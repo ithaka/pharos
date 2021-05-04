@@ -103,4 +103,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## License
 
-Licensed under the [MIT License](./LICENSE)
+This project is available under the MIT license.
+For more information, [view the full license and copyright notice](./LICENSE).
+
+Copyright 2021 Ithaka Harbors, Inc.
