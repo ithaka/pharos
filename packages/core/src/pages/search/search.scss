@@ -1,0 +1,193 @@
+@use '~@pharos/core/lib/utils/scss/mixins';
+
+.search-page__container {
+  display: grid;
+  grid-template-columns: 17rem 1fr;
+  grid-template-areas:
+    'header header header'
+    'sidebar main .'
+    'footer footer footer';
+  column-gap: 6rem;
+
+  pharos-header {
+    grid-area: header;
+  }
+
+  main {
+    grid-column: main;
+  }
+
+  aside {
+    grid-row: sidebar;
+  }
+
+  pharos-footer {
+    grid-column: footer;
+  }
+}
+
+.search-page__form {
+  display: grid;
+  grid-template-rows: 1fr;
+  row-gap: var(--pharos-spacing-one-and-a-half-x);
+  grid-template-columns: 14rem;
+
+  .search-page__facet {
+    border-top: 1px solid var(--pharos-color-ui-30);
+
+    pharos-checkbox-group,
+    pharos-radio-group,
+    fieldset {
+      margin-top: var(--pharos-spacing-one-and-a-half-x);
+    }
+
+    &:last-child {
+      border-bottom: 1px solid var(--pharos-color-ui-30);
+
+      pharos-radio-group {
+        margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+      }
+    }
+  }
+}
+
+.search-page__grid--result {
+  display: grid;
+  grid-template-columns: 1rem 9fr 13rem;
+  grid-template-rows: 1fr;
+  column-gap: var(--pharos-spacing-1-x);
+}
+
+.search-page__list--results {
+  @include mixins.no-bullet;
+
+  padding-left: 0;
+
+  .search-page__list-item--results {
+    margin-bottom: var(--pharos-spacing-5-x);
+  }
+}
+
+.search-page__list--action-buttons {
+  @include mixins.no-bullet;
+
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  margin-top: 1.25rem;
+  justify-items: end;
+}
+
+.search-page__list-item--action-buttons {
+  width: 100%;
+}
+
+.search-page__text--metadata {
+  color: var(--pharos-color-marble-gray-40);
+}
+
+.search-page__text--snippet {
+  color: var(--pharos-color-marble-gray-20);
+  font-size: var(--pharos-font-size-small);
+}
+
+.search-page__text--content-type {
+  @include mixins.content-label;
+
+  color: var(--pharos-color-marble-gray-40);
+}
+
+.search-page__grid--facets {
+  display: grid;
+  justify-content: center;
+  margin-top: var(--pharos-spacing-3-x);
+  row-gap: var(--pharos-spacing-1-x);
+}
+
+.search-page__fieldset--date {
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  legend {
+    padding: 0;
+    margin-bottom: var(--pharos-spacing-one-half-x);
+  }
+
+  .search-page__text--description {
+    display: block;
+    margin-bottom: var(--pharos-spacing-1-x);
+  }
+}
+
+.search-page__grid--date {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  row-gap: var(--pharos-spacing-one-half-x);
+  align-items: end;
+}
+
+.search-page__grid--image-results {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: var(--pharos-spacing-one-and-a-half-x);
+  margin: var(--pharos-spacing-3-x) 0;
+}
+
+.search-page__text--image-title {
+  display: block;
+  font-weight: var(--pharos-font-weight-bold);
+}
+
+.search-page__grid--image {
+  display: grid;
+  justify-content: center;
+  align-items: end;
+  grid-template-rows: 13.75rem 1fr;
+  row-gap: var(--pharos-spacing-1-x);
+  cursor: pointer;
+}
+
+.search-page__container--image-results {
+  grid-column: span 12;
+}
+
+.search-page__container--search-results {
+  margin-bottom: 11rem;
+  grid-column: span 10;
+}
+
+.search-page__container--results-top-bar {
+  display: flex;
+  margin: var(--pharos-spacing-2-x) 0;
+}
+
+.search-page__container--results-content {
+  display: flex;
+  margin: var(--pharos-spacing-3-x) 0 var(--pharos-spacing-one-and-a-half-x) 0;
+  grid-column: span 12;
+}
+
+.search-page__container--results-pagination {
+  display: flex;
+}
+
+.search-page__container--main-content {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--pharos-spacing-3-x);
+}
+
+.search-page__container--action-buttons {
+  margin-left: var(--pharos-spacing-3-x);
+}
+
+.search-page__container--all-images {
+  row-gap: 0;
+  align-items: center;
+  border: 1px solid var(--pharos-color-ui-40);
+  text-align: center;
+  padding: 0 var(--pharos-spacing-1-x);
+  font-weight: var(--pharos-font-weight-bold);
+}

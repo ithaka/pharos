@@ -1,0 +1,60 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: inline-flex;
+  flex-direction: row;
+  contain: layout;
+  position: relative;
+}
+
+.toast {
+  @include mixins.font-base;
+
+  width: 25rem;
+  box-sizing: border-box;
+  background: var(--pharos-color-marble-gray-10);
+  color: var(--pharos-color-text-white);
+  padding: var(--pharos-spacing-1-x);
+  border-radius: var(--pharos-radius-base-standard);
+  display: grid;
+  grid-template-areas: 'icon body dismiss';
+  grid-template-columns: var(--pharos-spacing-one-and-a-half-x) 1fr 1.75rem;
+  grid-gap: var(--pharos-spacing-1-x);
+
+  /* autoprefixer: ignore next */
+  align-items: start;
+
+  /* autoprefixer: ignore next */
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(calc(var(--pharos-spacing-1-x) * -1));
+  transition: opacity var(--pharos-transition-duration-long) ease-in-out,
+    transform var(--pharos-transition-duration-long) ease-in-out;
+}
+
+.toast__body {
+  grid-area: body;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+
+.toast__icon {
+  grid-area: icon;
+}
+
+.toast__button {
+  grid-area: dismiss;
+}
+
+.toast--success .toast__icon {
+  fill: var(--pharos-color-feedback-success);
+}
+
+.toast--error .toast__icon {
+  fill: var(--pharos-color-feedback-error);
+}
+
+:host([open]) .toast {
+  opacity: 1;
+  transform: translateY(0);
+}

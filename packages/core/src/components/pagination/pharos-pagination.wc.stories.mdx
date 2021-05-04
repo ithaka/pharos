@@ -1,0 +1,62 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { html } from 'lit-html';
+import { action } from '@storybook/addon-actions';
+
+import './pharos-pagination';
+
+import Intro from '@docs/guidelines/pagination.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Components/Pagination"
+  parameters={{
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
+
+# Pagination
+
+export const Template = (args) =>
+  html`
+    <pharos-pagination
+      total-results=${args.totalResults}
+      page-size=${args.pageSize}
+      current-page=${args.currentPage}
+    ></pharos-pagination>
+  `;
+
+<Canvas withToolbar>
+  <Story
+    name="Base"
+    argTypes={{
+      totalResults: { control: { type: 'number', min: 0 }, defaultValue: 1146 },
+      pageSize: { control: { type: 'number', min: 1 }, defaultValue: 25 },
+      currentPage: { control: { type: 'number', min: 1 }, defaultValue: 2 },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# API
+
+<ArgsTable of="pharos-pagination" />
+
+# Events
+
+<Canvas withToolbar>
+  <Story name="Events">
+    {() => {
+      return html`
+        <pharos-pagination
+          total-results="1146"
+          page-size="25"
+          current-page="2"
+          @prev-page="${(e) => action('Prev Page')(JSON.stringify(e))}"
+          @next-page="${(e) => action('Next Page')(JSON.stringify(e))}"
+        ></pharos-pagination>
+      `;
+    }}
+  </Story>
+</Canvas>

@@ -1,0 +1,65 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+
+import { PharosToast } from '../../react-components/toast/pharos-toast';
+import { PharosToaster } from '../../react-components/toast/pharos-toaster';
+import { PharosButton } from '../../react-components/button/pharos-button';
+
+import Intro from '@docs/guidelines/toast.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Components/Toast"
+  parameters={{
+    component: PharosToast,
+  }}
+/>
+
+# Toast
+
+<Canvas withToolbar>
+  <Story name="Base">
+    <PharosButton
+      id="success-toast-button"
+      onClick={() => {
+        const event = new CustomEvent('pharos-toast-open', {
+          detail: {
+            content:
+              'The item has moved to your <PharosLink href="#" onBackground bold>Workspace</PharosLink>.',
+          },
+        });
+        document.dispatchEvent(event);
+      }}
+    >
+      Have a toast!
+    </PharosButton>
+    <PharosToaster></PharosToaster>
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosToast} />
+
+# Error Toast
+
+<Canvas withToolbar>
+  <Story name="Error">
+    <PharosButton
+      id="error-toast-button"
+      onClick={() => {
+        const event = new CustomEvent('pharos-toast-open', {
+          detail: {
+            status: 'error',
+            content:
+              'Sorry, we were unable to move the item. Please try again later. If the issue persists, <PharosLink href="#" onBackground bold>contact JSTOR Support</PharosLink>.',
+          },
+        });
+        document.dispatchEvent(event);
+      }}
+    >
+      Have a toast!
+    </PharosButton>
+    <PharosToaster></PharosToaster>
+  </Story>
+</Canvas>

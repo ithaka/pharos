@@ -1,0 +1,26 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+
+import { PharosProgressBar } from '../../react-components/progress-bar/pharos-progress-bar';
+
+import Intro from '@docs/guidelines/progress-bar.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Components/ProgressBar"
+  parameters={{
+    component: PharosProgressBar,
+  }}
+/>
+
+# ProgressBar
+
+<Canvas withToolbar>
+  <Story name="Base">
+    <PharosProgressBar />
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosProgressBar} />

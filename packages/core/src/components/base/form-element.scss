@@ -1,0 +1,74 @@
+@use '../../utils/scss/mixins';
+
+:host([disabled]) {
+  pointer-events: none;
+}
+
+:host([required]) .required-indicator {
+  color: var(--pharos-form-element-color-text-required);
+}
+
+:host([required]) .required-indicator__text {
+  @include mixins.hidden;
+}
+
+.input-message {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  display: block;
+  padding: var(--pharos-spacing-one-half-x) 0;
+}
+
+.input-message__text {
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+:host([invalidated]) .input-message__text {
+  color: var(--pharos-form-element-color-text-invalid);
+}
+
+$elements: input-element textarea-element select-element;
+@each $element in $elements {
+  label[for='#{$element}'] {
+    @include mixins.form-element-label;
+  }
+
+  :host([hide-label]) label[for='#{$element}'] {
+    @include mixins.hidden;
+  }
+}
+
+$groupable-elements: radio-element checkbox-element;
+@each $element in $groupable-elements {
+  label[for='#{$element}'] {
+    @include mixins.groupable-element-label;
+  }
+
+  :host([hide-label]) label[for='#{$element}'] {
+    @include mixins.hidden;
+  }
+
+  :host([dark]) label[for='#{$element}'] {
+    color: var(--pharos-color-text-white);
+  }
+
+  :host(:hover) label[for='#{$element}'] {
+    cursor: pointer;
+  }
+
+  :host([disabled]) label[for='#{$element}'] {
+    pointer-events: none;
+    color: var(--pharos-form-element-color-text-disabled);
+  }
+}
+
+legend#legend {
+  @include mixins.form-element-label;
+}
+
+:host([hide-label]) legend#legend {
+  @include mixins.hidden;
+}

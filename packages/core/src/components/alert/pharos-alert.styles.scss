@@ -1,0 +1,11 @@
+pharos-alert .pharos-alert__link {
+  color: var(--pharos-alert-color-link-base);
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+pharos-alert[status='error'] .pharos-alert__link {
+  --pharos-alert-color-link-base: var(--pharos-alert-color-link-inverse);
+}

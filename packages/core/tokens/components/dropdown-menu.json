@@ -1,0 +1,23 @@
+{
+  "dropdown-menu": {
+    "color": {
+      "border": {
+        "base": {
+          "value": "{color.Marble gray.80.value}"
+        }
+      }
+    },
+    "size": {
+      "width": {
+        "min": {
+          "value": "9rem",
+          "comment": "TODO: Update with core token value"
+        },
+        "max": {
+          "value": "17rem",
+          "comment": "TODO: Update with core token value"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  width: 17rem;
+}
+
+.side-element__container {
+  display: grid;
+  grid-template-areas: '. content .';
+  grid-template-columns: var(--pharos-spacing-2-x) 1fr var(--pharos-spacing-2-x);
+  grid-template-rows: auto;
+  width: 17rem;
+}
+
+.side-element__content {
+  grid-area: content;
+  margin-top: var(--pharos-spacing-3-x);
+}

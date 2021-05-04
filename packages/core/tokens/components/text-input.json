@@ -1,0 +1,14 @@
+{
+  "text-input": {
+    "color": {
+      "icon": {
+        "valid": {
+          "value": "{color.feedback.success.value}"
+        },
+        "invalid": {
+          "value": "{color.feedback.error.value}"
+        }
+      }
+    }
+  }
+}

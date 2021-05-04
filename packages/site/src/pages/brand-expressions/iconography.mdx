@@ -1,0 +1,317 @@
+import IconsDisplay from '../../components/statics/iconography/IconsDisplay';
+import strokeWidth from '../../../static/images/brand-expressions/iconography/icons-2px-stroke.png';
+import centerWeight from '../../../static/images/brand-expressions/iconography/icons-center-stroke.png';
+import squareCap from '../../../static/images/brand-expressions/iconography/icons-square-caps.png';
+import alignOptically from '../../../static/images/brand-expressions/iconography/icons-align-optically.png';
+import squareJoins from '../../../static/images/brand-expressions/iconography/icons-square-joins.png';
+import logoInspired from '../../../static/images/brand-expressions/iconography/icons-logo-inspired.png';
+
+import heroImage from '../../../static/images/brand-expressions/iconography/icon_overview_hero.svg';
+import simpleDetail from '../../../static/images/brand-expressions/iconography/icon_principles_simple-detail.svg';
+import clearConceptual from '../../../static/images/brand-expressions/iconography/icon_oprinciples_clear-conceptual.svg';
+import principles1 from '../../../static/images/brand-expressions/iconography/icon_principles_family-friends-1.svg';
+import principles2 from '../../../static/images/brand-expressions/iconography/icon_principles_family-friends-2.svg';
+import labels from '../../../static/images/brand-expressions/iconography/icon_principles_labels.svg';
+import inAction1 from '../../../static/images/brand-expressions/iconography/iconography_icons-in-action_image1.png';
+import inAction2 from '../../../static/images/brand-expressions/iconography/iconography_icons-in-action_image2.png';
+
+import PageSection from '../../components/statics/PageSection';
+import Grid from '../../components/Grid';
+import DosAndDonts from '../../components/statics/DosAndDonts';
+
+<PageSection
+  title="Iconography"
+  description="JSTOR icons seek to provide clarity and convey brand personality through color and style, but must first communicate meaning in the content."
+  isHeader
+>
+  <PharosButton iconRight="link-external" href="#" target="_blank">
+    View icons in Storybook
+  </PharosButton>
+  <div
+    style={{
+      marginTop: 'var(--pharos-spacing-5-x)',
+      marginBottom: 'var(--pharos-spacing-7-x)',
+    }}
+  >
+    <Grid columns={1} justifyContent="center" minContent align="end">
+      <img src={heroImage} alt="Iconography" />
+    </Grid>
+  </div>
+</PageSection>
+
+<PageSection title="Icons">
+  <IconsDisplay
+    title="System"
+    rows={6}
+    iconsToShow={[
+      'arrow-up',
+      'arrow-down',
+      'arrow-left',
+      'arrow-right',
+      'attachment',
+      'calendar',
+      'chevron-down',
+      'chevron-up',
+      'chevron-left',
+      'chevron-right',
+      'chevron-left-large',
+      'chevron-right-large',
+      'close',
+      'close-inverse',
+      'copy',
+      'ellipses-horizontal',
+      'ellipses-vertical',
+      'link-external',
+      'view-gallery',
+      'view-grid',
+      'view-list',
+    ]}
+  />
+  <IconsDisplay
+    title="Workspace"
+    rows={3}
+    iconsToShow={[
+      'academic-content',
+      'add',
+      'delete',
+      'folder',
+      'folder-new',
+      'folder-selected',
+      'image',
+      'link',
+      'link-add',
+      'move',
+      'workspace',
+      'workspace-selected',
+      'primary-source',
+      'video',
+    ]}
+  />
+  <IconsDisplay
+    title="Alerts, feedback"
+    rows={2}
+    iconsToShow={[
+      'checkmark',
+      'checkmark-small',
+      'exclamation',
+      'dash-small',
+      'checkmark-inverse',
+      'exclamation-inverse',
+      'info-inverse',
+      'question-inverse',
+    ]}
+  />
+  <IconsDisplay
+    title="Item Actions"
+    rows={3}
+    iconsToShow={[
+      'cite',
+      'download',
+      'collapse',
+      'expand',
+      'fit-to-view',
+      'fullscreen',
+      'fullscreen-minimize',
+      'save',
+      'search',
+      'share',
+      'zoom-in',
+      'zoom-out',
+    ]}
+  />
+  <IconsDisplay
+    title="Social"
+    rows={2}
+    iconsToShow={[
+      'email',
+      'facebook',
+      'google-color',
+      'instagram',
+      'linkedin',
+      'twitter',
+      'tumblr',
+      'youtube',
+    ]}
+  />
+</PageSection>
+
+<PageSection title="Principles">
+  <div style={{ marginBottom: '4rem' }}>
+    <PharosHeading level="3" preset="4" style={{ marginBottom: '1rem' }}>
+      Simple over detailed
+    </PharosHeading>
+    <img src={simpleDetail} alt="Simple over detailed" style={{ marginBottom: '1rem' }} />
+    <p style={{ width: '66%', color: 'var(--pharos-color-text-20)' }}>
+      Icons should not be too heavy in details, this increases cognitive load on the user.
+    </p>
+  </div>
+  <div style={{ marginBottom: '4rem' }}>
+    <PharosHeading level="3" preset="4" style={{ marginBottom: '1rem' }}>
+      Clear over conceptual
+    </PharosHeading>
+    <img src={clearConceptual} alt="Clear over conceptual" style={{ marginBottom: '1rem' }} />
+    <p style={{ width: '66%', color: 'var(--pharos-color-text-20)' }}>
+      Icons should be a good mix of iconic and symbolic. Interpreting abstract (symbolic) icons can
+      take more time and effort for the user. Don't reinvent an icon that's already been accepted as
+      a convention.
+    </p>
+  </div>
+  <div style={{ marginBottom: '4rem' }}>
+    <PharosHeading level="3" preset="4" style={{ marginBottom: '.5rem' }}>
+      Family over friends
+    </PharosHeading>
+    <Grid columns={2} align="start" bottom={1}>
+      <img
+        src={principles1}
+        alt="A related set of icons works best when using icons in your experiences."
+      />
+      <img
+        src={principles2}
+        alt="A unrelated, inconsistent set of icons does not work as well for creating cohesiveness with iconography."
+      />
+    </Grid>
+    <div style={{ width: '66%', color: 'var(--pharos-color-text-20)' }}>
+      The icon set needs to look and feel related. If they aren't, the icons may look out of place,
+      cheapening the design or leading a user to mistrust the experience.
+    </div>
+  </div>
+  <div>
+    <PharosHeading level="3" preset="4" style={{ marginBottom: '1rem' }}>
+      Labels over no labels
+    </PharosHeading>
+    <img
+      src={labels}
+      alt="An image of a set of buttons that contain icons and text. When using iconography, it's best to use labels to identify the icon."
+      style={{ marginBottom: '1rem' }}
+    />
+    <p style={{ width: '66%', color: 'var(--pharos-color-text-20)' }}>
+      Icons with paired labels are more effective than icons alone. When paired, their meaning is
+      much more quickly recognizable and understood. If an icon cannot be paired with text next to
+      it, the use of a tooltip will suffice.
+    </p>
+  </div>
+</PageSection>
+
+<PageSection title="Best Practices">
+  <DosAndDonts>
+    <div style={{ width: '66%' }}>
+      <div style={{ marginBottom: 'var(--pharos-spacing-2-x)' }}>
+        <strong>Consider the following when implementing iconography</strong>
+        <ul>
+          <li>Consider if an icon is needed for the design, not all actions may need an icon</li>
+          <li>
+            Limit the creation of icon variations. There is no need for different icons to represent
+            the same concept (e.g. "admin settings" vs. "user settings")
+          </li>
+          <li>
+            Whenever possible, pair an icon with text, icons with labels are more effective than
+            icons alone.
+          </li>
+          <li>
+            If an icon cannot have text pair next to it, the use of a tooltip will suffice (e.g.
+            zoom in/zoom out on the viewer).
+          </li>
+        </ul>
+      </div>
+      <strong>Use in product for the following:</strong>
+      <ul>
+        <li>CTA's/buttons, most specifically when paired with text</li>
+        <li>Symbolize tools (e.g., the viewer toolbar or project creator in Forum)</li>
+        <li>System actions (e.g., dropdown arrows, wayfinding, etc.)</li>
+        <li>Banners or alerts to bring attention to a specific message</li>
+        <li>Represent content types at a high level</li>
+      </ul>
+    </div>
+  </DosAndDonts>
+  <DosAndDonts Dont>
+    <div style={{ width: '66%' }}>
+      <p>
+        Don't reinvent an icon that's already been accepted as a convention. (e.g. a "gear" icon for
+        "settings"). Interpreting abstract (symbolic) icons can take more time and can create a
+        cognitive load on the user.
+      </p>
+    </div>
+  </DosAndDonts>
+</PageSection>
+
+<PageSection title="Design and production guidelines">
+  <img src={strokeWidth} alt="All icons have a 2px stroke width" width="220" />
+  <img src={centerWeight} alt="Center the weight of icons" width="220" />
+  <img src={alignOptically} alt="Center the icons optically" width="220" />
+  <img src={squareJoins} alt="Make sure the icons have 90 degree angles" width="220" />
+  <img src={squareCap} alt="Icons have square caps" width="220" />
+  <img src={logoInspired} alt="Icons are inspired by the square shape of the logo" width="220" />
+  <div style={{ marginTop: '4rem', marginBottom: '5rem', width: '66%' }}>
+    <PharosHeading level="3" preset="4">
+      Steps
+    </PharosHeading>
+    <ol>
+      <li>
+        Please review our current icons to see if one can work for your need. All icons should be
+        unique and not redundant.
+      </li>
+      <li>
+        Create a 24x24px rectangle or artboard with a 1px grid. All lines and shapes of the icon are
+        to snap to a pixel on the grid, so there shouldn't be any decimal sizes of the lines or
+        shapes you create.
+      </li>
+      <li>
+        Then, you'll need to use our grid template. Most product-based icons should be 16px, with a
+        max size of 20px. The grid's internal boxes decrease from 24px at 2px increments down to
+        12px. These will serve as guidelines to snap your lines to.
+      </li>
+      <li>All icons have a 2px stroke width.</li>
+      <li>
+        When designing icons that include closed shapes, the weight needs to be "centered" as
+        opposed to "inside or "outside" the shape. This provides enough thickness and crisp
+        silhouettes.
+      </li>
+      <li>All existing corners need to be square angles, or 90 degrees</li>
+      <li>The caps/ends of the lines need to be square</li>
+      <li>Align elements optically (e.g., a play button)</li>
+    </ol>
+    <div
+      style={{
+        marginTop: 'var(--pharos-spacing-2-x)',
+        marginBottom: 'var(--pharos-spacing-2-x)',
+      }}
+    >
+      <PharosHeading level="4" preset="1--bold">
+        Implementation details when creating icons
+      </PharosHeading>
+      <ul>
+        <li>
+          It's important that the icons sit on the pixel so they always appeared crisp and sharp
+        </li>
+        <li>Please do not use the "line" tool, this can place vectors on half pixels</li>
+        <li>Be aware of automatic alignments which can place vectors on uneven or half pixels</li>
+      </ul>
+    </div>
+  </div>
+  <PharosHeading level="3" preset="4">
+    Exporting for the product
+  </PharosHeading>
+  <ul>
+    <li>
+      Icons should be at whole pixels. No decimals are allowed in x and y coordinates or width and
+      height fields.
+    </li>
+    <li>Each artboard and the artwork within it must be aligned to the pixel grid.</li>
+    <li>All strokes must be expanded and at whole pixel values.</li>
+    <li>
+      Convert your strokes to outlines, all shapes and paths should be combined and converted into a
+      single path.
+    </li>
+  </ul>
+</PageSection>
+
+<PageSection title="Icon in action">
+  <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>Workspace page</div>
+  <div style={{ marginBottom: 'var(--pharos-spacing-2-x)' }}>
+    <img src={inAction1} alt="Image in action 1" style={{ maxWidth: '100%' }} />
+  </div>
+  <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>Presentation slide</div>
+  <div>
+    <img src={inAction2} alt="Image in action 2" style={{ maxWidth: 465 }} />
+  </div>
+</PageSection>

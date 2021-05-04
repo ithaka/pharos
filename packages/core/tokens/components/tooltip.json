@@ -1,0 +1,17 @@
+{
+  "tooltip": {
+    "color": {
+      "background": {
+        "base": { "value": "{color.Marble gray.20.value}" }
+      },
+      "text": {
+        "base": { "value": "{color.text.white.value}" }
+      }
+    },
+    "size": {
+      "text": {
+        "base": { "value": "{font.size.small.value}" }
+      }
+    }
+  }
+}

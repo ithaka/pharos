@@ -1,0 +1,57 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { PharosPagination } from '../../react-components/pagination/pharos-pagination';
+
+import Intro from '@docs/guidelines/pagination.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Components/Pagination"
+  parameters={{
+    component: PharosPagination,
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
+
+# Pagination
+
+export const Template = (args) => (
+  <PharosPagination
+    totalResults={args.totalResults}
+    pageSize={args.pageSize}
+    currentPage={args.currentPage}
+  ></PharosPagination>
+);
+
+<Canvas withToolbar>
+  <Story
+    name="Base"
+    argTypes={{
+      totalResults: { control: { type: 'number', min: 0 }, defaultValue: 1146 },
+      pageSize: { control: { type: 'number', min: 1 }, defaultValue: 25 },
+      currentPage: { control: { type: 'number', min: 1 }, defaultValue: 2 },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# API
+
+<ArgsTable of={PharosPagination} />
+
+# Events
+
+<Canvas withToolbar>
+  <Story name="Events">
+    <PharosPagination
+      totalResults="1146"
+      pageSize="25"
+      currentPage="2"
+      onPrev-Page={(e) => action('Prev Page')(JSON.stringify(e))}
+      onNext-Page={(e) => action('Next Page')(JSON.stringify(e))}
+    ></PharosPagination>
+  </Story>
+</Canvas>

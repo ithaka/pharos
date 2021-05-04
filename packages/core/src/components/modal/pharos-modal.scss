@@ -1,0 +1,136 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  position: fixed;
+  z-index: 9000;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  contain: strict;
+}
+
+.modal__overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  overflow-y: scroll;
+  transition: visibility var(--pharos-transition-duration-default) ease-in-out,
+    background-color var(--pharos-transition-duration-default) ease-in-out;
+}
+
+.modal__dialog {
+  max-height: calc(100vh - var(--pharos-spacing-2-x));
+  max-width: 100%;
+  pointer-events: none;
+  z-index: 9001;
+  visibility: hidden;
+
+  @at-root #{&}--small {
+    width: 28rem;
+  }
+
+  @at-root #{&}--medium {
+    width: 39rem;
+  }
+
+  @at-root #{&}--large {
+    width: 48rem;
+  }
+}
+
+:host([open]) {
+  pointer-events: auto;
+
+  .modal__overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: visible;
+  }
+  .modal__dialog {
+    visibility: visible;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .modal__overlay {
+    display: block;
+    overflow-y: visible;
+    transition-duration: var(--pharos-transition-duration-long);
+  }
+
+  .modal__dialog {
+    position: relative;
+    min-width: 100vw;
+    max-height: 100vh;
+    height: 100vh;
+    top: 100%;
+    transition: visibility var(--pharos-transition-duration-long) linear
+        var(--pharos-transition-duration-long),
+      top var(--pharos-transition-duration-long) ease-in-out;
+  }
+
+  :host([open]) .modal__dialog {
+    top: 0;
+    transition: visibility 0s linear 0s, top var(--pharos-transition-duration-long) ease-in-out;
+  }
+}
+
+.modal__content {
+  @include mixins.font-base;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  pointer-events: auto;
+  overflow-y: scroll;
+  background-color: var(--pharos-modal-color-background-content);
+  background-clip: padding-box;
+  border: 1px solid var(--pharos-modal-color-border-content);
+  border-radius: var(--pharos-radius-base-standard);
+  outline: 0;
+}
+
+.modal__body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 0 var(--pharos-modal-spacing-base);
+}
+
+.modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--pharos-modal-spacing-base);
+}
+
+.modal__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--pharos-modal-spacing-base);
+
+  @at-root #{&}--empty {
+    padding: 0 0 var(--pharos-modal-spacing-base);
+  }
+}
+
+slot[name='footer']::slotted(*) {
+  margin: var(--pharos-spacing-one-half-x);
+}
+
+:host([footer-divider]) {
+  .modal__footer {
+    border-top: 1px solid var(--pharos-modal-color-border-content);
+  }
+}

@@ -1,0 +1,70 @@
+@use '../../utils/scss/mixins';
+
+::-webkit-search-cancel-button {
+  display: none;
+}
+
+::-ms-clear {
+  display: none;
+}
+
+:host {
+  display: block;
+  width: 100%;
+  contain: content;
+}
+
+#input-element {
+  @include mixins.input-base;
+  @include mixins.input-required;
+  @include mixins.input-placeholder;
+
+  &:focus {
+    @include mixins.input-padding-thick-border;
+    @include mixins.input-focus;
+  }
+}
+
+:host([invalidated]),
+:host([validated]) {
+  #input-element {
+    padding-right: 2.5rem;
+  }
+}
+
+:host([disabled]) #input-element {
+  @include mixins.input-disabled;
+}
+
+.input-wrapper {
+  @include mixins.input-wrapper;
+}
+
+.input__icon {
+  position: absolute;
+  right: var(--pharos-spacing-three-quarters-x);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+:host([invalidated]) .input__icon {
+  fill: var(--pharos-text-input-color-icon-invalid);
+}
+
+:host([validated]) .input__icon {
+  fill: var(--pharos-text-input-color-icon-valid);
+}
+
+:host([invalidated]) #input-element {
+  @include mixins.input-padding-thick-border;
+  @include mixins.input-invalid;
+}
+
+:host([on-background]) #input-element {
+  @include mixins.input-on-background;
+
+  &:focus {
+    @include mixins.input-padding-thick-border;
+    @include mixins.input-focus;
+  }
+}

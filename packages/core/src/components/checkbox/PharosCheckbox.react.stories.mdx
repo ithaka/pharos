@@ -1,0 +1,170 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { PharosCheckbox } from '../../react-components/checkbox/pharos-checkbox';
+import { PharosLink } from '../../react-components/link/pharos-link';
+
+import Intro from '@docs/guidelines/checkbox.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Forms/Checkbox"
+  parameters={{
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
+
+# Examples
+
+export const Template = (args) => (
+  <PharosCheckbox
+    checked={args.checked}
+    disabled={args.disabled}
+    hideLabel={args.hideLabel}
+    required={args.required}
+    invalidated={args.invalidated}
+    message={args.message}
+  >
+    <span slot="label">{args.label}</span>
+  </PharosCheckbox>
+);
+
+<Canvas withToolbar>
+  <Story
+    name="Base"
+    args={{
+      checked: false,
+      disabled: false,
+      hideLabel: false,
+      label: 'I am a label',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosCheckbox} />
+
+# States
+
+<Canvas withToolbar>
+  <Story name="States">
+    {() => {
+      return (
+        <div>
+          <div>
+            <PharosCheckbox name="one">
+              <span slot="label">Normal checkbox</span>
+            </PharosCheckbox>
+          </div>
+          <div>
+            <PharosCheckbox name="two" disabled>
+              <span slot="label">Disabled checkbox</span>
+            </PharosCheckbox>
+          </div>
+          <div>
+            <PharosCheckbox name="three" checked>
+              <span slot="label">Checked checkbox</span>
+            </PharosCheckbox>
+          </div>
+          <div>
+            <PharosCheckbox name="four" checked disabled>
+              <span slot="label">Disabled & Checked checkbox</span>
+            </PharosCheckbox>
+          </div>
+          <div>
+            <PharosCheckbox name="five" checked>
+              <div slot="label">
+                <div>Checked checkbox</div>
+                <div>Multiple lines</div>
+              </div>
+            </PharosCheckbox>
+          </div>
+          <div>
+            <PharosCheckbox name="six" invalidated>
+              <span slot="label">Error checkbox</span>
+            </PharosCheckbox>
+          </div>
+          <div>
+            <PharosCheckbox name="seven">
+              <span slot="label">
+                Label with a <PharosLink href="#">link</PharosLink>
+              </span>
+            </PharosCheckbox>
+          </div>
+          <div>
+            <PharosCheckbox name="eight" indeterminate>
+              <span slot="label">Indeterminate checkbox</span>
+            </PharosCheckbox>
+          </div>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Events
+
+<Canvas withToolbar>
+  <Story name="Events">
+    {() => {
+      return (
+        <PharosCheckbox
+          value="My value"
+          onChange={(e) => action('Change')(e.target.checked)}
+          onInput={(e) => action('Input')(e.target.value)}
+          onClick={(e) => action('Click')(e.target.checked)}
+        >
+          <span slot="label">I fire events</span>
+        </PharosCheckbox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Validity
+
+<Canvas withToolbar>
+  <Story
+    name="Validity"
+    args={{
+      required: true,
+      invalidated: true,
+      label: 'I am a label',
+      message: 'This field is required, please make a selection',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Dark
+
+<Canvas withToolbar>
+  <Story name="Dark">
+    {() => {
+      return (
+        <div>
+          <div className="checkbox-example__container--dark">
+            <PharosCheckbox name="dark" dark>
+              <span slot="label">Unchecked</span>
+            </PharosCheckbox>
+          </div>
+          <div className="checkbox-example__container--dark">
+            <PharosCheckbox name="dark" dark checked>
+              <span slot="label">Checked</span>
+            </PharosCheckbox>
+          </div>
+          <div className="checkbox-example__container--dark">
+            <PharosCheckbox name="indeterminate" dark indeterminate>
+              <span slot="label">Indeterminate</span>
+            </PharosCheckbox>
+          </div>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>

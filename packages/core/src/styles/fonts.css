@@ -1,0 +1,83 @@
+/* Webfonts: Copyright © Letters From Sweden. All rights reserved. To obtain a license, please see: https://lettersfromsweden.se */
+
+@font-face {
+  font-family: 'GT America Standard';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular.woff')
+      format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular.woff2')
+      format('woff2');
+}
+
+@font-face {
+  font-family: 'GT America Standard';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular-Italic.woff')
+      format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular-Italic.woff2')
+      format('woff2');
+}
+
+@font-face {
+  font-family: 'GT America Standard';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Medium.woff')
+      format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Medium.woff2')
+      format('woff2');
+}
+
+@font-face {
+  font-family: 'GT America Standard';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Medium-Italic.woff')
+      format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Medium-Italic.woff2')
+      format('woff2');
+}
+
+@font-face {
+  font-family: 'Ivar Headline';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Regular.woff') format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Ivar Headline';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Italic.woff') format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Ivar Headline';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Medium.woff') format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Ivar Headline';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-MediumItalic.woff')
+      format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-MediumItalic.woff2')
+      format('woff2');
+}

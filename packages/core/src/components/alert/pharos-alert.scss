@@ -1,0 +1,63 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  contain: layout;
+}
+
+.alert {
+  @include mixins.font-base;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--pharos-spacing-1-x);
+  border-radius: var(--pharos-radius-base-standard);
+  display: grid;
+  grid-template-areas: 'icon body';
+  grid-template-columns: var(--pharos-spacing-one-and-a-half-x) 1fr;
+  grid-gap: var(--pharos-spacing-1-x);
+  background: var(--pharos-alert-color-background-base);
+  color: var(--pharos-alert-color-text-base);
+}
+
+.alert__icon {
+  grid-area: icon;
+  fill: var(--pharos-alert-color-icon-base);
+}
+
+.alert__body {
+  grid-area: body;
+}
+
+.alert--info {
+  background: var(--pharos-alert-color-background-info);
+
+  .alert__icon {
+    fill: var(--pharos-alert-color-icon-info);
+  }
+}
+
+.alert--success {
+  background: var(--pharos-alert-color-background-success);
+
+  .alert__icon {
+    fill: var(--pharos-alert-color-icon-success);
+  }
+}
+
+.alert--warning {
+  background: var(--pharos-alert-color-background-warning);
+
+  .alert__icon {
+    fill: var(--pharos-alert-color-icon-warning);
+  }
+}
+
+.alert--error {
+  background: var(--pharos-alert-color-background-error);
+  color: var(--pharos-alert-color-text-inverse);
+
+  .alert__icon {
+    fill: var(--pharos-alert-color-icon-error);
+  }
+}

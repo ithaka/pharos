@@ -1,0 +1,256 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { PharosTextarea } from '../../react-components/textarea/pharos-textarea';
+import createFormData from '../../utils/createFormData';
+
+<Meta
+  title="Forms/Textarea"
+  parameters={{
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
+
+# Examples
+
+export const Template = (args) => (
+  <div
+    style={{
+      display: 'grid',
+      gridGap: '1rem',
+      gridTemplateColumns: 'repeat(1, 250px)',
+    }}
+  >
+    <PharosTextarea
+      name="story-input"
+      cols={args.columns}
+      disabled={args.disabled}
+      hideLabel={args.hideLabel}
+      invalidated={args.invalidated}
+      message={args.message}
+      placeholder={args.placeholder}
+      readonly={args.readonly}
+      required={args.required}
+      rows={args.rows}
+      validated={args.validated}
+      value={args.value}
+    >
+      <span slot="label">{args.label}</span>
+    </PharosTextarea>
+  </div>
+);
+
+<Canvas withToolbar>
+  <Story
+    name="Base"
+    argTypes={{
+      type: { table: { disable: true }, defaultValue: 'text' },
+    }}
+    args={{
+      label: 'I am a label',
+      placeholder: 'Enter some text',
+      value: '',
+      columns: 20,
+      rows: 2,
+      hideLabel: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosTextarea} />
+
+<Canvas withToolbar>
+  <Story name="States">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '1rem',
+        gridTemplateColumns: 'repeat(2, 250px)',
+      }}
+    >
+      <PharosTextarea>
+        <span slot="label">I am empty</span>
+      </PharosTextarea>
+      <PharosTextarea
+        disabled
+        style={{
+          msGridColumn: '3',
+        }}
+      >
+        <span slot="label">I am disabled</span>
+      </PharosTextarea>
+      <PharosTextarea
+        readonly
+        value="Can't touch this"
+        style={{
+          msGridRow: '2',
+        }}
+      >
+        <span slot="label">I am read-only</span>
+      </PharosTextarea>
+      <PharosTextarea
+        placeholder="Enter some text"
+        style={{
+          msGridColumn: '3',
+          msGridRow: '2',
+        }}
+      >
+        <span slot="label">I have a placeholder</span>
+      </PharosTextarea>
+      <PharosTextarea
+        value="Hi there"
+        style={{
+          msGridRow: '3',
+        }}
+      >
+        <span slot="label">I have a value provided</span>
+      </PharosTextarea>
+      <PharosTextarea
+        resize="none"
+        style={{
+          msGridColumn: '3',
+          msGridRow: '3',
+        }}
+      >
+        <span slot="label">I can't be resized</span>
+      </PharosTextarea>
+    </div>
+  </Story>
+</Canvas>
+
+# Events
+
+<Canvas withToolbar>
+  <Story name="Events">
+    {() => {
+      return (
+        <div
+          style={{
+            display: 'grid',
+            gridGap: '1rem',
+            gridTemplateColumns: 'repeat(1, 250px)',
+          }}
+        >
+          <PharosTextarea
+            placeholder="Enter some text"
+            onChange={(e) => action('Change')(e.target.value)}
+            onInput={(e) => action('Input')(e.target.value)}
+          >
+            <span slot="label">I fire events on input</span>
+          </PharosTextarea>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Validity
+
+<Canvas withToolbar>
+  <Story
+    name="Validity"
+    argTypes={{
+      label: { table: { disable: true }, defaultValue: 'Test me out' },
+      placeholder: {
+        table: { disable: true },
+        defaultValue: 'Enter some text',
+      },
+      value: { table: { disable: true }, defaultValue: ' ' },
+    }}
+    args={{
+      required: true,
+      invalidated: true,
+      validated: false,
+      message: 'This field does not meet the requirements',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Custom Error Message
+
+export const CustomTemplate = (args) => (
+  <div
+    style={{
+      display: 'grid',
+      gridGap: '1rem',
+      gridTemplateColumns: 'repeat(1, 250px)',
+    }}
+  >
+    <PharosTextarea
+      placeholder="Enter some text"
+      onChange={(e) => action('Change')(e.target.value)}
+      onInput={(e) => action('Input')(e.target.value)}
+      required={args.required}
+      invalidated={args.invalidated}
+      validated={args.validated}
+      message={args.message}
+    >
+      <span slot="label">I am invalid</span>
+      <span slot="message">
+        <p>Must be over 100 characters long</p>
+      </span>
+    </PharosTextarea>
+  </div>
+);
+
+<Canvas withToolbar>
+  <Story
+    name="Custom Error Message"
+    args={{
+      required: false,
+      invalidated: true,
+      validated: false,
+      message: 'This field does not meet the requirements',
+    }}
+  >
+    {CustomTemplate.bind({})}
+  </Story>
+</Canvas>
+
+# Form Data
+
+<Canvas withToolbar>
+  <Story name="Form Data">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '1rem',
+        gridTemplateColumns: 'repeat(1, 250px)',
+      }}
+    >
+      <form name="my-form" action="https://httpbin.org/post" method="POST">
+        <PharosTextarea
+          name="my-textarea"
+          placeholder="Enter some text"
+          onChange={(e) => action('Change')(e.target.value)}
+          onInput={(e) => action('Input')(e.target.value)}
+          required
+        >
+          <span slot="label">I am invalid</span>
+        </PharosTextarea>
+        <input
+          type="submit"
+          value="Submit"
+          onClick={(e) => {
+            e.preventDefault();
+            const form = document.querySelector('form[name="my-form"]');
+            const formData = createFormData(form);
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'https://httpbin.org/post', true);
+            xhr.onload = function () {
+              const response = JSON.parse(this.responseText);
+              action('FormData')(JSON.stringify(response.form));
+            };
+            xhr.send(formData);
+          }}
+        />
+      </form>
+    </div>
+  </Story>
+</Canvas>

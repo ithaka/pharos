@@ -1,0 +1,71 @@
+@import 'variables.module.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--pharos-color-black-base);
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    'sidenav main'
+    'sidenav footer';
+  grid-template-columns: max-content 1fr;
+}
+
+@media screen and (max-width: 1055px) {
+  .container {
+    grid-template-areas:
+      'main'
+      'footer';
+    grid-template-columns: auto;
+  }
+}
+
+.main {
+  grid-area: main;
+  padding: var(--main-spacing-padding) 0;
+  display: grid;
+  grid-template-areas: '. content . toc';
+  grid-template-columns: minmax(5.25rem, 7.75rem) minmax(45rem, 54rem) minmax(5.25rem, 7.75rem) 12.5rem;
+}
+
+.main___fill {
+  padding: 0;
+  grid-template-areas: '. content .';
+  grid-template-columns: 6.5rem 1fr 6.5rem;
+}
+
+@media screen and (max-width: 1055px) {
+  .main {
+    grid-template-columns: 1.5rem 1fr 1.5rem;
+  }
+}
+
+.content {
+  grid-area: content;
+}
+
+p,
+ul {
+  max-width: 100%;
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.main li {
+  margin-left: var(--spacing-small);
+}
+
+.main ul > li::marker {
+  color: var(--pharos-color-living-coral-base);
+}

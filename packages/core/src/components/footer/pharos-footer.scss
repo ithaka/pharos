@@ -1,0 +1,107 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  contain: content;
+}
+
+#footer-element {
+  background-color: var(--pharos-color-marble-gray-10);
+  color: var(--pharos-color-white);
+  padding-top: var(--pharos-spacing-2-x);
+  display: grid;
+  grid-template-areas: '. main .';
+  grid-template-columns: 1fr 8fr 1fr;
+}
+
+.footer__content {
+  grid-area: main;
+  max-width: 70rem;
+  justify-self: center;
+}
+
+.footer__row {
+  display: grid;
+}
+
+.footer__row--top {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+.footer__row--main {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1.25fr 1.75fr;
+  grid-template-rows: auto;
+  column-gap: var(--pharos-spacing-one-half-x);
+}
+
+.footer__row--bottom {
+  grid-template-columns: 0.79fr 0.25fr;
+  grid-template-rows: auto;
+}
+
+@media (max-width: 1024px) {
+  .footer__row--main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 0;
+  }
+  .footer__row--bottom {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .footer__row--main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+  }
+  .footer__row--bottom {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+}
+
+.footer__statement {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  color: var(--pharos-color-marble-gray-80);
+}
+
+.footer__list {
+  @include mixins.no-bullet;
+
+  padding-inline-start: 0;
+  padding-left: 0;
+
+  li:not(:last-child) {
+    margin-bottom: var(--pharos-spacing-three-quarters-x);
+  }
+}
+
+.footer__list--inline {
+  @include mixins.list-inline;
+
+  padding-inline-start: 0;
+  padding-left: 0;
+}
+
+.footer__list--social {
+  @include mixins.list-inline($margin-right: var(--pharos-spacing-1-x));
+
+  padding-inline-start: 0;
+  padding-left: 0;
+}
+
+.footer__list--social pharos-icon {
+  fill: var(--pharos-color-white);
+  transition: opacity var(--pharos-transition-duration-default) ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

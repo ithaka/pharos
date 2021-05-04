@@ -1,0 +1,263 @@
+import navigationalTooltip from '../images/components/tooltip/tooltip_navigational.png';
+import tooltipViewer from '../images/components/tooltip/tooltip_viewer-1.png';
+import tooltipViewerTwo from '../images/components/tooltip/tooltip_viewer-2.png';
+import tooltipViewerThree from '../images/components/tooltip/tooltip_viewer-3.png';
+import iconButton from '../images/components/tooltip/tooltip_icon-button.png';
+import largeExample from '../images/components/tooltip/tooltip_large-example.png';
+import tooltipOverflow from '../images/components/tooltip/tooltip_overflow.gif';
+import tooltipHoverable from '../images/components/tooltip/tooltip_hoverable.gif';
+
+# Tooltip
+
+<p
+  style={{
+    fontSize: 'var(--pharos-type-scale-6)',
+    lineHeight: '2rem',
+    marginBottom: 'var(--pharos-spacing-5-x)',
+  }}
+>
+  Tooltips provide concise additional information upon hover or focus. The content should be
+  contextual, helpful, and non-critical.
+</p>
+
+## Usage
+
+### Placement
+
+There are 12 placement options available. Tooltips can be placed top, bottom, left or right of the target (e.g. button, icon, link, etc.) and the caret (triangle) can be placed at the start, center or end of the tooltip.
+
+<Canvas>
+  <div className="tooltip-example__container">
+    <button data-tooltip-id="my-top-start-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-top-start-tooltip" open placement="top-start">
+      top-start
+    </pharos-tooltip>
+    <button data-tooltip-id="my-top-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-top-tooltip" open placement="top">
+      top
+    </pharos-tooltip>
+    <button data-tooltip-id="my-top-end-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-top-end-tooltip" open placement="top-end">
+      top-end
+    </pharos-tooltip>
+    <button data-tooltip-id="my-left-start-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-left-start-tooltip" open placement="left-start">
+      left-start
+    </pharos-tooltip>
+    <button data-tooltip-id="my-left-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-left-tooltip" open placement="left">
+      left
+    </pharos-tooltip>
+    <button data-tooltip-id="my-left-end-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-left-end-tooltip" open placement="left-end">
+      left-end
+    </pharos-tooltip>
+    <button data-tooltip-id="my-right-start-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-right-start-tooltip" open placement="right-start">
+      right-start
+    </pharos-tooltip>
+    <button data-tooltip-id="my-right-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-right-tooltip" open placement="right">
+      right
+    </pharos-tooltip>
+    <button data-tooltip-id="my-right-end-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-right-end-tooltip" open placement="right-end">
+      right-end
+    </pharos-tooltip>
+    <button data-tooltip-id="my-bottom-start-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-bottom-start-tooltip" open placement="bottom-start">
+      bottom-start
+    </pharos-tooltip>
+    <button data-tooltip-id="my-bottom-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-bottom-tooltip" open placement="bottom">
+      bottom
+    </pharos-tooltip>
+    <button data-tooltip-id="my-bottom-end-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-bottom-end-tooltip" open placement="bottom-end">
+      bottom-end
+    </pharos-tooltip>
+  </div>
+</Canvas>
+
+#### Where should I place the tooltip?
+
+All tooltips, by default, are positioned top-center.
+
+You can also decide to position the tooltip in a more appropriate place depending on the use case.
+
+##### Navigational
+
+For navigational items, the tooltip should be placed to the left of the associated icon button.
+
+<img
+  src={navigationalTooltip}
+  alt="Tooltip placement for navigational items"
+  className="pharos-storybook__image"
+  width="350"
+/>
+
+##### Icon Toolbar
+
+For content viewing experiences, the tooltip should sit below the viewer control icon buttons.
+
+<img
+  src={tooltipViewer}
+  alt="Tooltip placement for viewer full screen"
+  className="pharos-storybook__image"
+  width="700"
+/>
+<img
+  src={tooltipViewerThree}
+  alt="Tooltip placement for viewer toolbar"
+  className="pharos-storybook__image"
+  width="700"
+/>
+
+##### Icon Buttons
+
+For tooltips that are near other objects or items, display the tooltip to have more contrast, prominence and readability. In the example below, the tooltip has a top placement.
+
+<img
+  src={iconButton}
+  alt="Tooltip for an icon button"
+  className="pharos-storybook__image"
+  width="700"
+/>
+
+##### Longer Titles
+
+For titles that need a tooltip to display the full title, it should sit above the content, so the link text is still visible to the user.
+
+<img
+  src={largeExample}
+  alt="Example of tooltip with a long title"
+  className="pharos-storybook__image"
+  height="350"
+/>
+
+##### Caret Placement
+
+We use [Popper.js](https://popper.js.org/) to position our tooltips. By default, tooltips are placed in the center of the trigger, but the caret/arrow will move and remain "attached" with Popper's overflow functionality.
+
+<img
+  src={tooltipOverflow}
+  alt="Popper tooltip overflow example"
+  className="pharos-storybook__image"
+  width="300"
+/>
+
+<img
+  src={tooltipViewerTwo}
+  alt="Example tooltip caret placement in viewer"
+  className="pharos-storybook__image"
+  width="700"
+/>
+
+### Longer Content
+
+Larger tooltips can be used to display further additional information. It is highly recommended that you consider if you need a tooltip or not for the design. "Throw it in a tooltip" is not the answer.
+
+<Canvas>
+  <div className="tooltip-example__container">
+    <button data-tooltip-id="my-large-tooltip" className="tooltip-example__target">
+      <pharos-icon name="info-inverse"></pharos-icon>
+    </button>
+    <pharos-tooltip id="my-large-tooltip" open>
+      Large tooltip for more text goes here and here and here
+    </pharos-tooltip>
+  </div>
+</Canvas>
+
+## Best Practices
+
+### Dos
+
+- Use tooltips to clarify expected behavior when interacting with icon buttons, buttons, or links with an associated keyboard shortcut.
+- Use tooltips sparingly. If you're building something that requires a lot of tooltips, work on clarifying the design and the language in the experience. Do you NEED a tooltip?
+
+### Don'ts
+
+- Don't include interactive content such as buttons or links.
+- Don't include imagery, concise text will do.
+- Don't use tooltips to restate visible text in the UI.
+- Don't use tooltips to communicate critical information, like errors or other interaction feedback.
+
+## Accessibility
+
+### Guidance
+
+1. Tooltips display when their trigger element receives keyboard focus or is hovered over with a mouse.
+2. After the tooltip opens, initial focus should be set on the first focusable element in the tooltip.
+3. After the tooltip closes, focus should remain on the trigger.
+4. Focus must not move outside the tooltip's trigger until a user dismisses it via keyboard tabbing or moving their mouse off the trigger.
+5. A tooltip can be dismissed when a user moves their mouse off the trigger, removes keyboard focus of the element that invoked it, or by pressing the <kbd>Escape</kbd> key.
+
+### Usability
+
+#### Dismissible
+
+A user can dismiss the tooltip without moving their pointer hover or keyboard focus. This must be able to work with:
+
+- Mouse
+- Keyboard
+- Screen readers
+- Magnification and zoom
+
+#### Hoverable
+
+If pointer hover can trigger the additional content, then the pointer can be moved over the tooltip without it disappearing.
+
+<img
+  src={tooltipHoverable}
+  alt="Hovering over tooltip content"
+  className="pharos-storybook__image"
+  height="250"
+/>
+
+_Tooltip remains open while the cursor moves within the trigger and disappears when the cursor moves out of the trigger._
+
+#### Persistent
+
+The additional content remains visible until the hover or focus trigger is removed, the user dismisses it, or its information is no longer valid.
+
+### Keyboard Interactions
+
+Pressing <kbd>Escape</kbd> dismisses the tooltip.
+
+### Roles
+
+- The element that serves as the tooltip container has `role="tooltip"`.
+- The element that triggers the tooltip references the tooltip element with aria-describedby.
+- Don't rely on `title` attributes. They are not keyboard accessible and are not supported in many screen reader setups.
+
+## Content Guidelines
+
+**Tooltips should:**
+
+- Be concise and scannable
+- Be written in sentence case
+- Not be used to communicate error messages or critical info

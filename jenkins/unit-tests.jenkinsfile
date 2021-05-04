@@ -1,0 +1,46 @@
+#!/usr/bin/env groovy
+
+def label = "pharos-unit-tests-${UUID.randomUUID().toString()}"
+
+podTemplate(
+    label: label,
+    cloud: 'kubernetes',
+    containers: [
+        containerTemplate(
+            name: 'playwright',
+            image: params.PLAYWRIGHT_IMAGE.toString(),
+            command: 'cat',
+            ttyEnabled: true
+        ),
+    ],
+    volumes: [
+        hostPathVolume(
+            mountPath: '/dev/shm',
+            hostPath: '/dev/shm'
+        )
+    ]
+) {
+    node(label) {
+        try {
+            def code = checkout(scm)
+
+            container('playwright') {
+                stage('Install dependencies') {
+                    sh(script: "npm install --global yarn")
+                    sh(script: "yarn install --frozen-lockfile")
+                }
+
+                stage('Run linter') {
+                    sh(script: "yarn lint")
+                }
+
+                stage('Run unit tests') {
+                    sh(script: "yarn test")
+                }
+            }
+        } catch (error) {
+            println "Caught an error: ${error}"
+            currentBuild.result = 'FAILURE'
+        }
+    }
+}

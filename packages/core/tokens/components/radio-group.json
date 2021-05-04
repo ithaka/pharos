@@ -1,0 +1,12 @@
+{
+  "radio-group": {
+    "spacing": {
+      "vertical": {
+        "value": "{spacing.one-half-x.value}"
+      },
+      "horizontal": {
+        "value": "{spacing.one-and-a-half-x.value}"
+      }
+    }
+  }
+}

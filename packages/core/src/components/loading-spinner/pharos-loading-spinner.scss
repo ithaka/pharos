@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  contain: layout;
+}
+
+.loading-spinner__wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+}
+
+.loading-spinner__icon {
+  margin: 0 auto;
+  opacity: 1;
+}
+
+.loading-spinner__animation {
+  stroke-linecap: square;
+}

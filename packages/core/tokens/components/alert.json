@@ -1,0 +1,28 @@
+{
+  "alert": {
+    "color": {
+      "background": {
+        "base"   : { "value": "#cccccc" },
+        "info"   : { "value": "{color.Glacier blue.80.value}" },
+        "error"  : { "value": "#dc2828" },
+        "success": { "value": "#e3eed8" },
+        "warning": { "value": "#ffefc2" }
+      },
+      "icon": {
+        "base"   : { "value": "#333333" },
+        "info"   : { "value": "#00627a" },
+        "error"  : { "value": "{color.White.value}" },
+        "success": { "value": "#54842a" },
+        "warning": { "value": "#624e18" }
+      },
+      "text": {
+        "base"   : { "value": "{color.text.20.value}" },
+        "inverse": { "value": "{color.text.white.value}" }
+      },
+      "link": {
+        "base"   : { "value": "{color.interactive.secondary.value}" },
+        "inverse": { "value": "{color.White.value}" }
+      }
+    }
+  }
+}

@@ -1,0 +1,270 @@
+@use '~@pharos/core/lib/utils/scss/mixins';
+@use '../shared/styles/grid';
+@use "sass:map";
+
+$small: map.get(grid.$breakpoints, sm, width);
+$medium: map.get(grid.$breakpoints, md, width);
+$large: map.get(grid.$breakpoints, lg, width);
+$xlarge: map.get(grid.$breakpoints, xlg, width);
+$max: map.get(grid.$breakpoints, max, width);
+
+$columns-small: map.get(grid.$breakpoints, sm, columns);
+$columns-medium: map.get(grid.$breakpoints, md, columns);
+$columns-large: map.get(grid.$breakpoints, lg, columns);
+
+$default-margin: 3.5rem;
+
+@function calculate-rem($size) {
+  @return $size / 16px * 1rem;
+}
+
+@function content-width($width, $margin) {
+  @return calculate-rem($width) - 17 - 2 * $margin;
+}
+
+@mixin grid-columns-fluid($min-breakpoint, $max-breakpoint, $margin: $default-margin) {
+  $min-width: map.get(grid.$breakpoints, $min-breakpoint, width);
+  $max-width: map.get(grid.$breakpoints, $max-breakpoint, width);
+  $min-content: content-width($min-width, $margin);
+  $max-content: content-width($max-width, $margin);
+
+  grid-template-columns: $margin minmax($min-content, $max-content) $margin;
+}
+
+.reports-page__container {
+  display: grid;
+  grid-template-areas: 'sidenav main';
+
+  main {
+    grid-area: main;
+  }
+
+  .reports-page__sidenav {
+    grid-area: sidenav;
+  }
+}
+
+.reports-page__container--main-content {
+  display: grid;
+  grid-template-areas:
+    '. top .'
+    '. content .';
+  grid-template-columns: $default-margin 1fr $default-margin;
+  margin-bottom: 9.5rem;
+}
+
+.reports-page__container--top {
+  grid-area: top;
+  display: flex;
+  align-items: center;
+  margin-top: var(--pharos-spacing-2-x);
+}
+
+.reports-page__container--body {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: repeat($columns-large, 1fr);
+  column-gap: grid.$gutter;
+  row-gap: var(--pharos-spacing-three-and-a-half-x);
+}
+
+.reports-page__container--disclaimer {
+  margin-top: var(--pharos-spacing-three-and-a-half-x);
+  grid-column: span 8;
+}
+
+.reports-page__container--table {
+  grid-column: span 12;
+  position: relative;
+}
+
+.reports-page__button--create {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.reports-page__table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.reports-page__table-header {
+  padding: var(--pharos-spacing-three-quarters-x) 0 var(--pharos-spacing-three-quarters-x) 0;
+  text-align: left;
+}
+
+.reports-page__table-row {
+  border-top: 1px solid var(--pharos-color-marble-gray-base);
+
+  &:hover {
+    background-color: var(--pharos-color-hover-row);
+  }
+
+  &:last-child {
+    border-bottom: 1px solid var(--pharos-color-marble-gray-base);
+  }
+}
+
+.reports-page__table-cell {
+  padding: var(--pharos-spacing-three-quarters-x) var(--pharos-spacing-three-quarters-x)
+    var(--pharos-spacing-three-quarters-x) 0;
+  white-space: nowrap;
+  vertical-align: top;
+
+  p {
+    margin: 0;
+  }
+}
+
+.reports-page__table-cell--download {
+  text-align: end;
+}
+
+.reports-page__form--create-modal {
+  > *:not(:last-child) {
+    margin-bottom: var(--pharos-spacing-1-x);
+  }
+}
+
+.reports-page__fieldset--type {
+  border: none;
+  padding: 0;
+  margin-left: 0;
+}
+
+.reports-page__fieldset--date {
+  border: 1px solid var(--pharos-color-ui-40);
+}
+
+.reports-page__legend {
+  @include mixins.form-element-label;
+}
+
+.reports-page__grid--date-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--pharos-spacing-2-x);
+  padding: var(--pharos-spacing-1-x);
+}
+
+.reports-page__container--nav-header {
+  display: none;
+  grid-template-columns: repeat(4, max-content);
+  column-gap: var(--pharos-spacing-one-half-x);
+  align-items: center;
+
+  img {
+    margin-left: var(--pharos-spacing-one-half-x);
+  }
+}
+
+.reports-page__separator {
+  font-size: var(--pharos-font-size-large);
+  color: var(--pharos-color-marble-gray-80);
+}
+
+.reports-page__button--user {
+  margin-left: auto;
+}
+
+@media screen and (min-width: $small) and (max-width: $medium - 1px) {
+  .reports-page__container--main-content {
+    grid-template-columns: 1.5rem 1fr 1.5rem;
+  }
+
+  .reports-page__button--create {
+    top: -58px;
+    right: initial;
+  }
+
+  .reports-page__table {
+    border-collapse: unset;
+    table-layout: auto;
+
+    thead {
+      display: none;
+    }
+
+    td {
+      display: block;
+      text-align: left;
+    }
+  }
+
+  .reports-page__button--user {
+    display: none;
+  }
+}
+
+@media screen and (min-width: $medium) and (max-width: $large - 1px) {
+  .reports-page__container--main-content {
+    grid-template-columns: $default-margin 1fr $default-margin;
+  }
+}
+
+@media screen and (max-width: $large - 1px) {
+  .reports-page__container {
+    grid-template-areas: 'main';
+    grid-template-columns: 1fr;
+  }
+
+  .reports-page__container--nav-header {
+    display: grid;
+  }
+}
+
+@media screen and (max-width: $large) {
+  .reports-page__container--disclaimer {
+    grid-column: span 10;
+  }
+}
+
+@media screen and (max-width: $medium) {
+  .reports-page__container--body {
+    grid-template-columns: repeat($columns-medium, 1fr);
+  }
+
+  .reports-page__container--disclaimer {
+    grid-column: span 8;
+  }
+
+  .reports-page__container--table {
+    grid-column: span 8;
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .reports-page__container--body {
+    grid-template-columns: repeat($columns-small, 1fr);
+    row-gap: var(--pharos-spacing-three-and-a-half-x);
+  }
+
+  .reports-page__container--disclaimer {
+    grid-column: span 4;
+  }
+
+  .reports-page__container--table {
+    grid-column: span 4;
+  }
+}
+
+@media screen and (min-width: $large) and (max-width: $xlarge - 1px) {
+  .reports-page__container--main-content {
+    @include grid-columns-fluid(lg, xlg);
+  }
+}
+
+@media screen and (min-width: $xlarge) and (max-width: $max) {
+  .reports-page__container--main-content {
+    @include grid-columns-fluid(xlg, max);
+  }
+}
+
+@media screen and (min-width: $max) {
+  .reports-page__container--main-content {
+    grid-template-columns: $default-margin minmax(64rem, 1fr) $default-margin;
+  }
+}

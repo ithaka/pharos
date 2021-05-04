@@ -1,0 +1,25 @@
+#link-element {
+  padding: var(--pharos-spacing-three-quarters-x);
+  text-decoration: none;
+  font-weight: var(--pharos-font-weight-bold);
+}
+
+#link-element:hover,
+:host([is-active]) #link-element {
+  color: var(--pharos-color-interactive-primary);
+  background-color: var(--pharos-color-marble-gray-94);
+  border-bottom: 2px solid var(--pharos-color-hover-primary);
+  padding-bottom: calc(var(--pharos-spacing-three-quarters-x) - 2px);
+  fill: var(--pharos-color-interactive-primary);
+  text-decoration: none;
+}
+
+.link__icon {
+  fill: var(--pharos-color-interactive-secondary);
+  margin-left: var(--pharos-spacing-one-quarter-x);
+}
+
+:host([is-active]) .link__icon,
+#link-element:hover .link__icon {
+  fill: var(--pharos-color-interactive-primary);
+}

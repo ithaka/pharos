@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+lib/
+.storybook-static/
+packages/core/src/styles/*.ts
+packages/core/tokens/
+packages/core/custom-elements.json
+packages/**/package-lock.json
+packages/site/public/
+packages/site/.cache/
+package.json
+package-lock.json
+.changeset/
+functional_tests/

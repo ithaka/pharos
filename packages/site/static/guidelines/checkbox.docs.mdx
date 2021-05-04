@@ -1,0 +1,161 @@
+# Checkbox
+
+<p
+  style={{
+    fontSize: 'var(--pharos-type-scale-6)',
+    lineHeight: '2rem',
+    marginBottom: 'var(--pharos-spacing-5-x)',
+  }}
+>
+  Checkboxes present items in a list of one or more options where the user can have several
+  different combinations of selections.
+</p>
+
+## Usage
+
+The Checkbox component is used to provide a list of options where the user can select multiple options, including all or none. They work independently from each other, therefore checking an additional box does not affect the other selections. Checkboxes are not mutually exclusive.
+
+### Alignment
+
+Checkbox labels are placed to the right of the checkbox. If there is a checkbox group, the options can be vertically or horizontally stacked, depending on the use case and UI needs. It's preferred to have the checkboxes be vertically stacked for better readability.
+
+### Placement
+
+Checkboxes in JSTOR are often used when faceting results so a user can narrow their focus or on forms. They can be placed within pages or modals.
+
+## Best Practices
+
+### Dos
+
+- Use checkboxes when a user needs to choose "yes" or "no" per option (use a stand-alone checkbox). For example, to toggle a setting on or off.
+- Checkboxes should work independently from each other: selecting one checkbox shouldn't change the selection status of another checkbox in the list.
+- Checkboxes should always include a label.
+- Use a checkbox when accepting terms and conditions.
+- Use checkboxes when choices are not mutually exclusive.
+- The list of choices should be in a logical order.
+
+### Don'ts
+
+- Don't use checkboxes when there are no choices.
+- In use cases where only one choice of a group is allowed, do not use checkboxes, use the radio button component instead.
+- Do not make checkboxes affect other checkboxes unless for bulk selection actions.
+
+## Content Guidelines
+
+### Group Labels
+
+- For a grouping of checkboxes, you can include a heading to provide even greater clarity. This is especially helpful if there multiple groups on a page, form or experience.
+- Use Sentence case for group labels.
+
+### Labels
+
+- Labels are descriptive and succinct. They should provide further clarity for the user.
+- Labels should not end in punctuation.
+- Use Sentence case for labels. Avoid using negative language as they can be counterintuitive. For example, "I agree to the terms" instead of "I don't agree to the terms."
+- Long labels may wrap to a second line, but consider rewording the label if it gets to be too long. Labels should not be truncated.
+
+## Variants
+
+### Dark
+
+The dark variant of a checkbox is to be used in cases where the background containing the checkbox will be a dark color, or in cases where the theme of the page/component would be dark.
+
+<div
+  style={{
+    background: 'var(--pharos-color-marble-gray-10)',
+    padding: 'var(--pharos-spacing-1-x)',
+  }}
+>
+  <Canvas>
+    <pharos-checkbox dark>
+      <span slot="label">Checkbox label</span>
+    </pharos-checkbox>
+  </Canvas>
+</div>
+
+## States
+
+### Disabled
+
+A state which indicates that the user should not be able to interact with the input.
+
+<Canvas>
+  <pharos-checkbox disabled>
+    <span slot="label">Checkbox label</span>
+  </pharos-checkbox>
+</Canvas>
+
+### Required
+
+Indicates that the user must specify a value for the input before the form can be submitted.
+
+<Canvas>
+  <pharos-checkbox required>
+    <span slot="label">Checkbox label</span>
+  </pharos-checkbox>
+</Canvas>
+
+### Error
+
+A state that lets the user know there has been an error with what was inputted.
+
+<Canvas>
+  <pharos-checkbox required invalidated message="This field is required, please make a selection">
+    <span slot="label">Checkbox label</span>
+  </pharos-checkbox>
+</Canvas>
+
+### Checked
+
+A state in which the value will be submitted.
+
+<Canvas>
+  <pharos-checkbox checked>
+    <span slot="label">Checkbox label</span>
+  </pharos-checkbox>
+</Canvas>
+
+### Unchecked
+
+A state in which the value will be NOT submitted.
+
+<Canvas>
+  <pharos-checkbox>
+    <span slot="label">Checkbox label</span>
+  </pharos-checkbox>
+</Canvas>
+
+### Indeterminate
+
+A state which serves a visual purpose while masking the actual value of the checkbox.
+
+<Canvas>
+  <pharos-checkbox indeterminate checked>
+    <span slot="label">Checkbox label</span>
+  </pharos-checkbox>
+</Canvas>
+
+## Accessibility
+
+- Checkboxes must have a clear and concise label.
+- Users should be warned if selecting a checkbox will cause a context change.
+- Use the `disabled` attribute to prevent the checkbox from interaction.
+
+### Best practices for labels
+
+- Labels must be visible when an input gets focus
+- Labels must be announced to the screen reader on focus
+- Use sentence case
+
+### Properties and Roles
+
+- The checkbox has `role="checkbox"`.
+- The ARIA state is set to `aria-checked="true"` when the checkbox is selected, and `aria-checked="false"` when it is deselected.
+- Provide a fieldset that surrounds the entire grouping of checkboxes. Also, provide a legend, which is a description for the grouping. [Here's an example.](https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes)
+- Some assistive technology reads the legend text for each fieldset, so it should be brief and descriptive. This helps someone using assistive technology to understand the question they are answering with the group of checkboxes
+
+### Keyboard interaction
+
+- The <kbd>Space</kbd> key can be used to select and deselect each checkbox when it has focus.
+- Users can navigate between checkbox inputs by pressing <kbd>Tab</kbd> or <kbd>Shift</kbd>-<kbd>Tab</kbd>.
+- Checkboxes with the `disabled` attribute are ignored in the tab order.

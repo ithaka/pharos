@@ -1,0 +1,44 @@
+{
+  "dropdown-menu-item": {
+    "color": {
+      "text": {
+        "base": {
+          "value": "{color.Black.value}"
+        },
+        "hover": {
+          "value": "{color.JSTOR red.value}"
+        },
+        "disabled": {
+          "value": "{color.Marble gray.40.value}"
+        },
+        "description": {
+          "value": "{color.Marble gray.40.value}"
+        }
+      },
+      "border": {
+        "base": {
+          "value": "{color.Marble gray.80.value}"
+        }
+      },
+      "background": {
+        "base": {
+          "value": "{color.White.value}"
+        },
+        "active": {
+          "value": "{color.Marble gray.base.value}"
+        },
+        "disabled": {
+          "value": "{color.Marble gray.base.value}"
+        },
+        "hover": {
+          "value": "{color.Marble gray.94.value}"
+        }
+      },
+      "icon": {
+        "base": {
+          "value": "{color.Black.value}"
+        }
+      }
+    }
+  }
+}

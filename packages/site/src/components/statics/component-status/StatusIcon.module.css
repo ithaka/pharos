@@ -1,0 +1,27 @@
+.icon--legacy {
+  fill: #006179;
+}
+
+.icon--released {
+  fill: var(--pharos-color-green);
+}
+
+.icon--in-progress {
+  fill: var(--pharos-color-living-coral-base);
+}
+
+.icon--planned {
+  fill: var(--pharos-color-glacier-blue-base);
+}
+
+.icon--na {
+  fill: var(--pharos-color-black);
+}
+
+.icon--alpha {
+  fill: var(--pharos-color-yellow);
+}
+
+.icon--deprecated {
+  fill: var(--pharos-color-living-coral-53);
+}

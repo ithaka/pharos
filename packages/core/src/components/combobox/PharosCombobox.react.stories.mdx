@@ -1,0 +1,172 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { PharosCombobox } from '../../react-components/combobox/pharos-combobox';
+
+import Intro from '@docs/guidelines/combobox.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Forms/Combobox"
+  parameters={{
+    component: PharosCombobox,
+  }}
+/>
+
+# Examples
+
+export const Template = (args) => (
+  <PharosCombobox
+    value={args.value}
+    name={args.name}
+    placeholder={args.placeholder}
+    open={args.open}
+    disabled={args.disabled}
+    invalidated={args.invalidated}
+    validated={args.validated}
+    required={args.required}
+    message={args.message}
+    hideLabel={args.hideLabel}
+  >
+    <span slot="label">{args.label}</span>
+    <option value="1">Bulbasaur</option>
+    <option value="2">Charmander</option>
+    <option value="3">Squirtle</option>
+    <option value="4">Caterpie</option>
+    <option value="5">Weedle</option>
+    <option value="6">Pidgey</option>
+    <option value="7">Rattata</option>
+    <option value="8">Spearow</option>
+    <option value="9">Ekans</option>
+    <option value="10">Pikachu</option>
+    <option value="11">Sandshrew</option>
+    <option value="12">Clefairy</option>
+  </PharosCombobox>
+);
+
+<Canvas withToolbar>
+  <Story
+    name="Base"
+    args={{
+      label: 'I am a label',
+      value: '',
+      name: '',
+      placeholder: '',
+      open: false,
+      invalidated: false,
+      validated: false,
+      required: false,
+      message: '',
+      hideLabel: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosCombobox} />
+
+# States
+
+<Canvas withToolbar>
+  <Story
+    name="States"
+    args={{
+      placeholder: 'Enter some text',
+      open: false,
+      disabled: false,
+      value: '',
+      hideLabel: false,
+    }}
+  >
+    {((args) => (
+      <div
+        style={{
+          display: 'grid',
+          gridGap: '1rem',
+          gridTemplateColumns: 'repeat(1, 250px)',
+        }}
+      >
+        <PharosCombobox
+          placeholder={args.placeholder}
+          open={args.open}
+          disabled={args.disabled}
+          value={args.value}
+          hideLabel={args.hideLabel}
+        >
+          <span slot="label">You can edit my attributes</span>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </PharosCombobox>
+      </div>
+    )).bind({})}
+  </Story>
+</Canvas>
+
+# Events
+
+<Canvas withToolbar>
+  <Story name="Events">
+    {() => {
+      return (
+        <div
+          style={{
+            display: 'grid',
+            gridGap: '1rem',
+            gridTemplateColumns: 'repeat(1, 250px)',
+          }}
+        >
+          <PharosCombobox
+            placeholder="Enter some text"
+            onChange={(e) => action('Change')(e.target.value)}
+            onInput={(e) => action('Input')(e.target.value)}
+          >
+            <span slot="label">I fire events on input</span>
+            <option value="1">Bulbasaur</option>
+            <option value="2">Charmander</option>
+            <option value="3">Squirtle</option>
+            <option value="4">Caterpie</option>
+            <option value="5">Weedle</option>
+            <option value="6">Pidgey</option>
+            <option value="7">Rattata</option>
+            <option value="8">Spearow</option>
+            <option value="9">Ekans</option>
+            <option value="10">Pikachu</option>
+            <option value="11">Sandshrew</option>
+            <option value="12">Clefairy</option>
+          </PharosCombobox>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Search Mode
+
+<Canvas withToolbar>
+  <Story name="Search Mode">
+    {() => {
+      return (
+        <PharosCombobox placeholder="Search for things" searchMode>
+          <span slot="label">I'm searching for</span>
+          <option value="1">Bulbasaur</option>
+          <option value="2">Charmander</option>
+          <option value="3">Squirtle</option>
+          <option value="4">Caterpie</option>
+          <option value="5">Weedle</option>
+          <option value="6">Pidgey</option>
+          <option value="7">Rattata</option>
+          <option value="8">Spearow</option>
+          <option value="9">Ekans</option>
+          <option value="10">Pikachu</option>
+          <option value="11">Sandshrew</option>
+          <option value="12">Clefairy</option>
+        </PharosCombobox>
+      );
+    }}
+  </Story>
+</Canvas>

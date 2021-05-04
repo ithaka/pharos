@@ -1,0 +1,60 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  contain: content;
+}
+
+#button-element {
+  @include mixins.font-base;
+  @include mixins.interactive-focus;
+
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: start;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1.5rem;
+  grid-template-rows: auto;
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-2-x);
+  text-decoration: none;
+  color: var(--pharos-color-interactive-tertiary);
+  transition-property: background-color;
+  transition-duration: var(--pharos-transition-duration-default);
+
+  &:focus {
+    outline-offset: -2px;
+  }
+}
+
+#button-element:hover {
+  color: var(--pharos-color-interactive-tertiary);
+  background-color: var(--pharos-color-marble-gray-20);
+  text-decoration: none;
+}
+
+.button__icon {
+  fill: var(--pharos-color-interactive-tertiary);
+}
+
+.menu__container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--pharos-transition-duration-default) ease-out;
+  visibility: hidden;
+}
+
+.menu__container--show {
+  max-height: 50rem;
+  transition: max-height var(--pharos-transition-duration-long) ease-in;
+  visibility: visible;
+}
+
+.menu__list {
+  @include mixins.no-bullet;
+
+  margin-top: 0;
+  margin-bottom: var(--pharos-spacing-1-x);
+  padding-left: 0;
+}

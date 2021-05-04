@@ -1,0 +1,118 @@
+# Combobox
+
+<p
+  style={{
+    fontSize: 'var(--pharos-type-scale-6)',
+    lineHeight: '2rem',
+    marginBottom: 'var(--pharos-spacing-5-x)',
+  }}
+>
+  Comboboxes combine text inputs and dropdowns. The text input is used for filtering the options,
+  while the dropdown allows the selecting of options.
+</p>
+
+## Usage
+
+Clicking the dropdown arrow button will show all items. Typing in the text input will filter the list.
+
+Entering custom values is **not** currently supported.
+
+## Best Practices
+
+### Dos
+
+- Make sure the label clearly indicates to the user what kind of input is expected of them
+- Labels need to describe the purpose of the form control and must be used for all text inputs
+- Placeholder text should be a word or short phrase that demonstrates the expected type of data, rather than an explanatory message
+- Options shown in the dropdown are short and concise
+
+### Don'ts
+
+- Do not use placeholder text as a replacement for labels
+- Do not use for a short list of options, use a select component instead
+
+## Content Guidelines
+
+### Labels
+
+- The label needs to be helpful in telling the user what is expected of them, but they do not need to be instructive
+- Labels are placed above the Combobox
+- Labels are to be written in sentence case and should only be 1-3 words long
+
+### Placeholder Text
+
+Placeholder text is shown inside the text input to help users know what information they can enter.
+
+- Field placeholder text is used for supplementary information
+- The text should be written as examples instead of instructions
+
+## States
+
+### Default
+
+The default state - when no other state attribute is assigned to the Combobox.
+
+<Canvas>
+  <pharos-combobox>
+    <span slot="label">Combobox label</span>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </pharos-combobox>
+</Canvas>
+
+### Disabled
+
+Display this state when the Combobox is non-interactive.
+
+<Canvas>
+  <pharos-combobox disabled>
+    <span slot="label">Combobox label</span>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </pharos-combobox>
+</Canvas>
+
+### Required
+
+This state signifies a mandatory response from the user.
+
+<Canvas>
+  <pharos-combobox required>
+    <span slot="label">Combobox label</span>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </pharos-combobox>
+</Canvas>
+
+### Error
+
+Display this state when a user has encountered an error with their input. This could be if they didn't fill out a required field, or the information provided does not meet validation requirements.
+
+<Canvas>
+  <pharos-combobox required invalidated message="This field is required, please make a selection">
+    <span slot="label">Combobox label</span>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </pharos-combobox>
+</Canvas>
+
+## Accessibility
+
+- Every Combobox must have a label. A Combobox without a label is ambiguous and not accessible
+- In cases where context is sufficient and a label could be hidden, make sure to have the design reviewed
+- The Combobox uses the `aria-expanded`, `aria-selected`, `aria-haspopup`, `aria-controls`, `aria-autocomplete`, and `aria-activedescendant` properties on the nested elements depending on the current state of the component and its options
+- The Combobox input uses the `combobox` role. The Combobox list uses the `listbox` role. Each item from the popup list has an `option` role
+- To move the focus to the current keyboard navigation position, the component uses the `aria-activedescendant` approach
+
+### Accessibility best practices for labels:
+
+- Labels must be visible when an input gets focus
+- Labels must be announced to the screen reader on focus
+- Use sentence case
+
+### Keyboard interactions
+
+- Typing initiates autocomplete or popover
+- <kbd>&#8595;</kbd> opens the dropdown, if not already open
+- <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> moves through selection of options in popover or autocomplete
+- <kbd>Esc</kbd> closes popover

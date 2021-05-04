@@ -1,0 +1,29 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+
+import './pharos-footer';
+import { Footer } from '../../pages/shared/wc/footer';
+
+import Intro from '@docs/guidelines/footer.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Organisms/Footer"
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
+
+# Footer
+
+<Canvas>
+  <Story name="Base" parameters={{ chromatic: { viewports: [320, 1024, 1200] } }}>
+    {() => {
+      return Footer();
+    }}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of="pharos-footer" />

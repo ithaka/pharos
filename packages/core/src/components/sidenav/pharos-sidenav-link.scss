@@ -1,0 +1,33 @@
+#link-element {
+  display: grid;
+  grid-template-columns: auto 1.5rem;
+  grid-template-rows: auto;
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-2-x);
+  text-decoration: none;
+  color: var(--pharos-color-interactive-tertiary);
+  transition-property: background-color, visibility;
+  transition-duration: var(--pharos-transition-duration-default);
+
+  &:focus {
+    outline-offset: -2px;
+  }
+}
+
+#link-element:hover {
+  color: var(--pharos-color-interactive-tertiary);
+  background-color: var(--pharos-color-marble-gray-20);
+  text-decoration: none;
+}
+
+.link__icon {
+  fill: var(--pharos-color-interactive-tertiary);
+}
+
+:host([menu-item]) #link-element {
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-3-x);
+}
+
+:host([is-active]) #link-element {
+  background-color: var(--pharos-color-marble-gray-94);
+  color: var(--pharos-color-marble-gray-10);
+}

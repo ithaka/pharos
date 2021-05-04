@@ -1,0 +1,36 @@
+.container {
+  margin-bottom: var(--pharos-spacing-7-x);
+}
+
+.container__isSubsection {
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
+.container__less-margin {
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+.title__base {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+.title__moreSpace {
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+  color: var(--pharos-color-black);
+}
+
+.title__isHeader {
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+.description__base {
+  width: 75%;
+  color: var(--pharos-color-text-20);
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+.description__isHeader {
+  font-size: var(--pharos-type-scale-6);
+  line-height: 2rem;
+  margin-bottom: var(--pharos-spacing-3-x);
+}

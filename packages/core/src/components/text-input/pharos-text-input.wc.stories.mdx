@@ -1,0 +1,216 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { html } from 'lit-html';
+import { action } from '@storybook/addon-actions';
+import { ifDefined } from 'lit-html/directives/if-defined';
+
+import './pharos-text-input';
+import createFormData from '../../utils/createFormData';
+
+import Intro from '@docs/guidelines/text-input.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Forms/Text Input"
+  parameters={{
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
+
+# Examples
+
+export const Template = (args) =>
+  html`
+    <div
+      style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
+    >
+      <pharos-text-input
+        name="story-input"
+        type="${ifDefined(args.type)}"
+        ?hide-label="${args.hideLabel}"
+        ?validated="${args.validated}"
+        ?invalidated="${args.invalidated}"
+        ?required="${args.required}"
+        .message="${args.message}"
+      >
+        <span slot="label">${args.label}</span>
+      </pharos-text-input>
+    </div>
+  `;
+
+<Canvas withToolbar>
+  <Story
+    name="Base"
+    argTypes={{
+      type: {
+        options: ['email', 'hidden', 'number', 'password', 'search', 'tel', 'text', 'url'],
+        control: {
+          type: 'inline-radio',
+        },
+      },
+    }}
+    args={{ hideLabel: false, label: 'I am a label' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of="pharos-text-input" />
+
+# States
+
+<Canvas withToolbar>
+  <Story name="States">
+    {html`
+      <div
+        style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: repeat(2, 300px); -ms-grid-columns: 300px 1rem 300px"
+      >
+        <pharos-text-input><span slot="label">I am empty</span></pharos-text-input>
+        <pharos-text-input disabled style="-ms-grid-column: 3"
+          ><span slot="label">I am disabled</span></pharos-text-input
+        >
+        <pharos-text-input readonly value="Can't touch this" style="-ms-grid-row: 2"
+          ><span slot="label">I am read-only</span></pharos-text-input
+        >
+        <pharos-text-input placeholder="Enter some text" style="-ms-grid-column: 3; -ms-grid-row: 2"
+          ><span slot="label">I have a placeholder</span></pharos-text-input
+        >
+        <pharos-text-input value="Hi there" style="-ms-grid-row: 3"
+          ><span slot="label">I have a value provided</span></pharos-text-input
+        >
+        <pharos-text-input hide-label style="-ms-grid-column: 3; -ms-grid-row: 3"
+          ><span slot="label">My label is hidden</span></pharos-text-input
+        >
+        <pharos-text-input value="Hi there" validated style="-ms-grid-row: 3"
+          ><span slot="label">I am valid</span></pharos-text-input
+        >
+      </div>
+    `}
+  </Story>
+</Canvas>
+
+# Events
+
+<Canvas withToolbar>
+  <Story name="Events">
+    {() => {
+      return html`
+        <div
+          style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
+        >
+          <pharos-text-input
+            placeholder="Enter some text"
+            @change="${(e) => action('Change')(e.target.value)}"
+            @input="${(e) => action('Input')(e.target.value)}"
+          >
+            <span slot="label">I fire events on input</span>
+          </pharos-text-input>
+        </div>
+      `;
+    }}
+  </Story>
+</Canvas>
+
+# Validity
+
+<Canvas withToolbar>
+  <Story
+    name="Validity"
+    args={{
+      label: 'Test me out',
+      required: true,
+      invalidated: true,
+      validated: false,
+      message: 'This password does not meet the requirements',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Custom Error Message
+
+export const CustomTemplate = (args) =>
+  html`
+    <div
+      style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
+    >
+      <pharos-text-input
+        placeholder="Enter some text"
+        @change="${(e) => action('Change')(e.target.value)}"
+        @input="${(e) => action('Input')(e.target.value)}"
+        ?required="${args.required}"
+        ?invalidated=${args.invalidated}
+        ?validated=${args.validated}
+        .message=${args.message}
+      >
+        <span slot="label">I am invalid</span>
+        <span slot="message">
+          <ul style="margin: 0;padding-inline-start: 1.5rem;">
+            <li>One upper or lowercase letter</li>
+            <li>One number or special character</li>
+            <li>6 character minimum</li>
+            <li>No whitespace</li>
+          </ul>
+        </span>
+      </pharos-text-input>
+    </div>
+  `;
+
+<Canvas withToolbar>
+  <Story
+    name="Custom Error Message"
+    args={{
+      required: false,
+      invalidated: true,
+      validated: false,
+      message: 'This password does not meet the requirements',
+    }}
+  >
+    {CustomTemplate.bind({})}
+  </Story>
+</Canvas>
+
+# Form Data
+
+<Canvas withToolbar>
+  <Story name="Form Data">
+    {() => {
+      return html`
+        <div
+          style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
+        >
+          <form name="my-form" action="https://httpbin.org/post" method="POST">
+            <pharos-text-input
+              name="my-text-input"
+              placeholder="Enter some text"
+              @change="${(e) => action('Change')(e.target.value)}"
+              @input="${(e) => action('Input')(e.target.value)}"
+              required
+            >
+              <span slot="label">Test me out</span>
+            </pharos-text-input>
+            <input
+              type="submit"
+              value="Submit"
+              @click="${(e) => {
+                e.preventDefault();
+                const form = document.querySelector('form[name="my-form"]');
+                const formData = createFormData(form);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://httpbin.org/post', true);
+                xhr.onload = function () {
+                  const response = JSON.parse(this.responseText);
+                  action('FormData')(JSON.stringify(response.form));
+                };
+                xhr.send(formData);
+              }}"
+            />
+          </form>
+        </div>
+      `;
+    }}
+  </Story>
+</Canvas>

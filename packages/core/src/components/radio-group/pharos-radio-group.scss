@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  contain: layout;
+}
+
+.radio-group {
+  border: 0;
+  padding: 0;
+}
+
+.radio-group__radios {
+  display: flex;
+}
+
+.radio-group--vertical .radio-group__radios {
+  flex-direction: column;
+}
+
+.radio-group--horizontal .radio-group__radios {
+  flex-direction: row;
+}
+
+::slotted(pharos-radio-button) {
+  align-self: flex-start;
+}
+
+.radio-group--vertical ::slotted(pharos-radio-button:not(:last-child)) {
+  margin-bottom: var(--pharos-radio-group-spacing-vertical);
+}
+
+.radio-group--horizontal ::slotted(pharos-radio-button:not(:last-child)) {
+  margin-right: var(--pharos-radio-group-spacing-horizontal);
+}

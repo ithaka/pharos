@@ -1,0 +1,15 @@
+.colorGradient {
+  width: 8.25rem;
+  height: 8.25rem;
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.gradientContainer {
+  display: grid;
+  column-gap: var(--pharos-spacing-2-x);
+}
+
+.gradientLabel {
+  margin-bottom: var(--pharos-spacing-2-x);
+  line-height: var(--pharos-line-height-small);
+}

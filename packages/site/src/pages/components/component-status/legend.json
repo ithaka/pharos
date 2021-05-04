@@ -1,0 +1,44 @@
+{
+  "legacy": {
+    "id": "1",
+    "name": "Legacy",
+    "description": "Bonsai styling has been applied, will need design update once we transition to new brand.",
+    "icon": "legacy"
+  },
+  "released": {
+    "id": "2",
+    "name": "Released",
+    "description": "Live and available for adoption. It has been properly reviewed and QA'd.",
+    "icon": "released"
+  },
+  "in-progress": {
+    "id": "3",
+    "name": "In Progress",
+    "description": "Actively being created, either by the maintainers or a contributor.",
+    "icon": "in-progress"
+  },
+  "planned": {
+    "id": "4",
+    "name": "Planned",
+    "description": "The component is in an upcoming sprint or there are plans to create it soon.",
+    "icon": "planned"
+  },
+  "na": {
+    "id": "5",
+    "name": "N/A, Not Doing",
+    "description": "Not available yet, or it will not be created.",
+    "icon": "not-applicable"
+  },
+  "alpha": {
+    "id": "6",
+    "name": "Alpha",
+    "description": "Released in Pharos but is not 100% ready for adoption.",
+    "icon": "alpha"
+  },
+  "deprecated": {
+    "id": "7",
+    "name": "Deprecated",
+    "description": "Deprecated and removed from Pharos.",
+    "icon": "deprecated"
+  }
+}

@@ -1,0 +1,109 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { PharosTabs } from '../../react-components/tabs/pharos-tabs';
+import { PharosTab } from '../../react-components/tabs/pharos-tab';
+import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
+
+import Intro from '@docs/guidelines/tabs.docs.mdx';
+
+<Intro />
+
+<Meta title="Components/Tabs" />
+
+## Examples
+
+### Basic
+
+<Canvas withToolbar>
+  <Story name="Base">
+    <PharosTabs>
+      <PharosTab id="tab-1" data-panel-id="panel-1">
+        Tab 1
+      </PharosTab>
+      <PharosTab id="tab-2" data-panel-id="panel-2">
+        Tab 2
+      </PharosTab>
+      <PharosTab id="tab-3" data-panel-id="panel-3">
+        Tab 3
+      </PharosTab>
+      <PharosTabPanel id="panel-1" slot="panel">
+        Panel 1
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-2" slot="panel">
+        Panel 2
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-3" slot="panel">
+        Panel 3
+      </PharosTabPanel>
+    </PharosTabs>
+  </Story>
+</Canvas>
+
+### Event handling
+
+<Canvas withToolbar>
+  <Story name="Events">
+    <PharosTabs onPharos-Tab-Selected={(e) => action('Select')(e.target.id)}>
+      <PharosTab id="tab-1" data-panel-id="panel-1">
+        Tab 1
+      </PharosTab>
+      <PharosTab id="tab-2" data-panel-id="panel-2">
+        Tab 2
+      </PharosTab>
+      <PharosTab id="tab-3" data-panel-id="panel-3" selected>
+        Tab 3
+      </PharosTab>
+      <PharosTabPanel id="panel-1" slot="panel">
+        Panel 1
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-2" slot="panel">
+        Panel 2
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-3" slot="panel">
+        Panel 3
+      </PharosTabPanel>
+    </PharosTabs>
+  </Story>
+</Canvas>
+
+### Panel order
+
+<Canvas withToolbar>
+  <Story name="Panel Order">
+    <PharosTabs>
+      <PharosTab id="tab-1" data-panel-id="panel-1">
+        Tab 1
+      </PharosTab>
+      <PharosTab id="tab-2" data-panel-id="panel-2">
+        Tab 2
+      </PharosTab>
+      <PharosTab id="tab-3" data-panel-id="panel-3">
+        Tab 3
+      </PharosTab>
+      <PharosTabPanel id="panel-2" slot="panel">
+        I am the panel for tab 2 but listed 1st in the DOM
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-3" slot="panel">
+        I am the panel for tab 3 but listed 2nd in the DOM
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-1" slot="panel">
+        I am the panel for tab 1 but listed 3rd in the DOM
+      </PharosTabPanel>
+    </PharosTabs>
+  </Story>
+</Canvas>
+
+## API
+
+### pharos-tabs
+
+<ArgsTable of={PharosTabs} />
+
+### pharos-tab
+
+<ArgsTable of={PharosTab} />
+
+### pharos-tab-panel
+
+<ArgsTable of={PharosTabPanel} />

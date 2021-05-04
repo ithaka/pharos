@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ES2017",
+    "module": "commonjs",
+    "strict": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "rootDir": "src",
+    "outDir": "dist",
+    "importsNotUsedAsValues": "error",
+    "types": ["node", "jest"]
+  },
+  "include": ["src/**/*"]
+}

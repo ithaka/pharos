@@ -1,0 +1,103 @@
+<pharos-heading level={'1'} preset={'7--bold'} style={{color:'black', marginBottom:'var(--pharos-spacing-2-x)'}}>Header</pharos-heading>
+
+<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
+  <p style={{ fontSize: 'var(--pharos-type-scale-6)', lineHeight: '2rem' }}>
+    Headers are generally used as a container for introductory content or navigational elements.
+  </p>
+  <pharos-link href="#" target="_blank">
+    See in Storybook
+  </pharos-link>
+</div>
+
+## Usage
+
+<div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
+  <p>
+    The header is placed at the top of the layout for site-wide content and contains any combination
+    of a logo, headings, navigation menus and search bars. While multiple header elements are
+    allowed on a single page, they can not be placed within other header, footer or address regions.
+    If a header element is nested inside an article or section region, the header is considered a
+    header for that region, not the whole page or site.
+  </p>
+  <p>
+    The Pharos Header provides three slots that removes some of the intricacies of laying out links
+    and navigation elements: start, center and end. The three slots correspond to the first, second
+    and third column of the header, as shown below.
+  </p>
+</div>
+
+<div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
+  <pharos-header>
+    <div slot="start">start</div>
+    <div slot="center">center</div>
+    <div slot="end">end</div>
+  </pharos-header>
+</div>
+
+<pharos-heading level={'2'} preset={'6'} style= {{color:'var(--pharos-color-text-base)'}}>Best Practices</pharos-heading>
+
+<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
+  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
+    <pharos-heading level={'3'} preset={'2'}>
+      Dos
+    </pharos-heading>
+    <ul>
+      <li>
+        Use Pharos dropdown menu nav and their related components for navigation portion of the
+        header
+      </li>
+      <li>Use Pharos links for static links</li>
+      <li>Use the start, center and end props to place components in the correct spaces</li>
+    </ul>
+  </div>
+  <div>
+    <pharos-heading level={'3'} preset={'2'}>
+      Don'ts
+    </pharos-heading>
+    <ul>
+      <li>Don't place the Pharos Header component in another header, footer or address region</li>
+      <li>
+        Don't associate a header with the whole page if it is nested in a &lt;section&gt; or
+        &lt;article&gt; element
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
+  <pharos-heading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+    Content guidelines
+  </pharos-heading>
+  <p>
+    The content contained in the header can be seen as information pertinent to all facets of the
+    site. They generally serve as unifying core functionalities central to the purpose of the site.
+    Hence, the header should be placed in a highly visible and consistent position shared across
+    pages.
+  </p>
+  <p>
+    Use of Pharos components is highly recommended to deliver a consistent experience throughout
+    both the design and functional needs. Some Pharos components which fit naturally with the header
+    are the dropdown menu nav, link and input components, as shown at the example at the bottom of
+    the page.
+  </p>
+</div>
+
+<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
+  <pharos-heading level={'3'} preset={'2'}>
+    Relevant WCAG Guidelines
+  </pharos-heading>
+  <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+    <li>
+      <pharos-link href="https://www.w3.org/WAI/tutorials/page-structure/regions/">
+        W3 Page Regions
+      </pharos-link>
+    </li>
+    <li>
+      <pharos-link href="w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html">
+        ARIA Landmarks
+      </pharos-link>
+    </li>
+    <li>Use semantic &lt;header&gt; element</li>
+    <li>&lt;header&gt; should have a role="banner"</li>
+  </ul>
+</div>

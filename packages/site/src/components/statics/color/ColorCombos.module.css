@@ -1,0 +1,5 @@
+.colorBox {
+  height: 7.75rem;
+  display: flex;
+  margin-bottom: var(--pharos-spacing-1-x);
+}

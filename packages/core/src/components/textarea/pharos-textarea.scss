@@ -1,0 +1,50 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  width: 100%;
+  contain: content;
+}
+
+.textarea {
+  @include mixins.input-base;
+  @include mixins.input-required;
+  @include mixins.input-placeholder;
+
+  min-height: var(--pharos-textarea-size-height-base);
+  overflow: auto;
+
+  &:focus {
+    @include mixins.input-padding-thick-border;
+    @include mixins.input-focus;
+  }
+}
+
+:host([disabled]) .textarea {
+  @include mixins.input-disabled;
+}
+
+.textarea--resize-both {
+  resize: both;
+}
+
+.textarea--resize-horizontal {
+  resize: horizontal;
+}
+
+.textarea--resize-vertical {
+  resize: vertical;
+}
+
+.textarea--resize-none {
+  resize: none;
+}
+
+.textarea-wrapper {
+  @include mixins.input-wrapper;
+}
+
+:host([invalidated]) .textarea {
+  @include mixins.input-padding-thick-border;
+  @include mixins.input-invalid;
+}

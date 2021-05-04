@@ -1,0 +1,15 @@
+.container {
+  height: var(--pharos-spacing-7-x);
+  width: var(--pharos-spacing-7-x);
+  display: grid;
+  margin-bottom: var(--pharos-spacing-1-x);
+  padding: var(--pharos-spacing-one-half-x);
+}
+
+.container_text {
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  font-family: var(--pharos-font-family-body);
+  font-size: var(--pharos-spacing-one-and-a-half-x);
+}

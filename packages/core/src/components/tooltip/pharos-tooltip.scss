@@ -1,0 +1,93 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  position: fixed;
+  z-index: 140;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  contain: layout;
+}
+
+:host([data-popper-reference-hidden]) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.tooltip__body {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  white-space: nowrap;
+  transform: translate3d(0, 0, 0);
+  transition: visibility 0s var(--pharos-transition-duration-short),
+    opacity var(--pharos-transition-duration-short) linear;
+}
+
+:host([open]) .tooltip__body {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0ms;
+  pointer-events: auto;
+}
+
+.tooltip__bubble {
+  @include mixins.font-base(
+    $font-size: var(--pharos-tooltip-size-text-base),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  display: block;
+  background-color: var(--pharos-tooltip-color-background-base);
+  color: var(--pharos-tooltip-color-text-base);
+  text-align: center;
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+  overflow: hidden;
+  border-radius: var(--pharos-radius-base-standard);
+  transition: transform var(--pharos-transition-base) 0s;
+  transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+}
+
+.tooltip__bubble--text-wrap {
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-1-x);
+  width: 14rem;
+  white-space: normal;
+  text-align: start;
+  overflow-wrap: break-word;
+}
+
+.tooltip__caret {
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-top: 0.375rem solid var(--pharos-tooltip-color-background-base);
+  border-left: 0.375rem solid transparent;
+  border-right: 0.375rem solid transparent;
+  border-bottom: 0.375rem solid transparent;
+}
+
+:host([data-popper-placement*='right']) .tooltip__caret {
+  right: 100%;
+  border-right: 0.375rem solid var(--pharos-tooltip-color-background-base);
+  border-left: 0.375rem solid transparent;
+  border-top: 0.375rem solid transparent;
+  border-bottom: 0.375rem solid transparent;
+}
+
+:host([data-popper-placement*='left']) .tooltip__caret {
+  left: 100%;
+  border-left: 0.375rem solid var(--pharos-tooltip-color-background-base);
+  border-right: 0.375rem solid transparent;
+  border-top: 0.375rem solid transparent;
+  border-bottom: 0.375rem solid transparent;
+}
+
+:host([data-popper-placement*='bottom']) .tooltip__caret {
+  bottom: 100%;
+  border-bottom: 0.375rem solid var(--pharos-tooltip-color-background-base);
+  border-right: 0.375rem solid transparent;
+  border-top: 0.375rem solid transparent;
+  border-left: 0.375rem solid transparent;
+}

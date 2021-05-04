@@ -1,0 +1,36 @@
+@use '../utils/scss/mixins';
+
+html {
+  font-size: 100%;
+}
+
+body {
+  @include mixins.font-base;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  @include mixins.font-base;
+}
+
+th {
+  @include mixins.form-element-label;
+
+  display: table-cell;
+  text-align: left;
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+}
+
+small {
+  font-size: var(--pharos-font-size-small);
+}
+
+ol,
+ul {
+  li:not(:last-child) {
+    margin-bottom: var(--pharos-spacing-one-quarter-x);
+  }
+}

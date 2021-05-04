@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  contain: layout;
+}
+
+.checkbox-group {
+  border: 0;
+  padding: 0;
+}
+
+.checkbox-group__checkboxes {
+  display: flex;
+}
+
+.checkbox-group--vertical .checkbox-group__checkboxes {
+  flex-direction: column;
+}
+
+.checkbox-group--horizontal .checkbox-group__checkboxes {
+  flex-direction: row;
+}
+
+::slotted(pharos-checkbox) {
+  align-self: flex-start;
+}
+
+.checkbox-group--vertical ::slotted(pharos-checkbox:not(:last-child)) {
+  margin-bottom: var(--pharos-checkbox-group-spacing-vertical);
+}
+
+.checkbox-group--horizontal ::slotted(pharos-checkbox:not(:last-child)) {
+  margin-right: var(--pharos-checkbox-group-spacing-horizontal);
+}
