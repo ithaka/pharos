@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  width: 100%;
+  contain: paint;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  box-sizing: border-box;
+}
+
+.input-group--append {
+  right: 0;
+}
+
+.input-group--prepend {
+  left: 0;
+}
+
+slot[name='prepend']::slotted(*) {
+  margin-left: var(--pharos-spacing-one-quarter-x);
+}
+
+slot:not([name])::slotted(*) {
+  margin-right: var(--pharos-spacing-one-quarter-x);
+}
+
+slot[name='prepend']::slotted(pharos-icon:first-child) {
+  margin-left: calc(var(--pharos-spacing-three-quarters-x) + 1px);
+}
+
+slot:not([name])::slotted(pharos-icon:last-child) {
+  margin-right: calc(var(--pharos-spacing-three-quarters-x) + 1px);
+}

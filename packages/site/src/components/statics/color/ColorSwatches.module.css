@@ -1,0 +1,41 @@
+.colorSwatch {
+  width: 8.25rem;
+  height: 8.25rem;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.colorsContainer {
+  display: grid;
+  column-gap: var(--pharos-spacing-2-x);
+  row-gap: var(--pharos-spacing-2-x);
+}
+
+.colorName {
+  font-size: 18px;
+}
+
+.colorLabel {
+  margin-top: var(--pharos-spacing-one-and-a-half-x);
+  margin-left: var(--pharos-spacing-three-quarters-x);
+  line-height: var(--pharos-line-height-small);
+  white-space: nowrap;
+}
+
+.colorLabel div {
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.largeSwatch {
+  width: 11rem;
+  height: 11rem;
+}
+
+.colorImage {
+  margin-right: 3rem;
+  margin-bottom: 3rem;
+}
+
+.figure {
+  line-height: 0;
+}

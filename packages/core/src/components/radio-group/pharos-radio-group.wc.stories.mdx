@@ -1,0 +1,141 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { html } from 'lit-html';
+import { action } from '@storybook/addon-actions';
+
+import './pharos-radio-group';
+import '../radio-button/pharos-radio-button';
+import createFormData from '../../utils/createFormData';
+
+import Intro from '@docs/guidelines/radio.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Forms/Radio Group"
+  parameters={{
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
+
+# Examples
+
+export const Template = (args) =>
+  html`
+    <pharos-radio-group
+      ?horizontal=${args.horizontal}
+      ?disabled=${args.disabled}
+      ?hide-label=${args.hideLabel}
+      ?required=${args.required}
+      ?invalidated=${args.invalidated}
+      .message=${args.message}
+    >
+      <span slot="legend">Radio Group Header</span>
+      <pharos-radio-button value="1"><span slot="label">Radio Button 1</span></pharos-radio-button>
+      <pharos-radio-button value="2"><span slot="label">Radio Button 2</span></pharos-radio-button>
+      <pharos-radio-button value="3"><span slot="label">Radio Button 3</span></pharos-radio-button>
+      <pharos-radio-button value="4"><span slot="label">Radio Button 4</span></pharos-radio-button>
+    </pharos-radio-group>
+  `;
+
+<Canvas withToolbar>
+  <Story
+    name="Base"
+    argTypes={{
+      hideLabel: { control: { type: 'boolean' }, defaultValue: false },
+      horizontal: { control: { type: 'boolean' }, defaultValue: false },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of="pharos-radio-group" />
+
+# Events
+
+<Canvas withToolbar>
+  <Story name="Events">
+    {() => {
+      return html` <pharos-radio-group
+        @change="${(e) => action('Change')(e.target.value)}"
+        name="radio-group2"
+      >
+        <span slot="legend">Radio Group Header</span>
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
+        >
+        <pharos-radio-button value="2" checked
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
+        >
+        <pharos-radio-button value="3"
+          ><span slot="label">Radio Button 3</span></pharos-radio-button
+        >
+      </pharos-radio-group>`;
+    }}
+  </Story>
+</Canvas>
+
+# Validity
+
+<Canvas withToolbar>
+  <Story
+    name="Validity"
+    argTypes={{
+      invalidated: { control: { type: 'boolean' }, defaultValue: true },
+      required: { control: { type: 'boolean' }, defaultValue: true },
+      message: {
+        control: { type: 'text' },
+        defaultValue: 'This field is required, please make a selection',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Form Data
+
+<Canvas withToolbar>
+  <Story name="Form Data">
+    {() => {
+      return html`
+        <form name="my-form" action="https://httpbin.org/post" method="POST">
+          <pharos-radio-group
+            @change="${(e) => action('Change')(e.target.value)}"
+            name="radio-group4"
+            required
+          >
+            <span slot="legend">Radio Group Header</span>
+            <pharos-radio-button value="1"
+              ><span slot="label">Radio Button 1</span></pharos-radio-button
+            >
+            <pharos-radio-button value="2"
+              ><span slot="label">Radio Button 2</span></pharos-radio-button
+            >
+            <pharos-radio-button value="3"
+              ><span slot="label">Radio Button 3</span></pharos-radio-button
+            >
+          </pharos-radio-group>
+          <input
+            type="submit"
+            value="Submit"
+            @click="${(e) => {
+              e.preventDefault();
+              const form = document.querySelector('form[name="my-form"]');
+              const formData = createFormData(form);
+              const xhr = new XMLHttpRequest();
+              xhr.open('POST', 'https://httpbin.org/post', true);
+              xhr.onload = function () {
+                const response = JSON.parse(this.responseText);
+                action('FormData')(JSON.stringify(response.form));
+              };
+              xhr.send(formData);
+            }}"
+          />
+        </form>
+      `;
+    }}
+  </Story>
+</Canvas>

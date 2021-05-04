@@ -1,0 +1,58 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { PharosLoadingSpinner } from '../../react-components/loading-spinner/pharos-loading-spinner';
+import { PharosHeading } from '../../react-components/heading/pharos-heading';
+import { PharosButton } from '../../react-components/button/pharos-button';
+
+import Intro from '@docs/guidelines/loading-spinner.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Components/Loading Spinner"
+  parameters={{
+    component: PharosLoadingSpinner,
+  }}
+/>
+
+# LoadingSpinner
+
+<Canvas withToolbar>
+  <Story name="Base">
+    {() => {
+      return (
+        <div>
+          <PharosLoadingSpinner></PharosLoadingSpinner>
+          <PharosHeading level={1} preset={'5'}>
+            Hi there! As you can see, I am still loading
+          </PharosHeading>
+          <PharosButton onClick={() => action('Click')('Clicked')}>Can't press me!</PharosButton>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosLoadingSpinner} />
+
+<Canvas withToolbar>
+  <Story name="Scoped">
+    {() => {
+      return (
+        <div
+          style={{
+            height: '5rem',
+            width: '5rem',
+            border: '1px solid black',
+            position: 'relative',
+          }}
+        >
+          <PharosLoadingSpinner></PharosLoadingSpinner>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>

@@ -1,0 +1,30 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: flex;
+  contain: layout;
+  align-items: center;
+}
+
+.breadcrumb-item {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  color: var(--pharos-color-marble-gray-40);
+  white-space: nowrap;
+
+  &::after {
+    margin: 0 var(--pharos-spacing-one-half-x);
+    content: '/';
+    text-decoration: none;
+    color: var(--pharos-color-black);
+  }
+}
+
+.breadcrumb-item--last {
+  &::after {
+    content: '';
+  }
+}

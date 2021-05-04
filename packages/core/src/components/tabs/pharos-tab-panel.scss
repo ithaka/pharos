@@ -1,0 +1,16 @@
+:host {
+  visibility: hidden;
+  display: none;
+  contain: layout;
+  overflow-y: hidden;
+}
+
+:host(:focus) {
+  outline: 2px solid var(--pharos-color-focus);
+  outline-offset: 2px;
+}
+
+:host([selected]) {
+  visibility: visible;
+  display: flex;
+}

@@ -1,0 +1,57 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+
+import { PharosDropdownMenuNav } from '../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav';
+import { PharosDropdownMenuNavLink } from '../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav-link';
+import { PharosDropdownMenu } from '../../react-components/dropdown-menu/pharos-dropdown-menu';
+import { PharosDropdownMenuItem } from '../../react-components/dropdown-menu/pharos-dropdown-menu-item';
+
+import Intro from '@docs/guidelines/dropdown-menu-nav.docs.mdx';
+
+<Intro />
+
+<Meta title="Components/Dropdown Menu Nav" />
+
+# Base
+
+<Canvas>
+  <Story name="Base">
+    <PharosDropdownMenuNav>
+      <PharosDropdownMenuNavLink
+        href="#"
+        id="smurfs-link"
+        data-dropdown-menu-id="smurfs-menu"
+        data-dropdown-menu-hover
+        target="_blank"
+      >
+        Smurfs
+      </PharosDropdownMenuNavLink>
+      <PharosDropdownMenu id="smurfs-menu" data-dropdown-menu-hover>
+        <PharosDropdownMenuItem>Papa</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Clumsy</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Smurfette</PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+      <PharosDropdownMenuNavLink
+        href="#"
+        id="tmnt-link"
+        data-dropdown-menu-id="tmnt-menu"
+        data-dropdown-menu-hover
+        target="_blank"
+      >
+        Ninja Turtles
+      </PharosDropdownMenuNavLink>
+      <PharosDropdownMenu id="tmnt-menu">
+        <PharosDropdownMenuItem>Leonardo</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Donatello</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Raphael</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Michelangelo</PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+      <PharosDropdownMenuNavLink href="#" id="other-link" target="_blank">
+        Link to Other
+      </PharosDropdownMenuNavLink>
+    </PharosDropdownMenuNav>
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosDropdownMenuNav} />

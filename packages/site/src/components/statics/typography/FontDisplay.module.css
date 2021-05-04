@@ -1,0 +1,29 @@
+.textColor {
+  color: var(--pharos-color-text-base);
+  line-height: var(--pharos-line-height-xlarge);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.textColor__dark {
+  color: var(--pharos-color-text-white);
+  line-height: var(--pharos-line-height-xlarge);
+}
+
+.titleSize {
+  font-size: var(--pharos-type-scale-8);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.titleSize__large {
+  font-size: var(--pharos-type-scale-11);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.textSize {
+  font-size: var(--pharos-type-scale-6);
+  line-height: 2rem;
+}
+
+.textSize__large {
+  font-size: var(--pharos-type-scale-8);
+}

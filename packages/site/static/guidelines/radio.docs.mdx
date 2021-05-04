@@ -1,0 +1,120 @@
+# Radio Button
+
+<p
+  style={{
+    fontSize: 'var(--pharos-type-scale-6)',
+    lineHeight: '2rem',
+    marginBottom: 'var(--pharos-spacing-5-x)',
+  }}
+>
+  Radio buttons present items in a list of two or more options where the user can select only one
+  option at a time.
+</p>
+
+## Best Practices
+
+Radio buttons are normally presented in radio groups. Radio buttons should have a parent radio group component, which will group the buttons into a set.
+In a set of radio buttons, only one radio button can be selected at a time.
+
+### Dos
+
+- Include labels
+- Can include a Title for the group if necessary
+- Includes at least two or more items, but each option's value must be mutually exclusive
+- Use when users need to see the available options at a glance
+- Options are listed vertically, but can be horizontally oriented if there are only a few options
+
+### Don'ts
+
+- Do not check disabled radio buttons
+- Do not use when there are no choices, or multiple choices per group.
+- Do not display a set of radio buttons without a default selection, they should default to having one option selected. Use caution when selecting the default value and the order of the list to make the most sense.
+- Do not use if the list of choices gets too long, it may be better to use a "select" component instead. (Think about the mobile experience when deciding too).
+
+## States
+
+### Default
+
+<Canvas>
+  <pharos-radio-button>
+    <span slot="label">Radio label</span>
+  </pharos-radio-button>
+</Canvas>
+
+### Checked
+
+Indicates the value used for the radio group.
+
+<Canvas>
+  <pharos-radio-button checked>
+    <span slot="label">Radio label</span>
+  </pharos-radio-button>
+</Canvas>
+
+### Disabled
+
+Prevents interaction with the radio button component.
+
+<Canvas>
+  <pharos-radio-button disabled>
+    <span slot="label">Radio label</span>
+  </pharos-radio-button>
+</Canvas>
+
+### Error
+
+Indicates that an error has occured with the radio button.
+
+<Canvas>
+  <pharos-radio-button
+    required
+    invalidated
+    message="This field is required, please make a selection"
+  >
+    <span slot="label">Radio label</span>
+  </pharos-radio-button>
+</Canvas>
+
+## Content Guidelines
+
+### Labels
+
+- Labels are descriptive and succinct. They should provide further clarity for the user.
+- Labels should not end in punctuation.
+- Avoid using negative language as they can be counterintuitive. For example, "I want to receive a promotional email" instead of "I don't want to receive promotional email."
+
+## Accessibility
+
+- Uses aria-checked attribute to make sure the information communicated to assistive technology is the same as the visual state. (e.g. img element)
+- Use disabled prop to prevent the checkbox from interaction
+
+### Properties
+
+- A fieldset surrounds the entire grouping of radio buttons.
+- Some assistive technology read the legend ("title" prop for radio group) for each fieldset. It should be brief and descriptive to help someone using assistive technology quickly understand the question they are answering with the group of radio buttons.
+
+### Roles
+
+- Each radio button element has a role of "radio".
+- If a radio button is checked, the radio element has "aria-checked" set to true. If it is not checked, it has "aria-checked" set to false.
+
+### Accessibility best practices for labels
+
+- Labels must be visible when an input gets focus
+- Labels must be announced to the screen reader on focus
+- Use sentence case
+- If the text input is a required field include the aria-required property and indicate that it is a required field and use the validation message for input errors.
+
+### Keyboard interaction
+
+- <kbd>Space</kbd> checks the focused radio button, if it is not already checked.
+- <kbd>↑</kbd> / <kbd>←</kbd> move the indicator/focus to the radio button <strong>before</strong> the
+  current selected
+- <kbd>↓</kbd> / <kbd>→</kbd> move the indicator/focus to the radio button <strong>after</strong> the
+  current selected
+- <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> moves the focus into and out of the radio group.
+
+**When focus moves into a radio group**
+
+> - If a radio button is checked, focus is set on the checked button.
+> - If none of the radio buttons are checked, focus is set on the first radio button in the group.

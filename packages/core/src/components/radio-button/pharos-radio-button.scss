@@ -1,0 +1,91 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  contain: layout;
+}
+
+.input-wrapper {
+  @include mixins.option-wrapper;
+}
+
+.input__icon {
+  display: block;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: visible;
+
+  .outer {
+    stroke: var(--pharos-form-element-color-border-base);
+    fill: var(--pharos-radio-button-color-background-base);
+  }
+
+  .inner,
+  .focus,
+  .hover {
+    stroke: none;
+    fill: none;
+  }
+}
+
+:host([invalidated]) .input__icon {
+  .outer {
+    stroke: var(--pharos-form-element-color-border-invalid);
+  }
+}
+
+:host([disabled]) .input__icon {
+  pointer-events: none;
+
+  .outer {
+    fill: var(--pharos-form-element-color-background-disabled);
+  }
+}
+
+:host([checked]:not([disabled])) .input__icon {
+  .outer {
+    stroke: var(--pharos-color-interactive-secondary);
+  }
+}
+
+:host([checked][disabled]) .input__icon {
+  .inner {
+    fill: var(--pharos-color-text-disabled);
+  }
+}
+
+:host([checked][invalidated]) .input__icon {
+  .inner {
+    fill: var(--pharos-form-element-color-border-invalid);
+  }
+}
+
+:host([checked]:not([invalidated]):not([disabled])) .input__icon {
+  .inner {
+    fill: var(--pharos-color-interactive-secondary);
+  }
+}
+
+#radio-element {
+  @include mixins.option-input;
+
+  &:focus {
+    + .input-wrapper .input__icon {
+      .outer,
+      .focus {
+        stroke: var(--pharos-form-element-color-border-focus);
+      }
+    }
+  }
+}
+
+:host(:not([checked]):not([disabled]))
+  #radio-element:not(:focus)
+  + .input-wrapper:hover
+  .input__icon {
+  .outer,
+  .hover {
+    stroke: var(--pharos-color-hover-primary);
+  }
+}

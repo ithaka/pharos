@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  contain: layout;
+  position: fixed;
+  z-index: 1000;
+  right: var(--pharos-spacing-1-x);
+  top: var(--pharos-spacing-1-x);
+}
+
+.toaster__container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+::slotted(pharos-toast:not(:last-child)) {
+  margin-bottom: var(--pharos-spacing-1-x);
+}

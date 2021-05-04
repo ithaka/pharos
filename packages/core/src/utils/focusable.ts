@@ -1,0 +1,32 @@
+const focusable = `
+  a[href],
+  area[href],
+  button:not([disabled]),
+  details,
+  iframe,
+  input:not([disabled]),
+  select:not([disabled]),
+  textarea:not([disabled]),
+  [contentEditable="true"],
+  [tabindex]:not([tabindex="-1"]),
+  pharos-checkbox:not([disabled]),
+  pharos-radio-button:not([disabled]),
+  pharos-text-input:not([disabled]),
+  pharos-input-group:not([disabled]),
+  pharos-select:not([disabled]),
+  pharos-input-group-select:not([disabled]),
+  pharos-textarea:not([disabled]),
+  pharos-combobox:not([disabled]),
+  pharos-alert,
+  pharos-dropdown-menu-item:not([disabled]),
+  pharos-link[href],
+  pharos-button:not([disabled]),
+  pharos-tab,
+  pharos-dropdown-menu-nav-link[href],
+  pharos-sidenav-link[href],
+  pharos-toast,
+  pharos-breadcrumb-item[href],
+  pharos-sidenav-button:not([disabled])
+`;
+
+export default focusable;

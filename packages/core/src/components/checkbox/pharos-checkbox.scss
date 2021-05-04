@@ -1,0 +1,166 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  contain: layout;
+}
+
+.input-wrapper {
+  @include mixins.option-wrapper;
+}
+
+.input__icon {
+  display: block;
+  cursor: pointer;
+  overflow: visible;
+  box-sizing: border-box;
+
+  .box {
+    stroke: var(--pharos-form-element-color-border-base);
+    fill: var(--pharos-checkbox-color-background-base);
+  }
+
+  .checkmark,
+  .dash,
+  .focus,
+  .hover {
+    stroke: none;
+    fill: none;
+  }
+
+  .checkmark,
+  .dash,
+  .focus {
+    stroke-width: 2;
+  }
+}
+
+:host([indeterminate]) .input__icon {
+  .box {
+    stroke: var(--pharos-form-element-color-background-selected);
+  }
+
+  .dash {
+    stroke: var(--pharos-color-interactive-tertiary);
+  }
+}
+
+:host([invalidated]) .input__icon {
+  .box {
+    stroke: var(--pharos-form-element-color-border-invalid);
+  }
+}
+
+:host([disabled]) .input__icon {
+  pointer-events: none;
+
+  .box {
+    fill: var(--pharos-form-element-color-background-disabled);
+  }
+}
+
+:host([checked][dark]) .input__icon {
+  .checkmark {
+    stroke: var(--pharos-form-element-color-background-selected);
+  }
+}
+
+:host([indeterminate][dark]) .input__icon {
+  .box {
+    fill: var(--pharos-color-interactive-tertiary);
+    stroke: var(--pharos-color-interactive-tertiary);
+  }
+
+  .dash {
+    stroke: var(--pharos-form-element-color-background-selected);
+  }
+}
+
+:host([checked][disabled]) .input__icon {
+  .checkmark {
+    stroke: var(--pharos-color-text-disabled);
+  }
+}
+
+:host([checked][invalidated]) .input__icon {
+  .checkmark {
+    stroke: var(--pharos-form-element-color-border-invalid);
+  }
+}
+
+:host([dark]:not([checked]):not([indeterminate])) .input__icon {
+  .box {
+    fill: var(--pharos-form-element-color-background-selected);
+  }
+}
+
+:host([dark]:not([invalidated]):not([disabled])) .input__icon {
+  .box {
+    stroke: var(--pharos-color-interactive-tertiary);
+  }
+}
+
+:host([checked]:not([dark]):not([invalidated]):not([disabled])) .input__icon {
+  .box {
+    stroke: var(--pharos-form-element-color-background-selected);
+  }
+
+  .checkmark {
+    stroke: var(--pharos-color-interactive-tertiary);
+  }
+}
+
+:host([indeterminate]:not([invalidated]):not([disabled]):not([dark])) .input__icon {
+  .box {
+    fill: var(--pharos-form-element-color-background-selected);
+  }
+}
+
+:host([checked]:not([invalidated]):not([disabled]):not([dark])) .input__icon {
+  .box {
+    fill: var(--pharos-form-element-color-background-selected);
+  }
+}
+
+#checkbox-element {
+  @include mixins.option-input;
+}
+
+:host(:not([dark])) #checkbox-element:focus {
+  + .input-wrapper .input__icon {
+    .box,
+    .focus {
+      stroke: var(--pharos-form-element-color-border-focus);
+    }
+  }
+}
+
+:host([dark]) #checkbox-element:focus {
+  + .input-wrapper .input__icon {
+    .box,
+    .focus {
+      stroke: var(--pharos-form-element-color-border-focus);
+    }
+  }
+}
+
+:host([dark]:not([disabled]):not([checked]):not([indeterminate]))
+  #checkbox-element:not(:focus)
+  + .input-wrapper:hover
+  .input__icon {
+  .box,
+  .hover {
+    stroke: var(--pharos-color-interactive-tertiary);
+  }
+}
+
+:host(:not([checked]):not([disabled]):not([indeterminate]):not([dark]))
+  #checkbox-element:not(:focus)
+  + .input-wrapper:hover
+  .input__icon {
+  .box,
+  .hover {
+    stroke: var(--pharos-color-hover-primary);
+  }
+}

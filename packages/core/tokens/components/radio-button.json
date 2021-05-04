@@ -1,0 +1,11 @@
+{
+  "radio-button": {
+    "color": {
+      "background": {
+        "base": {
+          "value": "{color.ui.10.value}"
+        }
+      }
+    }
+  }
+}

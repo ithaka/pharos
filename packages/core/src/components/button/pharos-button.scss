@@ -1,0 +1,148 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: inline-flex;
+  contain: layout;
+}
+
+:host #button-element {
+  @include mixins.button-hover;
+  @include mixins.interactive-focus;
+}
+
+:host([variant='primary']) #button-element {
+  @include mixins.button-base;
+}
+
+:host([variant='secondary']) #button-element {
+  @include mixins.button-base(
+    $color: var(--pharos-color-text-base),
+    $background-color: transparent,
+    $border-color: var(--pharos-color-ui-40)
+  );
+}
+
+:host([variant='subtle']) #button-element {
+  @include mixins.button-base(
+    $color: var(--pharos-color-text-base),
+    $background-color: transparent,
+    $border-color: transparent
+  );
+}
+
+:host([href]) #button-element {
+  @include mixins.no-underline;
+}
+
+:host([large]) #button-element {
+  @include mixins.button-large;
+}
+
+:host([icon]) #button-element {
+  padding: var(--pharos-spacing-one-quarter-x);
+}
+
+:host([disabled]) {
+  pointer-events: none;
+}
+
+:host([disabled]) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-text-disabled),
+    $background-color: var(--pharos-color-disabled),
+    $border-color: var(--pharos-color-disabled)
+  );
+}
+
+:host([full-width]) {
+  width: 100%;
+
+  #button-element {
+    justify-content: start;
+    flex: auto;
+  }
+}
+
+:host([icon-condensed][icon]) #button-element {
+  padding: var(--pharos-spacing-one-eighth-x);
+  border: 0;
+}
+
+:host([icon][large]) #button-element {
+  padding: var(--pharos-spacing-one-half-x);
+}
+
+:host([icon]:not([disabled])) #button-element:hover,
+:host([icon]:not([disabled])) #button-element:active {
+  padding: calc(var(--pharos-spacing-one-quarter-x) - 1px);
+}
+
+:host([variant='subtle']:not([disabled])) #button-element:hover,
+:host([variant='subtle']:not([disabled])) #button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-color-hover-primary),
+    $background-color: var(--pharos-color-ui-20),
+    $border-color: var(--pharos-color-ui-20)
+  );
+}
+
+:host([on-background][variant='primary']:not([disabled])) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-secondary),
+    $background-color: var(--pharos-color-interactive-tertiary),
+    $border-color: var(--pharos-color-interactive-tertiary)
+  );
+}
+
+:host([on-background][variant='secondary']:not([disabled])) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-tertiary),
+    $background-color: transparent,
+    $border-color: var(--pharos-color-interactive-tertiary)
+  );
+}
+
+:host([on-background][variant='subtle']:not([disabled])) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-tertiary),
+    $background-color: transparent,
+    $border-color: transparent
+  );
+}
+
+:host([icon-condensed][icon]:not([disabled])) #button-element:hover,
+:host([icon-condensed][icon]:not([disabled])) #button-element:active {
+  padding: var(--pharos-spacing-one-eighth-x);
+}
+
+:host([on-background][variant='primary']:not([disabled])) #button-element:hover,
+:host([on-background][variant='primary']:not([disabled])) #button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-tertiary),
+    $background-color: transparent,
+    $border-color: var(--pharos-color-interactive-tertiary)
+  );
+}
+
+:host([on-background][variant='secondary']:not([disabled])) #button-element:hover,
+:host([on-background][variant='secondary']:not([disabled])) #button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-secondary),
+    $background-color: var(--pharos-color-interactive-tertiary),
+    $border-color: var(--pharos-color-interactive-tertiary)
+  );
+}
+
+:host([on-background][variant='subtle']:not([disabled])) #button-element:hover,
+:host([on-background][variant='subtle']:not([disabled])) #button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-secondary),
+    $background-color: var(--pharos-color-interactive-tertiary),
+    $border-color: var(--pharos-color-interactive-tertiary)
+  );
+}
+
+:host([icon][large]:not([disabled])) #button-element:hover,
+:host([icon][large]:not([disabled])) #button-element:active {
+  padding: calc(var(--pharos-spacing-one-half-x) - 1px);
+}

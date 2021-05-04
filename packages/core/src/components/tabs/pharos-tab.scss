@@ -1,0 +1,49 @@
+@use "../../utils/scss/mixins";
+
+:host {
+  @include mixins.font-base;
+  @include mixins.transition-base(color, border-bottom-color);
+
+  display: inline-block;
+  align-self: flex-start;
+  color: var(--pharos-color-text-20);
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-1-x);
+  border: none;
+  background: none;
+  border-bottom: 1px solid var(--pharos-color-ui-40);
+  contain: content;
+
+  &::after {
+    content: attr(data-text);
+    content: attr(data-text) / '';
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    user-select: none;
+    pointer-events: none;
+    font-weight: var(--pharos-font-weight-bold);
+    display: block;
+
+    @media speech {
+      display: none;
+    }
+  }
+}
+
+:host(:focus) {
+  outline: 2px solid var(--pharos-color-focus);
+  outline-offset: 2px;
+}
+
+:host(:hover) {
+  cursor: pointer;
+  color: var(--pharos-color-hover-primary);
+  border-bottom-color: var(--pharos-color-hover-primary);
+}
+
+:host([selected]) {
+  color: var(--pharos-color-text-base);
+  border-bottom: 2px solid var(--pharos-color-interactive-secondary);
+  font-weight: var(--pharos-font-weight-bold);
+  padding-bottom: calc(var(--pharos-spacing-one-half-x) - 1px);
+}

@@ -1,0 +1,132 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { PharosCheckboxGroup } from '../../react-components/checkbox-group/pharos-checkbox-group';
+import { PharosCheckbox } from '../../react-components/checkbox/pharos-checkbox';
+import createFormData from '../../utils/createFormData';
+
+import Intro from '@docs/guidelines/checkbox.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Forms/Checkbox Group"
+  parameters={{
+    component: PharosCheckboxGroup,
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
+
+# Examples
+
+export const Template = (args) => (
+  <PharosCheckboxGroup
+    required={args.required}
+    invalidated={args.invalidated}
+    horizontal={args.horizontal}
+    hideLabel={args.hideLabel}
+    disabled={args.disabled}
+    message={args.message}
+  >
+    <span slot="legend">Checkbox Group Header</span>
+    <PharosCheckbox value="1">
+      <span slot="label">Checkbox 1</span>
+    </PharosCheckbox>
+    <PharosCheckbox value="2">
+      <span slot="label">Checkbox 2</span>
+    </PharosCheckbox>
+  </PharosCheckboxGroup>
+);
+
+<Canvas withToolbar>
+  <Story name="Base" args={{ horizontal: false, hideLabel: false, disabled: false }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosCheckboxGroup} />
+
+# Events
+
+<Canvas withToolbar>
+  <Story name="Events">
+    {() => {
+      return (
+        <PharosCheckboxGroup
+          onChange={(e) => action('Change')(JSON.stringify(e.target.value))}
+          name="group2"
+        >
+          <span slot="legend">Checkbox Group Header</span>
+          <PharosCheckbox value="1">
+            <span slot="label">Checkbox 1</span>
+          </PharosCheckbox>
+          <PharosCheckbox value="2">
+            <span slot="label">Checkbox 2</span>
+          </PharosCheckbox>
+          <PharosCheckbox value="3">
+            <span slot="label">Checkbox 3</span>
+          </PharosCheckbox>
+        </PharosCheckboxGroup>
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Validity
+
+<Canvas withToolbar>
+  <Story
+    name="Validity"
+    args={{
+      horizontal: false,
+      required: true,
+      invalidated: true,
+      message: 'This field is required, please make a selection',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Form Data
+
+<Canvas withToolbar>
+  <Story name="Form Data">
+    <form name="my-form" action="https://httpbin.org/post" method="POST">
+      <PharosCheckboxGroup
+        onChange={(e) => action('Change')(e.target.value)}
+        name="checkbox-group4"
+        required
+      >
+        <span slot="legend">Checkbox Group Header</span>
+        <PharosCheckbox value="1">
+          <span slot="label">Checkbox 1</span>
+        </PharosCheckbox>
+        <PharosCheckbox value="2">
+          <span slot="label">Checkbox 2</span>
+        </PharosCheckbox>
+        <PharosCheckbox value="3">
+          <span slot="label">Checkbox 3</span>
+        </PharosCheckbox>
+      </PharosCheckboxGroup>
+      <input
+        type="submit"
+        value="Submit"
+        onClick={(e) => {
+          e.preventDefault();
+          const form = document.querySelector('form[name="my-form"]');
+          const formData = createFormData(form);
+          const xhr = new XMLHttpRequest();
+          xhr.open('POST', 'https://httpbin.org/post', true);
+          xhr.onload = function () {
+            const response = JSON.parse(this.responseText);
+            action('FormData')(JSON.stringify(response.form));
+          };
+          xhr.send(formData);
+        }}
+      />
+    </form>
+  </Story>
+</Canvas>

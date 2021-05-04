@@ -1,0 +1,48 @@
+{
+  "spacing": {
+    "one-eighth-x": {
+      "value": "0.125rem",
+      "comment": "2px"
+    },
+    "one-quarter-x": {
+        "value": "0.25rem",
+        "comment": "4px"
+    },
+    "one-half-x" : {
+      "value": "0.5rem",
+      "comment": "8px"
+    },
+    "three-quarters-x"   : {
+      "value": "0.75rem",
+      "comment": "12px"
+    },
+    "1x"  : {
+      "value": "1rem",
+      "comment": "16px"
+    },
+    "one-and-a-half-x"   : {
+      "value": "1.5rem",
+      "comment": "24px"
+    },
+    "2x"  : {
+      "value": "2rem",
+      "comment": "32px"
+    },
+    "3x"  : {
+      "value": "3rem",
+      "comment": "48px"
+    },
+    "three-and-a-half-x"   : {
+      "value": "3.5rem",
+      "comment": "56px"
+    },
+    "5x"  : {
+      "value": "5rem",
+      "comment": "80px"
+    },
+    "7x"  : {
+      "value": "7rem",
+      "comment": "112px"
+    }
+  }
+}

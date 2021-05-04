@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  contain: content;
+}
+
+.section__container {
+  margin: var(--pharos-spacing-one-and-a-half-x) 0;
+}
+
+.section__heading {
+  color: var(--pharos-color-marble-gray-80);
+  padding: 0 var(--pharos-spacing-2-x);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.section__divider {
+  border: none;
+  background: var(--pharos-color-marble-gray-40);
+  margin: 0 var(--pharos-spacing-2-x);
+  height: 1px;
+}

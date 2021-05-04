@@ -1,0 +1,33 @@
+.allIconContainer {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: var(--pharos-spacing-2-x);
+  column-gap: var(--pharos-spacing-2-x);
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
+.icon__title {
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.iconContainer {
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 0.5rem;
+}
+
+.icon {
+  max-width: var(--pharos-spacing-one-and-a-half-x);
+  max-height: var(--pharos-spacing-one-and-a-half-x);
+  stroke: var(--pharos-color-black);
+  stroke-width: 0;
+}
+
+.display__text {
+  margin-bottom: var(--pharos-spacing-one-half-x);
+  font-weight: var(--pharos-font-weight-bold);
+  color: var(--pharos-color-black);
+  line-height: var(--pharos-line-height-medium);
+  font-size: var(--pharos-font-size-small);
+}

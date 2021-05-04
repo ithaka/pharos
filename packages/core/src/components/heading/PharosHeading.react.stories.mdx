@@ -1,0 +1,88 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { PharosHeading } from '../../react-components/heading/pharos-heading';
+import { PharosCheckboxGroup } from '../../react-components/checkbox-group/pharos-checkbox-group';
+import { PharosCheckbox } from '../../react-components/checkbox/pharos-checkbox';
+import Intro from '@docs/guidelines/heading.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Components/Heading"
+  parameters={{
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
+
+# Examples
+
+export const Template = (args) => (
+  <PharosHeading level={args.level} preset={args.preset}>
+    {args.text}
+    <br />
+    second line
+  </PharosHeading>
+);
+
+<Canvas withToolbar>
+  <Story
+    name="Base"
+    argTypes={{
+      text: { control: { type: 'text' }, defaultValue: 'Heading style' },
+      level: {
+        control: { type: 'range', min: 1, max: 6, step: 1 },
+        defaultValue: 1,
+      },
+      preset: {
+        defaultValue: '5',
+        options: ['1', '2', '3', '4', '5', '6', '7', 'legend'],
+        control: {
+          type: 'radio',
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story
+    name="Bold"
+    argTypes={{
+      text: { control: { type: 'text' }, defaultValue: 'Heading style' },
+      level: {
+        control: { type: 'range', min: 1, max: 6, step: 1 },
+        defaultValue: 1,
+      },
+      preset: {
+        defaultValue: '5--bold',
+        options: ['1--bold', '2--bold', '3--bold', '4--bold', '5--bold', '6--bold', '7--bold'],
+        control: {
+          type: 'radio',
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosHeading} />
+
+<Canvas>
+  <Story name="Legend">
+    <PharosCheckboxGroup>
+      <PharosHeading slot="legend" level={2} preset={'legend'}>
+        I am legend
+      </PharosHeading>
+      <PharosCheckbox value="1">
+        <span slot="label">Checkbox 1</span>
+      </PharosCheckbox>
+      <PharosCheckbox value="2">
+        <span slot="label">Checkbox 2</span>
+      </PharosCheckbox>
+    </PharosCheckboxGroup>
+  </Story>
+</Canvas>

@@ -1,0 +1,60 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { html } from 'lit-html';
+
+import './pharos-dropdown-menu-nav';
+import '../dropdown-menu/pharos-dropdown-menu';
+import '../dropdown-menu/pharos-dropdown-menu-item';
+import './pharos-dropdown-menu-nav-link';
+
+import Intro from '@docs/guidelines/dropdown-menu-nav.docs.mdx';
+
+<Intro />
+
+<Meta title="Components/Dropdown Menu Nav" />
+
+# Base
+
+<Canvas>
+  <Story name="Base" parameters={{ chromatic: { viewports: [320, 1200] } }}>
+    {() => {
+      return html`
+        <pharos-dropdown-menu-nav>
+          <pharos-dropdown-menu-nav-link
+            href="#"
+            id="smurfs-link"
+            data-dropdown-menu-id="smurfs-menu"
+            data-dropdown-menu-hover
+            target="_blank"
+            >Smurfs</pharos-dropdown-menu-nav-link
+          >
+          <pharos-dropdown-menu id="smurfs-menu" data-dropdown-menu-hover>
+            <pharos-dropdown-menu-item>Papa</pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>Clumsy</pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>Smurfette</pharos-dropdown-menu-item>
+          </pharos-dropdown-menu>
+          <pharos-dropdown-menu-nav-link
+            href="#"
+            id="tmnt-link"
+            data-dropdown-menu-id="tmnt-menu"
+            data-dropdown-menu-hover
+            target="_blank"
+            >Ninja Turtles</pharos-dropdown-menu-nav-link
+          >
+          <pharos-dropdown-menu id="tmnt-menu">
+            <pharos-dropdown-menu-item>Leonardo</pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>Donatello</pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>Raphael</pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>Michelangelo</pharos-dropdown-menu-item>
+          </pharos-dropdown-menu>
+          <pharos-dropdown-menu-nav-link href="#" id="other-link" target="_blank"
+            >Link to Other</pharos-dropdown-menu-nav-link
+          >
+        </pharos-dropdown-menu-nav>
+      `;
+    }}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of="pharos-dropdown-menu-nav" />

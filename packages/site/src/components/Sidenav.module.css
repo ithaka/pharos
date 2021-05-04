@@ -1,0 +1,20 @@
+.sidenav {
+  grid-area: sidenav;
+}
+
+.site-brand__title {
+  display: block;
+  font-size: var(--pharos-type-scale-10);
+  letter-spacing: -1px;
+  font-family: var(--pharos-font-family-serif);
+  line-height: var(--pharos-type-scale-10);
+  margin-bottom: var(--pharos-spacing-one-quarter-x);
+  color: var(--pharos-color-white);
+}
+
+.site-brand__sub-title {
+  text-decoration: none;
+  font-family: var(--pharos-font-family-sans);
+  line-height: var(--pharos-line-height-small);
+  color: var(--pharos-color-marble-gray-80);
+}

@@ -1,0 +1,7 @@
+.cross_line {
+  transform: rotate(-45deg);
+  height: 3px;
+  background-color: var(--pharos-color-black);
+  border: 0;
+  position: relative;
+}

@@ -1,0 +1,26 @@
+.legend__cell {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--pharos-color-marble-gray-80);
+  background-color: var(--pharos-color-marble-gray-97);
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-1-x);
+}
+
+.legend__status-name {
+  margin-left: var(--pharos-spacing-one-half-x);
+  font-size: var(--pharos-type-scale-2);
+}
+
+.legend__status-description {
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-1-x);
+  font-size: var(--pharos-type-scale-2);
+}
+
+.legend__table {
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+.legend__border {
+  border: 1px solid var(--pharos-color-marble-gray-80);
+}

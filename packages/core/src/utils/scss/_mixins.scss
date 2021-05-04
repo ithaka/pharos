@@ -1,0 +1,310 @@
+@mixin input-base {
+  @include font-base;
+
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid var(--pharos-form-element-color-border-base);
+  border-radius: var(--pharos-radius-base-standard);
+  transition: transform var(--pharos-transition-base) 0s;
+  color: var(--pharos-form-element-color-text-base);
+}
+
+@mixin input-placeholder {
+  &::placeholder {
+    color: var(--pharos-form-element-color-text-placeholder);
+    opacity: 1;
+  }
+}
+
+@mixin input-focus {
+  outline: none;
+  border: 2px solid var(--pharos-form-element-color-border-focus);
+  transition: transform var(--pharos-transition-base) 0s;
+}
+
+@mixin input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+@mixin input-invalid {
+  border: 2px solid var(--pharos-form-element-color-border-invalid);
+}
+
+@mixin input-disabled {
+  color: var(--pharos-form-element-color-text-disabled);
+  background-color: var(--pharos-form-element-color-background-disabled);
+  border-color: var(--pharos-form-element-color-background-disabled);
+  pointer-events: none;
+}
+
+@mixin input-required {
+  &:required {
+    box-shadow: none;
+  }
+}
+
+@mixin input-padding-thick-border {
+  padding: calc(var(--pharos-spacing-one-half-x) - 1px)
+    calc(var(--pharos-spacing-three-quarters-x) - 1px);
+}
+
+@mixin input-on-background {
+  background-color: var(--pharos-color-marble-gray-20);
+  border-color: var(--pharos-color-marble-gray-20);
+  color: var(--pharos-color-text-white);
+  caret-color: var(--pharos-color-text-white);
+
+  &::placeholder {
+    color: var(--pharos-color-marble-gray-base);
+  }
+}
+
+@mixin option-input {
+  @include hidden;
+
+  display: block;
+  box-sizing: border-box;
+}
+
+@mixin option-wrapper {
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+@mixin hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
+@mixin font-base(
+  $font-family: var(--pharos-font-family-sans-serif),
+  $font-size: var(--pharos-font-size-base),
+  $font-weight: var(--pharos-font-weight-regular),
+  $line-height: var(--pharos-line-height-medium)
+) {
+  @if $font-family == var(--pharos-font-family-sans-serif) {
+    @include letter-spacing-sans-serif($font-size);
+  } @else if $font-family == var(--pharos-font-family-serif) {
+    @include letter-spacing-serif($font-size);
+  } @else {
+    @error "Unknown font-family #{$font-family}.";
+  }
+
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin letter-spacing-serif($font-size: 1rem) {
+  letter-spacing: calc(#{$font-size} * -0.01);
+}
+
+@mixin letter-spacing-sans-serif($font-size: 1rem) {
+  letter-spacing: calc(#{$font-size} * -0.02);
+}
+
+@mixin label-base($margin-bottom: var(--pharos-spacing-one-quarter-x), $text-transform: uppercase) {
+  color: var(--pharos-form-element-color-text-base);
+  margin-bottom: $margin-bottom;
+  display: block;
+  padding: 0;
+  text-transform: $text-transform;
+}
+
+@mixin form-element-label {
+  @include font-base(
+    $font-size: var(--pharos-form-element-size-text-label),
+    $font-weight: var(--pharos-font-weight-bold),
+    $line-height: var(--pharos-line-height-small)
+  );
+  @include label-base;
+}
+
+@mixin groupable-element-label {
+  @include font-base;
+  @include label-base($margin-bottom: 0, $text-transform: none);
+
+  padding-left: var(--pharos-spacing-one-quarter-x);
+}
+
+@mixin icon-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  background: none;
+  margin: 0;
+}
+
+@mixin interactive-focus {
+  &:focus {
+    outline: 2px solid var(--pharos-color-focus);
+    outline-offset: 2px;
+  }
+}
+
+@mixin button-base(
+  $color: var(--pharos-color-text-white),
+  $background-color: var(--pharos-color-interactive-primary),
+  $border-color: var(--pharos-color-interactive-primary)
+) {
+  @include font-base($font-weight: var(--pharos-font-weight-bold));
+  @include transition-base(border-color, background, color);
+
+  color: $color;
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-three-quarters-x);
+  border-radius: var(--pharos-radius-base-standard);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  appearance: none;
+
+  pharos-icon {
+    @include transition-base(fill, stroke);
+
+    fill: $color;
+    stroke: $color;
+    stroke-width: 0;
+  }
+
+  pharos-icon:first-child:not(:only-child) {
+    margin-right: var(--pharos-spacing-one-quarter-x);
+  }
+
+  pharos-icon:last-child:not(:only-child) {
+    margin-left: var(--pharos-spacing-one-quarter-x);
+  }
+}
+
+@mixin button-hover(
+  $color: var(--pharos-color-hover-primary),
+  $background-color: transparent,
+  $border-color: var(--pharos-color-hover-primary)
+) {
+  &:hover:not([disabled]),
+  &:active:not([disabled]) {
+    color: $color;
+    background-color: $background-color;
+    border: 2px solid $border-color;
+    padding: calc(var(--pharos-spacing-one-quarter-x) - 1px)
+      calc(var(--pharos-spacing-three-quarters-x) - 1px);
+
+    pharos-icon {
+      fill: $color;
+      stroke: $color;
+    }
+  }
+}
+
+@mixin button-large {
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
+
+  &:hover:not([disabled]),
+  &:active:not([disabled]) {
+    padding: calc(var(--pharos-spacing-one-half-x) - 1px)
+      calc(var(--pharos-spacing-three-quarters-x) - 1px);
+  }
+}
+
+@mixin button-color(
+  $color: var(--pharos-color-text-white),
+  $background-color: var(--pharos-color-interactive-primary),
+  $border-color: var(--pharos-color-interactive-primary)
+) {
+  color: $color;
+  background-color: $background-color;
+  border-color: $border-color;
+
+  pharos-icon {
+    fill: $color;
+    stroke: $color;
+  }
+}
+
+@mixin link-base {
+  @include font-base($font-size: inherit);
+  @include underline;
+
+  color: var(--pharos-color-interactive-secondary);
+  transition-property: color, text-decoration-color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+@mixin link-hover {
+  &:hover {
+    @include no-underline;
+
+    color: var(--pharos-color-hover-primary);
+  }
+}
+
+@mixin underline($text-decoration-color: var(--pharos-color-interactive-secondary)) {
+  text-decoration: underline;
+  text-decoration-color: $text-decoration-color;
+}
+
+@mixin no-underline {
+  text-decoration: none;
+  text-decoration-color: transparent;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+}
+
+@mixin no-bullet {
+  list-style-type: none;
+  -ms-overflow-style: none;
+}
+
+@mixin list-inline($margin-right: var(--pharos-spacing-one-and-a-half-x)) {
+  @include no-bullet;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  li:not(:last-child) {
+    margin-right: $margin-right;
+    margin-bottom: 0;
+  }
+}
+
+@mixin list-nested {
+  > li:not(:last-child) {
+    margin-bottom: var(--pharos-spacing-three-quarters-x);
+  }
+}
+
+@mixin transition-base($properties...) {
+  transition-property: $properties;
+  transition-duration: var(--pharos-transition-duration-default);
+  transition-timing-function: ease-in-out;
+}
+
+@mixin content-label($args...) {
+  @include form-element-label($args...);
+}

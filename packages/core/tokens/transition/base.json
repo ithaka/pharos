@@ -1,0 +1,15 @@
+{
+  "transition": {
+    "base": { "value": "250ms cubic-bezier(0.17, 0.67, 0.83, 0.67)"},
+    "duration": {
+      "shorter": { "value": "50ms" },
+      "short"  : { "value": "100ms" },
+      "default": { "value": "250ms" },
+      "long"   : { "value": "500ms" },
+      "longer" : { "value": "1000ms" }
+    },
+    "curve": {
+      "base": { "value": "cubic-bezier(0.17, 0.67, 0.83, 0.67)"}
+    }
+  }
+}

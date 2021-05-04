@@ -1,0 +1,18 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  contain: layout;
+}
+
+.tab__list {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.tab__panels {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  padding: var(--pharos-spacing-one-quarter-x);
+}

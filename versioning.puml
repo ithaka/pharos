@@ -1,0 +1,82 @@
+@startuml
+title Pharos package versioning (all shown versions hypothetical)
+actor "Maintainer" as dev #blue
+participant "ithaka/pharos" as repo
+database npm as npm
+participant "Some project" as project
+participant "Some other project" as otherproj
+actor "Pharos consumer" as user #red
+
+== User installs @pharos/core@1.0.3 ==
+user -> project: Install ""@pharos/core@1.0.3""
+project -> npm ++: Get ""v1.0.3""
+project <-- npm --: ""v1.0.3""
+
+== Maintainer publishes v1.1.0 ==
+dev -> dev: Develop new\n""@pharos/core"" feature
+dev -> repo: Push new\n""@pharos/core"" feature
+...
+...
+dev -> dev: Fix bug in ""@pharos/site""
+dev -> repo: Push ""@pharos/site""\nbug fix
+...
+...
+dev <-- repo: Pull latest changes
+dev -> npm: Publish ""@pharos/core@1.1.0""
+dev -> npm: Publish ""@pharos/site@1.1.0""
+
+== User installs @pharos/core@1.1.0 ==
+user -> project: Install ""@pharos/core@1.1.0""
+project -> npm ++: Get ""v1.1.0""
+project <-- npm --: ""v1.1.0""
+
+== User finds bug in @pharos/core@0.5.0 ==
+user -> otherproj: Install ""@pharos/core@0.5.0""
+otherproj -> npm ++: Get ""v0.5.0""
+otherproj <-- npm --: ""v0.5.0""
+...
+...
+user -> user: Find a bug in\n""@pharos/core@v0.5.0""
+user -> dev: Report bug
+|||
+|||
+dev -> repo: Pull ""@pharos/core@0.5.0"" tag
+dev <-- repo: ""v0.5.0""
+dev -> dev: Create ""v0.5.1"" branch
+dev -> repo: Push ""v0.5.1"" fixes
+dev -> npm: Publish ""@pharos/core@0.5.1""
+dev -> npm: Publish ""@pharos/site@0.5.1""
+|||
+|||
+dev -> repo: Pull ""develop"" branch (v1.1.0)
+dev <-- repo: ""develop""
+dev -> dev: Apply fix
+dev -> repo: Push ""v1.1.1"" fixes
+dev -> npm: Publish ""@pharos/core@1.1.1""
+dev -> npm: Publish ""@pharos/site@1.1.1""
+
+== User installs @pharos/core@0.5.1 ==
+user -> otherproj: Install ""@pharos/core@0.5.1""
+otherproj -> npm ++: Get ""v0.5.1""
+otherproj <-- npm --: ""v0.5.1""
+
+== User wants to use branded components ==
+dev -> dev: Develop branded components in ""v2.0.0"" branch
+dev -> repo: Push ""v2.0.0"" changes
+dev -> npm: Publish ""@pharos/core@2.0.0-beta.0""
+dev -> npm: Publish ""@pharos/site@2.0.0-beta.0""
+...
+...
+user -> otherproj: Install ""@pharos/core@2.0.0-beta.2""
+otherproj -> npm ++: Get ""v2.0.0-beta.2""
+otherproj <-- npm --: ""v2.0.0-beta.2""
+user -> user: Find a bug in @pharos/core@v2.0.0-beta.2
+user -> dev: Report bug
+...
+...
+
+dev -> dev: Develop fix in ""v2.0.0"" branch
+dev -> repo: Push ""v2.0.0"" changes
+dev -> npm: Publish ""@pharos/core@2.0.0-beta.3""
+dev -> npm: Publish ""@pharos/site@2.0.0-beta.3""
+@enduml

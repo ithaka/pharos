@@ -1,0 +1,61 @@
+#!/usr/bin/env groovy
+
+def label = "pharos-chromatic-${UUID.randomUUID().toString()}"
+
+podTemplate(
+    label: label,
+    cloud: 'kubernetes',
+    containers: [
+        containerTemplate(
+            name: 'chromatic',
+            image: params.CHROMATIC_IMAGE.toString(),
+            command: 'cat',
+            ttyEnabled: true
+        ),
+        containerTemplate(
+            name: 'aws',
+            image: params.AWS_IMAGE.toString(),
+            command: 'cat',
+            ttyEnabled: true
+        ),
+    ],
+    volumes: [
+        hostPathVolume(
+            mountPath: '/dev/shm',
+            hostPath: '/dev/shm'
+        )
+    ]
+) {
+    node(label) {
+        try {
+            def code = checkout(scm)
+
+            stage("Obtain configuration values") {
+                container('aws') {
+                    script {
+                        CHROMATIC_PROJECT_TOKEN=sh(
+                            script: "aws ssm get-parameters --name ${params.PARAMETER_NAME.toString()} --with-decryption | jq -r '.Parameters[0].Value'",
+                            returnStdout: true
+                        ).trim()
+                    }
+                    env.CHROMATIC_PROJECT_TOKEN = CHROMATIC_PROJECT_TOKEN
+                }
+            }
+
+            container('chromatic') {
+                stage('Install dependencies') {
+                    sh(script: "yarn install --frozen-lockfile")
+                }
+
+                stage('Run chromatic') {
+                    sh(script: "yarn storybook:setup")
+                    sh(script: "yarn build-storybook:wc")
+                    sh(script: "npx chromatic --ci --exit-zero-on-changes --exit-once-uploaded --storybook-build-dir=.storybook-static/wc --project-token=${env.CHROMATIC_PROJECT_TOKEN}")
+                }
+            }
+        } catch (error) {
+            println "Caught an error: ${error}"
+            currentBuild.result = 'FAILURE'
+        }
+    }
+}

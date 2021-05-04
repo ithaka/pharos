@@ -1,0 +1,42 @@
+.container {
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
+.line_dont {
+  border: none;
+  height: 2px;
+  background-color: var(--pharos-color-feedback-error);
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.line_do {
+  border: none;
+  height: 2px;
+  background-color: var(--pharos-color-feedback-success);
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: var(--pharos-spacing-2-x);
+  font-size: var(--pharos-spacing-one-and-a-half-x);
+  line-height: 0;
+}
+
+.text_container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 10fr;
+}
+
+.text_do {
+  color: var(--pharos-color-feedback-success);
+  margin-left: var(--pharos-spacing-one-half-x);
+}
+
+.text_dont {
+  color: var(--pharos-color-feedback-error);
+  margin-left: var(--pharos-spacing-one-half-x);
+}

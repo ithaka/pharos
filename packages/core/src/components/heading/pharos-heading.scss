@@ -1,0 +1,98 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  contain: layout;
+}
+
+.heading {
+  font-family: var(--pharos-font-family-serif);
+  font-weight: var(--pharos-font-weight-regular);
+  color: inherit;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+:host([preset='1']),
+:host([preset='1--bold']) {
+  .heading {
+    @include mixins.font-base($line-height: var(--pharos-line-height-small));
+  }
+}
+
+:host([preset='2']),
+:host([preset='2--bold']) {
+  .heading {
+    @include mixins.font-base($font-size: var(--pharos-type-scale-5));
+  }
+}
+
+:host([preset='3']),
+:host([preset='3--bold']) {
+  .heading {
+    @include mixins.font-base(
+      $font-family: var(--pharos-font-family-serif),
+      $font-size: var(--pharos-type-scale-6),
+      $line-height: var(--pharos-line-height-large)
+    );
+  }
+}
+
+:host([preset='4']),
+:host([preset='4--bold']) {
+  .heading {
+    @include mixins.font-base(
+      $font-size: var(--pharos-type-scale-6),
+      $line-height: var(--pharos-line-height-large)
+    );
+  }
+}
+
+:host([preset='5']),
+:host([preset='5--bold']) {
+  .heading {
+    @include mixins.font-base(
+      $font-family: var(--pharos-font-family-serif),
+      $font-size: var(--pharos-type-scale-8),
+      $line-height: var(--pharos-line-height-xlarge)
+    );
+  }
+}
+
+:host([preset='6']),
+:host([preset='6--bold']) {
+  .heading {
+    @include mixins.font-base(
+      $font-size: var(--pharos-type-scale-8),
+      $line-height: var(--pharos-line-height-xlarge)
+    );
+  }
+}
+
+:host([preset='7']),
+:host([preset='7--bold']) {
+  .heading {
+    @include mixins.font-base(
+      $font-family: var(--pharos-font-family-serif),
+      $font-size: var(--pharos-type-scale-12),
+      $line-height: var(--pharos-line-height-heading-large)
+    );
+  }
+}
+
+:host([preset='legend']) {
+  .heading {
+    @include mixins.form-element-label;
+
+    margin-bottom: 0;
+    color: inherit;
+  }
+}
+
+:host([preset$='--bold']) .heading {
+  font-weight: var(--pharos-font-weight-bold);
+}
+
+:host([no-margin]) .heading {
+  margin-bottom: 0;
+}

@@ -1,0 +1,441 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+
+import { PharosButton } from '../../react-components/button/pharos-button';
+import { iconNames } from '../../components/icon/pharos-icon';
+
+import { PharosCheckbox } from '../../react-components/checkbox/pharos-checkbox';
+import { PharosCheckboxGroup } from '../../react-components/checkbox-group/pharos-checkbox-group';
+import { PharosCombobox } from '../../react-components/combobox/pharos-combobox';
+import { PharosRadioButton } from '../../react-components/radio-button/pharos-radio-button';
+import { PharosRadioGroup } from '../../react-components/radio-group/pharos-radio-group';
+import { PharosSelect } from '../../react-components/select/pharos-select';
+import { PharosTextInput } from '../../react-components/text-input/pharos-text-input';
+import { PharosTextarea } from '../../react-components/textarea/pharos-textarea';
+
+<Meta
+  title="Components/Button"
+  parameters={{
+    component: PharosButton,
+  }}
+/>
+
+export const Template = (args) => (
+  <PharosButton
+    disabled={args.disabled}
+    variant={args.variant}
+    type={args.type}
+    icon={args.icon}
+    iconCondensed={args.iconCondensed}
+    iconLeft={args.iconLeft}
+    iconRight={args.iconRight}
+    large={args.large}
+    href={args.href}
+    target={args.target}
+    label={args.label}
+  >
+    {args.text}
+  </PharosButton>
+);
+
+# Button
+
+<Canvas>
+  <Story
+    name="Base"
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary', 'subtle'],
+        control: {
+          type: 'inline-radio',
+        },
+        defaultValue: 'primary',
+      },
+      type: {
+        options: ['button', 'submit', 'reset'],
+        control: {
+          type: 'inline-radio',
+        },
+        defaultValue: 'button',
+      },
+      iconLeft: {
+        options: iconNames,
+        control: {
+          type: 'select',
+        },
+      },
+      iconRight: {
+        options: iconNames,
+        control: {
+          type: 'select',
+        },
+      },
+    }}
+    args={{
+      text: 'I am a button',
+      disabled: false,
+      large: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosButton} />
+
+# Variants
+
+<Canvas withToolbar>
+  <Story name="Variants">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '2rem',
+        gridTemplateColumns: 'repeat(3, 200px)',
+      }}
+    >
+      <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
+        <PharosButton name="primary">Primary</PharosButton>
+        <PharosButton name="secondary" variant="secondary">
+          Secondary
+        </PharosButton>
+        <PharosButton name="subtle" variant="subtle">
+          Subtle
+        </PharosButton>
+      </div>
+      <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
+        <PharosButton name="primary-disabled" disabled>
+          Primary
+        </PharosButton>
+        <PharosButton name="secondary-disabled" variant="secondary" disabled>
+          Secondary
+        </PharosButton>
+        <PharosButton name="subtle-disabled" variant="subtle" disabled>
+          Subtle
+        </PharosButton>
+      </div>
+      <div
+        style={{
+          backgroundColor: '#000000',
+          padding: '1rem',
+          display: 'grid',
+          gridGap: '1.5rem',
+        }}
+      >
+        <PharosButton name="primary-on-background" onBackground>
+          Primary
+        </PharosButton>
+        <PharosButton name="secondary-on-background" variant="secondary" onBackground>
+          Secondary
+        </PharosButton>
+        <PharosButton name="subtle-on-background" variant="subtle" onBackground>
+          Subtle
+        </PharosButton>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+# Large
+
+<Canvas withToolbar>
+  <Story name="Large">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '2rem',
+        gridTemplateColumns: 'repeat(3, 200px)',
+      }}
+    >
+      <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
+        <PharosButton name="large-primary" large>
+          Primary
+        </PharosButton>
+        <PharosButton name="large-secondary" variant="secondary" large>
+          Secondary
+        </PharosButton>
+        <PharosButton name="large-subtle" variant="subtle" large>
+          Subtle
+        </PharosButton>
+      </div>
+      <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
+        <PharosButton name="large-primary-disabled" large disabled>
+          Primary
+        </PharosButton>
+        <PharosButton name="large-secondary-disabled" variant="secondary" large disabled>
+          Secondary
+        </PharosButton>
+        <PharosButton name="large-subtle-disabled" variant="subtle" large disabled>
+          Subtle
+        </PharosButton>
+      </div>
+      <div
+        style={{
+          backgroundColor: '#000000',
+          padding: '1rem',
+          display: 'grid',
+          gridGap: '1.5rem',
+        }}
+      >
+        <PharosButton name="large-primary-on-background" large onBackground>
+          Primary
+        </PharosButton>
+        <PharosButton name="large-secondary-on-background" variant="secondary" large onBackground>
+          Secondary
+        </PharosButton>
+        <PharosButton name="large-subtle-on-background" variant="subtle" large onBackground>
+          Subtle
+        </PharosButton>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+# With Icons
+
+<Canvas withToolbar>
+  <Story name="With Icons">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '2rem',
+        gridTemplateColumns: 'repeat(3, 200px)',
+      }}
+    >
+      <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
+        <PharosButton name="primary-icon-left" iconLeft="download">
+          Icon left
+        </PharosButton>
+        <PharosButton name="primary-icon-right" iconRight="chevron-down">
+          Icon right
+        </PharosButton>
+        <PharosButton name="primary-icon-both" iconRight="chevron-down" iconLeft="view-gallery">
+          Icon both
+        </PharosButton>
+      </div>
+      <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
+        <PharosButton name="primary-icon-left-disabled" iconLeft="download" disabled>
+          Icon left
+        </PharosButton>
+        <PharosButton name="primary-icon-right-disabled" iconRight="chevron-down" disabled>
+          Icon right
+        </PharosButton>
+        <PharosButton
+          name="primary-icon-both-disabled"
+          iconRight="chevron-down"
+          iconLeft="view-gallery"
+          disabled
+        >
+          Icon both
+        </PharosButton>
+      </div>
+      <div
+        style={{
+          backgroundColor: '#000000',
+          padding: '1rem',
+          display: 'grid',
+          gridGap: '1.5rem',
+        }}
+      >
+        <PharosButton name="primary-icon-left-on-background" iconLeft="download" onBackground>
+          Icon left
+        </PharosButton>
+        <PharosButton name="primary-icon-right-on-background" iconRight="chevron-down" onBackground>
+          Icon right
+        </PharosButton>
+        <PharosButton
+          name="primary-icon-both-on-background"
+          iconRight="chevron-down"
+          iconLeft="view-gallery"
+          onBackground
+        >
+          Icon both
+        </PharosButton>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+# Icon only
+
+<Canvas>
+  <Story
+    name="Icon only"
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary', 'subtle'],
+        control: {
+          type: 'inline-radio',
+        },
+        defaultValue: 'primary',
+      },
+      type: {
+        options: ['button', 'submit', 'reset'],
+        control: {
+          type: 'inline-radio',
+        },
+        defaultValue: 'button',
+      },
+      icon: {
+        options: iconNames,
+        control: {
+          type: 'select',
+        },
+      },
+    }}
+    args={{
+      icon: 'download',
+      disabled: false,
+      large: false,
+      label: 'download',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Icon only (condensed)
+
+<Canvas>
+  <Story
+    name="Icon only (condensed)"
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary', 'subtle'],
+        control: {
+          type: 'inline-radio',
+        },
+        defaultValue: 'primary',
+      },
+      type: {
+        options: ['button', 'submit', 'reset'],
+        control: {
+          type: 'inline-radio',
+        },
+        defaultValue: 'button',
+      },
+      icon: {
+        options: iconNames,
+        control: {
+          type: 'select',
+        },
+      },
+    }}
+    args={{
+      icon: 'download',
+      disabled: false,
+      large: false,
+      label: 'download',
+      iconCondensed: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Link
+
+<Canvas>
+  <Story
+    name="Link"
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary', 'subtle'],
+        control: {
+          type: 'inline-radio',
+        },
+        defaultValue: 'primary',
+      },
+      type: {
+        options: ['button', 'submit', 'reset'],
+        control: {
+          type: 'inline-radio',
+        },
+        defaultValue: 'button',
+      },
+      iconLeft: {
+        options: iconNames,
+        control: {
+          type: 'select',
+        },
+      },
+      iconRight: {
+        options: iconNames,
+        control: {
+          type: 'select',
+        },
+      },
+    }}
+    args={{
+      text: 'I am a button',
+      disabled: false,
+      large: false,
+      href: 'https://google.com',
+      target: '_blank',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Forms
+
+<Canvas withToolbar>
+  <Story name="Forms">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '1rem',
+        gridTemplateColumns: '300px',
+      }}
+    >
+      <form name="my-form" action="https://httpbin.org/post" method="POST">
+        <PharosTextInput name="my-text-input" required>
+          <span slot="label">Name</span>
+        </PharosTextInput>
+        <PharosSelect name="my-select" required style={{ marginTop: '1.5rem' }}>
+          <span slot="label">Role</span>
+          <option value="1">Student</option>
+          <option value="2">Teacher</option>
+          <option value="3" selected>
+            Librarian
+          </option>
+        </PharosSelect>
+        <PharosCombobox name="my-combobox" value="2" required style={{ marginTop: '1.5rem' }}>
+          <span slot="label">State</span>
+          <option value="1">New York</option>
+          <option value="2">Michigan</option>
+          <option value="3">New Jersey</option>
+        </PharosCombobox>
+        <PharosRadioGroup name="my-radio-group" style={{ marginTop: '1.5rem' }}>
+          <span slot="legend">Degree</span>
+          <PharosRadioButton value="1">
+            <span slot="label">Undergraduate</span>
+          </PharosRadioButton>
+          <PharosRadioButton value="2">
+            <span slot="label">Graduate</span>
+          </PharosRadioButton>
+        </PharosRadioGroup>
+        <PharosCheckboxGroup name="my-checkbox-group" style={{ marginTop: '1.5rem' }}>
+          <span slot="legend">Preferences</span>
+          <PharosCheckbox value="1">
+            <span slot="label">Send me promotions and discounts</span>
+          </PharosCheckbox>
+          <PharosCheckbox value="2" checked>
+            <span slot="label">Send me weekly updates</span>
+          </PharosCheckbox>
+        </PharosCheckboxGroup>
+        <PharosTextarea name="comments" style={{ marginTop: '1.5rem' }}>
+          <span slot="label">Comments</span>
+        </PharosTextarea>
+        <PharosButton type="reset" variant="secondary" style={{ marginTop: '1.5rem' }}>
+          Reset
+        </PharosButton>
+        <PharosButton type="submit" style={{ marginTop: '1.5rem' }}>
+          Submit
+        </PharosButton>
+      </form>
+    </div>
+  </Story>
+</Canvas>

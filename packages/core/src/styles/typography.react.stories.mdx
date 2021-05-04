@@ -1,0 +1,208 @@
+import { Story, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { Fragment } from 'react';
+
+import Intro from '@docs/guidelines/type-styles.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Styles/Typography"
+  parameters={{
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
+
+# Examples
+
+export const theirNames = [
+  'Claudette Colvin',
+  'Maude Ballou',
+  'Diane Nash',
+  'Rev. Dr. Pauli Murray',
+  'Mamie Till Mobley',
+];
+export const list = (
+  <Fragment>
+    {theirNames.map((name, index) => {
+      return <li key={index}>{name}</li>;
+    })}
+  </Fragment>
+);
+
+export const PlainTemplate = (args) => <span>{args.text}</span>;
+
+export const BringAttentionTemplate = (args) => (
+  <p>
+    To show the power of <b>{args.text}</b>, I sawed this boat in half! And repaired it with only{' '}
+    <b>{args.text}</b>!
+  </p>
+);
+
+export const StrongTemplate = (args) => (
+  <span>
+    What does the scouter say about his power level? <strong>{args.text}</strong>
+  </span>
+);
+
+export const SmallTemplate = (args) => <small>{args.text}</small>;
+
+export const IdiomaticTemplate = (args) => (
+  <p>
+    <i>{args.text}</i> is a beacon leading ships safely toward our collective knowledge.
+  </p>
+);
+
+export const EmphasisTemplate = (args) => (
+  <p>
+    You <em>{args.text}</em> the truth!
+  </p>
+);
+
+export const TableTemplate = (args) => (
+  <table className="typography-table-example" style={{ borderCollapse: 'collapse' }}>
+    <thead>
+      <tr>
+        <th className="typography-table-example">{args.header}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td className="typography-table-example">Sugar</td>
+      </tr>
+      <tr>
+        <td className="typography-table-example">Spice</td>
+      </tr>
+      <tr>
+        <td className="typography-table-example">Everything Nice</td>
+      </tr>
+    </tbody>
+  </table>
+);
+
+export const OrderedListTemplate = () => <ol>{list}</ol>;
+
+export const UnorderedListTemplate = () => <ul>{list}</ul>;
+
+export const ListNoBulletsTemplate = () => <ul className="list-example__no-bullets">{list}</ul>;
+
+export const NestedListsTemplate = () => (
+  <ul className="list-example__nested">
+    <li>
+      Claudette Colvin
+      <ul>
+        <li>
+          As a teenager, Colvin refused to give up her bus seat nine months before Rosa Parks.
+        </li>
+      </ul>
+    </li>
+    <li>
+      Maude Ballou
+      <ul>
+        <li>
+          Maude served as MLK's personal secretary, his right-hand woman from 1955 until 1960. In
+          1957, she was listed as number 21 on the Montgomery Improvement Associations list of
+          persons and churches most vulnerable to violent attacks.
+        </li>
+      </ul>
+    </li>
+  </ul>
+);
+
+export const InlineListTemplate = () => <ul className="list-example__inline">{list}</ul>;
+
+<Canvas withToolbar>
+  <Story
+    name="Plain Text"
+    args={{
+      text: 'I am plain text',
+    }}
+  >
+    {PlainTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story
+    name="Bring to Attention Text"
+    args={{
+      text: 'Flex Tape',
+    }}
+  >
+    {BringAttentionTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story
+    name="Strong Text"
+    args={{
+      text: "It's over 9000!",
+    }}
+  >
+    {StrongTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story
+    name="Small Text"
+    args={{
+      text: 'Honey, I shrunk the text!',
+    }}
+  >
+    {SmallTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story
+    name="Idiomatic Text"
+    args={{
+      text: 'Pharos',
+    }}
+  >
+    {IdiomaticTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story
+    name="Stress Emphasis Text"
+    args={{
+      text: "can't handle",
+    }}
+  >
+    {EmphasisTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story
+    name="Tables"
+    args={{
+      header: 'Ingredients',
+    }}
+  >
+    {TableTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story name="Ordered List">{OrderedListTemplate.bind({})}</Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story name="Unordered List">{UnorderedListTemplate.bind({})}</Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story name="List without Bullets">{ListNoBulletsTemplate.bind({})}</Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story name="Nested Lists">{NestedListsTemplate.bind({})}</Story>
+</Canvas>
+
+<Canvas withToolbar>
+  <Story name="Inline List">{InlineListTemplate.bind({})}</Story>
+</Canvas>

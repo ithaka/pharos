@@ -1,0 +1,83 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  width: 100%;
+  contain: paint;
+}
+
+#select-element {
+  @include mixins.input-base;
+  @include mixins.input-required;
+  @include mixins.transition-base(border-color, color);
+
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: none;
+  padding-right: 2.5rem;
+
+  &:focus {
+    @include mixins.input-padding-thick-border;
+    @include mixins.input-focus;
+
+    padding-right: calc(2.5rem - 1px);
+  }
+}
+
+#select-element::-ms-expand {
+  display: none;
+}
+
+:host([disabled]) #select-element {
+  @include mixins.input-disabled;
+
+  border-color: var(--pharos-form-element-color-border-disabled);
+}
+
+.select-wrapper {
+  @include mixins.input-wrapper;
+}
+
+.select__icon {
+  @include mixins.transition-base(fill);
+
+  position: absolute;
+  right: var(--pharos-spacing-1-x);
+  top: 50%;
+  transform: translateY(-50%);
+  fill: var(--pharos-color-black);
+  pointer-events: none;
+}
+
+:host([disabled]) .select__icon {
+  fill: var(--pharos-color-text-disabled);
+}
+
+:host([invalidated]) .select__icon {
+  fill: var(--pharos-form-element-color-border-invalid);
+}
+
+:host(:not([disabled]):not([invalidated])) .select-wrapper:hover .select__icon {
+  fill: var(--pharos-color-hover-primary);
+}
+
+:host([invalidated]) #select-element {
+  @include mixins.input-padding-thick-border;
+  @include mixins.input-invalid;
+
+  padding-right: calc(2.5rem - 1px);
+}
+
+:host(:not([disabled]):not([invalidated])) .select-wrapper:hover #select-element {
+  @include mixins.input-padding-thick-border;
+
+  padding-right: calc(2.5rem - 1px);
+  border: 2px solid var(--pharos-color-hover-primary);
+  color: var(--pharos-color-hover-primary);
+}
+
+optgroup,
+option {
+  color: var(--pharos-form-element-color-text-base);
+}

@@ -1,0 +1,43 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { html } from 'lit-html';
+
+import './pharos-loading-spinner';
+import '../heading/pharos-heading';
+import '../button/pharos-button';
+
+import Intro from '@docs/guidelines/loading-spinner.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Components/Loading Spinner"
+  parameters={{
+    options: { selectedPanel: 'addon-controls' },
+    chromatic: { disable: true },
+  }}
+/>
+
+# LoadingSpinner
+
+<Canvas withToolbar>
+  <Story name="Base">{html`
+    <pharos-loading-spinner></pharos-loading-spinner>
+    <pharos-heading level="1" preset="5"
+      >Hi there! As you can see, I am still loading</pharos-heading
+    >
+    <pharos-button @click="${() => action('Click')('Clicked')}">Can't press me!</pharos-button>
+  `}</Story>
+</Canvas>
+
+## API
+
+<ArgsTable of="pharos-loading-spinner" />
+
+<Canvas withToolbar>
+  <Story name="Scoped">{html`
+    <div style="height: 5rem; width: 5rem; border: 1px solid black; position: relative;">
+      <pharos-loading-spinner></pharos-loading-spinner>
+    </div>
+  `}</Story>
+</Canvas>

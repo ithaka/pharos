@@ -1,0 +1,62 @@
+{
+  "type": {
+    "scale": {
+      "1" : {
+        "value": "1",
+        "comment": "12px"
+      },
+      "2" : {
+        "value": "2",
+        "comment": "14px"
+      },
+      "3" : {
+        "value": "3",
+        "comment": "16px"
+      },
+      "4" : {
+        "value": "4",
+        "comment": "18px"
+      },
+      "5" : {
+        "value": "5",
+        "comment": "20px"
+      },
+      "6" : {
+        "value": "6",
+        "comment": "24px"
+      },
+      "7" : {
+        "value": "7",
+        "comment": "28px"
+      },
+      "8" : {
+        "value": "8",
+        "comment": "32px"
+      },
+      "9" : {
+        "value": "9",
+        "comment": "36px"
+      },
+      "10": {
+        "value": "10",
+        "comment": "42px"
+      },
+      "11": {
+        "value": "11",
+        "comment": "48px"
+      },
+      "12": {
+        "value": "12",
+        "comment": "54px"
+      },
+      "13": {
+        "value": "13",
+        "comment": "60px"
+      },
+      "14": {
+        "value": "14",
+        "comment": "68px"
+      }
+    }
+  }
+}

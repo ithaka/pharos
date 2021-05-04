@@ -1,0 +1,12 @@
+{
+  "textarea": {
+    "size": {
+      "height": {
+        "base": {
+          "value": "3.5rem",
+          "comment": "TODO: Update with core token value"
+        }
+      }
+    }
+  }
+}

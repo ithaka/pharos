@@ -1,0 +1,37 @@
+{
+  "modal": {
+    "color": {
+      "background": {
+        "content": {
+          "value": "{color.White.value}"
+        }
+      },
+      "border": {
+        "content": {
+          "value": "{color.Marble gray.base.value}"
+        }
+      },
+      "icon": {
+        "close": {
+          "value": "{color.Marble gray.50.value}"
+        },
+        "focus": {
+          "value": "{color.JSTOR red.value}"
+        }
+      }
+    },
+    "spacing": {
+      "base": {
+        "value": "{spacing.2x.value}"
+      }
+    },
+    "size": {
+      "width": {
+        "base": {
+          "value": "40rem",
+          "comment": "TODO: Update with core token value"
+        }
+      }
+    }
+  }
+}

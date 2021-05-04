@@ -1,0 +1,172 @@
+@font-face {
+  font-family: 'GT-America-Standard-Bold';
+  src: local('GT-America-Standard-Bold'),
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Bold.woff')
+      format('woff');
+}
+
+@font-face {
+  font-family: 'IvarDisplay-Regular';
+  src: local('IvarDisplay-Regular'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Regular.woff') format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IvarDisplay-Medium';
+  src: local('IvarDisplay-Medium'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Medium.woff') format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IvarDisplay-Bold';
+  src: local('IvarDisplay-Bold'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Bold.woff') format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'),
+    url('https://static.ithaka.org/pharos/assets/fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+.hero {
+  background: linear-gradient(
+    to right bottom,
+    var(--pharos-color-night-blue-base) 55%,
+    var(--pharos-color-living-coral-base)
+  );
+  padding: var(--pharos-spacing-5-x) 0;
+  margin: 0 -6.5rem;
+  display: grid;
+  grid-template-areas: '. text .';
+  grid-template-columns: 6.5rem 1fr 6.5rem;
+}
+
+@media screen and (max-width: 1055px) {
+  .hero {
+    grid-template-columns: 1.5rem 1fr 1.5rem;
+    margin: 0 -1.5rem;
+  }
+}
+
+.hero__text {
+  grid-area: text;
+  color: var(--pharos-color-text-white);
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--pharos-spacing-3-x);
+}
+
+.hero__heading {
+  font-size: var(--pharos-type-scale-14);
+  font-family: var(--pharos-font-family-serif);
+  line-height: 1.1;
+  font-weight: normal;
+  grid-column: span 10;
+}
+
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--pharos-spacing-3-x);
+  row-gap: var(--pharos-spacing-5-x);
+  margin: var(--pharos-spacing-5-x) 0;
+}
+
+.thumbnail {
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.section-title {
+  margin-bottom: var(--pharos-spacing-one-quarter-x);
+}
+
+.description {
+  color: var(--pharos-color-text-20);
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.icon {
+  margin-bottom: var(--pharos-spacing-one-quarter-x);
+}
+
+.caption {
+  font-size: var(--pharos-font-size-small);
+}
+
+dt {
+  font-weight: var(--pharos-font-weight-bold);
+  display: inline;
+}
+
+dt::after {
+  content: ': ';
+}
+
+dd {
+  display: inline;
+}
+
+dl {
+  margin: var(--pharos-spacing-1-x) 0 var(--pharos-spacing-2-x);
+}
+
+dl > div {
+  margin: var(--pharos-spacing-one-half-x) 0;
+}
+
+p {
+  color: var(--pharos-color-text-20);
+  margin-top: 0;
+}
+
+hr {
+  grid-column: span 12;
+  border: 1px var(--pharos-color-ui-20);
+  width: 100%;
+  height: 2px;
+  background-color: var(--pharos-color-ui-20);
+}
+
+.list {
+  list-style-type: none;
+}
+
+.list > li {
+  margin-left: 0;
+}
+
+.icon__arrow {
+  margin-left: var(--pharos-spacing-one-quarter-x);
+  fill: var(--pharos-color-text-white);
+}
+
+.heading__status {
+  grid-column: span 12;
+}
+
+.link__status {
+  grid-column: span 12;
+}
+
+.card {
+  grid-column: span 6;
+}
+
+.card__image {
+  grid-column: span 4;
+  display: grid;
+}
+
+figure {
+  margin: 0;
+}
+
+.button__card {
+  align-self: end;
+}

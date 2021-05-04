@@ -1,0 +1,40 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  contain: layout;
+  display: inline-flex;
+}
+
+.pagination__wrapper {
+  width: 100%;
+  display: inline-flex;
+}
+
+.pagination__info {
+  padding: 0 var(--pharos-spacing-1-x);
+}
+
+.pagination__link {
+  cursor: pointer;
+
+  pharos-icon {
+    transition-property: background-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+
+    &[name='chevron-left'] {
+      margin-right: var(--pharos-spacing-one-half-x);
+    }
+    &[name='chevron-right'] {
+      margin-left: var(--pharos-spacing-one-half-x);
+    }
+  }
+
+  &:hover {
+    pharos-icon {
+      stroke: var(--pharos-color-interactive-primary);
+      fill: var(--pharos-color-interactive-primary);
+      stroke-width: 0;
+    }
+  }
+}

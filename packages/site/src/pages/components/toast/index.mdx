@@ -1,0 +1,23 @@
+import Intro from '../../../../static/guidelines/toast.docs.mdx';
+
+<Intro />
+
+## Examples
+
+```jsx live
+<Fragment>
+  <PharosButton
+    onClick={() => {
+      const event = new CustomEvent('pharos-toast-open', {
+        detail: {
+          content: 'Hi there!',
+        },
+      });
+      document.dispatchEvent(event);
+    }}
+  >
+    Have a toast!
+  </PharosButton>
+  <PharosToaster></PharosToaster>
+</Fragment>
+```

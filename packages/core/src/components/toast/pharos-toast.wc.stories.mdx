@@ -1,0 +1,115 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { useEffect } from '@storybook/client-api';
+import { html } from 'lit-html';
+
+import './pharos-toaster';
+import '../button/pharos-button';
+
+import Intro from '@docs/guidelines/toast.docs.mdx';
+
+<Intro />
+
+<Meta title="Components/Toast" />
+
+# Toast
+
+<Canvas>
+  <Story name="Base">
+    {() => {
+      const effect = () => {
+        useEffect(() => {
+          document.querySelector('#success-toast-button').click();
+        });
+      };
+      effect();
+      return html`
+        <pharos-button
+          id="success-toast-button"
+          @click="${() => {
+            const event = new CustomEvent('pharos-toast-open', {
+              detail: {
+                content:
+                  'The item has moved to your <pharos-link href="#" on-background bold>Workspace</pharos-link>.',
+              },
+            });
+            document.dispatchEvent(event);
+          }}"
+        >
+          Have a toast!
+        </pharos-button>
+        <pharos-toaster></pharos-toaster>
+      `;
+    }}
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of="pharos-toast" />
+
+## Error Toast
+
+<Canvas>
+  <Story name="Error">
+    {() => {
+      const effect = () => {
+        useEffect(() => {
+          document.querySelector('#error-toast-button').click();
+        });
+      };
+      effect();
+      return html`
+        <pharos-button
+          id="error-toast-button"
+          @click="${() => {
+            const event = new CustomEvent('pharos-toast-open', {
+              detail: {
+                status: 'error',
+                content:
+                  'Sorry, we were unable to move the item. Please try again later. If the issue persists, <pharos-link href="#" on-background bold>contact JSTOR Support</pharos-link>.',
+              },
+            });
+            document.dispatchEvent(event);
+          }}"
+        >
+          I have a bad feeling about this
+        </pharos-button>
+        <pharos-toaster></pharos-toaster>
+      `;
+    }}
+  </Story>
+</Canvas>
+
+## Long Content Toast
+
+<Canvas>
+  <Story name="Long Content">
+    {() => {
+      const effect = () => {
+        useEffect(() => {
+          setTimeout(() => {
+            document.querySelector('#long-toast-button').click();
+          }, 300);
+        });
+      };
+      effect();
+      return html`
+        <pharos-button
+          id="long-toast-button"
+          @click="${() => {
+            const event = new CustomEvent('pharos-toast-open', {
+              detail: {
+                content:
+                  'The item has moved to <pharos-link href="#" on-background bold>Looooooooooooooooooooooooooooooooooooooooooong</pharos-link>.',
+              },
+            });
+            document.dispatchEvent(event);
+          }}"
+        >
+          Click to me see a long name
+        </pharos-button>
+        <pharos-toaster></pharos-toaster>
+      `;
+    }}
+  </Story>
+</Canvas>

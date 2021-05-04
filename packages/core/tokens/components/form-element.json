@@ -1,0 +1,55 @@
+{
+  "form-element": {
+    "color": {
+      "text": {
+        "base": {
+          "value": "{color.text.base.value}"
+        },
+        "required": {
+          "value": "{color.feedback.error.value}"
+        },
+        "invalid": {
+          "value": "{color.feedback.error.value}"
+        },
+        "disabled": {
+          "value": "{color.text.disabled.value}"
+        },
+        "placeholder": {
+          "value": "{color.text.placeholder.value}"
+        }
+      },
+      "background": {
+        "disabled": {
+          "value": "{color.disabled.value}"
+        },
+        "selected": {
+          "value": "{color.interactive.secondary.value}"
+        }
+      },
+      "border": {
+        "base": {
+          "value": "{color.ui.50.value}"
+        },
+        "focus": {
+          "value": "{color.focus.value}"
+        },
+        "invalid": {
+          "value": "{color.feedback.error.value}"
+        },
+        "disabled": {
+          "value": "{color.ui.40.value}"
+        }
+      }
+    },
+    "size": {
+      "text": {
+        "label": {
+          "value": "{font.size.small.value}"
+        },
+        "input": {
+          "value": "{font.size.base.value}"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,447 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { PharosDropdownMenu } from '../../react-components/dropdown-menu/pharos-dropdown-menu';
+import { PharosDropdownMenuItem } from '../../react-components/dropdown-menu/pharos-dropdown-menu-item';
+import { PharosHeading } from '../../react-components/heading/pharos-heading';
+import { PharosTextInput } from '../../react-components/text-input/pharos-text-input';
+import { PharosLink } from '../../react-components/link/pharos-link';
+import { PharosButton } from '../../react-components/button/pharos-button';
+
+import Intro from '@docs/guidelines/dropdown-menu.docs.mdx';
+
+<Intro />
+
+<Meta
+  title="Components/Dropdown Menu"
+  parameters={{
+    component: PharosDropdownMenu,
+  }}
+/>
+
+# Dropdown Menu
+
+<Canvas withToolbar>
+  <Story name="Base">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosButton data-dropdown-menu-id="my-menu">Click Me</PharosButton>
+      <PharosDropdownMenu id="my-menu">
+        <PharosDropdownMenuItem>Menu item 1</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Menu item 2</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Menu item 3</PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+    </div>
+  </Story>
+</Canvas>
+
+## API
+
+### PharosDropdownMenu
+
+<ArgsTable of={PharosDropdownMenu} />
+
+### PharosDropdownMenuItem
+
+<ArgsTable of={PharosDropdownMenuItem} />
+
+# Events
+
+<Canvas withToolbar>
+  <Story name="Events">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosButton data-dropdown-menu-id="my-menu-events" iconRight="chevron-down">
+        Click Me
+      </PharosButton>
+      <PharosDropdownMenu
+        id="my-menu-events"
+        showSelected
+        onPharos-Dropdown-Menu-Select={(e) => action('Select')(e.detail)}
+        onPharos-Dropdown-Menu-Selected={(e) => action('Selected')(e.detail)}
+      >
+        <PharosDropdownMenuItem>Menu item 1</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Menu item 2</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Menu item 3</PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+    </div>
+  </Story>
+</Canvas>
+
+# Icons
+
+<Canvas>
+  <Story name="Icons">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosButton
+        id="my-button-icons"
+        data-dropdown-menu-id="my-menu-icons"
+        iconRight="chevron-down"
+      >
+        With icons
+      </PharosButton>
+      <PharosDropdownMenu id="my-menu-icons" showSelected>
+        <PharosDropdownMenuItem icon="view-gallery">Item one</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem icon="view-list" selected>
+          Item two
+        </PharosDropdownMenuItem>
+        <PharosDropdownMenuItem icon="image">Item three</PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+    </div>
+  </Story>
+</Canvas>
+
+# Descriptions
+
+<Canvas>
+  <Story name="Descriptions">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosButton
+        id="my-button-descriptions"
+        data-dropdown-menu-id="my-menu-descriptions"
+        iconRight="chevron-down"
+      >
+        With descriptions
+      </PharosButton>
+      <PharosDropdownMenu id="my-menu-descriptions" showSelected>
+        <PharosDropdownMenuItem selected>
+          House Stark
+          <span slot="description">Winterfell, Capital of the Kingdom of the North</span>
+        </PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>
+          House Lannister
+          <span slot="description">Casterly Rock, Capital of the Westerlands</span>
+        </PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>
+          House Targaryen
+          <span slot="description">King's Landing, Capital of the Seven Kingdoms</span>
+        </PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>
+          House Tyrell
+          <span slot="description">Highgarden, Capital of the Reach</span>
+        </PharosDropdownMenuItem>
+        <PharosDropdownMenuItem disabled>
+          House Martell
+          <span slot="description">Sunspear, Capital of Dorne</span>
+        </PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+    </div>
+  </Story>
+</Canvas>
+
+# Full Width
+
+<Canvas>
+  <Story name="Full Width">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosButton
+        id="my-button-full"
+        data-dropdown-menu-id="my-menu-full"
+        iconRight="chevron-down"
+      >
+        With attribute fullWidth to match the width of the trigger
+      </PharosButton>
+      <PharosDropdownMenu id="my-menu-full" fullWidth>
+        <PharosDropdownMenuItem>Oh, supercalifragilisticexpialidocious!</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>
+          <span style={{ whiteSpace: 'normal' }}>
+            Even though the sound of it is something quite atrocious
+          </span>
+        </PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>
+          <span style={{ whiteSpace: 'normal' }}>
+            If you say it loud enough you'll always sound precocious
+          </span>
+        </PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+    </div>
+  </Story>
+</Canvas>
+
+# Links
+
+<Canvas>
+  <Story name="Links">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosLink
+        id="my-link"
+        href="https://www.google.com/"
+        target="_blank"
+        data-dropdown-menu-id="my-menu-links"
+        data-dropdown-menu-hover
+      >
+        With links
+      </PharosLink>
+      <PharosDropdownMenu id="my-menu-links">
+        <PharosDropdownMenuItem link="https://www.youtube.com/watch?v=gkTb9GP9lVI" target="_blank">
+          Menu item 1
+        </PharosDropdownMenuItem>
+        <PharosDropdownMenuItem link="https://www.youtube.com/watch?v=ZXsQAXx_ao0" target="_blank">
+          Menu item 2
+        </PharosDropdownMenuItem>
+        <PharosDropdownMenuItem link="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+          Menu item 3
+        </PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+    </div>
+  </Story>
+</Canvas>
+
+# Multiple Triggers
+
+<Canvas>
+  <Story name="Multiple Triggers">
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, auto)',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosButton data-dropdown-menu-id="my-menu-multiple" iconRight="chevron-down">
+        Click Me
+      </PharosButton>
+      <PharosDropdownMenu id="my-menu-multiple">
+        <PharosDropdownMenuItem>Never gonna give you up</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Never gonna let you down</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>
+          <span style={{ whiteSpace: 'normal' }}>Never gonna run around and desert you</span>
+        </PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Never gonna make you cry</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Never gonna say goodbye</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Never gonna tell a lie and hurt you</PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+      <PharosButton
+        data-dropdown-menu-id="my-menu-multiple"
+        data-dropdown-menu-hover
+        iconRight="chevron-down"
+      >
+        Hover here
+      </PharosButton>
+      <PharosButton data-dropdown-menu-id="my-menu-multiple" iconRight="chevron-down">
+        Click Me Too
+      </PharosButton>
+    </div>
+  </Story>
+</Canvas>
+
+# Multiple Dynamic Triggers
+
+<Canvas>
+  <Story name="Multiple Dynamic Triggers">
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, auto)',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosDropdownMenu id="my-menu-multiple-dynamic-triggers">
+        <PharosDropdownMenuItem>Item 1</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Item 2</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Item 3</PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+      <PharosButton
+        onClick={(e) => {
+          const trigger = e.target;
+          const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
+          menu.openWithTrigger(trigger);
+        }}
+      >
+        One
+      </PharosButton>
+      <PharosButton
+        onClick={(e) => {
+          const trigger = e.target;
+          const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
+          menu.openWithTrigger(trigger);
+        }}
+      >
+        Two
+      </PharosButton>
+      <PharosButton
+        onClick={(e) => {
+          const trigger = e.target;
+          const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
+          menu.openWithTrigger(trigger);
+        }}
+      >
+        Three
+      </PharosButton>
+    </div>
+  </Story>
+</Canvas>
+
+# Composition
+
+<Canvas>
+  <Story name="Composition">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosButton
+        id="my-button"
+        data-dropdown-menu-id="my-menu-composition"
+        iconRight="chevron-down"
+      >
+        Save
+      </PharosButton>
+      <PharosDropdownMenu id="my-menu-composition">
+        <div
+          style={{
+            padding: '1rem',
+            paddingBottom: '0.5rem',
+            borderBottom: '1px solid var(--pharos-dropdown-menu-item-color-border-base)',
+          }}
+        >
+          <PharosHeading preset={'2'}>Save to...</PharosHeading>
+        </div>
+        <PharosDropdownMenuItem>Workspace</PharosDropdownMenuItem>
+        <div
+          style={{
+            margin: '0.5rem 1rem',
+            display: 'flex',
+            flexDirection: 'column',
+            flexGrow: '1',
+          }}
+        >
+          <PharosTextInput
+            hideLabel
+            placeholder="New folder name"
+            style={{
+              margin: '0.5rem 0',
+            }}
+          >
+            <span slot="label">My label is hidden</span>
+          </PharosTextInput>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <PharosButton
+              type="button"
+              style={{
+                marginRight: 'auto',
+              }}
+              onClick={() => {
+                const menu = document.querySelector('pharos-dropdown-menu');
+                menu.open = false;
+              }}
+            >
+              Create
+            </PharosButton>
+            <PharosButton
+              type="button"
+              variant="secondary"
+              style={{
+                marginLeft: 'auto',
+              }}
+              onClick={() => {
+                const menu = document.querySelector('pharos-dropdown-menu');
+                menu.open = false;
+              }}
+            >
+              Cancel
+            </PharosButton>
+          </div>
+        </div>
+      </PharosDropdownMenu>
+    </div>
+  </Story>
+</Canvas>
+
+# Coordinating Dropdowns
+
+<Canvas>
+  <Story name="Coordinating Dropdowns">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosButton
+        id="coordinating-dropdown-trigger-button"
+        data-dropdown-menu-id="first-dropdown"
+      >
+        Click Me
+      </PharosButton>
+      <PharosDropdownMenu
+        id="first-dropdown"
+        onPharos-Dropdown-Menu-Select={() => {
+          const triggerElement = document.querySelector('#coordinating-dropdown-trigger-button');
+          const secondDropdown = document.querySelector('#second-dropdown');
+          secondDropdown.openWithTrigger(triggerElement);
+        }}
+      >
+        <PharosDropdownMenuItem>Click</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>any of these</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>options</PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+      <PharosDropdownMenu
+        id="second-dropdown"
+        onPharos-Dropdown-Menu-Closed={() => {
+          const secondDropdown = document.querySelector('#second-dropdown');
+          secondDropdown.removeAllTriggers();
+        }}
+      >
+        <PharosDropdownMenuItem>I am</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>a new</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>dropdown!</PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+    </div>
+  </Story>
+</Canvas>

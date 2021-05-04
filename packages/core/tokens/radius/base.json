@@ -1,0 +1,7 @@
+{
+  "radius": {
+    "base": {
+      "standard": { "value": "0.125rem", "comment": "2px" }
+    }
+  }
+}

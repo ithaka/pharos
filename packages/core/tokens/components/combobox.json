@@ -1,0 +1,40 @@
+{
+  "combobox": {
+    "color": {
+      "text": {
+        "hover": {
+          "value": "{color.hover.primary.value}"
+        },
+        "selected": {
+          "value": "{color.text.base.value}"
+        }
+      },
+      "icon": {
+        "clear": {
+          "value": "{color.ui.50.value}"
+        },
+        "dropdown": {
+          "value": "{color.interactive.secondary.value}"
+        },
+        "checkmark": {
+          "value": "{color.interactive.secondary.value}"
+        },
+        "focus": {
+          "value": "{color.interactive.primary.value}"
+        }
+      }
+    },
+    "size": {
+      "height": {
+        "list": {
+          "value": "15rem",
+          "comment": "TODO: Update with core token value"
+        },
+        "clear": {
+          "value": "1.875rem",
+          "comment": "TODO: Update with core token value"
+        }
+      }
+    }
+  }
+}
