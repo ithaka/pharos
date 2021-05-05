@@ -36,12 +36,17 @@ jobs:
       - name: Install Dependencies
         run: yarn --frozen-lockfile
 
+      - name: Setup Storybook
+        run: yarn storybook:setup
+
+      - name: Build Storybook
+        run: yarn build-storybook:wc
+
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          buildScriptName: yarn build-storybook:wc
           storybookBuildDir: .storybook-static/wc
           exitZeroOnChanges: true
           exitOnceUploaded: true
