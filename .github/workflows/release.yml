@@ -39,7 +39,7 @@ jobs:
       - name: Install Dependencies
         run: yarn --frozen-lockfile
 
-      - name: Create Release Pull Request or Publish to npm
+      - name: Create Release Pull Request or Publish to npm # Pushes to main will create/update the release PR. Merging the PR will publish the packages.
         id: changesets
         uses: changesets/action@master
         with:
