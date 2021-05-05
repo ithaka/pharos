@@ -2,6 +2,11 @@ name: Chromatic
 
 on:
   push:
+    paths:
+      - 'packages/core/**'
+      - '.storybook/**'
+      - 'yarn.lock'
+      - 'package.json'
     branches-ignore:
       - main
 

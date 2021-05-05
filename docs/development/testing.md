@@ -31,7 +31,7 @@ If you notice your component's coverage is low, think about what ways a user mig
 
 Because most Pharos components provide a visual aspect, it's important to test regressions to the visual appearance in addition to the interactive behavior.
 
-You can run [Chromatic](https://www.chromatic.com/) on your pull requests by commenting "chromatic." This will build an emphemeral Storybook instance, screenshot each story, and determine if any stories are different from the baseline.
+[Chromatic](https://www.chromatic.com/) is run on pull requests that include changes to the `core` package, the project's dependencies, or Storybook configuration. This will build an emphemeral Storybook instance, screenshot each story, and determine if any stories are different from the baseline.
 
 Chromatic generates reports the team can review to determine if they expect any changes identified.
 
