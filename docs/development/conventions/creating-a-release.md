@@ -4,6 +4,7 @@
 
 - [Preparing for a release](#preparing-for-a-release)
 - [Publishing a release](#publishing-a-release)
+- [Manually publishing a release](#manually-publishing-a-release)
 
 <!-- tocstop -->
 
@@ -18,13 +19,18 @@ $ git checkout develop
 $ git pull origin develop
 $ git checkout main
 $ git merge develop --ff
+$ git push origin main
 ```
 
 This brings the set of changes onto the `main` branch for a stable release. If that's successful, you'll be ready to publish the release.
 
 ## Publishing a release
 
-You'll use [Changesets](https://github.com/atlassian/changesets/tree/main/packages/cli) to version and publish the package. First you'll need to update the versions for all packages described in the changesets since last release:
+After pushing the commits to `main`, the [Changesets action](https://github.com/changesets/action) will create a pull request, titled `Version Packages`, with all of the package versions updated and changelogs updated. This pull request will automatically update whenever new changesets are pushed to `main`. When you're ready, you can merge the pull request and the action will publish the new version to npm for you.
+
+## Manually publishing a release
+
+You can use [Changesets](https://github.com/atlassian/changesets/tree/main/packages/cli) to version and publish the package manually. First you'll need to update the versions for all packages described in the changesets since last release:
 
 ```shell
 $ yarn changeset version
