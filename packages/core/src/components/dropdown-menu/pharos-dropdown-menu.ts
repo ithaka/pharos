@@ -1,4 +1,4 @@
-import { html, property, query, internalProperty } from 'lit-element';
+import { html, property, query, state } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { styleMap } from 'lit-html/directives/style-map.js';
 import { createPopper } from '../../utils/popper';
@@ -46,13 +46,13 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
   @property({ type: Boolean, reflect: true, attribute: 'full-width' })
   public fullWidth = false;
 
-  @internalProperty()
+  @state()
   private _navMenu = false;
 
   @query('.dropdown-menu__list')
   private _menu!: HTMLUListElement;
 
-  @internalProperty()
+  @state()
   private _targetWidth = 0;
 
   private _triggers!: HTMLElement[];

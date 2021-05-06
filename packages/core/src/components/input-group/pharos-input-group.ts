@@ -1,4 +1,4 @@
-import { html, query, internalProperty } from 'lit-element';
+import { html, query, state } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { inputGroupStyles } from './pharos-input-group.css';
 import { designTokens } from '../../styles/variables.css';
@@ -25,10 +25,10 @@ export class PharosInputGroup extends PharosTextInput {
   @query('.input-group--prepend')
   private _prependGroup!: HTMLDivElement;
 
-  @internalProperty()
+  @state()
   private _appendGroupWidth = 0;
 
-  @internalProperty()
+  @state()
   private _prependGroupWidth = 0;
 
   public static get styles(): CSSResultArray {

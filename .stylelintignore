@@ -4,5 +4,6 @@ coverage/
 lib/
 .storybook-static/
 packages/core/src/styles/*.ts
+packages/core/src/styles/_variables.scss
 packages/site/public/
 packages/site/.cache/

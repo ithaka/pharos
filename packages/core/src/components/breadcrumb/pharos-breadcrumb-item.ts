@@ -1,4 +1,4 @@
-import { html, internalProperty } from 'lit-element';
+import { html, state } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { classMap } from 'lit-html/directives/class-map.js';
@@ -31,16 +31,16 @@ const MAX_LENGTH = 40;
  */
 @customElement('pharos-breadcrumb-item')
 export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
-  @internalProperty()
+  @state()
   private _isTruncated = false;
 
-  @internalProperty()
+  @state()
   private _displayText = '';
 
-  @internalProperty()
+  @state()
   private _fullText = '';
 
-  @internalProperty()
+  @state()
   private _last = false;
 
   public static get styles(): CSSResultArray {

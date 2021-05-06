@@ -1,4 +1,4 @@
-import { html, property, internalProperty } from 'lit-element';
+import { html, property, state } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
@@ -66,7 +66,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   @property({ type: Boolean, reflect: true })
   public flex = false;
 
-  @internalProperty()
+  @state()
   private _alert!: PharosAlert;
 
   public static get styles(): CSSResultArray {

@@ -1,4 +1,4 @@
-import { html, property, query, internalProperty } from 'lit-element';
+import { html, property, query, state } from 'lit-element';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { classMap } from 'lit-html/directives/class-map.js';
@@ -86,7 +86,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
   @query('.combobox__button')
   private _button!: HTMLButtonElement;
 
-  @internalProperty()
+  @state()
   private _displayValue = '';
 
   private _clicked = false;

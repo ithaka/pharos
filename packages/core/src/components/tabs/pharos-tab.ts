@@ -1,4 +1,4 @@
-import { html, LitElement, property, internalProperty } from 'lit-element';
+import { html, LitElement, property, state } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { tabStyles } from './pharos-tab.css';
 import { designTokens } from '../../styles/variables.css';
@@ -23,7 +23,7 @@ export class PharosTab extends LitElement {
   @property({ type: Boolean, reflect: true })
   public selected = false;
 
-  @internalProperty()
+  @state()
   private _focused = false;
 
   public static get styles(): CSSResultArray {
