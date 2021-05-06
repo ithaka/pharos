@@ -1,4 +1,4 @@
-import { html, property, queryAssignedNodes, query, internalProperty } from 'lit-element';
+import { html, property, queryAssignedNodes, query, state } from 'lit-element';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { styleMap } from 'lit-html/directives/style-map.js';
@@ -49,10 +49,10 @@ export class PharosTooltip extends OverlayElement {
   @query('.tooltip__bubble')
   private _bubble!: HTMLSpanElement;
 
-  @internalProperty()
+  @state()
   private _textLength = 0;
 
-  @internalProperty()
+  @state()
   private _targetWidth = 0;
 
   private _hasHover = false;

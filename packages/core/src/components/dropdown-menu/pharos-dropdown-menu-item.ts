@@ -1,4 +1,4 @@
-import { html, LitElement, internalProperty, property } from 'lit-element';
+import { html, LitElement, state, property } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { nothing } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map.js';
@@ -60,13 +60,13 @@ export class PharosDropdownMenuItem extends FocusMixin(LitElement) {
   @property({ type: Boolean, reflect: true })
   public disabled = false;
 
-  @internalProperty()
+  @state()
   private _last = false;
 
-  @internalProperty()
+  @state()
   private _active = false;
 
-  @internalProperty()
+  @state()
   private _menu!: PharosDropdownMenu;
 
   public static get styles(): CSSResultArray {
