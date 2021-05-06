@@ -43,8 +43,8 @@ This repository contains a number of packages related to Pharos:
 | Syntax                          | Description                             |
 | ------------------------------- | --------------------------------------- |
 | [@pharos/core](./packages/core) | Pharos Component library                |
-| [@pharos/cli](./packages/site)  | Site & Documentation for Pharos         |
-| [@pharos/site](./packages/cli)  | CLI tool for building Pharos components |
+| [@pharos/cli](./packages/cli)   | CLI tool for building Pharos components |
+| [@pharos/site](./packages/site) | Site & Documentation for Pharos         |
 
 In addition to these packages, this repository contains [the configuration for Pharos Storybooks](./.storybook).
 
