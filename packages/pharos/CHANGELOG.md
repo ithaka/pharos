@@ -1,5 +1,16 @@
 # @ithaka/pharos
 
+## 9.0.0
+
+### Major Changes
+
+- [`329505a`](https://github.com/ithaka/pharos/commit/329505af1475004a64b319ca29614d8a0f2177d7) Thanks [@Niznikr](https://github.com/Niznikr)! - rename packages to publish to Ithaka namespace:
+
+  - Rename package `@pharos/core` to `@ithaka/pharos`
+  - Rename package `@pharos/cli` to `@ithaka/pharos-cli`
+  - Rename package `@pharos/site` to `@ithaka/pharos-site`
+  - Update documentation and imports
+
 ## 8.2.1
 
 ### Patch Changes
