@@ -1,0 +1,56 @@
+{
+  "name": "@ithaka/pharos-site",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Pharos acts as a guiding light to helps us create consistent, dependable and focused experiences for all of JSTOR users.",
+  "version": "4.17.0",
+  "dependencies": {
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "@ithaka/pharos": "^8.2.0",
+    "gatsby": "^3.3.1",
+    "gatsby-image": "^3.3.0",
+    "gatsby-plugin-google-tagmanager": "^3.3.0",
+    "gatsby-plugin-manifest": "^3.3.0",
+    "gatsby-plugin-mdx": "^2.3.0",
+    "gatsby-plugin-offline": "^4.3.0",
+    "gatsby-plugin-react-helmet": "^4.3.0",
+    "gatsby-plugin-sass": "^4.3.0",
+    "gatsby-plugin-sharp": "^3.3.1",
+    "gatsby-source-filesystem": "^3.3.0",
+    "gatsby-transformer-sharp": "^3.3.0",
+    "prism-react-renderer": "^1.2.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-live": "^2.2.3",
+    "sass": "^1.32.4"
+  },
+  "devDependencies": {
+    "@hot-loader/react-dom": "^17.0.1",
+    "@types/mdx-js__react": "^1.5.3",
+    "@types/react-helmet": "^6.1.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react": "^17.0.1",
+    "babel-preset-gatsby": "^1.3.0",
+    "typescript": "^4.2.2"
+  },
+  "author": "ITHAKA",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build --prefix-paths",
+    "prebuild": "yarn clean",
+    "develop": "gatsby develop",
+    "predevelop": "yarn clean",
+    "start": "yarn develop",
+    "serve": "gatsby serve --prefix-paths",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ithaka/pharos.git",
+    "directory": "site"
+  }
+}

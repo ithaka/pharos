@@ -28,7 +28,7 @@
 
 ## Getting Started
 
-- Check out the [core package](./packages/core) for more info about Pharos components and how to get started
+- Check out the [core package](./packages/pharos) for more info about Pharos components and how to get started
 - Visit the [Pharos site](https://www.jstor.org/pharos) to learn about the JSTOR brand, design guidelines, and component usage guidelines
 - Explore the [web component Storybook](#) or the [React Storybook](#) to try the live components
 - Test for visual regressions in the Pharos [Chromatic project](https://www.chromatic.com/builds?appId=60919c26122bd50039b34644)
@@ -40,11 +40,11 @@
 
 This repository contains a number of packages related to Pharos:
 
-| Syntax                          | Description                             |
-| ------------------------------- | --------------------------------------- |
-| [@pharos/core](./packages/core) | Pharos Component library                |
-| [@pharos/cli](./packages/cli)   | CLI tool for building Pharos components |
-| [@pharos/site](./packages/site) | Site & Documentation for Pharos         |
+| Syntax                                        | Description                             |
+| --------------------------------------------- | --------------------------------------- |
+| [@ithaka/pharos](./packages/pharos)           | Pharos Component library                |
+| [@ithaka/pharos-cli](./packages/pharos-cli)   | CLI tool for building Pharos components |
+| [@ithaka/pharos-site](./packages/pharos-site) | Site & Documentation for Pharos         |
 
 In addition to these packages, this repository contains [the configuration for Pharos Storybooks](./.storybook).
 

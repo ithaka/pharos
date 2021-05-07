@@ -8,12 +8,12 @@ node_modules/
 
 jenkins/
 
-packages/cli/
+packages/pharos-cli/
 
-packages/core/coverage/
+packages/pharos/coverage/
 
-packages/core/lib/
+packages/pharos/lib/
 
-packages/site/public/
+packages/pharos-site/public/
 
 .storybook-static/

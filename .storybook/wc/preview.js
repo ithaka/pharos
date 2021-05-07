@@ -1,7 +1,7 @@
 import { configure, setCustomElements } from '@storybook/web-components';
 import { Canvas } from '@storybook/addon-docs/blocks';
 
-import customElements from '../../packages/core/custom-elements.json';
+import customElements from '../../packages/pharos/custom-elements.json';
 import a11yConfig from '../a11yConfig';
 import '../styleConfig';
 import theme from '../theme';
@@ -26,7 +26,7 @@ export const parameters = {
 
 // force full reload to not re-register web components
 const req = require.context(
-  '../../packages/core',
+  '../../packages/pharos',
   true,
   /\.(wc|docs|pages)\.stories\.(js|mdx|ts)$/
 );

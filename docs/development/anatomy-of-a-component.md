@@ -21,16 +21,16 @@
 
 <!-- tocstop -->
 
-Most Pharos components consist of the same set of supporting files. The [@pharos/cli](../../packages/cli) package can create skeletons of these files for you automatically, and the following sections will help you understand which files make up a component and how they work together.
+Most Pharos components consist of the same set of supporting files. The [@ithaka/pharos-cli](../../packages/pharos-cli) package can create skeletons of these files for you automatically, and the following sections will help you understand which files make up a component and how they work together.
 
 ## High-level structure
 
-Each Pharos component has its own directory located at `packages/core/src/components/<component-name>/`. Files that define how the component looks and acts live in that component's directory.
+Each Pharos component has its own directory located at `packages/pharos/src/components/<component-name>/`. Files that define how the component looks and acts live in that component's directory.
 
 Imagine a SparklyText component which adds sparkles around the content it wraps. At a minimum, the SparklyText component's directory will contain the following content:
 
 ```
-packages/core/src/components/sparkly-text
+packages/pharos/src/components/sparkly-text
 ├── PharosSparklyText.react.stories.mdx
 ├── pharos-sparkly-text.scss
 ├── pharos-sparkly-text.test.ts
@@ -48,7 +48,7 @@ Pharos components use SCSS for its reduced code duplication and helpful utilitie
 
 The Pharos build process transforms the brand and component [design tokens](./design-tokens.md) into CSS variables that can be used in either a component's SCSS or TypeScript.
 
-You can import the variables in TypeScript from `packages/core/src/styles/variables.css.js`. You don't need to import them in your SCSS explicitly, because the component file will combine them in the appropriate order for the variables to be available.
+You can import the variables in TypeScript from `packages/pharos/src/styles/variables.css.js`. You don't need to import them in your SCSS explicitly, because the component file will combine them in the appropriate order for the variables to be available.
 
 ### Selector naming and structure
 

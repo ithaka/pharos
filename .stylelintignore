@@ -3,7 +3,7 @@ dist/
 coverage/
 lib/
 .storybook-static/
-packages/core/src/styles/*.ts
-packages/core/src/styles/_variables.scss
-packages/site/public/
-packages/site/.cache/
+packages/pharos/src/styles/*.ts
+packages/pharos/src/styles/_variables.scss
+packages/pharos-site/public/
+packages/pharos-site/.cache/

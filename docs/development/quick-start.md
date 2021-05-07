@@ -47,12 +47,12 @@ $ npm install --global typescript
 If the steps so far have succeeded, you should now be equipped to run the unit tests. Try running those now:
 
 ```shell
-$ yarn workspace @pharos/core test
+$ yarn workspace @ithaka/pharos test
 # OR
 $ yarn test
 ```
 
-This will run the tests for the `@pharos/core` package, and if they succeed you should see a message like the following:
+This will run the tests for the `@ithaka/pharos` package, and if they succeed you should see a message like the following:
 
 ```
 Chromium: |██████████████████████████████| 12/12 test files | 160 passed, 0 failed

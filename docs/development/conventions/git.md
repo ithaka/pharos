@@ -18,7 +18,7 @@ The following sections describe how we handle branches and commit messages.
 
 ### Branching strategy
 
-Because `@pharos/core` is an installable package rather than a runtime application, it can't be verified in production the same way applications are. Pharos may need to support multiple teams at various stages of being up-to-date, too, so the branching strategy is:
+Because `@ithaka/pharos` is an installable package rather than a runtime application, it can't be verified in production the same way applications are. Pharos may need to support multiple teams at various stages of being up-to-date, too, so the branching strategy is:
 
 1. A core `develop` branch representing the latest work
 1. A `main` branch for releasing stable versions

@@ -23,7 +23,7 @@ The tests run in Chromium, Firefox and WebKit using [Web Test Runner](https://gi
 
 ### Coverage
 
-The unit tests have thresholds defined to encourage thorough coverage of possible execution paths. You can view the coverage after running unit tests by opening the `packages/core/coverage/lcov-report/index.html` file in your browser and exploring the results.
+The unit tests have thresholds defined to encourage thorough coverage of possible execution paths. You can view the coverage after running unit tests by opening the `packages/pharos/coverage/lcov-report/index.html` file in your browser and exploring the results.
 
 If you notice your component's coverage is low, think about what ways a user might interact with the component and determine whether you've represented each interaction as a test. This is a great way to test the behaviors real users will encounter.
 
@@ -68,7 +68,7 @@ To simulate publishing your local working copy of Pharos and install it in a pro
 Start by publishing the package with yalc, which will package the code and place it in yalc's publishing cache in a directory on your computer:
 
 ```shell
-$ cd packages/core
+$ cd packages/pharos
 $ yalc publish
 ```
 
@@ -76,23 +76,23 @@ Then, install the package in your project:
 
 ```shell
 $ cd /path/to/project
-$ yalc add @pharos/core
+$ yalc add @ithaka/pharos
 ```
 
 This will allow you to use new or changed components in your project to see how well they work. When you need to make updates, you can push those changes to any project using the yalc-linked package:
 
 ```shell
-$ cd packages/core
+$ cd packages/pharos
 $ yalc push
 ```
 
 If you only want to update one project with the changes, you can re-publish and update that project:
 
 ```shell
-$ cd packages/core
+$ cd packages/pharos
 $ yalc publish
 $ cd /path/to/project
-$ yalc update @pharos/core
+$ yalc update @ithaka/pharos
 ```
 
 ## Integration testing
