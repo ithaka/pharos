@@ -4,11 +4,11 @@
     "access": "public"
   },
   "description": "Pharos acts as a guiding light to helps us create consistent, dependable and focused experiences for all of JSTOR users.",
-  "version": "4.17.0",
+  "version": "5.0.0",
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@ithaka/pharos": "^8.2.0",
+    "@ithaka/pharos": "^9.0.0",
     "gatsby": "^3.3.1",
     "gatsby-image": "^3.3.0",
     "gatsby-plugin-google-tagmanager": "^3.3.0",
