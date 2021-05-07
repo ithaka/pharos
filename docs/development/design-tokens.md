@@ -12,6 +12,6 @@ Design tokens are a way of abstracting decisions about the visual language of a 
 
 Pharos uses [Style Dictionary](https://github.com/amzn/style-dictionary) to organize tokens and transform them for consumption in various formats.
 
-The `packages/core/tokens/` directory organizes tokens according to category and scope. The `components/` directory contains component-scoped tokens, and the other top-level directories each represent a token category.
+The `packages/pharos/tokens/` directory organizes tokens according to category and scope. The `components/` directory contains component-scoped tokens, and the other top-level directories each represent a token category.
 
 JSON files within these directories define a hierarchy of token definitions. Token names derive directly from the hierarchy created in any particular JSON file and aren't affected by the directory structure. Read about token naming structure in the [Pharos design token guidelines](https://www.jstor.org/pharos/design-tokens).

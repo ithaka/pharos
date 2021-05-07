@@ -30,7 +30,7 @@ After pushing the commits to `main`, the [Changesets action](https://github.com/
 
 ## Manually publishing a release
 
-If the Changesets action is not working as expected you can instead use the [Changesets cli](https://github.com/atlassian/changesets/tree/main/packages/cli) to version and publish the package manually. First you'll need to update the versions for all packages described in the changesets since last release:
+If the Changesets action is not working as expected you can instead use the [Changesets cli](https://github.com/atlassian/changesets/tree/main/packages/pharos-cli) to version and publish the package manually. First you'll need to update the versions for all packages described in the changesets since last release:
 
 ```shell
 $ yarn changeset version

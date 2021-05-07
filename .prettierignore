@@ -3,12 +3,12 @@ dist/
 coverage/
 lib/
 .storybook-static/
-packages/core/src/styles/*.ts
-packages/core/tokens/
-packages/core/custom-elements.json
+packages/pharos/src/styles/*.ts
+packages/pharos/tokens/
+packages/pharos/custom-elements.json
 packages/**/package-lock.json
-packages/site/public/
-packages/site/.cache/
+packages/pharos-site/public/
+packages/pharos-site/.cache/
 package.json
 package-lock.json
 .changeset/

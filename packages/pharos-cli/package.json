@@ -1,0 +1,47 @@
+{
+  "name": "@ithaka/pharos-cli",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "4.1.0",
+  "description": "Pharos Web Component Generator",
+  "preferGlobal": true,
+  "dependencies": {
+    "colors": "^1.4.0",
+    "commander": "^7.0.0",
+    "fs-extra": "^9.0.1"
+  },
+  "bin": {
+    "pharos": "dist/index.js"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.6",
+    "jest": "^26.6.1",
+    "ts-jest": "^26.4.3",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.2.2"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "ts-node -P tsconfig.build.json src/index.ts",
+    "build": "tsc --project tsconfig.build.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ithaka/pharos"
+  },
+  "author": "ITHAKA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ithaka/pharos/issues"
+  },
+  "homepage": "https://github.com/ithaka/pharos/tree/develop/packages/pharos-cli#readme",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/index.d.ts"
+  ],
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js"
+}

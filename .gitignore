@@ -8,11 +8,11 @@ dist/
 coverage/
 lib/
 packages/**/package-lock.json
-packages/site/public/
-packages/site/.cache/
+packages/pharos-site/public/
+packages/pharos-site/.cache/
 react-components/
-packages/core/src/styles/*.ts
-packages/core/src/styles/_variables.scss
+packages/pharos/src/styles/*.ts
+packages/pharos/src/styles/_variables.scss
 *.css.ts
 package-lock.json
 custom-elements.json

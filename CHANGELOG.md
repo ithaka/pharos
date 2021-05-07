@@ -20,14 +20,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- @pharos/site
+- @ithaka/pharos-site
   - Modify navigation to new design/layout
 
 ## [4.0.6] - 2020-08-05
 
 ### Added
 
-- @pharos/site
+- @ithaka/pharos-site
   - Add design token structure and architecture documentation
 
 ### Changed
@@ -36,12 +36,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   - Use Web Test Runner for unit testing
 
-- @pharos/site
+- @ithaka/pharos-site
   - Use live components instead of screenshots in guidelines
 
 ### Maintenance
 
-- @pharos/site
+- @ithaka/pharos-site
 
   - Update site deployment to use apps/v1 Kubernetes API and a rolling update deployment strategy
 
@@ -138,13 +138,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Add `<pharos-combobox>` component
   - Add `focus` method to public API for alerts and form elements via mixin
 
-- @pharos/site
+- @ithaka/pharos-site
 
   - Add `Component: Combobox`
   - Update deployed site's routing to use a `/pharos` prefix in URLs
   - Deploy the site to the production cluster after merges to `develop`
 
-- @pharos/cli
+- @ithaka/pharos-cli
 
   - Added `pharos component|wc <component-name>` command line interface
 
@@ -194,7 +194,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   - Add `height` and `width` attributes to icon component to properly size them in IE11
 
-- @pharos/site
+- @ithaka/pharos-site
   - Add Textarea documentation
   - Add `Brand Expression: Color`
   - Add `Brand Expression: Imagery`
@@ -283,7 +283,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Add `<pharos-select>` component
   - Add `<pharos-textarea>` component
 
-- @pharos/site
+- @ithaka/pharos-site
   - Add `iconography` page
   - Add `logos` page
 
@@ -370,7 +370,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Add `<PharosTextInput />` component
   - Add `<PharosRadioButton />` component
   - Add `<PharosCheckbox />` component
-- @pharos/site
+- @ithaka/pharos-site
   - Create package for development of the Pharos site
 
 ### Maintenance

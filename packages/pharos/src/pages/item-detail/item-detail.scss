@@ -1,0 +1,274 @@
+@use '~@ithaka/pharos/lib/utils/scss/mixins';
+@use '../shared/styles/grid';
+@use "sass:map";
+
+$small: map.get(grid.$breakpoints, sm, width);
+$medium: map.get(grid.$breakpoints, md, width);
+$large: map.get(grid.$breakpoints, lg, width);
+
+$columns-small: map.get(grid.$breakpoints, sm, columns);
+$columns-medium: map.get(grid.$breakpoints, md, columns);
+$columns-large: map.get(grid.$breakpoints, lg, columns);
+
+$default-margin: 3.5rem;
+
+.item-detail-page__container {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+
+  .header-revised__container {
+    grid-area: header;
+  }
+
+  main {
+    grid-area: main;
+  }
+
+  pharos-footer {
+    grid-area: footer;
+  }
+}
+
+.item-detail-page__container--main-content {
+  display: grid;
+  grid-template-areas:
+    'top top top'
+    '. content .';
+  grid-template-columns: $default-margin 1fr $default-margin;
+  margin-bottom: 6rem;
+  margin-top: var(--pharos-spacing-1-x);
+}
+
+.item-detail-page__container--body {
+  grid-area: content;
+}
+
+.item-detail-page__grid--body {
+  display: grid;
+  grid-template-areas:
+    'viewer metadata'
+    'collections metadata';
+  grid-template-columns: repeat($columns-large, 1fr);
+  grid-template-rows: max-content 1fr;
+  column-gap: grid.$gutter;
+  row-gap: var(--pharos-spacing-3-x);
+}
+
+.item-detail-page__container--top {
+  grid-area: top;
+  border-bottom: 1px solid var(--pharos-color-ui-30);
+  border-top: 1px solid var(--pharos-color-ui-30);
+  display: flex;
+  padding: var(--pharos-spacing-1-x) var(--pharos-spacing-2-x);
+}
+
+.item-detail-page__container--action-buttons,
+.item-detail-page__container--mobile-buttons {
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  column-gap: var(--pharos-spacing-three-quarters-x);
+}
+
+.item-detail-page__container--mobile-buttons,
+.item-detail-page__button--mobile-back {
+  display: none;
+}
+
+.item-detail-page__container--collections {
+  grid-area: collections;
+  grid-column: span 8;
+  overflow: hidden;
+}
+
+.item-detail-page__container--metadata {
+  grid-area: metadata;
+  grid-column: span 4;
+}
+
+.item-detail-page__container--viewer {
+  grid-area: viewer;
+  background-color: var(--pharos-color-black);
+  grid-column: span 8;
+  margin-left: (-$default-margin);
+  height: 40rem;
+}
+
+.item-detail-page__label--content {
+  @include mixins.content-label;
+}
+
+.item-detail-page__text--metadata {
+  color: var(--pharos-color-text-40);
+}
+
+.item-detail-page__grid--metadata {
+  display: grid;
+  row-gap: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.item-detail-page__label--type {
+  @include mixins.content-label;
+
+  color: var(--pharos-color-text-40);
+}
+
+.item-detail-page__heading--metadata {
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+.item-detail-page__image--collection {
+  margin: var(--pharos-spacing-one-and-a-half-x) 0;
+}
+
+.item-detail-page__grid--carousel-item {
+  display: grid;
+  grid-template-rows: 13.75rem 1fr;
+  row-gap: var(--pharos-spacing-one-half-x);
+  justify-content: center;
+  align-items: end;
+  cursor: pointer;
+}
+
+.item-detail-page__grid--open-collection {
+  grid-template-rows: auto;
+}
+
+.item-detail-page__text--collection-title {
+  display: block;
+  font-size: var(--pharos-type-scale-5);
+}
+
+.item-detail-page__text--collection-items {
+  display: block;
+  color: var(--pharos-color-text-40);
+  margin-top: var(--pharos-spacing-one-half-x);
+}
+
+.item-detail-page__text--item-title {
+  display: block;
+  font-weight: var(--pharos-font-weight-bold);
+}
+
+.item-detail-page__text--item-metadata {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  display: block;
+  color: var(--pharos-color-text-40);
+  margin-top: var(--pharos-spacing-one-half-x);
+}
+
+.item-detail-page__list {
+  @include mixins.no-bullet;
+
+  overflow: scroll;
+  padding: var(--pharos-spacing-one-quarter-x);
+}
+
+.item-detail-page__grid--collections {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--pharos-spacing-1-x);
+  margin-top: var(--pharos-spacing-1-x);
+}
+
+.item-detail-page__container--top-bar {
+  display: flex;
+}
+
+.item-detail-page__grid--items {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: var(--pharos-spacing-1-x);
+  margin-bottom: var(--pharos-spacing-5-x);
+  margin-top: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.item-detail-page__container--carousel-buttons {
+  margin-left: auto;
+}
+
+.item-detail-page__button--back {
+  display: flex;
+  align-items: center;
+
+  &:hover pharos-icon {
+    fill: var(--pharos-color-hover-primary);
+  }
+}
+
+@media screen and (max-width: $large - 1px) {
+  .item-detail-page__container--top {
+    padding: var(--pharos-spacing-1-x);
+  }
+}
+
+@media screen and (max-width: $medium) {
+  .item-detail-page__grid--body {
+    grid-template-areas:
+      'viewer'
+      'metadata'
+      'collections';
+    grid-template-columns: repeat($columns-medium, 1fr);
+    row-gap: var(--pharos-spacing-2-x);
+  }
+
+  .item-detail-page__container--metadata {
+    grid-column: span 8;
+  }
+
+  .item-detail-page__container--viewer {
+    height: 37.5rem;
+    margin: 0 (-$default-margin);
+  }
+}
+
+@media screen and (min-width: $small) and (max-width: $medium - 1px) {
+  .item-detail-page__container--main-content {
+    grid-template-columns: 1.5rem 1fr 1.5rem;
+  }
+
+  .item-detail-page__container--action-buttons,
+  .item-detail-page__button--back {
+    display: none;
+  }
+
+  .item-detail-page__container--mobile-buttons,
+  .item-detail-page__button--mobile-back {
+    display: flex;
+  }
+
+  .item-detail-page__container--carousel-buttons {
+    display: none;
+  }
+
+  .item-detail-page__container--viewer {
+    margin: 0 -1.5rem;
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .item-detail-page__grid--body {
+    grid-template-columns: repeat($columns-small, 1fr);
+  }
+
+  .item-detail-page__container--metadata,
+  .item-detail-page__container--collections,
+  .item-detail-page__container--viewer {
+    grid-column: span 4;
+  }
+
+  .item-detail-page__container--viewer {
+    height: 20rem;
+  }
+
+  .item-detail-page__container--top {
+    padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-1-x);
+  }
+}

@@ -6,8 +6,8 @@ import {
   PharosColorMarbleGray50,
   PharosColorMarbleGray20,
   PharosFontFamilyBody,
-} from '../packages/core/lib/styles/variables.js';
-import '../packages/core/lib/styles/fonts.css';
+} from '../packages/pharos/lib/styles/variables.js';
+import '../packages/pharos/lib/styles/fonts.css';
 
 export default create({
   base: 'light',

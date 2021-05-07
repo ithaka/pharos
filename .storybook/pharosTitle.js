@@ -1,4 +1,4 @@
-import pkg from '../packages/core/package.json';
+import pkg from '../packages/pharos/package.json';
 
 const PHAROS_TITLE = `Pharos ${pkg.version}`;
 
