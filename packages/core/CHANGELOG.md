@@ -1,5 +1,14 @@
 # @pharos/core
 
+## 8.2.1
+
+### Patch Changes
+
+- [#9](https://github.com/ithaka/pharos/pull/9) [`bd2588a`](https://github.com/ithaka/pharos/commit/bd2588a3cf1fb77e68e98a5b6b8c5e2d9f14552b) Thanks [@Niznikr](https://github.com/Niznikr)! - update lit for forward-compatible features:
+
+  - Update dependencies
+  - Change `@internalProperty` to `@state`
+
 ## 8.2.0
 
 ### Minor Changes
