@@ -32,6 +32,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - name: Use Yarn Cache
+        if: steps.yarn-cache.outputs.cache-hit == 'true'
+        run: yarn --prefer-offline
+
       - name: Install Dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
