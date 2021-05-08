@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect, nextFrame } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import './pharos-sidenav';
 import './pharos-sidenav-section';
@@ -127,6 +127,7 @@ describe('pharos-sidenav', () => {
 
     await setViewport({ width: 1056, height: 768 });
     await component.updateComplete;
+    await nextFrame();
     expect(component.slide).to.be.false;
   });
 });
