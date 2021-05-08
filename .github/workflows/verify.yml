@@ -67,7 +67,7 @@ jobs:
 
       - name: Cache Browsers
         uses: actions/cache@v2
-        id: browser-cache # use this to check for `cache-hit` (`steps.browser-cache.outputs.cache-hit != 'true'`)
+        id: browsers-cache # use this to check for `cache-hit` (`steps.browsers-cache.outputs.cache-hit != 'true'`)
         with:
           path: '~/.cache/ms-playwright'
           key: ${{ runner.os }}-browsers-${{ hashFiles('**/yarn.lock') }}
