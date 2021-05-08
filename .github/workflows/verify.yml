@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --prefer-offline --frozen-lockfile
 
       - name: Lint
         run: yarn lint

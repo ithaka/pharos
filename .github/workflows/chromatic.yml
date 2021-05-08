@@ -39,7 +39,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --prefer-offline --frozen-lockfile
 
       - name: Setup Storybook
         run: yarn storybook:setup
