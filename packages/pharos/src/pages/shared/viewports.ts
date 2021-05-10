@@ -21,7 +21,7 @@ export const viewports = {
     },
   },
   xLarge: {
-    name: '1360 / 48',
+    name: '1360 / 85',
     styles: {
       width: '1360px',
       height: '768px',

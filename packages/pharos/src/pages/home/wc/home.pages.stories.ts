@@ -11,6 +11,7 @@ import { publicCollectionCards, communityCollectionCards } from '../mocks';
 
 import '../../../components/heading/pharos-heading';
 import '../../../components/link/pharos-link';
+import '../../../components/grid/pharos-grid';
 
 export default {
   title: 'Pages/Home',
@@ -26,18 +27,19 @@ export default {
 export const Home = (): TemplateResult => html`
   <div class="home-page__container">
     ${HeaderRevised()}
-    <main class="home-page__container--main-content">
-      <div class="home-page__container--top">
-        <pharos-heading level="1" preset="7" no-margin class="home-page__heading"
-          >Knowledge for everyone</pharos-heading
-        >
-        ${HeroSearch()}
-      </div>
-      <div
-        class="home-page__hero"
-        style="background-image: url('./images/storybook/home/hero.jpg')"
-      ></div>
-      <div class="home-page__container--body">
+    <main>
+      <pharos-grid class="home-page__container--main-content">
+        <div class="home-page__container--top" slot="top">
+          <pharos-heading level="1" preset="7" no-margin class="home-page__heading"
+            >Knowledge for everyone</pharos-heading
+          >
+          ${HeroSearch()}
+        </div>
+        <div
+          class="home-page__hero"
+          slot="top"
+          style="background-image: url('./images/storybook/home/hero.jpg')"
+        ></div>
         <pharos-link href="#" class="home-page__hero-link"
           >Tō kaidō gojo santsugi. Okazaki. Plate No 39. From the series: Fifty-three stations of
           the Tō kaidō Road, Kihei Sanoya, circa 1838.</pharos-link
@@ -62,7 +64,7 @@ export const Home = (): TemplateResult => html`
           (card) =>
             html`<div class="home-page__collection-card--community">${CollectionCard(card)}</div>`
         )}
-      </div>
+      </pharos-grid>
     </main>
     ${Footer()}
   </div>

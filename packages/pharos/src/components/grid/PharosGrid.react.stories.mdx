@@ -1,0 +1,28 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+
+import { PharosGrid } from '../../react-components/grid/pharos-grid';
+
+<!-- Create this file!
+import Intro from '@docs/guidelines/grid.docs.mdx';
+
+<Intro />
+-->
+
+<Meta
+  title="Components/Grid"
+  parameters={{
+    component: PharosGrid,
+  }}
+/>
+
+# Grid
+
+<Canvas withToolbar>
+  <Story name="Base">
+    <PharosGrid />
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosGrid} />

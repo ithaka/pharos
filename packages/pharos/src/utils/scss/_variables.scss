@@ -1,0 +1,24 @@
+@use '../../styles/variables';
+
+$breakpoints: (
+  small: (
+    columns: 4,
+    width: variables.$pharos-breakpoint-small,
+  ),
+  medium: (
+    columns: 8,
+    width: variables.$pharos-breakpoint-medium,
+  ),
+  large: (
+    columns: 12,
+    width: variables.$pharos-breakpoint-large,
+  ),
+  xlarge: (
+    columns: 12,
+    width: variables.$pharos-breakpoint-xlarge,
+  ),
+  max: (
+    columns: 12,
+    width: variables.$pharos-breakpoint-max,
+  ),
+) !default;

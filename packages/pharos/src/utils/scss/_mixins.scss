@@ -1,3 +1,6 @@
+@use './variables';
+@use './functions';
+
 @mixin input-base {
   @include font-base;
 
@@ -307,4 +310,44 @@
 
 @mixin content-label($args...) {
   @include form-element-label($args...);
+}
+
+@mixin at-least($breakpoint) {
+  @if map-has-key(variables.$breakpoints, $breakpoint) {
+    @media screen and (min-width: map-get(variables.$breakpoints, $breakpoint, width)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`. " + "Available breakpoints are: #{map-keys(variables.$breakpoints)}.";
+  }
+}
+
+@mixin until($breakpoint) {
+  @if map-has-key(variables.$breakpoints, $breakpoint) {
+    @media screen and (max-width: map-get(variables.$breakpoints, $breakpoint, width) - 1) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`. " + "Available breakpoints are: #{map-keys(variables.$breakpoints)}.";
+  }
+}
+
+@mixin grid-base {
+  display: grid;
+  grid-area: content;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--pharos-spacing-gutter);
+  row-gap: var(--pharos-spacing-three-and-a-half-x);
+
+  @include until(xlarge) {
+    max-width: functions.content-width(map-get(variables.$breakpoints, large, width), 4.5rem);
+  }
+
+  @include at-least(xlarge) {
+    max-width: functions.content-width(map-get(variables.$breakpoints, xlarge, width), 8rem);
+  }
+
+  @include at-least(max) {
+    max-width: functions.content-width(map-get(variables.$breakpoints, max, width), 9rem);
+  }
 }

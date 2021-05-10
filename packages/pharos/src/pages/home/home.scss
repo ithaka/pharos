@@ -63,7 +63,6 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
     '. top .'
     'hero hero hero'
     '. content .';
-  grid-template-columns: $margin-xlarge 1fr $margin-xlarge;
   margin-bottom: 10rem;
 }
 
@@ -166,10 +165,6 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
 }
 
 @media screen and (min-width: $small) and (max-width: $medium - 1px) {
-  .home-page__container--main-content {
-    @include grid-columns-fluid(sm, md);
-  }
-
   .home-page__collection-card--open {
     grid-column: span 6;
   }
@@ -184,10 +179,6 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
 }
 
 @media screen and (min-width: $medium) and (max-width: $large - 1px) {
-  .home-page__container--main-content {
-    @include grid-columns-fluid(md, lg);
-  }
-
   .home-page__collection-card--open {
     grid-column: span 6;
   }
@@ -268,23 +259,7 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
   }
 }
 
-@media screen and (min-width: $large) and (max-width: $xlarge - 1px) {
-  .home-page__container--main-content {
-    @include grid-columns-fluid(lg, xlg);
-  }
-}
-
-@media screen and (min-width: $xlarge) and (max-width: $max) {
-  .home-page__container--main-content {
-    @include grid-columns-fluid(xlg, max);
-  }
-}
-
 @media screen and (min-width: $max) {
-  .home-page__container--main-content {
-    grid-template-columns: $margin-max minmax(content-width($max, $margin-max), 1fr) $margin-max;
-  }
-
   .home-page__container--body {
     margin: auto;
   }
