@@ -1,4 +1,4 @@
-import { configure, setCustomElements } from '@storybook/web-components';
+import { setCustomElements } from '@storybook/web-components';
 import { Canvas } from '@storybook/addon-docs/blocks';
 
 import customElements from '../../packages/pharos/custom-elements.json';
@@ -23,18 +23,3 @@ export const parameters = {
     },
   },
 };
-
-// force full reload to not re-register web components
-const req = require.context(
-  '../../packages/pharos',
-  true,
-  /\.(wc|docs|pages)\.stories\.(js|mdx|ts)$/
-);
-configure(req, module);
-if (module.hot) {
-  module.hot.accept(req.id, () => {
-    const currentLocationHref = window.location.href;
-    window.history.pushState(null, null, currentLocationHref);
-    window.location.reload();
-  });
-}

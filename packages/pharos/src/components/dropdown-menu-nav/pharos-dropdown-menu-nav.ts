@@ -1,6 +1,7 @@
-import { html, LitElement, property } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { html, LitElement } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { dropdownMenuNavStyles } from './pharos-dropdown-menu-nav.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';

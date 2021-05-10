@@ -1,4 +1,4 @@
-import type { CSSResultArray } from 'lit-element';
+import type { CSSResultArray } from 'lit';
 import { sidenavButtonStyles } from './pharos-sidenav-button.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';

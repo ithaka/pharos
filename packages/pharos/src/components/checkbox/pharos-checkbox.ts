@@ -1,10 +1,11 @@
-import { html, property, query } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { html } from 'lit';
+import { property, query } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { checkboxStyles } from './pharos-checkbox.css';
 import { designTokens } from '../../styles/variables.css';
-import { unsafeSVG } from 'lit-html/directives/unsafe-svg.js';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from '../../utils/decorators';
 import {
   PHAROS_ASSET_ICON_DASH_SMALL,

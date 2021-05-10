@@ -1,8 +1,9 @@
-import { html, property, state } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { html } from 'lit';
+import { property, state } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { nothing } from 'lit-html';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { linkStyles } from './pharos-link.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';

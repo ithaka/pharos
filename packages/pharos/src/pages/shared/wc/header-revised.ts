@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import type { TemplateResult } from 'lit-html';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import '../styles/header-revised.scss';
 

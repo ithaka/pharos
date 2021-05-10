@@ -1,6 +1,6 @@
 const template = ({ componentName, titleCaseName, camelCaseName }) => `
-import { html, LitElement } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { html, LitElement } from 'lit';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { ${camelCaseName}Styles } from './pharos-${componentName}.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';

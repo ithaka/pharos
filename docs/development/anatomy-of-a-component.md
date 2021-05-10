@@ -133,8 +133,8 @@ The build system reads this SCSS file and generates a `.css.js` file you can imp
 Now create the `pharos-sparkly-text.ts` TypeScript file and import the following items:
 
 ```typescript
-import { LitElement, html } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { LitElement, html } from 'lit';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { customElement } from '../../utils/decorators';
 ```
 

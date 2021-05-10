@@ -1,5 +1,6 @@
-import { html, LitElement, property, state } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
+import { html, LitElement } from 'lit';
+import { property, state } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { tabStyles } from './pharos-tab.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';

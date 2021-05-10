@@ -1,5 +1,5 @@
-import { html } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { html } from 'lit';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { inputGroupSelectStyles } from './pharos-input-group-select.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';

@@ -1,6 +1,7 @@
-import { html, property, query, state } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
-import { styleMap } from 'lit-html/directives/style-map.js';
+import { html } from 'lit';
+import { property, query, state } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
+import { styleMap } from 'lit/directives/style-map.js';
 import { createPopper } from '../../utils/popper';
 import debounce from '../../utils/debounce';
 import observeResize from '../../utils/observeResize';

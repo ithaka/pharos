@@ -1,5 +1,6 @@
-import { html, property } from 'lit-element';
-import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
+import { html } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { checkboxGroupStyles } from './pharos-checkbox-group.css';
 import { designTokens } from '../../styles/variables.css';
 import type { PharosCheckbox } from '../checkbox/pharos-checkbox';

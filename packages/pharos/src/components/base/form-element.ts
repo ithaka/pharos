@@ -1,5 +1,6 @@
-import { LitElement, html, property } from 'lit-element';
-import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
+import { LitElement, html } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { nothing } from 'lit-html';
 import { formElementStyles } from './form-element.css';
 

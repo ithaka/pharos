@@ -1,8 +1,9 @@
-import { LitElement, html, property } from 'lit-element';
-import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
+import { LitElement, html } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { headingStyles } from './pharos-heading.css';
 import { designTokens } from '../../styles/variables.css';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { customElement } from '../../utils/decorators';
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;

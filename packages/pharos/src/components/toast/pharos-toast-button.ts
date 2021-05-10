@@ -1,4 +1,4 @@
-import type { CSSResultArray } from 'lit-element';
+import type { CSSResultArray } from 'lit';
 import { toastButtonStyles } from './pharos-toast-button.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';

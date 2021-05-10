@@ -1,5 +1,5 @@
-import { LitElement } from 'lit-element';
-import type { CSSResultArray } from 'lit-element';
+import { LitElement } from 'lit';
+import type { CSSResultArray } from 'lit';
 import { sideElementStyles } from './side-element.css';
 
 /**

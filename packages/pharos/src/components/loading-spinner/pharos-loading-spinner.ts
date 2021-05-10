@@ -1,5 +1,6 @@
-import { html, LitElement, query } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { html, LitElement } from 'lit';
+import { query } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { loadingSpinnerStyles } from './pharos-loading-spinner.css';
 import { designTokens } from '../../styles/variables.css';
 import {

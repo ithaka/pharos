@@ -87,7 +87,7 @@ StyleDictionary.registerFormat({
   formatter: function (dictionary) {
     return (
       fileHeader() +
-      `import { css } from 'lit-element';\n\n` +
+      `import { css } from 'lit';\n\n` +
       `export const designTokens = css\`\n` +
       `  :host {\n` +
       variablesWithPrefix('    --', dictionary.allProperties) +

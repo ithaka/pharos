@@ -1,5 +1,6 @@
-import { LitElement, property } from 'lit-element';
-import type { PropertyValues } from 'lit-element';
+import { LitElement } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { PropertyValues } from 'lit';
 
 export type LinkTarget = '_blank' | '_parent' | '_self' | '_top';
 

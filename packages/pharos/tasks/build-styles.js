@@ -46,7 +46,7 @@ const buildStyles = async () => {
              * THIS FILE IS GENERATED
              * DO NOT EDIT
              */\n
-            import { css } from 'lit-element';\n
+            import { css } from 'lit';\n
             export const ${styleName} = css\`
               ${file.contents}
             \`;
