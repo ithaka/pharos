@@ -1,4 +1,5 @@
-import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
+import { fixture, expect, elementUpdated } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
 import './pharos-modal';
 import '../text-input/pharos-text-input';
 import type { PharosModal } from './pharos-modal';

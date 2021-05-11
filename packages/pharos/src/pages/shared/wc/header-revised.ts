@@ -1,5 +1,5 @@
-import { html } from 'lit-html';
-import type { TemplateResult } from 'lit-html';
+import { html } from 'lit';
+import type { TemplateResult } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
 import '../styles/header-revised.scss';

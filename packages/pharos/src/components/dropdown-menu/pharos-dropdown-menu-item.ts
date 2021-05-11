@@ -1,7 +1,6 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
-import { nothing } from 'lit-html';
 import { classMap } from 'lit/directives/class-map.js';
 import { dropdownMenuItemStyles } from './pharos-dropdown-menu-item.css';
 import { designTokens } from '../../styles/variables.css';

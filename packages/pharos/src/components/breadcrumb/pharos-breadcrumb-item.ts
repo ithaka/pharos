@@ -74,22 +74,22 @@ export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
   }
 
   protected render(): TemplateResult {
-    const classes = classMap({
+    const classes = {
       [`breadcrumb-item`]: true,
       [`breadcrumb-item--last`]: this._last,
-    });
+    };
 
     return html`
       ${this.href
         ? html`<pharos-link
-            .class="${classes}"
+            class=${classMap(classes)}
             href=${ifDefined(this.href)}
             target=${ifDefined(this.target)}
             data-tooltip-id=${ifDefined(this._isTruncated ? 'truncate-tooltip' : undefined)}
             >${this._displayText}</pharos-link
           >`
         : html`<span
-            .class="${classes}"
+            class=${classMap(classes)}
             data-tooltip-id=${ifDefined(this._isTruncated ? 'truncate-tooltip' : undefined)}
             >${this._displayText}</span
           >`}

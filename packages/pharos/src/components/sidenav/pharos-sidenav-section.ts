@@ -1,7 +1,6 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
-import { nothing } from 'lit-html';
 import { sidenavSectionStyles } from './pharos-sidenav-section.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';

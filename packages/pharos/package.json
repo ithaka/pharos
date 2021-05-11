@@ -27,7 +27,7 @@
     "build:replace": "replace-in-file \"/(import|from)( '[.]+/)(.*)(?<!.js)(';)/g\" \"\\$1\\$2\\$3.js\\$4\" \"lib/**/*.js, lib/**/*.d.ts\" --isRegex --verbose",
     "prepublishOnly": "yarn build",
     "clean": "rimraf lib src/react-components",
-    "pretest": "yarn build",
+    "pretest": "yarn prebuild && yarn build:styles && yarn build:tests && yarn build:replace",
     "test": "wtr",
     "test:watch": "wtr --watch"
   },

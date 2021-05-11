@@ -1,8 +1,7 @@
 import { playwrightLauncher } from '@web/test-runner-playwright';
-import { esbuildPlugin } from '@web/dev-server-esbuild';
 
 export default {
-  files: ['src/**/*.test.ts'],
+  files: ['lib/**/*.test.js'],
   nodeResolve: true,
   concurrentBrowsers: 3,
   coverage: true,
@@ -36,7 +35,6 @@ export default {
     playwrightLauncher({ product: 'firefox' }),
     playwrightLauncher({ product: 'webkit' }),
   ],
-  plugins: [esbuildPlugin({ ts: true })],
   testFramework: {
     config: {
       timeout: '8000',

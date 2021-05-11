@@ -185,7 +185,7 @@ Create `pharos-sparkly-text.wc.stories.mdx` now, and add the following:
 
 ```jsx
 import { Story, Canvas, Meta } from '@storybook/addon-docs/blocks';
-import { html } from 'lit-html';
+import { html } from 'lit';
 
 import './pharos-sparkly-text';
 

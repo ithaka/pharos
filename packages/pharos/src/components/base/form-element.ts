@@ -1,7 +1,6 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
-import { nothing } from 'lit-html';
 import { formElementStyles } from './form-element.css';
 
 import FocusMixin from '../../utils/mixins/focus';
