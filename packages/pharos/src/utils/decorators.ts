@@ -75,9 +75,8 @@ const standardCustomElement = (tagName: string, descriptor: ClassDescriptor) => 
  * @category Decorator
  * @param tagName The name of the custom element to define.
  */
-export const customElement = (tagName: string) => (
-  classOrDescriptor: Constructor<HTMLElement> | ClassDescriptor
-) =>
-  typeof classOrDescriptor === 'function'
-    ? legacyCustomElement(tagName, classOrDescriptor)
-    : standardCustomElement(tagName, classOrDescriptor);
+export const customElement =
+  (tagName: string) => (classOrDescriptor: Constructor<HTMLElement> | ClassDescriptor) =>
+    typeof classOrDescriptor === 'function'
+      ? legacyCustomElement(tagName, classOrDescriptor)
+      : standardCustomElement(tagName, classOrDescriptor);
