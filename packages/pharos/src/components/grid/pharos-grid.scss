@@ -9,3 +9,11 @@
 .grid {
   @include mixins.grid-content;
 }
+
+:host([layout='1-col']) {
+  @include mixins.grid-base-1-col;
+
+  .grid {
+    @include mixins.grid-content-1-col;
+  }
+}

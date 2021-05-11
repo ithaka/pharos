@@ -349,8 +349,25 @@
 @mixin grid-base {
   display: grid;
   grid-template-areas: '. content .';
-  grid-template-columns: 1fr auto 1fr;
+}
 
+@mixin grid-content {
+  display: grid;
+  grid-area: content;
+  grid-template-columns: repeat(map-get(variables.$breakpoints, large, columns), 1fr);
+  column-gap: var(--pharos-spacing-gutter);
+  row-gap: var(--pharos-spacing-three-and-a-half-x);
+
+  @include until(medium) {
+    grid-template-columns: repeat(map-get(variables.$breakpoints, medium, columns), 1fr);
+  }
+
+  @include until(small) {
+    grid-template-columns: repeat(map-get(variables.$breakpoints, small, columns), 1fr);
+  }
+}
+
+@mixin grid-base-1-col {
   @include between(small, medium) {
     grid-template-columns: minmax(1.25rem, 1.5rem) auto minmax(1.25rem, 1.5rem);
   }
@@ -372,21 +389,8 @@
   }
 }
 
-@mixin grid-content {
-  display: grid;
-  grid-area: content;
-  grid-template-columns: repeat(map-get(variables.$breakpoints, large, columns), 1fr);
-  column-gap: var(--pharos-spacing-gutter);
-  row-gap: var(--pharos-spacing-three-and-a-half-x);
+@mixin grid-content-1-col {
   margin: auto;
-
-  @include until(medium) {
-    grid-template-columns: repeat(map-get(variables.$breakpoints, medium, columns), 1fr);
-  }
-
-  @include until(small) {
-    grid-template-columns: repeat(map-get(variables.$breakpoints, small, columns), 1fr);
-  }
 
   @include between(medium, large) {
     width: functions.content-width(map-get(variables.$breakpoints, medium, width), 1.5rem);

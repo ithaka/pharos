@@ -5,7 +5,7 @@ import { gridStyles } from './pharos-grid.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
-export type GridPreset = '1-col' | '1-col--sidenav' | '2-col';
+export type GridLayout = '1-col' | '1-col--sidenav' | '2-col';
 
 /**
  * Pharos grid component.
@@ -26,11 +26,11 @@ export class PharosGrid extends LitElement {
   public areas = '';
 
   /**
-   * Indicates the layout preset to use.
-   * @attr preset
+   * Indicates the layout to use.
+   * @attr layout
    */
   @property({ type: String, reflect: true })
-  public preset: GridPreset = '1-col';
+  public layout: GridLayout = '1-col';
 
   public static get styles(): CSSResultArray {
     return [designTokens, gridStyles];
