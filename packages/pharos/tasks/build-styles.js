@@ -30,7 +30,7 @@ const buildStyles = async () => {
         }),
       ])
     )
-    // Wrap in lit-element css template tag
+    // Wrap in lit css template tag
     .pipe(
       through2.obj((file, enc, done) => {
         // Define style export name, ex: pharos-alert => alertStyles

@@ -9,7 +9,7 @@
   * [The `:host` selector](#the-host-selector)
   * [CSS Containment](#css-containment)
 - [The component file](#the-component-file)
-  * [LitElement](#litelement)
+  * [Lit](#lit)
 - [Storybook stories](#storybook-stories)
 - [The SparklyText component](#the-sparklytext-component)
   * [The SparklyText SCSS styles](#the-sparklytext-scss-styles)
@@ -103,9 +103,9 @@ In most cases, these guidelines should be followed:
 
 The `pharos-sparkly-text.ts` TypeScript file is the one you might call "the SparklyText component." It contains the behavior and rendering entry point for SparklyText, and pulls global and component-specific visual styles.
 
-### LitElement
+### Lit
 
-Pharos components use [LitElement](https://lit-element.polymer-project.org/)—a successor to Polymer—and [lit-html](https://lit-html.polymer-project.org/) to aid in authoring web components. These packages provide conveniences on top of authoring web components completely from scratch, such as decorators that automate portions of the process and a JSX-like syntax for writing DOM structure.
+Pharos components use [Lit](https://lit.dev/) to aid in authoring web components. These packages provide conveniences on top of authoring web components completely from scratch, such as decorators that automate portions of the process and a JSX-like syntax for writing DOM structure.
 
 ## Storybook stories
 

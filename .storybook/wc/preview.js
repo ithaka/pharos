@@ -1,4 +1,4 @@
-import { setCustomElements } from '@storybook/web-components';
+import { setCustomElements } from '@storybook/lit';
 import { Canvas } from '@storybook/addon-docs/blocks';
 
 import customElements from '../../packages/pharos/custom-elements.json';
