@@ -198,10 +198,6 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
 }
 
 @media screen and (max-width: $medium) {
-  .home-page__container--body {
-    grid-template-columns: repeat($columns-medium, 1fr);
-  }
-
   .home-page__hero-link {
     grid-column: span 8;
   }
@@ -226,7 +222,6 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
 
 @media only screen and (max-width: $small) {
   .home-page__container--body {
-    grid-template-columns: repeat($columns-small, 1fr);
     row-gap: var(--pharos-spacing-three-and-a-half-x);
   }
 

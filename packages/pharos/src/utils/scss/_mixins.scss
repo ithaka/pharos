@@ -314,7 +314,8 @@
 
 @mixin at-least($breakpoint) {
   @if map-has-key(variables.$breakpoints, $breakpoint) {
-    @media screen and (min-width: map-get(variables.$breakpoints, $breakpoint, width)) {
+    $width: map-get(variables.$breakpoints, $breakpoint, width);
+    @media screen and (min-width: $width) {
       @content;
     }
   } @else {
@@ -324,7 +325,8 @@
 
 @mixin until($breakpoint) {
   @if map-has-key(variables.$breakpoints, $breakpoint) {
-    @media screen and (max-width: map-get(variables.$breakpoints, $breakpoint, width) - 1) {
+    $width: map-get(variables.$breakpoints, $breakpoint, width);
+    @media screen and (max-width: $width) {
       @content;
     }
   } @else {
@@ -332,22 +334,73 @@
   }
 }
 
+@mixin between($lower, $upper) {
+  @if map-has-key(variables.$breakpoints, $lower) and map-has-key(variables.$breakpoints, $upper) {
+    $lower-width: functions.calculate-px(map-get(variables.$breakpoints, $lower, width));
+    $upper-width: functions.calculate-px(map-get(variables.$breakpoints, $upper, width));
+    @media screen and (min-width: $lower-width) and (max-width: $upper-width - 1) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint range `#{$lower}` - `#{$upper}`. " + "Available breakpoints are: #{map-keys(variables.$breakpoints)}.";
+  }
+}
+
 @mixin grid-base {
   display: grid;
-  grid-area: content;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: var(--pharos-spacing-gutter);
-  row-gap: var(--pharos-spacing-three-and-a-half-x);
+  grid-template-areas: '. content .';
+  grid-template-columns: 1fr auto 1fr;
 
-  @include until(xlarge) {
-    max-width: functions.content-width(map-get(variables.$breakpoints, large, width), 4.5rem);
+  @include between(small, medium) {
+    grid-template-columns: minmax(1.25rem, 1.5rem) auto minmax(1.25rem, 1.5rem);
   }
 
-  @include at-least(xlarge) {
-    max-width: functions.content-width(map-get(variables.$breakpoints, xlarge, width), 8rem);
+  @include between(medium, large) {
+    grid-template-columns: minmax(1.5rem, 4.5rem) auto minmax(1.5rem, 4.5rem);
+  }
+
+  @include between(large, xlarge) {
+    grid-template-columns: minmax(4.5rem, 8rem) auto minmax(4.5rem, 8rem);
+  }
+
+  @include between(xlarge, max) {
+    grid-template-columns: minmax(8rem, 9rem) auto minmax(8rem, 9rem);
   }
 
   @include at-least(max) {
-    max-width: functions.content-width(map-get(variables.$breakpoints, max, width), 9rem);
+    grid-template-columns: minmax(9rem, 1fr) auto minmax(9rem, 1fr);
+  }
+}
+
+@mixin grid-content {
+  display: grid;
+  grid-area: content;
+  grid-template-columns: repeat(map-get(variables.$breakpoints, large, columns), 1fr);
+  column-gap: var(--pharos-spacing-gutter);
+  row-gap: var(--pharos-spacing-three-and-a-half-x);
+  margin: auto;
+
+  @include until(medium) {
+    grid-template-columns: repeat(map-get(variables.$breakpoints, medium, columns), 1fr);
+  }
+
+  @include until(small) {
+    grid-template-columns: repeat(map-get(variables.$breakpoints, small, columns), 1fr);
+  }
+
+  @include between(medium, large) {
+    width: functions.content-width(map-get(variables.$breakpoints, medium, width), 1.5rem);
+  }
+
+  @include between(large, xlarge) {
+    width: functions.content-width(map-get(variables.$breakpoints, large, width), 4.5rem);
+  }
+
+  @include between(xlarge, max) {
+    width: functions.content-width(map-get(variables.$breakpoints, xlarge, width), 8rem);
+  }
+
+  @include at-least(max) {
+    width: functions.content-width(map-get(variables.$breakpoints, max, width), 9rem);
   }
 }

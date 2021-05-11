@@ -1,12 +1,11 @@
 @use '../../utils/scss/mixins';
 
 :host {
-  display: grid;
+  @include mixins.grid-base;
+
   contain: layout;
-  grid-template-areas: '. content .';
-  grid-template-columns: 1fr max-content 1fr;
 }
 
 .grid {
-  @include mixins.grid-base;
+  @include mixins.grid-content;
 }

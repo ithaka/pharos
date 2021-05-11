@@ -1,3 +1,11 @@
 @function content-width($width, $margin) {
   @return $width - 2 * $margin;
 }
+
+@function calculate-rem($px) {
+  @return $px / 16px * 1rem;
+}
+
+@function calculate-px($rem) {
+  @return $rem / 1rem * 16px;
+}
