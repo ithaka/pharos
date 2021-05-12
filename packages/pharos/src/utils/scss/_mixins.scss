@@ -372,6 +372,7 @@
 
 @mixin grid-base-columns($layout) {
   $breakpoints: map-get(variables.$layouts, $layout);
+  $fixed-margin: $layout != '1-col';
 
   @each $breakpoint, $margin in $breakpoints {
     $i: index($breakpoints, $breakpoint $margin);
@@ -381,7 +382,9 @@
       $max-margin: nth(map-values($breakpoints), $i + 1);
 
       @include between($breakpoint, $upper) {
-        grid-template-columns: minmax($margin, $max-margin) auto minmax($margin, $max-margin);
+        $layout-margin: if($fixed-margin, $margin, minmax($margin, $max-margin));
+
+        grid-template-columns: $layout-margin auto $layout-margin;
         grid-template-rows: auto;
       }
     } @else {
