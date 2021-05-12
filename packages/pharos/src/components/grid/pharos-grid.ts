@@ -19,18 +19,25 @@ export type GridLayout = '1-col' | '1-col--sidenav' | '2-col';
 @customElement('pharos-grid')
 export class PharosGrid extends LitElement {
   /**
-   * Indicates the grid areas to use for the content grid.
+   * Indicates the layout to use.
+   * @attr layout
+   */
+  @property({ type: String, reflect: true })
+  public layout: GridLayout = '1-col';
+
+  /**
+   * Indicates the grid areas to use for the grid.
    * @attr areas
    */
   @property({ type: String, reflect: true })
   public areas = '';
 
   /**
-   * Indicates the layout to use.
-   * @attr layout
+   * Indicates the grid rows to use for the grid.
+   * @attr rows
    */
   @property({ type: String, reflect: true })
-  public layout: GridLayout = '1-col';
+  public rows = '';
 
   public static get styles(): CSSResultArray {
     return [designTokens, gridStyles];
@@ -38,7 +45,13 @@ export class PharosGrid extends LitElement {
 
   protected render(): TemplateResult {
     return html`<slot name="top"></slot>
-      <div class="grid" style=${styleMap(this.areas ? { gridTemplateAreas: `${this.areas}` } : {})}>
+      <div
+        class="grid"
+        style=${styleMap({
+          gridTemplateAreas: this.areas,
+          gridTemplateRows: this.rows,
+        })}
+      >
         <slot></slot>
       </div>`;
   }

@@ -25,3 +25,11 @@
     @include mixins.grid-content-width('1-col--sidenav');
   }
 }
+
+:host([layout='2-col']) {
+  @include mixins.grid-base-columns('2-col');
+
+  .grid {
+    @include mixins.grid-content-width('2-col');
+  }
+}

@@ -6,7 +6,7 @@ describe('pharos-grid', () => {
   let component: PharosGrid;
 
   beforeEach(async () => {
-    component = await fixture(html` <pharos-grid> Shell Grid </pharos-grid> `);
+    component = await fixture(html`<pharos-grid> Shell Grid </pharos-grid>`);
   });
 
   it('is accessible', async () => {

@@ -355,15 +355,18 @@
   display: grid;
   grid-area: content;
   grid-template-columns: repeat(map-get(variables.$breakpoints, large, columns), 1fr);
+  grid-template-rows: auto;
   column-gap: var(--pharos-spacing-gutter);
   row-gap: var(--pharos-spacing-three-and-a-half-x);
 
   @include until(medium) {
     grid-template-columns: repeat(map-get(variables.$breakpoints, medium, columns), 1fr);
+    grid-template-rows: auto;
   }
 
   @include until(small) {
     grid-template-columns: repeat(map-get(variables.$breakpoints, small, columns), 1fr);
+    grid-template-rows: auto;
   }
 }
 
@@ -379,10 +382,12 @@
 
       @include between($breakpoint, $upper) {
         grid-template-columns: minmax($margin, $max-margin) auto minmax($margin, $max-margin);
+        grid-template-rows: auto;
       }
     } @else {
       @include at-least($breakpoint) {
         grid-template-columns: minmax($margin, 1fr) auto minmax($margin, 1fr);
+        grid-template-rows: auto;
       }
     }
   }
