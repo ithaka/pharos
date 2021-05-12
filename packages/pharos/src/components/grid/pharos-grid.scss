@@ -11,9 +11,17 @@
 }
 
 :host([layout='1-col']) {
-  @include mixins.grid-base-1-col;
+  @include mixins.grid-base-columns('1-col');
 
   .grid {
-    @include mixins.grid-content-1-col;
+    @include mixins.grid-content-width('1-col');
+  }
+}
+
+:host([layout='1-col--sidenav']) {
+  @include mixins.grid-base-columns('1-col--sidenav');
+
+  .grid {
+    @include mixins.grid-content-width('1-col--sidenav');
   }
 }

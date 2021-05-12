@@ -22,3 +22,27 @@ $breakpoints: (
     width: variables.$pharos-breakpoint-max,
   ),
 ) !default;
+
+$layouts: (
+  '1-col': (
+    small: 1rem,
+    medium: 1.5rem,
+    large: 4.5rem,
+    xlarge: 8rem,
+    max: 9rem,
+  ),
+  '1-col--sidenav': (
+    small: 1.5rem,
+    medium: 3rem,
+    large: 3rem,
+    xlarge: 3rem,
+    max: 3rem,
+  ),
+  '2-col': (
+    small: 1.5rem,
+    medium: 3rem,
+    large: 3rem,
+    xlarge: 3rem,
+    max: 3rem,
+  ),
+) !default;

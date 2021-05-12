@@ -16,6 +16,7 @@ import '../../../components/tabs/pharos-tab-panel';
 import '../../../components/button/pharos-button';
 import '../../../components/toast/pharos-toaster';
 import '../../../components/sidenav/pharos-sidenav-button';
+import '../../../components/grid/pharos-grid';
 
 export default {
   title: 'Pages/Reports',
@@ -31,24 +32,27 @@ export default {
 export const Reports = (): TemplateResult => html`
   <div class="reports-page__container">
     ${Sidenav()}
-    <main class="reports-page__container--main-content">
-      <div class="reports-page__container--top">
-        <div class="reports-page__container--nav-header">
-          <pharos-sidenav-button></pharos-sidenav-button>
-          <img
-            src="./images/storybook/reports/jstor-horizontal.svg"
-            alt="logo"
-            width="96"
-            height="24"
-          />
-          <span class="reports-page__separator">/</span>
-          <pharos-heading level="1" preset="4" no-margin>Admin</pharos-heading>
+    <main>
+      <pharos-grid layout="1-col--sidenav" class="reports-page__container--main-content">
+        <div class="reports-page__container--top" slot="top">
+          <div class="reports-page__container--nav-header">
+            <pharos-sidenav-button></pharos-sidenav-button>
+            <img
+              src="./images/storybook/reports/jstor-horizontal.svg"
+              alt="logo"
+              width="96"
+              height="24"
+            />
+            <span class="reports-page__separator">/</span>
+            <pharos-heading level="1" preset="4" no-margin>Admin</pharos-heading>
+          </div>
+          <pharos-button
+            variant="subtle"
+            icon-right="chevron-down"
+            class="reports-page__button--user"
+            >Gerry Larry Burla</pharos-button
+          >
         </div>
-        <pharos-button variant="subtle" icon-right="chevron-down" class="reports-page__button--user"
-          >Gerry Larry Burla</pharos-button
-        >
-      </div>
-      <div class="reports-page__container--body">
         <div class="reports-page__container--disclaimer">
           <pharos-heading level="2" preset="5--bold">COUNTER 5 Usage Reports</pharos-heading>
           <p>
@@ -75,7 +79,7 @@ export const Reports = (): TemplateResult => html`
             </pharos-tab-panel>
           </pharos-tabs>
         </div>
-      </div>
+      </pharos-grid>
     </main>
   </div>
   <pharos-toaster></pharos-toaster>

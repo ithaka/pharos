@@ -19,7 +19,7 @@ export type GridLayout = '1-col' | '1-col--sidenav' | '2-col';
 @customElement('pharos-grid')
 export class PharosGrid extends LitElement {
   /**
-   * Indicates the grid areas to use for the grid.
+   * Indicates the grid areas to use for the content grid.
    * @attr areas
    */
   @property({ type: String, reflect: true })

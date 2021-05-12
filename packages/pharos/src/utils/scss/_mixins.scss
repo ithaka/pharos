@@ -367,44 +367,57 @@
   }
 }
 
-@mixin grid-base-1-col {
-  @include between(small, medium) {
-    grid-template-columns: minmax(1.25rem, 1.5rem) auto minmax(1.25rem, 1.5rem);
-  }
+@mixin grid-base-columns($layout) {
+  $breakpoints: map-get(variables.$layouts, $layout);
 
-  @include between(medium, large) {
-    grid-template-columns: minmax(1.5rem, 4.5rem) auto minmax(1.5rem, 4.5rem);
-  }
+  @each $breakpoint, $margin in $breakpoints {
+    $i: index($breakpoints, $breakpoint $margin);
 
-  @include between(large, xlarge) {
-    grid-template-columns: minmax(4.5rem, 8rem) auto minmax(4.5rem, 8rem);
-  }
+    @if $i != length($breakpoints) {
+      $upper: nth(map-keys($breakpoints), $i + 1);
+      $max-margin: nth(map-values($breakpoints), $i + 1);
 
-  @include between(xlarge, max) {
-    grid-template-columns: minmax(8rem, 9rem) auto minmax(8rem, 9rem);
-  }
-
-  @include at-least(max) {
-    grid-template-columns: minmax(9rem, 1fr) auto minmax(9rem, 1fr);
+      @include between($breakpoint, $upper) {
+        grid-template-columns: minmax($margin, $max-margin) auto minmax($margin, $max-margin);
+      }
+    } @else {
+      @include at-least($breakpoint) {
+        grid-template-columns: minmax($margin, 1fr) auto minmax($margin, 1fr);
+      }
+    }
   }
 }
 
-@mixin grid-content-1-col {
-  margin: auto;
+@mixin grid-content-width($layout) {
+  $breakpoints: map-get(variables.$layouts, $layout);
+  $fixed-width: $layout == '1-col';
+  $property: if($fixed-width, width, min-width);
 
-  @include between(medium, large) {
-    width: functions.content-width(map-get(variables.$breakpoints, medium, width), 1.5rem);
+  @if $fixed-width {
+    margin: auto;
   }
 
-  @include between(large, xlarge) {
-    width: functions.content-width(map-get(variables.$breakpoints, large, width), 4.5rem);
-  }
+  @each $breakpoint, $margin in $breakpoints {
+    $i: index($breakpoints, $breakpoint $margin);
 
-  @include between(xlarge, max) {
-    width: functions.content-width(map-get(variables.$breakpoints, xlarge, width), 8rem);
-  }
+    @if $i != 1 and $i != length($breakpoints) {
+      $upper: nth(map-keys($breakpoints), $i + 1);
 
-  @include at-least(max) {
-    width: functions.content-width(map-get(variables.$breakpoints, max, width), 9rem);
+      @include between($breakpoint, $upper) {
+        #{$property}: functions.content-width(
+          map-get(variables.$breakpoints, $breakpoint, width),
+          $margin,
+          $sidenav: str-index($layout, '--sidenav') and $i > 2
+        );
+      }
+    } @else if $i == length($breakpoints) {
+      @include at-least($breakpoint) {
+        #{$property}: functions.content-width(
+          map-get(variables.$breakpoints, $breakpoint, width),
+          $margin,
+          $sidenav: str-index($layout, '--sidenav')
+        );
+      }
+    }
   }
 }
