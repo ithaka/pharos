@@ -11,6 +11,7 @@ import { publicCollectionCards, communityCollectionCards } from '../mocks';
 
 import { PharosHeading } from '../../../react-components/heading/pharos-heading';
 import { PharosLink } from '../../../react-components/link/pharos-link';
+import { PharosGrid } from '../../../react-components/grid/pharos-grid';
 
 export default {
   title: 'Pages/Home',
@@ -25,18 +26,19 @@ export default {
 export const Home: FC = () => (
   <div className="home-page__container">
     <HeaderRevised />
-    <main className="home-page__container--main-content">
-      <div className="home-page__container--top">
-        <PharosHeading level={1} preset="7" noMargin className="home-page__heading">
-          Knowledge for everyone
-        </PharosHeading>
-        <HeroSearch />
-      </div>
-      <div
-        className="home-page__hero"
-        style={{ backgroundImage: `url('./images/storybook/home/hero.jpg')` }}
-      ></div>
-      <div className="home-page__container--body">
+    <main>
+      <PharosGrid className="home-page__container--main-content">
+        <div className="home-page__container--top" slot="top">
+          <PharosHeading level={1} preset="7" noMargin className="home-page__heading">
+            Knowledge for everyone
+          </PharosHeading>
+          <HeroSearch />
+        </div>
+        <div
+          className="home-page__hero"
+          slot="top"
+          style={{ backgroundImage: `url('./images/storybook/home/hero.jpg')` }}
+        ></div>
         <PharosLink href="#" className="home-page__hero-link">
           Tō kaidō gojo santsugi. Okazaki. Plate No 39. From the series: Fifty-three stations of the
           Tō kaidō Road, Kihei Sanoya, circa 1838.
@@ -69,7 +71,7 @@ export const Home: FC = () => (
             {CollectionCard(card)}
           </div>
         ))}
-      </div>
+      </PharosGrid>
     </main>
     <Footer />
   </div>

@@ -8,10 +8,12 @@ import { Footer } from '../../shared/react/Footer';
 import { ItemCarousel } from './item-carousel/ItemCarousel';
 import { CollectionCarousel } from './collection-carousel/CollectionCarousel';
 import { Metadata } from './Metadata';
+import { PharosBreakpointMedium } from '../../../styles/variables';
 
 import { PharosButton } from '../../../react-components/button/pharos-button';
 import { PharosLink } from '../../../react-components/link/pharos-link';
 import { PharosIcon } from '../../../react-components/icon/pharos-icon';
+import { PharosGrid } from '../../../react-components/grid/pharos-grid';
 
 export default {
   title: 'Pages/Item Detail',
@@ -23,56 +25,73 @@ export default {
   },
 } as Meta;
 
+const mql: MediaQueryList = window.matchMedia(`(max-width: ${PharosBreakpointMedium})`);
+let areas = mql.matches
+  ? "'viewer' 'metadata' 'collections'"
+  : "'viewer metadata' 'collections metadata'";
+
+const handleMediaChange = (e: MediaQueryListEvent): void => {
+  areas = e.matches
+    ? "'viewer' 'metadata' 'collections'"
+    : "'viewer metadata' 'collections metadata'";
+  const grid = document.querySelector('pharos-grid');
+  if (grid) grid.areas = areas;
+};
+mql.addEventListener('change', handleMediaChange);
+
 export const ItemDetail: FC = () => (
   <div className="item-detail-page__container">
     <HeaderRevised showSearch={true} />
-    <main className="item-detail-page__container--main-content">
-      <div className="item-detail-page__container--top">
-        <PharosLink href="#" className="item-detail-page__button--back" subtle flex>
-          <PharosIcon
-            name="arrow-left"
-            style={{ marginRight: 'var(--pharos-spacing-one-quarter-x)' }}
-          ></PharosIcon>
-          Back to results
-        </PharosLink>
-        <PharosButton
-          variant="subtle"
-          icon="arrow-left"
-          href="#"
-          label="Back to results"
-          className="item-detail-page__button--mobile-back"
-        ></PharosButton>
-        <div className="item-detail-page__container--action-buttons">
-          <PharosButton variant="secondary" iconLeft="cite">
-            Cite
-          </PharosButton>
-          <PharosButton variant="secondary" iconLeft="share">
-            Share
-          </PharosButton>
-          <PharosButton variant="secondary" iconLeft="save">
-            Save
-          </PharosButton>
-          <PharosButton variant="secondary" iconLeft="download">
-            Download
-          </PharosButton>
-        </div>
-        <div className="item-detail-page__container--mobile-buttons">
-          <PharosButton variant="subtle" icon="cite" label="Cite"></PharosButton>
-          <PharosButton variant="subtle" icon="share" label="Share"></PharosButton>
-          <PharosButton variant="subtle" icon="save" label="Save"></PharosButton>
-          <PharosButton variant="subtle" icon="download" label="Download"></PharosButton>
-        </div>
-      </div>
-      <div className="item-detail-page__container--body">
-        <div className="item-detail-page__grid--body">
-          <div className="item-detail-page__container--viewer"></div>
-          <div className="item-detail-page__container--collections">
-            <ItemCarousel />
-            <CollectionCarousel />
+    <main>
+      <PharosGrid
+        layout="2-col"
+        areas={areas}
+        rows="max-content 1fr"
+        className="item-detail-page__container--main-content"
+      >
+        <div className="item-detail-page__container--top" slot="top">
+          <PharosLink href="#" className="item-detail-page__button--back" subtle flex>
+            <PharosIcon
+              name="arrow-left"
+              style={{ marginRight: 'var(--pharos-spacing-one-quarter-x)' }}
+            ></PharosIcon>
+            Back to results
+          </PharosLink>
+          <PharosButton
+            variant="subtle"
+            icon="arrow-left"
+            href="#"
+            label="Back to results"
+            className="item-detail-page__button--mobile-back"
+          ></PharosButton>
+          <div className="item-detail-page__container--action-buttons">
+            <PharosButton variant="secondary" iconLeft="cite">
+              Cite
+            </PharosButton>
+            <PharosButton variant="secondary" iconLeft="share">
+              Share
+            </PharosButton>
+            <PharosButton variant="secondary" iconLeft="save">
+              Save
+            </PharosButton>
+            <PharosButton variant="secondary" iconLeft="download">
+              Download
+            </PharosButton>
           </div>
-          <Metadata />
+          <div className="item-detail-page__container--mobile-buttons">
+            <PharosButton variant="subtle" icon="cite" label="Cite"></PharosButton>
+            <PharosButton variant="subtle" icon="share" label="Share"></PharosButton>
+            <PharosButton variant="subtle" icon="save" label="Save"></PharosButton>
+            <PharosButton variant="subtle" icon="download" label="Download"></PharosButton>
+          </div>
         </div>
-      </div>
+        <div className="item-detail-page__container--viewer"></div>
+        <div className="item-detail-page__container--collections">
+          <ItemCarousel />
+          <CollectionCarousel />
+        </div>
+        <Metadata />
+      </PharosGrid>
     </main>
     <Footer />
   </div>

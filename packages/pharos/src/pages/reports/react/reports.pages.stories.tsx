@@ -19,6 +19,7 @@ import { PharosTab } from '../../../react-components/tabs/pharos-tab';
 import { PharosTabPanel } from '../../../react-components/tabs/pharos-tab-panel';
 import { PharosToaster } from '../../../react-components/toast/pharos-toaster';
 import { PharosSidenavButton } from '../../../react-components/sidenav/pharos-sidenav-button';
+import { PharosGrid } from '../../../react-components/grid/pharos-grid';
 
 export default {
   title: 'Pages/Reports',
@@ -34,30 +35,30 @@ export const Reports: FC = () => (
   <Fragment>
     <div className="reports-page__container">
       <Sidenav />
-      <main className="reports-page__container--main-content">
-        <div className="reports-page__container--top">
-          <div className="reports-page__container--nav-header">
-            <PharosSidenavButton />
-            <img
-              src="./images/storybook/reports/jstor-horizontal.svg"
-              alt="logo"
-              width="96"
-              height="24"
-            />
-            <span className="reports-page__separator">/</span>
-            <PharosHeading level={1} preset="4" noMargin>
-              Admin
-            </PharosHeading>
+      <main>
+        <PharosGrid layout="1-col--sidenav" className="reports-page__container--main-content">
+          <div className="reports-page__container--top" slot="top">
+            <div className="reports-page__container--nav-header">
+              <PharosSidenavButton />
+              <img
+                src="./images/storybook/reports/jstor-horizontal.svg"
+                alt="logo"
+                width="96"
+                height="24"
+              />
+              <span className="reports-page__separator">/</span>
+              <PharosHeading level={1} preset="4" noMargin>
+                Admin
+              </PharosHeading>
+            </div>
+            <PharosButton
+              variant="subtle"
+              iconRight="chevron-down"
+              className="reports-page__button--user"
+            >
+              Gerry Larry Burla
+            </PharosButton>
           </div>
-          <PharosButton
-            variant="subtle"
-            iconRight="chevron-down"
-            className="reports-page__button--user"
-          >
-            Gerry Larry Burla
-          </PharosButton>
-        </div>
-        <div className="reports-page__container--body">
           <div className="reports-page__container--disclaimer">
             <PharosHeading level={2} preset="5--bold">
               COUNTER 5 Usage Reports
@@ -93,7 +94,7 @@ export const Reports: FC = () => (
               </PharosTabPanel>
             </PharosTabs>
           </div>
-        </div>
+        </PharosGrid>
       </main>
     </div>
     <PharosToaster></PharosToaster>
