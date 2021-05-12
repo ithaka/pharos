@@ -26,14 +26,14 @@ export class PharosGrid extends LitElement {
   public layout: GridLayout = '1-col';
 
   /**
-   * Indicates the grid areas to use for the grid.
+   * Indicates the areas to use for the grid.
    * @attr areas
    */
   @property({ type: String, reflect: true })
   public areas = '';
 
   /**
-   * Indicates the grid rows to use for the grid.
+   * Indicates the rows to use for the grid.
    * @attr rows
    */
   @property({ type: String, reflect: true })
