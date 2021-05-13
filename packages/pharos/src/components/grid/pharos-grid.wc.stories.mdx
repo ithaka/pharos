@@ -51,3 +51,23 @@ export const gridItems = (rows) => {
     `}
   </Story>
 </Canvas>
+
+# Two column
+
+<Canvas>
+  <Story name="Two column">
+    {html`
+      <pharos-grid layout="2-col">
+        <div
+          style="grid-column: span 8; grid-row: 1; background: var(--pharos-color-living-coral-90); height: 20rem"
+        ></div>
+        <div
+          style="grid-column: span 8; grid-row: 2; background: var(--pharos-color-living-coral-80); height: 14.5rem"
+        ></div>
+        <div
+          style="grid-column: span 4; grid-row: span 2; background: var(--pharos-color-living-coral-base); height: 38rem"
+        ></div>
+      </pharos-grid>
+    `}
+  </Story>
+</Canvas>

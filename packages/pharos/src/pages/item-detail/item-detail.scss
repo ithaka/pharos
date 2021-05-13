@@ -51,20 +51,20 @@
 }
 
 .item-detail-page__container--collections {
-  grid-area: collections;
   grid-column: span 8;
+  grid-row: 2;
   overflow: hidden;
 }
 
 .item-detail-page__container--metadata {
-  grid-area: metadata;
   grid-column: span 4;
+  grid-row: span 2;
 }
 
 .item-detail-page__container--viewer {
-  grid-area: viewer;
   background-color: var(--pharos-color-black);
   grid-column: span 8;
+  grid-row: 1;
   margin-left: -3.5rem;
   height: 40rem;
 }
@@ -182,13 +182,6 @@
 }
 
 @include pharos.until(medium) {
-  .item-detail-page__grid--body {
-    grid-template-areas:
-      'viewer'
-      'metadata'
-      'collections';
-  }
-
   .item-detail-page__container--metadata {
     grid-column: span 8;
   }

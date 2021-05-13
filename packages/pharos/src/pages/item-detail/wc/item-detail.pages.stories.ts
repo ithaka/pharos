@@ -8,7 +8,6 @@ import { Footer } from '../../shared/wc/footer';
 import { ItemCarousel } from './item-carousel/item-carousel';
 import { CollectionCarousel } from './collection-carousel/collection-carousel';
 import { Metadata } from './metadata';
-import { PharosBreakpointMedium } from '../../../styles/variables';
 
 import '../../../components/button/pharos-button';
 import '../../../components/link/pharos-link';
@@ -26,27 +25,12 @@ export default {
   },
 };
 
-const mql: MediaQueryList = window.matchMedia(`(max-width: ${PharosBreakpointMedium})`);
-let areas = mql.matches
-  ? "'viewer' 'metadata' 'collections'"
-  : "'viewer metadata' 'collections metadata'";
-
-const handleMediaChange = (e: MediaQueryListEvent): void => {
-  areas = e.matches
-    ? "'viewer' 'metadata' 'collections'"
-    : "'viewer metadata' 'collections metadata'";
-  const grid = document.querySelector('pharos-grid');
-  if (grid) grid.areas = areas;
-};
-mql.addEventListener('change', handleMediaChange);
-
 export const ItemDetail = (): TemplateResult => html`
   <div class="item-detail-page__container">
     ${HeaderRevised(true)}
     <main>
       <pharos-grid
         layout="2-col"
-        areas="${areas}"
         rows="max-content 1fr"
         class="item-detail-page__container--main-content"
       >
