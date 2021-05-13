@@ -8,6 +8,7 @@ import { HeaderRevised } from '../../shared/react/HeaderRevised';
 import { CollectionCard } from './CollectionCard';
 import { HeroSearch } from './HeroSearch';
 import { publicCollectionCards, communityCollectionCards } from '../mocks';
+import { PharosSpacing7X } from '../../../styles/variables';
 
 import { PharosHeading } from '../../../react-components/heading/pharos-heading';
 import { PharosLink } from '../../../react-components/link/pharos-link';
@@ -27,7 +28,7 @@ export const Home: FC = () => (
   <div className="home-page__container">
     <HeaderRevised />
     <main>
-      <PharosGrid className="home-page__container--main-content">
+      <PharosGrid className="home-page__container--main-content" rowGap={PharosSpacing7X}>
         <div className="home-page__container--top" slot="top">
           <PharosHeading level={1} preset="7" noMargin className="home-page__heading">
             Knowledge for everyone

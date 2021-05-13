@@ -182,6 +182,10 @@
 }
 
 @include pharos.until(medium) {
+  .item-detail-page__container--collections {
+    display: none;
+  }
+
   .item-detail-page__container--metadata {
     grid-column: span 8;
   }

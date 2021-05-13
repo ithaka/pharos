@@ -14,7 +14,10 @@ import '../button/pharos-button';
 # Sidenav
 
 <Canvas>
-  <Story name="Base" parameters={{ chromatic: { viewports: [320, 1200] } }}>
+  <Story
+    name="Base"
+    parameters={{ chromatic: { viewports: [320, 1200] }, docs: { disable: true } }}
+  >
     {() => {
       return html`
         <pharos-sidenav-button></pharos-sidenav-button>

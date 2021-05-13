@@ -4,6 +4,7 @@ import { styleMap } from 'lit-html/directives/style-map.js';
 import { gridStyles } from './pharos-grid.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
+import { PharosSpacingThreeAndAHalfX } from '../../styles/variables';
 
 export type GridLayout = '1-col' | '1-col--sidenav' | '2-col';
 
@@ -39,6 +40,13 @@ export class PharosGrid extends LitElement {
   @property({ type: String, reflect: true })
   public rows = '';
 
+  /**
+   * Indicates the row gap to use for the grid.
+   * @attr row-gap
+   */
+  @property({ type: String, reflect: true, attribute: 'row-gap' })
+  public rowGap = PharosSpacingThreeAndAHalfX;
+
   public static get styles(): CSSResultArray {
     return [designTokens, gridStyles];
   }
@@ -50,6 +58,7 @@ export class PharosGrid extends LitElement {
         style=${styleMap({
           gridTemplateAreas: this.areas,
           gridTemplateRows: this.rows,
+          rowGap: this.rowGap,
         })}
       >
         <slot></slot>

@@ -8,6 +8,7 @@ import { Footer } from '../../shared/wc/footer';
 import { CollectionCard } from './collection-card';
 import { HeroSearch } from './hero-search';
 import { publicCollectionCards, communityCollectionCards } from '../mocks';
+import { PharosSpacing7X } from '../../../styles/variables';
 
 import '../../../components/heading/pharos-heading';
 import '../../../components/link/pharos-link';
@@ -28,7 +29,7 @@ export const Home = (): TemplateResult => html`
   <div class="home-page__container">
     ${HeaderRevised()}
     <main>
-      <pharos-grid class="home-page__container--main-content">
+      <pharos-grid class="home-page__container--main-content" row-gap="${PharosSpacing7X}">
         <div class="home-page__container--top" slot="top">
           <pharos-heading level="1" preset="7" no-margin class="home-page__heading"
             >Knowledge for everyone</pharos-heading

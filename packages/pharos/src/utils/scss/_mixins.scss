@@ -357,7 +357,6 @@
   grid-template-columns: repeat(map-get(variables.$breakpoints, large, columns), 1fr);
   grid-template-rows: auto;
   column-gap: var(--pharos-spacing-gutter);
-  row-gap: var(--pharos-spacing-three-and-a-half-x);
 
   @include until(medium) {
     grid-template-columns: repeat(map-get(variables.$breakpoints, medium, columns), 1fr);

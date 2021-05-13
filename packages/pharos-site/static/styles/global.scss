@@ -213,3 +213,11 @@ p.alert-example__content + p.alert-example__content {
     max-width: 80%;
   }
 }
+
+.grid-example__item {
+  background: var(--pharos-color-living-coral-90);
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

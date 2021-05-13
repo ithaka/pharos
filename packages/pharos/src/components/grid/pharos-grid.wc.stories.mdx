@@ -11,20 +11,37 @@ export const gridItems = (rows) => {
   const arr = [];
   rows.forEach((items) => {
     for (let i = 0; i < items; i++) {
-      arr.push({ span: 12 / items });
+      arr.push({ span: 12 / items, cols: items });
     }
   });
   return arr.map(
-    (item) => html`<div
-      style="grid-column: span ${item.span}; background: var(--pharos-color-living-coral-90); height: 3rem"
-    ></div>`
+    (item) => html`<div class="grid-example__item" style="grid-column: span ${item.span}">
+      ${item.cols}
+    </div>`
+  );
+};
+
+export const comboItems = (rows) => {
+  const arr = [];
+  rows.forEach((item) => {
+    arr.push({ span: item, cols: item });
+    arr.push({ span: 12 - item, cols: 12 - item });
+  });
+  return arr.map(
+    (item) => html`<div class="grid-example__item" style="grid-column: span ${item.span}">
+      Span ${item.cols}
+    </div>`
   );
 };
 
 # Grid
 
 <Canvas>
-  <Story name="Base">{html`<pharos-grid>${gridItems([1, 2, 3, 4, 6, 12])}</pharos-grid>`}</Story>
+  <Story name="Column layouts">
+    {html`
+      <pharos-grid> ${gridItems([1, 2, 3, 4, 6])} ${comboItems([7, 8, 9, 10])} </pharos-grid>
+    `}
+  </Story>
 </Canvas>
 
 ## API
@@ -34,7 +51,7 @@ export const gridItems = (rows) => {
 # One column with sidenav
 
 <Canvas>
-  <Story name="One column with sidenav">
+  <Story name="One column with sidenav" parameters={{ docs: { disable: true } }}>
     {html`
       <div
         style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
@@ -45,7 +62,7 @@ export const gridItems = (rows) => {
           </pharos-link>
         </pharos-sidenav>
         <main style="grid-area: main">
-          <pharos-grid layout="1-col--sidenav">${gridItems([1, 2, 3, 4, 6, 12])}</pharos-grid>
+          <pharos-grid layout="1-col--sidenav">${gridItems([1, 2, 3, 4, 6])}</pharos-grid>
         </main>
       </div>
     `}
