@@ -150,9 +150,7 @@ export const GlobalColorTokens = () => {
           </tr>
         </thead>
         <tbody>
-          ${colorTokens
-            .filter((color) => color.group === 'primary')
-            .map((color) => ColorRow(color))}
+          ${colorTokens.filter((color) => color.group === 'primary').map((color) => ColorRow(color))}
         </tbody>
       `
     )} ${TokenTable(

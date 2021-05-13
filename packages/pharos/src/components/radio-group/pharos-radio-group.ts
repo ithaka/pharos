@@ -33,11 +33,9 @@ export class PharosRadioGroup extends FormElement {
    */
   @property({ type: String, attribute: false })
   public get value(): string {
-    return (
-      [...this.children].find(
-        (child) => !child.slot && (child as PharosRadioButton).checked
-      ) as PharosRadioButton
-    )?.value;
+    return ([...this.children].find(
+      (child) => !child.slot && (child as PharosRadioButton).checked
+    ) as PharosRadioButton)?.value;
   }
 
   private _clicked = false;
