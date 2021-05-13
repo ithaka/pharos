@@ -34,14 +34,23 @@ export const comboItems = (rows) => {
   );
 };
 
+export const gridColumns = () => {
+  const arr = [];
+  for (let i = 1; i <= 12; i++) {
+    arr.push(html`<div class="grid-example__column">${i}</div>`);
+  }
+  return arr;
+};
+
 # Grid
 
 <Canvas>
-  <Story name="Column layouts">
-    {html`
-      <pharos-grid> ${gridItems([1, 2, 3, 4, 6])} ${comboItems([7, 8, 9, 10])} </pharos-grid>
-    `}
-  </Story>
+  <Story
+    name="One column"
+    parameters={{
+      layout: 'fullscreen',
+    }}
+  >{html` <pharos-grid>${gridColumns()}</pharos-grid> `}</Story>
 </Canvas>
 
 ## API
@@ -51,7 +60,10 @@ export const comboItems = (rows) => {
 # One column with sidenav
 
 <Canvas>
-  <Story name="One column with sidenav" parameters={{ docs: { disable: true } }}>
+  <Story
+    name="One column with sidenav"
+    parameters={{ docs: { disable: true }, layout: 'fullscreen' }}
+  >
     {html`
       <div
         style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
@@ -62,7 +74,7 @@ export const comboItems = (rows) => {
           </pharos-link>
         </pharos-sidenav>
         <main style="grid-area: main">
-          <pharos-grid layout="1-col--sidenav">${gridItems([1, 2, 3, 4, 6])}</pharos-grid>
+          <pharos-grid layout="1-col--sidenav">${gridColumns()}</pharos-grid>
         </main>
       </div>
     `}
@@ -72,19 +84,37 @@ export const comboItems = (rows) => {
 # Two column
 
 <Canvas>
-  <Story name="Two column">
+  <Story
+    name="Two column"
+    parameters={{
+      layout: 'fullscreen',
+    }}
+  >
     {html`
       <pharos-grid layout="2-col">
         <div
-          style="grid-column: span 8; grid-row: 1; background: var(--pharos-color-living-coral-90); height: 20rem"
+          style="grid-column: span 8; grid-row: 1; background: var(--pharos-color-glacier-blue-70); height: 20rem"
         ></div>
         <div
-          style="grid-column: span 8; grid-row: 2; background: var(--pharos-color-living-coral-80); height: 14.5rem"
+          style="grid-column: span 8; grid-row: 2; background: var(--pharos-color-glacier-blue-70); height: 14.5rem"
         ></div>
         <div
-          style="grid-column: span 4; grid-row: span 2; background: var(--pharos-color-living-coral-base); height: 38rem"
+          style="grid-column: span 4; grid-row: span 2; background: var(--pharos-color-glacier-blue-70); height: 38rem"
         ></div>
       </pharos-grid>
+      <pharos-grid layout="2-col" style="position: absolute; top: 0; width: 100%"
+        >${gridColumns()}</pharos-grid
+      >
+    `}
+  </Story>
+</Canvas>
+
+# Column layouts
+
+<Canvas>
+  <Story name="Column layouts">
+    {html`
+      <pharos-grid> ${gridItems([1, 2, 3, 4, 6])} ${comboItems([7, 8, 9, 10])} </pharos-grid>
     `}
   </Story>
 </Canvas>

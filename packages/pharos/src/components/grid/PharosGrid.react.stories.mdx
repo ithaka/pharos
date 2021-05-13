@@ -1,6 +1,9 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { Fragment } from 'react';
 
 import { PharosGrid } from '../../react-components/grid/pharos-grid';
+import { PharosSidenav } from '../../react-components/sidenav/pharos-sidenav';
+import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta
   title="Components/Grid"
@@ -9,14 +12,140 @@ import { PharosGrid } from '../../react-components/grid/pharos-grid';
   }}
 />
 
+export const gridItems = (rows) => {
+  const arr = [];
+  rows.forEach((items) => {
+    for (let i = 0; i < items; i++) {
+      arr.push({ span: 12 / items, cols: items });
+    }
+  });
+  return arr.map((item, index) => (
+    <div key={index} className="grid-example__item" style={{ gridColumn: `span ${item.span}` }}>
+      {item.cols}
+    </div>
+  ));
+};
+
+export const comboItems = (rows) => {
+  const arr = [];
+  rows.forEach((item) => {
+    arr.push({ span: item, cols: item });
+    arr.push({ span: 12 - item, cols: 12 - item });
+  });
+  return arr.map((item, index) => (
+    <div key={index} className="grid-example__item" style={{ gridColumn: `span ${item.span}` }}>
+      Span {item.cols}
+    </div>
+  ));
+};
+
+export const gridColumns = () => {
+  const arr = [];
+  for (let i = 1; i <= 12; i++) {
+    arr.push(<div className="grid-example__column">{i}</div>);
+  }
+  return arr;
+};
+
 # Grid
 
-<Canvas withToolbar>
-  <Story name="Base">
-    <PharosGrid />
+<Canvas>
+  <Story
+    name="One column"
+    parameters={{
+      layout: 'fullscreen',
+    }}
+  >
+    {<PharosGrid>{gridColumns()}</PharosGrid>}
   </Story>
 </Canvas>
 
 ## API
 
 <ArgsTable of={PharosGrid} />
+
+# One column with sidenav
+
+<Canvas>
+  <Story
+    name="One column with sidenav"
+    parameters={{ docs: { disable: true }, layout: 'fullscreen' }}
+  >
+    {
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateAreas: "'sidenav main'",
+          gridTemplateColumns: 'max-content 1fr',
+        }}
+      >
+        <PharosSidenav style={{ gridArea: 'sidenav' }}>
+          <PharosLink slot="top" href="/" id="jstor-logo">
+            <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
+          </PharosLink>
+        </PharosSidenav>
+        <main sstyle={{ gridArea: 'main' }}>
+          <PharosGrid layout="1-col--sidenav">{gridColumns()}</PharosGrid>
+        </main>
+      </div>
+    }
+  </Story>
+</Canvas>
+
+# Two column
+
+<Canvas>
+  <Story
+    name="Two column"
+    parameters={{
+      layout: 'fullscreen',
+    }}
+  >
+    {
+      <Fragment>
+        <PharosGrid layout="2-col">
+          <div
+            style={{
+              gridColumn: 'span 8',
+              gridRow: '1',
+              background: 'var(--pharos-color-glacier-blue-70)',
+              height: '20rem',
+            }}
+          ></div>
+          <div
+            style={{
+              gridColumn: 'span 8',
+              gridRow: '2',
+              background: 'var(--pharos-color-glacier-blue-70)',
+              height: '14.5rem',
+            }}
+          ></div>
+          <div
+            style={{
+              gridColumn: 'span 4',
+              gridRow: 'span 2',
+              background: 'var(--pharos-color-glacier-blue-70)',
+              height: '38rem',
+            }}
+          ></div>
+        </PharosGrid>
+        <PharosGrid layout="2-col" style={{ position: 'absolute', top: 0, width: '100%' }}>
+          {gridColumns()}
+        </PharosGrid>
+      </Fragment>
+    }
+  </Story>
+</Canvas>
+
+# Column layouts
+
+<Canvas>
+  <Story name="Column layouts">
+    {
+      <PharosGrid>
+        {gridItems([1, 2, 3, 4, 6])}
+        {comboItems([7, 8, 9, 10])}
+      </PharosGrid>
+    }
+  </Story>
+</Canvas>
