@@ -3,12 +3,6 @@ import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
 
 import { Pharos${titleCaseName} } from '../../react-components/${componentName}/pharos-${componentName}';
 
-<!-- Create this file!
-import Intro from '@docs/guidelines/${componentName}.docs.mdx';
-
-<Intro />
--->
-
 <Meta
   title="Components/${titleCaseName}"
   parameters={{
