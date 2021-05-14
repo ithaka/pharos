@@ -407,7 +407,14 @@
   @each $breakpoint, $margin in $breakpoints {
     $i: index($breakpoints, $breakpoint $margin);
 
-    @if $i != length($breakpoints) {
+    @if $i == 1 {
+      @include until($breakpoint) {
+        #{$property}: functions.content-width(
+          map-get(variables.$breakpoints, $breakpoint, width),
+          $margin
+        );
+      }
+    } @else if $i != length($breakpoints) {
       $upper: nth(map-keys($breakpoints), $i + 1);
 
       @include between($breakpoint, $upper) {

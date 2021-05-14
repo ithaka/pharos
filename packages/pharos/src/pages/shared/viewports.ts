@@ -1,9 +1,9 @@
 export const viewports = {
   small: {
-    name: '320 / 20',
+    name: '360 / 22.5',
     styles: {
-      width: '320px',
-      height: '568px',
+      width: '360px',
+      height: '560px',
     },
   },
   medium: {
