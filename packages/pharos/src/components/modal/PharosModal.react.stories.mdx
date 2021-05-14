@@ -106,12 +106,12 @@ export const Template = (args) => (
       onPharos-Modal-Close={(e) => action('Close')(e.detail)}
       onPharos-Modal-Closed={(e) => action('Closed')(e.detail)}
     >
-      <p slot="description">I describe the modal content</p>
+      <p slot="description">Description for the modal</p>
       <PharosTextInput style={{ marginBottom: '1rem' }} data-modal-focus>
         <span slot="label">Name</span>
       </PharosTextInput>
       <PharosTextInput style={{ marginBottom: '1rem' }}>
-        <span slot="label">Quest</span>
+        <span slot="label">User ID</span>
       </PharosTextInput>
       <PharosTextInput style={{ marginBottom: '1rem' }}>
         <span slot="label">Favorite Color</span>

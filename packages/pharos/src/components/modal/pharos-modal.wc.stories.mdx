@@ -116,12 +116,12 @@ export const Template = (args) =>
         @pharos-modal-close="${(e) => action('Close')(e.detail)}"
         @pharos-modal-closed="${(e) => action('Closed')(e.detail)}"
       >
-        <p slot="description">I describe the modal content</p>
+        <p slot="description">Description for the modal</p>
         <pharos-text-input style="margin-bottom: 1rem" data-modal-focus>
           <span slot="label">Name</span>
         </pharos-text-input>
         <pharos-text-input style="margin-bottom: 1rem">
-          <span slot="label">Quest</span>
+          <span slot="label">User ID</span>
         </pharos-text-input>
         <pharos-text-input style="margin-bottom: 1rem">
           <span slot="label">Favorite Color</span>
