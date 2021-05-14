@@ -15,6 +15,7 @@ module.exports = async ({ config, mode }) => {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.css'],
     fallback: {
       crypto: false,
+      path: false,
     },
   };
 
@@ -38,6 +39,8 @@ module.exports = async ({ config, mode }) => {
       },
     ],
   });
+
+  config.module.rules[1].exclude = /node_modules/;
 
   // Need to transpile for IE11
   const babelLoaderRule = config.module.rules.find(
