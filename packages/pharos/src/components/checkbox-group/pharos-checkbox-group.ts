@@ -44,7 +44,7 @@ export class PharosCheckboxGroup extends FormElement {
   }
 
   protected firstUpdated(): void {
-    this._initialize();
+    this._setBoxes();
 
     const boxes = this.querySelectorAll('pharos-checkbox') as NodeListOf<PharosCheckbox>;
     boxes.forEach((box) => {
@@ -70,18 +70,20 @@ export class PharosCheckboxGroup extends FormElement {
       changedProperties.has('invalidated') ||
       changedProperties.has('validated')
     ) {
-      this._initialize();
+      this._setBoxes();
     }
   }
 
-  private _initialize(): void {
+  private _setBoxes(): void {
     const boxes = this.querySelectorAll('pharos-checkbox') as NodeListOf<PharosCheckbox>;
-    boxes.forEach((box) => {
-      box.name = this.name;
-      box.disabled = this.disabled;
-      box.validated = this.validated;
-      box.invalidated = this.invalidated;
-    });
+    if (boxes) {
+      boxes.forEach((box) => {
+        box.name = this.name;
+        box.disabled = this.disabled;
+        box.validated = this.validated;
+        box.invalidated = this.invalidated;
+      });
+    }
   }
 
   protected render(): TemplateResult {
@@ -94,7 +96,6 @@ export class PharosCheckboxGroup extends FormElement {
       <fieldset
         class="checkbox-group checkbox-group--${this.horizontal ? 'horizontal' : 'vertical'}"
         aria-invalid="${this.invalidated}"
-        aria-labelledby="${labels.join(' ')}"
       >
         <legend id="legend" class="checkbox-group__legend">
           <slot name="legend"></slot>

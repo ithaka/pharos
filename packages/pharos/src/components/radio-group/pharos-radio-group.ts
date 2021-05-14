@@ -46,7 +46,7 @@ export class PharosRadioGroup extends FormElement {
   }
 
   protected firstUpdated(): void {
-    this._initialize();
+    this._setRadios();
     this._addFocusListeners();
 
     const radios = this.querySelectorAll('pharos-radio-button') as NodeListOf<PharosRadioButton>;
@@ -81,7 +81,7 @@ export class PharosRadioGroup extends FormElement {
       changedProperties.has('invalidated') ||
       changedProperties.has('validated')
     ) {
-      this._initialize();
+      this._setRadios();
     }
   }
 
@@ -136,7 +136,7 @@ export class PharosRadioGroup extends FormElement {
     }
   }
 
-  private _initialize(): void {
+  private _setRadios(): void {
     const radios = this.querySelectorAll('pharos-radio-button') as NodeListOf<PharosRadioButton>;
     radios.forEach((radio) => {
       radio.name = this.name;

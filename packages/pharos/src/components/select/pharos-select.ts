@@ -46,11 +46,11 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
   }
 
   protected firstUpdated(): void {
-    this._initialize();
+    this._setOption();
     this._options.forEach((option) => (option.defaultSelected = option.hasAttribute('selected')));
   }
 
-  private _initialize(): void {
+  private _setOption(): void {
     // Set value to selected option
     const selected = (this.querySelector('option[selected]') ||
       this.querySelector('option')) as HTMLOptionElement;
@@ -76,7 +76,7 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
 
   _handleFormReset(): void {
     this._options.forEach((option) => (option.selected = option.defaultSelected));
-    this._initialize();
+    this._setOption();
   }
 
   protected render(): TemplateResult {
