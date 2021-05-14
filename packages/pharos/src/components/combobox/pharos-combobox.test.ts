@@ -176,8 +176,9 @@ describe('pharos-combobox', () => {
     const firstOption = options[0];
     const expectedHTML =
       '<mark class="combobox__mark">O</mark>pti<mark class="combobox__mark">o</mark>n 1';
+    const optionHTML = firstOption.innerHTML.replace(/<!--.*?-->/g, '').trim();
 
-    expect(firstOption.innerHTML.trim()).to.equal(expectedHTML);
+    expect(optionHTML).to.equal(expectedHTML);
   });
 
   it('opens the list and highlights the first option when the down arrow key is pressed', async () => {
@@ -552,8 +553,9 @@ describe('pharos-combobox', () => {
     ) as NodeListOf<HTMLLIElement>;
     const firstOption = options[0];
     const expectedHTML = 'Option 1';
+    const optionHTML = firstOption.innerHTML.replace(/<!--.*?-->/g, '').trim();
 
-    expect(firstOption.innerHTML.trim()).to.equal(expectedHTML);
+    expect(optionHTML).to.equal(expectedHTML);
   });
 
   it('does not render a checkmark on selected options in search mode', async () => {
