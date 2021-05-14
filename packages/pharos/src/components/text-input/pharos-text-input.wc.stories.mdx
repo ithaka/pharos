@@ -32,6 +32,10 @@ export const Template = (args) =>
         ?invalidated="${args.invalidated}"
         ?required="${args.required}"
         .message="${args.message}"
+        .placeholder=${args.placeholder}
+        ?disabled=${args.disabled}
+        ?readonly=${args.readonly}
+        .value=${args.value}
       >
         <span slot="label">${args.label}</span>
       </pharos-text-input>
@@ -62,32 +66,21 @@ export const Template = (args) =>
 # States
 
 <Canvas withToolbar>
-  <Story name="States">
-    {html`
-      <div
-        style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: repeat(2, 300px); -ms-grid-columns: 300px 1rem 300px"
-      >
-        <pharos-text-input><span slot="label">I am empty</span></pharos-text-input>
-        <pharos-text-input disabled style="-ms-grid-column: 3"
-          ><span slot="label">I am disabled</span></pharos-text-input
-        >
-        <pharos-text-input readonly value="Can't touch this" style="-ms-grid-row: 2"
-          ><span slot="label">I am read-only</span></pharos-text-input
-        >
-        <pharos-text-input placeholder="Enter some text" style="-ms-grid-column: 3; -ms-grid-row: 2"
-          ><span slot="label">I have a placeholder</span></pharos-text-input
-        >
-        <pharos-text-input value="Hi there" style="-ms-grid-row: 3"
-          ><span slot="label">I have a value provided</span></pharos-text-input
-        >
-        <pharos-text-input hide-label style="-ms-grid-column: 3; -ms-grid-row: 3"
-          ><span slot="label">My label is hidden</span></pharos-text-input
-        >
-        <pharos-text-input value="Hi there" validated style="-ms-grid-row: 3"
-          ><span slot="label">I am valid</span></pharos-text-input
-        >
-      </div>
-    `}
+  <Story
+    name="States"
+    argTypes={{
+      type: { table: { disable: true }, defaultValue: 'text' },
+    }}
+    args={{
+      placeholder: 'Enter some text',
+      disabled: false,
+      readonly: false,
+      value: '',
+      hideLabel: false,
+      label: 'Edit attributes via control panel',
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
