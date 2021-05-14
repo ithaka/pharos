@@ -14,13 +14,7 @@ import Intro from '@docs/guidelines/type-styles.docs.mdx';
 
 # Examples
 
-export const theirNames = [
-  'Claudette Colvin',
-  'Maude Ballou',
-  'Diane Nash',
-  'Rev. Dr. Pauli Murray',
-  'Mamie Till Mobley',
-];
+export const theirNames = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
 export const list = html`
   ${theirNames.map((name) => {
     return html` <li>${name}</li> `;
@@ -30,24 +24,21 @@ export const list = html`
 export const PlainTemplate = (args) => html` <span>${args.text}</span> `;
 
 export const BringAttentionTemplate = (args) =>
-  html` <p>
-    To show the power of <b>${args.text}</b>, I sawed this boat in half! And repaired it with only
-    <b>${args.text}</b>!
-  </p>`;
+  html` <span> This is an example of how to bring attention to <b>${args.text}</b>. </span>`;
 
 export const StrongTemplate = (args) =>
-  html` <span
-    >What does the scouter say about his power level? <strong>${args.text}</strong></span
-  >`;
+  html` <span> This is an example of <strong>${args.text}</strong>. </span>`;
 
-export const SmallTemplate = (args) => html` <small>${args.text}</small>`;
+export const SmallTemplate = (args) =>
+  html`<span>This is an example of <small>${args.text}</small></span>`;
 
 export const IdiomaticTemplate = (args) =>
-  html`<p>
+  html`<span>
     <i>${args.text}</i> is a beacon leading ships safely toward our collective knowledge.
-  </p>`;
+  </span>`;
 
-export const EmphasisTemplate = (args) => html`<p>You <em>${args.text}</em> the truth!</p>`;
+export const EmphasisTemplate = (args) =>
+  html`<span>This is an example of <em>${args.text}</em>.</span>`;
 
 export const TableTemplate = (args) => html`
   <table class="typography-table-example" style="border-collapse: collapse;">
@@ -58,13 +49,13 @@ export const TableTemplate = (args) => html`
     </thead>
     <tbody>
       <tr>
-        <td class="typography-table-example">Sugar</td>
+        <td class="typography-table-example">Item 1</td>
       </tr>
       <tr>
-        <td class="typography-table-example">Spice</td>
+        <td class="typography-table-example">Item 2</td>
       </tr>
       <tr>
-        <td class="typography-table-example">Everything Nice</td>
+        <td class="typography-table-example">Item 3</td>
       </tr>
     </tbody>
   </table>
@@ -91,21 +82,15 @@ export const ListNoBulletsTemplate = () => html`
 export const NestedListsTemplate = () => html`
   <ul class="list-example__nested">
     <li>
-      Claudette Colvin
+      Item 1
       <ul>
-        <li>
-          As a teenager, Colvin refused to give up her bus seat nine months before Rosa Parks.
-        </li>
+        <li>Item 1.1</li>
       </ul>
     </li>
     <li>
-      Maude Ballou
+      Item 2
       <ul>
-        <li>
-          Maude served as MLK's personal secretary, his right-hand woman from 1955 until 1960. In
-          1957, she was listed as number 21 on the Montgomery Improvement Associations list of
-          persons and churches most vulnerable to violent attacks.
-        </li>
+        <li>Item 2.1</li>
       </ul>
     </li>
   </ul>
@@ -132,7 +117,7 @@ export const InlineListTemplate = () => html`
   <Story
     name="Bring to Attention Text"
     args={{
-      text: 'Flex Tape',
+      text: 'specific text',
     }}
   >
     {BringAttentionTemplate.bind({})}
@@ -143,7 +128,7 @@ export const InlineListTemplate = () => html`
   <Story
     name="Strong Text"
     args={{
-      text: "It's over 9000!",
+      text: 'strong text',
     }}
   >
     {StrongTemplate.bind({})}
@@ -154,7 +139,7 @@ export const InlineListTemplate = () => html`
   <Story
     name="Small Text"
     args={{
-      text: 'Honey, I shrunk the text!',
+      text: 'small text',
     }}
   >
     {SmallTemplate.bind({})}
@@ -176,7 +161,7 @@ export const InlineListTemplate = () => html`
   <Story
     name="Stress Emphasis Text"
     args={{
-      text: "can't handle",
+      text: 'emphasized text',
     }}
   >
     {EmphasisTemplate.bind({})}
@@ -187,7 +172,7 @@ export const InlineListTemplate = () => html`
   <Story
     name="Tables"
     args={{
-      header: 'Ingredients',
+      header: 'Header',
     }}
   >
     {TableTemplate.bind({})}
