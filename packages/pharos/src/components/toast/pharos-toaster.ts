@@ -54,7 +54,7 @@ export class PharosToaster extends LitElement {
     const toast = document.createElement('pharos-toast') as PharosToast;
     const { content, status } = (<CustomEvent>event).detail;
 
-    toast.insertAdjacentHTML('afterbegin', content);
+    toast.innerHTML = content;
     toast.status = status || DEFAULT_STATUS;
     this.insertBefore(toast, this.childNodes[0] || null);
     await this.updateComplete;
