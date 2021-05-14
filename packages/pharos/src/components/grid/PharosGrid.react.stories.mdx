@@ -13,6 +13,7 @@ import { PharosLink } from '../../react-components/link/pharos-link';
     viewport: {
       viewports,
     },
+    layout: 'fullscreen',
   }}
 />
 
@@ -54,14 +55,7 @@ export const gridColumns = () => {
 # Grid
 
 <Canvas>
-  <Story
-    name="One column"
-    parameters={{
-      layout: 'fullscreen',
-    }}
-  >
-    {<PharosGrid>{gridColumns()}</PharosGrid>}
-  </Story>
+  <Story name="One column">{<PharosGrid>{gridColumns()}</PharosGrid>}</Story>
 </Canvas>
 
 ## API
@@ -71,10 +65,7 @@ export const gridColumns = () => {
 # One column with sidenav
 
 <Canvas>
-  <Story
-    name="One column with sidenav"
-    parameters={{ docs: { disable: true }, layout: 'fullscreen' }}
-  >
+  <Story name="One column with sidenav" parameters={{ docs: { disable: true } }}>
     {
       <div
         style={{
@@ -99,39 +90,13 @@ export const gridColumns = () => {
 # Two column
 
 <Canvas>
-  <Story
-    name="Two column"
-    parameters={{
-      layout: 'fullscreen',
-    }}
-  >
+  <Story name="Two column">
     {
       <Fragment>
         <PharosGrid layout="2-col">
-          <div
-            style={{
-              gridColumn: 'span 8',
-              gridRow: '1',
-              background: 'var(--pharos-color-glacier-blue-70)',
-              height: '20rem',
-            }}
-          ></div>
-          <div
-            style={{
-              gridColumn: 'span 8',
-              gridRow: '2',
-              background: 'var(--pharos-color-glacier-blue-70)',
-              height: '14.5rem',
-            }}
-          ></div>
-          <div
-            style={{
-              gridColumn: 'span 4',
-              gridRow: 'span 2',
-              background: 'var(--pharos-color-glacier-blue-70)',
-              height: '38rem',
-            }}
-          ></div>
+          <div className="grid-example__container--first"></div>
+          <div className="grid-example__container--second"></div>
+          <div className="grid-example__container--third"></div>
         </PharosGrid>
         <PharosGrid layout="2-col" style={{ position: 'absolute', top: 0, width: '100%' }}>
           {gridColumns()}
@@ -146,7 +111,7 @@ export const gridColumns = () => {
 <Canvas>
   <Story name="Column layouts">
     {
-      <PharosGrid>
+      <PharosGrid style={{ margin: '1rem 0' }}>
         {gridItems([1, 2, 3, 4, 6])}
         {comboItems([7, 8, 9, 10])}
       </PharosGrid>

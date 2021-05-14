@@ -230,3 +230,31 @@ p.alert-example__content + p.alert-example__content {
   background-color: rgba(244, 215, 215, 0.6);
   padding-top: var(--pharos-spacing-1-x);
 }
+
+.grid-example__container--first {
+  grid-column: span 8;
+  grid-row: 1;
+  background: var(--pharos-color-glacier-blue-70);
+  height: 20rem;
+}
+
+.grid-example__container--second {
+  grid-column: span 8;
+  grid-row: 2;
+  background: var(--pharos-color-glacier-blue-70);
+  height: 14.5rem;
+}
+
+.grid-example__container--third {
+  grid-column: span 4;
+  grid-row: span 2;
+  background: var(--pharos-color-glacier-blue-70);
+  height: 38rem;
+}
+
+@include pharos.until(small) {
+  .grid-example__container--first,
+  .grid-example__container--second {
+    grid-column: span 4;
+  }
+}

@@ -407,7 +407,7 @@
   @each $breakpoint, $margin in $breakpoints {
     $i: index($breakpoints, $breakpoint $margin);
 
-    @if $i != 1 and $i != length($breakpoints) {
+    @if $i != length($breakpoints) {
       $upper: nth(map-keys($breakpoints), $i + 1);
 
       @include between($breakpoint, $upper) {
@@ -417,7 +417,7 @@
           $sidenav: str-index($layout, '--sidenav') and $i > 2
         );
       }
-    } @else if $i == length($breakpoints) {
+    } @else {
       @include at-least($breakpoint) {
         #{$property}: functions.content-width(
           map-get(variables.$breakpoints, $breakpoint, width),
