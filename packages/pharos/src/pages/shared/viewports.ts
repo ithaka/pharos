@@ -36,4 +36,4 @@ export const viewports = {
   },
 };
 
-export const breakpoints = [1584, 1360, 1056, 768, 320];
+export const breakpoints = [1584, 1360, 1056, 768, 360];
