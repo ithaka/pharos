@@ -1,5 +1,6 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
 import { Fragment } from 'react';
+import { viewports } from '../../pages/shared/viewports';
 
 import { PharosGrid } from '../../react-components/grid/pharos-grid';
 import { PharosSidenav } from '../../react-components/sidenav/pharos-sidenav';
@@ -9,6 +10,9 @@ import { PharosLink } from '../../react-components/link/pharos-link';
   title="Components/Grid"
   parameters={{
     component: PharosGrid,
+    viewport: {
+      viewports,
+    },
   }}
 />
 

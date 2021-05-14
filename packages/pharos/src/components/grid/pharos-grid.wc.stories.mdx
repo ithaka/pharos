@@ -1,11 +1,19 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
 import { html } from 'lit-html';
+import { viewports } from '../../pages/shared/viewports';
 
 import './pharos-grid';
 import '../sidenav/pharos-sidenav';
 import '../link/pharos-link';
 
-<Meta title="Components/Grid" />
+<Meta
+  title="Components/Grid"
+  parameters={{
+    viewport: {
+      viewports,
+    },
+  }}
+/>
 
 export const gridItems = (rows) => {
   const arr = [];
