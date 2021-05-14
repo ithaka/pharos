@@ -30,18 +30,19 @@ export const Template = (args) => (
     hideLabel={args.hideLabel}
   >
     <span slot="label">{args.label}</span>
-    <option value="1">Bulbasaur</option>
-    <option value="2">Charmander</option>
-    <option value="3">Squirtle</option>
-    <option value="4">Caterpie</option>
-    <option value="5">Weedle</option>
-    <option value="6">Pidgey</option>
-    <option value="7">Rattata</option>
-    <option value="8">Spearow</option>
-    <option value="9">Ekans</option>
-    <option value="10">Pikachu</option>
-    <option value="11">Sandshrew</option>
-    <option value="12">Clefairy</option>
+    <option value="1">New Hampshire</option>
+    <option value="2">Massachusetts</option>
+    <option value="3">Connecticut</option>
+    <option value="4">Rhode Island</option>
+    <option value="5">New York</option>
+    <option value="6">New Jersey</option>
+    <option value="7">Pennsylvania</option>
+    <option value="8">Delaware</option>
+    <option value="9">Maryland</option>
+    <option value="10">Virginia</option>
+    <option value="11">North Carolina</option>
+    <option value="12">South Carolina</option>
+    <option value="13">Georgia</option>
   </PharosCombobox>
 );
 
@@ -49,7 +50,7 @@ export const Template = (args) => (
   <Story
     name="Base"
     args={{
-      label: 'I am a label',
+      label: 'Thirteen Colonies',
       value: '',
       name: '',
       placeholder: '',
@@ -125,19 +126,20 @@ export const Template = (args) => (
             onChange={(e) => action('Change')(e.target.value)}
             onInput={(e) => action('Input')(e.target.value)}
           >
-            <span slot="label">I fire events on input</span>
-            <option value="1">Bulbasaur</option>
-            <option value="2">Charmander</option>
-            <option value="3">Squirtle</option>
-            <option value="4">Caterpie</option>
-            <option value="5">Weedle</option>
-            <option value="6">Pidgey</option>
-            <option value="7">Rattata</option>
-            <option value="8">Spearow</option>
-            <option value="9">Ekans</option>
-            <option value="10">Pikachu</option>
-            <option value="11">Sandshrew</option>
-            <option value="12">Clefairy</option>
+            <span slot="label">Events fire on selection</span>
+            <option value="NH">New Hampshire</option>
+            <option value="MA">Massachusetts</option>
+            <option value="CT">Connecticut</option>
+            <option value="RI">Rhode Island</option>
+            <option value="NY">New York</option>
+            <option value="NJ">New Jersey</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="DE">Delaware</option>
+            <option value="MD">Maryland</option>
+            <option value="VA">Virginia</option>
+            <option value="NC">North Carolina</option>
+            <option value="SC">South Carolina</option>
+            <option value="GA">Georgia</option>
           </PharosCombobox>
         </div>
       );
