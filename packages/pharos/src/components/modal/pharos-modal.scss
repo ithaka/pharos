@@ -65,13 +65,14 @@
     display: block;
     overflow-y: visible;
     transition-duration: var(--pharos-transition-duration-long);
+    height: 100%;
   }
 
   .modal__dialog {
     position: relative;
     min-width: 100vw;
     max-height: 100vh;
-    height: 100vh;
+    height: 100%;
     top: 100%;
     transition: visibility var(--pharos-transition-duration-long) linear
         var(--pharos-transition-duration-long),
