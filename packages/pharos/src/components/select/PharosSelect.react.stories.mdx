@@ -2,6 +2,7 @@ import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 
 import { PharosSelect } from '../../react-components/select/pharos-select';
+import { PharosLink } from '../../react-components/link/pharos-link';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -13,7 +14,11 @@ import createFormData from '../../utils/createFormData';
   }}
 />
 
-# Examples
+# Select
+
+<PharosLink href="https://www.jstor.org/pharos/components/select" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 export const Template = (args) => (
   <PharosSelect

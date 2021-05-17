@@ -4,12 +4,15 @@ import { action } from '@storybook/addon-actions';
 import { PharosTabs } from '../../react-components/tabs/pharos-tabs';
 import { PharosTab } from '../../react-components/tabs/pharos-tab';
 import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
+import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta title="Components/Tabs" />
 
-## Examples
+# Tabs
 
-### Basic
+<PharosLink href="https://www.jstor.org/pharos/components/tabs" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 <Canvas withToolbar>
   <Story name="Base">
@@ -36,7 +39,21 @@ import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
   </Story>
 </Canvas>
 
-### Event handling
+## API
+
+### pharos-tabs
+
+<ArgsTable of={PharosTabs} />
+
+### pharos-tab
+
+<ArgsTable of={PharosTab} />
+
+### pharos-tab-panel
+
+<ArgsTable of={PharosTabPanel} />
+
+## Event handling
 
 <Canvas withToolbar>
   <Story name="Events">
@@ -63,7 +80,7 @@ import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
   </Story>
 </Canvas>
 
-### Panel order
+## Panel order
 
 <Canvas withToolbar>
   <Story name="Panel Order">
@@ -89,17 +106,3 @@ import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
     </PharosTabs>
   </Story>
 </Canvas>
-
-## API
-
-### pharos-tabs
-
-<ArgsTable of={PharosTabs} />
-
-### pharos-tab
-
-<ArgsTable of={PharosTab} />
-
-### pharos-tab-panel
-
-<ArgsTable of={PharosTabPanel} />

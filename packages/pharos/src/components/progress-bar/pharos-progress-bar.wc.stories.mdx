@@ -2,6 +2,7 @@ import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
 import { html } from 'lit-html';
 
 import './pharos-progress-bar';
+import '../link/pharos-link';
 
 <Meta title="Components/Progress Bar" />
 
@@ -14,6 +15,8 @@ export const Template = (args) =>
   `;
 
 # Progress Bar
+
+<pharos-link href="https://www.jstor.org/pharos/components/progress-bar" target="_blank">See guidelines in Pharos</pharos-link>
 
 <Canvas>
   <Story
@@ -31,6 +34,12 @@ export const Template = (args) =>
   </Story>
 </Canvas>
 
+## API
+
+<ArgsTable of="pharos-progress-bar" />
+
+## Plain
+
 <Canvas>
   <Story
     name="Plain"
@@ -44,7 +53,3 @@ export const Template = (args) =>
     {Template.bind({})}
   </Story>
 </Canvas>
-
-## API
-
-<ArgsTable of="pharos-progress-bar" />

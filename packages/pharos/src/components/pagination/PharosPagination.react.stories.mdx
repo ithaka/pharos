@@ -2,6 +2,7 @@ import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 
 import { PharosPagination } from '../../react-components/pagination/pharos-pagination';
+import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta
   title="Components/Pagination"
@@ -12,6 +13,10 @@ import { PharosPagination } from '../../react-components/pagination/pharos-pagin
 />
 
 # Pagination
+
+<PharosLink href="https://www.jstor.org/pharos/components/pagination" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 export const Template = (args) => (
   <PharosPagination
@@ -34,11 +39,11 @@ export const Template = (args) => (
   </Story>
 </Canvas>
 
-# API
+## API
 
 <ArgsTable of={PharosPagination} />
 
-# Events
+## Events
 
 <Canvas withToolbar>
   <Story name="Events">
