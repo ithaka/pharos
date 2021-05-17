@@ -5,9 +5,9 @@
     The sidenav component is a vertical navigation layout that houses links and menus to help users
     navigate the site.
   </p>
-  <pharos-link href="#" target="_blank">
+  <PharosLink href="#" target="_blank">
     See in Storybook
-  </pharos-link>
+  </PharosLink>
 </div>
 
 ## Usage
@@ -20,13 +20,15 @@
   </p>
 </div>
 
-<pharos-heading level={'2'} preset={'6'}>Best Practices</pharos-heading>
+<PharosHeading level={'2'} preset={'6'}>
+  Best Practices
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Dos
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>The primary links representing main sections of the site should be listed first</li>
       <li>If needed, group navigation items into sections based on related categories.</li>
@@ -47,9 +49,9 @@
     </ul>
   </div>
   <div>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Don'ts
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>
         Don't use icons to represent the navigation items, alone or with text, reserve icons for use
@@ -74,7 +76,9 @@
   </div>
 </div>
 
-<pharos-heading level={'2'} preset={'6'}>Content Guidelines</pharos-heading>
+<PharosHeading level={'2'} preset={'6'}>
+  Content Guidelines
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
@@ -85,38 +89,42 @@
   </div>
 </div>
 
-<pharos-heading level={'2'} preset={'6'}>States</pharos-heading>
+<PharosHeading level={'2'} preset={'6'}>
+  States
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'4'}>
+    <PharosHeading level={'3'} preset={'4'}>
       Link
-    </pharos-heading>
-    <pharos-heading level={'4'} preset={'1--bold'}>
+    </PharosHeading>
+    <PharosHeading level={'4'} preset={'1--bold'}>
       External
-    </pharos-heading>
+    </PharosHeading>
     The sidenav link sub-component has an <code>external</code> state which places the external icon
     at the end of the row and causes the link to be open in a new page/tab.
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'4'}>
+    <PharosHeading level={'3'} preset={'4'}>
       Section
-    </pharos-heading>
-    <pharos-heading level={'4'} preset={'1--bold'}>
+    </PharosHeading>
+    <PharosHeading level={'4'} preset={'1--bold'}>
       Show Divider
-    </pharos-heading>
+    </PharosHeading>
     The sidenav section sub-component has a <code>showDivider</code> state, which places a divider
     below the section.
   </div>
 </div>
 
-<pharos-heading level={'2'} preset={'6'}>Variant</pharos-heading>
+<PharosHeading level={'2'} preset={'6'}>
+  Variant
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'4'}>
+    <PharosHeading level={'3'} preset={'4'}>
       Mobile
-    </pharos-heading>
+    </PharosHeading>
     The sidenav component has built-in responsive design which hides the menu for any width lower than
     1056 pixels. In order to show the menu again, use the button sub-component for a manual toggling
     experience. The navigation appears over the top of the content with an overlay over the underlying
@@ -124,63 +132,65 @@
   </div>
 </div>
 
-<pharos-heading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>Accessibility</pharos-heading>
+<PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+  Accessibility
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Relevant WCAG Guidelines
-    </pharos-heading>
+    </PharosHeading>
     <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
       <li>
-        <pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
           1.3.1 Info and Relationships A
-        </pharos-link>
+        </PharosLink>
       </li>
       <li>
-        <pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-navigation">
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-navigation">
           3.2.3 Consistent Navigation AA
-        </pharos-link>
+        </PharosLink>
       </li>
       <li>
-        <pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard">
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard">
           2.1.1 Keyboard
-        </pharos-link>
+        </PharosLink>
       </li>
     </ul>
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Importance
-    </pharos-heading>
+    </PharosHeading>
     Helps users get an overview of the hierarchical content available on the site and how to navigate
     them.
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Visual expectations
-    </pharos-heading>
+    </PharosHeading>
     A vertical menu that can contain links, sections and expandable menus
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Code expectations
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>The parent component is a nav element</li>
       <li>The menu sub-component is an unordered list</li>
     </ul>
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Screen reader
-    </pharos-heading>
+    </PharosHeading>
     Reads items in order from top to bottom
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Keyboard
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>
         <kbd>Tab</kbd>: moves focus onto the dropdown. When dropdown is expanded, focus will go to

@@ -5,9 +5,9 @@
     Toasts are non-disruptive messages that appear at the top right corner of the UI to provide
     quick, at-a-glance feedback on the outcome of an action.
   </p>
-  <pharos-link href="#" target="_blank">
+  <PharosLink href="#" target="_blank">
     See in Storybook
-  </pharos-link>
+  </PharosLink>
 </div>
 
 ## Usage
@@ -20,13 +20,15 @@
   </p>
 </div>
 
-<pharos-heading level={'2'} preset={'6'}>Best Practices</pharos-heading>
+<PharosHeading level={'2'} preset={'6'}>
+  Best Practices
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Dos
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>
         Use for short messages to confirm an action as feedback to the user. For example, you might
@@ -47,9 +49,9 @@
     </ul>
   </div>
   <div>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Don'ts
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>Not to be used for marketing information or in-app feature messages</li>
       <li>
@@ -60,15 +62,15 @@
 </div>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <pharos-heading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+  <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
     Content guidelines
-  </pharos-heading>
-  <pharos-heading level={'3'} preset={'4'}>
+  </PharosHeading>
+  <PharosHeading level={'3'} preset={'4'}>
     Toast Messages
-  </pharos-heading>
-  <pharos-heading level={'4'} preset={'2'}>
+  </PharosHeading>
+  <PharosHeading level={'4'} preset={'2'}>
     Success
-  </pharos-heading>
+  </PharosHeading>
   <p>
     Toast messages are simple, concise and human-sounding. The message informs the user of the
     outcome of an action.
@@ -82,33 +84,33 @@
   <p>Toast messages should be human sounding, and not as system-centric:</p>
   <ul className="list-example__no-bullets">
     <li style={{ display: 'flex', color: 'var(--pharos-color-green)' }}>
-      <pharos-icon
+      <PharosIcon
         name={'checkmark'}
         class="checkmark"
         style={{
           marginRight: 'var(--pharos-spacing-one-half-x)',
           fill: 'var(--pharos-color-green)',
         }}
-      ></pharos-icon>"The item was saved to Martin Luther King Research."
+      ></PharosIcon>"The item was saved to Martin Luther King Research."
     </li>
     <li style={{ display: 'flex', color: 'var(--pharos-color-living-coral-53)' }}>
-      <pharos-icon
+      <PharosIcon
         name={'close'}
         class="close"
         style={{
           marginRight: 'var(--pharos-spacing-one-half-x',
           fill: 'var(--pharos-color-living-coral-53)',
         }}
-      ></pharos-icon>"Item saved to Martin Luther King Research."
+      ></PharosIcon>"Item saved to Martin Luther King Research."
     </li>
   </ul>
   <p>
     Avoid unnecessary terms, for example, don't use "successfully" in banners that confirm an action
     has been completed, the success toast variant will suffice.
   </p>
-  <pharos-heading level={'4'} preset={'2'}>
+  <PharosHeading level={'4'} preset={'2'}>
     Error
-  </pharos-heading>
+  </PharosHeading>
   <p>
     When a user experiences an error, it should include an actionable step that the user can take on
     their own or seek help from support.
@@ -116,44 +118,46 @@
 </div>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <pharos-heading level={'2'} preset={'6'}>
+  <PharosHeading level={'2'} preset={'6'}>
     States
-  </pharos-heading>
-  <pharos-toast open>I am a success toast</pharos-toast>
-  <pharos-toast status="error" open>
+  </PharosHeading>
+  <PharosToast open>I am a success toast</PharosToast>
+  <PharosToast status="error" open>
     I am an error toast
-  </pharos-toast>
+  </PharosToast>
 </div>
 
-<pharos-heading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>Accessibility</pharos-heading>
+<PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+  Accessibility
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <pharos-heading level={'3'} preset={'2'}>
+  <PharosHeading level={'3'} preset={'2'}>
     Relevant WCAG Guidelines
-  </pharos-heading>
+  </PharosHeading>
   <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
     <li>
-      <pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification.html">
+      <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification.html">
         3.2.4 Consistent Identification
-      </pharos-link>
+      </PharosLink>
     </li>
     <li>
-      <pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html">
+      <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html">
         1.4.13 Content on Hover or Focus AA
-      </pharos-link>
+      </PharosLink>
     </li>
   </ul>
 </div>
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <pharos-heading level={'3'} preset={'2'}>
+  <PharosHeading level={'3'} preset={'2'}>
     Importance
-  </pharos-heading>
+  </PharosHeading>
   Allows the user to receive a quick notification
 </div>
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <pharos-heading level={'3'} preset={'2'}>
+  <PharosHeading level={'3'} preset={'2'}>
     Visual expectations
-  </pharos-heading>
+  </PharosHeading>
   <ul>
     <li>Toast notification should always appear in the same location on the screen</li>
     <li>
@@ -165,9 +169,9 @@
   </ul>
 </div>
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <pharos-heading level={'3'} preset={'2'}>
+  <PharosHeading level={'3'} preset={'2'}>
     Code expectations
-  </pharos-heading>
+  </PharosHeading>
   <ul>
     <li>
       Toasts should be wrapped in aria-live-region and have <code>role="alert"</code>, having both
@@ -177,18 +181,18 @@
   </ul>
 </div>
 <div>
-  <pharos-heading level={'3'} preset={'2'}>
+  <PharosHeading level={'3'} preset={'2'}>
     Expected actions
-  </pharos-heading>
+  </PharosHeading>
   <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
-    <pharos-heading level={'4'} preset={'1--bold'}>
+    <PharosHeading level={'4'} preset={'1--bold'}>
       Screen reader
-    </pharos-heading>
+    </PharosHeading>
     Reads the notification as soon as it appears on screen
   </div>
-  <pharos-heading level={'4'} preset={'1--bold'}>
+  <PharosHeading level={'4'} preset={'1--bold'}>
     Keyboard
-  </pharos-heading>
+  </PharosHeading>
   <ul>
     <li>
       Toast gets added into the focus order.
