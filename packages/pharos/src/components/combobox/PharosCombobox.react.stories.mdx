@@ -2,10 +2,7 @@ import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 
 import { PharosCombobox } from '../../react-components/combobox/pharos-combobox';
-
-import Intro from '@docs/guidelines/combobox.docs.mdx';
-
-<Intro />
+import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta
   title="Forms/Combobox"
@@ -14,7 +11,11 @@ import Intro from '@docs/guidelines/combobox.docs.mdx';
   }}
 />
 
-# Examples
+# Combobox
+
+<PharosLink href="https://www.jstor.org/pharos/components/combobox" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 export const Template = (args) => (
   <PharosCombobox

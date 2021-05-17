@@ -5,9 +5,9 @@
     The breadcrumb component is a secondary navigational pattern that allows users to move between
     and obtain context of various levels of hierarchy.
   </p>
-  <pharos-link href="#" target="_blank">
+  <PharosLink href="#" target="_blank">
     See in Storybook
-  </pharos-link>
+  </PharosLink>
 </div>
 
 ## Usage
@@ -19,13 +19,15 @@
   </p>
 </div>
 
-<pharos-heading level={'2'} preset={'6'}>Best Practices</pharos-heading>
+<PharosHeading level={'2'} preset={'6'}>
+  Best Practices
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Dos
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>Use relevant portions of page titles as their link text</li>
       <li>
@@ -35,9 +37,9 @@
     </ul>
   </div>
   <div>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Don'ts
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>Don't use breadcrumbs as the primary form of navigation</li>
       <li>Don't use breadcrumb-items outside of the breadcrumb component</li>
@@ -45,64 +47,66 @@
   </div>
 </div>
 
-<pharos-heading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>Accessibility</pharos-heading>
+<PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+  Accessibility
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <pharos-heading level={'3'} preset={'2'}>
+  <PharosHeading level={'3'} preset={'2'}>
     Relevant WCAG Guidelines
-  </pharos-heading>
+  </PharosHeading>
   <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
     <li>
-      <pharos-link href="https://www.w3.org/TR/wai-aria-practices/#breadcrumb">
+      <PharosLink href="https://www.w3.org/TR/wai-aria-practices/#breadcrumb">
         3.4 Authoring practices
-      </pharos-link>
+      </PharosLink>
     </li>
     <li>
-      <pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/location.html">
+      <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/location.html">
         2.4.8 Location (AA)
-      </pharos-link>
+      </PharosLink>
     </li>
     <li>
-      <pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html">
+      <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html">
         4.1.2: Name, Role, Value (Level A)
-      </pharos-link>
+      </PharosLink>
     </li>
   </ul>
 </div>
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <pharos-heading level={'3'} preset={'2'}>
+  <PharosHeading level={'3'} preset={'2'}>
     Importance
-  </pharos-heading>
+  </PharosHeading>
   Helps users understand where in the site they currently are visiting
 </div>
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <pharos-heading level={'3'} preset={'2'}>
+  <PharosHeading level={'3'} preset={'2'}>
     Visual expectations
-  </pharos-heading>
+  </PharosHeading>
   A trail of links pertaining to parental content separated by forward slashes
 </div>
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <pharos-heading level={'3'} preset={'2'}>
+  <PharosHeading level={'3'} preset={'2'}>
     Code expectations
-  </pharos-heading>
+  </PharosHeading>
   <ul>
     <li>The parent breadcrumb component is a nav element with an aria-label of breadcrumb</li>
     <li>The collection of links are contained in a ordered list</li>
   </ul>
 </div>
 <div>
-  <pharos-heading level={'3'} preset={'2'}>
+  <PharosHeading level={'3'} preset={'2'}>
     Expected actions
-  </pharos-heading>
+  </PharosHeading>
   <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
-    <pharos-heading level={'4'} preset={'1--bold'}>
+    <PharosHeading level={'4'} preset={'1--bold'}>
       Screen reader
-    </pharos-heading>
+    </PharosHeading>
     Reads links in breadcrumb in order
   </div>
-  <pharos-heading level={'4'} preset={'1--bold'}>
+  <PharosHeading level={'4'} preset={'1--bold'}>
     Keyboard
-  </pharos-heading>
+  </PharosHeading>
   <ul>
     <li>Links in breadcrumb are focused in order with tab</li>
   </ul>

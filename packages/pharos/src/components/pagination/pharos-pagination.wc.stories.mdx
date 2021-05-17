@@ -3,10 +3,7 @@ import { html } from 'lit-html';
 import { action } from '@storybook/addon-actions';
 
 import './pharos-pagination';
-
-import Intro from '@docs/guidelines/pagination.docs.mdx';
-
-<Intro />
+import '../link/pharos-link';
 
 <Meta
   title="Components/Pagination"
@@ -16,6 +13,8 @@ import Intro from '@docs/guidelines/pagination.docs.mdx';
 />
 
 # Pagination
+
+<pharos-link href="https://www.jstor.org/pharos/components/pagination" target="_blank">See guidelines in Pharos</pharos-link>
 
 export const Template = (args) =>
   html`
@@ -39,11 +38,11 @@ export const Template = (args) =>
   </Story>
 </Canvas>
 
-# API
+## API
 
 <ArgsTable of="pharos-pagination" />
 
-# Events
+## Events
 
 <Canvas withToolbar>
   <Story name="Events">
