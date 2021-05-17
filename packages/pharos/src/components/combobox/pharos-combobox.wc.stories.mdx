@@ -58,7 +58,7 @@ export const Template = (args) =>
       open: false,
       disabled: false,
       hideLabel: false,
-      label: 'Thirteen Colonies',
+      label: 'Combobox Label',
     }}
   >
     {Template.bind({})}
@@ -122,7 +122,7 @@ export const Template = (args) =>
           style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
         >
           <pharos-combobox
-            placeholder="Who's that Pokemon?"
+            placeholder="Select a state"
             @change="${(e) => action('Change')(e.target.value)}"
             @input="${(e) => action('Input')(e.target['_input'].value)}"
           >
@@ -153,7 +153,7 @@ export const Template = (args) =>
   <Story name="Search Mode">
     {() => {
       return html`
-        <pharos-combobox placeholder="Search for things" search-mode>
+        <pharos-combobox placeholder="Search..." search-mode>
           <span slot="label">I'm searching for</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>

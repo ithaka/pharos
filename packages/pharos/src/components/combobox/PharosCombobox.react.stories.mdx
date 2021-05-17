@@ -50,7 +50,7 @@ export const Template = (args) => (
   <Story
     name="Base"
     args={{
-      label: 'Thirteen Colonies',
+      label: 'Combobox Label',
       value: '',
       name: '',
       placeholder: '',
@@ -122,7 +122,7 @@ export const Template = (args) => (
           }}
         >
           <PharosCombobox
-            placeholder="Enter some text"
+            placeholder="Select a state"
             onChange={(e) => action('Change')(e.target.value)}
             onInput={(e) => action('Input')(e.target.value)}
           >
@@ -153,7 +153,7 @@ export const Template = (args) => (
   <Story name="Search Mode">
     {() => {
       return (
-        <PharosCombobox placeholder="Search for things" searchMode>
+        <PharosCombobox placeholder="Search..." searchMode>
           <span slot="label">I'm searching for</span>
           <option value="1">Bulbasaur</option>
           <option value="2">Charmander</option>
