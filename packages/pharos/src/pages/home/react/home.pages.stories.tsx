@@ -34,7 +34,7 @@ export const Home: FC = () => (
       </div>
       <div
         className="home-page__hero"
-        style={{ backgroundImage: `url('./images/storybook/home/hero.jpg')` }}
+        style={{ backgroundImage: `url('./images/home/hero.jpg')` }}
       ></div>
       <div className="home-page__container--body">
         <PharosLink href="#" className="home-page__hero-link">

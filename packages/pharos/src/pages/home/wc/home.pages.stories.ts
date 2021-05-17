@@ -33,10 +33,7 @@ export const Home = (): TemplateResult => html`
         >
         ${HeroSearch()}
       </div>
-      <div
-        class="home-page__hero"
-        style="background-image: url('./images/storybook/home/hero.jpg')"
-      ></div>
+      <div class="home-page__hero" style="background-image: url('./images/home/hero.jpg')"></div>
       <div class="home-page__container--body">
         <pharos-link href="#" class="home-page__hero-link"
           >Tō kaidō gojo santsugi. Okazaki. Plate No 39. From the series: Fifty-three stations of
