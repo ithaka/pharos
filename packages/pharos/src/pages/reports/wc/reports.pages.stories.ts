@@ -37,12 +37,7 @@ export const Reports = (): TemplateResult => html`
         <div class="reports-page__container--top" slot="top">
           <div class="reports-page__container--nav-header">
             <pharos-sidenav-button></pharos-sidenav-button>
-            <img
-              src="./images/storybook/reports/jstor-horizontal.svg"
-              alt="logo"
-              width="96"
-              height="24"
-            />
+            <img src="./images/reports/jstor-horizontal.svg" alt="logo" width="96" height="24" />
             <span class="reports-page__separator">/</span>
             <pharos-heading level="1" preset="4" no-margin>Admin</pharos-heading>
           </div>

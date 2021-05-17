@@ -38,7 +38,7 @@ export const Home: FC = () => (
         <div
           className="home-page__hero"
           slot="top"
-          style={{ backgroundImage: `url('./images/storybook/home/hero.jpg')` }}
+          style={{ backgroundImage: `url('./images/home/hero.jpg')` }}
         ></div>
         <PharosLink href="#" className="home-page__hero-link">
           Tō kaidō gojo santsugi. Okazaki. Plate No 39. From the series: Fifty-three stations of the

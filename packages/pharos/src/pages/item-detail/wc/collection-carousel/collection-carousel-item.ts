@@ -8,7 +8,7 @@ import '../../../../components/heading/pharos-heading';
 export const CollectionCarouselItem = (collection: Collection): TemplateResult => html`
   <pharos-link href="#" subtle flex>
     <div class="item-detail-page__grid--carousel-item item-detail-page__grid--open-collection">
-      <img src="./images/storybook/item-detail/${collection.image}" alt="${collection.title}" />
+      <img src="./images/item-detail/${collection.image}" alt="${collection.title}" />
       <pharos-heading preset="1--bold" level="3" no-margin>${collection.title}</pharos-heading>
     </div>
   </pharos-link>

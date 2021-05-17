@@ -40,12 +40,7 @@ export const Reports: FC = () => (
           <div className="reports-page__container--top" slot="top">
             <div className="reports-page__container--nav-header">
               <PharosSidenavButton />
-              <img
-                src="./images/storybook/reports/jstor-horizontal.svg"
-                alt="logo"
-                width="96"
-                height="24"
-              />
+              <img src="./images/reports/jstor-horizontal.svg" alt="logo" width="96" height="24" />
               <span className="reports-page__separator">/</span>
               <PharosHeading level={1} preset="4" noMargin>
                 Admin
