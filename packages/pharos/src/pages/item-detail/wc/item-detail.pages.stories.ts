@@ -12,7 +12,7 @@ import { Metadata } from './metadata';
 import '../../../components/button/pharos-button';
 import '../../../components/link/pharos-link';
 import '../../../components/icon/pharos-icon';
-import '../../../components/grid/pharos-grid';
+import '../../../components/layout/pharos-layout';
 
 export default {
   title: 'Pages/Item Detail',
@@ -29,8 +29,8 @@ export const ItemDetail = (): TemplateResult => html`
   <div class="item-detail-page__container">
     ${HeaderRevised(true)}
     <main>
-      <pharos-grid
-        layout="2-col"
+      <pharos-layout
+        preset="2-col"
         rows="max-content 1fr"
         class="item-detail-page__container--main-content"
       >
@@ -67,7 +67,7 @@ export const ItemDetail = (): TemplateResult => html`
           ${ItemCarousel()} ${CollectionCarousel()}
         </div>
         ${Metadata()}
-      </pharos-grid>
+      </pharos-layout>
     </main>
     ${Footer()}
   </div>

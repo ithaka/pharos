@@ -19,7 +19,7 @@ import { PharosTab } from '../../../react-components/tabs/pharos-tab';
 import { PharosTabPanel } from '../../../react-components/tabs/pharos-tab-panel';
 import { PharosToaster } from '../../../react-components/toast/pharos-toaster';
 import { PharosSidenavButton } from '../../../react-components/sidenav/pharos-sidenav-button';
-import { PharosGrid } from '../../../react-components/grid/pharos-grid';
+import { PharosLayout } from '../../../react-components/layout/pharos-layout';
 
 export default {
   title: 'Pages/Reports',
@@ -36,7 +36,7 @@ export const Reports: FC = () => (
     <div className="reports-page__container">
       <Sidenav />
       <main>
-        <PharosGrid layout="1-col--sidenav" className="reports-page__container--main-content">
+        <PharosLayout preset="1-col--sidenav" className="reports-page__container--main-content">
           <div className="reports-page__container--top" slot="top">
             <div className="reports-page__container--nav-header">
               <PharosSidenavButton />
@@ -94,7 +94,7 @@ export const Reports: FC = () => (
               </PharosTabPanel>
             </PharosTabs>
           </div>
-        </PharosGrid>
+        </PharosLayout>
       </main>
     </div>
     <PharosToaster></PharosToaster>

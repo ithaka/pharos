@@ -12,7 +12,7 @@ import { PharosSpacing7X } from '../../../styles/variables';
 
 import '../../../components/heading/pharos-heading';
 import '../../../components/link/pharos-link';
-import '../../../components/grid/pharos-grid';
+import '../../../components/layout/pharos-layout';
 
 export default {
   title: 'Pages/Home',
@@ -29,7 +29,7 @@ export const Home = (): TemplateResult => html`
   <div class="home-page__container">
     ${HeaderRevised()}
     <main>
-      <pharos-grid class="home-page__container--main-content" row-gap="${PharosSpacing7X}">
+      <pharos-layout class="home-page__container--main-content" row-gap="${PharosSpacing7X}">
         <div class="home-page__container--top" slot="top">
           <pharos-heading level="1" preset="7" no-margin class="home-page__heading"
             >Knowledge for everyone</pharos-heading
@@ -65,7 +65,7 @@ export const Home = (): TemplateResult => html`
           (card) =>
             html`<div class="home-page__collection-card--community">${CollectionCard(card)}</div>`
         )}
-      </pharos-grid>
+      </pharos-layout>
     </main>
     ${Footer()}
   </div>

@@ -12,7 +12,7 @@ import { PharosSpacing7X } from '../../../styles/variables';
 
 import { PharosHeading } from '../../../react-components/heading/pharos-heading';
 import { PharosLink } from '../../../react-components/link/pharos-link';
-import { PharosGrid } from '../../../react-components/grid/pharos-grid';
+import { PharosLayout } from '../../../react-components/layout/pharos-layout';
 
 export default {
   title: 'Pages/Home',
@@ -28,7 +28,7 @@ export const Home: FC = () => (
   <div className="home-page__container">
     <HeaderRevised />
     <main>
-      <PharosGrid className="home-page__container--main-content" rowGap={PharosSpacing7X}>
+      <PharosLayout className="home-page__container--main-content" rowGap={PharosSpacing7X}>
         <div className="home-page__container--top" slot="top">
           <PharosHeading level={1} preset="7" noMargin className="home-page__heading">
             Knowledge for everyone
@@ -72,7 +72,7 @@ export const Home: FC = () => (
             {CollectionCard(card)}
           </div>
         ))}
-      </PharosGrid>
+      </PharosLayout>
     </main>
     <Footer />
   </div>

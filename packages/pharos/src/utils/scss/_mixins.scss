@@ -346,12 +346,12 @@
   }
 }
 
-@mixin grid-base {
+@mixin layout-base {
   display: grid;
   grid-template-areas: '. content .';
 }
 
-@mixin grid-content {
+@mixin layout-content {
   display: grid;
   grid-area: content;
   grid-template-columns: repeat(map-get(variables.$breakpoints, large, columns), 1fr);
@@ -369,7 +369,7 @@
   }
 }
 
-@mixin grid-base-columns($layout) {
+@mixin layout-base-columns($layout) {
   $breakpoints: map-get(variables.$layouts, $layout);
   $fixed-margin: $layout != '1-col';
 
@@ -395,7 +395,7 @@
   }
 }
 
-@mixin grid-content-width($layout) {
+@mixin layout-content-width($layout) {
   $breakpoints: map-get(variables.$layouts, $layout);
   $fixed-width: $layout == '1-col';
   $property: if($fixed-width, width, min-width);

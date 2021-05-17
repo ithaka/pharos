@@ -16,7 +16,7 @@ import '../../../components/tabs/pharos-tab-panel';
 import '../../../components/button/pharos-button';
 import '../../../components/toast/pharos-toaster';
 import '../../../components/sidenav/pharos-sidenav-button';
-import '../../../components/grid/pharos-grid';
+import '../../../components/layout/pharos-layout';
 
 export default {
   title: 'Pages/Reports',
@@ -33,7 +33,7 @@ export const Reports = (): TemplateResult => html`
   <div class="reports-page__container">
     ${Sidenav()}
     <main>
-      <pharos-grid layout="1-col--sidenav" class="reports-page__container--main-content">
+      <pharos-layout preset="1-col--sidenav" class="reports-page__container--main-content">
         <div class="reports-page__container--top" slot="top">
           <div class="reports-page__container--nav-header">
             <pharos-sidenav-button></pharos-sidenav-button>
@@ -79,7 +79,7 @@ export const Reports = (): TemplateResult => html`
             </pharos-tab-panel>
           </pharos-tabs>
         </div>
-      </pharos-grid>
+      </pharos-layout>
     </main>
   </div>
   <pharos-toaster></pharos-toaster>

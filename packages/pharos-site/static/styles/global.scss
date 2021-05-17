@@ -214,7 +214,7 @@ p.alert-example__content + p.alert-example__content {
   }
 }
 
-.grid-example__item {
+.layout-example__item {
   background: var(--pharos-color-living-coral-80);
   height: 3rem;
   display: flex;
@@ -222,7 +222,7 @@ p.alert-example__content + p.alert-example__content {
   justify-content: center;
 }
 
-.grid-example__column {
+.layout-example__column {
   display: flex;
   justify-content: center;
   grid-column: span 1;
@@ -231,21 +231,21 @@ p.alert-example__content + p.alert-example__content {
   padding-top: var(--pharos-spacing-1-x);
 }
 
-.grid-example__container--first {
+.layout-example__container--first {
   grid-column: span 8;
   grid-row: 1;
   background: var(--pharos-color-glacier-blue-70);
   height: 20rem;
 }
 
-.grid-example__container--second {
+.layout-example__container--second {
   grid-column: span 8;
   grid-row: 2;
   background: var(--pharos-color-glacier-blue-70);
   height: 14.5rem;
 }
 
-.grid-example__container--third {
+.layout-example__container--third {
   grid-column: span 4;
   grid-row: span 2;
   background: var(--pharos-color-glacier-blue-70);
@@ -253,8 +253,8 @@ p.alert-example__content + p.alert-example__content {
 }
 
 @include pharos.until(small) {
-  .grid-example__container--first,
-  .grid-example__container--second {
+  .layout-example__container--first,
+  .layout-example__container--second {
     grid-column: span 4;
   }
 }

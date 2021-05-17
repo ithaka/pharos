@@ -2,14 +2,14 @@ import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
 import { Fragment } from 'react';
 import { viewports } from '../../pages/shared/viewports';
 
-import { PharosGrid } from '../../react-components/grid/pharos-grid';
+import { PharosLayout } from '../../react-components/layout/pharos-layout';
 import { PharosSidenav } from '../../react-components/sidenav/pharos-sidenav';
 import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta
-  title="Components/Grid"
+  title="Components/Layout"
   parameters={{
-    component: PharosGrid,
+    component: PharosLayout,
     viewport: {
       viewports,
     },
@@ -25,7 +25,7 @@ export const gridItems = (rows) => {
     }
   });
   return arr.map((item, index) => (
-    <div key={index} className="grid-example__item" style={{ gridColumn: `span ${item.span}` }}>
+    <div key={index} className="layout-example__item" style={{ gridColumn: `span ${item.span}` }}>
       {item.cols}
     </div>
   ));
@@ -38,7 +38,7 @@ export const comboItems = (rows) => {
     arr.push({ span: 12 - item, cols: 12 - item });
   });
   return arr.map((item, index) => (
-    <div key={index} className="grid-example__item" style={{ gridColumn: `span ${item.span}` }}>
+    <div key={index} className="layout-example__item" style={{ gridColumn: `span ${item.span}` }}>
       Span {item.cols}
     </div>
   ));
@@ -47,7 +47,7 @@ export const comboItems = (rows) => {
 export const gridColumns = () => {
   const arr = [];
   for (let i = 1; i <= 12; i++) {
-    arr.push(<div className="grid-example__column">{i}</div>);
+    arr.push(<div className="layout-example__column">{i}</div>);
   }
   return arr;
 };
@@ -55,12 +55,12 @@ export const gridColumns = () => {
 # Grid
 
 <Canvas>
-  <Story name="One column">{<PharosGrid>{gridColumns()}</PharosGrid>}</Story>
+  <Story name="One column">{<PharosLayout>{gridColumns()}</PharosLayout>}</Story>
 </Canvas>
 
 ## API
 
-<ArgsTable of={PharosGrid} />
+<ArgsTable of={PharosLayout} />
 
 # One column with sidenav
 
@@ -80,7 +80,7 @@ export const gridColumns = () => {
           </PharosLink>
         </PharosSidenav>
         <main sstyle={{ gridArea: 'main' }}>
-          <PharosGrid layout="1-col--sidenav">{gridColumns()}</PharosGrid>
+          <PharosLayout preset="1-col--sidenav">{gridColumns()}</PharosLayout>
         </main>
       </div>
     }
@@ -93,14 +93,14 @@ export const gridColumns = () => {
   <Story name="Two column">
     {
       <Fragment>
-        <PharosGrid layout="2-col">
-          <div className="grid-example__container--first"></div>
-          <div className="grid-example__container--second"></div>
-          <div className="grid-example__container--third"></div>
-        </PharosGrid>
-        <PharosGrid layout="2-col" style={{ position: 'absolute', top: 0, width: '100%' }}>
+        <PharosLayout preset="2-col">
+          <div className="layout-example__container--first"></div>
+          <div className="layout-example__container--second"></div>
+          <div className="layout-example__container--third"></div>
+        </PharosLayout>
+        <PharosLayout preset="2-col" style={{ position: 'absolute', top: 0, width: '100%' }}>
           {gridColumns()}
-        </PharosGrid>
+        </PharosLayout>
       </Fragment>
     }
   </Story>
@@ -111,10 +111,10 @@ export const gridColumns = () => {
 <Canvas>
   <Story name="Column layouts">
     {
-      <PharosGrid style={{ margin: '1rem 0' }}>
+      <PharosLayout style={{ margin: '1rem 0' }}>
         {gridItems([1, 2, 3, 4, 6])}
         {comboItems([7, 8, 9, 10])}
-      </PharosGrid>
+      </PharosLayout>
     }
   </Story>
 </Canvas>

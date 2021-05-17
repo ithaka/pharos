@@ -12,7 +12,7 @@ import { Metadata } from './Metadata';
 import { PharosButton } from '../../../react-components/button/pharos-button';
 import { PharosLink } from '../../../react-components/link/pharos-link';
 import { PharosIcon } from '../../../react-components/icon/pharos-icon';
-import { PharosGrid } from '../../../react-components/grid/pharos-grid';
+import { PharosLayout } from '../../../react-components/layout/pharos-layout';
 
 export default {
   title: 'Pages/Item Detail',
@@ -28,8 +28,8 @@ export const ItemDetail: FC = () => (
   <div className="item-detail-page__container">
     <HeaderRevised showSearch={true} />
     <main>
-      <PharosGrid
-        layout="2-col"
+      <PharosLayout
+        preset="2-col"
         rows="max-content 1fr"
         className="item-detail-page__container--main-content"
       >
@@ -75,7 +75,7 @@ export const ItemDetail: FC = () => (
           <CollectionCarousel />
         </div>
         <Metadata />
-      </PharosGrid>
+      </PharosLayout>
     </main>
     <Footer />
   </div>
