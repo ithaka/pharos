@@ -347,7 +347,7 @@
       "description": ""
     },
     "released": {
-      "status": "na",
+      "status": "9.1.0",
       "description": ""
     }
   },
@@ -419,11 +419,11 @@
   },
   "pagination": {
     "design": {
-      "status": "alpha",
+      "status": "released",
       "description": ""
     },
     "development": {
-      "status": "alpha",
+      "status": "released",
       "description": ""
     },
     "tests": {

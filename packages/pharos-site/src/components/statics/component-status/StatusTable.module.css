@@ -8,18 +8,20 @@
 }
 
 .table__cell {
-  padding: var(--pharos-spacing-one-and-a-half-x) 10rem var(--pharos-spacing-one-and-a-half-x) 0;
-  white-space: nowrap;
+  padding: var(--pharos-spacing-one-and-a-half-x) 0 var(--pharos-spacing-one-and-a-half-x) 0;
   vertical-align: top;
-  max-width: 11rem;
 }
 
 .table__header {
-  padding: var(--pharos-spacing-three-quarters-x) 0 var(--pharos-spacing-three-quarters-x) 0;
+  padding: var(--pharos-spacing-three-quarters-x) var(--pharos-spacing-2-x)
+    var(--pharos-spacing-three-quarters-x) 0;
   text-align: left;
   position: sticky;
   top: 0;
   background: var(--pharos-color-white);
+  min-width: 11rem;
+  box-shadow: 0 12px 19px rgba(229, 229, 229, 0.4);
+  white-space: nowrap;
 }
 
 .status__description {
@@ -28,4 +30,5 @@
   display: inline-flex;
   font-size: var(--pharos-font-size-small);
   line-height: var(--pharos-line-height-small);
+  padding-right: var(--pharos-spacing-1-x);
 }
