@@ -1,22 +1,15 @@
-import { html, property } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
+import { html, LitElement, property } from 'lit-element';
+import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { nothing } from 'lit-html';
 import { toggleButtonStyles } from './pharos-toggle-button.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
-import { AnchorElement } from '../base/anchor-element';
-import type { LinkTarget } from '../base/anchor-element';
-import FocusMixin from '../../utils/mixins/focus';
 import '../icon/pharos-icon';
 import type { IconName } from '../icon/pharos-icon';
 
-export type ButtonType = 'button' | 'reset';
-
-export type { LinkTarget, IconName };
-
-const TYPES = ['button', 'reset'];
+export type { IconName };
 
 /**
  * Pharos toggle button component.
@@ -27,7 +20,7 @@ const TYPES = ['button', 'reset'];
  *
  */
 @customElement('pharos-toggle-button')
-export class PharosToggleButton extends FocusMixin(AnchorElement) {
+export class PharosToggleButton extends LitElement {
   /**
    * Indicates that the button should have input focus when the page loads.
    * @attr autofocus
@@ -41,14 +34,6 @@ export class PharosToggleButton extends FocusMixin(AnchorElement) {
    */
   @property({ type: Boolean, reflect: true })
   public selected = false;
-
-  /**
-   * Indicates the default behavior of the button via the HTML5 attribute.
-   * @attr type
-   * @type {ButtonType | undefined}
-   */
-  @property({ type: String, reflect: true })
-  public type?: ButtonType;
 
   /**
    * The icon to be shown as the content of the button.
@@ -109,34 +94,12 @@ export class PharosToggleButton extends FocusMixin(AnchorElement) {
   @property({ type: Boolean, reflect: true, attribute: 'full-width' })
   public fullWidth = false;
 
-  /**
-   * Indicates the name when submitted with form data.
-   * @attr name
-   */
-  @property({ type: String, reflect: true })
-  public name?: string;
-
-  /**
-   * Indicates the value associated with the name when submitted with form data.
-   * @attr value
-   */
-  @property({ type: String, reflect: true })
-  public value?: string;
-
   public static get styles(): CSSResultArray {
     return [designTokens, toggleButtonStyles];
   }
 
   protected firstUpdated(): void {
     this.addEventListener('click', this._handleClick);
-  }
-
-  protected update(changedProperties: PropertyValues): void {
-    super.update && super.update(changedProperties);
-
-    if (changedProperties.has('type') && this.type && !TYPES.includes(this.type)) {
-      throw new Error(`${this.type} is not a valid type. Valid types are: ${TYPES.join(', ')}`);
-    }
   }
 
   private _handleClick(): void {
@@ -176,11 +139,9 @@ export class PharosToggleButton extends FocusMixin(AnchorElement) {
     return html`
       <button
         id="toggle-button-element"
-        name="${ifDefined(this.name)}"
-        value="${ifDefined(this.value)}"
         ?autofocus=${this.autofocus}
         ?disabled=${this.selected}
-        type="${ifDefined(this.type)}"
+        type="button"
         aria-label=${ifDefined(this.label)}
       >
         ${this.buttonContent}

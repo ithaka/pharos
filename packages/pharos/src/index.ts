@@ -38,3 +38,4 @@ export { PharosToaster } from './components/toast/pharos-toaster';
 export { PharosToastButton } from './components/toast/pharos-toast-button';
 export { PharosSidenavButton } from './components/sidenav/pharos-sidenav-button';
 export { PharosLayout } from './components/layout/pharos-layout';
+export { PharosToggleButtonGroup } from './components/toggle-button-group/pharos-toggle-button-group';

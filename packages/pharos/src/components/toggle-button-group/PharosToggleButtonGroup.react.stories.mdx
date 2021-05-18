@@ -1,0 +1,45 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { PharosToggleButtonGroup } from '../../react-components/tabs/pharos-toggle-button-group';
+import { PharosToggleButton } from '../../react-components/tabs/pharos-toggle-button';
+
+<Meta title="Components/Tabs" />
+
+## Examples
+
+### Basic
+
+<Canvas>
+  <Story name="Base">
+    <PharosToggleButtonGroup>
+      <PharosToggleButton icon-left="view-list">List</PharosToggleButton>
+      <PharosToggleButton icon-left="view-gallery">Gallery</PharosToggleButton>
+    </PharosToggleButtonGroup>
+  </Story>
+</Canvas>
+
+### Event handling
+
+<Canvas withToolbar>
+  <Story name="Events">
+    <PharosToggleButtonGroup onPharos-Toggle-Button-Selected={(e) => action('Select')(e.target.id)}>
+      <PharosToggleButton id="list-mode-button" icon-left="view-list">
+        List
+      </PharosToggleButton>
+      <PharosToggleButton id="gallery-mode-button" selected icon-left="view-gallery">
+        Gallery
+      </PharosToggleButton>
+    </PharosToggleButtonGroup>
+  </Story>
+</Canvas>
+
+## API
+
+### pharos-toggle-button-group
+
+<ArgsTable of={PharosToggleButtonGroup} />
+
+### pharos-toggle-button
+
+<ArgsTable of={PharosToggleButton} />

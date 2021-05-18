@@ -16,7 +16,7 @@
 }
 
 :host #toggle-button-element:focus {
-  overflow: visible;
+  outline-offset: 0;
 }
 
 :host([large]) #toggle-button-element {
@@ -33,7 +33,7 @@
 
 :host([selected]) #toggle-button-element {
   @include mixins.button-color(
-    $color: var(--pharos-color-text-disabled),
+    $color: var(--pharos-color-ui-50),
     $background-color: transparent,
     $border-color: var(--pharos-color-ui-40)
   );
