@@ -5,6 +5,7 @@ import { nothing } from 'lit-html';
 import { toggleButtonStyles } from './pharos-toggle-button.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
+import FocusMixin from '../../utils/mixins/focus';
 
 import '../icon/pharos-icon';
 import type { IconName } from '../icon/pharos-icon';
@@ -20,7 +21,7 @@ export type { IconName };
  *
  */
 @customElement('pharos-toggle-button')
-export class PharosToggleButton extends LitElement {
+export class PharosToggleButton extends FocusMixin(LitElement) {
   /**
    * Indicates that the button should have input focus when the page loads.
    * @attr autofocus
