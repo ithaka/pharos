@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import type { FC, ReactElement } from 'react';
-import { Link } from 'gatsby';
 import StatusIcon from './StatusIcon';
 import {
   table__row,
@@ -23,7 +22,12 @@ const StatusTable: FC = () => {
 
   const columns = ['Component', 'Design', 'Development', 'Tests', 'Documentation', 'Released In'];
 
+  const Pharos =
+    typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
+
   useEffect(() => {
+    const { PharosLink } = Pharos;
+
     const allComponentStatuses = Object.keys(statuses).map((key, i) => {
       const name = key.charAt(0).toUpperCase() + key.slice(1);
 
@@ -31,7 +35,7 @@ const StatusTable: FC = () => {
         <tr key={i} className={table__row}>
           <td className={table__cell}>
             {statuses[key as keyof typeof statuses].documentation.status === 'released' ? (
-              <Link to={`/components/${key}`}>{toCamelCase(name)}</Link>
+              <PharosLink href={`/components/${key}`}>{toCamelCase(name)}</PharosLink>
             ) : (
               toCamelCase(name)
             )}
@@ -57,7 +61,7 @@ const StatusTable: FC = () => {
     });
 
     setStateTable(allComponentStatuses);
-  }, []);
+  }, [setStateTable, Pharos]);
 
   return (
     <table className={table}>
