@@ -5,9 +5,9 @@ import { toggleButtonStyles } from './pharos-toggle-button.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';
-import type { IconName } from '../button/pharos-button';
+import type { ButtonType, LinkTarget, IconName } from '../button/pharos-button';
 
-export type { IconName };
+export type { ButtonType, LinkTarget, IconName };
 
 /**
  * Pharos toggle button component.
@@ -28,7 +28,7 @@ export class PharosToggleButton extends PharosButton {
 
   constructor() {
     super();
-    this.variant = '';
+    this.variant = 'secondary';
     this.type = 'button';
   }
 
