@@ -213,3 +213,48 @@ p.alert-example__content + p.alert-example__content {
     max-width: 80%;
   }
 }
+
+.layout-example__item {
+  background: var(--pharos-color-living-coral-80);
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout-example__column {
+  display: flex;
+  justify-content: center;
+  grid-column: span 1;
+  height: 100vh;
+  background-color: rgba(244, 215, 215, 0.6);
+  padding-top: var(--pharos-spacing-1-x);
+}
+
+.layout-example__container--first {
+  grid-column: span 8;
+  grid-row: 1;
+  background: var(--pharos-color-glacier-blue-70);
+  height: 20rem;
+}
+
+.layout-example__container--second {
+  grid-column: span 8;
+  grid-row: 2;
+  background: var(--pharos-color-glacier-blue-70);
+  height: 14.5rem;
+}
+
+.layout-example__container--third {
+  grid-column: span 4;
+  grid-row: span 2;
+  background: var(--pharos-color-glacier-blue-70);
+  height: 38rem;
+}
+
+@include pharos.until(small) {
+  .layout-example__container--first,
+  .layout-example__container--second {
+    grid-column: span 4;
+  }
+}

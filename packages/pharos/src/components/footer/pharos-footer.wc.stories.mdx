@@ -1,11 +1,8 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
 
 import './pharos-footer';
+import '../link/pharos-link';
 import { Footer } from '../../pages/shared/wc/footer';
-
-import Intro from '@docs/guidelines/footer.docs.mdx';
-
-<Intro />
 
 <Meta
   title="Organisms/Footer"
@@ -15,6 +12,8 @@ import Intro from '@docs/guidelines/footer.docs.mdx';
 />
 
 # Footer
+
+<pharos-link href="https://www.jstor.org/pharos/components/footer" target="_blank">See guidelines in Pharos</pharos-link>
 
 <Canvas>
   <Story name="Base" parameters={{ chromatic: { viewports: [320, 1024, 1200] } }}>

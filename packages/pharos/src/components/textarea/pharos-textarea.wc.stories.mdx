@@ -4,10 +4,8 @@ import { action } from '@storybook/addon-actions';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 import './pharos-textarea';
+import '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
-import Intro from '@docs/guidelines/textarea.docs.mdx';
-
-<Intro />
 
 <Meta
   title="Forms/Textarea"
@@ -16,7 +14,9 @@ import Intro from '@docs/guidelines/textarea.docs.mdx';
   }}
 />
 
-# Examples
+# Textarea
+
+<pharos-link href="https://www.jstor.org/pharos/components/textarea" target="_blank">See guidelines in Pharos</pharos-link>
 
 export const Template = (args) =>
   html`
@@ -33,8 +33,8 @@ export const Template = (args) =>
         .placeholder=${args.placeholder}
         .resize="${ifDefined(args.resize)}"
         ?readonly=${args.readonly}
-        .rows="${args.rows}"
         ?required=${args.required}
+        .rows="${args.rows}"
         ?validated=${args.validated}
         .value=${args.value}
       >
@@ -65,29 +65,24 @@ export const Template = (args) =>
 # States
 
 <Canvas withToolbar>
-  <Story name="States">
-    {html`
-      <div
-        style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: repeat(2, 250px); -ms-grid-columns: 250px 1rem 250px"
-      >
-        <pharos-textarea><span slot="label">I am empty</span></pharos-textarea>
-        <pharos-textarea disabled style="-ms-grid-column: 3"
-          ><span slot="label">I am disabled</span></pharos-textarea
-        >
-        <pharos-textarea readonly value="Can't touch this" style="-ms-grid-row: 2"
-          ><span slot="label">I am read-only</span></pharos-textarea
-        >
-        <pharos-textarea placeholder="Enter some text" style="-ms-grid-column: 3; -ms-grid-row: 2"
-          ><span slot="label">I have a placeholder</span></pharos-textarea
-        >
-        <pharos-textarea value="Hi there" style="-ms-grid-row: 3"
-          ><span slot="label">I have a value provided</span></pharos-textarea
-        >
-        <pharos-textarea resize="none" style="-ms-grid-column: 3; -ms-grid-row: 3"
-          ><span slot="label">I can't be resized</span></pharos-textarea
-        >
-      </div>
-    `}
+  <Story
+    name="States"
+    argTypes={{
+      type: { table: { disable: true }, defaultValue: 'text' },
+      resize: { control: { type: 'select', options: ['none', 'vertical', 'horizontal', 'both'] } },
+    }}
+    args={{
+      placeholder: 'Enter some text',
+      disabled: false,
+      readonly: false,
+      value: '',
+      resize: ['none', 'vertical', 'horizontal', 'both'],
+      hideLabel: false,
+      invalidated: false,
+      label: 'Edit via control panel',
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 

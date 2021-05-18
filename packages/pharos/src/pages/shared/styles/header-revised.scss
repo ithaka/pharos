@@ -1,9 +1,4 @@
-@use '../styles/grid';
-@use "sass:map";
-
-$small: map.get(grid.$breakpoints, sm, width);
-$medium: map.get(grid.$breakpoints, md, width);
-$large: map.get(grid.$breakpoints, lg, width);
+@use '~@ithaka/pharos/lib/styles/pharos';
 
 @mixin responsive-view {
   .header-revised__container--content {
@@ -111,13 +106,13 @@ $large: map.get(grid.$breakpoints, lg, width);
   display: block;
 }
 
-@media (max-width: $large - 1px) {
+@include pharos.between(small, large) {
   .header-revised__image--logo {
     display: none;
   }
 }
 
-@media (min-width: $medium) and (max-width: $large - 1px) {
+@include pharos.between(medium, large) {
   .header-revised__container {
     grid-template-columns: var(--pharos-spacing-1-x) 1fr var(--pharos-spacing-1-x);
   }
@@ -135,7 +130,7 @@ $large: map.get(grid.$breakpoints, lg, width);
   }
 }
 
-@media screen and (min-width: $small) and (max-width: $medium - 1px) {
+@include pharos.between(small, medium) {
   @include responsive-view;
 
   .header-revised__image--logo-small {

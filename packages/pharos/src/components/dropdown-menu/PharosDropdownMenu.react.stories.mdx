@@ -8,10 +8,6 @@ import { PharosTextInput } from '../../react-components/text-input/pharos-text-i
 import { PharosLink } from '../../react-components/link/pharos-link';
 import { PharosButton } from '../../react-components/button/pharos-button';
 
-import Intro from '@docs/guidelines/dropdown-menu.docs.mdx';
-
-<Intro />
-
 <Meta
   title="Components/Dropdown Menu"
   parameters={{
@@ -20,6 +16,10 @@ import Intro from '@docs/guidelines/dropdown-menu.docs.mdx';
 />
 
 # Dropdown Menu
+
+<PharosLink href="https://www.jstor.org/pharos/components/dropdown-menu" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 <Canvas withToolbar>
   <Story name="Base">
@@ -131,24 +131,20 @@ import Intro from '@docs/guidelines/dropdown-menu.docs.mdx';
       </PharosButton>
       <PharosDropdownMenu id="my-menu-descriptions" showSelected>
         <PharosDropdownMenuItem selected>
-          House Stark
-          <span slot="description">Winterfell, Capital of the Kingdom of the North</span>
+          Item 1<span slot="description">Description for item 1</span>
         </PharosDropdownMenuItem>
         <PharosDropdownMenuItem>
-          House Lannister
-          <span slot="description">Casterly Rock, Capital of the Westerlands</span>
+          Item 2<span slot="description">Description for item 2</span>
         </PharosDropdownMenuItem>
         <PharosDropdownMenuItem>
-          House Targaryen
-          <span slot="description">King's Landing, Capital of the Seven Kingdoms</span>
+          Item 3<span slot="description">Description for item 3</span>
         </PharosDropdownMenuItem>
         <PharosDropdownMenuItem>
-          House Tyrell
-          <span slot="description">Highgarden, Capital of the Reach</span>
+          Item 4<span slot="description">Description for item 4</span>
         </PharosDropdownMenuItem>
         <PharosDropdownMenuItem disabled>
-          House Martell
-          <span slot="description">Sunspear, Capital of Dorne</span>
+          Disabled
+          <span slot="description">This item has been disabled</span>
         </PharosDropdownMenuItem>
       </PharosDropdownMenu>
     </div>
@@ -175,15 +171,13 @@ import Intro from '@docs/guidelines/dropdown-menu.docs.mdx';
         With attribute fullWidth to match the width of the trigger
       </PharosButton>
       <PharosDropdownMenu id="my-menu-full" fullWidth>
-        <PharosDropdownMenuItem>Oh, supercalifragilisticexpialidocious!</PharosDropdownMenuItem>
         <PharosDropdownMenuItem>
-          <span style={{ whiteSpace: 'normal' }}>
-            Even though the sound of it is something quite atrocious
-          </span>
+          <span style={{ whiteSpace: 'normal' }}>Use full-width to display lengthy text</span>
         </PharosDropdownMenuItem>
         <PharosDropdownMenuItem>
           <span style={{ whiteSpace: 'normal' }}>
-            If you say it loud enough you'll always sound precocious
+            Even if longer text is placed in the item, it will span multiple lines to keep the width
+            of the item the same size as the trigger
           </span>
         </PharosDropdownMenuItem>
       </PharosDropdownMenu>
@@ -244,14 +238,11 @@ import Intro from '@docs/guidelines/dropdown-menu.docs.mdx';
         Click Me
       </PharosButton>
       <PharosDropdownMenu id="my-menu-multiple">
-        <PharosDropdownMenuItem>Never gonna give you up</PharosDropdownMenuItem>
-        <PharosDropdownMenuItem>Never gonna let you down</PharosDropdownMenuItem>
-        <PharosDropdownMenuItem>
-          <span style={{ whiteSpace: 'normal' }}>Never gonna run around and desert you</span>
-        </PharosDropdownMenuItem>
-        <PharosDropdownMenuItem>Never gonna make you cry</PharosDropdownMenuItem>
-        <PharosDropdownMenuItem>Never gonna say goodbye</PharosDropdownMenuItem>
-        <PharosDropdownMenuItem>Never gonna tell a lie and hurt you</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Item 1</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Item 2</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Item 3</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Item 4</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Item 5</PharosDropdownMenuItem>
       </PharosDropdownMenu>
       <PharosButton
         data-dropdown-menu-id="my-menu-multiple"

@@ -2,6 +2,7 @@ import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 
 import { PharosTextarea } from '../../react-components/textarea/pharos-textarea';
+import { PharosLink } from '../../react-components/link/pharos-link';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -11,7 +12,11 @@ import createFormData from '../../utils/createFormData';
   }}
 />
 
-# Examples
+# Textarea
+
+<PharosLink href="https://www.jstor.org/pharos/components/textarea" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 export const Template = (args) => (
   <div
@@ -29,6 +34,7 @@ export const Template = (args) => (
       invalidated={args.invalidated}
       message={args.message}
       placeholder={args.placeholder}
+      resize={args.resize}
       readonly={args.readonly}
       required={args.required}
       rows={args.rows}
@@ -64,61 +70,24 @@ export const Template = (args) => (
 <ArgsTable of={PharosTextarea} />
 
 <Canvas withToolbar>
-  <Story name="States">
-    <div
-      style={{
-        display: 'grid',
-        gridGap: '1rem',
-        gridTemplateColumns: 'repeat(2, 250px)',
-      }}
-    >
-      <PharosTextarea>
-        <span slot="label">I am empty</span>
-      </PharosTextarea>
-      <PharosTextarea
-        disabled
-        style={{
-          msGridColumn: '3',
-        }}
-      >
-        <span slot="label">I am disabled</span>
-      </PharosTextarea>
-      <PharosTextarea
-        readonly
-        value="Can't touch this"
-        style={{
-          msGridRow: '2',
-        }}
-      >
-        <span slot="label">I am read-only</span>
-      </PharosTextarea>
-      <PharosTextarea
-        placeholder="Enter some text"
-        style={{
-          msGridColumn: '3',
-          msGridRow: '2',
-        }}
-      >
-        <span slot="label">I have a placeholder</span>
-      </PharosTextarea>
-      <PharosTextarea
-        value="Hi there"
-        style={{
-          msGridRow: '3',
-        }}
-      >
-        <span slot="label">I have a value provided</span>
-      </PharosTextarea>
-      <PharosTextarea
-        resize="none"
-        style={{
-          msGridColumn: '3',
-          msGridRow: '3',
-        }}
-      >
-        <span slot="label">I can't be resized</span>
-      </PharosTextarea>
-    </div>
+  <Story
+    name="States"
+    argTypes={{
+      type: { table: { disable: true }, defaultValue: 'text' },
+      resize: { control: { type: 'select', options: ['none', 'vertical', 'horizontal', 'both'] } },
+    }}
+    args={{
+      placeholder: 'Enter some text',
+      disabled: false,
+      readonly: false,
+      value: '',
+      resize: ['none', 'vertical', 'horizontal', 'both'],
+      hideLabel: false,
+      invalidated: false,
+      label: 'Edit via control panel',
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 

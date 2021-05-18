@@ -1,4 +1,10 @@
-<pharos-heading level={'1'} preset={'7--bold'} style={{color:'black', marginBottom:'var(--pharos-spacing-2-x)'}}>Heading</pharos-heading>
+<PharosHeading
+  level={'1'}
+  preset={'7--bold'}
+  style={{ color: 'black', marginBottom: 'var(--pharos-spacing-2-x)' }}
+>
+  Heading
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <p style={{ fontSize: 'var(--pharos-type-scale-6)', lineHeight: '2rem' }}>
@@ -32,9 +38,9 @@
     allow users to easily scan pages and content. This includes line-height, font-family,
     font-sizes, letter-spacing and font weight.
   </p>
-  <pharos-heading level={'2'} preset={'1--bold'}>
+  <PharosHeading level={'2'} preset={'1--bold'}>
     Related
-  </pharos-heading>
+  </PharosHeading>
   JSTOR uses design tokens to set the typography styling in JSTOR's products. To learn more about other
   typography styles for the product, see our <PharosLink href="https://www.jstor.org/pharos/brand-expressions/typography">typography brand expression page.</PharosLink>
 </div>
@@ -44,112 +50,118 @@
 JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix of both to express our heading styles.
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <pharos-heading preset={'3'}>Ivar Headline</pharos-heading>
-  <pharos-heading preset={'3--bold'}>Ivar Headline Medium</pharos-heading>
-  <pharos-heading preset={'4'}>GT America</pharos-heading>
-  <pharos-heading preset={'4--bold'}>GT America Medium</pharos-heading>
+  <PharosHeading preset={'3'}>Ivar Headline</PharosHeading>
+  <PharosHeading preset={'3--bold'}>Ivar Headline Medium</PharosHeading>
+  <PharosHeading preset={'4'}>GT America</PharosHeading>
+  <PharosHeading preset={'4--bold'}>GT America Medium</PharosHeading>
 </div>
 
-<pharos-heading level={'2'} preset={'6'} style={{marginBottom: 'var(--pharos-spacing-1-x)', color:'var(--pharos-color-text-base)'}}>Presets</pharos-heading>
+<PharosHeading
+  level={'2'}
+  preset={'6'}
+  style={{ marginBottom: 'var(--pharos-spacing-1-x)', color: 'var(--pharos-color-text-base)' }}
+>
+  Presets
+</PharosHeading>
 
-| {/\*\*                                                                                 |                                                                                                                                                                                        |     |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| <pharos-heading preset={'2'}>JSTOR is for the intellectually curious</pharos-heading>  | <strong>Preset="2"</strong>                                                                                                                                                            |
-|                                                                                        | <ul><li>typeface: GT America Standard</li><li>font-size: 20px</li><li>font-weight: Regular (400)</li><li>letter-spacing: -2%</li></ul>                                                 |
-| <pharos-heading preset={'3'}>JSTOR is for the intellectually curious</pharos-heading>  | <strong>Preset="3"</strong>                                                                                                                                                            |
-|                                                                                        | <ul><li>Typeface: GT America Standard</li> <li>Font-size: 24px</li> <li>Line-height: 28px</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li></ul>                   |
-| <pharos-heading preset={'4'}>JSTOR is for the intellectually curious</pharos-heading>  | <strong>Preset="4"</strong>                                                                                                                                                            |
-|                                                                                        | <ul><li>Typeface: Ivar Headline</li> <li>font-size: 24px</li> <li>Line-height: 28px</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -1%</li></ul>                         |
-| <pharos-heading preset={'5'}>JSTOR is for the intellectually curious </pharos-heading> | <strong>Preset="5"</strong>                                                                                                                                                            |
-|                                                                                        | <ul><li>Typeface: GT America Standard</li> <li>Font-size: 32px</li> <li>Line-height: 36px</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li></ul>                   |
-| <pharos-heading preset={'6'}>JSTOR is for the intellectually curious</pharos-heading>  | <strong>Preset="6"</strong>                                                                                                                                                            |
-|                                                                                        | <ul><li>Typeface: Ivar Headline</li> <li>Font-size: 32px</li> <li>Line-height: 36px</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li></ul>                         |
-| <pharos-heading preset={'7'}>JSTOR is for the intellectually curious</pharos-heading>  | <strong>Preset="7"</strong><ul><li>Typeface: Ivar Headline</li> <li>font-size: 54px</li> <li>line-height: 1</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li></ul> |
+| {/\*\*                                                                               |                                                                                                                                                                                        |     |
+| ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| <PharosHeading preset={'2'}>JSTOR is for the intellectually curious</PharosHeading>  | <strong>Preset="2"</strong>                                                                                                                                                            |
+|                                                                                      | <ul><li>typeface: GT America Standard</li><li>font-size: 20px</li><li>font-weight: Regular (400)</li><li>letter-spacing: -2%</li></ul>                                                 |
+| <PharosHeading preset={'3'}>JSTOR is for the intellectually curious</PharosHeading>  | <strong>Preset="3"</strong>                                                                                                                                                            |
+|                                                                                      | <ul><li>Typeface: GT America Standard</li> <li>Font-size: 24px</li> <li>Line-height: 28px</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li></ul>                   |
+| <PharosHeading preset={'4'}>JSTOR is for the intellectually curious</PharosHeading>  | <strong>Preset="4"</strong>                                                                                                                                                            |
+|                                                                                      | <ul><li>Typeface: Ivar Headline</li> <li>font-size: 24px</li> <li>Line-height: 28px</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -1%</li></ul>                         |
+| <PharosHeading preset={'5'}>JSTOR is for the intellectually curious </PharosHeading> | <strong>Preset="5"</strong>                                                                                                                                                            |
+|                                                                                      | <ul><li>Typeface: GT America Standard</li> <li>Font-size: 32px</li> <li>Line-height: 36px</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li></ul>                   |
+| <PharosHeading preset={'6'}>JSTOR is for the intellectually curious</PharosHeading>  | <strong>Preset="6"</strong>                                                                                                                                                            |
+|                                                                                      | <ul><li>Typeface: Ivar Headline</li> <li>Font-size: 32px</li> <li>Line-height: 36px</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li></ul>                         |
+| <PharosHeading preset={'7'}>JSTOR is for the intellectually curious</PharosHeading>  | <strong>Preset="7"</strong><ul><li>Typeface: Ivar Headline</li> <li>font-size: 54px</li> <li>line-height: 1</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li></ul> |
 
 !\*/}
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading
+    <PharosHeading
       level={'3'}
       preset={'legend'}
       style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}
     >
       Regular weight presets
-    </pharos-heading>
-    <pharos-heading level={'4'} preset={'7'}>
+    </PharosHeading>
+    <PharosHeading level={'4'} preset={'7'}>
       Heading Preset 7
-    </pharos-heading>
-    <pharos-heading
+    </PharosHeading>
+    <PharosHeading
       level={'4'}
       preset={'6'}
       style={{ marginBottom: 'var(--pharos-spacing-one-half-x)' }}
     >
       Heading Preset 6
-    </pharos-heading>
-    <pharos-heading
+    </PharosHeading>
+    <PharosHeading
       level={'4'}
       preset={'5'}
       style={{ marginBottom: 'var(--pharos-spacing-one-quarter-x)' }}
     >
       Heading Preset 5
-    </pharos-heading>
-    <pharos-heading
+    </PharosHeading>
+    <PharosHeading
       level={'4'}
       preset={'4'}
       style={{ marginBottom: 'var(--pharos-spacing-one-half-x)' }}
     >
       Heading Preset 4
-    </pharos-heading>
-    <pharos-heading
+    </PharosHeading>
+    <PharosHeading
       level={'4'}
       preset={'3'}
       style={{ marginBottom: 'var(--pharos-spacing-one-half-x)' }}
     >
       Heading Preset 3
-    </pharos-heading>
-    <pharos-heading level={'4'} preset={'2'}>
+    </PharosHeading>
+    <PharosHeading level={'4'} preset={'2'}>
       Heading Preset 2
-    </pharos-heading>
+    </PharosHeading>
   </div>
   <div>
-    <pharos-heading
+    <PharosHeading
       level={'3'}
       preset={'legend'}
       style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}
     >
       Bold weight presets
-    </pharos-heading>
-    <pharos-heading level={'4'} preset={'7--bold'}>
+    </PharosHeading>
+    <PharosHeading level={'4'} preset={'7--bold'}>
       Heading Preset 7--bold
-    </pharos-heading>
-    <pharos-heading
+    </PharosHeading>
+    <PharosHeading
       level={'4'}
       preset={'5--bold'}
       style={{ marginBottom: 'var(--pharos-spacing-one-half-x)' }}
     >
       Heading Preset 5--bold
-    </pharos-heading>
-    <pharos-heading
+    </PharosHeading>
+    <PharosHeading
       level={'4'}
       preset={'1--bold'}
       style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}
     >
       Heading Preset 1--bold
-    </pharos-heading>
-    <pharos-heading level={'4'} preset={'legend'}>
+    </PharosHeading>
+    <PharosHeading level={'4'} preset={'legend'}>
       Heading Preset Legend
-    </pharos-heading>
+    </PharosHeading>
   </div>
 </div>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <pharos-heading level={'2'} preset={'6'} style={{ color: 'var(--pharos-color-text-base)' }}>
+  <PharosHeading level={'2'} preset={'6'} style={{ color: 'var(--pharos-color-text-base)' }}>
     Styling
-  </pharos-heading>
-  <pharos-heading level={'3'} preset={'2'} style={{ color: 'var(--pharos-color-text-base)' }}>
+  </PharosHeading>
+  <PharosHeading level={'3'} preset={'2'} style={{ color: 'var(--pharos-color-text-base)' }}>
     Selecting the right presets
-  </pharos-heading>
+  </PharosHeading>
   <p>
     For headings and titles, always try our serif heading presets (Ivar) first because elevates the
     content, beautifies the page, and helps with scannability when paired with our sans-serif
@@ -178,13 +190,15 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
   </ul>
 </div>
 
-<pharos-heading level={'2'} preset={'6'} style= {{color:'var(--pharos-color-text-base)'}}>Best Practices</pharos-heading>
+<PharosHeading level={'2'} preset={'6'} style={{ color: 'var(--pharos-color-text-base)' }}>
+  Best Practices
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Dos
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>
         Include a level number (between 1 and 6) to create semantic hierarchy, all headings need to
@@ -198,9 +212,9 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
     </ul>
   </div>
   <div>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Don'ts
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>
         Don't use heading tags to resize normal text, use our type-scale and font-family design
@@ -212,9 +226,9 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
 </div>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <pharos-heading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+  <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
     Content guidelines
-  </pharos-heading>
+  </PharosHeading>
   <p>
     Headings and subheadings help organize the content. They identify sections and groupings of
     content to make it easy for readers to scan. Headings are also important for accessibility, as
@@ -260,24 +274,24 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
     </ul>
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Importance
-    </pharos-heading>
+    </PharosHeading>
     For screen reader users, headings describe relationships between sections and subsections. They provide
     both an outline and a means of navigation. Without headings, users have to step through every single
     element in turn, to get from one place to another.
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Visual expectations
-    </pharos-heading>
+    </PharosHeading>
     Color contrast of text to background should use WCAG 2.1 AA standards is 4.5:1, except, large text
     only needs 3:1.
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Code expectations
-    </pharos-heading>
+    </PharosHeading>
     <p>Each page starts with a level="1" (h1), and Heading levels should go in a logical order</p>
     <p> For example:</p>
     <ul>
@@ -302,12 +316,12 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
     </ul>
   </div>
   <div>
-    <pharos-heading level={'3'} preset={'2'}>
+    <PharosHeading level={'3'} preset={'2'}>
       Expected actions
-    </pharos-heading>
-    <pharos-heading level={'4'} preset={'1--bold'}>
+    </PharosHeading>
+    <PharosHeading level={'4'} preset={'1--bold'}>
       For screen reader users, headings...
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>describe relationships between sections and subsections.</li>
       <li>

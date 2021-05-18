@@ -1,13 +1,19 @@
-<pharos-heading level={'1'} preset={'7--bold'} style={{color:'black', marginBottom:'var(--pharos-spacing-2-x)'}}>Progress Bar</pharos-heading>
+<PharosHeading
+  level={'1'}
+  preset={'7--bold'}
+  style={{ color: 'black', marginBottom: 'var(--pharos-spacing-2-x)' }}
+>
+  Progress Bar
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <p style={{ fontSize: 'var(--pharos-type-scale-6)', lineHeight: '2rem' }}>
     The progress bar visually represents progress of a particular process. It shows how much of the
     task has been completed and how much is remaining.
   </p>
-  <pharos-link href="#" target="_blank">
+  <PharosLink href="#" target="_blank">
     See in Storybook
-  </pharos-link>
+  </PharosLink>
 </div>
 
 ## Usage
@@ -19,22 +25,24 @@
   </p>
 </div>
 
-<pharos-heading level={'2'} preset={'6'} style= {{color:'var(--pharos-color-text-base)'}}>Best Practices</pharos-heading>
+<PharosHeading level={'2'} preset={'6'} style={{ color: 'var(--pharos-color-text-base)' }}>
+  Best Practices
+</PharosHeading>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'4'}>
+    <PharosHeading level={'3'} preset={'4'}>
       Dos
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>Give users an indication of how much of the task has completed and how much is left</li>
       <li>Display the file being uploaded to reinforce that action a user is taking</li>
     </ul>
   </div>
   <div>
-    <pharos-heading level={'3'} preset={'4'}>
+    <PharosHeading level={'3'} preset={'4'}>
       Don'ts
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>
         Use a progress bar as a placeholder to indicate page, section or content loading, use a
@@ -45,12 +53,12 @@
 </div>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <pharos-heading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+  <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
     Content guidelines
-  </pharos-heading>
-  <pharos-heading level={'3'} preset={'4'}>
+  </PharosHeading>
+  <PharosHeading level={'3'} preset={'4'}>
     Progress Descriptions
-  </pharos-heading>
+  </PharosHeading>
   <ul>
     <li>
       If the progress bar calls for descriptions, these should be written as short sentence
@@ -67,31 +75,31 @@
 </div>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <pharos-heading level={'2'} preset={'6'}>
+  <PharosHeading level={'2'} preset={'6'}>
     States
-  </pharos-heading>
-  <pharos-progress-bar value="25">
+  </PharosHeading>
+  <PharosProgressBar value="25">
     <div slot="title">Title.xls</div>
     <div slot="description">Processing</div>
-  </pharos-progress-bar>
-  <pharos-progress-bar value="50">
+  </PharosProgressBar>
+  <PharosProgressBar value="50">
     <div slot="title">Title.xls</div>
     <div slot="description">Extracting headers...</div>
-  </pharos-progress-bar>
-  <pharos-progress-bar value="75">
+  </PharosProgressBar>
+  <PharosProgressBar value="75">
     <div slot="title">Title.xls</div>
     <div slot="description">Mapping your fields...</div>
-  </pharos-progress-bar>
-  <pharos-progress-bar value="100">
+  </PharosProgressBar>
+  <PharosProgressBar value="100">
     <div slot="title">Title.xls</div>
     <div slot="description">Done!</div>
-  </pharos-progress-bar>
+  </PharosProgressBar>
 </div>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <pharos-heading level={'2'} preset={'6'}>
+  <PharosHeading level={'2'} preset={'6'}>
     Variants
-  </pharos-heading>
+  </PharosHeading>
   <p>
     The progress bar can be used with the file name and description text of the processes, just the
     filename, or just the progress bar itself. Use the progress bar alone when a filename and
@@ -99,58 +107,58 @@
   </p>
   <div style={{ marginBottom: 'var(--pharos-spacing-one-and-a-half-x)' }}>
     <div>
-      <pharos-heading level={'3'} preset={'4'}>
+      <PharosHeading level={'3'} preset={'4'}>
         File Name only
-      </pharos-heading>
+      </PharosHeading>
     </div>
-    <pharos-progress-bar value="100">
+    <PharosProgressBar value="100">
       <div slot="title">Title.xls</div>
-    </pharos-progress-bar>
+    </PharosProgressBar>
   </div>
   <div>
     <div>
-      <pharos-heading level={'3'} preset={'4'}>
+      <PharosHeading level={'3'} preset={'4'}>
         No Title
-      </pharos-heading>
+      </PharosHeading>
     </div>
-    <pharos-progress-bar value="100"></pharos-progress-bar>
+    <PharosProgressBar value="100"></PharosProgressBar>
   </div>
 </div>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <pharos-heading level={'2'} preset={'6'}>
+  <PharosHeading level={'2'} preset={'6'}>
     Accessibility
-  </pharos-heading>
+  </PharosHeading>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'4'}>
+    <PharosHeading level={'3'} preset={'4'}>
       Relevant WCAG Guidelines
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>
-        <pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
           1.3.1 Info and Relationships A
-        </pharos-link>
+        </PharosLink>
       </li>
     </ul>
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'4'}>
+    <PharosHeading level={'3'} preset={'4'}>
       Importance
-    </pharos-heading>
+    </PharosHeading>
     <div>
       For screen reader users, a progress bar will inform the user how far they are into a certain
       process
     </div>
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'4'}>
+    <PharosHeading level={'3'} preset={'4'}>
       Code Expectations
-    </pharos-heading>
+    </PharosHeading>
     <div style={{ fontWeight: 'bold' }}>
       Via{' '}
-      <pharos-link href="https://dequeuniversity.com/library/aria/progress-bar-bounded">
+      <PharosLink href="https://dequeuniversity.com/library/aria/progress-bar-bounded">
         Deque
-      </pharos-link>
+      </PharosLink>
       :
     </div>
     <ul>
@@ -166,9 +174,9 @@
     </ul>
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <pharos-heading level={'3'} preset={'4'}>
+    <PharosHeading level={'3'} preset={'4'}>
       Expected actions
-    </pharos-heading>
+    </PharosHeading>
     <div style={{ fontWeight: 'bold' }}>For screen reader users, progress bars</div>
     <ul>
       <li>Keep them updated with the status of a process</li>
