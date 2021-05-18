@@ -1,5 +1,32 @@
 # @ithaka/pharos
 
+## 9.1.0
+
+### Minor Changes
+
+- [#17](https://github.com/ithaka/pharos/pull/17) [`4dd7f01`](https://github.com/ithaka/pharos/commit/4dd7f010bdad906f0d21dbd35e48378e9bceffd7) Thanks [@Niznikr](https://github.com/Niznikr)! - add layout component:
+
+  - Add design tokens for breakpoints and grid gutter
+  - Add layout component which applies a 12-column grid for a specified layout
+  - Add Sass mixins for establishing grid styles for the breakpoints
+  - Add Sass maps for storing column and margin design decisions
+  - Update example Storybook pages to utilize the component
+
+### Patch Changes
+
+- [#20](https://github.com/ithaka/pharos/pull/20) [`b8581b4`](https://github.com/ithaka/pharos/commit/b8581b4f72309037d0182266571e527a0dec86c5) Thanks [@Niznikr](https://github.com/Niznikr)! - remove component guidelines from Storybook:
+
+  - Remove component guidelines from Storybook
+  - Add links to the guidelines
+  - Use React versions of components in the guidelines to render properly in Gatsby
+  - Move Storybook images to the `.storybook` directory
+
+* [#18](https://github.com/ithaka/pharos/pull/18) [`3d6e99c`](https://github.com/ithaka/pharos/commit/3d6e99c07bcf4d46062dc781d4e812fa69c22114) Thanks [@SMQuazi](https://github.com/SMQuazi)! - Update examples for storybook to align with voice and tone
+
+- [#16](https://github.com/ithaka/pharos/pull/16) [`482ac64`](https://github.com/ithaka/pharos/commit/482ac64ca0bb1876c2fb18d8586caef574a82032) Thanks [@Niznikr](https://github.com/Niznikr)! - fix inconsistent unit test
+
+* [#21](https://github.com/ithaka/pharos/pull/21) [`8c4bd58`](https://github.com/ithaka/pharos/commit/8c4bd580f4dfb0136764a1030fc3b13c6ab19a58) Thanks [@michael-iden](https://github.com/michael-iden)! - fix: resize modal to fill available space on mobile browsers
+
 ## 9.0.0
 
 ### Major Changes

@@ -1,5 +1,16 @@
 # @ithaka/pharos-cli
 
+## 5.0.1
+
+### Patch Changes
+
+- [#20](https://github.com/ithaka/pharos/pull/20) [`b8581b4`](https://github.com/ithaka/pharos/commit/b8581b4f72309037d0182266571e527a0dec86c5) Thanks [@Niznikr](https://github.com/Niznikr)! - remove component guidelines from Storybook:
+
+  - Remove component guidelines from Storybook
+  - Add links to the guidelines
+  - Use React versions of components in the guidelines to render properly in Gatsby
+  - Move Storybook images to the `.storybook` directory
+
 ## 5.0.0
 
 ### Major Changes
