@@ -139,25 +139,24 @@ import '../button/pharos-button';
           </pharos-button>
           <pharos-dropdown-menu id="my-menu-descriptions" show-selected>
             <pharos-dropdown-menu-item selected>
-              House Stark
-              <span slot="description">Winterfell, Capital of the Kingdom of the North</span>
+              Item 1
+              <span slot="description">Description for item 1</span>
             </pharos-dropdown-menu-item>
             <pharos-dropdown-menu-item>
-              House Lannister
-              <span slot="description">Casterly Rock, Capital of the Westerlands</span>
+              Item 2
+              <span slot="description">Description for item 2</span>
             </pharos-dropdown-menu-item>
-            <pharos-dropdown-menu-item
-              >House Targaryen<span slot="description"
-                >King's Landing, Capital of the Seven Kingdoms</span
-              ></pharos-dropdown-menu-item
-            >
             <pharos-dropdown-menu-item>
-              House Tyrell
-              <span slot="description">Highgarden, Capital of the Reach</span>
+              Item 3
+              <span slot="description">Description for item 3</span>
+            </pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>
+              Item 4
+              <span slot="description">Description for item 4</span>
             </pharos-dropdown-menu-item>
             <pharos-dropdown-menu-item disabled>
-              House Martell
-              <span slot="description">Sunspear, Capital of Dorne</span>
+              Disabled
+              <span slot="description">This item has been disabled</span>
             </pharos-dropdown-menu-item>
           </pharos-dropdown-menu>
         </div>
@@ -192,18 +191,14 @@ import '../button/pharos-button';
           </pharos-button>
           <pharos-dropdown-menu id="my-menu-full" full-width>
             <pharos-dropdown-menu-item>
-              Oh, supercalifragilisticexpialidocious!
+              Use full-width to display lengthy text
             </pharos-dropdown-menu-item>
             <pharos-dropdown-menu-item>
-              <span style="white-space: normal"
-                >Even though the sound of it is something quite atrocious</span
-              >
+              <span style="white-space: normal">
+                Even if longer text is placed in the item, it will span multiple lines to keep the
+                width of the item the same size as the trigger
+              </span>
             </pharos-dropdown-menu-item>
-            <pharos-dropdown-menu-item
-              ><span style="white-space: normal"
-                >If you say it loud enough you'll always sound precocious</span
-              ></pharos-dropdown-menu-item
-            >
           </pharos-dropdown-menu>
         </div>
       `;
@@ -272,16 +267,11 @@ import '../button/pharos-button';
           Click Me
         </pharos-button>
         <pharos-dropdown-menu id="my-menu-multiple">
-          <pharos-dropdown-menu-item>Never gonna give you up</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Never gonna let you down</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item
-            ><span style="white-space: normal"
-              >Never gonna run around and desert you</span
-            ></pharos-dropdown-menu-item
-          >
-          <pharos-dropdown-menu-item>Never gonna make you cry</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Never gonna say goodbye</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Never gonna tell a lie and hurt you</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Item 1</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Item 2</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Item 3</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Item 4</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Item 5</pharos-dropdown-menu-item>
         </pharos-dropdown-menu>
         <pharos-button
           data-dropdown-menu-id="my-menu-multiple"
