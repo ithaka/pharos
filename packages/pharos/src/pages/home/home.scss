@@ -1,41 +1,4 @@
-@use '~@ithaka/pharos/lib/utils/scss/mixins';
-@use '../shared/styles/grid';
-@use "sass:map";
-
-$small: map.get(grid.$breakpoints, sm, width);
-$medium: map.get(grid.$breakpoints, md, width);
-$large: map.get(grid.$breakpoints, lg, width);
-$xlarge: map.get(grid.$breakpoints, xlg, width);
-$max: map.get(grid.$breakpoints, max, width);
-
-$columns-small: map.get(grid.$breakpoints, sm, columns);
-$columns-medium: map.get(grid.$breakpoints, md, columns);
-$columns-large: map.get(grid.$breakpoints, lg, columns);
-
-$margin-xlarge: map.get(grid.$breakpoints, xlg, margin);
-$margin-max: map.get(grid.$breakpoints, max, margin);
-
-@function calculate-rem($size) {
-  @return $size / 16px * 1rem;
-}
-
-@function content-width($width, $margin) {
-  @return calculate-rem($width) - 2 * $margin;
-}
-
-@mixin grid-columns-fluid($min-breakpoint, $max-breakpoint) {
-  $min-margin: map.get(grid.$breakpoints, $min-breakpoint, margin);
-  $max-margin: map.get(grid.$breakpoints, $max-breakpoint, margin);
-  $min-width: map.get(grid.$breakpoints, $min-breakpoint, width);
-  $max-width: map.get(grid.$breakpoints, $max-breakpoint, width);
-  $min-content: content-width($min-width, $min-margin);
-  $max-content: content-width($max-width, $max-margin);
-
-  grid-template-columns: minmax($min-margin, $max-margin) minmax($min-content, $max-content) minmax(
-      $min-margin,
-      $max-margin
-    );
-}
+@use '~@ithaka/pharos/lib/styles/pharos';
 
 .home-page__container {
   display: grid;
@@ -63,7 +26,6 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
     '. top .'
     'hero hero hero'
     '. content .';
-  grid-template-columns: $margin-xlarge 1fr $margin-xlarge;
   margin-bottom: 10rem;
 }
 
@@ -84,15 +46,6 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
 
 .home-page__container--top {
   grid-area: top;
-}
-
-.home-page__container--body {
-  grid-area: content;
-  display: grid;
-  grid-template-columns: repeat($columns-large, 1fr);
-  column-gap: grid.$gutter;
-  row-gap: var(--pharos-spacing-7-x);
-  max-width: 79.5rem;
 }
 
 .home-page__hero-link {
@@ -118,7 +71,7 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
 }
 
 .home-page__list--access {
-  @include mixins.no-bullet;
+  @include pharos.no-bullet;
 
   padding-left: 0;
   margin: 0;
@@ -142,7 +95,7 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.32);
 
   &:focus {
-    @include mixins.input-focus;
+    @include pharos.input-focus;
 
     padding: calc(var(--pharos-spacing-1-x) - 1px) calc(var(--pharos-spacing-1-x) - 1px)
       calc(var(--pharos-spacing-1-x) - 1px) calc(4rem - 1px);
@@ -151,7 +104,7 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
 
 .home-page__container--input {
   position: absolute;
-  top: 19.6rem;
+  top: 10rem;
   display: flex;
   align-items: center;
   width: 50rem;
@@ -165,11 +118,7 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
   transform: translateY(-50%);
 }
 
-@media screen and (min-width: $small) and (max-width: $medium - 1px) {
-  .home-page__container--main-content {
-    @include grid-columns-fluid(sm, md);
-  }
-
+@include pharos.between(small, medium) {
   .home-page__collection-card--open {
     grid-column: span 6;
   }
@@ -183,11 +132,7 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
   }
 }
 
-@media screen and (min-width: $medium) and (max-width: $large - 1px) {
-  .home-page__container--main-content {
-    @include grid-columns-fluid(md, lg);
-  }
-
+@include pharos.between(medium, large) {
   .home-page__collection-card--open {
     grid-column: span 6;
   }
@@ -200,17 +145,9 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
   .home-page__container--input {
     width: 42rem;
   }
-
-  .home-page__container--input {
-    top: 18rem;
-  }
 }
 
-@media screen and (max-width: $medium) {
-  .home-page__container--body {
-    grid-template-columns: repeat($columns-medium, 1fr);
-  }
-
+@include pharos.until(medium) {
   .home-page__hero-link {
     grid-column: span 8;
   }
@@ -233,12 +170,7 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
   }
 }
 
-@media only screen and (max-width: $small) {
-  .home-page__container--body {
-    grid-template-columns: repeat($columns-small, 1fr);
-    row-gap: var(--pharos-spacing-three-and-a-half-x);
-  }
-
+@include pharos.until(small) {
   .home-page__hero-link {
     grid-column: span 4;
   }
@@ -265,27 +197,5 @@ $margin-max: map.get(grid.$breakpoints, max, margin);
 
   .home-page__heading {
     margin-top: var(--pharos-spacing-3-x);
-  }
-}
-
-@media screen and (min-width: $large) and (max-width: $xlarge - 1px) {
-  .home-page__container--main-content {
-    @include grid-columns-fluid(lg, xlg);
-  }
-}
-
-@media screen and (min-width: $xlarge) and (max-width: $max) {
-  .home-page__container--main-content {
-    @include grid-columns-fluid(xlg, max);
-  }
-}
-
-@media screen and (min-width: $max) {
-  .home-page__container--main-content {
-    grid-template-columns: $margin-max minmax(content-width($max, $margin-max), 1fr) $margin-max;
-  }
-
-  .home-page__container--body {
-    margin: auto;
   }
 }

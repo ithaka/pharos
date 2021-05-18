@@ -329,6 +329,28 @@
       "description": ""
     }
   },
+  "layout": {
+    "design": {
+      "status": "released",
+      "description": ""
+    },
+    "development": {
+      "status": "released",
+      "description": ""
+    },
+    "tests": {
+      "status": "na",
+      "description": ""
+    },
+    "documentation": {
+      "status": "planned",
+      "description": ""
+    },
+    "released": {
+      "status": "na",
+      "description": ""
+    }
+  },
   "link": {
     "design": {
       "status": "released",
@@ -515,8 +537,8 @@
       "description": ""
     },
     "tests": {
-      "status": "in-progress",
-      "description": "responsive features need tests"
+      "status": "released",
+      "description": ""
     },
     "documentation": {
       "status": "released",

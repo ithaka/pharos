@@ -1,39 +1,9 @@
-@use '~@ithaka/pharos/lib/utils/scss/mixins';
-@use '../shared/styles/grid';
-@use "sass:map";
-
-$small: map.get(grid.$breakpoints, sm, width);
-$medium: map.get(grid.$breakpoints, md, width);
-$large: map.get(grid.$breakpoints, lg, width);
-$xlarge: map.get(grid.$breakpoints, xlg, width);
-$max: map.get(grid.$breakpoints, max, width);
-
-$columns-small: map.get(grid.$breakpoints, sm, columns);
-$columns-medium: map.get(grid.$breakpoints, md, columns);
-$columns-large: map.get(grid.$breakpoints, lg, columns);
-
-$default-margin: 3.5rem;
-
-@function calculate-rem($size) {
-  @return $size / 16px * 1rem;
-}
-
-@function content-width($width, $margin) {
-  @return calculate-rem($width) - 17 - 2 * $margin;
-}
-
-@mixin grid-columns-fluid($min-breakpoint, $max-breakpoint, $margin: $default-margin) {
-  $min-width: map.get(grid.$breakpoints, $min-breakpoint, width);
-  $max-width: map.get(grid.$breakpoints, $max-breakpoint, width);
-  $min-content: content-width($min-width, $margin);
-  $max-content: content-width($max-width, $margin);
-
-  grid-template-columns: $margin minmax($min-content, $max-content) $margin;
-}
+@use '~@ithaka/pharos/lib/styles/pharos';
 
 .reports-page__container {
   display: grid;
   grid-template-areas: 'sidenav main';
+  grid-template-columns: max-content 1fr;
 
   main {
     grid-area: main;
@@ -49,7 +19,6 @@ $default-margin: 3.5rem;
   grid-template-areas:
     '. top .'
     '. content .';
-  grid-template-columns: $default-margin 1fr $default-margin;
   margin-bottom: 9.5rem;
 }
 
@@ -58,14 +27,6 @@ $default-margin: 3.5rem;
   display: flex;
   align-items: center;
   margin-top: var(--pharos-spacing-2-x);
-}
-
-.reports-page__container--body {
-  grid-area: content;
-  display: grid;
-  grid-template-columns: repeat($columns-large, 1fr);
-  column-gap: grid.$gutter;
-  row-gap: var(--pharos-spacing-three-and-a-half-x);
 }
 
 .reports-page__container--disclaimer {
@@ -140,7 +101,7 @@ $default-margin: 3.5rem;
 }
 
 .reports-page__legend {
-  @include mixins.form-element-label;
+  @include pharos.form-element-label;
 }
 
 .reports-page__grid--date-group {
@@ -170,11 +131,7 @@ $default-margin: 3.5rem;
   margin-left: auto;
 }
 
-@media screen and (min-width: $small) and (max-width: $medium - 1px) {
-  .reports-page__container--main-content {
-    grid-template-columns: 1.5rem 1fr 1.5rem;
-  }
-
+@include pharos.between(small, medium) {
   .reports-page__button--create {
     top: -58px;
     right: initial;
@@ -199,13 +156,7 @@ $default-margin: 3.5rem;
   }
 }
 
-@media screen and (min-width: $medium) and (max-width: $large - 1px) {
-  .reports-page__container--main-content {
-    grid-template-columns: $default-margin 1fr $default-margin;
-  }
-}
-
-@media screen and (max-width: $large - 1px) {
+@include pharos.between(small, large) {
   .reports-page__container {
     grid-template-areas: 'main';
     grid-template-columns: 1fr;
@@ -216,17 +167,13 @@ $default-margin: 3.5rem;
   }
 }
 
-@media screen and (max-width: $large) {
+@include pharos.until(large) {
   .reports-page__container--disclaimer {
     grid-column: span 10;
   }
 }
 
-@media screen and (max-width: $medium) {
-  .reports-page__container--body {
-    grid-template-columns: repeat($columns-medium, 1fr);
-  }
-
+@include pharos.until(medium) {
   .reports-page__container--disclaimer {
     grid-column: span 8;
   }
@@ -236,35 +183,12 @@ $default-margin: 3.5rem;
   }
 }
 
-@media only screen and (max-width: $small) {
-  .reports-page__container--body {
-    grid-template-columns: repeat($columns-small, 1fr);
-    row-gap: var(--pharos-spacing-three-and-a-half-x);
-  }
-
+@include pharos.until(small) {
   .reports-page__container--disclaimer {
     grid-column: span 4;
   }
 
   .reports-page__container--table {
     grid-column: span 4;
-  }
-}
-
-@media screen and (min-width: $large) and (max-width: $xlarge - 1px) {
-  .reports-page__container--main-content {
-    @include grid-columns-fluid(lg, xlg);
-  }
-}
-
-@media screen and (min-width: $xlarge) and (max-width: $max) {
-  .reports-page__container--main-content {
-    @include grid-columns-fluid(xlg, max);
-  }
-}
-
-@media screen and (min-width: $max) {
-  .reports-page__container--main-content {
-    grid-template-columns: $default-margin minmax(64rem, 1fr) $default-margin;
   }
 }
