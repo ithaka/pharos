@@ -8,7 +8,7 @@ import type { PharosToggleButton } from './pharos-toggle-button';
 const matchesFunc = 'matches' in Element.prototype ? 'matches' : 'msMatchesSelector';
 
 /**
- * Pharos tabs component.
+ * Pharos toggle button group component.
  *
  * @element pharos-toggle-button-group
  *
@@ -41,6 +41,7 @@ export class PharosToggleButtonGroup extends LitElement {
 
   private _handleButtonSelected(event: Event): void {
     const selected = event.target as PharosToggleButton;
+    console.log(selected.id);
     const previous = this.querySelector(
       `pharos-toggle-button[selected]:not([id="${selected.id}"])`
     ) as PharosToggleButton;

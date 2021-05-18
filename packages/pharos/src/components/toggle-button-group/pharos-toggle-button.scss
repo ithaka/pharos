@@ -11,12 +11,15 @@
   @include mixins.button-base(
     $color: var(--pharos-color-text-base),
     $background-color: transparent,
-    $border-color: var(--pharos-color-ui-40)
+    $border-color: var(--pharos-color-black)
   );
+
+  border-radius: 0;
 }
 
 :host #toggle-button-element:focus {
   outline-offset: 0;
+  margin-right: -2px;
 }
 
 :host([large]) #toggle-button-element {
@@ -33,7 +36,7 @@
 
 :host([selected]) #toggle-button-element {
   @include mixins.button-color(
-    $color: var(--pharos-color-ui-50),
+    $color: var(--pharos-color-ui-40),
     $background-color: transparent,
     $border-color: var(--pharos-color-ui-40)
   );
