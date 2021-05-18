@@ -1,0 +1,9 @@
+{
+  "breakpoint": {
+    "small"  : { "value": "22.5rem", "comment": "360px" },
+    "medium" : { "value": "48rem", "comment": "768px" },
+    "large"  : { "value": "66rem", "comment": "1056px" },
+    "xlarge" : { "value": "85rem", "comment": "1360px" },
+    "max" : { "value": "99rem", "comment": "1584px" }
+  }
+}

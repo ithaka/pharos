@@ -8,9 +8,11 @@ import { Footer } from '../../shared/wc/footer';
 import { CollectionCard } from './collection-card';
 import { HeroSearch } from './hero-search';
 import { publicCollectionCards, communityCollectionCards } from '../mocks';
+import { PharosSpacing7X } from '../../../styles/variables';
 
 import '../../../components/heading/pharos-heading';
 import '../../../components/link/pharos-link';
+import '../../../components/layout/pharos-layout';
 
 export default {
   title: 'Pages/Home',
@@ -26,15 +28,19 @@ export default {
 export const Home = (): TemplateResult => html`
   <div class="home-page__container">
     ${HeaderRevised()}
-    <main class="home-page__container--main-content">
-      <div class="home-page__container--top">
-        <pharos-heading level="1" preset="7" no-margin class="home-page__heading"
-          >Knowledge for everyone</pharos-heading
-        >
-        ${HeroSearch()}
-      </div>
-      <div class="home-page__hero" style="background-image: url('./images/home/hero.jpg')"></div>
-      <div class="home-page__container--body">
+    <main>
+      <pharos-layout class="home-page__container--main-content" row-gap="${PharosSpacing7X}">
+        <div class="home-page__container--top" slot="top">
+          <pharos-heading level="1" preset="7" no-margin class="home-page__heading"
+            >Knowledge for everyone</pharos-heading
+          >
+          ${HeroSearch()}
+        </div>
+        <div
+          class="home-page__hero"
+          slot="top"
+          style="background-image: url('./images/home/hero.jpg')"
+        ></div>
         <pharos-link href="#" class="home-page__hero-link"
           >Tō kaidō gojo santsugi. Okazaki. Plate No 39. From the series: Fifty-three stations of
           the Tō kaidō Road, Kihei Sanoya, circa 1838.</pharos-link
@@ -59,7 +65,7 @@ export const Home = (): TemplateResult => html`
           (card) =>
             html`<div class="home-page__collection-card--community">${CollectionCard(card)}</div>`
         )}
-      </div>
+      </pharos-layout>
     </main>
     ${Footer()}
   </div>
