@@ -2,11 +2,8 @@ import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 
 import { PharosTextInput } from '../../react-components/text-input/pharos-text-input';
+import { PharosLink } from '../../react-components/link/pharos-link';
 import createFormData from '../../utils/createFormData';
-
-import Intro from '@docs/guidelines/text-input.docs.mdx';
-
-<Intro />
 
 <Meta
   title="Forms/Text Input"
@@ -15,7 +12,11 @@ import Intro from '@docs/guidelines/text-input.docs.mdx';
   }}
 />
 
-# Examples
+# Text Input
+
+<PharosLink href="https://www.jstor.org/pharos/components/text-input" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 export const Template = (args) => (
   <div

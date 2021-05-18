@@ -1,0 +1,35 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  @include mixins.layout-base;
+
+  contain: layout;
+}
+
+.layout {
+  @include mixins.layout-content;
+}
+
+:host([preset='1-col']) {
+  @include mixins.layout-base-columns('1-col');
+
+  .layout {
+    @include mixins.layout-content-width('1-col');
+  }
+}
+
+:host([preset='1-col--sidenav']) {
+  @include mixins.layout-base-columns('1-col--sidenav');
+
+  .layout {
+    @include mixins.layout-content-width('1-col--sidenav');
+  }
+}
+
+:host([preset='2-col']) {
+  @include mixins.layout-base-columns('2-col');
+
+  .layout {
+    @include mixins.layout-content-width('2-col');
+  }
+}
