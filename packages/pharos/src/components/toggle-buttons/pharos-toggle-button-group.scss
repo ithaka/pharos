@@ -1,0 +1,11 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  contain: layout;
+}
+
+.toggle-button__list {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}

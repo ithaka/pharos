@@ -1,7 +1,7 @@
 import { html, fixture, expect } from '@open-wc/testing';
 import './pharos-toggle-button';
 import type { PharosToggleButton } from './pharos-toggle-button';
-import { PharosColorMarbleGray10 } from '../../styles/variables';
+import { PharosColorWhite } from '../../styles/variables';
 
 describe('pharos-toggle-button', () => {
   let component: PharosToggleButton;
@@ -12,7 +12,7 @@ describe('pharos-toggle-button', () => {
 
   it('is accessible on a AA compliant background', async () => {
     const parentNode = document.createElement('div');
-    parentNode.style.backgroundColor = PharosColorMarbleGray10;
+    parentNode.style.backgroundColor = PharosColorWhite;
 
     component = await fixture(html`<pharos-toggle-button>I am a button</pharos-toggle-button>`, {
       parentNode,

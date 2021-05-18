@@ -1,0 +1,77 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { PharosToggleButtonGroup } from '../../react-components/tabs/pharos-toggle-button-group';
+import { PharosToggleButton } from '../../react-components/tabs/pharos-toggle-button';
+
+import Intro from '@docs/guidelines/tabs.docs.mdx';
+
+<Intro />
+
+<Meta title="Components/Tabs" />
+
+## Examples
+
+### Basic
+
+<Canvas withToolbar>
+  <Story name="Base">
+    <PharosToggleButtonGroup>
+      <PharosToggleButton id="tab-1" data-panel-id="panel-1">
+        Tab 1
+      </PharosToggleButton>
+      <PharosToggleButton id="tab-2" data-panel-id="panel-2">
+        Tab 2
+      </PharosToggleButton>
+      <PharosToggleButton id="tab-3" data-panel-id="panel-3">
+        Tab 3
+      </PharosToggleButton>
+    </PharosToggleButtonGroup>
+  </Story>
+</Canvas>
+
+### Event handling
+
+<Canvas withToolbar>
+  <Story name="Events">
+    <PharosToggleButtonGroup onPharos-Toggle-Button-Selected={(e) => action('Select')(e.target.id)}>
+      <PharosToggleButton id="tab-1" data-panel-id="panel-1">
+        Tab 1
+      </PharosToggleButton>
+      <PharosToggleButton id="tab-2" data-panel-id="panel-2">
+        Tab 2
+      </PharosToggleButton>
+      <PharosToggleButton id="tab-3" data-panel-id="panel-3" selected>
+        Tab 3
+      </PharosToggleButton>
+    </PharosToggleButtonGroup>
+  </Story>
+</Canvas>
+
+### Panel order
+
+<Canvas withToolbar>
+  <Story name="Panel Order">
+    <PharosToggleButtonGroup>
+      <PharosToggleButton id="tab-1" data-panel-id="panel-1">
+        Tab 1
+      </PharosToggleButton>
+      <PharosToggleButton id="tab-2" data-panel-id="panel-2">
+        Tab 2
+      </PharosToggleButton>
+      <PharosToggleButton id="tab-3" data-panel-id="panel-3">
+        Tab 3
+      </PharosToggleButton>
+    </PharosToggleButtonGroup>
+  </Story>
+</Canvas>
+
+## API
+
+### pharos-toggle-button-group
+
+<ArgsTable of={PharosToggleButtonGroup} />
+
+### pharos-toggle-button
+
+<ArgsTable of={PharosToggleButton} />

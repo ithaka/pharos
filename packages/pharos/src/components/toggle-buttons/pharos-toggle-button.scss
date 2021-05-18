@@ -1,10 +1,90 @@
 @use '../../utils/scss/mixins';
 
-:host([on-background][variant='subtle']:not([disabled])) #button-element:hover,
-:host([on-background][variant='subtle']:not([disabled])) #button-element:active {
-  @include mixins.button-color(
-    $color: var(--pharos-color-marble-gray-50),
+:host {
+  display: inline-flex;
+  contain: layout;
+}
+
+:host #toggle-button-element {
+  @include mixins.button-hover;
+  @include mixins.interactive-focus;
+  @include mixins.button-base(
+    $color: var(--pharos-color-text-base),
     $background-color: transparent,
-    $border-color: transparent
+    $border-color: var(--pharos-color-ui-40)
   );
+}
+
+:host #toggle-button-element:focus {
+  overflow: visible;
+}
+
+:host([large]) #toggle-button-element {
+  @include mixins.button-large;
+}
+
+:host([icon]) #toggle-button-element {
+  padding: var(--pharos-spacing-one-quarter-x);
+}
+
+:host([selected]) {
+  pointer-events: none;
+}
+
+:host([selected]) #toggle-button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-text-disabled),
+    $background-color: transparent,
+    $border-color: var(--pharos-color-ui-40)
+  );
+}
+
+:host([full-width]) {
+  width: 100%;
+
+  #toggle-button-element {
+    justify-content: start;
+    flex: auto;
+  }
+}
+
+:host([icon-condensed][icon]) #toggle-button-element {
+  padding: var(--pharos-spacing-one-eighth-x);
+  border: 0;
+}
+
+:host([icon][large]) #toggle-button-element {
+  padding: var(--pharos-spacing-one-half-x);
+}
+
+:host([on-background]:not([selected])) #toggle-button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-tertiary),
+    $background-color: transparent,
+    $border-color: var(--pharos-color-interactive-tertiary)
+  );
+}
+
+:host([on-background]:not([selected])) #toggle-button-element:hover,
+:host([on-background]:not([selected])) #toggle-button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-secondary),
+    $background-color: var(--pharos-color-interactive-tertiary),
+    $border-color: var(--pharos-color-interactive-tertiary)
+  );
+}
+
+:host([icon]:not([selected])) #toggle-button-element:hover,
+:host([icon]:not([selected])) #toggle-button-element:active {
+  padding: calc(var(--pharos-spacing-one-quarter-x) - 1px);
+}
+
+:host([icon-condensed][icon]:not([selected])) #toggle-button-element:hover,
+:host([icon-condensed][icon]:not([selected])) #toggle-button-element:active {
+  padding: var(--pharos-spacing-one-eighth-x);
+}
+
+:host([icon][large]:not([selected])) #toggle-button-element:hover,
+:host([icon][large]:not([selected])) #toggle-button-element:active {
+  padding: calc(var(--pharos-spacing-one-half-x) - 1px);
 }
