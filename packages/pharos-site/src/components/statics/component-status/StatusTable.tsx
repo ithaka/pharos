@@ -30,10 +30,6 @@ const StatusTable: FC = () => {
   const ref = createRef<HTMLTableCellElement>();
 
   useEffect(() => {
-    console.log(IsStuck);
-  }, [IsStuck]);
-
-  useEffect(() => {
     const { PharosLink } = Pharos;
 
     const cachedRef = ref.current;
@@ -47,7 +43,6 @@ const StatusTable: FC = () => {
       }
     );
     if (cachedRef) {
-      console.log('observing');
       observer.observe(cachedRef);
     }
 
