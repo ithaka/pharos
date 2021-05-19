@@ -1,0 +1,16 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { html } from 'lit-html';
+
+import './pharos-image-card';
+
+<Meta title="Components/Image Card" />
+
+# ImageCard
+
+<Canvas>
+  <Story name="Base">{html` <pharos-image-card title="South Hall"></pharos-image-card> `}</Story>
+</Canvas>
+
+## API
+
+<ArgsTable of="pharos-image-card" />

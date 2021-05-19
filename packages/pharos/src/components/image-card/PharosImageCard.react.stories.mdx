@@ -1,0 +1,22 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+
+import { PharosImageCard } from '../../react-components/image-card/pharos-image-card';
+
+<Meta
+  title="Components/Image Card"
+  parameters={{
+    component: PharosImageCard,
+  }}
+/>
+
+# ImageCard
+
+<Canvas withToolbar>
+  <Story name="Base">
+    <PharosImageCard />
+  </Story>
+</Canvas>
+
+## API
+
+<ArgsTable of={PharosImageCard} />
