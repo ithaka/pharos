@@ -79,6 +79,7 @@ const StatusTable: FC = () => {
     });
 
     setStateTable(allComponentStatuses);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setStateTable, Pharos]);
 
   return (
