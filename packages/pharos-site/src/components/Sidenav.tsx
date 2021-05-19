@@ -117,6 +117,20 @@ const Sidenav: FC = () => {
           <PharosSidenavMenu label="Templates"></PharosSidenavMenu>
         </PharosSidenavSection>
         <PharosSidenavSection label="Design System">
+          <PharosSidenavLink
+            href="/design-tokens"
+            isActive={window.location.pathname === withPrefix('/design-tokens')}
+            onClick={handleLinkClick}
+          >
+            Design Tokens
+          </PharosSidenavLink>
+          <PharosSidenavLink
+            href="/components/textarea"
+            isActive={window.location.pathname === withPrefix('/components/textarea')}
+            onClick={handleLinkClick}
+          >
+            Text Area
+          </PharosSidenavLink>
           <PharosSidenavMenu label="Components" expanded={isExpanded('components')}>
             {[
               'Component status',
