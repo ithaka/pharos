@@ -5,10 +5,7 @@ import { html } from 'lit';
 import './pharos-loading-spinner';
 import '../heading/pharos-heading';
 import '../button/pharos-button';
-
-import Intro from '@docs/guidelines/loading-spinner.docs.mdx';
-
-<Intro />
+import '../link/pharos-link';
 
 <Meta
   title="Components/Loading Spinner"
@@ -18,14 +15,14 @@ import Intro from '@docs/guidelines/loading-spinner.docs.mdx';
   }}
 />
 
-# LoadingSpinner
+# Loading Spinner
+
+<pharos-link href="https://www.jstor.org/pharos/components/loading-spinner" target="_blank">See guidelines in Pharos</pharos-link>
 
 <Canvas withToolbar>
   <Story name="Base">{html`
     <pharos-loading-spinner></pharos-loading-spinner>
-    <pharos-heading level="1" preset="5"
-      >Hi there! As you can see, I am still loading</pharos-heading
-    >
+    <pharos-heading level="1" preset="5">Loading spinner demonstration</pharos-heading>
     <pharos-button @click="${() => action('Click')('Clicked')}">Can't press me!</pharos-button>
   `}</Story>
 </Canvas>

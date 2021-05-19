@@ -3,10 +3,6 @@ import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { PharosAlert } from '../../react-components/alert/pharos-alert';
 import { PharosLink } from '../../react-components/link/pharos-link';
 
-import Intro from '@docs/guidelines/alert.docs.mdx';
-
-<Intro />
-
 <Meta
   title="Components/Alert"
   parameters={{
@@ -19,6 +15,10 @@ import Intro from '@docs/guidelines/alert.docs.mdx';
 />
 
 # Alert
+
+<PharosLink href="https://www.jstor.org/pharos/components/alert" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 export const Template = (args) => <PharosAlert status={args.status}>{args.text}</PharosAlert>;
 

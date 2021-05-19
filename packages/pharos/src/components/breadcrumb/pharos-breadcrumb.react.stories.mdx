@@ -2,6 +2,7 @@ import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 
 import { PharosBreadcrumb } from '../../react-components/breadcrumb/pharos-breadcrumb.tsx';
 import { PharosBreadcrumbItem } from '../../react-components/breadcrumb/pharos-breadcrumb-item.tsx';
+import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta title="Components/Breadcrumb" />
 
@@ -19,13 +20,17 @@ export const Template = (args) => (
 
 # Breadcrumbs
 
+<PharosLink href="https://www.jstor.org/pharos/components/breadcrumb" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
+
 <Canvas>
   <Story
     name="Base"
     args={{
-      firstCrumb: 'Mouse Over to See the Full Text of Long Content Which Are Truncated',
-      secondCrumb: 'Short Texts Will Not',
-      thirdCrumb: 'The Current Place',
+      firstCrumb: 'Hover to see the full text of long content, which are truncated',
+      secondCrumb: 'Short texts will not',
+      thirdCrumb: 'Current',
     }}
   >
     {Template()}

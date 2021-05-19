@@ -3,12 +3,6 @@ import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit';
 import './pharos-${componentName}';
 
-<!-- Create this file!
-import Intro from '@docs/guidelines/${componentName}.docs.mdx';
-
-<Intro />
--->
-
 <Meta
   title="Components/${titleCaseName}"
 />

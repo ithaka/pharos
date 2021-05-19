@@ -3,11 +3,8 @@ import { action } from '@storybook/addon-actions';
 
 import { PharosCheckboxGroup } from '../../react-components/checkbox-group/pharos-checkbox-group';
 import { PharosCheckbox } from '../../react-components/checkbox/pharos-checkbox';
+import { PharosLink } from '../../react-components/link/pharos-link';
 import createFormData from '../../utils/createFormData';
-
-import Intro from '@docs/guidelines/checkbox.docs.mdx';
-
-<Intro />
 
 <Meta
   title="Forms/Checkbox Group"
@@ -17,7 +14,11 @@ import Intro from '@docs/guidelines/checkbox.docs.mdx';
   }}
 />
 
-# Examples
+# Checkbox Group
+
+<PharosLink href="https://www.jstor.org/pharos/components/checkbox" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 export const Template = (args) => (
   <PharosCheckboxGroup

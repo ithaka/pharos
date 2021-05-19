@@ -3,6 +3,7 @@ import { html } from 'lit';
 
 import './pharos-breadcrumb';
 import './pharos-breadcrumb-item';
+import '../link/pharos-link';
 
 <Meta title="Components/Breadcrumb" />
 
@@ -21,12 +22,14 @@ export const Template = (args) =>
 
 # Breadcrumbs
 
+<pharos-link href="https://www.jstor.org/pharos/components/breadcrumb" target="_blank">See guidelines in Pharos</pharos-link>
+
 <Canvas>
   <Story
     args={{
-      firstCrumb: 'Mouse Over to See the Full Text of Long Content Which Are Truncated',
-      secondCrumb: 'Short Texts Will Not',
-      thirdCrumb: 'The Current Place',
+      firstCrumb: 'Hover to see the full text of long content, which are truncated',
+      secondCrumb: 'Short texts will not',
+      thirdCrumb: 'Current',
     }}
     name="Base"
   >

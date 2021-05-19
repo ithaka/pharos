@@ -1,12 +1,10 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
+import { useEffect } from 'react';
 
 import { PharosToast } from '../../react-components/toast/pharos-toast';
 import { PharosToaster } from '../../react-components/toast/pharos-toaster';
 import { PharosButton } from '../../react-components/button/pharos-button';
-
-import Intro from '@docs/guidelines/toast.docs.mdx';
-
-<Intro />
+import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta
   title="Components/Toast"
@@ -16,6 +14,10 @@ import Intro from '@docs/guidelines/toast.docs.mdx';
 />
 
 # Toast
+
+<PharosLink href="https://www.jstor.org/pharos/components/toast" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 <Canvas withToolbar>
   <Story name="Base">
@@ -61,5 +63,41 @@ import Intro from '@docs/guidelines/toast.docs.mdx';
       Have a toast!
     </PharosButton>
     <PharosToaster></PharosToaster>
+  </Story>
+</Canvas>
+
+## Long Content Toast
+
+<Canvas>
+  <Story name="Long Content">
+    {() => {
+      const effect = () => {
+        useEffect(() => {
+          setTimeout(() => {
+            document.querySelector('#long-toast-button').click();
+          }, 300);
+        });
+      };
+      effect();
+      return (
+        <>
+          <PharosButton
+            id="long-toast-button"
+            onClick={() => {
+              const event = new CustomEvent('pharos-toast-open', {
+                detail: {
+                  content:
+                    'This is a notification for longer content, which may even include a <pharos-link href="#" on-background bold>link</pharos-link>.',
+                },
+              });
+              document.dispatchEvent(event);
+            }}
+          >
+            Click to me see a long name
+          </PharosButton>
+          <PharosToaster></PharosToaster>
+        </>
+      );
+    }}
   </Story>
 </Canvas>

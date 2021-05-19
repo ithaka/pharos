@@ -6,9 +6,9 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   title="Icon"
   description="Pharos Icons are SVG visual representations of objects, items or content, or actions a user can take."
 >
-  <pharos-link href="#" target="_blank">
+  <PharosLink href="#" target="_blank">
     See in Storybook
-  </pharos-link>
+  </PharosLink>
 </PageSection>
 
 <PageSection title="Usage">
@@ -21,9 +21,9 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       Icons can be used inside links or buttons and also alone when space is limited, with a high
       amount of care and thought.
     </p>
-    <pharos-heading level="4" preset="2">
+    <PharosHeading level="4" preset="2">
       Use in product for the following:
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>CTA buttons or links, most specifically when paired with text</li>
       <li>To symbolize tools (e.g., the viewer toolbar or project creator in Forum)</li>
@@ -32,9 +32,9 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       <li>Represent content types</li>
       <li>Success and error states with text inputs for forms</li>
     </ul>
-    <pharos-heading level="4" preset="2">
+    <PharosHeading level="4" preset="2">
       Using with buttons or links
-    </pharos-heading>
+    </PharosHeading>
     <p>
       If the experience calls for it, buttons can be used with an icon to the left or the right of
       the text. Icons should be used consistently, e.g., if there is a row of buttons, all of them
@@ -44,18 +44,18 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       Links can also include an icon if needed. An example of this happens in the pagination
       component.
     </p>
-    <pharos-heading level="4" preset="2">
+    <PharosHeading level="4" preset="2">
       Using with inputs
-    </pharos-heading>
+    </PharosHeading>
     <p>
       Pharos text inputs and input groups can include icons. Icons need to be vertically centered
       within the input, which should automatically happen.
     </p>
   </PageSection>
   <PageSection title="Formatting" isSubsection>
-    <pharos-heading level="4" preset="2">
+    <PharosHeading level="4" preset="2">
       Sizing
-    </pharos-heading>
+    </PharosHeading>
     <p>
       Pharos icons are most typically 24px by 24px. This aligns with our base font size's
       line-height to make alignment smoother when icons are in use inline with text. A few icons are
@@ -63,45 +63,45 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       please contact the maintainers to discuss the need. Typically the answer will be to adjust the
       design or to go another route that obviates the need.
     </p>
-    <pharos-heading level="4" preset="2">
+    <PharosHeading level="4" preset="2">
       Color
-    </pharos-heading>
+    </PharosHeading>
     <p>
       Icons are always a solid color and need to pass the same color contrast ratio as typography
       (4.5:1). The color of the icon should reflect the importance of the icon's action.
     </p>
     <p>
       The color can also signify different states to alert users. This occurs with{' '}
-      <pharos-link href="/components/toast">toasts</pharos-link>,{' '}
-      <pharos-link href="/components/alert">alerts</pharos-link> and error/success states for{' '}
-      <pharos-link href="/components/text-input">text inputs</pharos-link>. We use icons so that
-      color alone is not the only signal critical information to users in their workflow (
-      <pharos-link href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-without-color.html">
+      <PharosLink href="/components/toast">toasts</PharosLink>,{' '}
+      <PharosLink href="/components/alert">alerts</PharosLink> and error/success states for{' '}
+      <PharosLink href="/components/text-input">text inputs</PharosLink>. We use icons so that color
+      alone is not the only signal critical information to users in their workflow (
+      <PharosLink href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-without-color.html">
         SC 1.4.1
-      </pharos-link>
+      </PharosLink>
       ).
     </p>
-    <pharos-heading level="4" preset="2">
+    <PharosHeading level="4" preset="2">
       Spacing
-    </pharos-heading>
+    </PharosHeading>
     <p>
       When used in interactive components, like buttons, the spacing will follow the attributes set
       for the component. When icons are used next to text, there should be a minimum of 4px
       ($pharos-spacing-one-quarter-x) between the text and the icon.
     </p>
-    <pharos-heading level="4" preset="2">
+    <PharosHeading level="4" preset="2">
       Alignment
-    </pharos-heading>
+    </PharosHeading>
     <p>
       When icons are used next to text, they should be aligned to the center of the first (or only)
       line of text.
     </p>
-    <pharos-heading level="4" preset="2">
+    <PharosHeading level="4" preset="2">
       Contributing
-    </pharos-heading>
+    </PharosHeading>
     <p>
       Not finding an icon to support the design need? Please refer to the{' '}
-      <pharos-link href="/brand-expressions/iconography">Iconography brand expressions</pharos-link>{' '}
+      <PharosLink href="/brand-expressions/iconography">Iconography brand expressions</PharosLink>{' '}
       to learn more about the principles and how to create an icon.
     </p>
   </PageSection>
@@ -145,14 +145,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection title="Relevant WCAG Guidelines" isSubsection lessMargin>
     <ul>
       <li>
-        <pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">
           1.4.1 Use of Color A
-        </pharos-link>
+        </PharosLink>
       </li>
       <li>
-        <pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification">
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification">
           3.2.4 Consistent Identification AA
-        </pharos-link>
+        </PharosLink>
       </li>
     </ul>
   </PageSection>
@@ -173,17 +173,17 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
   <PageSection title="Expected actions" isSubsection lessMargin>
     <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
-      <pharos-heading level="4" preset="1--bold">
+      <PharosHeading level="4" preset="1--bold">
         Screen reader
-      </pharos-heading>
+      </PharosHeading>
       <ul>
         <li>Reads the accompanying text if applicable</li>
         <li>Reads the `&lt;title&gt;` element text if the icon is standalone</li>
       </ul>
     </div>
-    <pharos-heading level="4" preset="1--bold">
+    <PharosHeading level="4" preset="1--bold">
       Keyboard
-    </pharos-heading>
+    </PharosHeading>
     <ul>
       <li>Icon with accompanying text should be in tab index</li>
       <li>Standalone icon should also be in tab index</li>

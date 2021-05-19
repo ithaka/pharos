@@ -4,11 +4,8 @@ import { action } from '@storybook/addon-actions';
 import { ifDefined } from 'lit/directives/if-defined';
 
 import './pharos-combobox';
+import '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
-
-import Intro from '@docs/guidelines/combobox.docs.mdx';
-
-<Intro />
 
 <Meta
   title="Forms/Combobox"
@@ -18,7 +15,9 @@ import Intro from '@docs/guidelines/combobox.docs.mdx';
   }}
 />
 
-# Examples
+# Combobox
+
+<pharos-link href="https://www.jstor.org/pharos/components/combobox" target="_blank">See guidelines in Pharos</pharos-link>
 
 export const Template = (args) =>
   html`
@@ -35,20 +34,19 @@ export const Template = (args) =>
       ?required=${args.required}
     >
       <span slot="label">${args.label}</span>
-      <option value="1">Bulbasaur</option>
-      <option value="2">Charmander</option>
-      <option value="3">Squirtle</option>
-      <option value="4">Caterpie</option>
-      <option value="5">Weedle</option>
-      <option value="6">Pidgey</option>
-      <option value="7">Rattata</option>
-      <option value="8">Spearow</option>
-      <option value="9">Ekans</option>
-      <option value="10">Pikachu</option>
-      <option value="11">Sandshrew</option>
-      <option value="12">Clefairy</option>
-      <option value="13">Magikarp</option>
-      <option value="14">Snorlax</option>
+      <option value="1">New Hampshire</option>
+      <option value="2">Massachusetts</option>
+      <option value="3">Connecticut</option>
+      <option value="4">Rhode Island</option>
+      <option value="5">New York</option>
+      <option value="6">New Jersey</option>
+      <option value="7">Pennsylvania</option>
+      <option value="8">Delaware</option>
+      <option value="9">Maryland</option>
+      <option value="10">Virginia</option>
+      <option value="11">North Carolina</option>
+      <option value="12">South Carolina</option>
+      <option value="13">Georgia</option>
     </pharos-combobox>
   `;
 
@@ -59,7 +57,7 @@ export const Template = (args) =>
       open: false,
       disabled: false,
       hideLabel: false,
-      label: 'I choose you',
+      label: 'Combobox Label',
     }}
   >
     {Template.bind({})}
@@ -123,27 +121,24 @@ export const Template = (args) =>
           style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
         >
           <pharos-combobox
-            placeholder="Who's that Pokemon?"
+            placeholder="Select a state"
             @change="${(e) => action('Change')(e.target.value)}"
             @input="${(e) => action('Input')(e.target['_input'].value)}"
           >
-            <span slot="label">I fire events on input</span>
-            <option value="bu">Bulbasaur</option>
-            <option value="ch">Charmander</option>
-            <option value="sq">Squirtle</option>
-            <option value="ca">Caterpie</option>
-            <option value="we">Weedle</option>
-            <option value="pi">Pidgey</option>
-            <option value="ra">Rattata</option>
-            <option value="sp">Spearow</option>
-            <option value="ek">Ekans</option>
-            <option value="pi">Pikachu</option>
-            <option value="sa">Sandshrew</option>
-            <option value="cl">Clefairy</option>
-            <option value="ma">Magikarp</option>
-            <option value="sn">Snorlax</option>
-            <option value="me">Mew</option>
-            <option value="mw">Mewtwo</option>
+            <span slot="label">Events fire on selection</span>
+            <option value="NH">New Hampshire</option>
+            <option value="MA">Massachusetts</option>
+            <option value="CT">Connecticut</option>
+            <option value="RI">Rhode Island</option>
+            <option value="NY">New York</option>
+            <option value="NJ">New Jersey</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="DE">Delaware</option>
+            <option value="MD">Maryland</option>
+            <option value="VA">Virginia</option>
+            <option value="NC">North Carolina</option>
+            <option value="SC">South Carolina</option>
+            <option value="GA">Georgia</option>
           </pharos-combobox>
         </div>
       `;
@@ -157,7 +152,7 @@ export const Template = (args) =>
   <Story name="Search Mode">
     {() => {
       return html`
-        <pharos-combobox placeholder="Search for things" search-mode>
+        <pharos-combobox placeholder="Search..." search-mode>
           <span slot="label">I'm searching for</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>

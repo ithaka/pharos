@@ -1,11 +1,8 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 
 import { PharosIcon } from '../../react-components/icon/pharos-icon';
+import { PharosLink } from '../../react-components/link/pharos-link';
 import { iconNames } from '../../components/icon/pharos-icon';
-
-import Intro from '@docs/guidelines/icon.docs.mdx';
-
-<Intro />
 
 <Meta
   title="Components/Icon"
@@ -19,6 +16,10 @@ export const Template = (args) => (
 );
 
 # Icon
+
+<PharosLink href="https://www.jstor.org/pharos/components/icon" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 <Canvas withToolbar>
   <Story

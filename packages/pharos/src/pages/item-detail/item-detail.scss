@@ -1,16 +1,4 @@
-@use '~@ithaka/pharos/lib/utils/scss/mixins';
-@use '../shared/styles/grid';
-@use "sass:map";
-
-$small: map.get(grid.$breakpoints, sm, width);
-$medium: map.get(grid.$breakpoints, md, width);
-$large: map.get(grid.$breakpoints, lg, width);
-
-$columns-small: map.get(grid.$breakpoints, sm, columns);
-$columns-medium: map.get(grid.$breakpoints, md, columns);
-$columns-large: map.get(grid.$breakpoints, lg, columns);
-
-$default-margin: 3.5rem;
+@use '~@ithaka/pharos/lib/styles/pharos';
 
 .item-detail-page__container {
   display: grid;
@@ -37,24 +25,8 @@ $default-margin: 3.5rem;
   grid-template-areas:
     'top top top'
     '. content .';
-  grid-template-columns: $default-margin 1fr $default-margin;
   margin-bottom: 6rem;
   margin-top: var(--pharos-spacing-1-x);
-}
-
-.item-detail-page__container--body {
-  grid-area: content;
-}
-
-.item-detail-page__grid--body {
-  display: grid;
-  grid-template-areas:
-    'viewer metadata'
-    'collections metadata';
-  grid-template-columns: repeat($columns-large, 1fr);
-  grid-template-rows: max-content 1fr;
-  column-gap: grid.$gutter;
-  row-gap: var(--pharos-spacing-3-x);
 }
 
 .item-detail-page__container--top {
@@ -79,26 +51,26 @@ $default-margin: 3.5rem;
 }
 
 .item-detail-page__container--collections {
-  grid-area: collections;
   grid-column: span 8;
+  grid-row: 2;
   overflow: hidden;
 }
 
 .item-detail-page__container--metadata {
-  grid-area: metadata;
   grid-column: span 4;
+  grid-row: span 2;
 }
 
 .item-detail-page__container--viewer {
-  grid-area: viewer;
   background-color: var(--pharos-color-black);
   grid-column: span 8;
-  margin-left: (-$default-margin);
+  grid-row: 1;
+  margin-left: -3.5rem;
   height: 40rem;
 }
 
 .item-detail-page__label--content {
-  @include mixins.content-label;
+  @include pharos.content-label;
 }
 
 .item-detail-page__text--metadata {
@@ -111,7 +83,7 @@ $default-margin: 3.5rem;
 }
 
 .item-detail-page__label--type {
-  @include mixins.content-label;
+  @include pharos.content-label;
 
   color: var(--pharos-color-text-40);
 }
@@ -154,7 +126,7 @@ $default-margin: 3.5rem;
 }
 
 .item-detail-page__text--item-metadata {
-  @include mixins.font-base(
+  @include pharos.font-base(
     $font-size: var(--pharos-font-size-small),
     $line-height: var(--pharos-line-height-small)
   );
@@ -165,7 +137,7 @@ $default-margin: 3.5rem;
 }
 
 .item-detail-page__list {
-  @include mixins.no-bullet;
+  @include pharos.no-bullet;
 
   overflow: scroll;
   padding: var(--pharos-spacing-one-quarter-x);
@@ -203,20 +175,15 @@ $default-margin: 3.5rem;
   }
 }
 
-@media screen and (max-width: $large - 1px) {
+@include pharos.between(small, large) {
   .item-detail-page__container--top {
     padding: var(--pharos-spacing-1-x);
   }
 }
 
-@media screen and (max-width: $medium) {
-  .item-detail-page__grid--body {
-    grid-template-areas:
-      'viewer'
-      'metadata'
-      'collections';
-    grid-template-columns: repeat($columns-medium, 1fr);
-    row-gap: var(--pharos-spacing-2-x);
+@include pharos.until(medium) {
+  .item-detail-page__container--collections {
+    display: none;
   }
 
   .item-detail-page__container--metadata {
@@ -225,15 +192,11 @@ $default-margin: 3.5rem;
 
   .item-detail-page__container--viewer {
     height: 37.5rem;
-    margin: 0 (-$default-margin);
+    margin: 0 -3.5rem;
   }
 }
 
-@media screen and (min-width: $small) and (max-width: $medium - 1px) {
-  .item-detail-page__container--main-content {
-    grid-template-columns: 1.5rem 1fr 1.5rem;
-  }
-
+@include pharos.between(small, medium) {
   .item-detail-page__container--action-buttons,
   .item-detail-page__button--back {
     display: none;
@@ -247,17 +210,9 @@ $default-margin: 3.5rem;
   .item-detail-page__container--carousel-buttons {
     display: none;
   }
-
-  .item-detail-page__container--viewer {
-    margin: 0 -1.5rem;
-  }
 }
 
-@media only screen and (max-width: $small) {
-  .item-detail-page__grid--body {
-    grid-template-columns: repeat($columns-small, 1fr);
-  }
-
+@include pharos.until(small) {
   .item-detail-page__container--metadata,
   .item-detail-page__container--collections,
   .item-detail-page__container--viewer {

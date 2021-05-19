@@ -8,7 +8,7 @@ import '../../../components/heading/pharos-heading';
 export const Metadata = (): TemplateResult => html`
   <div class="item-detail-page__container--metadata">
     <img
-      src="./images/storybook/item-detail/portal-logo.png"
+      src="./images/item-detail/portal-logo.png"
       alt="portal logo"
       class="item-detail-page__image--collection"
     />

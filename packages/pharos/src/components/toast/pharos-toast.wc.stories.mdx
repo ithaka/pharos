@@ -4,14 +4,13 @@ import { html } from 'lit';
 
 import './pharos-toaster';
 import '../button/pharos-button';
-
-import Intro from '@docs/guidelines/toast.docs.mdx';
-
-<Intro />
+import '../link/pharos-link';
 
 <Meta title="Components/Toast" />
 
 # Toast
+
+<pharos-link href="https://www.jstor.org/pharos/components/toast" target="_blank">See guidelines in Pharos</pharos-link>
 
 <Canvas>
   <Story name="Base">
@@ -100,7 +99,7 @@ import Intro from '@docs/guidelines/toast.docs.mdx';
             const event = new CustomEvent('pharos-toast-open', {
               detail: {
                 content:
-                  'The item has moved to <pharos-link href="#" on-background bold>Looooooooooooooooooooooooooooooooooooooooooong</pharos-link>.',
+                  'This is a notification for longer content, which may even include a <pharos-link href="#" on-background bold>link</pharos-link>.',
               },
             });
             document.dispatchEvent(event);

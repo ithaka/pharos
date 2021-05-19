@@ -5,10 +5,6 @@ import { ifDefined } from 'lit/directives/if-defined';
 import './pharos-alert';
 import '../link/pharos-link';
 
-import Intro from '@docs/guidelines/alert.docs.mdx';
-
-<Intro />
-
 <Meta
   title="Components/Alert"
   parameters={{
@@ -21,6 +17,8 @@ import Intro from '@docs/guidelines/alert.docs.mdx';
 />
 
 # Alert
+
+<pharos-link href="https://www.jstor.org/pharos/components/alert" target="_blank">See guidelines in Pharos</pharos-link>
 
 export const Template = (args) => html`<pharos-alert status=${ifDefined(args.status)}>
   ${args.text}

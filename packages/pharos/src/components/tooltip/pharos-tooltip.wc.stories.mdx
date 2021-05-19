@@ -7,10 +7,7 @@ import './pharos-tooltip';
 import '../button/pharos-button';
 import '../dropdown-menu/pharos-dropdown-menu';
 import '../dropdown-menu/pharos-dropdown-menu-item';
-
-import Intro from '@docs/guidelines/tooltip.docs.mdx';
-
-<Intro />
+import '../link/pharos-link';
 
 <Meta
   title="Components/Tooltip"
@@ -20,7 +17,9 @@ import Intro from '@docs/guidelines/tooltip.docs.mdx';
   }}
 />
 
-# Examples
+# Tooltip
+
+<pharos-link href="https://www.jstor.org/pharos/components/tooltip" target="_blank">See guidelines in Pharos</pharos-link>
 
 export const Template = (args) => {
   const effect = () => {
@@ -176,7 +175,7 @@ export const Template = (args) => {
     args={{
       targetText:
         'Hover here to see a tooltip that is as wide as me. If you resize the window while its open, its width will continue to match mine!',
-      tooltipText: `Now, this is a story all about how my life got flipped-turned upside down and I'd like to take a minute just sit right there I'll tell you how I became the prince of a town called Bel Air`,
+      tooltipText: `When using the fullWidth attribute, the display of the tooltip will always be the size of the button that triggers the tooltip, regardless of the length of the text.`,
       id: 'my-full-tooltip',
     }}
     argTypes={{
@@ -222,11 +221,11 @@ export const Template = (args) => {
             <pharos-dropdown-menu-item>Menu item 1</pharos-dropdown-menu-item>
             <pharos-dropdown-menu-item>Menu item 2</pharos-dropdown-menu-item>
             <pharos-dropdown-menu-item data-tooltip-id="my-tooltip"
-              >Hover on Me!!!!!!</pharos-dropdown-menu-item
+              >Hover on Me</pharos-dropdown-menu-item
             >
             <pharos-tooltip id="my-tooltip" boundary="my-menu"
-              >this is a very long tooltip but I stay in the dropdown menu's
-              boundary!!!</pharos-tooltip
+              >Even very long tooltips, such as this one, will stay within the boundaries of the
+              Tooltip.</pharos-tooltip
             >
           </pharos-dropdown-menu>
         </div>

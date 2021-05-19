@@ -1,11 +1,10 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 
+import { PharosDropdownMenu } from '../../react-components/dropdown-menu/pharos-dropdown-menu';
+import { PharosDropdownMenuItem } from '../../react-components/dropdown-menu/pharos-dropdown-menu-item';
 import { PharosTooltip } from '../../react-components/tooltip/pharos-tooltip';
 import { PharosButton } from '../../react-components/button/pharos-button';
-
-import Intro from '@docs/guidelines/tooltip.docs.mdx';
-
-<Intro />
+import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta
   title="Components/Tooltip"
@@ -16,7 +15,11 @@ import Intro from '@docs/guidelines/tooltip.docs.mdx';
   }}
 />
 
-# Examples
+# Tooltip
+
+<PharosLink href="https://www.jstor.org/pharos/components/tooltip" target="_blank">
+  See guidelines in Pharos
+</PharosLink>
 
 export const Template = (args) => (
   <div
@@ -179,7 +182,7 @@ export const Template = (args) => (
     args={{
       targetText:
         'Hover here to see a tooltip that is as wide as me. If you resize the window while its open, its width will continue to match mine!',
-      tooltipText: `Now, this is a story all about how my life got flipped-turned upside down and I'd like to take a minute just sit right there I'll tell you how I became the prince of a town called Bel Air`,
+      tooltipText: `When using the fullWidth attribute, the display of the tooltip will always be the size of the button that triggers the tooltip, regardless of the length of the text.`,
       id: 'my-full-tooltip',
     }}
     argTypes={{
@@ -211,6 +214,33 @@ export const Template = (args) => (
       <PharosTooltip id="my-multi-tooltip" fullWidth>
         Hi there!
       </PharosTooltip>
+    </div>
+  </Story>
+</Canvas>
+
+# Custom Boundary
+
+<Canvas withToolbar>
+  <Story name="Custom Boundary">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosButton id="my-button" data-dropdown-menu-id="my-menu" icon-right="chevron-down">
+        Click Me
+      </PharosButton>
+      <PharosDropdownMenu id="my-menu">
+        <PharosDropdownMenuItem>Menu item 1</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Menu item 2</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem data-tooltip-id="my-tooltip">Hover on Me</PharosDropdownMenuItem>
+        <PharosTooltip id="my-tooltip" boundary="my-menu">
+          this is a very long tooltip but I stay in the dropdown menu's boundary!!!
+        </PharosTooltip>
+      </PharosDropdownMenu>
     </div>
   </Story>
 </Canvas>
