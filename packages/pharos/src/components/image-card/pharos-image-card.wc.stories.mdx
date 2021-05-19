@@ -8,7 +8,24 @@ import './pharos-image-card';
 # ImageCard
 
 <Canvas>
-  <Story name="Base">{html` <pharos-image-card title="South Hall"></pharos-image-card> `}</Story>
+  <Story name="Base">
+    {html`
+      <pharos-image-card
+        title="South Hall"
+        link="https://www.jstor.org/stable/10.2307/community.26220188"
+      >
+        <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
+        <div slot="metadata">Tubby, William Bunker (American architect,...</div>
+        <div slot="metadata">1889-1892 (creation)</div>
+        <div slot="metadata">
+          Part of
+          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+            >Pratt Institute Buildings Image Collection</pharos-link
+          >
+        </div>
+      </pharos-image-card>
+    `}
+  </Story>
 </Canvas>
 
 ## API

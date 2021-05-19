@@ -1,4 +1,37 @@
+@use '../../utils/scss/mixins';
+
 :host {
-  display: block;
+  display: inline-flex;
   contain: layout;
+}
+
+.card {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.card__image,
+.card__title {
+  display: inline-flex;
+}
+
+.card__image {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+.card__title {
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.card__metadata {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  color: var(--pharos-color-text-40);
+}
+
+slot[name='metadata']::slotted(*:not(:last-child)) {
+  margin-bottom: var(--pharos-spacing-one-half-x);
 }

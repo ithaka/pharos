@@ -28,13 +28,13 @@ export class PharosImageCard extends LitElement {
   }
 
   protected render(): TemplateResult {
-    return html`<div>
-      <slot name="image"></slot>
-      <pharos-link href="${this.link}" subtle flex
+    return html`<div class="card">
+      <pharos-link class="card__image" href="${this.link}" subtle flex><slot name="image"></slot></pharos-link>
+      <pharos-link class="card__title" href="${this.link}" subtle flex
         ><pharos-heading preset="1--bold" level="3" no-margin
           >${this.title}</pharos-heading
         ></pharos-link
-      ><slot name="metadata"></slot>
+      ><div class="card__metadata"><slot name="metadata"></div></slot>
     </div>`;
   }
 }
