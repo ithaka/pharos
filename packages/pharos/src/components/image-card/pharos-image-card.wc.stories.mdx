@@ -5,21 +5,56 @@ import './pharos-image-card';
 
 <Meta title="Components/Image Card" />
 
-# ImageCard
+# Image Card
+
+export const Template = (args) => html`<pharos-image-card
+  title="South Hall"
+  link="https://www.jstor.org/stable/10.2307/community.26220188"
+  ?error=${args.error}
+>
+  <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
+  <div slot="metadata">Tubby, William Bunker (American architect,...</div>
+  <div slot="metadata">1889-1892 (creation)</div>
+  <div slot="metadata">
+    Part of
+    <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+      >Pratt Institute Buildings Image Collection</pharos-link
+    >
+  </div>
+</pharos-image-card>`;
 
 <Canvas>
-  <Story name="Base">
+  <Story name="Base">{Template.bind({})}</Story>
+</Canvas>
+
+## API
+
+<ArgsTable of="pharos-image-card" />
+
+# Error State
+
+<Canvas>
+  <Story name="Error State" args={{ error: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Subtle Card
+
+<Canvas>
+  <Story name="Subtle Card">
     {html`
       <pharos-image-card
         title="South Hall"
         link="https://www.jstor.org/stable/10.2307/community.26220188"
+        subtle
       >
         <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
         <div slot="metadata">Tubby, William Bunker (American architect,...</div>
         <div slot="metadata">1889-1892 (creation)</div>
         <div slot="metadata">
           Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image" on-background
             >Pratt Institute Buildings Image Collection</pharos-link
           >
         </div>
@@ -27,7 +62,3 @@ import './pharos-image-card';
     `}
   </Story>
 </Canvas>
-
-## API
-
-<ArgsTable of="pharos-image-card" />
