@@ -4,10 +4,13 @@ import { nothing } from 'lit-html';
 import { imageCardStyles } from './pharos-image-card.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
+import type { PharosButton } from '../button/pharos-button';
+import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
 
 import '../heading/pharos-heading';
 import '../link/pharos-link';
 import '../icon/pharos-icon';
+import '../button/pharos-button';
 
 @customElement('pharos-image-card')
 export class PharosImageCard extends LitElement {
@@ -39,8 +42,23 @@ export class PharosImageCard extends LitElement {
   @property({ type: Boolean, reflect: true })
   public subtle = false;
 
+  /**
+   * Indicates the action menu id to be passed to the action button.
+   * @attr action-menu
+   */
+  @property({ type: String, reflect: true, attribute: 'action-menu' })
+  public actionMenu?: string;
+
   public static get styles(): CSSResultArray {
     return [designTokens, imageCardStyles];
+  }
+
+  private _handleClick(e: MouseEvent): void {
+    const trigger = e.target as PharosButton;
+    const menu: PharosDropdownMenu | null = document.querySelector(
+      `pharos-dropdown-menu#${this.actionMenu}`
+    );
+    menu?.openWithTrigger(trigger);
   }
 
   private _renderImage(): TemplateResult {
@@ -63,9 +81,22 @@ export class PharosImageCard extends LitElement {
     >`;
   }
 
+  private _renderActionButton(): TemplateResult | typeof nothing {
+    return this.actionMenu
+      ? html`<pharos-button
+          class="card__button"
+          icon="ellipses-vertical"
+          variant="subtle"
+          icon-condensed
+          @click=${this._handleClick}
+        ></pharos-button>`
+      : nothing;
+  }
+
   protected render(): TemplateResult {
     return html`<div class="card">
-      ${this._renderImage()} ${this.renderTitle}
+      ${this._renderImage()}
+      <div class="card__container--title">${this.renderTitle} ${this._renderActionButton()}</div>
       ${this.subtle
         ? nothing
         : html`<div class="card__metadata"><slot name="metadata"></slot></div>`}

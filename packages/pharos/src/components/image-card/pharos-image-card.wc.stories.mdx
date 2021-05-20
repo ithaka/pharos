@@ -62,3 +62,32 @@ export const Template = (args) => html`<pharos-image-card
     `}
   </Story>
 </Canvas>
+
+# With Action Menu
+
+<Canvas>
+  <Story name="With Action Menu" args={{ actionMenu: 'my-dropdown-menu' }}>
+    {html`
+      <pharos-image-card
+        title="South Hall"
+        link="https://www.jstor.org/stable/10.2307/community.26220188"
+        action-menu="my-dropdown-menu"
+      >
+        <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
+        <div slot="metadata">Tubby, William Bunker (American architect,...</div>
+        <div slot="metadata">1889-1892 (creation)</div>
+        <div slot="metadata">
+          Part of
+          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+            >Pratt Institute Buildings Image Collection</pharos-link
+          >
+        </div>
+      </pharos-image-card>
+      <pharos-dropdown-menu id="my-dropdown-menu">
+        <pharos-dropdown-menu-item>Item 1</pharos-dropdown-menu-item>
+        <pharos-dropdown-menu-item>Item 2</pharos-dropdown-menu-item>
+        <pharos-dropdown-menu-item>Item 3</pharos-dropdown-menu-item>
+      </pharos-dropdown-menu>
+    `}
+  </Story>
+</Canvas>

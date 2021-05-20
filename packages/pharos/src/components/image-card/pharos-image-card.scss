@@ -20,10 +20,6 @@
   margin-bottom: var(--pharos-spacing-1-x);
 }
 
-.card__title {
-  margin-bottom: var(--pharos-spacing-one-half-x);
-}
-
 .card__metadata {
   @include mixins.font-base(
     $font-size: var(--pharos-font-size-small),
@@ -46,6 +42,26 @@
     opacity var(--pharos-transition-duration-default) linear;
 }
 
+.card__container--error {
+  border: 1px solid var(--pharos-color-ui-40);
+  height: 14.625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: var(--pharos-spacing-1-x);
+}
+
+.card__container--title {
+  margin-bottom: var(--pharos-spacing-one-half-x);
+  display: flex;
+  align-items: center;
+}
+
+.card__button {
+  margin-left: auto;
+}
+
 :host([subtle]) .card__image {
   position: relative;
 
@@ -62,14 +78,4 @@
 
 slot[name='metadata']::slotted(*:not(:last-child)) {
   margin-bottom: var(--pharos-spacing-one-half-x);
-}
-
-.card__container--error {
-  border: 1px solid var(--pharos-color-ui-40);
-  height: 14.625rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  row-gap: var(--pharos-spacing-1-x);
 }
