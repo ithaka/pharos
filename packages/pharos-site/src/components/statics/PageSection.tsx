@@ -3,6 +3,7 @@ import type { FC, ReactElement } from 'react';
 import {
   container,
   container__isSubsection,
+  container__isSubsubsection,
   title__isHeader,
   title__moreSpace,
   title__base,
@@ -16,6 +17,7 @@ interface PageSectionProps {
   description?: string | JSX.Element;
   isHeader?: boolean;
   isSubsection?: boolean;
+  isSubsubsection?: boolean;
   moreTitleSpace?: boolean;
   lessMargin?: boolean;
 }
@@ -25,6 +27,7 @@ const PageSection: FC<PageSectionProps> = ({
   description,
   isHeader,
   isSubsection,
+  isSubsubsection,
   children,
   moreTitleSpace,
   lessMargin,
@@ -32,6 +35,12 @@ const PageSection: FC<PageSectionProps> = ({
   const [Display, setDisplay] = useState<ReactElement | null>(null);
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
+
+  if (Number(isHeader) + Number(isSubsection) + Number(isSubsubsection) > 1) {
+    console.error(
+      'Only 1 of isHeader, isSubsection and/or isSubsubsection props should be used at a time.'
+    );
+  }
 
   useEffect(() => {
     const { PharosHeading } = Pharos;
@@ -60,11 +69,21 @@ const PageSection: FC<PageSectionProps> = ({
       </div>
     );
 
+    const subsubsectionTitle = (
+      <div className={moreTitleSpace ? title__moreSpace : title__base}>
+        <PharosHeading level="2" preset="4">
+          {title}
+        </PharosHeading>
+      </div>
+    );
+
     const displayedTitle = () => {
       if (isHeader) {
         return headerTitle;
       } else if (isSubsection) {
         return subsectionTitle;
+      } else if (isSubsubsection) {
+        return subsubsectionTitle;
       } else {
         return baseTitle;
       }
@@ -73,7 +92,13 @@ const PageSection: FC<PageSectionProps> = ({
     const content = (
       <div
         className={
-          lessMargin ? container__lessMargin : isSubsection ? container__isSubsection : container
+          lessMargin
+            ? container__lessMargin
+            : isSubsection
+            ? container__isSubsection
+            : isSubsubsection
+            ? container__isSubsubsection
+            : container
         }
       >
         {displayedTitle()}
@@ -84,7 +109,17 @@ const PageSection: FC<PageSectionProps> = ({
       </div>
     );
     setDisplay(content);
-  }, [Pharos, children, description, isHeader, moreTitleSpace, title, isSubsection, lessMargin]);
+  }, [
+    Pharos,
+    children,
+    description,
+    isHeader,
+    moreTitleSpace,
+    title,
+    isSubsection,
+    isSubsubsection,
+    lessMargin,
+  ]);
 
   return Display;
 };

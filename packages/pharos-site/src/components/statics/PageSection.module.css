@@ -6,6 +6,10 @@
   margin-bottom: var(--pharos-spacing-5-x);
 }
 
+.container__isSubsubsection {
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
 .container__less-margin {
   margin-bottom: var(--pharos-spacing-3-x);
 }
