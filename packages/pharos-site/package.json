@@ -39,12 +39,12 @@
   "author": "ITHAKA",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build --prefix-paths",
+    "build": "gatsby build",
     "prebuild": "yarn clean",
     "develop": "gatsby develop",
     "predevelop": "yarn clean",
     "start": "yarn develop",
-    "serve": "gatsby serve --prefix-paths",
+    "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
