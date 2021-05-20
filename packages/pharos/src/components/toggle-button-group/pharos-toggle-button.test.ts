@@ -19,4 +19,13 @@ describe('pharos-toggle-button', () => {
     });
     await expect(component).to.be.accessible();
   });
+
+  it('throws an error when an invalid property is set', async () => {
+    component = await fixture(
+      html` <pharos-toggle-button href="www.truedelta.com"></pharos-toggle-button> `
+    ).catch((e) => e);
+    expect(
+      'The toggle button component does not support these properties: href, hreflang, ping, rel, and target.'
+    ).to.be.thrown;
+  });
 });

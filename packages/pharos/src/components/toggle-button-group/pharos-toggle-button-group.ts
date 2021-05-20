@@ -30,6 +30,12 @@ export class PharosToggleButtonGroup extends LitElement {
       `pharos-toggle-button`
     ) as NodeListOf<PharosToggleButton>;
     this._selectInitialToggleButton(toggleButtons);
+
+    const maxIdx = toggleButtons.length - 1;
+    toggleButtons.forEach((button, idx) => {
+      button['_first'] = idx == 0;
+      button['_last'] = idx == maxIdx;
+    });
   }
 
   private _selectInitialToggleButton(toggleButtons: NodeListOf<PharosToggleButton>): void {
@@ -41,13 +47,30 @@ export class PharosToggleButtonGroup extends LitElement {
 
   private _handleButtonSelected(event: Event): void {
     const selected = event.target as PharosToggleButton;
-    console.log(selected.id);
     const previous = this.querySelector(
       `pharos-toggle-button[selected]:not([id="${selected.id}"])`
     ) as PharosToggleButton;
 
     if (previous) {
       previous.selected = false;
+    }
+
+    const toggleButtons = this.querySelectorAll(
+      `pharos-toggle-button`
+    ) as NodeListOf<PharosToggleButton>;
+
+    let borderToHide = -1;
+    toggleButtons.forEach((button, idx) => {
+      button['_hideBorder'] = false;
+      if (button == selected) {
+        if (idx > 0) {
+          borderToHide = idx - 1;
+        }
+      }
+    });
+
+    if (borderToHide >= 0) {
+      toggleButtons[borderToHide]['_hideBorder'] = true;
     }
   }
 

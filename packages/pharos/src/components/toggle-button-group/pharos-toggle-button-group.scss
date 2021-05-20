@@ -5,7 +5,7 @@
 }
 
 .toggle-button__list {
-  display: flex;
   flex-direction: row;
-  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+  display: inline-table;
+  border-collapse: collapse;
 }

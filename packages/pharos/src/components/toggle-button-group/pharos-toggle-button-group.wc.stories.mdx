@@ -4,9 +4,9 @@ import { html } from 'lit-html';
 import './pharos-toggle-button-group';
 import './pharos-toggle-button';
 
-<Meta title="Components/Toggle Button Group" />
+<Meta title="Components/Toggle Button" />
 
-# Toggle Button Group
+# Toggle Button
 
 ## Basic
 
@@ -14,9 +14,40 @@ import './pharos-toggle-button';
   <Story name="Base">
     {html`
       <pharos-toggle-button-group>
-        <pharos-toggle-button icon-left="view-list"> List </pharos-toggle-button>
-        <pharos-toggle-button icon-left="view-gallery"> Gallery </pharos-toggle-button>
+        <pharos-toggle-button
+          @click="${() => {
+            document.querySelector('#list-view').style.display = 'block';
+            document.querySelector('#gallery-view').style.display = 'none';
+            document.querySelector('#presentation-view').style.display = 'none';
+          }}"
+          icon-left="view-list"
+        >
+          List
+        </pharos-toggle-button>
+        <pharos-toggle-button
+          @click="${() => {
+            document.querySelector('#list-view').style.display = 'none';
+            document.querySelector('#gallery-view').style.display = 'block';
+            document.querySelector('#presentation-view').style.display = 'none';
+          }}"
+          icon-left="view-gallery"
+        >
+          Gallery
+        </pharos-toggle-button>
+        <pharos-toggle-button
+          @click="${() => {
+            document.querySelector('#list-view').style.display = 'none';
+            document.querySelector('#gallery-view').style.display = 'none';
+            document.querySelector('#presentation-view').style.display = 'block';
+          }}"
+          icon-left="image"
+        >
+          Presentation
+        </pharos-toggle-button>
       </pharos-toggle-button-group>
+      <div id="list-view" style="display: none">List view</div>
+      <div id="gallery-view" style="display: none">Gallery view</div>
+      <div id="presentation-view" style="display: none">Presentation view</div>
     `}
   </Story>
 </Canvas>
@@ -35,6 +66,20 @@ import './pharos-toggle-button';
         <pharos-toggle-button id="gallery-mode-button" icon-left="view-gallery">
           Gallery
         </pharos-toggle-button>
+      </pharos-toggle-button-group>
+    `}
+  </Story>
+</Canvas>
+
+## Icons Only
+
+<Canvas withToolbar>
+  <Story name="Icons Only">
+    {html`
+      <pharos-toggle-button-group>
+        <pharos-toggle-button icon="view-list"></pharos-toggle-button>
+        <pharos-toggle-button icon="view-gallery"></pharos-toggle-button>
+        <pharos-toggle-button icon="image"></pharos-toggle-button>
       </pharos-toggle-button-group>
     `}
   </Story>

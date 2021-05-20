@@ -1,13 +1,6 @@
 @use '../../utils/scss/mixins';
 
-:host {
-  display: inline-flex;
-  contain: layout;
-}
-
-:host #toggle-button-element {
-  @include mixins.button-hover;
-  @include mixins.interactive-focus;
+:host([variant='secondary']) #button-element {
   @include mixins.button-base(
     $color: var(--pharos-color-text-base),
     $background-color: transparent,
@@ -17,50 +10,45 @@
   border-radius: 0;
 }
 
-:host #toggle-button-element:focus {
+:host([first='true']) #button-element {
+  border-radius: var(--pharos-radius-base-standard) 0 0 var(--pharos-radius-base-standard);
+}
+
+:host([last='true']) #button-element {
+  border-radius: 0 var(--pharos-radius-base-standard) var(--pharos-radius-base-standard) 0;
+}
+
+:host([variant='secondary']) #button-element:focus {
   outline-offset: 0;
-  margin-right: -2px;
 }
 
-:host([large]) #toggle-button-element {
-  @include mixins.button-large;
-}
-
-:host([icon]) #toggle-button-element {
-  padding: var(--pharos-spacing-one-quarter-x);
-}
-
-:host([selected]) {
-  pointer-events: none;
-}
-
-:host([selected]) #toggle-button-element {
+:host([variant='secondary']:not([selected])) #button-element {
   @include mixins.button-color(
-    $color: var(--pharos-color-ui-40),
+    $color: var(--pharos-color-text-40),
     $background-color: transparent,
     $border-color: var(--pharos-color-ui-40)
   );
-}
 
-:host([full-width]) {
-  width: 100%;
-
-  #toggle-button-element {
-    justify-content: start;
-    flex: auto;
+  pharos-icon {
+    fill: var(--pharos-color-ui-40);
+    stroke: var(--pharos-color-ui-40);
   }
 }
 
-:host([icon-condensed][icon]) #toggle-button-element {
-  padding: var(--pharos-spacing-one-eighth-x);
-  border: 0;
+:host([variant='secondary'][first='false']:not([selected])) #button-element {
+  border-left-color: transparent;
 }
 
-:host([icon][large]) #toggle-button-element {
-  padding: var(--pharos-spacing-one-half-x);
+:host([variant='secondary']:not([selected])) #button-element:hover,
+:host([variant='secondary']:not([selected])) #button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-color-hover-primary),
+    $background-color: transparent,
+    $border-color: var(--pharos-color-hover-primary)
+  );
 }
 
-:host([on-background]:not([selected])) #toggle-button-element {
+:host([variant='secondary'][on-background][selected]) #button-element {
   @include mixins.button-color(
     $color: var(--pharos-color-interactive-tertiary),
     $background-color: transparent,
@@ -68,8 +56,14 @@
   );
 }
 
-:host([on-background]:not([selected])) #toggle-button-element:hover,
-:host([on-background]:not([selected])) #toggle-button-element:active {
+:host([variant='secondary'][icon]) #button-element:hover,
+:host([variant='secondary'][icon]) #button-element:active {
+  padding: calc(var(--pharos-spacing-one-quarter-x) - 1px)
+    calc(var(--pharos-spacing-three-quarters-x) - 1px);
+}
+
+:host([variant='secondary'][on-background]:not([selected])) #button-element:hover,
+:host([variant='secondary'][on-background]:not([selected])) #button-element:active {
   @include mixins.button-color(
     $color: var(--pharos-color-interactive-secondary),
     $background-color: var(--pharos-color-interactive-tertiary),
@@ -77,17 +71,31 @@
   );
 }
 
-:host([icon]:not([selected])) #toggle-button-element:hover,
-:host([icon]:not([selected])) #toggle-button-element:active {
-  padding: calc(var(--pharos-spacing-one-quarter-x) - 1px);
+:host([variant='secondary'][first='true'][hideBorder='true']:not([selected])) #button-element {
+  border-right-color: transparent;
 }
 
-:host([icon-condensed][icon]:not([selected])) #toggle-button-element:hover,
-:host([icon-condensed][icon]:not([selected])) #toggle-button-element:active {
+:host([variant='secondary'][first='true'][hideBorder='true']:not([selected])) #button-element:hover,
+:host([variant='secondary'][first='true'][hideBorder='true']:not([selected]))
+  #button-element:active {
+  border-right-color: var(--pharos-color-hover-primary);
+}
+
+:host([variant='secondary'][first='true'][hideBorder='true']:not([selected]))
+  #button-element:focus {
+  border-right-color: var(--pharos-color-focus);
+}
+
+:host([selected]) {
+  pointer-events: none;
+}
+
+:host([variant='secondary'][icon-condensed][icon]:not([selected])) #toggle-button-element:hover,
+:host([variant='secondary'][icon-condensed][icon]:not([selected])) #toggle-button-element:active {
   padding: var(--pharos-spacing-one-eighth-x);
 }
 
-:host([icon][large]:not([selected])) #toggle-button-element:hover,
-:host([icon][large]:not([selected])) #toggle-button-element:active {
+:host([variant='secondary'][icon][large]:not([selected])) #toggle-button-element:hover,
+:host([variant='secondary'][icon][large]:not([selected])) #toggle-button-element:active {
   padding: calc(var(--pharos-spacing-one-half-x) - 1px);
 }

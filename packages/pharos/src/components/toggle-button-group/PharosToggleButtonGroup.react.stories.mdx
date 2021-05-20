@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { PharosToggleButtonGroup } from '../../react-components/toggle-button-group/pharos-toggle-button-group';
 import { PharosToggleButton } from '../../react-components/toggle-button-group/pharos-toggle-button';
 
-<Meta title="Components/ToggleButtonGroup" />
+<Meta title="Components/Toggle Button" />
 
 ## Examples
 
@@ -13,9 +13,46 @@ import { PharosToggleButton } from '../../react-components/toggle-button-group/p
 <Canvas>
   <Story name="Base">
     <PharosToggleButtonGroup>
-      <PharosToggleButton icon-left="view-list">List</PharosToggleButton>
-      <PharosToggleButton icon-left="view-gallery">Gallery</PharosToggleButton>
+      <PharosToggleButton
+        onClick={() => {
+          document.querySelector('#list-view').style.display = 'block';
+          document.querySelector('#gallery-view').style.display = 'none';
+          document.querySelector('#presentation-view').style.display = 'none';
+        }}
+        icon-left="view-list"
+      >
+        List
+      </PharosToggleButton>
+      <PharosToggleButton
+        onClick={() => {
+          document.querySelector('#list-view').style.display = 'none';
+          document.querySelector('#gallery-view').style.display = 'block';
+          document.querySelector('#presentation-view').style.display = 'none';
+        }}
+        icon-left="view-gallery"
+      >
+        Gallery
+      </PharosToggleButton>
+      <PharosToggleButton
+        onClick={() => {
+          document.querySelector('#list-view').style.display = 'none';
+          document.querySelector('#gallery-view').style.display = 'none';
+          document.querySelector('#presentation-view').style.display = 'block';
+        }}
+        icon-left="view-gallery"
+      >
+        Presentation
+      </PharosToggleButton>
     </PharosToggleButtonGroup>
+    <div id="list-view" style={{ display: 'none' }}>
+      List view
+    </div>
+    <div id="gallery-view" style={{ display: 'none' }}>
+      Gallery view
+    </div>
+    <div id="presentation-view" style={{ display: 'none' }}>
+      Presentation view
+    </div>
   </Story>
 </Canvas>
 
@@ -30,6 +67,18 @@ import { PharosToggleButton } from '../../react-components/toggle-button-group/p
       <PharosToggleButton id="gallery-mode-button" selected icon-left="view-gallery">
         Gallery
       </PharosToggleButton>
+    </PharosToggleButtonGroup>
+  </Story>
+</Canvas>
+
+### Icons Only
+
+<Canvas>
+  <Story name="Icons Only">
+    <PharosToggleButtonGroup>
+      <PharosToggleButton icon="view-list">List</PharosToggleButton>
+      <PharosToggleButton icon="view-gallery">Gallery</PharosToggleButton>
+      <PharosToggleButton icon="view-gallery">Presentation</PharosToggleButton>
     </PharosToggleButtonGroup>
   </Story>
 </Canvas>

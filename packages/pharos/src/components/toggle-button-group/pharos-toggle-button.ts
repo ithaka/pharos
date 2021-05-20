@@ -1,4 +1,4 @@
-import { html, property } from 'lit-element';
+import { html, property, state } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { toggleButtonStyles } from './pharos-toggle-button.css';
@@ -26,6 +26,15 @@ export class PharosToggleButton extends PharosButton {
   @property({ type: Boolean, reflect: true })
   public selected = false;
 
+  @state()
+  private _first = false;
+
+  @state()
+  private _last = false;
+
+  @state()
+  private _hideBorder = false;
+
   constructor() {
     super();
     this.variant = 'secondary';
@@ -33,7 +42,35 @@ export class PharosToggleButton extends PharosButton {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, toggleButtonStyles];
+    return [designTokens, super.styles, toggleButtonStyles];
+  }
+
+  protected update(changedProperties: PropertyValues): void {
+    super.update && super.update(changedProperties);
+
+    if (
+      changedProperties.has('href') ||
+      changedProperties.has('hreflang') ||
+      changedProperties.has('ping') ||
+      changedProperties.has('rel') ||
+      changedProperties.has('target')
+    ) {
+      throw new Error(
+        'The toggle button component does not support these properties: href, hreflang, ping, rel, and target.'
+      );
+    }
+
+    if (changedProperties.has('_first')) {
+      this.setAttribute('first', this._first ? 'true' : 'false');
+    }
+
+    if (changedProperties.has('_last')) {
+      this.setAttribute('last', this._last ? 'true' : 'false');
+    }
+
+    if (changedProperties.has('_hideBorder')) {
+      this.setAttribute('hideBorder', this._hideBorder ? 'true' : 'false');
+    }
   }
 
   protected firstUpdated(): void {
@@ -52,7 +89,7 @@ export class PharosToggleButton extends PharosButton {
   protected render(): TemplateResult {
     return html`
       <button
-        id="toggle-button-element"
+        id="button-element"
         ?autofocus=${this.autofocus}
         ?selected=${this.selected}
         ?disabled="${this.selected}"
@@ -62,22 +99,6 @@ export class PharosToggleButton extends PharosButton {
         ${this.buttonContent}
       </button>
     `;
-  }
-
-  protected update(changedProperties: PropertyValues): void {
-    super.update && super.update(changedProperties);
-
-    if (
-      changedProperties.has('href') ||
-      changedProperties.has('hreflang') ||
-      changedProperties.has('ping') ||
-      changedProperties.has('rel') ||
-      changedProperties.has('target')
-    ) {
-      throw new Error(
-        'The toggle button component does not support these properties: href, hreflang, ping, rel, and target.'
-      );
-    }
   }
 }
 
