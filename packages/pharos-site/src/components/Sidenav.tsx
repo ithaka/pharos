@@ -107,13 +107,6 @@ const Sidenav: FC = () => {
           >
             Design tokens
           </PharosSidenavLink>
-          <PharosSidenavLink
-            href="/components/textarea"
-            isActive={window.location.pathname === withPrefix('/components/textarea')}
-            onClick={handleLinkClick}
-          >
-            Text area
-          </PharosSidenavLink>
           <PharosSidenavMenu label="Components" expanded={isExpanded('components')}>
             {[
               'Component status',
