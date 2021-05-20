@@ -71,7 +71,7 @@ const PageSection: FC<PageSectionProps> = ({
 
     const subsubsectionTitle = (
       <div className={moreTitleSpace ? title__moreSpace : title__base}>
-        <PharosHeading level="2" preset="4">
+        <PharosHeading level={'4'} preset={'1--bold'}>
           {title}
         </PharosHeading>
       </div>
