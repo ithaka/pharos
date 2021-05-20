@@ -8,7 +8,7 @@ import '../../../components/heading/pharos-heading';
 export const CollectionCard = (card: Card): TemplateResult => html`
   <div>
     <img
-      src="./images/storybook/home/${card.image}"
+      src="./images/home/${card.image}"
       alt="${card.title}"
       width="99.9%"
       class="home-page__image--collection"

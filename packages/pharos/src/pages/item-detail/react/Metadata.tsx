@@ -7,7 +7,7 @@ import { PharosHeading } from '../../../react-components/heading/pharos-heading'
 export const Metadata: FC = () => (
   <div className="item-detail-page__container--metadata">
     <img
-      src="./images/storybook/item-detail/portal-logo.png"
+      src="./images/item-detail/portal-logo.png"
       alt="portal logo"
       className="item-detail-page__image--collection"
     />

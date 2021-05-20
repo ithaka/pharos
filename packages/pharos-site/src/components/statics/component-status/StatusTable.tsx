@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createRef } from 'react';
 import type { FC, ReactElement } from 'react';
-import { Link } from 'gatsby';
 import StatusIcon from './StatusIcon';
 import {
   table__row,
@@ -8,6 +7,7 @@ import {
   status__description,
   table,
   table__header,
+  stuck,
 } from './StatusTable.module.css';
 import legend from '../../../pages/components/component-status/legend.json';
 import statuses from '../../../pages/components/component-status/status.json';
@@ -20,10 +20,32 @@ const toCamelCase = (str: string) => {
 
 const StatusTable: FC = () => {
   const [StateTable, setStateTable] = useState<ReactElement[] | null>(null);
+  const [IsStuck, setIsStuck] = useState(false);
 
   const columns = ['Component', 'Design', 'Development', 'Tests', 'Documentation', 'Released In'];
 
+  const Pharos =
+    typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
+
+  const ref = createRef<HTMLTableCellElement>();
+
   useEffect(() => {
+    const { PharosLink } = Pharos;
+
+    const cachedRef = ref.current;
+    const observer = new IntersectionObserver(
+      ([e]) => {
+        const tBool = e.intersectionRatio < 1;
+        return setIsStuck(tBool);
+      },
+      {
+        threshold: [1],
+      }
+    );
+    if (cachedRef) {
+      observer.observe(cachedRef);
+    }
+
     const allComponentStatuses = Object.keys(statuses).map((key, i) => {
       const name = key.charAt(0).toUpperCase() + key.slice(1);
 
@@ -31,7 +53,7 @@ const StatusTable: FC = () => {
         <tr key={i} className={table__row}>
           <td className={table__cell}>
             {statuses[key as keyof typeof statuses].documentation.status === 'released' ? (
-              <Link to={`/components/${key}`}>{toCamelCase(name)}</Link>
+              <PharosLink href={`/components/${key}`}>{toCamelCase(name)}</PharosLink>
             ) : (
               toCamelCase(name)
             )}
@@ -57,7 +79,8 @@ const StatusTable: FC = () => {
     });
 
     setStateTable(allComponentStatuses);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setStateTable, Pharos]);
 
   return (
     <table className={table}>
@@ -65,7 +88,7 @@ const StatusTable: FC = () => {
         <tr>
           {columns.map((column, id) => {
             return (
-              <th key={id} className={table__header}>
+              <th key={id} className={`${table__header} ${IsStuck ? stuck : null}`} ref={ref}>
                 {column}
               </th>
             );

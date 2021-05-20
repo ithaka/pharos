@@ -7,17 +7,18 @@ import squareJoins from '../../../static/images/brand-expressions/iconography/ic
 import logoInspired from '../../../static/images/brand-expressions/iconography/icons-logo-inspired.png';
 
 import heroImage from '../../../static/images/brand-expressions/iconography/icon_overview_hero.svg';
-import simpleDetail from '../../../static/images/brand-expressions/iconography/icon_principles_simple-detail.svg';
-import clearConceptual from '../../../static/images/brand-expressions/iconography/icon_oprinciples_clear-conceptual.svg';
-import principles1 from '../../../static/images/brand-expressions/iconography/icon_principles_family-friends-1.svg';
-import principles2 from '../../../static/images/brand-expressions/iconography/icon_principles_family-friends-2.svg';
-import labels from '../../../static/images/brand-expressions/iconography/icon_principles_labels.svg';
-import inAction1 from '../../../static/images/brand-expressions/iconography/iconography_icons-in-action_image1.png';
-import inAction2 from '../../../static/images/brand-expressions/iconography/iconography_icons-in-action_image2.png';
+import simpleDo from '../../../static/images/brand-expressions/iconography/iconography_simple-detailed_do.svg';
+import simpleDont from '../../../static/images/brand-expressions/iconography/iconography_simple-detailed_dont.svg';
+import clearDo from '../../../static/images/brand-expressions/iconography/iconography_clear-conceptual_do.svg';
+import clearDont from '../../../static/images/brand-expressions/iconography/iconography_clear-conceptual_dont.svg';
+import familyDo from '../../../static/images/brand-expressions/iconography/iconography_family-friends_do.svg';
+import familyDont from '../../../static/images/brand-expressions/iconography/iconography_family-friends_dont.svg';
+import labelsDo from '../../../static/images/brand-expressions/iconography/iconography_labels_do.svg';
+import labelsDont from '../../../static/images/brand-expressions/iconography/iconography_labels_dont.svg';
 
 import PageSection from '../../components/statics/PageSection';
 import Grid from '../../components/Grid';
-import DosAndDonts from '../../components/statics/DosAndDonts';
+import BestPractices from '../../components/statics/BestPractices.tsx';
 
 <PageSection
   title="Iconography"
@@ -140,98 +141,110 @@ import DosAndDonts from '../../components/statics/DosAndDonts';
     <PharosHeading level="3" preset="4" style={{ marginBottom: '1rem' }}>
       Simple over detailed
     </PharosHeading>
-    <img src={simpleDetail} alt="Simple over detailed" style={{ marginBottom: '1rem' }} />
-    <p style={{ width: '66%', color: 'var(--pharos-color-text-20)' }}>
-      Icons should not be too heavy in details, this increases cognitive load on the user.
-    </p>
+    <Grid columns={2} justify="center" bottom={1}>
+      <img src={simpleDo} alt="Simple over detailed do" />
+      <img src={simpleDont} alt="Simple over detailed dont" />
+    </Grid>
+    <BestPractices
+      Do={
+        <ul>
+          <li>Icons should have simple lines and shapes</li>
+          <li>
+            Limit the creation of icon variations. No need for different icons to represent the same
+            concept (e.g. "admin settings" vs. "user settings")
+          </li>
+        </ul>
+      }
+      Dont={
+        <ul>
+          <li>
+            Icons should not be too heavy in details, this increases cognitive load on the user
+          </li>
+        </ul>
+      }
+    />
   </div>
   <div style={{ marginBottom: '4rem' }}>
     <PharosHeading level="3" preset="4" style={{ marginBottom: '1rem' }}>
       Clear over conceptual
     </PharosHeading>
-    <img src={clearConceptual} alt="Clear over conceptual" style={{ marginBottom: '1rem' }} />
-    <p style={{ width: '66%', color: 'var(--pharos-color-text-20)' }}>
-      Icons should be a good mix of iconic and symbolic. Interpreting abstract (symbolic) icons can
-      take more time and effort for the user. Don't reinvent an icon that's already been accepted as
-      a convention.
-    </p>
+    <Grid columns={2} justify="center" bottom={1}>
+      <img src={clearDo} alt="Clear over conceptual do" />
+      <img src={clearDont} alt="Clear over conceptual dont" />
+    </Grid>
+    <BestPractices
+      Do={
+        <ul>
+          <li>
+            Users should be able to understand what the icon represents. Interpreting abstract
+            (symbolic) icons can take more time and effort.
+          </li>
+          <li>Needs to be quickly recognizable on smaller screens.</li>
+          <li>Use well-known icons.</li>
+        </ul>
+      }
+      Dont={
+        <ul>
+          <li>
+            Don't reinvent an icon that's already been accepted as a convention. (e.g. a "gear" icon
+            for "settings").
+          </li>
+        </ul>
+      }
+    />
   </div>
   <div style={{ marginBottom: '4rem' }}>
     <PharosHeading level="3" preset="4" style={{ marginBottom: '.5rem' }}>
       Family over friends
     </PharosHeading>
-    <Grid columns={2} align="start" bottom={1}>
-      <img
-        src={principles1}
-        alt="A related set of icons works best when using icons in your experiences."
-      />
-      <img
-        src={principles2}
-        alt="A unrelated, inconsistent set of icons does not work as well for creating cohesiveness with iconography."
-      />
+    <Grid columns={2} justify="center" bottom={1}>
+      <img src={familyDo} alt="Family over friends do" />
+      <img src={familyDont} alt="Family over friends dont" />
     </Grid>
-    <div style={{ width: '66%', color: 'var(--pharos-color-text-20)' }}>
-      The icon set needs to look and feel related. If they aren't, the icons may look out of place,
-      cheapening the design or leading a user to mistrust the experience.
-    </div>
+    <BestPractices
+      Do={
+        <ul>
+          <li>The icon set needs to look and feel related.</li>
+        </ul>
+      }
+      Dont={
+        <ul>
+          <li>
+            Icons that aren't related may look out of place, cheapening the design or leading a user
+            to mistrust your design.
+          </li>
+        </ul>
+      }
+    />
   </div>
   <div>
     <PharosHeading level="3" preset="4" style={{ marginBottom: '1rem' }}>
       Labels over no labels
     </PharosHeading>
-    <img
-      src={labels}
-      alt="An image of a set of buttons that contain icons and text. When using iconography, it's best to use labels to identify the icon."
-      style={{ marginBottom: '1rem' }}
-    />
-    <p style={{ width: '66%', color: 'var(--pharos-color-text-20)' }}>
-      Icons with paired labels are more effective than icons alone. When paired, their meaning is
-      much more quickly recognizable and understood. If an icon cannot be paired with text next to
-      it, the use of a tooltip will suffice.
-    </p>
-  </div>
-</PageSection>
-
-<PageSection title="Best Practices">
-  <DosAndDonts>
-    <div style={{ width: '66%' }}>
-      <div style={{ marginBottom: 'var(--pharos-spacing-2-x)' }}>
-        <strong>Consider the following when implementing iconography</strong>
+    <Grid columns={2} justify="center" bottom={1}>
+      <img src={labelsDo} alt="Labels over no labels do" />
+      <img src={labelsDont} alt="Labels over no labels dont" />
+    </Grid>
+    <BestPractices
+      Do={
         <ul>
-          <li>Consider if an icon is needed for the design, not all actions may need an icon</li>
           <li>
-            Limit the creation of icon variations. There is no need for different icons to represent
-            the same concept (e.g. "admin settings" vs. "user settings")
-          </li>
-          <li>
-            Whenever possible, pair an icon with text, icons with labels are more effective than
-            icons alone.
+            Whenever possible, pair an icon with text, it's more quickly recognizable and
+            understood.
           </li>
           <li>
             If an icon cannot have text pair next to it, the use of a tooltip will suffice (e.g.
             zoom in/zoom out on the viewer).
           </li>
         </ul>
-      </div>
-      <strong>Use in product for the following:</strong>
-      <ul>
-        <li>CTA's/buttons, most specifically when paired with text</li>
-        <li>Symbolize tools (e.g., the viewer toolbar or project creator in Forum)</li>
-        <li>System actions (e.g., dropdown arrows, wayfinding, etc.)</li>
-        <li>Banners or alerts to bring attention to a specific message</li>
-        <li>Represent content types at a high level</li>
-      </ul>
-    </div>
-  </DosAndDonts>
-  <DosAndDonts Dont>
-    <div style={{ width: '66%' }}>
-      <p>
-        Don't reinvent an icon that's already been accepted as a convention. (e.g. a "gear" icon for
-        "settings"). Interpreting abstract (symbolic) icons can take more time and can create a
-        cognitive load on the user.
-      </p>
-    </div>
-  </DosAndDonts>
+      }
+      Dont={
+        <ul>
+          <li>Avoid using icons alone. Icons with labels are more effective.</li>
+        </ul>
+      }
+    />
+  </div>
 </PageSection>
 
 <PageSection title="Design and production guidelines">
@@ -303,15 +316,4 @@ import DosAndDonts from '../../components/statics/DosAndDonts';
       single path.
     </li>
   </ul>
-</PageSection>
-
-<PageSection title="Icon in action">
-  <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>Workspace page</div>
-  <div style={{ marginBottom: 'var(--pharos-spacing-2-x)' }}>
-    <img src={inAction1} alt="Image in action 1" style={{ maxWidth: '100%' }} />
-  </div>
-  <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>Presentation slide</div>
-  <div>
-    <img src={inAction2} alt="Image in action 2" style={{ maxWidth: 465 }} />
-  </div>
 </PageSection>

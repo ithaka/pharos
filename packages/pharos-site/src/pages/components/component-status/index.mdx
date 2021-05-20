@@ -4,7 +4,15 @@ import StatusTable from '../../../components/statics/component-status/StatusTabl
 
 <PageSection
   title="Component Status"
-  description="A detailed breakdown of our components and status of their implementation. If you have a new component suggestion, reach out to us and check out the governance model."
+  description={
+    <>
+      A detailed breakdown of our components and status of their implementation. For contributing
+      new component ideas, see the{' '}
+      <PharosLink href="https://github.com/ithaka/pharos/blob/develop/docs/README.md">
+        contribution guidelines.
+      </PharosLink>
+    </>
+  }
   isHeader
 >
   <StatusLegend />

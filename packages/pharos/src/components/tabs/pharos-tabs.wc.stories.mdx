@@ -5,16 +5,13 @@ import { html } from 'lit-html';
 import './pharos-tab';
 import './pharos-tabs';
 import './pharos-tab-panel';
-
-import Intro from '@docs/guidelines/tabs.docs.mdx';
-
-<Intro />
+import '../link/pharos-link';
 
 <Meta title="Components/Tabs" />
 
-## Examples
+# Tabs
 
-### Basic
+<pharos-link href="https://www.jstor.org/pharos/components/tabs" target="_blank">See guidelines in Pharos</pharos-link>
 
 <Canvas>
   <Story name="Base">
@@ -26,46 +23,6 @@ import Intro from '@docs/guidelines/tabs.docs.mdx';
         <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
         <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
         <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
-      </pharos-tabs>
-    `}
-  </Story>
-</Canvas>
-
-### Event handling
-
-<Canvas>
-  <Story name="Events">
-    {html`
-      <pharos-tabs @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}">
-        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
-        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
-        <pharos-tab id="tab-3" data-panel-id="panel-3" selected>Tab 3</pharos-tab>
-        <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
-        <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
-        <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
-      </pharos-tabs>
-    `}
-  </Story>
-</Canvas>
-
-### Panel order
-
-<Canvas>
-  <Story name="Panel Order">
-    {html`
-      <pharos-tabs>
-        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
-        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
-        <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
-        <pharos-tab-panel id="panel-2" slot="panel"
-          >I am the panel for tab 2 but listed 1st in the DOM</pharos-tab-panel
-        >
-        <pharos-tab-panel id="panel-3" slot="panel"
-          >I am the panel for tab 3 but listed 2rd in the DOM</pharos-tab-panel
-        >
-        <pharos-tab-panel id="panel-1" slot="panel"
-          >I am the panel for tab 1 but listed 3rd in the DOM</pharos-tab-panel
-        >
       </pharos-tabs>
     `}
   </Story>
@@ -84,3 +41,43 @@ import Intro from '@docs/guidelines/tabs.docs.mdx';
 ### pharos-tab-panel
 
 <ArgsTable of="pharos-tab-panel" />
+
+## Event handling
+
+<Canvas>
+  <Story name="Events">
+    {html`
+      <pharos-tabs @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}">
+        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
+        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
+        <pharos-tab id="tab-3" data-panel-id="panel-3" selected>Tab 3</pharos-tab>
+        <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
+        <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
+        <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
+      </pharos-tabs>
+    `}
+  </Story>
+</Canvas>
+
+## Panel order
+
+<Canvas>
+  <Story name="Panel Order">
+    {html`
+      <pharos-tabs>
+        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
+        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
+        <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
+        <pharos-tab-panel id="panel-2" slot="panel"
+          >I am the panel for tab 2 but listed 1st in the DOM</pharos-tab-panel
+        >
+        <pharos-tab-panel id="panel-3" slot="panel"
+          >I am the panel for tab 3 but listed 2nd in the DOM</pharos-tab-panel
+        >
+        <pharos-tab-panel id="panel-1" slot="panel"
+          >I am the panel for tab 1 but listed 3rd in the DOM</pharos-tab-panel
+        >
+      </pharos-tabs>
+    `}
+  </Story>
+</Canvas>

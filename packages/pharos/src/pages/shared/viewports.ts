@@ -1,9 +1,9 @@
 export const viewports = {
   small: {
-    name: '320 / 20',
+    name: '360 / 22.5',
     styles: {
-      width: '320px',
-      height: '568px',
+      width: '360px',
+      height: '560px',
     },
   },
   medium: {
@@ -21,7 +21,7 @@ export const viewports = {
     },
   },
   xLarge: {
-    name: '1360 / 48',
+    name: '1360 / 85',
     styles: {
       width: '1360px',
       height: '768px',
@@ -36,4 +36,4 @@ export const viewports = {
   },
 };
 
-export const breakpoints = [1584, 1360, 1056, 768, 320];
+export const breakpoints = [1584, 1360, 1056, 768, 360];

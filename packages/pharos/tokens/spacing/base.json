@@ -43,6 +43,10 @@
     "7x"  : {
       "value": "7rem",
       "comment": "112px"
+    },
+    "gutter"  : {
+      "value": "{spacing.3x.value}",
+      "comment": "48px"
     }
   }
 }

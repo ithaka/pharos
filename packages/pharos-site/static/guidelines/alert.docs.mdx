@@ -80,16 +80,16 @@ When displaying an alert, push the content below it down (could be the page cont
 Use a success alert when notifying the user that a task has been completed. They can include follow up actions if necessary related to the task.
 
 <Canvas>
-  <pharos-alert status="success">
+  <PharosAlert status="success">
     <p className="alert-example__content">
       Your username and a link to reset your password have been sent to your email address.
     </p>
     <p className="alert-example__content">
       If this email does not arrive within a few minutes,{' '}
-      <pharos-link href="#">try entering your password again</pharos-link> or contact{' '}
-      <pharos-link href="#">support@jstor.org</pharos-link>
+      <PharosLink href="#">try entering your password again</PharosLink> or contact{' '}
+      <PharosLink href="#">support@jstor.org</PharosLink>
     </p>
-  </pharos-alert>
+  </PharosAlert>
 </Canvas>
 
 #### Messaging:
@@ -101,11 +101,10 @@ Inform the user of the completion of their task in past tense and what they can 
 Use an info alert when notifying the user of neutral information. They can include links for users to take action.
 
 <Canvas>
-  <pharos-alert status="info">
+  <PharosAlert status="info">
     This is a temporary workspace and will expire in 2 days. To save and keep your workspace
-    forever, <pharos-link href="#">log in</pharos-link> or{' '}
-    <pharos-link href="#">register</pharos-link>
-  </pharos-alert>
+    forever, <PharosLink href="#">log in</PharosLink> or <PharosLink href="#">register</PharosLink>
+  </PharosAlert>
 </Canvas>
 
 ### Warning
@@ -113,25 +112,25 @@ Use an info alert when notifying the user of neutral information. They can inclu
 Use a warning alert to inform users of an instance that will directly impact the ability for them to complete their task. It should provide a reason for the warning, a recommended next step, and a way to contact us. Warnings are meant to be less alarming than error alerts.
 
 <Canvas>
-  <pharos-alert status="warning">
+  <PharosAlert status="warning">
     The information provided does not match our records. Please check your username or password and
     try again. If the issue persists, please contact{' '}
-    <pharos-link href="#">support@jstor.org</pharos-link>.
-  </pharos-alert>
+    <PharosLink href="#">support@jstor.org</PharosLink>.
+  </PharosAlert>
 </Canvas>
 
 <Canvas>
-  <pharos-alert status="warning">
+  <PharosAlert status="warning">
     This email address is connected to JSTOR with a Google account. Please try{' '}
-    <pharos-link href="#">logging in with Google</pharos-link> to access your account. If this
-    doesn't seem right, contact <pharos-link href="#">support@jstor.org</pharos-link>.
-  </pharos-alert>
+    <PharosLink href="#">logging in with Google</PharosLink> to access your account. If this doesn't
+    seem right, contact <PharosLink href="#">support@jstor.org</PharosLink>.
+  </PharosAlert>
 </Canvas>
 
 <Canvas>
-  <pharos-alert status="warning">
-    Your session expired. To continue, please <pharos-link href="#">log in</pharos-link>
-  </pharos-alert>
+  <PharosAlert status="warning">
+    Your session expired. To continue, please <PharosLink href="#">log in</PharosLink>
+  </PharosAlert>
 </Canvas>
 
 ### Error
@@ -139,13 +138,13 @@ Use a warning alert to inform users of an instance that will directly impact the
 Use an error alert when the user has submitted something the system can't accept, preventing them from continuing or when there is a system error that needs immediate attention.
 
 <Canvas>
-  <pharos-alert status="error">
+  <PharosAlert status="error">
     We're sorry, we experienced an issue submitting your report. Please try again. If the issue
     persists, contact{' '}
-    <pharos-link href="#" on-background>
+    <PharosLink href="#" onBackground>
       support@jstor.org
-    </pharos-link>
-  </pharos-alert>
+    </PharosLink>
+  </PharosAlert>
 </Canvas>
 
 To provide extra clarity, doubling on the use of Alerts and inline validation helps people quickly notice, find, and remedy errors.
@@ -162,7 +161,7 @@ To provide extra clarity, doubling on the use of Alerts and inline validation he
 **If the user made an error** the messaging should provide a reason for the alert, a recommended next step, and a way to contact us. If there are multiple errors, summarize them in a logical order (e.g. for forms that are missing several required fields from the user).
 
 <Canvas>
-  <pharos-alert status="error">
+  <PharosAlert status="error">
     <p className="alert-example__content">
       Please correct the following highlighted fields before continuing.
     </p>
@@ -171,19 +170,19 @@ To provide extra clarity, doubling on the use of Alerts and inline validation he
       <li>Password</li>
       <li>Accept JSTOR's Terms and Conditions</li>
     </ul>
-  </pharos-alert>
+  </PharosAlert>
 </Canvas>
 
 **If there is a system error** or something went wrong on our end, be apologetic, take the blame, provide a reason for the alert, and a way to contact us.
 
 <Canvas>
-  <pharos-alert status="error">
+  <PharosAlert status="error">
     We're sorry, we experienced an issue submitting your report. Please try again. If the issue
     persists, contact{' '}
-    <pharos-link href="#" on-background>
+    <PharosLink href="#" onBackground>
       support@jstor.org
-    </pharos-link>
-  </pharos-alert>
+    </PharosLink>
+  </PharosAlert>
 </Canvas>
 
 ## Accessibility

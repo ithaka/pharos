@@ -5,14 +5,13 @@ import './pharos-dropdown-menu-nav';
 import '../dropdown-menu/pharos-dropdown-menu';
 import '../dropdown-menu/pharos-dropdown-menu-item';
 import './pharos-dropdown-menu-nav-link';
-
-import Intro from '@docs/guidelines/dropdown-menu-nav.docs.mdx';
-
-<Intro />
+import '../link/pharos-link';
 
 <Meta title="Components/Dropdown Menu Nav" />
 
-# Base
+# Dropdown Menu Nav
+
+<pharos-link href="https://www.jstor.org/pharos/components/dropdown-menu-nav" target="_blank">See guidelines in Pharos</pharos-link>
 
 <Canvas>
   <Story name="Base" parameters={{ chromatic: { viewports: [320, 1200] } }}>
@@ -21,33 +20,33 @@ import Intro from '@docs/guidelines/dropdown-menu-nav.docs.mdx';
         <pharos-dropdown-menu-nav>
           <pharos-dropdown-menu-nav-link
             href="#"
-            id="smurfs-link"
-            data-dropdown-menu-id="smurfs-menu"
+            id="category1-link"
+            data-dropdown-menu-id="category1-menu"
             data-dropdown-menu-hover
             target="_blank"
-            >Smurfs</pharos-dropdown-menu-nav-link
+            >Category 1</pharos-dropdown-menu-nav-link
           >
-          <pharos-dropdown-menu id="smurfs-menu" data-dropdown-menu-hover>
-            <pharos-dropdown-menu-item>Papa</pharos-dropdown-menu-item>
-            <pharos-dropdown-menu-item>Clumsy</pharos-dropdown-menu-item>
-            <pharos-dropdown-menu-item>Smurfette</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu id="category1-menu" data-dropdown-menu-hover>
+            <pharos-dropdown-menu-item>Item 1.1</pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>Item 1.2</pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>Item 1.3</pharos-dropdown-menu-item>
           </pharos-dropdown-menu>
           <pharos-dropdown-menu-nav-link
             href="#"
-            id="tmnt-link"
-            data-dropdown-menu-id="tmnt-menu"
+            id="category2-link"
+            data-dropdown-menu-id="category2-menu"
             data-dropdown-menu-hover
             target="_blank"
-            >Ninja Turtles</pharos-dropdown-menu-nav-link
+            >Category 2</pharos-dropdown-menu-nav-link
           >
-          <pharos-dropdown-menu id="tmnt-menu">
-            <pharos-dropdown-menu-item>Leonardo</pharos-dropdown-menu-item>
-            <pharos-dropdown-menu-item>Donatello</pharos-dropdown-menu-item>
-            <pharos-dropdown-menu-item>Raphael</pharos-dropdown-menu-item>
-            <pharos-dropdown-menu-item>Michelangelo</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu id="category2-menu">
+            <pharos-dropdown-menu-item>Item 2.1</pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>Item 2.2</pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>Item 2.3</pharos-dropdown-menu-item>
+            <pharos-dropdown-menu-item>Item 2.4</pharos-dropdown-menu-item>
           </pharos-dropdown-menu>
           <pharos-dropdown-menu-nav-link href="#" id="other-link" target="_blank"
-            >Link to Other</pharos-dropdown-menu-nav-link
+            >Link</pharos-dropdown-menu-nav-link
           >
         </pharos-dropdown-menu-nav>
       `;

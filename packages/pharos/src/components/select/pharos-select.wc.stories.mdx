@@ -3,11 +3,8 @@ import { html } from 'lit-html';
 import { action } from '@storybook/addon-actions';
 
 import './pharos-select';
+import '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
-
-import Intro from '@docs/guidelines/select.docs.mdx';
-
-<Intro />
 
 <Meta
   title="Forms/Select"
@@ -16,7 +13,9 @@ import Intro from '@docs/guidelines/select.docs.mdx';
   }}
 />
 
-# Examples
+# Select
+
+<pharos-link href="https://www.jstor.org/pharos/components/select" target="_blank">See guidelines in Pharos</pharos-link>
 
 export const Template = (args) =>
   html`
