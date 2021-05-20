@@ -88,6 +88,7 @@ export class PharosImageCard extends LitElement {
           icon="ellipses-vertical"
           variant="subtle"
           icon-condensed
+          label="More actions"
           @click=${this._handleClick}
         ></pharos-button>`
       : nothing;
