@@ -68,7 +68,10 @@ export class PharosImageCard extends LitElement {
         </div>`
       : html`<pharos-link class="card__image" href="${this.link}" subtle flex
           ><slot name="image"></slot>${this.subtle
-            ? html`<div class="card__metadata--hover"><slot name="metadata"></slot></div>`
+            ? html`<div class="card__metadata--hover">
+                <strong class="card__title--hover">${this.title}</strong
+                ><slot name="metadata"></slot>
+              </div>`
             : nothing}</pharos-link
         >`;
   }

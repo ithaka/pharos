@@ -249,7 +249,7 @@
 }
 
 @mixin link-base {
-  @include font-base($font-size: inherit);
+  @include font-base($font-size: inherit, $line-height: inherit);
   @include underline;
 
   color: var(--pharos-color-interactive-secondary);
