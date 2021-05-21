@@ -7,6 +7,7 @@ import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';
 import type { ButtonType, LinkTarget, IconName } from '../button/pharos-button';
 
+export type BorderVariant = 'transparent' | 'zero' | 'double';
 export type { ButtonType, LinkTarget, IconName };
 
 /**
@@ -38,11 +39,16 @@ export class PharosToggleButton extends PharosButton {
   @state()
   private _hideRightBorder = false;
 
-  @state()
-  protected _hovered = false;
+  /**
+   * Indicates the variant of button.
+   * @attr variant
+   */
+  @property({ type: String, reflect: true })
+  public borderVariant: BorderVariant = 'transparent';
 
   constructor() {
     super();
+    this.borderVariant = 'transparent';
     this.variant = 'secondary';
     this.type = 'button';
   }
@@ -85,10 +91,6 @@ export class PharosToggleButton extends PharosButton {
 
   protected firstUpdated(): void {
     this.addEventListener('click', this._handleClickToggle);
-    this.addEventListener('mouseover', this._handleMouseOver);
-    this.addEventListener('mouseout', this._handleMouseOut);
-    this.addEventListener('focus', this._dispatchBorderCheck);
-    this.addEventListener('focusout', this._dispatchBorderCheck);
   }
 
   private _handleClickToggle(): void {
@@ -100,23 +102,6 @@ export class PharosToggleButton extends PharosButton {
     this.dispatchEvent(new CustomEvent('pharos-toggle-button-selected', details));
   }
 
-  private _handleMouseOver(): void {
-    this._hovered = true;
-    this._dispatchBorderCheck();
-  }
-
-  private _handleMouseOut(): void {
-    this._hovered = false;
-    this._dispatchBorderCheck();
-  }
-
-  private _dispatchBorderCheck(): void {
-    const details = {
-      bubbles: true,
-      composed: true,
-    };
-    this.dispatchEvent(new CustomEvent('pharos-toggle-button-border-check', details));
-  }
   protected render(): TemplateResult {
     return html`
       <button

@@ -22,11 +22,7 @@ export class PharosToggleButtonGroup extends LitElement {
   }
 
   protected firstUpdated(): void {
-    window.addEventListener('blur', () => {
-      this._setBorders();
-    });
     this.addEventListener('pharos-toggle-button-selected', this._handleButtonSelected);
-    this.addEventListener('pharos-toggle-button-border-check', this._setBorders);
     this.addEventListener('keydown', this._handleKeydown);
     this.addEventListener('focusout', this._handleFocusout);
 
@@ -60,38 +56,23 @@ export class PharosToggleButtonGroup extends LitElement {
       previous.selected = false;
     }
 
-    this._setBorders();
-  }
-
-  private _setBorders(): void {
-    const toggleButtons = this.querySelectorAll(
-      `pharos-toggle-button`
-    ) as NodeListOf<PharosToggleButton>;
-
-    toggleButtons.forEach((b) => {
-      b['_hideRightBorder'] = false;
+    const toggleButtons = Array.prototype.slice.call(
+      this.querySelectorAll(`pharos-toggle-button`)
+    ) as PharosToggleButton[];
+    let selectIdx = -1;
+    toggleButtons.forEach((b, idx) => {
       b['_hideLeftBorder'] = false;
-    });
-    toggleButtons.forEach((button, idx) => {
-      const selfFocused = this._needsOutline(button);
-      if (button.selected || selfFocused) {
-        if (idx > 0) {
-          const leftSibling = toggleButtons[idx - 1];
-          button['_hideLeftBorder'] = selfFocused || this._needsOutline(leftSibling);
-          leftSibling['_hideRightBorder'] = true;
-        }
-        if (idx < toggleButtons.length - 1) {
-          const rightSibling = toggleButtons[idx + 1];
-          button['_hideRightBorder'] = selfFocused || this._needsOutline(rightSibling);
-          rightSibling['_hideLeftBorder'] = true;
-        }
+      b['_hideRightBorder'] = false;
+      if (b.id == selected.id) {
+        selectIdx = idx;
       }
     });
-  }
-
-  private _needsOutline(button: PharosToggleButton): boolean {
-    const focusElem = document.activeElement;
-    return (button == focusElem && document.hasFocus()) || button['_hovered'];
+    if (selectIdx > 0) {
+      toggleButtons[selectIdx - 1]['_hideRightBorder'] = true;
+    }
+    if (selectIdx < toggleButtons.length - 1) {
+      toggleButtons[selectIdx + 1]['_hideLeftBorder'] = true;
+    }
   }
 
   private _handleKeydown(event: KeyboardEvent): void {

@@ -20,6 +20,7 @@
 
 :host([variant='secondary']) #button-element:focus {
   outline-offset: 0;
+  z-index: 100;
 }
 
 :host([variant='secondary']:not([selected])) #button-element {
@@ -35,22 +36,6 @@
   }
 }
 
-:host([variant='secondary'][hideLeftBorder='true'][selected]) #button-element {
-  border-left-color: transparent;
-}
-
-:host([variant='secondary'][hideLeftBorder='true']:not([selected])) #button-element {
-  border-left-color: transparent;
-}
-
-:host([variant='secondary'][hideRightBorder='true'][selected]) #button-element {
-  border-right-color: transparent;
-}
-
-:host([variant='secondary'][hideRightBorder='true']:not([selected])) #button-element {
-  border-right-color: transparent;
-}
-
 :host([variant='secondary'][icon]:not([selected])) #button-element {
   pharos-icon {
     fill: var(--pharos-color-ui-50);
@@ -58,21 +43,17 @@
   }
 }
 
-:host([variant='secondary'][first='false']:not([selected])) #button-element {
-  border-left-color: transparent;
-}
-
-:host([selected]) {
-  pointer-events: none;
-}
-
 :host([variant='secondary']:not([selected])) #button-element:hover,
 :host([variant='secondary']:not([selected])) #button-element:active {
-  @include mixins.button-color(
-    $color: var(--pharos-color-hover-primary),
-    $background-color: transparent,
-    $border-color: var(--pharos-color-hover-primary)
-  );
+  color: var(--pharos-color-hover-primary);
+  background-color: var(--pharos-color-marble-gray-97);
+  border-width: 1px;
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-three-quarters-x);
+
+  pharos-icon {
+    fill: var(--pharos-color-hover-primary);
+    stroke: var(--pharos-color-hover-primary);
+  }
 }
 
 :host([variant='secondary'][on-background][selected]) #button-element {
@@ -83,10 +64,60 @@
   );
 }
 
-:host([variant='secondary'][icon]) #button-element:hover,
-:host([variant='secondary'][icon]) #button-element:active {
-  padding: calc(var(--pharos-spacing-one-quarter-x) - 1px)
-    calc(var(--pharos-spacing-three-quarters-x) - 1px);
+:host([variant='secondary'][first='false'][borderVariant='transparent']:not([selected]))
+  #button-element {
+  border-left-color: transparent;
+}
+
+:host([variant='secondary'][hideleftborder='true'][borderVariant='transparent']:not([selected]))
+  #button-element,
+:host([variant='secondary'][hideleftborder='true'][borderVariant='transparent'][selected])
+  #button-element {
+  border-left-color: transparent;
+}
+
+:host([variant='secondary'][hiderightborder='true'][borderVariant='transparent']:not([selected]))
+  #button-element,
+:host([variant='secondary'][hiderightborder='true'][borderVariant='transparent'][selected])
+  #button-element {
+  border-right-color: transparent;
+}
+
+:host([variant='secondary'][last='false'][borderVariant='transparent']) #button-element:focus {
+  border-right-width: 0;
+  outline-offset: 0;
+}
+
+:host([variant='secondary'][first='false'][borderVariant='zero']:not([selected])) #button-element {
+  border-left-width: 0;
+}
+
+:host([variant='secondary'][hideleftborder='true'][borderVariant='zero']:not([selected]))
+  #button-element,
+:host([variant='secondary'][hideleftborder='true'][borderVariant='zero'][selected])
+  #button-element {
+  border-left-width: 0;
+}
+
+:host([variant='secondary'][hiderightborder='true'][borderVariant='zero']:not([selected]))
+  #button-element,
+:host([variant='secondary'][hiderightborder='true'][borderVariant='zero'][selected])
+  #button-element {
+  border-right-width: 0;
+}
+
+:host([variant='secondary'][last='false'][borderVariant='zero']) #button-element:focus {
+  border-right-width: 0;
+  outline-offset: 0;
+}
+
+:host([selected]) {
+  pointer-events: none;
+}
+
+:host([variant='secondary'][icon]:not([selected])) #button-element:hover,
+:host([variant='secondary'][icon]:not([selected])) #button-element:active {
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-three-quarters-x);
 }
 
 :host([variant='secondary'][on-background]:not([selected])) #button-element:hover,

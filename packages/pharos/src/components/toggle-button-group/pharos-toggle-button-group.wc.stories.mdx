@@ -74,15 +74,67 @@ import './pharos-toggle-button';
   </Story>
 </Canvas>
 
-## Icons Only
+## Icons Only (Transparent)
 
 <Canvas withToolbar>
-  <Story name="Icons Only">
+  <Story name="Icons Only (Transparent)">
     {html`
       <pharos-toggle-button-group>
         <pharos-toggle-button icon="view-list" id="view-list-button"></pharos-toggle-button>
         <pharos-toggle-button icon="view-gallery" id="view-gallery-button"></pharos-toggle-button>
         <pharos-toggle-button icon="image" id="view-presentation-button"></pharos-toggle-button>
+      </pharos-toggle-button-group>
+    `}
+  </Story>
+</Canvas>
+
+## Icons Only (Zero Width)
+
+<Canvas withToolbar>
+  <Story name="Icons Only (Zero Width)">
+    {html`
+      <pharos-toggle-button-group>
+        <pharos-toggle-button
+          icon="view-list"
+          id="view-list-button"
+          bordervariant="zero"
+        ></pharos-toggle-button>
+        <pharos-toggle-button
+          icon="view-gallery"
+          id="view-gallery-button"
+          bordervariant="zero"
+        ></pharos-toggle-button>
+        <pharos-toggle-button
+          icon="image"
+          id="view-presentation-button"
+          bordervariant="zero"
+        ></pharos-toggle-button>
+      </pharos-toggle-button-group>
+    `}
+  </Story>
+</Canvas>
+
+## Icons Only (Double Borders)
+
+<Canvas withToolbar>
+  <Story name="Icons Only (Double Borders)">
+    {html`
+      <pharos-toggle-button-group>
+        <pharos-toggle-button
+          icon="view-list"
+          id="view-list-button"
+          bordervariant="double"
+        ></pharos-toggle-button>
+        <pharos-toggle-button
+          icon="view-gallery"
+          id="view-gallery-button"
+          bordervariant="double"
+        ></pharos-toggle-button>
+        <pharos-toggle-button
+          icon="image"
+          id="view-presentation-button"
+          bordervariant="double"
+        ></pharos-toggle-button>
       </pharos-toggle-button-group>
     `}
   </Story>
