@@ -22,7 +22,11 @@ export class PharosToggleButtonGroup extends LitElement {
   }
 
   protected firstUpdated(): void {
+    window.addEventListener('blur', () => {
+      this._setBorders();
+    });
     this.addEventListener('pharos-toggle-button-selected', this._handleButtonSelected);
+    this.addEventListener('pharos-toggle-button-border-check', this._setBorders);
     this.addEventListener('keydown', this._handleKeydown);
     this.addEventListener('focusout', this._handleFocusout);
 
@@ -47,6 +51,7 @@ export class PharosToggleButtonGroup extends LitElement {
 
   private _handleButtonSelected(event: Event): void {
     const selected = event.target as PharosToggleButton;
+
     const previous = this.querySelector(
       `pharos-toggle-button[selected]:not([id="${selected.id}"])`
     ) as PharosToggleButton;
@@ -55,23 +60,38 @@ export class PharosToggleButtonGroup extends LitElement {
       previous.selected = false;
     }
 
+    this._setBorders();
+  }
+
+  private _setBorders(): void {
     const toggleButtons = this.querySelectorAll(
       `pharos-toggle-button`
     ) as NodeListOf<PharosToggleButton>;
 
-    let borderToHide = -1;
+    toggleButtons.forEach((b) => {
+      b['_hideRightBorder'] = false;
+      b['_hideLeftBorder'] = false;
+    });
     toggleButtons.forEach((button, idx) => {
-      button['_hideBorder'] = false;
-      if (button == selected) {
+      const selfFocused = this._needsOutline(button);
+      if (button.selected || selfFocused) {
         if (idx > 0) {
-          borderToHide = idx - 1;
+          const leftSibling = toggleButtons[idx - 1];
+          button['_hideLeftBorder'] = selfFocused || this._needsOutline(leftSibling);
+          leftSibling['_hideRightBorder'] = true;
+        }
+        if (idx < toggleButtons.length - 1) {
+          const rightSibling = toggleButtons[idx + 1];
+          button['_hideRightBorder'] = selfFocused || this._needsOutline(rightSibling);
+          rightSibling['_hideLeftBorder'] = true;
         }
       }
     });
+  }
 
-    if (borderToHide >= 0) {
-      toggleButtons[borderToHide]['_hideBorder'] = true;
-    }
+  private _needsOutline(button: PharosToggleButton): boolean {
+    const focusElem = document.activeElement;
+    return (button == focusElem && document.hasFocus()) || button['_hovered'];
   }
 
   private _handleKeydown(event: KeyboardEvent): void {

@@ -33,7 +33,13 @@ export class PharosToggleButton extends PharosButton {
   private _last = false;
 
   @state()
-  private _hideBorder = false;
+  private _hideLeftBorder = false;
+
+  @state()
+  private _hideRightBorder = false;
+
+  @state()
+  protected _hovered = false;
 
   constructor() {
     super();
@@ -68,13 +74,21 @@ export class PharosToggleButton extends PharosButton {
       this.setAttribute('last', this._last ? 'true' : 'false');
     }
 
-    if (changedProperties.has('_hideBorder')) {
-      this.setAttribute('hideBorder', this._hideBorder ? 'true' : 'false');
+    if (changedProperties.has('_hideLeftBorder')) {
+      this.setAttribute('hideLeftBorder', this._hideLeftBorder ? 'true' : 'false');
+    }
+
+    if (changedProperties.has('_hideRightBorder')) {
+      this.setAttribute('hideRightBorder', this._hideRightBorder ? 'true' : 'false');
     }
   }
 
   protected firstUpdated(): void {
     this.addEventListener('click', this._handleClickToggle);
+    this.addEventListener('mouseover', this._handleMouseOver);
+    this.addEventListener('mouseout', this._handleMouseOut);
+    this.addEventListener('focus', this._dispatchBorderCheck);
+    this.addEventListener('focusout', this._dispatchBorderCheck);
   }
 
   private _handleClickToggle(): void {
@@ -86,6 +100,23 @@ export class PharosToggleButton extends PharosButton {
     this.dispatchEvent(new CustomEvent('pharos-toggle-button-selected', details));
   }
 
+  private _handleMouseOver(): void {
+    this._hovered = true;
+    this._dispatchBorderCheck();
+  }
+
+  private _handleMouseOut(): void {
+    this._hovered = false;
+    this._dispatchBorderCheck();
+  }
+
+  private _dispatchBorderCheck(): void {
+    const details = {
+      bubbles: true,
+      composed: true,
+    };
+    this.dispatchEvent(new CustomEvent('pharos-toggle-button-border-check', details));
+  }
   protected render(): TemplateResult {
     return html`
       <button

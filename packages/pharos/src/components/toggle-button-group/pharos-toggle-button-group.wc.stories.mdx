@@ -21,6 +21,7 @@ import './pharos-toggle-button';
             document.querySelector('#presentation-view').style.display = 'none';
           }}"
           icon-left="view-list"
+          id="view-list-button"
         >
           List
         </pharos-toggle-button>
@@ -31,6 +32,7 @@ import './pharos-toggle-button';
             document.querySelector('#presentation-view').style.display = 'none';
           }}"
           icon-left="view-gallery"
+          id="view-gallery-button"
         >
           Gallery
         </pharos-toggle-button>
@@ -41,6 +43,7 @@ import './pharos-toggle-button';
             document.querySelector('#presentation-view').style.display = 'block';
           }}"
           icon-left="image"
+          id="view-presentation-button"
         >
           Presentation
         </pharos-toggle-button>
@@ -77,9 +80,9 @@ import './pharos-toggle-button';
   <Story name="Icons Only">
     {html`
       <pharos-toggle-button-group>
-        <pharos-toggle-button icon="view-list"></pharos-toggle-button>
-        <pharos-toggle-button icon="view-gallery"></pharos-toggle-button>
-        <pharos-toggle-button icon="image"></pharos-toggle-button>
+        <pharos-toggle-button icon="view-list" id="view-list-button"></pharos-toggle-button>
+        <pharos-toggle-button icon="view-gallery" id="view-gallery-button"></pharos-toggle-button>
+        <pharos-toggle-button icon="image" id="view-presentation-button"></pharos-toggle-button>
       </pharos-toggle-button-group>
     `}
   </Story>

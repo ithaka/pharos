@@ -35,8 +35,35 @@
   }
 }
 
+:host([variant='secondary'][hideLeftBorder='true'][selected]) #button-element {
+  border-left-color: transparent;
+}
+
+:host([variant='secondary'][hideLeftBorder='true']:not([selected])) #button-element {
+  border-left-color: transparent;
+}
+
+:host([variant='secondary'][hideRightBorder='true'][selected]) #button-element {
+  border-right-color: transparent;
+}
+
+:host([variant='secondary'][hideRightBorder='true']:not([selected])) #button-element {
+  border-right-color: transparent;
+}
+
+:host([variant='secondary'][icon]:not([selected])) #button-element {
+  pharos-icon {
+    fill: var(--pharos-color-ui-50);
+    stroke: var(--pharos-color-ui-50);
+  }
+}
+
 :host([variant='secondary'][first='false']:not([selected])) #button-element {
   border-left-color: transparent;
+}
+
+:host([selected]) {
+  pointer-events: none;
 }
 
 :host([variant='secondary']:not([selected])) #button-element:hover,
@@ -69,25 +96,6 @@
     $background-color: var(--pharos-color-interactive-tertiary),
     $border-color: var(--pharos-color-interactive-tertiary)
   );
-}
-
-:host([variant='secondary'][first='true'][hideBorder='true']:not([selected])) #button-element {
-  border-right-color: transparent;
-}
-
-:host([variant='secondary'][first='true'][hideBorder='true']:not([selected])) #button-element:hover,
-:host([variant='secondary'][first='true'][hideBorder='true']:not([selected]))
-  #button-element:active {
-  border-right-color: var(--pharos-color-hover-primary);
-}
-
-:host([variant='secondary'][first='true'][hideBorder='true']:not([selected]))
-  #button-element:focus {
-  border-right-color: var(--pharos-color-focus);
-}
-
-:host([selected]) {
-  pointer-events: none;
 }
 
 :host([variant='secondary'][icon-condensed][icon]:not([selected])) #toggle-button-element:hover,

@@ -19,6 +19,7 @@ import { PharosToggleButton } from '../../react-components/toggle-button-group/p
           document.querySelector('#gallery-view').style.display = 'none';
           document.querySelector('#presentation-view').style.display = 'none';
         }}
+        id="view-list-button"
         icon-left="view-list"
       >
         List
@@ -29,6 +30,7 @@ import { PharosToggleButton } from '../../react-components/toggle-button-group/p
           document.querySelector('#gallery-view').style.display = 'block';
           document.querySelector('#presentation-view').style.display = 'none';
         }}
+        id="view-gallery-button"
         icon-left="view-gallery"
       >
         Gallery
@@ -39,6 +41,7 @@ import { PharosToggleButton } from '../../react-components/toggle-button-group/p
           document.querySelector('#gallery-view').style.display = 'none';
           document.querySelector('#presentation-view').style.display = 'block';
         }}
+        id="view-presentation-button"
         icon-left="view-gallery"
       >
         Presentation
@@ -76,9 +79,15 @@ import { PharosToggleButton } from '../../react-components/toggle-button-group/p
 <Canvas>
   <Story name="Icons Only">
     <PharosToggleButtonGroup>
-      <PharosToggleButton icon="view-list">List</PharosToggleButton>
-      <PharosToggleButton icon="view-gallery">Gallery</PharosToggleButton>
-      <PharosToggleButton icon="view-gallery">Presentation</PharosToggleButton>
+      <PharosToggleButton icon="view-list" id="view-list-button">
+        List
+      </PharosToggleButton>
+      <PharosToggleButton icon="view-gallery" id="view-gallery-button">
+        Gallery
+      </PharosToggleButton>
+      <PharosToggleButton icon="view-presentation" id="view-presentation-button">
+        Presentation
+      </PharosToggleButton>
     </PharosToggleButtonGroup>
   </Story>
 </Canvas>
