@@ -10,23 +10,30 @@
   flex-direction: column;
 }
 
-.card__image,
-.card__title {
+.card__link--image,
+.card__link--title {
   display: inline-flex;
 }
 
-.card__image,
-.card__container--error {
+.card__link--image,
+.card__container--error,
+.card__container--collection-image {
   margin-bottom: var(--pharos-spacing-1-x);
 }
 
-.card__metadata {
+.card__metadata--base {
   @include mixins.font-base(
     $font-size: var(--pharos-font-size-small),
     $line-height: var(--pharos-line-height-small)
   );
 
   color: var(--pharos-color-text-40);
+}
+
+.card__metadata--collection {
+  @include mixins.font-base;
+
+  color: var(--pharos-color-text-20);
 }
 
 .card__metadata--hover {
@@ -51,19 +58,35 @@
 }
 
 .card__container--error {
+  min-width: 11rem;
   border: 1px solid var(--pharos-color-ui-40);
   height: 14.625rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   row-gap: var(--pharos-spacing-1-x);
 }
 
 .card__container--title {
-  margin-bottom: var(--pharos-spacing-one-half-x);
   display: flex;
   align-items: center;
+}
+
+.card__container--base-title {
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.card__container--collection-title {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+.card__container--collection-image {
+  display: grid;
+  overflow: hidden;
+  position: relative;
+  height: auto;
 }
 
 .card__button {
@@ -77,7 +100,7 @@
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-:host([subtle]) .card__image {
+:host([subtle]) .card__link--image {
   position: relative;
 
   &:hover {
@@ -92,4 +115,16 @@
 
 slot[name='metadata']::slotted(*:not(:last-child)) {
   margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+:host([variant='collection']) slot[name='metadata']::slotted(*:not(:last-child)) {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+:host([variant='collection']) slot[name='image']::slotted(img) {
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  object-position: 50% 30%;
 }

@@ -1,6 +1,7 @@
 import { html, LitElement, property } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { nothing } from 'lit-html';
+import { classMap } from 'lit-html/directives/class-map.js';
 import { imageCardStyles } from './pharos-image-card.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
@@ -12,6 +13,19 @@ import '../link/pharos-link';
 import '../icon/pharos-icon';
 import '../button/pharos-button';
 
+export type ImageCardVariant = 'base' | 'collection';
+
+const VARIANTS = ['base', 'collection'];
+
+/**
+ * Pharos image card component.
+ *
+ * @element pharos-image-card
+ *
+ * @slot image - Contains the image to display on the card.
+ * @slot metadata - Contains the metadata for the item.
+ *
+ */
 @customElement('pharos-image-card')
 export class PharosImageCard extends LitElement {
   /**
@@ -49,8 +63,25 @@ export class PharosImageCard extends LitElement {
   @property({ type: String, reflect: true, attribute: 'action-menu' })
   public actionMenu?: string;
 
+  /**
+   * Indicates the variant of card.
+   * @attr variant
+   */
+  @property({ type: String, reflect: true })
+  public variant: ImageCardVariant = 'base';
+
   public static get styles(): CSSResultArray {
     return [designTokens, imageCardStyles];
+  }
+
+  protected update(changedProperties: PropertyValues): void {
+    super.update && super.update(changedProperties);
+
+    if (changedProperties.has('variant') && this.variant && !VARIANTS.includes(this.variant)) {
+      throw new Error(
+        `${this.variant} is not a valid variant. Valid variants are: ${VARIANTS.join(', ')}`
+      );
+    }
   }
 
   private _handleClick(e: MouseEvent): void {
@@ -61,12 +92,19 @@ export class PharosImageCard extends LitElement {
     menu?.openWithTrigger(trigger);
   }
 
-  private _renderImage(): TemplateResult {
+  private _renderCollectionImage(): TemplateResult {
+    return html`<div class="card__container--collection-image">
+      <svg role="presentation" viewBox="0 0 4 3"></svg>
+      <slot name="image"></slot>
+    </div>`;
+  }
+
+  private _renderBaseImage(): TemplateResult {
     return this.error
       ? html`<div class="card__container--error">
           <pharos-icon name="exclamation-inverse"></pharos-icon>Preview not available
         </div>`
-      : html`<pharos-link class="card__image" href="${this.link}" subtle flex
+      : html`<pharos-link class="card__link--image" href="${this.link}" subtle flex
           ><slot name="image"></slot>${this.subtle
             ? html`<div class="card__metadata--hover">
                 <strong class="card__title--hover">${this.title}</strong
@@ -76,9 +114,16 @@ export class PharosImageCard extends LitElement {
         >`;
   }
 
+  private _renderImage(): TemplateResult {
+    return this.variant === 'collection' ? this._renderCollectionImage() : this._renderBaseImage();
+  }
+
   protected get renderTitle(): TemplateResult {
-    return html`<pharos-link class="card__title" href="${this.link}" subtle flex
-      ><pharos-heading preset="1--bold" level="3" no-margin
+    return html`<pharos-link class="card__link--title" href="${this.link}" subtle flex
+      ><pharos-heading
+        preset="${this.variant === 'collection' ? '2' : '1--bold'}"
+        level="3"
+        no-margin
         >${this.title}</pharos-heading
       ></pharos-link
     >`;
@@ -97,13 +142,31 @@ export class PharosImageCard extends LitElement {
       : nothing;
   }
 
+  private _renderMetadata(): TemplateResult | typeof nothing {
+    return this.subtle
+      ? nothing
+      : html`<div
+          class="${classMap({
+            [`card__metadata`]: true,
+            [`card__metadata--${this.variant}`]: this.variant,
+          })}"
+        >
+          <slot name="metadata"></slot>
+        </div>`;
+  }
+
   protected render(): TemplateResult {
     return html`<div class="card">
       ${this._renderImage()}
-      <div class="card__container--title">${this.renderTitle} ${this._renderActionButton()}</div>
-      ${this.subtle
-        ? nothing
-        : html`<div class="card__metadata"><slot name="metadata"></slot></div>`}
+      <div
+        class="${classMap({
+          [`card__container--title`]: true,
+          [`card__container--${this.variant}-title`]: this.variant,
+        })}"
+      >
+        ${this.renderTitle} ${this._renderActionButton()}
+      </div>
+      ${this._renderMetadata()}
     </div>`;
   }
 }
