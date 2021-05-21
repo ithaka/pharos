@@ -1,12 +1,14 @@
-import { html, LitElement, property } from 'lit-element';
+import { html, LitElement, property, query } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { nothing } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { imageCardStyles } from './pharos-image-card.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
+
 import type { PharosButton } from '../button/pharos-button';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
+import type { PharosLink } from '../link/pharos-link';
 
 import '../heading/pharos-heading';
 import '../link/pharos-link';
@@ -70,6 +72,9 @@ export class PharosImageCard extends LitElement {
   @property({ type: String, reflect: true })
   public variant: ImageCardVariant = 'base';
 
+  @query('.card__link--title')
+  private _title!: PharosLink;
+
   public static get styles(): CSSResultArray {
     return [designTokens, imageCardStyles];
   }
@@ -92,6 +97,10 @@ export class PharosImageCard extends LitElement {
     menu?.openWithTrigger(trigger);
   }
 
+  private _handleImageHover(event: Event): void {
+    this._title['_hover'] = event.type === 'mouseenter';
+  }
+
   private _renderCollectionImage(): TemplateResult {
     return html`<div class="card__container--collection-image">
       <svg role="presentation" viewBox="0 0 4 3"></svg>
@@ -104,7 +113,13 @@ export class PharosImageCard extends LitElement {
       ? html`<div class="card__container--error">
           <pharos-icon name="exclamation-inverse"></pharos-icon>Preview not available
         </div>`
-      : html`<pharos-link class="card__link--image" href="${this.link}" subtle flex
+      : html`<pharos-link
+          class="card__link--image"
+          href="${this.link}"
+          subtle
+          flex
+          @mouseenter=${this._handleImageHover}
+          @mouseleave=${this._handleImageHover}
           ><slot name="image"></slot>${this.subtle
             ? html`<div class="card__metadata--hover">
                 <strong class="card__title--hover">${this.title}</strong
@@ -160,8 +175,8 @@ export class PharosImageCard extends LitElement {
       ${this._renderImage()}
       <div
         class="${classMap({
-          [`card__container--title`]: true,
-          [`card__container--${this.variant}-title`]: this.variant,
+          [`card__title`]: true,
+          [`card__title--${this.variant}`]: this.variant,
         })}"
       >
         ${this.renderTitle} ${this._renderActionButton()}

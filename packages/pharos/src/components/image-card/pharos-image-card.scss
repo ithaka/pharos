@@ -69,16 +69,16 @@
   row-gap: var(--pharos-spacing-1-x);
 }
 
-.card__container--title {
+.card__title {
   display: flex;
   align-items: center;
 }
 
-.card__container--base-title {
+.card__title--base {
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.card__container--collection-title {
+.card__title--collection {
   margin-bottom: var(--pharos-spacing-1-x);
 }
 
