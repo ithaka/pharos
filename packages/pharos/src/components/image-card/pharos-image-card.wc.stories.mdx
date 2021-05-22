@@ -1,30 +1,79 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
 import { html } from 'lit-html';
+import { viewports } from '../../pages/shared/viewports';
 
 import './pharos-image-card';
+import '../layout/pharos-layout';
 
-<Meta title="Components/Image Card" />
+import { items, collections } from '../../pages/item-detail/mocks';
+
+<Meta
+  title="Components/Image Card"
+  parameters={{
+    layout: 'fullscreen',
+    viewport: {
+      viewports,
+    },
+  }}
+/>
 
 # Image Card
 
-export const Template = (args) => html`<pharos-image-card
-  title="South Hall"
-  link="https://www.jstor.org/stable/10.2307/community.26220188"
-  ?error=${args.error}
->
-  <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-  <div slot="metadata">Tubby, William Bunker (American architect,...</div>
-  <div slot="metadata">1889-1892 (creation)</div>
-  <div slot="metadata">
-    Part of
-    <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-      >Pratt Institute Buildings Image Collection</pharos-link
+export const Template = (args) => html`<pharos-layout style="margin: 1rem 0"
+  ><pharos-image-card
+    title="South Hall"
+    link="https://www.jstor.org/stable/10.2307/community.26220188"
+    ?error=${args.error}
+    ?subtle=${args.subtle}
+    style="grid-column: span 2"
+  >
+    <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
+    <div slot="metadata">Tubby, William Bunker (American architect,...</div>
+    <div slot="metadata">1889-1892 (creation)</div>
+    <div slot="metadata">
+      Part of
+      <pharos-link
+        href="https://www.jstor.org/site/pratt/buildings-image"
+        ?on-background=${args.subtle}
+        >Pratt Institute Buildings Image Collection</pharos-link
+      >
+    </div>
+  </pharos-image-card></pharos-layout
+>`;
+
+export const MultipleTemplate = () => html`<pharos-layout style="margin: 1rem 0">
+  ${items.map((item, index) => {
+    return html`<pharos-image-card title="Card Title" link="#" style="grid-column: span 2">
+      <img src="./images/item-detail/${item.image}" alt="Card Title ${index}" slot="image" />
+      <div slot="metadata">Creator of the item</div>
+      <div slot="metadata">1990-2000</div>
+      <div slot="metadata">
+        Part of
+        <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+          >An Example Collection</pharos-link
+        >
+      </div>
+    </pharos-image-card>`;
+  })}</pharos-layout
+>`;
+
+export const CollectionsTemplate = () => html`<pharos-layout style="margin: 1rem 0">
+  ${collections.map((collection) => {
+    return html`<pharos-image-card
+      title="${collection.title}"
+      link="#"
+      variant="collection"
+      style="grid-column: span 3"
     >
-  </div>
-</pharos-image-card>`;
+      <img src="./images/item-detail/${collection.image}" alt="${collection.title}" slot="image" />
+      <div slot="metadata"><strong>${collection.items} items</strong></div>
+      <div slot="metadata">Selections from the global permanent collection.</div>
+    </pharos-image-card>`;
+  })}</pharos-layout
+>`;
 
 <Canvas>
-  <Story name="Base">{Template.bind({})}</Story>
+  <Story name="Base">{MultipleTemplate.bind({})}</Story>
 </Canvas>
 
 ## API
@@ -39,50 +88,37 @@ export const Template = (args) => html`<pharos-image-card
   </Story>
 </Canvas>
 
-# Subtle Card
+# Subtle
 
 <Canvas>
-  <Story name="Subtle Card">
-    {html`
-      <pharos-image-card
-        title="South Hall"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        subtle
-      >
-        <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div slot="metadata">1889-1892 (creation)</div>
-        <div slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image" on-background
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
+  <Story name="Subtle" args={{ subtle: true }}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 
 # With Action Menu
 
 <Canvas>
-  <Story name="With Action Menu" args={{ actionMenu: 'my-dropdown-menu' }}>
+  <Story name="With Action Menu">
     {html`
-      <pharos-image-card
-        title="South Hall"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        action-menu="my-dropdown-menu"
-      >
-        <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div slot="metadata">1889-1892 (creation)</div>
-        <div slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
+      <pharos-layout style="margin: 1rem 0">
+        <pharos-image-card
+          title="South Hall"
+          link="https://www.jstor.org/stable/10.2307/community.26220188"
+          action-menu="my-dropdown-menu"
+          style="grid-column: span 2"
+        >
+          <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
+          <div slot="metadata">Tubby, William Bunker (American architect,...</div>
+          <div slot="metadata">1889-1892 (creation)</div>
+          <div slot="metadata">
+            Part of
+            <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+              >Pratt Institute Buildings Image Collection</pharos-link
+            >
+          </div>
+        </pharos-image-card>
+      </pharos-layout>
       <pharos-dropdown-menu id="my-dropdown-menu">
         <pharos-dropdown-menu-item>Item 1</pharos-dropdown-menu-item>
         <pharos-dropdown-menu-item>Item 2</pharos-dropdown-menu-item>
@@ -90,4 +126,10 @@ export const Template = (args) => html`<pharos-image-card
       </pharos-dropdown-menu>
     `}
   </Story>
+</Canvas>
+
+# Collection
+
+<Canvas>
+  <Story name="Collection">{CollectionsTemplate.bind({})}</Story>
 </Canvas>

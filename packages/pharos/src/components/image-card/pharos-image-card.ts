@@ -1,7 +1,6 @@
 import { html, LitElement, property, query } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { nothing } from 'lit-html';
-import { classMap } from 'lit-html/directives/class-map.js';
 import { imageCardStyles } from './pharos-image-card.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
@@ -45,6 +44,13 @@ export class PharosImageCard extends LitElement {
   public link = '';
 
   /**
+   * Indicates the variant of card.
+   * @attr variant
+   */
+  @property({ type: String, reflect: true })
+  public variant: ImageCardVariant = 'base';
+
+  /**
    * Indicates if the image is not available or accessible.
    * @attr error
    */
@@ -64,13 +70,6 @@ export class PharosImageCard extends LitElement {
    */
   @property({ type: String, reflect: true, attribute: 'action-menu' })
   public actionMenu?: string;
-
-  /**
-   * Indicates the variant of card.
-   * @attr variant
-   */
-  @property({ type: String, reflect: true })
-  public variant: ImageCardVariant = 'base';
 
   @query('.card__link--title')
   private _title!: PharosLink;
@@ -136,6 +135,7 @@ export class PharosImageCard extends LitElement {
   protected get renderTitle(): TemplateResult {
     return html`<pharos-link class="card__link--title" href="${this.link}" subtle flex
       ><pharos-heading
+        class="card__heading"
         preset="${this.variant === 'collection' ? '2' : '1--bold'}"
         level="3"
         no-margin
@@ -160,12 +160,7 @@ export class PharosImageCard extends LitElement {
   private _renderMetadata(): TemplateResult | typeof nothing {
     return this.subtle
       ? nothing
-      : html`<div
-          class="${classMap({
-            [`card__metadata`]: true,
-            [`card__metadata--${this.variant}`]: this.variant,
-          })}"
-        >
+      : html`<div class="card__metadata">
           <slot name="metadata"></slot>
         </div>`;
   }
@@ -173,14 +168,7 @@ export class PharosImageCard extends LitElement {
   protected render(): TemplateResult {
     return html`<div class="card">
       ${this._renderImage()}
-      <div
-        class="${classMap({
-          [`card__title`]: true,
-          [`card__title--${this.variant}`]: this.variant,
-        })}"
-      >
-        ${this.renderTitle} ${this._renderActionButton()}
-      </div>
+      <div class="card__title">${this.renderTitle} ${this._renderActionButton()}</div>
       ${this._renderMetadata()}
     </div>`;
   }
