@@ -1,11 +1,6 @@
-import navigationalTooltip from '../images/components/tooltip/tooltip_navigational.png';
 import tooltipViewer from '../images/components/tooltip/tooltip_viewer-1.png';
 import tooltipViewerTwo from '../images/components/tooltip/tooltip_viewer-2.png';
-import tooltipViewerThree from '../images/components/tooltip/tooltip_viewer-3.png';
-import iconButton from '../images/components/tooltip/tooltip_icon-button.png';
-import largeExample from '../images/components/tooltip/tooltip_large-example.png';
 import tooltipOverflow from '../images/components/tooltip/tooltip_overflow.gif';
-import tooltipHoverable from '../images/components/tooltip/tooltip_hoverable.gif';
 import PageSection from '../../src/components/statics/PageSection.tsx';
 import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
@@ -115,14 +110,7 @@ You can also decide to position the tooltip in a more appropriate place dependin
 
 For navigational items, the tooltip should be placed to the left of the associated icon button.
 
-<img
-  src={navigationalTooltip}
-  alt="Tooltip placement for navigational items"
-  className="pharos-storybook__image"
-  width="350"
-/>
-
-##### Icon Toolbar
+##### Icon toolbar
 
 For content viewing experiences, the tooltip should sit below the viewer control icon buttons.
 
@@ -132,36 +120,16 @@ For content viewing experiences, the tooltip should sit below the viewer control
   className="pharos-storybook__image"
   width="700"
 />
-<img
-  src={tooltipViewerThree}
-  alt="Tooltip placement for viewer toolbar"
-  className="pharos-storybook__image"
-  width="700"
-/>
 
-##### Icon Buttons
+##### Icon buttons
 
 For tooltips that are near other objects or items, display the tooltip to have more contrast, prominence and readability. In the example below, the tooltip has a top placement.
 
-<img
-  src={iconButton}
-  alt="Tooltip for an icon button"
-  className="pharos-storybook__image"
-  width="700"
-/>
-
-##### Longer Titles
+##### Longer titles
 
 For titles that need a tooltip to display the full title, it should sit above the content, so the link text is still visible to the user.
 
-<img
-  src={largeExample}
-  alt="Example of tooltip with a long title"
-  className="pharos-storybook__image"
-  height="350"
-/>
-
-##### Caret Placement
+##### Caret placement
 
 We use [Popper.js](https://popper.js.org/) to position our tooltips. By default, tooltips are placed in the center of the trigger, but the caret/arrow will move and remain "attached" with Popper's overflow functionality.
 
@@ -179,7 +147,7 @@ We use [Popper.js](https://popper.js.org/) to position our tooltips. By default,
   width="700"
 />
 
-### Longer Content
+### Longer content
 
 Larger tooltips can be used to display further additional information. It is highly recommended that you consider if you need a tooltip or not for the design. "Throw it in a tooltip" is not the answer.
 
@@ -247,20 +215,13 @@ A user can dismiss the tooltip without moving their pointer hover or keyboard fo
 
 If pointer hover can trigger the additional content, then the pointer can be moved over the tooltip without it disappearing.
 
-<img
-  src={tooltipHoverable}
-  alt="Hovering over tooltip content"
-  className="pharos-storybook__image"
-  height="250"
-/>
-
 _Tooltip remains open while the cursor moves within the trigger and disappears when the cursor moves out of the trigger._
 
 #### Persistent
 
 The additional content remains visible until the hover or focus trigger is removed, the user dismisses it, or its information is no longer valid.
 
-### Keyboard Interactions
+### Keyboard interactions
 
 Pressing <kbd>Escape</kbd> dismisses the tooltip.
 
@@ -270,7 +231,7 @@ Pressing <kbd>Escape</kbd> dismisses the tooltip.
 - The element that triggers the tooltip references the tooltip element with aria-describedby.
 - Don't rely on `title` attributes. They are not keyboard accessible and are not supported in many screen reader setups.
 
-## Content Guidelines
+## Content guidelines
 
 **Tooltips should:**
 
