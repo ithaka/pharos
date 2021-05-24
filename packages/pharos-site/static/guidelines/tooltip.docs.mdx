@@ -6,6 +6,8 @@ import iconButton from '../images/components/tooltip/tooltip_icon-button.png';
 import largeExample from '../images/components/tooltip/tooltip_large-example.png';
 import tooltipOverflow from '../images/components/tooltip/tooltip_overflow.gif';
 import tooltipHoverable from '../images/components/tooltip/tooltip_hoverable.gif';
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 # Tooltip
 
@@ -192,19 +194,33 @@ Larger tooltips can be used to display further additional information. It is hig
   </div>
 </Canvas>
 
-## Best Practices
-
-### Dos
-
-- Use tooltips to clarify expected behavior when interacting with icon buttons, buttons, or links with an associated keyboard shortcut.
-- Use tooltips sparingly. If you're building something that requires a lot of tooltips, work on clarifying the design and the language in the experience. Do you NEED a tooltip?
-
-### Don'ts
-
-- Don't include interactive content such as buttons or links.
-- Don't include imagery, concise text will do.
-- Don't use tooltips to restate visible text in the UI.
-- Don't use tooltips to communicate critical information, like errors or other interaction feedback.
+<PageSection title="Best practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>
+          Use tooltips to clarify expected behavior when interacting with icon buttons, buttons, or
+          links with an associated keyboard shortcut.
+        </li>
+        <li>
+          Use tooltips sparingly. If you're building something that requires a lot of tooltips, work
+          on clarifying the design and the language in the experience. Do you NEED a tooltip?
+        </li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Don't include interactive content such as buttons or links.</li>
+        <li>Don't include imagery, concise text will do. </li>
+        <li>Don't use tooltips to restate visible text in the UI.</li>
+        <li>
+          Don't use tooltips to communicate critical information, like errors or other interaction
+          feedback.
+        </li>
+      </ul>
+    }
+  />
+</PageSection>
 
 ## Accessibility
 
