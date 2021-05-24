@@ -50,65 +50,61 @@ export const Template = (args) => (
 );
 
 export const MultipleTemplate = () => (
-  <PharosLayout style={{ margin: '1rem 0' }}>
+  <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
     {items.map((item, index) => {
       return (
-        <PharosImageCard
-          id={`card-${index}`}
-          key={index}
-          title="Card Title"
-          link="#"
-          style={{ gridColumn: 'span 2' }}
-        >
-          <img
-            id={`image-${index}`}
-            src="./images/item-detail/{item.image}"
-            alt={`Card Title ${index}`}
-            slot="image"
-          />
-          <div id={`creator-${index}`} slot="metadata">
-            Creator of the item
-          </div>
-          <div id={`item-date-${index}`} slot="metadata">
-            1990-2000
-          </div>
-          <div id={`collection-${index}`} slot="metadata">
-            Part of
-            <PharosLink href="https://www.jstor.org/site/pratt/buildings-image">
-              An Example Collection
-            </PharosLink>
-          </div>
-        </PharosImageCard>
+        <li style={{ gridColumn: 'span 2' }} key={index}>
+          <PharosImageCard id={`card-${index}`} title="Card Title" link="#">
+            <img
+              id={`image-${index}`}
+              src="./images/item-detail/{item.image}"
+              alt={`Card Title ${index}`}
+              slot="image"
+            />
+            <div id={`creator-${index}`} slot="metadata">
+              Creator of the item
+            </div>
+            <div id={`item-date-${index}`} slot="metadata">
+              1990-2000
+            </div>
+            <div id={`collection-${index}`} slot="metadata">
+              Part of
+              <PharosLink href="https://www.jstor.org/site/pratt/buildings-image">
+                An Example Collection
+              </PharosLink>
+            </div>
+          </PharosImageCard>
+        </li>
       );
     })}
   </PharosLayout>
 );
 
 export const CollectionsTemplate = () => (
-  <PharosLayout style={{ margin: '1rem 0' }}>
+  <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
     {collections.map((collection, index) => {
       return (
-        <PharosImageCard
-          id={`card-${index}`}
-          key={index}
-          title={collection.title}
-          link="#"
-          variant="collection"
-          class="image-card-example__card--collection"
-        >
-          <img
-            id={`image-${index}`}
-            src="./images/item-detail/{collection.image}"
-            alt={collection.title}
-            slot="image"
-          />
-          <div id={`items-${index}`} slot="metadata">
-            <strong>{collection.items} items</strong>
-          </div>
-          <div id={`description-${index}`} slot="metadata">
-            Selections from the global permanent collection.
-          </div>
-        </PharosImageCard>
+        <li className="image-card-example__card--collection" key={index}>
+          <PharosImageCard
+            id={`card-${index}`}
+            title={collection.title}
+            link="#"
+            variant="collection"
+          >
+            <img
+              id={`image-${index}`}
+              src="./images/item-detail/{collection.image}"
+              alt={collection.title}
+              slot="image"
+            />
+            <div id={`items-${index}`} slot="metadata">
+              <strong>{collection.items} items</strong>
+            </div>
+            <div id={`description-${index}`} slot="metadata">
+              Selections from the global permanent collection.
+            </div>
+          </PharosImageCard>
+        </li>
       );
     })}
   </PharosLayout>
