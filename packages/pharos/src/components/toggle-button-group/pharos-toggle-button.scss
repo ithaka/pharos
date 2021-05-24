@@ -56,57 +56,21 @@
   }
 }
 
-:host([variant='secondary'][on-background][selected]) #button-element {
-  @include mixins.button-color(
-    $color: var(--pharos-color-interactive-tertiary),
-    $background-color: transparent,
-    $border-color: var(--pharos-color-interactive-tertiary)
-  );
-}
-
-:host([variant='secondary'][first='false'][borderVariant='transparent']:not([selected]))
-  #button-element {
-  border-left-color: transparent;
-}
-
-:host([variant='secondary'][hideleftborder='true'][borderVariant='transparent']:not([selected]))
-  #button-element,
-:host([variant='secondary'][hideleftborder='true'][borderVariant='transparent'][selected])
-  #button-element {
-  border-left-color: transparent;
-}
-
-:host([variant='secondary'][hiderightborder='true'][borderVariant='transparent']:not([selected]))
-  #button-element,
-:host([variant='secondary'][hiderightborder='true'][borderVariant='transparent'][selected])
-  #button-element {
-  border-right-color: transparent;
-}
-
-:host([variant='secondary'][last='false'][borderVariant='transparent']) #button-element:focus {
-  border-right-width: 0;
-  outline-offset: 0;
-}
-
-:host([variant='secondary'][first='false'][borderVariant='zero']:not([selected])) #button-element {
+:host([variant='secondary'][first='false']:not([selected])) #button-element {
   border-left-width: 0;
 }
 
-:host([variant='secondary'][hideleftborder='true'][borderVariant='zero']:not([selected]))
-  #button-element,
-:host([variant='secondary'][hideleftborder='true'][borderVariant='zero'][selected])
-  #button-element {
+:host([variant='secondary'][hideleftborder='true']:not([selected])) #button-element,
+:host([variant='secondary'][hideleftborder='true'][selected]) #button-element {
   border-left-width: 0;
 }
 
-:host([variant='secondary'][hiderightborder='true'][borderVariant='zero']:not([selected]))
-  #button-element,
-:host([variant='secondary'][hiderightborder='true'][borderVariant='zero'][selected])
-  #button-element {
+:host([variant='secondary'][hiderightborder='true']:not([selected])) #button-element,
+:host([variant='secondary'][hiderightborder='true'][selected]) #button-element {
   border-right-width: 0;
 }
 
-:host([variant='secondary'][last='false'][borderVariant='zero']) #button-element:focus {
+:host([variant='secondary'][last='false']) #button-element:focus {
   border-right-width: 0;
   outline-offset: 0;
 }

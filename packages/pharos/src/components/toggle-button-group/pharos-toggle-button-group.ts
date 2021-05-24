@@ -73,6 +73,8 @@ export class PharosToggleButtonGroup extends LitElement {
     if (selectIdx < toggleButtons.length - 1) {
       toggleButtons[selectIdx + 1]['_hideLeftBorder'] = true;
     }
+
+    selected.focus();
   }
 
   private _handleKeydown(event: KeyboardEvent): void {

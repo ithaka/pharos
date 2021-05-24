@@ -7,7 +7,6 @@ import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';
 import type { ButtonType, LinkTarget, IconName } from '../button/pharos-button';
 
-export type BorderVariant = 'transparent' | 'zero' | 'double';
 export type { ButtonType, LinkTarget, IconName };
 
 /**
@@ -39,16 +38,8 @@ export class PharosToggleButton extends PharosButton {
   @state()
   private _hideRightBorder = false;
 
-  /**
-   * Indicates the variant of button.
-   * @attr variant
-   */
-  @property({ type: String, reflect: true })
-  public borderVariant: BorderVariant = 'transparent';
-
   constructor() {
     super();
-    this.borderVariant = 'transparent';
     this.variant = 'secondary';
     this.type = 'button';
   }
@@ -108,7 +99,6 @@ export class PharosToggleButton extends PharosButton {
         id="button-element"
         ?autofocus=${this.autofocus}
         ?selected=${this.selected}
-        ?disabled="${this.selected}"
         type="button"
         aria-label=${ifDefined(this.label)}
       >

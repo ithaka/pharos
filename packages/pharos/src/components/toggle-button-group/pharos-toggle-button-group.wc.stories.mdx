@@ -4,7 +4,7 @@ import { html } from 'lit-html';
 import './pharos-toggle-button-group';
 import './pharos-toggle-button';
 
-<Meta title="Components/Toggle Button" />
+<Meta title="Components/Toggle Button Group" />
 
 # Toggle Button
 
@@ -74,67 +74,15 @@ import './pharos-toggle-button';
   </Story>
 </Canvas>
 
-## Icons Only (Transparent)
+## Icons Only
 
 <Canvas withToolbar>
-  <Story name="Icons Only (Transparent)">
+  <Story name="Icons Only">
     {html`
       <pharos-toggle-button-group>
         <pharos-toggle-button icon="view-list" id="view-list-button"></pharos-toggle-button>
         <pharos-toggle-button icon="view-gallery" id="view-gallery-button"></pharos-toggle-button>
         <pharos-toggle-button icon="image" id="view-presentation-button"></pharos-toggle-button>
-      </pharos-toggle-button-group>
-    `}
-  </Story>
-</Canvas>
-
-## Icons Only (Zero Width)
-
-<Canvas withToolbar>
-  <Story name="Icons Only (Zero Width)">
-    {html`
-      <pharos-toggle-button-group>
-        <pharos-toggle-button
-          icon="view-list"
-          id="view-list-button"
-          bordervariant="zero"
-        ></pharos-toggle-button>
-        <pharos-toggle-button
-          icon="view-gallery"
-          id="view-gallery-button"
-          bordervariant="zero"
-        ></pharos-toggle-button>
-        <pharos-toggle-button
-          icon="image"
-          id="view-presentation-button"
-          bordervariant="zero"
-        ></pharos-toggle-button>
-      </pharos-toggle-button-group>
-    `}
-  </Story>
-</Canvas>
-
-## Icons Only (Double Borders)
-
-<Canvas withToolbar>
-  <Story name="Icons Only (Double Borders)">
-    {html`
-      <pharos-toggle-button-group>
-        <pharos-toggle-button
-          icon="view-list"
-          id="view-list-button"
-          bordervariant="double"
-        ></pharos-toggle-button>
-        <pharos-toggle-button
-          icon="view-gallery"
-          id="view-gallery-button"
-          bordervariant="double"
-        ></pharos-toggle-button>
-        <pharos-toggle-button
-          icon="image"
-          id="view-presentation-button"
-          bordervariant="double"
-        ></pharos-toggle-button>
       </pharos-toggle-button-group>
     `}
   </Story>
