@@ -1,6 +1,8 @@
 import workspaceAlert from '../images/components/alerts/alert_workspace-placement.png';
 import errorSection from '../images/components/alerts/alert_error_section.png';
 import errorAlertDoubled from '../images/components/alerts/alert_error_doubled.png';
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 # Alert
 
@@ -45,21 +47,34 @@ Use alerts if you need to communicate to users in a prominent way to take action
 
 When displaying an alert, push the content below it down (could be the page content below or the section content).
 
-## Best Practices
-
-### Dos
-
-- Do use alerts thoughtfully and sparingly for only the most important information.
-- Do keep the messaging concise, scannable, and actionable (if needed).
-- Do focus messaging on a single topic or required action to avoid overwhelming the user.
-
-### Don'ts
-
-- Don't use alerts for marketing information.
-- Don't use redundant terms. As an example, saying "successfully" in alerts that confirm a successful action is redundant.
-- Don't include more than one or two links per alert. The primary action should be listed first.
-- Don't use ephemeral messaging to convey important context like form errors.
-- Don't display more than one alert at a time.
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>Do use alerts thoughtfully and sparingly for only the most important information.</li>
+        <li>Do keep the messaging concise, scannable, and actionable (if needed).</li>
+        <li>
+          Do focus messaging on a single topic or required action to avoid overwhelming the user.
+        </li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Don't use alerts for marketing information.</li>
+        <li>
+          Don't use redundant terms. As an example, saying "successfully" in alerts that confirm a
+          successful action is redundant.
+        </li>
+        <li>
+          Don't include more than one or two links per alert. The primary action should be listed
+          first.
+        </li>
+        <li>Don't use ephemeral messaging to convey important context like form errors.</li>
+        <li>Don't display more than one alert at a time.</li>
+      </ul>
+    }
+  />
+</PageSection>
 
 ## Content Guidelines
 
