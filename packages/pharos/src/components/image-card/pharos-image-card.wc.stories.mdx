@@ -4,6 +4,9 @@ import { viewports } from '../../pages/shared/viewports';
 
 import './pharos-image-card';
 import '../layout/pharos-layout';
+import '../link/pharos-link';
+import '../dropdown-menu/pharos-dropdown-menu';
+import '../dropdown-menu/pharos-dropdown-menu-item';
 
 import { items, collections } from '../../pages/item-detail/mocks';
 
@@ -27,10 +30,10 @@ export const Template = (args) => html`<pharos-layout style="margin: 1rem 0"
     ?subtle=${args.subtle}
     style="grid-column: span 2"
   >
-    <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-    <div slot="metadata">Tubby, William Bunker (American architect,...</div>
-    <div slot="metadata">1889-1892 (creation)</div>
-    <div slot="metadata">
+    <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
+    <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
+    <div id="item-date" slot="metadata">1889-1892 (creation)</div>
+    <div id="collection" slot="metadata">
       Part of
       <pharos-link
         href="https://www.jstor.org/site/pratt/buildings-image"
@@ -43,11 +46,21 @@ export const Template = (args) => html`<pharos-layout style="margin: 1rem 0"
 
 export const MultipleTemplate = () => html`<pharos-layout style="margin: 1rem 0">
   ${items.map((item, index) => {
-    return html`<pharos-image-card title="Card Title" link="#" style="grid-column: span 2">
-      <img src="./images/item-detail/${item.image}" alt="Card Title ${index}" slot="image" />
-      <div slot="metadata">Creator of the item</div>
-      <div slot="metadata">1990-2000</div>
-      <div slot="metadata">
+    return html`<pharos-image-card
+      id="card-${index}"
+      title="Card Title"
+      link="#"
+      style="grid-column: span 2"
+    >
+      <img
+        id="image-${index}"
+        src="./images/item-detail/${item.image}"
+        alt="Card Title ${index}"
+        slot="image"
+      />
+      <div id="creator-${index}" slot="metadata">Creator of the item</div>
+      <div id="item-date-${index}" slot="metadata">1990-2000</div>
+      <div id="collection-${index}" slot="metadata">
         Part of
         <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
           >An Example Collection</pharos-link
@@ -58,16 +71,24 @@ export const MultipleTemplate = () => html`<pharos-layout style="margin: 1rem 0"
 >`;
 
 export const CollectionsTemplate = () => html`<pharos-layout style="margin: 1rem 0">
-  ${collections.map((collection) => {
+  ${collections.map((collection, index) => {
     return html`<pharos-image-card
+      id="card-${index}"
       title="${collection.title}"
       link="#"
       variant="collection"
-      style="grid-column: span 3"
+      class="image-card-example__card--collection"
     >
-      <img src="./images/item-detail/${collection.image}" alt="${collection.title}" slot="image" />
-      <div slot="metadata"><strong>${collection.items} items</strong></div>
-      <div slot="metadata">Selections from the global permanent collection.</div>
+      <img
+        id="image-${index}"
+        src="./images/item-detail/${collection.image}"
+        alt="${collection.title}"
+        slot="image"
+      />
+      <div id="items-${index}" slot="metadata"><strong>${collection.items} items</strong></div>
+      <div id="description-${index}" slot="metadata">
+        Selections from the global permanent collection.
+      </div>
     </pharos-image-card>`;
   })}</pharos-layout
 >`;
@@ -88,10 +109,10 @@ export const CollectionsTemplate = () => html`<pharos-layout style="margin: 1rem
   </Story>
 </Canvas>
 
-# Subtle
+# Subtle State
 
 <Canvas>
-  <Story name="Subtle" args={{ subtle: true }}>
+  <Story name="Subtle State" args={{ subtle: true }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -108,10 +129,15 @@ export const CollectionsTemplate = () => html`<pharos-layout style="margin: 1rem
           action-menu="my-dropdown-menu"
           style="grid-column: span 2"
         >
-          <img src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-          <div slot="metadata">Tubby, William Bunker (American architect,...</div>
-          <div slot="metadata">1889-1892 (creation)</div>
-          <div slot="metadata">
+          <img
+            id="image"
+            src="./images/item-detail/collection_5.png"
+            alt="south hall"
+            slot="image"
+          />
+          <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
+          <div id="item-date" slot="metadata">1889-1892 (creation)</div>
+          <div id="collection" slot="metadata">
             Part of
             <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
               >Pratt Institute Buildings Image Collection</pharos-link
