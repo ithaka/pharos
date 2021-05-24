@@ -21,7 +21,7 @@
 
 .card__link--image,
 .card__container--error,
-.card__container--collection-image {
+.card__container--collection {
   margin-bottom: var(--pharos-spacing-1-x);
 }
 
@@ -72,7 +72,7 @@
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.card__container--collection-image {
+.card__container--collection {
   display: grid;
   overflow: hidden;
   position: relative;

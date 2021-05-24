@@ -101,7 +101,7 @@ export class PharosImageCard extends LitElement {
   }
 
   private _renderCollectionImage(): TemplateResult {
-    return html`<div class="card__container--collection-image">
+    return html`<div class="card__container--collection">
       <svg role="presentation" viewBox="0 0 4 3"></svg>
       <slot name="image"></slot>
     </div>`;
