@@ -72,7 +72,6 @@
 
 :host([selected]) {
   pointer-events: none;
-  border: 1px solid var(--pharos-color-black);
 }
 
 :host([variant='secondary'][icon]:not([selected])) #button-element:hover,
