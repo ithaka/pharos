@@ -1,4 +1,6 @@
 import ellipsesExample from '../images/components/button/buttons_ellipses-example.png';
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PharosHeading
   level={'1'}
@@ -88,41 +90,36 @@ import ellipsesExample from '../images/components/button/buttons_ellipses-exampl
   </p>
 </div>
 
-## Best Practices
-
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'4'}>
-      Dos
-    </PharosHeading>
-    <ul>
-      <li>Buttons should be easy to find among other elements, including other buttons</li>
-      <li>
-        The button's content should be clear and accurately labeled, encouraging a user to take
-        action with an action-oriented verb
-      </li>
-      <li>
-        Prioritize actions within the page and experience based on business and user needs. For most
-        use cases, only one primary button should be used on a page so users are clear about what
-        the most important action is.
-      </li>
-      <li>Use the best variant for your UI needs to communicate meaning and hierarchy.</li>
-    </ul>
-  </div>
-  <div>
-    <PharosHeading level={'3'} preset={'4'}>
-      Don'ts
-    </PharosHeading>
-    <ul>
-      <li>
-        Utilize multiple primary buttons in an array, this causes an imbalance of hierarchy and
-        confusion about what actions should be taken. Reserve primary buttons for the most important
-        action when displaying a series of buttons.
-      </li>
-      <li>Don't use a button variant for an action it's not intended for</li>
-    </ul>
-  </div>
-</div>
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>Buttons should be easy to find among other elements, including other buttons.</li>
+        <li>
+          The button's content should be clear and accurately labeled, encouraging a user to take
+          action with an action-oriented verb.
+        </li>
+        <li>
+          Prioritize actions within the page and experience based on business and user needs. For
+          most use cases, only one primary button should be used on a page so users are clear about
+          what the most important action is.
+        </li>
+        <li>Use the best variant for your UI needs to communicate meaning and hierarchy.</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>
+          Utilize multiple primary buttons in an array, this causes an imbalance of hierarchy and
+          confusion about what actions should be taken. Reserve primary buttons for the most
+          important action when displaying a series of buttons.
+        </li>
+        <li>Don't use dropdown menus in cases when data is commonly known and easier to type</li>
+        <li>Don't use a button variant for an action it's not intended for.</li>
+      </ul>
+    }
+  />
+</PageSection>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>

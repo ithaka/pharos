@@ -1,5 +1,8 @@
 # Link
 
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
+
 <p
   style={{
     fontSize: 'var(--pharos-type-scale-6)',
@@ -14,16 +17,24 @@
 
 Use links to allow users to navigate to another page within the application, navigate to a different site or jump to an element on the current page. Links within paragraphs or other bodies of text should only link the text that describes where users would go when they click the link. Links that aren't in full sentences should be a noun or start with a verb followed by a noun. They should not be punctuated, except if they end with a question mark.
 
-## Best Practices
-
-### Dos
-
-- Give links text that clearly describes their destination or purpose.
-- For consistency, use the same text for links that navigate to the same place.
-
-### Don'ts
-
-- Use links for actions, such as "Close", "Cancel", or "Save". These patterns are best suited for buttons in most cases.
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>Give links text that clearly describes their destination or purpose.</li>
+        <li>For consistency, use the same text for links that navigate to the same place.</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>
+          Use links for actions, such as "Close", "Cancel", or "Save". These patterns are best
+          suited for buttons in most cases.
+        </li>
+      </ul>
+    }
+  />
+</PageSection>
 
 ## Content Guidelines
 

@@ -1,5 +1,8 @@
 # Dropdown Menu Nav
 
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
+
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <p style={{ fontSize: 'var(--pharos-type-scale-6)', lineHeight: '2rem' }}>
     The dropdown menu nav provides users an overview of your site's page hierarchy.
@@ -17,32 +20,24 @@
   </p>
 </div>
 
-<PharosHeading level={'2'} preset={'6'}>
-  Best Practices
-</PharosHeading>
-
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'2'}>
-      Dos
-    </PharosHeading>
-    <ul>
-      <li>Ensure all links and menu items navigate to a URL</li>
-      <li>
-        Group navigation menu items together in a Pharos dropdown menu based on related categories
-      </li>
-    </ul>
-  </div>
-  <div>
-    <PharosHeading level={'3'} preset={'2'}>
-      Don'ts
-    </PharosHeading>
-    <ul>
-      <li>Open links in the nav from a new browser tab</li>
-      <li>Include links that navigate the user to a different site</li>
-    </ul>
-  </div>
-</div>
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>Ensure all links and menu items navigate to a URL</li>
+        <li>
+          Group navigation menu items together in a Pharos dropdown menu based on related categories
+        </li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Open links in the nav from a new browser tab</li>
+        <li>Include links that navigate the user to a different site</li>
+      </ul>
+    }
+  />
+</PageSection>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
   <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>

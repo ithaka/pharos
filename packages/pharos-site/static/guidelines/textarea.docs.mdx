@@ -1,5 +1,8 @@
 # Textarea
 
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
+
 <p
   style={{
     fontSize: 'var(--pharos-type-scale-6)',
@@ -16,18 +19,31 @@ Use textareas when you want to allow users to enter a sizeable amount of free-fo
 
 The length of the text input provides a hint to users as to how much text to write. If an input requires users to write longer forms of text use a textarea instead of a single text input field.
 
-## Best Practices
-
-### Dos
-
-- Use when an input needs users to longer amounts of text
-- Make sure the label clearly indicates to the user what kind of input is expected of them
-- Labels need to describe the purpose of the form control and must be used for all textarea inputs
-- Placeholder text should be a word or short phrase that demonstrates the expected type of data, rather than an explanatory message
-
-### Don'ts
-
-- Do not use placeholder text as a replacement for labels
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>Use when an input needs users to longer amounts of text</li>
+        <li>
+          Make sure the label clearly indicates to the user what kind of input is expected of them
+        </li>
+        <li>
+          Labels need to describe the purpose of the form control and must be used for all textarea
+          inputs
+        </li>
+        <li>
+          Placeholder text should be a word or short phrase that demonstrates the expected type of
+          data, rather than an explanatory message
+        </li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Do not use placeholder text as a replacement for labels</li>
+      </ul>
+    }
+  />
+</PageSection>
 
 ## Content Guidelines
 

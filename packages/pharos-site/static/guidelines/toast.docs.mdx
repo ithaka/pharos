@@ -1,5 +1,8 @@
 # Toast
 
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
+
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <p style={{ fontSize: 'var(--pharos-type-scale-6)', lineHeight: '2rem' }}>
     Toasts are non-disruptive messages that appear at the top right corner of the UI to provide
@@ -20,46 +23,38 @@
   </p>
 </div>
 
-<PharosHeading level={'2'} preset={'6'}>
-  Best Practices
-</PharosHeading>
-
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'2'}>
-      Dos
-    </PharosHeading>
-    <ul>
-      <li>
-        Use for short messages to confirm an action as feedback to the user. For example, you might
-        show a toast message to inform a user that their recent action was successful
-      </li>
-      <li>
-        Toasts should be concise, scannable and informative—users shouldn't need to spend a lot of
-        time figuring out which action they just took and where they could go next (e.g., iew in
-        workspace)
-      </li>
-      <li>States: Can be used specifically for success and error messages</li>
-      <li>
-        Display toasts one at a time, the newest toasts should appear above the most recently
-        displayed toasts
-      </li>
-      <li>Toasts should always be dismissible (the "x" in the top right corner)</li>
-      <li>Use appropriate punctuation; each message should end in a "."</li>
-    </ul>
-  </div>
-  <div>
-    <PharosHeading level={'3'} preset={'2'}>
-      Don'ts
-    </PharosHeading>
-    <ul>
-      <li>Not to be used for marketing information or in-app feature messages</li>
-      <li>
-        Not to be used for system errors, outages, etc. Use an alert or banner for these needs.
-      </li>
-    </ul>
-  </div>
-</div>
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>
+          Use for short messages to confirm an action as feedback to the user. For example, you
+          might show a toast message to inform a user that their recent action was successful
+        </li>
+        <li>
+          Toasts should be concise, scannable and informative—users shouldn't need to spend a lot of
+          time figuring out which action they just took and where they could go next (e.g., iew in
+          workspace)
+        </li>
+        <li>States: Can be used specifically for success and error messages</li>
+        <li>
+          Display toasts one at a time, the newest toasts should appear above the most recently
+          displayed toasts
+        </li>
+        <li>Toasts should always be dismissible (the "x" in the top right corner)</li>
+        <li>Use appropriate punctuation; each message should end in a "."</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Not to be used for marketing information or in-app feature messages</li>
+        <li>
+          Not to be used for system errors, outages, etc. Use an alert or banner for these needs.
+        </li>
+      </ul>
+    }
+  />
+</PageSection>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
   <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>

@@ -1,5 +1,8 @@
 # Checkbox
 
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
+
 <p
   style={{
     fontSize: 'var(--pharos-type-scale-6)',
@@ -23,22 +26,36 @@ Checkbox labels are placed to the right of the checkbox. If there is a checkbox 
 
 Checkboxes in JSTOR are often used when faceting results so a user can narrow their focus or on forms. They can be placed within pages or modals.
 
-## Best Practices
-
-### Dos
-
-- Use checkboxes when a user needs to choose "yes" or "no" per option (use a stand-alone checkbox). For example, to toggle a setting on or off.
-- Checkboxes should work independently from each other: selecting one checkbox shouldn't change the selection status of another checkbox in the list.
-- Checkboxes should always include a label.
-- Use a checkbox when accepting terms and conditions.
-- Use checkboxes when choices are not mutually exclusive.
-- The list of choices should be in a logical order.
-
-### Don'ts
-
-- Don't use checkboxes when there are no choices.
-- In use cases where only one choice of a group is allowed, do not use checkboxes, use the radio button component instead.
-- Do not make checkboxes affect other checkboxes unless for bulk selection actions.
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>
+          Use checkboxes when a user needs to choose "yes" or "no" per option (use a stand-alone
+          checkbox). For example, to toggle a setting on or off.
+        </li>
+        <li>
+          Checkboxes should work independently from each other: selecting one checkbox shouldn't
+          change the selection status of another checkbox in the list.
+        </li>
+        <li>heckboxes should always include a label.</li>
+        <li>Use a checkbox when accepting terms and conditions.</li>
+        <li>Use checkboxes when choices are not mutually exclusive.</li>
+        <li>The list of choices should be in a logical order.</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Don't use checkboxes when there are no choices.</li>
+        <li>
+          In use cases where only one choice of a group is allowed, do not use checkboxes, use the
+          radio button component instead.
+        </li>
+        <li>Do not make checkboxes affect other checkboxes unless for bulk selection actions.</li>
+      </ul>
+    }
+  />
+</PageSection>
 
 ## Content Guidelines
 

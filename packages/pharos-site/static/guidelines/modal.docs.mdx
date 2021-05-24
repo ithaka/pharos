@@ -1,4 +1,5 @@
 import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection
   title="Modal"
@@ -42,21 +43,23 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
 </PageSection>
 
 <PageSection title="Best Practices">
-  <PageSection title="Dos" isSubsection lessMargin>
-    <ul>
-      <li>Allow users to take an action to complete a task in their workflow</li>
-      <li>Display critical information to give users more context</li>
-      <li>
-        When using form elements in a modal, it's recommended to validate the user's data before
-        submission (inline validation)
-      </li>
-    </ul>
-  </PageSection>
-  <PageSection title="Dont's" isSubsection lessMargin>
-    <ul>
-      <li>Don't use for long forms, instead, incorporate into the page's content</li>
-    </ul>
-  </PageSection>
+  <BestPractices
+    Do={
+      <ul>
+        <li>Allow users to take an action to complete a task in their workflow</li>
+        <li>Display critical information to give users more context</li>
+        <li>
+          When using form elements in a modal, it's recommended to validate the user's data before
+          submission (inline validation)
+        </li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Don't use for long forms, instead, incorporate into the page's content</li>
+      </ul>
+    }
+  />
 </PageSection>
 
 <PageSection title="Content Guidelines">

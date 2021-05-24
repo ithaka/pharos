@@ -1,5 +1,8 @@
 # Sidenav
 
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
+
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <p style={{ fontSize: 'var(--pharos-type-scale-6)', lineHeight: '2rem' }}>
     The sidenav component is a vertical navigation layout that houses links and menus to help users
@@ -20,61 +23,53 @@
   </p>
 </div>
 
-<PharosHeading level={'2'} preset={'6'}>
-  Best Practices
-</PharosHeading>
-
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'2'}>
-      Dos
-    </PharosHeading>
-    <ul>
-      <li>The primary links representing main sections of the site should be listed first</li>
-      <li>If needed, group navigation items into sections based on related categories.</li>
-      <li>Use short and concise verbiage menu option and section heading text</li>
-      <li>Keep the links consistent throughout the site</li>
-      <li>Sidenav Components:</li>
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>The primary links representing main sections of the site should be listed first</li>
+        <li>If needed, group navigation items into sections based on related categories.</li>
+        <li>Use short and concise verbiage menu option and section heading text</li>
+        <li>Keep the links consistent throughout the site</li>
+        <li>Sidenav Components:</li>
+        <ul>
+          <li>
+            Use the section sub component when trying to create groupings of menus and link that are
+            visible at all times
+          </li>
+          <li>
+            Use the side menu sub component inside the sidenav component when trying to create a
+            dropdown type of menu in the navigation
+          </li>
+          <li>Use the link sub component when trying to create a static link</li>
+        </ul>
+      </ul>
+    }
+    Dont={
       <ul>
         <li>
-          Use the section sub component when trying to create groupings of menus and link that are
-          visible at all times
+          Don't use icons to represent the navigation items, alone or with text, reserve icons for
+          use within the UI
         </li>
         <li>
-          Use the side menu sub component inside the sidenav component when trying to create a
-          dropdown type of menu in the navigation
+          Don't move the placement of the sidenav to the right side of the content, it should always
+          be fixed to the left
         </li>
-        <li>Use the link sub component when trying to create a static link</li>
+        <li>
+          Do not nest or group menu options more than one level of hierarchy, we want to keep the
+          navigation simple and understandable. If you find you need to nest, reconsider the
+          information architecture.
+        </li>
+        <li>
+          Don't use the sidenav component if there are less than 3 menu item options, instead of a
+          top navigation layout
+        </li>
+        <li>Don't use any of the 3 sub components outside of the sidenav component</li>
+        <li>Don't use the sidenav to display important system or site information</li>
       </ul>
-    </ul>
-  </div>
-  <div>
-    <PharosHeading level={'3'} preset={'2'}>
-      Don'ts
-    </PharosHeading>
-    <ul>
-      <li>
-        Don't use icons to represent the navigation items, alone or with text, reserve icons for use
-        within the UI
-      </li>
-      <li>
-        Don't move the placement of the sidenav to the right side of the content, it should always
-        be fixed to the left
-      </li>
-      <li>
-        Do not nest or group menu options more than one level of hierarchy, we want to keep the
-        navigation simple and understandable. If you find you need to nest, reconsider the
-        information architecture.
-      </li>
-      <li>
-        Don't use the sidenav component if there are less than 3 menu item options, instead of a top
-        navigation layout
-      </li>
-      <li>Don't use any of the 3 sub components outside of the sidenav component</li>
-      <li>Don't use the sidenav to display important system or site information</li>
-    </ul>
-  </div>
-</div>
+    }
+  />
+</PageSection>
 
 <PharosHeading level={'2'} preset={'6'}>
   Content Guidelines

@@ -1,5 +1,8 @@
 # Radio Button
 
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
+
 <p
   style={{
     fontSize: 'var(--pharos-type-scale-6)',
@@ -11,25 +14,39 @@
   option at a time.
 </p>
 
-## Best Practices
-
-Radio buttons are normally presented in radio groups. Radio buttons should have a parent radio group component, which will group the buttons into a set.
-In a set of radio buttons, only one radio button can be selected at a time.
-
-### Dos
-
-- Include labels
-- Can include a Title for the group if necessary
-- Includes at least two or more items, but each option's value must be mutually exclusive
-- Use when users need to see the available options at a glance
-- Options are listed vertically, but can be horizontally oriented if there are only a few options
-
-### Don'ts
-
-- Do not check disabled radio buttons
-- Do not use when there are no choices, or multiple choices per group.
-- Do not display a set of radio buttons without a default selection, they should default to having one option selected. Use caution when selecting the default value and the order of the list to make the most sense.
-- Do not use if the list of choices gets too long, it may be better to use a "select" component instead. (Think about the mobile experience when deciding too).
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>Include labels</li>
+        <li>Tan include a Title for the group if necessary</li>
+        <li>
+          Includes at least two or more items, but each option's value must be mutually exclusive
+        </li>
+        <li>Use when users need to see the available options at a glance</li>
+        <li>
+          Options are listed vertically, but can be horizontally oriented if there are only a few
+          options
+        </li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Do not check disabled radio buttons</li>
+        <li>Do not use when there are no choices, or multiple choices per group.</li>
+        <li>
+          Do not display a set of radio buttons without a default selection, they should default to
+          having one option selected. Use caution when selecting the default value and the order of
+          the list to make the most sense.
+        </li>
+        <li>
+          Do not use if the list of choices gets too long, it may be better to use a "select"
+          component instead. (Think about the mobile experience when deciding too).
+        </li>
+      </ul>
+    }
+  />
+</PageSection>
 
 ## States
 

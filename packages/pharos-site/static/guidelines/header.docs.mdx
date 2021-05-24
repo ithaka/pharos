@@ -1,3 +1,6 @@
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
+
 <PharosHeading
   level={'1'}
   preset={'7--bold'}
@@ -40,37 +43,29 @@
   </PharosHeader>
 </div>
 
-<PharosHeading level={'2'} preset={'6'} style={{ color: 'var(--pharos-color-text-base)' }}>
-  Best Practices
-</PharosHeading>
-
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'2'}>
-      Dos
-    </PharosHeading>
-    <ul>
-      <li>
-        Use Pharos dropdown menu nav and their related components for navigation portion of the
-        header
-      </li>
-      <li>Use Pharos links for static links</li>
-      <li>Use the start, center and end props to place components in the correct spaces</li>
-    </ul>
-  </div>
-  <div>
-    <PharosHeading level={'3'} preset={'2'}>
-      Don'ts
-    </PharosHeading>
-    <ul>
-      <li>Don't place the Pharos Header component in another header, footer or address region</li>
-      <li>
-        Don't associate a header with the whole page if it is nested in a &lt;section&gt; or
-        &lt;article&gt; element
-      </li>
-    </ul>
-  </div>
-</div>
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>
+          Use Pharos dropdown menu nav and their related components for navigation portion of the
+          header
+        </li>
+        <li>Use Pharos links for static links</li>
+        <li>Use the start, center and end props to place components in the correct spaces</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Don't place the Pharos Header component in another header, footer or address region</li>
+        <li>
+          Don't associate a header with the whole page if it is nested in a &lt;section&gt; or
+          &lt;article&gt; element
+        </li>
+      </ul>
+    }
+  />
+</PageSection>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
   <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>

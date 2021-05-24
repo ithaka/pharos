@@ -1,5 +1,8 @@
 # Text Input
 
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
+
 <p
   style={{
     fontSize: 'var(--pharos-type-scale-6)',
@@ -14,18 +17,31 @@
 
 Inputs are used for forms or inputting data to get a result, so the design and implementation should be as concise as possible. Careful thought should be considered about the need for each text input and what value the data will provide. What do we gain by asking the user to provide this information?
 
-## Best Practices
-
-### Dos
-
-- Make sure the label clearly indicates to the user what kind of input is expected of them
-- Labels need to describe the purpose of the form control and must be used for all text inputs
-- Placeholder text should be a word or short phrase that demonstrates the expected type of data, rather than an explanatory message
-
-### Don'ts
-
-- Do not use when users are choosing from a specific set of options
-- Do not use placeholder text as a replacement for labels
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>
+          Make sure the label clearly indicates to the user what kind of input is expected of them
+        </li>
+        <li>
+          Labels need to describe the purpose of the form control and must be used for all text
+          inputs
+        </li>
+        <li>
+          Placeholder text should be a word or short phrase that demonstrates the expected type of
+          data, rather than an explanatory message
+        </li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Do not use when users are choosing from a specific set of options</li>
+        <li>Do not use placeholder text as a replacement for labels</li>
+      </ul>
+    }
+  />
+</PageSection>
 
 ## Content Guidelines
 

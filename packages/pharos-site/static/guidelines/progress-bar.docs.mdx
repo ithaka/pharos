@@ -1,3 +1,6 @@
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
+
 <PharosHeading
   level={'1'}
   preset={'7--bold'}
@@ -25,32 +28,24 @@
   </p>
 </div>
 
-<PharosHeading level={'2'} preset={'6'} style={{ color: 'var(--pharos-color-text-base)' }}>
-  Best Practices
-</PharosHeading>
-
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'4'}>
-      Dos
-    </PharosHeading>
-    <ul>
-      <li>Give users an indication of how much of the task has completed and how much is left</li>
-      <li>Display the file being uploaded to reinforce that action a user is taking</li>
-    </ul>
-  </div>
-  <div>
-    <PharosHeading level={'3'} preset={'4'}>
-      Don'ts
-    </PharosHeading>
-    <ul>
-      <li>
-        Use a progress bar as a placeholder to indicate page, section or content loading, use a
-        skeleton loader or loading spinner instead
-      </li>
-    </ul>
-  </div>
-</div>
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>Give users an indication of how much of the task has completed and how much is left</li>
+        <li>Display the file being uploaded to reinforce that action a user is taking</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>
+          Use a progress bar as a placeholder to indicate page, section or content loading, use a
+          skeleton loader or loading spinner instead
+        </li>
+      </ul>
+    }
+  />
+</PageSection>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
   <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
