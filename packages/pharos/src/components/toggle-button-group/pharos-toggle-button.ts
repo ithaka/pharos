@@ -1,6 +1,5 @@
-import { html, property, state } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { property, state } from 'lit-element';
+import type { CSSResultArray, PropertyValues } from 'lit-element';
 import { toggleButtonStyles } from './pharos-toggle-button.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
@@ -91,20 +90,6 @@ export class PharosToggleButton extends PharosButton {
     };
     this.selected = true;
     this.dispatchEvent(new CustomEvent('pharos-toggle-button-selected', details));
-  }
-
-  protected render(): TemplateResult {
-    return html`
-      <button
-        id="button-element"
-        ?autofocus=${this.autofocus}
-        ?selected=${this.selected}
-        type="button"
-        aria-label=${ifDefined(this.label)}
-      >
-        ${this.buttonContent}
-      </button>
-    `;
   }
 }
 

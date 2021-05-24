@@ -67,14 +67,13 @@ export class PharosToggleButtonGroup extends LitElement {
         selectIdx = idx;
       }
     });
+
     if (selectIdx > 0) {
       toggleButtons[selectIdx - 1]['_hideRightBorder'] = true;
     }
     if (selectIdx < toggleButtons.length - 1) {
       toggleButtons[selectIdx + 1]['_hideLeftBorder'] = true;
     }
-
-    selected.focus();
   }
 
   private _handleKeydown(event: KeyboardEvent): void {
