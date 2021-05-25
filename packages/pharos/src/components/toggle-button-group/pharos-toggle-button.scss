@@ -50,11 +50,6 @@
   }
 }
 
-:host([icon]:not([disabled])) #button-element:hover,
-:host([icon]:not([disabled])) #button-element:active {
-  padding: unset;
-}
-
 :host([variant='secondary'][icon]:not([selected])) #button-element {
   pharos-icon {
     fill: var(--pharos-color-ui-50);
@@ -82,6 +77,11 @@
 
 :host([variant='secondary'][hide-right-border='true']:not([selected])) #button-element:active {
   border-right-width: 0;
+}
+
+:host([variant='secondary']:not([selected])) #button-element:hover pharos-icon {
+  fill: var(--pharos-color-hover-primary);
+  stroke: var(--pharos-color-hover-primary);
 }
 
 :host([selected]) {
