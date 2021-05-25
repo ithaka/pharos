@@ -51,7 +51,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Content Guidelines">
-  <PageSection isSubsection title="Labels">
+  <PageSection subSectionLevel={1} title="Labels">
     <ul>
       <li>
         The label needs to be helpful in telling the user what is expected of them, but they do not
@@ -62,7 +62,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </ul>
   </PageSection>
   <PageSection
-    isSubsection
+    subSectionLevel={1}
     title="Placeholder Text"
     description="Placeholder text is shown inside the text input to help users know what information they can enter."
   >
@@ -75,7 +75,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection title="States">
   <PageSection
-    isSubsection
+    subSectionLevel={1}
     title="Default"
     description="The default state - when no other state attribute is assigned to the Combobox."
   >
@@ -88,7 +88,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection
-    isSubsection
+    subSectionLevel={1}
     title="Disabled"
     description="Display this state when the Combobox is non-interactive."
   >
@@ -101,7 +101,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection
-    isSubsection
+    subSectionLevel={1}
     title="Required"
     description="This state signifies a mandatory response from the user."
   >
@@ -114,7 +114,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection
-    isSubsection
+    subSectionLevel={1}
     title="Error"
     description="Display this state when a user has encountered an error with their input. This could be if they didn't fill out a required field, or the information provided does not meet validation requirements."
   >
@@ -155,14 +155,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       `aria-activedescendant` approach
     </li>
   </ul>
-  <PageSection isSubsection title="Accessibility best practices for labels:">
+  <PageSection subSectionLevel={1} title="Accessibility best practices for labels:">
     <ul>
       <li>Labels must be visible when an input gets focus</li>
       <li>Labels must be announced to the screen reader on focus</li>
       <li>Use sentence case</li>
     </ul>
   </PageSection>
-  <PageSection isSubsection title="Keyboard interactions">
+  <PageSection subSectionLevel={1} title="Keyboard interactions">
     <ul>
       <li>Typing initiates autocomplete or popover</li>
       <li>

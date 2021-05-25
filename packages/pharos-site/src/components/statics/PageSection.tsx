@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import type { FC, ReactElement } from 'react';
 import {
   container,
-  container__isSubsection,
-  container__isSubsubsection,
+  container__subsectionLevelOne,
+  container__subsectionLevelTwo,
+  container__subsectionLevelThree,
   title__isHeader,
   title__moreSpace,
   title__base,
@@ -16,8 +17,7 @@ interface PageSectionProps {
   title: string;
   description?: string | JSX.Element;
   isHeader?: boolean;
-  isSubsection?: boolean;
-  isSubsubsection?: boolean;
+  subSectionLevel: 1 | 2 | 3;
   moreTitleSpace?: boolean;
   lessMargin?: boolean;
 }
@@ -26,8 +26,7 @@ const PageSection: FC<PageSectionProps> = ({
   title,
   description,
   isHeader,
-  isSubsection,
-  isSubsubsection,
+  subSectionLevel,
   children,
   moreTitleSpace,
   lessMargin,
@@ -36,10 +35,8 @@ const PageSection: FC<PageSectionProps> = ({
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
 
-  if (Number(isHeader) + Number(isSubsection) + Number(isSubsubsection) > 1) {
-    console.error(
-      'Only 1 of isHeader, isSubsection and/or isSubsubsection props should be used at a time.'
-    );
+  if (isHeader && subSectionLevel > 1) {
+    console.error("isHeader can't be used with SubSectionLevel.");
   }
 
   useEffect(() => {
@@ -61,7 +58,7 @@ const PageSection: FC<PageSectionProps> = ({
       </div>
     );
 
-    const subsectionTitle = (
+    const subsection1Title = (
       <div className={moreTitleSpace ? title__moreSpace : title__base}>
         <PharosHeading level="2" preset="4">
           {title}
@@ -69,7 +66,7 @@ const PageSection: FC<PageSectionProps> = ({
       </div>
     );
 
-    const subsubsectionTitle = (
+    const subsection2Title = (
       <div className={moreTitleSpace ? title__moreSpace : title__base}>
         <PharosHeading level={'4'} preset={'1--bold'}>
           {title}
@@ -77,13 +74,24 @@ const PageSection: FC<PageSectionProps> = ({
       </div>
     );
 
+    const subsection3Title = (
+      <div className={moreTitleSpace ? title__moreSpace : title__base}>
+        <PharosHeading level={'5'} preset={'1--bold'}>
+          {title}
+        </PharosHeading>
+      </div>
+    );
+
     const displayedTitle = () => {
+      console.log(subSectionLevel);
       if (isHeader) {
         return headerTitle;
-      } else if (isSubsection) {
-        return subsectionTitle;
-      } else if (isSubsubsection) {
-        return subsubsectionTitle;
+      } else if (subSectionLevel === 1) {
+        return subsection1Title;
+      } else if (subSectionLevel === 2) {
+        return subsection2Title;
+      } else if (subSectionLevel === 3) {
+        return subsection3Title;
       } else {
         return baseTitle;
       }
@@ -94,10 +102,12 @@ const PageSection: FC<PageSectionProps> = ({
         className={
           lessMargin
             ? container__lessMargin
-            : isSubsection
-            ? container__isSubsection
-            : isSubsubsection
-            ? container__isSubsubsection
+            : subSectionLevel === 1
+            ? container__subsectionLevelOne
+            : subSectionLevel === 2
+            ? container__subsectionLevelTwo
+            : subSectionLevel === 3
+            ? container__subsectionLevelThree
             : container
         }
       >
@@ -109,17 +119,7 @@ const PageSection: FC<PageSectionProps> = ({
       </div>
     );
     setDisplay(content);
-  }, [
-    Pharos,
-    children,
-    description,
-    isHeader,
-    moreTitleSpace,
-    title,
-    isSubsection,
-    isSubsubsection,
-    lessMargin,
-  ]);
+  }, [Pharos, children, description, isHeader, moreTitleSpace, title, lessMargin, subSectionLevel]);
 
   return Display;
 };

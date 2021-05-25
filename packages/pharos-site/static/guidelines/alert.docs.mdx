@@ -23,7 +23,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   title="Usage"
   description="Use alerts if you need to communicate to users in a prominent way to take action or be made aware of important information that does not interrupt their experience."
 >
-  <PageSection isSubsection title="Appropriate Placement">
+  <PageSection subSectionLevel={1} title="Appropriate Placement">
     <ul>
       <li>
         Alerts relevant to an entire page should be placed at the top of that page, below the page
@@ -51,7 +51,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
     </ul>
     <PageSection
-      isSubsubsection
+      subSectionLevel={2}
       title="Transition"
       description="When displaying an alert, push the content below it down (could be the page content below or the section content)."
     ></PageSection>
@@ -107,7 +107,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Variants">
-  <PageSection title="Success" isSubsection>
+  <PageSection title="Success" subSectionLevel={1}>
     Use a success alert when notifying the user that a task has been completed. They can include
     follow up actions if necessary related to the task.
     <Canvas>
@@ -122,11 +122,11 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         </p>
       </PharosAlert>
     </Canvas>
-    <PageSection title="Messaging" isSubsubsection>
+    <PageSection title="Messaging" subSectionLevel={2}>
       Inform the user of the completion of their task in past tense and what they can expect next.
     </PageSection>
   </PageSection>
-  <PageSection title="Informational" isSubsection>
+  <PageSection title="Informational" subSectionLevel={1}>
     Use an info alert when notifying the user of neutral information. They can include links for
     users to take action.
     <Canvas>
@@ -137,7 +137,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </PharosAlert>
     </Canvas>
   </PageSection>
-  <PageSection title="Warning" isSubsection>
+  <PageSection title="Warning" subSectionLevel={1}>
     Use a warning alert to inform users of an instance that will directly impact the ability for
     them to complete their task. It should provide a reason for the warning, a recommended next
     step, and a way to contact us. Warnings are meant to be less alarming than error alerts.
@@ -161,7 +161,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </PharosAlert>
     </Canvas>
   </PageSection>
-  <PageSection title="Error" isSubsection>
+  <PageSection title="Error" subSectionLevel={1}>
     Use an error alert when the user has submitted something the system can't accept, preventing
     them from continuing or when there is a system error that needs immediate attention.
     <Canvas>
@@ -181,7 +181,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       className="pharos-storybook__image"
       width="700"
     />
-    <PageSection title="Messaging" isSubsubsection>
+    <PageSection title="Messaging" subSectionLevel={2}>
       <em>If the user made an error</em> the messaging should provide a reason for the alert, a
       recommended next step, and a way to contact us. If there are multiple errors, summarize them
       in a logical order (e.g. for forms that are missing several required fields from the user).

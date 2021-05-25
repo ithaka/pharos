@@ -53,7 +53,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     <PharosLink href="https://www.w3.org/WAI/tutorials/menus/flyout/">W3 Dropdown Menus</PharosLink>
   }
 >
-  <PageSection isSubsection title="Relevant WCAG Guidelines">
+  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
@@ -73,17 +73,17 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </ul>
   </PageSection>
   <PageSection
-    isSubsection
+    subSectionLevel={1}
     title="Importance"
     description="Dropdowns all users to better understand how menu items are related based on their grouping"
   />
   <PageSection
-    isSubsection
+    subSectionLevel={1}
     title="Visual expectations"
     description="Dropdowns include some indication that they are expandable/interactable"
   />
   <PageSection
-    isSubsection
+    subSectionLevel={1}
     title="Code expectations"
     description={
       <ul>
@@ -120,13 +120,13 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </ul>
     </nav>
   </code>
-  <PageSection isSubsection title="Expected actions">
+  <PageSection subSectionLevel={1} title="Expected actions">
     <PageSection
-      isSubsubsection
+      subSectionLevel={2}
       title="Screen reader"
       description='Reads "dropdown name, collapsed, menu item"'
     />
-    <PageSection isSubsubsection title="Keyboard">
+    <PageSection subSectionLevel={2} title="Keyboard">
       <ul>
         <li>
           <kbd>Tab</kbd> moves focus onto the dropdown. When dropdown is expanded, focus will go to

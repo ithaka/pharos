@@ -38,12 +38,12 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Content Guidelines">
-  <PageSection title="Panel" isSubsection>
+  <PageSection title="Panel" subSectionLevel={1}>
     <ul>
       <li>The content shown in the panels should have a logical connection to each other.</li>
     </ul>
   </PageSection>
-  <PageSection title="Tab" isSubsection>
+  <PageSection title="Tab" subSectionLevel={1}>
     <ul>
       <li>
         The text used for a tab should aim to be a single categorical word that explains the section
@@ -54,7 +54,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="States">
-  <PageSection title="Tab" isSubsection>
+  <PageSection title="Tab" subSectionLevel={1}>
     <PharosHeading level={'4'} preset={'1--bold'}>
       Selected
     </PharosHeading>
@@ -65,7 +65,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection title="Relevant WCAG Guidelines" isSubsection lessMargin>
+  <PageSection title="Relevant WCAG Guidelines" subSectionLevel={1} lessMargin>
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
@@ -79,10 +79,10 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection title="Importance" isSubsection lessMargin>
+  <PageSection title="Importance" subSectionLevel={1} lessMargin>
     Tabs allow users to navigate through multiple sections of content easily
   </PageSection>
-  <PageSection title="Code Expectations" isSubsection lessMargin>
+  <PageSection title="Code Expectations" subSectionLevel={1} lessMargin>
     Via <PharosLink href="https://www.w3.org/TR/wai-aria-practices/#tabpanel">W3</PharosLink>:
     <ul>
       <li>
@@ -131,7 +131,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection title="Expected actions" isSubsection lessMargin>
+  <PageSection title="Expected actions" subSectionLevel={1} lessMargin>
     <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
       <PharosHeading level={'4'} preset={'1--bold'}>
         Screen reader

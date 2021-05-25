@@ -19,14 +19,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   title="Usage"
   description="The Checkbox component is used to provide a list of options where the user can select multiple options, including all or none. They work independently from each other, therefore checking an additional box does not affect the other selections. Checkboxes are not mutually exclusive."
 >
-  <PageSection title="Alignment" isSubsection>
+  <PageSection title="Alignment" subSectionLevel={1}>
     <p>
       Checkbox labels are placed to the right of the checkbox. If there is a checkbox group, the
       options can be vertically or horizontally stacked, depending on the use case and UI needs.
       It's preferred to have the checkboxes be vertically stacked for better readability.
     </p>
   </PageSection>
-  <PageSection title="Placement" isSubsection>
+  <PageSection title="Placement" subSectionLevel={1}>
     <p>
       Checkboxes in JSTOR are often used when faceting results so a user can narrow their focus or
       on forms. They can be placed within pages or modals.
@@ -66,7 +66,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Content Guidelines">
-  <PageSection title="Group Labels" isSubsection>
+  <PageSection title="Group Labels" subSectionLevel={1}>
     <ul>
       <li>
         For a grouping of checkboxes, you can include a heading to provide even greater clarity.
@@ -75,7 +75,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       <li>Use Sentence case for group labels.</li>
     </ul>
   </PageSection>
-  <PageSection title="Labels" isSubsection>
+  <PageSection title="Labels" subSectionLevel={1}>
     <ul>
       <li>
         Labels are descriptive and succinct. They should provide further clarity for the user.
@@ -96,7 +96,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 <PageSection title="Variants">
   <PageSection
     title="Dark"
-    isSubsection
+    subSectionLevel={1}
     description="The dark variant of a checkbox is to be used in cases where the background containing the checkbox will be a dark color, or in cases where the theme of the page/component would be dark."
   >
     <div
@@ -116,7 +116,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 <PageSection title="States">
   <PageSection
     title="Disabled"
-    isSubsection
+    subSectionLevel={1}
     description="A state which indicates that the user should not be able to interact with the input."
   >
     <Canvas>
@@ -127,7 +127,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
   <PageSection
     title="Required"
-    isSubsection
+    subSectionLevel={1}
     description="Indicates that the user must specify a value for the input before the form can be submitted."
   >
     <Canvas>
@@ -138,7 +138,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
   <PageSection
     title="Error"
-    isSubsection
+    subSectionLevel={1}
     description="A state that lets the user know there has been an error with what was inputted."
   >
     <Canvas>
@@ -153,7 +153,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
   <PageSection
     title="Checked"
-    isSubsection
+    subSectionLevel={1}
     description="A state in which the value will be submitted."
   >
     <Canvas>
@@ -164,7 +164,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
   <PageSection
     title="Unchecked"
-    isSubsection
+    subSectionLevel={1}
     description="A state in which the value will be NOT submitted."
   >
     <Canvas>
@@ -175,7 +175,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
   <PageSection
     title="Indeterminate"
-    isSubsection
+    subSectionLevel={1}
     description="A state which serves a visual purpose while masking the actual value of the checkbox."
   >
     <Canvas>
@@ -192,14 +192,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     <li>Users should be warned if selecting a checkbox will cause a context change.</li>
     <li>Use the `disabled` attribute to prevent the checkbox from interaction.</li>
   </ul>
-  <PageSection isSubsection title="Best practices for labels">
+  <PageSection subSectionLevel={1} title="Best practices for labels">
     <ul>
       <li>Labels must be visible when an input gets focus</li>
       <li>Labels must be announced to the screen reader on focus</li>
       <li>Use sentence case</li>
     </ul>
   </PageSection>
-  <PageSection isSubsection title="Properties and Roles">
+  <PageSection subSectionLevel={1} title="Properties and Roles">
     <li>The checkbox has `role="checkbox"`.</li>
     <li>
       The ARIA state is set to `aria-checked="true"` when the checkbox is selected, and
@@ -216,7 +216,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       answering with the group of checkboxes
     </li>
   </PageSection>
-  <PageSection isSubsection title="Keyboard interaction">
+  <PageSection subSectionLevel={1} title="Keyboard interaction">
     <li>
       The <kbd>Space</kbd> key can be used to select and deselect each checkbox when it has focus.
     </li>

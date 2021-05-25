@@ -46,7 +46,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Content guidelines">
-  <PageSection title="Label" isSubsection>
+  <PageSection title="Label" subSectionLevel={1}>
     <ul>
       <li>
         The label needs to be helpful in telling the user what is expected of them, but they do not
@@ -55,7 +55,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       <li>Labels are to be written in sentence case and should only be 1-3 words long</li>
     </ul>
   </PageSection>
-  <PageSection title="Item" isSubsection>
+  <PageSection title="Item" subSectionLevel={1}>
     <ul>
       <li>Menu item text should be short and concise</li>
     </ul>
@@ -63,7 +63,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="States">
-  <PageSection title="Item" isSubsection>
+  <PageSection title="Item" subSectionLevel={1}>
     <div>
       <PharosHeading level="4" preset="1--bold">
         Default
@@ -107,25 +107,25 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </PharosLink>
     </li>
   </ul>
-  <PageSection title="Importance" isSubsection>
+  <PageSection title="Importance" subSectionLevel={1}>
     Provides users with options to select from a group of related items
   </PageSection>
-  <PageSection title="Visual expectations" isSubsection>
+  <PageSection title="Visual expectations" subSectionLevel={1}>
     A trigger (link or button) that causes a menu to show under it with a list of options to pick
     from.
   </PageSection>
-  <PageSection title="Code Expectations" isSubsection>
+  <PageSection title="Code Expectations" subSectionLevel={1}>
     <ul>
       <li>Dropdown list item has aria-haspopup="true" and aria-expanded="false"</li>
       <li>There is another list within the dropdown that contains all its child elements</li>
     </ul>
   </PageSection>
-  <PageSection title="Screen reader" isSubsection>
+  <PageSection title="Screen reader" subSectionLevel={1}>
     <ul>
       <li>Reads "dropdown name, collapsed, menu item"</li>
     </ul>
   </PageSection>
-  <PageSection title="Keyboard" isSubsection>
+  <PageSection title="Keyboard" subSectionLevel={1}>
     <ul>
       <li>
         <kbd>Tab</kbd>: moves focus onto the dropdown. When dropdown is expanded, focus will go to

@@ -40,7 +40,7 @@ import CodeBlock from '../../src/components/CodeBlock';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection title="Relevant WCAG Guidelines" isSubsection lessMargin>
+  <PageSection title="Relevant WCAG Guidelines" subSectionLevel={1} lessMargin>
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html">
@@ -49,11 +49,11 @@ import CodeBlock from '../../src/components/CodeBlock';
       </li>
     </ul>
   </PageSection>
-  <PageSection title="Importance" isSubsection lessMargin>
+  <PageSection title="Importance" subSectionLevel={1} lessMargin>
     Loading spinners visually (and audibly) inform the user that something is in the process of
     loading
   </PageSection>
-  <PageSection title="Code Expectations" isSubsection lessMargin>
+  <PageSection title="Code Expectations" subSectionLevel={1} lessMargin>
     <ul>
       <li>Role = "alert"</li>
       <li>
@@ -91,13 +91,13 @@ import CodeBlock from '../../src/components/CodeBlock';
       </div>
     </CodeBlock>
   </PageSection>
-  <PageSection title="Screen reader" isSubsection lessMargin>
+  <PageSection title="Screen reader" subSectionLevel={1} lessMargin>
     <ul>
       <li>When spinner is active - audible message: "Content is loading"</li>
       <li>When content is done loading - audible message: "Content is loaded"</li>
     </ul>
   </PageSection>
-  <PageSection title="Keyboard" isSubsection lessMargin>
+  <PageSection title="Keyboard" subSectionLevel={1} lessMargin>
     <ul>
       <li>No specific keyboard commands since aria-live announces "assertive" automatically</li>
     </ul>
