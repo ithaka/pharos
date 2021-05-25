@@ -60,13 +60,13 @@
   border-left-width: 0;
 }
 
-:host([variant='secondary'][hideleftborder='true']:not([selected])) #button-element,
-:host([variant='secondary'][hideleftborder='true'][selected]) #button-element {
+:host([variant='secondary'][hide-left-border='true']:not([selected])) #button-element,
+:host([variant='secondary'][hide-left-border='true'][selected]) #button-element {
   border-left-width: 0;
 }
 
-:host([variant='secondary'][hiderightborder='true']:not([selected])) #button-element,
-:host([variant='secondary'][hiderightborder='true'][selected]) #button-element {
+:host([variant='secondary'][hide-right-border='true']:not([selected])) #button-element,
+:host([variant='secondary'][hide-right-border='true'][selected]) #button-element {
   border-right-width: 0;
 }
 

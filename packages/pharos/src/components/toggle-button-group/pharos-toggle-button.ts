@@ -71,11 +71,11 @@ export class PharosToggleButton extends PharosButton {
     }
 
     if (changedProperties.has('_hideLeftBorder')) {
-      this.setAttribute('hideLeftBorder', this._hideLeftBorder ? 'true' : 'false');
+      this.setAttribute('hide-left-border', this._hideLeftBorder ? 'true' : 'false');
     }
 
     if (changedProperties.has('_hideRightBorder')) {
-      this.setAttribute('hideRightBorder', this._hideRightBorder ? 'true' : 'false');
+      this.setAttribute('hide-right-border', this._hideRightBorder ? 'true' : 'false');
     }
   }
 
