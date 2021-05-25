@@ -36,7 +36,14 @@
   }
 }
 
-:host #button-element:hover:not([disabled]),
+:host([variant='secondary'][icon]:not([selected])) #button-element {
+  pharos-icon {
+    fill: var(--pharos-color-ui-50);
+    stroke: var(--pharos-color-ui-50);
+  }
+}
+
+:host([variant='secondary']:not([disabled])) #button-element:hover,
 :host([variant='secondary']:not([selected])) #button-element:hover,
 :host([variant='secondary']:not([selected])) #button-element:active {
   color: var(--pharos-color-hover-primary);
@@ -47,13 +54,6 @@
   pharos-icon {
     fill: var(--pharos-color-hover-primary);
     stroke: var(--pharos-color-hover-primary);
-  }
-}
-
-:host([variant='secondary'][icon]:not([selected])) #button-element {
-  pharos-icon {
-    fill: var(--pharos-color-ui-50);
-    stroke: var(--pharos-color-ui-50);
   }
 }
 
@@ -77,11 +77,6 @@
 
 :host([variant='secondary'][hide-right-border='true']:not([selected])) #button-element:active {
   border-right-width: 0;
-}
-
-:host([variant='secondary']:not([selected])) #button-element:hover pharos-icon {
-  fill: var(--pharos-color-hover-primary);
-  stroke: var(--pharos-color-hover-primary);
 }
 
 :host([selected]) {
