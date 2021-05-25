@@ -27,8 +27,6 @@ const Sidenav: FC = () => {
       PharosSidenavLink,
       PharosSidenavMenu,
       PharosLink,
-      PharosInputGroup,
-      PharosButton,
     } = Pharos;
 
     const getLink = (pageName: string) => {
@@ -63,16 +61,6 @@ const Sidenav: FC = () => {
             <div className={siteBrand__subTitle}>JSTOR&apos;s Design System</div>
           </div>
         </PharosLink>
-        <PharosInputGroup slot="top" name="nav-search" placeholder="Search" hideLabel onBackground>
-          <span slot="label">Search</span>
-          <PharosButton
-            name="search-button"
-            icon="search"
-            variant="subtle"
-            label="search"
-            onBackground
-          ></PharosButton>
-        </PharosInputGroup>
         <PharosSidenavSection showDivider>
           <PharosSidenavLink
             href="/getting-started"
@@ -81,7 +69,6 @@ const Sidenav: FC = () => {
           >
             Getting started
           </PharosSidenavLink>
-          <PharosSidenavMenu label="Resources"></PharosSidenavMenu>
           <PharosSidenavLink
             href="/help"
             isActive={window.location.pathname === withPrefix('/help')}
@@ -92,12 +79,9 @@ const Sidenav: FC = () => {
           <PharosSidenavLink href="https://github.com/ithaka/pharos" target="_blank" external>
             GitHub
           </PharosSidenavLink>
-          <PharosSidenavLink href="#" target="_blank" external>
-            UI Design Kit
-          </PharosSidenavLink>
         </PharosSidenavSection>
         <PharosSidenavSection label="Brand Guidelines" showDivider>
-          <PharosSidenavMenu label="Brand Expressions" expanded={isExpanded('brand-expressions')}>
+          <PharosSidenavMenu label="Brand expressions" expanded={isExpanded('brand-expressions')}>
             {['Logos', 'Typography', 'Color', 'Imagery', 'Iconography'].map(
               createSidenavLink.bind(this, 'brand-expressions')
             )}
@@ -114,9 +98,15 @@ const Sidenav: FC = () => {
               'Editing checklist',
             ].map(createSidenavLink.bind(this, 'content-style-guide'))}
           </PharosSidenavMenu>
-          <PharosSidenavMenu label="Templates"></PharosSidenavMenu>
         </PharosSidenavSection>
         <PharosSidenavSection label="Design System">
+          <PharosSidenavLink
+            href="/design-tokens"
+            isActive={window.location.pathname === withPrefix('/design-tokens')}
+            onClick={handleLinkClick}
+          >
+            Design tokens
+          </PharosSidenavLink>
           <PharosSidenavMenu label="Components" expanded={isExpanded('components')}>
             {[
               'Component status',
@@ -147,17 +137,9 @@ const Sidenav: FC = () => {
               'Textarea',
             ].map(createSidenavLink.bind(this, 'components'))}
           </PharosSidenavMenu>
-          <PharosSidenavMenu label="Design Tokens"></PharosSidenavMenu>
           <PharosSidenavMenu label="Styles" expanded={isExpanded('styles')}>
             {['Type styles'].map(createSidenavLink.bind(this, 'styles'))}
           </PharosSidenavMenu>
-          <PharosSidenavLink
-            href="/icons"
-            isActive={window.location.pathname === withPrefix('/icons')}
-            onClick={handleLinkClick}
-          >
-            Icons
-          </PharosSidenavLink>
         </PharosSidenavSection>
       </PharosSidenav>
     );
