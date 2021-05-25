@@ -56,6 +56,12 @@
   @include mixins.no-underline;
 }
 
+:host([subtle]) #link-element.link--hover {
+  @include mixins.underline($text-decoration-color: var(--pharos-color-hover-primary));
+
+  color: var(--pharos-color-hover-primary);
+}
+
 :host([on-background][subtle]) #link-element:hover {
   @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
 }

@@ -13,7 +13,7 @@ import {
 
 interface PageSectionProps {
   title: string;
-  description?: string;
+  description?: string | JSX.Element;
   isHeader?: boolean;
   isSubsection?: boolean;
   moreTitleSpace?: boolean;
@@ -77,13 +77,9 @@ const PageSection: FC<PageSectionProps> = ({
         }
       >
         {displayedTitle()}
-        {description
-          ? description.split(`\n`).map((paragraph, i) => (
-              <p key={i} className={isHeader ? description__isHeader : description__base}>
-                {paragraph}
-              </p>
-            ))
-          : null}
+        {description ? (
+          <div className={isHeader ? description__isHeader : description__base}>{description}</div>
+        ) : null}
         {children}
       </div>
     );

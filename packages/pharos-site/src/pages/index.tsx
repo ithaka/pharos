@@ -23,7 +23,7 @@ import {
 import brandGuideline from '../../static/images/homepage/home-brand-guidelines.png';
 import components from '../../static/images/homepage/home-components.svg';
 import getStarted from '../../static/images/homepage/home-get-started.svg';
-import contribute from '../../static/images/homepage/home-contribute.png';
+import contribute from '../../static/images/homepage/home-contribute.svg';
 
 import '@ithaka/pharos/lib/styles/fonts.css';
 
