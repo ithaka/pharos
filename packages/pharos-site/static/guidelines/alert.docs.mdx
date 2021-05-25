@@ -1,6 +1,5 @@
-import workspaceAlert from '../images/components/alerts/alert_workspace-placement.png';
-import errorSection from '../images/components/alerts/alert_error_section.png';
-import errorAlertDoubled from '../images/components/alerts/alert_error_doubled.png';
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 # Alert
 
@@ -19,25 +18,11 @@ import errorAlertDoubled from '../images/components/alerts/alert_error_doubled.p
 
 Use alerts if you need to communicate to users in a prominent way to take action or be made aware of important information that does not interrupt their experience.
 
-### Appropriate Placement
+### Appropriate placement
 
 - Alerts relevant to an entire page should be placed at the top of that page, below the page header.
 
-<img
-  src={workspaceAlert}
-  alt="Alert placement example"
-  className="pharos-storybook__image"
-  width="700"
-/>
-
 - Alerts related to a section of a page, like a modal, should be placed inside that section, below any section heading.
-
-<img
-  src={errorSection}
-  alt="Alert in section example"
-  className="pharos-storybook__image"
-  width="700"
-/>
 
 - Alerts related to an element more specific than a section should be placed immediately above or below that element.
 
@@ -45,23 +30,36 @@ Use alerts if you need to communicate to users in a prominent way to take action
 
 When displaying an alert, push the content below it down (could be the page content below or the section content).
 
-## Best Practices
+<PageSection title="Best practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>Do use alerts thoughtfully and sparingly for only the most important information.</li>
+        <li>Do keep the messaging concise, scannable, and actionable (if needed).</li>
+        <li>
+          Do focus messaging on a single topic or required action to avoid overwhelming the user.
+        </li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Don't use alerts for marketing information.</li>
+        <li>
+          Don't use redundant terms. As an example, saying "successfully" in alerts that confirm a
+          successful action is redundant.
+        </li>
+        <li>
+          Don't include more than one or two links per alert. The primary action should be listed
+          first.
+        </li>
+        <li>Don't use ephemeral messaging to convey important context like form errors.</li>
+        <li>Don't display more than one alert at a time.</li>
+      </ul>
+    }
+  />
+</PageSection>
 
-### Dos
-
-- Do use alerts thoughtfully and sparingly for only the most important information.
-- Do keep the messaging concise, scannable, and actionable (if needed).
-- Do focus messaging on a single topic or required action to avoid overwhelming the user.
-
-### Don'ts
-
-- Don't use alerts for marketing information.
-- Don't use redundant terms. As an example, saying "successfully" in alerts that confirm a successful action is redundant.
-- Don't include more than one or two links per alert. The primary action should be listed first.
-- Don't use ephemeral messaging to convey important context like form errors.
-- Don't display more than one alert at a time.
-
-## Content Guidelines
+## Content guidelines
 
 **Good alert messaging should:**
 
@@ -148,13 +146,6 @@ Use an error alert when the user has submitted something the system can't accept
 </Canvas>
 
 To provide extra clarity, doubling on the use of Alerts and inline validation helps people quickly notice, find, and remedy errors.
-
-<img
-  src={errorAlertDoubled}
-  alt="Doubled alert example"
-  className="pharos-storybook__image"
-  width="700"
-/>
 
 #### Messaging:
 
