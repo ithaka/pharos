@@ -60,11 +60,11 @@ export class PharosToggleButtonGroup extends LitElement {
       this.querySelectorAll(`pharos-toggle-button`)
     ) as PharosToggleButton[];
     let selectIdx = -1;
-    toggleButtons.forEach((b, idx) => {
-      b['_hideLeftBorder'] = false;
-      b['_hideRightBorder'] = false;
-      if (b.id == selected.id) {
-        selectIdx = idx;
+    toggleButtons.forEach((button, index) => {
+      button['_hideLeftBorder'] = false;
+      button['_hideRightBorder'] = false;
+      if (button.id == selected.id) {
+        selectIdx = index;
       }
     });
 
@@ -140,11 +140,7 @@ export class PharosToggleButtonGroup extends LitElement {
       `pharos-toggle-button`
     ) as NodeListOf<PharosToggleButton>;
     toggleButtons.forEach((button) => {
-      if (button.hasAttribute('selected')) {
-        button['_focused'] = true;
-      } else {
-        button['_focused'] = false;
-      }
+      button['_focused'] = button.hasAttribute('selected');
     });
   }
 
