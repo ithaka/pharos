@@ -120,7 +120,7 @@
     "lit-element": "^2.5.1",
     "lit-html": "^1.4.1",
     "playwright": "^1.11.0",
-    "webpack": "^5.35.0",
+    "webpack": "^5.37.1",
     "dotenv-webpack": "^6.0.0",
     "html-webpack-plugin": "^5.0.0",
     "terser-webpack-plugin": "^5.0.0",
