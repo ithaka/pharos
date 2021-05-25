@@ -4,16 +4,16 @@
       "background": {
         "base"   : { "value": "#cccccc" },
         "info"   : { "value": "{color.Glacier blue.80.value}" },
-        "error"  : { "value": "#dc2828" },
-        "success": { "value": "#e3eed8" },
-        "warning": { "value": "#ffefc2" }
+        "error"  : { "value": "{color.Living coral.90.value}"},
+        "success": { "value": "{color.Green.93.value}" },
+        "warning": { "value": "{color.Yellow.97.value}" }
       },
       "icon": {
         "base"   : { "value": "#333333" },
-        "info"   : { "value": "#00627a" },
-        "error"  : { "value": "{color.White.value}" },
-        "success": { "value": "#54842a" },
-        "warning": { "value": "#624e18" }
+        "info"   : { "value": "{color.Glacier blue.40.value}" },
+        "error"  : { "value": "{color.feedback.error.value}" },
+        "success": { "value": "{color.feedback.success.value}" },
+        "warning": { "value": "{color.feedback.warning.value}" }
       },
       "text": {
         "base"   : { "value": "{color.text.20.value}" },
