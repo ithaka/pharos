@@ -33,8 +33,8 @@ export class PharosToggleButtonGroup extends LitElement {
 
     const maxIdx = toggleButtons.length - 1;
     toggleButtons.forEach((button, idx) => {
-      button['_first'] = idx == 0;
-      button['_last'] = idx == maxIdx;
+      button['_first'] = idx === 0;
+      button['_last'] = idx === maxIdx;
     });
   }
 
@@ -59,21 +59,11 @@ export class PharosToggleButtonGroup extends LitElement {
     const toggleButtons = Array.prototype.slice.call(
       this.querySelectorAll(`pharos-toggle-button`)
     ) as PharosToggleButton[];
-    let selectIdx = -1;
+    const selectIdx = toggleButtons.findIndex((button) => button.id === selected.id);
     toggleButtons.forEach((button, index) => {
-      button['_hideLeftBorder'] = false;
-      button['_hideRightBorder'] = false;
-      if (button.id == selected.id) {
-        selectIdx = index;
-      }
+      button['_hideLeftBorder'] = index === selectIdx + 1;
+      button['_hideRightBorder'] = index === selectIdx - 1;
     });
-
-    if (selectIdx > 0) {
-      toggleButtons[selectIdx - 1]['_hideRightBorder'] = true;
-    }
-    if (selectIdx < toggleButtons.length - 1) {
-      toggleButtons[selectIdx + 1]['_hideLeftBorder'] = true;
-    }
   }
 
   private _handleKeydown(event: KeyboardEvent): void {
@@ -108,16 +98,18 @@ export class PharosToggleButtonGroup extends LitElement {
       return;
     }
 
-    let index = ids.findIndex((v) => v === focused.id);
-
+    const focusedButtonIndex = ids.findIndex((buttonId) => buttonId === focused.id);
+    const lastButton = ids.length - 1;
+    const firstButton = 0;
+    let moveToIndex;
     if (moveForward) {
-      index = index === ids.length - 1 ? 0 : index + 1;
+      moveToIndex = focusedButtonIndex === lastButton ? firstButton : focusedButtonIndex + 1;
     } else {
-      index = index === 0 ? ids.length - 1 : index - 1;
+      moveToIndex = focusedButtonIndex === firstButton ? lastButton : focusedButtonIndex - 1;
     }
 
     focused['_focused'] = false;
-    const moveFocusTo = toggleButtons[index];
+    const moveFocusTo = toggleButtons[moveToIndex];
     moveFocusTo['_focused'] = true;
 
     await moveFocusTo.updateComplete;
