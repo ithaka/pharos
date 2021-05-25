@@ -6,6 +6,8 @@ import {
   line_do,
   icon__do,
   icon__dont,
+  text_do,
+  text_dont,
   container__practices,
   text__guideline,
 } from './BestPractices.module.css';
@@ -35,8 +37,9 @@ const BestPractices: FC<BestPracticesProps> = ({ Do, Dont }) => {
                   description="Check mark"
                   className={icon__do}
                 ></PharosIcon>
-                <span className={text__guideline}>{Do}</span>
+                <span className={text_do}>Do&apos;s</span>
               </div>
+              <span className={text__guideline}>{Do}</span>
             </>
           ) : null}
         </div>
@@ -46,8 +49,9 @@ const BestPractices: FC<BestPracticesProps> = ({ Do, Dont }) => {
               <hr className={line_dont} />
               <div className={container__practices}>
                 <PharosIcon name="close" description="X" className={icon__dont}></PharosIcon>
-                <span className={text__guideline}>{Dont}</span>
+                <span className={text_dont}>Don&apos;ts</span>
               </div>
+              <span className={text__guideline}>{Dont}</span>
             </>
           ) : null}
         </div>

@@ -10,20 +10,31 @@
   display: grid;
   grid-template-columns: max-content 1fr;
   column-gap: var(--pharos-spacing-1-x);
+  margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
 .line_dont {
   border: none;
   height: 2px;
   background-color: var(--pharos-color-feedback-error);
-  margin-bottom: var(--pharos-spacing-three-quarters-x);
+  margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
 .line_do {
   border: none;
   height: 2px;
   background-color: var(--pharos-color-feedback-success);
-  margin-bottom: var(--pharos-spacing-three-quarters-x);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.text_do {
+  color: var(--pharos-color-feedback-success);
+  font-weight: bold;
+}
+
+.text_dont {
+  color: var(--pharos-color-feedback-error);
+  font-weight: bold;
 }
 
 .text__guideline {
