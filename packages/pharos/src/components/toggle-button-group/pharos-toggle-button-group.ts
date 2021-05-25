@@ -91,15 +91,14 @@ export class PharosToggleButtonGroup extends LitElement {
     const toggleButtons = Array.prototype.slice.call(
       this.querySelectorAll(`pharos-toggle-button`)
     ) as PharosToggleButton[];
-    const ids = toggleButtons.map((toggleButton) => toggleButton.id);
 
     const focused = document.activeElement as PharosToggleButton;
     if (!focused[matchesFunc]('pharos-toggle-button')) {
       return;
     }
 
-    const focusedButtonIndex = ids.findIndex((buttonId) => buttonId === focused.id);
-    const lastButton = ids.length - 1;
+    const focusedButtonIndex = toggleButtons.findIndex((button) => button.id === focused.id);
+    const lastButton = toggleButtons.length - 1;
     const firstButton = 0;
     let moveToIndex;
     if (moveForward) {
