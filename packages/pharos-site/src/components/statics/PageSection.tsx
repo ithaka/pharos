@@ -83,7 +83,6 @@ const PageSection: FC<PageSectionProps> = ({
     );
 
     const displayedTitle = () => {
-      console.log(subSectionLevel);
       if (isHeader) {
         return headerTitle;
       } else if (subSectionLevel === 1) {
