@@ -1,89 +1,102 @@
-# Select
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
-<p
-  style={{
-    fontSize: 'var(--pharos-type-scale-6)',
-    lineHeight: '2rem',
-    marginBottom: 'var(--pharos-spacing-5-x)',
-  }}
->
-  A select allows users to choose one option from a list in a form.
-</p>
+<PageSection isHeader title="Select" description="">
+  <PharosLink
+    href="A select allows users to choose one option from a list in a form."
+    target="_blank"
+  >
+    See in Storybook
+  </PharosLink>
+</PageSection>
 
-## Best Practices
+<PageSection title="Best Practices">
+  <p>
+    Select is a type of input that is used in forms, where a user is submitting data and chooses one
+    option from a list.
+  </p>
+  <BestPractices
+    Do={
+      <ul>
+        <li>
+          Use when you have 6 or more pre-defined mutually exclusive options for the user to choose
+          from (use the select component instead of radio buttons)
+        </li>
+        <li>Have a default selection when possible</li>
+        <li>Use "Select" as the default placeholder option if there's no logical default option</li>
+        <li>Labels should be concise</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Avoid using a select for navigational related needs, a dropdown menu will suffice</li>
+        <li>Avoid long-winded labels for the options, 1-3 words</li>
+      </ul>
+    }
+  />
+</PageSection>
 
-Select is a type of input that is used in forms, where a user is submitting data and chooses one option from a list.
+<PageSection title="Content Guidelines">
+  <PageSection subSectionLevel={1} title="Labels">
+    <ul>
+      <li>Succinctly write labels, they are no more than 3 words</li>
+      <li>Write in sentence case</li>
+      <li>Avoid punctuation and articles ("the," "a," "an")</li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Select Options">
+    <ul>
+      <li>Start with "Select" as a placeholder if there isn't a default option</li>
+      <li>Relates to what the option will ultimately do</li>
+      <li>List options alphabetically or in a logical order (like frequency of use)</li>
+      <li>Written in sentence case</li>
+      <li>Avoid punctuation and articles ("the," "a," "an")</li>
+    </ul>
+  </PageSection>
+</PageSection>
 
-### Do's
+<PageSection title="States">
+  <PageSection subSectionLevel={1} title="Default">
+    <Canvas>
+      <PharosSelect>
+        <span slot="label">Select label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </PharosSelect>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Disabled">
+    <Canvas>
+      <PharosSelect disabled>
+        <span slot="label">Select label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </PharosSelect>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Required">
+    <Canvas>
+      <PharosSelect required>
+        <span slot="label">Select label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </PharosSelect>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Error">
+    <Canvas>
+      <PharosSelect required invalidated message="This field is required, please make a selection">
+        <span slot="label">Select label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </PharosSelect>
+    </Canvas>
+  </PageSection>
+</PageSection>
 
-- Use when you have 6 or more pre-defined mutually exclusive options for the user to choose from (use the select component instead of radio buttons)
-- Have a default selection when possible
-- Use "Select" as the default placeholder option if there's no logical default option
-- Labels should be concise
-
-### Dont's
-
-- Avoid using a select for navigational related needs, a dropdown menu will suffice
-- Avoid long-winded labels for the options, 1-3 words
-
-## Content Guidelines
-
-### Labels
-
-- Succinctly write labels, they are no more than 3 words
-- Write in sentence case
-- Avoid punctuation and articles ("the," "a," "an")
-
-### Select Options
-
-- Start with "Select" as a placeholder if there isn't a default option
-- Relates to what the option will ultimately do
-- List options alphabetically or in a logical order (like frequency of use)
-- Written in sentence case
-- Avoid punctuation and articles ("the," "a," "an")
-
-## States
-
-### Default
-
-<Canvas>
-  <PharosSelect>
-    <span slot="label">Select label</span>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-  </PharosSelect>
-</Canvas>
-
-### Disabled
-
-<Canvas>
-  <PharosSelect disabled>
-    <span slot="label">Select label</span>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-  </PharosSelect>
-</Canvas>
-
-### Required
-
-<Canvas>
-  <PharosSelect required>
-    <span slot="label">Select label</span>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-  </PharosSelect>
-</Canvas>
-
-### Error
-
-<Canvas>
-  <PharosSelect required invalidated message="This field is required, please make a selection">
-    <span slot="label">Select label</span>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-  </PharosSelect>
-</Canvas>
-
-## Validation
-
-Real-time validation helps to streamline the process and keep data clean when the user is filling out forms. For full guidelines, refer to the forms page.
+<PageSection title="Validation">
+  <p>
+    Real-time validation helps to streamline the process and keep data clean when the user is
+    filling out forms. For full guidelines, refer to the forms page.
+  </p>
+</PageSection>

@@ -1,4 +1,4 @@
-import { Canvas } from '@storybook/addon-docs/blocks';
+import { Canvas } from '@storybook/addon-docs';
 
 import a11yConfig from '../a11yConfig';
 import '../styleConfig';

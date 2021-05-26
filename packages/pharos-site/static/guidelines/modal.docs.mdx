@@ -7,13 +7,16 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
     a page's content. They are used for getting a user's attention and for taking action without
     changing page context."
 >
-  <PharosLink href="#" target="_blank">
+  <PharosLink
+    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/components-modal--base"
+    target="_blank"
+  >
     See in Storybook
   </PharosLink>
 </PageSection>
 
 <PageSection title="Usage">
-  <PageSection title="Overview" isSubsection lessMargin>
+  <PageSection title="Overview" subSectionLevel={1} lessMargin>
     <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
       <p>
         Modals are used to present critical information or request user input needed to complete a
@@ -26,7 +29,7 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
       </p>
     </div>
   </PageSection>
-  <PageSection title="When to Use" isSubsection lessMargin>
+  <PageSection title="When to Use" subSectionLevel={1} lessMargin>
     <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
       <ul>
         <li>When a user needs to do a focused task (e.g., enter specific information)</li>
@@ -42,7 +45,7 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
 </PageSection>
 
 <PageSection title="Best Practices">
-  <PageSection title="Dos" isSubsection lessMargin>
+  <PageSection title="Dos" subSectionLevel={1} lessMargin>
     <ul>
       <li>Allow users to take an action to complete a task in their workflow</li>
       <li>Display critical information to give users more context</li>
@@ -52,7 +55,7 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection title="Dont's" isSubsection lessMargin>
+  <PageSection title="Dont's" subSectionLevel={1} lessMargin>
     <ul>
       <li>Don't use for long forms, instead, incorporate into the page's content</li>
     </ul>
@@ -60,17 +63,17 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
 </PageSection>
 
 <PageSection title="Content Guidelines">
-  <PageSection title="Modal Heading" isSubsection lessMargin>
+  <PageSection title="Modal Heading" subSectionLevel={1} lessMargin>
     A modal's heading should be concise, describing the information or action being presented. They
     should be written in sentence case and describe the action a user will take (e.g., "Delete
     folder," "Create report," or "Cite") or relevant information to the copy being displayed.
     Punctuation is generally not needed or encouraged in modal headings.
   </PageSection>
-  <PageSection title="Modal Content" isSubsection lessMargin>
+  <PageSection title="Modal Content" subSectionLevel={1} lessMargin>
     There are no specific requirements for the content of a modal; it can be composed as the
     information calls for. The content could include supporting body copy or form elements.
   </PageSection>
-  <PageSection title="Modal Footer" isSubsection lessMargin>
+  <PageSection title="Modal Footer" subSectionLevel={1} lessMargin>
     The footer content contains all possible actions for the user to take, but can also include
     further pertinent/relevant information. For buttons, use descriptive words such as "Add," and
     Save.
@@ -78,31 +81,31 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
 </PageSection>
 
 <PageSection title="States">
-  <PageSection title="No Footer" isSubsection lessMargin>
+  <PageSection title="No Footer" subSectionLevel={1} lessMargin>
     Use for information-only based content that does not require the user to take an action.
   </PageSection>
-  <PageSection title="Mobile" isSubsection lessMargin>
+  <PageSection title="Mobile" subSectionLevel={1} lessMargin>
     For screen sizes smaller than our Tablet (768px) down to our Mobile size (320px), the modal will
     act as a "sheet" and take over the entire width and height of the screen.
   </PageSection>
 </PageSection>
 
 <PageSection title="Variants">
-  <PageSection title="Small" isSubsection lessMargin>
+  <PageSection title="Small" subSectionLevel={1} lessMargin>
     Use for quick, short information. The small modal size should also be used to confirm delete
     actions.
   </PageSection>
-  <PageSection title="Medium (Default)" isSubsection lessMargin>
+  <PageSection title="Medium (Default)" subSectionLevel={1} lessMargin>
     Medium is our default modal size. It can be used in most instances.
   </PageSection>
-  <PageSection title="Large" isSubsection lessMargin>
+  <PageSection title="Large" subSectionLevel={1} lessMargin>
     For displaying more complex information, such as data tables, use the large modal for maximum
     screen real-estate.
   </PageSection>
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection title="Relevant WCAG Guidelines" isSubsection lessMargin>
+  <PageSection title="Relevant WCAG Guidelines" subSectionLevel={1} lessMargin>
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
@@ -111,12 +114,12 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection title="Importance" isSubsection lessMargin>
+  <PageSection title="Importance" subSectionLevel={1} lessMargin>
     Modals should not open automatically as this can interrupt a users workflow. By giving the user
     control when they would like to view this modal, this gives them the freedom to decide when they
     would like to be given the additional information in the overlay.
   </PageSection>
-  <PageSection title="Code Expectations" isSubsection lessMargin>
+  <PageSection title="Code Expectations" subSectionLevel={1} lessMargin>
     Via{' '}
     <PharosLink href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html">
       w3
@@ -141,7 +144,7 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
       <li>An aria-label should be placed on the "X" that contains "close modal"</li>
     </ul>
   </PageSection>
-  <PageSection title="Code Expectations" isSubsection lessMargin>
+  <PageSection title="Code Expectations" subSectionLevel={1} lessMargin>
     <PharosHeading level={'3'} preset={'2'}>
       Expected actions
     </PharosHeading>

@@ -1,76 +1,64 @@
-# Footer
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <p style={{ fontSize: 'var(--pharos-type-scale-6)', lineHeight: '2rem' }}>
-    Footers are used as a container for site navigational elements and disclaimers.
-  </p>
-  <PharosLink href="#" target="_blank">
+<PageSection
+  isHeader
+  title="Footer"
+  description="Footers are used as a container for site navigational elements and disclaimers."
+>
+  <PharosLink
+    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/organisms-footer--base"
+    target="_blank"
+  >
     See in Storybook
   </PharosLink>
-</div>
+</PageSection>
 
-## Usage
+<PageSection
+  title="Usage"
+  description="The footer contains links to various pages on the platform and information about copyright data.
+    It is not sectioning content and does not introduce a new section in the outline of a page."
+/>
 
-<div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <p>
-    The footer contains links to various pages on the platform and information about copyright data.
-    It is not sectioning content and does not introduce a new section in the outline of a page.
-  </p>
-</div>
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>
+          Use On Background, subtle links as these are best suited for navigational elements on
+          darker, accessible backgrounds
+        </li>
+        <li>Ensure grouped links are related in the kinds of pages they link out to</li>
+        <li>Use icons with links to social media pages</li>
+        <li>Use text approved by Legal for the mission and copyright statements</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Include links to specific content on the platform</li>
+      </ul>
+    }
+  />
+</PageSection>
 
-<PharosHeading level={'2'} preset={'6'} style={{ color: 'var(--pharos-color-text-base)' }}>
-  Best Practices
-</PharosHeading>
-
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'2'}>
-      Dos
-    </PharosHeading>
+<PageSection
+  title="Content guidelines"
+  description="Footers contain site-wide information, such as copyright information, mission statements, links
+    to pages and legal disclaimers."
+>
+  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
     <ul>
       <li>
-        Use On Background, subtle links as these are best suited for navigational elements on
-        darker, accessible backgrounds
+        <PharosLink href="https://www.w3.org/WAI/tutorials/page-structure/regions/#page-footer">
+          W3 Page Regions
+        </PharosLink>
       </li>
-      <li>Ensure grouped links are related in the kinds of pages they link out to</li>
-      <li>Use icons with links to social media pages</li>
-      <li>Use text approved by Legal for the mission and copyright statements</li>
+      <li>
+        Use the semantic <code>&lt;footer&gt;</code> element to create this region
+      </li>
+      <li>
+        <code>&lt;footer&gt;</code> element should have a <code>role="contentinfo"</code>
+      </li>
     </ul>
-  </div>
-  <div>
-    <PharosHeading level={'3'} preset={'2'}>
-      Don'ts
-    </PharosHeading>
-    <ul>
-      <li>Include links to specific content on the platform</li>
-    </ul>
-  </div>
-</div>
-
-<div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
-    Content guidelines
-  </PharosHeading>
-  <p>
-    Footers contain site-wide information, such as copyright information, mission statements, links
-    to pages and legal disclaimers.
-  </p>
-</div>
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <PharosHeading level={'3'} preset={'2'}>
-    Relevant WCAG Guidelines
-  </PharosHeading>
-  <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
-    <li>
-      <PharosLink href="https://www.w3.org/WAI/tutorials/page-structure/regions/#page-footer">
-        W3 Page Regions
-      </PharosLink>
-    </li>
-    <li>
-      Use the semantic <code>&lt;footer&gt;</code> element to create this region
-    </li>
-    <li>
-      <code>&lt;footer&gt;</code> element should have a <code>role="contentinfo"</code>
-    </li>
-  </ul>
-</div>
+  </PageSection>
+</PageSection>

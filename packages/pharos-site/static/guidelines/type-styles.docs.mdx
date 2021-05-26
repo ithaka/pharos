@@ -11,24 +11,24 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
 </PageSection>
 
 <PageSection title="Font Stack">
-  <PageSection title="Branded" isSubsection lessMargin>
+  <PageSection title="Branded" subSectionLevel={1} lessMargin>
     <p style={{ fontFamily: 'var(--pharos-font-family-sans-serif)' }}>GT America</p>
     <p style={{ fontFamily: 'var(--pharos-font-family-serif)' }}>Ivar Headline</p>
   </PageSection>
-  <PageSection title="Fallback" isSubsection lessMargin>
+  <PageSection title="Fallback" subSectionLevel={1} lessMargin>
     <p style={{ fontFamily: 'Helvetica Neue' }}>Helvetica Neue, Arial</p>
     <p style={{ fontFamily: 'Times' }}>Times</p>
   </PageSection>
 </PageSection>
 
 <PageSection title="Usage">
-  <PageSection title="Design Tokens" isSubsection>
+  <PageSection title="Design Tokens" subSectionLevel={1}>
     <p>
       Please refer to our type tokens to see font-sizes, line-heights, letter-spacing,
       font-families, font-weights, and type-scale.
     </p>
   </PageSection>
-  <PageSection title="Formatting Styles" isSubsection>
+  <PageSection title="Formatting Styles" subSectionLevel={1}>
     <Canvas>
       <table className="typography-table-example" style={{ borderCollapse: 'collapse' }}>
         <thead>
@@ -76,7 +76,7 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
       </table>
     </Canvas>
   </PageSection>
-  <PageSection title="Other Styles" isSubsection>
+  <PageSection title="Other Styles" subSectionLevel={1}>
     <div style={{ marginBottom: 'var(--pharos-spacing-2-x)' }}>
       <PharosHeading level="4" preset="2">
         Tables

@@ -1,83 +1,65 @@
-<PharosHeading
-  level={'1'}
-  preset={'7--bold'}
-  style={{ color: 'black', marginBottom: 'var(--pharos-spacing-2-x)' }}
->
-  Progress Bar
-</PharosHeading>
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <p style={{ fontSize: 'var(--pharos-type-scale-6)', lineHeight: '2rem' }}>
-    The progress bar visually represents progress of a particular process. It shows how much of the
-    task has been completed and how much is remaining.
-  </p>
-  <PharosLink href="#" target="_blank">
+<PageSection
+  isHeader
+  title="Progress Bar"
+  description="The progress bar visually represents progress of a particular process. It shows how much of the
+    task has been completed and how much is remaining."
+>
+  <PharosLink
+    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/components-progress-bar--base"
+    target="_blank"
+  >
     See in Storybook
   </PharosLink>
-</div>
+</PageSection>
 
-## Usage
-
-<div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
+<PageSection title="Usage">
   <p>
     This component can be used to visually represent the completion of a task, such as importing or
     uploading files or when a process time can be calculated and takes longer than 10 seconds.
   </p>
-</div>
+</PageSection>
 
-<PharosHeading level={'2'} preset={'6'} style={{ color: 'var(--pharos-color-text-base)' }}>
-  Best Practices
-</PharosHeading>
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>Give users an indication of how much of the task has completed and how much is left</li>
+        <li>Display the file being uploaded to reinforce that action a user is taking</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>
+          Use a progress bar as a placeholder to indicate page, section or content loading, use a
+          skeleton loader or loading spinner instead
+        </li>
+      </ul>
+    }
+  />
+</PageSection>
 
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'4'}>
-      Dos
-    </PharosHeading>
-    <ul>
-      <li>Give users an indication of how much of the task has completed and how much is left</li>
-      <li>Display the file being uploaded to reinforce that action a user is taking</li>
-    </ul>
-  </div>
-  <div>
-    <PharosHeading level={'3'} preset={'4'}>
-      Don'ts
-    </PharosHeading>
+<PageSection title="Content Guidelines">
+  <PageSection subSectionLevel={1} title="Progress Descriptions">
     <ul>
       <li>
-        Use a progress bar as a placeholder to indicate page, section or content loading, use a
-        skeleton loader or loading spinner instead
+        If the progress bar calls for descriptions, these should be written as short sentence
+        fragments
+      </li>
+      <li>Written in sentence case of the processes</li>
+      <li>The copy should be concise and human sounding </li>
+      <li>When the process is complete "Done!" should be in the description</li>
+      <li>
+        Three dots should be present at the end of each statement to help indicate progress e.g.,
+        "Extracting the headers…"
       </li>
     </ul>
-  </div>
-</div>
+  </PageSection>
+</PageSection>
 
-<div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-  <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
-    Content guidelines
-  </PharosHeading>
-  <PharosHeading level={'3'} preset={'4'}>
-    Progress Descriptions
-  </PharosHeading>
-  <ul>
-    <li>
-      If the progress bar calls for descriptions, these should be written as short sentence
-      fragments
-    </li>
-    <li>Written in sentence case of the processes</li>
-    <li>The copy should be concise and human sounding </li>
-    <li>When the process is complete "Done!" should be in the description</li>
-    <li>
-      Three dots should be present at the end of each statement to help indicate progress e.g.,
-      "Extracting the headers…"
-    </li>
-  </ul>
-</div>
-
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <PharosHeading level={'2'} preset={'6'}>
-    States
-  </PharosHeading>
+<PageSection title="States">
   <PharosProgressBar value="25">
     <div slot="title">Title.xls</div>
     <div slot="description">Processing</div>
@@ -94,45 +76,26 @@
     <div slot="title">Title.xls</div>
     <div slot="description">Done!</div>
   </PharosProgressBar>
-</div>
+</PageSection>
 
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <PharosHeading level={'2'} preset={'6'}>
-    Variants
-  </PharosHeading>
+<PageSection title="Variants">
   <p>
     The progress bar can be used with the file name and description text of the processes, just the
     filename, or just the progress bar itself. Use the progress bar alone when a filename and
     processes are unknown.
   </p>
-  <div style={{ marginBottom: 'var(--pharos-spacing-one-and-a-half-x)' }}>
-    <div>
-      <PharosHeading level={'3'} preset={'4'}>
-        File Name only
-      </PharosHeading>
-    </div>
+  <PageSection subSectionLevel={1} title="File Name only">
     <PharosProgressBar value="100">
       <div slot="title">Title.xls</div>
     </PharosProgressBar>
-  </div>
-  <div>
-    <div>
-      <PharosHeading level={'3'} preset={'4'}>
-        No Title
-      </PharosHeading>
-    </div>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="No Title">
     <PharosProgressBar value="100"></PharosProgressBar>
-  </div>
-</div>
+  </PageSection>
+</PageSection>
 
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <PharosHeading level={'2'} preset={'6'}>
-    Accessibility
-  </PharosHeading>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'4'}>
-      Relevant WCAG Guidelines
-    </PharosHeading>
+<PageSection title="Accessibility">
+  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
@@ -140,28 +103,19 @@
         </PharosLink>
       </li>
     </ul>
-  </div>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'4'}>
-      Importance
-    </PharosHeading>
-    <div>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Importance">
+    <p>
       For screen reader users, a progress bar will inform the user how far they are into a certain
       process
-    </div>
-  </div>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'4'}>
-      Code Expectations
-    </PharosHeading>
-    <div style={{ fontWeight: 'bold' }}>
-      Via{' '}
-      <PharosLink href="https://dequeuniversity.com/library/aria/progress-bar-bounded">
-        Deque
-      </PharosLink>
-      :
-    </div>
-    <ul>
+    </p>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Code Expectations">
+    Via{' '}
+    <PharosLink href="https://dequeuniversity.com/library/aria/progress-bar-bounded">
+      Deque
+    </PharosLink>
+    :<ul>
       <li>
         We want to use the HTML &lt;Progress&gt; element. Within this element, there should be:
         <ul>
@@ -172,24 +126,23 @@
         </ul>
       </li>
     </ul>
-  </div>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'4'}>
-      Expected actions
-    </PharosHeading>
-    <div style={{ fontWeight: 'bold' }}>For screen reader users, progress bars</div>
-    <ul>
-      <li>Keep them updated with the status of a process</li>
-    </ul>
-    <div style={{ fontWeight: 'bold' }}>Screenreader specifics</div>
-    <ul>
-      <li>Reads: "percent/value that is currently given to progress bar"</li>
-      <li>On completion can give an update such as "complete"</li>
-    </ul>
-    <div style={{ fontWeight: 'bold' }}>Keyboard</div>
-    <div>
-      The progress bar should be in the tax index so that users can get the information when in
-      focus, even if the information is announced automatically.
-    </div>
-  </div>
-</div>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Expected actions">
+    <PageSection subSectionLevel={2} title="Screen reader">
+      <ul>
+        <li>Keep them updated with the status of a process</li>
+      </ul>
+    </PageSection>
+    <PageSection subSectionLevel={2} title="Screenreader specifics">
+      <ul>
+        <li>Reads: "percent/value that is currently given to progress bar"</li>
+        <li>On completion can give an update such as "complete"</li>
+      </ul>
+      <div style={{ fontWeight: 'bold' }}>Keyboard</div>
+      <div>
+        The progress bar should be in the tax index so that users can get the information when in
+        focus, even if the information is announced automatically.
+      </div>
+    </PageSection>
+  </PageSection>
+</PageSection>
