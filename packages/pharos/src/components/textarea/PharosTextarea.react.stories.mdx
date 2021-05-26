@@ -1,4 +1,4 @@
-import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
 import { PharosTextarea } from '../../react-components/textarea/pharos-textarea';
@@ -70,24 +70,27 @@ export const Template = (args) => (
 <ArgsTable of={PharosTextarea} />
 
 <Canvas withToolbar>
-  <Story
-    name="States"
-    argTypes={{
-      type: { table: { disable: true }, defaultValue: 'text' },
-      resize: { control: { type: 'select', options: ['none', 'vertical', 'horizontal', 'both'] } },
-    }}
-    args={{
-      placeholder: 'Enter some text',
-      disabled: false,
-      readonly: false,
-      value: '',
-      resize: ['none', 'vertical', 'horizontal', 'both'],
-      hideLabel: false,
-      invalidated: false,
-      label: 'Edit via control panel',
-    }}
-  >
-    {Template.bind({})}
+  <Story name="States">
+    <div style={{ display: 'grid', gridGap: '1rem', gridTemplateColumns: 'repeat(2, 250px)' }}>
+      <PharosTextarea>
+        <span slot="label">Empty textarea</span>
+      </PharosTextarea>
+      <PharosTextarea disabled>
+        <span slot="label">Disabled textarea</span>
+      </PharosTextarea>
+      <PharosTextarea readonly value="Example text">
+        <span slot="label">Read only textarea</span>
+      </PharosTextarea>
+      <PharosTextarea placeholder="Placeholder text">
+        <span slot="label">Placeholder for textarea</span>
+      </PharosTextarea>
+      <PharosTextarea value="This value is provided">
+        <span slot="label">Value provided textarea</span>
+      </PharosTextarea>
+      <PharosTextarea resize="none">
+        <span slot="label">non-resizeable textarea</span>
+      </PharosTextarea>
+    </div>
   </Story>
 </Canvas>
 

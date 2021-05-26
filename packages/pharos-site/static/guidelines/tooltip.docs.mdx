@@ -1,11 +1,6 @@
-import navigationalTooltip from '../images/components/tooltip/tooltip_navigational.png';
 import tooltipViewer from '../images/components/tooltip/tooltip_viewer-1.png';
 import tooltipViewerTwo from '../images/components/tooltip/tooltip_viewer-2.png';
-import tooltipViewerThree from '../images/components/tooltip/tooltip_viewer-3.png';
-import iconButton from '../images/components/tooltip/tooltip_icon-button.png';
-import largeExample from '../images/components/tooltip/tooltip_large-example.png';
 import tooltipOverflow from '../images/components/tooltip/tooltip_overflow.gif';
-import tooltipHoverable from '../images/components/tooltip/tooltip_hoverable.gif';
 
 import PageSection from '../../src/components/statics/PageSection.tsx';
 import BestPractices from '../../src/components/statics/BestPractices.tsx';
@@ -118,14 +113,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
           For navigational items, the tooltip should be placed to the left of the associated icon
           button.
         </p>
-        <img
-          src={navigationalTooltip}
-          alt="Tooltip placement for navigational items"
-          className="pharos-storybook__image"
-          width="350"
-        />
       </PageSection>
-      <PageSection subSectionLevel={3} title="Icon Toolbar">
+      <PageSection subSectionLevel={3} title="Icon toolbar">
         <p>
           For content viewing experiences, the tooltip should sit below the viewer control icon
           buttons.
@@ -136,39 +125,21 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
           className="pharos-storybook__image"
           width="700"
         />
-        <img
-          src={tooltipViewerThree}
-          alt="Tooltip placement for viewer toolbar"
-          className="pharos-storybook__image"
-          width="700"
-        />
       </PageSection>
-      <PageSection subSectionLevel={3} title="Icon Buttons">
+      <PageSection subSectionLevel={3} title="Icon buttons">
         <p>
           For tooltips that are near other objects or items, display the tooltip to have more
           contrast, prominence and readability. In the example below, the tooltip has a top
           placement.
         </p>
-        <img
-          src={iconButton}
-          alt="Tooltip for an icon button"
-          className="pharos-storybook__image"
-          width="700"
-        />
       </PageSection>
-      <PageSection subSectionLevel={3} title="Longer Titles">
+      <PageSection subSectionLevel={3} title="Longer titles">
         <p>
           For titles that need a tooltip to display the full title, it should sit above the content,
           so the link text is still visible to the user.
         </p>
-        <img
-          src={largeExample}
-          alt="Example of tooltip with a long title"
-          className="pharos-storybook__image"
-          height="350"
-        />
       </PageSection>
-      <PageSection subSectionLevel={3} title="Caret Placement">
+      <PageSection subSectionLevel={3} title="Caret placement">
         <p>
           We use <PharosLink href="https://popper.js.org/">Popper.js</PharosLink> to position our
           tooltips. By default, tooltips are placed in the center of the trigger, but the
@@ -189,7 +160,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </PageSection>
     </PageSection>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Longer Content">
+  <PageSection subSectionLevel={1} title="Longer content">
     <p>
       Larger tooltips can be used to display further additional information. It is highly
       recommended that you consider if you need a tooltip or not for the design. "Throw it in a
@@ -208,7 +179,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -236,7 +207,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
+<PageSection title="Content guidelines">
   <em>Tooltips should:</em>
   <ul>
     <li>Be concise and scannable</li>
@@ -285,12 +256,6 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         If pointer hover can trigger the additional content, then the pointer can be moved over the
         tooltip without it disappearing.
       </p>
-      <img
-        src={tooltipHoverable}
-        alt="Hovering over tooltip content"
-        className="pharos-storybook__image"
-        height="250"
-      />
       <i>
         Tooltip remains open while the cursor moves within the trigger and disappears when the
         cursor moves out of the trigger.
