@@ -1,6 +1,6 @@
-import { html, LitElement, property, query } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
-import { nothing } from 'lit-html';
+import { html, LitElement, nothing } from 'lit';
+import { property, query } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
