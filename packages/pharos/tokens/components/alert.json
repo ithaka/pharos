@@ -2,7 +2,7 @@
   "alert": {
     "color": {
       "background": {
-        "base"   : { "value": "#cccccc" },
+        "base"   : { "value": "{color.Marble gray.94.value}" },
         "info"   : { "value": "{color.Glacier blue.80.value}" },
         "error"  : { "value": "{color.Living coral.90.value}"},
         "success": { "value": "{color.Green.93.value}" },
@@ -24,7 +24,7 @@
         "inverse": { "value": "{color.White.value}" }
       },
       "border": {
-        "base"   : { "value": "#333333" },
+        "base"   : { "value": "{color.Marble gray.94.value}" },
         "info"   : { "value": "{color.Glacier blue.40.value}" },
         "error"  : { "value": "{color.feedback.error.value}" },
         "success": { "value": "{color.feedback.success.value}" },
