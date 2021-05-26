@@ -2,12 +2,20 @@
   margin-bottom: var(--pharos-spacing-7-x);
 }
 
-.container__isSubsection {
+.container__less-margin {
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+.container__subsection-level-one {
   margin-bottom: var(--pharos-spacing-5-x);
 }
 
-.container__less-margin {
+.container__subsection-level-two {
   margin-bottom: var(--pharos-spacing-3-x);
+}
+
+.container__subsection-level-three {
+  margin-bottom: var(--pharos-spacing-2-x);
 }
 
 .title__base {
