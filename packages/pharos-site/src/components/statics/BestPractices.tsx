@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import type { FC, ReactElement } from 'react';
 import Grid from '../Grid';
 import {
-  line_dont,
-  line_do,
+  line__dont,
+  line__do,
   icon__do,
   icon__dont,
-  text_do,
-  text_dont,
+  text__do,
+  text__dont,
   container__practices,
   text__guideline,
 } from './BestPractices.module.css';
@@ -30,7 +30,7 @@ const BestPractices: FC<BestPracticesProps> = ({ Do, Dont }) => {
         <div>
           {Do ? (
             <>
-              <hr className={line_do} />
+              <hr className={line__do} />
               <div className={container__practices}>
                 <PharosIcon
                   name="checkmark"
@@ -38,7 +38,7 @@ const BestPractices: FC<BestPracticesProps> = ({ Do, Dont }) => {
                   className={icon__do}
                 ></PharosIcon>
                 <div>
-                  <span className={text_do}>Dos</span>
+                  <span className={text__do}>Dos</span>
                   <span className={text__guideline}>{Do}</span>
                 </div>
               </div>
@@ -48,11 +48,11 @@ const BestPractices: FC<BestPracticesProps> = ({ Do, Dont }) => {
         <div>
           {Dont ? (
             <>
-              <hr className={line_dont} />
+              <hr className={line__dont} />
               <div className={container__practices}>
                 <PharosIcon name="close" description="X" className={icon__dont}></PharosIcon>
                 <div>
-                  <span className={text_dont}>Don&apos;ts</span>
+                  <span className={text__dont}>Don&apos;ts</span>
                   <span className={text__guideline}> {Dont} </span>
                 </div>
               </div>

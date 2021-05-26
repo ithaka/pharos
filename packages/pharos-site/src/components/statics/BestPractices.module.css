@@ -13,28 +13,28 @@
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.line_dont {
+.line__dont {
   border: none;
   height: 2px;
   background-color: var(--pharos-color-feedback-error);
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.line_do {
+.line__do {
   border: none;
   height: 2px;
   background-color: var(--pharos-color-feedback-success);
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.text_do {
+.text__do {
   color: var(--pharos-color-feedback-success);
   font-weight: bold;
 }
 
-.text_dont {
+.text__dont {
   color: var(--pharos-color-feedback-error);
-  font-weight: bold;
+  font-weight: var(--pharos-font-weight-bold);
 }
 
 .text__guideline {
