@@ -1,25 +1,31 @@
-# Radio Button
-
 import PageSection from '../../src/components/statics/PageSection.tsx';
 import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
-<p
-  style={{
-    fontSize: 'var(--pharos-type-scale-6)',
-    lineHeight: '2rem',
-    marginBottom: 'var(--pharos-spacing-5-x)',
-  }}
+<PageSection
+  isHeader
+  title="Radio Button"
+  description="Radio buttons present items in a list of two or more options where the user can select only one
+  option at a time.b"
 >
-  Radio buttons present items in a list of two or more options where the user can select only one
-  option at a time.
-</p>
+  <PharosLink
+    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/forms-radio-button--base"
+    target="_blank"
+  >
+    See in Storybook
+  </PharosLink>
+</PageSection>
 
 <PageSection title="Best Practices">
+  <p>
+    Radio buttons are normally presented in radio groups. Radio buttons should have a parent radio
+    group component, which will group the buttons into a set. In a set of radio buttons, only one
+    radio button can be selected at a time.
+  </p>
   <BestPractices
     Do={
       <ul>
         <li>Include labels</li>
-        <li>Tan include a Title for the group if necessary</li>
+        <li>Can include a Title for the group if necessary</li>
         <li>
           Includes at least two or more items, but each option's value must be mutually exclusive
         </li>
@@ -48,86 +54,124 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-## States
+<PageSection title="Content Guidelines">
+  <PageSection subSectionLevel={1} title="Labels">
+    <ul>
+      <li>
+        Labels are descriptive and succinct. They should provide further clarity for the user.
+      </li>
+      <li>Labels should not end in punctuation.</li>
+      <li>
+        Avoid using negative language as they can be counterintuitive. For example, "I want to
+        receive a promotional email" instead of "I don't want to receive promotional email."
+      </li>
+    </ul>
+  </PageSection>
+</PageSection>
 
-### Default
+<PageSection title="States">
+  <PageSection subSectionLevel={1} title="Default">
+    <Canvas>
+      <PharosRadioButton>
+        <span slot="label">Radio label</span>
+      </PharosRadioButton>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Checked">
+    <Canvas>
+      <p>Indicates the value used for the radio group.</p>
+      <PharosRadioButton checked>
+        <span slot="label">Radio label</span>
+      </PharosRadioButton>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Disabled">
+    <p>Prevents interaction with the radio button component.</p>
+    <Canvas>
+      <PharosRadioButton disabled>
+        <span slot="label">Radio label</span>
+      </PharosRadioButton>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Error">
+    <p>Indicates that an error has occured with the radio button.</p>
+    <Canvas>
+      <PharosRadioButton
+        required
+        invalidated
+        message="This field is required, please make a selection"
+      >
+        <span slot="label">Radio label</span>
+      </PharosRadioButton>
+    </Canvas>
+  </PageSection>
+</PageSection>
 
-<Canvas>
-  <PharosRadioButton>
-    <span slot="label">Radio label</span>
-  </PharosRadioButton>
-</Canvas>
-
-### Checked
-
-Indicates the value used for the radio group.
-
-<Canvas>
-  <PharosRadioButton checked>
-    <span slot="label">Radio label</span>
-  </PharosRadioButton>
-</Canvas>
-
-### Disabled
-
-Prevents interaction with the radio button component.
-
-<Canvas>
-  <PharosRadioButton disabled>
-    <span slot="label">Radio label</span>
-  </PharosRadioButton>
-</Canvas>
-
-### Error
-
-Indicates that an error has occured with the radio button.
-
-<Canvas>
-  <PharosRadioButton required invalidated message="This field is required, please make a selection">
-    <span slot="label">Radio label</span>
-  </PharosRadioButton>
-</Canvas>
-
-## Content Guidelines
-
-### Labels
-
-- Labels are descriptive and succinct. They should provide further clarity for the user.
-- Labels should not end in punctuation.
-- Avoid using negative language as they can be counterintuitive. For example, "I want to receive a promotional email" instead of "I don't want to receive promotional email."
-
-## Accessibility
-
-- Uses aria-checked attribute to make sure the information communicated to assistive technology is the same as the visual state. (e.g. img element)
-- Use disabled prop to prevent the checkbox from interaction
-
-### Properties
-
-- A fieldset surrounds the entire grouping of radio buttons.
-- Some assistive technology read the legend ("title" prop for radio group) for each fieldset. It should be brief and descriptive to help someone using assistive technology quickly understand the question they are answering with the group of radio buttons.
-
-### Roles
-
-- Each radio button element has a role of "radio".
-- If a radio button is checked, the radio element has "aria-checked" set to true. If it is not checked, it has "aria-checked" set to false.
-
-### Accessibility best practices for labels
-
-- Labels must be visible when an input gets focus
-- Labels must be announced to the screen reader on focus
-- Use sentence case
-- If the text input is a required field include the aria-required property and indicate that it is a required field and use the validation message for input errors.
-
-### Keyboard interaction
-
-- <kbd>Space</kbd> checks the focused radio button, if it is not already checked.
-- <kbd>↑</kbd> / <kbd>←</kbd> move the indicator/focus to the radio button <strong>before</strong> the
-  current selected
-- <kbd>↓</kbd> / <kbd>→</kbd> move the indicator/focus to the radio button <strong>after</strong> the
-  current selected
-- <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> moves the focus into and out of the radio group.
-
-**When focus moves into a radio group**
-
-> - If a radio button is checked, focus is set on the checked button.
-> - If none of the radio buttons are checked, focus is set on the first radio button in the group.
+<PageSection title="Accessibility">
+  <ul>
+    <li>
+      Uses aria-checked attribute to make sure the information communicated to assistive technology
+      is the same as the visual state. (e.g. img element)
+    </li>
+    <li>Use disabled prop to prevent the checkbox from interaction</li>
+  </ul>
+  <PageSection subSectionLevel={1} title="Properties">
+    <ul>
+      <li>A fieldset surrounds the entire grouping of radio buttons.</li>
+      <li>
+        Some assistive technology read the legend ("title" prop for radio group) for each fieldset.
+        It should be brief and descriptive to help someone using assistive technology quickly
+        understand the question they are answering with the group of radio buttons.
+      </li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Roles">
+    <ul>
+      <li>Each radio button element has a role of "radio".</li>
+      <li>
+        If a radio button is checked, the radio element has "aria-checked" set to true. If it is not
+        checked, it has "aria-checked" set to false.
+      </li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Accessibility best practices for labels">
+    <ul>
+      <li>Labels must be visible when an input gets focus</li>
+      <li>Labels must be announced to the screen reader on focus</li>
+      <li>Use sentence case</li>
+      <li>
+        If the text input is a required field include the aria-required property and indicate that
+        it is a required field and use the validation message for input errors.
+      </li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Expected actions">
+    <PageSection subSectionLevel={2} title="Keyboard">
+      <ul>
+        <li>
+          <kbd>Space</kbd> checks the focused radio button, if it is not already checked.
+        </li>
+        <li>
+          <kbd>↑</kbd> / <kbd>←</kbd> move the indicator/focus to the radio button{' '}
+          <strong>before</strong> the current selected
+        </li>
+        <li>
+          <kbd>↓</kbd> / <kbd>→</kbd> move the indicator/focus to the radio button{' '}
+          <strong>after</strong> the current selected
+        </li>
+        <li>
+          <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> moves the focus into and out of the
+          radio group.
+        </li>
+      </ul>
+      <em>When focus moves into a radio group</em>
+      <ul>
+        <li>If a radio button is checked, focus is set on the checked button.</li>
+        <li>
+          If none of the radio buttons are checked, focus is set on the first radio button in the
+          group.
+        </li>
+      </ul>
+    </PageSection>
+  </PageSection>
+</PageSection>

@@ -47,14 +47,14 @@ import CodeBlock from '../../src/components/CodeBlock';
 </PageSection>
 
 <PageSection title="Variants">
-  <PageSection title="Basic" isSubsection lessMargin>
+  <PageSection title="Basic" subSectionLevel={1} lessMargin>
     Use the basic variant to navigate to different pages of large lists of items, and indicate which
     page you are currently viewing.
   </PageSection>
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection title="Relevant WCAG Guidelines" isSubsection lessMargin>
+  <PageSection title="Relevant WCAG Guidelines" subSectionLevel={1} lessMargin>
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
@@ -63,10 +63,10 @@ import CodeBlock from '../../src/components/CodeBlock';
       </li>
     </ul>
   </PageSection>
-  <PageSection title="Importance" isSubsection lessMargin>
+  <PageSection title="Importance" subSectionLevel={1} lessMargin>
     Pagination allows users to navigate multiple pages that are grouped together.
   </PageSection>
-  <PageSection title="Code Expectations" isSubsection lessMargin>
+  <PageSection title="Code Expectations" subSectionLevel={1} lessMargin>
     <ul>
       <li>
         Everything should be wrapped in the <code>&lt;nav&gt;</code> tag
@@ -96,7 +96,7 @@ import CodeBlock from '../../src/components/CodeBlock';
       </nav>
     </CodeBlock>
   </PageSection>
-  <PageSection title="Expected actions" isSubsection lessMargin>
+  <PageSection title="Expected actions" subSectionLevel={1} lessMargin>
     <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
       <PharosHeading level={'4'} preset={'1--bold'}>
         Screen reader

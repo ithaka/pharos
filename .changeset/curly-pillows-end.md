@@ -7,3 +7,6 @@ replace low res images on the site:
 * Remove unused images
 * Update `Principles` section on the iconography page
 
+
+
+

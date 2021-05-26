@@ -249,7 +249,7 @@
 }
 
 @mixin link-base {
-  @include font-base($font-size: inherit);
+  @include font-base($font-size: inherit, $line-height: inherit);
   @include underline;
 
   color: var(--pharos-color-interactive-secondary);
@@ -357,6 +357,9 @@
   grid-template-columns: repeat(map-get(variables.$breakpoints, large, columns), 1fr);
   grid-template-rows: auto;
   column-gap: var(--pharos-spacing-gutter);
+  padding: 0;
+  margin: 0;
+  list-style: none;
 
   @include until(medium) {
     grid-template-columns: repeat(map-get(variables.$breakpoints, medium, columns), 1fr);
@@ -434,4 +437,12 @@
       }
     }
   }
+}
+
+@mixin truncate-text($lines: 1) {
+  overflow: hidden;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  white-space: normal;
 }

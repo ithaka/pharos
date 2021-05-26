@@ -1,0 +1,159 @@
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
+import { html } from 'lit-html';
+import { viewports } from '../../pages/shared/viewports';
+
+import './pharos-image-card';
+import '../layout/pharos-layout';
+import '../link/pharos-link';
+import '../dropdown-menu/pharos-dropdown-menu';
+import '../dropdown-menu/pharos-dropdown-menu-item';
+
+import { items, collections } from '../../pages/item-detail/mocks';
+
+<Meta
+  title="Components/Image Card"
+  parameters={{
+    layout: 'fullscreen',
+    viewport: {
+      viewports,
+    },
+  }}
+/>
+
+# Image Card
+
+export const Template = (args) => html`<pharos-layout style="margin: 1rem 0"
+  ><pharos-image-card
+    title="South Hall"
+    link="https://www.jstor.org/stable/10.2307/community.26220188"
+    ?error=${args.error}
+    ?subtle=${args.subtle}
+    style="grid-column: span 2"
+  >
+    <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
+    <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
+    <div id="item-date" slot="metadata">1889-1892 (creation)</div>
+    <div id="collection" slot="metadata">
+      Part of
+      <pharos-link
+        href="https://www.jstor.org/site/pratt/buildings-image"
+        ?on-background=${args.subtle}
+        >Pratt Institute Buildings Image Collection</pharos-link
+      >
+    </div>
+  </pharos-image-card></pharos-layout
+>`;
+
+export const MultipleTemplate = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
+  ${items.map((item, index) => {
+    return html`<li style="grid-column: span 2">
+      <pharos-image-card id="card-${index}" title="Card Title" link="#">
+        <img
+          id="image-${index}"
+          src="./images/item-detail/${item.image}"
+          alt="Card Title ${index}"
+          slot="image"
+        />
+        <div id="creator-${index}" slot="metadata">Creator of the item</div>
+        <div id="item-date-${index}" slot="metadata">1990-2000</div>
+        <div id="collection-${index}" slot="metadata">
+          Part of
+          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+            >An Example Collection</pharos-link
+          >
+        </div>
+      </pharos-image-card>
+    </li>`;
+  })}</pharos-layout
+>`;
+
+export const CollectionsTemplate = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
+  ${collections.map((collection, index) => {
+    return html`<li class="image-card-example__card--collection">
+      <pharos-image-card
+        id="card-${index}"
+        title="${collection.title}"
+        link="#"
+        variant="collection"
+      >
+        <img
+          id="image-${index}"
+          src="./images/item-detail/${collection.image}"
+          alt="${collection.title}"
+          slot="image"
+        />
+        <div id="items-${index}" slot="metadata"><strong>${collection.items} items</strong></div>
+        <div id="description-${index}" slot="metadata">
+          Selections from the global permanent collection.
+        </div>
+      </pharos-image-card>
+    </li>`;
+  })}</pharos-layout
+>`;
+
+<Canvas>
+  <Story name="Base">{MultipleTemplate.bind({})}</Story>
+</Canvas>
+
+## API
+
+<ArgsTable of="pharos-image-card" />
+
+# Error State
+
+<Canvas>
+  <Story name="Error State" args={{ error: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Subtle State
+
+<Canvas>
+  <Story name="Subtle State" args={{ subtle: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# With Action Menu
+
+<Canvas>
+  <Story name="With Action Menu">
+    {html`
+      <pharos-layout style="margin: 1rem 0">
+        <pharos-image-card
+          title="South Hall"
+          link="https://www.jstor.org/stable/10.2307/community.26220188"
+          action-menu="my-dropdown-menu"
+          style="grid-column: span 2"
+        >
+          <img
+            id="image"
+            src="./images/item-detail/collection_5.png"
+            alt="south hall"
+            slot="image"
+          />
+          <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
+          <div id="item-date" slot="metadata">1889-1892 (creation)</div>
+          <div id="collection" slot="metadata">
+            Part of
+            <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+              >Pratt Institute Buildings Image Collection</pharos-link
+            >
+          </div>
+        </pharos-image-card>
+      </pharos-layout>
+      <pharos-dropdown-menu id="my-dropdown-menu">
+        <pharos-dropdown-menu-item>Item 1</pharos-dropdown-menu-item>
+        <pharos-dropdown-menu-item>Item 2</pharos-dropdown-menu-item>
+        <pharos-dropdown-menu-item>Item 3</pharos-dropdown-menu-item>
+      </pharos-dropdown-menu>
+    `}
+  </Story>
+</Canvas>
+
+# Collection
+
+<Canvas>
+  <Story name="Collection">{CollectionsTemplate.bind({})}</Story>
+</Canvas>
