@@ -51,4 +51,9 @@
 
 .container__end {
   grid-column: span 3;
+  display: grid;
+}
+
+.netlify-link {
+  align-self: end;
 }
