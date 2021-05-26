@@ -25,16 +25,28 @@ describe('pharos-layout', () => {
     component.areas = "'top' 'body'";
     await component.updateComplete;
 
-    const layout = component.renderRoot.querySelector('.layout') as HTMLDivElement;
-    expect(layout.style.gridTemplateAreas).to.equal('"top" "body"');
+    expect(component['_layout'].style.gridTemplateAreas).to.equal('"top" "body"');
   });
 
   it('has an attribute to set the inner grid rows', async () => {
     component.rows = 'max-content 1fr';
     await component.updateComplete;
 
-    const layout = component.renderRoot.querySelector('.layout') as HTMLDivElement;
-    expect(layout.style.gridTemplateRows).to.equal('max-content 1fr');
+    expect(component['_layout'].style.gridTemplateRows).to.equal('max-content 1fr');
+  });
+
+  it('has an attribute to set the inner grid row gap', async () => {
+    component.rowGap = '1rem';
+    await component.updateComplete;
+
+    expect(component['_layout'].style.rowGap).to.equal('1rem');
+  });
+
+  it('has an attribute to set the HTML tag of the inner grid', async () => {
+    component.tag = 'ol';
+    await component.updateComplete;
+
+    expect(component['_layout'].tagName).to.equal('OL');
   });
 
   it('throws an error for an invalid preset value', async () => {

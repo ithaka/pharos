@@ -1,0 +1,11 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  contain: layout;
+}
+
+.toggle-button__list {
+  flex-direction: row;
+  display: inline-table;
+  border-collapse: collapse;
+}

@@ -88,6 +88,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/fswlee"><img src="https://avatars.githubusercontent.com/u/5896534?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Florence Lee</b></sub></a><br /><a href="#design-fswlee" title="Design">🎨</a> <a href="https://github.com/ithaka/pharos/commits?author=fswlee" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/jalex21"><img src="https://avatars.githubusercontent.com/u/64159876?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Justin Alexander</b></sub></a><br /><a href="#a11y-jalex21" title="Accessibility">️️️️♿️</a> <a href="https://github.com/ithaka/pharos/commits?author=jalex21" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/matomaton"><img src="https://avatars.githubusercontent.com/u/46448980?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Matthew Martin</b></sub></a><br /><a href="#design-matomaton" title="Design">🎨</a> <a href="https://github.com/ithaka/pharos/commits?author=matomaton" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Lham42"><img src="https://avatars.githubusercontent.com/u/32990373?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Elham Islam</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=Lham42" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/gbassham"><img src="https://avatars.githubusercontent.com/u/56835183?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gayla Bassham</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=gbassham" title="Code">💻</a></td>
   </tr>
 </table>
 

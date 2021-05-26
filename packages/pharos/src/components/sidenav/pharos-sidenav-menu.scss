@@ -46,7 +46,7 @@
 }
 
 .menu__container--show {
-  max-height: 50rem;
+  max-height: 100rem;
   transition: max-height var(--pharos-transition-duration-long) ease-in;
   visibility: visible;
 }

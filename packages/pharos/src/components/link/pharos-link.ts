@@ -69,6 +69,9 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   @state()
   private _alert!: PharosAlert;
 
+  @state()
+  private _hover = false;
+
   public static get styles(): CSSResultArray {
     return [designTokens, linkStyles];
   }
@@ -86,6 +89,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
       id="link-element"
       class="${classMap({
         [`link--alert`]: this._alert && this._alert.status !== 'error',
+        [`link--hover`]: this._hover,
       })}"
       download=${ifDefined(this.download)}
       href=${ifDefined(this.href)}

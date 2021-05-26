@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
-import { styleMap } from 'lit/directives/style-map.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { layoutStyles } from './pharos-layout.css';
 import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
@@ -50,6 +50,16 @@ export class PharosLayout extends LitElement {
   @property({ type: String, reflect: true, attribute: 'row-gap' })
   public rowGap = PharosSpacingThreeAndAHalfX;
 
+  /**
+   * Indicates the HTML tag to use for the inner grid.
+   * @attr tag
+   */
+  @property({ type: String, reflect: true })
+  public tag = 'div';
+
+  @query('.layout')
+  private _layout!: HTMLElement;
+
   public static get styles(): CSSResultArray {
     return [designTokens, layoutStyles];
   }
@@ -65,18 +75,21 @@ export class PharosLayout extends LitElement {
     }
   }
 
+  protected updated(changedProperties: PropertyValues): void {
+    if (changedProperties.has('areas')) {
+      this._layout.style.gridTemplateAreas = this.areas;
+    }
+    if (changedProperties.has('rows')) {
+      this._layout.style.gridTemplateRows = this.rows;
+    }
+    if (changedProperties.has('rowGap')) {
+      this._layout.style.rowGap = this.rowGap;
+    }
+  }
+
   protected render(): TemplateResult {
-    return html`<slot name="top"></slot>
-      <div
-        class="layout"
-        style=${styleMap({
-          gridTemplateAreas: this.areas,
-          gridTemplateRows: this.rows,
-          rowGap: this.rowGap,
-        })}
-      >
-        <slot></slot>
-      </div>`;
+    const template = `<slot name="top"></slot><${this.tag} class="layout"><slot></slot></${this.tag}>`;
+    return html`${unsafeHTML(template)}`;
   }
 }
 
