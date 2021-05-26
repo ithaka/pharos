@@ -41,7 +41,7 @@
   color: var(--pharos-color-marble-gray-20);
 }
 
-div div .text__guideline ul > ::marker {
+.text__guideline ::marker {
   color: var(--pharos-color-marble-gray-20);
   font-size: 10px;
 }
