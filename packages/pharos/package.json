@@ -34,8 +34,7 @@
   "browserslist": [
     "last 2 versions",
     "Firefox ESR",
-    "not dead",
-    "ie 11"
+    "not dead"
   ],
   "repository": {
     "type": "git",

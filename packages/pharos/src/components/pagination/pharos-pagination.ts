@@ -2,7 +2,6 @@ import { html, LitElement, property } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { nothing } from 'lit-html';
 import { paginationStyles } from './pharos-pagination.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import '../icon/pharos-icon';
@@ -40,7 +39,7 @@ export class PharosPagination extends LitElement {
   public currentPage = 1;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, paginationStyles];
+    return [paginationStyles];
   }
 
   protected get totalPages(): number {

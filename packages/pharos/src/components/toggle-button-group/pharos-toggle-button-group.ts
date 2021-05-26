@@ -1,7 +1,6 @@
 import { html, LitElement } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { toggleButtonGroupStyles } from './pharos-toggle-button-group.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import type { PharosToggleButton } from './pharos-toggle-button';
 
@@ -18,7 +17,7 @@ const matchesFunc = 'matches' in Element.prototype ? 'matches' : 'msMatchesSelec
 @customElement('pharos-toggle-button-group')
 export class PharosToggleButtonGroup extends LitElement {
   public static get styles(): CSSResultArray {
-    return [designTokens, toggleButtonGroupStyles];
+    return [toggleButtonGroupStyles];
   }
 
   protected firstUpdated(): void {

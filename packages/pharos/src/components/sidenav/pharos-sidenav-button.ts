@@ -1,6 +1,5 @@
 import type { CSSResultArray } from 'lit-element';
 import { sidenavButtonStyles } from './pharos-sidenav-button.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';
 
@@ -25,7 +24,7 @@ export class PharosSidenavButton extends PharosButton {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, sidenavButtonStyles];
+    return [super.styles, sidenavButtonStyles];
   }
 
   protected firstUpdated(): void {

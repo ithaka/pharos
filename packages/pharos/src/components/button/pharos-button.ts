@@ -3,7 +3,6 @@ import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { nothing } from 'lit-html';
 import { buttonStyles } from './pharos-button.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import { AnchorElement } from '../base/anchor-element';
@@ -146,7 +145,7 @@ export class PharosButton extends FocusMixin(AnchorElement) {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, buttonStyles];
+    return [buttonStyles];
   }
 
   protected firstUpdated(): void {

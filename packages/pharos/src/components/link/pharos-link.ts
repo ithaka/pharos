@@ -4,7 +4,6 @@ import { nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { linkStyles } from './pharos-link.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import type { PharosAlert } from '../alert/pharos-alert';
 
@@ -73,7 +72,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   private _hover = false;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, linkStyles];
+    return [linkStyles];
   }
 
   protected firstUpdated(): void {

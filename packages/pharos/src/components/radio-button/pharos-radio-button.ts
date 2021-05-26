@@ -1,7 +1,6 @@
 import { html, property, query } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { radioButtonStyles } from './pharos-radio-button.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import { FormElement } from '../base/form-element';
@@ -39,7 +38,7 @@ export class PharosRadioButton extends FormMixin(FormElement) {
   private _radio!: HTMLInputElement;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, radioButtonStyles];
+    return [super.styles, radioButtonStyles];
   }
 
   protected firstUpdated(): void {

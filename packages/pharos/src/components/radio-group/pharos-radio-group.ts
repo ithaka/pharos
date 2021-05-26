@@ -1,7 +1,6 @@
 import { html, property } from 'lit-element';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
 import { radioGroupStyles } from './pharos-radio-group.css';
-import { designTokens } from '../../styles/variables.css';
 import type { PharosRadioButton } from '../radio-button/pharos-radio-button';
 import { customElement } from '../../utils/decorators';
 
@@ -41,7 +40,7 @@ export class PharosRadioGroup extends FormElement {
   private _clicked = false;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, radioGroupStyles];
+    return [super.styles, radioGroupStyles];
   }
 
   protected firstUpdated(): void {

@@ -6,7 +6,6 @@ import { createPopper } from '../../utils/popper';
 import debounce from '../../utils/debounce';
 import observeResize from '../../utils/observeResize';
 import { tooltipStyles } from './pharos-tooltip.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import { OverlayElement } from '../base/overlay-element';
@@ -95,7 +94,7 @@ export class PharosTooltip extends OverlayElement {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, tooltipStyles];
+    return [tooltipStyles];
   }
 
   protected firstUpdated(): void {

@@ -4,7 +4,6 @@ import { classMap } from 'lit-html/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { nothing } from 'lit-html';
 import { modalStyles } from './pharos-modal.css';
-import { designTokens } from '../../styles/variables.css';
 import focusable from '../../utils/focusable';
 import { customElement } from '../../utils/decorators';
 
@@ -79,7 +78,7 @@ export class PharosModal extends LitElement {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, modalStyles];
+    return [modalStyles];
   }
 
   protected firstUpdated(): void {

@@ -15,9 +15,7 @@ import '../link/pharos-link';
 <Canvas>
   <Story name="Base">
     {html`
-      <div
-        style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 524px; -ms-grid-columns: 524px"
-      >
+      <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
         <pharos-input-group name="my-input-group">
           <span slot="label">Search</span>
           <pharos-button
@@ -42,14 +40,12 @@ import '../link/pharos-link';
   <Story name="Composition">
     {() => {
       return html`
-        <div
-          style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 524px; -ms-grid-columns: 524px"
-        >
+        <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
           <pharos-input-group name="my-input-group-icon">
             <span slot="label">With icons</span>
             <pharos-icon id="calendar" name="calendar"></pharos-icon>
           </pharos-input-group>
-          <pharos-input-group name="my-input-group-buttons" style="-ms-grid-row: 2">
+          <pharos-input-group name="my-input-group-buttons">
             <span slot="label">Multiple buttons</span>
             <pharos-button
               name="close-button"
@@ -64,7 +60,7 @@ import '../link/pharos-link';
               label="search"
             ></pharos-button>
           </pharos-input-group>
-          <pharos-input-group name="my-input-group-select" style="-ms-grid-row: 3">
+          <pharos-input-group name="my-input-group-select">
             <span slot="label">With select</span>
             <pharos-input-group-select name="my-group-select" hide-label>
               <span slot="label">Search</span>
@@ -78,7 +74,7 @@ import '../link/pharos-link';
               label="search"
             ></pharos-button>
           </pharos-input-group>
-          <pharos-input-group name="my-input-group-prepend" style="-ms-grid-row: 4">
+          <pharos-input-group name="my-input-group-prepend">
             <pharos-button
               name="book-button"
               slot="prepend"

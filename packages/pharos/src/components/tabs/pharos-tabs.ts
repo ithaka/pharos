@@ -1,7 +1,6 @@
 import { html, LitElement } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { tabsStyles } from './pharos-tabs.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import type { PharosTab } from './pharos-tab';
 import type { PharosTabPanel } from './pharos-tab-panel';
@@ -20,7 +19,7 @@ const matchesFunc = 'matches' in Element.prototype ? 'matches' : 'msMatchesSelec
 @customElement('pharos-tabs')
 export class PharosTabs extends LitElement {
   public static get styles(): CSSResultArray {
-    return [designTokens, tabsStyles];
+    return [tabsStyles];
   }
 
   protected firstUpdated(): void {

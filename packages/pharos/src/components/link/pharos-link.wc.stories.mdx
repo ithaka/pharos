@@ -12,9 +12,7 @@ import './pharos-link';
 />
 
 export const Template = (args) =>
-  html` <div
-    style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
-  >
+  html` <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
     <pharos-link
       download=${ifDefined(args.download)}
       href=${ifDefined(args.href)}
