@@ -10,22 +10,38 @@
   display: grid;
   grid-template-columns: max-content 1fr;
   column-gap: var(--pharos-spacing-1-x);
+  margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.line_dont {
+.line__dont {
   border: none;
   height: 2px;
   background-color: var(--pharos-color-feedback-error);
-  margin-bottom: var(--pharos-spacing-three-quarters-x);
+  margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.line_do {
+.line__do {
   border: none;
   height: 2px;
   background-color: var(--pharos-color-feedback-success);
-  margin-bottom: var(--pharos-spacing-three-quarters-x);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.text__do {
+  color: var(--pharos-color-feedback-success);
+  font-weight: bold;
+}
+
+.text__dont {
+  color: var(--pharos-color-feedback-error);
+  font-weight: var(--pharos-font-weight-bold);
 }
 
 .text__guideline {
   color: var(--pharos-color-marble-gray-20);
+}
+
+.text__guideline ::marker {
+  color: var(--pharos-color-marble-gray-20);
+  font-size: 10px;
 }
