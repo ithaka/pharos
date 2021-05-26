@@ -56,4 +56,6 @@
 
 .netlify-link {
   align-self: end;
+  justify-self: start;
+  display: flex;
 }
