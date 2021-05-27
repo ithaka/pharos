@@ -9,7 +9,7 @@
         "warning": { "value": "{color.Yellow.97.value}" }
       },
       "icon": {
-        "base"   : { "value": "#333333" },
+        "base"   : { "value": "{color.Black.value}" },
         "info"   : { "value": "{color.Glacier blue.40.value}" },
         "error"  : { "value": "{color.feedback.error.value}" },
         "success": { "value": "{color.feedback.success.value}" },

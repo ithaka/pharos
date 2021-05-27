@@ -30,7 +30,7 @@ describe('pharos-alert', () => {
           class="alert__icon"
           description=""
           height="24"
-          name="base"
+          name="info-inverse"
           width="24"
         >
         </pharos-icon>

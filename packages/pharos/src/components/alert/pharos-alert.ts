@@ -11,7 +11,7 @@ import '../icon/pharos-icon';
 export type AlertStatus = 'info' | 'success' | 'warning' | 'error' | '';
 
 export enum ALERT_ICON {
-  BASE = 'base',
+  BASE = 'info-inverse',
   INFO = 'info-inverse',
   ERROR = 'exclamation-inverse',
   SUCCESS = 'checkmark-inverse',
