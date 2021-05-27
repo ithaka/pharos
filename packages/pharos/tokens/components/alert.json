@@ -16,7 +16,7 @@
         "warning": { "value": "{color.feedback.warning.value}" }
       },
       "text": {
-        "base"   : { "value": "{color.text.20.value}" },
+        "base"   : { "value": "{color.text.base.value}" },
         "inverse": { "value": "{color.text.white.value}" }
       },
       "link": {
