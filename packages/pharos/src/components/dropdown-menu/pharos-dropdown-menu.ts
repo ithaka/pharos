@@ -115,7 +115,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
     super.update && super.update(changedProperties);
   }
 
-  private _emitEvent() {
+  private _emitVisibilityChange() {
     const details = {
       bubbles: true,
       composed: true,
@@ -164,7 +164,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
       this._setPopperListeners();
       this._setupResizeObserver();
       this._setTriggerAttributes();
-      this._emitEvent();
+      this._emitVisibilityChange();
     }
 
     super.updated(changedProperties);

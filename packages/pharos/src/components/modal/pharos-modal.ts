@@ -106,7 +106,7 @@ export class PharosModal extends LitElement {
         this._returnTriggerFocus();
       }
 
-      this._emitEvent();
+      this._emitVisibilityChange();
     }
   }
 
@@ -211,7 +211,7 @@ export class PharosModal extends LitElement {
     }
   }
 
-  private _emitEvent() {
+  private _emitVisibilityChange() {
     const details = {
       bubbles: true,
       composed: true,
