@@ -105,6 +105,8 @@ export class PharosModal extends LitElement {
         body?.classList.remove('pharos-modal__body');
         this._returnTriggerFocus();
       }
+
+      this._emitEvent();
     }
   }
 
@@ -149,7 +151,6 @@ export class PharosModal extends LitElement {
         )
       ) {
         this.open = false;
-        this.dispatchEvent(new CustomEvent('pharos-modal-closed', details));
       }
     }
   }
@@ -166,7 +167,6 @@ export class PharosModal extends LitElement {
         this.dispatchEvent(new CustomEvent('pharos-modal-open', { ...details, cancelable: true }))
       ) {
         this.open = true;
-        this.dispatchEvent(new CustomEvent('pharos-modal-opened', details));
       }
     }
   }
@@ -208,6 +208,19 @@ export class PharosModal extends LitElement {
     if (this._currentTrigger && typeof (this._currentTrigger as HTMLElement).focus === 'function') {
       (this._currentTrigger as HTMLElement).focus();
       this._currentTrigger = null;
+    }
+  }
+
+  private _emitEvent() {
+    const details = {
+      bubbles: true,
+      composed: true,
+    };
+
+    if (this.open) {
+      this.dispatchEvent(new CustomEvent('pharos-modal-opened', details));
+    } else {
+      this.dispatchEvent(new CustomEvent('pharos-modal-closed', details));
     }
   }
 
