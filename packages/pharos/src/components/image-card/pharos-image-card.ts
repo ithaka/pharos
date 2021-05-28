@@ -107,25 +107,32 @@ export class PharosImageCard extends LitElement {
     </div>`;
   }
 
-  private _renderBaseImage(): TemplateResult {
+  private _renderLinkContent(): TemplateResult {
     return this.error
       ? html`<div class="card__container--error">
           <pharos-icon name="exclamation-inverse"></pharos-icon>Preview not available
         </div>`
-      : html`<pharos-link
-          class="card__link--image"
-          href="${this.link}"
-          subtle
-          flex
-          @mouseenter=${this._handleImageHover}
-          @mouseleave=${this._handleImageHover}
-          ><slot name="image"></slot>${this.subtle
-            ? html`<div class="card__metadata--hover">
-                <strong class="card__title--hover">${this.title}</strong
-                ><slot name="metadata"></slot>
-              </div>`
-            : nothing}</pharos-link
-        >`;
+      : html`<slot name="image"></slot>`;
+  }
+
+  private _renderHoverMetadata(): TemplateResult | typeof nothing {
+    return this.subtle
+      ? html`<div class="card__metadata--hover">
+          <strong class="card__title--hover">${this.title}</strong><slot name="metadata"></slot>
+        </div>`
+      : nothing;
+  }
+
+  private _renderBaseImage(): TemplateResult {
+    return html`<pharos-link
+      class="card__link--image"
+      href="${this.link}"
+      subtle
+      flex
+      @mouseenter=${this._handleImageHover}
+      @mouseleave=${this._handleImageHover}
+      >${this._renderLinkContent()}${this._renderHoverMetadata()}</pharos-link
+    >`;
   }
 
   private _renderImage(): TemplateResult {
