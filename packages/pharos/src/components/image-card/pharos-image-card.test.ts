@@ -137,7 +137,24 @@ describe('pharos-image-card', () => {
     expect(metadataHover).not.to.be.null;
   });
 
+  it('renders a hoverable version of the metadata in the error and subtle state', async () => {
+    component.subtle = true;
+    component.error = true;
+    await component.updateComplete;
+
+    const metadataHover = component.renderRoot.querySelector('.card__metadata--hover');
+    expect(metadataHover).not.to.be.null;
+  });
+
   it('renders a link around the image for the base variant', async () => {
+    const link = component.renderRoot.querySelector('pharos-link.card__link--image');
+    expect(link).not.to.be.null;
+  });
+
+  it('renders a link around the container for the error state', async () => {
+    component.error = true;
+    await component.updateComplete;
+
     const link = component.renderRoot.querySelector('pharos-link.card__link--image');
     expect(link).not.to.be.null;
   });
