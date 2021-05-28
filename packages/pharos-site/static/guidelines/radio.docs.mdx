@@ -5,7 +5,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   isHeader
   title="Radio Button"
   description="Radio buttons present items in a list of two or more options where the user can select only one
-  option at a time.b"
+  option at a time."
 >
   <PharosLink
     href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/forms-radio-button--base"
@@ -108,25 +108,51 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <ul>
-    <li>
-      Uses aria-checked attribute to make sure the information communicated to assistive technology
-      is the same as the visual state. (e.g. img element)
-    </li>
-    <li>Use disabled prop to prevent the checkbox from interaction</li>
-  </ul>
-  <PageSection subSectionLevel={1} title="Properties">
+  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
     <ul>
-      <li>A fieldset surrounds the entire grouping of radio buttons.</li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
+          1.3.1 Info and Relationships A
+        </PharosLink>
+      </li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions">
+          3.3.2 Labels or Instructions A
+        </PharosLink>
+      </li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Importance">
+    <ul>
+      <li>
+        Uses aria-checked attribute to make sure the information communicated to assistive
+        technology is the same as the visual state. (e.g. img element)
+      </li>
+      <li>Use disabled prop to prevent the checkbox from interaction</li>
+      <li>Do we allow for help text? </li>
+      <li>
+        {' '}
+        Let's look at the &nbsp;
+        <PharosLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton">
+          WCAG guidelines
+        </PharosLink>
+      </li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Code Expectations">
+    <ul>
+      <li>
+        Provide a fieldset that surrounds the entire grouping of radio buttons. Also, provide a
+        legend, which is a description for the grouping. &nbsp;
+        <PharosLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#naming_with_legends">
+          Here's an example.
+        </PharosLink>
+      </li>
       <li>
         Some assistive technology read the legend ("title" prop for radio group) for each fieldset.
         It should be brief and descriptive to help someone using assistive technology quickly
         understand the question they are answering with the group of radio buttons.
       </li>
-    </ul>
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Roles">
-    <ul>
       <li>Each radio button element has a role of "radio".</li>
       <li>
         If a radio button is checked, the radio element has "aria-checked" set to true. If it is not
@@ -134,18 +160,39 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Accessibility best practices for labels">
-    <ul>
-      <li>Labels must be visible when an input gets focus</li>
-      <li>Labels must be announced to the screen reader on focus</li>
-      <li>Use sentence case</li>
-      <li>
-        If the text input is a required field include the aria-required property and indicate that
-        it is a required field and use the validation message for input errors.
-      </li>
-    </ul>
-  </PageSection>
   <PageSection subSectionLevel={1} title="Expected actions">
+    <PageSection subSectionLevel={2} title="Screen reader">
+      <ul>
+        <li>
+          Reads the label, the option, checked or unchecked and X out of X.
+          <ul>
+            <li>
+              For example:
+              <ul>
+                <li>
+                  Download file as:
+                  <ul>
+                    <li>.doc</li>
+                    <li> .pdf </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              The above example (with focus on the .doc and is NOT checked) should read as "Download
+              file as, .doc, unchecked, 1 of 2"
+              <ul>
+                <li>
+                  <PharosLink href="https://www.youtube.com/watch?v=X__fAJDyBjo">
+                    Example
+                  </PharosLink>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </PageSection>
     <PageSection subSectionLevel={2} title="Keyboard">
       <ul>
         <li>
@@ -161,15 +208,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         </li>
         <li>
           <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> moves the focus into and out of the
-          radio group.
-        </li>
-      </ul>
-      <em>When focus moves into a radio group</em>
-      <ul>
-        <li>If a radio button is checked, focus is set on the checked button.</li>
-        <li>
-          If none of the radio buttons are checked, focus is set on the first radio button in the
-          group.
+          radio group. When focus moves into a radio group:
+          <ul>
+            <li>If a radio button is checked, focus is set on the checked button.</li>
+            <li>
+              If none of the radio buttons are checked, focus is set on the first radio button in
+              the group.
+            </li>
+          </ul>
         </li>
       </ul>
     </PageSection>
