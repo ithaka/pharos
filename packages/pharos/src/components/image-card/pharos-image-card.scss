@@ -20,7 +20,6 @@
 }
 
 .card__link--image,
-.card__container--error,
 .card__container--collection {
   margin-bottom: var(--pharos-spacing-1-x);
 }
@@ -64,6 +63,7 @@
   align-items: center;
   text-align: center;
   row-gap: var(--pharos-spacing-1-x);
+  align-self: flex-end;
 }
 
 .card__title {

@@ -1,5 +1,19 @@
 # @ithaka/pharos-site
 
+## 5.2.1
+
+### Patch Changes
+
+- [#48](https://github.com/ithaka/pharos/pull/48) [`ced1c1f`](https://github.com/ithaka/pharos/commit/ced1c1f082e40b5e0b5c71830fb6c6cde1277b83) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies:
+
+  - Update Gatsby dependencies
+  - Update ESLint dependencies
+  - Update Sass
+  - Update cli dependencies
+
+- Updated dependencies [[`2656245`](https://github.com/ithaka/pharos/commit/26562459b4911d61bd299e5be191f87ff236d3c1), [`ced1c1f`](https://github.com/ithaka/pharos/commit/ced1c1f082e40b5e0b5c71830fb6c6cde1277b83)]:
+  - @ithaka/pharos@9.2.1
+
 ## 5.2.0
 
 ### Minor Changes
