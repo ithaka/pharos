@@ -317,7 +317,7 @@
       "description": ""
     },
     "tests": {
-      "status": "planned",
+      "status": "released",
       "description": ""
     },
     "documentation": {
@@ -325,7 +325,7 @@
       "description": ""
     },
     "released": {
-      "status": "na",
+      "status": "9.2.0",
       "description": ""
     }
   },
@@ -656,6 +656,28 @@
     },
     "released": {
       "status": "7.21.0",
+      "description": ""
+    }
+  },
+  "toggle-button-group": {
+    "design": {
+      "status": "released",
+      "description": ""
+    },
+    "development": {
+      "status": "released",
+      "description": ""
+    },
+    "tests": {
+      "status": "planned",
+      "description": ""
+    },
+    "documentation": {
+      "status": "planned",
+      "description": ""
+    },
+    "released": {
+      "status": "na",
       "description": ""
     }
   },

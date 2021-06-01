@@ -10,6 +10,7 @@ module.exports = async ({ config, mode }) => {
   config.resolve = {
     alias: {
       '@lib': path.resolve(__dirname, '../packages/pharos/lib'),
+      '@config': path.resolve(__dirname, './'),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.css'],
     fallback: {
