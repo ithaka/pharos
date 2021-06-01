@@ -100,13 +100,21 @@ const Sidenav: FC = () => {
           </PharosSidenavMenu>
         </PharosSidenavSection>
         <PharosSidenavSection label="Design System">
-          <PharosSidenavLink
-            href="/design-tokens"
-            isActive={window.location.pathname === withPrefix('/design-tokens')}
-            onClick={handleLinkClick}
-          >
-            Design tokens
-          </PharosSidenavLink>
+          <PharosSidenavMenu label="Design Tokens" expanded={isExpanded('design-tokens')}>
+            {[
+              'Overview',
+              'Alias',
+              'Font Family',
+              'Font Size',
+              'Font Weight',
+              'Global Colors',
+              'Line Height',
+              'Radius',
+              'Spacing',
+              'Transitions',
+              'Type Scale',
+            ].map(createSidenavLink.bind(this, 'design-tokens'))}
+          </PharosSidenavMenu>
           <PharosSidenavMenu label="Components" expanded={isExpanded('components')}>
             {[
               'Component status',
