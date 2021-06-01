@@ -1,9 +1,9 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosCheckboxGroup } from '../../react-components/checkbox-group/pharos-checkbox-group';
 import { PharosCheckbox } from '../../react-components/checkbox/pharos-checkbox';
-import { PharosLink } from '../../react-components/link/pharos-link';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -16,9 +16,7 @@ import createFormData from '../../utils/createFormData';
 
 # Checkbox Group
 
-<PharosLink href="https://pharos.jstor.org/components/checkbox" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="checkbox" />
 
 export const Template = (args) => (
   <PharosCheckboxGroup

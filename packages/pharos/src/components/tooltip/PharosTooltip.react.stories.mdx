@@ -1,10 +1,10 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosDropdownMenu } from '../../react-components/dropdown-menu/pharos-dropdown-menu';
 import { PharosDropdownMenuItem } from '../../react-components/dropdown-menu/pharos-dropdown-menu-item';
 import { PharosTooltip } from '../../react-components/tooltip/pharos-tooltip';
 import { PharosButton } from '../../react-components/button/pharos-button';
-import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta
   title="Components/Tooltip"
@@ -17,9 +17,7 @@ import { PharosLink } from '../../react-components/link/pharos-link';
 
 # Tooltip
 
-<PharosLink href="https://pharos.jstor.org/components/tooltip" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="tooltip" />
 
 export const Template = (args) => (
   <div

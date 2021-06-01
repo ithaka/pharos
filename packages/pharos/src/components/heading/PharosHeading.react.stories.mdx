@@ -1,9 +1,9 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosHeading } from '../../react-components/heading/pharos-heading';
 import { PharosCheckboxGroup } from '../../react-components/checkbox-group/pharos-checkbox-group';
 import { PharosCheckbox } from '../../react-components/checkbox/pharos-checkbox';
-import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta
   title="Components/Heading"
@@ -14,9 +14,7 @@ import { PharosLink } from '../../react-components/link/pharos-link';
 
 # Heading
 
-<PharosLink href="https://pharos.jstor.org/components/heading" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="heading" />
 
 export const Template = (args) => (
   <PharosHeading level={args.level} preset={args.preset}>

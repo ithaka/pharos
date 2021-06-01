@@ -1,9 +1,11 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { useEffect } from 'react';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosToast } from '../../react-components/toast/pharos-toast';
 import { PharosToaster } from '../../react-components/toast/pharos-toaster';
 import { PharosButton } from '../../react-components/button/pharos-button';
+// eslint-disable-next-line no-unused-vars
 import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta
@@ -15,9 +17,7 @@ import { PharosLink } from '../../react-components/link/pharos-link';
 
 # Toast
 
-<PharosLink href="https://pharos.jstor.org/components/toast" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="toast" />
 
 <Canvas withToolbar>
   <Story name="Base">

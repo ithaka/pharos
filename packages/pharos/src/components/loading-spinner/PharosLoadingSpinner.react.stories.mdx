@@ -1,10 +1,10 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosLoadingSpinner } from '../../react-components/loading-spinner/pharos-loading-spinner';
 import { PharosHeading } from '../../react-components/heading/pharos-heading';
 import { PharosButton } from '../../react-components/button/pharos-button';
-import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Meta
   title="Components/Loading Spinner"
@@ -15,9 +15,7 @@ import { PharosLink } from '../../react-components/link/pharos-link';
 
 # Loading Spinner
 
-<PharosLink href="https://pharos.jstor.org/components/loading-spinner" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="loading-spinner" />
 
 <Canvas withToolbar>
   <Story name="Base">

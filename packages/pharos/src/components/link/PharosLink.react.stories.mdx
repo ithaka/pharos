@@ -1,4 +1,5 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosLink } from '../../react-components/link/pharos-link';
 
@@ -11,9 +12,7 @@ import { PharosLink } from '../../react-components/link/pharos-link';
 
 # Link
 
-<PharosLink href="https://pharos.jstor.org/components/link" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="link" />
 
 <Canvas withToolbar>
   <Story name="Base">

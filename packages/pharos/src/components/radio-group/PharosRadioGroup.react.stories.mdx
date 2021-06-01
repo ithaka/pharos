@@ -1,9 +1,9 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosRadioGroup } from '../../react-components/radio-group/pharos-radio-group';
 import { PharosRadioButton } from '../../react-components/radio-button/pharos-radio-button';
-import { PharosLink } from '../../react-components/link/pharos-link';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -17,9 +17,7 @@ import createFormData from '../../utils/createFormData';
 
 # Radio Group
 
-<PharosLink href="https://pharos.jstor.org/components/radio-button" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="radio-button" />
 
 export const Template = (args) => (
   <PharosRadioGroup

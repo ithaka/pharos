@@ -1,6 +1,7 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import './pharos-alert';
 import '../link/pharos-link';
@@ -18,7 +19,7 @@ import '../link/pharos-link';
 
 # Alert
 
-<pharos-link href="https://pharos.jstor.org/components/alert" target="_blank">See guidelines in Pharos</pharos-link>
+<GuidelineLink path="alert" />
 
 export const Template = (args) => html`<pharos-alert status=${ifDefined(args.status)}>
   ${args.text}
