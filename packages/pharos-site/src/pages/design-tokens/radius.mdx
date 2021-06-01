@@ -1,0 +1,34 @@
+import { TokenTable } from '../../components/statics/design-token/TokenTable';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
+
+<>
+  {TokenTable(
+    'Border radius tokens',
+    <>
+      <thead>
+        <tr>
+          <th style={{ width: '50%' }}>Token</th>
+          <th style={{ width: '25%' }}>Value</th>
+          <th style={{ width: '25%' }}>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.keys(tokens.radius.base).map((key, index) => (
+          <tr key={index}>
+            <td>{toTokenFormat(tokens.radius.base[key].name)}</td>
+            <td>
+              {tokens.radius.base[key].comment} | {tokens.radius.base[key].value}
+            </td>
+            <td>
+              <div
+                className="radius-example"
+                style={{ borderRadius: tokens.radius.base[key].value }}
+              />
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </>
+  )}
+</>
