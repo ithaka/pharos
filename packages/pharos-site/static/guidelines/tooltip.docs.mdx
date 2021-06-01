@@ -240,16 +240,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       <li>
         For labels (similar to the metadata and thumbnail hover on &nbsp;
         <PharosLink href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">
-          {' '}
           item page
         </PharosLink>) &nbsp;
         <ul>
           <li> Use aria-labelledby and have the id share the same label</li>
           <li> Make it the &lt;button&gt; attribute with a &lt;class&gt; attribute as well</li>
           <li>
-            {' '}
-            Within the &lt;div&gt; add "role=tooltip" and the id attribute that corresponds to the aria-labelledby.
-            Also add whatever you want the tooltip to give the user
+            Within the &lt;div&gt; add "role=tooltip" and the id attribute that corresponds to the
+            aria-labelledby. Also add whatever you want the tooltip to give the user
             <ul>
               <li>
                 <PharosLink href="https://docs.google.com/document/d/1GEzU9omXho7_5cpCI_hyVOtnyKoC9bwgFQNWHJLspmg/edit?usp=sharing">
@@ -267,17 +265,15 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         For tooltips that provide additional or clarifying information (similar to the ? next to
         "Stable URL" on the &nbsp;
         <PharosLink href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">
-          {' '}
           item page
         </PharosLink>) &nbsp;
         <ul>
           <li>
-            {' '}
             Similar to the structure of the example above
             <ul>
               <li>
                 However, we need to add the label aspect with something other than the
-                aria-labelledby because we need to use this for the new information{' '}
+                aria-labelledby because we need to use this for the new information
               </li>
               <li>
                 We can put the title into a hidden class to make this work effectively
@@ -306,8 +302,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     <PageSection subSectionLevel={2} title="Keyboard">
       <ul>
         <li>
-          {' '}
-          Pressing <kbd>Escape</kbd> dismisses the tooltip.{' '}
+          Pressing <kbd>Escape</kbd> dismisses the tooltip.
         </li>
         <li> Should be included in tab order logically</li>
         <li> Tooltip should open when focus is given to the element</li>

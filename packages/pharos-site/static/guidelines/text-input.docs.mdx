@@ -225,24 +225,20 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection subSectionLevel={1} title="Code expectations">
     <ul>
       <li>
-        {' '}
         Via &nbsp;
         <PharosLink href="https://www.w3.org/WAI/tutorials/forms/labels/">W3</PharosLink>
         &nbsp; there are 3 ways to approach input groups:
       </li>
       <li>
-        {' '}
         Visual label:
         <ul>
           <li> &lt;label for="fieldname"&gt; Field Name: &lt;/label&gt; </li>
           <li>
-            {' '}
             &lt;input id="fieldname" type="text" autocomplete="fieldname"&gt;
             <ul>
               <li> Matching for and id names associate the label with its form control </li>
               <li> Form control can only have one associated &lt;label&gt; </li>
               <li>
-                {' '}
                 This allows user to click the label and focus will be put into the field, ensuring
                 that the label is associated with the input
               </li>
@@ -259,13 +255,11 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     as a "Search" button next to the input).
     <ul>
       <li>
-        {' '}
         Visually hidden label:
         <ul>
           <li> &lt;label for="fieldname" class="visuallyhideen"&gt;Field name: &lt;/label&gt; </li>
           <li> &lt;input type="text" name="fieldname" id="fieldname"&gt; </li>
           <li>
-            {' '}
             &lt;button type="submit"&gt; Button Name &lt;/button&gt;
             <ul>
               <li>Allows assistive technology to understand a visually hidden label</li>
@@ -274,7 +268,6 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         </ul>
       </li>
       <li>
-        {' '}
         Aria-label:
         <ul>
           <li> &lt;input type="text" name="fieldname" aira-label="Field Name"&gt; </li>
@@ -289,17 +282,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     <PageSection subSectionLevel={2} title="Screen reader">
       <ul>
         <li>
-          {' '}
           Reads: "Field name, edit text"
           <ul>
             <li>
-              {' '}
               If autocomplete is enabled: "Field name, edit text with autofill menu, required (if
-              applicable)"{' '}
+              applicable)"
             </li>
             <li>
-              {' '}
-              Aria label example: "designated aria-label, edit text, required (if applicable)"{' '}
+              Aria label example: "designated aria-label, edit text, required (if applicable)"
             </li>
           </ul>
         </li>
@@ -308,11 +298,9 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     <PageSection subSectionLevel={2} title="Keyboard">
       <ul>
         <li>
-          {' '}
-          <kbd>Enter</kbd> &nbsp; key: submits the input{' '}
+          <kbd>Enter</kbd> &nbsp; key: submits the input
         </li>
         <li>
-          {' '}
           Input (and applicable controls such as a button) should be included in the logical tab
           order
         </li>
