@@ -3,7 +3,7 @@
     "color": {
       "background": {
         "base"   : { "value": "{color.Marble gray.94.value}" },
-        "info"   : { "value": "{color.Glacier blue.80.value}" },
+        "info"   : { "value": "{color.Glacier blue.90.value}" },
         "error"  : { "value": "{color.Living coral.90.value}"},
         "success": { "value": "{color.Green.93.value}" },
         "warning": { "value": "{color.Yellow.97.value}" }
