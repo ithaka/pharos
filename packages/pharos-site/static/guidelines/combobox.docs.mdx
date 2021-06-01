@@ -164,17 +164,12 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         &nbsp; of a combobox with an autocomplete dropdown list (via w3c)
       </li>
       <li>
-        {' '}
         The ComboBox uses the aria-expanded, aria-selected, aria-disabled, aria-haspopup, aria-owns,
         aria-activedescendant and aria-hidden properties on the nested elements depending on the
         current state of the component and its options.
       </li>
+      <li>The ComboBox uses the listbox role. Each item from the popup list has an option role.</li>
       <li>
-        {' '}
-        The ComboBox uses the listbox role. Each item from the popup list has an option role.
-      </li>
-      <li>
-        {' '}
         To move the focus to the current keyboard navigation position, the component uses the
         aria-activedescendant approach.
       </li>
@@ -203,7 +198,6 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
           On textbook
           <ul>
             <li>
-              {' '}
               <kbd>Down</kbd> arrow
               <ul>
                 <li> Opens dropdown if nothing is typed in</li>
@@ -211,31 +205,27 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
               </ul>
             </li>
             <li>
-              {' '}
               <kbd>Alt</kbd> + <kbd>down</kbd> arrow
               <ul>
                 <li> Opens selection list without changing focus</li>
               </ul>
             </li>
             <li>
-              {' '}
               <kbd>Up</kbd> arrow
               <ul>
                 <li>If field is populated, moves focus to the last selection</li>
                 <li>
-                  If nothing is in field, first opens the list of selections then goes to the bottom{' '}
+                  If nothing is in field, first opens the list of selections then goes to the bottom
                 </li>
               </ul>
             </li>
             <li>
-              {' '}
               <kbd>Enter</kbd>
               <ul>
                 <li>Selects the suggestion/closes the box </li>
               </ul>
             </li>
             <li>
-              {' '}
               <kbd>Esc </kbd>
               <ul>
                 <li>loses the box if the suggestion box is expanded </li>
