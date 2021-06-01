@@ -29,7 +29,7 @@
 ## Getting Started
 
 - Check out the [core package](./packages/pharos) for more info about Pharos components and how to get started
-- Visit the [Pharos site](https://www.jstor.org/pharos) to learn about the JSTOR brand, design guidelines, and component usage guidelines
+- Visit the [Pharos site](https://pharos.jstor.org) to learn about the JSTOR brand, design guidelines, and component usage guidelines
 - Explore the [web component Storybook](#) or the [React Storybook](#) to try the live components
 - Test for visual regressions in the Pharos [Chromatic project](https://www.chromatic.com/builds?appId=60919c26122bd50039b34644)
 
