@@ -78,11 +78,11 @@ const IndexPage: FC = () => {
             <PharosButton
               className={button__card}
               variant="secondary"
-              href="brand-expressions/logos"
+              href="brand-expressions/color"
               data-sc="link:logos"
               onClick={handleLinkClick}
             >
-              Start with logos
+              Start with color
             </PharosButton>
           </div>
           <div className={card__image}>
