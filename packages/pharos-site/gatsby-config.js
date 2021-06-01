@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: `/pharos`,
   siteMetadata: {
     title: `Pharos`,
     description: `ITHAKA's design system`,

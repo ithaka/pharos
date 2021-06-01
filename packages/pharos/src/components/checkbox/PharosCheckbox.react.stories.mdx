@@ -1,5 +1,6 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosCheckbox } from '../../react-components/checkbox/pharos-checkbox';
 import { PharosLink } from '../../react-components/link/pharos-link';
@@ -13,9 +14,7 @@ import { PharosLink } from '../../react-components/link/pharos-link';
 
 # Checkbox
 
-<PharosLink href="https://www.jstor.org/pharos/components/checkbox" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="checkbox" />
 
 export const Template = (args) => (
   <PharosCheckbox
