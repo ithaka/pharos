@@ -1,0 +1,57 @@
+import { TokenTable } from '../../components/statics/design-token/TokenTable';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { ColorRow } from '../../components/statics/design-token/ColorRow';
+
+<>
+  {TokenTable(
+    'Alias color tokens',
+    <>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Value</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.keys(tokens.color.interactive).map((key) =>
+          ColorRow(tokens.color.interactive[key])
+        )}
+        {Object.keys(tokens.color.ui).map((key) => ColorRow(tokens.color.ui[key]))}
+        {ColorRow(tokens.color.disabled)}
+        {ColorRow(tokens.color.overlay)}
+        {Object.keys(tokens.color.feedback).map((key) => ColorRow(tokens.color.feedback[key]))}
+      </tbody>
+    </>
+  )}
+  {TokenTable(
+    'Text color tokens',
+    <>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Value</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>{Object.keys(tokens.color.text).map((key) => ColorRow(tokens.color.text[key]))}</tbody>
+    </>
+  )}
+  {TokenTable(
+    'Interaction color tokens',
+    <>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Value</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {ColorRow(tokens.color.focus)}
+        {Object.keys(tokens.color.hover).map((key) => ColorRow(tokens.color.hover[key]))}
+      </tbody>
+    </>
+  )}
+</>
+;
