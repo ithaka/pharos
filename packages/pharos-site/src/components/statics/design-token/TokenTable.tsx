@@ -1,4 +1,4 @@
-export const TokenTable = (title, content) => {
+export const TokenTable = (title: string, content: JSX.Element): JSX.Element => {
   return (
     <div className="token-table-container">
       <h2>{title}</h2>

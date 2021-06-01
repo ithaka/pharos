@@ -1,4 +1,4 @@
-export const toTokenFormat = (text) => {
+export const toTokenFormat = (text: string): JSX.Element => {
   return (
     <code>
       $

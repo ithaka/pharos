@@ -1,6 +1,6 @@
 import { toTokenFormat } from './toTokenFormat';
-
-export const ColorRow = (color) => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+export const ColorRow = (color: any): JSX.Element => {
   let OGColorHtml;
   if (color.original.value.startsWith('{color.')) {
     const OGColorToken =
