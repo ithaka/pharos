@@ -1,5 +1,5 @@
 const template = ({ titleCaseName, componentName }) => `
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit-html';
 import './pharos-${componentName}';
 

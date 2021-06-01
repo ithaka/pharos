@@ -1,5 +1,56 @@
 # @ithaka/pharos-site
 
+## 5.2.1
+
+### Patch Changes
+
+- [#48](https://github.com/ithaka/pharos/pull/48) [`ced1c1f`](https://github.com/ithaka/pharos/commit/ced1c1f082e40b5e0b5c71830fb6c6cde1277b83) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies:
+
+  - Update Gatsby dependencies
+  - Update ESLint dependencies
+  - Update Sass
+  - Update cli dependencies
+
+- Updated dependencies [[`2656245`](https://github.com/ithaka/pharos/commit/26562459b4911d61bd299e5be191f87ff236d3c1), [`ced1c1f`](https://github.com/ithaka/pharos/commit/ced1c1f082e40b5e0b5c71830fb6c6cde1277b83)]:
+  - @ithaka/pharos@9.2.1
+
+## 5.2.0
+
+### Minor Changes
+
+- [#31](https://github.com/ithaka/pharos/pull/31) [`faf789c`](https://github.com/ithaka/pharos/commit/faf789cfa753d355a7171622b4d591df90c4fd88) Thanks [@Niznikr](https://github.com/Niznikr)! - add image card component:
+
+  - Add card component with `error` and `subtle` states
+  - Add `action-menu` attribute to render an action button to act as the trigger for the menu
+  - Add `collection` variant to present collection in 4:3 aspect ratio
+  - Add `tag` prop to `pharos-layout` to specify the HTML tag to use for the inner grid
+  - Update `playwright`
+
+* [#34](https://github.com/ithaka/pharos/pull/34) [`8495afa`](https://github.com/ithaka/pharos/commit/8495afa2bc2fc60f3b86b4e3ad27213e747816fe) Thanks [@SMQuazi](https://github.com/SMQuazi)! - \* Update PageSection subsection prop
+  - Update all component pages to use PageSection component
+  - Add template for pages
+
+- [#35](https://github.com/ithaka/pharos/pull/35) [`fbb9900`](https://github.com/ithaka/pharos/commit/fbb99008b6575697f128c98dc8a07150a331e022) Thanks [@Lham42](https://github.com/Lham42)! - Best practices component was implemented on every component section and best practices component was adjusted in styling to be more accessible.
+
+### Patch Changes
+
+- [#27](https://github.com/ithaka/pharos/pull/27) [`7b21f7f`](https://github.com/ithaka/pharos/commit/7b21f7f1232dbeb7de603b5251ce94c0997cf78d) Thanks [@Lham42](https://github.com/Lham42)! - Removed deadlinks and added new links to site-nav
+
+* [#24](https://github.com/ithaka/pharos/pull/24) [`4c46e19`](https://github.com/ithaka/pharos/commit/4c46e1922a5708b6f596baebf5cb8c54c34d8323) Thanks [@SMQuazi](https://github.com/SMQuazi)! - update component status page
+
+- [#22](https://github.com/ithaka/pharos/pull/22) [`516c13c`](https://github.com/ithaka/pharos/commit/516c13c4d1d51ef642a67330a5b33b9fc4e0f5b1) Thanks [@Niznikr](https://github.com/Niznikr)! - replace low res images on the site:
+
+  - Replace low res images on the home and imagery pages
+  - Remove unused images
+  - Update `Principles` section on the iconography page
+
+* [#32](https://github.com/ithaka/pharos/pull/32) [`4705e55`](https://github.com/ithaka/pharos/commit/4705e550c943d9e0311dfbebfb0d5c037b5c7318) Thanks [@Lham42](https://github.com/Lham42)! - Remove outdated images, sentence headings and implement best practices component in alert and tooltips sections.
+
+- [#26](https://github.com/ithaka/pharos/pull/26) [`512b7d6`](https://github.com/ithaka/pharos/commit/512b7d6d77cf5a8848a950bcd2d51cf607019780) Thanks [@SMQuazi](https://github.com/SMQuazi)! - update component status table header to only show drop shadow when stickied
+
+- Updated dependencies [[`46fbc67`](https://github.com/ithaka/pharos/commit/46fbc679c16f094aef2c207e4f4c05e71552a9bb), [`faf789c`](https://github.com/ithaka/pharos/commit/faf789cfa753d355a7171622b4d591df90c4fd88), [`54c251f`](https://github.com/ithaka/pharos/commit/54c251fd1a9843e9167a4375d9d91ca1f5dfa609), [`aa77fe3`](https://github.com/ithaka/pharos/commit/aa77fe3d135b9f5f8d7af8da9e535b1a9664120a), [`1a32ff4`](https://github.com/ithaka/pharos/commit/1a32ff4c930f014141671df8704f09a9266806ce)]:
+  - @ithaka/pharos@9.2.0
+
 ## 5.1.0
 
 ### Minor Changes

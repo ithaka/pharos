@@ -1,4 +1,4 @@
-import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
 import { PharosTextInput } from '../../react-components/text-input/pharos-text-input';
@@ -74,21 +74,36 @@ export const Template = (args) => (
 # States
 
 <Canvas withToolbar>
-  <Story
-    name="States"
-    argTypes={{
-      type: { table: { disable: true }, defaultValue: 'text' },
-    }}
-    args={{
-      placeholder: 'Enter some text',
-      disabled: false,
-      readonly: false,
-      value: '',
-      hideLabel: false,
-      label: 'Edit attributes via control panel',
-    }}
-  >
-    {Template.bind({})}
+  <Story name="States">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '1rem',
+        gridTemplateColumns: 'repeat(2, 300px)',
+      }}
+    >
+      <PharosTextInput>
+        <span slot="label">Empty input</span>
+      </PharosTextInput>
+      <PharosTextInput disabled>
+        <span slot="label">Disabled input</span>
+      </PharosTextInput>
+      <PharosTextInput readonly value="Example text">
+        <span slot="label">Read only input</span>
+      </PharosTextInput>
+      <PharosTextInput placeholder="example placeholder text">
+        <span slot="label">Placeholder for input</span>
+      </PharosTextInput>
+      <PharosTextInput value="This value was provided">
+        <span slot="label">Value provided</span>
+      </PharosTextInput>
+      <PharosTextInput hideLabel value="Hidden label input">
+        <span slot="label">Hidden label</span>
+      </PharosTextInput>
+      <PharosTextInput value="A validated value" validated>
+        <span slot="label">Validated input</span>
+      </PharosTextInput>
+    </div>
   </Story>
 </Canvas>
 

@@ -1,5 +1,43 @@
 # @ithaka/pharos
 
+## 9.2.1
+
+### Patch Changes
+
+- [#51](https://github.com/ithaka/pharos/pull/51) [`2656245`](https://github.com/ithaka/pharos/commit/26562459b4911d61bd299e5be191f87ff236d3c1) Thanks [@Niznikr](https://github.com/Niznikr)! - render link for error image cards and allow subtle state
+
+* [#48](https://github.com/ithaka/pharos/pull/48) [`ced1c1f`](https://github.com/ithaka/pharos/commit/ced1c1f082e40b5e0b5c71830fb6c6cde1277b83) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies:
+
+  - Update Gatsby dependencies
+  - Update ESLint dependencies
+  - Update Sass
+  - Update cli dependencies
+
+## 9.2.0
+
+### Minor Changes
+
+- [#31](https://github.com/ithaka/pharos/pull/31) [`faf789c`](https://github.com/ithaka/pharos/commit/faf789cfa753d355a7171622b4d591df90c4fd88) Thanks [@Niznikr](https://github.com/Niznikr)! - add image card component:
+
+  - Add card component with `error` and `subtle` states
+  - Add `action-menu` attribute to render an action button to act as the trigger for the menu
+  - Add `collection` variant to present collection in 4:3 aspect ratio
+  - Add `tag` prop to `pharos-layout` to specify the HTML tag to use for the inner grid
+  - Update `playwright`
+
+* [#25](https://github.com/ithaka/pharos/pull/25) [`54c251f`](https://github.com/ithaka/pharos/commit/54c251fd1a9843e9167a4375d9d91ca1f5dfa609) Thanks [@gbassham](https://github.com/gbassham)! - adds toggle button and toggle button group components
+
+### Patch Changes
+
+- [#33](https://github.com/ithaka/pharos/pull/33) [`46fbc67`](https://github.com/ithaka/pharos/commit/46fbc679c16f094aef2c207e4f4c05e71552a9bb) Thanks [@Niznikr](https://github.com/Niznikr)! - update Storybook to generate React API tables:
+
+  - Update Storybook to 6.3 alpha
+  - Follow migration guidelines
+
+* [#29](https://github.com/ithaka/pharos/pull/29) [`aa77fe3`](https://github.com/ithaka/pharos/commit/aa77fe3d135b9f5f8d7af8da9e535b1a9664120a) Thanks [@Niznikr](https://github.com/Niznikr)! - increase max-height of sidenav menu
+
+- [#30](https://github.com/ithaka/pharos/pull/30) [`1a32ff4`](https://github.com/ithaka/pharos/commit/1a32ff4c930f014141671df8704f09a9266806ce) Thanks [@SMQuazi](https://github.com/SMQuazi)! - revert textarea and textinput examples to show multiple variants on state stories
+
 ## 9.1.0
 
 ### Minor Changes

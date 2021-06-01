@@ -195,6 +195,24 @@
         "design",
         "doc"
       ]
+    },
+    {
+      "login": "Lham42",
+      "name": "Elham Islam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32990373?v=4",
+      "profile": "https://github.com/Lham42",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "gbassham",
+      "name": "Gayla Bassham",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56835183?v=4",
+      "profile": "https://github.com/gbassham",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7

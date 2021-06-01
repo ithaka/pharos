@@ -1,0 +1,140 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: inline-flex;
+  contain: layout;
+}
+
+.card {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.card__link--image {
+  height: 15.625rem;
+}
+
+.card__link--image,
+.card__link--title {
+  display: inline-flex;
+}
+
+.card__link--image,
+.card__container--collection {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+.card__metadata {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  color: var(--pharos-color-text-40);
+}
+
+.card__metadata--hover {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  height: 100%;
+  box-sizing: border-box;
+  color: var(--pharos-color-text-white);
+  background-color: rgba(0, 0, 0, 0);
+  padding: var(--pharos-spacing-three-quarters-x);
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  transition: visibility var(--pharos-transition-duration-default) ease-in-out,
+    opacity var(--pharos-transition-duration-default) ease-in-out,
+    background-color var(--pharos-transition-duration-default) ease-in-out;
+}
+
+.card__container--error {
+  border: 1px solid var(--pharos-color-ui-40);
+  height: 12.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  row-gap: var(--pharos-spacing-1-x);
+  align-self: flex-end;
+}
+
+.card__title {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.card__container--collection {
+  display: grid;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+}
+
+.card__button {
+  margin-left: auto;
+}
+
+.card__title--hover {
+  @include mixins.font-base($font-weight: var(--pharos-font-weight-bold));
+
+  display: block;
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.card__heading,
+.card__title--hover {
+  @include mixins.truncate-text($lines: 2);
+}
+
+:host([subtle]) .card__link--image {
+  position: relative;
+
+  &:hover {
+    .card__metadata--hover {
+      background-color: rgba(0, 0, 0, 0.75);
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+slot[name='image']::slotted(img) {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+slot[name='metadata']::slotted(*:not(:last-child)) {
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+:host([variant='collection']) .card__title {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+:host([variant='collection']) .card__metadata {
+  @include mixins.font-base;
+
+  color: var(--pharos-color-text-20);
+}
+
+:host([variant='collection']) slot[name='metadata']::slotted(*:not(:last-child)) {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+:host([variant='collection']) slot[name='image']::slotted(img) {
+  position: absolute;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
