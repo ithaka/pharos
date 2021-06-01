@@ -30,6 +30,8 @@
     "build-storybook:react": "node_modules/@storybook/react/bin/build.js -c .storybook/react -o .storybook-static/react -s ./.storybook/assets",
     "build-storybook:wc": "node_modules/@storybook/web-components/bin/build.js -c .storybook/wc -o .storybook-static/wc -s ./.storybook/assets",
     "build-storybook": "yarn storybook:setup && yarn build-storybook:react && yarn build-storybook:wc",
+    "storybook:main:start": "node_modules/@storybook/web-components/bin/index.js -c .storybook/main -p 9002 -s ./.storybook/assets",
+    "storybook:main:build": "node_modules/@storybook/web-components/bin/build.js -c .storybook/main -o .storybook-static/main -s ./.storybook/assets",
     "presite:build": "yarn build:core",
     "site:build": "yarn workspace @ithaka/pharos-site build",
     "presite:develop": "yarn build:core",
