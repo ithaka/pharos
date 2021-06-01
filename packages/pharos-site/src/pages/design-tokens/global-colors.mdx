@@ -1,7 +1,7 @@
 import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { ColorRow } from '../../components/statics/design-token/ColorRow';
-let colorTokens = [];
+export let colorTokens = [];
 Object.keys(tokens.color)
   .filter((key) => key !== 'brand' && key !== 'base')
   .map((key) => {
