@@ -9,6 +9,7 @@ import {
   container__start,
   container__center,
   container__end,
+  netlifyLink,
 } from './footer.module.css';
 import logoWhite from '../../static/images/footer/logo-white.svg';
 
@@ -83,6 +84,12 @@ const Footer: FC = () => {
               </PharosLink>
               .
             </div>
+            <a href="https://www.netlify.com" className={netlifyLink}>
+              <img
+                src="https://www.netlify.com/img/global/badges/netlify-light.svg"
+                alt="Deploys by Netlify"
+              />
+            </a>
           </div>
         </div>
       </div>

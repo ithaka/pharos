@@ -1,10 +1,10 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit-html';
 import { action } from '@storybook/addon-actions';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import './pharos-radio-group';
 import '../radio-button/pharos-radio-button';
-import '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -16,7 +16,7 @@ import createFormData from '../../utils/createFormData';
 
 # Radio Group
 
-<pharos-link href="https://www.jstor.org/pharos/components/radio-button" target="_blank">See guidelines in Pharos</pharos-link>
+<GuidelineLink path="radio-button" />
 
 export const Template = (args) =>
   html`

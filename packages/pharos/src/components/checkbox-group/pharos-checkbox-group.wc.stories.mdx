@@ -1,10 +1,10 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit-html';
 import { action } from '@storybook/addon-actions';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import './pharos-checkbox-group';
 import '../checkbox/pharos-checkbox';
-import '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -16,7 +16,7 @@ import createFormData from '../../utils/createFormData';
 
 # Checkbox Group
 
-<pharos-link href="https://www.jstor.org/pharos/components/checkbox" target="_blank">See guidelines in Pharos</pharos-link>
+<GuidelineLink path="checkbox" />
 
 export const Template = (args) =>
   html` <pharos-checkbox-group
