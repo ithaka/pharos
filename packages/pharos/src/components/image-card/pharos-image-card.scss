@@ -41,6 +41,7 @@
 
   height: 100%;
   box-sizing: border-box;
+  overflow: auto;
   color: var(--pharos-color-text-white);
   background-color: rgba(0, 0, 0, 0);
   padding: var(--pharos-spacing-three-quarters-x);

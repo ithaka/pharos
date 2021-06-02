@@ -45,7 +45,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -65,18 +65,18 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
-  <PageSection title="Modal Heading" subSectionLevel={1} lessMargin>
+<PageSection title="Content guidelines">
+  <PageSection title="Modal heading" subSectionLevel={1} lessMargin>
     A modal's heading should be concise, describing the information or action being presented. They
     should be written in sentence case and describe the action a user will take (e.g., "Delete
     folder," "Create report," or "Cite") or relevant information to the copy being displayed.
     Punctuation is generally not needed or encouraged in modal headings.
   </PageSection>
-  <PageSection title="Modal Content" subSectionLevel={1} lessMargin>
+  <PageSection title="Modal content" subSectionLevel={1} lessMargin>
     There are no specific requirements for the content of a modal; it can be composed as the
     information calls for. The content could include supporting body copy or form elements.
   </PageSection>
-  <PageSection title="Modal Footer" subSectionLevel={1} lessMargin>
+  <PageSection title="Modal footer" subSectionLevel={1} lessMargin>
     The footer content contains all possible actions for the user to take, but can also include
     further pertinent/relevant information. For buttons, use descriptive words such as "Add," and
     Save.
@@ -84,7 +84,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="States">
-  <PageSection title="No Footer" subSectionLevel={1} lessMargin>
+  <PageSection title="No footer" subSectionLevel={1} lessMargin>
     Use for information-only based content that does not require the user to take an action.
   </PageSection>
   <PageSection title="Mobile" subSectionLevel={1} lessMargin>
@@ -108,7 +108,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection title="Relevant WCAG Guidelines" subSectionLevel={1} lessMargin>
+  <PageSection title="Relevant WCAG guidelines" subSectionLevel={1} lessMargin>
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
@@ -122,12 +122,11 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     control when they would like to view this modal, this gives them the freedom to decide when they
     would like to be given the additional information in the overlay.
   </PageSection>
-  <PageSection title="Code Expectations" subSectionLevel={1} lessMargin>
-    Via{' '}
+  <PageSection title="Code expectations" subSectionLevel={1} lessMargin>
+    Via &nbsp;
     <PharosLink href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html">
       w3
-    </PharosLink>
-    :<ul>
+    </PharosLink>:<ul>
       <li>
         When the modal is open, only interactable elements and content should be able to be
         accessed. No element behind the modal overlay should be in the tab index or accessible to
@@ -139,18 +138,17 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         Div also has aria-labelledby="id" to give an accessible name. It will point to the element
         that provides the dialog title.
       </li>
-      <li>
-        The title or purpose of the element should contain the "id" that is being referenced by the
-        aria-labelledby
-      </li>
+      <ul>
+        <li>
+          The title or purpose of the element should contain the "id" that is being referenced by
+          the aria-labelledby
+        </li>
+      </ul>
       <li>Div has aria-modal="true"</li>
       <li>An aria-label should be placed on the "X" that contains "close modal"</li>
     </ul>
   </PageSection>
-  <PageSection title="Code Expectations" subSectionLevel={1} lessMargin>
-    <PharosHeading level={'3'} preset={'2'}>
-      Expected actions
-    </PharosHeading>
+  <PageSection title="Expected actions" subSectionLevel={1} lessMargin>
     <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
       <PharosHeading level={'4'} preset={'1--bold'}>
         Screen reader

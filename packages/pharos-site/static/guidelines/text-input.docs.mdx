@@ -23,7 +23,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </p>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -49,7 +49,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
+<PageSection title="Content guidelines">
   <PageSection subSectionLevel={1} title="Labels">
     <ul>
       <li>
@@ -60,7 +60,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       <li>Labels are to be written in sentence case and should only be 1-3 words long</li>
     </ul>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Placeholder Text">
+  <PageSection subSectionLevel={1} title="Placeholder text">
     <p>
       Placeholder text is shown inside the text input to help users know what information they can
       enter.
@@ -182,25 +182,130 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <ul>
-    <li>
-      Every text input must have a label. A text input without a label is ambiguous and not
-      accessible
-    </li>
-    <li>
-      In cases where context is sufficient and a label could be hidden, make sure to have the design
-      reviewed
-    </li>
-  </ul>
-  <PageSection subSectionLevel={1} title="Accessibility best practices for labels">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul>
-      <li>Labels must be visible when an input gets focus</li>
-      <li>Labels must be announced to the screen reader on focus</li>
-      <li>Use sentence case</li>
       <li>
-        If the text input is a required field include the aria-required property and indicate that
-        it is a required field and use the validation message for input errors.
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose">
+          1.3.5 Identify Input Purpose AA
+        </PharosLink>
+      </li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
+          1.3.1 Info and Relationships
+        </PharosLink>
+      </li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions">
+          3.3.2 Labels or Instructions A
+        </PharosLink>
+      </li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html">
+          2.4.6 Headings and Labels
+        </PharosLink>
+      </li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value">
+          4.1.2 Name, Role, Value A
+        </PharosLink>
       </li>
     </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Importance">
+    Inputs allow the user to complete many different tasks. This can include filling out a form or
+    submitting a search
+  </PageSection>
+  <ul>
+    <PharosHeading level={'3'} preset={'2'}>
+      Accessibility best practices for labels
+    </PharosHeading>
+    <li>Labels must be visible when an input gets focus</li>
+    <li>Labels must be announced to the screen reader on focus</li>
+    <li>Use sentence case</li>
+  </ul>
+  <PageSection subSectionLevel={1} title="Code expectations">
+    <ul>
+      <li>
+        Via &nbsp;
+        <PharosLink href="https://www.w3.org/WAI/tutorials/forms/labels/">W3</PharosLink>
+        &nbsp; there are 3 ways to approach input groups:
+      </li>
+      <li>
+        Visual label:
+        <ul>
+          <li> &lt;label for="fieldname"&gt; Field Name: &lt;/label&gt; </li>
+          <li>
+            &lt;input id="fieldname" type="text" autocomplete="fieldname"&gt;
+            <ul>
+              <li> Matching for and id names associate the label with its form control </li>
+              <li> Form control can only have one associated &lt;label&gt; </li>
+              <li>
+                This allows user to click the label and focus will be put into the field, ensuring
+                that the label is associated with the input
+              </li>
+            </ul>
+          </li>
+          <li>
+            We can also use an aria-label on the input to give the user more information about the
+            field
+          </li>
+        </ul>
+      </li>
+    </ul>
+    The next two methods should ONLY be used when purpose can be determined with no visual label (such
+    as a "Search" button next to the input).
+    <ul>
+      <li>
+        Visually hidden label:
+        <ul>
+          <li> &lt;label for="fieldname" class="visuallyhideen"&gt;Field name: &lt;/label&gt; </li>
+          <li> &lt;input type="text" name="fieldname" id="fieldname"&gt; </li>
+          <li>
+            &lt;button type="submit"&gt; Button Name &lt;/button&gt;
+            <ul>
+              <li>Allows assistive technology to understand a visually hidden label</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Aria-label:
+        <ul>
+          <li> &lt;input type="text" name="fieldname" aira-label="Field Name"&gt; </li>
+          <li> &lt;button type="submit"&gt; Button Name &lt;/button&gt; </li>
+        </ul>
+      </li>
+    </ul>
+    *NOTE: If the text input is a required field include the <code>aria-required</code> property and
+    indicate that it is a required field. Use the validation message for input errors
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Expected actions">
+    <PageSection subSectionLevel={2} title="Screen reader">
+      <ul>
+        <li>
+          Reads: "Field name, edit text"
+          <ul>
+            <li>
+              If autocomplete is enabled: "Field name, edit text with autofill menu, required (if
+              applicable)"
+            </li>
+            <li>
+              Aria label example: "designated aria-label, edit text, required (if applicable)"
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </PageSection>
+    <PageSection subSectionLevel={2} title="Keyboard">
+      <ul>
+        <li>
+          <kbd>Enter</kbd> &nbsp; key: submits the input
+        </li>
+        <li>
+          Input (and applicable controls such as a button) should be included in the logical tab
+          order
+        </li>
+      </ul>
+    </PageSection>
   </PageSection>
 </PageSection>
