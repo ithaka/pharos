@@ -9,3 +9,21 @@
   to = "https://pharos-storybooks.netlify.app/react/:splat"
   status = 200
   force = true
+
+[[redirects]]
+  from = "https://pharos.jstor.org/storybook/*"
+  to = "https://pharos-storybooks.netlify.app/main/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://pharos.jstor.org/storybooks/wc"
+  to = "https://pharos.jstor.org/storybooks/wc/"
+
+[[redirects]]
+  from = "https://pharos.jstor.org/storybooks/react"
+  to = "https://pharos.jstor.org/storybooks/react/"
+
+[[redirects]]
+  from = "https://pharos.jstor.org/storybook"
+  to = "https://pharos.jstor.org/storybook/"
