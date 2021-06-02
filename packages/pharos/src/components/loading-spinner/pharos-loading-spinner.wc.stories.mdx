@@ -1,11 +1,11 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 import { html } from 'lit-html';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import './pharos-loading-spinner';
 import '../heading/pharos-heading';
 import '../button/pharos-button';
-import '../link/pharos-link';
 
 <Meta
   title="Components/Loading Spinner"
@@ -17,7 +17,7 @@ import '../link/pharos-link';
 
 # Loading Spinner
 
-<pharos-link href="https://www.jstor.org/pharos/components/loading-spinner" target="_blank">See guidelines in Pharos</pharos-link>
+<GuidelineLink path="loading-spinner" />
 
 <Canvas withToolbar>
   <Story name="Base">{html`
