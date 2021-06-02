@@ -18,11 +18,11 @@ config.refs = (config, { configType }) => {
   return {
     webComponents: {
       title: 'Web Components',
-      url: 'https://pharos.jstor.org/storybooks/wc',
+      url: 'https://pharos.jstor.org/storybooks/wc/',
     },
     react: {
       title: 'React',
-      url: 'https://pharos.jstor.org/storybooks/react',
+      url: 'https://pharos.jstor.org/storybooks/react/',
     },
   };
 };
