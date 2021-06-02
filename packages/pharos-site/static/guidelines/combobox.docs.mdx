@@ -23,7 +23,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <p>Entering custom values is **not** currently supported.</p>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -50,7 +50,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
+<PageSection title="Content guidelines">
   <PageSection subSectionLevel={1} title="Labels">
     <ul>
       <li>
@@ -63,7 +63,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
   <PageSection
     subSectionLevel={1}
-    title="Placeholder Text"
+    title="Placeholder text"
     description="Placeholder text is shown inside the text input to help users know what information they can enter."
   >
     <ul>
@@ -133,7 +133,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose">
@@ -164,14 +164,18 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         &nbsp; of a combobox with an autocomplete dropdown list (via w3c)
       </li>
       <li>
-        The ComboBox uses the aria-expanded, aria-selected, aria-disabled, aria-haspopup, aria-owns,
-        aria-activedescendant and aria-hidden properties on the nested elements depending on the
-        current state of the component and its options.
+        The ComboBox uses the <code>aria-expanded</code>, <code>aria-selected</code>,{' '}
+        <code>aria-disabled</code>, <code>aria-haspopup</code>, <code>aria-owns</code>,
+        <code>aria-activedescendant</code> and <code>aria-hidden</code> properties on the nested
+        elements depending on the current state of the component and its options.
       </li>
-      <li>The ComboBox uses the listbox role. Each item from the popup list has an option role.</li>
+      <li>
+        The ComboBox uses the <code>listbox</code> role. Each item from the popup list has an{' '}
+        <code>option</code> role.
+      </li>
       <li>
         To move the focus to the current keyboard navigation position, the component uses the
-        aria-activedescendant approach.
+        <code>aria-activedescendant</code> approach.
       </li>
     </ul>
   </PageSection>

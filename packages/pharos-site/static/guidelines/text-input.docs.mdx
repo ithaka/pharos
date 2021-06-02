@@ -23,7 +23,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </p>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -49,7 +49,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
+<PageSection title="Content guidelines">
   <PageSection subSectionLevel={1} title="Labels">
     <ul>
       <li>
@@ -60,7 +60,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       <li>Labels are to be written in sentence case and should only be 1-3 words long</li>
     </ul>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Placeholder Text">
+  <PageSection subSectionLevel={1} title="Placeholder text">
     <p>
       Placeholder text is shown inside the text input to help users know what information they can
       enter.
@@ -182,7 +182,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose">
@@ -215,13 +215,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     Inputs allow the user to complete many different tasks. This can include filling out a form or
     submitting a search
   </PageSection>
-  <PageSection subSectionLevel={1} title="Accessibility best practices for labes:">
-    <ul>
-      <li>Labels must be visible when an input gets focus</li>
-      <li>Labels must be announced to the screen reader on focus</li>
-      <li>Use sentence case</li>
-    </ul>
-  </PageSection>
+  <ul>
+    <PharosHeading level={'3'} preset={'2'}>
+      Accessibility best practices for labels
+    </PharosHeading>
+    <li>Labels must be visible when an input gets focus</li>
+    <li>Labels must be announced to the screen reader on focus</li>
+    <li>Use sentence case</li>
+  </ul>
   <PageSection subSectionLevel={1} title="Code expectations">
     <ul>
       <li>
@@ -275,10 +276,10 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         </ul>
       </li>
     </ul>
-    *NOTE: If the text input is a required field include the aria-required property and indicate that
-    it is a required field. Use the validation message for input errors
+    *NOTE: If the text input is a required field include the <code>aria-required</code> property and
+    indicate that it is a required field. Use the validation message for input errors
   </PageSection>
-  <PageSection subSectionLevel={1} title="Expected Actions">
+  <PageSection subSectionLevel={1} title="Expected actions">
     <PageSection subSectionLevel={2} title="Screen reader">
       <ul>
         <li>

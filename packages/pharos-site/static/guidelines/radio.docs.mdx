@@ -15,7 +15,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PharosLink>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <p>
     Radio buttons are normally presented in radio groups. Radio buttons should have a parent radio
     group component, which will group the buttons into a set. In a set of radio buttons, only one
@@ -54,7 +54,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
+<PageSection title="Content guidelines">
   <PageSection subSectionLevel={1} title="Labels">
     <ul>
       <li>
@@ -108,7 +108,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
@@ -138,11 +138,11 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Code Expectations">
+  <PageSection subSectionLevel={1} title="Code expectations">
     <ul>
       <li>
-        Provide a fieldset that surrounds the entire grouping of radio buttons. Also, provide a
-        legend, which is a description for the grouping. &nbsp;
+        Provide a <code>fieldset</code> that surrounds the entire grouping of radio buttons. Also,
+        provide a<code>legend</code>, which is a description for the grouping. &nbsp;
         <PharosLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#naming_with_legends">
           Here's an example.
         </PharosLink>
@@ -154,8 +154,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
       <li>Each radio button element has a role of "radio".</li>
       <li>
-        If a radio button is checked, the radio element has "aria-checked" set to true. If it is not
-        checked, it has "aria-checked" set to false.
+        If a radio button is checked, the radio element has "aria-checked" set to <code>true</code>.
+        If it is not checked, it has "aria-checked" set to <code>false</code>.
       </li>
     </ul>
   </PageSection>
@@ -198,11 +198,11 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
           <kbd>Space</kbd> checks the focused radio button, if it is not already checked.
         </li>
         <li>
-          <kbd>↑</kbd> / <kbd>←</kbd> move the indicator/focus to the radio button
+          <kbd>↑</kbd> / <kbd>←</kbd> move the indicator/focus to the radio button &nbsp;
           <strong>before</strong> the current selected
         </li>
         <li>
-          <kbd>↓</kbd> / <kbd>→</kbd> move the indicator/focus to the radio button
+          <kbd>↓</kbd> / <kbd>→</kbd> move the indicator/focus to the radio button &nbsp;
           <strong>after</strong> the current selected
         </li>
         <li>

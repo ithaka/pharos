@@ -34,7 +34,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -65,8 +65,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
-  <PageSection title="Group Labels" subSectionLevel={1}>
+<PageSection title="Content guidelines">
+  <PageSection title="Group labels" subSectionLevel={1}>
     <ul>
       <li>
         For a grouping of checkboxes, you can include a heading to provide even greater clarity.
@@ -187,7 +187,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value">
@@ -201,17 +201,20 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     filter. A checkbox grouping also will typically allow users to select more than one item in the
     grouping.
   </PageSection>
-  <PageSection subSectionLevel={1} title="Code Expectations">
+  <PageSection subSectionLevel={1} title="Code expectations">
     <ul>
       <li> The checkbox has the role "checkbox". </li>
       <li>
-        When the checkbox is selected, the ARIA state is set to aria-checked="true" and when it is
-        deselected aria-checked="false".
+        When the checkbox is selected, the ARIA state is set to <code>aria-checked="true"</code> and
+        when it is deselected <code>aria-checked="false"</code>.
       </li>
       <li>
-        Provide a fieldset that surrounds the entire grouping of checkboxes. Also, provide a legend,
-        which is a description for the grouping. &nbsp;
-        <PharosLink href="https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes">
+        Provide a <code>fieldset</code> that surrounds the entire grouping of checkboxes. Also,
+        provide a <code>legend</code>, which is a description for the grouping. &nbsp;
+        <PharosLink
+          href="https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes"
+          target="_blank"
+        >
           Here's an example.
         </PharosLink>
       </li>
@@ -222,7 +225,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Expected Actions">
+  <PageSection subSectionLevel={1} title="Expected actions">
     <PageSection subSectionLevel={2} title="Screen reader">
       <ul>
         <li>Reads: "item name, state (checked or unchecked), checkbox, fieldset name, group" </li>

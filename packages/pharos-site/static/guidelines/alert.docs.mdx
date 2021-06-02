@@ -42,7 +42,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -71,7 +71,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
+<PageSection title="Content guidelines">
   <em>Good alert messaging should:</em>
   <ul>
     <li>Be scannable, brief, and to the point.</li>
@@ -191,7 +191,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification">
@@ -218,8 +218,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection subSectionLevel={1} title="Importance">
     <ul>
       <li>
-        Alerts notify assistive technologies of a message that will be audibly read to the users if
-        role=alert is put onto an element
+        Alerts notify assistive technologies of a message that will be audibly read to the users if{' '}
+        <code>role=alert</code> is put onto an element
         <ul>
           <li>
             Examples (via MDN): invalid form entry, expiring session or loss of connection resulting
@@ -231,14 +231,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         Different ways to use aria-live:
         <ul>
           <li>
-            aria-live="assertive"
+            <code>aria-live="assertive"</code>
             <ul>
               <li>Immediately interrupts the user to read the message</li>
               <li>A use case would be informing the user of an error message</li>
             </ul>
           </li>
           <li>
-            aria-live="polite"
+            <code>aria-live="polite" </code>
             <ul>
               <li>Waits until the user is idle to deliver the message</li>
               <li>
@@ -251,12 +251,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Code Expectations">
+  <PageSection subSectionLevel={1} title="Code expectations">
     <ul>
       <li>
-        Putting role="alert" can notify users of a error in a form
+        Putting <code>role="alert"</code> can notify users of a error in a form
         <ul>
-          <li>This technique is the same as adding aria-live="assertive"</li>
+          <li>
+            This technique is the same as adding <code>aria-live="assertive"</code>
+          </li>
         </ul>
       </li>
       <li>
@@ -275,14 +277,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
       <li>
         If an alert appears after a user has taken an action, it should be wrapped in
-        aria-live-region and have role="alert" and aria-live="assertive". In cases where a user has
-        taken action (like filling out and submitting a form), the user's attention is required to
-        remedy the error.
+        aria-live-region and have <code>role="alert"</code> and <code>aria-live="assertive"</code>.
+        In cases where a user has taken action (like filling out and submitting a form), the user's
+        attention is required to remedy the error.
       </li>
     </ul>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Expected Actions">
-    <PageSection subSectionLevel={2} title="Screen Reader">
+  <PageSection subSectionLevel={1} title="Expected actions">
+    <PageSection subSectionLevel={2} title="Screen reader">
       <ul>
         <li>If the aria-live is "assertive" the alert is read immediately </li>
         <li>If the aria-live is "polite" the alert is read when the user is idle</li>
