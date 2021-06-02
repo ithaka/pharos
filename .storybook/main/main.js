@@ -1,13 +1,15 @@
 let config = require('../main');
 
+config.stories.push('../../packages/pharos/**/*.docs.stories.mdx');
+
 config.refs = {
-  story1: {
+  webComponents: {
     title: 'Web Components',
-    url: 'http://pharos-storybooks.apps.test.cirrostratus.org/wc',
+    url: 'https://pharos-storybooks.netlify.app/wc',
   },
-  story2: {
+  react: {
     title: 'React',
-    url: 'http://pharos-storybooks.apps.test.cirrostratus.org/react',
+    url: 'https://pharos-storybooks.netlify.app/react',
   },
 };
 
