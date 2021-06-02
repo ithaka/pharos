@@ -2,11 +2,12 @@ import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
 import '../../../static/styles/global.scss';
+import PageSection from '../../components/statics/PageSection';
 
-<>
+<PageSection title="Spacing" isHeader>
   {TokenTable(
-    'Spacing tokens',
-    <>
+    'Spacing',
+    <P>
       <thead>
         <tr>
           <th style={{ width: '40%' }}>Token</th>
@@ -36,6 +37,6 @@ import '../../../static/styles/global.scss';
             </tr>
           ))}
       </tbody>
-    </>
+    </P>
   )}
-</>
+</PageSection>

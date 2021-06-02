@@ -2,10 +2,11 @@ import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { ColorRow } from '../../components/statics/design-token/ColorRow';
 import { ColorHead } from '../../components/statics/design-token/ColorHead';
+import PageSection from '../../components/statics/PageSection';
 
-<>
+<PageSection title="Alias colors" isHeader>
   {TokenTable(
-    'Alias color tokens',
+    'Alias colors',
     <>
       <ColorHead />
       <tbody>
@@ -20,14 +21,14 @@ import { ColorHead } from '../../components/statics/design-token/ColorHead';
     </>
   )}
   {TokenTable(
-    'Text color tokens',
+    'Text color',
     <>
       <ColorHead />
       <tbody>{Object.keys(tokens.color.text).map((key) => ColorRow(tokens.color.text[key]))}</tbody>
     </>
   )}
   {TokenTable(
-    'Interaction color tokens',
+    'Interaction color',
     <>
       <ColorHead />
       <tbody>
@@ -36,5 +37,4 @@ import { ColorHead } from '../../components/statics/design-token/ColorHead';
       </tbody>
     </>
   )}
-</>
-;
+</PageSection>

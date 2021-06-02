@@ -1,13 +1,15 @@
 import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
+import PageSection from '../../components/statics/PageSection';
+
 export const baseValue = tokens.font.size['base'].value;
 export const basePixels = tokens.type.scale[baseValue].comment;
 export const basePx = basePixels.substring(0, basePixels.length - 2);
 
-<>
+<PageSection title="Font size" isHeader>
   {TokenTable(
-    'Font size tokens',
+    'Font size',
     <>
       <thead>
         <tr>
@@ -41,4 +43,4 @@ export const basePx = basePixels.substring(0, basePixels.length - 2);
       </tbody>
     </>
   )}
-</>
+</PageSection>

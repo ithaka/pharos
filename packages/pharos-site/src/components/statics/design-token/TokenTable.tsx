@@ -1,5 +1,5 @@
-import PageSection from '../PageSection';
 import { tokenTable } from './TokenTable.module.css';
+import { PharosHeading } from '@ithaka/pharos/lib/react-components/heading/pharos-heading';
 
 export const TokenTable = (
   title: string,
@@ -8,9 +8,13 @@ export const TokenTable = (
 ): JSX.Element => {
   return (
     <div>
-      <PageSection title={title} description={subtitle} isHeader>
-        <table className={tokenTable}>{content}</table>
-      </PageSection>
+      <PharosHeading level={1} preset={'6'}>
+        {title}
+      </PharosHeading>
+      {subtitle ? <div>{subtitle}</div> : null}
+      <table className={tokenTable}>{content}</table>
+      <br />
+      <br />
     </div>
   );
 };

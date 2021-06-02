@@ -2,6 +2,8 @@ import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { ColorRow } from '../../components/statics/design-token/ColorRow';
 import { ColorHead } from '../../components/statics/design-token/ColorHead';
+import PageSection from '../../components/statics/PageSection';
+
 export let colorTokens = [];
 Object.keys(tokens.color)
   .filter((key) => key !== 'brand' && key !== 'base')
@@ -18,7 +20,7 @@ Object.keys(tokens.color)
     }
   });
 
-<>
+<PageSection title="Global colors" isHeader>
   {TokenTable(
     'Primary colors',
     <>
@@ -69,4 +71,4 @@ Object.keys(tokens.color)
       </tbody>
     </>
   )}
-</>
+</PageSection>

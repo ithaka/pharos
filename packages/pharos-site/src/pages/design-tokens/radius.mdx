@@ -1,11 +1,12 @@
 import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
+import PageSection from '../../components/statics/PageSection';
 
-<>
+<PageSection title="Radius" isHeader>
   {TokenTable(
-    'Border radius tokens',
-    <>
+    'Border radius',
+    <P>
       <thead>
         <tr>
           <th style={{ width: '40%' }}>Token</th>
@@ -35,6 +36,6 @@ import { toTokenFormat } from '../../components/statics/design-token/toTokenForm
           </tr>
         ))}
       </tbody>
-    </>
+    </P>
   )}
-</>
+</PageSection>

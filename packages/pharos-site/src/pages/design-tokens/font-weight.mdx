@@ -1,10 +1,11 @@
 import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
+import PageSection from '../../components/statics/PageSection';
 
-<>
+<PageSection title="Font weight" isHeader>
   {TokenTable(
-    'Font weight tokens',
+    'Font weight',
     <>
       <thead>
         <tr>
@@ -41,4 +42,4 @@ import { toTokenFormat } from '../../components/statics/design-token/toTokenForm
       </tbody>
     </>
   )}
-</>
+</PageSection>

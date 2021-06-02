@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
+import PageSection from '../../components/statics/PageSection';
+
 export const TransitionRow = (transition, widthRem, color) => {
   const [bgc, setBgc] = useState(color);
   const HandleMouseEnter = () => {
@@ -39,9 +41,10 @@ const exampleColors = [
   '--pharos-color-night-blue-base',
 ];
 
-<>
+<PageSection title="Transitions" isHeader>
+  <p>Hover over the colorful boxes to view the transitions.</p>
   {TokenTable(
-    'Transition tokens',
+    'Transition',
     <>
       <thead>
         <tr>
@@ -56,7 +59,6 @@ const exampleColors = [
           TransitionRow(tokens.transition.duration[key], exampleRems[i], exampleColors[i])
         )}
       </tbody>
-    </>,
-    <p>Hover over the colorful boxes to view the transitions.</p>
+    </>
   )}
-</>
+</PageSection>

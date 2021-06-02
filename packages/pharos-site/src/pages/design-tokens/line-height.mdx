@@ -1,11 +1,13 @@
 import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
+import PageSection from '../../components/statics/PageSection';
+
 export const fontSizeMap = [12, 14, 16, 24, 32, 54, 16];
 
-<>
+<PageSection title="Line height" isHeader>
   {TokenTable(
-    'Line height tokens',
+    'Line height',
     <>
       <thead>
         <tr>
@@ -38,8 +40,10 @@ export const fontSizeMap = [12, 14, 16, 24, 32, 54, 16];
                           : 'var(--pharos-font-family-sans-serif)',
                     }}
                   >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
+                    {console.log(key)}
+                    {key === 'heading-large'
+                      ? 'Lorem ipsum dolor sit amet...'
+                      : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
                   </div>
                 </td>
               </tr>
@@ -48,4 +52,4 @@ export const fontSizeMap = [12, 14, 16, 24, 32, 54, 16];
       </tbody>
     </>
   )}
-</>
+</PageSection>
