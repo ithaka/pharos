@@ -1,6 +1,7 @@
 import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { ColorRow } from '../../components/statics/design-token/ColorRow';
+import { ColorHead } from '../../components/statics/design-token/ColorHead';
 export let colorTokens = [];
 Object.keys(tokens.color)
   .filter((key) => key !== 'brand' && key !== 'base')
@@ -21,13 +22,7 @@ Object.keys(tokens.color)
   {TokenTable(
     'Primary colors',
     <>
-      <thead>
-        <tr>
-          <th>Token</th>
-          <th>Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
+      <ColorHead />
       <tbody>
         {colorTokens.filter((color) => color.group === 'primary').map((color) => ColorRow(color))}
       </tbody>
@@ -36,13 +31,7 @@ Object.keys(tokens.color)
   {TokenTable(
     'Secondary colors',
     <>
-      <thead>
-        <tr>
-          <th>Token</th>
-          <th>Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
+      <ColorHead />
       <tbody>
         {colorTokens.filter((color) => color.group === 'secondary').map((color) => ColorRow(color))}
         {ColorRow(tokens.color['Marble gray'].base)}
@@ -52,13 +41,7 @@ Object.keys(tokens.color)
   {TokenTable(
     'Grayscale colors',
     <>
-      <thead>
-        <tr>
-          <th>Token</th>
-          <th>Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
+      <ColorHead />
       <tbody>
         {colorTokens
           .filter((color) => color.palette === 'grayscale')
@@ -69,13 +52,7 @@ Object.keys(tokens.color)
   {TokenTable(
     'Tints',
     <>
-      <thead>
-        <tr>
-          <th>Token</th>
-          <th>Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
+      <ColorHead />
       <tbody>
         {colorTokens.filter((color) => color.group === 'tint').map((color) => ColorRow(color))}
       </tbody>
@@ -84,13 +61,7 @@ Object.keys(tokens.color)
   {TokenTable(
     'Feedback colors',
     <>
-      <thead>
-        <tr>
-          <th>Token</th>
-          <th>Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
+      <ColorHead />
       <tbody>
         {colorTokens
           .filter((color) => color.palette === 'feedback')

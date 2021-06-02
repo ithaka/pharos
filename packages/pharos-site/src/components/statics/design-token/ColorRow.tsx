@@ -1,4 +1,5 @@
 import { toTokenFormat } from './toTokenFormat';
+import { colorExample } from './ColorRow.module.css';
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
 export const ColorRow = (color: any): JSX.Element => {
   let OGColorHtml;
@@ -16,13 +17,13 @@ export const ColorRow = (color: any): JSX.Element => {
   }
   return (
     <tr>
-      <td style={{ width: '50%' }}>{toTokenFormat(color.name)}</td>
-      <td style={{ width: '25%' }}>
+      <td>{toTokenFormat(color.name)}</td>
+      <td>
         {OGColorHtml}
         <div>{color.value}</div>
       </td>
-      <td style={{ width: '25%' }}>
-        <div className="color-example" style={{ backgroundColor: color.value }}></div>
+      <td>
+        <div className={colorExample} style={{ backgroundColor: color.value }}></div>
       </td>
     </tr>
   );

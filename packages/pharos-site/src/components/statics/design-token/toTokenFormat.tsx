@@ -1,6 +1,8 @@
+import { code } from './toTokenFormat.module.css';
+
 export const toTokenFormat = (text: string): JSX.Element => {
   return (
-    <code>
+    <code className={code}>
       $
       {text
         .replace(/([a-z])([A-Z]|[0-9])/g, '$1-$2')

@@ -1,6 +1,7 @@
 import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
+import '../../../static/styles/global.scss';
 
 <>
   {TokenTable(
@@ -8,14 +9,14 @@ import { toTokenFormat } from '../../components/statics/design-token/toTokenForm
     <>
       <thead>
         <tr>
-          <th style={{ width: '50%' }}>Token</th>
-          <th style={{ width: '25%' }}>Value</th>
-          <th style={{ width: '25%' }}>Example</th>
+          <th style={{ width: '40%' }}>Token</th>
+          <th style={{ width: '30%' }}>Value</th>
+          <th>Example</th>
         </tr>
       </thead>
       <tbody>
         {Object.keys(tokens.spacing)
-          .filter((key) => key !== 'brand')
+          .filter((key) => key !== 'gutter')
           .map((key, index) => (
             <tr key={index}>
               <td>{toTokenFormat(tokens.spacing[key].name)}</td>
@@ -23,7 +24,14 @@ import { toTokenFormat } from '../../components/statics/design-token/toTokenForm
                 {tokens.spacing[key].comment} | {tokens.spacing[key].value}
               </td>
               <td>
-                <div className="spacing-example" style={{ height: tokens.spacing[key].value }} />
+                <div
+                  style={{
+                    height: tokens.spacing[key].value,
+                    background: 'var(--pharos-color-living-coral-80)',
+                    width: '100%',
+                    display: 'inline-block',
+                  }}
+                />
               </td>
             </tr>
           ))}

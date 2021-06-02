@@ -1,10 +1,16 @@
-export const TokenTable = (title: string, content: JSX.Element): JSX.Element => {
+import PageSection from '../PageSection';
+import { tokenTable } from './TokenTable.module.css';
+
+export const TokenTable = (
+  title: string,
+  content: JSX.Element,
+  subtitle?: JSX.Element
+): JSX.Element => {
   return (
-    <div className="token-table-container">
-      <h2>{title}</h2>
-      <table className="token-table">{content}</table>
-      <br />
-      <br />
+    <div>
+      <PageSection title={title} description={subtitle} isHeader>
+        <table className={tokenTable}>{content}</table>
+      </PageSection>
     </div>
   );
 };

@@ -1,0 +1,12 @@
+.token-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.token-table td {
+  padding-bottom: var(--pharos-spacing-one-and-a-half-x);
+  padding-right: var(--pharos-spacing-2-x);
+  padding-top: var(--pharos-spacing-one-and-a-half-x);
+  vertical-align: top;
+  border-bottom: 1px solid var(--pharos-color-ui-30);
+}

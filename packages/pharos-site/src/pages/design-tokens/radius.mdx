@@ -8,9 +8,9 @@ import { toTokenFormat } from '../../components/statics/design-token/toTokenForm
     <>
       <thead>
         <tr>
-          <th style={{ width: '50%' }}>Token</th>
-          <th style={{ width: '25%' }}>Value</th>
-          <th style={{ width: '25%' }}>Example</th>
+          <th style={{ width: '40%' }}>Token</th>
+          <th style={{ width: '30%' }}>Value</th>
+          <th>Example</th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +23,13 @@ import { toTokenFormat } from '../../components/statics/design-token/toTokenForm
             <td>
               <div
                 className="radius-example"
-                style={{ borderRadius: tokens.radius.base[key].value }}
+                style={{
+                  borderRadius: tokens.radius.base[key].value,
+                  background: 'var(--pharos-color-living-coral-80)',
+                  width: '2rem',
+                  height: '2rem',
+                  display: 'inline-block',
+                }}
               />
             </td>
           </tr>

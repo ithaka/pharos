@@ -21,6 +21,7 @@ export const TransitionRow = (transition, widthRem, color) => {
             width: `${widthRem}rem`,
             transition: transition.value,
             background: `var(${bgc})`,
+            height: '3rem',
           }}
           onMouseEnter={HandleMouseEnter}
           onMouseLeave={HandleMouseLeave}
@@ -45,8 +46,8 @@ const exampleColors = [
       <thead>
         <tr>
           <th style={{ width: '40%' }}>Token</th>
-          <th style={{ width: '30%' }}>Value</th>
-          <th style={{ width: '30%' }}>Example (Hover)</th>
+          <th style={{ width: '40%' }}>Value</th>
+          <th>Example</th>
         </tr>
       </thead>
       <tbody>
@@ -55,6 +56,7 @@ const exampleColors = [
           TransitionRow(tokens.transition.duration[key], exampleRems[i], exampleColors[i])
         )}
       </tbody>
-    </>
+    </>,
+    <p>Hover over the colorful boxes to view the transitions.</p>
   )}
 </>

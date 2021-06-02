@@ -103,16 +103,16 @@ const Sidenav: FC = () => {
           <PharosSidenavMenu label="Design Tokens" expanded={isExpanded('design-tokens')}>
             {[
               'Overview',
-              'Alias',
-              'Font Family',
-              'Font Size',
-              'Font Weight',
-              'Global Colors',
-              'Line Height',
+              'Alias colors',
+              'Global colors',
+              'Font family',
+              'Font size',
+              'Font weight',
+              'Line height',
               'Radius',
               'Spacing',
               'Transitions',
-              'Type Scale',
+              'Type scale',
             ].map(createSidenavLink.bind(this, 'design-tokens'))}
           </PharosSidenavMenu>
           <PharosSidenavMenu label="Components" expanded={isExpanded('components')}>

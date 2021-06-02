@@ -1,18 +1,13 @@
 import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { ColorRow } from '../../components/statics/design-token/ColorRow';
+import { ColorHead } from '../../components/statics/design-token/ColorHead';
 
 <>
   {TokenTable(
     'Alias color tokens',
     <>
-      <thead>
-        <tr>
-          <th>Token</th>
-          <th>Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
+      <ColorHead />
       <tbody>
         {Object.keys(tokens.color.interactive).map((key) =>
           ColorRow(tokens.color.interactive[key])
@@ -27,26 +22,14 @@ import { ColorRow } from '../../components/statics/design-token/ColorRow';
   {TokenTable(
     'Text color tokens',
     <>
-      <thead>
-        <tr>
-          <th>Token</th>
-          <th>Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
+      <ColorHead />
       <tbody>{Object.keys(tokens.color.text).map((key) => ColorRow(tokens.color.text[key]))}</tbody>
     </>
   )}
   {TokenTable(
     'Interaction color tokens',
     <>
-      <thead>
-        <tr>
-          <th>Token</th>
-          <th>Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
+      <ColorHead />
       <tbody>
         {ColorRow(tokens.color.focus)}
         {Object.keys(tokens.color.hover).map((key) => ColorRow(tokens.color.hover[key]))}
