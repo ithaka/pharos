@@ -1,29 +1,40 @@
 [[redirects]]
-  from = "https://pharos.jstor.org/storybooks/wc/*"
-  to = "https://pharos-storybooks.netlify.app/wc/:splat"
-  status = 200
+  from = "/storybook"
+  to = "https://pharos.jstor.org/storybook/"
+  status = 301
   force = true
 
 [[redirects]]
-  from = "https://pharos.jstor.org/storybooks/react/*"
-  to = "https://pharos-storybooks.netlify.app/react/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "https://pharos.jstor.org/storybook/*"
+  from = "/storybook/*"
   to = "https://pharos-storybooks.netlify.app/main/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://pharos.jstor.org/storybooks/wc"
+  from = "/storybooks/wc"
   to = "https://pharos.jstor.org/storybooks/wc/"
+  status = 301
+  force = true
 
 [[redirects]]
-  from = "https://pharos.jstor.org/storybooks/react"
+  from = "/storybooks/wc/*"
+  to = "https://pharos-storybooks.netlify.app/wc/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybooks/react"
   to = "https://pharos.jstor.org/storybooks/react/"
+  status = 301
+  force = true
 
 [[redirects]]
-  from = "https://pharos.jstor.org/storybook"
-  to = "https://pharos.jstor.org/storybook/"
+  from = "/storybooks/react/*"
+  to = "https://pharos-storybooks.netlify.app/react/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
