@@ -66,6 +66,13 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   @property({ type: Boolean, reflect: true })
   public flex = false;
 
+  /**
+   * Indicates the link is hidden until focused.
+   * @attr skip
+   */
+  @property({ type: Boolean, reflect: true })
+  public skip = false;
+
   @state()
   private _alert!: PharosAlert;
 
