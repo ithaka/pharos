@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/storybook"
-  to = "/storybook/"
+  to = "https://pharos.jstor.org/storybook/"
   status = 301
   force = true
 
@@ -12,7 +12,7 @@
 
 [[redirects]]
   from = "/storybooks/wc"
-  to = "/storybooks/wc/"
+  to = "https://pharos.jstor.org/storybooks/wc/"
   status = 301
   force = true
 
@@ -24,7 +24,7 @@
 
 [[redirects]]
   from = "/storybooks/react"
-  to = "/storybooks/react/"
+  to = "https://pharos.jstor.org/storybooks/react/"
   status = 301
   force = true
 
