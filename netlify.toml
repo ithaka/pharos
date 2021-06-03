@@ -1,31 +1,13 @@
 [[redirects]]
-  from = "/storybook"
-  to = "https://pharos.jstor.org/storybook/"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/storybook/*"
   to = "https://pharos-storybooks.netlify.app/main/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from = "/storybooks/wc"
-  to = "https://pharos.jstor.org/storybooks/wc/"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/storybooks/wc/*"
   to = "https://pharos-storybooks.netlify.app/wc/:splat"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/storybooks/react"
-  to = "https://pharos.jstor.org/storybooks/react/"
-  status = 301
   force = true
 
 [[redirects]]
