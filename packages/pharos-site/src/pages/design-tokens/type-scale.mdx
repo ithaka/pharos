@@ -3,9 +3,9 @@ import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
 import PageSection from '../../components/statics/PageSection';
 
-<PageSection title="Transitions" isHeader>
+<PageSection title="Type scale" isHeader>
   {TokenTable(
-    'Type scale',
+    '',
     <>
       <thead>
         <tr>
@@ -43,7 +43,11 @@ import PageSection from '../../components/statics/PageSection';
               {tokens.type.scale[key].value > 5 ? (
                 <span
                   className="token-type-serif"
-                  style={{ fontSize: tokens.type.scale[key].comment }}
+                  style={{
+                    fontSize: tokens.type.scale[key].comment,
+                    fontFamily: 'var(--pharos-font-family-serif)',
+                    lineHeight: 'var(--pharos-line-height-heading-large)',
+                  }}
                 >
                   Ivar Headline
                 </span>

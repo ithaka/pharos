@@ -14,9 +14,11 @@ export const TokenTable = (
     const { PharosHeading } = Pharos;
     const table = (
       <div>
-        <PharosHeading level={1} preset={'6'}>
-          {title}
-        </PharosHeading>
+        {title ? (
+          <PharosHeading level={1} preset={'6'}>
+            {title}
+          </PharosHeading>
+        ) : null}
         {subtitle ? <div>{subtitle}</div> : null}
         <table className={tokenTable}>{content}</table>
         <br />
