@@ -10,6 +10,7 @@ import { SideElement } from '../base/side-element';
 import FocusMixin from '../../utils/mixins/focus';
 
 import '../button/pharos-button';
+import '../link/pharos-link';
 
 /**
  * Pharos sidenav component.
@@ -30,7 +31,7 @@ export class PharosSidenav extends FocusMixin(SideElement) {
   public slide = false;
 
   /**
-   * Indicates the target
+   * Indicates the skip to target
    * @attr main-content-id
    */
   @property({ type: String, reflect: true, attribute: 'main-content-id' })
@@ -70,7 +71,7 @@ export class PharosSidenav extends FocusMixin(SideElement) {
 
   private _renderSkipToMain(): TemplateResult | typeof nothing {
     return this.mainContentId
-      ? html`<pharos-link on-background skip href="#${this.mainContentId}">
+      ? html`<pharos-link id="sidenav-skip-link" on-background skip href="#${this.mainContentId}">
           Skip to main content</pharos-link
         > `
       : nothing;

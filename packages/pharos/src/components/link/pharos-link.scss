@@ -65,6 +65,7 @@
 :host([skip]) #link-element:not(:focus) {
   @include mixins.hidden;
 }
+
 :host([on-background][subtle]) #link-element:hover {
   @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
 }

@@ -39,7 +39,7 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
 
     const button = <PharosSidenavButton />;
     const skipLink = (
-      <PharosLink id="skip-link" skip href="#">
+      <PharosLink id="skip-link" skip href="#sidenav-skip-link">
         Skip to main navigation
       </PharosLink>
     );
