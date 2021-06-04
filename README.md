@@ -109,8 +109,8 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 JSTOR is part of ITHAKA, a not-for-profit dedicated to expanding access to knowledge and education worldwide. Our staff makes us who we are. We’re hiring — join us!
 
-- CTA [See career opportunities](https://recruiting.ultipro.com/ITH1000ITHAK/JobBoard/5fe90ad4-9e26-490b-9c45-6c9669d4dcd0/?q=&o=postedDateDesc)
-- CTA 2: [Learn more about ITHAKA](https://ithaka.org/)
+- [See career opportunities](https://recruiting.ultipro.com/ITH1000ITHAK/JobBoard/5fe90ad4-9e26-490b-9c45-6c9669d4dcd0/?q=&o=postedDateDesc)
+- [Learn more about ITHAKA](https://ithaka.org/)
 
 ## License
 
