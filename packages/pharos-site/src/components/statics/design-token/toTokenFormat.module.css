@@ -1,0 +1,7 @@
+.code {
+  font-size: var(--pharos-font-size-small);
+  background: var(--pharos-color-ui-20);
+  border-radius: 1px;
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+  white-space: nowrap;
+}

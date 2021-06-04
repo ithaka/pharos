@@ -1,0 +1,74 @@
+import { TokenTable } from '../../components/statics/design-token/TokenTable';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { ColorRow } from '../../components/statics/design-token/ColorRow';
+import { ColorHead } from '../../components/statics/design-token/ColorHead';
+import PageSection from '../../components/statics/PageSection';
+
+export let colorTokens = [];
+Object.keys(tokens.color)
+  .filter((key) => key !== 'brand' && key !== 'base')
+  .map((key) => {
+    const currentToken = tokens.color[key];
+    if (currentToken.value) {
+      colorTokens.push(currentToken);
+    } else {
+      Object.keys(currentToken).map((k) => {
+        if (currentToken[k].value) {
+          colorTokens.push(currentToken[k]);
+        }
+      });
+    }
+  });
+
+<PageSection title="Global colors" isHeader>
+  {TokenTable(
+    'Primary colors',
+    <>
+      <ColorHead />
+      <tbody>
+        {colorTokens.filter((color) => color.group === 'primary').map((color) => ColorRow(color))}
+      </tbody>
+    </>
+  )}
+  {TokenTable(
+    'Secondary colors',
+    <>
+      <ColorHead />
+      <tbody>
+        {colorTokens.filter((color) => color.group === 'secondary').map((color) => ColorRow(color))}
+        {ColorRow(tokens.color['Marble gray'].base)}
+      </tbody>
+    </>
+  )}
+  {TokenTable(
+    'Grayscale colors',
+    <>
+      <ColorHead />
+      <tbody>
+        {colorTokens
+          .filter((color) => color.palette === 'grayscale')
+          .map((color) => ColorRow(color))}
+      </tbody>
+    </>
+  )}
+  {TokenTable(
+    'Tints',
+    <>
+      <ColorHead />
+      <tbody>
+        {colorTokens.filter((color) => color.group === 'tint').map((color) => ColorRow(color))}
+      </tbody>
+    </>
+  )}
+  {TokenTable(
+    'Feedback colors',
+    <>
+      <ColorHead />
+      <tbody>
+        {colorTokens
+          .filter((color) => color.palette === 'feedback')
+          .map((color) => ColorRow(color))}
+      </tbody>
+    </>
+  )}
+</PageSection>
