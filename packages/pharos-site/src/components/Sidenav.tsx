@@ -54,7 +54,7 @@ const Sidenav: FC = () => {
     };
 
     const content = (
-      <PharosSidenav className={sidenav}>
+      <PharosSidenav mainContentId="skip-link" className={sidenav}>
         <PharosLink href="/" slot="top" flex onClick={handleLinkClick}>
           <div>
             <div className={siteBrand__title}>{data.site.siteMetadata.title}</div>
