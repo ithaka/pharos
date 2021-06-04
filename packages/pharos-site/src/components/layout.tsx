@@ -3,7 +3,7 @@ import type { FC, ReactElement } from 'react';
 import type { WindowLocation } from '@reach/router';
 import Sidenav from './Sidenav';
 import Footer from './footer';
-import { container, main, main___fill, content } from './layout.module.css';
+import { container, main, main___fill, content, topBar } from './layout.module.css';
 import SEO from './seo';
 import Fonts from './Fonts';
 
@@ -32,12 +32,20 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
 
+  const [Link, setLink] = useState<ReactElement | null>(null);
+
   useEffect(() => {
-    const { PharosSidenavButton } = Pharos;
+    const { PharosSidenavButton, PharosLink } = Pharos;
 
-    const content = <PharosSidenavButton />;
+    const button = <PharosSidenavButton />;
+    const skipLink = (
+      <PharosLink id="skip-link" skip href="#">
+        Skip to main navigation
+      </PharosLink>
+    );
 
-    setButton(content);
+    setButton(button);
+    setLink(skipLink);
   }, [Pharos]);
 
   return (
@@ -47,7 +55,10 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
       <Sidenav />
       <main className={`${main} ${fill ? main___fill : ''}`}>
         <div className={content}>
-          {Button}
+          <div className={topBar}>
+            {Button}
+            {Link}
+          </div>
           {children}
         </div>
       </main>

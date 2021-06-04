@@ -69,3 +69,8 @@ ul {
 .main ul > li::marker {
   color: var(--pharos-color-living-coral-base);
 }
+
+.top-bar {
+  display: flex;
+  align-items: center;
+}
