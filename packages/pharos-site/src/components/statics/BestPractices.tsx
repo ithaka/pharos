@@ -39,7 +39,7 @@ const BestPractices: FC<BestPracticesProps> = ({ Do, Dont }) => {
                 ></PharosIcon>
                 <div>
                   <span className={text__do}>Dos</span>
-                  <span className={text__guideline}>{Do}</span>
+                  <div className={text__guideline}>{Do}</div>
                 </div>
               </div>
             </>
@@ -53,7 +53,7 @@ const BestPractices: FC<BestPracticesProps> = ({ Do, Dont }) => {
                 <PharosIcon name="close" description="X" className={icon__dont}></PharosIcon>
                 <div>
                   <span className={text__dont}>Don&apos;ts</span>
-                  <span className={text__guideline}> {Dont} </span>
+                  <div className={text__guideline}> {Dont} </div>
                 </div>
               </div>
             </>
