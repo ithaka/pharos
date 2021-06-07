@@ -45,7 +45,7 @@ const PageSection: FC<PageSectionProps> = ({
     const { PharosHeading } = Pharos;
     const { PharosLink } = Pharos;
     const url =
-      'https://pharos.jstor.org/storybooks/wc/?path=/story/' +
+      'https://pharos.jstor.org/storybook/?path=/story/webcomponents_' +
       storyBookType +
       '-' +
       title.replace(/ /g, '-') +
