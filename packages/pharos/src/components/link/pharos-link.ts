@@ -74,6 +74,13 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   @property({ type: Boolean, reflect: true })
   public skip = false;
 
+  /**
+   * Indicates the link should not have a hover state.
+   * @attr no-hover
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'no-hover' })
+  public noHover = false;
+
   @state()
   private _alert!: PharosAlert;
 
