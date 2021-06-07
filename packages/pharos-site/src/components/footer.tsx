@@ -10,6 +10,8 @@ import {
   container__center,
   container__end,
   netlifyLink,
+  badge,
+  container__link,
 } from './footer.module.css';
 import logoWhite from '../../static/images/footer/logo-white.svg';
 
@@ -76,13 +78,14 @@ const Footer: FC = () => {
                   About JSTOR
                 </PharosLink>
               </li>
-              <li>
+              <li className={container__link}>
                 <PharosLink
                   href="https://recruiting.ultipro.com/ITH1000ITHAK/JobBoard/5fe90ad4-9e26-490b-9c45-6c9669d4dcd0/?q=&o=postedDateDesc"
                   onBackground
                 >
                   Careers
                 </PharosLink>
+                <strong className={badge}>We&apos;re hiring!</strong>
               </li>
             </ul>
           </div>

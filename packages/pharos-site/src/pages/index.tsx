@@ -18,6 +18,8 @@ import {
   heading__status,
   link__status,
   button__card,
+  badge,
+  container__heading,
 } from './index.module.css';
 
 import brandGuideline from '../../static/images/homepage/home-brand-guidelines.png';
@@ -217,9 +219,12 @@ const IndexPage: FC = () => {
             <div className={icon}>
               <PharosIcon name="workspace"></PharosIcon>
             </div>
-            <PharosHeading level="2" preset="4">
-              Work with us at ITHAKA
-            </PharosHeading>
+            <div className={container__heading}>
+              <PharosHeading level="2" preset="4" noMargin>
+                Work with us at ITHAKA
+              </PharosHeading>
+              <strong className={badge}>We&apos;re hiring!</strong>
+            </div>
             <p className={description}>
               JSTOR is part of ITHAKA, a not-for-profit dedicated to expanding access to knowledge
               and education worldwide. Our staff makes us who we are. We&apos;re hiring — join us!

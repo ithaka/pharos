@@ -60,3 +60,18 @@
   font-size: var(--pharos-font-size-small);
   line-height: var(--pharos-line-height-small);
 }
+
+.badge {
+  color: var(--pharos-color-text-white);
+  text-transform: uppercase;
+  font-size: var(--pharos-font-size-micro);
+  line-height: var(--pharos-line-height-xsmall);
+  background-color: var(--pharos-color-marble-gray-20);
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+}
+
+.container__link {
+  display: flex;
+  align-items: center;
+  column-gap: var(--pharos-spacing-three-quarters-x);
+}
