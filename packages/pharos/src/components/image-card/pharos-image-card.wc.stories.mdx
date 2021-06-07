@@ -82,7 +82,7 @@ export const CollectionsTemplate = () => html`<pharos-layout tag="ol" style="mar
           alt="${collection.title}"
           slot="image"
         />
-        <div id="items-${index}" slot="metadata"><strong>${collection.items} items</strong></div>
+        <strong id="items-${index}" slot="metadata">${collection.items} items</strong>
         <div id="description-${index}" slot="metadata">
           Selections from the global permanent collection.
         </div>

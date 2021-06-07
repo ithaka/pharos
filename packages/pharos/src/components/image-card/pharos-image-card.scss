@@ -20,7 +20,7 @@
 }
 
 .card__link--image,
-.card__container--collection {
+.card__link--collection {
   margin-bottom: var(--pharos-spacing-1-x);
 }
 
@@ -73,9 +73,8 @@
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.card__container--collection {
+.card__link--collection {
   display: grid;
-  overflow: hidden;
   position: relative;
   height: auto;
 }
@@ -94,6 +93,12 @@
 .card__heading,
 .card__title--hover {
   @include mixins.truncate-text($lines: 2);
+}
+
+.card__svg {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 :host([subtle]) .card__link--image {
@@ -120,18 +125,17 @@ slot[name='metadata']::slotted(*:not(:last-child)) {
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
+slot[name='metadata']::slotted(strong) {
+  display: block;
+  color: var(--pharos-color-text-base);
+}
+
 :host([variant='collection']) .card__title {
   margin-bottom: var(--pharos-spacing-1-x);
 }
 
 :host([variant='collection']) .card__metadata {
-  @include mixins.font-base;
-
   color: var(--pharos-color-text-20);
-}
-
-:host([variant='collection']) slot[name='metadata']::slotted(*:not(:last-child)) {
-  margin-bottom: var(--pharos-spacing-1-x);
 }
 
 :host([variant='collection']) slot[name='image']::slotted(img) {
