@@ -48,7 +48,7 @@ describe('pharos-image-card', () => {
         alt="Card Title"
         src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
       />
-      <div slot="metadata"><strong>100 items</strong></div>
+      <strong slot="metadata">100 items</strong>
       <div slot="metadata">Description of collection.</div>
     </pharos-image-card>`);
     await expect(component).to.be.accessible();
