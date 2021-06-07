@@ -136,7 +136,17 @@ const PageSection: FC<PageSectionProps> = ({
       </div>
     );
     setDisplay(content);
-  }, [Pharos, children, description, isHeader, moreTitleSpace, title, lessMargin, subSectionLevel]);
+  }, [
+    Pharos,
+    children,
+    description,
+    isHeader,
+    moreTitleSpace,
+    title,
+    lessMargin,
+    subSectionLevel,
+    storyBookType,
+  ]);
 
   return Display;
 };
