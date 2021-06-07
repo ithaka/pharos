@@ -159,11 +159,11 @@ describe('pharos-image-card', () => {
     expect(link).not.to.be.null;
   });
 
-  it('renders a container around the image for the collection variant', async () => {
+  it('renders a link around the image for the collection variant', async () => {
     component.variant = 'collection';
     await component.updateComplete;
 
-    const container = component.renderRoot.querySelector('.card__container--collection');
-    expect(container).not.to.be.null;
+    const link = component.renderRoot.querySelector('pharos-link.card__link--collection');
+    expect(link).not.to.be.null;
   });
 });
