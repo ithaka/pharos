@@ -26,7 +26,7 @@ const Footer: FC = () => {
         <div className={main}>
           <div className={container__start}>
             <img src={logoWhite} alt="JSTOR Logo" width="70" height="100" />
-            <div className={note}>Pharos is JSTOR&apos;s design system</div>
+            <div className={note}>Copyright © {new Date().getFullYear()} JSTOR</div>
           </div>
           <div className={container__center}>
             <ul className={list}>
@@ -50,17 +50,41 @@ const Footer: FC = () => {
                 </PharosLink>
               </li>
               <li>
-                <PharosLink href="#" onBackground data-sc="link:wc storybook footer">
+                <PharosLink
+                  href="https://pharos.jstor.org/storybooks/wc/"
+                  onBackground
+                  data-sc="link:wc storybook footer"
+                >
                   Web Components Storybook
                 </PharosLink>
               </li>
               <li>
-                <PharosLink href="#" onBackground data-sc="link:react storybook footer">
+                <PharosLink
+                  href="https://pharos.jstor.org/storybooks/react/"
+                  onBackground
+                  data-sc="link:react storybook footer"
+                >
                   React Storybook
                 </PharosLink>
               </li>
             </ul>
-            <div className={note}>Copyright © {new Date().getFullYear()} JSTOR</div>
+          </div>
+          <div className={container__center}>
+            <ul className={list}>
+              <li>
+                <PharosLink href="https://about.jstor.org/" onBackground>
+                  About JSTOR
+                </PharosLink>
+              </li>
+              <li>
+                <PharosLink
+                  href="https://recruiting.ultipro.com/ITH1000ITHAK/JobBoard/5fe90ad4-9e26-490b-9c45-6c9669d4dcd0/?q=&o=postedDateDesc"
+                  onBackground
+                >
+                  Careers
+                </PharosLink>
+              </li>
+            </ul>
           </div>
           <div className={container__end}>
             <PharosHeading level="2" preset="1--bold">
@@ -84,12 +108,12 @@ const Footer: FC = () => {
               </PharosLink>
               .
             </div>
-            <a href="https://www.netlify.com" className={netlifyLink}>
-              <img
-                src="https://www.netlify.com/img/global/badges/netlify-light.svg"
-                alt="Deploys by Netlify"
-              />
-            </a>
+            <em className={`${note} ${netlifyLink}`}>
+              This site is powered by{' '}
+              <PharosLink href="https://www.netlify.com" onBackground>
+                Netlify
+              </PharosLink>
+            </em>
           </div>
         </div>
       </div>

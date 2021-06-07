@@ -23,7 +23,6 @@ import {
 import brandGuideline from '../../static/images/homepage/home-brand-guidelines.png';
 import components from '../../static/images/homepage/home-components.svg';
 import getStarted from '../../static/images/homepage/home-get-started.svg';
-import contribute from '../../static/images/homepage/home-contribute.svg';
 
 import '@ithaka/pharos/lib/styles/fonts.css';
 
@@ -187,11 +186,9 @@ const IndexPage: FC = () => {
           <hr />
 
           <div className={card}>
-            <div>
-              <img src={contribute} alt="Contribute" width="100%" />
+            <div className={icon}>
+              <PharosIcon name="add"></PharosIcon>
             </div>
-          </div>
-          <div className={card}>
             <PharosHeading level="2" preset="4">
               Contribute to Pharos
             </PharosHeading>
@@ -213,6 +210,28 @@ const IndexPage: FC = () => {
                 >
                   See the contribution guidelines
                 </PharosLink>
+              </li>
+            </ul>
+          </div>
+          <div className={card}>
+            <div className={icon}>
+              <PharosIcon name="workspace"></PharosIcon>
+            </div>
+            <PharosHeading level="2" preset="4">
+              Work with us at ITHAKA
+            </PharosHeading>
+            <p className={description}>
+              JSTOR is part of ITHAKA, a not-for-profit dedicated to expanding access to knowledge
+              and education worldwide. Our staff makes us who we are. We&apos;re hiring — join us!
+            </p>
+            <ul className={list}>
+              <li>
+                <PharosLink href="https://recruiting.ultipro.com/ITH1000ITHAK/JobBoard/5fe90ad4-9e26-490b-9c45-6c9669d4dcd0/?q=&o=postedDateDesc">
+                  See career opportunities
+                </PharosLink>
+              </li>
+              <li>
+                <PharosLink href="https://ithaka.org/">Learn more about ITHAKA</PharosLink>
               </li>
             </ul>
           </div>
