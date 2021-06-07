@@ -82,7 +82,7 @@ const Sidenav: FC = () => {
         </PharosSidenavSection>
         <PharosSidenavSection label="Brand Guidelines" showDivider>
           <PharosSidenavMenu label="Brand expressions" expanded={isExpanded('brand-expressions')}>
-            {['Typography', 'Color', 'Imagery', 'Iconography'].map(
+            {['Logos', 'Typography', 'Color', 'Imagery', 'Iconography'].map(
               createSidenavLink.bind(this, 'brand-expressions')
             )}
           </PharosSidenavMenu>
@@ -102,7 +102,6 @@ const Sidenav: FC = () => {
         <PharosSidenavSection label="Design System">
           <PharosSidenavMenu label="Design Tokens" expanded={isExpanded('design-tokens')}>
             {[
-              'Overview',
               'Alias colors',
               'Global colors',
               'Font family',
