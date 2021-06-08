@@ -20,6 +20,7 @@ interface PageSectionProps {
   subSectionLevel: 1 | 2 | 3;
   moreTitleSpace?: boolean;
   lessMargin?: boolean;
+  storyBookType?: string;
 }
 
 const PageSection: FC<PageSectionProps> = ({
@@ -30,6 +31,7 @@ const PageSection: FC<PageSectionProps> = ({
   children,
   moreTitleSpace,
   lessMargin,
+  storyBookType,
 }) => {
   const [Display, setDisplay] = useState<ReactElement | null>(null);
   const Pharos =
@@ -41,6 +43,13 @@ const PageSection: FC<PageSectionProps> = ({
 
   useEffect(() => {
     const { PharosHeading } = Pharos;
+    const { PharosLink } = Pharos;
+    const url =
+      'https://pharos.jstor.org/storybook/?path=/story/webcomponents_' +
+      storyBookType +
+      '-' +
+      title.replace(/ /g, '-') +
+      '--base';
 
     const headerTitle = (
       <div className={title__isHeader}>
@@ -82,6 +91,14 @@ const PageSection: FC<PageSectionProps> = ({
       </div>
     );
 
+    const storyBookLink = (
+      <div>
+        <PharosLink href={url} target="_blank">
+          See in Storybook
+        </PharosLink>
+      </div>
+    );
+
     const displayedTitle = () => {
       if (isHeader) {
         return headerTitle;
@@ -114,11 +131,22 @@ const PageSection: FC<PageSectionProps> = ({
         {description ? (
           <div className={isHeader ? description__isHeader : description__base}>{description}</div>
         ) : null}
+        {storyBookType ? storyBookLink : null}
         {children}
       </div>
     );
     setDisplay(content);
-  }, [Pharos, children, description, isHeader, moreTitleSpace, title, lessMargin, subSectionLevel]);
+  }, [
+    Pharos,
+    children,
+    description,
+    isHeader,
+    moreTitleSpace,
+    title,
+    lessMargin,
+    subSectionLevel,
+    storyBookType,
+  ]);
 
   return Display;
 };
