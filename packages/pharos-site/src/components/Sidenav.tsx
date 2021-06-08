@@ -39,7 +39,7 @@ const Sidenav: FC = () => {
         <PharosSidenavLink
           key={index}
           href={url}
-          isActive={window.location.pathname === withPrefix(url)}
+          isActive={window.location.pathname.startsWith(withPrefix(url))}
           onClick={handleLinkClick}
         >
           {page}
@@ -64,14 +64,14 @@ const Sidenav: FC = () => {
         <PharosSidenavSection showDivider>
           <PharosSidenavLink
             href="/getting-started"
-            isActive={window.location.pathname === withPrefix('/getting-started')}
+            isActive={window.location.pathname.startsWith(withPrefix('/getting-started'))}
             onClick={handleLinkClick}
           >
             Getting started
           </PharosSidenavLink>
           <PharosSidenavLink
             href="/help"
-            isActive={window.location.pathname === withPrefix('/help')}
+            isActive={window.location.pathname.startsWith(withPrefix('/help'))}
             onClick={handleLinkClick}
           >
             Help
