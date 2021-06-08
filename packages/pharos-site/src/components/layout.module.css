@@ -65,7 +65,7 @@ ul {
 }
 
 .main li {
-  margin-left: var(--spacing-small);
+  margin-left: var(--pharos-spacing-one-and-a-half-x);
 }
 
 .main ul > li::marker {

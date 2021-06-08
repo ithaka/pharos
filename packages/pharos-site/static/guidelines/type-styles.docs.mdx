@@ -12,12 +12,28 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
 
 <PageSection title="Font Stack">
   <PageSection title="Branded" subSectionLevel={1} lessMargin>
-    <p style={{ fontFamily: 'var(--pharos-font-family-sans-serif)' }}>GT America</p>
-    <p style={{ fontFamily: 'var(--pharos-font-family-serif)' }}>Ivar Headline</p>
+    <p
+      style={{
+        fontFamily: 'var(--pharos-font-family-sans-serif)',
+        fontSize: 'var(--pharos-font-size-large)',
+      }}
+    >
+      GT America
+    </p>
+    <p
+      style={{
+        fontFamily: 'var(--pharos-font-family-serif)',
+        fontSize: 'var(--pharos-font-size-large)',
+      }}
+    >
+      Ivar Headline
+    </p>
   </PageSection>
   <PageSection title="Fallback" subSectionLevel={1} lessMargin>
-    <p style={{ fontFamily: 'Helvetica Neue' }}>Helvetica Neue, Arial</p>
-    <p style={{ fontFamily: 'Times' }}>Times</p>
+    <p style={{ fontFamily: 'Helvetica Neue', fontSize: 'var(--pharos-font-size-large)' }}>
+      Helvetica Neue, Arial
+    </p>
+    <p style={{ fontFamily: 'Times', fontSize: 'var(--pharos-font-size-large)' }}>Times</p>
   </PageSection>
 </PageSection>
 
