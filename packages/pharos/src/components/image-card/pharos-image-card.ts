@@ -101,10 +101,16 @@ export class PharosImageCard extends LitElement {
   }
 
   private _renderCollectionImage(): TemplateResult {
-    return html`<div class="card__container--collection">
-      <svg role="presentation" viewBox="0 0 4 3"></svg>
-      <slot name="image"></slot>
-    </div>`;
+    return html`<pharos-link
+      class="card__link--collection"
+      href="${this.link}"
+      subtle
+      flex
+      no-hover
+      @mouseenter=${this._handleImageHover}
+      @mouseleave=${this._handleImageHover}
+      ><svg class="card__svg" role="presentation" viewBox="0 0 4 3"></svg> <slot name="image"></slot
+    ></pharos-link>`;
   }
 
   private _renderLinkContent(): TemplateResult {
@@ -129,6 +135,7 @@ export class PharosImageCard extends LitElement {
       href="${this.link}"
       subtle
       flex
+      no-hover
       @mouseenter=${this._handleImageHover}
       @mouseleave=${this._handleImageHover}
       >${this._renderLinkContent()}${this._renderHoverMetadata()}</pharos-link
@@ -136,6 +143,7 @@ export class PharosImageCard extends LitElement {
   }
 
   private _renderImage(): TemplateResult {
+    // TODO: Refactor with _renderCollectionImage and _renderBaseImage when Playwright/Webkit is updated
     return this.variant === 'collection' ? this._renderCollectionImage() : this._renderBaseImage();
   }
 

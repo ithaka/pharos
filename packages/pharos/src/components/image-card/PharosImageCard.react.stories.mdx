@@ -59,7 +59,7 @@ export const MultipleTemplate = () => (
           <PharosImageCard id={`card-${index}`} title="Card Title" link="#">
             <img
               id={`image-${index}`}
-              src="./images/item-detail/{item.image}"
+              src={`./images/item-detail/${item.image}`}
               alt={`Card Title ${index}`}
               slot="image"
             />
@@ -95,13 +95,13 @@ export const CollectionsTemplate = () => (
           >
             <img
               id={`image-${index}`}
-              src="./images/item-detail/{collection.image}"
+              src={`./images/item-detail/${collection.image}`}
               alt={collection.title}
               slot="image"
             />
-            <div id={`items-${index}`} slot="metadata">
-              <strong>{collection.items} items</strong>
-            </div>
+            <strong id={`items-${index}`} slot="metadata">
+              {collection.items} items
+            </strong>
             <div id={`description-${index}`} slot="metadata">
               Selections from the global permanent collection.
             </div>

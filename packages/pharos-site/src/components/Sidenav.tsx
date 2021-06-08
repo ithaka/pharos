@@ -39,7 +39,7 @@ const Sidenav: FC = () => {
         <PharosSidenavLink
           key={index}
           href={url}
-          isActive={window.location.pathname === withPrefix(url)}
+          isActive={window.location.pathname.startsWith(withPrefix(url))}
           onClick={handleLinkClick}
         >
           {page}
@@ -54,7 +54,7 @@ const Sidenav: FC = () => {
     };
 
     const content = (
-      <PharosSidenav className={sidenav}>
+      <PharosSidenav mainContentId="skip-link" className={sidenav}>
         <PharosLink href="/" slot="top" flex onClick={handleLinkClick}>
           <div>
             <div className={siteBrand__title}>{data.site.siteMetadata.title}</div>
@@ -64,14 +64,14 @@ const Sidenav: FC = () => {
         <PharosSidenavSection showDivider>
           <PharosSidenavLink
             href="/getting-started"
-            isActive={window.location.pathname === withPrefix('/getting-started')}
+            isActive={window.location.pathname.startsWith(withPrefix('/getting-started'))}
             onClick={handleLinkClick}
           >
             Getting started
           </PharosSidenavLink>
           <PharosSidenavLink
             href="/help"
-            isActive={window.location.pathname === withPrefix('/help')}
+            isActive={window.location.pathname.startsWith(withPrefix('/help'))}
             onClick={handleLinkClick}
           >
             Help
@@ -82,7 +82,7 @@ const Sidenav: FC = () => {
         </PharosSidenavSection>
         <PharosSidenavSection label="Brand Guidelines" showDivider>
           <PharosSidenavMenu label="Brand expressions" expanded={isExpanded('brand-expressions')}>
-            {['Typography', 'Color', 'Imagery', 'Iconography'].map(
+            {['Logos', 'Typography', 'Color', 'Imagery', 'Iconography'].map(
               createSidenavLink.bind(this, 'brand-expressions')
             )}
           </PharosSidenavMenu>
@@ -133,7 +133,6 @@ const Sidenav: FC = () => {
           </PharosSidenavMenu>
           <PharosSidenavMenu label="Design tokens" expanded={isExpanded('design-tokens')}>
             {[
-              'Overview',
               'Alias colors',
               'Global colors',
               'Font family',
@@ -146,7 +145,6 @@ const Sidenav: FC = () => {
               'Type scale',
             ].map(createSidenavLink.bind(this, 'design-tokens'))}
           </PharosSidenavMenu>
-
           <PharosSidenavMenu label="Styles" expanded={isExpanded('styles')}>
             {['Type styles'].map(createSidenavLink.bind(this, 'styles'))}
           </PharosSidenavMenu>

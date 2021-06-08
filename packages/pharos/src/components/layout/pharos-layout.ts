@@ -87,7 +87,7 @@ export class PharosLayout extends LitElement {
   }
 
   protected render(): TemplateResult {
-    const template = `<slot name="top"></slot><${this.tag} class="layout"><slot></slot></${this.tag}>`;
+    const template = `<slot name="top"></slot><${this.tag} id="layout-container" class="layout"><slot></slot></${this.tag}>`;
     return html`${unsafeHTML(template)}`;
   }
 }
