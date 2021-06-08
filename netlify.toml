@@ -38,3 +38,6 @@
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
+
+[build]
+  ignore = "bash ./build-ignore.sh"
