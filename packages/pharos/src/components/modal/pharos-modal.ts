@@ -13,7 +13,6 @@ import '@ithaka/focus-trap';
 
 const CLOSE_BUTTONS = `[data-modal-close],pharos-button#close-button`;
 const FOCUS_ELEMENT = `[data-modal-focus]`;
-const matchesFunc = 'matches' in Element.prototype ? 'matches' : 'msMatchesSelector';
 
 export type ModalSize = 'small' | 'medium' | 'large';
 
@@ -178,7 +177,7 @@ export class PharosModal extends LitElement {
   }
 
   private _handleDialogClick(event: MouseEvent): void {
-    if ((event.target as Element)[matchesFunc](CLOSE_BUTTONS)) {
+    if ((event.target as Element).matches(CLOSE_BUTTONS)) {
       this._closeModal(event.target);
     }
   }

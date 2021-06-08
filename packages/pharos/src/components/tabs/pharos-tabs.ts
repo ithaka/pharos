@@ -5,8 +5,6 @@ import { customElement } from '../../utils/decorators';
 import type { PharosTab } from './pharos-tab';
 import type { PharosTabPanel } from './pharos-tab-panel';
 
-const matchesFunc = 'matches' in Element.prototype ? 'matches' : 'msMatchesSelector';
-
 /**
  * Pharos tabs component.
  *
@@ -100,7 +98,7 @@ export class PharosTabs extends LitElement {
     const ids = tabs.map((tab) => tab.id);
 
     const focused = document.activeElement as PharosTab;
-    if (!focused[matchesFunc]('pharos-tab')) {
+    if (!focused.matches('pharos-tab')) {
       return;
     }
 
@@ -126,7 +124,7 @@ export class PharosTabs extends LitElement {
   }
 
   private _handleFocusout(event: FocusEvent): void {
-    if (event.relatedTarget && (event.relatedTarget as Element)[matchesFunc]('pharos-tab')) {
+    if (event.relatedTarget && (event.relatedTarget as Element).matches('pharos-tab')) {
       return;
     }
     const tabs = this.querySelectorAll(`pharos-tab`) as NodeListOf<PharosTab>;

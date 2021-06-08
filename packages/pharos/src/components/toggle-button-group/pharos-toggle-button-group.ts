@@ -4,8 +4,6 @@ import { toggleButtonGroupStyles } from './pharos-toggle-button-group.css';
 import { customElement } from '../../utils/decorators';
 import type { PharosToggleButton } from './pharos-toggle-button';
 
-const matchesFunc = 'matches' in Element.prototype ? 'matches' : 'msMatchesSelector';
-
 /**
  * Pharos toggle button group component.
  *
@@ -92,7 +90,7 @@ export class PharosToggleButtonGroup extends LitElement {
     ) as PharosToggleButton[];
 
     const focused = document.activeElement as PharosToggleButton;
-    if (!focused[matchesFunc]('pharos-toggle-button')) {
+    if (!focused.matches('pharos-toggle-button')) {
       return;
     }
 
@@ -120,10 +118,7 @@ export class PharosToggleButtonGroup extends LitElement {
   }
 
   private _handleFocusout(event: FocusEvent): void {
-    if (
-      event.relatedTarget &&
-      (event.relatedTarget as Element)[matchesFunc]('pharos-toggle-button')
-    ) {
+    if (event.relatedTarget && (event.relatedTarget as Element).matches('pharos-toggle-button')) {
       return;
     }
     const toggleButtons = this.querySelectorAll(

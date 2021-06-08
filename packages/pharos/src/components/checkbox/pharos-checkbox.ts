@@ -14,7 +14,6 @@ import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
 
 const LINKS = `a[href],pharos-link[href]`;
-const matchesFunc = 'matches' in Element.prototype ? 'matches' : 'msMatchesSelector';
 
 /**
  * Pharos checkbox component.
@@ -91,7 +90,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   }
 
   private _handleClick(event: Event): void {
-    if (!(event.target as Element)[matchesFunc](LINKS)) {
+    if (!(event.target as Element).matches(LINKS)) {
       event.preventDefault();
       event.stopPropagation();
       this._checkbox.click();
@@ -108,7 +107,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   }
 
   private _handleMousedown(event: MouseEvent): void {
-    if (!(event.target as Element)[matchesFunc](LINKS)) {
+    if (!(event.target as Element).matches(LINKS)) {
       event.preventDefault();
     }
   }
