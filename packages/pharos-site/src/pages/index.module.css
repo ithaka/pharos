@@ -170,3 +170,19 @@ figure {
 .button__card {
   align-self: end;
 }
+
+.badge {
+  color: var(--pharos-color-text-40);
+  text-transform: uppercase;
+  font-size: var(--pharos-font-size-micro);
+  line-height: var(--pharos-line-height-xsmall);
+  background-color: var(--pharos-color-ui-30);
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+}
+
+.container__heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--pharos-spacing-three-quarters-x);
+  column-gap: var(--pharos-spacing-three-quarters-x);
+}
