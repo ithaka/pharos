@@ -1,5 +1,40 @@
 # @ithaka/pharos-site
 
+## 5.3.0
+
+### Minor Changes
+
+- [#66](https://github.com/ithaka/pharos/pull/66) [`54e9ce0`](https://github.com/ithaka/pharos/commit/54e9ce06e5033a1ef487e6fdbee4fb8aee25b19b) Thanks [@Lham42](https://github.com/Lham42)! - Add skip to main content functionality for sidenav component:
+
+  - Add `skip` prop to `pharos-link` to specify whether the link must be hidden until focused
+  - Add `main-content-id` prop to `pharos-sidenav` to render a skip link with target
+  - Add skip links to the site sidenav and main element
+
+* [#70](https://github.com/ithaka/pharos/pull/70) [`cdb6e07`](https://github.com/ithaka/pharos/commit/cdb6e07b3f047a02102f0d8d4a851f9864954427) Thanks [@Niznikr](https://github.com/Niznikr)! - add careers section to homepage
+
+- [#54](https://github.com/ithaka/pharos/pull/54) [`05ff395`](https://github.com/ithaka/pharos/commit/05ff3956955e4e795e431b31dc5e73884d194e4f) Thanks [@SMQuazi](https://github.com/SMQuazi)! - Add design token pages to Pharos site
+
+### Patch Changes
+
+- [#28](https://github.com/ithaka/pharos/pull/28) [`54f3896`](https://github.com/ithaka/pharos/commit/54f38967a73c8965e8802098d255ffbf535e4930) Thanks [@Niznikr](https://github.com/Niznikr)! - remove /pharos prefix from Gatsby config
+
+* [#69](https://github.com/ithaka/pharos/pull/69) [`c6fb749`](https://github.com/ithaka/pharos/commit/c6fb7496f420f9590c8a7a4575242ad2823c4354) Thanks [@Lham42](https://github.com/Lham42)! - docs(pharos-site): add storybook links to public component sections
+
+  - add `storyBookType` prop to `PageSection` component which takes in the element type for a specified component
+  - if 'storyBookType' is passed, pharos link is rendered to component specified url
+  - pass in `storyBookType` into the component sections
+
+- [#55](https://github.com/ithaka/pharos/pull/55) [`84a3595`](https://github.com/ithaka/pharos/commit/84a3595d2e192a389eb79fe26268662c829d2483) Thanks [@Niznikr](https://github.com/Niznikr)! - remove logos page from site
+
+* [#71](https://github.com/ithaka/pharos/pull/71) [`ae1a4e7`](https://github.com/ithaka/pharos/commit/ae1a4e7b9ae2805a60b6aafea2bad17247792c6a) Thanks [@Lham42](https://github.com/Lham42)! - Reactiviate logo guidelines and deactiviate design token overview
+
+- [#63](https://github.com/ithaka/pharos/pull/63) [`9d59f17`](https://github.com/ithaka/pharos/commit/9d59f173b91932c9f5cfd2b170ac13a87fb848aa) Thanks [@SMQuazi](https://github.com/SMQuazi)! - Remove storybook urls
+
+* [#53](https://github.com/ithaka/pharos/pull/53) [`8462e70`](https://github.com/ithaka/pharos/commit/8462e70c71a7e786e9637247e29aa8c18223f6f4) Thanks [@Lham42](https://github.com/Lham42)! - Update accessibility sections for components.
+
+* Updated dependencies [[`630604f`](https://github.com/ithaka/pharos/commit/630604f3e5966e75ff19764d3b4357efc4f2f3dc), [`54e9ce0`](https://github.com/ithaka/pharos/commit/54e9ce06e5033a1ef487e6fdbee4fb8aee25b19b), [`54f3896`](https://github.com/ithaka/pharos/commit/54f38967a73c8965e8802098d255ffbf535e4930), [`cdb6e07`](https://github.com/ithaka/pharos/commit/cdb6e07b3f047a02102f0d8d4a851f9864954427), [`c528ef1`](https://github.com/ithaka/pharos/commit/c528ef130b915b633c8b39b56218d5af20fb7ae7), [`e5652d6`](https://github.com/ithaka/pharos/commit/e5652d63d0b0941e31f4847812f787d180f94117), [`cffffc5`](https://github.com/ithaka/pharos/commit/cffffc51d4592b76b0fd022e9b5070fbb88df5b4)]:
+  - @ithaka/pharos@9.3.0
+
 ## 5.2.1
 
 ### Patch Changes
