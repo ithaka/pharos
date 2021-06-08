@@ -46,6 +46,7 @@ const Footer: FC = () => {
                 <PharosLink
                   href="https://github.com/ithaka/pharos/blob/main/packages/pharos/CHANGELOG.md"
                   onBackground
+                  target="_blank"
                   data-sc="link:changelog footer"
                 >
                   Changelog
@@ -55,6 +56,7 @@ const Footer: FC = () => {
                 <PharosLink
                   href="https://pharos.jstor.org/storybooks/wc/"
                   onBackground
+                  target="_blank"
                   data-sc="link:wc storybook footer"
                 >
                   Web Components Storybook
@@ -64,6 +66,7 @@ const Footer: FC = () => {
                 <PharosLink
                   href="https://pharos.jstor.org/storybooks/react/"
                   onBackground
+                  target="_blank"
                   data-sc="link:react storybook footer"
                 >
                   React Storybook
@@ -74,7 +77,7 @@ const Footer: FC = () => {
           <div className={container__center}>
             <ul className={list}>
               <li>
-                <PharosLink href="https://about.jstor.org/" onBackground>
+                <PharosLink href="https://about.jstor.org/" onBackground target="_blank">
                   About JSTOR
                 </PharosLink>
               </li>
@@ -82,6 +85,7 @@ const Footer: FC = () => {
                 <PharosLink
                   href="https://recruiting.ultipro.com/ITH1000ITHAK/JobBoard/5fe90ad4-9e26-490b-9c45-6c9669d4dcd0/?q=&o=postedDateDesc"
                   onBackground
+                  target="_blank"
                 >
                   Careers
                 </PharosLink>
@@ -105,6 +109,7 @@ const Footer: FC = () => {
               <PharosLink
                 href="https://github.com/ithaka/pharos"
                 onBackground
+                target="_blank"
                 data-sc="link:repo footer"
               >
                 open an issue on GitHub
@@ -113,7 +118,7 @@ const Footer: FC = () => {
             </div>
             <em className={`${note} ${netlifyLink}`}>
               This site is powered by{' '}
-              <PharosLink href="https://www.netlify.com" onBackground>
+              <PharosLink href="https://www.netlify.com" onBackground target="_blank">
                 Netlify
               </PharosLink>
             </em>
