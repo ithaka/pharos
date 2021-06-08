@@ -5,16 +5,9 @@ import baseImageExample from '../../../../.storybook/assets/images/item-detail/c
 <PageSection
   isHeader
   title="Image Card"
-  description="Image cards group related visual and textual context.
-"
->
-  <PharosLink
-    href="https://pharos.jstor.org/storybooks/wc/?path=/story/components-image-card--base"
-    target="_blank"
-  >
-    See in Storybook
-  </PharosLink>
-</PageSection>
+  description="Image cards group related visual and textual context."
+  storyBookType="components"
+></PageSection>
 
 <PageSection title="Usage">
   <PageSection subSectionLevel={1} title="When to use">
@@ -124,7 +117,10 @@ import baseImageExample from '../../../../.storybook/assets/images/item-detail/c
           1889-1892 (creation)
         </div>
         <div id="collection" slot="metadata">
-          From the <PharosLink href="#">Collection title</PharosLink>
+          From the{' '}
+          <PharosLink href="#" onBackground>
+            Collection title
+          </PharosLink>
         </div>
       </PharosImageCard>
     </Canvas>
