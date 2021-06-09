@@ -55,6 +55,8 @@
       "menu": { "value": "assets/icons/menu.svg" },
       "move": { "value": "assets/icons/move.svg" },
       "new": { "value": "assets/icons/new.svg" },
+      "pdf": { "value": "assets/icons/pdf.svg" },
+      "ppt": { "value": "assets/icons/ppt.svg" },
       "primary-source": { "value": "assets/icons/primary-source.svg" },
       "question-inverse": { "value": "assets/icons/question-inverse.svg" },
       "save": { "value": "assets/icons/save.svg" },
