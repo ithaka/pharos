@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "9.2.0",
+  "version": "9.3.0",
   "description": "Pharos web components for products and experiences",
   "files": [
     "lib",
@@ -34,8 +34,7 @@
   "browserslist": [
     "last 2 versions",
     "Firefox ESR",
-    "not dead",
-    "ie 11"
+    "not dead"
   ],
   "repository": {
     "type": "git",

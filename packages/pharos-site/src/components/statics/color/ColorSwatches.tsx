@@ -128,9 +128,6 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
                   <div>
                     <strong>CMYK</strong> - c{CMYK[0]} m{CMYK[1]} y{CMYK[2]} k{CMYK[3]}
                   </div>
-                  <div>
-                    <strong>Pantone</strong>
-                  </div>
                 </>
               ) : null}
             </figcaption>

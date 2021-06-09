@@ -1,7 +1,6 @@
 import { html, query, state } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { inputGroupStyles } from './pharos-input-group.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { PharosTextInput } from '../text-input/pharos-text-input';
 import type { TextInputType, TextInputAutocomplete } from '../text-input/pharos-text-input';
@@ -32,7 +31,7 @@ export class PharosInputGroup extends PharosTextInput {
   private _prependGroupWidth = 0;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, inputGroupStyles];
+    return [super.styles, inputGroupStyles];
   }
 
   protected firstUpdated(): void {

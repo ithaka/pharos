@@ -1,7 +1,6 @@
 import { html, property } from 'lit-element';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
 import { checkboxGroupStyles } from './pharos-checkbox-group.css';
-import { designTokens } from '../../styles/variables.css';
 import type { PharosCheckbox } from '../checkbox/pharos-checkbox';
 import { customElement } from '../../utils/decorators';
 
@@ -39,7 +38,7 @@ export class PharosCheckboxGroup extends FormElement {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, checkboxGroupStyles];
+    return [super.styles, checkboxGroupStyles];
   }
 
   protected firstUpdated(): void {

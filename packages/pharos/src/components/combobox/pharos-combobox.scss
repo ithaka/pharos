@@ -77,10 +77,6 @@
   }
 }
 
-::-ms-clear {
-  display: none;
-}
-
 :host([disabled]) #input-element {
   @include mixins.input-disabled;
 
@@ -117,7 +113,6 @@
   list-style-type: none;
   padding-inline-start: 0;
   padding-left: 0;
-  -ms-overflow-style: none;
   animation: fadeIn 300ms ease-in-out both;
   transform-origin: top left;
 }

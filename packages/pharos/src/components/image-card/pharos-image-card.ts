@@ -2,7 +2,6 @@ import { html, LitElement, property, query } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { nothing } from 'lit-html';
 import { imageCardStyles } from './pharos-image-card.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import type { PharosButton } from '../button/pharos-button';
@@ -75,7 +74,7 @@ export class PharosImageCard extends LitElement {
   private _title!: PharosLink;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, imageCardStyles];
+    return [imageCardStyles];
   }
 
   protected update(changedProperties: PropertyValues): void {
@@ -101,34 +100,49 @@ export class PharosImageCard extends LitElement {
   }
 
   private _renderCollectionImage(): TemplateResult {
-    return html`<div class="card__container--collection">
-      <svg role="presentation" viewBox="0 0 4 3"></svg>
-      <slot name="image"></slot>
-    </div>`;
+    return html`<pharos-link
+      class="card__link--collection"
+      href="${this.link}"
+      subtle
+      flex
+      no-hover
+      @mouseenter=${this._handleImageHover}
+      @mouseleave=${this._handleImageHover}
+      ><svg class="card__svg" role="presentation" viewBox="0 0 4 3"></svg> <slot name="image"></slot
+    ></pharos-link>`;
   }
 
-  private _renderBaseImage(): TemplateResult {
+  private _renderLinkContent(): TemplateResult {
     return this.error
       ? html`<div class="card__container--error">
           <pharos-icon name="exclamation-inverse"></pharos-icon>Preview not available
         </div>`
-      : html`<pharos-link
-          class="card__link--image"
-          href="${this.link}"
-          subtle
-          flex
-          @mouseenter=${this._handleImageHover}
-          @mouseleave=${this._handleImageHover}
-          ><slot name="image"></slot>${this.subtle
-            ? html`<div class="card__metadata--hover">
-                <strong class="card__title--hover">${this.title}</strong
-                ><slot name="metadata"></slot>
-              </div>`
-            : nothing}</pharos-link
-        >`;
+      : html`<slot name="image"></slot>`;
+  }
+
+  private _renderHoverMetadata(): TemplateResult | typeof nothing {
+    return this.subtle
+      ? html`<div class="card__metadata--hover">
+          <strong class="card__title--hover">${this.title}</strong><slot name="metadata"></slot>
+        </div>`
+      : nothing;
+  }
+
+  private _renderBaseImage(): TemplateResult {
+    return html`<pharos-link
+      class="card__link--image"
+      href="${this.link}"
+      subtle
+      flex
+      no-hover
+      @mouseenter=${this._handleImageHover}
+      @mouseleave=${this._handleImageHover}
+      >${this._renderLinkContent()}${this._renderHoverMetadata()}</pharos-link
+    >`;
   }
 
   private _renderImage(): TemplateResult {
+    // TODO: Refactor with _renderCollectionImage and _renderBaseImage when Playwright/Webkit is updated
     return this.variant === 'collection' ? this._renderCollectionImage() : this._renderBaseImage();
   }
 

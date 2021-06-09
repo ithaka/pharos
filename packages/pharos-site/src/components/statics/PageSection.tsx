@@ -7,7 +7,6 @@ import {
   container__subsectionLevelThree,
   title__isHeader,
   title__moreSpace,
-  title__base,
   description__isHeader,
   description__base,
   container__lessMargin,
@@ -20,6 +19,7 @@ interface PageSectionProps {
   subSectionLevel: 1 | 2 | 3;
   moreTitleSpace?: boolean;
   lessMargin?: boolean;
+  storyBookType?: string;
 }
 
 const PageSection: FC<PageSectionProps> = ({
@@ -30,6 +30,7 @@ const PageSection: FC<PageSectionProps> = ({
   children,
   moreTitleSpace,
   lessMargin,
+  storyBookType,
 }) => {
   const [Display, setDisplay] = useState<ReactElement | null>(null);
   const Pharos =
@@ -41,6 +42,13 @@ const PageSection: FC<PageSectionProps> = ({
 
   useEffect(() => {
     const { PharosHeading } = Pharos;
+    const { PharosLink } = Pharos;
+    const url =
+      'https://pharos.jstor.org/storybook/?path=/story/webcomponents_' +
+      storyBookType +
+      '-' +
+      title.replace(/ /g, '-').toLowerCase() +
+      '--base';
 
     const headerTitle = (
       <div className={title__isHeader}>
@@ -51,7 +59,7 @@ const PageSection: FC<PageSectionProps> = ({
     );
 
     const baseTitle = (
-      <div className={moreTitleSpace ? title__moreSpace : title__base}>
+      <div className={moreTitleSpace ? title__moreSpace : ''}>
         <PharosHeading level="2" preset="6">
           {title}
         </PharosHeading>
@@ -59,7 +67,7 @@ const PageSection: FC<PageSectionProps> = ({
     );
 
     const subsection1Title = (
-      <div className={moreTitleSpace ? title__moreSpace : title__base}>
+      <div className={moreTitleSpace ? title__moreSpace : ''}>
         <PharosHeading level="2" preset="4">
           {title}
         </PharosHeading>
@@ -67,7 +75,7 @@ const PageSection: FC<PageSectionProps> = ({
     );
 
     const subsection2Title = (
-      <div className={moreTitleSpace ? title__moreSpace : title__base}>
+      <div className={moreTitleSpace ? title__moreSpace : ''}>
         <PharosHeading level={'4'} preset={'1--bold'}>
           {title}
         </PharosHeading>
@@ -75,10 +83,18 @@ const PageSection: FC<PageSectionProps> = ({
     );
 
     const subsection3Title = (
-      <div className={moreTitleSpace ? title__moreSpace : title__base}>
+      <div className={moreTitleSpace ? title__moreSpace : ''}>
         <PharosHeading level={'5'} preset={'1--bold'}>
           {title}
         </PharosHeading>
+      </div>
+    );
+
+    const storyBookLink = (
+      <div>
+        <PharosLink href={url} target="_blank">
+          See in Storybook
+        </PharosLink>
       </div>
     );
 
@@ -114,11 +130,22 @@ const PageSection: FC<PageSectionProps> = ({
         {description ? (
           <div className={isHeader ? description__isHeader : description__base}>{description}</div>
         ) : null}
+        {storyBookType ? storyBookLink : null}
         {children}
       </div>
     );
     setDisplay(content);
-  }, [Pharos, children, description, isHeader, moreTitleSpace, title, lessMargin, subSectionLevel]);
+  }, [
+    Pharos,
+    children,
+    description,
+    isHeader,
+    moreTitleSpace,
+    title,
+    lessMargin,
+    subSectionLevel,
+    storyBookType,
+  ]);
 
   return Display;
 };

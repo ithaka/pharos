@@ -1,22 +1,12 @@
 import PageSection from '../../src/components/statics/PageSection.tsx';
 import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
-<PharosHeading
-  level={'1'}
-  preset={'7--bold'}
-  style={{ color: 'black', marginBottom: 'var(--pharos-spacing-2-x)' }}
->
-  Heading
-</PharosHeading>
-
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <p style={{ fontSize: 'var(--pharos-type-scale-6)', lineHeight: '2rem' }}>
-    Headings are used as the titles or labels of each major section of a page that make up the UI.
-  </p>
-  <PharosLink href="#" target="_blank">
-    See in Storybook
-  </PharosLink>
-</div>
+<PageSection
+  isHeader
+  title="Heading"
+  description="Headings are used as the titles or labels of each major section of a page that make up the UI."
+  storyBookType="components"
+></PageSection>
 
 ## Usage
 
@@ -45,7 +35,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     Related
   </PharosHeading>
   JSTOR uses design tokens to set the typography styling in JSTOR's products. To learn more about other
-  typography styles for the product, see our <PharosLink href="https://www.jstor.org/pharos/brand-expressions/typography">typography brand expression page.</PharosLink>
+  typography styles for the product, see our <PharosLink href="https://pharos.jstor.org/brand-expressions/typography">typography brand expression page.</PharosLink>
 </div>
 
 ## Typeface

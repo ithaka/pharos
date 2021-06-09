@@ -3,17 +3,11 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection
   isHeader
+  storyBookType="components"
   title="Sidenav"
   description="The sidenav component is a vertical navigation layout that houses links and menus to help users
     navigate the site."
->
-  <PharosLink
-    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/components-sidenav--base"
-    target="_blank"
-  >
-    See in Storybook
-  </PharosLink>
-</PageSection>
+></PageSection>
 
 <PageSection title="Usage">
   <p>
@@ -23,7 +17,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </p>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -71,7 +65,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
+<PageSection title="Content guidelines">
   <p>
     A navigation menu acts as a table of contents for your site. The content of links should reflect
     this hierarchy. The primary links representing main sections of the site should first be listed.
@@ -88,7 +82,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </PageSection>
   </PageSection>
   <PageSection subSectionLevel={1} title="Section">
-    <PageSection subSectionLevel={2} title="Show Divider">
+    <PageSection subSectionLevel={2} title="Show divider">
       The sidenav section sub-component has a <code>showDivider</code> state, which places a divider
       below the section.
     </PageSection>
@@ -110,7 +104,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
@@ -135,10 +129,10 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       navigate them.
     </p>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Visual Expectations">
+  <PageSection subSectionLevel={1} title="Visual expectations">
     <p>A vertical menu that can contain links, sections and expandable menus</p>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Code Expectations">
+  <PageSection subSectionLevel={1} title="Code expectations">
     <ul>
       <li>The parent component is a nav element</li>
       <li>The menu sub-component is an unordered list</li>

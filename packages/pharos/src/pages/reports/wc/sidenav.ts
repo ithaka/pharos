@@ -8,7 +8,7 @@ import '../../../components/sidenav/pharos-sidenav-menu';
 import '../../../components/link/pharos-link';
 
 export const Sidenav = (): TemplateResult => html`
-  <pharos-sidenav class="reports-page__sidenav">
+  <pharos-sidenav class="reports-page__sidenav" main-content-id="main-content">
     <pharos-link slot="top" href="/" id="jstor-logo">
       <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
     </pharos-link>

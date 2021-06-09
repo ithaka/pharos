@@ -4,16 +4,10 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 <PageSection
   isHeader
   title="Progress Bar"
+  storyBookType="components"
   description="The progress bar visually represents progress of a particular process. It shows how much of the
     task has been completed and how much is remaining."
->
-  <PharosLink
-    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/components-progress-bar--base"
-    target="_blank"
-  >
-    See in Storybook
-  </PharosLink>
-</PageSection>
+></PageSection>
 
 <PageSection title="Usage">
   <p>
@@ -22,7 +16,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </p>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -41,8 +35,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
-  <PageSection subSectionLevel={1} title="Progress Descriptions">
+<PageSection title="Content guidelines">
+  <PageSection subSectionLevel={1} title="Progress descriptions">
     <ul>
       <li>
         If the progress bar calls for descriptions, these should be written as short sentence
@@ -95,7 +89,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
@@ -110,12 +104,11 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       process
     </p>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Code Expectations">
-    Via{' '}
+  <PageSection subSectionLevel={1} title="Code expectations">
+    Via
     <PharosLink href="https://dequeuniversity.com/library/aria/progress-bar-bounded">
       Deque
-    </PharosLink>
-    :<ul>
+    </PharosLink>:<ul>
       <li>
         We want to use the HTML &lt;Progress&gt; element. Within this element, there should be:
         <ul>

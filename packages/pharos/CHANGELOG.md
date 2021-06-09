@@ -1,5 +1,46 @@
 # @ithaka/pharos
 
+## 9.3.0
+
+### Minor Changes
+
+- [#66](https://github.com/ithaka/pharos/pull/66) [`54e9ce0`](https://github.com/ithaka/pharos/commit/54e9ce06e5033a1ef487e6fdbee4fb8aee25b19b) Thanks [@Lham42](https://github.com/Lham42)! - Add skip to main content functionality for sidenav component:
+
+  - Add `skip` prop to `pharos-link` to specify whether the link must be hidden until focused
+  - Add `main-content-id` prop to `pharos-sidenav` to render a skip link with target
+  - Add skip links to the site sidenav and main element
+
+* [#72](https://github.com/ithaka/pharos/pull/72) [`e5652d6`](https://github.com/ithaka/pharos/commit/e5652d63d0b0941e31f4847812f787d180f94117) Thanks [@Niznikr](https://github.com/Niznikr)! - enable setting elements in a shadow DOM as tooltip boundary
+
+- [#68](https://github.com/ithaka/pharos/pull/68) [`cffffc5`](https://github.com/ithaka/pharos/commit/cffffc51d4592b76b0fd022e9b5070fbb88df5b4) Thanks [@Niznikr](https://github.com/Niznikr)! - update collection cards:
+
+  - Update collection card styles
+  - Wrap link around collection image
+  - Add `no-hover` attribute for links
+
+### Patch Changes
+
+- [#58](https://github.com/ithaka/pharos/pull/58) [`630604f`](https://github.com/ithaka/pharos/commit/630604f3e5966e75ff19764d3b4357efc4f2f3dc) Thanks [@Niznikr](https://github.com/Niznikr)! - set overflow for subtle image cards
+
+* [#28](https://github.com/ithaka/pharos/pull/28) [`54f3896`](https://github.com/ithaka/pharos/commit/54f38967a73c8965e8802098d255ffbf535e4930) Thanks [@Niznikr](https://github.com/Niznikr)! - remove /pharos prefix from Gatsby config
+
+- [#70](https://github.com/ithaka/pharos/pull/70) [`cdb6e07`](https://github.com/ithaka/pharos/commit/cdb6e07b3f047a02102f0d8d4a851f9864954427) Thanks [@Niznikr](https://github.com/Niznikr)! - add careers section to homepage
+
+* [#67](https://github.com/ithaka/pharos/pull/67) [`c528ef1`](https://github.com/ithaka/pharos/commit/c528ef130b915b633c8b39b56218d5af20fb7ae7) Thanks [@Lham42](https://github.com/Lham42)! - Add CTA for career opportunities to repo and storybook
+
+## 9.2.1
+
+### Patch Changes
+
+- [#51](https://github.com/ithaka/pharos/pull/51) [`2656245`](https://github.com/ithaka/pharos/commit/26562459b4911d61bd299e5be191f87ff236d3c1) Thanks [@Niznikr](https://github.com/Niznikr)! - render link for error image cards and allow subtle state
+
+* [#48](https://github.com/ithaka/pharos/pull/48) [`ced1c1f`](https://github.com/ithaka/pharos/commit/ced1c1f082e40b5e0b5c71830fb6c6cde1277b83) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies:
+
+  - Update Gatsby dependencies
+  - Update ESLint dependencies
+  - Update Sass
+  - Update cli dependencies
+
 ## 9.2.0
 
 ### Minor Changes

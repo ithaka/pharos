@@ -30,18 +30,23 @@
 .text__do {
   color: var(--pharos-color-feedback-success);
   font-weight: bold;
+  margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
 .text__dont {
   color: var(--pharos-color-feedback-error);
   font-weight: var(--pharos-font-weight-bold);
+  margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
 .text__guideline {
   color: var(--pharos-color-marble-gray-20);
 }
 
+.text__guideline ul li:not(:last-child) {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
 .text__guideline ::marker {
   color: var(--pharos-color-marble-gray-20);
-  font-size: 10px;
 }

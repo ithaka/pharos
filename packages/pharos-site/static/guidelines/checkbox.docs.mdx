@@ -6,14 +6,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   description="Checkboxes present items in a list of one or more options where the user can have several
   different combinations of selections."
   isHeader
->
-  <PharosLink
-    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/forms-checkbox--base"
-    target="_blank"
-  >
-    See in Storybook
-  </PharosLink>
-</PageSection>
+  storyBookType="forms"
+></PageSection>
 
 <PageSection
   title="Usage"
@@ -34,7 +28,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -65,8 +59,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
-  <PageSection title="Group Labels" subSectionLevel={1}>
+<PageSection title="Content guidelines">
+  <PageSection title="Group labels" subSectionLevel={1}>
     <ul>
       <li>
         For a grouping of checkboxes, you can include a heading to provide even greater clarity.
@@ -187,43 +181,62 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <ul>
-    <li>Checkboxes must have a clear and concise label.</li>
-    <li>Users should be warned if selecting a checkbox will cause a context change.</li>
-    <li>Use the `disabled` attribute to prevent the checkbox from interaction.</li>
-  </ul>
-  <PageSection subSectionLevel={1} title="Best practices for labels">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul>
-      <li>Labels must be visible when an input gets focus</li>
-      <li>Labels must be announced to the screen reader on focus</li>
-      <li>Use sentence case</li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value">
+          4.1.2 Name, Role, Value A
+        </PharosLink>
+      </li>
     </ul>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Properties and Roles">
-    <li>The checkbox has `role="checkbox"`.</li>
-    <li>
-      The ARIA state is set to `aria-checked="true"` when the checkbox is selected, and
-      `aria-checked="false"` when it is deselected.
-    </li>
-    <li>
-      Provide a fieldset that surrounds the entire grouping of checkboxes. Also, provide a legend,
-      which is a description for the grouping. [Here's an
-      example.](https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes)
-    </li>
-    <li>
-      Some assistive technology reads the legend text for each fieldset, so it should be brief and
-      descriptive. This helps someone using assistive technology to understand the question they are
-      answering with the group of checkboxes
-    </li>
+  <PageSection subSectionLevel={1} title="Importance">
+    Checkboxes help users to understand the relationship between selections in a form element or
+    filter. A checkbox grouping also will typically allow users to select more than one item in the
+    grouping.
   </PageSection>
-  <PageSection subSectionLevel={1} title="Keyboard interaction">
-    <li>
-      The <kbd>Space</kbd> key can be used to select and deselect each checkbox when it has focus.
-    </li>
-    <li>
-      Users can navigate between checkbox inputs by pressing <kbd>Tab</kbd> or <kbd>Shift</kbd>-
-      <kbd>Tab</kbd>.
-    </li>
-    <li>Checkboxes with the `disabled` attribute are ignored in the tab order.</li>
+  <PageSection subSectionLevel={1} title="Code expectations">
+    <ul>
+      <li> The checkbox has the role "checkbox". </li>
+      <li>
+        When the checkbox is selected, the ARIA state is set to <code>aria-checked="true"</code> and
+        when it is deselected <code>aria-checked="false"</code>.
+      </li>
+      <li>
+        Provide a <code>fieldset</code> that surrounds the entire grouping of checkboxes. Also,
+        provide a <code>legend</code>, which is a description for the grouping. &nbsp;
+        <PharosLink
+          href="https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes"
+          target="_blank"
+        >
+          Here's an example.
+        </PharosLink>
+      </li>
+      <li>
+        Some assistive technology reads the legend text for each fieldset, so it should be brief and
+        descriptive. This helps someone using assistive technology to understand the question they
+        are answering with the group of checkboxes
+      </li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Expected actions">
+    <PageSection subSectionLevel={2} title="Screen reader">
+      <ul>
+        <li>Reads: "item name, state (checked or unchecked), checkbox, fieldset name, group" </li>
+      </ul>
+    </PageSection>
+    <PageSection subSectionLevel={2} title="Keyboard">
+      <ul>
+        <li>
+          The <kbd>Space</kbd> key can be used to select and deselect each checkbox when it has
+          focus.
+        </li>
+        <li>
+          Users can navigate between checkbox inputs by pressing <kbd>Tab</kbd> or <kbd>Shift</kbd>-
+          <kbd>Tab</kbd>.
+        </li>
+        <li>Checkboxes identified as `disabled` attribute are ignored in the tab order.</li>
+      </ul>
+    </PageSection>
   </PageSection>
 </PageSection>

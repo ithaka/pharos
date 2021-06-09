@@ -4,7 +4,6 @@ import { classMap } from 'lit-html/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { nothing } from 'lit-html';
 import { modalStyles } from './pharos-modal.css';
-import { designTokens } from '../../styles/variables.css';
 import focusable from '../../utils/focusable';
 import { customElement } from '../../utils/decorators';
 
@@ -14,7 +13,6 @@ import '@ithaka/focus-trap';
 
 const CLOSE_BUTTONS = `[data-modal-close],pharos-button#close-button`;
 const FOCUS_ELEMENT = `[data-modal-focus]`;
-const matchesFunc = 'matches' in Element.prototype ? 'matches' : 'msMatchesSelector';
 
 export type ModalSize = 'small' | 'medium' | 'large';
 
@@ -79,7 +77,7 @@ export class PharosModal extends LitElement {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, modalStyles];
+    return [modalStyles];
   }
 
   protected firstUpdated(): void {
@@ -179,7 +177,7 @@ export class PharosModal extends LitElement {
   }
 
   private _handleDialogClick(event: MouseEvent): void {
-    if ((event.target as Element)[matchesFunc](CLOSE_BUTTONS)) {
+    if ((event.target as Element).matches(CLOSE_BUTTONS)) {
       this._closeModal(event.target);
     }
   }

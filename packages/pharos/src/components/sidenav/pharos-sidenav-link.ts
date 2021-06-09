@@ -2,7 +2,6 @@ import { html, property } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { nothing } from 'lit-html';
 import { sidenavLinkStyles } from './pharos-sidenav-link.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { PharosLink } from '../link/pharos-link';
 import '../icon/pharos-icon';
@@ -43,7 +42,7 @@ export class PharosSidenavLink extends PharosLink {
   public menuItem = false;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, sidenavLinkStyles];
+    return [super.styles, sidenavLinkStyles];
   }
 
   protected get appendContent(): TemplateResult | typeof nothing {
