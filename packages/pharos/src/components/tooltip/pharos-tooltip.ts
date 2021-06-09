@@ -5,6 +5,7 @@ import { styleMap } from 'lit-html/directives/style-map.js';
 import { createPopper } from '../../utils/popper';
 import debounce from '../../utils/debounce';
 import observeResize from '../../utils/observeResize';
+import deepSelector from '../../utils/deepSelector';
 import { tooltipStyles } from './pharos-tooltip.css';
 import { customElement } from '../../utils/decorators';
 
@@ -226,7 +227,7 @@ export class PharosTooltip extends OverlayElement {
               boundary:
                 this.boundary === 'clippingParents'
                   ? this.boundary
-                  : document.querySelector(`#${this.boundary}`),
+                  : deepSelector(`#${this.boundary}`),
             },
           },
         ],

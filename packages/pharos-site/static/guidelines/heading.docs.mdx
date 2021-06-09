@@ -1,19 +1,12 @@
-<PharosHeading
-  level={'1'}
-  preset={'7--bold'}
-  style={{ color: 'black', marginBottom: 'var(--pharos-spacing-2-x)' }}
->
-  Heading
-</PharosHeading>
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <p style={{ fontSize: 'var(--pharos-type-scale-6)', lineHeight: '2rem' }}>
-    Headings are used as the titles or labels of each major section of a page that make up the UI.
-  </p>
-  <PharosLink href="#" target="_blank">
-    See in Storybook
-  </PharosLink>
-</div>
+<PageSection
+  isHeader
+  title="Heading"
+  description="Headings are used as the titles or labels of each major section of a page that make up the UI."
+  storyBookType="components"
+></PageSection>
 
 ## Usage
 
@@ -42,7 +35,7 @@
     Related
   </PharosHeading>
   JSTOR uses design tokens to set the typography styling in JSTOR's products. To learn more about other
-  typography styles for the product, see our <PharosLink href="https://www.jstor.org/pharos/brand-expressions/typography">typography brand expression page.</PharosLink>
+  typography styles for the product, see our <PharosLink href="https://pharos.jstor.org/brand-expressions/typography">typography brand expression page.</PharosLink>
 </div>
 
 ## Typeface
@@ -190,40 +183,32 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
   </ul>
 </div>
 
-<PharosHeading level={'2'} preset={'6'} style={{ color: 'var(--pharos-color-text-base)' }}>
-  Best Practices
-</PharosHeading>
-
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'2'}>
-      Dos
-    </PharosHeading>
-    <ul>
-      <li>
-        Include a level number (between 1 and 6) to create semantic hierarchy, all headings need to
-        semantically tagged so that a screen reader can identify them when reading a page, or be
-        able pull up a list of all the page headings
-      </li>
-      <li>Include only one level="1" (h1) per page</li>
-      <li>Place headings at the top of their related section</li>
-      <li>Clearly describe the content they refer to</li>
-      <li>Support the hierarchy and structure of the page</li>
-    </ul>
-  </div>
-  <div>
-    <PharosHeading level={'3'} preset={'2'}>
-      Don'ts
-    </PharosHeading>
-    <ul>
-      <li>
-        Don't use heading tags to resize normal text, use our type-scale and font-family design
-        tokens instead
-      </li>
-      <li>Don't skip heading levels, begin with level="1" (h1), level="2" (h2), and so on</li>
-    </ul>
-  </div>
-</div>
+<PageSection title="Best Practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>
+          Include a level number (between 1 and 6) to create semantic hierarchy, all headings need
+          to semantically tagged so that a screen reader can identify them when reading a page, or
+          be able pull up a list of all the page headings
+        </li>
+        <li>Include only one level="1" (h1) per page</li>
+        <li>Place headings at the top of their related section</li>
+        <li>Clearly describe the content they refer to</li>
+        <li>Support the hierarchy and structure of the page</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>
+          Don't use heading tags to resize normal text, use our type-scale and font-family design
+          tokens instead
+        </li>
+        <li>Don't skip heading levels, begin with level="1" (h1), level="2" (h2), and so on</li>
+      </ul>
+    }
+  />
+</PageSection>
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>

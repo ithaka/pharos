@@ -21,6 +21,8 @@ a {
     'sidenav main'
     'sidenav footer';
   grid-template-columns: max-content 1fr;
+  min-height: 100vh;
+  grid-template-rows: 1fr auto;
 }
 
 @media screen and (max-width: 1055px) {
@@ -63,9 +65,14 @@ ul {
 }
 
 .main li {
-  margin-left: var(--spacing-small);
+  margin-left: var(--pharos-spacing-one-and-a-half-x);
 }
 
 .main ul > li::marker {
   color: var(--pharos-color-living-coral-base);
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
 }

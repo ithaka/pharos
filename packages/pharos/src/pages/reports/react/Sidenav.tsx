@@ -7,7 +7,7 @@ import { PharosSidenavLink } from '../../../react-components/sidenav/pharos-side
 import { PharosSidenavMenu } from '../../../react-components/sidenav/pharos-sidenav-menu';
 
 export const Sidenav: FC = () => (
-  <PharosSidenav className="reports-page__sidenav">
+  <PharosSidenav className="reports-page__sidenav" mainContentId="main-content">
     <PharosLink slot="top" href="/" id="jstor-logo">
       <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
     </PharosLink>

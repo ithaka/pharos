@@ -3,16 +3,13 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection
   isHeader
+  storyBookType="components"
   title="Icon"
   description="Pharos Icons are SVG visual representations of objects, items or content, or actions a user can take."
->
-  <PharosLink href="#" target="_blank">
-    See in Storybook
-  </PharosLink>
-</PageSection>
+></PageSection>
 
 <PageSection title="Usage">
-  <PageSection title="When to use" isSubsection>
+  <PageSection title="When to use" subSectionLevel={1}>
     <p>
       Pharos icons seek to provide clarity and convey brand personality through color and style, but
       must first communicate meaning in the content.
@@ -52,7 +49,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       within the input, which should automatically happen.
     </p>
   </PageSection>
-  <PageSection title="Formatting" isSubsection>
+  <PageSection title="Formatting" subSectionLevel={1}>
     <PharosHeading level="4" preset="2">
       Sizing
     </PharosHeading>
@@ -71,9 +68,10 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       (4.5:1). The color of the icon should reflect the importance of the icon's action.
     </p>
     <p>
-      The color can also signify different states to alert users. This occurs with{' '}
-      <PharosLink href="/components/toast">toasts</PharosLink>,{' '}
-      <PharosLink href="/components/alert">alerts</PharosLink> and error/success states for{' '}
+      The color can also signify different states to alert users. This occurs with
+      <PharosLink href="/components/toast">toasts</PharosLink>,<PharosLink href="/components/alert">
+        alerts
+      </PharosLink> and error/success states for
       <PharosLink href="/components/text-input">text inputs</PharosLink>. We use icons so that color
       alone is not the only signal critical information to users in their workflow (
       <PharosLink href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-without-color.html">
@@ -100,14 +98,15 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       Contributing
     </PharosHeading>
     <p>
-      Not finding an icon to support the design need? Please refer to the{' '}
-      <PharosLink href="/brand-expressions/iconography">Iconography brand expressions</PharosLink>{' '}
-      to learn more about the principles and how to create an icon.
+      Not finding an icon to support the design need? Please refer to the
+      <PharosLink href="/brand-expressions/iconography">
+        Iconography brand expressions
+      </PharosLink> to learn more about the principles and how to create an icon.
     </p>
   </PageSection>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -134,7 +133,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
+<PageSection title="Content guidelines">
   <p>
     For the text labels, they should relate to the content or action being represented. The labels
     should be concise and efficient.
@@ -142,7 +141,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection title="Relevant WCAG Guidelines" isSubsection lessMargin>
+  <PageSection title="Relevant WCAG guidelines" subSectionLevel={1} lessMargin>
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">
@@ -156,10 +155,10 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection title="Importance" isSubsection lessMargin>
+  <PageSection title="Importance" subSectionLevel={1} lessMargin>
     <p>Icons provide users a visual representation of text or potential actions.</p>
   </PageSection>
-  <PageSection title="Code Expectations" isSubsection lessMargin>
+  <PageSection title="Code expectations" subSectionLevel={1} lessMargin>
     <ul>
       <li>
         If the icon is purely decorative and is accompanied by text, the icon should have an
@@ -171,7 +170,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection title="Expected actions" isSubsection lessMargin>
+  <PageSection title="Expected actions" subSectionLevel={1} lessMargin>
     <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
       <PharosHeading level="4" preset="1--bold">
         Screen reader

@@ -43,7 +43,7 @@ Then, render the component in your template:
 </pharos-tooltip>
 ```
 
-See the [web component Storybook](#) for details on component-specific syntax.
+See the [web component Storybook](https://pharos.jstor.org/storybooks/wc/) for details on component-specific syntax.
 
 ### Browser support and polyfills
 
@@ -74,7 +74,7 @@ Then, render the component in your JSX:
 <PharosTooltip content={'I am a tooltip'}>Hover here!</PharosTooltip>
 ```
 
-See the [React Storybook](#) for details on component-specific syntax.
+See the [React Storybook](https://pharos.jstor.org/storybooks/react/) for details on component-specific syntax.
 
 ## Using Pharos design tokens
 

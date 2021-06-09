@@ -1,7 +1,7 @@
 .footer {
   background: var(--pharos-color-marble-gray-10);
   color: var(--pharos-color-text-white);
-  padding: var(--pharos-spacing-3-x) 0;
+  padding: var(--pharos-spacing-3-x) 0 var(--pharos-spacing-2-x) 0;
   display: grid;
   grid-template-columns: 6.5rem 1fr 6.5rem;
   grid-template-areas: '. main .';
@@ -40,8 +40,9 @@
 }
 
 .container__start {
-  grid-column: span 6;
+  grid-column: span 3;
   display: grid;
+  row-gap: 5rem;
 }
 
 .container__center {
@@ -51,4 +52,26 @@
 
 .container__end {
   grid-column: span 3;
+  display: grid;
+  grid-template-rows: max-content 1fr 1fr;
+}
+
+.netlify-link {
+  font-size: var(--pharos-font-size-small);
+  line-height: var(--pharos-line-height-small);
+}
+
+.badge {
+  color: var(--pharos-color-text-white);
+  text-transform: uppercase;
+  font-size: var(--pharos-font-size-micro);
+  line-height: var(--pharos-line-height-xsmall);
+  background-color: var(--pharos-color-marble-gray-20);
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+}
+
+.container__link {
+  display: flex;
+  align-items: center;
+  column-gap: var(--pharos-spacing-three-quarters-x);
 }

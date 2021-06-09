@@ -40,3 +40,7 @@
   color: var(--pharos-color-feedback-error);
   margin-left: var(--pharos-spacing-one-half-x);
 }
+
+.icon_do {
+  fill: var(--pharos-color-feedback-success);
+}
