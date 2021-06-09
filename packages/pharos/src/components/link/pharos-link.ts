@@ -6,7 +6,6 @@ import { classMap } from 'lit-html/directives/class-map.js';
 import { linkStyles } from './pharos-link.css';
 import { customElement } from '../../utils/decorators';
 import deepSelector from '../../utils/deepSelector';
-import type { PharosAlert } from '../alert/pharos-alert';
 
 import { AnchorElement } from '../base/anchor-element';
 import type { LinkTarget } from '../base/anchor-element';
@@ -81,17 +80,13 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   public noHover = false;
 
   @state()
-  private _alert!: PharosAlert;
+  private _alert = false;
 
   @state()
   private _hover = false;
 
   public static get styles(): CSSResultArray {
     return [linkStyles];
-  }
-
-  protected firstUpdated(): void {
-    this._alert = this.closest('pharos-alert') as PharosAlert;
   }
 
   private async _handleClick(): Promise<void> {
@@ -110,7 +105,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
     return html`<a
       id="link-element"
       class="${classMap({
-        [`link--alert`]: this._alert && this._alert.status !== 'error',
+        [`link--alert`]: this._alert,
         [`link--hover`]: this._hover,
       })}"
       download=${ifDefined(this.download)}

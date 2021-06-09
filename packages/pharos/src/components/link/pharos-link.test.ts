@@ -1,6 +1,5 @@
 import { html, fixture, expect, nextFrame } from '@open-wc/testing';
 import './pharos-link';
-import '../alert/pharos-alert';
 import type { PharosLink } from './pharos-link';
 import { PharosColorBlack } from '../../styles/variables';
 
@@ -51,17 +50,6 @@ describe('pharos-link', () => {
     `).catch((e) => e);
     expect('fake is not a valid target. Valid targets are: _blank, _parent, _self, _top').to.be
       .thrown;
-  });
-
-  it('adds a class to update its styles when in an alert', async () => {
-    const parentNode = document.createElement('pharos-alert');
-
-    component = await fixture(html`<pharos-link href="#">I am a link</pharos-link>`, {
-      parentNode,
-    });
-    const link = component.renderRoot.querySelector('#link-element');
-
-    expect(link).to.have.class('link--alert');
   });
 
   it('delegates focus to the target when clicked in the skip state', async () => {
