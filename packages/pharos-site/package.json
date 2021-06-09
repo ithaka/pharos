@@ -16,6 +16,7 @@
     "gatsby-plugin-mdx": "^2.6.0",
     "gatsby-plugin-offline": "^4.6.0",
     "gatsby-plugin-react-helmet": "^4.6.0",
+    "gatsby-plugin-remove-trailing-slashes": "^3.6.0",
     "gatsby-plugin-sass": "^4.6.0",
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-source-filesystem": "^3.6.0",
