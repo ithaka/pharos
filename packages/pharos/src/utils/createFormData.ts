@@ -19,7 +19,7 @@ const createFormData = (form: HTMLFormElement): FormData => {
       if (element) {
         (element as HTMLInputElement).value = inputValue as string;
       } else {
-        // Web component form input doesn't participate in the form in Safari and IE11
+        // Web component form input doesn't participate in the form in Safari
         const hiddenInput = document.createElement('input');
         hiddenInput.type = 'hidden';
         hiddenInput.value = inputValue as string;

@@ -2,7 +2,6 @@ import { LitElement, html, property } from 'lit-element';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { alertStyles } from './pharos-alert.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import FocusMixin from '../../utils/mixins/focus';
@@ -56,7 +55,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
   public status: AlertStatus = '';
 
   public static get styles(): CSSResultArray {
-    return [designTokens, alertStyles];
+    return [alertStyles];
   }
 
   protected update(changedProperties: PropertyValues): void {

@@ -1,7 +1,6 @@
 import { html, LitElement, query } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { loadingSpinnerStyles } from './pharos-loading-spinner.css';
-import { designTokens } from '../../styles/variables.css';
 import {
   PharosLoadingSpinnerColorStrokePrimary,
   PharosLoadingSpinnerColorStrokeSecondary,
@@ -25,7 +24,7 @@ export class PharosLoadingSpinner extends LitElement {
   private _spinner!: SVGCircleElement;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, loadingSpinnerStyles];
+    return [loadingSpinnerStyles];
   }
 
   protected firstUpdated(): void {

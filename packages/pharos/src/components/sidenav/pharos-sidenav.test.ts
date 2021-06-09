@@ -130,4 +130,11 @@ describe('pharos-sidenav', () => {
     await nextFrame();
     expect(component.slide).to.be.false;
   });
+
+  it('renders a skip link when attribute main-content-id is passed', async () => {
+    component.mainContentId = 'test';
+    await component.updateComplete;
+    const link = component.renderRoot.querySelector('#sidenav-skip-link');
+    expect(link).not.to.be.null;
+  });
 });

@@ -39,7 +39,7 @@ const Sidenav: FC = () => {
         <PharosSidenavLink
           key={index}
           href={url}
-          isActive={window.location.pathname === withPrefix(url)}
+          isActive={window.location.pathname.startsWith(withPrefix(url))}
           onClick={handleLinkClick}
         >
           {page}
@@ -54,7 +54,7 @@ const Sidenav: FC = () => {
     };
 
     const content = (
-      <PharosSidenav className={sidenav}>
+      <PharosSidenav mainContentId="skip-link" className={sidenav}>
         <PharosLink href="/" slot="top" flex onClick={handleLinkClick}>
           <div>
             <div className={siteBrand__title}>{data.site.siteMetadata.title}</div>
@@ -64,14 +64,14 @@ const Sidenav: FC = () => {
         <PharosSidenavSection showDivider>
           <PharosSidenavLink
             href="/getting-started"
-            isActive={window.location.pathname === withPrefix('/getting-started')}
+            isActive={window.location.pathname.startsWith(withPrefix('/getting-started'))}
             onClick={handleLinkClick}
           >
             Getting started
           </PharosSidenavLink>
           <PharosSidenavLink
             href="/help"
-            isActive={window.location.pathname === withPrefix('/help')}
+            isActive={window.location.pathname.startsWith(withPrefix('/help'))}
             onClick={handleLinkClick}
           >
             Help
@@ -100,13 +100,6 @@ const Sidenav: FC = () => {
           </PharosSidenavMenu>
         </PharosSidenavSection>
         <PharosSidenavSection label="Design System">
-          <PharosSidenavLink
-            href="/design-tokens"
-            isActive={window.location.pathname === withPrefix('/design-tokens')}
-            onClick={handleLinkClick}
-          >
-            Design tokens
-          </PharosSidenavLink>
           <PharosSidenavMenu label="Components" expanded={isExpanded('components')}>
             {[
               'Component status',
@@ -121,6 +114,7 @@ const Sidenav: FC = () => {
               'Header',
               'Heading',
               'Icon',
+              'Image Card',
               'Input Group',
               'Link',
               'Loading Spinner',
@@ -136,6 +130,20 @@ const Sidenav: FC = () => {
               'Text Input',
               'Textarea',
             ].map(createSidenavLink.bind(this, 'components'))}
+          </PharosSidenavMenu>
+          <PharosSidenavMenu label="Design tokens" expanded={isExpanded('design-tokens')}>
+            {[
+              'Alias colors',
+              'Global colors',
+              'Font family',
+              'Font size',
+              'Font weight',
+              'Line height',
+              'Radius',
+              'Spacing',
+              'Transitions',
+              'Type scale',
+            ].map(createSidenavLink.bind(this, 'design-tokens'))}
           </PharosSidenavMenu>
           <PharosSidenavMenu label="Styles" expanded={isExpanded('styles')}>
             {['Type styles'].map(createSidenavLink.bind(this, 'styles'))}

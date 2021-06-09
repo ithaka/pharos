@@ -32,7 +32,7 @@ export default {
 export const Reports = (): TemplateResult => html`
   <div class="reports-page__container">
     ${Sidenav()}
-    <main>
+    <main id="main-content">
       <pharos-layout preset="1-col--sidenav" class="reports-page__container--main-content">
         <div class="reports-page__container--top" slot="top">
           <div class="reports-page__container--nav-header">

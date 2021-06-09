@@ -1,7 +1,6 @@
 import { html, LitElement, property } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { tabPanelStyles } from './pharos-tab-panel.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import focusable from '../../utils/focusable';
 
@@ -23,7 +22,7 @@ export class PharosTabPanel extends LitElement {
   public selected = false;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, tabPanelStyles];
+    return [tabPanelStyles];
   }
 
   protected firstUpdated(): void {

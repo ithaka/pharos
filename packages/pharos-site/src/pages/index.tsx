@@ -18,12 +18,13 @@ import {
   heading__status,
   link__status,
   button__card,
+  badge,
+  container__heading,
 } from './index.module.css';
 
 import brandGuideline from '../../static/images/homepage/home-brand-guidelines.png';
 import components from '../../static/images/homepage/home-components.svg';
 import getStarted from '../../static/images/homepage/home-get-started.svg';
-import contribute from '../../static/images/homepage/home-contribute.svg';
 
 import '@ithaka/pharos/lib/styles/fonts.css';
 
@@ -78,11 +79,11 @@ const IndexPage: FC = () => {
             <PharosButton
               className={button__card}
               variant="secondary"
-              href="brand-expressions/logos"
+              href="brand-expressions/color"
               data-sc="link:logos"
               onClick={handleLinkClick}
             >
-              Start with logos
+              Start with color
             </PharosButton>
           </div>
           <div className={card__image}>
@@ -111,7 +112,7 @@ const IndexPage: FC = () => {
               <img src={getStarted} alt="Get Started" width="100%" />
             </div>
             <PharosHeading level="2" preset="4">
-              Get Started
+              Get started
             </PharosHeading>
             <p className={description}>
               Pharos streamlines the development and design process. Check out our resources to use
@@ -138,25 +139,34 @@ const IndexPage: FC = () => {
               What&apos;s new: Pharos {pkg.version}
             </PharosHeading>
             <p className={description}>
-              A new and improved version of the Pharos component library. Upgrade today to explore
-              new possibilities for your apps and projects, and help maintain consistency on JSTOR.
+              Upgrade to the latest version of Pharos today to explore new possibilities for your
+              apps and projects, and help maintain consistency on JSTOR.
             </p>
             <ul className={list}>
               <li>
                 <PharosLink
                   href="https://github.com/ithaka/pharos/blob/main/packages/pharos/CHANGELOG.md"
+                  target="_blank"
                   data-sc="link:changelog"
                 >
                   Changelog
                 </PharosLink>
               </li>
               <li>
-                <PharosLink href="#" data-sc="link:wc storybook">
+                <PharosLink
+                  href="https://pharos.jstor.org/storybooks/wc/"
+                  target="_blank"
+                  data-sc="link:wc storybook"
+                >
                   Web Components Storybook
                 </PharosLink>
               </li>
               <li>
-                <PharosLink href="#" data-sc="link:react storybook">
+                <PharosLink
+                  href="https://pharos.jstor.org/storybooks/react/"
+                  target="_blank"
+                  data-sc="link:react storybook"
+                >
                   React Components Storybook
                 </PharosLink>
               </li>
@@ -170,7 +180,8 @@ const IndexPage: FC = () => {
               Support
             </PharosHeading>
             <p className={description}>
-              Experiencing a Pharos-related issue or just need some help? Report an issue in GitHub.
+              Experiencing a Pharos-related issue or just need some help? Report an issue in Github
+              or get in touch via slack.
             </p>
             <ul className={list}>
               <li>
@@ -179,19 +190,20 @@ const IndexPage: FC = () => {
                 </PharosLink>
               </li>
               <li>
-                <PharosLink href="mailto:opensource@ithaka.org">Contact Us</PharosLink>
+                <PharosLink href="mailto:opensource@ithaka.org">Contact us</PharosLink>
+              </li>
+              <li>
+                <PharosLink href="https://github.com/ithaka/pharos/issues" target="_blank">
+                  Report an issue
+                </PharosLink>
               </li>
             </ul>
           </div>
 
-          <hr />
-
           <div className={card}>
-            <div>
-              <img src={contribute} alt="Contribute" width="100%" />
+            <div className={icon}>
+              <PharosIcon name="add"></PharosIcon>
             </div>
-          </div>
-          <div className={card}>
             <PharosHeading level="2" preset="4">
               Contribute to Pharos
             </PharosHeading>
@@ -202,16 +214,51 @@ const IndexPage: FC = () => {
             </p>
             <ul className={list}>
               <li>
-                <PharosLink href="https://github.com/ithaka/pharos" data-sc="link:repo">
+                <PharosLink
+                  href="https://github.com/ithaka/pharos"
+                  target="_blank"
+                  data-sc="link:repo"
+                >
                   Help build Pharos
                 </PharosLink>
               </li>
               <li>
                 <PharosLink
                   href="https://github.com/ithaka/pharos/blob/main/docs/README.md"
+                  target="_blank"
                   data-sc="link:contribution guidelines"
                 >
                   See the contribution guidelines
+                </PharosLink>
+              </li>
+            </ul>
+          </div>
+          <div className={card}>
+            <div className={icon}>
+              <PharosIcon name="workspace"></PharosIcon>
+            </div>
+            <div className={container__heading}>
+              <PharosHeading level="2" preset="4" noMargin>
+                Work with us at ITHAKA
+              </PharosHeading>
+              <strong className={badge}>We&apos;re hiring!</strong>
+            </div>
+            <p className={description}>
+              JSTOR is part of ITHAKA, a not-for-profit dedicated to expanding access to knowledge
+              and education worldwide. Our staff makes us who we are. We&apos;re hiring — join us!
+            </p>
+            <ul className={list}>
+              <li>
+                <PharosLink
+                  href="https://recruiting.ultipro.com/ITH1000ITHAK/JobBoard/5fe90ad4-9e26-490b-9c45-6c9669d4dcd0/?q=&o=postedDateDesc"
+                  target="_blank"
+                >
+                  See career opportunities
+                </PharosLink>
+              </li>
+              <li>
+                <PharosLink href="https://ithaka.org/" target="_blank">
+                  Learn more about ITHAKA
                 </PharosLink>
               </li>
             </ul>

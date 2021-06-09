@@ -1,7 +1,6 @@
 import { html, LitElement } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { headerStyles } from './pharos-header.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 /**
@@ -18,7 +17,7 @@ import { customElement } from '../../utils/decorators';
 @customElement('pharos-header')
 export class PharosHeader extends LitElement {
   public static get styles(): CSSResultArray {
-    return [designTokens, headerStyles];
+    return [headerStyles];
   }
 
   protected render(): TemplateResult {

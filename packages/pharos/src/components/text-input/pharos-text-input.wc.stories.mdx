@@ -2,9 +2,9 @@ import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit-html';
 import { action } from '@storybook/addon-actions';
 import { ifDefined } from 'lit-html/directives/if-defined';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import './pharos-text-input';
-import '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -16,13 +16,11 @@ import createFormData from '../../utils/createFormData';
 
 # Text Input
 
-<pharos-link href="https://www.jstor.org/pharos/components/text-input" target="_blank">See guidelines in Pharos</pharos-link>
+<GuidelineLink path="text-input" />
 
 export const Template = (args) =>
   html`
-    <div
-      style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
-    >
+    <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
       <pharos-text-input
         name="story-input"
         type="${ifDefined(args.type)}"
@@ -68,30 +66,23 @@ export const Template = (args) =>
   <Story name="States">
     {html`
       <div
-        style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: repeat(2, 300px); -ms-grid-columns: 300px 1rem 300px"
+        style="display: grid; grid-gap: 1rem; grid-template-columns: repeat(2, 300px); 1rem 300px"
       >
         <pharos-text-input><span slot="label">Empty input</span></pharos-text-input>
-        <pharos-text-input disabled style="-ms-grid-column: 3"
-          ><span slot="label">Disabled input</span></pharos-text-input
-        >
-        <pharos-text-input readonly value="Example text" style="-ms-grid-row: 2"
+        <pharos-text-input disabled><span slot="label">Disabled input</span></pharos-text-input>
+        <pharos-text-input readonly value="Example text"
           ><span slot="label">Read only input</span></pharos-text-input
         >
-        <pharos-text-input
-          placeholder="example placeholder text"
-          style="-ms-grid-column: 3; -ms-grid-row: 2"
+        <pharos-text-input placeholder="example placeholder text"
           ><span slot="label">Placeholder for input</span></pharos-text-input
         >
-        <pharos-text-input value="This value was provided" style="-ms-grid-row: 3"
+        <pharos-text-input value="This value was provided"
           ><span slot="label">Value provided</span></pharos-text-input
         >
-        <pharos-text-input
-          hide-label
-          style="-ms-grid-column: 3; -ms-grid-row: 3"
-          value="Hidden label input"
+        <pharos-text-input hide-label value="Hidden label input"
           ><span slot="label">Hidden label</span></pharos-text-input
         >
-        <pharos-text-input value="A validated value" validated style="-ms-grid-row: 3"
+        <pharos-text-input value="A validated value" validated
           ><span slot="label">Validated input</span></pharos-text-input
         >
       </div>
@@ -105,9 +96,7 @@ export const Template = (args) =>
   <Story name="Events">
     {() => {
       return html`
-        <div
-          style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
-        >
+        <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
           <pharos-text-input
             placeholder="Enter some text"
             @change="${(e) => action('Change')(e.target.value)}"
@@ -142,9 +131,7 @@ export const Template = (args) =>
 
 export const CustomTemplate = (args) =>
   html`
-    <div
-      style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
-    >
+    <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
       <pharos-text-input
         placeholder="Enter some text"
         @change="${(e) => action('Change')(e.target.value)}"
@@ -187,9 +174,7 @@ export const CustomTemplate = (args) =>
   <Story name="Form Data">
     {() => {
       return html`
-        <div
-          style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
-        >
+        <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
           <form name="my-form" action="https://httpbin.org/post" method="POST">
             <pharos-text-input
               name="my-text-input"

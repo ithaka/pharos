@@ -48,7 +48,7 @@ describe('pharos-image-card', () => {
         alt="Card Title"
         src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
       />
-      <div slot="metadata"><strong>100 items</strong></div>
+      <strong slot="metadata">100 items</strong>
       <div slot="metadata">Description of collection.</div>
     </pharos-image-card>`);
     await expect(component).to.be.accessible();
@@ -137,16 +137,33 @@ describe('pharos-image-card', () => {
     expect(metadataHover).not.to.be.null;
   });
 
+  it('renders a hoverable version of the metadata in the error and subtle state', async () => {
+    component.subtle = true;
+    component.error = true;
+    await component.updateComplete;
+
+    const metadataHover = component.renderRoot.querySelector('.card__metadata--hover');
+    expect(metadataHover).not.to.be.null;
+  });
+
   it('renders a link around the image for the base variant', async () => {
     const link = component.renderRoot.querySelector('pharos-link.card__link--image');
     expect(link).not.to.be.null;
   });
 
-  it('renders a container around the image for the collection variant', async () => {
+  it('renders a link around the container for the error state', async () => {
+    component.error = true;
+    await component.updateComplete;
+
+    const link = component.renderRoot.querySelector('pharos-link.card__link--image');
+    expect(link).not.to.be.null;
+  });
+
+  it('renders a link around the image for the collection variant', async () => {
     component.variant = 'collection';
     await component.updateComplete;
 
-    const container = component.renderRoot.querySelector('.card__container--collection');
-    expect(container).not.to.be.null;
+    const link = component.renderRoot.querySelector('pharos-link.card__link--collection');
+    expect(link).not.to.be.null;
   });
 });

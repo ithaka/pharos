@@ -3,17 +3,11 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection
   isHeader
+  storyBookType="components"
   title="Toast"
   description="Toasts are non-disruptive messages that appear at the top right corner of the UI to provide
     quick, at-a-glance feedback on the outcome of an action."
->
-  <PharosLink
-    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/components-toast--base"
-    target="_blank"
-  >
-    See in Storybook
-  </PharosLink>
-</PageSection>
+></PageSection>
 
 <PageSection title="Usage">
   <p>
@@ -23,7 +17,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </p>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -56,8 +50,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection title="Content Guidelines">
-  <PageSection subSectionLevel={1} title="Toast Messages">
+<PageSection title="Content guidelines">
+  <PageSection subSectionLevel={1} title="Toast messages">
     <PageSection subSectionLevel={2} title="Success">
       <p>
         Toast messages are simple, concise and human-sounding. The message informs the user of the
@@ -114,7 +108,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul>
       <li>
         <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification.html">
@@ -131,7 +125,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection subSectionLevel={1} title="Importance">
     <p>Allows the user to receive a quick notification</p>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Visual Expectations">
+  <PageSection subSectionLevel={1} title="Visual expectations">
     <ul>
       <li>Toast notification should always appear in the same location on the screen</li>
       <li>
@@ -142,7 +136,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </li>
     </ul>
   </PageSection>
-  <PageSection subSectionLevel={1} title="Code Expectations">
+  <PageSection subSectionLevel={1} title="Code expectations">
     <ul>
       <li>
         Toasts should be wrapped in aria-live-region and have <code>role="alert"</code>, having both

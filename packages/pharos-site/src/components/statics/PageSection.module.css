@@ -18,10 +18,6 @@
   margin-bottom: var(--pharos-spacing-2-x);
 }
 
-.title__base {
-  margin-bottom: var(--pharos-spacing-1-x);
-}
-
 .title__moreSpace {
   margin-bottom: var(--pharos-spacing-one-and-a-half-x);
   color: var(--pharos-color-black);

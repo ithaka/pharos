@@ -5,14 +5,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   isHeader
   title="Dropdown Menu"
   description="Dropdown menus present a list of menu items from which a user can choose from."
->
-  <PharosLink
-    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/components-dropdown-menu--base"
-    target="_blank"
-  >
-    See in Storybook
-  </PharosLink>
-</PageSection>
+  storyBookType="components"
+></PageSection>
 
 <PageSection title="Usage">
   <p>
@@ -23,7 +17,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </p>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -114,7 +108,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     A trigger (link or button) that causes a menu to show under it with a list of options to pick
     from.
   </PageSection>
-  <PageSection title="Code Expectations" subSectionLevel={1}>
+  <PageSection title="Code expectations" subSectionLevel={1}>
     <ul>
       <li>Dropdown list item has aria-haspopup="true" and aria-expanded="false"</li>
       <li>There is another list within the dropdown that contains all its child elements</li>

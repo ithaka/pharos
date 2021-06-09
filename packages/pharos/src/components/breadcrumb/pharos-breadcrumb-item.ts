@@ -3,7 +3,6 @@ import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { breadcrumbItemStyles } from './pharos-breadcrumb-item.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import { AnchorElement } from '../base/anchor-element';
@@ -44,7 +43,7 @@ export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
   private _last = false;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, breadcrumbItemStyles];
+    return [breadcrumbItemStyles];
   }
 
   private _contentObserver: MutationObserver = new MutationObserver(() => {

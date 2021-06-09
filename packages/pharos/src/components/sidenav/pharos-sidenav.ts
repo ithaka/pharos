@@ -1,14 +1,15 @@
 import { html, property } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { sidenavStyles } from './pharos-sidenav.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
+import { nothing } from 'lit-html';
 
 import { SideElement } from '../base/side-element';
 
 import FocusMixin from '../../utils/mixins/focus';
 
 import '../button/pharos-button';
+import '../link/pharos-link';
 
 /**
  * Pharos sidenav component.
@@ -28,6 +29,13 @@ export class PharosSidenav extends FocusMixin(SideElement) {
   @property({ type: Boolean, reflect: true })
   public slide = false;
 
+  /**
+   * Indicates the skip to target
+   * @attr main-content-id
+   */
+  @property({ type: String, reflect: true, attribute: 'main-content-id' })
+  public mainContentId?: string;
+
   private _mediaQuery: MediaQueryList = window.matchMedia(`(max-width: 1055px)`);
 
   constructor() {
@@ -46,7 +54,7 @@ export class PharosSidenav extends FocusMixin(SideElement) {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, sidenavStyles];
+    return [super.styles, sidenavStyles];
   }
 
   private _handleClickClose(): void {
@@ -58,6 +66,14 @@ export class PharosSidenav extends FocusMixin(SideElement) {
     if (!e.matches) {
       this.slide = false;
     }
+  }
+
+  private _renderSkipToMain(): TemplateResult | typeof nothing {
+    return this.mainContentId
+      ? html`<pharos-link id="sidenav-skip-link" on-background skip href="#${this.mainContentId}">
+          Skip to main content</pharos-link
+        > `
+      : nothing;
   }
 
   protected render(): TemplateResult {
@@ -73,6 +89,7 @@ export class PharosSidenav extends FocusMixin(SideElement) {
             icon-condensed
             @click=${this._handleClickClose}
           ></pharos-button>
+          ${this._renderSkipToMain()}
           <slot name="top"></slot>
         </div>
         <div class="sidenav__sections">

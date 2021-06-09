@@ -1,4 +1,5 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosAlert } from '../../react-components/alert/pharos-alert';
 import { PharosLink } from '../../react-components/link/pharos-link';
@@ -16,9 +17,7 @@ import { PharosLink } from '../../react-components/link/pharos-link';
 
 # Alert
 
-<PharosLink href="https://www.jstor.org/pharos/components/alert" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="alert" />
 
 export const Template = (args) => <PharosAlert status={args.status}>{args.text}</PharosAlert>;
 

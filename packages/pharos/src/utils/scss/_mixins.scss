@@ -280,7 +280,6 @@
 
 @mixin no-bullet {
   list-style-type: none;
-  -ms-overflow-style: none;
 }
 
 @mixin list-inline($margin-right: var(--pharos-spacing-one-and-a-half-x)) {

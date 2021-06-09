@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: `/pharos`,
   siteMetadata: {
     title: `Pharos`,
     description: `ITHAKA's design system`,
@@ -64,5 +63,6 @@ module.exports = {
         allExtensions: true,
       },
     },
+    `gatsby-plugin-remove-trailing-slashes`,
   ],
 };

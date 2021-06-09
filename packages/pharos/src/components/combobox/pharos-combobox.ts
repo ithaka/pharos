@@ -5,7 +5,6 @@ import { classMap } from 'lit-html/directives/class-map.js';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { nothing } from 'lit-html';
 import { comboboxStyles } from './pharos-combobox.css';
-import { designTokens } from '../../styles/variables.css';
 import debounce from '../../utils/debounce';
 import { customElement } from '../../utils/decorators';
 
@@ -109,7 +108,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
   );
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, comboboxStyles];
+    return [super.styles, comboboxStyles];
   }
 
   protected firstUpdated(): void {

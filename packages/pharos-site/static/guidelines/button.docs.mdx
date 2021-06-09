@@ -2,14 +2,12 @@ import PageSection from '../../src/components/statics/PageSection.tsx';
 import BestPractices from '../../src/components/statics/BestPractices.tsx';
 import ellipsesExample from '../images/components/button/buttons_ellipses-example.png';
 
-<PageSection title="Button" description="Buttons communicate actions that users can take." isHeader>
-  <PharosLink
-    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/components-button--base"
-    target="_blank"
-  >
-    See in Storybook
-  </PharosLink>
-</PageSection>
+<PageSection
+  title="Button"
+  description="Buttons communicate actions that users can take."
+  isHeader
+  storyBookType="components"
+></PageSection>
 
 <PageSection title="Usage" description="Buttons communicate actions that users can take.">
   <PageSection title="When to use buttons" subSectionLevel={1}>
@@ -70,7 +68,7 @@ import ellipsesExample from '../images/components/button/buttons_ellipses-exampl
   </PageSection>
 </PageSection>
 
-<PageSection title="Best Practices">
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
@@ -237,8 +235,8 @@ import ellipsesExample from '../images/components/button/buttons_ellipses-exampl
   <PageSection title="With icons" subSectionLevel={1}>
     <p>
       Pair text with an icon to better clarify the meaning of the button. Use no more than one icon
-      before text and one icon after text (see
-      <PharosLink href="https://www.jstor.org/pharos/brand-expressions/iconography">
+      before text and one icon after text (see &nbsp;
+      <PharosLink href="https://pharos.jstor.org/brand-expressions/iconography">
         Pharos icons
       </PharosLink>
       ). When deciding to use an icon in a button, it allows for a subtle, but personable,
@@ -257,7 +255,7 @@ import ellipsesExample from '../images/components/button/buttons_ellipses-exampl
       tooltip to help visually provide meaning to the action. They should be used only in compact UI
       situations. Use an icon that conveys a single action.
     </p>
-    <PharosButton name="icon-only" icon="chevron-left-large" variant="subtle"></PharosButton>{' '}
+    <PharosButton name="icon-only" icon="chevron-left-large" variant="subtle"></PharosButton>
     <PharosButton name="icon-only" icon="chevron-right-large" variant="subtle"></PharosButton>
   </PageSection>
   <PageSection title="Large button" subSectionLevel={1}>
@@ -313,7 +311,7 @@ import ellipsesExample from '../images/components/button/buttons_ellipses-exampl
     >
       <PharosButton name="primary-on-background" on-background>
         Primary button
-      </PharosButton>{' '}
+      </PharosButton>
       <PharosButton name="secondary-on-background" variant="secondary" on-background>
         Secondary button
       </PharosButton>
@@ -322,6 +320,15 @@ import ellipsesExample from '../images/components/button/buttons_ellipses-exampl
 </PageSection>
 
 <PageSection title="Accessibility">
+  <PageSection title="Relevant WCAG guidelines" subSectionLevel={1}>
+    <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
+          1.3.1 Info and Relationships A
+        </PharosLink>
+      </li>
+    </ul>
+  </PageSection>
   <PageSection title="Importance" subSectionLevel={1}>
     <p>
       By using the semantic <code>button</code> element, assistive technologies can better
@@ -373,20 +380,11 @@ import ellipsesExample from '../images/components/button/buttons_ellipses-exampl
           close a modal
         </li>
         <li>
-          In example above, put an aria-label element on the button element:{' '}
-          <code>&lt;button type="button" aria-label="close modal"&gt;.</code> A screen reader would
-          then read <i>"Close modal, button"</i>
+          In example above, put an aria-label element on the button element:
+          <code>&lt;button type="button" aria-label="close modal"&gt;.</code> A screen reader would then
+          read <i>"Close modal, button"</i>
         </li>
       </ul>
     </PageSection>
-  </PageSection>
-  <PageSection title="Relevant WCAG Guidelines" subSectionLevel={1}>
-    <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
-      <li>
-        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
-          1.3.1 Info and Relationships A
-        </PharosLink>
-      </li>
-    </ul>
   </PageSection>
 </PageSection>

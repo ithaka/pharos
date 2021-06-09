@@ -10,9 +10,6 @@
 - [Typography and mixins](#typography-and-mixins)
 - [Styling components](#styling-components)
 - [Using Pharos form elements in forms](#using-pharos-form-elements-in-forms)
-- [Component-specific notes](#component-specific-notes)
-  * [Tooltip and Dropdown Menu](#tooltip-and-dropdown-menu)
-  * [Loading spinner](#loading-spinner)
 - [Adoption Governance Model](#adoption-governance-model)
 
 <!-- tocstop -->
@@ -46,7 +43,7 @@ Then, render the component in your template:
 </pharos-tooltip>
 ```
 
-See the [web component Storybook](#) for details on component-specific syntax.
+See the [web component Storybook](https://pharos.jstor.org/storybooks/wc/) for details on component-specific syntax.
 
 ### Browser support and polyfills
 
@@ -77,7 +74,7 @@ Then, render the component in your JSX:
 <PharosTooltip content={'I am a tooltip'}>Hover here!</PharosTooltip>
 ```
 
-See the [React Storybook](#) for details on component-specific syntax.
+See the [React Storybook](https://pharos.jstor.org/storybooks/react/) for details on component-specific syntax.
 
 ## Using Pharos design tokens
 
@@ -188,9 +185,9 @@ Components that have corresponding stylesheets are:
 
 ## Using Pharos form elements in forms
 
-Pharos form elements listen to the [`formdata` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/formdata_event) to add their values to the enclosing `<form>`. Safari and IE11 don't natively fire the `formdata` event, so form authors need to fire a custom event in its stead.
+Pharos form elements listen to the [`formdata` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/formdata_event) to add their values to the enclosing `<form>`. Safari doesn't natively fire the `formdata` event, so form authors need to fire a custom event in its stead.
 
-Pharos provides a cross-browser `createFormData` utility function for populating forms via a custom `formdata` event. You should call `createFormData` in your form's `submit` event handler. You will also need to use [`formdata-polyfill`](https://www.npmjs.com/package/formdata-polyfill) to support IE11 and Safari.
+Pharos provides a cross-browser `createFormData` utility function for populating forms via a custom `formdata` event. You should call `createFormData` in your form's `submit` event handler.
 
 ```javascript
 import 'formdata-polyfill'; // Should come before the createFormData import
@@ -218,16 +215,6 @@ form.addEventListener('submit', (event) => {
   xhr.send(formData);
 });
 ```
-
-## Component-specific notes
-
-### Tooltip and Dropdown Menu
-
-Pharos tooltips and dropdown menus utilize the [`ResizeObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) to size themselves appropriately in `full-width` mode. You will need to use the [`resize-observer-polyfill`](https://www.npmjs.com/package/resize-observer-polyfill) polyfill to support tooltips in IE11.
-
-### Loading spinner
-
-Pharos loading spinners utilize the [`Web Animations API`](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) to animate the spinner SVG. You will need to use the [`web-animations-js`](https://github.com/web-animations/web-animations-js) polyfill to support spinners in IE11.
 
 ## Adoption Governance Model
 

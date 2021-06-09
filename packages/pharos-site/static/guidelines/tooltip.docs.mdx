@@ -7,17 +7,11 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection
   isHeader
+  storyBookType="components"
   title="Tooltip"
   description="Tooltips provide concise additional information upon hover or focus. The content should be
   contextual, helpful, and non-critical."
->
-  <PharosLink
-    href="http://pharos-storybooks.apps.test.cirrostratus.org/wc/?path=/story/components-tooltip--base"
-    target="_blank"
-  >
-    See in Storybook
-  </PharosLink>
-</PageSection>
+></PageSection>
 
 <PageSection title="Usage">
   <PageSection subSectionLevel={1} title="Placement">
@@ -217,74 +211,98 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 
 <PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Guidance">
-    <ol>
-      <li>
-        Tooltips display when their trigger element receives keyboard focus or is hovered over with
-        a mouse.
-      </li>
-      <li>
-        After the tooltip opens, initial focus should be set on the first focusable element in the
-        tooltip.
-      </li>
-      <li>After the tooltip closes, focus should remain on the trigger.</li>
-      <li>
-        Focus must not move outside the tooltip's trigger until a user dismisses it via keyboard
-        tabbing or moving their mouse off the trigger.
-      </li>
-      <li>
-        A tooltip can be dismissed when a user moves their mouse off the trigger, removes keyboard
-        focus of the element that invoked it, or by pressing the <kbd>Escape</kbd> key.
-      </li>
-    </ol>
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Usability">
-    <PageSection subSectionLevel={2} title="Dismissible">
-      <p>
-        A user can dismiss the tooltip without moving their pointer hover or keyboard focus. This
-        must be able to work with:
-      </p>
-      <ul>
-        <li>Mouse</li>
-        <li>Keyboard</li>
-        <li>Screen readers</li>
-        <li>Magnification and zoom</li>
-      </ul>
-    </PageSection>
-    <PageSection subSectionLevel={2} title="Hoverable">
-      <p>
-        If pointer hover can trigger the additional content, then the pointer can be moved over the
-        tooltip without it disappearing.
-      </p>
-      <i>
-        Tooltip remains open while the cursor moves within the trigger and disappears when the
-        cursor moves out of the trigger.
-      </i>
-    </PageSection>
-    <PageSection subSectionLevel={2} title="Persistent">
-      <p>
-        The additional content remains visible until the hover or focus trigger is removed, the user
-        dismisses it, or its information is no longer valid.
-      </p>
-    </PageSection>
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Expected actions">
-    <PageSection subSectionLevel={2} title="Keyboard">
-      Pressing <kbd>Escape</kbd> dismisses the tooltip.
-    </PageSection>
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Roles">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
     <ul>
       <li>
-        The element that serves as the tooltip container has <code>role="tooltip"</code>.
-      </li>
-      <li>
-        The element that triggers the tooltip references the tooltip element with aria-describedby.
-      </li>
-      <li>
-        Don't rely on <code>title</code> attributes. They are not keyboard accessible and are not
-        supported in many screen reader setups.
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html">
+          1.4.13 Content on Hover or Focus AA
+        </PharosLink>
       </li>
     </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Importance">
+    Tooltips give additional information to the user by providing information that isn't presented
+    visually. Tooltips can take multiple forms, such as a label for an icon (similar to our metadata
+    icon on the item page) or providing additional information or clarification about an element
+    (usually in the form of a "i" or a "?" icon). Tooltips do not need to receive focus, but rather
+    just live on the button, link or form field that it relates to. There may be additional Aria
+    tags that need to be added to make the tooltip available to assistive technologies, such as
+    aria-describedby.
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Code expectations">
+    <ul>
+      <li>
+        For labels (similar to the metadata and thumbnail hover on &nbsp;
+        <PharosLink href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">
+          item page
+        </PharosLink>) &nbsp;
+        <ul>
+          <li> Use aria-labelledby and have the id share the same label</li>
+          <li> Make it the &lt;button&gt; attribute with a &lt;class&gt; attribute as well</li>
+          <li>
+            Within the &lt;div&gt; add "role=tooltip" and the id attribute that corresponds to the
+            aria-labelledby. Also add whatever you want the tooltip to give the user
+            <ul>
+              <li>
+                <PharosLink href="https://docs.google.com/document/d/1GEzU9omXho7_5cpCI_hyVOtnyKoC9bwgFQNWHJLspmg/edit?usp=sharing">
+                  Example
+                </PharosLink>
+                (via Inclusive Components by Heydon Pickering)
+              </li>
+              <li>The role of "tooltip" assures that the aria-labelledby will work correctly</li>
+              <li>The button role will also ensure that this works correctly </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        For tooltips that provide additional or clarifying information (similar to the ? next to
+        "Stable URL" on the &nbsp;
+        <PharosLink href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">
+          item page
+        </PharosLink>) &nbsp;
+        <ul>
+          <li>
+            Similar to the structure of the example above
+            <ul>
+              <li>
+                However, we need to add the label aspect with something other than the
+                aria-labelledby because we need to use this for the new information
+              </li>
+              <li>
+                We can put the title into a hidden class to make this work effectively
+                <ul>
+                  <li>
+                    <PharosLink href="https://docs.google.com/document/d/1GEzU9omXho7_5cpCI_hyVOtnyKoC9bwgFQNWHJLspmg/edit?usp=sharing">
+                      Example
+                    </PharosLink>
+                    &nbsp; (via Inclusive Components by Heydon Pickering)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Expected actions">
+    <PageSection subSectionLevel={2} title="Screen reader">
+      <ul>
+        <li> Reads similarly to a text label</li>
+        <li> Announces the tooltip on hover/focus </li>
+      </ul>
+    </PageSection>
+    <PageSection subSectionLevel={2} title="Keyboard">
+      <ul>
+        <li>
+          Pressing <kbd>Escape</kbd> dismisses the tooltip.
+        </li>
+        <li> Should be included in tab order logically</li>
+        <li> Tooltip should open when focus is given to the element</li>
+        <li> Tooltip should not automatically disappear </li>
+        <li> After tooltip is closed, focus should remain on the trigger</li>
+      </ul>
+    </PageSection>
   </PageSection>
 </PageSection>
