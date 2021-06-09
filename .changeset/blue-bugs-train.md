@@ -3,4 +3,4 @@
 '@ithaka/pharos-site': patch
 ---
 
-Add new color tokens and use them in alert component
+add new color tokens and use them in alerts
