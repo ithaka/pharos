@@ -1,6 +1,7 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { Fragment } from 'react';
 import { viewports } from '../../pages/shared/viewports';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosImageCard } from '../../react-components/image-card/pharos-image-card';
 import { PharosLayout } from '../../react-components/layout/pharos-layout';
@@ -21,6 +22,8 @@ import { items, collections } from '../../pages/item-detail/mocks';
 />
 
 # Image Card
+
+<GuidelineLink path="image-card" />
 
 export const Template = (args) => (
   <PharosLayout style={{ margin: '1rem 0' }}>

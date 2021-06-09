@@ -9,15 +9,10 @@
   --font-family-code: consolas, monospace;
   --font-color: var(--color-black);
   --font-color-inverse: var(--color-white);
-  --spacing-xsmall: 1rem;
-  --spacing-small: 1.25rem;
-  --spacing-medium: 2rem;
-  --spacing-large: 3.25rem;
-  --spacing-xlarge: 5.25rem;
 
   /* Component tokens */
   --sidebar-color-background: var(--color-black);
   --sidebar-color-text: var(--font-color-inverse);
-  --sidebar-spacing-padding: var(--spacing-small);
-  --main-spacing-padding: var(--spacing-xlarge);
+  --sidebar-spacing-padding: var(--pharos-spacing-one-and-a-half-x);
+  --main-spacing-padding: var(--pharos-spacing-7-x);
 }

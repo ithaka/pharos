@@ -7,7 +7,6 @@ import {
   container__subsectionLevelThree,
   title__isHeader,
   title__moreSpace,
-  title__base,
   description__isHeader,
   description__base,
   container__lessMargin,
@@ -48,7 +47,7 @@ const PageSection: FC<PageSectionProps> = ({
       'https://pharos.jstor.org/storybook/?path=/story/webcomponents_' +
       storyBookType +
       '-' +
-      title.replace(/ /g, '-') +
+      title.replace(/ /g, '-').toLowerCase() +
       '--base';
 
     const headerTitle = (
@@ -60,7 +59,7 @@ const PageSection: FC<PageSectionProps> = ({
     );
 
     const baseTitle = (
-      <div className={moreTitleSpace ? title__moreSpace : title__base}>
+      <div className={moreTitleSpace ? title__moreSpace : ''}>
         <PharosHeading level="2" preset="6">
           {title}
         </PharosHeading>
@@ -68,7 +67,7 @@ const PageSection: FC<PageSectionProps> = ({
     );
 
     const subsection1Title = (
-      <div className={moreTitleSpace ? title__moreSpace : title__base}>
+      <div className={moreTitleSpace ? title__moreSpace : ''}>
         <PharosHeading level="2" preset="4">
           {title}
         </PharosHeading>
@@ -76,7 +75,7 @@ const PageSection: FC<PageSectionProps> = ({
     );
 
     const subsection2Title = (
-      <div className={moreTitleSpace ? title__moreSpace : title__base}>
+      <div className={moreTitleSpace ? title__moreSpace : ''}>
         <PharosHeading level={'4'} preset={'1--bold'}>
           {title}
         </PharosHeading>
@@ -84,7 +83,7 @@ const PageSection: FC<PageSectionProps> = ({
     );
 
     const subsection3Title = (
-      <div className={moreTitleSpace ? title__moreSpace : title__base}>
+      <div className={moreTitleSpace ? title__moreSpace : ''}>
         <PharosHeading level={'5'} preset={'1--bold'}>
           {title}
         </PharosHeading>

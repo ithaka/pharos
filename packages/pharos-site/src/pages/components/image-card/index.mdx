@@ -1,0 +1,25 @@
+import Intro from '../../../../static/guidelines/image-card.docs';
+
+<Intro />
+
+## Examples
+
+```jsx live
+<PharosImageCard title="Card title" link="#">
+  <img
+    id="image"
+    src="../images/components/image-card/collection_5.png"
+    alt="south hall"
+    slot="image"
+  />
+  <div id="creator" slot="metadata">
+    Tubby, William Bunker (American architect,...
+  </div>
+  <div id="item-date" slot="metadata">
+    1889-1892 (creation)
+  </div>
+  <div id="collection" slot="metadata">
+    From the <PharosLink href="#">Collection title</PharosLink>
+  </div>
+</PharosImageCard>
+```
