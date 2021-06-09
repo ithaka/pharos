@@ -25,10 +25,6 @@
   }
 }
 
-#select-element::-ms-expand {
-  display: none;
-}
-
 :host([disabled]) #select-element {
   @include mixins.input-disabled;
 

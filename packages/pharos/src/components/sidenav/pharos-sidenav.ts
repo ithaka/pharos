@@ -1,7 +1,6 @@
 import { html, property } from 'lit-element';
 import type { TemplateResult, CSSResultArray } from 'lit-element';
 import { sidenavStyles } from './pharos-sidenav.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { nothing } from 'lit-html';
 
@@ -55,7 +54,7 @@ export class PharosSidenav extends FocusMixin(SideElement) {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, sidenavStyles];
+    return [super.styles, sidenavStyles];
   }
 
   private _handleClickClose(): void {

@@ -42,17 +42,6 @@ module.exports = async ({ config, mode }) => {
 
   config.module.rules[1].exclude = /node_modules/;
 
-  // Need to transpile for IE11
-  const babelLoaderRule = config.module.rules.find(
-    (item) => item.use && item.use.some && item.use.some((use) => /babel-loader/i.test(use.loader))
-  );
-  if (babelLoaderRule) {
-    config.module.rules.unshift({
-      use: babelLoaderRule.use,
-      include: [path.dirname(require.resolve('@ithaka/focus-trap'))],
-    });
-  }
-
   // Return the altered config
   return config;
 };

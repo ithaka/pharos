@@ -2,7 +2,6 @@ import { html, LitElement, property, query } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { nothing } from 'lit-html';
 import { imageCardStyles } from './pharos-image-card.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import type { PharosButton } from '../button/pharos-button';
@@ -75,7 +74,7 @@ export class PharosImageCard extends LitElement {
   private _title!: PharosLink;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, imageCardStyles];
+    return [imageCardStyles];
   }
 
   protected update(changedProperties: PropertyValues): void {

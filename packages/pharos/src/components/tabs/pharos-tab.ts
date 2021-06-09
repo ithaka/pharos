@@ -1,7 +1,6 @@
 import { html, LitElement, property, state } from 'lit-element';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
 import { tabStyles } from './pharos-tab.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 /**
@@ -27,7 +26,7 @@ export class PharosTab extends LitElement {
   private _focused = false;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, tabStyles];
+    return [tabStyles];
   }
 
   protected firstUpdated(): void {

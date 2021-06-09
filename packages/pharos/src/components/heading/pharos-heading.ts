@@ -1,7 +1,6 @@
 import { LitElement, html, property } from 'lit-element';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
 import { headingStyles } from './pharos-heading.css';
-import { designTokens } from '../../styles/variables.css';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { customElement } from '../../utils/decorators';
 
@@ -75,7 +74,7 @@ export class PharosHeading extends LitElement {
   public noMargin = false;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, headingStyles];
+    return [headingStyles];
   }
 
   protected update(changedProperties: PropertyValues): void {

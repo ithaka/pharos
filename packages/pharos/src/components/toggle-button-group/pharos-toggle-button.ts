@@ -1,7 +1,6 @@
 import { property, state } from 'lit-element';
 import type { CSSResultArray, PropertyValues } from 'lit-element';
 import { toggleButtonStyles } from './pharos-toggle-button.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';
 import type { ButtonType, LinkTarget, IconName } from '../button/pharos-button';
@@ -44,7 +43,7 @@ export class PharosToggleButton extends PharosButton {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, toggleButtonStyles];
+    return [super.styles, toggleButtonStyles];
   }
 
   protected update(changedProperties: PropertyValues): void {

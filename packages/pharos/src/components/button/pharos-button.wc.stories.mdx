@@ -97,28 +97,20 @@ export const Template = (args) =>
 <Canvas withToolbar>
   <Story name="Variants">
     {html`
-      <div
-        style="display: grid; display: -ms-grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px); -ms-grid-columns: 200px 2rem 200px 2rem 200px"
-      >
-        <div
-          style="padding: 1rem; display: grid; grid-gap: 1.5rem; -ms-grid-column: 1; -ms-grid-row: 1;"
-        >
+      <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
+        <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="primary">Primary</pharos-button>
           <pharos-button name="secondary" variant="secondary">Secondary</pharos-button>
           <pharos-button name="subtle" variant="subtle">Subtle</pharos-button>
         </div>
-        <div
-          style="padding: 1rem; display: grid; grid-gap: 1.5rem; -ms-grid-column: 1; -ms-grid-row: 2;"
-        >
+        <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="primary-disabled" disabled>Primary</pharos-button>
           <pharos-button name="secondary-disabled" variant="secondary" disabled
             >Secondary</pharos-button
           >
           <pharos-button name="subtle-disabled" variant="subtle" disabled>Subtle</pharos-button>
         </div>
-        <div
-          style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem; -ms-grid-column: 1; -ms-grid-row: 3;"
-        >
+        <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="primary-on-background" on-background>Primary</pharos-button>
           <pharos-button name="secondary-on-background" variant="secondary" on-background
             >Secondary</pharos-button
@@ -137,19 +129,13 @@ export const Template = (args) =>
 <Canvas withToolbar>
   <Story name="Large">
     {html`
-      <div
-        style="display: grid; display: -ms-grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px); -ms-grid-columns: 200px 2rem 200px 2rem 200px"
-      >
-        <div
-          style="padding: 1rem; display: grid; grid-gap: 1.5rem; -ms-grid-column: 1; -ms-grid-row: 1;"
-        >
+      <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
+        <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="large-primary" large>Primary</pharos-button>
           <pharos-button name="large-secondary" variant="secondary" large>Secondary</pharos-button>
           <pharos-button name="large-subtle" variant="subtle" large>Subtle</pharos-button>
         </div>
-        <div
-          style="padding: 1rem; display: grid; grid-gap: 1.5rem; -ms-grid-column: 1; -ms-grid-row: 2;"
-        >
+        <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="large-primary-disabled" large disabled>Primary</pharos-button>
           <pharos-button name="large-secondary-disabled" variant="secondary" large disabled
             >Secondary</pharos-button
@@ -158,9 +144,7 @@ export const Template = (args) =>
             >Subtle</pharos-button
           >
         </div>
-        <div
-          style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem; -ms-grid-column: 1; -ms-grid-row: 3;"
-        >
+        <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="large-primary-on-background" large on-background
             >Primary</pharos-button
           >
@@ -185,12 +169,8 @@ export const Template = (args) =>
 <Canvas withToolbar>
   <Story name="With Icons">
     {html`
-      <div
-        style="display: grid; display: -ms-grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px); -ms-grid-columns: 200px 2rem 200px 2rem 200px"
-      >
-        <div
-          style="padding: 1rem; display: grid; grid-gap: 1.5rem; -ms-grid-column: 1; -ms-grid-row: 1;"
-        >
+      <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
+        <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="primary-icon-left" icon-left="download">Icon left</pharos-button>
           <pharos-button name="primary-icon-right" icon-right="chevron-down"
             >Icon right</pharos-button
@@ -199,9 +179,7 @@ export const Template = (args) =>
             >Icon both</pharos-button
           >
         </div>
-        <div
-          style="padding: 1rem; display: grid; grid-gap: 1.5rem; -ms-grid-column: 1; -ms-grid-row: 2;"
-        >
+        <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="primary-icon-left-disabled" icon-left="download" disabled
             >Icon left</pharos-button
           >
@@ -216,9 +194,7 @@ export const Template = (args) =>
             >Icon both</pharos-button
           >
         </div>
-        <div
-          style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem; -ms-grid-column: 1; -ms-grid-row: 3;"
-        >
+        <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="primary-icon-left-on-background" icon-left="download" on-background
             >Icon left</pharos-button
           >
@@ -363,9 +339,7 @@ export const Template = (args) =>
   <Story name="Forms">
     {() => {
       return html`
-        <div
-          style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
-        >
+        <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
           <form name="my-form" action="https://httpbin.org/post" method="POST">
             <pharos-text-input name="my-text-input" required>
               <span slot="label">Name</span>

@@ -51,13 +51,7 @@ await expect(component).to.be.accessible();
 
 ## Cross-browser testing
 
-Because Pharos needs to support Chrome, Firefox, Safari, Edge, and IE11, testing across these browsers is a must. In particular, keyboard navigation, focus states, and rendering can vary widely across these browsers. The Pharos Storybooks are compatible with all supported browsers, so Storybook is a good way to try things out. To view Storybook in IE11, you can run Storybook so that it will load inside a VMWare machine:
-
-```shell
-$ yarn storybook:wc:dev -- -h 0.0.0.0
-```
-
-After determining the IP address of your computer, you can replace `localhost` with that IP address in the IE11 address bar to access Storybook in VMWare.
+Because Pharos needs to support Chrome, Firefox, Safari, and Edge, testing across these browsers is a must. In particular, keyboard navigation, focus states, and rendering can vary widely across these browsers. The Pharos Storybooks are compatible with all supported browsers, so Storybook is a good way to try things out.
 
 ## Verifying changes in context
 
