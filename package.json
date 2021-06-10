@@ -85,7 +85,7 @@
     "cssnano": "^5.0.1",
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-lit": "^1.4.0",
+    "eslint-plugin-lit": "^1.5.1",
     "eslint-plugin-mdx": "^1.13.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -121,7 +121,7 @@
   "resolutions": {
     "@babel/core": "7.13.1",
     "@babel/preset-env": "7.13.0",
-    "playwright": "^1.11.0",
+    "playwright": "^1.12.1",
     "webpack": "^5.37.1",
     "dotenv-webpack": "^6.0.0",
     "html-webpack-plugin": "^5.0.0",
