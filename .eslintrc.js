@@ -27,11 +27,16 @@ module.exports = {
       parserOptions: {
         project: './packages/**/tsconfig.json',
       },
-      extends: 'plugin:@typescript-eslint/recommended',
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'plugin:wc/recommended',
+        'plugin:lit/recommended',
+      ],
       rules: {
         'no-unused-vars': 'off',
         '@typescript-eslint/consistent-type-imports': ['error'],
         '@typescript-eslint/no-unused-vars': ['error'],
+        'lit/no-legacy-template-syntax': 'off',
       },
     },
     {

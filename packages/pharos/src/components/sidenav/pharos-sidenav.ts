@@ -1,8 +1,8 @@
-import { html, property } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { html, nothing } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { sidenavStyles } from './pharos-sidenav.css';
 import { customElement } from '../../utils/decorators';
-import { nothing } from 'lit-html';
 
 import { SideElement } from '../base/side-element';
 

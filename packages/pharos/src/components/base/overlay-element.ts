@@ -1,5 +1,6 @@
-import { LitElement, property } from 'lit-element';
-import type { PropertyValues } from 'lit-element';
+import { LitElement } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { PropertyValues } from 'lit';
 import deepSelector from '../../utils/deepSelector';
 import { placements } from '../../utils/popper';
 import type { Instance, Options, Placement, PositioningStrategy } from '../../utils/popper';

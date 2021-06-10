@@ -1,6 +1,6 @@
-import { html, property } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
-import { nothing } from 'lit-html';
+import { html, nothing } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { sidenavLinkStyles } from './pharos-sidenav-link.css';
 import { customElement } from '../../utils/decorators';
 import { PharosLink } from '../link/pharos-link';

@@ -1,5 +1,5 @@
-import { html, LitElement } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { html, LitElement } from 'lit';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { toasterStyles } from './pharos-toaster.css';
 
 import { customElement } from '../../utils/decorators';
@@ -54,7 +54,7 @@ export class PharosToaster extends LitElement {
     const toast = document.createElement('pharos-toast') as PharosToast;
     const { content, status } = (<CustomEvent>event).detail;
 
-    toast.insertAdjacentHTML('afterbegin', content);
+    toast.innerHTML = content;
     toast.status = status || DEFAULT_STATUS;
     this.insertBefore(toast, this.childNodes[0] || null);
     await this.updateComplete;

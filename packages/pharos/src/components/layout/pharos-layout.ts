@@ -1,6 +1,7 @@
-import { html, LitElement, property, query } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { html, LitElement } from 'lit';
+import { property, query } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { layoutStyles } from './pharos-layout.css';
 import { customElement } from '../../utils/decorators';
 import { PharosSpacingThreeAndAHalfX } from '../../styles/variables';

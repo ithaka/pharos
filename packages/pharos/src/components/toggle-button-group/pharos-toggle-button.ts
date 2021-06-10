@@ -1,5 +1,5 @@
-import { property, state } from 'lit-element';
-import type { CSSResultArray, PropertyValues } from 'lit-element';
+import { property, state } from 'lit/decorators.js';
+import type { CSSResultArray, PropertyValues } from 'lit';
 import { toggleButtonStyles } from './pharos-toggle-button.css';
 import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';

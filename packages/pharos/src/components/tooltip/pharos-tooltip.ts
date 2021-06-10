@@ -1,7 +1,8 @@
-import { html, property, queryAssignedNodes, query, state } from 'lit-element';
-import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map.js';
-import { styleMap } from 'lit-html/directives/style-map.js';
+import { html } from 'lit';
+import { property, queryAssignedNodes, query, state } from 'lit/decorators.js';
+import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { createPopper } from '../../utils/popper';
 import debounce from '../../utils/debounce';
 import observeResize from '../../utils/observeResize';
@@ -83,7 +84,9 @@ export class PharosTooltip extends OverlayElement {
   );
 
   protected get content(): HTMLElement | Text {
-    return Array.prototype.slice.call(this._contentNodes)?.find((node) => node.textContent);
+    return Array.prototype.slice
+      .call(this._contentNodes)
+      ?.find((node) => node.textContent && node.nodeName === '#text');
   }
 
   constructor() {

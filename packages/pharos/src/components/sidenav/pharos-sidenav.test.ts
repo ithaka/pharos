@@ -1,4 +1,5 @@
-import { html, fixture, expect, nextFrame } from '@open-wc/testing';
+import { fixture, expect, nextFrame } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
 import { setViewport } from '@web/test-runner-commands';
 import './pharos-sidenav';
 import './pharos-sidenav-section';

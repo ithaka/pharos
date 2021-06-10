@@ -1,4 +1,5 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { fixture, expect } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
 import './pharos-button';
 import type { PharosButton } from './pharos-button';
 import '../text-input/pharos-text-input';

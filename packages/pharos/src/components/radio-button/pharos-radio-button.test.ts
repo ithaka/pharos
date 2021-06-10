@@ -1,4 +1,5 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { fixture, expect } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
 import './pharos-radio-button';
 import '../radio-group/pharos-radio-group';
 import '../link/pharos-link';

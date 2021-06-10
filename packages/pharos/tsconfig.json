@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2019",
     "module": "es2015",
-    "lib": ["es2017", "dom", "dom.iterable"],
+    "lib": ["es2019", "dom", "dom.iterable"],
     "jsx": "react-jsx",
     "declaration": true,
     "declarationMap": true,

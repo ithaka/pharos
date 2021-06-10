@@ -1,6 +1,7 @@
-import { html, LitElement, queryAssignedNodes } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { html, LitElement } from 'lit';
+import { queryAssignedNodes } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { footerStyles } from './pharos-footer.css';
 import { customElement } from '../../utils/decorators';
 

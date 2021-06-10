@@ -1,7 +1,8 @@
-import { html, state } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { html } from 'lit';
+import { state } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { breadcrumbItemStyles } from './pharos-breadcrumb-item.css';
 import { customElement } from '../../utils/decorators';
 
@@ -51,7 +52,9 @@ export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
   });
 
   protected get content(): HTMLElement | Text {
-    return Array.prototype.slice.call(this.childNodes)?.find((node) => node.textContent);
+    return Array.prototype.slice
+      .call(this.childNodes)
+      ?.find((node) => node.textContent && node.nodeName === '#text');
   }
 
   protected firstUpdated(): void {
@@ -72,22 +75,22 @@ export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
   }
 
   protected render(): TemplateResult {
-    const classes = classMap({
+    const classes = {
       [`breadcrumb-item`]: true,
       [`breadcrumb-item--last`]: this._last,
-    });
+    };
 
     return html`
       ${this.href
         ? html`<pharos-link
-            class="${classes}"
+            class=${classMap(classes)}
             href=${ifDefined(this.href)}
             target=${ifDefined(this.target)}
             data-tooltip-id=${ifDefined(this._isTruncated ? 'truncate-tooltip' : undefined)}
             >${this._displayText}</pharos-link
           >`
         : html`<span
-            class="${classes}"
+            class=${classMap(classes)}
             data-tooltip-id=${ifDefined(this._isTruncated ? 'truncate-tooltip' : undefined)}
             >${this._displayText}</span
           >`}

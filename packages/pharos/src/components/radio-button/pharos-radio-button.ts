@@ -1,5 +1,6 @@
-import { html, property, query } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { html } from 'lit';
+import { property, query } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { radioButtonStyles } from './pharos-radio-button.css';
 import { customElement } from '../../utils/decorators';
 

@@ -1,5 +1,6 @@
-import { html, LitElement, property } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { html, LitElement } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { tabPanelStyles } from './pharos-tab-panel.css';
 import { customElement } from '../../utils/decorators';
 import focusable from '../../utils/focusable';
