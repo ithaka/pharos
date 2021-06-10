@@ -60,13 +60,13 @@
   }
 }
 
-:host([checked][dark]) .input__icon {
+:host([checked][on-background]) .input__icon {
   .checkmark {
     stroke: var(--pharos-form-element-color-background-selected);
   }
 }
 
-:host([indeterminate][dark]) .input__icon {
+:host([indeterminate][on-background]) .input__icon {
   .box {
     fill: var(--pharos-color-interactive-tertiary);
     stroke: var(--pharos-color-interactive-tertiary);
@@ -89,19 +89,19 @@
   }
 }
 
-:host([dark]:not([checked]):not([indeterminate])) .input__icon {
+:host([on-background]:not([checked]):not([indeterminate])) .input__icon {
   .box {
     fill: var(--pharos-form-element-color-background-selected);
   }
 }
 
-:host([dark]:not([invalidated]):not([disabled])) .input__icon {
+:host([on-background]:not([invalidated]):not([disabled])) .input__icon {
   .box {
     stroke: var(--pharos-color-interactive-tertiary);
   }
 }
 
-:host([checked]:not([dark]):not([invalidated]):not([disabled])) .input__icon {
+:host([checked]:not([on-background]):not([invalidated]):not([disabled])) .input__icon {
   .box {
     stroke: var(--pharos-form-element-color-background-selected);
   }
@@ -111,13 +111,13 @@
   }
 }
 
-:host([indeterminate]:not([invalidated]):not([disabled]):not([dark])) .input__icon {
+:host([indeterminate]:not([invalidated]):not([disabled]):not([on-background])) .input__icon {
   .box {
     fill: var(--pharos-form-element-color-background-selected);
   }
 }
 
-:host([checked]:not([invalidated]):not([disabled]):not([dark])) .input__icon {
+:host([checked]:not([invalidated]):not([disabled]):not([on-background])) .input__icon {
   .box {
     fill: var(--pharos-form-element-color-background-selected);
   }
@@ -127,7 +127,7 @@
   @include mixins.option-input;
 }
 
-:host(:not([dark])) #checkbox-element:focus {
+:host(:not([on-background])) #checkbox-element:focus {
   + .input-wrapper .input__icon {
     .box,
     .focus {
@@ -136,7 +136,7 @@
   }
 }
 
-:host([dark]) #checkbox-element:focus {
+:host([on-background]) #checkbox-element:focus {
   + .input-wrapper .input__icon {
     .box,
     .focus {
@@ -145,7 +145,7 @@
   }
 }
 
-:host([dark]:not([disabled]):not([checked]):not([indeterminate]))
+:host([on-background]:not([disabled]):not([checked]):not([indeterminate]))
   #checkbox-element:not(:focus)
   + .input-wrapper:hover
   .input__icon {
@@ -155,7 +155,7 @@
   }
 }
 
-:host(:not([checked]):not([disabled]):not([indeterminate]):not([dark]))
+:host(:not([checked]):not([disabled]):not([indeterminate]):not([on-background]))
   #checkbox-element:not(:focus)
   + .input-wrapper:hover
   .input__icon {

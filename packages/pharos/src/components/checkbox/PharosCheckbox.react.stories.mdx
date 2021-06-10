@@ -140,25 +140,25 @@ export const Template = (args) => (
   </Story>
 </Canvas>
 
-# Dark
+# On background
 
 <Canvas withToolbar>
-  <Story name="Dark">
+  <Story name="On background">
     {() => {
       return (
         <div>
-          <div className="checkbox-example__container--dark">
-            <PharosCheckbox name="dark" dark>
+          <div className="checkbox-example__container--on-background">
+            <PharosCheckbox name="on-background" onBackground>
               <span slot="label">Unchecked</span>
             </PharosCheckbox>
           </div>
-          <div className="checkbox-example__container--dark">
-            <PharosCheckbox name="dark" dark checked>
+          <div className="checkbox-example__container--on-background">
+            <PharosCheckbox name="on-background" onBackground checked>
               <span slot="label">Checked</span>
             </PharosCheckbox>
           </div>
-          <div className="checkbox-example__container--dark">
-            <PharosCheckbox name="indeterminate" dark indeterminate>
+          <div className="checkbox-example__container--on-background">
+            <PharosCheckbox name="indeterminate" onBackground indeterminate>
               <span slot="label">Indeterminate</span>
             </PharosCheckbox>
           </div>
