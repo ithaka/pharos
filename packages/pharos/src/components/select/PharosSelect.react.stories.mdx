@@ -37,7 +37,11 @@ export const Template = (args) => (
 );
 
 <Canvas withToolbar>
-  <Story name="Base" args={{ disabled: false, hideLabel: false }}>
+  <Story
+    name="Base"
+    args={{ disabled: false, hideLabel: false }}
+    style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;"
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -130,7 +134,7 @@ export const Template = (args) => (
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
       </PharosSelect>
-      <input
+      <pharos-button
         type="submit"
         value="Submit"
         onClick={(e) => {
@@ -145,7 +149,9 @@ export const Template = (args) => (
           };
           xhr.send(formData);
         }}
-      />
+      >
+        Submit
+      </pharos-button>
     </form>
   </Story>
 </Canvas>

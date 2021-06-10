@@ -125,7 +125,7 @@ export const Template = (args) => (
             <span slot="label">Radio Button 3</span>
           </PharosRadioButton>
         </PharosRadioGroup>
-        <input
+        <pharos-button
           type="submit"
           value="Submit"
           onClick={(e) => {
@@ -140,7 +140,9 @@ export const Template = (args) => (
             };
             xhr.send(formData);
           }}
-        />
+        >
+          Submit
+        </pharos-button>
       </form>
     )}
   </Story>

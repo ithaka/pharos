@@ -117,7 +117,7 @@ export const Template = (args) =>
               ><span slot="label">Radio Button 3</span></pharos-radio-button
             >
           </pharos-radio-group>
-          <input
+          <pharos-button
             type="submit"
             value="Submit"
             @click="${(e) => {
@@ -132,7 +132,8 @@ export const Template = (args) =>
               };
               xhr.send(formData);
             }}"
-          />
+            >Submit</pharos-button
+          >
         </form>
       `;
     }}

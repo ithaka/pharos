@@ -110,7 +110,7 @@ export const Template = (args) => (
           <span slot="label">Checkbox 3</span>
         </PharosCheckbox>
       </PharosCheckboxGroup>
-      <input
+      <pharos-button
         type="submit"
         value="Submit"
         onClick={(e) => {
@@ -125,7 +125,9 @@ export const Template = (args) => (
           };
           xhr.send(formData);
         }}
-      />
+      >
+        Submit
+      </pharos-button>
     </form>
   </Story>
 </Canvas>
