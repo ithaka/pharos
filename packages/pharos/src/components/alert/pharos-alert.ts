@@ -3,6 +3,7 @@ import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element
 import { classMap } from 'lit-html/directives/class-map.js';
 import { alertStyles } from './pharos-alert.css';
 import { customElement } from '../../utils/decorators';
+import type { PharosLink } from '../link/pharos-link';
 
 import FocusMixin from '../../utils/mixins/focus';
 import '../icon/pharos-icon';
@@ -10,7 +11,7 @@ import '../icon/pharos-icon';
 export type AlertStatus = 'info' | 'success' | 'warning' | 'error' | '';
 
 export enum ALERT_ICON {
-  BASE = 'base',
+  BASE = 'info-inverse',
   INFO = 'info-inverse',
   ERROR = 'exclamation-inverse',
   SUCCESS = 'checkmark-inverse',
@@ -54,6 +55,8 @@ export class PharosAlert extends FocusMixin(LitElement) {
   @property({ type: String, reflect: true })
   public status: AlertStatus = '';
 
+  private _allLinks!: NodeListOf<PharosLink>;
+
   public static get styles(): CSSResultArray {
     return [alertStyles];
   }
@@ -73,6 +76,14 @@ export class PharosAlert extends FocusMixin(LitElement) {
     return ALERT_ICON[key as keyof typeof ALERT_ICON] || ALERT_ICON.BASE;
   }
 
+  private _handleSlotChange(): void {
+    this._allLinks = this.querySelectorAll('pharos-link');
+
+    this._allLinks.forEach((link) => {
+      link['_alert'] = true;
+    });
+  }
+
   protected render(): TemplateResult {
     return html`
       <div
@@ -85,7 +96,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
       >
         <pharos-icon class="alert__icon" name="${this._getIcon()}"></pharos-icon>
         <div class="alert__body">
-          <slot></slot>
+          <slot @slotchange=${this._handleSlotChange}></slot>
         </div>
       </div>
     `;

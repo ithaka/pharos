@@ -213,6 +213,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "satya-achanta-venkata",
+      "name": "Satya AchantaVenkata",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57365199?v=4",
+      "profile": "https://github.com/satya-achanta-venkata",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
