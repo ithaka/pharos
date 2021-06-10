@@ -9,17 +9,16 @@ import type { PharosLink } from '../link/pharos-link';
 import FocusMixin from '../../utils/mixins/focus';
 import '../icon/pharos-icon';
 
-export type AlertStatus = 'info' | 'success' | 'warning' | 'error' | '';
+export type AlertStatus = 'info' | 'success' | 'warning' | 'error';
 
 export enum ALERT_ICON {
-  BASE = 'info-inverse',
   INFO = 'info-inverse',
   ERROR = 'exclamation-inverse',
   SUCCESS = 'checkmark-inverse',
   WARNING = 'exclamation-inverse',
 }
 
-const STATUSES = ['info', 'success', 'warning', 'error', ''];
+const STATUSES = ['info', 'success', 'warning', 'error'];
 
 /**
  * Pharos alert component
@@ -28,10 +27,6 @@ const STATUSES = ['info', 'success', 'warning', 'error', ''];
  *
  * @slot - Contains the alert message (the default slot).
  *
- * @cssprop {Color} --pharos-alert-color-background-base - The default background color of an alert
- * @cssprop {Color} --pharos-alert-color-text-base - The default text color for messaging in an alert
- * @cssprop {Color} --pharos-alert-color-link-base - The default text color for links in an alert
- * @cssprop {Color} --pharos-alert-color-icon-base - The default fill color for an alert icon
  * @cssprop {Color} --pharos-alert-color-text-inverse - The inverted text color for messaging in a dark-colored alert
  * @cssprop {Color} --pharos-alert-color-link-inverse - The inverted text color for links in a dark-colored alert
  *
@@ -52,9 +47,10 @@ export class PharosAlert extends FocusMixin(LitElement) {
   /**
    * The status to reflect to the user
    * @attr status
+   * @type {AlertStatus | undefined}
    */
   @property({ type: String, reflect: true })
-  public status: AlertStatus = '';
+  public status?: AlertStatus;
 
   private _allLinks!: NodeListOf<PharosLink>;
 
@@ -65,6 +61,10 @@ export class PharosAlert extends FocusMixin(LitElement) {
   protected update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
+    if (!this.status) {
+      throw new Error(`status is a required attribute.`);
+    }
+
     if (changedProperties.has('status') && !STATUSES.includes(this.status)) {
       throw new Error(
         `${this.status} is not a valid status. Valid statuses are: ${STATUSES.join(', ')}`
@@ -73,8 +73,8 @@ export class PharosAlert extends FocusMixin(LitElement) {
   }
 
   private _getIcon(): ALERT_ICON {
-    const key = this.status.toUpperCase();
-    return ALERT_ICON[key as keyof typeof ALERT_ICON] || ALERT_ICON.BASE;
+    const key = this.status?.toUpperCase();
+    return ALERT_ICON[key as keyof typeof ALERT_ICON] || ALERT_ICON.INFO;
   }
 
   private _handleSlotChange(): void {
@@ -91,7 +91,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
         role="alert"
         class="${classMap({
           [`alert`]: true,
-          [`alert--${this.status}`]: this.status,
+          [`alert--${this.status}`]: this.status || '',
         })}"
         tabindex="0"
       >

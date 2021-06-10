@@ -25,10 +25,6 @@ export const Template = (args) => html`<pharos-alert status=${ifDefined(args.sta
   ${args.text}
 </pharos-alert>`;
 
-<Canvas withToolbar>
-  <Story name="Base">{Template.bind({})}</Story>
-</Canvas>
-
 ## API
 
 <ArgsTable of="pharos-alert" />
