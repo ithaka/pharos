@@ -1,6 +1,7 @@
-import { LitElement, html, property } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
-import { unsafeSVG } from 'lit-html/directives/unsafe-svg.js';
+import { LitElement, html } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
+import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { iconStyles } from './pharos-icon.css';
 import { customElement } from '../../utils/decorators';
 

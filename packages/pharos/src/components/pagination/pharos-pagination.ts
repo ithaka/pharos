@@ -1,6 +1,6 @@
-import { html, LitElement, property } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
-import { nothing } from 'lit-html';
+import { html, LitElement, nothing } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { paginationStyles } from './pharos-pagination.css';
 import { customElement } from '../../utils/decorators';
 

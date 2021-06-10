@@ -1,6 +1,6 @@
 import { dedupeMixin } from '@open-wc/dedupe-mixin';
 import type { Constructor } from '@open-wc/dedupe-mixin';
-import type { LitElement } from 'lit-element';
+import type { LitElement } from 'lit';
 
 /**
  * @param Base The base class for the mixin to modify.

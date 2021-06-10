@@ -1,4 +1,5 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { fixture, expect } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
 import './pharos-header';
 import '../link/pharos-link';
 import '../dropdown-menu-nav/pharos-dropdown-menu-nav';

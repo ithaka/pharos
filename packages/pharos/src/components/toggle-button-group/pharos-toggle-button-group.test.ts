@@ -1,4 +1,5 @@
-import { html, fixture, expect, aTimeout } from '@open-wc/testing';
+import { fixture, expect, aTimeout } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
 import './pharos-toggle-button-group';
 import './pharos-toggle-button';
 import type { PharosToggleButtonGroup } from './pharos-toggle-button-group';

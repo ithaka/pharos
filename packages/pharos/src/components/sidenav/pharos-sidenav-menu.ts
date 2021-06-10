@@ -1,6 +1,7 @@
-import { html, LitElement, property } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { html, LitElement } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 import { sidenavMenuStyles } from './pharos-sidenav-menu.css';
 import { customElement } from '../../utils/decorators';
 import FocusMixin from '../../utils/mixins/focus';

@@ -9,7 +9,7 @@
   * [The `:host` selector](#the-host-selector)
   * [CSS Containment](#css-containment)
 - [The component file](#the-component-file)
-  * [LitElement](#litelement)
+  * [Lit](#lit)
 - [Storybook stories](#storybook-stories)
 - [The SparklyText component](#the-sparklytext-component)
   * [The SparklyText SCSS styles](#the-sparklytext-scss-styles)
@@ -103,9 +103,9 @@ In most cases, these guidelines should be followed:
 
 The `pharos-sparkly-text.ts` TypeScript file is the one you might call "the SparklyText component." It contains the behavior and rendering entry point for SparklyText, and pulls global and component-specific visual styles.
 
-### LitElement
+### Lit
 
-Pharos components use [LitElement](https://lit-element.polymer-project.org/)—a successor to Polymer—and [lit-html](https://lit-html.polymer-project.org/) to aid in authoring web components. These packages provide conveniences on top of authoring web components completely from scratch, such as decorators that automate portions of the process and a JSX-like syntax for writing DOM structure.
+Pharos components use [Lit](https://lit.dev/) to aid in authoring web components. These packages provide conveniences on top of authoring web components completely from scratch, such as decorators that automate portions of the process and a JSX-like syntax for writing DOM structure.
 
 ## Storybook stories
 
@@ -133,8 +133,8 @@ The build system reads this SCSS file and generates a `.css.js` file you can imp
 Now create the `pharos-sparkly-text.ts` TypeScript file and import the following items:
 
 ```typescript
-import { LitElement, html } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { LitElement, html } from 'lit';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { customElement } from '../../utils/decorators';
 ```
 
@@ -184,7 +184,7 @@ Create `pharos-sparkly-text.wc.stories.mdx` now, and add the following:
 
 ```jsx
 import { Story, Canvas, Meta } from '@storybook/addon-docs';
-import { html } from 'lit-html';
+import { html } from 'lit';
 
 import './pharos-sparkly-text';
 

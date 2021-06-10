@@ -1,7 +1,7 @@
-import { html, LitElement, state, property } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
-import { nothing } from 'lit-html';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { html, LitElement, nothing } from 'lit';
+import { property, state } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 import { dropdownMenuItemStyles } from './pharos-dropdown-menu-item.css';
 import { customElement } from '../../utils/decorators';
 import type { PharosDropdownMenu } from './pharos-dropdown-menu';

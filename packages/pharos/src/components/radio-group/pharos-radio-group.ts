@@ -1,5 +1,6 @@
-import { html, property } from 'lit-element';
-import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
+import { html } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { radioGroupStyles } from './pharos-radio-group.css';
 import type { PharosRadioButton } from '../radio-button/pharos-radio-button';
 import { customElement } from '../../utils/decorators';
@@ -44,7 +45,7 @@ export class PharosRadioGroup extends FormElement {
   }
 
   protected firstUpdated(): void {
-    this._initialize();
+    this._setRadios();
     this._addFocusListeners();
 
     const radios = this.querySelectorAll('pharos-radio-button') as NodeListOf<PharosRadioButton>;
@@ -79,7 +80,7 @@ export class PharosRadioGroup extends FormElement {
       changedProperties.has('invalidated') ||
       changedProperties.has('validated')
     ) {
-      this._initialize();
+      this._setRadios();
     }
   }
 
@@ -134,7 +135,7 @@ export class PharosRadioGroup extends FormElement {
     }
   }
 
-  private _initialize(): void {
+  private _setRadios(): void {
     const radios = this.querySelectorAll('pharos-radio-button') as NodeListOf<PharosRadioButton>;
     radios.forEach((radio) => {
       radio.name = this.name;

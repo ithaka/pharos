@@ -1,7 +1,8 @@
-import { html, property, query } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { html } from 'lit';
+import { property, query } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { selectStyles } from './pharos-select.css';
 import { customElement } from '../../utils/decorators';
 
@@ -44,11 +45,11 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
   }
 
   protected firstUpdated(): void {
-    this._initialize();
+    this._setOption();
     this._options.forEach((option) => (option.defaultSelected = option.hasAttribute('selected')));
   }
 
-  private _initialize(): void {
+  private _setOption(): void {
     // Set value to selected option
     const selected = (this.querySelector('option[selected]') ||
       this.querySelector('option')) as HTMLOptionElement;
@@ -74,7 +75,7 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
 
   _handleFormReset(): void {
     this._options.forEach((option) => (option.selected = option.defaultSelected));
-    this._initialize();
+    this._setOption();
   }
 
   protected render(): TemplateResult {

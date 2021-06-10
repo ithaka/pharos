@@ -23,7 +23,8 @@ exports.onCreateWebpackConfig = ({ actions, loaders, getConfig, stage }) => {
 
       // Exclude all node_modules from transpilation, except for 'swiper' and 'dom7'
       exclude: (modulePath) =>
-        /node_modules/.test(modulePath) && !/node_modules\/(lit-html|lit-element)/.test(modulePath),
+        /node_modules/.test(modulePath) &&
+        !/node_modules\/(lit-html|lit-element|lit)/.test(modulePath),
     },
   ];
 

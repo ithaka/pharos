@@ -1,7 +1,7 @@
-import { html, property, query } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { nothing } from 'lit-html';
+import { html, nothing } from 'lit';
+import { property, query } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { buttonStyles } from './pharos-button.css';
 import { customElement } from '../../utils/decorators';
 

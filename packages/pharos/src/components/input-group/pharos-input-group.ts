@@ -1,5 +1,6 @@
-import { html, query, state } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
+import { html } from 'lit';
+import { query, state } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { inputGroupStyles } from './pharos-input-group.css';
 import { customElement } from '../../utils/decorators';
 import { PharosTextInput } from '../text-input/pharos-text-input';

@@ -1,8 +1,8 @@
-import { html, LitElement, property, state } from 'lit-element';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { nothing } from 'lit-html';
+import { html, LitElement, nothing } from 'lit';
+import { property, state } from 'lit/decorators.js';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { modalStyles } from './pharos-modal.css';
 import focusable from '../../utils/focusable';
 import { customElement } from '../../utils/decorators';

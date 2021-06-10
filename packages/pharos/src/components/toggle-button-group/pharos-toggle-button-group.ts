@@ -1,5 +1,5 @@
-import { html, LitElement } from 'lit-element';
-import type { TemplateResult, CSSResultArray } from 'lit-element';
+import { html, LitElement } from 'lit';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { toggleButtonGroupStyles } from './pharos-toggle-button-group.css';
 import { customElement } from '../../utils/decorators';
 import type { PharosToggleButton } from './pharos-toggle-button';

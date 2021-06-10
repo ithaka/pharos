@@ -1,4 +1,5 @@
-import { html, fixture, expect, nextFrame } from '@open-wc/testing';
+import { fixture, expect, nextFrame } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
 import './pharos-input-group';
 import '../button/pharos-button';
 import type { PharosInputGroup } from './pharos-input-group';

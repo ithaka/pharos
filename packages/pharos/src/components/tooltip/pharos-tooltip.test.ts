@@ -1,4 +1,5 @@
-import { html, fixture, expect, aTimeout, nextFrame } from '@open-wc/testing';
+import { fixture, expect, aTimeout, nextFrame } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
 import sinon from 'sinon';
 import type { SinonSpy } from 'sinon';
 

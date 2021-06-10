@@ -1,9 +1,9 @@
-import { html, property, query, state } from 'lit-element';
-import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { classMap } from 'lit-html/directives/class-map.js';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import { nothing } from 'lit-html';
+import { html, nothing } from 'lit';
+import { property, query, state } from 'lit/decorators.js';
+import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { comboboxStyles } from './pharos-combobox.css';
 import debounce from '../../utils/debounce';
 import { customElement } from '../../utils/decorators';

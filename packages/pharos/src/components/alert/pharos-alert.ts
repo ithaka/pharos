@@ -1,6 +1,7 @@
-import { LitElement, html, property } from 'lit-element';
-import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { LitElement, html } from 'lit';
+import { property } from 'lit/decorators.js';
+import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 import { alertStyles } from './pharos-alert.css';
 import { customElement } from '../../utils/decorators';
 import type { PharosLink } from '../link/pharos-link';
