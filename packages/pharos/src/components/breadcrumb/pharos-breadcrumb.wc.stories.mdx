@@ -1,9 +1,9 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import './pharos-breadcrumb';
 import './pharos-breadcrumb-item';
-import '../link/pharos-link';
 
 <Meta title="Components/Breadcrumb" />
 
@@ -22,7 +22,7 @@ export const Template = (args) =>
 
 # Breadcrumbs
 
-<pharos-link href="https://www.jstor.org/pharos/components/breadcrumb" target="_blank">See guidelines in Pharos</pharos-link>
+<GuidelineLink path="breadcrumb" />
 
 <Canvas>
   <Story

@@ -23,14 +23,8 @@ const buildStyles = async () => {
     // Convert to CSS
     .pipe(sass())
     // Run through PostCSS
-    .pipe(
-      postcss([
-        autoprefixer({
-          grid: 'autoplace',
-        }),
-      ])
-    )
-    // Wrap in lit css template tag
+    .pipe(postcss([autoprefixer()]))
+    // Wrap in lit-element css template tag
     .pipe(
       through2.obj((file, enc, done) => {
         // Define style export name, ex: pharos-alert => alertStyles
@@ -72,13 +66,7 @@ const buildSlotStyles = async () => {
     // Convert to CSS
     .pipe(sass())
     // Run through PostCSS
-    .pipe(
-      postcss([
-        autoprefixer({
-          grid: 'autoplace',
-        }),
-      ])
-    )
+    .pipe(postcss([autoprefixer()]))
     // Update filename
     .pipe(
       rename((path) => {

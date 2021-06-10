@@ -6,7 +6,6 @@ import { createPopper } from '../../utils/popper';
 import debounce from '../../utils/debounce';
 import observeResize from '../../utils/observeResize';
 import { dropdownMenuStyles } from './pharos-dropdown-menu.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import type { PharosDropdownMenuItem } from './pharos-dropdown-menu-item';
 import type { PharosDropdownMenuNavLink } from '../dropdown-menu-nav/pharos-dropdown-menu-nav-link';
@@ -89,7 +88,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, dropdownMenuStyles];
+    return [dropdownMenuStyles];
   }
 
   public removeAllTriggers(): void {
@@ -116,7 +115,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
     super.update && super.update(changedProperties);
   }
 
-  private _emitEvent() {
+  private _emitVisibilityChange() {
     const details = {
       bubbles: true,
       composed: true,
@@ -165,7 +164,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
       this._setPopperListeners();
       this._setupResizeObserver();
       this._setTriggerAttributes();
-      this._emitEvent();
+      this._emitVisibilityChange();
     }
 
     super.updated(changedProperties);

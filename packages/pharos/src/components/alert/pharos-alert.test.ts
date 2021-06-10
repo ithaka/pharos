@@ -1,6 +1,7 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import './pharos-alert';
+import '../link/pharos-link';
 import type { PharosAlert } from './pharos-alert';
 
 describe('pharos-alert', () => {
@@ -31,7 +32,7 @@ describe('pharos-alert', () => {
           class="alert__icon"
           description=""
           height="24"
-          name="base"
+          name="info-inverse"
           width="24"
         >
         </pharos-icon>
@@ -63,5 +64,15 @@ describe('pharos-alert', () => {
 
     expect(activeElement === alert).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
+  });
+
+  it('adds a class to slotted links', async () => {
+    const link = document.createElement('pharos-link');
+
+    component.appendChild(link);
+    await component.updateComplete;
+    const anchor = link.renderRoot.querySelector('#link-element');
+
+    expect(anchor).to.have.class('link--alert');
   });
 });

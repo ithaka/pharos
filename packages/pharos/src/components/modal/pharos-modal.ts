@@ -4,7 +4,6 @@ import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { modalStyles } from './pharos-modal.css';
-import { designTokens } from '../../styles/variables.css';
 import focusable from '../../utils/focusable';
 import { customElement } from '../../utils/decorators';
 
@@ -14,7 +13,6 @@ import '@ithaka/focus-trap';
 
 const CLOSE_BUTTONS = `[data-modal-close],pharos-button#close-button`;
 const FOCUS_ELEMENT = `[data-modal-focus]`;
-const matchesFunc = 'matches' in Element.prototype ? 'matches' : 'msMatchesSelector';
 
 export type ModalSize = 'small' | 'medium' | 'large';
 
@@ -79,7 +77,7 @@ export class PharosModal extends LitElement {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, modalStyles];
+    return [modalStyles];
   }
 
   protected firstUpdated(): void {
@@ -105,6 +103,8 @@ export class PharosModal extends LitElement {
         body?.classList.remove('pharos-modal__body');
         this._returnTriggerFocus();
       }
+
+      this._emitVisibilityChange();
     }
   }
 
@@ -149,7 +149,6 @@ export class PharosModal extends LitElement {
         )
       ) {
         this.open = false;
-        this.dispatchEvent(new CustomEvent('pharos-modal-closed', details));
       }
     }
   }
@@ -166,7 +165,6 @@ export class PharosModal extends LitElement {
         this.dispatchEvent(new CustomEvent('pharos-modal-open', { ...details, cancelable: true }))
       ) {
         this.open = true;
-        this.dispatchEvent(new CustomEvent('pharos-modal-opened', details));
       }
     }
   }
@@ -179,7 +177,7 @@ export class PharosModal extends LitElement {
   }
 
   private _handleDialogClick(event: MouseEvent): void {
-    if ((event.target as Element)[matchesFunc](CLOSE_BUTTONS)) {
+    if ((event.target as Element).matches(CLOSE_BUTTONS)) {
       this._closeModal(event.target);
     }
   }
@@ -208,6 +206,19 @@ export class PharosModal extends LitElement {
     if (this._currentTrigger && typeof (this._currentTrigger as HTMLElement).focus === 'function') {
       (this._currentTrigger as HTMLElement).focus();
       this._currentTrigger = null;
+    }
+  }
+
+  private _emitVisibilityChange() {
+    const details = {
+      bubbles: true,
+      composed: true,
+    };
+
+    if (this.open) {
+      this.dispatchEvent(new CustomEvent('pharos-modal-opened', details));
+    } else {
+      this.dispatchEvent(new CustomEvent('pharos-modal-closed', details));
     }
   }
 

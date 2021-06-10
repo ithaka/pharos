@@ -4,9 +4,8 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { linkStyles } from './pharos-link.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
-import type { PharosAlert } from '../alert/pharos-alert';
+import deepSelector from '../../utils/deepSelector';
 
 import { AnchorElement } from '../base/anchor-element';
 import type { LinkTarget } from '../base/anchor-element';
@@ -66,18 +65,36 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   @property({ type: Boolean, reflect: true })
   public flex = false;
 
+  /**
+   * Indicates the link is hidden until focused and skips to another element when clicked.
+   * @attr skip
+   */
+  @property({ type: Boolean, reflect: true })
+  public skip = false;
+
+  /**
+   * Indicates the link should not have a hover state.
+   * @attr no-hover
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'no-hover' })
+  public noHover = false;
+
   @state()
-  private _alert!: PharosAlert;
+  private _alert = false;
 
   @state()
   private _hover = false;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, linkStyles];
+    return [linkStyles];
   }
 
-  protected firstUpdated(): void {
-    this._alert = this.closest('pharos-alert') as PharosAlert;
+  private async _handleClick(): Promise<void> {
+    if (this.skip && this.href) {
+      const target = deepSelector(this.href) as HTMLElement;
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+      target?.focus && target?.focus();
+    }
   }
 
   protected get appendContent(): TemplateResult | typeof nothing {
@@ -88,7 +105,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
     return html`<a
       id="link-element"
       class="${classMap({
-        [`link--alert`]: this._alert && this._alert.status !== 'error',
+        [`link--alert`]: this._alert,
         [`link--hover`]: this._hover,
       })}"
       download=${ifDefined(this.download)}
@@ -99,6 +116,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
       target=${ifDefined(this.target)}
       type=${ifDefined(this.type)}
       aria-label=${ifDefined(this.label)}
+      @click=${this._handleClick}
       ><slot></slot>${this.appendContent}</a
     >`;
   }

@@ -1,5 +1,25 @@
 # @ithaka/pharos-cli
 
+## 5.0.3
+
+### Patch Changes
+
+- [#48](https://github.com/ithaka/pharos/pull/48) [`ced1c1f`](https://github.com/ithaka/pharos/commit/ced1c1f082e40b5e0b5c71830fb6c6cde1277b83) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies:
+
+  - Update Gatsby dependencies
+  - Update ESLint dependencies
+  - Update Sass
+  - Update cli dependencies
+
+## 5.0.2
+
+### Patch Changes
+
+- [#33](https://github.com/ithaka/pharos/pull/33) [`46fbc67`](https://github.com/ithaka/pharos/commit/46fbc679c16f094aef2c207e4f4c05e71552a9bb) Thanks [@Niznikr](https://github.com/Niznikr)! - update Storybook to generate React API tables:
+
+  - Update Storybook to 6.3 alpha
+  - Follow migration guidelines
+
 ## 5.0.1
 
 ### Patch Changes

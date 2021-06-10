@@ -1,6 +1,7 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit';
 import { viewports } from '../../pages/shared/viewports';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import './pharos-image-card';
 import '../layout/pharos-layout';
@@ -21,6 +22,8 @@ import { items, collections } from '../../pages/item-detail/mocks';
 />
 
 # Image Card
+
+<GuidelineLink path="image-card" />
 
 export const Template = (args) => html`<pharos-layout style="margin: 1rem 0"
   ><pharos-image-card
@@ -82,7 +85,7 @@ export const CollectionsTemplate = () => html`<pharos-layout tag="ol" style="mar
           alt="${collection.title}"
           slot="image"
         />
-        <div id="items-${index}" slot="metadata"><strong>${collection.items} items</strong></div>
+        <strong id="items-${index}" slot="metadata">${collection.items} items</strong>
         <div id="description-${index}" slot="metadata">
           Selections from the global permanent collection.
         </div>

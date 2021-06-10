@@ -5,7 +5,3 @@ pharos-alert .pharos-alert__link {
     text-decoration: none;
   }
 }
-
-pharos-alert[status='error'] .pharos-alert__link {
-  --pharos-alert-color-link-base: var(--pharos-alert-color-link-inverse);
-}

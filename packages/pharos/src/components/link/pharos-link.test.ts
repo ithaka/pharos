@@ -1,7 +1,6 @@
-import { fixture, expect } from '@open-wc/testing';
+import { fixture, expect, nextFrame } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import './pharos-link';
-import '../alert/pharos-alert';
 import type { PharosLink } from './pharos-link';
 import { PharosColorBlack } from '../../styles/variables';
 
@@ -54,14 +53,29 @@ describe('pharos-link', () => {
       .thrown;
   });
 
-  it('adds a class to update its styles when in an alert', async () => {
-    const parentNode = document.createElement('pharos-alert');
+  it('delegates focus to the target when clicked in the skip state', async () => {
+    let activeElement = null;
+    const onFocusIn = (event: Event): void => {
+      activeElement = event.composedPath()[0];
+    };
+    document.addEventListener('focusin', onFocusIn);
 
-    component = await fixture(html`<pharos-link href="#">I am a link</pharos-link>`, {
-      parentNode,
-    });
-    const link = component.renderRoot.querySelector('#link-element');
+    component.skip = true;
+    component.href = '#test';
+    await component.updateComplete;
 
-    expect(link).to.have.class('link--alert');
+    const link = document.createElement('pharos-link');
+    link.id = 'test';
+    link.href = '#';
+    link.textContent = 'I am a link';
+    document.body.appendChild(link);
+
+    const anchor = component.renderRoot.querySelector('#link-element') as HTMLAnchorElement;
+    anchor?.click();
+    await nextFrame();
+    await nextFrame();
+
+    expect(activeElement === link.renderRoot.querySelector('#link-element')).to.be.true;
+    document.removeEventListener('focusin', onFocusIn);
   });
 });

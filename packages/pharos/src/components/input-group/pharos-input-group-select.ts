@@ -1,7 +1,6 @@
 import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { inputGroupSelectStyles } from './pharos-input-group-select.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { PharosSelect } from '../select/pharos-select';
 
@@ -13,7 +12,7 @@ import { PharosSelect } from '../select/pharos-select';
 @customElement('pharos-input-group-select')
 export class PharosInputGroupSelect extends PharosSelect {
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, inputGroupSelectStyles];
+    return [super.styles, inputGroupSelectStyles];
   }
 
   protected render(): TemplateResult {

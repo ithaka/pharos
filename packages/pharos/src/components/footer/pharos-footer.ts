@@ -3,7 +3,6 @@ import { queryAssignedNodes } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { footerStyles } from './pharos-footer.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import ObserveChildrenMixin from '../../utils/mixins/observe-children';
@@ -30,7 +29,7 @@ export class PharosFooter extends ObserveChildrenMixin(LitElement) {
   private _widgetNodes!: NodeListOf<HTMLElement>;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, footerStyles];
+    return [footerStyles];
   }
 
   private _widgetObserver: MutationObserver = new MutationObserver(

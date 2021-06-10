@@ -5,7 +5,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { comboboxStyles } from './pharos-combobox.css';
-import { designTokens } from '../../styles/variables.css';
 import debounce from '../../utils/debounce';
 import { customElement } from '../../utils/decorators';
 
@@ -109,7 +108,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
   );
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, comboboxStyles];
+    return [super.styles, comboboxStyles];
   }
 
   protected firstUpdated(): void {

@@ -1,0 +1,43 @@
+[[redirects]]
+  from = "/storybook"
+  to = "https://pharos-storybooks.netlify.app/main/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybook/*"
+  to = "https://pharos-storybooks.netlify.app/main/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybooks/wc"
+  to = "https://pharos-storybooks.netlify.app/wc/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybooks/wc/*"
+  to = "https://pharos-storybooks.netlify.app/wc/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybooks/react"
+  to = "https://pharos-storybooks.netlify.app/react/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybooks/react/*"
+  to = "https://pharos-storybooks.netlify.app/react/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+[build]
+  ignore = "bash ./build-ignore.sh"

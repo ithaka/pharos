@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { toastStyles } from './pharos-toast.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import debounce from '../../utils/debounce';
 
@@ -57,7 +56,7 @@ export class PharosToast extends FocusMixin(LitElement) {
   }, TOAST_LIFE);
 
   public static get styles(): CSSResultArray {
-    return [designTokens, toastStyles];
+    return [toastStyles];
   }
 
   protected firstUpdated(): void {

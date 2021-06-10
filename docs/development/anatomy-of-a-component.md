@@ -147,7 +147,6 @@ import { customElement } from '../../utils/decorators';
 Next, you'll import the design tokens, transformed into CSS variables by the build, along with SparklyText's generated CSS:
 
 ```typescript
-import { designTokens } from '../../styles/variables.css';
 import { sparklyTextStyles } from './pharos-sparkly-text.css';
 ```
 
@@ -157,7 +156,7 @@ Now you've got all the ingredients needed to write the component definition. Add
 @customElement('pharos-sparkly-text')
 export class PharosSparklyText extends LitElement {
   public static get styles(): CSSResultArray {
-    return [designTokens, sparklyTextStyles];
+    return [sparklyTextStyles];
   }
 
   protected render(): TemplateResult {

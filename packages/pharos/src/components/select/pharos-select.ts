@@ -4,7 +4,6 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { selectStyles } from './pharos-select.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import { FormElement } from '../base/form-element';
@@ -42,7 +41,7 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, selectStyles];
+    return [super.styles, selectStyles];
   }
 
   protected firstUpdated(): void {

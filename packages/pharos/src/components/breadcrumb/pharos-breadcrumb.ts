@@ -1,7 +1,6 @@
 import { html, LitElement } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { breadcrumbStyles } from './pharos-breadcrumb.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import FocusMixin from '../../utils/mixins/focus';
@@ -22,7 +21,7 @@ import FocusMixin from '../../utils/mixins/focus';
 @customElement('pharos-breadcrumb')
 export class PharosBreadcrumb extends FocusMixin(LitElement) {
   public static get styles(): CSSResultArray {
-    return [designTokens, breadcrumbStyles];
+    return [breadcrumbStyles];
   }
 
   private _handleSlotchange(): void {

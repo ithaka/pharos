@@ -3,7 +3,6 @@ import { property, query } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { checkboxStyles } from './pharos-checkbox.css';
-import { designTokens } from '../../styles/variables.css';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from '../../utils/decorators';
@@ -16,7 +15,6 @@ import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
 
 const LINKS = `a[href],pharos-link[href]`;
-const matchesFunc = 'matches' in Element.prototype ? 'matches' : 'msMatchesSelector';
 
 /**
  * Pharos checkbox component.
@@ -62,7 +60,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   private _checkbox!: HTMLInputElement;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, checkboxStyles];
+    return [super.styles, checkboxStyles];
   }
 
   protected firstUpdated(): void {
@@ -93,7 +91,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   }
 
   private _handleClick(event: Event): void {
-    if (!(event.target as Element)[matchesFunc](LINKS)) {
+    if (!(event.target as Element).matches(LINKS)) {
       event.preventDefault();
       event.stopPropagation();
       this._checkbox.click();
@@ -110,7 +108,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   }
 
   private _handleMousedown(event: MouseEvent): void {
-    if (!(event.target as Element)[matchesFunc](LINKS)) {
+    if (!(event.target as Element).matches(LINKS)) {
       event.preventDefault();
     }
   }

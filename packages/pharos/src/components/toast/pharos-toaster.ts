@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { toasterStyles } from './pharos-toaster.css';
-import { designTokens } from '../../styles/variables.css';
+
 import { customElement } from '../../utils/decorators';
 
 import './pharos-toast';
@@ -35,7 +35,7 @@ export class PharosToaster extends LitElement {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, toasterStyles];
+    return [toasterStyles];
   }
 
   connectedCallback(): void {

@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { dropdownMenuNavStyles } from './pharos-dropdown-menu-nav.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import type { PharosDropdownMenuNavLink } from './pharos-dropdown-menu-nav-link';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
@@ -31,7 +30,7 @@ export class PharosDropdownMenuNav extends FocusMixin(LitElement) {
   private _allMenus!: NodeListOf<PharosDropdownMenu>;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, dropdownMenuNavStyles];
+    return [dropdownMenuNavStyles];
   }
 
   protected firstUpdated(): void {

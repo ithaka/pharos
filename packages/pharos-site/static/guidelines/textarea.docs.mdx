@@ -1,109 +1,136 @@
-# Textarea
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
-<p
-  style={{
-    fontSize: 'var(--pharos-type-scale-6)',
-    lineHeight: '2rem',
-    marginBottom: 'var(--pharos-spacing-5-x)',
-  }}
->
-  A text area allows users to enter long, free-form text that can be on multiple lines.
-</p>
+<PageSection
+  isHeader
+  title="Textarea"
+  storyBookType="forms"
+  description="A text area allows users to enter long, free-form text that can be on multiple lines."
+></PageSection>
 
-## Usage
+<PageSection title="Usage">
+  <p>
+    Use textareas when you want to allow users to enter a sizeable amount of free-form text, like
+    leaving feedback, adding a description, creating a note and more.
+  </p>
+  <p>
+    The length of the text input provides a hint to users as to how much text to write. If an input
+    requires users to write longer forms of text use a textarea instead of a single text input
+    field.
+  </p>
+</PageSection>
 
-Use textareas when you want to allow users to enter a sizeable amount of free-form text, like leaving feedback, adding a description, creating a note and more.
+<PageSection title="Best practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>Use when an input needs users to longer amounts of text</li>
+        <li>
+          Make sure the label clearly indicates to the user what kind of input is expected of them
+        </li>
+        <li>
+          Labels need to describe the purpose of the form control and must be used for all textarea
+          inputs
+        </li>
+        <li>
+          Placeholder text should be a word or short phrase that demonstrates the expected type of
+          data, rather than an explanatory message
+        </li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Do not use placeholder text as a replacement for labels</li>
+      </ul>
+    }
+  />
+</PageSection>
 
-The length of the text input provides a hint to users as to how much text to write. If an input requires users to write longer forms of text use a textarea instead of a single text input field.
+<PageSection title="Content guidelines">
+  <PageSection subSectionLevel={1} title="Labels">
+    <ul>
+      <li>
+        The textarea label needs to be helpful in telling the user what is expected of them, but
+        they do not need to be instructive
+      </li>
+      <li>Labels are placed above the textarea</li>
+      <li>Labels are to be written in sentence case and should only be 1-3 words long</li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Placeholder text">
+    <p>
+      Placeholder text is shown inside the textarea to help users know what information they can
+      enter.
+    </p>
+    <ul>
+      <li>Field placeholder text is used for supplementary information</li>
+      <li>The text should be written as examples instead of instructions</li>
+    </ul>
+  </PageSection>
+</PageSection>
 
-## Best Practices
+<PageSection title="State">
+  <PageSection subSectionLevel={1} title="Default">
+    <p>A textarea should be used when the user needs to enter multiple lines of text.</p>
+    <Canvas>
+      <PharosTextarea>
+        <span slot="label">Textarea label</span>
+      </PharosTextarea>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Disabled">
+    <p>A state which indicates that the user should not be able to interact with the input.</p>
+    <Canvas>
+      <PharosTextarea disabled>
+        <span slot="label">Textarea label</span>
+      </PharosTextarea>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Required">
+    <p>
+      Indicates that the user must specify a value for the input before the form can be submitted.
+    </p>
+    <Canvas>
+      <PharosTextarea required>
+        <span slot="label">Textarea label</span>
+      </PharosTextarea>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Read-only">
+    <p>A state where the field cannot be edited by the user.</p>
+    <Canvas>
+      <PharosTextarea readonly>
+        <span slot="label">Textarea label</span>
+      </PharosTextarea>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Error">
+    <p>A state that lets the user know there has been an error with what was inputted.</p>
+    <Canvas>
+      <PharosTextarea required invalidated message="This field is required">
+        <span slot="label">Textarea label</span>
+      </PharosTextarea>
+    </Canvas>
+  </PageSection>
+</PageSection>
 
-### Dos
-
-- Use when an input needs users to longer amounts of text
-- Make sure the label clearly indicates to the user what kind of input is expected of them
-- Labels need to describe the purpose of the form control and must be used for all textarea inputs
-- Placeholder text should be a word or short phrase that demonstrates the expected type of data, rather than an explanatory message
-
-### Don'ts
-
-- Do not use placeholder text as a replacement for labels
-
-## Content Guidelines
-
-### Labels
-
-- The textarea label needs to be helpful in telling the user what is expected of them, but they do not need to be instructive
-- Labels are placed above the textarea
-- Labels are to be written in sentence case and should only be 1-3 words long
-
-### Placeholder Text
-
-Placeholder text is shown inside the textarea to help users know what information they can enter.
-
-- Field placeholder text is used for supplementary information
-- The text should be written as examples instead of instructions
-
-## States
-
-### Default
-
-A textarea should be used when the user needs to enter multiple lines of text.
-
-<Canvas>
-  <PharosTextarea>
-    <span slot="label">Textarea label</span>
-  </PharosTextarea>
-</Canvas>
-
-### Disabled
-
-A state which indicates that the user should not be able to interact with the input.
-
-<Canvas>
-  <PharosTextarea disabled>
-    <span slot="label">Textarea label</span>
-  </PharosTextarea>
-</Canvas>
-
-### Required
-
-Indicates that the user must specify a value for the input before the form can be submitted.
-
-<Canvas>
-  <PharosTextarea required>
-    <span slot="label">Textarea label</span>
-  </PharosTextarea>
-</Canvas>
-
-### Read-only
-
-A state where the field cannot be edited by the user.
-
-<Canvas>
-  <PharosTextarea readonly>
-    <span slot="label">Textarea label</span>
-  </PharosTextarea>
-</Canvas>
-
-### Error
-
-A state that lets the user know there has been an error with what was inputted.
-
-<Canvas>
-  <PharosTextarea required invalidated message="This field is required">
-    <span slot="label">Textarea label</span>
-  </PharosTextarea>
-</Canvas>
-
-## Accessibility
-
-- Every textarea must have a label. A textarea without a label is ambiguous and not accessible
-- In cases where context is sufficient and a label could be hidden, make sure to have the design reviewed
-
-### Accessibility best practices for labels
-
-- Labels must be visible when an input gets focus
-- Labels must be announced to the screen reader on focus
-- Use sentence case
-- If the text input is a required field include the aria-required property and indicate that it is a required field and use the validation message for input errors.
+<PageSection title="Accessibility">
+  <ul>
+    <li>
+      Every textarea must have a label. A textarea without a label is ambiguous and not accessible
+    </li>
+    <li>
+      In cases where context is sufficient and a label could be hidden, make sure to have the design
+      reviewed
+    </li>
+  </ul>
+  <PageSection subSectionLevel={1} title="Accessibility best practices for labels">
+    <li>Labels must be visible when an input gets focus</li>
+    <li>Labels must be announced to the screen reader on focus</li>
+    <li>Use sentence case</li>
+    <li>
+      If the text input is a required field include the aria-required property and indicate that it
+      is a required field and use the validation message for input errors.
+    </li>
+  </PageSection>
+</PageSection>

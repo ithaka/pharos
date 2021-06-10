@@ -1,5 +1,6 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { Fragment } from 'react';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosSidenav } from '../../react-components/sidenav/pharos-sidenav';
 import { PharosSidenavSection } from '../../react-components/sidenav/pharos-sidenav-section';
@@ -19,9 +20,7 @@ import { PharosLink } from '../../react-components/link/pharos-link';
 
 # Sidenav
 
-<PharosLink href="https://www.jstor.org/pharos/components/sidenav" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="sidenav" />
 
 <Canvas withToolbar>
   <Story name="Base" parameters={{ docs: { disable: true } }}>

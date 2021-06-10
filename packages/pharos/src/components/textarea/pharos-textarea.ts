@@ -4,7 +4,6 @@ import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { textareaStyles } from './pharos-textarea.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import { FormElement } from '../base/form-element';
@@ -114,7 +113,7 @@ export class PharosTextarea extends FormMixin(FormElement) {
   private _textarea!: HTMLTextAreaElement;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, textareaStyles];
+    return [super.styles, textareaStyles];
   }
 
   protected firstUpdated(): void {

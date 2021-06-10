@@ -1,149 +1,305 @@
-# Text Input
+import PageSection from '../../src/components/statics/PageSection.tsx';
+import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
-<p
-  style={{
-    fontSize: 'var(--pharos-type-scale-6)',
-    lineHeight: '2rem',
-    marginBottom: 'var(--pharos-spacing-5-x)',
-  }}
->
-  Text inputs enable users to supply data as part of a form or a query string for search.
-</p>
+<PageSection
+  isHeader
+  storyBookType="forms"
+  title="Text Input"
+  description="Text inputs enable users to supply data as part of a form or a query string for search."
+></PageSection>
 
-## Usage
+<PageSection title="Usage">
+  <p>
+    Inputs are used for forms or inputting data to get a result, so the design and implementation
+    should be as concise as possible. Careful thought should be considered about the need for each
+    text input and what value the data will provide. What do we gain by asking the user to provide
+    this information?
+  </p>
+</PageSection>
 
-Inputs are used for forms or inputting data to get a result, so the design and implementation should be as concise as possible. Careful thought should be considered about the need for each text input and what value the data will provide. What do we gain by asking the user to provide this information?
+<PageSection title="Best practices">
+  <BestPractices
+    Do={
+      <ul>
+        <li>
+          Make sure the label clearly indicates to the user what kind of input is expected of them
+        </li>
+        <li>
+          Labels need to describe the purpose of the form control and must be used for all text
+          inputs
+        </li>
+        <li>
+          Placeholder text should be a word or short phrase that demonstrates the expected type of
+          data, rather than an explanatory message
+        </li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>Do not use when users are choosing from a specific set of options</li>
+        <li>Do not use placeholder text as a replacement for labels</li>
+      </ul>
+    }
+  />
+</PageSection>
 
-## Best Practices
+<PageSection title="Content guidelines">
+  <PageSection subSectionLevel={1} title="Labels">
+    <ul>
+      <li>
+        The input label needs to be helpful in telling the user what is expected of them, but they
+        do not need to be instructive
+      </li>
+      <li>Labels are placed above the input text field</li>
+      <li>Labels are to be written in sentence case and should only be 1-3 words long</li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Placeholder text">
+    <p>
+      Placeholder text is shown inside the text input to help users know what information they can
+      enter.
+    </p>
+    <ul>
+      <li>Field placeholder text is used for supplementary information</li>
+      <li>The text should be written as examples instead of instructions</li>
+    </ul>
+  </PageSection>
+</PageSection>
 
-### Dos
+<PageSection title="Variants">
+  <PageSection subSectionLevel={1} title="Text">
+    <p>
+      The text variant should be used when the user needs to enter a single-line value and there
+      isn't a more specific input type available for collecting that value.
+    </p>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Password">
+    <p>
+      A password input is a single-line text field whose value is obscured. Use it when you need to
+      protect the user's content from being read.
+    </p>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Email">
+    <p>
+      A search input allows the user to enter search queries. Line-breaks are automatically removed
+      from the input value. They may include a delete or "clear" icon in supporting browsers that
+      can be used to clear the field.
+    </p>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Search">
+    <p>
+      Use the email variant to allow the user to enter or edit an email address. You get automatic
+      validation that the entered text is in the correct form to potentially be a legitimate e-mail
+      address. This can help avoid cases in which the user mistypes or enters an invalid address.
+    </p>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Number">
+    <p>
+      This is used for entering a number. It displays a numeric keypad in some devices with dynamic
+      keypads. Usually a set of up and down buttons are also provided to step the value up and down.
+    </p>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="URL">
+    <p>
+      The URL input allows users to input a valid URL. Using this type, you get automatic validation
+      that the entered text is at least in the correct form to potentially be a legitimate URL. This
+      can help avoid cases in which the user mistypes the website's address, or provides an invalid
+      one.
+    </p>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Hidden">
+    <p>
+      A hidden input does not display a value to the user, but its value is submitted to the server.
+      This is used when you want to include data the user doesn't need to see or edit along with the
+      form when it's submitted to the server, such as a unique security token.
+    </p>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Tel">
+    <p>
+      The tel input allows the user to enter or edit a telephone number. They display a telephone
+      keypad in some devices with dynamic keypads. The input value is not automatically validated to
+      a particular format because they vary so much around the world.
+    </p>
+  </PageSection>
+</PageSection>
 
-- Make sure the label clearly indicates to the user what kind of input is expected of them
-- Labels need to describe the purpose of the form control and must be used for all text inputs
-- Placeholder text should be a word or short phrase that demonstrates the expected type of data, rather than an explanatory message
+<PageSection title="State">
+  <PageSection subSectionLevel={1} title="Default">
+    <Canvas>
+      <PharosTextInput>
+        <span slot="label">Text input label</span>
+      </PharosTextInput>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Disabled">
+    <p>A state which indicates that the user should not be able to interact with the input.</p>
+    <Canvas>
+      <PharosTextInput disabled>
+        <span slot="label">Text input label</span>
+      </PharosTextInput>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Required">
+    <p>
+      Indicates that the user must specify a value for the input before the form can be submitted.
+    </p>
+    <Canvas>
+      <PharosTextInput required>
+        <span slot="label">Text input label</span>
+      </PharosTextInput>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Read-only">
+    <p>A state where the field cannot be edited by the user.</p>
+    <Canvas>
+      <PharosTextInput readonly>
+        <span slot="label">Text input label</span>
+      </PharosTextInput>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Error">
+    <p>A state that lets the user know there has been an error with what was inputted.</p>
+    <Canvas>
+      <PharosTextInput required invalidated message="This field is required">
+        <span slot="label">Text input label</span>
+      </PharosTextInput>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Validated">
+    <p>A state that lets the user know that the input has been validated.</p>
+    <Canvas>
+      <PharosTextInput required value="I have text" validated>
+        <span slot="label">Text input label</span>
+      </PharosTextInput>
+    </Canvas>
+  </PageSection>
+</PageSection>
 
-### Don'ts
-
-- Do not use when users are choosing from a specific set of options
-- Do not use placeholder text as a replacement for labels
-
-## Content Guidelines
-
-### Labels
-
-- The input label needs to be helpful in telling the user what is expected of them, but they do not need to be instructive
-- Labels are placed above the input text field
-- Labels are to be written in sentence case and should only be 1-3 words long
-
-### Placeholder Text
-
-Placeholder text is shown inside the text input to help users know what information they can enter.
-
-- Field placeholder text is used for supplementary information
-- The text should be written as examples instead of instructions
-
-## Variants
-
-### Text
-
-The text variant should be used when the user needs to enter a single-line value and there isn't a more specific input type available for collecting that value.
-
-### Password
-
-A password input is a single-line text field whose value is obscured. Use it when you need to protect the user's content from being read.
-
-### Email
-
-Use the email variant to allow the user to enter or edit an email address. You get automatic validation that the entered text is in the correct form to potentially be a legitimate e-mail address. This can help avoid cases in which the user mistypes or enters an invalid address.
-
-### Search
-
-A search input allows the user to enter search queries. Line-breaks are automatically removed from the input value. They may include a delete or "clear" icon in supporting browsers that can be used to clear the field.
-
-### Number
-
-This is used for entering a number. It displays a numeric keypad in some devices with dynamic keypads. Usually a set of up and down buttons are also provided to step the value up and down.
-
-### URL
-
-The URL input allows users to input a valid URL. Using this type, you get automatic validation that the entered text is at least in the correct form to potentially be a legitimate URL. This can help avoid cases in which the user mistypes the website's address, or provides an invalid one.
-
-### Hidden
-
-A hidden input does not display a value to the user, but its value is submitted to the server. This is used when you want to include data the user doesn't need to see or edit along with the form when it's submitted to the server, such as a unique security token.
-
-### Tel
-
-The tel input allows the user to enter or edit a telephone number. They display a telephone keypad in some devices with dynamic keypads. The input value is not automatically validated to a particular format because they vary so much around the world.
-
-## States
-
-### Default
-
-<Canvas>
-  <PharosTextInput>
-    <span slot="label">Text input label</span>
-  </PharosTextInput>
-</Canvas>
-
-### Disabled
-
-A state which indicates that the user should not be able to interact with the input.
-
-<Canvas>
-  <PharosTextInput disabled>
-    <span slot="label">Text input label</span>
-  </PharosTextInput>
-</Canvas>
-
-### Required
-
-Indicates that the user must specify a value for the input before the form can be submitted.
-
-<Canvas>
-  <PharosTextInput required>
-    <span slot="label">Text input label</span>
-  </PharosTextInput>
-</Canvas>
-
-### Read-only
-
-A state where the field cannot be edited by the user.
-
-<Canvas>
-  <PharosTextInput readonly>
-    <span slot="label">Text input label</span>
-  </PharosTextInput>
-</Canvas>
-
-### Error
-
-A state that lets the user know there has been an error with what was inputted.
-
-<Canvas>
-  <PharosTextInput required invalidated message="This field is required">
-    <span slot="label">Text input label</span>
-  </PharosTextInput>
-</Canvas>
-
-### Validated
-
-A state that lets the user know that the input has been validated.
-
-<Canvas>
-  <PharosTextInput required value="I have text" validated>
-    <span slot="label">Text input label</span>
-  </PharosTextInput>
-</Canvas>
-
-## Accessibility
-
-- Every text input must have a label. A text input without a label is ambiguous and not accessible
-- In cases where context is sufficient and a label could be hidden, make sure to have the design reviewed
-
-### Accessibility best practices for labels
-
-- Labels must be visible when an input gets focus
-- Labels must be announced to the screen reader on focus
-- Use sentence case
-- If the text input is a required field include the aria-required property and indicate that it is a required field and use the validation message for input errors.
+<PageSection title="Accessibility">
+  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
+    <ul>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose">
+          1.3.5 Identify Input Purpose AA
+        </PharosLink>
+      </li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
+          1.3.1 Info and Relationships
+        </PharosLink>
+      </li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions">
+          3.3.2 Labels or Instructions A
+        </PharosLink>
+      </li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html">
+          2.4.6 Headings and Labels
+        </PharosLink>
+      </li>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value">
+          4.1.2 Name, Role, Value A
+        </PharosLink>
+      </li>
+    </ul>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Importance">
+    Inputs allow the user to complete many different tasks. This can include filling out a form or
+    submitting a search
+  </PageSection>
+  <ul>
+    <PharosHeading level={'3'} preset={'2'}>
+      Accessibility best practices for labels
+    </PharosHeading>
+    <li>Labels must be visible when an input gets focus</li>
+    <li>Labels must be announced to the screen reader on focus</li>
+    <li>Use sentence case</li>
+  </ul>
+  <PageSection subSectionLevel={1} title="Code expectations">
+    <ul>
+      <li>
+        Via &nbsp;
+        <PharosLink href="https://www.w3.org/WAI/tutorials/forms/labels/">W3</PharosLink>
+        &nbsp; there are 3 ways to approach input groups:
+      </li>
+      <li>
+        Visual label:
+        <ul>
+          <li> &lt;label for="fieldname"&gt; Field Name: &lt;/label&gt; </li>
+          <li>
+            &lt;input id="fieldname" type="text" autocomplete="fieldname"&gt;
+            <ul>
+              <li> Matching for and id names associate the label with its form control </li>
+              <li> Form control can only have one associated &lt;label&gt; </li>
+              <li>
+                This allows user to click the label and focus will be put into the field, ensuring
+                that the label is associated with the input
+              </li>
+            </ul>
+          </li>
+          <li>
+            We can also use an aria-label on the input to give the user more information about the
+            field
+          </li>
+        </ul>
+      </li>
+    </ul>
+    The next two methods should ONLY be used when purpose can be determined with no visual label (such
+    as a "Search" button next to the input).
+    <ul>
+      <li>
+        Visually hidden label:
+        <ul>
+          <li> &lt;label for="fieldname" class="visuallyhideen"&gt;Field name: &lt;/label&gt; </li>
+          <li> &lt;input type="text" name="fieldname" id="fieldname"&gt; </li>
+          <li>
+            &lt;button type="submit"&gt; Button Name &lt;/button&gt;
+            <ul>
+              <li>Allows assistive technology to understand a visually hidden label</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Aria-label:
+        <ul>
+          <li> &lt;input type="text" name="fieldname" aira-label="Field Name"&gt; </li>
+          <li> &lt;button type="submit"&gt; Button Name &lt;/button&gt; </li>
+        </ul>
+      </li>
+    </ul>
+    *NOTE: If the text input is a required field include the <code>aria-required</code> property and
+    indicate that it is a required field. Use the validation message for input errors
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Expected actions">
+    <PageSection subSectionLevel={2} title="Screen reader">
+      <ul>
+        <li>
+          Reads: "Field name, edit text"
+          <ul>
+            <li>
+              If autocomplete is enabled: "Field name, edit text with autofill menu, required (if
+              applicable)"
+            </li>
+            <li>
+              Aria label example: "designated aria-label, edit text, required (if applicable)"
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </PageSection>
+    <PageSection subSectionLevel={2} title="Keyboard">
+      <ul>
+        <li>
+          <kbd>Enter</kbd> &nbsp; key: submits the input
+        </li>
+        <li>
+          Input (and applicable controls such as a button) should be included in the logical tab
+          order
+        </li>
+      </ul>
+    </PageSection>
+  </PageSection>
+</PageSection>

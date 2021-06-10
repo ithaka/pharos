@@ -1,7 +1,7 @@
 import { LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { PropertyValues } from 'lit';
-
+import deepSelector from '../../utils/deepSelector';
 import { placements } from '../../utils/popper';
 import type { Instance, Options, Placement, PositioningStrategy } from '../../utils/popper';
 
@@ -92,9 +92,7 @@ export class OverlayElement extends LitElement {
         );
         if (preventOverflow?.options) {
           preventOverflow.options.boundary =
-            this.boundary === 'clippingParents'
-              ? this.boundary
-              : document.querySelector(`#${this.boundary}`);
+            this.boundary === 'clippingParents' ? this.boundary : deepSelector(`#${this.boundary}`);
         }
 
         this._popper?.setOptions(this._options);

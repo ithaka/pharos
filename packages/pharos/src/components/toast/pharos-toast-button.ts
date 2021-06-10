@@ -1,6 +1,5 @@
 import type { CSSResultArray } from 'lit';
 import { toastButtonStyles } from './pharos-toast-button.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';
 
@@ -27,7 +26,7 @@ export class PharosToastButton extends PharosButton {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, toastButtonStyles];
+    return [super.styles, toastButtonStyles];
   }
 }
 

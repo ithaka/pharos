@@ -2,7 +2,6 @@ import { html, LitElement, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { sidenavSectionStyles } from './pharos-sidenav-section.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 
 import '../heading/pharos-heading';
@@ -32,7 +31,7 @@ export class PharosSidenavSection extends LitElement {
   public showDivider = false;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, sidenavSectionStyles];
+    return [sidenavSectionStyles];
   }
 
   private _renderLabel(): TemplateResult | typeof nothing {

@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { sidenavMenuStyles } from './pharos-sidenav-menu.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import FocusMixin from '../../utils/mixins/focus';
 
@@ -37,7 +36,7 @@ export class PharosSidenavMenu extends FocusMixin(LitElement) {
   private _allLinks!: NodeListOf<PharosSidenavLink>;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, sidenavMenuStyles];
+    return [sidenavMenuStyles];
   }
 
   protected firstUpdated(): void {

@@ -9,6 +9,18 @@ import type { PharosButton } from '../button/pharos-button';
 describe('pharos-modal', () => {
   let component: PharosModal, componentNoFooter: PharosModal;
 
+  const getSimpleModal = () => {
+    return html`
+      <pharos-modal id="my-modal" header="Pharos modal">
+        I am a modal
+        <div slot="footer">
+          <button type="button" data-modal-close>Cancel</button>
+          <button type="button">Ok</button>
+        </div>
+      </pharos-modal>
+    `;
+  };
+
   beforeEach(async () => {
     component = await fixture(html`
       <pharos-modal header="Pharos modal">
@@ -193,15 +205,7 @@ describe('pharos-modal', () => {
     trigger.setAttribute('data-modal-id', 'my-modal');
     document.body.appendChild(trigger);
 
-    component = await fixture(html`
-      <pharos-modal id="my-modal" header="Pharos modal">
-        I am a modal
-        <div slot="footer">
-          <button type="button" data-modal-close>Cancel</button>
-          <button type="button">Ok</button>
-        </div>
-      </pharos-modal>
-    `);
+    component = await fixture(getSimpleModal());
 
     trigger.click();
     await component.updateComplete;
@@ -235,12 +239,12 @@ describe('pharos-modal', () => {
     expect(component.open).to.be.true;
   });
 
-  it('fires a custom event pharos-modal-closed when closed by user interaction', async () => {
+  it('includes details of trigger when custom event pharos-modal-close is fired', async () => {
     let trigger = null;
     const handleClose = (e: Event): void => {
       trigger = (e as CustomEvent).detail;
     };
-    component.addEventListener('pharos-modal-closed', handleClose);
+    component.addEventListener('pharos-modal-close', handleClose);
     component.open = true;
     await component.updateComplete;
 
@@ -250,21 +254,42 @@ describe('pharos-modal', () => {
     expect(trigger === closeButton).to.be.true;
   });
 
+  it('fires a custom event pharos-modal-closed when closed by user interaction', async () => {
+    let wasFired = false;
+    const handleClose = (): void => {
+      wasFired = true;
+    };
+    component.addEventListener('pharos-modal-closed', handleClose);
+    component.open = true;
+    await component.updateComplete;
+
+    const closeButton = component.renderRoot.querySelector('#close-button') as PharosButton;
+    closeButton.click();
+    await component.updateComplete;
+    expect(wasFired).to.be.true;
+  });
+
+  it('fires a custom event pharos-modal-closed when closed via props', async () => {
+    let wasFired = false;
+    const handleClose = (): void => {
+      wasFired = true;
+    };
+    component.addEventListener('pharos-modal-closed', handleClose);
+
+    component.open = true;
+    await component.updateComplete;
+    component.open = false;
+    await component.updateComplete;
+    expect(wasFired).to.be.true;
+  });
+
   it('fires a cancelable custom event pharos-modal-open when starting to open by user interaction', async () => {
     const trigger = document.createElement('button');
     trigger.setAttribute('id', 'trigger');
     trigger.setAttribute('data-modal-id', 'my-modal');
     document.body.appendChild(trigger);
 
-    component = await fixture(html`
-      <pharos-modal id="my-modal" header="Pharos modal">
-        I am a modal
-        <div slot="footer">
-          <button type="button" data-modal-close>Cancel</button>
-          <button type="button">Ok</button>
-        </div>
-      </pharos-modal>
-    `);
+    component = await fixture(getSimpleModal());
 
     const handleOpen = (e: Event): void => {
       e.preventDefault();
@@ -275,30 +300,52 @@ describe('pharos-modal', () => {
     expect(component.open).to.be.false;
   });
 
-  it('fires a custom event pharos-modal-opened when opened by user interaction', async () => {
+  it('includes details of trigger when custom event pharos-modal-open is fired', async () => {
     let clicked = null;
     const trigger = document.createElement('button');
     trigger.setAttribute('id', 'trigger');
     trigger.setAttribute('data-modal-id', 'my-modal');
     document.body.appendChild(trigger);
 
-    component = await fixture(html`
-      <pharos-modal id="my-modal" header="Pharos modal">
-        I am a modal
-        <div slot="footer">
-          <button type="button" data-modal-close>Cancel</button>
-          <button type="button">Ok</button>
-        </div>
-      </pharos-modal>
-    `);
+    component = await fixture(getSimpleModal());
 
     const handleOpen = (e: Event): void => {
       clicked = (e as CustomEvent).detail;
     };
-    component.addEventListener('pharos-modal-opened', handleOpen);
+    component.addEventListener('pharos-modal-open', handleOpen);
     trigger.click();
     await component.updateComplete;
     expect(clicked === trigger).to.be.true;
+  });
+
+  it('fires a custom event pharos-modal-opened when opened by user interaction', async () => {
+    let wasFired = false;
+    const trigger = document.createElement('button');
+    trigger.setAttribute('id', 'trigger');
+    trigger.setAttribute('data-modal-id', 'my-modal');
+    document.body.appendChild(trigger);
+
+    component = await fixture(getSimpleModal());
+
+    const handleOpen = (): void => {
+      wasFired = true;
+    };
+    component.addEventListener('pharos-modal-opened', handleOpen);
+    trigger.click();
+    await component.updateComplete;
+    expect(wasFired).to.be.true;
+  });
+
+  it('fires a custom event pharos-modal-opened when opened via props', async () => {
+    let wasFired = false;
+    const handleOpen = (): void => {
+      wasFired = true;
+    };
+    component.addEventListener('pharos-modal-opened', handleOpen);
+
+    component.open = true;
+    await component.updateComplete;
+    expect(wasFired).to.be.true;
   });
 
   it('adds a class to prevent scrolling on the body when opened', async () => {

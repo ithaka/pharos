@@ -31,6 +31,7 @@
 
 .alert--info {
   background: var(--pharos-alert-color-background-info);
+  border: 1px solid var(--pharos-alert-color-border-info);
 
   .alert__icon {
     fill: var(--pharos-alert-color-icon-info);
@@ -39,6 +40,7 @@
 
 .alert--success {
   background: var(--pharos-alert-color-background-success);
+  border: 1px solid var(--pharos-alert-color-border-success);
 
   .alert__icon {
     fill: var(--pharos-alert-color-icon-success);
@@ -47,6 +49,7 @@
 
 .alert--warning {
   background: var(--pharos-alert-color-background-warning);
+  border: 1px solid var(--pharos-alert-color-border-warning);
 
   .alert__icon {
     fill: var(--pharos-alert-color-icon-warning);
@@ -55,7 +58,7 @@
 
 .alert--error {
   background: var(--pharos-alert-color-background-error);
-  color: var(--pharos-alert-color-text-inverse);
+  border: 1px solid var(--pharos-alert-color-border-error);
 
   .alert__icon {
     fill: var(--pharos-alert-color-icon-error);

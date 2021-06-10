@@ -2,7 +2,6 @@ import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { dropdownMenuNavLinkStyles } from './pharos-dropdown-menu-nav-link.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { PharosLink } from '../link/pharos-link';
 import '../icon/pharos-icon';
@@ -34,7 +33,7 @@ export class PharosDropdownMenuNavLink extends PharosLink {
   }
 
   public static get styles(): CSSResultArray {
-    return [designTokens, super.styles, dropdownMenuNavLinkStyles];
+    return [super.styles, dropdownMenuNavLinkStyles];
   }
 
   protected get appendContent(): TemplateResult | typeof nothing {

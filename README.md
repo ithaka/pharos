@@ -29,8 +29,8 @@
 ## Getting Started
 
 - Check out the [core package](./packages/pharos) for more info about Pharos components and how to get started
-- Visit the [Pharos site](https://www.jstor.org/pharos) to learn about the JSTOR brand, design guidelines, and component usage guidelines
-- Explore the [web component Storybook](#) or the [React Storybook](#) to try the live components
+- Visit the [Pharos site](https://pharos.jstor.org) to learn about the JSTOR brand, design guidelines, and component usage guidelines
+- Explore the [web component Storybook](https://pharos.jstor.org/storybooks/wc/) or the [React Storybook](https://pharos.jstor.org/storybooks/react/) to try the live components
 - Test for visual regressions in the Pharos [Chromatic project](https://www.chromatic.com/builds?appId=60919c26122bd50039b34644)
 
 <br />
@@ -92,6 +92,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/gbassham"><img src="https://avatars.githubusercontent.com/u/56835183?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gayla Bassham</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=gbassham" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/satya-achanta-venkata"><img src="https://avatars.githubusercontent.com/u/57365199?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Satya AchantaVenkata</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=satya-achanta-venkata" title="Code">💻</a> <a href="https://github.com/ithaka/pharos/commits?author=satya-achanta-venkata" title="Documentation">📖</a></td>
   </tr>
 </table>
 
@@ -104,6 +105,13 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 <br />
 <br />
+
+## Work with us at ITHAKA
+
+JSTOR is part of ITHAKA, a not-for-profit dedicated to expanding access to knowledge and education worldwide. Our staff makes us who we are. We’re hiring — join us!
+
+- [See career opportunities](https://recruiting.ultipro.com/ITH1000ITHAK/JobBoard/5fe90ad4-9e26-490b-9c45-6c9669d4dcd0/?q=&o=postedDateDesc)
+- [Learn more about ITHAKA](https://ithaka.org/)
 
 ## License
 

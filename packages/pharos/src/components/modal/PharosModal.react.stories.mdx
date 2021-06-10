@@ -1,6 +1,7 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 import { Fragment } from 'react';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosModal } from '../../react-components/modal/pharos-modal';
 import { PharosTextInput } from '../../react-components/text-input/pharos-text-input';
@@ -40,9 +41,7 @@ export const Template = (args) => (
 
 # Modal
 
-<PharosLink href="https://www.jstor.org/pharos/components/modal" target="_blank">
-  See guidelines in Pharos
-</PharosLink>
+<GuidelineLink path="modal" />
 
 <Canvas withToolbar>
   <Story
@@ -144,7 +143,7 @@ export const Template = (args) => (
         <PharosAlert status="error">
           We're sorry, we experienced an issue submitting your report. Please try again. If the
           issue persists, contact
-          <PharosLink id="support-link" href="#" onBackground>
+          <PharosLink id="support-link" href="#">
             support@jstor.org
           </PharosLink>.
         </PharosAlert>

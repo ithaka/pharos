@@ -35,7 +35,7 @@ export const Reports: FC = () => (
   <Fragment>
     <div className="reports-page__container">
       <Sidenav />
-      <main>
+      <main id="main-content">
         <PharosLayout preset="1-col--sidenav" className="reports-page__container--main-content">
           <div className="reports-page__container--top" slot="top">
             <div className="reports-page__container--nav-header">

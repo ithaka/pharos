@@ -2,7 +2,6 @@ import { html, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { progressBarStyles } from './pharos-progress-bar.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { styleMap } from 'lit/directives/style-map.js';
 import { PharosColorGlacierBlueBase, PharosColorNightBlueBase } from '../../styles/variables';
@@ -26,7 +25,7 @@ export class PharosProgressBar extends LitElement {
   public value = 0;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, progressBarStyles];
+    return [progressBarStyles];
   }
 
   protected render(): TemplateResult {

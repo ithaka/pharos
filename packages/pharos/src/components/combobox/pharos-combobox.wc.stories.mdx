@@ -2,9 +2,9 @@ import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit';
 import { action } from '@storybook/addon-actions';
 import { ifDefined } from 'lit/directives/if-defined';
+import { GuidelineLink } from '@config/GuidelineLink';
 
 import './pharos-combobox';
-import '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -17,7 +17,7 @@ import createFormData from '../../utils/createFormData';
 
 # Combobox
 
-<pharos-link href="https://www.jstor.org/pharos/components/combobox" target="_blank">See guidelines in Pharos</pharos-link>
+<GuidelineLink path="combobox" />
 
 export const Template = (args) =>
   html`
@@ -73,34 +73,32 @@ export const Template = (args) =>
 <Canvas withToolbar>
   <Story name="States">
     {html`
-      <div
-        style="display: grid; display: -ms-grid; grid-gap: 7rem; grid-template-columns: repeat(2, 300px); -ms-grid-columns: 300px 7rem 300px"
-      >
+      <div style="display: grid; grid-gap: 7rem; grid-template-columns: repeat(2, 300px);">
         <pharos-combobox>
           <span slot="label">I am empty</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </pharos-combobox>
-        <pharos-combobox disabled style="-ms-grid-column: 3">
+        <pharos-combobox disabled>
           <span slot="label">I am disabled</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </pharos-combobox>
-        <pharos-combobox placeholder="Enter some text" style="-ms-grid-column: 3; -ms-grid-row: 2">
+        <pharos-combobox placeholder="Enter some text">
           <span slot="label">I have a placeholder</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </pharos-combobox>
-        <pharos-combobox value="2" style="-ms-grid-row: 3">
+        <pharos-combobox value="2">
           <span slot="label">I have a value provided</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </pharos-combobox>
-        <pharos-combobox hide-label style="-ms-grid-column: 3; -ms-grid-row: 3">
+        <pharos-combobox hide-label>
           <span slot="label">My label is hidden</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
@@ -117,9 +115,7 @@ export const Template = (args) =>
   <Story name="Events">
     {() => {
       return html`
-        <div
-          style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
-        >
+        <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
           <pharos-combobox
             placeholder="Select a state"
             @change="${(e) => action('Change')(e.target.value)}"
@@ -177,9 +173,7 @@ export const Template = (args) =>
   >
     {((args) => {
       return html`
-        <div
-          style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
-        >
+        <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
           <pharos-combobox
             name="my-combobox"
             placeholder="Enter some text"
@@ -207,9 +201,7 @@ export const Template = (args) =>
   <Story name="Form Data">
     {() => {
       return html`
-        <div
-          style="display: grid; display: -ms-grid; grid-gap: 1rem; grid-template-columns: 300px; -ms-grid-columns: 300px"
-        >
+        <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
           <form name="my-form" action="https://httpbin.org/post" method="POST">
             <pharos-combobox
               name="my-combobox"

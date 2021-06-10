@@ -3,7 +3,6 @@ import { property, query } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { layoutStyles } from './pharos-layout.css';
-import { designTokens } from '../../styles/variables.css';
 import { customElement } from '../../utils/decorators';
 import { PharosSpacingThreeAndAHalfX } from '../../styles/variables';
 
@@ -61,7 +60,7 @@ export class PharosLayout extends LitElement {
   private _layout!: HTMLElement;
 
   public static get styles(): CSSResultArray {
-    return [designTokens, layoutStyles];
+    return [layoutStyles];
   }
 
   protected update(changedProperties: PropertyValues): void {
@@ -88,7 +87,7 @@ export class PharosLayout extends LitElement {
   }
 
   protected render(): TemplateResult {
-    const template = `<slot name="top"></slot><${this.tag} class="layout"><slot></slot></${this.tag}>`;
+    const template = `<slot name="top"></slot><${this.tag} id="layout-container" class="layout"><slot></slot></${this.tag}>`;
     return html`${unsafeHTML(template)}`;
   }
 }
