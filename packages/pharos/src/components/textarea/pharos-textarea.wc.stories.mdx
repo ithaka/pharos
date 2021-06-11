@@ -66,18 +66,20 @@ export const Template = (args) =>
   <Story name="States">
     {html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: repeat(2, 250px);">
-        <pharos-textarea><span slot="label">Empty textarea</span></pharos-textarea>
-        <pharos-textarea disabled><span slot="label">Disabled textarea</span></pharos-textarea>
-        <pharos-textarea readonly value="Example text"
+        <pharos-textarea name="default"><span slot="label">Empty textarea</span></pharos-textarea>
+        <pharos-textarea name="disabled" disabled
+          ><span slot="label">Disabled textarea</span></pharos-textarea
+        >
+        <pharos-textarea name="readonly" readonly value="Example text"
           ><span slot="label">Read only textarea</span></pharos-textarea
         >
-        <pharos-textarea placeholder="Placeholder text"
+        <pharos-textarea name="placeholder" placeholder="Placeholder text"
           ><span slot="label">Placeholder for textarea</span></pharos-textarea
         >
-        <pharos-textarea value="This value is provided"
+        <pharos-textarea name="provided" value="This value is provided"
           ><span slot="label">Value provided textarea</span></pharos-textarea
         >
-        <pharos-textarea resize="none"
+        <pharos-textarea name="resize" resize="none"
           ><span slot="label">non-resizeable textarea</span></pharos-textarea
         >
       </div>
