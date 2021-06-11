@@ -15,25 +15,23 @@ describe('pharos-alert', () => {
     await expect(component).to.be.accessible();
   });
 
-  it('sets its default attributes', async () => {
-    component = await fixture(html` <pharos-alert> It worked! </pharos-alert> `);
-    expect(component).dom.to.equal(`<pharos-alert status="">It worked!</pharos-alert>`);
+  it('throws an error for missing status attribute', async () => {
+    component = await fixture(html` <pharos-alert> It worked! </pharos-alert> `).catch((e) => e);
+    expect('status is a required attribute.').to.be.thrown;
   });
 
-  it('renders the base alert when a status is not provided', async () => {
-    component = await fixture(html` <pharos-alert> It worked! </pharos-alert> `);
+  it('renders the alert when a status is provided', async () => {
+    component = await fixture(html` <pharos-alert status="info"> It worked! </pharos-alert> `);
     expect(component).shadowDom.to.equal(`
       <div
-        class="alert"
+        class="alert alert--info"
         role="alert"
         tabindex="0"
       >
         <pharos-icon
           class="alert__icon"
           description=""
-          height="24"
           name="info-inverse"
-          width="24"
         >
         </pharos-icon>
         <div class="alert__body">
