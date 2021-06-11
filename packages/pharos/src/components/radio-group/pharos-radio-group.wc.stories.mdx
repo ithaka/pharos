@@ -102,7 +102,7 @@ export const Template = (args) =>
       return html`
         <form name="my-form" action="https://httpbin.org/post" method="POST">
           <pharos-radio-group
-            style="margin-bottom: 8px"
+            style="margin-bottom: 0.5rem;"
             @change="${(e) => action('Change')(e.target.value)}"
             name="radio-group4"
             required
