@@ -121,9 +121,9 @@ StyleDictionary.registerFormat({
       fileHeader() +
       dictionary.allProperties
         .map(function (prop) {
-          var to_ret_prop = 'export default ' + JSON.stringify(prop.value) + ';';
-          if (prop.comment) to_ret_prop = to_ret_prop.concat(' // ' + prop.comment);
-          return to_ret_prop;
+          const value = `export default ${JSON.stringify(prop.value)};`;
+          const comment = prop.comment ? ` // ${prop.comment}` : '';
+          return `${value}${comment}`;
         })
         .join('\n')
     );
