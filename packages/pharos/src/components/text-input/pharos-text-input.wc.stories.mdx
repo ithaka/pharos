@@ -68,21 +68,23 @@ export const Template = (args) =>
       <div
         style="display: grid; grid-gap: 1rem; grid-template-columns: repeat(2, 300px); 1rem 300px"
       >
-        <pharos-text-input><span slot="label">Empty input</span></pharos-text-input>
-        <pharos-text-input disabled><span slot="label">Disabled input</span></pharos-text-input>
-        <pharos-text-input readonly value="Example text"
+        <pharos-text-input name="default"><span slot="label">Empty input</span></pharos-text-input>
+        <pharos-text-input name="disabled" disabled
+          ><span slot="label">Disabled input</span></pharos-text-input
+        >
+        <pharos-text-input name="readonly" readonly value="Example text"
           ><span slot="label">Read only input</span></pharos-text-input
         >
-        <pharos-text-input placeholder="example placeholder text"
+        <pharos-text-input name="placeholder" placeholder="example placeholder text"
           ><span slot="label">Placeholder for input</span></pharos-text-input
         >
-        <pharos-text-input value="This value was provided"
+        <pharos-text-input name="provided" value="This value was provided"
           ><span slot="label">Value provided</span></pharos-text-input
         >
-        <pharos-text-input hide-label value="Hidden label input"
+        <pharos-text-input name="hidden" hide-label value="Hidden label input"
           ><span slot="label">Hidden label</span></pharos-text-input
         >
-        <pharos-text-input value="A validated value" validated
+        <pharos-text-input name="validated" value="A validated value" validated
           ><span slot="label">Validated input</span></pharos-text-input
         >
       </div>
@@ -177,6 +179,7 @@ export const CustomTemplate = (args) =>
         <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
           <form name="my-form" action="https://httpbin.org/post" method="POST">
             <pharos-text-input
+              style="margin-bottom: 0.5rem;"
               name="my-text-input"
               placeholder="Enter some text"
               @change="${(e) => action('Change')(e.target.value)}"
@@ -185,7 +188,7 @@ export const CustomTemplate = (args) =>
             >
               <span slot="label">Test me out</span>
             </pharos-text-input>
-            <input
+            <pharos-button
               type="submit"
               value="Submit"
               @click="${(e) => {
@@ -200,7 +203,8 @@ export const CustomTemplate = (args) =>
                 };
                 xhr.send(formData);
               }}"
-            />
+              >Submit
+            </pharos-button>
           </form>
         </div>
       `;

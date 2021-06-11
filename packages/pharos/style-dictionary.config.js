@@ -11,6 +11,9 @@ export default {
         {
           destination: '_variables.scss',
           format: 'scss/variables',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -22,6 +25,9 @@ export default {
         {
           destination: 'variables.css',
           format: 'css/variables',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -33,6 +39,9 @@ export default {
         {
           destination: 'variables.css.ts',
           format: 'css/js',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -47,6 +56,9 @@ export default {
           prop.attributes.category === 'asset' &&
           prop.attributes.type === 'icon' &&
           prop.attributes.item === icon,
+        options: {
+          outputReferences: true,
+        },
       })),
     },
     js: {
@@ -58,6 +70,9 @@ export default {
           name: 'tokens',
           destination: 'tokens.ts',
           format: 'js/object',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -69,6 +84,9 @@ export default {
         {
           destination: 'variables.ts',
           format: 'javascript/es6',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
