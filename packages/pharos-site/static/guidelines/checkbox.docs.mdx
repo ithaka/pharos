@@ -3,8 +3,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection
   title="Checkbox"
-  description="Checkboxes present items in a list of one or more options where the user can have several
-  different combinations of selections."
+  description="Checkboxes present items in a list of one or more options where the user can have several different combinations of selections."
   isHeader
   storyBookType="forms"
 ></PageSection>
@@ -15,8 +14,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 >
   <PageSection title="Alignment" subSectionLevel={1}>
     <p>
-      Checkbox labels are placed to the right of the checkbox. If there is a checkbox group, the
-      options can be vertically or horizontally stacked, depending on the use case and UI needs.
+      Labels for checkboxes are placed to the right of the checkbox. If there's a checkbox group,
+      the options can be vertically or horizontally stacked, depending on the use case and UI needs.
       It's preferred to have the checkboxes be vertically stacked for better readability.
     </p>
   </PageSection>
@@ -32,35 +31,31 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <BestPractices
     Do={
       <ul>
+        <li>Use checkboxes when users need to choose "yes" or "no" per option</li>
         <li>
-          Use checkboxes when a user needs to choose "yes" or "no" per option (use a stand-alone
-          checkbox). For example, to toggle a setting on or off.
+          Checkboxes should work independently from each other, unless there are checkboxes to
+          control groups
         </li>
-        <li>
-          Checkboxes should work independently from each other: selecting one checkbox shouldn't
-          change the selection status of another checkbox in the list.
-        </li>
-        <li>Checkboxes should always include a label.</li>
-        <li>Use a checkbox when accepting terms and conditions.</li>
-        <li>Use checkboxes when choices are not mutually exclusive.</li>
-        <li>The list of choices should be in a logical order.</li>
+        <li>Checkboxes should always include a label</li>
+        <li>Use checkboxes when choices are not mutually exclusive</li>
+        <li>The list of choices should be in a logical order</li>
       </ul>
     }
     Dont={
       <ul>
-        <li>Don't use checkboxes when there are no choices.</li>
+        <li>Don't use checkboxes when there are no choices or a choice is non-binary</li>
         <li>
-          In use cases where only one choice of a group is allowed, do not use checkboxes, use the
-          radio button component instead.
+          Don't use where only one choice in a group is allowed. Consider using the radio button
+          component instead
         </li>
-        <li>Do not make checkboxes affect other checkboxes unless for bulk selection actions.</li>
+        <li>Don't make checkboxes affect other checkboxes unless for bulk selection actions</li>
       </ul>
     }
   />
 </PageSection>
 
 <PageSection title="Content guidelines">
-  <PageSection title="Group labels" subSectionLevel={1}>
+  <PageSection title="Group labels (optional)" subSectionLevel={1}>
     <ul>
       <li>
         For a grouping of checkboxes, you can include a heading to provide even greater clarity.
@@ -75,23 +70,25 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         Labels are descriptive and succinct. They should provide further clarity for the user.
       </li>
       <li>Labels should not end in punctuation.</li>
+      <li>Use Sentence case for labels.</li>
       <li>
-        Use Sentence case for labels. Avoid using negative language as they can be counterintuitive.
-        For example, "I agree to the terms" instead of "I don't agree to the terms."
+        Avoid using negative language as it can be counterintuitive. For example, "I agree to the
+        terms" instead of "I don't agree to the terms."
       </li>
       <li>
         Long labels may wrap to a second line, but consider rewording the label if it gets to be too
-        long. Labels should not be truncated.
+        long.
       </li>
+      <li>Labels should not be truncated.</li>
     </ul>
   </PageSection>
 </PageSection>
 
 <PageSection title="Variants">
   <PageSection
-    title="Dark"
+    title="onBackground"
     subSectionLevel={1}
-    description="The dark variant of a checkbox is to be used in cases where the background containing the checkbox will be a dark color, or in cases where the theme of the page/component would be dark."
+    description="The onBackground variant of a checkbox is to be used in cases where the background containing the checkbox will be a dark color, or in cases where the theme of the page/component would be dark."
   >
     <div
       style={{
@@ -100,7 +97,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       }}
     >
       <Canvas>
-        <PharosCheckbox dark>
+        <PharosCheckbox onBackground>
           <span slot="label">Checkbox label</span>
         </PharosCheckbox>
       </Canvas>
@@ -108,70 +105,62 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
 </PageSection>
 <PageSection title="States">
-  <PageSection
-    title="Disabled"
-    subSectionLevel={1}
-    description="A state which indicates that the user should not be able to interact with the input."
-  >
-    <Canvas>
-      <PharosCheckbox disabled>
-        <span slot="label">Checkbox label</span>
-      </PharosCheckbox>
-    </Canvas>
-  </PageSection>
-  <PageSection
-    title="Required"
-    subSectionLevel={1}
-    description="Indicates that the user must specify a value for the input before the form can be submitted."
-  >
-    <Canvas>
-      <PharosCheckbox required>
-        <span slot="label">Checkbox label</span>
-      </PharosCheckbox>
-    </Canvas>
-  </PageSection>
-  <PageSection
-    title="Error"
-    subSectionLevel={1}
-    description="A state that lets the user know there has been an error with what was inputted."
-  >
-    <Canvas>
-      <PharosCheckbox
-        required
-        invalidated
-        message="This field is required, please make a selection"
-      >
-        <span slot="label">Checkbox label</span>
-      </PharosCheckbox>
-    </Canvas>
-  </PageSection>
-  <PageSection
-    title="Checked"
-    subSectionLevel={1}
-    description="A state in which the value will be submitted."
-  >
-    <Canvas>
-      <PharosCheckbox checked>
-        <span slot="label">Checkbox label</span>
-      </PharosCheckbox>
-    </Canvas>
-  </PageSection>
-  <PageSection
-    title="Unchecked"
-    subSectionLevel={1}
-    description="A state in which the value will be NOT submitted."
-  >
+  <PageSection title="Default" subSectionLevel={1}>
+    <p>A state which indicates that the user should be able to interact with the input.</p>
     <Canvas>
       <PharosCheckbox>
         <span slot="label">Checkbox label</span>
       </PharosCheckbox>
     </Canvas>
   </PageSection>
-  <PageSection
-    title="Indeterminate"
-    subSectionLevel={1}
-    description="A state which serves a visual purpose while masking the actual value of the checkbox."
-  >
+  <PageSection title="Disabled" subSectionLevel={1}>
+    <p>A state which indicates that the user should not be able to interact with the input.</p>
+    <Canvas>
+      <PharosCheckbox disabled>
+        <span slot="label">Checkbox label</span>
+      </PharosCheckbox>
+    </Canvas>
+  </PageSection>
+  <PageSection title="Required" subSectionLevel={1}>
+    <p>
+      Indicates that the user must specify a value for the input before the form can be submitted.
+    </p>
+    <Canvas>
+      <PharosCheckbox required>
+        <span slot="label">Checkbox label</span>
+      </PharosCheckbox>
+    </Canvas>
+  </PageSection>
+  <PageSection title="Error" subSectionLevel={1}>
+    <p>A state that lets the user know there has been an error with what was inputted.</p>
+    <Canvas>
+      <PharosCheckbox
+        required
+        invalidated
+        message="This field is required, please make a selection."
+      >
+        <span slot="label">Checkbox label</span>
+      </PharosCheckbox>
+    </Canvas>
+  </PageSection>
+  <PageSection title="Checked" subSectionLevel={1}>
+    <p>A state in which the value will be submitted.</p>
+    <Canvas>
+      <PharosCheckbox checked>
+        <span slot="label">Checkbox label</span>
+      </PharosCheckbox>
+    </Canvas>
+  </PageSection>
+  <PageSection title="Unchecked" subSectionLevel={1}>
+    <p>A state in which the value will be NOT submitted.</p>
+    <Canvas>
+      <PharosCheckbox>
+        <span slot="label">Checkbox label</span>
+      </PharosCheckbox>
+    </Canvas>
+  </PageSection>
+  <PageSection title="Indeterminate" subSectionLevel={1}>
+    <p>A state which serves a visual purpose while masking the actual value of the checkbox.</p>
     <Canvas>
       <PharosCheckbox indeterminate checked>
         <span slot="label">Checkbox label</span>
