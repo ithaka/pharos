@@ -22,7 +22,7 @@
     },
     "spacing": {
       "base": {
-        "value": "{spacing.2x.value}"
+        "value": "{spacing.2-x.value}"
       }
     },
     "size": {
