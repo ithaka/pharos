@@ -21,12 +21,6 @@ import { PharosLink } from '../../react-components/link/pharos-link';
 
 export const Template = (args) => <PharosAlert status={args.status}>{args.text}</PharosAlert>;
 
-<Canvas withToolbar>
-  <Story name="Base" args={{ status: '' }}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
 ## API
 
 <ArgsTable of={PharosAlert} />
