@@ -9,6 +9,9 @@ export default {
         {
           destination: '_variables.scss',
           format: 'scss/variables',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -20,6 +23,9 @@ export default {
         {
           destination: 'variables.css',
           format: 'css/variables',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -31,6 +37,9 @@ export default {
         {
           destination: 'variables.css.ts',
           format: 'css/js',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -49,6 +58,9 @@ export default {
               type: 'icon',
             },
           },
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -61,6 +73,9 @@ export default {
           name: 'tokens',
           destination: 'tokens.ts',
           format: 'js/object',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -72,6 +87,9 @@ export default {
         {
           destination: 'variables.ts',
           format: 'javascript/es6',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },

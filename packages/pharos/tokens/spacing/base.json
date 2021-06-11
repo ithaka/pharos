@@ -16,7 +16,7 @@
       "value": "0.75rem",
       "comment": "12px"
     },
-    "1x"  : {
+    "1-x"  : {
       "value": "1rem",
       "comment": "16px"
     },
@@ -24,11 +24,11 @@
       "value": "1.5rem",
       "comment": "24px"
     },
-    "2x"  : {
+    "2-x"  : {
       "value": "2rem",
       "comment": "32px"
     },
-    "3x"  : {
+    "3-x"  : {
       "value": "3rem",
       "comment": "48px"
     },
@@ -36,16 +36,16 @@
       "value": "3.5rem",
       "comment": "56px"
     },
-    "5x"  : {
+    "5-x"  : {
       "value": "5rem",
       "comment": "80px"
     },
-    "7x"  : {
+    "7-x"  : {
       "value": "7rem",
       "comment": "112px"
     },
     "gutter"  : {
-      "value": "{spacing.3x.value}",
+      "value": "{spacing.3-x.value}",
       "comment": "48px"
     }
   }
