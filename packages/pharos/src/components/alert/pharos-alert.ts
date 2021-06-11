@@ -47,10 +47,9 @@ export class PharosAlert extends FocusMixin(LitElement) {
   /**
    * The status to reflect to the user
    * @attr status
-   * @type {AlertStatus | undefined}
    */
   @property({ type: String, reflect: true })
-  public status?: AlertStatus;
+  public status!: AlertStatus;
 
   private _allLinks!: NodeListOf<PharosLink>;
 
