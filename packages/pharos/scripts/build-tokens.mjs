@@ -114,6 +114,22 @@ StyleDictionary.registerFormat({
   },
 });
 
+StyleDictionary.registerFormat({
+  name: 'javascript/es6-default',
+  formatter: function (dictionary) {
+    return (
+      fileHeader() +
+      dictionary.allProperties
+        .map(function (prop) {
+          var to_ret_prop = 'export default ' + JSON.stringify(prop.value) + ';';
+          if (prop.comment) to_ret_prop = to_ret_prop.concat(' // ' + prop.comment);
+          return to_ret_prop;
+        })
+        .join('\n')
+    );
+  },
+});
+
 // APPLY THE CONFIGURATION
 // IMPORTANT: the registration of custom transforms
 // needs to be done _before_ applying the configuration

@@ -6,10 +6,8 @@ import { checkboxStyles } from './pharos-checkbox.css';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from '../../utils/decorators';
-import {
-  PHAROS_ASSET_ICON_DASH_SMALL,
-  PHAROS_ASSET_ICON_CHECKMARK_SMALL,
-} from '../../styles/icons';
+import dashSmall from '../../styles/icons/dash-small';
+import checkmarkSmall from '../../styles/icons/checkmark-small';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
@@ -101,9 +99,9 @@ export class PharosCheckbox extends FormMixin(FormElement) {
 
   private _renderPath(): string {
     if (this.indeterminate) {
-      return atob(PHAROS_ASSET_ICON_DASH_SMALL);
+      return atob(dashSmall);
     } else {
-      return atob(PHAROS_ASSET_ICON_CHECKMARK_SMALL);
+      return atob(checkmarkSmall);
     }
   }
 
