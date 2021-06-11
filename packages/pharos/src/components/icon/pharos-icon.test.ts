@@ -19,10 +19,21 @@ describe('pharos-icon', () => {
     expect('No icon named "fake"').to.be.thrown;
   });
 
+  it('uses dimensions 24x24 when the icon name does not end in "-small"', async () => {
+    component.name = 'checkmark';
+    await component.updateComplete;
+    const svg = component.renderRoot.querySelector('svg');
+    expect(svg?.getAttribute('viewBox')).to.equal('0 0 24 24');
+    expect(svg?.getAttribute('height')).to.equal('24');
+    expect(svg?.getAttribute('width')).to.equal('24');
+  });
+
   it('updates its dimensions to 16x16 when the icon name ends with "-small"', async () => {
     component.name = 'checkmark-small';
     await component.updateComplete;
-    expect(component.width).to.equal(16);
-    expect(component.height).to.equal(16);
+    const svg = component.renderRoot.querySelector('svg');
+    expect(svg?.getAttribute('viewBox')).to.equal('0 0 16 16');
+    expect(svg?.getAttribute('height')).to.equal('16');
+    expect(svg?.getAttribute('width')).to.equal('16');
   });
 });

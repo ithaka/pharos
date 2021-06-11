@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
-import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { iconStyles } from './pharos-icon.css';
 import { customElement } from '../../utils/decorators';
@@ -13,6 +13,9 @@ export type IconName = keyof typeof tokens.asset.icon;
 export const iconNames = Object.keys(icons).map((icon) =>
   icon.replace('PHAROS_ASSET_ICON_', '').replace(/_/g, '-').toLowerCase()
 );
+
+const SMALL_ICON_SIZE = 16;
+const LARGE_ICON_SIZE = 24;
 
 /**
  * Pharos icon component.
@@ -30,20 +33,6 @@ export class PharosIcon extends LitElement {
   public name?: IconName;
 
   /**
-   * The height of the icon
-   * @attr height
-   */
-  @property({ type: Number, reflect: true })
-  public height = 24;
-
-  /**
-   * The width of the icon
-   * @attr width
-   */
-  @property({ type: Number, reflect: true })
-  public width = 24;
-
-  /**
    * A description of what the icon represents
    * @attr description
    */
@@ -54,16 +43,8 @@ export class PharosIcon extends LitElement {
     return [iconStyles];
   }
 
-  protected updated(changedProperties: PropertyValues): void {
-    if (changedProperties.has('name')) {
-      if (this.name?.endsWith('-small')) {
-        this.height = 16;
-        this.width = 16;
-      } else {
-        this.height = 24;
-        this.width = 24;
-      }
-    }
+  private _getIconSize(): number {
+    return this.name?.endsWith('-small') ? SMALL_ICON_SIZE : LARGE_ICON_SIZE;
   }
 
   protected render(): TemplateResult {
@@ -79,17 +60,19 @@ export class PharosIcon extends LitElement {
       throw new Error(`No icon named "${this.name}"`);
     }
 
+    const size = this._getIconSize();
+
     return html`
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
-        viewBox="0 0 ${this.width} ${this.height}"
+        viewBox="0 0 ${size} ${size}"
         class="icon"
         role="img"
         aria-hidden=${this.description === ''}
         aria-label=${this.description || ''}
-        height="${this.height}"
-        width="${this.width}"
+        height="${size}"
+        width="${size}"
         focusable="false"
       >
         ${unsafeSVG(svg)}

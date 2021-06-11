@@ -178,9 +178,7 @@ describe('pharos-text-input', () => {
         <pharos-icon
           class="input__icon"
           description=""
-          height="24"
           name="exclamation"
-          width="24"
         >
         </pharos-icon>
       </div>
@@ -211,9 +209,7 @@ describe('pharos-text-input', () => {
         <pharos-icon
           class="input__icon"
           description=""
-          height="24"
           name="checkmark"
-          width="24"
         >
         </pharos-icon>
       </div>

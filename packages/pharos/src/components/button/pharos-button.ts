@@ -186,8 +186,12 @@ export class PharosButton extends FocusMixin(AnchorElement) {
     }
   }
 
-  private _handleClick(): void {
-    if ((this.type === 'submit' || this.type === 'reset') && this._form) {
+  private _handleClick(event: MouseEvent): void {
+    if (
+      (this.type === 'submit' || this.type === 'reset') &&
+      this._form &&
+      !event.defaultPrevented
+    ) {
       this._formButton.type = this.type;
       this._form?.appendChild(this._formButton);
       this._formButton.click();
