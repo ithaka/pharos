@@ -74,31 +74,31 @@ export const Template = (args) =>
   <Story name="States">
     {html`
       <div style="display: grid; grid-gap: 7rem; grid-template-columns: repeat(2, 300px);">
-        <pharos-combobox>
+        <pharos-combobox name="default">
           <span slot="label">I am empty</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </pharos-combobox>
-        <pharos-combobox disabled>
+        <pharos-combobox name="disabled" disabled>
           <span slot="label">I am disabled</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </pharos-combobox>
-        <pharos-combobox placeholder="Enter some text">
+        <pharos-combobox name="placeholder" placeholder="Enter some text">
           <span slot="label">I have a placeholder</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </pharos-combobox>
-        <pharos-combobox value="2">
+        <pharos-combobox name="provided" value="2">
           <span slot="label">I have a value provided</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </pharos-combobox>
-        <pharos-combobox hide-label>
+        <pharos-combobox name="hidden" hide-label>
           <span slot="label">My label is hidden</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
