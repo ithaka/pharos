@@ -7,7 +7,9 @@ describe('pharos-heading', () => {
   let component: PharosHeading;
 
   beforeEach(async () => {
-    component = await fixture(html` <pharos-heading> This is a heading </pharos-heading> `);
+    component = await fixture(
+      html` <pharos-heading level="1"> This is a heading </pharos-heading> `
+    );
   });
 
   it('is accessible', async () => {
@@ -16,7 +18,7 @@ describe('pharos-heading', () => {
 
   it('sets its default attributes', async () => {
     component = await fixture(
-      html` <pharos-heading preset="1"> This is a heading </pharos-heading> `
+      html` <pharos-heading level="1" preset="1"> This is a heading </pharos-heading> `
     );
     expect(component).dom.to.equal(
       `<pharos-heading level="1" preset="1">This is a heading</pharos-heading>`
@@ -34,6 +36,13 @@ describe('pharos-heading', () => {
     `);
   });
 
+  it('throws an error for a missing level value', async () => {
+    component = await fixture(html` <pharos-heading> This is a heading </pharos-heading> `).catch(
+      (e) => e
+    );
+    expect('level is a required attribute.').to.be.thrown;
+  });
+
   it('throws an error for an invalid level value', async () => {
     component = await fixture(html`
       <pharos-heading level="7"> This is a heading </pharos-heading>
@@ -43,7 +52,7 @@ describe('pharos-heading', () => {
 
   it('throws an error for an invalid preset value', async () => {
     component = await fixture(html`
-      <pharos-heading preset="9"> This is a heading </pharos-heading>
+      <pharos-heading level="1" preset="9"> This is a heading </pharos-heading>
     `).catch((e) => e);
     expect(
       '9 is not a valid preset. Available presets are 1, 1--bold, 2, 2--bold, 3, 3--bold, 4, 4--bold, 5, 5--bold, 6, 6--bold, 7, 7--bold, legend.'

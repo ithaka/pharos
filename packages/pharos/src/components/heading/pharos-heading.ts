@@ -58,7 +58,7 @@ export class PharosHeading extends LitElement {
    * @attr level
    */
   @property({ type: Number, reflect: true })
-  public level: HeadingLevel = 1;
+  public level!: HeadingLevel;
 
   /**
    * Indicates the visual styling preset to use.
@@ -80,6 +80,10 @@ export class PharosHeading extends LitElement {
 
   protected update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
+
+    if (!this.level) {
+      throw new Error(`level is a required attribute.`);
+    }
 
     if (changedProperties.has('level') && !LEVELS.includes(this.level)) {
       throw new Error(
