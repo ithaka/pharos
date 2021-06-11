@@ -111,6 +111,7 @@ export const Template = (args) => (
     {() => (
       <form name="my-form" action="https://httpbin.org/post" method="POST">
         <PharosRadioGroup
+          style="margin-bottom: 8px;"
           onChange={(e) => action('Change')(e.target.value)}
           name="radio-group4"
           required

@@ -177,6 +177,7 @@ export const CustomTemplate = (args) =>
         <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
           <form name="my-form" action="https://httpbin.org/post" method="POST">
             <pharos-text-input
+              style="margin-bottom: 8px"
               name="my-text-input"
               placeholder="Enter some text"
               @change="${(e) => action('Change')(e.target.value)}"

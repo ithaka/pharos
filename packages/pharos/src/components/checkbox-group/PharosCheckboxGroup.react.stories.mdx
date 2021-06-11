@@ -96,6 +96,7 @@ export const Template = (args) => (
   <Story name="Form Data">
     <form name="my-form" action="https://httpbin.org/post" method="POST">
       <PharosCheckboxGroup
+        style="margin-bottom: 8px;"
         onChange={(e) => action('Change')(e.target.value)}
         name="checkbox-group4"
         required
