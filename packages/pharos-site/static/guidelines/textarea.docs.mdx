@@ -10,13 +10,9 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection title="Usage">
   <p>
-    Use textareas when you want to allow users to enter a sizeable amount of free-form text, like
-    leaving feedback, adding a description, creating a note and more.
-  </p>
-  <p>
-    The length of the text input provides a hint to users as to how much text to write. If an input
-    requires users to write longer forms of text use a textarea instead of a single text input
-    field.
+    Textarea allows users to enter a sizeable amount of free-form text, like leaving feedback,
+    adding a description, creating a note and more. If an input requires users to write longer forms
+    of text, use a textarea instead of a single text input field.
   </p>
 </PageSection>
 
@@ -24,14 +20,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <BestPractices
     Do={
       <ul>
-        <li>Use when an input needs users to longer amounts of text</li>
-        <li>
-          Make sure the label clearly indicates to the user what kind of input is expected of them
-        </li>
-        <li>
-          Labels need to describe the purpose of the form control and must be used for all textarea
-          inputs
-        </li>
+        <li>Labels should clearly indicates input expectations of the user</li>
+        <li>Labels should describe purpose and must be used for all textarea inputs</li>
         <li>
           Placeholder text should be a word or short phrase that demonstrates the expected type of
           data, rather than an explanatory message
@@ -40,7 +30,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     }
     Dont={
       <ul>
-        <li>Do not use placeholder text as a replacement for labels</li>
+        <li>Don't use placeholder text as a replacement for labels</li>
       </ul>
     }
   />
@@ -49,10 +39,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 <PageSection title="Content guidelines">
   <PageSection subSectionLevel={1} title="Labels">
     <ul>
-      <li>
-        The textarea label needs to be helpful in telling the user what is expected of them, but
-        they do not need to be instructive
-      </li>
+      <li>The textarea label should help users understand input expectations</li>
       <li>Labels are placed above the textarea</li>
       <li>Labels are to be written in sentence case and should only be 1-3 words long</li>
     </ul>
@@ -71,7 +58,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection title="State">
   <PageSection subSectionLevel={1} title="Default">
-    <p>A textarea should be used when the user needs to enter multiple lines of text.</p>
+    <p>Indicates that the user can interact with the text area.</p>
     <Canvas>
       <PharosTextarea>
         <span slot="label">Textarea label</span>
@@ -79,7 +66,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Disabled">
-    <p>A state which indicates that the user should not be able to interact with the input.</p>
+    <p>Indicates that the user is unable to interact with the text area.</p>
     <Canvas>
       <PharosTextarea disabled>
         <span slot="label">Textarea label</span>
@@ -97,7 +84,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Read-only">
-    <p>A state where the field cannot be edited by the user.</p>
+    <p>Indicates that the field cannot be edited by the user.</p>
     <Canvas>
       <PharosTextarea readonly>
         <span slot="label">Textarea label</span>
@@ -105,7 +92,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Error">
-    <p>A state that lets the user know there has been an error with what was inputted.</p>
+    <p>Indicates that an error occurred with the supplied value in the text area.</p>
     <Canvas>
       <PharosTextarea required invalidated message="This field is required">
         <span slot="label">Textarea label</span>

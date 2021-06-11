@@ -4,44 +4,35 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 <PageSection
   isHeader
   storyBookType="forms"
-  title="Radio Button"
-  description="Radio buttons present items in a list of two or more options where the user can select only one
-  option at a time."
+  title="Radio button"
+  description="Radio buttons present items in a list of two or more options where the user can select only one option at a time."
 ></PageSection>
 
-<PageSection title="Best practices">
+<PageSection title="Usage">
   <p>
-    Radio buttons are normally presented in radio groups. Radio buttons should have a parent radio
-    group component, which will group the buttons into a set. In a set of radio buttons, only one
-    radio button can be selected at a time.
+    Radio buttons are normally presented in radio groups (a collection of radio buttons which will
+    be grouped by the radio button group component). Only one radio button in a group can be
+    selected at a time.
   </p>
+</PageSection>
+
+<PageSection title="Best practices">
   <BestPractices
     Do={
       <ul>
-        <li>Include labels</li>
-        <li>Can include a Title for the group if necessary</li>
-        <li>
-          Includes at least two or more items, but each option's value must be mutually exclusive
-        </li>
+        <li>Use a label to provide context for radio buttons</li>
+        <li>Include two or more mutually exclusive items in a group</li>
         <li>Use when users need to see the available options at a glance</li>
-        <li>
-          Options are listed vertically, but can be horizontally oriented if there are only a few
-          options
-        </li>
+        <li>Use horizontally oriented only if there are a few options</li>
       </ul>
     }
     Dont={
       <ul>
-        <li>Do not check disabled radio buttons</li>
-        <li>Do not use when there are no choices, or multiple choices per group.</li>
+        <li>Don't use radio buttons when there are no choices, or multiple choices per group.</li>
+        <li>Don't display a set of radio buttons without a default selection.</li>
         <li>
-          Do not display a set of radio buttons without a default selection, they should default to
-          having one option selected. Use caution when selecting the default value and the order of
-          the list to make the most sense.
-        </li>
-        <li>
-          Do not use if the list of choices gets too long, it may be better to use a "select"
-          component instead. (Think about the mobile experience when deciding too).
+          Don't use radio buttons if the list of choices gets long. (The select component may be
+          better suited)
         </li>
       </ul>
     }
@@ -65,6 +56,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection title="States">
   <PageSection subSectionLevel={1} title="Default">
+    <p>Indicates that the user can interact with the radio button.</p>
     <Canvas>
       <PharosRadioButton>
         <span slot="label">Radio label</span>
@@ -72,15 +64,15 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Checked">
+    <p>Indicates the value used for the radio group.</p>
     <Canvas>
-      <p>Indicates the value used for the radio group.</p>
       <PharosRadioButton checked>
         <span slot="label">Radio label</span>
       </PharosRadioButton>
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Disabled">
-    <p>Prevents interaction with the radio button component.</p>
+    <p>Indicates that the user can interact with the radio button.</p>
     <Canvas>
       <PharosRadioButton disabled>
         <span slot="label">Radio label</span>

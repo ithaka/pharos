@@ -8,6 +8,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   description="A select allows users to choose one option from a list in a form."
 ></PageSection>
 
+<PageSection title="Usage">
+  <p>
+    Select is a type of input that's used in forms to allow users to submit data from a list of
+    options. Although the select component itself is styled to align with the brand, the options
+    component within it are left to be styled by the browser.
+  </p>
+</PageSection>
+
 <PageSection title="Best practices">
   <p>
     Select is a type of input that is used in forms, where a user is submitting data and chooses one
@@ -17,7 +25,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     Do={
       <ul>
         <li>
-          Use when you have 6 or more pre-defined mutually exclusive options for the user to choose
+          Use when you have 6 or more pre-defined, mutually exclusive options for the user to choose
           from (use the select component instead of radio buttons)
         </li>
         <li>Have a default selection when possible</li>
@@ -27,8 +35,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     }
     Dont={
       <ul>
-        <li>Avoid using a select for navigational related needs, a dropdown menu will suffice</li>
-        <li>Avoid long-winded labels for the options, 1-3 words</li>
+        <li>Don't use a select for navigational related needs, a dropdown menu will suffice</li>
+        <li>Don't use wordy labels for the options, aim for 1-3 words.</li>
       </ul>
     }
   />
@@ -37,7 +45,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 <PageSection title="Content guidelines">
   <PageSection subSectionLevel={1} title="Labels">
     <ul>
-      <li>Succinctly write labels, they are no more than 3 words</li>
+      <li>Write labels succinctly so they're no more than 3 words</li>
       <li>Write in sentence case</li>
       <li>Avoid punctuation and articles ("the," "a," "an")</li>
     </ul>
@@ -45,9 +53,9 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection subSectionLevel={1} title="Select options">
     <ul>
       <li>Start with "Select" as a placeholder if there isn't a default option</li>
-      <li>Relates to what the option will ultimately do</li>
+      <li>Options should be related to intended functionality, if presenting a list of actions</li>
       <li>List options alphabetically or in a logical order (like frequency of use)</li>
-      <li>Written in sentence case</li>
+      <li>Write in sentence case</li>
       <li>Avoid punctuation and articles ("the," "a," "an")</li>
     </ul>
   </PageSection>
@@ -55,6 +63,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection title="States">
   <PageSection subSectionLevel={1} title="Default">
+    <p>Indicates that the user can interact with the select component.</p>
     <Canvas>
       <PharosSelect>
         <span slot="label">Select label</span>
@@ -64,6 +73,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Disabled">
+    <p>Indicates that the user is unable to interact with the select component.</p>
     <Canvas>
       <PharosSelect disabled>
         <span slot="label">Select label</span>
@@ -73,6 +83,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Required">
+    <p>Indicates that the select dropdown requires the user to make a selection.</p>
     <Canvas>
       <PharosSelect required>
         <span slot="label">Select label</span>
@@ -82,6 +93,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Error">
+    <p>Indicates that an error occurred within the select dropdown.</p>
     <Canvas>
       <PharosSelect required invalidated message="This field is required, please make a selection">
         <span slot="label">Select label</span>
@@ -91,6 +103,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
 </PageSection>
+
+<PageSection title="Validation">
+  <p>
+    Real-time validation helps to streamline the process and keep data clean when the user is
+    filling out forms.
+  </p>
+</PageSection>
+
 <PageSection title="Accessibility">
   <PageSection subSectionLevel={1} title="Relevant WCAG Guidelines">
     <ul>

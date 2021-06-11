@@ -4,7 +4,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 <PageSection
   isHeader
   storyBookType="forms"
-  title="Text Input"
+  title="Text input"
   description="Text inputs enable users to supply data as part of a form or a query string for search."
 ></PageSection>
 
@@ -12,8 +12,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <p>
     Inputs are used for forms or inputting data to get a result, so the design and implementation
     should be as concise as possible. Careful thought should be considered about the need for each
-    text input and what value the data will provide. What do we gain by asking the user to provide
-    this information?
+    text input and what value the data will provide.
   </p>
 </PageSection>
 
@@ -21,23 +20,21 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <BestPractices
     Do={
       <ul>
+        <li>Labels should clearly indicate what kind of input is expected from the user</li>
         <li>
-          Make sure the label clearly indicates to the user what kind of input is expected of them
-        </li>
-        <li>
-          Labels need to describe the purpose of the form control and must be used for all text
+          Labels should describe the purpose of the form control and must be used for all text
           inputs
         </li>
         <li>
-          Placeholder text should be a word or short phrase that demonstrates the expected type of
-          data, rather than an explanatory message
+          Placeholder text should be concise, and demonstrate the expected type of data, rather than
+          an explanatory message
         </li>
       </ul>
     }
     Dont={
       <ul>
-        <li>Do not use when users are choosing from a specific set of options</li>
-        <li>Do not use placeholder text as a replacement for labels</li>
+        <li>Don't use when users are choosing from a set of options</li>
+        <li>Don't use placeholder text as a replacement for labels</li>
       </ul>
     }
   />
@@ -47,8 +44,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection subSectionLevel={1} title="Labels">
     <ul>
       <li>
-        The input label needs to be helpful in telling the user what is expected of them, but they
-        do not need to be instructive
+        The input label needs to help tell the user what is expected of them, but they don't need to
+        be instructive
       </li>
       <li>Labels are placed above the input text field</li>
       <li>Labels are to be written in sentence case and should only be 1-3 words long</li>
@@ -69,35 +66,51 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 <PageSection title="Variants">
   <PageSection subSectionLevel={1} title="Text">
     <p>
-      The text variant should be used when the user needs to enter a single-line value and there
-      isn't a more specific input type available for collecting that value.
+      The text variant is a single-line text field for generic text, used when there isn't a more
+      specific input type available for collecting a value.
     </p>
+    <Canvas>
+      <PharosTextInput type="text" placeholder="text"></PharosTextInput>
+    </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Password">
     <p>
-      A password input is a single-line text field whose value is obscured. Use it when you need to
+      A password input is a single-line text field whose value is obscured, used when you need to
       protect the user's content from being read.
     </p>
+    <Canvas>
+      <PharosTextInput type="password" value="password"></PharosTextInput>
+    </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Email">
+    <p>
+      The email variant provides validation to ensure proper formatting of an email address. Use the
+      email variant to allow the user to enter or edit an email address to help avoid user typos and
+      invalid addresses.
+    </p>
+    <Canvas>
+      <PharosTextInput type="email" value="name@provider.com"></PharosTextInput>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Search">
     <p>
       A search input allows the user to enter search queries. Line-breaks are automatically removed
       from the input value. They may include a delete or "clear" icon in supporting browsers that
       can be used to clear the field.
     </p>
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Search">
-    <p>
-      Use the email variant to allow the user to enter or edit an email address. You get automatic
-      validation that the entered text is in the correct form to potentially be a legitimate e-mail
-      address. This can help avoid cases in which the user mistypes or enters an invalid address.
-    </p>
+    <Canvas>
+      <PharosTextInput type="search" value="my query"></PharosTextInput>
+    </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Number">
     <p>
-      This is used for entering a number. It displays a numeric keypad in some devices with dynamic
-      keypads. Usually a set of up and down buttons are also provided to step the value up and down.
+      The number input provides some functionality used to collect a numerical value. Usually a set
+      of up and down buttons are also provided to step the value up and down. On some devices, it
+      displays a numeric keypad when active.
     </p>
+    <Canvas>
+      <PharosTextInput type="number" value="1234"></PharosTextInput>
+    </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="URL">
     <p>
@@ -106,25 +119,35 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       can help avoid cases in which the user mistypes the website's address, or provides an invalid
       one.
     </p>
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Hidden">
-    <p>
-      A hidden input does not display a value to the user, but its value is submitted to the server.
-      This is used when you want to include data the user doesn't need to see or edit along with the
-      form when it's submitted to the server, such as a unique security token.
-    </p>
+    <Canvas>
+      <PharosTextInput type="url" value="https://pharos.jstor.org/"></PharosTextInput>
+    </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Tel">
     <p>
-      The tel input allows the user to enter or edit a telephone number. They display a telephone
-      keypad in some devices with dynamic keypads. The input value is not automatically validated to
-      a particular format because they vary so much around the world.
+      The tel input allows the user to enter or edit a telephone number. It displays a telephone
+      keypad in some devices with dynamic keypads. The input value is not automatically validated
+      due to the various global formats.
     </p>
+    <Canvas>
+      <PharosTextInput type="tel" value="9999999999"></PharosTextInput>
+    </Canvas>
+  </PageSection>
+  <PageSection subSectionLevel={1} title="Hidden">
+    <p>
+      A hidden input does not display a value to the user, but is submitted to the server. This can
+      be used when you want to include data the user doesn't need to see or edit, such as a unique
+      security token.
+    </p>
+    <Canvas>
+      <PharosTextInput type="hidden" value="HiddenValue"></PharosTextInput>
+    </Canvas>
   </PageSection>
 </PageSection>
 
 <PageSection title="State">
   <PageSection subSectionLevel={1} title="Default">
+    <p>Indicates that the user can interact with the text field.</p>
     <Canvas>
       <PharosTextInput>
         <span slot="label">Text input label</span>
@@ -132,7 +155,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Disabled">
-    <p>A state which indicates that the user should not be able to interact with the input.</p>
+    <p>Indicates that the user is unable to interact with the text field.</p>
     <Canvas>
       <PharosTextInput disabled>
         <span slot="label">Text input label</span>
@@ -150,7 +173,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Read-only">
-    <p>A state where the field cannot be edited by the user.</p>
+    <p>Indicates that the field cannot be edited by the user.</p>
     <Canvas>
       <PharosTextInput readonly>
         <span slot="label">Text input label</span>
@@ -158,7 +181,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Error">
-    <p>A state that lets the user know there has been an error with what was inputted.</p>
+    <p>Indicates that an error occurred with the supplied value in the text field.</p>
     <Canvas>
       <PharosTextInput required invalidated message="This field is required">
         <span slot="label">Text input label</span>
@@ -166,7 +189,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection subSectionLevel={1} title="Validated">
-    <p>A state that lets the user know that the input has been validated.</p>
+    <p>Indicates that the input has been validated.</p>
     <Canvas>
       <PharosTextInput required value="I have text" validated>
         <span slot="label">Text input label</span>
