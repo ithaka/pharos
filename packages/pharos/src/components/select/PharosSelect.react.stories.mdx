@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosSelect } from '../../react-components/select/pharos-select';
+import { PharosButton } from '../../react-components/button/pharos-button';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -134,7 +135,7 @@ export const Template = (args) => (
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
       </PharosSelect>
-      <pharos-button
+      <PharosButton
         type="submit"
         value="Submit"
         onClick={(e) => {
@@ -151,7 +152,7 @@ export const Template = (args) => (
         }}
       >
         Submit
-      </pharos-button>
+      </PharosButton>
     </form>
   </Story>
 </Canvas>

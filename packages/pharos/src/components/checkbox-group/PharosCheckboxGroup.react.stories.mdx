@@ -4,6 +4,7 @@ import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosCheckboxGroup } from '../../react-components/checkbox-group/pharos-checkbox-group';
 import { PharosCheckbox } from '../../react-components/checkbox/pharos-checkbox';
+import { PharosButton } from '../../react-components/button/pharos-button';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -110,7 +111,7 @@ export const Template = (args) => (
           <span slot="label">Checkbox 3</span>
         </PharosCheckbox>
       </PharosCheckboxGroup>
-      <pharos-button
+      <PharosButton
         type="submit"
         value="Submit"
         onClick={(e) => {
@@ -126,8 +127,9 @@ export const Template = (args) => (
           xhr.send(formData);
         }}
       >
+        {' '}
         Submit
-      </pharos-button>
+      </PharosButton>
     </form>
   </Story>
 </Canvas>

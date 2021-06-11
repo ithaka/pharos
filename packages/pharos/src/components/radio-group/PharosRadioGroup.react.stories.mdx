@@ -4,6 +4,7 @@ import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosRadioGroup } from '../../react-components/radio-group/pharos-radio-group';
 import { PharosRadioButton } from '../../react-components/radio-button/pharos-radio-button';
+import { PharosButton } from '../../react-components/button/pharos-button';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -125,7 +126,7 @@ export const Template = (args) => (
             <span slot="label">Radio Button 3</span>
           </PharosRadioButton>
         </PharosRadioGroup>
-        <pharos-button
+        <PharosButton
           type="submit"
           value="Submit"
           onClick={(e) => {
@@ -142,7 +143,7 @@ export const Template = (args) => (
           }}
         >
           Submit
-        </pharos-button>
+        </PharosButton>
       </form>
     )}
   </Story>
