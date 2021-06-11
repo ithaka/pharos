@@ -185,7 +185,7 @@ export const CustomTemplate = (args) =>
             >
               <span slot="label">Test me out</span>
             </pharos-text-input>
-            <input
+            <pharos-button
               type="submit"
               value="Submit"
               @click="${(e) => {
@@ -200,7 +200,8 @@ export const CustomTemplate = (args) =>
                 };
                 xhr.send(formData);
               }}"
-            />
+              >Submit
+            </pharos-button>
           </form>
         </div>
       `;

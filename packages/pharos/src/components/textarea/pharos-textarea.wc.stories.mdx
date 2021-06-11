@@ -182,7 +182,7 @@ export const CustomTemplate = (args) =>
             >
               <span slot="label">I am invalid</span>
             </pharos-textarea>
-            <input
+            <pharos-button
               type="submit"
               value="Submit"
               @click="${(e) => {
@@ -197,7 +197,9 @@ export const CustomTemplate = (args) =>
                 };
                 xhr.send(formData);
               }}"
-            />
+            >
+              Submit
+            </pharos-button>
           </form>
         </div>
       `;
