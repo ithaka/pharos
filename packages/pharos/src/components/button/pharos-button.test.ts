@@ -270,5 +270,39 @@ describe('pharos-button', () => {
 
       expect(leak).to.be.false;
     });
+
+    it('allows clicks to be canceled when in a form and type is set to "submit"', async () => {
+      const parentNode = document.createElement('form');
+      let formdata = new FormData();
+      parentNode.setAttribute('name', 'my-form');
+
+      const submitButton = document.createElement('pharos-button') as PharosButton;
+      submitButton.type = 'submit';
+      submitButton.appendChild(document.createTextNode('I am a button'));
+      submitButton.addEventListener('click', (event) => {
+        event.preventDefault();
+      });
+      parentNode.appendChild(submitButton);
+
+      component = await fixture(
+        html`
+          <pharos-text-input name="my-input" value="test">
+            <span slot="label">I am a label</span>
+          </pharos-text-input>
+        `,
+        { parentNode }
+      );
+
+      const form = document.querySelector('form');
+      form?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        formdata = createFormData(parentNode as HTMLFormElement);
+      });
+
+      submitButton?.click();
+      await component.updateComplete;
+
+      expect(formdata.get('my-input')).to.be.null;
+    });
   });
 });
