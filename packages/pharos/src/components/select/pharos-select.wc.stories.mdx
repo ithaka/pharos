@@ -25,6 +25,7 @@ export const Template = (args) =>
       ?required=${args.required}
       ?invalidated=${args.invalidated}
       .message=${args.message}
+      style="display: grid; grid-template-columns: 300px;"
     >
       <span slot="label">Select Demo</span>
       <option value="1">Option 1</option>
@@ -130,7 +131,7 @@ export const Template = (args) =>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </pharos-select>
-        <input
+        <pharos-button
           type="submit"
           value="Submit"
           @click="${(e) => {
@@ -145,7 +146,8 @@ export const Template = (args) =>
             };
             xhr.send(formData);
           }}"
-        />
+          >Submit</pharos-button
+        >
       </form>
     `}
   </Story>

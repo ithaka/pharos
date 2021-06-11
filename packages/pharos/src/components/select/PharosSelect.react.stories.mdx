@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosSelect } from '../../react-components/select/pharos-select';
+import { PharosButton } from '../../react-components/button/pharos-button';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -26,6 +27,7 @@ export const Template = (args) => (
     invalidated={args.invalidated}
     message={args.message}
     value={3}
+    style="display: grid; grid-template-columns: 300px;"
   >
     <span slot="label">Select Demo</span>
     <option value="1">Option 1</option>
@@ -37,7 +39,11 @@ export const Template = (args) => (
 );
 
 <Canvas withToolbar>
-  <Story name="Base" args={{ disabled: false, hideLabel: false }}>
+  <Story
+    name="Base"
+    args={{ disabled: false, hideLabel: false }}
+    style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;"
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -130,7 +136,7 @@ export const Template = (args) => (
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
       </PharosSelect>
-      <input
+      <PharosButton
         type="submit"
         value="Submit"
         onClick={(e) => {
@@ -145,7 +151,9 @@ export const Template = (args) => (
           };
           xhr.send(formData);
         }}
-      />
+      >
+        Submit
+      </PharosButton>
     </form>
   </Story>
 </Canvas>

@@ -178,13 +178,14 @@ export const CustomTemplate = (args) =>
             <pharos-textarea
               name="my-textarea"
               placeholder="Enter some text"
+              style="margin-bottom: 0.5rem;"
               @change="${(e) => action('Change')(e.target.value)}"
               @input="${(e) => action('Input')(e.target.value)}"
               required
             >
               <span slot="label">I am invalid</span>
             </pharos-textarea>
-            <input
+            <pharos-button
               type="submit"
               value="Submit"
               @click="${(e) => {
@@ -199,7 +200,9 @@ export const CustomTemplate = (args) =>
                 };
                 xhr.send(formData);
               }}"
-            />
+            >
+              Submit
+            </pharos-button>
           </form>
         </div>
       `;

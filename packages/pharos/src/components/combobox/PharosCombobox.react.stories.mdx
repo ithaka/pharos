@@ -3,6 +3,8 @@ import { action } from '@storybook/addon-actions';
 import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosCombobox } from '../../react-components/combobox/pharos-combobox';
+import { PharosButton } from '../../react-components/button/pharos-button';
+import createFormData from '../../utils/createFormData';
 
 <Meta
   title="Forms/Combobox"
@@ -27,6 +29,7 @@ export const Template = (args) => (
     required={args.required}
     message={args.message}
     hideLabel={args.hideLabel}
+    style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;"
   >
     <span slot="label">{args.label}</span>
     <option value="1">New Hampshire</option>
@@ -152,7 +155,11 @@ export const Template = (args) => (
   <Story name="Search Mode">
     {() => {
       return (
-        <PharosCombobox placeholder="Search..." searchMode>
+        <PharosCombobox
+          placeholder="Search..."
+          searchMode
+          style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;"
+        >
           <span slot="label">I'm searching for</span>
           <option value="1">Bulbasaur</option>
           <option value="2">Charmander</option>
@@ -169,5 +176,47 @@ export const Template = (args) => (
         </PharosCombobox>
       );
     }}
+  </Story>
+</Canvas>
+
+# Form Data
+
+<Canvas withToolbar>
+  <Story name="Form Data">
+    <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
+      <form name="my-form" action="https://httpbin.org/post" method="POST">
+        <PharosCombobox
+          name="my-combobox"
+          style="margin-bottom: 8px;"
+          placeholder="Enter some text"
+          onChange={(e) => action('Change')(e.target.value)}
+          onInput={(e) => action('Input')(e.target['_input'].value)}
+          required
+        >
+          <span slot="label">Test me out</span>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </PharosCombobox>
+        <PharosButton
+          type="submit"
+          value="Submit"
+          onclick={(e) => {
+            e.preventDefault();
+            const form = document.querySelector('form[name="my-form"]');
+            const formData = createFormData(form);
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'https://httpbin.org/post', true);
+            xhr.onload = function () {
+              const response = JSON.parse(this.responseText);
+              action('FormData')(JSON.stringify(response.form));
+            };
+            xhr.send(formData);
+          }}
+        >
+          Submit
+        </PharosButton>
+      </form>
+    </div>
   </Story>
 </Canvas>
