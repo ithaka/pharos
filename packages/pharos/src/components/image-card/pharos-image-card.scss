@@ -11,7 +11,7 @@
 }
 
 .card__link--image {
-  height: 15.625rem;
+  height: 14rem;
 }
 
 .card__link--image,
@@ -65,6 +65,10 @@
   text-align: center;
   row-gap: var(--pharos-spacing-1-x);
   align-self: flex-end;
+
+  .unavailable-text {
+    max-width: 9rem;
+  }
 }
 
 .card__title {

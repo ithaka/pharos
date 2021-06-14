@@ -115,7 +115,8 @@ export class PharosImageCard extends LitElement {
   private _renderLinkContent(): TemplateResult {
     return this.error
       ? html`<div class="card__container--error">
-          <pharos-icon name="exclamation-inverse"></pharos-icon>Preview not available
+          <pharos-icon name="exclamation-inverse"></pharos-icon>
+          <span class="unavailable-text">Preview not available</span>
         </div>`
       : html`<slot name="image"></slot>`;
   }
