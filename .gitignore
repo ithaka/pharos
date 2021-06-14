@@ -11,7 +11,7 @@ packages/**/package-lock.json
 packages/pharos-site/public/
 packages/pharos-site/.cache/
 react-components/
-packages/pharos/src/styles/*.ts
+packages/pharos/src/styles/**/*.ts
 packages/pharos/src/styles/_variables.scss
 *.css.ts
 package-lock.json
