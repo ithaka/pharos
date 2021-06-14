@@ -18,30 +18,21 @@ const getRem = (px) => {
   return px / BASE_FONT_SIZE;
 };
 
-const variablesWithPrefix = (prefix, properties, commentStyle) => {
-  return properties
-    .map(function (prop) {
-      var to_ret_prop =
-        prefix +
-        prop.name +
-        ': ' +
-        (prop.attributes.category === 'asset' ? `'` + prop.value + `'` : prop.value) +
-        ';';
+const cssVar = (token, dictionary) => {
+  let value = JSON.stringify(token.value);
+  if (dictionary.usesReference(token.original.value)) {
+    const reference = dictionary.getReferences(token.original.value);
+    if (reference[0]?.name) {
+      value = `var(--${reference[0].name})`;
+    } else {
+      value = token.attributes.category === 'asset' ? `'${token.value}'` : token.value;
+    }
+  } else {
+    value = token.attributes.category === 'asset' ? `'${token.value}'` : token.value;
+  }
 
-      if (prop.comment) {
-        if (commentStyle === 'short') {
-          to_ret_prop = to_ret_prop.concat(' // ' + prop.comment);
-        } else {
-          to_ret_prop = to_ret_prop.concat(' /* ' + prop.comment + ' */');
-        }
-      }
-
-      return to_ret_prop;
-    })
-    .filter(function (strVal) {
-      return !!strVal;
-    })
-    .join('\n');
+  const comment = token.comment ? ` /* ${token.comment} */` : '';
+  return `--${token.name}: ${value}${comment};`;
 };
 
 const fileHeader = () => {
@@ -90,7 +81,7 @@ StyleDictionary.registerFormat({
       `import { css } from 'lit';\n\n` +
       `export const designTokens = css\`\n` +
       `  :host {\n` +
-      variablesWithPrefix('    --', dictionary.allProperties) +
+      dictionary.allProperties.map((token) => '    ' + cssVar(token, dictionary)).join('\n') +
       `\n  }\n` +
       `\`;\n`
     );
@@ -110,6 +101,22 @@ StyleDictionary.registerFormat({
       `\n\nexport default ` +
       (this.name || '_styleDictionary') +
       ';'
+    );
+  },
+});
+
+StyleDictionary.registerFormat({
+  name: 'javascript/es6-default',
+  formatter: function (dictionary) {
+    return (
+      fileHeader() +
+      dictionary.allProperties
+        .map(function (prop) {
+          const value = `export default ${JSON.stringify(prop.value)};`;
+          const comment = prop.comment ? ` // ${prop.comment}` : '';
+          return `${value}${comment}`;
+        })
+        .join('\n')
     );
   },
 });

@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { GuidelineLink } from '@config/GuidelineLink';
 
 import { PharosTextInput } from '../../react-components/text-input/pharos-text-input';
+import { PharosButton } from '../../react-components/button/pharos-button';
 import createFormData from '../../utils/createFormData';
 
 <Meta
@@ -216,6 +217,7 @@ export const CustomTemplate = (args) => (
     >
       <form name="my-form" action="https://httpbin.org/post" method="POST">
         <PharosTextInput
+          style={{ marginBottom: '0.5rem' }}
           name="my-text-input"
           placeholder="Enter some text"
           onChange={(e) => action('Change')(e.target.value)}
@@ -224,7 +226,7 @@ export const CustomTemplate = (args) => (
         >
           <span slot="label">Test me out</span>
         </PharosTextInput>
-        <input
+        <PharosButton
           type="submit"
           value="Submit"
           onClick={(e) => {
@@ -239,7 +241,9 @@ export const CustomTemplate = (args) => (
             };
             xhr.send(formData);
           }}
-        />
+        >
+          Submit
+        </PharosButton>
       </form>
     </div>
   </Story>

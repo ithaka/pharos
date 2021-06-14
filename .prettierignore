@@ -3,7 +3,7 @@ dist/
 coverage/
 lib/
 .storybook-static/
-packages/pharos/src/styles/*.ts
+packages/pharos/src/styles/**/*.ts
 packages/pharos/tokens/
 packages/pharos/custom-elements.json
 packages/**/package-lock.json

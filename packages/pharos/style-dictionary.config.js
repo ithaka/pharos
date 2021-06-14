@@ -1,3 +1,5 @@
+import icons from './tokens/assets/icons.json';
+
 export default {
   source: ['tokens/**/*.json'],
   platforms: {
@@ -9,6 +11,9 @@ export default {
         {
           destination: '_variables.scss',
           format: 'scss/variables',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -20,6 +25,9 @@ export default {
         {
           destination: 'variables.css',
           format: 'css/variables',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -31,26 +39,27 @@ export default {
         {
           destination: 'variables.css.ts',
           format: 'css/js',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
     'assets/embed/javascript': {
       transforms: ['attribute/cti', 'name/cti/constant', 'asset/base64'],
       prefix: 'pharos',
-      buildPath: 'src/styles/',
-      files: [
-        {
-          destination: 'icons.ts',
-          format: 'javascript/es6',
-          name: 'icons',
-          filter: {
-            attributes: {
-              category: 'asset',
-              type: 'icon',
-            },
-          },
+      buildPath: 'src/styles/icons/',
+      files: Object.keys(icons.asset.icon).map((icon) => ({
+        destination: `${icon}.ts`,
+        format: 'javascript/es6-default',
+        filter: (prop) =>
+          prop.attributes.category === 'asset' &&
+          prop.attributes.type === 'icon' &&
+          prop.attributes.item === icon,
+        options: {
+          outputReferences: true,
         },
-      ],
+      })),
     },
     js: {
       transformGroup: 'js',
@@ -61,6 +70,9 @@ export default {
           name: 'tokens',
           destination: 'tokens.ts',
           format: 'js/object',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
@@ -72,6 +84,9 @@ export default {
         {
           destination: 'variables.ts',
           format: 'javascript/es6',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
