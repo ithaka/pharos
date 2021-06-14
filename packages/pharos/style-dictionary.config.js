@@ -1,3 +1,5 @@
+import icons from './tokens/assets/icons.json';
+
 export default {
   source: ['tokens/**/*.json'],
   platforms: {
@@ -46,23 +48,18 @@ export default {
     'assets/embed/javascript': {
       transforms: ['attribute/cti', 'name/cti/constant', 'asset/base64'],
       prefix: 'pharos',
-      buildPath: 'src/styles/',
-      files: [
-        {
-          destination: 'icons.ts',
-          format: 'javascript/es6',
-          name: 'icons',
-          filter: {
-            attributes: {
-              category: 'asset',
-              type: 'icon',
-            },
-          },
-          options: {
-            outputReferences: true,
-          },
+      buildPath: 'src/styles/icons/',
+      files: Object.keys(icons.asset.icon).map((icon) => ({
+        destination: `${icon}.ts`,
+        format: 'javascript/es6-default',
+        filter: (prop) =>
+          prop.attributes.category === 'asset' &&
+          prop.attributes.type === 'icon' &&
+          prop.attributes.item === icon,
+        options: {
+          outputReferences: true,
         },
-      ],
+      })),
     },
     js: {
       transformGroup: 'js',

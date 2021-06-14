@@ -75,3 +75,7 @@
   align-items: center;
   column-gap: var(--pharos-spacing-three-quarters-x);
 }
+
+.logo__link {
+  display: flex;
+}

@@ -12,6 +12,7 @@ import {
   netlifyLink,
   badge,
   container__link,
+  logo__link,
 } from './footer.module.css';
 import logoWhite from '../../static/images/footer/logo-white.svg';
 
@@ -27,7 +28,9 @@ const Footer: FC = () => {
       <div className={footer}>
         <div className={main}>
           <div className={container__start}>
-            <img src={logoWhite} alt="JSTOR Logo" width="70" height="100" />
+            <PharosLink className={logo__link} href="https://www.jstor.org/" target="_blank" flex>
+              <img src={logoWhite} alt="JSTOR Logo" width="70" height="100" />
+            </PharosLink>
             <div className={note}>Copyright © {new Date().getFullYear()} JSTOR</div>
           </div>
           <div className={container__center}>

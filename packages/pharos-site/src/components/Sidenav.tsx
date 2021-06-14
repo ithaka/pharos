@@ -79,6 +79,9 @@ const Sidenav: FC = () => {
           <PharosSidenavLink href="https://github.com/ithaka/pharos" target="_blank" external>
             GitHub
           </PharosSidenavLink>
+          <PharosSidenavLink href="https://www.jstor.org/" target="_blank" external>
+            JSTOR
+          </PharosSidenavLink>
         </PharosSidenavSection>
         <PharosSidenavSection label="Brand Guidelines" showDivider>
           <PharosSidenavMenu label="Brand expressions" expanded={isExpanded('brand-expressions')}>
@@ -108,26 +111,26 @@ const Sidenav: FC = () => {
               'Breadcrumb',
               'Checkbox',
               'Combobox',
-              'Dropdown Menu',
-              'Dropdown Menu Nav',
+              'Dropdown menu',
+              'Dropdown menu nav',
               'Footer',
               'Header',
               'Heading',
               'Icon',
-              'Image Card',
-              'Input Group',
+              'Image card',
+              'Input group',
               'Link',
-              'Loading Spinner',
+              'Loading spinner',
               'Modal',
               'Pagination',
-              'Progress Bar',
-              'Radio Button',
+              'Progress bar',
+              'Radio button',
               'Select',
               'Sidenav',
               'Tabs',
               'Toast',
               'Tooltip',
-              'Text Input',
+              'Text input',
               'Textarea',
             ].map(createSidenavLink.bind(this, 'components'))}
           </PharosSidenavMenu>
