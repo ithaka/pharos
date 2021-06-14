@@ -79,6 +79,9 @@ const Sidenav: FC = () => {
           <PharosSidenavLink href="https://github.com/ithaka/pharos" target="_blank" external>
             GitHub
           </PharosSidenavLink>
+          <PharosSidenavLink href="https://www.jstor.org/" target="_blank" external>
+            JSTOR
+          </PharosSidenavLink>
         </PharosSidenavSection>
         <PharosSidenavSection label="Brand Guidelines" showDivider>
           <PharosSidenavMenu label="Brand expressions" expanded={isExpanded('brand-expressions')}>
