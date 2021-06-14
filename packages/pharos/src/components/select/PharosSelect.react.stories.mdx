@@ -39,11 +39,7 @@ export const Template = (args) => (
 );
 
 <Canvas withToolbar>
-  <Story
-    name="Base"
-    args={{ disabled: false, hideLabel: false }}
-    style={{ display: 'grid', gridGap: '1rem', gridTemplateColumns: '300px' }}
-  >
+  <Story name="Base" args={{ disabled: false, hideLabel: false }}>
     {Template.bind({})}
   </Story>
 </Canvas>
