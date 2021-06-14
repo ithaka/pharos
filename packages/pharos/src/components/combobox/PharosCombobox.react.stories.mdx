@@ -187,7 +187,7 @@ export const Template = (args) => (
       <form name="my-form" action="https://httpbin.org/post" method="POST">
         <PharosCombobox
           name="my-combobox"
-          style="margin-bottom: 8px;"
+          style={{ marginBottom: '0.5rem' }}
           placeholder="Enter some text"
           onChange={(e) => action('Change')(e.target.value)}
           onInput={(e) => action('Input')(e.target['_input'].value)}
