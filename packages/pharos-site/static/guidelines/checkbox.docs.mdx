@@ -10,18 +10,18 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 
 <PageSection
   title="Usage"
-  description="The Checkbox component is used to provide a list of options where the user can select multiple options, including all or none. They work independently from each other, therefore checking an additional box does not affect the other selections. Checkboxes are not mutually exclusive."
+  description="The checkbox component is used to provide multiple options the user can select, including all or none. They work independently from each other, therefore checking an additional box does not affect the other selections. Checkboxes are not mutually exclusive."
 >
   <PageSection title="Alignment" subSectionLevel={1}>
     <p>
       Labels for checkboxes are placed to the right of the checkbox. If there's a checkbox group,
       the options can be vertically or horizontally stacked, depending on the use case and UI needs.
-      It's preferred to have the checkboxes be vertically stacked for better readability.
+      Vertically stacking the checkboxes is preferable for better readability.
     </p>
   </PageSection>
   <PageSection title="Placement" subSectionLevel={1}>
     <p>
-      Checkboxes in JSTOR are often used when faceting results so a user can narrow their focus or
+      Checkboxes in JSTOR are often used when faceting results so users can narrow their focus, or
       on forms. They can be placed within pages or modals.
     </p>
   </PageSection>
@@ -76,8 +76,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
         terms" instead of "I don't agree to the terms."
       </li>
       <li>
-        Long labels may wrap to a second line, but consider rewording the label if it gets to be too
-        long.
+        Long labels may wrap to a second line, but consider rewording the label if it gets too long.
       </li>
       <li>Labels should not be truncated.</li>
     </ul>
@@ -88,7 +87,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection
     title="onBackground"
     subSectionLevel={1}
-    description="The onBackground variant of a checkbox is to be used in cases where the background containing the checkbox will be a dark color, or in cases where the theme of the page/component would be dark."
+    description="In cases where the background containing the checkbox will be a dark color or, in cases where the theme of the page/component would be dark, use the onBackground variant checkbox."
   >
     <div
       style={{
@@ -106,7 +105,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 </PageSection>
 <PageSection title="States">
   <PageSection title="Default" subSectionLevel={1}>
-    <p>A state which indicates that the user should be able to interact with the input.</p>
+    <p>Indicates that the checkbox is interactable.</p>
     <Canvas>
       <PharosCheckbox>
         <span slot="label">Checkbox label</span>
@@ -114,7 +113,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection title="Disabled" subSectionLevel={1}>
-    <p>A state which indicates that the user should not be able to interact with the input.</p>
+    <p>Indicates that the checkbox should not be interactable.</p>
     <Canvas>
       <PharosCheckbox disabled>
         <span slot="label">Checkbox label</span>
@@ -132,7 +131,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection title="Error" subSectionLevel={1}>
-    <p>A state that lets the user know there has been an error with what was inputted.</p>
+    <p>Indicates that an error occurred within the checkbox.</p>
     <Canvas>
       <PharosCheckbox
         required
@@ -144,7 +143,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection title="Checked" subSectionLevel={1}>
-    <p>A state in which the value will be submitted.</p>
+    <p>Indicates that the checkbox is selected and will submit a checked value of true.</p>
     <Canvas>
       <PharosCheckbox checked>
         <span slot="label">Checkbox label</span>
@@ -152,7 +151,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection title="Unchecked" subSectionLevel={1}>
-    <p>A state in which the value will be NOT submitted.</p>
+    <p>Indicates that the checkbox is not selected and will submit an unchecked value of false.</p>
     <Canvas>
       <PharosCheckbox>
         <span slot="label">Checkbox label</span>
@@ -160,7 +159,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     </Canvas>
   </PageSection>
   <PageSection title="Indeterminate" subSectionLevel={1}>
-    <p>A state which serves a visual purpose while masking the actual value of the checkbox.</p>
+    <p>A state that serves a visual purpose while masking the actual value of the checkbox.</p>
     <Canvas>
       <PharosCheckbox indeterminate checked>
         <span slot="label">Checkbox label</span>
