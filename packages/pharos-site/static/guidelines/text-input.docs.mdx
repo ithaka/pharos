@@ -11,8 +11,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
 <PageSection title="Usage">
   <p>
     Inputs are used for forms or inputting data to get a result, so the design and implementation
-    should be as concise as possible. Careful thought should be considered about the need for each
-    text input and what value the data will provide.
+    should be as concise as possible. Carefully consider the need for each text input and what value
+    the data will provide.
   </p>
 </PageSection>
 
@@ -44,8 +44,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection subSectionLevel={1} title="Labels">
     <ul>
       <li>
-        The input label needs to tell the user what is expected of them, but it doesn't need to be
-        instructive
+        The input label needs to help the user understand what is expected of them, but it doesn't
+        need to be instructive
       </li>
       <li>Labels are placed above the input text field</li>
       <li>Labels are to be written in sentence case and should only be 1-3 words long</li>
@@ -85,8 +85,8 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection subSectionLevel={1} title="Email">
     <p>
       The email type provides validation to ensure proper formatting of an email address. Use the
-      email variant to allow the user to enter or edit an email address to help avoid user typos and
-      invalid addresses.
+      email variant to prompt the user to enter or edit an email address without typos or invalid
+      formats.
     </p>
     <Canvas>
       <PharosTextInput type="email" value="name@provider.com"></PharosTextInput>
@@ -105,7 +105,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection subSectionLevel={1} title="Number">
     <p>
       The number input provides some functionality used to collect a numerical value. Usually a set
-      of up and down buttons are also provided to step the value up and down. On some devices, it
+      of up and down buttons are also provided to adjust the value up and down. On some devices, it
       displays a numeric keypad when active.
     </p>
     <Canvas>
@@ -114,10 +114,9 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   </PageSection>
   <PageSection subSectionLevel={1} title="URL">
     <p>
-      The URL input allows users to input a valid URL. Using this type, you get automatic validation
-      that the entered text is at least in the correct form to potentially be a legitimate URL. This
-      can help avoid cases in which the user mistypes the website's address, or provides an invalid
-      one.
+      The URL input allows users to enter a valid URL. Using this type, you get automatic validation
+      that the entered text is in the correct form. This can help avoid cases in which the user
+      mistypes the website's address or provides an invalid one.
     </p>
     <Canvas>
       <PharosTextInput type="url" value="https://pharos.jstor.org/"></PharosTextInput>
@@ -243,9 +242,9 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PageSection subSectionLevel={1} title="Code expectations">
     <ul>
       <li>
-        Via &nbsp;
-        <PharosLink href="https://www.w3.org/WAI/tutorials/forms/labels/">W3</PharosLink>
-        &nbsp; there are 3 ways to approach input groups:
+        According to &nbsp;
+        <PharosLink href="https://www.w3.org/WAI/tutorials/forms/labels/">W3</PharosLink>, there are
+        3 ways to approach input groups:
       </li>
       <li>
         Visual label:
