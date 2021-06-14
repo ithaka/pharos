@@ -199,7 +199,7 @@ export const CustomTemplate = (args) => (
         <PharosTextarea
           name="my-textarea"
           placeholder="Enter some text"
-          style="margin-bottom: 0.5rem;"
+          style={{ marginBottom: '0.5rem' }}
           onChange={(e) => action('Change')(e.target.value)}
           onInput={(e) => action('Input')(e.target.value)}
           required
