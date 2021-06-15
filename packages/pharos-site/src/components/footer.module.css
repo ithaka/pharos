@@ -1,7 +1,7 @@
 .footer {
   background: var(--pharos-color-marble-gray-10);
   color: var(--pharos-color-text-white);
-  padding: var(--pharos-spacing-3-x) 0 var(--pharos-spacing-2-x) 0;
+  padding: var(--pharos-spacing-3-x) 0;
   display: grid;
   grid-template-columns: 6.5rem 1fr 6.5rem;
   grid-template-areas: '. main .';
@@ -20,6 +20,7 @@
   grid-template-rows: auto min-content;
   grid-template-columns: repeat(12, 1fr);
   column-gap: var(--pharos-spacing-3-x);
+  row-gap: var(--pharos-spacing-3-x);
 }
 
 .right-text {
@@ -28,7 +29,8 @@
 
 .note {
   color: var(--pharos-color-marble-gray-80);
-  align-self: flex-end;
+  font-size: var(--pharos-font-size-small);
+  line-height: var(--pharos-line-height-small);
 }
 
 .list {
@@ -42,7 +44,6 @@
 .container__start {
   grid-column: span 3;
   display: grid;
-  row-gap: 5rem;
 }
 
 .container__center {
@@ -53,12 +54,15 @@
 .container__end {
   grid-column: span 3;
   display: grid;
-  grid-template-rows: max-content 1fr 1fr;
+  grid-template-rows: max-content 1fr;
 }
 
 .netlify-link {
-  font-size: var(--pharos-font-size-small);
-  line-height: var(--pharos-line-height-small);
+  grid-column: 10 / span 3;
+}
+
+.copyright-statement {
+  grid-column: span 6;
 }
 
 .badge {

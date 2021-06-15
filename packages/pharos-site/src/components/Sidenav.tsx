@@ -93,13 +93,9 @@ const Sidenav: FC = () => {
             label="Content style guide"
             expanded={isExpanded('content-style-guide')}
           >
-            {[
-              'Voice and tone',
-              'Web elements',
-              'JSTOR terms',
-              'Grammar and style',
-              'Editing checklist',
-            ].map(createSidenavLink.bind(this, 'content-style-guide'))}
+            {['Voice and tone', 'Web elements', 'Grammar and style', 'Editing checklist'].map(
+              createSidenavLink.bind(this, 'content-style-guide')
+            )}
           </PharosSidenavMenu>
         </PharosSidenavSection>
         <PharosSidenavSection label="Design System">
