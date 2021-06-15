@@ -172,11 +172,10 @@ figure {
 }
 
 .badge {
-  color: var(--pharos-color-text-40);
   text-transform: uppercase;
   font-size: var(--pharos-font-size-micro);
   line-height: var(--pharos-line-height-xsmall);
-  background-color: var(--pharos-color-ui-30);
+  background-color: var(--pharos-color-glacier-blue-80);
   padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
 }
 
