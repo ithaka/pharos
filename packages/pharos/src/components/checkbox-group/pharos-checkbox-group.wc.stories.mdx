@@ -11,7 +11,7 @@ import createFormData from '../../utils/createFormData';
 <Meta
   title="Forms/Checkbox Group"
   parameters={{
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
   }}
 />
 
@@ -46,7 +46,12 @@ export const Template = (args) =>
 # Events
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {() => {
       return html` <pharos-checkbox-group
         @change="${(e) => action('Change')(JSON.stringify(e.target.value))}"

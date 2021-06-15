@@ -9,7 +9,7 @@ import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
 <Meta
   title="Components/Tabs"
   parameters={{
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
   }}
 />
 
@@ -59,7 +59,12 @@ import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
 ## Event handling
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     <PharosTabs onPharos-Tab-Selected={(e) => action('Select')(e.target.id)}>
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1

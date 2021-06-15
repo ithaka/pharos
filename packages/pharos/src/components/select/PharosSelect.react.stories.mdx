@@ -10,7 +10,7 @@ import createFormData from '../../utils/createFormData';
   title="Forms/Select"
   parameters={{
     component: PharosSelect,
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
     knobs: { escapeHTML: false },
   }}
 />
@@ -91,7 +91,12 @@ export const Template = (args) => (
 # Events
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {() => {
       return (
         <PharosSelect onChange={(e) => action('Change')(e.target.value)}>

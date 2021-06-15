@@ -10,7 +10,7 @@ import createFormData from '../../utils/createFormData';
 <Meta
   title="Forms/Text Input"
   parameters={{
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
   }}
 />
 
@@ -95,7 +95,12 @@ export const Template = (args) =>
 # Events
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {() => {
       return html`
         <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">

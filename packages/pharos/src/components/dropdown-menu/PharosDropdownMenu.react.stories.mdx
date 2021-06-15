@@ -12,7 +12,7 @@ import { PharosButton } from '../../react-components/button/pharos-button';
 <Meta
   title="Components/Dropdown Menu"
   parameters={{
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
     component: PharosDropdownMenu,
   }}
 />
@@ -54,7 +54,12 @@ import { PharosButton } from '../../react-components/button/pharos-button';
 # Events
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     <div
       style={{
         display: 'grid',

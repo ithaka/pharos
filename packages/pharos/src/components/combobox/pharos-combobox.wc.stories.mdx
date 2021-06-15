@@ -10,7 +10,7 @@ import createFormData from '../../utils/createFormData';
 <Meta
   title="Forms/Combobox"
   parameters={{
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
     controls: { expanded: true },
   }}
 />
@@ -113,7 +113,12 @@ export const Template = (args) =>
 # Events
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {() => {
       return html`
         <div style="display: grid; grid-template-columns: 300px;">

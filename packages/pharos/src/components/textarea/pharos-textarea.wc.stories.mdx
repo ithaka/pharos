@@ -10,7 +10,7 @@ import createFormData from '../../utils/createFormData';
 <Meta
   title="Forms/Textarea"
   parameters={{
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
   }}
 />
 
@@ -90,7 +90,12 @@ export const Template = (args) =>
 # Events
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {() => {
       return html`
         <div style="display: grid; grid-gap: 1rem; grid-template-columns: 250px;">

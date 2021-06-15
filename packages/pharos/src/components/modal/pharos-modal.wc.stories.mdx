@@ -13,7 +13,7 @@ import '../button/pharos-button';
 <Meta
   title="Components/Modal"
   parameters={{
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
   }}
 />
 
@@ -95,7 +95,12 @@ export const Template = (args) =>
 # Events
 
 <Canvas>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {html`
       <pharos-button
         type="button"

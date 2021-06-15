@@ -10,7 +10,7 @@ import createFormData from '../../utils/createFormData';
 <Meta
   title="Forms/Radio Group"
   parameters={{
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
   }}
 />
 
@@ -55,7 +55,12 @@ export const Template = (args) =>
 # Events
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {() => {
       return html` <pharos-radio-group
         @change="${(e) => action('Change')(e.target.value)}"

@@ -10,7 +10,7 @@ import './pharos-tab-panel';
 <Meta
   title="Components/Tabs"
   parameters={{
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
   }}
 />
 
@@ -50,7 +50,12 @@ import './pharos-tab-panel';
 ## Event handling
 
 <Canvas>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {html`
       <pharos-tabs @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}">
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>

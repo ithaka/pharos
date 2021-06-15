@@ -7,7 +7,7 @@ import './pharos-toggle-button';
 <Meta
   title="Components/Toggle Button Group"
   parameters={{
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'addon-controls' },
   }}
 />
 
@@ -63,7 +63,12 @@ import './pharos-toggle-button';
 ## Event handling
 
 <Canvas>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {html`
       <pharos-toggle-button-group
         @pharos-toggle-button-selected="${(e) => action('Selected')(e.target.id)}"
