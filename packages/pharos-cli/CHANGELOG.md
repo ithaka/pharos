@@ -1,5 +1,27 @@
 # @ithaka/pharos-cli
 
+## 5.1.0
+
+### Minor Changes
+
+- [#19](https://github.com/ithaka/pharos/pull/19) [`70f42ef`](https://github.com/ithaka/pharos/commit/70f42ef0776d1b0ff0ea32ae6560deef92757d8d) Thanks [@Niznikr](https://github.com/Niznikr)! - update to Lit 2:
+
+  - Update to Lit 2 following upgrade guide
+  - Update `@open-wc/testing` tools
+  - Target `es2019` as recommended by Lit
+  - Run tests on built JS package
+
+* [#42](https://github.com/ithaka/pharos/pull/42) [`84e5bfa`](https://github.com/ithaka/pharos/commit/84e5bfad249b5e5738cf6adf03bc6f25c769628d) Thanks [@Niznikr](https://github.com/Niznikr)! - remove support for IE11:
+
+  - Remove polyfills
+  - Remove design token imports in components
+  - Update documentation
+  - Remove IE11 related styles
+
+### Patch Changes
+
+- [#86](https://github.com/ithaka/pharos/pull/86) [`802f4d8`](https://github.com/ithaka/pharos/commit/802f4d8e5d07a1e834e879d86898c77debd05fcf) Thanks [@Niznikr](https://github.com/Niznikr)! - import html from lit
+
 ## 5.0.3
 
 ### Patch Changes

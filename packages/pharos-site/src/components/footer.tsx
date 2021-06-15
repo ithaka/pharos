@@ -10,8 +10,10 @@ import {
   container__center,
   container__end,
   netlifyLink,
+  copyrightStatement,
   badge,
   container__link,
+  logo__link,
 } from './footer.module.css';
 import logoWhite from '../../static/images/footer/logo-white.svg';
 
@@ -27,8 +29,9 @@ const Footer: FC = () => {
       <div className={footer}>
         <div className={main}>
           <div className={container__start}>
-            <img src={logoWhite} alt="JSTOR Logo" width="70" height="100" />
-            <div className={note}>Copyright © {new Date().getFullYear()} JSTOR</div>
+            <PharosLink className={logo__link} href="https://www.jstor.org/" target="_blank" flex>
+              <img src={logoWhite} alt="JSTOR Logo" width="70" height="100" />
+            </PharosLink>
           </div>
           <div className={container__center}>
             <ul className={list}>
@@ -116,13 +119,18 @@ const Footer: FC = () => {
               </PharosLink>
               .
             </div>
-            <em className={`${note} ${netlifyLink}`}>
-              This site is powered by{' '}
-              <PharosLink href="https://www.netlify.com" onBackground target="_blank">
-                Netlify
-              </PharosLink>
-            </em>
           </div>
+          <div className={`${note} ${copyrightStatement}`}>
+            &copy;{new Date().getFullYear()} ITHAKA. All Rights Reserved. JSTOR&reg;, the JSTOR
+            logo, JPASS&reg;, Artstor&reg;, Reveal Digital&trade; and ITHAKA&reg; are registered
+            trademarks of ITHAKA.
+          </div>
+          <em className={`${note} ${netlifyLink}`}>
+            This site is powered by{' '}
+            <PharosLink href="https://www.netlify.com" onBackground target="_blank">
+              Netlify
+            </PharosLink>
+          </em>
         </div>
       </div>
     );

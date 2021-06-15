@@ -1,4 +1,5 @@
-import DosAndDonts from '../../components/statics/DosAndDonts';
+import handleLinkClick from '../../utils/handleLinkClick';
+import BestPractices from '../../components/statics/BestPractices.tsx';
 import imageHero from '../../../static/images/brand-expressions/imagery/imagery_hero_cover.png';
 import imageArtstor1 from '../../../static/images/brand-expressions/imagery/imagery_artstor_1.png';
 import imageArtstor2 from '../../../static/images/brand-expressions/imagery/imagery_artstor_2.png';
@@ -21,7 +22,7 @@ import Grid from '../../components/Grid';
 
 <PageSection
   title="Imagery"
-  description="We have a great opportunity to express who we are through imagery. We are selecting images from two categories, JSTOR images (archive) and brand images."
+  description="We have a great opportunity to use imagery for expression. Our imagery style falls into two categories: Archival and Brand images."
   isHeader
 >
   <Grid columns={1} justifyContent="center" minContent align="end">
@@ -31,7 +32,7 @@ import Grid from '../../components/Grid';
 
 <PageSection
   title="Image types"
-  description="The two main categories of images are Archival and Brand. Archival includes Artstor, Community Collections, Primary Source, Journal and Book covers. Brand images are images of users, research and the places JSTOR is being used."
+  description="The two main categories of images are Archival and Brand. Archival includes content from Artstor, Community Collections, Primary Source, Journal and Book covers. Brand images are images portray users, research, and the places JSTOR is used."
 >
   <PharosHeading level="3" preset="4">
     Artstor
@@ -117,26 +118,26 @@ import Grid from '../../components/Grid';
 
 <PageSection
   title="Principles"
-  description="Visuals are the most immediate aspect of our brand, and we must be mindful of how we select them. Here are some basic guidelines to consider as you pick images for promoting our services and products."
+  description="Visuals are the most immediate aspect of our brand, and we must be mindful of how we select them. Here are some basic guidelines to consider as you pick images for promoting services and products."
 >
   <div style={{ marginBottom: 'var(--pharos-spacing-2-x)' }}>
     <PharosHeading level="3" preset="4">
       Diverse
     </PharosHeading>
     <p style={{ color: 'var(--pharos-color-text-20)' }}>
-      Archive images should represent our collections (Artstor, Open Community Collections, Primary
+      Archive images pull from collections on JSTOR (Artstor, Open Community Collections, Primary
       Sources) as well as the diverse content types in them (art, objects, historical documentation,
       science). When choosing non-western items, take care to look at their intended purpose and not
       just how they look.
     </p>
     <p style={{ color: 'var(--pharos-color-text-20)' }}>
       Images of art or artifacts should represent different cultures and time periods, including
-      diversity in the creators (women, non-western). Similarly, images of people should be diverse
-      (representing different demographics and abilities).
+      diversity in the creators (e.g., race, gender, location, etc.). Similarly, images of people
+      should be diverse (e.g., representing different demographics and abilities).
     </p>
     <p style={{ color: 'var(--pharos-color-text-20)' }}>
-      If it's a global or international campaign, make sure the people pictured adhere to dress
-      codes of most countries (e.g. non-revealing outfits).
+      For global or international campaigns, make sure the people pictured adhere to dress codes of
+      most countries (e.g. non-revealing outfits).
     </p>
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-2-x)' }}>
@@ -152,9 +153,9 @@ import Grid from '../../components/Grid';
       Representative
     </PharosHeading>
     <p style={{ color: 'var(--pharos-color-text-20)' }}>
-      Carefully select the images to best represent the content of the message. For example, if
-      we're promoting ebooks, don't use photos of posters; if we're contacting secondary schools
-      don't show images of a large research library.
+      Carefully select images that best represent the content of the message or associated content.
+      For example, if we're highlighting eBooks, don't display images of posters; if we're
+      contacting secondary schools, don't show images of a large research library.
     </p>
   </div>
   <div>
@@ -162,38 +163,49 @@ import Grid from '../../components/Grid';
       Excellence
     </PharosHeading>
     <p style={{ color: 'var(--pharos-color-text-20)' }}>
-      Images should reflect our brand framework:
-      <br />
-      It feels - Dependable, Intriguing, Focused
-      <br />
-      It looks - Uncomplicated, Composed, Modern
+      The images should be aesthetically pleasing and reflect our brand framework:
     </p>
-    <p style={{ color: 'var(--pharos-color-text-20)' }}>
-      Consider the brand color palette when selecting. <br />
-      The images should be aesthetically pleasing, as outlined in our brand direction
+    <div style={{ color: 'var(--pharos-color-text-20)' }}>
+      <strong>It feels</strong> - Dependable, Intriguing, Focused
+    </div>
+    <div style={{ color: 'var(--pharos-color-text-20)' }}>
+      <strong>It looks</strong> - Uncomplicated, Composed, Modern
+    </div>
+    <p
+      style={{
+        color: 'var(--pharos-color-text-20)',
+        marginTop: 'var(--pharos-spacing-one-and-a-half-x)',
+      }}
+    >
+      Also, consider the{' '}
+      <PharosLink href="/brand-expressions/color" onClick={handleLinkClick}>
+        brand color palette
+      </PharosLink>{' '}
+      when making selections.
     </p>
   </div>
 </PageSection>
 
 <PageSection title="Best Practices">
-  <DosAndDonts>
-    <ul>
-      <li>Choose bright, light and colorful images </li>
-      <li>
-        Select images that fit the space, for example a landscape ortient image for a landing page
-        banner
-      </li>
-      <li>For Archival images include credit information</li>
-      <li>Review the Imagery Principles when selecting images</li>
-    </ul>
-  </DosAndDonts>
-  <DosAndDonts Dont>
-    <ul>
-      <li>
-        Manipulate the image such as changing the color, adding or removing elements, or combining
-        two different images
-      </li>
-      <li>Overlap imagery</li>
-    </ul>
-  </DosAndDonts>
+  <BestPractices
+    Do={
+      <ul>
+        <li>Choose bright, light, and colorful images</li>
+        <li>
+          Select images that fit the space, e.g., a landscape orientation for a landing page banner
+        </li>
+        <li>For Archival images, include credit information</li>
+        <li>Review the Imagery Principles when selecting images</li>
+      </ul>
+    }
+    Dont={
+      <ul>
+        <li>
+          Manipulate the image such as changing the color, adding or removing elements, or combining
+          two different images
+        </li>
+        <li>Overlap imagery</li>
+      </ul>
+    }
+  />
 </PageSection>

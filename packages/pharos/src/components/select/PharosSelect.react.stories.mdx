@@ -27,7 +27,7 @@ export const Template = (args) => (
     invalidated={args.invalidated}
     message={args.message}
     value={3}
-    style="display: grid; grid-template-columns: 300px;"
+    style={{ display: 'grid', gridTemplateColumns: '300px' }}
   >
     <span slot="label">Select Demo</span>
     <option value="1">Option 1</option>
@@ -39,11 +39,7 @@ export const Template = (args) => (
 );
 
 <Canvas withToolbar>
-  <Story
-    name="Base"
-    args={{ disabled: false, hideLabel: false }}
-    style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;"
-  >
+  <Story name="Base" args={{ disabled: false, hideLabel: false }}>
     {Template.bind({})}
   </Story>
 </Canvas>

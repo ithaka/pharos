@@ -1,5 +1,35 @@
 # @ithaka/pharos-site
 
+## 5.4.0
+
+### Minor Changes
+
+- [#98](https://github.com/ithaka/pharos/pull/98) [`3084eed`](https://github.com/ithaka/pharos/commit/3084eed72aedd0139f591a69a8b3bfe4f27a2bb2) Thanks [@Niznikr](https://github.com/Niznikr)! - add links to JSTOR from site
+
+* [#19](https://github.com/ithaka/pharos/pull/19) [`70f42ef`](https://github.com/ithaka/pharos/commit/70f42ef0776d1b0ff0ea32ae6560deef92757d8d) Thanks [@Niznikr](https://github.com/Niznikr)! - update to Lit 2:
+
+  - Update to Lit 2 following upgrade guide
+  - Update `@open-wc/testing` tools
+  - Target `es2019` as recommended by Lit
+  - Run tests on built JS package
+
+- [#75](https://github.com/ithaka/pharos/pull/75) [`4bec861`](https://github.com/ithaka/pharos/commit/4bec8619cbe2cbadf79cc90f189f2563619c2545) Thanks [@kelseytrabue](https://github.com/kelseytrabue)! - image card documentation, design tweaks
+
+### Patch Changes
+
+- [#36](https://github.com/ithaka/pharos/pull/36) [`db6c095`](https://github.com/ithaka/pharos/commit/db6c095c7782edff521846b645b89848adcd2f2e) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - add new color tokens and use them in alerts
+
+* [#87](https://github.com/ithaka/pharos/pull/87) [`8de89ed`](https://github.com/ithaka/pharos/commit/8de89ede3b9d1764767ae818d2ba89991a3827a7) Thanks [@SMQuazi](https://github.com/SMQuazi)! - Update checkbox, radio button, select, text input and text area docs with brand copy
+
+- [#96](https://github.com/ithaka/pharos/pull/96) [`3c57dee`](https://github.com/ithaka/pharos/commit/3c57dee1e60f554276b1d1400d4e679a0e404bfb) Thanks [@Lham42](https://github.com/Lham42)! - Change sidenav component titles to sentence casing
+
+* [#100](https://github.com/ithaka/pharos/pull/100) [`db17b11`](https://github.com/ithaka/pharos/commit/db17b113df4840d2f7a516ba029b648bdfff6de9) Thanks [@Lham42](https://github.com/Lham42)! - Update component documentation sections as per doc audit
+
+- [#78](https://github.com/ithaka/pharos/pull/78) [`568c5ea`](https://github.com/ithaka/pharos/commit/568c5ea296aae502f3a132a4ca59e8c0c6c35898) Thanks [@Niznikr](https://github.com/Niznikr)! - remove trailing slashes from Gatsby paths
+
+- Updated dependencies [[`db6c095`](https://github.com/ithaka/pharos/commit/db6c095c7782edff521846b645b89848adcd2f2e), [`28dfaaa`](https://github.com/ithaka/pharos/commit/28dfaaae1ad204c937e8af227bce2220d47fb484), [`b8d5dfa`](https://github.com/ithaka/pharos/commit/b8d5dfac4f179ad7480488df768e7adb21332035), [`9bd2085`](https://github.com/ithaka/pharos/commit/9bd2085c62edb6cd6a93bb430c5dcd47a0a47c70), [`a95c6fd`](https://github.com/ithaka/pharos/commit/a95c6fd574816d8a6f2c66bd903141135516173f), [`c8c299b`](https://github.com/ithaka/pharos/commit/c8c299b0dfd62dab4aeababfa69108b95483a640), [`d967b52`](https://github.com/ithaka/pharos/commit/d967b520e054c8dd5bfa1dbdc33ec3bd848860cb), [`70f42ef`](https://github.com/ithaka/pharos/commit/70f42ef0776d1b0ff0ea32ae6560deef92757d8d), [`5435a15`](https://github.com/ithaka/pharos/commit/5435a153da40c98f031f57b76de81a820ac35ffe), [`81dd35c`](https://github.com/ithaka/pharos/commit/81dd35c4c7b0dad5d995e9472f54c158027d151d), [`7b4cf51`](https://github.com/ithaka/pharos/commit/7b4cf51054cf7647864afe5ce4e53de963660f0d), [`84e5bfa`](https://github.com/ithaka/pharos/commit/84e5bfad249b5e5738cf6adf03bc6f25c769628d), [`955983f`](https://github.com/ithaka/pharos/commit/955983f0c26c1574d79eb8934c3a239587c4a8a6), [`faed05f`](https://github.com/ithaka/pharos/commit/faed05f19c9b42c18e9a3f526f007d589fbf601c), [`63342ae`](https://github.com/ithaka/pharos/commit/63342ae3967f58c3652f08392b465dcb57162d1b), [`1e1a86a`](https://github.com/ithaka/pharos/commit/1e1a86ac68a1b71094db1caa955849ba3c2af042), [`aa82d00`](https://github.com/ithaka/pharos/commit/aa82d00b12346d3ff852b4d74bb91445a2eee877)]:
+  - @ithaka/pharos@10.0.0
+
 ## 5.3.0
 
 ### Minor Changes

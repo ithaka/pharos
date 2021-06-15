@@ -1,5 +1,72 @@
 # @ithaka/pharos
 
+## 10.0.0
+
+### Major Changes
+
+- [#36](https://github.com/ithaka/pharos/pull/36) [`db6c095`](https://github.com/ithaka/pharos/commit/db6c095c7782edff521846b645b89848adcd2f2e) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - add new color tokens and use them in alerts
+
+* [#81](https://github.com/ithaka/pharos/pull/81) [`28dfaaa`](https://github.com/ithaka/pharos/commit/28dfaaae1ad204c937e8af227bce2220d47fb484) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Remove 'base' variant alert and make status required property
+
+- [#83](https://github.com/ithaka/pharos/pull/83) [`c8c299b`](https://github.com/ithaka/pharos/commit/c8c299b0dfd62dab4aeababfa69108b95483a640) Thanks [@daneah](https://github.com/daneah)! - Remove icon height and width as public properties
+
+* [#19](https://github.com/ithaka/pharos/pull/19) [`70f42ef`](https://github.com/ithaka/pharos/commit/70f42ef0776d1b0ff0ea32ae6560deef92757d8d) Thanks [@Niznikr](https://github.com/Niznikr)! - update to Lit 2:
+
+  - Update to Lit 2 following upgrade guide
+  - Update `@open-wc/testing` tools
+  - Target `es2019` as recommended by Lit
+  - Run tests on built JS package
+
+- [#50](https://github.com/ithaka/pharos/pull/50) [`81dd35c`](https://github.com/ithaka/pharos/commit/81dd35c4c7b0dad5d995e9472f54c158027d151d) Thanks [@Niznikr](https://github.com/Niznikr)! - fire modal events when opened/closed via props:
+
+  - Move `pharos-modal-opened` and `pharos-modal-closed` to updated lifecycle and remove trigger details
+
+* [#42](https://github.com/ithaka/pharos/pull/42) [`84e5bfa`](https://github.com/ithaka/pharos/commit/84e5bfad249b5e5738cf6adf03bc6f25c769628d) Thanks [@Niznikr](https://github.com/Niznikr)! - remove support for IE11:
+
+  - Remove polyfills
+  - Remove design token imports in components
+  - Update documentation
+  - Remove IE11 related styles
+
+- [#80](https://github.com/ithaka/pharos/pull/80) [`955983f`](https://github.com/ithaka/pharos/commit/955983f0c26c1574d79eb8934c3a239587c4a8a6) Thanks [@daneah](https://github.com/daneah)! - Rename `dark` property to `on-background` for consistency with other components
+
+* [#91](https://github.com/ithaka/pharos/pull/91) [`1e1a86a`](https://github.com/ithaka/pharos/commit/1e1a86ac68a1b71094db1caa955849ba3c2af042) Thanks [@daneah](https://github.com/daneah)! - Make level a required prop for Heading
+
+### Minor Changes
+
+- [#79](https://github.com/ithaka/pharos/pull/79) [`b8d5dfa`](https://github.com/ithaka/pharos/commit/b8d5dfac4f179ad7480488df768e7adb21332035) Thanks [@michael-iden](https://github.com/michael-iden)! - add pdf and ppt icons
+
+* [#89](https://github.com/ithaka/pharos/pull/89) [`d967b52`](https://github.com/ithaka/pharos/commit/d967b520e054c8dd5bfa1dbdc33ec3bd848860cb) Thanks [@Niznikr](https://github.com/Niznikr)! - import icons dynamically:
+
+  - Export icon tokens individually as default exports
+  - Update `pharos-icon` to dynamically import them
+
+- [#88](https://github.com/ithaka/pharos/pull/88) [`5435a15`](https://github.com/ithaka/pharos/commit/5435a153da40c98f031f57b76de81a820ac35ffe) Thanks [@daneah](https://github.com/daneah)! - Upgrade to Style Dictionary 3.0
+
+  - Use the `outputReferences` option to generate tokens by reference instead of by value.
+    That is, CSS and SCSS variables can reference other variables in turn, keeping the provenance of each token in the output.
+  - Rename the `1x`, `2x`, etc. tokens to `1-x`, `2-x`, etc. to maintain and match their output names.
+
+### Patch Changes
+
+- [#99](https://github.com/ithaka/pharos/pull/99) [`9bd2085`](https://github.com/ithaka/pharos/commit/9bd2085c62edb6cd6a93bb430c5dcd47a0a47c70) Thanks [@Niznikr](https://github.com/Niznikr)! - update styles usage for React stories
+
+* [#92](https://github.com/ithaka/pharos/pull/92) [`a95c6fd`](https://github.com/ithaka/pharos/commit/a95c6fd574816d8a6f2c66bd903141135516173f) Thanks [@SMQuazi](https://github.com/SMQuazi)! - add name attributes to states story for combobox, text-input and textarea
+
+- [#95](https://github.com/ithaka/pharos/pull/95) [`7b4cf51`](https://github.com/ithaka/pharos/commit/7b4cf51054cf7647864afe5ce4e53de963660f0d) Thanks [@gbassham](https://github.com/gbassham)! - update image card styles:
+
+  - Change height for image in image card component from 250px to 224px
+  - Add max-width on "Preview not available" text to guarantee wrapping
+
+* [#85](https://github.com/ithaka/pharos/pull/85) [`faed05f`](https://github.com/ithaka/pharos/commit/faed05f19c9b42c18e9a3f526f007d589fbf601c) Thanks [@Niznikr](https://github.com/Niznikr)! - check if click is canceled for submit buttons
+
+- [#84](https://github.com/ithaka/pharos/pull/84) [`63342ae`](https://github.com/ithaka/pharos/commit/63342ae3967f58c3652f08392b465dcb57162d1b) Thanks [@Lham42](https://github.com/Lham42)! - modify button and input styles in Storybook:
+
+  - add `<pharos-button>` to checkbox group, combobox, radio group and select stories
+  - modify width for combobox and select in Storybook
+
+* [#94](https://github.com/ithaka/pharos/pull/94) [`aa82d00`](https://github.com/ithaka/pharos/commit/aa82d00b12346d3ff852b4d74bb91445a2eee877) Thanks [@Niznikr](https://github.com/Niznikr)! - fix Storybook inconsistencies
+
 ## 9.3.0
 
 ### Minor Changes
