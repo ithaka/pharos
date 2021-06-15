@@ -54,7 +54,7 @@ export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
   protected get content(): HTMLElement | Text {
     return Array.prototype.slice
       .call(this.childNodes)
-      ?.find((node) => node.textContent && node.nodeName === '#text');
+      ?.find((node) => node.textContent && node.nodeName !== '#comment');
   }
 
   protected firstUpdated(): void {
