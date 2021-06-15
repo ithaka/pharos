@@ -24,6 +24,7 @@ const VARIANTS = ['base', 'collection'];
  *
  * @slot image - Contains the image to display on the card.
  * @slot metadata - Contains the metadata for the item.
+ * @slot title - Contains the title for the item (renders if title prop is not set).
  *
  */
 @customElement('pharos-image-card')
@@ -149,14 +150,16 @@ export class PharosImageCard extends LitElement {
 
   protected get renderTitle(): TemplateResult {
     return html`<pharos-link class="card__link--title" href="${this.link}" subtle flex
-      ><pharos-heading
-        class="card__heading"
-        preset="${this.variant === 'collection' ? '2' : '1--bold'}"
-        level="3"
-        no-margin
-        >${this.title}</pharos-heading
-      ></pharos-link
-    >`;
+      >${this.title
+        ? html`<pharos-heading
+            class="card__heading"
+            preset="${this.variant === 'collection' ? '2' : '1--bold'}"
+            level="3"
+            no-margin
+            >${this.title}</pharos-heading
+          >`
+        : html`<slot name="title"></slot>`}
+    </pharos-link>`;
   }
 
   private _renderActionButton(): TemplateResult | typeof nothing {
