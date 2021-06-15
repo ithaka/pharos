@@ -86,7 +86,7 @@ export class PharosTooltip extends OverlayElement {
   protected get content(): HTMLElement | Text {
     return Array.prototype.slice
       .call(this._contentNodes)
-      ?.find((node) => node.textContent && node.nodeName === '#text');
+      ?.find((node) => node.textContent && node.nodeName !== '#comment');
   }
 
   constructor() {
