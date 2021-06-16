@@ -117,6 +117,23 @@ describe('pharos-image-card', () => {
     expect(heading?.getAttribute('preset')).to.equal('2');
   });
 
+  it('renders the title via a slot when the title property is not set', async () => {
+    component = await fixture(html`<pharos-image-card link="#">
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <span slot="title">Card Title</span>
+      <div slot="metadata">Creator of the item</div>
+      <div slot="metadata">1990-2000</div>
+      <div slot="metadata">Part of <pharos-link href="#">An Example Collection</pharos-link></div>
+    </pharos-image-card>`);
+
+    const titleSlot = component.renderRoot.querySelector('slot[name="title"]');
+    expect(titleSlot).not.to.be.null;
+  });
+
   it('renders an exclamation icon in the error state', async () => {
     component.error = true;
     await component.updateComplete;
