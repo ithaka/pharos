@@ -14,6 +14,7 @@ import '../button/pharos-button';
 <Meta
   title="Components/Dropdown Menu"
   parameters={{
+    options: { selectedPanel: 'addon-controls' },
     chromatic: { delay: 700 },
   }}
 />
@@ -52,7 +53,12 @@ import '../button/pharos-button';
 # Events
 
 <Canvas>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {html`
       <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
         <pharos-button

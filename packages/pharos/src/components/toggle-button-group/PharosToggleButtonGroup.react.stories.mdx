@@ -4,7 +4,12 @@ import { action } from '@storybook/addon-actions';
 import { PharosToggleButtonGroup } from '../../react-components/toggle-button-group/pharos-toggle-button-group';
 import { PharosToggleButton } from '../../react-components/toggle-button-group/pharos-toggle-button';
 
-<Meta title="Components/Toggle Button Group" />
+<Meta
+  title="Components/Toggle Button Group"
+  parameters={{
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
 
 # Toggle Button Group
 
@@ -62,7 +67,12 @@ import { PharosToggleButton } from '../../react-components/toggle-button-group/p
 ## Event handling
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     <PharosToggleButtonGroup onPharos-Toggle-Button-Selected={(e) => action('Select')(e.target.id)}>
       <PharosToggleButton id="list-mode-button" icon-left="view-list">
         List

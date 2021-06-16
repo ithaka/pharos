@@ -101,7 +101,12 @@ export const Template = (args) => {
 # Events
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {() => {
       return html`
         <pharos-checkbox

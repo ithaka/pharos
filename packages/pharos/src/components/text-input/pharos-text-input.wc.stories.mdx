@@ -95,7 +95,12 @@ export const Template = (args) =>
 # Events
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     {() => {
       return html`
         <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">

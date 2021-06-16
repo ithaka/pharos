@@ -44,7 +44,12 @@ export const Template = (args) => (
 ## Events
 
 <Canvas withToolbar>
-  <Story name="Events">
+  <Story
+    name="Events"
+    parameters={{
+      options: { selectedPanel: 'addon-actions' },
+    }}
+  >
     <PharosPagination
       totalResults="1146"
       pageSize="25"
