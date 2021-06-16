@@ -1,5 +1,19 @@
 # @ithaka/pharos-site
 
+## 5.4.1
+
+### Patch Changes
+
+- [#103](https://github.com/ithaka/pharos/pull/103) [`ff9be47`](https://github.com/ithaka/pharos/commit/ff9be47f7eb42d62a9a9787b348c160c9a274f9c) Thanks [@Niznikr](https://github.com/Niznikr)! - update content based on legal review:
+
+  - Remove logo downloads
+  - Update footer copyright statement
+  - Update imagery copy
+  - Remove JSTOR terms page
+
+- Updated dependencies [[`8ecfcca`](https://github.com/ithaka/pharos/commit/8ecfcca2e08b4800b6f796c4675388050e1a8618), [`cc6a25f`](https://github.com/ithaka/pharos/commit/cc6a25ff31ca9c18eec2994f2510c690633c0c23), [`c263ec0`](https://github.com/ithaka/pharos/commit/c263ec03741654fa916886b1ef5b72e03d85dbd4)]:
+  - @ithaka/pharos@10.1.0
+
 ## 5.4.0
 
 ### Minor Changes

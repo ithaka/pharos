@@ -1,5 +1,17 @@
 # @ithaka/pharos
 
+## 10.1.0
+
+### Minor Changes
+
+- [#105](https://github.com/ithaka/pharos/pull/105) [`c263ec0`](https://github.com/ithaka/pharos/commit/c263ec03741654fa916886b1ef5b72e03d85dbd4) Thanks [@Niznikr](https://github.com/Niznikr)! - add slot for title to image cards
+
+### Patch Changes
+
+- [#104](https://github.com/ithaka/pharos/pull/104) [`8ecfcca`](https://github.com/ithaka/pharos/commit/8ecfcca2e08b4800b6f796c4675388050e1a8618) Thanks [@eslawski](https://github.com/eslawski)! - Fix tooltip and breadcrumb overflow logic when slotted content is non-HTML
+
+* [#106](https://github.com/ithaka/pharos/pull/106) [`cc6a25f`](https://github.com/ithaka/pharos/commit/cc6a25ff31ca9c18eec2994f2510c690633c0c23) Thanks [@eslawski](https://github.com/eslawski)! - add min-width rule when flexed for better text wrapping support
+
 ## 10.0.0
 
 ### Major Changes
