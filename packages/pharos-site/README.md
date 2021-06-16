@@ -6,7 +6,7 @@
 
 Documentation pages on the Pharos site are written using MDX — markdown files that allow you to integrate JSX easily. This combines the ease in editing long-form content with being able to import components which can elevate the content. These file names should be kebab-cased and named to match the component and what will be displayed in the side navigation bar.
 
-## PHaros components
+## Pharos components
 
 Components used in the documentation can be found in `/src/components`. Examples of them being used and imported can be seen in other existing MDX files found in `pharos-site/src/static`. Please use the `<PageSection>` component for each documentation category and use its `subSectionLevel` property for subsections under the category. For best practices, also use the `<BestPractices>` component
 
