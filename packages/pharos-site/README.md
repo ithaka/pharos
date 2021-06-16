@@ -16,4 +16,4 @@ When creating a new section or page of documentation, it is important to add a l
 
 ## Making a pull request
 
-Once a page has been created or documentation has been modified, you can then generate a [pull request](https://github.com/ithaka/pharos) indicating the changes made.
+Once a page has been created or documentation has been modified, you can then generate a [pull request](https://github.com/ithaka/pharos/pulls) indicating the changes made.
