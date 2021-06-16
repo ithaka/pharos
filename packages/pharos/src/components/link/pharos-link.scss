@@ -38,6 +38,7 @@
 
 :host([flex]) #link-element {
   display: inline-flex;
+  min-width: 0;
 }
 
 :host([on-background]) #link-element:hover {
