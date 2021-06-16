@@ -77,7 +77,7 @@ const Sidenav: FC = () => {
             Help
           </PharosSidenavLink>
           <PharosSidenavMenu label="Contributing" expanded={isExpanded('contributing')}>
-            {['Contributing documentation'].map(createSidenavLink.bind(this, 'contributing'))}
+            {['Documentation'].map(createSidenavLink.bind(this, 'contributing'))}
           </PharosSidenavMenu>
           <PharosSidenavLink href="https://github.com/ithaka/pharos" target="_blank" external>
             GitHub
