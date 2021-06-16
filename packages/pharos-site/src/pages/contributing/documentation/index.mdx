@@ -1,0 +1,101 @@
+import PageSection from '../../../components/statics/PageSection.tsx';
+
+<PageSection
+  title="Documentation"
+  description="For all Pharos components and elements, contributors create useful, thorough documentation to provide an understanding of its proper usage and context."
+  isHeader
+></PageSection>
+
+<PageSection
+  title="Importance"
+  description="Documentation is essential to upholding quality and cohesion. 
+  Articulate and thorough documentation allows for users and contributors to acquire knowledge more efficiently, motivating further contribution and information sharing. 
+  Referring to documentation helps to reduce redundancy in components and features while ensuring all implemented features are being used appropriately and to their 
+  fullest potential."
+></PageSection>
+
+<PageSection
+  title="When documentation is needed"
+  description="When a new component or feature is added, supporting documentation should be written to communicate and provide guidelines for its proper usage. 
+  Additionally, if changes are made to existing components that affect their usage or functionality, the documentation should reflect these changes."
+></PageSection>
+
+<PageSection title="Writing documentation">
+  <PageSection title="Getting started" subSectionLevel={1}>
+    <p>
+      To get started, use our &nbsp;
+      <PharosLink href="https://docs.google.com/document/d/1GDFM4iQsta8MjErF7hEYkFaNMoQNKzEzpM-RWG8JcwM/edit">
+        documentation template
+      </PharosLink>&nbsp; to ensure all needed sections are included and consistent.
+    </p>
+  </PageSection>
+  <PageSection title="Writing guidelines" subSectionLevel={1}>
+    <p>
+      Please refer to the
+      <PharosLink href="https://pharos.jstor.org/content-style-guide/voice-and-tone">
+        JSTOR content style guide
+      </PharosLink>&nbsp; to gain a better understanding of our collective writing style and structure.
+      We apply our writing principles when creating documentation.
+    </p>
+    <PageSection
+      title="Concise"
+      subSectionLevel={2}
+      description="The way we write is simple and direct, and for all reading levels. It should be understandable by anyone regardless of their culture, language, or ability. We aim to provide the right amount of context so our users know how to use Pharos components or elements successfully."
+    ></PageSection>
+    <PageSection
+      title="Consistent"
+      subSectionLevel={2}
+      description="We use the same template for each of the components to create predictability in understanding their purpose, standards, and variations. We also aim to use consistent language in all documentation so users experience a seamless transition as they make their way through the site."
+    ></PageSection>
+    <PageSection
+      title="Style"
+      subSectionLevel={2}
+      description="Wherever possible, write headings and titles in sentence case — studies indicate that sentence case is easier to read, plus title case can come across as heavy and overly serious."
+    ></PageSection>
+  </PageSection>
+  <PageSection title="Documentation categories" subSectionLevel={1}>
+    <PageSection
+      title="Title"
+      subSectionLevel={2}
+      description="Title of the Component (singular)"
+    ></PageSection>
+    <PageSection
+      title="Deck"
+      subSectionLevel={2}
+      description="Tweet-length description of the component and its purpose."
+    ></PageSection>
+    <PageSection
+      title="Usage"
+      subSectionLevel={2}
+      description="Explain the implementation of the element (e.g. orientation, placement, use cases). Indicate any behavior that a user would need to know that should happen when using this component in their UI."
+    ></PageSection>
+    <PageSection title="Best practices" subSectionLevel={2}>
+      <PageSection
+        title="Do's"
+        subSectionLevel={3}
+        description="Explain appropriate use cases for the component, general guidelines to follow when using, and other considerations that should be made in the component's usage."
+      ></PageSection>
+      <PageSection
+        title="Don'ts"
+        subSectionLevel={3}
+        description="Include common misuse cases for the component, common errors made in its usage, and other actions to avoid."
+      ></PageSection>
+    </PageSection>
+    <PageSection
+      title="Content guidelines (If applicable)"
+      subSectionLevel={2}
+      description="If a component has content, please include guidelines for how the content should be written for the needs of the component (e.g., how labels should be written)."
+    ></PageSection>
+    <PageSection
+      title="Variants (If applicable)"
+      subSectionLevel={2}
+      description="If a component has variants, display an example of the Pharos variant along with their title, purposes, and use cases (e.g. Error, Warning, Info, and Success Alerts). "
+    ></PageSection>
+    <PageSection
+      title="States (If applicable)"
+      subSectionLevel={2}
+      description="If a component has multiple states (e.g. disabled, enabled, error, required), please include them. Include an example of the component in each state."
+    ></PageSection>
+    <PageSection title="" subSectionLevel={2}></PageSection>
+  </PageSection>
+</PageSection>
