@@ -36,11 +36,8 @@
   font-weight: var(--pharos-font-weight-bold);
 }
 
-:host([flex]) {
-  display: inline-flex;
-}
-
 :host([flex]) #link-element {
+  display: inline-flex;
   min-width: 0;
 }
 
