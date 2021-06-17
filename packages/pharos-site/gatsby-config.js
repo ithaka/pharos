@@ -1,4 +1,7 @@
 module.exports = {
+  flags: {
+    PRESERVE_WEBPACK_CACHE: true,
+  },
   siteMetadata: {
     title: `Pharos`,
     description: `ITHAKA's design system`,
