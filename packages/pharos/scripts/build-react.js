@@ -1,23 +1,14 @@
-import fs from 'fs';
+import * as fs from 'fs/promises';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-import gulp from 'gulp';
-import debug from 'gulp-debug';
-import rename from 'gulp-rename';
-import through2 from 'through2';
-import prettier from 'gulp-prettier';
+import globby from 'globby';
 import customElements from '../custom-elements.json';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import prettier from 'prettier';
 
 const REACT_PROP_TYPE = 'DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>';
 
 // Convert web component tag to React component name
 const toCamelCase = (str) => {
-  return str.replace(/-([a-z])/g, function (g) {
+  return str.replace(/-([a-z])/g, (g) => {
     return g[1].toUpperCase();
   });
 };
@@ -91,71 +82,59 @@ const importTypes = (file, filePath) => {
   return '';
 };
 
-const buildReact = async () => {
-  // Create output directory
-  const dir = path.resolve(__dirname, '../src/react-components');
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
-  }
-  return await gulp
-    .src(
-      [
-        'src/components/**/pharos-*.ts',
-        '!src/components/**/*.css.ts',
-        '!src/components/**/*.test.ts',
-      ],
-      { base: './src/components' }
-    )
-    .pipe(debug({ title: 'react' }))
-    // Wrap each web component with React wrapper
-    .pipe(
-      through2.obj((file, enc, done) => {
-        const webComponentFilePath = file.path.split('components/')[1].split('.ts')[0];
-        const webComponentName = webComponentFilePath.split('/').pop();
-        const reactComponentName = toCamelCase(
-          webComponentName[0].toUpperCase() + webComponentName.substr(1)
-        );
-        const relativePath = `'../../components/${webComponentFilePath}'`;
-        const reactInterface = createComponentInterface(webComponentName, reactComponentName);
+const setup = async () => {
+  await fs.mkdir('./src/react-components', { recursive: true });
+};
 
-        // Generate React component using our wrapper
-        file.contents = Buffer.from(`
+export const buildReact = async () => {
+  for await (const componentPath of globby.stream(
+    './src/components/**/pharos-!(*.css|*.test)*.ts'
+  )) {
+    const dest = componentPath.replace('/components/', '/react-components/').replace('.ts', '.tsx');
+    const webComponentFilePath = componentPath.split('components/')[1].split('.ts')[0];
+    const webComponentName = webComponentFilePath.split('/').pop();
+    const reactComponentName = toCamelCase(
+      webComponentName[0].toUpperCase() + webComponentName.substr(1)
+    );
+    const relativePath = `'../../components/${webComponentFilePath}'`;
+    const reactInterface = createComponentInterface(webComponentName, reactComponentName);
+
+    const component = await fs.readFile(componentPath, 'utf8');
+
+    // Generate React component using our wrapper
+    const reactComponent = `
           import type { FC, DetailedHTMLProps, HTMLAttributes } from 'react';
           import createReactComponent from '../../utils/createReactComponent';
           import ${relativePath};
 
-          ${importTypes(file.contents.toString(enc), relativePath)}
+          ${importTypes(component, relativePath)}
 
           ${reactInterface}
 
           export const ${reactComponentName}: FC${
-          reactInterface ? `<${reactComponentName}Props>` : `<${REACT_PROP_TYPE}>`
-        } = createReactComponent('${webComponentName}');
+      reactInterface ? `<${reactComponentName}Props>` : `<${REACT_PROP_TYPE}>`
+    } = createReactComponent('${webComponentName}');
           ${reactComponentName}.displayName = '${reactComponentName}';
 
           ${createDefaultProps(webComponentName, reactComponentName)}
-        `);
+        `;
 
-        // Append React component export to index file
-        fs.appendFile(
-          path.resolve(__dirname, '../src/react-components/index.ts'),
-          `export { ${reactComponentName} } from './${webComponentFilePath}';\n`,
-          (err) => {
-            if (err) throw err;
-          }
-        );
-        done(null, file);
-      })
-    )
-    // Update to TypeScript extension
-    .pipe(
-      rename((path) => {
-        path.extname = '.tsx';
-      })
-    )
-    // Run through prettier
-    .pipe(prettier())
-    .pipe(gulp.dest('src/react-components'));
+    // Append React component export to index file
+    await fs.appendFile(
+      './src/react-components/index.ts',
+      `export { ${reactComponentName} } from './${webComponentFilePath}';\n`,
+      (err) => {
+        if (err) throw err;
+      }
+    );
+
+    const options = prettier.resolveConfig.sync(componentPath);
+    options.parser = 'typescript';
+    const formatted = prettier.format(reactComponent, options);
+    await fs.mkdir(path.dirname(dest), { recursive: true });
+    await fs.writeFile(dest, formatted, { flag: 'w' });
+  }
 };
 
-export { buildReact };
+setup();
+buildReact();
