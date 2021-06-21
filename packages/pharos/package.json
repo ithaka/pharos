@@ -62,6 +62,7 @@
     "chokidar": "^3.5.2",
     "globby": "^11.0.4",
     "postcss": "^8.3.0",
+    "prettier": "2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "replace-in-file": "^6.1.0",
