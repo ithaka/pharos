@@ -21,6 +21,7 @@
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-source-filesystem": "^3.6.0",
     "gatsby-transformer-sharp": "^3.6.0",
+    "prettier": "2.2.1",
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -29,7 +30,6 @@
     "sass": "^1.34.0"
   },
   "devDependencies": {
-    "@hot-loader/react-dom": "^17.0.1",
     "@types/mdx-js__react": "^1.5.3",
     "@types/react-helmet": "^6.1.0",
     "@types/react-dom": "^17.0.0",
@@ -41,9 +41,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "prebuild": "yarn clean",
     "develop": "gatsby develop",
-    "predevelop": "yarn clean",
     "start": "yarn develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
