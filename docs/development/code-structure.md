@@ -26,7 +26,7 @@ packages/pharos
 └── tokens/
 ```
 
-The `scripts/` directory contain code for building the package. The `src/` directory contains the TypeScript code for all Pharos components, along with utilities for developing those components. The `tokens/` directory contains the [design tokens](./design-tokens.md) used to define Pharos' visual language.
+The `scripts/` directory contains code for building the package. The `src/` directory contains the TypeScript code for all Pharos components, along with utilities for developing those components. The `tokens/` directory contains the [design tokens](./design-tokens.md) used to define Pharos' visual language.
 
 ## `@ithaka/pharos-site` package
 
