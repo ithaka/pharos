@@ -49,8 +49,6 @@ jobs:
         with:
           node-version: 14.x
 
-      - uses: microsoft/playwright-github-action@v1
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
