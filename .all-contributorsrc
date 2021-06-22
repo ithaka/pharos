@@ -223,6 +223,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "facelessfool",
+      "name": "K Chingsubam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41726786?v=4",
+      "profile": "https://github.com/facelessfool",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
