@@ -15,6 +15,7 @@ const Sidenav: FC = () => {
       site {
         siteMetadata {
           title
+          subtitle
         }
       }
     }
@@ -58,7 +59,7 @@ const Sidenav: FC = () => {
         <PharosLink href="/" slot="top" flex onClick={handleLinkClick}>
           <div>
             <div className={siteBrand__title}>{data.site.siteMetadata.title}</div>
-            <div className={siteBrand__subTitle}>JSTOR&apos;s Design System</div>
+            <div className={siteBrand__subTitle}>{data.site.siteMetadata.subtitle}</div>
           </div>
         </PharosLink>
         <PharosSidenavSection showDivider>
