@@ -49,8 +49,6 @@ jobs:
         with:
           node-version: 14.x
 
-      - uses: microsoft/playwright-github-action@v1
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -73,6 +71,9 @@ jobs:
           key: ${{ runner.os }}-browsers-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-browsers-
+
+      - name: Install Browsers Dependencies
+        run: npx playwright install-deps
 
       - name: Install Dependencies
         run: yarn --prefer-offline --frozen-lockfile
