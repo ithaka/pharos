@@ -72,7 +72,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-browsers-
 
-      - name: Install Browsers
+      - name: Install Browsers Dependencies
         run: npx playwright install-deps
 
       - name: Install Dependencies
