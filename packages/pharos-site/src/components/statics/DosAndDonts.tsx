@@ -35,7 +35,7 @@ const DosAndDonts: FC<DosAndDontsProps> = ({ children, Dont }) => {
                   style={{ fill: 'var(--pharos-color-feedback-error)' }}
                 ></PharosIcon>
                 <PharosHeading level="4" preset="4--bold" noMargin>
-                  <span className={text_dont}>Dont&apos;s</span>
+                  <span className={text_dont}>Don&apos;ts</span>
                 </PharosHeading>
               </>
             ) : (
@@ -46,7 +46,7 @@ const DosAndDonts: FC<DosAndDontsProps> = ({ children, Dont }) => {
                   style={{ fill: 'var(--pharos-color-feedback-success)' }}
                 ></PharosIcon>
                 <PharosHeading level="4" preset="4--bold" noMargin>
-                  <span className={text_do}>Do&apos;s</span>
+                  <span className={text_do}>Dos</span>
                 </PharosHeading>
               </>
             )}
