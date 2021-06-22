@@ -74,6 +74,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-browsers-
 
+      - name: Install Browsers
+        if: steps.browsers-cache.outputs.cache-hit != 'true'
+        run: npx playwright install-deps
+
       - name: Install Dependencies
         run: yarn --prefer-offline --frozen-lockfile
 
