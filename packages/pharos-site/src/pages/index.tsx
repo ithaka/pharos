@@ -39,7 +39,7 @@ const IndexPage: FC = () => {
     const { PharosHeading, PharosLink, PharosIcon, PharosButton } = Pharos;
 
     const content = (
-      <Layout fill>
+      <>
         <div className={hero}>
           <div className={hero__text}>
             <h1 className={hero__heading}>
@@ -264,12 +264,12 @@ const IndexPage: FC = () => {
             </ul>
           </div>
         </div>
-      </Layout>
+      </>
     );
     setDisplay(content);
   }, [Pharos]);
 
-  return Display;
+  return <Layout fill>{Display}</Layout>;
 };
 
 export default IndexPage;

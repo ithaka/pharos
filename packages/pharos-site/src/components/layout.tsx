@@ -51,7 +51,7 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
   return (
     <div className={container}>
       <Fonts />
-      <SEO title={pageName || 'Home'} />
+      <SEO title={pageName || 'Home'} pathname={location?.pathname} />
       <Sidenav />
       <main className={`${main} ${fill ? main___fill : ''}`}>
         <div className={content}>
