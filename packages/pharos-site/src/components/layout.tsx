@@ -3,7 +3,7 @@ import type { FC, ReactElement } from 'react';
 import type { WindowLocation } from '@reach/router';
 import Sidenav from './Sidenav';
 import Footer from './footer';
-import { container, main, main___fill, content, topBar } from './layout.module.css';
+import { container, content, content___fill, main, topBar } from './layout.module.css';
 import SEO from './seo';
 import Fonts from './Fonts';
 
@@ -28,40 +28,40 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
   const path = location?.pathname.split('/');
   const pageName = path && getPageName(path[path.length - 1]);
 
-  const [Button, setButton] = useState<ReactElement | null>(null);
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
 
-  const [Link, setLink] = useState<ReactElement | null>(null);
+  const [MainContent, setMainContent] = useState<ReactElement | null>(null);
 
   useEffect(() => {
-    const { PharosSidenavButton, PharosLink } = Pharos;
+    const { PharosSidenavButton, PharosLink, PharosLayout } = Pharos;
 
-    const button = <PharosSidenavButton />;
-    const skipLink = (
-      <PharosLink id="skip-link" skip href="#sidenav-skip-link">
-        Skip to main navigation
-      </PharosLink>
+    const body = (
+      <main className={main}>
+        <PharosLayout
+          preset="1-col--sidenav"
+          className={`${content} ${fill ? content___fill : ''}`}
+        >
+          <div slot="top" className={topBar}>
+            <PharosSidenavButton />
+            <PharosLink id="skip-link" skip href="#sidenav-skip-link">
+              Skip to main navigation
+            </PharosLink>
+          </div>
+          {children}
+        </PharosLayout>
+      </main>
     );
 
-    setButton(button);
-    setLink(skipLink);
-  }, [Pharos]);
+    setMainContent(body);
+  }, [Pharos, children, fill]);
 
   return (
     <div className={container}>
       <Fonts />
       <SEO title={pageName || 'Home'} pathname={location?.pathname} />
       <Sidenav />
-      <main className={`${main} ${fill ? main___fill : ''}`}>
-        <div className={content}>
-          <div className={topBar}>
-            {Button}
-            {Link}
-          </div>
-          {children}
-        </div>
-      </main>
+      {MainContent}
       <Footer />
     </div>
   );
