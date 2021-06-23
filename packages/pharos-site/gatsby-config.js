@@ -8,7 +8,7 @@ module.exports = {
     description: `The Pharos design system is our guiding light toward creating cohesive, supportive, and beautiful experiences for the intellectually curious.`,
     author: `@jstor`,
     image: {
-      path: '/images/pharos-artboard.jpg',
+      path: '/images/pharos-orb.png',
       height: '1400',
       width: '2704',
     },
