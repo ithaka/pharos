@@ -40,7 +40,7 @@ const IndexPage: FC = () => {
       <>
         <PharosLayout preset="1-col--sidenav" className={hero}>
           <h1 className={hero__heading}>
-            The Pharos design system is our guiding light toward creating <i>cohesive, </i>
+            Pharos, JSTOR&apos;s design system, guides us to create <i>cohesive, </i>
             <i>supportive, </i> and <i>beautiful</i> experiences for the{' '}
             <i>intellectually curious</i>.
           </h1>

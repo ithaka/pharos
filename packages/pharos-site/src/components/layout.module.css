@@ -48,6 +48,7 @@ a {
 
 .content___fill {
   padding: 0;
+  margin-bottom: var(--pharos-spacing-5-x);
 }
 
 p,
@@ -68,4 +69,14 @@ ul {
   grid-area: top;
   display: flex;
   align-items: center;
+}
+
+.page {
+  grid-column: span 8;
+}
+
+@media screen and (max-width: 22.5rem) {
+  .page {
+    grid-column: span 4;
+  }
 }

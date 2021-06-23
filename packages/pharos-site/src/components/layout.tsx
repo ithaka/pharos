@@ -3,9 +3,10 @@ import type { FC, ReactElement } from 'react';
 import type { WindowLocation } from '@reach/router';
 import Sidenav from './Sidenav';
 import Footer from './footer';
-import { container, content, content___fill, main, topBar } from './layout.module.css';
+import { container, content, content___fill, main, topBar, page } from './layout.module.css';
 import SEO from './seo';
 import Fonts from './Fonts';
+import { PharosSpacing5X } from '@ithaka/pharos/lib/styles/variables';
 
 import '@ithaka/pharos/lib/styles/variables.css';
 import '@ithaka/pharos/lib/styles/pharos-alert.css';
@@ -38,17 +39,18 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
 
     const body = (
       <main className={main}>
+        <div className={topBar}>
+          <PharosSidenavButton />
+          <PharosLink id="skip-link" skip href="#sidenav-skip-link">
+            Skip to main navigation
+          </PharosLink>
+        </div>
         <PharosLayout
           preset="1-col--sidenav"
           className={`${content} ${fill ? content___fill : ''}`}
+          rowGap={fill ? PharosSpacing5X : '0'}
         >
-          <div slot="top" className={topBar}>
-            <PharosSidenavButton />
-            <PharosLink id="skip-link" skip href="#sidenav-skip-link">
-              Skip to main navigation
-            </PharosLink>
-          </div>
-          {children}
+          {fill ? children : <div className={page}>{children}</div>}
         </PharosLayout>
       </main>
     );

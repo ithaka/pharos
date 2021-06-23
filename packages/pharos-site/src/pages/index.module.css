@@ -193,4 +193,8 @@ figure {
   .card__image {
     grid-column: span 4;
   }
+
+  .hero__heading {
+    font-size: var(--pharos-type-scale-10);
+  }
 }
