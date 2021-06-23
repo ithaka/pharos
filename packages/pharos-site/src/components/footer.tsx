@@ -25,7 +25,7 @@ const Footer: FC = () => {
     const { PharosHeading, PharosLink, PharosLayout } = Pharos;
 
     const content = (
-      <PharosLayout preset="1-col--sidenav" rows="auto min-content" className={footer}>
+      <PharosLayout preset="1-col--sidenav-comfy" rows="auto min-content" className={footer}>
         <div className={container__start}>
           <PharosLink className={logo__link} href="https://www.jstor.org/" target="_blank" flex>
             <img src={logoWhite} alt="JSTOR Logo" width="70" height="100" />

@@ -1,6 +1,7 @@
 .token-table {
   table-layout: fixed;
   width: 100%;
+  white-space: nowrap;
 }
 
 .token-table td {
@@ -9,4 +10,7 @@
   padding-top: var(--pharos-spacing-one-and-a-half-x);
   vertical-align: top;
   border-top: 1px solid var(--pharos-color-ui-30);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

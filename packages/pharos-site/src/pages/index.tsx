@@ -38,7 +38,7 @@ const IndexPage: FC = () => {
 
     const content = (
       <>
-        <PharosLayout preset="1-col--sidenav" className={hero}>
+        <PharosLayout preset="1-col--sidenav-comfy" rowGap="0" className={hero}>
           <h1 className={hero__heading}>
             Pharos, JSTOR&apos;s design system, guides us to create <i>cohesive, </i>
             <i>supportive, </i> and <i>beautiful</i> experiences for the{' '}

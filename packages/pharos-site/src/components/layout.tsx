@@ -40,13 +40,13 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
     const body = (
       <main className={main}>
         <div className={topBar}>
-          <PharosSidenavButton />
-          <PharosLink id="skip-link" skip href="#sidenav-skip-link">
+          <PharosSidenavButton onBackground />
+          <PharosLink id="skip-link" skip href="#sidenav-skip-link" onBackground>
             Skip to main navigation
           </PharosLink>
         </div>
         <PharosLayout
-          preset="1-col--sidenav"
+          preset="1-col--sidenav-comfy"
           className={`${content} ${fill ? content___fill : ''}`}
           rowGap={fill ? PharosSpacing5X : '0'}
         >

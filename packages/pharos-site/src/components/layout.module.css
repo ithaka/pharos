@@ -12,7 +12,7 @@ ol {
 }
 
 a {
-  color: var(--pharos-color-black-base);
+  color: var(--pharos-color-black);
 }
 
 .container {
@@ -39,9 +39,6 @@ a {
 }
 
 .content {
-  grid-template-areas:
-    '. top .'
-    '. content .';
   padding: var(--main-spacing-padding) 0;
   display: grid;
 }
@@ -66,9 +63,9 @@ ul {
 }
 
 .top-bar {
-  grid-area: top;
   display: flex;
   align-items: center;
+  background-color: var(--pharos-color-black);
 }
 
 .page {
