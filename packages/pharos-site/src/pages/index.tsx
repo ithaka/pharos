@@ -175,12 +175,12 @@ const IndexPage: FC = () => {
             Support
           </PharosHeading>
           <p className={description}>
-            Experiencing a Pharos-related issue or just need some help? Report an issue in Github or
-            get in touch via slack.
+            Experiencing a Pharos-related issue or just need some help? Report an issue in GitHub or
+            get in touch via Slack.
           </p>
           <ul className={list}>
             <li>
-              <PharosLink href="help" data-sc="link:help" onClick={handleLinkClick}>
+              <PharosLink href="/help" data-sc="link:help" onClick={handleLinkClick}>
                 Help
               </PharosLink>
             </li>
