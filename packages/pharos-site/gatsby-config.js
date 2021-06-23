@@ -9,8 +9,8 @@ module.exports = {
     author: `@jstor`,
     image: {
       path: '/images/pharos-orb.png',
-      height: '1400',
-      width: '2704',
+      height: '1000',
+      width: '1700',
     },
     siteUrl: 'https://pharos.jstor.org',
   },
