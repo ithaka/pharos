@@ -83,6 +83,27 @@ export const gridColumns = () => {
   </Story>
 </Canvas>
 
+# One column with sidenav and comfy spacing
+
+<Canvas>
+  <Story name="One column with sidenav and comfy spacing" parameters={{ docs: { disable: true } }}>
+    {html`
+      <div
+        style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
+      >
+        <pharos-sidenav style="grid-area: sidenav">
+          <pharos-link slot="top" href="/" id="jstor-logo">
+            <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
+          </pharos-link>
+        </pharos-sidenav>
+        <main style="grid-area: main">
+          <pharos-layout preset="1-col--sidenav-comfy">${gridColumns()}</pharos-layout>
+        </main>
+      </div>
+    `}
+  </Story>
+</Canvas>
+
 # Two column
 
 <Canvas>
