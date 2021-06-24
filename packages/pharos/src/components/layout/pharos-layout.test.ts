@@ -53,7 +53,8 @@ describe('pharos-layout', () => {
     component = await fixture(html` <pharos-layout preset="fake-col"></pharos-layout> `).catch(
       (e) => e
     );
-    expect('fake-col is not a valid preset. Valid presets are: 1-col, 1-col--sidenav, 2-col').to.be
-      .thrown;
+    expect(
+      'fake-col is not a valid preset. Valid presets are: 1-col, 1-col--sidenav, 1-col--sidenav-comfy, 2-col'
+    ).to.be.thrown;
   });
 });

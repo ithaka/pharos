@@ -14,6 +14,7 @@ interface SourceProps {
   lang?: string;
   meta?: [];
   title: string;
+  pathname?: string;
 }
 
 const SEO: FC<SourceProps> = ({ description, lang, meta, title, pathname }) => {

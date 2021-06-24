@@ -6,9 +6,9 @@ import { layoutStyles } from './pharos-layout.css';
 import { customElement } from '../../utils/decorators';
 import { PharosSpacingThreeAndAHalfX } from '../../styles/variables';
 
-export type LayoutPreset = '1-col' | '1-col--sidenav' | '2-col';
+export type LayoutPreset = '1-col' | '1-col--sidenav' | '1-col--sidenav-comfy' | '2-col';
 
-const PRESETS = ['1-col', '1-col--sidenav', '2-col'];
+const PRESETS = ['1-col', '1-col--sidenav', '1-col--sidenav-comfy', '2-col'];
 
 /**
  * Pharos layout component.
