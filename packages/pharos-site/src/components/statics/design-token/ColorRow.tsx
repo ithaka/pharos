@@ -16,7 +16,7 @@ export const ColorRow = (color: any): JSX.Element => {
     OGColorHtml = <div>{OGColorToken}</div>;
   }
   return (
-    <tr>
+    <tr key={color.name + color.value}>
       <td>{toTokenFormat(color.name)}</td>
       <td>
         {OGColorHtml}
