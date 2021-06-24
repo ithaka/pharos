@@ -1,11 +1,16 @@
 import { tokenTable } from './TokenTable.module.css';
 import { useEffect, useState } from 'react';
+import type { FC } from 'react';
 
-export const TokenTable = (props: any) => {
+interface TokenTableProps {
+  title?: string;
+  subtitle?: string;
+}
+
+export const TokenTable: FC<TokenTableProps> = ({ title, subtitle, children }) => {
   const [StateTable, setStateTable] = useState(<></>);
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
-  const { title, subtitle, children } = props;
 
   useEffect(() => {
     const { PharosHeading } = Pharos;
