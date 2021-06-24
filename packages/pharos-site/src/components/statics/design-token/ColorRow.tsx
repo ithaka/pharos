@@ -1,7 +1,7 @@
 import { toTokenFormat } from './toTokenFormat';
 import { colorExample } from './ColorRow.module.css';
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
-export const ColorRow = (color: any): JSX.Element => {
+export const ColorRow = (color: any, key?: any): JSX.Element => {
   let OGColorHtml;
   if (color.original.value.startsWith('{color.')) {
     const OGColorToken =
@@ -16,7 +16,7 @@ export const ColorRow = (color: any): JSX.Element => {
     OGColorHtml = <div>{OGColorToken}</div>;
   }
   return (
-    <tr>
+    <tr key={key}>
       <td>{toTokenFormat(color.name)}</td>
       <td>
         {OGColorHtml}
