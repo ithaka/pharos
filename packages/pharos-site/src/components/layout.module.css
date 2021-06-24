@@ -46,6 +46,9 @@ a {
 .content___fill {
   padding: 0;
   margin-bottom: var(--pharos-spacing-5-x);
+  grid-template-areas:
+    'hero hero hero'
+    '. content .';
 }
 
 p,
