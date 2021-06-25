@@ -1,0 +1,88 @@
+import { Story, Canvas, Meta } from '@storybook/addon-docs';
+
+import sass_values from './sass_values.ts';
+
+<Meta
+  title="Styles/Sass"
+  parameters={{
+    options: { selectedPanel: 'addon-controls' },
+  }}
+/>
+
+export const toTokenFormat = (text) => {
+  return (
+    <code>
+      {text
+        .replace(/([a-z])([A-Z]|[0-9])/g, '$1-$2')
+        .replace(/([0-9])([a-z]|[A-Z])/g, '$1-$2')
+        .replace(/([A-Z])([A-Z])/g, '$1-$2')
+        .toLowerCase()}
+    </code>
+  );
+};
+
+export const renderCssAttributes = (attributes) => {
+  let cssHTML = attributes.map((element, index) => {
+    if (element.indexOf(':') != -1) {
+      var property = element.substr(0, element.indexOf(':') + 1);
+      var remaining = element.substr(element.indexOf(':') + 1, element.length - 1);
+      return (
+        <div key={index}>
+          <code style={{ color: 'red' }}>{property}</code>
+          <code>{remaining}</code>
+          <br />{' '}
+        </div>
+      );
+    } else {
+      return (
+        <div key={index}>
+          <code>{element}</code> <br />
+        </div>
+      );
+    }
+  });
+  return cssHTML;
+};
+
+export const TokenTable = (title, content) => {
+  return (
+    <div className="token-table-container">
+      <h2>{title}</h2>
+      <table className="token-table">{content}</table>
+      <br />
+      <br />
+    </div>
+  );
+};
+
+export const PharosMixins = () => (
+  <>
+    {TokenTable(
+      'Sass Mixins',
+      <>
+        <thead>
+          <tr>
+            <th style={{ width: '10%' }}>Token</th>
+            <th style={{ width: '50%' }}>CSS attributes</th>
+            <th style={{ width: '40%' }}>Usage description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(sass_values.mixins).map((key, index) => {
+            return (
+              <tr key={index}>
+                <td>{toTokenFormat(sass_values.mixins[key].name)}</td>
+                <td>{renderCssAttributes(sass_values.mixins[key].parameters)}</td>
+                <td>{sass_values.mixins[key].usage}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </>
+    )}
+  </>
+);
+
+<Canvas withToolbar>
+  <Story name="Mixins">{PharosMixins()}</Story>
+</Canvas>
