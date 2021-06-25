@@ -77,6 +77,13 @@ const Sidenav: FC = () => {
           >
             Help
           </PharosSidenavLink>
+          <PharosSidenavLink
+            href="/faqs"
+            isActive={window.location.pathname === withPrefix('/faqs')}
+            onClick={handleLinkClick}
+          >
+            FAQs
+          </PharosSidenavLink>
           <PharosSidenavMenu label="Contributing" expanded={isExpanded('contributing')}>
             {['Documentation', 'Development'].map(createSidenavLink.bind(this, 'contributing'))}
           </PharosSidenavMenu>
