@@ -20,7 +20,6 @@ declare global {
     'pharos-${componentName}': Pharos${titleCaseName};
   }
 }
-
 `;
 
 module.exports = template;
