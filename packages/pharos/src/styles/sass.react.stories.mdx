@@ -26,16 +26,16 @@ export const renderCssAttributes = (attributes) => {
       var property = element.substr(0, element.indexOf(':') + 1);
       var remaining = element.substr(element.indexOf(':') + 1, element.length - 1);
       return (
-        <div key={index}>
-          <code style={{ color: 'red' }}>{property}</code>
-          <code>{remaining}</code>
+        <div key={index} style={{ backgroundColor: '#F5F5F5' }}>
+          <code style={{ color: 'blue', backgroundColor: '#F5F5F5' }}>{property}</code>
+          <code style={{ backgroundColor: '#F5F5F5' }}>{remaining}</code>
           <br />{' '}
         </div>
       );
     } else {
       return (
-        <div key={index}>
-          <code>{element}</code> <br />
+        <div key={index} style={{ backgroundColor: '#F5F5F5' }}>
+          <code style={{ backgroundColor: '#F5F5F5' }}>{element}</code> <br />
         </div>
       );
     }
