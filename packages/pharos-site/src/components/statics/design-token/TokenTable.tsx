@@ -1,12 +1,14 @@
 import { tokenTable } from './TokenTable.module.css';
 import { useEffect, useState } from 'react';
+import type { FC } from 'react';
 
-export const TokenTable = (
-  title: string,
-  content: JSX.Element,
-  subtitle?: JSX.Element
-): JSX.Element => {
-  const [StateTable, setStateTable] = useState<JSX.Element>(<></>);
+interface TokenTableProps {
+  title?: string;
+  subtitle?: string;
+}
+
+export const TokenTable: FC<TokenTableProps> = ({ title, subtitle, children }) => {
+  const [StateTable, setStateTable] = useState(<></>);
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
 
@@ -20,13 +22,13 @@ export const TokenTable = (
           </PharosHeading>
         ) : null}
         {subtitle ? <div>{subtitle}</div> : null}
-        <table className={tokenTable}>{content}</table>
+        <table className={tokenTable}>{children}</table>
         <br />
         <br />
       </div>
     );
     setStateTable(table);
-  }, [Pharos, title, content, subtitle]);
+  }, [Pharos, title, subtitle, children]);
 
   return StateTable;
 };

@@ -43,22 +43,19 @@ const exampleColors = [
 
 <PageSection title="Transitions" isHeader>
   <p>Hover over the colorful boxes to view the transitions.</p>
-  {TokenTable(
-    '',
-    <>
-      <thead>
-        <tr>
-          <th style={{ width: '40%' }}>Token</th>
-          <th style={{ width: '40%' }}>Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        {TransitionRow(tokens.transition.base, 5, '--pharos-color-living-coral-80')}
-        {Object.keys(tokens.transition.duration).map((key, i) =>
-          TransitionRow(tokens.transition.duration[key], exampleRems[i], exampleColors[i], key)
-        )}
-      </tbody>
-    </>
-  )}
+  <TokenTable>
+    <thead>
+      <tr>
+        <th style={{ width: '40%' }}>Token</th>
+        <th style={{ width: '40%' }}>Value</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      {TransitionRow(tokens.transition.base, 5, '--pharos-color-living-coral-80')}
+      {Object.keys(tokens.transition.duration).map((key, i) =>
+        TransitionRow(tokens.transition.duration[key], exampleRems[i], exampleColors[i], i)
+      )}
+    </tbody>
+  </TokenTable>
 </PageSection>

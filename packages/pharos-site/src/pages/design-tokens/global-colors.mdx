@@ -21,54 +21,43 @@ Object.keys(tokens.color)
   });
 
 <PageSection title="Global colors" isHeader>
-  {TokenTable(
-    'Primary colors',
-    <>
-      <ColorHead />
-      <tbody>
-        {colorTokens.filter((color) => color.group === 'primary').map((color) => ColorRow(color))}
-      </tbody>
-    </>
-  )}
-  {TokenTable(
-    'Secondary colors',
-    <>
-      <ColorHead />
-      <tbody>
-        {colorTokens.filter((color) => color.group === 'secondary').map((color) => ColorRow(color))}
-        {ColorRow(tokens.color['Marble gray'].base)}
-      </tbody>
-    </>
-  )}
-  {TokenTable(
-    'Grayscale colors',
-    <>
-      <ColorHead />
-      <tbody>
-        {colorTokens
-          .filter((color) => color.palette === 'grayscale')
-          .map((color) => ColorRow(color))}
-      </tbody>
-    </>
-  )}
-  {TokenTable(
-    'Tints',
-    <>
-      <ColorHead />
-      <tbody>
-        {colorTokens.filter((color) => color.group === 'tint').map((color) => ColorRow(color))}
-      </tbody>
-    </>
-  )}
-  {TokenTable(
-    'Feedback colors',
-    <>
-      <ColorHead />
-      <tbody>
-        {colorTokens
-          .filter((color) => color.palette === 'feedback')
-          .map((color) => ColorRow(color))}
-      </tbody>
-    </>
-  )}
+  <TokenTable title="Primary colors">
+    <ColorHead />
+    <tbody>
+      {colorTokens
+        .filter((color) => color.group === 'primary')
+        .map((color, i) => ColorRow(color, i))}
+    </tbody>
+  </TokenTable>
+  <TokenTable title="Secondary colors">
+    <ColorHead />
+    <tbody>
+      {colorTokens
+        .filter((color) => color.group === 'secondary')
+        .map((color, i) => ColorRow(color, i))}
+      {ColorRow(tokens.color['Marble gray'].base)}
+    </tbody>
+  </TokenTable>
+  <TokenTable title="Grayscale colors">
+    <ColorHead />
+    <tbody>
+      {colorTokens
+        .filter((color) => color.palette === 'grayscale')
+        .map((color, i) => ColorRow(color, i))}
+    </tbody>
+  </TokenTable>
+  <TokenTable title="Tints">
+    <ColorHead />
+    <tbody>
+      {colorTokens.filter((color) => color.group === 'tint').map((color, i) => ColorRow(color, i))}
+    </tbody>
+  </TokenTable>
+  <TokenTable title="Feedback colors">
+    <ColorHead />
+    <tbody>
+      {colorTokens
+        .filter((color) => color.palette === 'feedback')
+        .map((color, i) => ColorRow(color, i))}
+    </tbody>
+  </TokenTable>
 </PageSection>
