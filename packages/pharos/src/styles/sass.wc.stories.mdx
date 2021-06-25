@@ -25,9 +25,14 @@ export const renderCssAttributes = (attributes) => {
     if (element.indexOf(':') != -1) {
       var property = element.substr(0, element.indexOf(':') + 1);
       var remaining = element.substr(element.indexOf(':') + 1, element.length - 1);
-      return html` <code style="color:red">${property}</code><code>${remaining}</code> <br /> `;
+      return html` <div style="background-color:#F5F5F5">
+        <code style="color:blue; background-color:#F5F5F5">${property}</code
+        ><code>${remaining}</code> <br />
+      </div>`;
     } else {
-      return html` <code>${element}</code> <br /> `;
+      return html` <div style="background-color:#F5F5F5">
+        <code style="background-color:#F5F5F5">${element}</code> <br />
+      </div>`;
     }
   });
   return cssHTML;
