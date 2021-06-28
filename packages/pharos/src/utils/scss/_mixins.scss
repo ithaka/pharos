@@ -438,6 +438,10 @@
   }
 }
 
+/// Truncates text based on number of lines.
+/// @param {number} $lines [1] - The number of lines allowed before truncating
+/// @access public
+/// @group typography
 @mixin truncate-text($lines: 1) {
   overflow: hidden;
   -webkit-line-clamp: $lines;

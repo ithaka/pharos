@@ -13,3 +13,4 @@ package.json
 package-lock.json
 .changeset/
 functional_tests/
+packages/pharos/sass.json
