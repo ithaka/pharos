@@ -10,7 +10,7 @@ import sass_values from '../../../../.storybook/sass';
 
 export const toTokenFormat = (text) => {
   return (
-    <code>
+    <code style={{ fontSize: 'var(--pharos-font-size-small)' }}>
       {text
         .replace(/([a-z])([A-Z]|[0-9])/g, '$1-$2')
         .replace(/([0-9])([a-z]|[A-Z])/g, '$1-$2')
@@ -29,19 +29,20 @@ export const renderCssAttributes = (attributes) => {
         <div key={index}>
           <code
             style={{
-              color: 'var(--pharos-color-jstor-red)',
               backgroundColor: 'var(--pharos-color-marble-gray-97)',
               fontSize: 'var(--pharos-font-size-micro)',
             }}
           >
-            {property}
-          </code>
-          <code
-            style={{
-              backgroundColor: 'var(--pharos-color-marble-gray-97)',
-              fontSize: 'var(--pharos-font-size-micro)',
-            }}
-          >
+            <span
+              style={{
+                color: 'var(--pharos-color-jstor-red)',
+                backgroundColor: 'var(--pharos-color-marble-gray-97)',
+                paddingRight: '0px',
+                marginRight: '0px',
+              }}
+            >
+              {property}
+            </span>
             {remaining}
           </code>
           <br />

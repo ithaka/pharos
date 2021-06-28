@@ -11,7 +11,7 @@ import sass_values from '../../../../.storybook/sass';
 />
 
 export const toTokenFormat = (text) => {
-  return html`<code
+  return html`<code style="font-size:var(--pharos-font-size-small);"
     >$${text
       .replace(/([a-z])([A-Z]|[0-9])/g, '$1-$2')
       .replace(/([0-9])([a-z]|[A-Z])/g, '$1-$2')
@@ -26,10 +26,11 @@ export const renderCssAttributes = (attributes) => {
       var property = element.substr(0, element.indexOf(':') + 1);
       var remaining = element.substr(element.indexOf(':') + 1, element.length - 1);
       return html` <code
-          style="color:var(--pharos-color-jstor-red); background-color:var(--pharos-color-marble-gray-97); font-size:var(--pharos-font-size-micro);"
-          >${property}</code
-        ><code
           style="background-color:var(--pharos-color-marble-gray-97); font-size:var(--pharos-font-size-micro)"
+        >
+          <span
+            style="color:var(--pharos-color-jstor-red); background-color:var(--pharos-color-marble-gray-97)"
+            >${property}</span
           >${remaining}</code
         >
         <br />`;

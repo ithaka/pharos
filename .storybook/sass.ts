@@ -169,7 +169,7 @@ const sass_values = {
       name: 'groupable-element-label',
       parameters: [
         '@include label-base($margin-bottom: 0,',
-        '$text-transform: none)',
+        '$text-transform: none',
 
         'padding-left: var(--pharos-spacing-one-quarter-x)',
       ],
@@ -246,7 +246,7 @@ const sass_values = {
         'var(--pharos-spacing-three-quarters-x)',
 
         '&:hover:not([disabled]),',
-        '&:active:not([disabled]) {',
+        '&:active:not([disabled])',
         'padding: calc(var(--pharos-spacing-one-half-x) - 1px)',
         'calc(var(--pharos-spacing-three-quarters-x) - 1px)',
       ],
