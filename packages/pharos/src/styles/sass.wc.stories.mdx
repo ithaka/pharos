@@ -26,12 +26,15 @@ export const renderCssAttributes = (attributes) => {
       var property = element.substr(0, element.indexOf(':') + 1);
       var remaining = element.substr(element.indexOf(':') + 1, element.length - 1);
       return html` <code
-          style="color:var(--pharos-color-jstor-red); background-color:var(--pharos-color-marble-gray-97);"
+          style="color:var(--pharos-color-jstor-red); background-color:var(--pharos-color-marble-gray-97); font-size:var(--pharos-font-size-micro);"
           >${property}</code
-        ><code style="background-color:var(--pharos-color-marble-gray-97);">${remaining}</code>
+        ><code
+          style="background-color:var(--pharos-color-marble-gray-97); font-size:var(--pharos-font-size-micro)"
+          >${remaining}</code
+        >
         <br />`;
     } else {
-      return html` <code style="background-color:var(--pharos-color-marble-gray-97);>${element}</code>
+      return html` <code style="background-color:var(--pharos-color-marble-gray-97); font-size:var(--pharos-font-size-micro)>${element}</code>
         <br />`;
     }
   });
@@ -53,32 +56,182 @@ export const TokenTable = (title, content) => {
 
 export const PharosMixins = () => html`
   ${TokenTable(
-    'Sass Mixins',
+    'Buttons',
     html`
       <thead>
         <tr>
-          <th style="width:10%">Token</th>
-          <th style="width:10%">Category</th>
-          <th style="width:40%">Usage description</th>
-          <th style="width:50%">CSS attributes</th>
+          <th style="width:26%">Token</th>
+          <th style="width:14%">Usage description</th>
+          <th style="width:60%">CSS attributes</th>
         </tr>
       </thead>
       <tbody>
         ${Object.keys(sass_values.mixins).map((key) => {
-          return html`
-            <tr>
-              <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
-              <td>${sass_values.mixins[key].category}</td>
-              <td>${sass_values.mixins[key].usage}</td>
-              <td>
-                <div
-                  style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x)"
-                >
-                  ${renderCssAttributes(sass_values.mixins[key].parameters)}
-                </div>
-              </td>
-            </tr>
-          `;
+          if (sass_values.mixins[key].category == 'Buttons') {
+            return html`
+              <tr>
+                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
+                <td>${sass_values.mixins[key].usage}</td>
+                <td>
+                  <div
+                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
+                  >
+                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
+                  </div>
+                </td>
+              </tr>
+            `;
+          } else return;
+        })}
+      </tbody>
+    `
+  )}${TokenTable(
+    'Form elements',
+    html`
+      <thead>
+        <tr>
+          <th style="width:26%">Token</th>
+          <th style="width:14%">Usage description</th>
+          <th style="width:60%">CSS attributes</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${Object.keys(sass_values.mixins).map((key) => {
+          if (sass_values.mixins[key].category == 'Form elements') {
+            return html`
+              <tr>
+                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
+                <td>${sass_values.mixins[key].usage}</td>
+                <td>
+                  <div
+                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
+                  >
+                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
+                  </div>
+                </td>
+              </tr>
+            `;
+          } else return;
+        })}
+      </tbody>
+    `
+  )}${TokenTable(
+    'Interaction',
+    html`
+      <thead>
+        <tr>
+          <th style="width:26%">Token</th>
+          <th style="width:14%">Usage description</th>
+          <th style="width:60%">CSS attributes</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${Object.keys(sass_values.mixins).map((key) => {
+          if (sass_values.mixins[key].category == 'Interaction') {
+            return html`
+              <tr>
+                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
+                <td>${sass_values.mixins[key].usage}</td>
+                <td>
+                  <div
+                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
+                  >
+                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
+                  </div>
+                </td>
+              </tr>
+            `;
+          } else return;
+        })}
+      </tbody>
+    `
+  )}${TokenTable(
+    'Layout',
+    html`
+      <thead>
+        <tr>
+          <th style="width:26%">Token</th>
+          <th style="width:14%">Usage description</th>
+          <th style="width:60%">CSS attributes</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${Object.keys(sass_values.mixins).map((key) => {
+          if (sass_values.mixins[key].category == 'Layout') {
+            return html`
+              <tr>
+                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
+                <td>${sass_values.mixins[key].usage}</td>
+                <td>
+                  <div
+                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
+                  >
+                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
+                  </div>
+                </td>
+              </tr>
+            `;
+          } else return;
+        })}
+      </tbody>
+    `
+  )}${TokenTable(
+    'Links',
+    html`
+      <thead>
+        <tr>
+          <th style="width:26%">Token</th>
+          <th style="width:14%">Usage description</th>
+          <th style="width:60%">CSS attributes</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${Object.keys(sass_values.mixins).map((key) => {
+          if (sass_values.mixins[key].category == 'Links') {
+            return html`
+              <tr>
+                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
+                <td>${sass_values.mixins[key].usage}</td>
+                <td>
+                  <div
+                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
+                  >
+                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
+                  </div>
+                </td>
+              </tr>
+            `;
+          } else return;
+        })}
+      </tbody>
+    `
+  )} ${TokenTable(
+    'Typography',
+    html`
+      <thead>
+        <tr>
+          <th style="width:26%">Token</th>
+          <th style="width:14%">Usage description</th>
+          <th style="width:60%">CSS attributes</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${Object.keys(sass_values.mixins).map((key) => {
+          if (sass_values.mixins[key].category == 'Typography') {
+            return html`
+              <tr>
+                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
+                <td>${sass_values.mixins[key].usage}</td>
+                <td>
+                  <div
+                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
+                  >
+                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
+                  </div>
+                </td>
+              </tr>
+            `;
+          } else return;
         })}
       </tbody>
     `

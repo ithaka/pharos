@@ -359,6 +359,7 @@ const sass_values = {
         '$width: map-get(variables.$breakpoints, $breakpoint, width)',
       ],
       category: 'Layout',
+      usage: 'Styles viewports that are at most the size of the passed breakpoint',
     },
     {
       name: 'between',
@@ -367,6 +368,7 @@ const sass_values = {
         '$upper-width: functions.calculate-px(map-get(variables.$breakpoints, $upper, width))',
       ],
       category: 'Layout',
+      usage: 'Styles viewports that are between the sizes of the passed breakpoints',
     },
     {
       name: 'layout-base',
