@@ -12,7 +12,7 @@ import '../components/icon/pharos-icon';
 />
 
 export const toTokenFormat = (text) => {
-  return html`<code
+  return html`<code style="font-size:var(--pharos-font-size-small);"
     >$${text
       .replace(/([a-z])([A-Z]|[0-9])/g, '$1-$2')
       .replace(/([0-9])([a-z]|[A-Z])/g, '$1-$2')
