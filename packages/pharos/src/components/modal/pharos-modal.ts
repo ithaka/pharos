@@ -93,7 +93,7 @@ export class PharosModal extends LitElement {
   }
 
   protected updated(changedProperties: PropertyValues): void {
-    if (changedProperties.has('open') && changedProperties.get('open') !== undefined) {
+    if (changedProperties.has('open')) {
       const body = document.querySelector('body');
 
       if (this.open) {
@@ -104,7 +104,9 @@ export class PharosModal extends LitElement {
         this._returnTriggerFocus();
       }
 
-      this._emitVisibilityChange();
+      if (changedProperties.get('open') !== undefined) {
+        this._emitVisibilityChange();
+      }
     }
   }
 
