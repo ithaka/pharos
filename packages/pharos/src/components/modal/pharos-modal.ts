@@ -93,7 +93,7 @@ export class PharosModal extends LitElement {
   }
 
   protected updated(changedProperties: PropertyValues): void {
-    if (changedProperties.has('open')) {
+    if (changedProperties.has('open') && changedProperties.get('open') !== undefined) {
       const body = document.querySelector('body');
 
       if (this.open) {
