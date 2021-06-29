@@ -42,19 +42,6 @@ export const renderCssAttributes = (attributes) => {
   return cssHTML;
 };
 
-export const TokenTable = (title, content) => {
-  return html`
-    <div class="token-table-container">
-      <h2>${title}</h2>
-      <table class="token-table">
-        ${content}
-      </table>
-      <br />
-      <br />
-    </div>
-  `;
-};
-
 export const MixinTable = (title) => {
   return html`
     <div class="token-table-container">
