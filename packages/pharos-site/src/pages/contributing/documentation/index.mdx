@@ -120,12 +120,31 @@ import PageSection from '../../../components/statics/PageSection.tsx';
     <PharosHeading level={'4'} preset={'2'}>
       Accessibility
     </PharosHeading>
+    <PharosHeading level={'4'} preset={'1--bold'}>
+      Relevant guidelines
+    </PharosHeading>
+    <p>Include any WCAG guidelines that are applicable to the component for reference.</p>
+    <PharosHeading level={'4'} preset={'1--bold'}>
+      Visual expectations
+    </PharosHeading>
     <p>
-      This section should start with any relevant WCAG guidelines for reference. The accessibility
-      section should also include code expectations and expected actions. Semantic elements should
-      be indicated with <code> &lt;code&gt;&lt;/code&gt; </code> tags for clarity. In addition,
-      include any important points pertaining to implementation. For the expected action section,
-      there should be relevant keyboard commands and their behavior. There also needs to be a screen
+      If a component has any design elements that are specifically for accessibility reasons add
+      that here. This section will not always appear as previous sections in the documentation may
+      cover this content.
+    </p>
+    <PharosHeading level={'4'} preset={'1--bold'}>
+      Code expectations
+    </PharosHeading>
+    <p>
+      Outlines any code needed to successfully implement the component. Semantic elements should be
+      indicated with <code>&lt;code&gt;&lt;/code&gt;</code> tags for clarity. In addition, include
+      any important points pertaining to implementation.
+    </p>
+    <PharosHeading level={'4'} preset={'1--bold'}>
+      Expected actions
+    </PharosHeading>
+    <p>
+      Include any relevant keyboard commands and their behavior. There also needs to be a screen
       reader section, which should list what to expect audibly when interacting with a component.
     </p>
   </PageSection>
