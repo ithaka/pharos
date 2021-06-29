@@ -4,8 +4,15 @@ module.exports = {
   },
   siteMetadata: {
     title: `Pharos`,
-    description: `ITHAKA's design system`,
-    author: `ITHAKA`,
+    subtitle: `JSTOR's Design System`,
+    description: `The Pharos design system is our guiding light toward creating cohesive, supportive, and beautiful experiences for the intellectually curious.`,
+    author: `@jstor`,
+    image: {
+      path: '/images/pharos-orb.png',
+      height: '1000',
+      width: '1700',
+    },
+    siteUrl: 'https://pharos.jstor.org',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

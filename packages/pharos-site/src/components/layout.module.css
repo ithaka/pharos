@@ -12,7 +12,7 @@ ol {
 }
 
 a {
-  color: var(--pharos-color-black-base);
+  color: var(--pharos-color-black);
 }
 
 .container {
@@ -36,26 +36,19 @@ a {
 
 .main {
   grid-area: main;
-  padding: var(--main-spacing-padding) 0;
-  display: grid;
-  grid-template-areas: '. content . toc';
-  grid-template-columns: minmax(5.25rem, 7.75rem) minmax(45rem, 54rem) minmax(5.25rem, 7.75rem) 12.5rem;
-}
-
-.main___fill {
-  padding: 0;
-  grid-template-areas: '. content .';
-  grid-template-columns: 6.5rem 1fr 6.5rem;
-}
-
-@media screen and (max-width: 1055px) {
-  .main {
-    grid-template-columns: 1.5rem 1fr 1.5rem;
-  }
 }
 
 .content {
-  grid-area: content;
+  padding: var(--main-spacing-padding) 0;
+  display: grid;
+}
+
+.content___fill {
+  padding: 0;
+  margin-bottom: var(--pharos-spacing-5-x);
+  grid-template-areas:
+    'hero hero hero'
+    '. content .';
 }
 
 p,
@@ -75,4 +68,15 @@ ul {
 .top-bar {
   display: flex;
   align-items: center;
+  background-color: var(--pharos-color-black);
+}
+
+.page {
+  grid-column: span 8;
+}
+
+@media screen and (max-width: 22.5rem) {
+  .page {
+    grid-column: span 4;
+  }
 }

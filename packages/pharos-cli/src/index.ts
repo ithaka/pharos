@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 import colors from 'colors';
-import program from 'commander';
+import { Command } from 'commander';
 import createPharosComponent from './cmds/pharos-component';
+
+const program = new Command();
 
 program
   .version('0.0.1', '-v, --VERSION')

@@ -88,7 +88,7 @@ const StatusTable: FC = () => {
         <tr>
           {columns.map((column, id) => {
             return (
-              <th key={id} className={`${table__header} ${IsStuck ? stuck : null}`} ref={ref}>
+              <th key={id} className={`${table__header} ${IsStuck ? stuck : ''}`} ref={ref}>
                 {column}
               </th>
             );

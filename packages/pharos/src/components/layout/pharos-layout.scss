@@ -26,6 +26,14 @@
   }
 }
 
+:host([preset='1-col--sidenav-comfy']) {
+  @include mixins.layout-base-columns('1-col--sidenav-comfy');
+
+  .layout {
+    @include mixins.layout-content-width('1-col--sidenav-comfy');
+  }
+}
+
 :host([preset='2-col']) {
   @include mixins.layout-base-columns('2-col');
 
