@@ -13,8 +13,7 @@ import { PharosIcon } from '../react-components/icon/pharos-icon';
 
 export const toTokenFormat = (text) => {
   return (
-    <code>
-      $
+    <code style={{ fontSize: 'var(--pharos-font-size-small)' }}>
       {text
         .replace(/([a-z])([A-Z]|[0-9])/g, '$1-$2')
         .replace(/([0-9])([a-z]|[A-Z])/g, '$1-$2')
