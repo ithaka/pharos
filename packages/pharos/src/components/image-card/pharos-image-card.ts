@@ -25,6 +25,7 @@ const VARIANTS = ['base', 'collection'];
  * @slot image - Contains the image to display on the card.
  * @slot metadata - Contains the metadata for the item.
  * @slot title - Contains the title for the item (renders if title prop is not set).
+ * @slot action-menu - Contains the action-menu for the item (renders if action-menu prop is not set).
  *
  */
 @customElement('pharos-image-card')
