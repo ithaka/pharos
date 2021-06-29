@@ -162,7 +162,7 @@ export class PharosImageCard extends LitElement {
     </pharos-link>`;
   }
 
-  private _renderActionButton(): TemplateResult | typeof nothing {
+  private _renderActionButton(): TemplateResult {
     return this.actionMenu
       ? html`<pharos-button
           class="card__button"
@@ -172,7 +172,7 @@ export class PharosImageCard extends LitElement {
           label="More actions"
           @click=${this._handleClick}
         ></pharos-button>`
-      : nothing;
+      : html`<div class="card__button"><slot name="action-menu"></slot></div>`;
   }
 
   private _renderMetadata(): TemplateResult | typeof nothing {
