@@ -343,7 +343,7 @@ const sass_values = {
     },
     {
       name: 'content-label',
-      parameters: [':@include form-element-label($args...)'],
+      parameters: ['@include form-element-label($args...)'],
       usage: 'Base style for content labels',
       category: 'Layout',
     },
