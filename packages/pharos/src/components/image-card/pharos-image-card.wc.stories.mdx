@@ -4,6 +4,7 @@ import { viewports } from '../../pages/shared/viewports';
 import { GuidelineLink } from '@config/GuidelineLink';
 
 import './pharos-image-card';
+import '../button/pharos-button';
 import '../layout/pharos-layout';
 import '../link/pharos-link';
 import '../dropdown-menu/pharos-dropdown-menu';
@@ -151,6 +152,51 @@ export const CollectionsTemplate = () => html`<pharos-layout tag="ol" style="mar
         <pharos-dropdown-menu-item>Item 2</pharos-dropdown-menu-item>
         <pharos-dropdown-menu-item>Item 3</pharos-dropdown-menu-item>
       </pharos-dropdown-menu>
+    `}
+  </Story>
+</Canvas>
+
+# With Action Menu Slot
+
+<Canvas>
+  <Story name="With Action Menu Slot">
+    {html`
+      <pharos-layout style="margin: 1rem 0">
+        <pharos-image-card
+          title="South Hall"
+          link="https://www.jstor.org/stable/10.2307/community.26220188"
+          style="grid-column: span 2"
+        >
+          <img
+            id="image"
+            src="./images/item-detail/collection_5.png"
+            alt="south hall"
+            slot="image"
+          />
+          <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
+          <div id="item-date" slot="metadata">1889-1892 (creation)</div>
+          <div id="collection" slot="metadata">
+            Part of
+            <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+              >Pratt Institute Buildings Image Collection</pharos-link
+            >
+          </div>
+          <div slot="action-menu">
+            <pharos-button
+              label="actions menu"
+              data-dropdown-menu-id="dropdownId"
+              icon="ellipses-vertical"
+              icon-condensed
+              variant="subtle"
+            ></pharos-button>
+            <pharos-dropdown-menu id="dropdownId">
+              <pharos-dropdown-menu-item>Item 1</pharos-dropdown-menu-item>
+              <pharos-dropdown-menu-item>Item 2</pharos-dropdown-menu-item>
+              <pharos-dropdown-menu-item>Item 3</pharos-dropdown-menu-item>
+            </pharos-dropdown-menu>
+          </div>
+        </pharos-image-card>
+      </pharos-layout>
     `}
   </Story>
 </Canvas>

@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import { viewports } from '../../pages/shared/viewports';
 import { GuidelineLink } from '@config/GuidelineLink';
 
+import { PharosButton } from '../../react-components/button/pharos-button';
 import { PharosImageCard } from '../../react-components/image-card/pharos-image-card';
 import { PharosLayout } from '../../react-components/layout/pharos-layout';
 import { PharosLink } from '../../react-components/link/pharos-link';
@@ -176,6 +177,55 @@ export const CollectionsTemplate = () => (
         <PharosDropdownMenuItem>Item 2</PharosDropdownMenuItem>
         <PharosDropdownMenuItem>Item 3</PharosDropdownMenuItem>
       </PharosDropdownMenu>
+    </Fragment>
+  </Story>
+</Canvas>
+
+# With Action Menu Slot
+
+<Canvas>
+  <Story name="With Action Menu Slot">
+    <Fragment>
+      <PharosLayout style={{ margin: '1rem 0' }}>
+        <PharosImageCard
+          title="South Hall"
+          link="https://www.jstor.org/stable/10.2307/community.26220188"
+          style={{ gridColumn: 'span 2' }}
+        >
+          <img
+            id="image"
+            src="./images/item-detail/collection_5.png"
+            alt="south hall"
+            slot="image"
+          />
+          <div id="creator" slot="metadata">
+            Tubby, William Bunker (American architect,...
+          </div>
+          <div id="item-date" slot="metadata">
+            1889-1892 (creation)
+          </div>
+          <div id="collection" slot="metadata">
+            Part of
+            <PharosLink href="https://www.jstor.org/site/pratt/buildings-image">
+              Pratt Institute Buildings Image Collection
+            </PharosLink>
+          </div>
+          <div slot="action-menu">
+            <PharosButton
+              label="actions menu"
+              data-dropdown-menu-id="dropdownId"
+              icon="ellipses-vertical"
+              iconCondensed
+              variant="subtle"
+            ></PharosButton>
+            <PharosDropdownMenu id="dropdownId">
+              <PharosDropdownMenuItem>Item 1</PharosDropdownMenuItem>
+              <PharosDropdownMenuItem>Item 2</PharosDropdownMenuItem>
+              <PharosDropdownMenuItem>Item 3</PharosDropdownMenuItem>
+            </PharosDropdownMenu>
+          </div>
+        </PharosImageCard>
+      </PharosLayout>
     </Fragment>
   </Story>
 </Canvas>
