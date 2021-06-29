@@ -55,188 +55,48 @@ export const TokenTable = (title, content) => {
   `;
 };
 
+export const MixinTable = (title) => {
+  return html`
+    <div class="token-table-container">
+      <h2>${title}</h2>
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th style="width:26%">Token</th>
+            <th style="width:14%">Usage description</th>
+            <th style="width:60%">CSS attributes</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${Object.keys(sass_values.mixins).map((key) => {
+            if (sass_values.mixins[key].category == title) {
+              return html`
+                <tr>
+                  <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
+                  <td>${sass_values.mixins[key].usage}</td>
+                  <td>
+                    <div
+                      style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
+                    >
+                      ${renderCssAttributes(sass_values.mixins[key].parameters)}
+                    </div>
+                  </td>
+                </tr>
+              `;
+            } else return;
+          })}
+        </tbody>
+      </table>
+      <br />
+      <br />
+    </div>
+  `;
+};
+
 export const PharosMixins = () => html`
-  ${TokenTable(
-    'Buttons',
-    html`
-      <thead>
-        <tr>
-          <th style="width:26%">Token</th>
-          <th style="width:14%">Usage description</th>
-          <th style="width:60%">CSS attributes</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${Object.keys(sass_values.mixins).map((key) => {
-          if (sass_values.mixins[key].category == 'Buttons') {
-            return html`
-              <tr>
-                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
-                <td>${sass_values.mixins[key].usage}</td>
-                <td>
-                  <div
-                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
-                  >
-                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
-                  </div>
-                </td>
-              </tr>
-            `;
-          } else return;
-        })}
-      </tbody>
-    `
-  )}${TokenTable(
-    'Form elements',
-    html`
-      <thead>
-        <tr>
-          <th style="width:26%">Token</th>
-          <th style="width:14%">Usage description</th>
-          <th style="width:60%">CSS attributes</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${Object.keys(sass_values.mixins).map((key) => {
-          if (sass_values.mixins[key].category == 'Form elements') {
-            return html`
-              <tr>
-                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
-                <td>${sass_values.mixins[key].usage}</td>
-                <td>
-                  <div
-                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
-                  >
-                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
-                  </div>
-                </td>
-              </tr>
-            `;
-          } else return;
-        })}
-      </tbody>
-    `
-  )}${TokenTable(
-    'Interaction',
-    html`
-      <thead>
-        <tr>
-          <th style="width:26%">Token</th>
-          <th style="width:14%">Usage description</th>
-          <th style="width:60%">CSS attributes</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${Object.keys(sass_values.mixins).map((key) => {
-          if (sass_values.mixins[key].category == 'Interaction') {
-            return html`
-              <tr>
-                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
-                <td>${sass_values.mixins[key].usage}</td>
-                <td>
-                  <div
-                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
-                  >
-                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
-                  </div>
-                </td>
-              </tr>
-            `;
-          } else return;
-        })}
-      </tbody>
-    `
-  )}${TokenTable(
-    'Layout',
-    html`
-      <thead>
-        <tr>
-          <th style="width:26%">Token</th>
-          <th style="width:14%">Usage description</th>
-          <th style="width:60%">CSS attributes</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${Object.keys(sass_values.mixins).map((key) => {
-          if (sass_values.mixins[key].category == 'Layout') {
-            return html`
-              <tr>
-                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
-                <td>${sass_values.mixins[key].usage}</td>
-                <td>
-                  <div
-                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
-                  >
-                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
-                  </div>
-                </td>
-              </tr>
-            `;
-          } else return;
-        })}
-      </tbody>
-    `
-  )}${TokenTable(
-    'Links',
-    html`
-      <thead>
-        <tr>
-          <th style="width:26%">Token</th>
-          <th style="width:14%">Usage description</th>
-          <th style="width:60%">CSS attributes</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${Object.keys(sass_values.mixins).map((key) => {
-          if (sass_values.mixins[key].category == 'Links') {
-            return html`
-              <tr>
-                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
-                <td>${sass_values.mixins[key].usage}</td>
-                <td>
-                  <div
-                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
-                  >
-                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
-                  </div>
-                </td>
-              </tr>
-            `;
-          } else return;
-        })}
-      </tbody>
-    `
-  )} ${TokenTable(
-    'Typography',
-    html`
-      <thead>
-        <tr>
-          <th style="width:26%">Token</th>
-          <th style="width:14%">Usage description</th>
-          <th style="width:60%">CSS attributes</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${Object.keys(sass_values.mixins).map((key) => {
-          if (sass_values.mixins[key].category == 'Typography') {
-            return html`
-              <tr>
-                <td>${toTokenFormat(sass_values.mixins[key].name)}</td>
-                <td>${sass_values.mixins[key].usage}</td>
-                <td>
-                  <div
-                    style="background-color:var(--pharos-color-marble-gray-97); border-style: solid; border-color: var(--pharos-color-marble-gray-80); padding-bottom:var(--pharos-spacing-one-eighth-x); border-width: 1px"
-                  >
-                    ${renderCssAttributes(sass_values.mixins[key].parameters)}
-                  </div>
-                </td>
-              </tr>
-            `;
-          } else return;
-        })}
-      </tbody>
-    `
-  )}
+  ${MixinTable('Buttons')} ${MixinTable('Form elements')} ${MixinTable('Interaction')} ${MixinTable(
+    'Layout'
+  )} ${MixinTable('Links')} ${MixinTable('Typography')}
 `;
 
 <Canvas withToolbar>

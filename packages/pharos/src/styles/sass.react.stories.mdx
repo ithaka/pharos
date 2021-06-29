@@ -67,11 +67,44 @@ export const renderCssAttributes = (attributes) => {
   return cssHTML;
 };
 
-export const TokenTable = (title, content) => {
+export const MixinTable = (title) => {
   return (
     <div className="token-table-container">
       <h2>{title}</h2>
-      <table className="token-table">{content}</table>
+      <table className="token-table">
+        <thead>
+          <tr>
+            <th style={{ width: '26%' }}>Token</th>
+            <th style={{ width: '14%' }}>Usage description</th>
+            <th style={{ width: '60%' }}>CSS attributes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(sass_values.mixins).map((key, index) => {
+            if (sass_values.mixins[key].category == title) {
+              return (
+                <tr key={index}>
+                  <td>{toTokenFormat(sass_values.mixins[key].name)}</td>
+                  <td>{sass_values.mixins[key].usage}</td>
+                  <td>
+                    <div
+                      style={{
+                        backgroundColor: 'var(--pharos-color-marble-gray-97)',
+                        borderStyle: 'solid',
+                        borderColor: 'var(--pharos-color-marble-gray-80)',
+                        paddingBottom: 'var(--pharos-spacing-one-eighth-x)',
+                        borderWidth: '1px',
+                      }}
+                    >
+                      {renderCssAttributes(sass_values.mixins[key].parameters)}
+                    </div>
+                  </td>
+                </tr>
+              );
+            } else return;
+          })}
+        </tbody>
+      </table>
       <br />
       <br />
     </div>
@@ -80,228 +113,8 @@ export const TokenTable = (title, content) => {
 
 export const PharosMixins = () => (
   <>
-    {TokenTable(
-      'Buttons',
-      <>
-        <thead>
-          <tr>
-            <th style={{ width: '26%' }}>Token</th>
-            <th style={{ width: '14%' }}>Usage description</th>
-            <th style={{ width: '60%' }}>CSS attributes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(sass_values.mixins).map((key, index) => {
-            if (sass_values.mixins[key].category == 'Buttons') {
-              return (
-                <tr key={index}>
-                  <td>{toTokenFormat(sass_values.mixins[key].name)}</td>
-                  <td>{sass_values.mixins[key].usage}</td>
-                  <td>
-                    <div
-                      style={{
-                        backgroundColor: 'var(--pharos-color-marble-gray-97)',
-                        borderStyle: 'solid',
-                        borderColor: 'var(--pharos-color-marble-gray-80)',
-                        paddingBottom: 'var(--pharos-spacing-one-eighth-x)',
-                        borderWidth: '1px',
-                      }}
-                    >
-                      {renderCssAttributes(sass_values.mixins[key].parameters)}
-                    </div>
-                  </td>
-                </tr>
-              );
-            } else return;
-          })}
-        </tbody>
-      </>
-    )}
-    {TokenTable(
-      'Form elements',
-      <>
-        <thead>
-          <tr>
-            <th style={{ width: '26%' }}>Token</th>
-            <th style={{ width: '14%' }}>Usage description</th>
-            <th style={{ width: '60%' }}>CSS attributes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(sass_values.mixins).map((key, index) => {
-            if (sass_values.mixins[key].category == 'Form elements') {
-              return (
-                <tr key={index}>
-                  <td>{toTokenFormat(sass_values.mixins[key].name)}</td>
-                  <td>{sass_values.mixins[key].usage}</td>
-                  <td>
-                    <div
-                      style={{
-                        backgroundColor: 'var(--pharos-color-marble-gray-97)',
-                        borderStyle: 'solid',
-                        borderColor: 'var(--pharos-color-marble-gray-80)',
-                        paddingBottom: 'var(--pharos-spacing-one-eighth-x)',
-                        borderWidth: '1px',
-                      }}
-                    >
-                      {renderCssAttributes(sass_values.mixins[key].parameters)}
-                    </div>
-                  </td>
-                </tr>
-              );
-            } else return;
-          })}
-        </tbody>
-      </>
-    )}
-    {TokenTable(
-      'Interaction',
-      <>
-        <thead>
-          <tr>
-            <th style={{ width: '26%' }}>Token</th>
-            <th style={{ width: '14%' }}>Usage description</th>
-            <th style={{ width: '60%' }}>CSS attributes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(sass_values.mixins).map((key, index) => {
-            if (sass_values.mixins[key].category == 'Interaction') {
-              return (
-                <tr key={index}>
-                  <td>{toTokenFormat(sass_values.mixins[key].name)}</td>
-                  <td>{sass_values.mixins[key].usage}</td>
-                  <td>
-                    <div
-                      style={{
-                        backgroundColor: 'var(--pharos-color-marble-gray-97)',
-                        borderStyle: 'solid',
-                        borderColor: 'var(--pharos-color-marble-gray-80)',
-                        paddingBottom: 'var(--pharos-spacing-one-eighth-x)',
-                        borderWidth: '1px',
-                      }}
-                    >
-                      {renderCssAttributes(sass_values.mixins[key].parameters)}
-                    </div>
-                  </td>
-                </tr>
-              );
-            } else return;
-          })}
-        </tbody>
-      </>
-    )}
-    {TokenTable(
-      'Layout',
-      <>
-        <thead>
-          <tr>
-            <th style={{ width: '26%' }}>Token</th>
-            <th style={{ width: '14%' }}>Usage description</th>
-            <th style={{ width: '60%' }}>CSS attributes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(sass_values.mixins).map((key, index) => {
-            if (sass_values.mixins[key].category == 'Layout') {
-              return (
-                <tr key={index}>
-                  <td>{toTokenFormat(sass_values.mixins[key].name)}</td>
-                  <td>{sass_values.mixins[key].usage}</td>
-                  <td>
-                    <div
-                      style={{
-                        backgroundColor: 'var(--pharos-color-marble-gray-97)',
-                        borderStyle: 'solid',
-                        borderColor: 'var(--pharos-color-marble-gray-80)',
-                        paddingBottom: 'var(--pharos-spacing-one-eighth-x)',
-                        borderWidth: '1px',
-                      }}
-                    >
-                      {renderCssAttributes(sass_values.mixins[key].parameters)}
-                    </div>
-                  </td>
-                </tr>
-              );
-            } else return;
-          })}
-        </tbody>
-      </>
-    )}
-    {TokenTable(
-      'Links',
-      <>
-        <thead>
-          <tr>
-            <th style={{ width: '26%' }}>Token</th>
-            <th style={{ width: '14%' }}>Usage description</th>
-            <th style={{ width: '60%' }}>CSS attributes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(sass_values.mixins).map((key, index) => {
-            if (sass_values.mixins[key].category == 'Links') {
-              return (
-                <tr key={index}>
-                  <td>{toTokenFormat(sass_values.mixins[key].name)}</td>
-                  <td>{sass_values.mixins[key].usage}</td>
-                  <td>
-                    <div
-                      style={{
-                        backgroundColor: 'var(--pharos-color-marble-gray-97)',
-                        borderStyle: 'solid',
-                        borderColor: 'var(--pharos-color-marble-gray-80)',
-                        paddingBottom: 'var(--pharos-spacing-one-eighth-x)',
-                        borderWidth: '1px',
-                      }}
-                    >
-                      {renderCssAttributes(sass_values.mixins[key].parameters)}
-                    </div>
-                  </td>
-                </tr>
-              );
-            } else return;
-          })}
-        </tbody>
-      </>
-    )}
-    {TokenTable(
-      'Typography',
-      <>
-        <thead>
-          <tr>
-            <th style={{ width: '26%' }}>Token</th>
-            <th style={{ width: '14%' }}>Usage description</th>
-            <th style={{ width: '60%' }}>CSS attributes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(sass_values.mixins).map((key, index) => {
-            if (sass_values.mixins[key].category == 'Interaction') {
-              return (
-                <tr key={index}>
-                  <td>{toTokenFormat(sass_values.mixins[key].name)}</td>
-                  <td>{sass_values.mixins[key].usage}</td>
-                  <td>
-                    <div
-                      style={{
-                        backgroundColor: 'var(--pharos-color-marble-gray-97)',
-                        borderStyle: 'solid',
-                        borderColor: 'var(--pharos-color-marble-gray-80)',
-                        paddingBottom: 'var(--pharos-spacing-one-eighth-x)',
-                        borderWidth: '1px',
-                      }}
-                    >
-                      {renderCssAttributes(sass_values.mixins[key].parameters)}
-                    </div>
-                  </td>
-                </tr>
-              );
-            } else return;
-          })}
-        </tbody>
-      </>
-    )}
+    {MixinTable('Buttons')} {MixinTable('Form elements')} {MixinTable('Interaction')}
+    {MixinTable('Layout')} {MixinTable('Links')} {MixinTable('Typography')}
   </>
 );
 
