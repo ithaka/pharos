@@ -210,21 +210,19 @@ export const CollectionsTemplate = () => (
               Pratt Institute Buildings Image Collection
             </PharosLink>
           </div>
-          <div slot="action-menu">
-            <PharosButton
-              label="actions menu"
-              data-dropdown-menu-id="dropdownId"
-              icon="ellipses-vertical"
-              iconCondensed
-              variant="subtle"
-            ></PharosButton>
-            <PharosDropdownMenu id="dropdownId">
-              <PharosDropdownMenuItem>Item 1</PharosDropdownMenuItem>
-              <PharosDropdownMenuItem>Item 2</PharosDropdownMenuItem>
-              <PharosDropdownMenuItem>Item 3</PharosDropdownMenuItem>
-            </PharosDropdownMenu>
-          </div>
+          <PharosButton
+            slot="action-button"
+            data-dropdown-menu-id="dropdownId"
+            icon="ellipses-vertical"
+            iconCondensed
+            variant="subtle"
+          ></PharosButton>
         </PharosImageCard>
+        <PharosDropdownMenu id="dropdownId">
+          <PharosDropdownMenuItem>Item 1</PharosDropdownMenuItem>
+          <PharosDropdownMenuItem>Item 2</PharosDropdownMenuItem>
+          <PharosDropdownMenuItem>Item 3</PharosDropdownMenuItem>
+        </PharosDropdownMenu>
       </PharosLayout>
     </Fragment>
   </Story>

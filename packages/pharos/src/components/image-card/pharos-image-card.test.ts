@@ -99,7 +99,7 @@ describe('pharos-image-card', () => {
     expect(button).not.to.be.null;
   });
 
-  it('renders the action-menu via a slot when the action menu id property is not provided', async () => {
+  it('renders the action-button via a slot when the action menu id property is not provided', async () => {
     component = await fixture(html`<pharos-image-card link="#">
       <img
         slot="image"
@@ -110,10 +110,10 @@ describe('pharos-image-card', () => {
       <div slot="metadata">Creator of the item</div>
       <div slot="metadata">1990-2000</div>
       <div slot="metadata">Part of <pharos-link href="#">An Example Collection</pharos-link></div>
-      <div slot="action-menu">ActionMenuDropdownComponent</div>
+      <div slot="action-button">ActionButtonComponent</div>
     </pharos-image-card>`);
 
-    const actionMenuSlot = component.renderRoot.querySelector('slot[name="action-menu"]');
+    const actionMenuSlot = component.renderRoot.querySelector('slot[name="action-button"]');
     expect(actionMenuSlot).not.to.be.null;
   });
 

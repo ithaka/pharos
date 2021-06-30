@@ -181,21 +181,19 @@ export const CollectionsTemplate = () => html`<pharos-layout tag="ol" style="mar
               >Pratt Institute Buildings Image Collection</pharos-link
             >
           </div>
-          <div slot="action-menu">
-            <pharos-button
-              label="actions menu"
-              data-dropdown-menu-id="dropdownId"
-              icon="ellipses-vertical"
-              icon-condensed
-              variant="subtle"
-            ></pharos-button>
-            <pharos-dropdown-menu id="dropdownId">
-              <pharos-dropdown-menu-item>Item 1</pharos-dropdown-menu-item>
-              <pharos-dropdown-menu-item>Item 2</pharos-dropdown-menu-item>
-              <pharos-dropdown-menu-item>Item 3</pharos-dropdown-menu-item>
-            </pharos-dropdown-menu>
-          </div>
+          <pharos-button
+            slot="action-button"
+            data-dropdown-menu-id="dropdownId"
+            icon="ellipses-vertical"
+            icon-condensed
+            variant="subtle"
+          ></pharos-button>
         </pharos-image-card>
+        <pharos-dropdown-menu id="dropdownId">
+          <pharos-dropdown-menu-item>Item 1</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Item 2</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Item 3</pharos-dropdown-menu-item>
+        </pharos-dropdown-menu>
       </pharos-layout>
     `}
   </Story>
