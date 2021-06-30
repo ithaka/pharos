@@ -1,5 +1,42 @@
 # @ithaka/pharos-site
 
+## 5.5.0
+
+### Minor Changes
+
+- [#120](https://github.com/ithaka/pharos/pull/120) [`f57a8b9`](https://github.com/ithaka/pharos/commit/f57a8b9caf777f06a70165531557c566f317aa40) Thanks [@daneah](https://github.com/daneah)! - Use a simplified image for social sharing
+
+* [#112](https://github.com/ithaka/pharos/pull/112) [`14bfb27`](https://github.com/ithaka/pharos/commit/14bfb27a3178d233077127a2743d34f2553e01d7) Thanks [@Niznikr](https://github.com/Niznikr)! - use Gatsby cache for site builds
+
+- [#126](https://github.com/ithaka/pharos/pull/126) [`ad91672`](https://github.com/ithaka/pharos/commit/ad916729deb59b27275a1a4372aaa60d836c9284) Thanks [@SMQuazi](https://github.com/SMQuazi)! - Add FAQs section to site
+
+* [#116](https://github.com/ithaka/pharos/pull/116) [`b49a2a1`](https://github.com/ithaka/pharos/commit/b49a2a1b1ac49b35994a3d521cbb9747a117f558) Thanks [@facelessfool](https://github.com/facelessfool)! - Proper grammar used for guideline titles by changing the apostrophes used as plurality, and missing from contractions
+
+- [#122](https://github.com/ithaka/pharos/pull/122) [`60667c5`](https://github.com/ithaka/pharos/commit/60667c558fc476ac4df1c1c7185846e400a686af) Thanks [@Niznikr](https://github.com/Niznikr)! - implement layout component on the site:
+
+  - Add preset `1-col--sidenav-comfy` to `<pharos-layout>` for larger margins on our breakpoints
+  - Implement layouts with the new preset on the site
+  - Update site styles for responsiveness on our breakpoints
+
+### Patch Changes
+
+- [#109](https://github.com/ithaka/pharos/pull/109) [`fa5ac04`](https://github.com/ithaka/pharos/commit/fa5ac04aaa46d2fc44c60bcff8ce768dd708f1b8) Thanks [@Lham42](https://github.com/Lham42)! - Add a contributing documentation page, developer guidelines page and contributing section to the pharos-site
+
+* [#119](https://github.com/ithaka/pharos/pull/119) [`7cd2cab`](https://github.com/ithaka/pharos/commit/7cd2cab2c16daca4d82d72f4d50a3c26b05c004e) Thanks [@daneah](https://github.com/daneah)! - Fix server-side rendering for meta tags so that they can be properly picked up by crawlers and social sites
+
+- [#124](https://github.com/ithaka/pharos/pull/124) [`cf0b380`](https://github.com/ithaka/pharos/commit/cf0b38024298fe1f60466f171334f7bef8f6d344) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies
+
+* [#123](https://github.com/ithaka/pharos/pull/123) [`5a5de6d`](https://github.com/ithaka/pharos/commit/5a5de6d72387a7490aa732803da488f284dc098b) Thanks [@SMQuazi](https://github.com/SMQuazi)! - update TokenTable & ColorRow components to prevent unique key and re-render limit errors
+
+- [#129](https://github.com/ithaka/pharos/pull/129) [`b1af2a6`](https://github.com/ithaka/pharos/commit/b1af2a68f6b7c8071608ccc1a47cacb5a0f8c388) Thanks [@Lham42](https://github.com/Lham42)! - Update accessibility section of contributing documentation with updated format and content
+
+* [#111](https://github.com/ithaka/pharos/pull/111) [`f8c75a2`](https://github.com/ithaka/pharos/commit/f8c75a26255ea5e79f5eba85e6d4eb3c0f077118) Thanks [@Lham42](https://github.com/Lham42)! - change spacing on grammar and style page
+
+- [#114](https://github.com/ithaka/pharos/pull/114) [`ef0cd0b`](https://github.com/ithaka/pharos/commit/ef0cd0befcc5f558c302258758401174c92bdf33) Thanks [@Niznikr](https://github.com/Niznikr)! - use node in place of gulp for building Pharos
+
+- Updated dependencies [[`53dac65`](https://github.com/ithaka/pharos/commit/53dac6539cd97b8249ff9c0438417415005b17bc), [`f4c6e4a`](https://github.com/ithaka/pharos/commit/f4c6e4a2567bd738168a29e230b3b7de018bc798), [`cf0b380`](https://github.com/ithaka/pharos/commit/cf0b38024298fe1f60466f171334f7bef8f6d344), [`944e802`](https://github.com/ithaka/pharos/commit/944e8023c8e0569b8255c531f603dafddac0849b), [`1e1c1fd`](https://github.com/ithaka/pharos/commit/1e1c1fdf368682171f8eba63a0eb55acf741a9f5), [`60667c5`](https://github.com/ithaka/pharos/commit/60667c558fc476ac4df1c1c7185846e400a686af), [`ef0cd0b`](https://github.com/ithaka/pharos/commit/ef0cd0befcc5f558c302258758401174c92bdf33)]:
+  - @ithaka/pharos@10.2.0
+
 ## 5.4.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @ithaka/pharos-cli
 
+## 5.1.1
+
+### Patch Changes
+
+- [#124](https://github.com/ithaka/pharos/pull/124) [`cf0b380`](https://github.com/ithaka/pharos/commit/cf0b38024298fe1f60466f171334f7bef8f6d344) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies
+
 ## 5.1.0
 
 ### Minor Changes

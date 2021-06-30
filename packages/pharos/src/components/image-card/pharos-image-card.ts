@@ -28,6 +28,7 @@ const DEFAULT_HEADING_LEVEL = 3;
  * @slot image - Contains the image to display on the card.
  * @slot metadata - Contains the metadata for the item.
  * @slot title - Contains the title for the item (renders if title prop is not set).
+ * @slot action-button - Contains the action-button for the item (renders if action-menu prop is not set).
  *
  */
 @customElement('pharos-image-card')
@@ -172,17 +173,17 @@ export class PharosImageCard extends LitElement {
     </pharos-link>`;
   }
 
-  private _renderActionButton(): TemplateResult | typeof nothing {
+  private _renderActionButton(): TemplateResult {
     return this.actionMenu
       ? html`<pharos-button
-          class="card__button"
+          class="card__action-button"
           icon="ellipses-vertical"
           variant="subtle"
           icon-condensed
           label="More actions"
           @click=${this._handleClick}
         ></pharos-button>`
-      : nothing;
+      : html`<div class="card__action-button"><slot name="action-button"></slot></div>`;
   }
 
   private _renderMetadata(): TemplateResult | typeof nothing {
