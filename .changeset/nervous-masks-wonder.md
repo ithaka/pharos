@@ -2,4 +2,4 @@
 '@ithaka/pharos': minor
 ---
 
-allow action-menu to be a slotted element
+allow action-button to be a slotted element
