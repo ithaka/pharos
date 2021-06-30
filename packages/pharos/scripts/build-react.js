@@ -15,22 +15,27 @@ const toCamelCase = (str) => {
 
 // Create prop interface using custom-elements.json
 const createComponentInterface = (component, reactName) => {
-  const item = customElementsManifest.tags.find((item) => item.name === component);
+  const item = customElementsManifest.modules
+    .map((module) => module.declarations)
+    .flat()
+    .find((item) => item.tagName === component);
   const props =
-    item.properties &&
-    item.properties.map((property) => {
-      const readonly =
-        property.description && property.description.includes('@readonly') ? 'readonly ' : '';
-      const optional =
-        property.default || property.type.includes('undefined') || readonly ? '?' : '';
+    item.members.length &&
+    item.members
+      .filter((member) => member.kind === 'field' && member.privacy === 'public')
+      .map((property) => {
+        const readonly =
+          property.description && property.description.includes('@readonly') ? 'readonly ' : '';
+        const optional =
+          property.default || property.type.text.includes('undefined') || readonly ? '?' : '';
 
-      return (
-        `/**\n` +
-        `* ${property.description || ''}\n` +
-        `*/\n` +
-        `${readonly}${property.name}${optional}: ${property.type};\n`
-      );
-    });
+        return (
+          `/**\n` +
+          `* ${property.description || ''}\n` +
+          `*/\n` +
+          `${readonly}${property.name}${optional}: ${property.type.text};\n`
+        );
+      });
 
   const events =
     item.events &&
@@ -61,11 +66,14 @@ const createComponentInterface = (component, reactName) => {
 
 // Define default prop values using custom-elements.json
 const createDefaultProps = (component, reactName) => {
-  const item = customElementsManifest.tags.find((item) => item.name === component);
+  const item = customElementsManifest.modules
+    .map((module) => module.declarations)
+    .flat()
+    .find((item) => item.tagName === component);
   const props =
-    item.properties &&
-    item.properties
-      .filter((property) => property.default)
+    item.members.length &&
+    item.members
+      .filter((member) => member.kind === 'field' && member.privacy === 'public' && member.default)
       .map((property) => {
         return `${property.name}: ${property.default},\n`;
       });

@@ -1492,10 +1492,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@custom-elements-manifest/analyzer@^0.3.12":
-  version "0.3.13"
-  resolved "https://registry.yarnpkg.com/@custom-elements-manifest/analyzer/-/analyzer-0.3.13.tgz#59c64ac636f9e33ca28f5e41406ad559acc558a2"
-  integrity sha512-Yj1MYiKgV3rilegkAy9rpGOiTz6Q9U/zIs77dIkqX3ADB+fwRyqTSa/8HjNFfo7iSlLrOMtGYWYt9Wz75trXnA==
+"@custom-elements-manifest/analyzer@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@custom-elements-manifest/analyzer/-/analyzer-0.4.1.tgz#59c6d51024025dac8253a3f518e6a93753eb922f"
+  integrity sha512-rD7rk0V80xGDtWUAMk7F7ar45lTDrewT/pw64zCw6rpwvbegoGJZBh9CfQ6d7eY4Xn3PLsiVV2v20ArFuW1zUg==
   dependencies:
     "@web/config-loader" "^0.1.3"
     chokidar "^3.5.2"
