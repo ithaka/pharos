@@ -1,5 +1,29 @@
 # @ithaka/pharos
 
+## 10.2.0
+
+### Minor Changes
+
+- [#93](https://github.com/ithaka/pharos/pull/93) [`944e802`](https://github.com/ithaka/pharos/commit/944e8023c8e0569b8255c531f603dafddac0849b) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - update event stories in Storybook to default to actions tab instead of controls tab
+
+* [#128](https://github.com/ithaka/pharos/pull/128) [`1e1c1fd`](https://github.com/ithaka/pharos/commit/1e1c1fdf368682171f8eba63a0eb55acf741a9f5) Thanks [@michael-iden](https://github.com/michael-iden)! - allow action-button to be a slotted element
+
+- [#122](https://github.com/ithaka/pharos/pull/122) [`60667c5`](https://github.com/ithaka/pharos/commit/60667c558fc476ac4df1c1c7185846e400a686af) Thanks [@Niznikr](https://github.com/Niznikr)! - implement layout component on the site:
+
+  - Add preset `1-col--sidenav-comfy` to `<pharos-layout>` for larger margins on our breakpoints
+  - Implement layouts with the new preset on the site
+  - Update site styles for responsiveness on our breakpoints
+
+### Patch Changes
+
+- [#125](https://github.com/ithaka/pharos/pull/125) [`53dac65`](https://github.com/ithaka/pharos/commit/53dac6539cd97b8249ff9c0438417415005b17bc) Thanks [@Lham42](https://github.com/Lham42)! - Add sass mixins section to storybook
+
+* [#130](https://github.com/ithaka/pharos/pull/130) [`f4c6e4a`](https://github.com/ithaka/pharos/commit/f4c6e4a2567bd738168a29e230b3b7de018bc798) Thanks [@eslawski](https://github.com/eslawski)! - Prevent pharos-modal-closed event from being emitted on initial render
+
+- [#124](https://github.com/ithaka/pharos/pull/124) [`cf0b380`](https://github.com/ithaka/pharos/commit/cf0b38024298fe1f60466f171334f7bef8f6d344) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies
+
+* [#114](https://github.com/ithaka/pharos/pull/114) [`ef0cd0b`](https://github.com/ithaka/pharos/commit/ef0cd0befcc5f558c302258758401174c92bdf33) Thanks [@Niznikr](https://github.com/Niznikr)! - use node in place of gulp for building Pharos
+
 ## 10.1.0
 
 ### Minor Changes
