@@ -78,6 +78,7 @@ export class PharosImageCard extends LitElement {
   /**
    * The heading level to use for the card title when using the title property.
    * @attr heading-level
+   * @type {HeadingLevel | undefined}
    */
   @property({ type: Number, reflect: true, attribute: 'heading-level' })
   public headingLevel?: HeadingLevel;
