@@ -104,7 +104,9 @@ export class PharosModal extends LitElement {
         this._returnTriggerFocus();
       }
 
-      this._emitVisibilityChange();
+      if (changedProperties.get('open') !== undefined) {
+        this._emitVisibilityChange();
+      }
     }
   }
 
