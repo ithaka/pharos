@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import path from 'path';
 import globby from 'globby';
-import customElements from '../custom-elements.json';
+import customElementsManifest from '../custom-elements.json';
 import prettier from 'prettier';
 
 const REACT_PROP_TYPE = 'DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>';
@@ -15,7 +15,7 @@ const toCamelCase = (str) => {
 
 // Create prop interface using custom-elements.json
 const createComponentInterface = (component, reactName) => {
-  const item = customElements.tags.find((item) => item.name === component);
+  const item = customElementsManifest.tags.find((item) => item.name === component);
   const props =
     item.properties &&
     item.properties.map((property) => {
@@ -61,7 +61,7 @@ const createComponentInterface = (component, reactName) => {
 
 // Define default prop values using custom-elements.json
 const createDefaultProps = (component, reactName) => {
-  const item = customElements.tags.find((item) => item.name === component);
+  const item = customElementsManifest.tags.find((item) => item.name === component);
   const props =
     item.properties &&
     item.properties

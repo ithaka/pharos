@@ -19,7 +19,7 @@ export type { Placement, PositioningStrategy };
 /**
  * Pharos dropdown menu component.
  *
- * @element pharos-dropdown-menu
+ * @tag pharos-dropdown-menu
  *
  * @slot - Contains the menu items.
  *

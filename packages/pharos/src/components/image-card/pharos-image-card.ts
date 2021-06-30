@@ -25,7 +25,7 @@ const DEFAULT_HEADING_LEVEL = 3;
 /**
  * Pharos image card component.
  *
- * @element pharos-image-card
+ * @tag pharos-image-card
  *
  * @slot image - Contains the image to display on the card.
  * @slot metadata - Contains the metadata for the item.

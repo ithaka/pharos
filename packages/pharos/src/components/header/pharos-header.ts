@@ -6,7 +6,7 @@ import { customElement } from '../../utils/decorators';
 /**
  * Pharos header component.
  *
- * @element pharos-header
+ * @tag pharos-header
  *
  * @slot top - Content to be shown at the top of the nav.
  * @slot start - Content to be shown at the start of the nav.

@@ -24,7 +24,7 @@ const MAX_LENGTH = 40;
  * text and tooltip (if the text is truncated) logic and styling.
  *
  *
- * @element pharos-breadcrumb-item
+ * @tag pharos-breadcrumb-item
  *
  * @slot - Contains the links and text to convert into breadcrumbs
  *

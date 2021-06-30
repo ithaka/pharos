@@ -9,7 +9,7 @@ import '../heading/pharos-heading';
 /**
  * Pharos sidenav section component.
  *
- * @element pharos-sidenav-section
+ * @tag pharos-sidenav-section
  *
  * @slot - Contains the content of the section (the default slot).
  *

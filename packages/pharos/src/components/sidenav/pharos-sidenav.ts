@@ -14,7 +14,7 @@ import '../link/pharos-link';
 /**
  * Pharos sidenav component.
  *
- * @element pharos-sidenav
+ * @tag pharos-sidenav
  *
  * @slot top - Content to be shown at the top of the sidenav.
  * @slot - Contains the sections of the sidenav (the default slot).

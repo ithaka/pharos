@@ -7,7 +7,7 @@ import { customElement } from '../../utils/decorators';
 /**
  * Pharos tab component.
  *
- * @element pharos-tab
+ * @tag pharos-tab
  *
  * @slot - Contains the content of the tab.
  *

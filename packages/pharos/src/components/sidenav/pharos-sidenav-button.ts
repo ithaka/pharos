@@ -11,7 +11,7 @@ export type { LinkTarget, ButtonType, IconName };
 /**
  * Pharos sidenav button component.
  *
- * @element pharos-sidenav-button
+ * @tag pharos-sidenav-button
  *
  */
 @customElement('pharos-sidenav-button')

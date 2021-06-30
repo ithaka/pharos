@@ -8,7 +8,7 @@ import type { PharosTabPanel } from './pharos-tab-panel';
 /**
  * Pharos tabs component.
  *
- * @element pharos-tabs
+ * @tag pharos-tabs
  *
  * @slot - Contains the tabs.
  * @slot panel - Contains the panel to be shown for a tab.

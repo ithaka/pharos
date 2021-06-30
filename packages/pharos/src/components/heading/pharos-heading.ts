@@ -47,7 +47,7 @@ const PRESETS = [
 /**
  * Pharos heading component.
  *
- * @element pharos-heading
+ * @tag pharos-heading
  *
  * @slot - Contains the heading text (the default slot).
  */

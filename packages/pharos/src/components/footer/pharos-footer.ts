@@ -12,7 +12,7 @@ import '../icon/pharos-icon';
 /**
  * Pharos footer component.
  *
- * @element pharos-footer
+ * @tag pharos-footer
  *
  * @slot links-group - One or more lists of links to show in the middle of the footer.
  * @slot button-links - List of button links to show in the middle of the footer.

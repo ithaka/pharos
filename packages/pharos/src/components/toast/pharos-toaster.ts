@@ -20,7 +20,7 @@ import { DEFAULT_STATUS } from './pharos-toast';
 /**
  * Pharos toaster component.
  *
- * @element pharos-toaster
+ * @tag pharos-toaster
  *
  * @slot - Contains the toasts (the default slot).
  *

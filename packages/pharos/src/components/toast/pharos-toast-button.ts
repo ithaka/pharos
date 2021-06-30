@@ -11,7 +11,7 @@ export type { LinkTarget, ButtonType, IconName };
 /**
  * Pharos toast button component.
  *
- * @element pharos-toast-button
+ * @tag pharos-toast-button
  *
  */
 @customElement('pharos-toast-button')

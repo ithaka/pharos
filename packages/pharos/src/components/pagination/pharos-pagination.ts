@@ -10,7 +10,7 @@ import '../link/pharos-link';
 /**
  * Pharos pagination component.
  *
- * @element pharos-pagination
+ * @tag pharos-pagination
  *
  * @fires prev-page - Fires when the previous page link is clicked
  * @fires next-page - Fires when the next page link is clicked

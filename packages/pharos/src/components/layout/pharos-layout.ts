@@ -13,7 +13,7 @@ const PRESETS = ['1-col', '1-col--sidenav', '1-col--sidenav-comfy', '2-col'];
 /**
  * Pharos layout component.
  *
- * @element pharos-layout
+ * @tag pharos-layout
  *
  * @slot top - Content to be shown above the inner grid.
  * @slot - Content to be shown within the inner grid (the default slot).

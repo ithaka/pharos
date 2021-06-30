@@ -12,7 +12,7 @@ export type { TextInputType, TextInputAutocomplete };
 /**
  * Pharos input group component.
  *
- * @element pharos-input-group
+ * @tag pharos-input-group
  *
  * @slot - Contains the elements to be appended to the input group (the default slot).
  * @slot prepend - Contains the elements to be prepended to the input group.
