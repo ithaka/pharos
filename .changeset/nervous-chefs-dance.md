@@ -2,4 +2,7 @@
 '@ithaka/pharos': patch
 ---
 
-center images within image card
+image-card style updates
+
+* center images horizontally within image card
+* align card title to top instead of center
