@@ -5,6 +5,8 @@ import { imageCardStyles } from './pharos-image-card.css';
 import { customElement } from '../../utils/decorators';
 
 import type { HeadingLevel } from '../heading/pharos-heading';
+export type { HeadingLevel };
+
 import type { PharosButton } from '../button/pharos-button';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
 import type { PharosLink } from '../link/pharos-link';
