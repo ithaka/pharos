@@ -12,16 +12,12 @@
 
 .card__link--image {
   height: 14rem;
+  margin: 0 auto var(--pharos-spacing-1-x);
 }
 
 .card__link--image,
 .card__link--title {
   display: inline-flex;
-}
-
-.card__link--image,
-.card__link--collection {
-  margin-bottom: var(--pharos-spacing-1-x);
 }
 
 .card__metadata {
@@ -81,6 +77,7 @@
   display: grid;
   position: relative;
   height: auto;
+  margin-bottom: var(--pharos-spacing-1-x);
 }
 
 .card__action-button {
