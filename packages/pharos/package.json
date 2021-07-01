@@ -15,7 +15,7 @@
   "scripts": {
     "analyze": "wca analyze src --outFile custom-elements.json",
     "build:tokens": "node --experimental-json-modules ./scripts/build-tokens.mjs",
-    "prebuild": "yarn clean && yarn build:tokens && yarn analyze && yarn build:react && yarn build:assets",
+    "prebuild": "yarn clean && yarn build:tokens && yarn analyze && yarn build:react && yarn build:assets && yarn build:sassdoc",
     "build": "yarn build:styles && yarn build:tsc && yarn build:replace:imports",
     "build:tsc": "tsc --project tsconfig.build.json",
     "build:tsc:watch": "tsc -w --project tsconfig.build.json",

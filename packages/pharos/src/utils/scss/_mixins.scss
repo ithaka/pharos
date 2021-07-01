@@ -1,6 +1,9 @@
 @use './variables';
 @use './functions';
 
+/// Base styles for inputs
+/// @access public
+/// @group form-elements
 @mixin input-base {
   @include font-base;
 
@@ -14,6 +17,9 @@
   color: var(--pharos-form-element-color-text-base);
 }
 
+/// Placeholder styles for inputs
+/// @access public
+/// @group form-elements
 @mixin input-placeholder {
   &::placeholder {
     color: var(--pharos-form-element-color-text-placeholder);
@@ -21,12 +27,18 @@
   }
 }
 
+/// Focus styles for inputs
+/// @access public
+/// @group form-elements
 @mixin input-focus {
   outline: none;
   border: 2px solid var(--pharos-form-element-color-border-focus);
   transition: transform var(--pharos-transition-base) 0s;
 }
 
+/// Wrapper styles for inputs
+/// @access public
+/// @group form-elements
 @mixin input-wrapper {
   position: relative;
   display: flex;
@@ -34,10 +46,16 @@
   width: 100%;
 }
 
+/// Styles for input's invalid state
+/// @access public
+/// @group form-elements
 @mixin input-invalid {
   border: 2px solid var(--pharos-form-element-color-border-invalid);
 }
 
+/// Styles for input's disabled state
+/// @access public
+/// @group form-elements
 @mixin input-disabled {
   color: var(--pharos-form-element-color-text-disabled);
   background-color: var(--pharos-form-element-color-background-disabled);
@@ -45,17 +63,26 @@
   pointer-events: none;
 }
 
+/// Styles for input's required state
+/// @access public
+/// @group form-elements
 @mixin input-required {
   &:required {
     box-shadow: none;
   }
 }
 
+/// Styles for input states with thicker borders
+/// @access public
+/// @group form-elements
 @mixin input-padding-thick-border {
   padding: calc(var(--pharos-spacing-one-half-x) - 1px)
     calc(var(--pharos-spacing-three-quarters-x) - 1px);
 }
 
+/// Styles for inputs on a background
+/// @access public
+/// @group form-elements
 @mixin input-on-background {
   background-color: var(--pharos-color-marble-gray-20);
   border-color: var(--pharos-color-marble-gray-20);
@@ -67,6 +94,9 @@
   }
 }
 
+/// Styles for input options
+/// @access public
+/// @group form-elements
 @mixin option-input {
   @include hidden;
 
@@ -74,12 +104,18 @@
   box-sizing: border-box;
 }
 
+/// Wrapper styles for input options
+/// @access public
+/// @group form-elements
 @mixin option-wrapper {
   display: inline-flex;
   align-items: flex-start;
   position: relative;
 }
 
+/// Styles to hide an element
+/// @access public
+/// @group interaction
 @mixin hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -93,6 +129,13 @@
   white-space: nowrap;
 }
 
+/// Base styles for font.
+/// @param {string} $font-family [var(--pharos-font-family-sans-serif)] - The font family of the font
+/// @param {string} $font-size [var(--pharos-font-size-base)] - The size of the font
+/// @param {string} $font-weight [var(--pharos-font-weight-regular)] - The weight of the font
+/// @param {string} $line-height [var(--pharos-line-height-medium)] - The line height of the font
+/// @access public
+/// @group typography
 @mixin font-base(
   $font-family: var(--pharos-font-family-sans-serif),
   $font-size: var(--pharos-font-size-base),
@@ -116,14 +159,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/// Letter spacing for serif type
+/// @access public
+/// @group typography
 @mixin letter-spacing-serif($font-size: 1rem) {
   letter-spacing: calc(#{$font-size} * -0.01);
 }
 
+/// Letter spacing for sans-serif type
+/// @access public
+/// @group typography
 @mixin letter-spacing-sans-serif($font-size: 1rem) {
   letter-spacing: calc(#{$font-size} * -0.02);
 }
 
+/// Base styles for labels
+/// @access public
+/// @group form-elements
 @mixin label-base($margin-bottom: var(--pharos-spacing-one-quarter-x), $text-transform: uppercase) {
   color: var(--pharos-form-element-color-text-base);
   margin-bottom: $margin-bottom;
@@ -132,6 +184,9 @@
   text-transform: $text-transform;
 }
 
+/// Styles for labels of form elements
+/// @access public
+/// @group form-elements
 @mixin form-element-label {
   @include font-base(
     $font-size: var(--pharos-form-element-size-text-label),
@@ -141,6 +196,9 @@
   @include label-base;
 }
 
+/// Styles for labels of grouped form elements
+/// @access public
+/// @group form-elements
 @mixin groupable-element-label {
   @include font-base;
   @include label-base($margin-bottom: 0, $text-transform: none);
@@ -148,6 +206,9 @@
   padding-left: var(--pharos-spacing-one-quarter-x);
 }
 
+/// Styles for icon buttons.
+/// @access public
+/// @group buttons
 @mixin icon-button {
   display: flex;
   flex-direction: column;
@@ -159,6 +220,9 @@
   margin: 0;
 }
 
+/// Focus styles for most interactive components.
+/// @access public
+/// @group interaction
 @mixin interactive-focus {
   &:focus {
     outline: 2px solid var(--pharos-color-focus);
@@ -166,6 +230,12 @@
   }
 }
 
+/// Base styles for buttons.
+/// @param {string} $color [var(--pharos-color-text-white)] - The color of the text
+/// @param {string} $background-color [var(--pharos-color-interactive-primary)] - The color of the background
+/// @param {string} $border-color [var(--pharos-color-interactive-primary)] - The color of the border
+/// @access public
+/// @group buttons
 @mixin button-base(
   $color: var(--pharos-color-text-white),
   $background-color: var(--pharos-color-interactive-primary),
@@ -203,6 +273,12 @@
   }
 }
 
+/// Hover styles for buttons.
+/// @param {string} $color [var(--pharos-color-hover-primary)] - The color of the text
+/// @param {string} $background-color [transparent] - The color of the background
+/// @param {string} $border-color [var(--pharos-color-hover-primary)] - The color of the border
+/// @access public
+/// @group buttons
 @mixin button-hover(
   $color: var(--pharos-color-hover-primary),
   $background-color: transparent,
@@ -223,6 +299,9 @@
   }
 }
 
+/// Styles for large buttons.
+/// @access public
+/// @group buttons
 @mixin button-large {
   padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
 
@@ -233,6 +312,12 @@
   }
 }
 
+/// Color styles for buttons.
+/// @param {string} $color [var(--pharos-color-text-white)] - The color of the text
+/// @param {string} $background-color [var(--pharos-color-interactive-primary)] - The color of the background
+/// @param {string} $border-color [var(--pharos-color-interactive-primary)] - The color of the border
+/// @access public
+/// @group buttons
 @mixin button-color(
   $color: var(--pharos-color-text-white),
   $background-color: var(--pharos-color-interactive-primary),
@@ -248,6 +333,9 @@
   }
 }
 
+/// Base styles for links.
+/// @access public
+/// @group links
 @mixin link-base {
   @include font-base($font-size: inherit, $line-height: inherit);
   @include underline;
@@ -258,6 +346,9 @@
   transition-timing-function: ease-in-out;
 }
 
+/// Hover style for links.
+/// @access public
+/// @group links
 @mixin link-hover {
   &:hover {
     @include no-underline;
@@ -266,11 +357,18 @@
   }
 }
 
+/// Base styles for underlines.
+/// @param {string} $text-decoration-color [var(--pharos-color-interactive-secondary)] - The color of the underline
+/// @access public
+/// @group links
 @mixin underline($text-decoration-color: var(--pharos-color-interactive-secondary)) {
   text-decoration: underline;
   text-decoration-color: $text-decoration-color;
 }
 
+/// Removes underlines.
+/// @access public
+/// @group links
 @mixin no-underline {
   text-decoration: none;
   text-decoration-color: transparent;
@@ -278,10 +376,17 @@
   text-decoration-style: solid;
 }
 
+/// Removes bullets from lists.
+/// @access public
+/// @group typography
 @mixin no-bullet {
   list-style-type: none;
 }
 
+/// Base styles for inline lists.
+/// @param {string} $margin-right [var(--pharos-spacing-one-and-a-half-x)] - The margin between list items
+/// @access public
+/// @group typography
 @mixin list-inline($margin-right: var(--pharos-spacing-one-and-a-half-x)) {
   @include no-bullet;
 
@@ -295,22 +400,36 @@
   }
 }
 
+/// Base style for nested lists.
+/// @access public
+/// @group typography
 @mixin list-nested {
   > li:not(:last-child) {
     margin-bottom: var(--pharos-spacing-three-quarters-x);
   }
 }
 
+/// Base styles for transitions.
+/// @param {string} $properties - The transition properties to style
+/// @access public
+/// @group interaction
 @mixin transition-base($properties...) {
   transition-property: $properties;
   transition-duration: var(--pharos-transition-duration-default);
   transition-timing-function: ease-in-out;
 }
 
+/// Base styles for content labels.
+/// @access public
+/// @group typography
 @mixin content-label($args...) {
   @include form-element-label($args...);
 }
 
+/// Creates a media query that starts at the passed breakpoint.
+/// @param {string} $breakpoint - The breakpoint to use as the minimum
+/// @access public
+/// @group layout
 @mixin at-least($breakpoint) {
   @if map-has-key(variables.$breakpoints, $breakpoint) {
     $width: map-get(variables.$breakpoints, $breakpoint, width);
@@ -322,6 +441,10 @@
   }
 }
 
+/// Creates a media query that ranges up to the passed breakpoint.
+/// @param {string} $breakpoint - The breakpoint to use as the maximum
+/// @access public
+/// @group layout
 @mixin until($breakpoint) {
   @if map-has-key(variables.$breakpoints, $breakpoint) {
     $width: map-get(variables.$breakpoints, $breakpoint, width);
@@ -333,6 +456,11 @@
   }
 }
 
+/// Creates a media query that ranges between the two passed breakpoints.
+/// @param {string} $lower - The breakpoint to use as the lower bounds
+/// @param {string} $upper - The breakpoint to use as the upper bounds
+/// @access public
+/// @group layout
 @mixin between($lower, $upper) {
   @if map-has-key(variables.$breakpoints, $lower) and map-has-key(variables.$breakpoints, $upper) {
     $lower-width: functions.calculate-px(map-get(variables.$breakpoints, $lower, width));
@@ -345,11 +473,17 @@
   }
 }
 
+/// Base style for the layout's outer grid.
+/// @access public
+/// @group layout
 @mixin layout-base {
   display: grid;
   grid-template-areas: '. content .';
 }
 
+/// Base style for the layout's inner grid.
+/// @access public
+/// @group layout
 @mixin layout-content {
   display: grid;
   grid-area: content;
@@ -371,6 +505,10 @@
   }
 }
 
+/// Sets margins for the layout's outer grid.
+/// @param {string} $layout - The layout preset
+/// @access public
+/// @group layout
 @mixin layout-base-columns($layout) {
   $breakpoints: map-get(variables.$layouts, $layout);
   $fixed-margin: $layout != '1-col';
@@ -397,6 +535,10 @@
   }
 }
 
+/// Sets widths for the layout's inner grid.
+/// @param {string} $layout - The layout preset
+/// @access public
+/// @group layout
 @mixin layout-content-width($layout) {
   $breakpoints: map-get(variables.$layouts, $layout);
   $fixed-width: $layout == '1-col';
