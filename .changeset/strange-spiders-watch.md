@@ -1,5 +1,5 @@
 ---
-'@ithaka/pharos-site': major
+'@ithaka/pharos-site': minor
 ---
 
 Add cookie settings option to footer of pharos site
