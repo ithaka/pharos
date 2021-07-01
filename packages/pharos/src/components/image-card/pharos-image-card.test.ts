@@ -83,6 +83,18 @@ describe('pharos-image-card', () => {
     expect(menu.open).to.be.true;
   });
 
+  it('uses a default heading level when not supplied', async () => {
+    const heading = component.renderRoot.querySelector('pharos-heading');
+    expect(heading?.getAttribute('level')).to.equal('3');
+  });
+
+  it('uses the supplied heading level', async () => {
+    component.headingLevel = 2;
+    await component.updateComplete;
+    const heading = component.renderRoot.querySelector('pharos-heading');
+    expect(heading?.getAttribute('level')).to.equal('2');
+  });
+
   it('sets title link hover state when the card image link is hovered', async () => {
     const imageLink = component.renderRoot.querySelector('.card__link--image');
     imageLink?.dispatchEvent(new Event('mouseenter'));

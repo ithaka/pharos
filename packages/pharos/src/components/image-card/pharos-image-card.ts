@@ -4,6 +4,9 @@ import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
 import { customElement } from '../../utils/decorators';
 
+import type { HeadingLevel } from '../heading/pharos-heading';
+export type { HeadingLevel };
+
 import type { PharosButton } from '../button/pharos-button';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
 import type { PharosLink } from '../link/pharos-link';
@@ -16,6 +19,8 @@ import '../button/pharos-button';
 export type ImageCardVariant = 'base' | 'collection';
 
 const VARIANTS = ['base', 'collection'];
+
+const DEFAULT_HEADING_LEVEL = 3;
 
 /**
  * Pharos image card component.
@@ -71,6 +76,14 @@ export class PharosImageCard extends LitElement {
    */
   @property({ type: String, reflect: true, attribute: 'action-menu' })
   public actionMenu?: string;
+
+  /**
+   * The heading level to use for the card title when using the title property.
+   * @attr heading-level
+   * @type {HeadingLevel | undefined}
+   */
+  @property({ type: Number, reflect: true, attribute: 'heading-level' })
+  public headingLevel?: HeadingLevel;
 
   @query('.card__link--title')
   private _title!: PharosLink;
@@ -155,7 +168,7 @@ export class PharosImageCard extends LitElement {
         ? html`<pharos-heading
             class="card__heading"
             preset="${this.variant === 'collection' ? '2' : '1--bold'}"
-            level="3"
+            level="${this.headingLevel || DEFAULT_HEADING_LEVEL}"
             no-margin
             >${this.title}</pharos-heading
           >`
