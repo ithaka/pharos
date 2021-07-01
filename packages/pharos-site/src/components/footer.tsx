@@ -92,6 +92,15 @@ const Footer: FC = () => {
               </PharosLink>
               <strong className={badge}>We&apos;re hiring!</strong>
             </li>
+            <li>
+              <PharosLink
+                href="javascript:void(0)"
+                onclick="OneTrust.ToggleInfoDisplay()"
+                onBackground
+              >
+                Cookie settings
+              </PharosLink>
+            </li>
           </ul>
         </div>
         <div className={container__end}>
