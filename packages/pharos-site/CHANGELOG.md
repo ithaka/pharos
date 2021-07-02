@@ -1,5 +1,18 @@
 # @ithaka/pharos-site
 
+## 5.6.0
+
+### Minor Changes
+
+- [#135](https://github.com/ithaka/pharos/pull/135) [`9d405fc`](https://github.com/ithaka/pharos/commit/9d405fc565a9b4d192372e0fc355848a9408db0c) Thanks [@Lham42](https://github.com/Lham42)! - Add cookie settings option to footer of pharos site
+
+### Patch Changes
+
+- [#131](https://github.com/ithaka/pharos/pull/131) [`acd6338`](https://github.com/ithaka/pharos/commit/acd6338c4ac31609859e96a68b32d04137b102ea) Thanks [@Lham42](https://github.com/Lham42)! - Update accessibility section for image card component
+
+- Updated dependencies [[`bad3ef6`](https://github.com/ithaka/pharos/commit/bad3ef6118fa5de333399b8f6473f4707ba20103), [`5e00ece`](https://github.com/ithaka/pharos/commit/5e00ece6b9da6b6fc51f81dcf803c11d4e79e5cb), [`b5d84e6`](https://github.com/ithaka/pharos/commit/b5d84e6a074e20b8ba87f8f704a2d0f7c773ae6f)]:
+  - @ithaka/pharos@10.3.0
+
 ## 5.5.0
 
 ### Minor Changes
