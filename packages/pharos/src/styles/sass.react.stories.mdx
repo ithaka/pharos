@@ -8,11 +8,18 @@ import sassDoc from '../../sass.json';
   }}
 />
 
+export const tableTitle = (title) => {
+  return title
+    .split('-')
+    .map((str) => str[0].toUpperCase() + str.slice(1))
+    .join(' ');
+};
+
 export const MixinTable = (title) => {
   const mixins = sassDoc.filter((value) => value.context.type === 'mixin');
   return (
     <div className="token-table-container" style={{ width: '100%' }}>
-      <h2>{title}</h2>
+      <h2>{tableTitle(title)}</h2>
       <table className="token-table" style={{ tableLayout: 'fixed' }}>
         <thead>
           <tr>
