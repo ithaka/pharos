@@ -2,7 +2,6 @@
 
 :host {
   display: inline-flex;
-  contain: layout;
 }
 
 .card {
@@ -12,16 +11,12 @@
 
 .card__link--image {
   height: 14rem;
+  margin: 0 auto var(--pharos-spacing-1-x);
 }
 
 .card__link--image,
 .card__link--title {
   display: inline-flex;
-}
-
-.card__link--image,
-.card__link--collection {
-  margin-bottom: var(--pharos-spacing-1-x);
 }
 
 .card__metadata {
@@ -73,7 +68,7 @@
 
 .card__title {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
@@ -81,10 +76,7 @@
   display: grid;
   position: relative;
   height: auto;
-}
-
-.card__action-button {
-  margin-left: auto;
+  margin-bottom: var(--pharos-spacing-1-x);
 }
 
 .card__title--hover {
