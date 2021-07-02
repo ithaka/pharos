@@ -35,7 +35,11 @@ export const MixinTable = (title) => {
             if (mixin.group.includes(title)) {
               return html`
                 <tr>
-                  <td>${mixin.context.name}</td>
+                  <td>
+                    <code style="font-size: var(--pharos-font-size-small)"
+                      >${mixin.context.name}</code
+                    >
+                  </td>
                   <td>${mixin.description}</td>
                   <td>
                     <div
