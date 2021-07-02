@@ -1,5 +1,25 @@
 # @ithaka/pharos
 
+## 10.3.0
+
+### Minor Changes
+
+- [#133](https://github.com/ithaka/pharos/pull/133) [`bad3ef6`](https://github.com/ithaka/pharos/commit/bad3ef6118fa5de333399b8f6473f4707ba20103) Thanks [@daneah](https://github.com/daneah)! - Add headingLevel to image card to change the heading level when using the `title` property
+
+* [#137](https://github.com/ithaka/pharos/pull/137) [`b5d84e6`](https://github.com/ithaka/pharos/commit/b5d84e6a074e20b8ba87f8f704a2d0f7c773ae6f) Thanks [@Niznikr](https://github.com/Niznikr)! - use SassDoc to document SASS:
+
+  - Add a script that uses SassDoc to generate a json containing all documented SASS
+  - Add documentation comments to mixins
+  - Update mixin stories
+
+### Patch Changes
+
+- [#136](https://github.com/ithaka/pharos/pull/136) [`5e00ece`](https://github.com/ithaka/pharos/commit/5e00ece6b9da6b6fc51f81dcf803c11d4e79e5cb) Thanks [@michael-iden](https://github.com/michael-iden)! - image-card style updates
+
+  - center images horizontally within image card
+  - align card title to top instead of center
+  - remove contain styling from the card element
+
 ## 10.2.0
 
 ### Minor Changes
