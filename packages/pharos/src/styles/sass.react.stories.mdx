@@ -11,13 +11,13 @@ import sassDoc from '../../sass.json';
 export const MixinTable = (title) => {
   const mixins = sassDoc.filter((value) => value.context.type === 'mixin');
   return (
-    <div className="token-table-container">
+    <div className="token-table-container" style={{ width: '100%' }}>
       <h2>{title}</h2>
-      <table className="token-table">
+      <table className="token-table" style={{ tableLayout: 'fixed' }}>
         <thead>
           <tr>
-            <th style={{ width: '26%' }}>Name</th>
-            <th style={{ width: '14%' }}>Description</th>
+            <th style={{ width: '20%' }}>Name</th>
+            <th style={{ width: '20%' }}>Description</th>
             <th style={{ width: '60%' }}>Code</th>
           </tr>
         </thead>
