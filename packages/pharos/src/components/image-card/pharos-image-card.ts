@@ -186,7 +186,7 @@ export class PharosImageCard extends LitElement {
           label="More actions"
           @click=${this._handleClick}
         ></pharos-button>`
-      : html`<div class="card__action-button"><slot name="action-button"></slot></div>`;
+      : html`<slot name="action-button"></slot>`;
   }
 
   private _renderMetadata(): TemplateResult | typeof nothing {
