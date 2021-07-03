@@ -45,6 +45,7 @@ export class PharosLayout extends LitElement {
   /**
    * Indicates the row gap to use for the inner grid.
    * @attr row-gap
+   * @type {string}
    */
   @property({ type: String, reflect: true, attribute: 'row-gap' })
   public rowGap = PharosSpacingThreeAndAHalfX;

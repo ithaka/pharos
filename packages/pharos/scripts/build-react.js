@@ -19,23 +19,24 @@ const createComponentInterface = (component, reactName) => {
     .map((module) => module.declarations)
     .flat()
     .find((item) => item.tagName === component);
+  const publicFields = item.members.filter(
+    (member) => member.kind === 'field' && member.privacy === 'public'
+  );
   const props =
-    item.members.length &&
-    item.members
-      .filter((member) => member.kind === 'field' && member.privacy === 'public')
-      .map((property) => {
-        const readonly =
-          property.description && property.description.includes('@readonly') ? 'readonly ' : '';
-        const optional =
-          property.default || property.type.text.includes('undefined') || readonly ? '?' : '';
+    publicFields.length &&
+    publicFields.map((property) => {
+      const readonly =
+        property.description && property.description.includes('@readonly') ? 'readonly ' : '';
+      const optional =
+        property.default || property.type.text.includes('undefined') || readonly ? '?' : '';
 
-        return (
-          `/**\n` +
-          `* ${property.description || ''}\n` +
-          `*/\n` +
-          `${readonly}${property.name}${optional}: ${property.type.text};\n`
-        );
-      });
+      return (
+        `/**\n` +
+        `* ${property.description || ''}\n` +
+        `*/\n` +
+        `${readonly}${property.name}${optional}: ${property.type.text};\n`
+      );
+    });
 
   const events =
     item.events &&
@@ -70,13 +71,14 @@ const createDefaultProps = (component, reactName) => {
     .map((module) => module.declarations)
     .flat()
     .find((item) => item.tagName === component);
+  const defaultFields = item.members.filter(
+    (member) => member.kind === 'field' && member.privacy === 'public' && member.default
+  );
   const props =
-    item.members.length &&
-    item.members
-      .filter((member) => member.kind === 'field' && member.privacy === 'public' && member.default)
-      .map((property) => {
-        return `${property.name}: ${property.default},\n`;
-      });
+    defaultFields.length &&
+    defaultFields.map((property) => {
+      return `${property.name}: ${property.default},\n`;
+    });
   return props ? `${reactName}.defaultProps = {\n` + `${props.join('')}` + `};` : ``;
 };
 
