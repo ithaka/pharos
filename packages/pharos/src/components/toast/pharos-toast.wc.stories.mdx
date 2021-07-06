@@ -19,7 +19,7 @@ import '../link/pharos-link';
 <GuidelineLink path="toast" />
 
 <Canvas>
-  <Story name="Base">
+  <Story name="Base" parameters={{ chromatic: { viewports: [320, 1200] } }}>
     {() => {
       const effect = () => {
         useEffect(() => {
@@ -88,7 +88,7 @@ import '../link/pharos-link';
 ## Long Content Toast
 
 <Canvas>
-  <Story name="Long Content">
+  <Story name="Long Content" parameters={{ chromatic: { viewports: [320, 1200] } }}>
     {() => {
       const effect = () => {
         useEffect(() => {
