@@ -2,11 +2,13 @@
 
 :host {
   display: inline-flex;
+  width: 100%;
 }
 
 .card {
   display: inline-flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .card__link--image {
