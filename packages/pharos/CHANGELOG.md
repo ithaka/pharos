@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 10.3.1
+
+### Patch Changes
+
+- [#140](https://github.com/ithaka/pharos/pull/140) [`91bd5bb`](https://github.com/ithaka/pharos/commit/91bd5bb60a8fef8d248bc8ff2bfa7242751df7cb) Thanks [@michael-iden](https://github.com/michael-iden)! - link around image on card no longer has `contain: layout` style isolation
+
+* [#142](https://github.com/ithaka/pharos/pull/142) [`efdf62c`](https://github.com/ithaka/pharos/commit/efdf62c10eea72b644a7f61a33cf58542884ec00) Thanks [@Niznikr](https://github.com/Niznikr)! - set max-width for toasts on mobile
+
 ## 10.3.0
 
 ### Minor Changes
