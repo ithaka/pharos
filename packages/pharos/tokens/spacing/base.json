@@ -44,6 +44,10 @@
       "value": "7rem",
       "comment": "112px"
     },
+    "10-x": {
+      "value": "10rem",
+      "comment": "160px"
+    },
     "gutter"  : {
       "value": "{spacing.3-x.value}",
       "comment": "48px"
