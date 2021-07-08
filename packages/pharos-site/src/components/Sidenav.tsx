@@ -126,6 +126,7 @@ const Sidenav: FC = () => {
               'Icon',
               'Image card',
               'Input group',
+              'Layout',
               'Link',
               'Loading spinner',
               'Modal',
