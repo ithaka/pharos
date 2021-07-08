@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 10.4.0
+
+### Minor Changes
+
+- [#147](https://github.com/ithaka/pharos/pull/147) [`ce4eb30`](https://github.com/ithaka/pharos/commit/ce4eb300946614e2e4bfc295c54df0750fb59aa6) Thanks [@daneah](https://github.com/daneah)! - Add pharos-spacing-10-x token
+
+### Patch Changes
+
+- [#145](https://github.com/ithaka/pharos/pull/145) [`1fb07e5`](https://github.com/ithaka/pharos/commit/1fb07e5dd6eb38b656f00abbe8eab6587342afa3) Thanks [@michael-iden](https://github.com/michael-iden)! - expand card to be full width to fix alignment issues for cards within a wider grid
+
 ## 10.3.1
 
 ### Patch Changes
