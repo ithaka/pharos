@@ -1,5 +1,11 @@
 # @ithaka/pharos-site
 
+## 5.6.1
+
+### Patch Changes
+
+- [#150](https://github.com/ithaka/pharos/pull/150) [`d0f7b08`](https://github.com/ithaka/pharos/commit/d0f7b08207688b202f453fe54b48c1b55cbd5f6b) Thanks [@Lham42](https://github.com/Lham42)! - Add pharos grid layout documentation page to the site
+
 ## 5.6.0
 
 ### Minor Changes
