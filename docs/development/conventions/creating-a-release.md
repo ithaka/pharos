@@ -26,7 +26,7 @@ This brings the set of changes onto the `main` branch for a stable release. If t
 
 ## Publishing a release
 
-After pushing the commits to `main`, the [Changesets action](https://github.com/changesets/action) will create a pull request, titled `Version Packages`, with all of the package versions updated and changelogs updated. This pull request will automatically update whenever new changesets are pushed to `main`. When you're ready, you can merge the pull request and the action will publish the new versions to NPM for you.
+After pushing the commits to `main`, the [Changesets action](https://github.com/changesets/action) will create a pull request, titled **Version Packages**, with all of the package versions and changelogs updated. This pull request will automatically update whenever new changesets are pushed to `main`. When you're ready, you can merge the pull request and the action will publish the new versions to NPM for you.
 
 ## Manually publishing a release
 
