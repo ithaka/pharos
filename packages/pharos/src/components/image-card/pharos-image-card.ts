@@ -16,9 +16,9 @@ import '../link/pharos-link';
 import '../icon/pharos-icon';
 import '../button/pharos-button';
 
-export type ImageCardVariant = 'base' | 'collection';
+export type ImageCardVariant = 'base' | 'collection' | 'promotional';
 
-const VARIANTS = ['base', 'collection'];
+const VARIANTS = ['base', 'collection', 'promotional'];
 
 const DEFAULT_HEADING_LEVEL = 3;
 
@@ -162,12 +162,20 @@ export class PharosImageCard extends LitElement {
     return this.variant === 'collection' ? this._renderCollectionImage() : this._renderBaseImage();
   }
 
+  private _chooseHeadingPreset(): string {
+    return {
+      collection: '2',
+      promotional: '4',
+      base: '1--bold',
+    }[this.variant];
+  }
+
   protected get renderTitle(): TemplateResult {
     return html`<pharos-link class="card__link--title" href="${this.link}" subtle flex
       >${this.title
         ? html`<pharos-heading
             class="card__heading"
-            preset="${this.variant === 'collection' ? '2' : '1--bold'}"
+            preset="${this._chooseHeadingPreset()}"
             level="${this.headingLevel || DEFAULT_HEADING_LEVEL}"
             no-margin
             >${this.title}</pharos-heading
