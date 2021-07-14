@@ -7,7 +7,6 @@ import { customElement } from '../../utils/decorators';
 import type { PharosLink } from '../link/pharos-link';
 
 import FocusMixin from '../../utils/mixins/focus';
-import '../icon/pharos-icon';
 
 export type AlertStatus = 'info' | 'success' | 'warning' | 'error';
 
@@ -95,6 +94,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
         tabindex="0"
       >
         <pharos-icon class="alert__icon" name="${this._getIcon()}"></pharos-icon>
+        <yay>test<yay>
         <div class="alert__body">
           <slot @slotchange=${this._handleSlotChange}></slot>
         </div>
