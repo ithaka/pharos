@@ -224,6 +224,13 @@ describe('pharos-image-card', () => {
     expect(link).not.to.be.null;
   });
 
+  it('renders the source type when provided', async () => {
+    component.sourceType = 'image';
+    await component.updateComplete;
+    const sourceType = component.renderRoot.querySelector('.card__source-type');
+    expect(sourceType).not.to.be.null;
+  });
+
   it('renders a link around the container for the error state', async () => {
     component.error = true;
     await component.updateComplete;

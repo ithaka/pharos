@@ -43,6 +43,13 @@ export class PharosImageCard extends LitElement {
   public title = '';
 
   /**
+   * Indicates the item type of the source content represented by the card.
+   * @attr source-type
+   */
+  @property({ type: String, reflect: true, attribute: 'source-type' })
+  public sourceType?: string;
+
+  /**
    * Indicates the link to apply to the title and image.
    * @attr link
    */
@@ -197,6 +204,12 @@ export class PharosImageCard extends LitElement {
       : html`<slot name="action-button"></slot>`;
   }
 
+  private _renderSourceType(): TemplateResult | typeof nothing {
+    return this.sourceType
+      ? html`<div class="card__source-type">${this.sourceType}</div>`
+      : nothing;
+  }
+
   private _renderMetadata(): TemplateResult | typeof nothing {
     return this.subtle
       ? nothing
@@ -207,7 +220,7 @@ export class PharosImageCard extends LitElement {
 
   protected render(): TemplateResult {
     return html`<div class="card">
-      ${this._renderImage()}
+      ${this._renderImage()} ${this._renderSourceType()}
       <div class="card__title">${this.renderTitle} ${this._renderActionButton()}</div>
       ${this._renderMetadata()}
     </div>`;

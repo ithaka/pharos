@@ -71,6 +71,28 @@ export const MultipleTemplate = () => html`<pharos-layout tag="ol" style="margin
   })}</pharos-layout
 >`;
 
+export const SourceTypesTemplate = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
+  ${items.map((item, index) => {
+    return html`<li style="grid-column: span 2">
+      <pharos-image-card id="card-${index}" title="Card Title" link="#" source-type="Image">
+        <img
+          id="image-${index}"
+          src="./images/item-detail/${item.image}"
+          alt="Card Title ${index}"
+          slot="image"
+        />
+        <div id="creator-${index}" slot="metadata">Creator of the item</div>
+        <div id="item-date-${index}" slot="metadata">1990-2000</div>
+        <div id="collection-${index}" slot="metadata">
+          Part of
+          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+            >An Example Collection</pharos-link
+          >
+        </div>
+      </pharos-image-card>
+    </li>`;
+  })}</pharos-layout
+>`;
 export const CollectionsTemplate = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
   ${collections.map((collection, index) => {
     return html`<li class="image-card-example__card--collection">
@@ -96,17 +118,15 @@ export const CollectionsTemplate = () => html`<pharos-layout tag="ol" style="mar
 >`;
 
 export const PromotionalTemplate = () => html`<pharos-layout style="margin: 1rem 0">
-  <pharos-image-card
-    class="image-card-example__card--promotional"
-    title="Bring your work to life with images"
-    link="#"
-    variant="promotional"
-  >
-    <img src="./images/item-detail/open_collection_3.png" alt="" slot="image" />
-    <p slot="metadata">
-      Harness the power of visual materials—explore more than 3 million images now on JSTOR.
-    </p>
-  </pharos-image-card>
+  <div class="image-card-example__card--promotional">
+    <pharos-image-card title="Bring your work to life with images" link="#" variant="promotional">
+      <img src="./images/item-detail/open_collection_3.png" alt="" slot="image" />
+      <p slot="metadata">
+        Harness the power of visual materials—explore more than 3 million images now on JSTOR.
+      </p>
+    </pharos-image-card>
+    <pharos-button variant="secondary">Search for images</pharos-button>
+  </div>
 </pharos-layout>`;
 
 <Canvas>
@@ -116,6 +136,12 @@ export const PromotionalTemplate = () => html`<pharos-layout style="margin: 1rem
 ## API
 
 <ArgsTable of="pharos-image-card" />
+
+# With Source Types
+
+<Canvas>
+  <Story name="With Source Types">{SourceTypesTemplate.bind()}</Story>
+</Canvas>
 
 # Error State
 
