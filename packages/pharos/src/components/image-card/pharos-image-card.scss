@@ -150,10 +150,7 @@ slot[name='metadata']::slotted(strong) {
 }
 
 :host([variant='promotional']) .card__metadata {
-  @include mixins.font-base(
-    $font-size: var(--pharos-font-size-base),
-    $line-height: var(--pharos-line-height-medium)
-  );
+  @include mixins.font-base;
 }
 
 :host([variant='collection']) slot[name='image']::slotted(img) {
