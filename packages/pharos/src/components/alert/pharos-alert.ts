@@ -7,6 +7,7 @@ import { customElement } from '../../utils/decorators';
 import type { PharosLink } from '../link/pharos-link';
 
 import FocusMixin from '../../utils/mixins/focus';
+import '../icon/pharos-icon';
 
 export type AlertStatus = 'info' | 'success' | 'warning' | 'error';
 
