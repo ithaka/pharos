@@ -26,15 +26,7 @@ This brings the set of changes onto the `main` branch for a stable release. If t
 
 ## Publishing a release
 
-After pushing the commits to `main`, the [Changesets action](https://github.com/changesets/action) will create a pull request, titled `Version Packages`, with all of the package versions updated and changelogs updated. This pull request will automatically update whenever new changesets are pushed to `main`. When you're ready, you can merge the pull request and the action will publish the new versions to NPM for you. Lastly, the `main` branch's latest changes must be merged into the `develop` branch. It's important to do a fast-forward merge to avoid additional merge commits:
-
-```shell
-$ git checkout main
-$ git pull origin main
-$ git checkout develop
-$ git merge main --ff
-$ git push origin develop
-```
+After pushing the commits to `main`, the [Changesets action](https://github.com/changesets/action) will create a pull request, titled **Version Packages**, with all of the package versions and changelogs updated. This pull request will automatically update whenever new changesets are pushed to `main`. When you're ready, you can merge the pull request and the action will publish the new versions to NPM for you.
 
 ## Manually publishing a release
 
@@ -66,4 +58,12 @@ This publishes the newly-versioned packages to [npm](https://www.npmjs.com/) and
 $ git push --follow-tags
 ```
 
-The last step is to merge and push changes from `main` to `develop` to pull in the updated version strings.
+Lastly, the `main` branch's latest changes must be merged into the `develop` branch. It's important to do a fast-forward merge to avoid additional merge commits:
+
+```shell
+$ git checkout main
+$ git pull origin main
+$ git checkout develop
+$ git merge main --ff
+$ git push origin develop
+```
