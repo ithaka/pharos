@@ -20,6 +20,7 @@
 .card__link--image,
 .card__link--title {
   display: inline-flex;
+  min-width: 0;
 }
 
 .card__metadata {
