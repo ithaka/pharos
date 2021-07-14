@@ -4,7 +4,7 @@ import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
 import { customElement } from '../../utils/decorators';
 
-import type { HeadingLevel } from '../heading/pharos-heading';
+import type { HeadingLevel, HeadingPreset } from '../heading/pharos-heading';
 export type { HeadingLevel };
 
 import type { PharosButton } from '../button/pharos-button';
@@ -169,12 +169,12 @@ export class PharosImageCard extends LitElement {
     return this.variant === 'collection' ? this._renderCollectionImage() : this._renderBaseImage();
   }
 
-  private _chooseHeadingPreset(): string {
+  private _chooseHeadingPreset(): HeadingPreset {
     return {
       collection: '2',
       promotional: '4',
       base: '1--bold',
-    }[this.variant];
+    }[this.variant] as HeadingPreset;
   }
 
   protected get renderTitle(): TemplateResult {
