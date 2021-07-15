@@ -55,6 +55,23 @@ describe('pharos-image-card', () => {
     await expect(component).to.be.accessible();
   });
 
+  it('is accessible as the promotional variant', async () => {
+    component = await fixture(html`<pharos-image-card
+      title="Card Title"
+      link="#"
+      variant="promotional"
+    >
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <strong slot="metadata">100 items</strong>
+      <div slot="metadata">Description of collection.</div>
+    </pharos-image-card>`);
+    await expect(component).to.be.accessible();
+  });
+
   it('throws an error for an invalid variant value', async () => {
     component = await fixture(html`
       <pharos-image-card title="Card Title" link="#" variant="fake"></pharos-image-card>
@@ -147,6 +164,14 @@ describe('pharos-image-card', () => {
     expect(heading?.getAttribute('preset')).to.equal('2');
   });
 
+  it('renders a heading with preset "4" for the promotional variant', async () => {
+    component.variant = 'promotional';
+    await component.updateComplete;
+
+    const heading = component.renderRoot.querySelector('pharos-heading.card__heading');
+    expect(heading?.getAttribute('preset')).to.equal('4');
+  });
+
   it('renders the title via a slot when the title property is not set', async () => {
     component = await fixture(html`<pharos-image-card link="#">
       <img
@@ -197,6 +222,13 @@ describe('pharos-image-card', () => {
   it('renders a link around the image for the base variant', async () => {
     const link = component.renderRoot.querySelector('pharos-link.card__link--image');
     expect(link).not.to.be.null;
+  });
+
+  it('renders the source type when provided', async () => {
+    component.sourceType = 'image';
+    await component.updateComplete;
+    const sourceType = component.renderRoot.querySelector('.card__source-type');
+    expect(sourceType).not.to.be.null;
   });
 
   it('renders a link around the container for the error state', async () => {

@@ -69,6 +69,18 @@
   }
 }
 
+.card__source-type {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $font-weight: var(--pharos-font-weight-bold),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  color: var(--pharos-color-text-40);
+  text-transform: uppercase;
+  margin-bottom: var(--pharos-spacing-one-quarter-x);
+}
+
 .card__title {
   display: flex;
   justify-content: space-between;
@@ -135,6 +147,10 @@ slot[name='metadata']::slotted(strong) {
 
 :host([variant='collection']) .card__metadata {
   color: var(--pharos-color-text-20);
+}
+
+:host([variant='promotional']) .card__metadata {
+  @include mixins.font-base;
 }
 
 :host([variant='collection']) slot[name='image']::slotted(img) {
