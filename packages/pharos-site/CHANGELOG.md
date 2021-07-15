@@ -1,5 +1,16 @@
 # @ithaka/pharos-site
 
+## 5.7.0
+
+### Minor Changes
+
+- [#157](https://github.com/ithaka/pharos/pull/157) [`4bf0806`](https://github.com/ithaka/pharos/commit/4bf0806105b3e851d8a45cddde9d9ec9e25179b9) Thanks [@daneah](https://github.com/daneah)! - Add promotional variant and source-type prop
+
+### Patch Changes
+
+- Updated dependencies [[`4bf0806`](https://github.com/ithaka/pharos/commit/4bf0806105b3e851d8a45cddde9d9ec9e25179b9), [`4ab8479`](https://github.com/ithaka/pharos/commit/4ab84799afdaa52f07be8da07673a82cf5088a8f)]:
+  - @ithaka/pharos@10.5.0
+
 ## 5.6.1
 
 ### Patch Changes
