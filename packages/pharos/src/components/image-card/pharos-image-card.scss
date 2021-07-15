@@ -23,6 +23,10 @@
   min-width: 0;
 }
 
+:host([variant='promotional']) .card__link--image {
+  height: unset;
+}
+
 .card__metadata {
   @include mixins.font-base(
     $font-size: var(--pharos-font-size-small),
