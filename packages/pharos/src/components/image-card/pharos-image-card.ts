@@ -4,7 +4,7 @@ import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
 import { customElement } from '../../utils/decorators';
 
-import type { HeadingLevel } from '../heading/pharos-heading';
+import type { HeadingLevel, HeadingPreset } from '../heading/pharos-heading';
 export type { HeadingLevel };
 
 import type { PharosButton } from '../button/pharos-button';
@@ -16,9 +16,9 @@ import '../link/pharos-link';
 import '../icon/pharos-icon';
 import '../button/pharos-button';
 
-export type ImageCardVariant = 'base' | 'collection';
+export type ImageCardVariant = 'base' | 'collection' | 'promotional';
 
-const VARIANTS = ['base', 'collection'];
+const VARIANTS = ['base', 'collection', 'promotional'];
 
 const DEFAULT_HEADING_LEVEL = 3;
 
@@ -41,6 +41,13 @@ export class PharosImageCard extends LitElement {
    */
   @property({ type: String, reflect: true })
   public title = '';
+
+  /**
+   * Indicates the item type of the source content represented by the card.
+   * @attr source-type
+   */
+  @property({ type: String, reflect: true, attribute: 'source-type' })
+  public sourceType?: string;
 
   /**
    * Indicates the link to apply to the title and image.
@@ -162,12 +169,20 @@ export class PharosImageCard extends LitElement {
     return this.variant === 'collection' ? this._renderCollectionImage() : this._renderBaseImage();
   }
 
+  private _chooseHeadingPreset(): HeadingPreset {
+    return {
+      collection: '2',
+      promotional: '4',
+      base: '1--bold',
+    }[this.variant] as HeadingPreset;
+  }
+
   protected get renderTitle(): TemplateResult {
     return html`<pharos-link class="card__link--title" href="${this.link}" subtle flex
       >${this.title
         ? html`<pharos-heading
             class="card__heading"
-            preset="${this.variant === 'collection' ? '2' : '1--bold'}"
+            preset="${this._chooseHeadingPreset()}"
             level="${this.headingLevel || DEFAULT_HEADING_LEVEL}"
             no-margin
             >${this.title}</pharos-heading
@@ -189,6 +204,12 @@ export class PharosImageCard extends LitElement {
       : html`<slot name="action-button"></slot>`;
   }
 
+  private _renderSourceType(): TemplateResult | typeof nothing {
+    return this.sourceType
+      ? html`<div class="card__source-type">${this.sourceType}</div>`
+      : nothing;
+  }
+
   private _renderMetadata(): TemplateResult | typeof nothing {
     return this.subtle
       ? nothing
@@ -199,7 +220,7 @@ export class PharosImageCard extends LitElement {
 
   protected render(): TemplateResult {
     return html`<div class="card">
-      ${this._renderImage()}
+      ${this._renderImage()} ${this._renderSourceType()}
       <div class="card__title">${this.renderTitle} ${this._renderActionButton()}</div>
       ${this._renderMetadata()}
     </div>`;

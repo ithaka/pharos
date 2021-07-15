@@ -74,7 +74,38 @@ export const MultipleTemplate = () => (
               1990-2000
             </div>
             <div id={`collection-${index}`} slot="metadata">
-              Part of
+              Part of{' '}
+              <PharosLink href="https://www.jstor.org/site/pratt/buildings-image">
+                An Example Collection
+              </PharosLink>
+            </div>
+          </PharosImageCard>
+        </li>
+      );
+    })}
+  </PharosLayout>
+);
+
+export const SourceTypesTemplate = () => (
+  <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
+    {items.map((item, index) => {
+      return (
+        <li style={{ gridColumn: 'span 2' }} key={index}>
+          <PharosImageCard id={`card-${index}`} title="Card Title" link="#" source-type="Image">
+            <img
+              id={`image-${index}`}
+              src={`./images/item-detail/${item.image}`}
+              alt={`Card Title ${index}`}
+              slot="image"
+            />
+            <div id={`creator-${index}`} slot="metadata">
+              Creator of the item
+            </div>
+            <div id={`item-date-${index}`} slot="metadata">
+              1990-2000
+            </div>
+            <div id={`collection-${index}`} slot="metadata">
+              Part of{' '}
               <PharosLink href="https://www.jstor.org/site/pratt/buildings-image">
                 An Example Collection
               </PharosLink>
@@ -116,6 +147,20 @@ export const CollectionsTemplate = () => (
   </PharosLayout>
 );
 
+export const PromotionalTemplate = () => (
+  <PharosLayout style={{ margin: '1rem 0' }}>
+    <div className="image-card-example__card--promotional">
+      <PharosImageCard title="Bring your work to life with images" link="#" variant="promotional">
+        <img src="./images/item-detail/open_collection_3.png" alt="" slot="image" />
+        <p slot="metadata">
+          Harness the power of visual materials—explore more than 3 million images now on JSTOR.
+        </p>
+      </PharosImageCard>
+      <PharosButton variant="secondary">Search for images</PharosButton>
+    </div>
+  </PharosLayout>
+);
+
 <Canvas>
   <Story name="Base">{MultipleTemplate.bind({})}</Story>
 </Canvas>
@@ -123,6 +168,12 @@ export const CollectionsTemplate = () => (
 ## API
 
 <ArgsTable of={PharosImageCard} />
+
+# With Source Types
+
+<Canvas>
+  <Story name="With Source Types">{SourceTypesTemplate.bind()}</Story>
+</Canvas>
 
 # Error State
 
@@ -232,4 +283,10 @@ export const CollectionsTemplate = () => (
 
 <Canvas>
   <Story name="Collection">{CollectionsTemplate.bind({})}</Story>
+</Canvas>
+
+# Promotional
+
+<Canvas>
+  <Story name="Promotional">{PromotionalTemplate.bind({})}</Story>
 </Canvas>
