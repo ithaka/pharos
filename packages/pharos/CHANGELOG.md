@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 10.5.1
+
+### Patch Changes
+
+- [#165](https://github.com/ithaka/pharos/pull/165) [`7c77a9d`](https://github.com/ithaka/pharos/commit/7c77a9dfb435d76e6833c21bc4646f68dc2662f9) Thanks [@daneah](https://github.com/daneah)! - Allow promotional image cards to have dynamic heights
+
 ## 10.5.0
 
 ### Minor Changes
