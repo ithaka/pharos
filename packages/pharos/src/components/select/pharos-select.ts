@@ -47,7 +47,7 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
   protected firstUpdated(): void {
     if (!this.value) {
       this._setOption();
-    } else {
+    } else if (this._options.find((o) => o.value === this.value)) {
       this._select.value = this.value;
     }
     this._options.forEach((option) => (option.defaultSelected = option.hasAttribute('selected')));
