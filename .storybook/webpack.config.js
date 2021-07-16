@@ -51,13 +51,14 @@ module.exports = async ({ config, mode }) => {
     ) {
       delete rule.use;
       rule.loader = 'esbuild-loader';
+      rule.options = { target: 'firefox65' };
     }
   });
 
-  config.module.rules[0].options = { loader: 'tsx' };
+  config.module.rules[0].options = { loader: 'tsx', target: 'firefox65' };
 
   if (config.mode === 'production') {
-    config.optimization.minimizer = [new ESBuildMinifyPlugin()];
+    config.optimization.minimizer = [new ESBuildMinifyPlugin({ target: 'firefox65' })];
   }
 
   // Return the altered config
