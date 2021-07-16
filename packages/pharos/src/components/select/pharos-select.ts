@@ -45,10 +45,10 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
   }
 
   protected firstUpdated(): void {
-    if (!this.value) {
-      this._setOption();
-    } else if (this._options.find((o) => o.value === this.value)) {
+    if (this.value && this._options.find((o) => o.value === this.value)) {
       this._select.value = this.value;
+    } else {
+      this._setOption();
     }
     this._options.forEach((option) => (option.defaultSelected = option.hasAttribute('selected')));
   }
@@ -56,7 +56,7 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
   private _setOption(): void {
     // Set value to selected option
     const selected = (this.querySelector('option[selected]') ||
-      this.querySelector('option')) as HTMLOptionElement;
+      this.querySelector('option:not([disabled])')) as HTMLOptionElement;
     this.value = selected?.value;
   }
 
