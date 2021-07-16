@@ -80,7 +80,6 @@
     "@typescript-eslint/parser": "^4.25.0",
     "all-contributors-cli": "^6.20.0",
     "assert": "^2.0.0",
-    "chromatic": "^5.9.2",
     "concurrently": "^6.0.0",
     "css-loader": "^5.2.0",
     "cssnano": "^5.0.1",

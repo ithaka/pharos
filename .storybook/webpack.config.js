@@ -1,6 +1,5 @@
 const path = require('path');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
-const isChromatic = require('chromatic/isChromatic');
 
 // Export a function. Accept the base config as the only param.
 module.exports = async ({ config, mode }) => {
@@ -44,7 +43,7 @@ module.exports = async ({ config, mode }) => {
 
   config.module.rules[1].exclude = /node_modules/;
 
-  const TARGET_ENV = isChromatic ? 'firefox65' : 'esnext';
+  const TARGET_ENV = process.env.GITHUB_WORKFLOW === 'Chromatic' ? 'firefox65' : 'esnext';
   config.module.rules.forEach((rule) => {
     if (
       /babel-loader/i.test(rule.loader) ||
