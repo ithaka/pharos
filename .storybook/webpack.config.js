@@ -1,4 +1,5 @@
 const path = require('path');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 // Export a function. Accept the base config as the only param.
 module.exports = async ({ config, mode }) => {
@@ -41,6 +42,23 @@ module.exports = async ({ config, mode }) => {
   });
 
   config.module.rules[1].exclude = /node_modules/;
+
+  config.module.rules.forEach((rule) => {
+    if (
+      /babel-loader/i.test(rule.loader) ||
+      /babel-loader/i.test(rule.use?.loader) ||
+      (rule.use?.length === 1 && rule.use?.some((use) => /babel-loader/i.test(use.loader)))
+    ) {
+      delete rule.use;
+      rule.loader = 'esbuild-loader';
+    }
+  });
+
+  config.module.rules[0].options = { loader: 'tsx' };
+
+  if (config.mode === 'production') {
+    config.optimization.minimizer = [new ESBuildMinifyPlugin()];
+  }
 
   // Return the altered config
   return config;
