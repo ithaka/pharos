@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 10.5.2
+
+### Patch Changes
+
+- [#169](https://github.com/ithaka/pharos/pull/169) [`c286150`](https://github.com/ithaka/pharos/commit/c2861506d6a7f771250a8f28648ec27a3c4c884a) Thanks [@Niznikr](https://github.com/Niznikr)! - set the selection when a value is initially passed for selects
+
 ## 10.5.1
 
 ### Patch Changes
