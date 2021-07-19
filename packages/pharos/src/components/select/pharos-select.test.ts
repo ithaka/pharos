@@ -232,4 +232,19 @@ describe('pharos-select', () => {
 
     expect(component.renderRoot.querySelectorAll('option')?.length).to.equal(4);
   });
+
+  it('sets the selection when a value is initially passed', async () => {
+    component = await fixture(
+      html`<pharos-select value="2">
+        <span slot="label">test</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5">Option 5</option>
+      </pharos-select>`
+    );
+    await component.updateComplete;
+    expect(component['_select'].value).to.equal('2');
+  });
 });
