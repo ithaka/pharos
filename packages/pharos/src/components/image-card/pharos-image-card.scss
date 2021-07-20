@@ -106,9 +106,11 @@
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.card__heading,
-.card__title--hover {
-  @include mixins.truncate-text($lines: 2);
+:host(:not([variant='promotional'])) {
+  .card__heading,
+  .card__title--hover {
+    @include mixins.truncate-text($lines: 2);
+  }
 }
 
 .card__svg {
