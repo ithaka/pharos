@@ -545,7 +545,9 @@
   $property: if($fixed-width, width, min-width);
 
   @if $fixed-width {
-    margin: auto;
+    @include at-least(medium) {
+      margin: auto;
+    }
   }
 
   @each $breakpoint, $margin in $breakpoints {
