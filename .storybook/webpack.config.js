@@ -1,5 +1,6 @@
 const path = require('path');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
+const { ProvidePlugin } = require('webpack');
 
 // Export a function. Accept the base config as the only param.
 module.exports = async ({ config, mode }) => {
@@ -43,6 +44,7 @@ module.exports = async ({ config, mode }) => {
 
   config.module.rules[1].exclude = /node_modules/;
 
+  // TODO: Refactor when Chromatic updates Firefox
   const TARGET_ENV = process.env.GITHUB_WORKFLOW === 'Chromatic' ? 'firefox65' : 'esnext';
   config.module.rules.forEach((rule) => {
     if (
@@ -61,6 +63,12 @@ module.exports = async ({ config, mode }) => {
   if (config.mode === 'production') {
     config.optimization.minimizer = [new ESBuildMinifyPlugin({ target: TARGET_ENV })];
   }
+
+  config.plugins.push(
+    new ProvidePlugin({
+      React: 'react',
+    })
+  );
 
   // Return the altered config
   return config;
