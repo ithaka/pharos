@@ -6,6 +6,8 @@ import prettier from 'prettier';
 
 const REACT_PROP_TYPE = 'DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>';
 
+const modules = customElementsManifest.modules.map((module) => module.declarations).flat();
+
 // Convert web component tag to React component name
 const toCamelCase = (str) => {
   return str.replace(/-([a-z])/g, (g) => {
@@ -15,10 +17,7 @@ const toCamelCase = (str) => {
 
 // Create prop interface using custom-elements.json
 const createComponentInterface = (component, reactName) => {
-  const item = customElementsManifest.modules
-    .map((module) => module.declarations)
-    .flat()
-    .find((item) => item.tagName === component);
+  const item = modules.find((item) => item.tagName === component);
   const publicFields = item.members.filter(
     (member) => member.kind === 'field' && member.privacy === 'public'
   );
@@ -67,17 +66,20 @@ const createComponentInterface = (component, reactName) => {
 
 // Define default prop values using custom-elements.json
 const createDefaultProps = (component, reactName) => {
-  const item = customElementsManifest.modules
-    .map((module) => module.declarations)
-    .flat()
-    .find((item) => item.tagName === component);
+  const item = modules.find((item) => item.tagName === component);
   const defaultFields = item.members.filter(
     (member) => member.kind === 'field' && member.privacy === 'public' && member.default
   );
   const props =
     defaultFields.length &&
     defaultFields.map((property) => {
-      return `${property.name}: ${property.default},\n`;
+      const hasInitializer = item.attributes?.find(
+        (attribute) => attribute.default === property.default && attribute.resolveInitializer
+      );
+      const defaultValue = hasInitializer
+        ? modules.find((item) => item.kind === 'variable' && item.name === property.default).default
+        : property.default;
+      return `${property.name}: ${defaultValue},\n`;
     });
   return props ? `${reactName}.defaultProps = {\n` + `${props.join('')}` + `};` : ``;
 };
