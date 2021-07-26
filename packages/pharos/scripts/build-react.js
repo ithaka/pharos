@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 import path from 'path';
-import globby from 'globby';
+import { globbyStream } from 'globby';
 import customElements from '../custom-elements.json';
 import prettier from 'prettier';
 
@@ -87,7 +87,7 @@ const setup = async () => {
 };
 
 export const buildReact = async () => {
-  for await (const componentPath of globby.stream(
+  for await (const componentPath of globbyStream(
     './src/components/**/pharos-!(*.css|*.test)*.ts'
   )) {
     const dest = componentPath.replace('/components/', '/react-components/').replace('.ts', '.tsx');

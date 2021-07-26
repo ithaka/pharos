@@ -63,14 +63,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Cache Browsers
-        uses: actions/cache@v2
-        id: browsers-cache # use this to check for `cache-hit` (`steps.browsers-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: '~/.cache/ms-playwright'
-          key: ${{ runner.os }}-browsers-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-browsers-
+      - name: Install Browsers
+        run: npx playwright install
 
       - name: Install Browsers Dependencies
         run: npx playwright install-deps
