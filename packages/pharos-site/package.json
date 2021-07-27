@@ -6,9 +6,9 @@
   "description": "Pharos acts as a guiding light to helps us create consistent, dependable and focused experiences for all of JSTOR users.",
   "version": "5.7.0",
   "dependencies": {
+    "@ithaka/pharos": "^10.5.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@ithaka/pharos": "^10.5.0",
     "gatsby": "^3.6.1",
     "gatsby-image": "^3.6.0",
     "gatsby-plugin-google-tagmanager": "^3.6.0",
@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "@types/mdx-js__react": "^1.5.3",
-    "@types/react-helmet": "^6.1.0",
-    "@types/react-dom": "^17.0.0",
     "@types/react": "^17.0.1",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-helmet": "^6.1.0",
     "babel-preset-gatsby": "^1.6.0",
     "typescript": "^4.2.2"
   },
