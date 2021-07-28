@@ -16,7 +16,7 @@
     "analyze": "wca analyze src --outFile custom-elements.json",
     "build:tokens": "node --experimental-json-modules ./scripts/build-tokens.mjs",
     "prebuild": "yarn clean && yarn build:tokens && yarn analyze && yarn build:react && yarn build:assets && yarn build:sassdoc",
-    "build": "yarn build:styles && yarn build:tsc && yarn build:replace:imports",
+    "build": "yarn prebuild && yarn build:styles && yarn build:tsc && yarn build:replace:imports",
     "build:tsc": "tsc --project tsconfig.build.json",
     "build:tsc:watch": "tsc -w --project tsconfig.build.json",
     "build:react": "node --experimental-json-modules ./scripts/build-react.js",
@@ -29,9 +29,10 @@
     "build:replace:dynamic": "replace-in-file \"/(import[(].)([.]+/)(.*?)(?<!.js)(.[)])/g\" \"\\$1\\$2\\$3.js\\$4\" \"lib/**/*.js\" --isRegex --verbose",
     "build:replace:imports": "yarn build:replace && yarn build:replace:dynamic",
     "prepublishOnly": "yarn build",
+    "prepack": "yarn build",
     "clean": "rimraf lib src/react-components",
     "pretest": "yarn prebuild && yarn build:styles && yarn build:tests && yarn build:replace:imports",
-    "test": "wtr",
+    "test": "yarn pretest && wtr",
     "test:watch": "wtr --watch"
   },
   "browserslist": [
