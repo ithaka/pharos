@@ -41,3 +41,7 @@
 
 [build]
   ignore = "bash ./build-ignore.sh"
+
+[build.environment]
+  YARN_VERSION = "3.0.0"
+  YARN_FLAGS = "--immutable"
