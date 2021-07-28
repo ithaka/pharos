@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Dependencies
-        run: yarn --prefer-offline --frozen-lockfile
+        run: yarn --immutable
 
       - name: Lint
         run: yarn lint
@@ -70,7 +70,7 @@ jobs:
         run: npx playwright install-deps
 
       - name: Install Dependencies
-        run: yarn --prefer-offline --frozen-lockfile
+        run: yarn --immutable
 
       - name: Test
         run: yarn test
