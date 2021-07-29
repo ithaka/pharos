@@ -38,11 +38,11 @@ export class PharosCheckboxGroup extends FormElement {
       .map((box) => (box as PharosCheckbox).value);
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, checkboxGroupStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._setBoxes();
 
     const boxes = this.querySelectorAll('pharos-checkbox') as NodeListOf<PharosCheckbox>;
@@ -60,7 +60,7 @@ export class PharosCheckboxGroup extends FormElement {
     });
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (
@@ -83,7 +83,7 @@ export class PharosCheckboxGroup extends FormElement {
     });
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     const labels = ['legend'];
     if (this.messageId) {
       labels.push(this.messageId);

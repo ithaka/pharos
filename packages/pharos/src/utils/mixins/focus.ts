@@ -11,7 +11,7 @@ const FocusMixinImplementation = <T extends Constructor<HTMLElement>>(Base: T): 
    * A mixin class to handle focusing pharos components.
    */
   class Focus extends Base {
-    public focus(): void {
+    public override focus(): void {
       const target = this.shadowRoot?.querySelector(focusable) || this.querySelector(focusable);
       (target as HTMLElement)?.focus();
     }

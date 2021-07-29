@@ -29,11 +29,11 @@ export class PharosDropdownMenuNav extends FocusMixin(LitElement) {
   private _allLinks!: NodeListOf<PharosDropdownMenuNavLink>;
   private _allMenus!: NodeListOf<PharosDropdownMenu>;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [dropdownMenuNavStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.addEventListener('focus', () => this._closeAllMenus());
   }
 
@@ -65,7 +65,7 @@ export class PharosDropdownMenuNav extends FocusMixin(LitElement) {
     });
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <nav class="dropdown-menu-nav__container" aria-label=${ifDefined(this.label)}>
         <slot @slotchange=${this._handleSlotChange}></slot>

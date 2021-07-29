@@ -41,18 +41,18 @@ export class PharosSidenavLink extends PharosLink {
   @property({ type: Boolean, reflect: true, attribute: 'menu-item' })
   public menuItem = false;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, sidenavLinkStyles];
   }
 
-  protected get appendContent(): TemplateResult | typeof nothing {
+  protected override get appendContent(): TemplateResult | typeof nothing {
     if (this.external) {
       return html`<pharos-icon name="link-external" class="link__icon"></pharos-icon>`;
     }
     return nothing;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`${super.render()}`;
   }
 }

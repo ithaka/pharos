@@ -22,11 +22,11 @@ export class PharosTabPanel extends LitElement {
   @property({ type: Boolean, reflect: true })
   public selected = false;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [tabPanelStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.setAttribute('role', 'tabpanel');
     this.addEventListener('keydown', this._handleKeydown);
     const focusableElements = this.querySelector(focusable);
@@ -39,7 +39,7 @@ export class PharosTabPanel extends LitElement {
     event.stopPropagation();
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html` <slot></slot> `;
   }
 }

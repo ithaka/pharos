@@ -31,16 +31,16 @@ export class PharosInputGroup extends PharosTextInput {
   @state()
   private _prependGroupWidth = 0;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, inputGroupStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.addEventListener('focus', this._adjustPadding);
     this.addEventListener('blur', this._adjustPadding);
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  protected override updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
 
     if (changedProperties.has('_prependGroupWidth')) {
@@ -55,7 +55,7 @@ export class PharosInputGroup extends PharosTextInput {
     }
   }
 
-  protected get prependContent(): TemplateResult {
+  protected override get prependContent(): TemplateResult {
     return html`
       <div class="input-group input-group--prepend">
         <slot name="prepend" @slotchange=${this._updatePrependPadding}></slot>
@@ -63,7 +63,7 @@ export class PharosInputGroup extends PharosTextInput {
     `;
   }
 
-  protected get appendContent(): TemplateResult {
+  protected override get appendContent(): TemplateResult {
     return html`
       <div class="input-group input-group--append">
         <slot @slotchange=${this._updateAppendPadding}></slot>
@@ -97,7 +97,7 @@ export class PharosInputGroup extends PharosTextInput {
     }px`;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html` ${super.render()} `;
   }
 }

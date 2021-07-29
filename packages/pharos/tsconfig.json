@@ -20,6 +20,7 @@
     "forceConsistentCasingInFileNames": true,
     "importsNotUsedAsValues": "error",
     "resolveJsonModule": true,
+    "noImplicitOverride": true,
     "types": ["mocha"],
     "plugins": [
       {

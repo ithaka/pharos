@@ -66,11 +66,11 @@ export class FormElement extends FocusMixin(LitElement) {
   @property({ type: Boolean, reflect: true, attribute: 'hide-label' })
   public hideLabel = false;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [formElementStyles];
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('validated') && this.validated) {
       this.removeAttribute('invalidated');
     } else if (changedProperties.has('invalidated') && this.invalidated) {

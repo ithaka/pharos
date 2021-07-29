@@ -97,11 +97,11 @@ export class PharosTooltip extends OverlayElement {
     this._handleClose = this._handleClose.bind(this);
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [tooltipStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._setTextLength();
 
     this.addEventListener('mouseenter', this._handleBubbleHover);
@@ -114,7 +114,7 @@ export class PharosTooltip extends OverlayElement {
     });
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
   }
 
@@ -122,7 +122,7 @@ export class PharosTooltip extends OverlayElement {
     return this._textLength > 30;
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
       if (
         this.open &&
@@ -151,7 +151,7 @@ export class PharosTooltip extends OverlayElement {
     super.updated(changedProperties);
   }
 
-  connectedCallback(): void {
+  override connectedCallback(): void {
     super.connectedCallback && super.connectedCallback();
     document.addEventListener('keydown', this._handleKeydown);
     document.addEventListener('pharos-tooltip-close', this._handleClose as EventListener);
@@ -159,7 +159,7 @@ export class PharosTooltip extends OverlayElement {
     this._addTriggerListeners();
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     document.removeEventListener('keydown', this._handleKeydown);
     document.removeEventListener('pharos-tooltip-close', this._handleClose as EventListener);
 
@@ -351,7 +351,7 @@ export class PharosTooltip extends OverlayElement {
     }
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div class="tooltip__body" role="tooltip" aria-hidden="${!this.open}">
         <span

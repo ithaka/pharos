@@ -28,7 +28,7 @@ export class PharosFooter extends ObserveChildrenMixin(LitElement) {
   @queryAssignedNodes('google-widget', false, '#google_translate_element')
   private _widgetNodes!: NodeListOf<HTMLElement>;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [footerStyles];
   }
 
@@ -51,7 +51,7 @@ export class PharosFooter extends ObserveChildrenMixin(LitElement) {
     }
   );
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     if (this._widgetNodes.length) {
       this._widgetObserver.observe(this._widgetNodes[0], {
         childList: true,
@@ -59,12 +59,12 @@ export class PharosFooter extends ObserveChildrenMixin(LitElement) {
     }
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     this._widgetObserver.disconnect();
     super.disconnectedCallback && super.disconnectedCallback();
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <footer id="footer-element">
         <div class="footer__content">

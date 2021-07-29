@@ -25,7 +25,7 @@ export class PharosToastButton extends PharosButton {
     this.iconCondensed = true;
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, toastButtonStyles];
   }
 }

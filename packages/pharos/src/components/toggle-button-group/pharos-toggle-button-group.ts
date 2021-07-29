@@ -14,11 +14,11 @@ import type { PharosToggleButton } from './pharos-toggle-button';
  */
 @customElement('pharos-toggle-button-group')
 export class PharosToggleButtonGroup extends LitElement {
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [toggleButtonGroupStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.addEventListener('pharos-toggle-button-selected', this._handleButtonSelected);
     this.addEventListener('keydown', this._handleKeydown);
     this.addEventListener('focusout', this._handleFocusout);
@@ -129,7 +129,7 @@ export class PharosToggleButtonGroup extends LitElement {
     });
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div class="toggle-button__list" role="group">
         <slot></slot>

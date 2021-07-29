@@ -26,11 +26,11 @@ export class PharosTab extends LitElement {
   @state()
   private _focused = false;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [tabStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.addEventListener('click', this._handleClick);
 
     this.setAttribute('role', 'tab');
@@ -40,7 +40,7 @@ export class PharosTab extends LitElement {
     this.dataset.text = this.textContent || '';
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('selected')) {
       this._focused = this.selected;
       this.setAttribute('aria-selected', this.selected ? 'true' : 'false');
@@ -59,7 +59,7 @@ export class PharosTab extends LitElement {
     this.dispatchEvent(new CustomEvent('pharos-tab-selected', details));
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html` <slot></slot> `;
   }
 }

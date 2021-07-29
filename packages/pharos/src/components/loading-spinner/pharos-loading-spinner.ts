@@ -24,11 +24,11 @@ export class PharosLoadingSpinner extends LitElement {
   @query('.loading-spinner__animation')
   private _spinner!: SVGCircleElement;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [loadingSpinnerStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._setupAnimation();
   }
 
@@ -70,7 +70,7 @@ export class PharosLoadingSpinner extends LitElement {
     this._icon.animate(rotateKeys, rotateTiming);
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div
         class="loading-spinner__wrapper"

@@ -60,11 +60,11 @@ export class PharosLayout extends LitElement {
   @query('.layout')
   private _layout!: HTMLElement;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [layoutStyles];
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (changedProperties.has('preset') && !PRESETS.includes(this.preset)) {
@@ -75,7 +75,7 @@ export class PharosLayout extends LitElement {
     }
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('areas')) {
       this._layout.style.gridTemplateAreas = this.areas;
     }
@@ -87,7 +87,7 @@ export class PharosLayout extends LitElement {
     }
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     const template = `<slot name="top"></slot><${this.tag} id="layout-container" class="layout"><slot></slot></${this.tag}>`;
     return html`${unsafeHTML(template)}`;
   }

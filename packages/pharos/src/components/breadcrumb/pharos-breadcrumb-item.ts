@@ -43,7 +43,7 @@ export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
   @state()
   private _last = false;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [breadcrumbItemStyles];
   }
 
@@ -57,7 +57,7 @@ export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
       ?.find((node) => node.textContent && node.nodeName !== '#comment');
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.setAttribute('role', 'listitem');
     this._setItem();
     this._contentObserver.observe(this.content, {
@@ -74,7 +74,7 @@ export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
       : this._fullText || '';
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     const classes = {
       [`breadcrumb-item`]: true,
       [`breadcrumb-item--last`]: this._last,

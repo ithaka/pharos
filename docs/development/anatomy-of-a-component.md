@@ -155,11 +155,11 @@ Now you've got all the ingredients needed to write the component definition. Add
 ```typescript
 @customElement('pharos-sparkly-text')
 export class PharosSparklyText extends LitElement {
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [sparklyTextStyles];
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div class="sparkly__content">
         <slot name="content"></slot>
