@@ -12,7 +12,7 @@ const LINKS = `a[href],pharos-link[href]`;
 /**
  * Pharos radio button component.
  *
- * @element pharos-radio-button
+ * @tag pharos-radio-button
  *
  * @slot label - Contains the label content.
  *

@@ -7,7 +7,7 @@ import { PharosSelect } from '../select/pharos-select';
 /**
  * Pharos input group select component.
  *
- * @element pharos-input-group-select
+ * @tag pharos-input-group-select
  */
 @customElement('pharos-input-group-select')
 export class PharosInputGroupSelect extends PharosSelect {

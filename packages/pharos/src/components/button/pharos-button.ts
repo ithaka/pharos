@@ -24,7 +24,7 @@ const VARIANTS = ['primary', 'secondary', 'subtle'];
 /**
  * Pharos button component.
  *
- * @element pharos-button
+ * @tag pharos-button
  *
  * @slot - Contains the content of the button (the default slot).
  *

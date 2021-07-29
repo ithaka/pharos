@@ -15,7 +15,7 @@ const LARGE_ICON_SIZE = 24;
 /**
  * Pharos icon component.
  *
- * @element pharos-icon
+ * @tag pharos-icon
  */
 @customElement('pharos-icon')
 export class PharosIcon extends LitElement {

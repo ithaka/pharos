@@ -10,7 +10,7 @@ import { FormElement } from '../base/form-element';
 /**
  * Pharos checkbox group component.
  *
- * @element pharos-checkbox-group
+ * @tag pharos-checkbox-group
  *
  * @slot legend - Contains the fieldset legend content.
  * @slot - Contains the set of checkboxes (the default slot).
@@ -28,7 +28,7 @@ export class PharosCheckboxGroup extends FormElement {
   public horizontal = false;
 
   /**
-   * Indicates the selected checkboxes for the group @readonly
+   * Indicates the selected checkboxes for the group
    * @readonly
    */
   @property({ type: Array, attribute: false })

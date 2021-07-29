@@ -7,7 +7,7 @@ import type { PharosToggleButton } from './pharos-toggle-button';
 /**
  * Pharos toggle button group component.
  *
- * @element pharos-toggle-button-group
+ * @tag pharos-toggle-button-group
  *
  * @slot - Contains the buttons.
  *

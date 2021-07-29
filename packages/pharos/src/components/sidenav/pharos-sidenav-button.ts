@@ -4,14 +4,14 @@ import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';
 
 import type { LinkTarget } from '../base/anchor-element';
-import type { ButtonType, IconName } from '../button/pharos-button';
+import type { ButtonType, IconName, ButtonVariant } from '../button/pharos-button';
 
-export type { LinkTarget, ButtonType, IconName };
+export type { LinkTarget, ButtonType, IconName, ButtonVariant };
 
 /**
  * Pharos sidenav button component.
  *
- * @element pharos-sidenav-button
+ * @tag pharos-sidenav-button
  *
  */
 @customElement('pharos-sidenav-button')

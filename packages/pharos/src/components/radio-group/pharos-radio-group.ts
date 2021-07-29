@@ -10,7 +10,7 @@ import { FormElement } from '../base/form-element';
 /**
  * Pharos radio group component.
  *
- * @element pharos-radio-group
+ * @tag pharos-radio-group
  *
  * @slot legend - Contains the fieldset legend content.
  * @slot - Contains the set of radio buttons (the default slot).
@@ -28,7 +28,7 @@ export class PharosRadioGroup extends FormElement {
   public horizontal = false;
 
   /**
-   * Indicates the selected radio for the group @readonly
+   * Indicates the selected radio for the group
    * @readonly
    */
   @property({ type: String, attribute: false })

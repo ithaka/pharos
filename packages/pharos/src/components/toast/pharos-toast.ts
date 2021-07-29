@@ -27,7 +27,7 @@ export const DEFAULT_STATUS = 'success';
 /**
  * Pharos toast component.
  *
- * @element pharos-toast
+ * @tag pharos-toast
  *
  * @slot - Content inside the toast (the default slot).
  *

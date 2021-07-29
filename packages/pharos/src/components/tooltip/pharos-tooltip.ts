@@ -17,7 +17,7 @@ export type { Placement, PositioningStrategy };
 /**
  * Pharos tooltip component.
  *
- * @element pharos-tooltip
+ * @tag pharos-tooltip
  *
  * @slot - Content inside the tooltip (the default slot).
  *
