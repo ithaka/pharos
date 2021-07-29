@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 import path from 'path';
-import globby from 'globby';
+import { globbyStream } from 'globby';
 import sass from 'sass';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
@@ -21,7 +21,7 @@ const setup = async () => {
 };
 
 export const buildStyles = async () => {
-  for await (const sassPath of globby.stream('./src/components/**/!(*.styles).scss')) {
+  for await (const sassPath of globbyStream('./src/components/**/!(*.styles).scss')) {
     const dest = sassPath.replace('.scss', '.css.ts');
     const cssResult = await sassPromise({
       file: sassPath,
@@ -56,7 +56,7 @@ export const buildStyles = async () => {
 };
 
 export const buildSlotStyles = async () => {
-  for await (const slotPath of globby.stream('./src/components/**/*.styles.scss')) {
+  for await (const slotPath of globbyStream('./src/components/**/*.styles.scss')) {
     const dest = path.basename(slotPath).replace('.styles.scss', '.css');
     const cssResult = await sassPromise({
       file: slotPath,
@@ -82,13 +82,13 @@ export const buildSassUtils = async () => {
 };
 
 export const buildSassStyles = async () => {
-  for await (const sassPath of globby.stream('./src/styles/*.scss')) {
+  for await (const sassPath of globbyStream('./src/styles/*.scss')) {
     await fs.copyFile(sassPath, path.join('./lib/styles', path.basename(sassPath)));
   }
 };
 
 export const buildCssStyles = async () => {
-  for await (const cssPath of globby.stream('./src/styles/*.css')) {
+  for await (const cssPath of globbyStream('./src/styles/*.css')) {
     await fs.copyFile(cssPath, path.join('./lib/styles', path.basename(cssPath)));
   }
 };
