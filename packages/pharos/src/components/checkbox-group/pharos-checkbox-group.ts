@@ -28,7 +28,7 @@ export class PharosCheckboxGroup extends FormElement {
   public horizontal = false;
 
   /**
-   * Indicates the selected checkboxes for the group @readonly
+   * Indicates the selected checkboxes for the group
    * @readonly
    */
   @property({ type: Array, attribute: false })

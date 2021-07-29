@@ -28,7 +28,7 @@ export class PharosRadioGroup extends FormElement {
   public horizontal = false;
 
   /**
-   * Indicates the selected radio for the group @readonly
+   * Indicates the selected radio for the group
    * @readonly
    */
   @property({ type: String, attribute: false })

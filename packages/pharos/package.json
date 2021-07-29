@@ -61,6 +61,7 @@
     "@web/test-runner-commands": "^0.4.5",
     "@web/test-runner-playwright": "^0.8.6",
     "autoprefixer": "^10.2.1",
+    "cem-plugin-readonly": "^0.0.1",
     "chokidar": "^3.5.2",
     "globby": "^11.0.4",
     "postcss": "^8.3.0",

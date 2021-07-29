@@ -62,7 +62,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
   public searchMode = false;
 
   /**
-   * The list of options available in the combobox dropdown list @readonly
+   * The list of options available in the combobox dropdown list
    * @readonly
    */
   @property({ attribute: false, reflect: false })
@@ -71,7 +71,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
   }
 
   /**
-   * The index of the selected option, if any @readonly
+   * The index of the selected option, if any
    * @readonly
    */
   @property({ attribute: false, reflect: false })

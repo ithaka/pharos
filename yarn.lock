@@ -6582,6 +6582,11 @@ cdocparser@^0.13.0:
     lodash.assign "^2.4.1"
     strip-indent "^1.0.0"
 
+cem-plugin-readonly@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/cem-plugin-readonly/-/cem-plugin-readonly-0.0.1.tgz#d70a852c6dae75506d268281207a58a6a1d9ea0d"
+  integrity sha512-Jc7SBzouNEwAuxKMrezuxMgyM8Qrj5c6vCEjUp+drRC0FG26kc8yRkepxCoRbACb4RJOGsyBvkW+w17hwBk1kg==
+
 chai-a11y-axe@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/chai-a11y-axe/-/chai-a11y-axe-1.3.1.tgz#1889d2b639612ff4e9b9e40ff528442fd0191798"

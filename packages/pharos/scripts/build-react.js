@@ -24,10 +24,8 @@ const createComponentInterface = (component, reactName) => {
   const props =
     publicFields.length &&
     publicFields.map((property) => {
-      const readonly =
-        property.description && property.description.includes('@readonly') ? 'readonly ' : '';
-      const optional =
-        property.default || property.type.text.includes('undefined') || readonly ? '?' : '';
+      const readonly = property.readonly ? 'readonly ' : '';
+      const optional = property.default || property.optional || property.readonly ? '?' : '';
 
       return (
         `/**\n` +
