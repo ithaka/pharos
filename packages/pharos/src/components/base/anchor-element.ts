@@ -54,7 +54,7 @@ export class AnchorElement extends LitElement {
   @property({ type: String, reflect: true })
   public target?: LinkTarget;
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (changedProperties.has('target') && this.target && !TARGETS.includes(this.target)) {

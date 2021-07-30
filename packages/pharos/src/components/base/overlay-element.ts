@@ -44,7 +44,7 @@ export class OverlayElement extends LitElement {
   protected _popper?: Instance;
   protected _options?: Options;
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (changedProperties.has('placement') && !placements.includes(this.placement)) {
@@ -71,7 +71,7 @@ export class OverlayElement extends LitElement {
     }
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  protected override updated(changedProperties: PropertyValues): void {
     if (
       changedProperties.has('placement') ||
       changedProperties.has('fallbackPlacements') ||

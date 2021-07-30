@@ -40,11 +40,11 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
     ) as HTMLOptionElement[];
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, selectStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     if (this.value && this._options.find((o) => o.value === this.value)) {
       this._select.value = this.value;
     } else {
@@ -82,7 +82,7 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
     this._setOption();
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <label for="select-element">
         <slot name="label"></slot>

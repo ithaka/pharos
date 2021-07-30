@@ -16,11 +16,11 @@ import type { PharosTabPanel } from './pharos-tab-panel';
  */
 @customElement('pharos-tabs')
 export class PharosTabs extends LitElement {
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [tabsStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.addEventListener('pharos-tab-selected', this._handleTabSelected);
     this.addEventListener('keydown', this._handleKeydown);
     this.addEventListener('focusout', this._handleFocusout);
@@ -137,7 +137,7 @@ export class PharosTabs extends LitElement {
     });
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div class="tab__list" role="tablist">
         <slot></slot>

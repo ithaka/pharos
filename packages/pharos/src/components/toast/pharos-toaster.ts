@@ -34,17 +34,17 @@ export class PharosToaster extends LitElement {
     this._closeToast = this._closeToast.bind(this);
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [toasterStyles];
   }
 
-  connectedCallback(): void {
+  override connectedCallback(): void {
     super.connectedCallback && super.connectedCallback();
     document.addEventListener('pharos-toast-open', this._openToast as EventListener);
     document.addEventListener('pharos-toast-close', this._closeToast as EventListener);
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     document.removeEventListener('pharos-toast-open', this._openToast as EventListener);
     document.removeEventListener('pharos-toast-close', this._closeToast as EventListener);
     super.disconnectedCallback && super.disconnectedCallback();
@@ -65,7 +65,7 @@ export class PharosToaster extends LitElement {
     this.removeChild(event.detail);
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div class="toaster__container">
         <slot></slot>

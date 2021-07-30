@@ -42,11 +42,11 @@ export class PharosToggleButton extends PharosButton {
     this.type = 'button';
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, toggleButtonStyles];
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (
@@ -78,7 +78,7 @@ export class PharosToggleButton extends PharosButton {
     }
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.addEventListener('click', this._handleClickToggle);
   }
 

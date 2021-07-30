@@ -36,7 +36,7 @@ export class PharosButton extends FocusMixin(AnchorElement) {
    * @attr autofocus
    */
   @property({ type: Boolean, reflect: true })
-  public autofocus = false;
+  public override autofocus = false;
 
   /**
    * Indicates that the button cannot be pressed or focused by the user.
@@ -144,17 +144,17 @@ export class PharosButton extends FocusMixin(AnchorElement) {
     this._stopClickLeak = this._stopClickLeak.bind(this);
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [buttonStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._formButton = document.createElement('button');
     this._formButton.addEventListener('click', this._stopClickLeak);
     this.addEventListener('click', this._handleClick);
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (changedProperties.has('type') && this.type && !TYPES.includes(this.type)) {
@@ -167,12 +167,12 @@ export class PharosButton extends FocusMixin(AnchorElement) {
     }
   }
 
-  connectedCallback(): void {
+  override connectedCallback(): void {
     super.connectedCallback && super.connectedCallback();
     this._form = this.closest('form');
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     super.disconnectedCallback && super.disconnectedCallback();
   }
 
@@ -229,7 +229,7 @@ export class PharosButton extends FocusMixin(AnchorElement) {
         `;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return this.href
       ? html`
           <a

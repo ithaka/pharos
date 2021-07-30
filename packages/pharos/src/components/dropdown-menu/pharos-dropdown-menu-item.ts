@@ -68,11 +68,11 @@ export class PharosDropdownMenuItem extends FocusMixin(LitElement) {
   @state()
   private _menu!: PharosDropdownMenu;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [dropdownMenuItemStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.addEventListener('click', this._handleClick);
     this.addEventListener('mousedown', this._handleMousedown);
     this.addEventListener('mouseup', this._handleMouseup);
@@ -145,7 +145,7 @@ export class PharosDropdownMenuItem extends FocusMixin(LitElement) {
     `;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <li
         class="${classMap({

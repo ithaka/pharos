@@ -23,11 +23,11 @@ export class PharosSidenavButton extends PharosButton {
     this.label = 'Open menu';
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, sidenavButtonStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.addEventListener('click', this._handleClickOpen);
   }
 

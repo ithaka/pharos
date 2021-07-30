@@ -17,7 +17,7 @@ const ObserveChildrenMixinImplementation = <T extends Constructor<LitElement>>(B
       this.requestUpdate();
     };
 
-    connectedCallback(): void {
+    override connectedCallback(): void {
       super.connectedCallback && super.connectedCallback();
       this._childrenObserver = new MutationObserver(this._handleMutation);
       this._childrenObserver?.observe(this, {
@@ -27,7 +27,7 @@ const ObserveChildrenMixinImplementation = <T extends Constructor<LitElement>>(B
       });
     }
 
-    disconnectedCallback(): void {
+    override disconnectedCallback(): void {
       if (this._childrenObserver) {
         this._childrenObserver.disconnect();
         this._childrenObserver = null;

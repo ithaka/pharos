@@ -35,11 +35,11 @@ export class PharosSidenavMenu extends FocusMixin(LitElement) {
 
   private _allLinks!: NodeListOf<PharosSidenavLink>;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [sidenavMenuStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._allLinks = this.querySelectorAll('pharos-sidenav-link');
     this._allLinks.forEach((link) => {
       link.menuItem = true;
@@ -84,7 +84,7 @@ export class PharosSidenavMenu extends FocusMixin(LitElement) {
     `;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <button
         id="button-element"

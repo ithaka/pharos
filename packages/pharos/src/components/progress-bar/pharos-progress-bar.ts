@@ -24,11 +24,11 @@ export class PharosProgressBar extends LitElement {
   @property({ type: Number, reflect: true })
   public value = 0;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [progressBarStyles];
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div id="title" class="progress-bar__title"><slot name="title"></slot></div>
       <div

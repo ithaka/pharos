@@ -43,17 +43,17 @@ export class PharosSidenav extends FocusMixin(SideElement) {
     this._handleMediaChange = this._handleMediaChange.bind(this);
   }
 
-  connectedCallback(): void {
+  override connectedCallback(): void {
     super.connectedCallback && super.connectedCallback();
     this._mediaQuery.addEventListener('change', this._handleMediaChange);
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     this._mediaQuery.removeEventListener('change', this._handleMediaChange);
     super.disconnectedCallback && super.disconnectedCallback();
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, sidenavStyles];
   }
 
@@ -76,7 +76,7 @@ export class PharosSidenav extends FocusMixin(SideElement) {
       : nothing;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <nav id="nav-element" class="side-element__container">
         <div class="side-element__content">

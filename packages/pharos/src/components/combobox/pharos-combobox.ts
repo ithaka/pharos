@@ -107,11 +107,11 @@ export class PharosCombobox extends FormMixin(FormElement) {
     }
   );
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, comboboxStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._setDisplayValue();
     this._input.defaultValue = this._displayValue;
     this._defaultValue = this.value;
@@ -122,7 +122,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
     });
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  protected override updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
 
     if (changedProperties.has('open') && !this.open) {
@@ -134,7 +134,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
     }
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     this._childrenObserver.disconnect();
     super.disconnectedCallback && super.disconnectedCallback();
   }
@@ -447,7 +447,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
     this.open = !this.open;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <label for="input-element" id="input-label">
         <slot name="label"></slot>

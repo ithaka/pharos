@@ -112,15 +112,15 @@ export class PharosTextarea extends FormMixin(FormElement) {
   @query('#textarea-element')
   private _textarea!: HTMLTextAreaElement;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, textareaStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._textarea.defaultValue = this.value;
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (changedProperties.has('resize') && !RESIZES.includes(this.resize)) {
@@ -159,7 +159,7 @@ export class PharosTextarea extends FormMixin(FormElement) {
     this.value = this._textarea.defaultValue;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <label for="textarea-element">
         <slot name="label"></slot>

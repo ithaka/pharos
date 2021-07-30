@@ -16,11 +16,11 @@ import { customElement } from '../../utils/decorators';
  */
 @customElement('pharos-header')
 export class PharosHeader extends LitElement {
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [headerStyles];
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <header id="header-element">
         <div class="header__top">

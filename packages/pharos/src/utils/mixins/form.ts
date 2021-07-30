@@ -28,7 +28,7 @@ const FormMixinImplementation = <T extends Constructor<HTMLElement>>(Base: T): T
       this._handleFormReset = this._handleFormReset.bind(this);
     }
 
-    connectedCallback(): void {
+    override connectedCallback(): void {
       super.connectedCallback && super.connectedCallback();
       const form = this.closest('form');
       if (form) {
@@ -37,7 +37,7 @@ const FormMixinImplementation = <T extends Constructor<HTMLElement>>(Base: T): T
       }
     }
 
-    disconnectedCallback(): void {
+    override disconnectedCallback(): void {
       const form = this.closest('form');
       if (form) {
         form.removeEventListener('formdata', this._handleFormdata);
