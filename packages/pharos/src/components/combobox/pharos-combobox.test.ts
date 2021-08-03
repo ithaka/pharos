@@ -661,4 +661,14 @@ describe('pharos-combobox', () => {
 
     expect(component.open).to.be.false;
   });
+
+  it('clears the displayed value when the value is cleared programmatically', async () => {
+    component.value = '1';
+    await elementUpdated(component);
+
+    component.value = '';
+    await elementUpdated(component);
+
+    expect(component['_input'].value).to.equal('');
+  });
 });

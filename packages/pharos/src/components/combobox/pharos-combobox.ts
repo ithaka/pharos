@@ -334,7 +334,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
   }
 
   private _handleInputBlur(): void {
-    this._setDisplayValue();
+    this._setDisplayValue(true);
     this._closeDropdown();
   }
 
@@ -437,9 +437,11 @@ export class PharosCombobox extends FormMixin(FormElement) {
     this._displayValue = this._input.defaultValue;
   }
 
-  private _setDisplayValue() {
+  private _setDisplayValue(blurred = false) {
     if (this.value && this.selectedIndex >= 0) {
       this._displayValue = this.options[this.selectedIndex].text.trim();
+    } else if (this.value === '' && !blurred) {
+      this._displayValue = '';
     }
   }
 
