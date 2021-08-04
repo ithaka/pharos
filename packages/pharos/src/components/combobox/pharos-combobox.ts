@@ -267,12 +267,11 @@ export class PharosCombobox extends FormMixin(FormElement) {
     } else {
       return html`
         <button
+          tabindex="-1"
           type="button"
           class="combobox__button"
           ?disabled=${this.disabled}
           @click=${this._handleButtonClick}
-          @mousedown=${this._handleButtonMousedown}
-          @focus=${this._handleButtonFocus}
           @blur=${this._handleButtonBlur}
         >
           <pharos-icon
@@ -298,31 +297,14 @@ export class PharosCombobox extends FormMixin(FormElement) {
     }, 100)();
   }
 
-  private _handleButtonFocus(): void {
-    if (!this._clicked) {
-      debounce(() => {
-        this.open = true;
-      }, 100)();
-    }
-  }
-
-  private _handleButtonMousedown(event: MouseEvent): void {
-    event.preventDefault();
-    this._clicked = true;
-  }
-
   private _handleButtonClick(event: MouseEvent): void {
     event.preventDefault();
-    this._button.focus();
-    this._clicked = false;
-
-    debounce(() => {
-      this.open = !this.open;
-    }, 100)();
+    this._input.focus();
+    this.open = true;
   }
 
-  private _handleButtonBlur(): void {
-    if (!this._clicked) {
+  private _handleButtonBlur(event: BlurEvent): void {
+    if (event.relatedTarget !== this._input) {
       this._closeDropdown();
     }
   }
@@ -333,9 +315,11 @@ export class PharosCombobox extends FormMixin(FormElement) {
     this._input.focus();
   }
 
-  private _handleInputBlur(): void {
+  private _handleInputBlur(event: BlurEvent): void {
     this._setDisplayValue(true);
-    this._closeDropdown();
+    if (event.relatedTarget !== this._button) {
+      this._closeDropdown();
+    }
   }
 
   private _handleInputKeydown(event: KeyboardEvent): void {
