@@ -111,7 +111,7 @@ describe('pharos-combobox', () => {
 
     matchingOption.click();
 
-    component['_button'].dispatchEvent(new FocusEvent('focus'));
+    component['_input'].dispatchEvent(new MouseEvent('click'));
     await aTimeout(100);
     await component.updateComplete;
 
