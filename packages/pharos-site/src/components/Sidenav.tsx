@@ -140,6 +140,7 @@ const Sidenav: FC = () => {
               'Tooltip',
               'Text input',
               'Textarea',
+              'Toggle button group',
             ].map(createSidenavLink.bind(this, 'components'))}
           </PharosSidenavMenu>
           <PharosSidenavMenu label="Design tokens" expanded={isExpanded('design-tokens')}>
