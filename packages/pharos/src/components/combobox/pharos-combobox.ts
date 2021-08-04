@@ -88,7 +88,6 @@ export class PharosCombobox extends FormMixin(FormElement) {
   @state()
   private _displayValue = '';
 
-  private _clicked = false;
   private _noResults = false;
   private _query = '';
   private _defaultValue = '';
@@ -303,7 +302,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
     this.open = true;
   }
 
-  private _handleButtonBlur(event: BlurEvent): void {
+  private _handleButtonBlur(event: FocusEvent): void {
     if (event.relatedTarget !== this._input) {
       this._closeDropdown();
     }
@@ -315,7 +314,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
     this._input.focus();
   }
 
-  private _handleInputBlur(event: BlurEvent): void {
+  private _handleInputBlur(event: FocusEvent): void {
     this._setDisplayValue(true);
     if (event.relatedTarget !== this._button) {
       this._closeDropdown();
