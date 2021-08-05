@@ -83,6 +83,7 @@
     "concurrently": "^6.2.0",
     "css-loader": "^5.2.0",
     "cssnano": "^5.0.1",
+    "esbuild-loader": "^2.14.0",
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-lit": "^1.5.1",
