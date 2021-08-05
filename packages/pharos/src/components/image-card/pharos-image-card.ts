@@ -25,7 +25,7 @@ const DEFAULT_HEADING_LEVEL = 3;
 /**
  * Pharos image card component.
  *
- * @element pharos-image-card
+ * @tag pharos-image-card
  *
  * @slot image - Contains the image to display on the card.
  * @slot metadata - Contains the metadata for the item.
@@ -40,7 +40,7 @@ export class PharosImageCard extends LitElement {
    * @attr title
    */
   @property({ type: String, reflect: true })
-  public title = '';
+  public override title = '';
 
   /**
    * Indicates the item type of the source content represented by the card.
@@ -95,11 +95,11 @@ export class PharosImageCard extends LitElement {
   @query('.card__link--title')
   private _title!: PharosLink;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [imageCardStyles];
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (changedProperties.has('variant') && this.variant && !VARIANTS.includes(this.variant)) {
@@ -218,7 +218,7 @@ export class PharosImageCard extends LitElement {
         </div>`;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`<div class="card">
       ${this._renderImage()} ${this._renderSourceType()}
       <div class="card__title">${this.renderTitle} ${this._renderActionButton()}</div>

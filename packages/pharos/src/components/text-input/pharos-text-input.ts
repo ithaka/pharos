@@ -49,7 +49,7 @@ const BLOCKING = [
 /**
  * Pharos text input component.
  *
- * @element pharos-text-input
+ * @tag pharos-text-input
  *
  * @slot label - Contains the label content.
  * @slot message - Contains message content to show below the input.
@@ -130,15 +130,15 @@ export class PharosTextInput extends FormMixin(FormElement) {
   @query('#input-element')
   private _input!: HTMLInputElement;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, textInputStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._input.defaultValue = this.value;
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (changedProperties.has('type') && !TYPES.includes(this.type)) {
@@ -210,7 +210,7 @@ export class PharosTextInput extends FormMixin(FormElement) {
     return nothing;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <label for="input-element">
         <slot name="label"></slot>

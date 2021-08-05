@@ -23,7 +23,7 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
 /**
  * Pharos alert component
  *
- * @element pharos-alert
+ * @tag pharos-alert
  *
  * @slot - Contains the alert message (the default slot).
  *
@@ -53,11 +53,11 @@ export class PharosAlert extends FocusMixin(LitElement) {
 
   private _allLinks!: NodeListOf<PharosLink>;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [alertStyles];
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (!this.status) {
@@ -84,7 +84,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
     });
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div
         role="alert"

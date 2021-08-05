@@ -1,5 +1,19 @@
 # @ithaka/pharos
 
+## 10.5.3
+
+### Patch Changes
+
+- [#172](https://github.com/ithaka/pharos/pull/172) [`430a843`](https://github.com/ithaka/pharos/commit/430a84324fe636ad1ff0a3cdee09a1ff786fc697) Thanks [@Niznikr](https://github.com/Niznikr)! - apply margins medium and above for 1-col layout
+
+* [#171](https://github.com/ithaka/pharos/pull/171) [`d23d1b7`](https://github.com/ithaka/pharos/commit/d23d1b7a7eb8b967fa410a3d91e299d9163b2f98) Thanks [@Niznikr](https://github.com/Niznikr)! - do not truncate promotional image card titles
+
+## 10.5.2
+
+### Patch Changes
+
+- [#169](https://github.com/ithaka/pharos/pull/169) [`c286150`](https://github.com/ithaka/pharos/commit/c2861506d6a7f771250a8f28648ec27a3c4c884a) Thanks [@Niznikr](https://github.com/Niznikr)! - set the selection when a value is initially passed for selects
+
 ## 10.5.1
 
 ### Patch Changes

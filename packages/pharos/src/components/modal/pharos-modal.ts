@@ -21,7 +21,7 @@ const SIZES = ['small', 'medium', 'large'];
 /**
  * Pharos modal component.
  *
- * @element pharos-modal
+ * @tag pharos-modal
  *
  * @slot description - Content that describes the primary message or purpose of the modal.
  * @slot - Contains the content of the modal body.
@@ -76,15 +76,15 @@ export class PharosModal extends LitElement {
     this._handleTriggerClick = this._handleTriggerClick.bind(this);
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [modalStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._addTriggerListeners();
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (changedProperties.has('size') && !SIZES.includes(this.size)) {
@@ -92,7 +92,7 @@ export class PharosModal extends LitElement {
     }
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
       const body = document.querySelector('body');
 
@@ -110,14 +110,14 @@ export class PharosModal extends LitElement {
     }
   }
 
-  connectedCallback(): void {
+  override connectedCallback(): void {
     super.connectedCallback && super.connectedCallback();
     document.addEventListener('keydown', this._handleKeydown);
 
     this._addTriggerListeners();
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     document.removeEventListener('keydown', this._handleKeydown);
     this._triggers.forEach((trigger) => {
       trigger.removeEventListener('click', this._handleTriggerClick);
@@ -244,7 +244,7 @@ export class PharosModal extends LitElement {
       (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).length === 0;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div class="modal__overlay">
         <div

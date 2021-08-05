@@ -19,7 +19,7 @@ export type { Placement, PositioningStrategy };
 /**
  * Pharos dropdown menu component.
  *
- * @element pharos-dropdown-menu
+ * @tag pharos-dropdown-menu
  *
  * @slot - Contains the menu items.
  *
@@ -87,7 +87,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
     this._handleTriggerKeydown = this._handleTriggerKeydown.bind(this);
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [dropdownMenuStyles];
   }
 
@@ -105,13 +105,13 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
     }
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.addEventListener('click', this._handleMenuClick);
     this.addEventListener('keydown', this._handleMenuKeydown);
     this._addTriggerListeners();
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
   }
 
@@ -128,7 +128,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
     }
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
       if (this._currentTrigger && this._navMenu) {
         (this._currentTrigger as PharosDropdownMenuNavLink).isActive = this.open;
@@ -170,7 +170,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
     super.updated(changedProperties);
   }
 
-  connectedCallback(): void {
+  override connectedCallback(): void {
     super.connectedCallback && super.connectedCallback();
     document.addEventListener('click', this._handleClick);
     document.addEventListener('keydown', this._handleKeydown);
@@ -193,7 +193,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
     this._triggers = [];
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     document.removeEventListener('click', this._handleClick);
     document.removeEventListener('keydown', this._handleKeydown);
     this._removeTriggerListeners();
@@ -579,7 +579,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
     `;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return this._navMenu
       ? html`${this._renderList()}`
       : html`<focus-trap>${this._renderList()}</focus-trap>`;

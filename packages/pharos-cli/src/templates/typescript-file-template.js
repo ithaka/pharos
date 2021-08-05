@@ -6,11 +6,11 @@ import { customElement } from '../../utils/decorators';
 
 @customElement('pharos-${componentName}')
 export class Pharos${titleCaseName} extends LitElement {
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [${camelCaseName}Styles];
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html\` <span>This is the ${titleCaseName} component!</span> \`;
   }
 }

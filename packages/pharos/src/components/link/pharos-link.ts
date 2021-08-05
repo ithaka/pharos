@@ -16,7 +16,7 @@ export type { LinkTarget };
 /**
  * Pharos link component.
  *
- * @element pharos-link
+ * @tag pharos-link
  *
  * @slot - Contains the content of the link (the default slot).
  *
@@ -85,7 +85,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   @state()
   private _hover = false;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [linkStyles];
   }
 
@@ -101,7 +101,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
     return nothing;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`<a
       id="link-element"
       class="${classMap({

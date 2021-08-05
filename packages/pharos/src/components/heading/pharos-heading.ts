@@ -47,7 +47,7 @@ const PRESETS = [
 /**
  * Pharos heading component.
  *
- * @element pharos-heading
+ * @tag pharos-heading
  *
  * @slot - Contains the heading text (the default slot).
  */
@@ -74,11 +74,11 @@ export class PharosHeading extends LitElement {
   @property({ type: Boolean, reflect: true, attribute: 'no-margin' })
   public noMargin = false;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [headingStyles];
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (!this.level) {
@@ -98,7 +98,7 @@ export class PharosHeading extends LitElement {
     }
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     const template = `
       <h${this.level} class="heading">
         <slot></slot>

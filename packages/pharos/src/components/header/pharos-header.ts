@@ -6,7 +6,7 @@ import { customElement } from '../../utils/decorators';
 /**
  * Pharos header component.
  *
- * @element pharos-header
+ * @tag pharos-header
  *
  * @slot top - Content to be shown at the top of the nav.
  * @slot start - Content to be shown at the start of the nav.
@@ -16,11 +16,11 @@ import { customElement } from '../../utils/decorators';
  */
 @customElement('pharos-header')
 export class PharosHeader extends LitElement {
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [headerStyles];
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <header id="header-element">
         <div class="header__top">

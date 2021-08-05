@@ -1,10 +1,12 @@
 import * as fs from 'fs/promises';
 import path from 'path';
-import globby from 'globby';
-import customElements from '../custom-elements.json';
+import { globbyStream } from 'globby';
+import customElementsManifest from '../custom-elements.json';
 import prettier from 'prettier';
 
 const REACT_PROP_TYPE = 'DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>';
+
+const modules = customElementsManifest.modules.map((module) => module.declarations).flat();
 
 // Convert web component tag to React component name
 const toCamelCase = (str) => {
@@ -15,20 +17,21 @@ const toCamelCase = (str) => {
 
 // Create prop interface using custom-elements.json
 const createComponentInterface = (component, reactName) => {
-  const item = customElements.tags.find((item) => item.name === component);
+  const item = modules.find((item) => item.tagName === component);
+  const publicFields = item.members.filter(
+    (member) => member.kind === 'field' && member.privacy === 'public'
+  );
   const props =
-    item.properties &&
-    item.properties.map((property) => {
-      const readonly =
-        property.description && property.description.includes('@readonly') ? 'readonly ' : '';
-      const optional =
-        property.default || property.type.includes('undefined') || readonly ? '?' : '';
+    publicFields.length &&
+    publicFields.map((property) => {
+      const readonly = property.readonly ? 'readonly ' : '';
+      const optional = property.default || property.optional || property.readonly ? '?' : '';
 
       return (
         `/**\n` +
         `* ${property.description || ''}\n` +
         `*/\n` +
-        `${readonly}${property.name}${optional}: ${property.type};\n`
+        `${readonly}${property.name}${optional}: ${property.type.text};\n`
       );
     });
 
@@ -61,14 +64,21 @@ const createComponentInterface = (component, reactName) => {
 
 // Define default prop values using custom-elements.json
 const createDefaultProps = (component, reactName) => {
-  const item = customElements.tags.find((item) => item.name === component);
+  const item = modules.find((item) => item.tagName === component);
+  const defaultFields = item.members.filter(
+    (member) => member.kind === 'field' && member.privacy === 'public' && member.default
+  );
   const props =
-    item.properties &&
-    item.properties
-      .filter((property) => property.default)
-      .map((property) => {
-        return `${property.name}: ${property.default},\n`;
-      });
+    defaultFields.length &&
+    defaultFields.map((property) => {
+      const hasInitializer = item.attributes?.find(
+        (attribute) => attribute.default === property.default && attribute.resolveInitializer
+      );
+      const defaultValue = hasInitializer
+        ? modules.find((item) => item.kind === 'variable' && item.name === property.default).default
+        : property.default;
+      return `${property.name}: ${defaultValue},\n`;
+    });
   return props ? `${reactName}.defaultProps = {\n` + `${props.join('')}` + `};` : ``;
 };
 
@@ -87,7 +97,7 @@ const setup = async () => {
 };
 
 export const buildReact = async () => {
-  for await (const componentPath of globby.stream(
+  for await (const componentPath of globbyStream(
     './src/components/**/pharos-!(*.css|*.test)*.ts'
   )) {
     const dest = componentPath.replace('/components/', '/react-components/').replace('.ts', '.tsx');

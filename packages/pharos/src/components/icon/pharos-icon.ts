@@ -15,7 +15,7 @@ const LARGE_ICON_SIZE = 24;
 /**
  * Pharos icon component.
  *
- * @element pharos-icon
+ * @tag pharos-icon
  */
 @customElement('pharos-icon')
 export class PharosIcon extends LitElement {
@@ -37,11 +37,11 @@ export class PharosIcon extends LitElement {
   @state()
   private _svg = '';
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [iconStyles];
   }
 
-  protected async updated(changedProperties: PropertyValues): Promise<void> {
+  protected override async updated(changedProperties: PropertyValues): Promise<void> {
     if (changedProperties.has('name')) {
       try {
         const icon = await import(`../../styles/icons/${this.name}`);
@@ -56,7 +56,7 @@ export class PharosIcon extends LitElement {
     return this.name?.endsWith('-small') ? SMALL_ICON_SIZE : LARGE_ICON_SIZE;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     const size = this._getIconSize();
 
     return html`

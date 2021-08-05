@@ -9,7 +9,7 @@ import { PharosColorGlacierBlueBase, PharosColorNightBlueBase } from '../../styl
 /**
  * Pharos progress bar component.
  *
- * @element pharos-progress-bar
+ * @tag pharos-progress-bar
  *
  * @slot title - Contains the title of what the progress bar pertains to.
  * @slot description - Contains additional text content to display below the bar.
@@ -24,11 +24,11 @@ export class PharosProgressBar extends LitElement {
   @property({ type: Number, reflect: true })
   public value = 0;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [progressBarStyles];
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div id="title" class="progress-bar__title"><slot name="title"></slot></div>
       <div

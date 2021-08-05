@@ -17,7 +17,7 @@ const LINKS = `a[href],pharos-link[href]`;
 /**
  * Pharos checkbox component.
  *
- * @element pharos-checkbox
+ * @tag pharos-checkbox
  *
  * @slot label - Contains the label content.
  * @slot message - Contains message content to show below the input.
@@ -57,11 +57,11 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   @query('#checkbox-element')
   private _checkbox!: HTMLInputElement;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, checkboxStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._checkbox.defaultChecked = this.checked;
   }
 
@@ -111,7 +111,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
     }
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <input
         id="checkbox-element"

@@ -7,15 +7,15 @@ import { PharosSelect } from '../select/pharos-select';
 /**
  * Pharos input group select component.
  *
- * @element pharos-input-group-select
+ * @tag pharos-input-group-select
  */
 @customElement('pharos-input-group-select')
 export class PharosInputGroupSelect extends PharosSelect {
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, inputGroupSelectStyles];
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html` ${super.render()} `;
   }
 }

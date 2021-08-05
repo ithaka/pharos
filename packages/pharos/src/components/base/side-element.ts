@@ -6,7 +6,7 @@ import { sideElementStyles } from './side-element.css';
  * The base side element class to house shared properties, styles, and methods.
  */
 export class SideElement extends LitElement {
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [sideElementStyles];
   }
 }

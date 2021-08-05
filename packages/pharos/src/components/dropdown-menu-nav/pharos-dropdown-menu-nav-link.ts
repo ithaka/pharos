@@ -13,7 +13,7 @@ export type { LinkTarget };
 /**
  * Pharos dropdown menu nav link component.
  *
- * @element pharos-dropdown-menu-nav-link
+ * @tag pharos-dropdown-menu-nav-link
  *
  * @slot - Contains the content of the link (the default slot).
  *
@@ -32,18 +32,18 @@ export class PharosDropdownMenuNavLink extends PharosLink {
     this.flex = true;
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, dropdownMenuNavLinkStyles];
   }
 
-  protected get appendContent(): TemplateResult | typeof nothing {
+  protected override get appendContent(): TemplateResult | typeof nothing {
     if (this.hasAttribute('data-dropdown-menu-id')) {
       return html`<pharos-icon name="chevron-down" class="link__icon"></pharos-icon>`;
     }
     return nothing;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`${super.render()}`;
   }
 }

@@ -12,7 +12,7 @@ const LINKS = `a[href],pharos-link[href]`;
 /**
  * Pharos radio button component.
  *
- * @element pharos-radio-button
+ * @tag pharos-radio-button
  *
  * @slot label - Contains the label content.
  *
@@ -37,11 +37,11 @@ export class PharosRadioButton extends FormMixin(FormElement) {
   @query('#radio-element')
   private _radio!: HTMLInputElement;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, radioButtonStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._radio.defaultChecked = this.checked;
   }
 
@@ -76,7 +76,7 @@ export class PharosRadioButton extends FormMixin(FormElement) {
     }
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <input
         id="radio-element"

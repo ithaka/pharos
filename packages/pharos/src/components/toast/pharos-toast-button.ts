@@ -4,14 +4,14 @@ import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';
 
 import type { LinkTarget } from '../base/anchor-element';
-import type { ButtonType, IconName } from '../button/pharos-button';
+import type { ButtonType, IconName, ButtonVariant } from '../button/pharos-button';
 
-export type { LinkTarget, ButtonType, IconName };
+export type { LinkTarget, ButtonType, IconName, ButtonVariant };
 
 /**
  * Pharos toast button component.
  *
- * @element pharos-toast-button
+ * @tag pharos-toast-button
  *
  */
 @customElement('pharos-toast-button')
@@ -25,7 +25,7 @@ export class PharosToastButton extends PharosButton {
     this.iconCondensed = true;
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, toastButtonStyles];
   }
 }

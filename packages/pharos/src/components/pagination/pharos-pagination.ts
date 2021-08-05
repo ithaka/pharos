@@ -10,7 +10,7 @@ import '../link/pharos-link';
 /**
  * Pharos pagination component.
  *
- * @element pharos-pagination
+ * @tag pharos-pagination
  *
  * @fires prev-page - Fires when the previous page link is clicked
  * @fires next-page - Fires when the next page link is clicked
@@ -38,7 +38,7 @@ export class PharosPagination extends LitElement {
   @property({ type: Number, reflect: true, attribute: 'current-page' })
   public currentPage = 1;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [paginationStyles];
   }
 
@@ -46,7 +46,7 @@ export class PharosPagination extends LitElement {
     return Math.ceil(this.totalResults / this.pageSize);
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (
@@ -138,7 +138,7 @@ export class PharosPagination extends LitElement {
     return nothing;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div class="pagination__wrapper" role="navigation" aria-label="pagination">
         ${this._renderPrevLink()}

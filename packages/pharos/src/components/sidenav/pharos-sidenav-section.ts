@@ -9,7 +9,7 @@ import '../heading/pharos-heading';
 /**
  * Pharos sidenav section component.
  *
- * @element pharos-sidenav-section
+ * @tag pharos-sidenav-section
  *
  * @slot - Contains the content of the section (the default slot).
  *
@@ -30,7 +30,7 @@ export class PharosSidenavSection extends LitElement {
   @property({ type: Boolean, reflect: true, attribute: 'show-divider' })
   public showDivider = false;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [sidenavSectionStyles];
   }
 
@@ -52,7 +52,7 @@ export class PharosSidenavSection extends LitElement {
     return nothing;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div class="section__container">
         ${this._renderLabel()}

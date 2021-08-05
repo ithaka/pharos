@@ -10,7 +10,7 @@ import { FormElement } from '../base/form-element';
 /**
  * Pharos radio group component.
  *
- * @element pharos-radio-group
+ * @tag pharos-radio-group
  *
  * @slot legend - Contains the fieldset legend content.
  * @slot - Contains the set of radio buttons (the default slot).
@@ -28,23 +28,25 @@ export class PharosRadioGroup extends FormElement {
   public horizontal = false;
 
   /**
-   * Indicates the selected radio for the group @readonly
+   * Indicates the selected radio for the group
    * @readonly
    */
   @property({ type: String, attribute: false })
   public get value(): string {
-    return ([...this.children].find(
-      (child) => !child.slot && (child as PharosRadioButton).checked
-    ) as PharosRadioButton)?.value;
+    return (
+      [...this.children].find(
+        (child) => !child.slot && (child as PharosRadioButton).checked
+      ) as PharosRadioButton
+    )?.value;
   }
 
   private _clicked = false;
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, radioGroupStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._setRadios();
     this._addFocusListeners();
 
@@ -71,7 +73,7 @@ export class PharosRadioGroup extends FormElement {
     this.addEventListener('keydown', this._handleKeydown);
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (
@@ -172,7 +174,7 @@ export class PharosRadioGroup extends FormElement {
     });
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     const labels = ['legend'];
     if (this.messageId) {
       labels.push(this.messageId);

@@ -17,7 +17,7 @@ import '../button/pharos-button';
 /**
  * Pharos combobox component.
  *
- * @element pharos-combobox
+ * @tag pharos-combobox
  *
  * @slot label - Contains the label content.
  * @slot - Contains the available options for the combobox (the default slot).
@@ -62,7 +62,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
   public searchMode = false;
 
   /**
-   * The list of options available in the combobox dropdown list @readonly
+   * The list of options available in the combobox dropdown list
    * @readonly
    */
   @property({ attribute: false, reflect: false })
@@ -71,7 +71,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
   }
 
   /**
-   * The index of the selected option, if any @readonly
+   * The index of the selected option, if any
    * @readonly
    */
   @property({ attribute: false, reflect: false })
@@ -88,7 +88,6 @@ export class PharosCombobox extends FormMixin(FormElement) {
   @state()
   private _displayValue = '';
 
-  private _clicked = false;
   private _noResults = false;
   private _query = '';
   private _defaultValue = '';
@@ -107,11 +106,11 @@ export class PharosCombobox extends FormMixin(FormElement) {
     }
   );
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, comboboxStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this._setDisplayValue();
     this._input.defaultValue = this._displayValue;
     this._defaultValue = this.value;
@@ -122,7 +121,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
     });
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  protected override updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
 
     if (changedProperties.has('open') && !this.open) {
@@ -134,7 +133,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
     }
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     this._childrenObserver.disconnect();
     super.disconnectedCallback && super.disconnectedCallback();
   }
@@ -267,12 +266,11 @@ export class PharosCombobox extends FormMixin(FormElement) {
     } else {
       return html`
         <button
+          tabindex="-1"
           type="button"
           class="combobox__button"
           ?disabled=${this.disabled}
           @click=${this._handleButtonClick}
-          @mousedown=${this._handleButtonMousedown}
-          @focus=${this._handleButtonFocus}
           @blur=${this._handleButtonBlur}
         >
           <pharos-icon
@@ -298,31 +296,14 @@ export class PharosCombobox extends FormMixin(FormElement) {
     }, 100)();
   }
 
-  private _handleButtonFocus(): void {
-    if (!this._clicked) {
-      debounce(() => {
-        this.open = true;
-      }, 100)();
-    }
-  }
-
-  private _handleButtonMousedown(event: MouseEvent): void {
-    event.preventDefault();
-    this._clicked = true;
-  }
-
   private _handleButtonClick(event: MouseEvent): void {
     event.preventDefault();
-    this._button.focus();
-    this._clicked = false;
-
-    debounce(() => {
-      this.open = !this.open;
-    }, 100)();
+    this._input.focus();
+    this.open = true;
   }
 
-  private _handleButtonBlur(): void {
-    if (!this._clicked) {
+  private _handleButtonBlur(event: FocusEvent): void {
+    if (event.relatedTarget !== this._input) {
       this._closeDropdown();
     }
   }
@@ -333,9 +314,11 @@ export class PharosCombobox extends FormMixin(FormElement) {
     this._input.focus();
   }
 
-  private _handleInputBlur(): void {
-    this._setDisplayValue();
-    this._closeDropdown();
+  private _handleInputBlur(event: FocusEvent): void {
+    this._setDisplayValue(true);
+    if (event.relatedTarget !== this._button) {
+      this._closeDropdown();
+    }
   }
 
   private _handleInputKeydown(event: KeyboardEvent): void {
@@ -437,9 +420,11 @@ export class PharosCombobox extends FormMixin(FormElement) {
     this._displayValue = this._input.defaultValue;
   }
 
-  private _setDisplayValue() {
+  private _setDisplayValue(blurred = false) {
     if (this.value && this.selectedIndex >= 0) {
       this._displayValue = this.options[this.selectedIndex].text.trim();
+    } else if (this.value === '' && !blurred) {
+      this._displayValue = '';
     }
   }
 
@@ -447,7 +432,7 @@ export class PharosCombobox extends FormMixin(FormElement) {
     this.open = !this.open;
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <label for="input-element" id="input-label">
         <slot name="label"></slot>

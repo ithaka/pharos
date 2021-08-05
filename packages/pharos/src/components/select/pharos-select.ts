@@ -14,7 +14,7 @@ import '../icon/pharos-icon';
 /**
  * Pharos select component.
  *
- * @element pharos-select
+ * @tag pharos-select
  *
  * @slot label - Contains the label content.
  * @slot - Contains the available options for the select (the default slot).
@@ -40,19 +40,23 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
     ) as HTMLOptionElement[];
   }
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [super.styles, selectStyles];
   }
 
-  protected firstUpdated(): void {
-    this._setOption();
+  protected override firstUpdated(): void {
+    if (this.value && this._options.find((o) => o.value === this.value)) {
+      this._select.value = this.value;
+    } else {
+      this._setOption();
+    }
     this._options.forEach((option) => (option.defaultSelected = option.hasAttribute('selected')));
   }
 
   private _setOption(): void {
     // Set value to selected option
     const selected = (this.querySelector('option[selected]') ||
-      this.querySelector('option')) as HTMLOptionElement;
+      this.querySelector('option:not([disabled])')) as HTMLOptionElement;
     this.value = selected?.value;
   }
 
@@ -78,7 +82,7 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
     this._setOption();
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <label for="select-element">
         <slot name="label"></slot>

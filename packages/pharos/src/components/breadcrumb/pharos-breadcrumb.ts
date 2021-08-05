@@ -13,14 +13,14 @@ import FocusMixin from '../../utils/mixins/focus';
  *
  * i.e. Language / Characters / Letters / Letter A
  *
- * @element pharos-breadcrumb
+ * @tag pharos-breadcrumb
  *
  * @slot - Contains pharos-breadcrumb-items
  *
  */
 @customElement('pharos-breadcrumb')
 export class PharosBreadcrumb extends FocusMixin(LitElement) {
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [breadcrumbStyles];
   }
 
@@ -35,7 +35,7 @@ export class PharosBreadcrumb extends FocusMixin(LitElement) {
     });
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`<nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <slot @slotchange=${this._handleSlotchange}></slot>

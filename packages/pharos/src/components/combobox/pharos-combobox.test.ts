@@ -111,7 +111,7 @@ describe('pharos-combobox', () => {
 
     matchingOption.click();
 
-    component['_button'].dispatchEvent(new FocusEvent('focus'));
+    component['_input'].dispatchEvent(new MouseEvent('click'));
     await aTimeout(100);
     await component.updateComplete;
 
@@ -339,25 +339,11 @@ describe('pharos-combobox', () => {
   });
 
   it('opens the dropdown list on focus of the dropdown button', async () => {
-    component['_button'].dispatchEvent(new FocusEvent('focus'));
+    component['_button'].dispatchEvent(new MouseEvent('click'));
     await aTimeout(100);
     await component.updateComplete;
 
     expect(component.open).to.be.true;
-  });
-
-  it('toggles the dropdown list on click of the dropdown button', async () => {
-    component['_button'].dispatchEvent(new MouseEvent('mousedown'));
-    component['_button'].dispatchEvent(new MouseEvent('click'));
-    await aTimeout(100);
-    await component.updateComplete;
-    expect(component.open).to.be.true;
-
-    component['_button'].dispatchEvent(new MouseEvent('mousedown'));
-    component['_button'].dispatchEvent(new MouseEvent('click'));
-    await aTimeout(100);
-    await component.updateComplete;
-    expect(component.open).to.be.false;
   });
 
   it('toggles the dropdown list on click of the input', async () => {
@@ -660,5 +646,15 @@ describe('pharos-combobox', () => {
     await component.updateComplete;
 
     expect(component.open).to.be.false;
+  });
+
+  it('clears the displayed value when the value is cleared programmatically', async () => {
+    component.value = '1';
+    await elementUpdated(component);
+
+    component.value = '';
+    await elementUpdated(component);
+
+    expect(component['_input'].value).to.equal('');
   });
 });

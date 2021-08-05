@@ -27,7 +27,7 @@ export const DEFAULT_STATUS = 'success';
 /**
  * Pharos toast component.
  *
- * @element pharos-toast
+ * @tag pharos-toast
  *
  * @slot - Content inside the toast (the default slot).
  *
@@ -55,18 +55,18 @@ export class PharosToast extends FocusMixin(LitElement) {
     this.close();
   }, TOAST_LIFE);
 
-  public static get styles(): CSSResultArray {
+  public static override get styles(): CSSResultArray {
     return [toastStyles];
   }
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     this.addEventListener('focusin', this._handleTimer);
     this.addEventListener('focusout', this._handleTimer);
 
     this.open = true;
   }
 
-  protected update(changedProperties: PropertyValues): void {
+  protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
     if (changedProperties.has('status') && !STATUSES.includes(this.status)) {
@@ -102,7 +102,7 @@ export class PharosToast extends FocusMixin(LitElement) {
     }, 500)();
   }
 
-  protected render(): TemplateResult {
+  protected override render(): TemplateResult {
     return html`
       <div
         role="alert"
