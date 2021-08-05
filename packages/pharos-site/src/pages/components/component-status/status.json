@@ -23,7 +23,7 @@
   },
   "alert": {
     "design": {
-      "status": "legacy",
+      "status": "released",
       "description": ""
     },
     "development": {
