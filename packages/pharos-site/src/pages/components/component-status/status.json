@@ -23,7 +23,7 @@
   },
   "alert": {
     "design": {
-      "status": "legacy",
+      "status": "released",
       "description": ""
     },
     "development": {
@@ -673,7 +673,7 @@
       "description": ""
     },
     "documentation": {
-      "status": "planned",
+      "status": "released",
       "description": ""
     },
     "released": {
