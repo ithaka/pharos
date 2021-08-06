@@ -13,11 +13,12 @@
   padding: var(--pharos-spacing-1-x);
   border-radius: var(--pharos-radius-base-standard);
   display: grid;
-  grid-template-areas: 'icon body';
-  grid-template-columns: var(--pharos-spacing-one-and-a-half-x) 1fr;
+  grid-template-areas: 'icon body dismiss';
+  grid-template-columns: var(--pharos-spacing-one-and-a-half-x) 1fr 1.75rem;
   grid-gap: var(--pharos-spacing-1-x);
   background: var(--pharos-alert-color-background-base);
   color: var(--pharos-alert-color-text-base);
+  align-items: start;
 }
 
 .alert__icon {
@@ -27,6 +28,10 @@
 
 .alert__body {
   grid-area: body;
+}
+
+.alert__button {
+  grid-area: dismiss;
 }
 
 .alert--info {
