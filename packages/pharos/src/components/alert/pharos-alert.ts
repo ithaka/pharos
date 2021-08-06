@@ -28,7 +28,7 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
  *
  * @slot - Contains the alert message (the default slot).
  *
- * @fires pharos-alert-close - Fires when the toast has closed
+ * @fires pharos-alert-close - Fires when the alert has closed
  *
  * @cssprop {Color} --pharos-alert-color-text-inverse - The inverted text color for messaging in a dark-colored alert
  * @cssprop {Color} --pharos-alert-color-link-inverse - The inverted text color for links in a dark-colored alert
