@@ -59,7 +59,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
    * @attr dismissisible
    */
   @property({ type: Boolean, reflect: true })
-  public isDismissible = false;
+  public closable = false;
 
   private _allLinks!: NodeListOf<PharosLink>;
 
@@ -98,8 +98,8 @@ export class PharosAlert extends FocusMixin(LitElement) {
     this.remove();
   }
 
-  private _getCloseButton(): TemplateResult | typeof nothing {
-    return this.isDismissible
+  private _renderCloseButton(): TemplateResult | typeof nothing {
+    return this.closable
       ? html` <pharos-button
           type="button"
           variant="subtle"
@@ -125,7 +125,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
         <div class="alert__body">
           <slot @slotchange=${this._handleSlotChange}></slot>
         </div>
-        ${this._getCloseButton()}
+        ${this._renderCloseButton()}
       </div>
     `;
   }

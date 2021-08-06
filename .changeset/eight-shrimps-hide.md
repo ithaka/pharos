@@ -5,4 +5,4 @@
 
 Add dismissibility function to alert component:
 
-* add `isDismissibile` property to `alert` component 
+* add `closable` property to `alert` component 
