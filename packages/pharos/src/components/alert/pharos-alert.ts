@@ -55,8 +55,8 @@ export class PharosAlert extends FocusMixin(LitElement) {
   public status!: AlertStatus;
 
   /**
-   * Indicates if the modal is open.
-   * @attr dismissisible
+   * Indicates if the alert is closable
+   * @attr closable
    */
   @property({ type: Boolean, reflect: true })
   public closable = false;
