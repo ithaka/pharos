@@ -1,5 +1,6 @@
 import { html, LitElement, nothing } from 'lit';
 import { property, query } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
 import { customElement } from '../../utils/decorators';
@@ -55,6 +56,13 @@ export class PharosImageCard extends LitElement {
    */
   @property({ type: String, reflect: true })
   public link = '';
+
+  /**
+   * Indicates the label to apply to the image link.
+   * @attr link
+   */
+  @property({ type: String, reflect: true, attribute: 'image-link-label' })
+  public imageLinkLabel?: string;
 
   /**
    * Indicates the variant of card.
@@ -125,6 +133,7 @@ export class PharosImageCard extends LitElement {
     return html`<pharos-link
       class="card__link--collection"
       href="${this.link}"
+      aria-label=${ifDefined(this.imageLinkLabel)}
       subtle
       flex
       no-hover
@@ -155,6 +164,7 @@ export class PharosImageCard extends LitElement {
     return html`<pharos-link
       class="card__link--image"
       href="${this.link}"
+      aria-label=${ifDefined(this.imageLinkLabel)}
       subtle
       flex
       no-hover
