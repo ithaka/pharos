@@ -96,9 +96,21 @@ export class PharosAlert extends FocusMixin(LitElement) {
 
   private close(): void {
     this.remove();
+    const details = {
+      bubbles: true,
+      composed: true,
+    };
+    this.dispatchEvent(new CustomEvent('pharos-alert-close', details));
   }
 
   private _renderCloseButton(): TemplateResult | typeof nothing {
+    console.log(
+      classMap({
+        [`alert`]: true,
+        [`alert--${this.status}`]: this.status || '',
+        [`alert--closable`]: this.closable,
+      })
+    );
     return this.closable
       ? html` <pharos-button
           type="button"
@@ -118,6 +130,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
         class="${classMap({
           [`alert`]: true,
           [`alert--${this.status}`]: this.status || '',
+          [`alert--closable`]: this.closable,
         })}"
         tabindex="0"
       >
