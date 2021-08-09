@@ -10,7 +10,11 @@ describe('pharos-image-card', () => {
   let component: PharosImageCard;
 
   beforeEach(async () => {
-    component = await fixture(html`<pharos-image-card title="Card Title" link="#">
+    component = await fixture(html`<pharos-image-card
+      title="Card Title"
+      link="#"
+      image-link-label="Label for card image link"
+    >
       <img
         slot="image"
         alt="Card Title"
@@ -245,5 +249,18 @@ describe('pharos-image-card', () => {
 
     const link = component.renderRoot.querySelector('pharos-link.card__link--collection');
     expect(link).not.to.be.null;
+  });
+
+  it('renders a label for the link around the image for the base variant', async () => {
+    const link = component.renderRoot.querySelector('pharos-link.card__link--image');
+    expect(link?.getAttribute('label')).to.equal('Label for card image link');
+  });
+
+  it('renders a label for the link around the image for the collection variant', async () => {
+    component.variant = 'collection';
+    await component.updateComplete;
+
+    const link = component.renderRoot.querySelector('pharos-link.card__link--collection');
+    expect(link?.getAttribute('label')).to.equal('Label for card image link');
   });
 });
