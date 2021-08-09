@@ -252,7 +252,6 @@ describe('pharos-image-card', () => {
   });
 
   it('renders a label for the link around the image for the base variant', async () => {
-    await component.updateComplete;
 
     const link = component.renderRoot.querySelector('pharos-link.card__link--image');
     expect(link?.getAttribute('label')).to.equal('Label for card image link');
