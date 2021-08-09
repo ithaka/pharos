@@ -21,7 +21,7 @@
 }
 
 .alert--closable {
-  grid-template-areas: 'icon body dismiss';
+  grid-template-areas: 'icon body close';
   grid-template-columns: var(--pharos-spacing-one-and-a-half-x) 1fr 1.75rem;
   align-items: start;
 }
@@ -36,7 +36,7 @@
 }
 
 .alert__button {
-  grid-area: dismiss;
+  grid-area: close;
 }
 
 .alert--info {

@@ -81,9 +81,9 @@ export const ErrorTemplate = (args) => (
   </Story>
 </Canvas>
 
-## Dismissible Alert
+## Closable Alert
 
-export const DismissibleTemplate = (args) => (
+export const ClosableTemplate = (args) => (
   <pharos-alert status="error" closable>
     <p className="alert-example__content">{args.text}</p>
     <p className="alert-example__content">
@@ -94,7 +94,7 @@ export const DismissibleTemplate = (args) => (
 );
 
 <Canvas withToolbar>
-  <Story name="Dismissible" args={{ text: "Your password didn't meet the minimum requirements." }}>
-    {DismissibleTemplate.bind({})}
+  <Story name="Closable" args={{ text: "Your password didn't meet the minimum requirements." }}>
+    {ClosableTemplate.bind({})}
   </Story>
 </Canvas>
