@@ -59,7 +59,7 @@ export class PharosImageCard extends LitElement {
 
   /**
    * Indicates the label to apply to the image link.
-   * @attr link
+   * @attr image-link-label
    */
   @property({ type: String, reflect: true, attribute: 'image-link-label' })
   public imageLinkLabel?: string;
