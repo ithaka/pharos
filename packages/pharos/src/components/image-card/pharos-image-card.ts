@@ -133,7 +133,7 @@ export class PharosImageCard extends LitElement {
     return html`<pharos-link
       class="card__link--collection"
       href="${this.link}"
-      aria-label=${ifDefined(this.imageLinkLabel)}
+      label="${ifDefined(this.imageLinkLabel)}"
       subtle
       flex
       no-hover
@@ -164,7 +164,7 @@ export class PharosImageCard extends LitElement {
     return html`<pharos-link
       class="card__link--image"
       href="${this.link}"
-      aria-label=${ifDefined(this.imageLinkLabel)}
+      label=${ifDefined(this.imageLinkLabel)}
       subtle
       flex
       no-hover
