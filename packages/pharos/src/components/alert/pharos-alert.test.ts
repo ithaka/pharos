@@ -3,6 +3,7 @@ import { html } from 'lit/static-html.js';
 import './pharos-alert';
 import '../link/pharos-link';
 import type { PharosAlert } from './pharos-alert';
+import type { PharosButton } from '../button/pharos-button';
 
 describe('pharos-alert', () => {
   let component: PharosAlert;
@@ -72,5 +73,39 @@ describe('pharos-alert', () => {
     const anchor = link.renderRoot.querySelector('#link-element');
 
     expect(anchor).to.have.class('link--alert');
+  });
+
+  it('is closable', async () => {
+    component = await fixture(
+      html`
+        <pharos-alert status="success" closable id="closable-alert"> It worked! </pharos-alert>
+      `
+    );
+
+    await component.updateComplete;
+
+    const closeButton = component.renderRoot.querySelector('.alert__button') as PharosButton;
+    closeButton.click();
+
+    expect(document.getElementById('closable-alert')).to.be.null;
+  });
+
+  it('fires a custom event pharos-alert-closed when closed by user interaction', async () => {
+    component = await fixture(
+      html`
+        <pharos-alert status="success" closable id="closable-alert"> It worked! </pharos-alert>
+      `
+    );
+    let wasFired = false;
+    const handleClose = (): void => {
+      wasFired = true;
+    };
+    component.addEventListener('pharos-alert-closed', handleClose);
+    await component.updateComplete;
+
+    const closeButton = component.renderRoot.querySelector('.alert__button') as PharosButton;
+    closeButton.click();
+
+    expect(wasFired).to.be.true;
   });
 });
