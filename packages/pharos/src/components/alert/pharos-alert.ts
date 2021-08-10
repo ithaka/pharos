@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -8,6 +8,7 @@ import type { PharosLink } from '../link/pharos-link';
 
 import FocusMixin from '../../utils/mixins/focus';
 import '../icon/pharos-icon';
+import '../button/pharos-button';
 
 export type AlertStatus = 'info' | 'success' | 'warning' | 'error';
 
@@ -26,6 +27,8 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
  * @tag pharos-alert
  *
  * @slot - Contains the alert message (the default slot).
+ *
+ * @fires pharos-alert-closed - Fires when the alert has closed
  *
  * @cssprop {Color} --pharos-alert-color-text-inverse - The inverted text color for messaging in a dark-colored alert
  * @cssprop {Color} --pharos-alert-color-link-inverse - The inverted text color for links in a dark-colored alert
@@ -50,6 +53,13 @@ export class PharosAlert extends FocusMixin(LitElement) {
    */
   @property({ type: String, reflect: true })
   public status!: AlertStatus;
+
+  /**
+   * Indicates if the alert is closable
+   * @attr closable
+   */
+  @property({ type: Boolean, reflect: true })
+  public closable = false;
 
   private _allLinks!: NodeListOf<PharosLink>;
 
@@ -84,6 +94,28 @@ export class PharosAlert extends FocusMixin(LitElement) {
     });
   }
 
+  private close(): void {
+    this.remove();
+    const details = {
+      bubbles: true,
+      composed: true,
+    };
+    this.dispatchEvent(new CustomEvent('pharos-alert-closed', details));
+  }
+
+  private _renderCloseButton(): TemplateResult | typeof nothing {
+    return this.closable
+      ? html` <pharos-button
+          type="button"
+          variant="subtle"
+          icon="close"
+          label="Close alert"
+          class="alert__button"
+          @click=${this.close}
+        ></pharos-button>`
+      : nothing;
+  }
+
   protected override render(): TemplateResult {
     return html`
       <div
@@ -91,6 +123,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
         class="${classMap({
           [`alert`]: true,
           [`alert--${this.status}`]: this.status || '',
+          [`alert--closable`]: this.closable,
         })}"
         tabindex="0"
       >
@@ -98,6 +131,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
         <div class="alert__body">
           <slot @slotchange=${this._handleSlotChange}></slot>
         </div>
+        ${this._renderCloseButton()}
       </div>
     `;
   }

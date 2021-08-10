@@ -20,6 +20,12 @@
   color: var(--pharos-alert-color-text-base);
 }
 
+.alert--closable {
+  grid-template-areas: 'icon body close';
+  grid-template-columns: var(--pharos-spacing-one-and-a-half-x) 1fr 1.75rem;
+  align-items: start;
+}
+
 .alert__icon {
   grid-area: icon;
   fill: var(--pharos-alert-color-icon-base);
@@ -27,6 +33,10 @@
 
 .alert__body {
   grid-area: body;
+}
+
+.alert__button {
+  grid-area: close;
 }
 
 .alert--info {
