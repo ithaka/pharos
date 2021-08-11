@@ -12,13 +12,13 @@
 }
 
 .card__link--image {
-  contain: unset;
   height: 14rem;
   margin: 0 auto var(--pharos-spacing-1-x);
 }
 
 .card__link--image,
 .card__link--title {
+  contain: unset;
   display: inline-flex;
   min-width: 0;
 }

@@ -1,5 +1,37 @@
 # @ithaka/pharos
 
+## 10.6.0
+
+### Minor Changes
+
+- [#194](https://github.com/ithaka/pharos/pull/194) [`efea137`](https://github.com/ithaka/pharos/commit/efea137717110dff3c40df0138589f840588a9a6) Thanks [@Lham42](https://github.com/Lham42)! - Add closability function to alert component:
+
+  - add `closable` property to `alert` component
+
+* [#188](https://github.com/ithaka/pharos/pull/188) [`767d6f8`](https://github.com/ithaka/pharos/commit/767d6f8f10267afcb111fa92d9a7b3a71c3fee4e) Thanks [@Niznikr](https://github.com/Niznikr)! - update to TypeScript 4.3:
+
+  - Update packages to use TypeScript 4.3
+  - Add `noImplicitOverride` flag
+  - Update Prettier to support the new `override` keyword
+
+- [#186](https://github.com/ithaka/pharos/pull/186) [`3946ca2`](https://github.com/ithaka/pharos/commit/3946ca26e0d9cc4587d7c6bfd8f6e67efb58d3ea) Thanks [@Niznikr](https://github.com/Niznikr)! - use custom elements manifest v1.0.0:
+
+  - Swap `web-component-analyzer` for `@custom-elements-manifest/analyzer`
+  - Update Storybook to support the updated format
+  - Update React build script
+
+* [#196](https://github.com/ithaka/pharos/pull/196) [`1fb1f99`](https://github.com/ithaka/pharos/commit/1fb1f99dfebaf2751110e779818de62a1e8655b6) Thanks [@michael-iden](https://github.com/michael-iden)! - Add optional label for the link wrapping the image in the image card to improve accessibility
+
+### Patch Changes
+
+- [#185](https://github.com/ithaka/pharos/pull/185) [`6be9b5b`](https://github.com/ithaka/pharos/commit/6be9b5b750322c8f87c68e417189e938fb937292) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies
+
+* [#190](https://github.com/ithaka/pharos/pull/190) [`699b69b`](https://github.com/ithaka/pharos/commit/699b69b6686aec643c37b87dde5aad8f7e393b8c) Thanks [@daneah](https://github.com/daneah)! - Fix keyboard navigation behavior for Combobox
+
+- [#199](https://github.com/ithaka/pharos/pull/199) [`d37e2ef`](https://github.com/ithaka/pharos/commit/d37e2efbd0117877c3b320296eee0547365ba52b) Thanks [@michael-iden](https://github.com/michael-iden)! - Remove containment styling for linked title in image-card component
+
+* [#189](https://github.com/ithaka/pharos/pull/189) [`4830362`](https://github.com/ithaka/pharos/commit/483036262202e1baea2af555bc1eeb2107691a05) Thanks [@Niznikr](https://github.com/Niznikr)! - clear combobox input when value is reset
+
 ## 10.5.3
 
 ### Patch Changes

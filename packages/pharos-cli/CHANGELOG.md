@@ -1,5 +1,15 @@
 # @ithaka/pharos-cli
 
+## 5.1.2
+
+### Patch Changes
+
+- [#188](https://github.com/ithaka/pharos/pull/188) [`767d6f8`](https://github.com/ithaka/pharos/commit/767d6f8f10267afcb111fa92d9a7b3a71c3fee4e) Thanks [@Niznikr](https://github.com/Niznikr)! - update to TypeScript 4.3:
+
+  - Update packages to use TypeScript 4.3
+  - Add `noImplicitOverride` flag
+  - Update Prettier to support the new `override` keyword
+
 ## 5.1.1
 
 ### Patch Changes
