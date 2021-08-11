@@ -1,5 +1,26 @@
 # @ithaka/pharos-site
 
+## 5.8.0
+
+### Minor Changes
+
+- [#194](https://github.com/ithaka/pharos/pull/194) [`efea137`](https://github.com/ithaka/pharos/commit/efea137717110dff3c40df0138589f840588a9a6) Thanks [@Lham42](https://github.com/Lham42)! - Add closability function to alert component:
+
+  - add `closable` property to `alert` component
+
+### Patch Changes
+
+- [#188](https://github.com/ithaka/pharos/pull/188) [`767d6f8`](https://github.com/ithaka/pharos/commit/767d6f8f10267afcb111fa92d9a7b3a71c3fee4e) Thanks [@Niznikr](https://github.com/Niznikr)! - update to TypeScript 4.3:
+
+  - Update packages to use TypeScript 4.3
+  - Add `noImplicitOverride` flag
+  - Update Prettier to support the new `override` keyword
+
+* [#191](https://github.com/ithaka/pharos/pull/191) [`6208ccf`](https://github.com/ithaka/pharos/commit/6208ccf82fd87c7830337964bcafdfbfa322f814) Thanks [@Lham42](https://github.com/Lham42)! - Add documentation for pharos toggle button group
+
+* Updated dependencies [[`efea137`](https://github.com/ithaka/pharos/commit/efea137717110dff3c40df0138589f840588a9a6), [`6be9b5b`](https://github.com/ithaka/pharos/commit/6be9b5b750322c8f87c68e417189e938fb937292), [`699b69b`](https://github.com/ithaka/pharos/commit/699b69b6686aec643c37b87dde5aad8f7e393b8c), [`767d6f8`](https://github.com/ithaka/pharos/commit/767d6f8f10267afcb111fa92d9a7b3a71c3fee4e), [`3946ca2`](https://github.com/ithaka/pharos/commit/3946ca26e0d9cc4587d7c6bfd8f6e67efb58d3ea), [`1fb1f99`](https://github.com/ithaka/pharos/commit/1fb1f99dfebaf2751110e779818de62a1e8655b6), [`d37e2ef`](https://github.com/ithaka/pharos/commit/d37e2efbd0117877c3b320296eee0547365ba52b), [`4830362`](https://github.com/ithaka/pharos/commit/483036262202e1baea2af555bc1eeb2107691a05)]:
+  - @ithaka/pharos@10.6.0
+
 ## 5.7.0
 
 ### Minor Changes
