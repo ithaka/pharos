@@ -4,11 +4,11 @@
 
 - [Installation](#installation)
 - [Using web components](#using-web-components)
-  * [Browser support and polyfills](#browser-support-and-polyfills)
 - [Using Pharos components in React](#using-pharos-components-in-react)
+- [Styling components](#styling-components)
 - [Using Pharos design tokens](#using-pharos-design-tokens)
 - [Typography and mixins](#typography-and-mixins)
-- [Styling components](#styling-components)
+- [Additional component styles](#additional-component-styles)
 - [Using Pharos form elements in forms](#using-pharos-form-elements-in-forms)
 - [Adoption Governance Model](#adoption-governance-model)
 
@@ -45,21 +45,6 @@ Then, render the component in your template:
 
 See the [web component Storybook](https://pharos.jstor.org/storybooks/wc/) for details on component-specific syntax.
 
-### Browser support and polyfills
-
-Web components are still an emerging technology. Modern browser support is pretty good, but still exhibits small variations. Support is low or none in older versions of Edge and Internet Explorer.
-
-Pharos does not come with polyfilling measures included. Because products have a wide variety of browser support strategies, Pharos would need to support the union of all these strategies, leading to reduced performance for products that support a more limited set of browsers. If you need wide browser support, you may need the following polyfills:
-
-| Polyfill                                                                                             | Needed for                                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| [`webcomponentsjs`](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) | Any page where you use web components that need wide browser support                                                |
-| [`resize-observer-polyfill`](https://github.com/que-etc/resize-observer-polyfill)                    | `pharos-tooltip`, `pharos-dropdown-menu`                                                                            |
-| [`web-animations-js`](https://github.com/web-animations/web-animations-js)                           | `pharos-loading-spinner`                                                                                            |
-| [`formdata-polyfill`](https://github.com/jimmywarting/FormData)                                      | All form control components &mdash; see [Using Pharos form elements in forms](#using-pharos-form-elements-in-forms) |
-
-It's always a good idea to double check the features you want to use against the browsers you need to support using [Can I use](https://caniuse.com) or [MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Browser_support_for_JavaScript_APIs).
-
 ## Using Pharos components in React
 
 [React](https://reactjs.org/) is a JavaScript library used to build encapsulated components that manage their own state. React doesn't currently play perfectly with raw web components, so if you're developing a React application you should use the wrapper components provided in the `lib/react-components/` directory of the package. To use a component, first import it:
@@ -76,11 +61,9 @@ Then, render the component in your JSX:
 
 See the [React Storybook](https://pharos.jstor.org/storybooks/react/) for details on component-specific syntax.
 
-## Using Pharos design tokens
+## Styling components
 
-Components in Pharos are styled using design tokens, a tech agnostic way to store variables such as typography, color, and spacing so that Pharos can be shared across platforms. You can use these tokens to help style your own components and pages to ensure our brand is properly expressed to users. The token files are located in the `lib/styles/` directory of the package.
-
-To use the tokens as CSS variables, import them like so in your styles entrypoint to be available globally:
+Pharos components utilize CSS variables for their styling. To style components across your app, import the variables like so in your styles entrypoint:
 
 ```css
 /* index.css */
@@ -89,6 +72,10 @@ To use the tokens as CSS variables, import them like so in your styles entrypoin
 
 /* More global styles */
 ```
+
+## Using Pharos design tokens
+
+Components in Pharos are styled using design tokens, a tech agnostic way to store design decisions such as typography, color, and spacing so that Pharos can be shared across platforms. You can use these tokens to help style your own components and pages to ensure the brand is properly expressed to users. The token files are located in the `lib/styles/` directory of the package.
 
 To use the tokens as SASS variables, import them like so in the file where you want to use them:
 
@@ -161,9 +148,9 @@ You can access all Pharos variables, mixins, and functions from a single `pharos
 }
 ```
 
-## Styling components
+## Additional component styles
 
-Most components in Pharos benefit from the fully isolated styling provided by web components. However, some components provide slots you can populate with your own content. Content provided by application authors is rendered in the light DOM, and is not always stylable by web components.
+Most components in Pharos benefit from the fully isolated styling provided by web components and CSS variables. However, some components provide slots you can populate with your own content. Content provided by application authors is rendered in the light DOM, and is not always stylable by web components.
 
 You may need to import additional CSS files into your project's build for components whose slots expect nested content. These files are located in the `lib/styles/` directory of the package. To use the CSS, import it in whichever bundle will be included on the same page as your component:
 
@@ -190,7 +177,6 @@ Pharos form elements listen to the [`formdata` event](https://developer.mozilla.
 Pharos provides a cross-browser `createFormData` utility function for populating forms via a custom `formdata` event. You should call `createFormData` in your form's `submit` event handler.
 
 ```javascript
-import 'formdata-polyfill'; // Should come before the createFormData import
 import createFormData from '@ithaka/pharos/lib/utils/createFormData.js';
 
 const form = document.querySelector('form');
@@ -200,7 +186,6 @@ form.addEventListener('submit', (event) => createFormData(event.target));
 If you submit your forms asynchronously, you can pass the result of `createFormData` in your request:
 
 ```javascript
-import 'formdata-polyfill'; // Should come before the createFormData import
 import createFormData from '@ithaka/pharos/lib/utils/createFormData.js';
 
 const form = document.querySelector('form');
