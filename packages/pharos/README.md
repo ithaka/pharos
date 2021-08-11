@@ -8,7 +8,7 @@
 - [Styling components](#styling-components)
 - [Using Pharos design tokens](#using-pharos-design-tokens)
 - [Typography and mixins](#typography-and-mixins)
-- [Styling components](#styling-components-1)
+- [Additional component styles](#additional-component-styles)
 - [Using Pharos form elements in forms](#using-pharos-form-elements-in-forms)
 - [Adoption Governance Model](#adoption-governance-model)
 
@@ -148,9 +148,9 @@ You can access all Pharos variables, mixins, and functions from a single `pharos
 }
 ```
 
-## Styling components
+## Additional component styles
 
-Most components in Pharos benefit from the fully isolated styling provided by web components. However, some components provide slots you can populate with your own content. Content provided by application authors is rendered in the light DOM, and is not always stylable by web components.
+Most components in Pharos benefit from the fully isolated styling provided by web components and CSS variables. However, some components provide slots you can populate with your own content. Content provided by application authors is rendered in the light DOM, and is not always stylable by web components.
 
 You may need to import additional CSS files into your project's build for components whose slots expect nested content. These files are located in the `lib/styles/` directory of the package. To use the CSS, import it in whichever bundle will be included on the same page as your component:
 
