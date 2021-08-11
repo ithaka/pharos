@@ -75,7 +75,7 @@ Pharos components utilize CSS variables for their styling. To style components a
 
 ## Using Pharos design tokens
 
-Components in Pharos are styled using design tokens, a tech agnostic way to store variables such as typography, color, and spacing so that Pharos can be shared across platforms. You can use these tokens to help style your own components and pages to ensure our brand is properly expressed to users. The token files are located in the `lib/styles/` directory of the package.
+Components in Pharos are styled using design tokens, a tech agnostic way to store design decisions such as typography, color, and spacing so that Pharos can be shared across platforms. You can use these tokens to help style your own components and pages to ensure the brand is properly expressed to users. The token files are located in the `lib/styles/` directory of the package.
 
 To use the tokens as SASS variables, import them like so in the file where you want to use them:
 
