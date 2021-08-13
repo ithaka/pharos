@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 10.6.1
+
+### Patch Changes
+
+- [#201](https://github.com/ithaka/pharos/pull/201) [`5ed76ad`](https://github.com/ithaka/pharos/commit/5ed76ad968221aa1255fddfff172e114f4fea9e5) Thanks [@Niznikr](https://github.com/Niznikr)! - update docs to instruct importing of CSS var tokens
+
+* [#202](https://github.com/ithaka/pharos/pull/202) [`3a51350`](https://github.com/ithaka/pharos/commit/3a5135074aef4d55c05b0ee08122b1a9ce57e333) Thanks [@daneah](https://github.com/daneah)! - Allow breadcrumb items to wrap
+
 ## 10.6.0
 
 ### Minor Changes
