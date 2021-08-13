@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 5.8.1
+
+### Patch Changes
+
+- [#198](https://github.com/ithaka/pharos/pull/198) [`96b3d9c`](https://github.com/ithaka/pharos/commit/96b3d9c2d00e5c8c492eea73143660c7945e599e) Thanks [@daneah](https://github.com/daneah)! - Replace non-breaking spaces with normal spaces
+
+- Updated dependencies [[`5ed76ad`](https://github.com/ithaka/pharos/commit/5ed76ad968221aa1255fddfff172e114f4fea9e5), [`3a51350`](https://github.com/ithaka/pharos/commit/3a5135074aef4d55c05b0ee08122b1a9ce57e333)]:
+  - @ithaka/pharos@10.6.1
+
 ## 5.8.0
 
 ### Minor Changes
