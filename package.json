@@ -122,8 +122,8 @@
   "resolutions": {
     "@babel/core": "7.13.1",
     "@babel/preset-env": "7.13.0",
-    "playwright": "^1.13.0",
-    "webpack": "^5.46.0",
+    "playwright": "^1.14.0",
+    "webpack": "^5.50.0",
     "dotenv-webpack": "^7.0.0",
     "html-webpack-plugin": "^5.0.0",
     "terser-webpack-plugin": "^5.0.0",
