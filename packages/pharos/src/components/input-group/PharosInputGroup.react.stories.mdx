@@ -43,6 +43,39 @@ import { PharosIcon } from '../../react-components/icon/pharos-icon';
 
 <ArgsTable of={PharosInputGroup} />
 
+# Validity
+
+<Canvas withToolbar>
+  <Story name="Validity">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '1rem',
+        gridTemplateColumns: 'repeat(1, 524px)',
+      }}
+    >
+      <PharosInputGroup invalidated value="not an email" name="my-input-group">
+        <span slot="label">Search</span>
+        <PharosButton
+          name="search-button"
+          icon="search"
+          variant="subtle"
+          label="search"
+        ></PharosButton>
+      </PharosInputGroup>
+      <PharosInputGroup validated value="here@there.com" name="my-input-group">
+        <span slot="label">Search</span>
+        <PharosButton
+          name="search-button"
+          icon="search"
+          variant="subtle"
+          label="search"
+        ></PharosButton>
+      </PharosInputGroup>
+    </div>
+  </Story>
+</Canvas>
+
 # Composition
 
 <Canvas withToolbar>

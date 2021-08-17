@@ -128,7 +128,10 @@ export class PharosTextInput extends FormMixin(FormElement) {
   public onBackground = false;
 
   @query('#input-element')
-  private _input!: HTMLInputElement;
+  protected _input!: HTMLInputElement;
+
+  @query('.input__icon')
+  protected _inputIcon!: HTMLInputElement;
 
   public static override get styles(): CSSResultArray {
     return [super.styles, textInputStyles];
