@@ -46,7 +46,9 @@ export class PharosInputGroup extends PharosTextInput {
     if (changedProperties.has('_prependGroupWidth')) {
       this._input.style.paddingLeft = `calc(${PharosSpacingThreeQuartersX} + ${this._prependGroupWidth}px)`;
     }
-    if (changedProperties.has('_appendGroupWidth')) {
+    if (
+      ['invalidated', 'validated', '_appendGroupWidth'].some((key) => changedProperties.has(key))
+    ) {
       if (this._inputIcon) {
         this._inputIcon.style.right = `${this._appendGroupWidth}px`;
         this._input.style.paddingRight = `calc(${PharosSpacingOneAndAHalfX} + ${this._appendGroupWidth}px)`;
@@ -83,7 +85,7 @@ export class PharosInputGroup extends PharosTextInput {
   }
 
   private _adjustPadding(event: FocusEvent) {
-    const amount = event.type === 'focus' ? -1 : 1;
+    const amount = this.invalidated ? 0 : event.type === 'focus' ? -1 : 1;
     this._input.style.paddingLeft = `${
       parseInt(window.getComputedStyle(this._input, null).getPropertyValue('padding-left'), 10) +
       amount
