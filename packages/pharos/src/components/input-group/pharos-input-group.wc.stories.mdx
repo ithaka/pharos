@@ -34,6 +34,35 @@ import '../button/pharos-button';
 
 <ArgsTable of="pharos-input-group" />
 
+# Validity
+
+<Canvas>
+  <Story name="Validity">
+    {html`
+      <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
+        <pharos-input-group invalidated value="not an email" name="my-input-group">
+          <span slot="label">Email</span>
+          <pharos-button
+            name="search-button"
+            icon="search"
+            variant="subtle"
+            label="search"
+          ></pharos-button>
+        </pharos-input-group>
+        <pharos-input-group validated value="here@there.com" name="my-input-group">
+          <span slot="label">Email</span>
+          <pharos-button
+            name="search-button"
+            icon="search"
+            variant="subtle"
+            label="search"
+          ></pharos-button>
+        </pharos-input-group>
+      </div>
+    `}
+  </Story>
+</Canvas>
+
 # Composition
 
 <Canvas>

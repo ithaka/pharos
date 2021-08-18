@@ -5,7 +5,7 @@ import { inputGroupStyles } from './pharos-input-group.css';
 import { customElement } from '../../utils/decorators';
 import { PharosTextInput } from '../text-input/pharos-text-input';
 import type { TextInputType, TextInputAutocomplete } from '../text-input/pharos-text-input';
-import { PharosSpacingThreeQuartersX } from '../../styles/variables';
+import { PharosSpacingOneAndAHalfX, PharosSpacingThreeQuartersX } from '../../styles/variables';
 
 export type { TextInputType, TextInputAutocomplete };
 
@@ -44,14 +44,17 @@ export class PharosInputGroup extends PharosTextInput {
     super.updated(changedProperties);
 
     if (changedProperties.has('_prependGroupWidth')) {
-      super[
-        '_input'
-      ].style.paddingLeft = `calc(${PharosSpacingThreeQuartersX} + ${this._prependGroupWidth}px)`;
+      this._input.style.paddingLeft = `calc(${PharosSpacingThreeQuartersX} + ${this._prependGroupWidth}px)`;
     }
-    if (changedProperties.has('_appendGroupWidth')) {
-      super[
-        '_input'
-      ].style.paddingRight = `calc(${PharosSpacingThreeQuartersX} + ${this._appendGroupWidth}px)`;
+    if (
+      ['invalidated', 'validated', '_appendGroupWidth'].some((key) => changedProperties.has(key))
+    ) {
+      if (this._inputIcon) {
+        this._inputIcon.style.right = `${this._appendGroupWidth}px`;
+        this._input.style.paddingRight = `calc(${PharosSpacingOneAndAHalfX} + ${this._appendGroupWidth}px)`;
+      } else {
+        this._input.style.paddingRight = `calc(${PharosSpacingThreeQuartersX} + ${this._appendGroupWidth}px)`;
+      }
     }
   }
 
@@ -82,18 +85,14 @@ export class PharosInputGroup extends PharosTextInput {
   }
 
   private _adjustPadding(event: FocusEvent) {
-    const amount = event.type === 'focus' ? -1 : 1;
-    super['_input'].style.paddingLeft = `${
-      parseInt(
-        window.getComputedStyle(super['_input'], null).getPropertyValue('padding-left'),
-        10
-      ) + amount
+    const amount = this.invalidated ? 0 : event.type === 'focus' ? -1 : 1;
+    this._input.style.paddingLeft = `${
+      parseInt(window.getComputedStyle(this._input, null).getPropertyValue('padding-left'), 10) +
+      amount
     }px`;
-    super['_input'].style.paddingRight = `${
-      parseInt(
-        window.getComputedStyle(super['_input'], null).getPropertyValue('padding-right'),
-        10
-      ) + amount
+    this._input.style.paddingRight = `${
+      parseInt(window.getComputedStyle(this._input, null).getPropertyValue('padding-right'), 10) +
+      amount
     }px`;
   }
 
