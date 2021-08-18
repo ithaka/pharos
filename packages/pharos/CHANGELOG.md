@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 10.6.2
+
+### Patch Changes
+
+- [#205](https://github.com/ithaka/pharos/pull/205) [`37780dd`](https://github.com/ithaka/pharos/commit/37780dd3ce0f3d8ba0c95ea5c9d135eee0aed6e4) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies
+
+* [#206](https://github.com/ithaka/pharos/pull/206) [`a87cfea`](https://github.com/ithaka/pharos/commit/a87cfea007469b41e83bc4a595bb38bc499888e7) Thanks [@daneah](https://github.com/daneah)! - Fix positioning of validity icons in the presence of appended group items (like buttons)
+
 ## 10.6.1
 
 ### Patch Changes
