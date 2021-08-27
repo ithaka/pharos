@@ -16,6 +16,29 @@ div#google_translate_element div.goog-te-gadget-simple {
   border-color: var(--pharos-color-interactive-tertiary);
 }
 
+pharos-footer {
+  ul[slot] li:not(:last-child) {
+    margin-bottom: var(--pharos-spacing-three-quarters-x);
+  }
+
+  ul[slot='social-links'] {
+    @include mixins.list-inline($margin-right: var(--pharos-spacing-1-x));
+
+    pharos-icon {
+      fill: var(--pharos-color-white);
+      transition: opacity var(--pharos-transition-duration-default) ease-in-out;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  ul[slot='legal-links'] {
+    @include mixins.list-inline;
+  }
+}
+
 div#google_translate_element div.goog-te-gadget-simple a.goog-te-menu-value {
   @include mixins.interactive-focus;
 

@@ -72,36 +72,9 @@
   color: var(--pharos-color-marble-gray-80);
 }
 
-.footer__list {
+::slotted(ul) {
   @include mixins.no-bullet;
 
   padding-inline-start: 0;
   padding-left: 0;
-
-  li:not(:last-child) {
-    margin-bottom: var(--pharos-spacing-three-quarters-x);
-  }
-}
-
-.footer__list--inline {
-  @include mixins.list-inline;
-
-  padding-inline-start: 0;
-  padding-left: 0;
-}
-
-.footer__list--social {
-  @include mixins.list-inline($margin-right: var(--pharos-spacing-1-x));
-
-  padding-inline-start: 0;
-  padding-left: 0;
-}
-
-.footer__list--social pharos-icon {
-  fill: var(--pharos-color-white);
-  transition: opacity var(--pharos-transition-duration-default) ease-in-out;
-
-  &:hover {
-    opacity: 0.7;
-  }
 }

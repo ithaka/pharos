@@ -1,11 +1,9 @@
 import { html, LitElement } from 'lit';
 import { queryAssignedNodes } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { footerStyles } from './pharos-footer.css';
 import { customElement } from '../../utils/decorators';
 
-import ObserveChildrenMixin from '../../utils/mixins/observe-children';
 import '../heading/pharos-heading';
 import '../icon/pharos-icon';
 
@@ -24,7 +22,7 @@ import '../icon/pharos-icon';
  *
  */
 @customElement('pharos-footer')
-export class PharosFooter extends ObserveChildrenMixin(LitElement) {
+export class PharosFooter extends LitElement {
   @queryAssignedNodes('google-widget', false, '#google_translate_element')
   private _widgetNodes!: NodeListOf<HTMLElement>;
 
@@ -72,34 +70,12 @@ export class PharosFooter extends ObserveChildrenMixin(LitElement) {
             <pharos-heading level="2" preset="5--bold">Explore JSTOR</pharos-heading>
           </div>
           <div class="footer__row footer__row--main">
-            ${[...this.children]
-              .filter((child) => child.slot === 'links-group')
-              .map((list) => {
-                return html`
-                  <div>
-                    <ul class="footer__list">
-                      ${unsafeHTML(list.innerHTML)}
-                    </ul>
-                  </div>
-                `;
-              })}
+            <slot name="links-group"></slot>
             <div>
-              <ul class="footer__list">
-                ${[...this.children]
-                  .filter((child) => child.slot === 'button-links')
-                  .map((list) => {
-                    return html`${unsafeHTML(list.innerHTML)}`;
-                  })}
-              </ul>
+              <slot name="button-links"></slot>
             </div>
             <div>
-              <ul class="footer__list--social">
-                ${[...this.children]
-                  .filter((child) => child.slot === 'social-links')
-                  .map((list) => {
-                    return html`${unsafeHTML(list.innerHTML)}`;
-                  })}
-              </ul>
+              <slot name="social-links"></slot>
               <p class="footer__statement">
                 <slot name="mission-statement"></slot>
               </p>
@@ -109,13 +85,7 @@ export class PharosFooter extends ObserveChildrenMixin(LitElement) {
             </div>
           </div>
           <div class="footer__row footer__row--bottom">
-            <ul class="footer__list--inline">
-              ${[...this.children]
-                .filter((child) => child.slot === 'legal-links')
-                .map((list) => {
-                  return html`${unsafeHTML(list.innerHTML)}`;
-                })}
-            </ul>
+            <slot name="legal-links"></slot>
             <slot name="google-widget"></slot>
           </div>
         </div>
