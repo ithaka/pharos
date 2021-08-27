@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 10.6.3
+
+### Patch Changes
+
+- [#210](https://github.com/ithaka/pharos/pull/210) [`9aaa78a`](https://github.com/ithaka/pharos/commit/9aaa78a66408ea18109d29ab172d1db66ca98d7d) Thanks [@Niznikr](https://github.com/Niznikr)! - use slots directly in the footer
+
 ## 10.6.2
 
 ### Patch Changes
