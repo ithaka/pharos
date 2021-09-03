@@ -122,8 +122,6 @@
   "resolutions": {
     "@babel/core": "7.13.1",
     "@babel/preset-env": "7.13.0",
-    "lit": "^2.0.0-rc.4",
-    "lit-html": "^2.0.0-rc.4",
     "playwright": "^1.14.0",
     "webpack": "^5.50.0",
     "dotenv-webpack": "^7.0.0",
