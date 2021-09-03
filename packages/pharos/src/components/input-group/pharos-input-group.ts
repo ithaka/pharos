@@ -75,12 +75,12 @@ export class PharosInputGroup extends PharosTextInput {
   }
 
   private async _updateAppendPadding(): Promise<void> {
-    await this.updateComplete;
+    await new Promise((resolve) => requestAnimationFrame(resolve));
     this._appendGroupWidth = this._appendGroup.getBoundingClientRect().width;
   }
 
   private async _updatePrependPadding(): Promise<void> {
-    await this.updateComplete;
+    await new Promise((resolve) => requestAnimationFrame(resolve));
     this._prependGroupWidth = this._prependGroup.getBoundingClientRect().width;
   }
 
