@@ -91,4 +91,22 @@ describe('pharos-input-group', () => {
 
     expect(paddingLeft).to.equal(expectedPadding);
   });
+
+  it('adjusts the validated icon position when elements are appended to the group', async () => {
+    component.validated = true;
+    await component.updateComplete;
+    await nextFrame();
+    expect(component['_inputIcon'].style.right).to.equal('26px');
+  });
+
+  it('adjusts the validated icon position when elements are dynamically appended to the group', async () => {
+    const button = document.createElement('pharos-button');
+    button.icon = 'close';
+    component.appendChild(button);
+    component.validated = true;
+
+    await component.updateComplete;
+    await nextFrame();
+    expect(component['_inputIcon'].style.right).to.equal('50px');
+  });
 });
