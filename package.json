@@ -122,6 +122,7 @@
   "resolutions": {
     "@babel/core": "7.13.1",
     "@babel/preset-env": "7.13.0",
+    "axe-core": "^4.3.3",
     "playwright": "^1.14.0",
     "webpack": "^5.50.0",
     "dotenv-webpack": "^7.0.0",
