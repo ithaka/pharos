@@ -60,6 +60,7 @@
       "primary-source": { "value": "assets/icons/primary-source.svg" },
       "question-inverse": { "value": "assets/icons/question-inverse.svg" },
       "save": { "value": "assets/icons/save.svg" },
+      "saved": { "value": "assets/icons/saved.svg" },
       "search": { "value": "assets/icons/search.svg" },
       "share": { "value": "assets/icons/share.svg" },
       "tumblr": { "value": "assets/icons/tumblr.svg" },
