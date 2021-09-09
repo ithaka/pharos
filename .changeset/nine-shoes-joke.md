@@ -1,5 +1,5 @@
 ---
-'@ithaka/pharos': patch
+'@ithaka/pharos': minor
 ---
 
 Adds overlay button variant
