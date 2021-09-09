@@ -49,6 +49,12 @@ describe('pharos-button', () => {
       await expect(component).to.be.accessible();
     });
 
+    it('is accessible as the overlay variant', async () => {
+      component.variant = 'overlay';
+      await component.updateComplete;
+      await expect(component).to.be.accessible();
+    });
+
     it('is accessible on a AA compliant background', async () => {
       const parentNode = document.createElement('div');
       parentNode.style.backgroundColor = PharosColorBlack;
@@ -78,6 +84,19 @@ describe('pharos-button', () => {
 
       component = await fixture(
         html`<pharos-button variant="subtle" on-background>I am a button</pharos-button>`,
+        {
+          parentNode,
+        }
+      );
+      await expect(component).to.be.accessible();
+    });
+
+    it('is accessible on a AA compliant background as the overlay variant', async () => {
+      const parentNode = document.createElement('div');
+      parentNode.style.backgroundColor = PharosColorBlack;
+
+      component = await fixture(
+        html`<pharos-button variant="overlay" on-background>I am a button</pharos-button>`,
         {
           parentNode,
         }

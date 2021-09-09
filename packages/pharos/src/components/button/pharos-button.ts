@@ -13,13 +13,13 @@ import type { IconName } from '../icon/pharos-icon';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'subtle';
+export type ButtonVariant = 'primary' | 'secondary' | 'subtle' | 'overlay';
 
 export type { LinkTarget, IconName };
 
 const TYPES = ['button', 'submit', 'reset'];
 
-const VARIANTS = ['primary', 'secondary', 'subtle'];
+const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'];
 
 /**
  * Pharos button component.
