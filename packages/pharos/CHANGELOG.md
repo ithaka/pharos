@@ -1,5 +1,19 @@
 # @ithaka/pharos
 
+## 10.7.0
+
+### Minor Changes
+
+- [#216](https://github.com/ithaka/pharos/pull/216) [`d89a692`](https://github.com/ithaka/pharos/commit/d89a692cf60c9b320a77aa27c857b2a57b608a21) Thanks [@eslawski](https://github.com/eslawski)! - Adds overlay button variant
+
+### Patch Changes
+
+- [#214](https://github.com/ithaka/pharos/pull/214) [`4af1d23`](https://github.com/ithaka/pharos/commit/4af1d23059ea9f48d16d199ac735bb56636f3a73) Thanks [@Niznikr](https://github.com/Niznikr)! - update Lit to latest RC
+
+* [#213](https://github.com/ithaka/pharos/pull/213) [`7298e8a`](https://github.com/ithaka/pharos/commit/7298e8a208ab099464966ce61bbd5920597bffe4) Thanks [@Niznikr](https://github.com/Niznikr)! - update validation icon placement when input groups have items appended dynamically
+
+- [#215](https://github.com/ithaka/pharos/pull/215) [`e2a9c18`](https://github.com/ithaka/pharos/commit/e2a9c186121a13ee3dc461ef7888f7d029872637) Thanks [@eslawski](https://github.com/eslawski)! - Add saved icon
+
 ## 10.6.3
 
 ### Patch Changes
