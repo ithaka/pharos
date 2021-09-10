@@ -52,7 +52,7 @@ export const Template = (args) =>
     name="Base"
     argTypes={{
       variant: {
-        options: ['primary', 'secondary', 'subtle'],
+        options: ['primary', 'secondary', 'subtle', 'overlay'],
         control: {
           type: 'inline-radio',
         },
@@ -102,6 +102,7 @@ export const Template = (args) =>
           <pharos-button name="primary">Primary</pharos-button>
           <pharos-button name="secondary" variant="secondary">Secondary</pharos-button>
           <pharos-button name="subtle" variant="subtle">Subtle</pharos-button>
+          <pharos-button name="overlay" variant="overlay">Overlay</pharos-button>
         </div>
         <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="primary-disabled" disabled>Primary</pharos-button>
@@ -109,6 +110,7 @@ export const Template = (args) =>
             >Secondary</pharos-button
           >
           <pharos-button name="subtle-disabled" variant="subtle" disabled>Subtle</pharos-button>
+          <pharos-button name="overlay-disabled" variant="overlay" disabled>Overlay</pharos-button>
         </div>
         <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="primary-on-background" on-background>Primary</pharos-button>
@@ -117,6 +119,9 @@ export const Template = (args) =>
           >
           <pharos-button name="subtle-on-background" variant="subtle" on-background
             >Subtle</pharos-button
+          >
+          <pharos-button name="overlay-on-background" variant="overlay" on-background
+            >Overlay</pharos-button
           >
         </div>
       </div>
@@ -134,6 +139,7 @@ export const Template = (args) =>
           <pharos-button name="large-primary" large>Primary</pharos-button>
           <pharos-button name="large-secondary" variant="secondary" large>Secondary</pharos-button>
           <pharos-button name="large-subtle" variant="subtle" large>Subtle</pharos-button>
+          <pharos-button name="large-overlay" variant="overlay" large>Overlay</pharos-button>
         </div>
         <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <pharos-button name="large-primary-disabled" large disabled>Primary</pharos-button>
@@ -142,6 +148,9 @@ export const Template = (args) =>
           >
           <pharos-button name="large-subtle-disabled" variant="subtle" large disabled
             >Subtle</pharos-button
+          >
+          <pharos-button name="large-overlay" variant="overlay" large disabled
+            >Overlay</pharos-button
           >
         </div>
         <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
@@ -157,6 +166,9 @@ export const Template = (args) =>
           >
           <pharos-button name="large-subtle-on-background" variant="subtle" large on-background
             >Subtle</pharos-button
+          >
+          <pharos-button name="large-overlay" variant="overlay" large on-background
+            >Overlay</pharos-button
           >
         </div>
       </div>
@@ -224,7 +236,7 @@ export const Template = (args) =>
     name="Icon only"
     argTypes={{
       variant: {
-        options: ['primary', 'secondary', 'subtle'],
+        options: ['primary', 'secondary', 'subtle', 'overlay'],
         control: {
           type: 'inline-radio',
         },
@@ -262,7 +274,7 @@ export const Template = (args) =>
     name="Icon only (condensed)"
     argTypes={{
       variant: {
-        options: ['primary', 'secondary', 'subtle'],
+        options: ['primary', 'secondary', 'subtle', 'overlay'],
         control: {
           type: 'inline-radio',
         },
@@ -295,7 +307,7 @@ export const Template = (args) =>
     name="Link"
     argTypes={{
       variant: {
-        options: ['primary', 'secondary', 'subtle'],
+        options: ['primary', 'secondary', 'subtle', 'overlay'],
         control: {
           type: 'inline-radio',
         },

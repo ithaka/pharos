@@ -30,6 +30,16 @@
   );
 }
 
+:host([variant='overlay']) #button-element {
+  @include mixins.button-base(
+    $color: var(--pharos-color-ui-10),
+    $background-color: var(--pharos-color-marble-gray-10),
+    $border-color: var(--pharos-color-marble-gray-10)
+  );
+
+  opacity: 0.9;
+}
+
 :host([href]) #button-element {
   @include mixins.no-underline;
 }
@@ -83,6 +93,15 @@
     $color: var(--pharos-color-hover-primary),
     $background-color: var(--pharos-color-ui-20),
     $border-color: var(--pharos-color-ui-20)
+  );
+}
+
+:host([variant='overlay']:not([disabled])) #button-element:hover,
+:host([variant='overlay']:not([disabled])) #button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-color-ui-10),
+    $background-color: var(--pharos-color-marble-gray-20),
+    $border-color: var(--pharos-color-marble-gray-20)
   );
 }
 
