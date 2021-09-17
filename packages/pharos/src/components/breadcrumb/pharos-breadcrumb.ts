@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { breadcrumbStyles } from './pharos-breadcrumb.css';
-import { customElement } from '../../utils/decorators';
+import type { PharosBreadcrumbItem } from './pharos-breadcrumb-item';
 
 import FocusMixin from '../../utils/mixins/focus';
 
@@ -13,19 +13,18 @@ import FocusMixin from '../../utils/mixins/focus';
  *
  * i.e. Language / Characters / Letters / Letter A
  *
- * @tag pharos-breadcrumb
- *
  * @slot - Contains pharos-breadcrumb-items
  *
  */
-@customElement('pharos-breadcrumb')
 export class PharosBreadcrumb extends FocusMixin(LitElement) {
   public static override get styles(): CSSResultArray {
     return [breadcrumbStyles];
   }
 
   private _handleSlotchange(): void {
-    const items = this.querySelectorAll('pharos-breadcrumb-item');
+    const items = this.querySelectorAll(
+      'pharos-breadcrumb-item'
+    ) as NodeListOf<PharosBreadcrumbItem>;
     items.forEach((item, index) => {
       item['_last'] = false;
 
@@ -41,11 +40,5 @@ export class PharosBreadcrumb extends FocusMixin(LitElement) {
         <slot @slotchange=${this._handleSlotchange}></slot>
       </ol>
     </nav>`;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-breadcrumb': PharosBreadcrumb;
   }
 }

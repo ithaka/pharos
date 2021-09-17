@@ -1,6 +1,5 @@
 import type { CSSResultArray } from 'lit';
 import { sidenavButtonStyles } from './pharos-sidenav-button.css';
-import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';
 
 import type { LinkTarget } from '../base/anchor-element';
@@ -10,11 +9,7 @@ export type { LinkTarget, ButtonType, IconName, ButtonVariant };
 
 /**
  * Pharos sidenav button component.
- *
- * @tag pharos-sidenav-button
- *
  */
-@customElement('pharos-sidenav-button')
 export class PharosSidenavButton extends PharosButton {
   constructor() {
     super();
@@ -38,11 +33,5 @@ export class PharosSidenavButton extends PharosButton {
       await sidenav.updateComplete;
       sidenav.focus();
     }
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-sidenav-button': PharosSidenavButton;
   }
 }

@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { sidenavMenuStyles } from './pharos-sidenav-menu.css';
-import { customElement } from '../../utils/decorators';
 import FocusMixin from '../../utils/mixins/focus';
 
 import type { PharosSidenavLink } from './pharos-sidenav-link';
@@ -12,12 +11,9 @@ import '../icon/pharos-icon';
 /**
  * Pharos sidenav menu component.
  *
- * @tag pharos-sidenav-menu
- *
  * @slot - Contains the items of the menu (the default slot).
  *
  */
-@customElement('pharos-sidenav-menu')
 export class PharosSidenavMenu extends FocusMixin(LitElement) {
   /**
    * Indicates the label of the menu.
@@ -96,11 +92,5 @@ export class PharosSidenavMenu extends FocusMixin(LitElement) {
       </button>
       ${this._renderMenu()}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-sidenav-menu': PharosSidenavMenu;
   }
 }

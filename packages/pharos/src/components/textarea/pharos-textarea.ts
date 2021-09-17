@@ -4,7 +4,6 @@ import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { textareaStyles } from './pharos-textarea.css';
-import { customElement } from '../../utils/decorators';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
@@ -20,8 +19,6 @@ const WRAPS = ['soft', 'hard'];
 /**
  * Pharos text input component.
  *
- * @tag pharos-textarea
- *
  * @slot label - Contains the label content.
  * @slot message - Contains message content to show below the input.
  *
@@ -30,7 +27,6 @@ const WRAPS = ['soft', 'hard'];
  *
  * @cssprop {Length} --pharos-textarea-size-text-base - Text input font size.
  */
-@customElement('pharos-textarea')
 export class PharosTextarea extends FormMixin(FormElement) {
   /**
    * Indicates textarea value.
@@ -193,11 +189,5 @@ export class PharosTextarea extends FormMixin(FormElement) {
       </div>
       ${this.messageContent}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-textarea': PharosTextarea;
   }
 }

@@ -8,7 +8,6 @@ import debounce from '../../utils/debounce';
 import observeResize from '../../utils/observeResize';
 import deepSelector from '../../utils/deepSelector';
 import { tooltipStyles } from './pharos-tooltip.css';
-import { customElement } from '../../utils/decorators';
 
 import { OverlayElement } from '../base/overlay-element';
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
@@ -17,15 +16,12 @@ export type { Placement, PositioningStrategy };
 /**
  * Pharos tooltip component.
  *
- * @tag pharos-tooltip
- *
  * @slot - Content inside the tooltip (the default slot).
  *
  * @cssprop {Length} --pharos-tooltip-size-text-base - Tooltip font size.
  * @cssprop {Color} --pharos-tooltip-color-background-base - Font color for the bubble.
  * @cssprop {Color} --pharos-tooltip-color-text-base - Font color for the text.
  */
-@customElement('pharos-tooltip')
 export class PharosTooltip extends OverlayElement {
   /**
    * Indicates if the tooltip width should equal its target's width.
@@ -366,11 +362,5 @@ export class PharosTooltip extends OverlayElement {
         <div class="tooltip__caret"></div>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-tooltip': PharosTooltip;
   }
 }

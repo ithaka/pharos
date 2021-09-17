@@ -3,14 +3,10 @@ import { property } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { checkboxGroupStyles } from './pharos-checkbox-group.css';
 import type { PharosCheckbox } from '../checkbox/pharos-checkbox';
-import { customElement } from '../../utils/decorators';
-
 import { FormElement } from '../base/form-element';
 
 /**
  * Pharos checkbox group component.
- *
- * @tag pharos-checkbox-group
  *
  * @slot legend - Contains the fieldset legend content.
  * @slot - Contains the set of checkboxes (the default slot).
@@ -18,7 +14,6 @@ import { FormElement } from '../base/form-element';
  *
  * @fires change - Fires when the value has changed
  */
-@customElement('pharos-checkbox-group')
 export class PharosCheckboxGroup extends FormElement {
   /**
    * Dictate if checkboxes should be displayed horizontally
@@ -105,11 +100,5 @@ export class PharosCheckboxGroup extends FormElement {
         ${this.messageContent}
       </fieldset>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-checkbox-group': PharosCheckboxGroup;
   }
 }

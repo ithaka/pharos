@@ -3,7 +3,6 @@ import { property, query } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { buttonStyles } from './pharos-button.css';
-import { customElement } from '../../utils/decorators';
 
 import { AnchorElement } from '../base/anchor-element';
 import type { LinkTarget } from '../base/anchor-element';
@@ -24,12 +23,9 @@ const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'];
 /**
  * Pharos button component.
  *
- * @tag pharos-button
- *
  * @slot - Contains the content of the button (the default slot).
  *
  */
-@customElement('pharos-button')
 export class PharosButton extends FocusMixin(AnchorElement) {
   /**
    * Indicates that the button should have input focus when the page loads.
@@ -260,11 +256,5 @@ export class PharosButton extends FocusMixin(AnchorElement) {
             ${this.buttonContent}
           </button>
         `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-button': PharosButton;
   }
 }

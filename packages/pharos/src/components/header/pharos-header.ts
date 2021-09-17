@@ -1,12 +1,9 @@
 import { html, LitElement } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { headerStyles } from './pharos-header.css';
-import { customElement } from '../../utils/decorators';
 
 /**
  * Pharos header component.
- *
- * @tag pharos-header
  *
  * @slot top - Content to be shown at the top of the nav.
  * @slot start - Content to be shown at the start of the nav.
@@ -14,7 +11,6 @@ import { customElement } from '../../utils/decorators';
  * @slot end - Content to be shown at the end of the nav.
  *
  */
-@customElement('pharos-header')
 export class PharosHeader extends LitElement {
   public static override get styles(): CSSResultArray {
     return [headerStyles];
@@ -41,11 +37,5 @@ export class PharosHeader extends LitElement {
         </div>
       </header>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-header': PharosHeader;
   }
 }

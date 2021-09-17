@@ -6,17 +6,13 @@ import {
   PharosLoadingSpinnerColorStrokePrimary,
   PharosLoadingSpinnerColorStrokeSecondary,
 } from '../../styles/variables';
-import { customElement } from '../../utils/decorators';
 
 /**
  * Pharos loading spinner component.
  *
- * @tag pharos-loading-spinner
- *
  * @cssprop {Color} --pharos-loading-spinner-color-stroke-primary - The primary color of the spinner icon.
  * @cssprop {Color} --pharos-loading-spinner-color-stroke-secondary - The secondary color of the spinner icon.
  */
-@customElement('pharos-loading-spinner')
 export class PharosLoadingSpinner extends LitElement {
   @query('.loading-spinner__icon')
   private _icon!: SVGElement;
@@ -98,11 +94,5 @@ export class PharosLoadingSpinner extends LitElement {
         </svg>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-loading-spinner': PharosLoadingSpinner;
   }
 }

@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { toastStyles } from './pharos-toast.css';
-import { customElement } from '../../utils/decorators';
 import debounce from '../../utils/debounce';
 
 import FocusMixin from '../../utils/mixins/focus';
@@ -27,14 +26,11 @@ export const DEFAULT_STATUS = 'success';
 /**
  * Pharos toast component.
  *
- * @tag pharos-toast
- *
  * @slot - Content inside the toast (the default slot).
  *
  * @fires pharos-toast-close - Fires when the toast has closed
  *
  */
-@customElement('pharos-toast')
 export class PharosToast extends FocusMixin(LitElement) {
   /**
    * The status to reflect to the user.
@@ -119,11 +115,5 @@ export class PharosToast extends FocusMixin(LitElement) {
         <pharos-toast-button class="toast__button" @click=${this.close}></pharos-toast-button>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-toast': PharosToast;
   }
 }

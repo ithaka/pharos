@@ -65,7 +65,7 @@ const standardCustomElement = (tagName: string, descriptor: ClassDescriptor) => 
  * Class decorator factory that defines the decorated class as a custom element.
  *
  * ```
- * @customElement('my-element')
+ * ('my-element')
  * class MyElement {
  *   render() {
  *     return html``;

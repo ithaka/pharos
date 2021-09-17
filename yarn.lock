@@ -3299,7 +3299,15 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@lit/reactive-element@^1.0.0-rc.1", "@lit/reactive-element@^1.0.0-rc.2":
+"@lit-labs/scoped-registry-mixin@^1.0.0-rc.3":
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@lit-labs/scoped-registry-mixin/-/scoped-registry-mixin-1.0.0-rc.3.tgz#252e79b369bfb6454e5a31f7f4d47047756f04c0"
+  integrity sha512-fP45lxGQKV++K7RcrqrG3Rk5EE+qQ3baJ+BMrIDQ2HnK0ffB1i4TT+YYVsmXlLhkmbMQfbzLRfHw5PQHigPFhA==
+  dependencies:
+    "@lit/reactive-element" "1.0.0-rc.4"
+    lit "^2.0.0-rc.2"
+
+"@lit/reactive-element@1.0.0-rc.4", "@lit/reactive-element@^1.0.0-rc.1", "@lit/reactive-element@^1.0.0-rc.2":
   version "1.0.0-rc.4"
   resolved "https://registry.yarnpkg.com/@lit/reactive-element/-/reactive-element-1.0.0-rc.4.tgz#3473f6a687e9925fc2e9ff1b716a86b5f4b576ad"
   integrity sha512-dJMha+4NFYdpnUJzRrWTFV5Hdp9QHWFuPnaoqonrKl4lGJVnYez9mu8ev9F/5KM47tjAjh22DuRHrdFDHfOijA==
@@ -14680,7 +14688,7 @@ lit-html@^2.0.0-rc.4:
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@^2.0.0-rc.1, lit@^2.0.0-rc.4:
+lit@^2.0.0-rc.1, lit@^2.0.0-rc.2, lit@^2.0.0-rc.4:
   version "2.0.0-rc.4"
   resolved "https://registry.yarnpkg.com/lit/-/lit-2.0.0-rc.4.tgz#ea9eb44fa5cc974b7af4a45f8d82172d0b3f9c26"
   integrity sha512-HPJrSvK377a1E5eSAUG+eTJWIOJFGNtnfbGPHY4vbc0Ud9GTFSwMEbeAOIJnA+5q92cafR38F1bWOyo4a2ncag==

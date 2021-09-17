@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { alertStyles } from './pharos-alert.css';
-import { customElement } from '../../utils/decorators';
 import type { PharosLink } from '../link/pharos-link';
 
 import FocusMixin from '../../utils/mixins/focus';
@@ -24,8 +23,6 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
 /**
  * Pharos alert component
  *
- * @tag pharos-alert
- *
  * @slot - Contains the alert message (the default slot).
  *
  * @fires pharos-alert-closed - Fires when the alert has closed
@@ -45,7 +42,6 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
  * @cssprop {Color} --pharos-alert-color-background-error - The background color of an error alert
  * @cssprop {Color} --pharos-alert-color-icon-error - The fill color for an error alert icon
  */
-@customElement('pharos-alert')
 export class PharosAlert extends FocusMixin(LitElement) {
   /**
    * The status to reflect to the user
@@ -134,11 +130,5 @@ export class PharosAlert extends FocusMixin(LitElement) {
         ${this._renderCloseButton()}
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-alert': PharosAlert;
   }
 }

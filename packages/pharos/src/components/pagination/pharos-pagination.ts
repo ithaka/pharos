@@ -2,7 +2,6 @@ import { html, LitElement, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { paginationStyles } from './pharos-pagination.css';
-import { customElement } from '../../utils/decorators';
 
 import '../icon/pharos-icon';
 import '../link/pharos-link';
@@ -10,12 +9,9 @@ import '../link/pharos-link';
 /**
  * Pharos pagination component.
  *
- * @tag pharos-pagination
- *
  * @fires prev-page - Fires when the previous page link is clicked
  * @fires next-page - Fires when the next page link is clicked
  */
-@customElement('pharos-pagination')
 export class PharosPagination extends LitElement {
   /**
    * Indicates the total number of results.
@@ -146,11 +142,5 @@ export class PharosPagination extends LitElement {
         ${this._renderNextLink()}
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-pagination': PharosPagination;
   }
 }

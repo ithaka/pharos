@@ -3,7 +3,6 @@ import { property, query } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { textInputStyles } from './pharos-text-input.css';
-import { customElement } from '../../utils/decorators';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
@@ -49,8 +48,6 @@ const BLOCKING = [
 /**
  * Pharos text input component.
  *
- * @tag pharos-text-input
- *
  * @slot label - Contains the label content.
  * @slot message - Contains message content to show below the input.
  *
@@ -61,7 +58,6 @@ const BLOCKING = [
  * @cssprop {Color} --pharos-text-input-color-icon-valid - Fill color for valid state icon.
  * @cssprop {Color} --pharos-text-input-color-icon-invalid - Fill color for invalidated state icon.
  */
-@customElement('pharos-text-input')
 export class PharosTextInput extends FormMixin(FormElement) {
   /**
    * Indicates input value.
@@ -245,11 +241,5 @@ export class PharosTextInput extends FormMixin(FormElement) {
       </div>
       ${this.messageContent}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-text-input': PharosTextInput;
   }
 }

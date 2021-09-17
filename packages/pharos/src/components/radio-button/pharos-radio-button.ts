@@ -2,8 +2,6 @@ import { html } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { radioButtonStyles } from './pharos-radio-button.css';
-import { customElement } from '../../utils/decorators';
-
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
 
@@ -12,13 +10,10 @@ const LINKS = `a[href],pharos-link[href]`;
 /**
  * Pharos radio button component.
  *
- * @tag pharos-radio-button
- *
  * @slot label - Contains the label content.
  *
  * @fires change - Fires when the value has changed
  */
-@customElement('pharos-radio-button')
 export class PharosRadioButton extends FormMixin(FormElement) {
   /**
    * Indicates if radio is checked.
@@ -113,11 +108,5 @@ export class PharosRadioButton extends FormMixin(FormElement) {
       </div>
       ${this.messageContent}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-radio-button': PharosRadioButton;
   }
 }

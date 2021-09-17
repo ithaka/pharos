@@ -2,19 +2,15 @@ import { html, LitElement } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { tabStyles } from './pharos-tab.css';
-import { customElement } from '../../utils/decorators';
 
 /**
  * Pharos tab component.
- *
- * @tag pharos-tab
  *
  * @slot - Contains the content of the tab.
  *
  * @fires pharos-tab-selected - Fires when the tab is selected.
  *
  */
-@customElement('pharos-tab')
 export class PharosTab extends LitElement {
   /**
    * Indicates if the tab is selected.
@@ -61,11 +57,5 @@ export class PharosTab extends LitElement {
 
   protected override render(): TemplateResult {
     return html` <slot></slot> `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-tab': PharosTab;
   }
 }

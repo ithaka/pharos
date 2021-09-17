@@ -4,7 +4,6 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { selectStyles } from './pharos-select.css';
-import { customElement } from '../../utils/decorators';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
@@ -14,15 +13,12 @@ import '../icon/pharos-icon';
 /**
  * Pharos select component.
  *
- * @tag pharos-select
- *
  * @slot label - Contains the label content.
  * @slot - Contains the available options for the select (the default slot).
  * @slot message - Contains message content to show below the select.
  *
  * @fires change - Fires when the value has changed
  */
-@customElement('pharos-select')
 export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
   /**
    * Indicates the value for the select.
@@ -110,11 +106,5 @@ export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
       </div>
       ${this.messageContent}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-select': PharosSelect;
   }
 }

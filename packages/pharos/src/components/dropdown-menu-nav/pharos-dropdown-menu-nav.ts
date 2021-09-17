@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { dropdownMenuNavStyles } from './pharos-dropdown-menu-nav.css';
-import { customElement } from '../../utils/decorators';
 import type { PharosDropdownMenuNavLink } from './pharos-dropdown-menu-nav-link';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
 
@@ -12,12 +11,9 @@ import FocusMixin from '../../utils/mixins/focus';
 /**
  * Pharos dropdown menu nav component.
  *
- * @tag pharos-dropdown-menu-nav
- *
  * @slot - Contains the pharos-links and associated pharos-dropdown-menu.
  *
  */
-@customElement('pharos-dropdown-menu-nav')
 export class PharosDropdownMenuNav extends FocusMixin(LitElement) {
   /**
    * Indicates the aria label to apply to the nav.
@@ -71,11 +67,5 @@ export class PharosDropdownMenuNav extends FocusMixin(LitElement) {
         <slot @slotchange=${this._handleSlotChange}></slot>
       </nav>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-dropdown-menu-nav': PharosDropdownMenuNav;
   }
 }

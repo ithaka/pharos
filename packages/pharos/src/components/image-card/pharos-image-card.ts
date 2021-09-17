@@ -3,7 +3,6 @@ import { property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
-import { customElement } from '../../utils/decorators';
 
 import type { HeadingLevel, HeadingPreset } from '../heading/pharos-heading';
 export type { HeadingLevel };
@@ -26,15 +25,12 @@ const DEFAULT_HEADING_LEVEL = 3;
 /**
  * Pharos image card component.
  *
- * @tag pharos-image-card
- *
  * @slot image - Contains the image to display on the card.
  * @slot metadata - Contains the metadata for the item.
  * @slot title - Contains the title for the item (renders if title prop is not set).
  * @slot action-button - Contains the action-button for the item (renders if action-menu prop is not set).
  *
  */
-@customElement('pharos-image-card')
 export class PharosImageCard extends LitElement {
   /**
    * Indicates the title of the item presented in the card.
@@ -234,11 +230,5 @@ export class PharosImageCard extends LitElement {
       <div class="card__title">${this.renderTitle} ${this._renderActionButton()}</div>
       ${this._renderMetadata()}
     </div>`;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-image-card': PharosImageCard;
   }
 }

@@ -1,18 +1,14 @@
 import { html, LitElement } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { toggleButtonGroupStyles } from './pharos-toggle-button-group.css';
-import { customElement } from '../../utils/decorators';
 import type { PharosToggleButton } from './pharos-toggle-button';
 
 /**
  * Pharos toggle button group component.
  *
- * @tag pharos-toggle-button-group
- *
  * @slot - Contains the buttons.
  *
  */
-@customElement('pharos-toggle-button-group')
 export class PharosToggleButtonGroup extends LitElement {
   public static override get styles(): CSSResultArray {
     return [toggleButtonGroupStyles];
@@ -135,11 +131,5 @@ export class PharosToggleButtonGroup extends LitElement {
         <slot></slot>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-toggle-button-group': PharosToggleButtonGroup;
   }
 }

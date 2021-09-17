@@ -6,7 +6,6 @@ import { createPopper } from '../../utils/popper';
 import debounce from '../../utils/debounce';
 import observeResize from '../../utils/observeResize';
 import { dropdownMenuStyles } from './pharos-dropdown-menu.css';
-import { customElement } from '../../utils/decorators';
 import type { PharosDropdownMenuItem } from './pharos-dropdown-menu-item';
 import type { PharosDropdownMenuNavLink } from '../dropdown-menu-nav/pharos-dropdown-menu-nav-link';
 
@@ -19,8 +18,6 @@ export type { Placement, PositioningStrategy };
 /**
  * Pharos dropdown menu component.
  *
- * @tag pharos-dropdown-menu
- *
  * @slot - Contains the menu items.
  *
  * @fires pharos-dropdown-menu-select - Fires when an item is about to be selected - cancelable
@@ -28,9 +25,7 @@ export type { Placement, PositioningStrategy };
  * @fires pharos-dropdown-menu-opened - Fires when the dropdown menu is opened
  * @fires pharos-dropdown-menu-closed - Fires when the dropdown menu is closed
  *
- *
  */
-@customElement('pharos-dropdown-menu')
 export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
   /**
    * Indicates if the dropdown should display a checkmark on the selected item.
@@ -583,11 +578,5 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
     return this._navMenu
       ? html`${this._renderList()}`
       : html`<focus-trap>${this._renderList()}</focus-trap>`;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-dropdown-menu': PharosDropdownMenu;
   }
 }

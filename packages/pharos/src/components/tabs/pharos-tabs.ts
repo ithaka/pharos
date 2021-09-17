@@ -1,20 +1,17 @@
 import { html, LitElement } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { tabsStyles } from './pharos-tabs.css';
-import { customElement } from '../../utils/decorators';
+
 import type { PharosTab } from './pharos-tab';
 import type { PharosTabPanel } from './pharos-tab-panel';
 
 /**
  * Pharos tabs component.
  *
- * @tag pharos-tabs
- *
  * @slot - Contains the tabs.
  * @slot panel - Contains the panel to be shown for a tab.
  *
  */
-@customElement('pharos-tabs')
 export class PharosTabs extends LitElement {
   public static override get styles(): CSSResultArray {
     return [tabsStyles];
@@ -146,11 +143,5 @@ export class PharosTabs extends LitElement {
         <slot name="panel"></slot>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-tabs': PharosTabs;
   }
 }

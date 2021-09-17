@@ -6,7 +6,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { comboboxStyles } from './pharos-combobox.css';
 import debounce from '../../utils/debounce';
-import { customElement } from '../../utils/decorators';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
@@ -16,8 +15,6 @@ import '../button/pharos-button';
 
 /**
  * Pharos combobox component.
- *
- * @tag pharos-combobox
  *
  * @slot label - Contains the label content.
  * @slot - Contains the available options for the combobox (the default slot).
@@ -35,7 +32,6 @@ import '../button/pharos-button';
  * @cssprop {Color} --pharos-combobox-size-height-list - Height of the dropdown list.
  * @cssprop {Color} --pharos-combobox-size-height-clear - Height of the clear button.
  */
-@customElement('pharos-combobox')
 export class PharosCombobox extends FormMixin(FormElement) {
   /**
    * Indicates the value for the input.
@@ -465,11 +461,5 @@ export class PharosCombobox extends FormMixin(FormElement) {
       </div>
       ${this.messageContent}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-combobox': PharosCombobox;
   }
 }

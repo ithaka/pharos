@@ -4,7 +4,6 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { linkStyles } from './pharos-link.css';
-import { customElement } from '../../utils/decorators';
 import deepSelector from '../../utils/deepSelector';
 
 import { AnchorElement } from '../base/anchor-element';
@@ -16,12 +15,9 @@ export type { LinkTarget };
 /**
  * Pharos link component.
  *
- * @tag pharos-link
- *
  * @slot - Contains the content of the link (the default slot).
  *
  */
-@customElement('pharos-link')
 export class PharosLink extends FocusMixin(AnchorElement) {
   /**
    * Indicates the MIME type of the target.
@@ -119,11 +115,5 @@ export class PharosLink extends FocusMixin(AnchorElement) {
       @click=${this._handleClick}
       ><slot></slot>${this.appendContent}</a
     >`;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-link': PharosLink;
   }
 }

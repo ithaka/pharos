@@ -2,7 +2,6 @@ import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { sidenavLinkStyles } from './pharos-sidenav-link.css';
-import { customElement } from '../../utils/decorators';
 import { PharosLink } from '../link/pharos-link';
 import '../icon/pharos-icon';
 
@@ -13,12 +12,9 @@ export type { LinkTarget };
 /**
  * Pharos sidenav link component.
  *
- * @tag pharos-sidenav-link
- *
  * @slot - Contains the content of the link (the default slot).
  *
  */
-@customElement('pharos-sidenav-link')
 export class PharosSidenavLink extends PharosLink {
   /**
    * Indicates the link is active
@@ -54,11 +50,5 @@ export class PharosSidenavLink extends PharosLink {
 
   protected override render(): TemplateResult {
     return html`${super.render()}`;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-sidenav-link': PharosSidenavLink;
   }
 }

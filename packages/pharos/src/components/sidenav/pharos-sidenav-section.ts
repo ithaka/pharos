@@ -2,19 +2,15 @@ import { html, LitElement, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { sidenavSectionStyles } from './pharos-sidenav-section.css';
-import { customElement } from '../../utils/decorators';
 
 import '../heading/pharos-heading';
 
 /**
  * Pharos sidenav section component.
  *
- * @tag pharos-sidenav-section
- *
  * @slot - Contains the content of the section (the default slot).
  *
  */
-@customElement('pharos-sidenav-section')
 export class PharosSidenavSection extends LitElement {
   /**
    * Indicates the label to apply to the section.
@@ -60,11 +56,5 @@ export class PharosSidenavSection extends LitElement {
       </div>
       ${this._renderDivider()}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-sidenav-section': PharosSidenavSection;
   }
 }

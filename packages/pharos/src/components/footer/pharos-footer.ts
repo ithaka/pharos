@@ -2,15 +2,12 @@ import { html, LitElement } from 'lit';
 import { queryAssignedNodes } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { footerStyles } from './pharos-footer.css';
-import { customElement } from '../../utils/decorators';
 
 import '../heading/pharos-heading';
 import '../icon/pharos-icon';
 
 /**
  * Pharos footer component.
- *
- * @tag pharos-footer
  *
  * @slot links-group - One or more lists of links to show in the middle of the footer.
  * @slot button-links - List of button links to show in the middle of the footer.
@@ -21,7 +18,6 @@ import '../icon/pharos-icon';
  * @slot google-widget - Contains the Google translate widget.
  *
  */
-@customElement('pharos-footer')
 export class PharosFooter extends LitElement {
   @queryAssignedNodes('google-widget', false, '#google_translate_element')
   private _widgetNodes!: NodeListOf<HTMLElement>;
@@ -91,11 +87,5 @@ export class PharosFooter extends LitElement {
         </div>
       </footer>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-footer': PharosFooter;
   }
 }

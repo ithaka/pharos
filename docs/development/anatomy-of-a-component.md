@@ -135,7 +135,6 @@ Now create the `pharos-sparkly-text.ts` TypeScript file and import the following
 ```typescript
 import { LitElement, html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
-import { customElement } from '../../utils/decorators';
 ```
 
 - `LitElement` is the base class all web components written using LitElement must use.
@@ -153,7 +152,7 @@ import { sparklyTextStyles } from './pharos-sparkly-text.css';
 Now you've got all the ingredients needed to write the component definition. Add the following to `pharos-sparkly-text.ts`:
 
 ```typescript
-@customElement('pharos-sparkly-text')
+('pharos-sparkly-text');
 export class PharosSparklyText extends LitElement {
   public static override get styles(): CSSResultArray {
     return [sparklyTextStyles];

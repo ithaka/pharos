@@ -2,18 +2,14 @@ import { html, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { tabPanelStyles } from './pharos-tab-panel.css';
-import { customElement } from '../../utils/decorators';
 import focusable from '../../utils/focusable';
 
 /**
  * Pharos tab panel component.
  *
- * @tag pharos-tab-panel
- *
  * @slot - Contains the content of the panel.
  *
  */
-@customElement('pharos-tab-panel')
 export class PharosTabPanel extends LitElement {
   /**
    * Indicates if the panel is selected.
@@ -41,11 +37,5 @@ export class PharosTabPanel extends LitElement {
 
   protected override render(): TemplateResult {
     return html` <slot></slot> `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-tab-panel': PharosTabPanel;
   }
 }

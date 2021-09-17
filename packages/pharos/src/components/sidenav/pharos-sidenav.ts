@@ -2,8 +2,6 @@ import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { sidenavStyles } from './pharos-sidenav.css';
-import { customElement } from '../../utils/decorators';
-
 import { SideElement } from '../base/side-element';
 
 import FocusMixin from '../../utils/mixins/focus';
@@ -14,13 +12,10 @@ import '../link/pharos-link';
 /**
  * Pharos sidenav component.
  *
- * @tag pharos-sidenav
- *
  * @slot top - Content to be shown at the top of the sidenav.
  * @slot - Contains the sections of the sidenav (the default slot).
  *
  */
-@customElement('pharos-sidenav')
 export class PharosSidenav extends FocusMixin(SideElement) {
   /**
    * Indicates that the sidenav should slide in.
@@ -97,11 +92,5 @@ export class PharosSidenav extends FocusMixin(SideElement) {
         </div>
       </nav>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-sidenav': PharosSidenav;
   }
 }

@@ -5,7 +5,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { modalStyles } from './pharos-modal.css';
 import focusable from '../../utils/focusable';
-import { customElement } from '../../utils/decorators';
 
 import '../button/pharos-button';
 import '../heading/pharos-heading';
@@ -21,8 +20,6 @@ const SIZES = ['small', 'medium', 'large'];
 /**
  * Pharos modal component.
  *
- * @tag pharos-modal
- *
  * @slot description - Content that describes the primary message or purpose of the modal.
  * @slot - Contains the content of the modal body.
  * @slot footer - Contains the content of the modal footer.
@@ -33,7 +30,6 @@ const SIZES = ['small', 'medium', 'large'];
  * @fires pharos-modal-closed - Fires when the modal has closed
  *
  */
-@customElement('pharos-modal')
 export class PharosModal extends LitElement {
   /**
    * Indicates if the modal is open.
@@ -284,11 +280,5 @@ export class PharosModal extends LitElement {
         </div>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-modal': PharosModal;
   }
 }

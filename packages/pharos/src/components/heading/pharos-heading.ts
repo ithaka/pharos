@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { headingStyles } from './pharos-heading.css';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { customElement } from '../../utils/decorators';
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -47,11 +46,8 @@ const PRESETS = [
 /**
  * Pharos heading component.
  *
- * @tag pharos-heading
- *
  * @slot - Contains the heading text (the default slot).
  */
-@customElement('pharos-heading')
 export class PharosHeading extends LitElement {
   /**
    * Indicates the heading tag level.
@@ -105,11 +101,5 @@ export class PharosHeading extends LitElement {
       </h${this.level}>
     `;
     return html`${unsafeHTML(template)}`;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-heading': PharosHeading;
   }
 }

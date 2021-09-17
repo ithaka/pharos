@@ -3,7 +3,6 @@ import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { dropdownMenuItemStyles } from './pharos-dropdown-menu-item.css';
-import { customElement } from '../../utils/decorators';
 import type { PharosDropdownMenu } from './pharos-dropdown-menu';
 
 import FocusMixin from '../../utils/mixins/focus';
@@ -15,13 +14,10 @@ export type { IconName };
 /**
  * Pharos dropdown menu item component.
  *
- * @tag pharos-dropdown-menu-item
- *
  * @slot description - Content that describes the item.
  * @slot - Contains the content of dropdown item.
  *
  */
-@customElement('pharos-dropdown-menu-item')
 export class PharosDropdownMenuItem extends FocusMixin(LitElement) {
   /**
    * The icon to be used for the item
@@ -170,11 +166,5 @@ export class PharosDropdownMenuItem extends FocusMixin(LitElement) {
             </button>`}
       </li>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-dropdown-menu-item': PharosDropdownMenuItem;
   }
 }

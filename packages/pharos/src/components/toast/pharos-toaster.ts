@@ -2,8 +2,6 @@ import { html, LitElement } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { toasterStyles } from './pharos-toaster.css';
 
-import { customElement } from '../../utils/decorators';
-
 import './pharos-toast';
 import type { PharosToast } from './pharos-toast';
 import { DEFAULT_STATUS } from './pharos-toast';
@@ -20,13 +18,10 @@ import { DEFAULT_STATUS } from './pharos-toast';
 /**
  * Pharos toaster component.
  *
- * @tag pharos-toaster
- *
  * @slot - Contains the toasts (the default slot).
  *
  * @listens pharos-toast-open
  */
-@customElement('pharos-toaster')
 export class PharosToaster extends LitElement {
   constructor() {
     super();
@@ -71,11 +66,5 @@ export class PharosToaster extends LitElement {
         <slot></slot>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-toaster': PharosToaster;
   }
 }
