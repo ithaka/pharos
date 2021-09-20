@@ -3,10 +3,11 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { dropdownMenuNavLinkStyles } from './pharos-dropdown-menu-nav-link.css';
 import { PharosLink } from '../link/pharos-link';
-import '../icon/pharos-icon';
+
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
 
 import type { LinkTarget } from '../base/anchor-element';
-
 export type { LinkTarget };
 
 /**
@@ -15,7 +16,11 @@ export type { LinkTarget };
  * @slot - Contains the content of the link (the default slot).
  *
  */
-export class PharosDropdownMenuNavLink extends PharosLink {
+export class PharosDropdownMenuNavLink extends ScopedRegistryMixin(PharosLink) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * Indicates the link is active
    * @attr is-active

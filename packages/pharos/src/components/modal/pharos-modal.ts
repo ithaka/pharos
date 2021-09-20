@@ -6,8 +6,9 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { modalStyles } from './pharos-modal.css';
 import focusable from '../../utils/focusable';
 
-import '../button/pharos-button';
-import '../heading/pharos-heading';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosButton } from '../button/pharos-button';
+import { PharosHeading } from '../heading/pharos-heading';
 import '@ithaka/focus-trap';
 
 const CLOSE_BUTTONS = `[data-modal-close],pharos-button#close-button`;
@@ -30,7 +31,12 @@ const SIZES = ['small', 'medium', 'large'];
  * @fires pharos-modal-closed - Fires when the modal has closed
  *
  */
-export class PharosModal extends LitElement {
+export class PharosModal extends ScopedRegistryMixin(LitElement) {
+  static elementDefinitions = {
+    'pharos-button': PharosButton,
+    'pharos-heading': PharosHeading,
+  };
+
   /**
    * Indicates if the modal is open.
    * @attr open

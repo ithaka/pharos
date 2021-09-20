@@ -6,7 +6,8 @@ import { textInputStyles } from './pharos-text-input.css';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
-import '../icon/pharos-icon';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
 
 export type TextInputType =
   | 'email'
@@ -58,7 +59,11 @@ const BLOCKING = [
  * @cssprop {Color} --pharos-text-input-color-icon-valid - Fill color for valid state icon.
  * @cssprop {Color} --pharos-text-input-color-icon-invalid - Fill color for invalidated state icon.
  */
-export class PharosTextInput extends FormMixin(FormElement) {
+export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * Indicates input value.
    * @attr value

@@ -9,9 +9,10 @@ import debounce from '../../utils/debounce';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
-import '../icon/pharos-icon';
-import '../tooltip/pharos-tooltip';
-import '../button/pharos-button';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosTooltip } from '../tooltip/pharos-tooltip';
+import { PharosButton } from '../button/pharos-button';
 
 /**
  * Pharos combobox component.
@@ -32,7 +33,13 @@ import '../button/pharos-button';
  * @cssprop {Color} --pharos-combobox-size-height-list - Height of the dropdown list.
  * @cssprop {Color} --pharos-combobox-size-height-clear - Height of the clear button.
  */
-export class PharosCombobox extends FormMixin(FormElement) {
+export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+    'pharos-tooltip': PharosTooltip,
+    'pharos-button': PharosButton,
+  };
+
   /**
    * Indicates the value for the input.
    * @attr value

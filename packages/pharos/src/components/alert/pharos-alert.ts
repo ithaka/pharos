@@ -6,8 +6,9 @@ import { alertStyles } from './pharos-alert.css';
 import type { PharosLink } from '../link/pharos-link';
 
 import FocusMixin from '../../utils/mixins/focus';
-import '../icon/pharos-icon';
-import '../button/pharos-button';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosButton } from '../button/pharos-button';
 
 export type AlertStatus = 'info' | 'success' | 'warning' | 'error';
 
@@ -42,7 +43,12 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
  * @cssprop {Color} --pharos-alert-color-background-error - The background color of an error alert
  * @cssprop {Color} --pharos-alert-color-icon-error - The fill color for an error alert icon
  */
-export class PharosAlert extends FocusMixin(LitElement) {
+export class PharosAlert extends ScopedRegistryMixin(FocusMixin(LitElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+    'pharos-button': PharosButton,
+  };
+
   /**
    * The status to reflect to the user
    * @attr status

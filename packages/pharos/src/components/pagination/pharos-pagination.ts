@@ -3,8 +3,9 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { paginationStyles } from './pharos-pagination.css';
 
-import '../icon/pharos-icon';
-import '../link/pharos-link';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosLink } from '../link/pharos-link';
 
 /**
  * Pharos pagination component.
@@ -12,7 +13,12 @@ import '../link/pharos-link';
  * @fires prev-page - Fires when the previous page link is clicked
  * @fires next-page - Fires when the next page link is clicked
  */
-export class PharosPagination extends LitElement {
+export class PharosPagination extends ScopedRegistryMixin(LitElement) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+    'pharos-link': PharosLink,
+  };
+
   /**
    * Indicates the total number of results.
    * @attr totalResults

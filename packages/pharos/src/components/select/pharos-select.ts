@@ -8,7 +8,8 @@ import { selectStyles } from './pharos-select.css';
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
 import ObserveChildrenMixin from '../../utils/mixins/observe-children';
-import '../icon/pharos-icon';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
 
 /**
  * Pharos select component.
@@ -19,7 +20,13 @@ import '../icon/pharos-icon';
  *
  * @fires change - Fires when the value has changed
  */
-export class PharosSelect extends ObserveChildrenMixin(FormMixin(FormElement)) {
+export class PharosSelect extends ScopedRegistryMixin(
+  ObserveChildrenMixin(FormMixin(FormElement))
+) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * Indicates the value for the select.
    * @attr value

@@ -3,10 +3,11 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { sidenavMenuStyles } from './pharos-sidenav-menu.css';
-import FocusMixin from '../../utils/mixins/focus';
-
 import type { PharosSidenavLink } from './pharos-sidenav-link';
-import '../icon/pharos-icon';
+
+import FocusMixin from '../../utils/mixins/focus';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
 
 /**
  * Pharos sidenav menu component.
@@ -14,7 +15,11 @@ import '../icon/pharos-icon';
  * @slot - Contains the items of the menu (the default slot).
  *
  */
-export class PharosSidenavMenu extends FocusMixin(LitElement) {
+export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(LitElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * Indicates the label of the menu.
    * @attr label

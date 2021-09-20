@@ -6,9 +6,10 @@ import { dropdownMenuItemStyles } from './pharos-dropdown-menu-item.css';
 import type { PharosDropdownMenu } from './pharos-dropdown-menu';
 
 import FocusMixin from '../../utils/mixins/focus';
-import '../icon/pharos-icon';
-import type { IconName } from '../icon/pharos-icon';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
 
+import type { IconName } from '../icon/pharos-icon';
 export type { IconName };
 
 /**
@@ -18,7 +19,11 @@ export type { IconName };
  * @slot - Contains the content of dropdown item.
  *
  */
-export class PharosDropdownMenuItem extends FocusMixin(LitElement) {
+export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(LitElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * The icon to be used for the item
    * @attr icon

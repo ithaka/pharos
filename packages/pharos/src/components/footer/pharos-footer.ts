@@ -3,8 +3,9 @@ import { queryAssignedNodes } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { footerStyles } from './pharos-footer.css';
 
-import '../heading/pharos-heading';
-import '../icon/pharos-icon';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosHeading } from '../heading/pharos-heading';
 
 /**
  * Pharos footer component.
@@ -18,7 +19,12 @@ import '../icon/pharos-icon';
  * @slot google-widget - Contains the Google translate widget.
  *
  */
-export class PharosFooter extends LitElement {
+export class PharosFooter extends ScopedRegistryMixin(LitElement) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+    'pharos-heading': PharosHeading,
+  };
+
   @queryAssignedNodes('google-widget', false, '#google_translate_element')
   private _widgetNodes!: NodeListOf<HTMLElement>;
 

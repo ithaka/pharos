@@ -3,18 +3,17 @@ import { property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
+import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
 
 import type { HeadingLevel, HeadingPreset } from '../heading/pharos-heading';
 export type { HeadingLevel };
 
-import type { PharosButton } from '../button/pharos-button';
-import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
-import type { PharosLink } from '../link/pharos-link';
-
-import '../heading/pharos-heading';
-import '../link/pharos-link';
-import '../icon/pharos-icon';
-import '../button/pharos-button';
+import FocusMixin from '../../utils/mixins/focus';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosHeading } from '../heading/pharos-heading';
+import { PharosLink } from '../link/pharos-link';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosButton } from '../button/pharos-button';
 
 export type ImageCardVariant = 'base' | 'collection' | 'promotional';
 
@@ -31,7 +30,14 @@ const DEFAULT_HEADING_LEVEL = 3;
  * @slot action-button - Contains the action-button for the item (renders if action-menu prop is not set).
  *
  */
-export class PharosImageCard extends LitElement {
+export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(LitElement)) {
+  static elementDefinitions = {
+    'pharos-heading': PharosHeading,
+    'pharos-link': PharosLink,
+    'pharos-icon': PharosIcon,
+    'pharos-button': PharosButton,
+  };
+
   /**
    * Indicates the title of the item presented in the card.
    * @attr title

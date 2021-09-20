@@ -4,11 +4,12 @@ import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { toastStyles } from './pharos-toast.css';
 import debounce from '../../utils/debounce';
+import type { Procedure } from '../../typings/procedure';
 
 import FocusMixin from '../../utils/mixins/focus';
-import '../icon/pharos-icon';
-import './pharos-toast-button';
-import type { Procedure } from '../../typings/procedure';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosToastButton } from './pharos-toast-button';
 
 export type ToastStatus = 'success' | 'error';
 
@@ -31,7 +32,12 @@ export const DEFAULT_STATUS = 'success';
  * @fires pharos-toast-close - Fires when the toast has closed
  *
  */
-export class PharosToast extends FocusMixin(LitElement) {
+export class PharosToast extends ScopedRegistryMixin(FocusMixin(LitElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+    'pharos-toast-button': PharosToastButton,
+  };
+
   /**
    * The status to reflect to the user.
    * @attr status

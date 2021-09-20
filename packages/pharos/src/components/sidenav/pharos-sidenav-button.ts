@@ -1,10 +1,10 @@
 import type { CSSResultArray } from 'lit';
 import { sidenavButtonStyles } from './pharos-sidenav-button.css';
 import { PharosButton } from '../button/pharos-button';
+import type { PharosSidenav } from './pharos-sidenav';
 
 import type { LinkTarget } from '../base/anchor-element';
 import type { ButtonType, IconName, ButtonVariant } from '../button/pharos-button';
-
 export type { LinkTarget, ButtonType, IconName, ButtonVariant };
 
 /**
@@ -27,7 +27,7 @@ export class PharosSidenavButton extends PharosButton {
   }
 
   private async _handleClickOpen(): Promise<void> {
-    const sidenav = document.querySelector('pharos-sidenav');
+    const sidenav: PharosSidenav | null = document.querySelector('pharos-sidenav');
     if (sidenav) {
       sidenav.slide = true;
       await sidenav.updateComplete;
