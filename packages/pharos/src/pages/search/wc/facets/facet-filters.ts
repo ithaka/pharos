@@ -4,7 +4,6 @@ import type { TemplateResult } from 'lit';
 import { MultiSelectFacet } from './multi-select-facet';
 import { SingleSelectFacet } from './single-select-facet';
 import { DateRangeFacet } from './date-range-facet';
-import '../../../../components/heading/pharos-heading';
 
 const academicContentItems = [
   { label: 'Journals', value: 'journals' },

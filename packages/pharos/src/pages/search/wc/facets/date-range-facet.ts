@@ -1,10 +1,6 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
-import '../../../../components/text-input/pharos-text-input';
-import '../../../../components/button/pharos-button';
-import '../../../../components/heading/pharos-heading';
-
 export const DateRangeFacet = (): TemplateResult => html`
   <fieldset class="search-page__fieldset--date">
     <legend>

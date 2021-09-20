@@ -1,12 +1,6 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
-import '../../../components/sidenav/pharos-sidenav';
-import '../../../components/sidenav/pharos-sidenav-section';
-import '../../../components/sidenav/pharos-sidenav-link';
-import '../../../components/sidenav/pharos-sidenav-menu';
-import '../../../components/link/pharos-link';
-
 export const Sidenav = (): TemplateResult => html`
   <pharos-sidenav class="reports-page__sidenav" main-content-id="main-content">
     <pharos-link slot="top" href="/" id="jstor-logo">

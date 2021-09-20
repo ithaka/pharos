@@ -4,9 +4,6 @@ import type { TemplateResult } from 'lit';
 import { ItemCarouselItem } from './item-carousel-item';
 import { items } from '../../mocks';
 
-import '../../../../components/heading/pharos-heading';
-import '../../../../components/button/pharos-button';
-
 export const ItemCarousel = (): TemplateResult => html`
   <div class="item-detail-page__container--top-bar">
     <pharos-heading level="2" preset="3" no-margin>In this collection</pharos-heading>

@@ -16,8 +16,8 @@ const toCamelCase = (str) => {
 };
 
 // Create prop interface using custom-elements.json
-const createComponentInterface = (component, reactName) => {
-  const item = modules.find((item) => item.tagName === component);
+const createComponentInterface = (reactName) => {
+  const item = modules.find((item) => item.name == reactName);
   const publicFields = item.members.filter(
     (member) => member.kind === 'field' && member.privacy === 'public'
   );
@@ -63,8 +63,8 @@ const createComponentInterface = (component, reactName) => {
 };
 
 // Define default prop values using custom-elements.json
-const createDefaultProps = (component, reactName) => {
-  const item = modules.find((item) => item.tagName === component);
+const createDefaultProps = (reactName) => {
+  const item = modules.find((item) => item.name == reactName);
   const defaultFields = item.members.filter(
     (member) => member.kind === 'field' && member.privacy === 'public' && member.default
   );
@@ -101,7 +101,7 @@ export const buildReact = async () => {
       webComponentName[0].toUpperCase() + webComponentName.substr(1)
     );
     const relativePath = `'../../components/${webComponentFilePath}'`;
-    const reactInterface = createComponentInterface(webComponentName, reactComponentName);
+    const reactInterface = createComponentInterface(reactComponentName);
 
     const component = await fs.readFile(componentPath, 'utf8');
 
@@ -109,7 +109,6 @@ export const buildReact = async () => {
     const reactComponent = `
           import type { FC, DetailedHTMLProps, HTMLAttributes } from 'react';
           import createReactComponent from '../../utils/createReactComponent';
-          import ${relativePath};
 
           ${importTypes(component, relativePath)}
 
@@ -120,7 +119,7 @@ export const buildReact = async () => {
     } = createReactComponent('${webComponentName}');
           ${reactComponentName}.displayName = '${reactComponentName}';
 
-          ${createDefaultProps(webComponentName, reactComponentName)}
+          ${createDefaultProps(reactComponentName)}
         `;
 
     // Append React component export to index file

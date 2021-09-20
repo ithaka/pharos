@@ -1,16 +1,6 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
-import '../../../components/header/pharos-header';
-import '../../../components/link/pharos-link';
-import '../../../components/dropdown-menu-nav/pharos-dropdown-menu-nav';
-import '../../../components/dropdown-menu-nav/pharos-dropdown-menu-nav-link';
-import '../../../components/dropdown-menu/pharos-dropdown-menu';
-import '../../../components/dropdown-menu/pharos-dropdown-menu-item';
-import '../../../components/input-group/pharos-input-group';
-import '../../../components/button/pharos-button';
-import '../../../components/icon/pharos-icon';
-
 const accountNav = (section: string) => html`
   <pharos-dropdown-menu-nav label="profile">
     <pharos-dropdown-menu-nav-link

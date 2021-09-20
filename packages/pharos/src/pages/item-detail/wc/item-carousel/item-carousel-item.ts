@@ -2,9 +2,6 @@ import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 import type { Item } from '../../types';
 
-import '../../../../components/link/pharos-link';
-import '../../../../components/heading/pharos-heading';
-
 export const ItemCarouselItem = (item: Item): TemplateResult => html`
   <pharos-link href="#" subtle flex>
     <div class="item-detail-page__grid--carousel-item">

@@ -8,9 +8,6 @@ import { FacetFilters } from './facets/facet-filters';
 import { SearchResults } from './search-results/search-results';
 import { ImageResults } from './image-results/image-results';
 
-import '../../../components/heading/pharos-heading';
-import '../../../components/link/pharos-link';
-
 export default {
   title: 'Pages/Search',
   parameters: {

@@ -2,9 +2,6 @@ import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 import type { CheckboxGroupItem } from '../../types';
 
-import '../../../../components/checkbox-group/pharos-checkbox-group';
-import '../../../../components/checkbox/pharos-checkbox';
-
 export const MultiSelectFacet = (
   name: string,
   legend: string,

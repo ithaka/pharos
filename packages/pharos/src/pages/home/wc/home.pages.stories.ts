@@ -10,10 +10,6 @@ import { HeroSearch } from './hero-search';
 import { publicCollectionCards, communityCollectionCards } from '../mocks';
 import { PharosSpacing7X } from '../../../styles/variables';
 
-import '../../../components/heading/pharos-heading';
-import '../../../components/link/pharos-link';
-import '../../../components/layout/pharos-layout';
-
 export default {
   title: 'Pages/Home',
   parameters: {

@@ -9,11 +9,6 @@ import { ItemCarousel } from './item-carousel/item-carousel';
 import { CollectionCarousel } from './collection-carousel/collection-carousel';
 import { Metadata } from './metadata';
 
-import '../../../components/button/pharos-button';
-import '../../../components/link/pharos-link';
-import '../../../components/icon/pharos-icon';
-import '../../../components/layout/pharos-layout';
-
 export default {
   title: 'Pages/Item Detail',
   parameters: {

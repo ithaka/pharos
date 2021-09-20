@@ -1,14 +1,6 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
-import '../../../components/modal/pharos-modal';
-import '../../../components/button/pharos-button';
-import '../../../components/select/pharos-select';
-import '../../../components/text-input/pharos-text-input';
-import '../../../components/radio-group/pharos-radio-group';
-import '../../../components/radio-button/pharos-radio-button';
-import '../../../components/input-group/pharos-input-group';
-
 export const CreateReportModal = (): TemplateResult => html`
   <pharos-modal id="create-report-modal" header="Create Report" size="large">
     <form class="reports-page__form--create-modal">
