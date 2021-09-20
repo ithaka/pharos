@@ -1,4 +1,5 @@
 import PageSection from '../../../components/statics/PageSection.tsx';
+import pdf from '../../../../static/files/documentations/documentation-template.pdf';
 
 <PageSection
   title="Contributing documentation"
@@ -23,11 +24,8 @@ import PageSection from '../../../components/statics/PageSection.tsx';
 <PageSection title="Writing documentation">
   <PageSection title="Getting started" subSectionLevel={1}>
     <p>
-      To get started, use the{' '}
-      <PharosLink href="https://docs.google.com/document/d/1GDFM4iQsta8MjErF7hEYkFaNMoQNKzEzpM-RWG8JcwM/edit">
-        documentation template
-      </PharosLink>{' '}
-      to ensure all needed sections are included and consistent.
+      To get started, use the <PharosLink href={pdf}>documentation template</PharosLink> to ensure
+      all needed sections are included and consistent.
     </p>
   </PageSection>
   <PageSection title="Writing guidelines" subSectionLevel={1}>
