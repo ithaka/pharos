@@ -18,6 +18,7 @@ module.exports = async ({ config, mode }) => {
     fallback: {
       crypto: false,
       path: false,
+      assert: false,
     },
   };
 
