@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { tabStyles } from './pharos-tab.css';
@@ -11,7 +12,7 @@ import { tabStyles } from './pharos-tab.css';
  * @fires pharos-tab-selected - Fires when the tab is selected.
  *
  */
-export class PharosTab extends LitElement {
+export class PharosTab extends PharosElement {
   /**
    * Indicates if the tab is selected.
    * @attr selected

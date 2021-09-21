@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { toggleButtonGroupStyles } from './pharos-toggle-button-group.css';
 import type { PharosToggleButton } from './pharos-toggle-button';
@@ -9,7 +10,7 @@ import type { PharosToggleButton } from './pharos-toggle-button';
  * @slot - Contains the buttons.
  *
  */
-export class PharosToggleButtonGroup extends LitElement {
+export class PharosToggleButtonGroup extends PharosElement {
   public static override get styles(): CSSResultArray {
     return [toggleButtonGroupStyles];
   }
@@ -19,9 +20,9 @@ export class PharosToggleButtonGroup extends LitElement {
     this.addEventListener('keydown', this._handleKeydown);
     this.addEventListener('focusout', this._handleFocusout);
 
-    const toggleButtons = this.querySelectorAll(
-      `pharos-toggle-button`
-    ) as NodeListOf<PharosToggleButton>;
+    const toggleButtons: NodeListOf<PharosToggleButton> = this.querySelectorAll(
+      `[data-pharos-component="PharosToggleButton"]`
+    );
     this._selectInitialToggleButton(toggleButtons);
 
     const maxIdx = toggleButtons.length - 1;
@@ -32,7 +33,9 @@ export class PharosToggleButtonGroup extends LitElement {
   }
 
   private _selectInitialToggleButton(toggleButtons: NodeListOf<PharosToggleButton>): void {
-    const selected = this.querySelector(`pharos-toggle-button[selected]`) as PharosToggleButton;
+    const selected: PharosToggleButton | null = this.querySelector(
+      `[data-pharos-component="PharosToggleButton"][selected]`
+    );
     const selectedButton: PharosToggleButton = selected ? selected : toggleButtons[0];
 
     selectedButton.selected = true;
@@ -41,17 +44,17 @@ export class PharosToggleButtonGroup extends LitElement {
   private _handleButtonSelected(event: Event): void {
     const selected = event.target as PharosToggleButton;
 
-    const previous = this.querySelector(
-      `pharos-toggle-button[selected]:not([id="${selected.id}"])`
-    ) as PharosToggleButton;
+    const previous: PharosToggleButton | null = this.querySelector(
+      `[data-pharos-component="PharosToggleButton"][selected]:not([id="${selected.id}"])`
+    );
 
     if (previous) {
       previous.selected = false;
     }
 
-    const toggleButtons = Array.prototype.slice.call(
-      this.querySelectorAll(`pharos-toggle-button`)
-    ) as PharosToggleButton[];
+    const toggleButtons: PharosToggleButton[] = Array.prototype.slice.call(
+      this.querySelectorAll(`[data-pharos-component="PharosToggleButton"]`)
+    );
     const selectIdx = toggleButtons.findIndex((button) => button.id === selected.id);
     toggleButtons.forEach((button, index) => {
       button['_hideLeftBorder'] = index === selectIdx + 1;
@@ -81,12 +84,12 @@ export class PharosToggleButtonGroup extends LitElement {
   }
 
   private async _handleArrowKeys(moveForward: boolean): Promise<void> {
-    const toggleButtons = Array.prototype.slice.call(
-      this.querySelectorAll(`pharos-toggle-button`)
-    ) as PharosToggleButton[];
+    const toggleButtons: PharosToggleButton[] = Array.prototype.slice.call(
+      this.querySelectorAll(`[data-pharos-component="PharosToggleButton"]`)
+    );
 
     const focused = document.activeElement as PharosToggleButton;
-    if (!focused.matches('pharos-toggle-button')) {
+    if (!focused.matches('[data-pharos-component="PharosToggleButton"]')) {
       return;
     }
 
@@ -114,12 +117,15 @@ export class PharosToggleButtonGroup extends LitElement {
   }
 
   private _handleFocusout(event: FocusEvent): void {
-    if (event.relatedTarget && (event.relatedTarget as Element).matches('pharos-toggle-button')) {
+    if (
+      event.relatedTarget &&
+      (event.relatedTarget as Element).matches('[data-pharos-component="PharosToggleButton"]')
+    ) {
       return;
     }
-    const toggleButtons = this.querySelectorAll(
-      `pharos-toggle-button`
-    ) as NodeListOf<PharosToggleButton>;
+    const toggleButtons: NodeListOf<PharosToggleButton> = this.querySelectorAll(
+      `[data-pharos-component="PharosToggleButton"]`
+    );
     toggleButtons.forEach((button) => {
       button['_focused'] = button.hasAttribute('selected');
     });

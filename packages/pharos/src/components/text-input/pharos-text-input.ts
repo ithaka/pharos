@@ -26,12 +26,12 @@ const TYPES = ['email', 'hidden', 'number', 'password', 'search', 'tel', 'text',
 const SUBMITTABLE = [
   'input[type="submit"]:not([disabled])',
   'button[type="submit"]:not([disabled])',
-  'pharos-button[type="submit"]:not([disabled])',
+  '[data-pharos-component="PharosButton"][type="submit"]:not([disabled])',
 ];
 
 const BLOCKING = [
-  'pharos-text-input',
-  'pharos-input-group',
+  '[data-pharos-component="PharosTextInput"]',
+  '[data-pharos-component="PharosInputGroup"]',
   'input[type="text"]',
   'input[type="search"]',
   'input[type="url"]',

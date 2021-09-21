@@ -1,4 +1,5 @@
-import { html, LitElement, nothing } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -11,7 +12,7 @@ import { PharosButton } from '../button/pharos-button';
 import { PharosHeading } from '../heading/pharos-heading';
 import '@ithaka/focus-trap';
 
-const CLOSE_BUTTONS = `[data-modal-close],pharos-button#close-button`;
+const CLOSE_BUTTONS = `[data-modal-close],[data-pharos-component="PharosButton"]#close-button`;
 const FOCUS_ELEMENT = `[data-modal-focus]`;
 
 export type ModalSize = 'small' | 'medium' | 'large';
@@ -31,7 +32,7 @@ const SIZES = ['small', 'medium', 'large'];
  * @fires pharos-modal-closed - Fires when the modal has closed
  *
  */
-export class PharosModal extends ScopedRegistryMixin(LitElement) {
+export class PharosModal extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-button': PharosButton,
     'pharos-heading': PharosHeading,

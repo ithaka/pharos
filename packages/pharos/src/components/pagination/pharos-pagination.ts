@@ -1,4 +1,5 @@
-import { html, LitElement, nothing } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { paginationStyles } from './pharos-pagination.css';
@@ -13,7 +14,7 @@ import { PharosLink } from '../link/pharos-link';
  * @fires prev-page - Fires when the previous page link is clicked
  * @fires next-page - Fires when the next page link is clicked
  */
-export class PharosPagination extends ScopedRegistryMixin(LitElement) {
+export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
     'pharos-link': PharosLink,

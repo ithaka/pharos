@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { toasterStyles } from './pharos-toaster.css';
 
@@ -22,7 +23,7 @@ import { DEFAULT_STATUS } from './pharos-toast';
  *
  * @listens pharos-toast-open
  */
-export class PharosToaster extends LitElement {
+export class PharosToaster extends PharosElement {
   constructor() {
     super();
     this._openToast = this._openToast.bind(this);

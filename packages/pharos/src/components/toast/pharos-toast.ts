@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -32,7 +33,7 @@ export const DEFAULT_STATUS = 'success';
  * @fires pharos-toast-close - Fires when the toast has closed
  *
  */
-export class PharosToast extends ScopedRegistryMixin(FocusMixin(LitElement)) {
+export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
     'pharos-toast-button': PharosToastButton,

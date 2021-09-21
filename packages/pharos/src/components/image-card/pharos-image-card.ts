@@ -1,4 +1,5 @@
-import { html, LitElement, nothing } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html, nothing } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
@@ -30,7 +31,7 @@ const DEFAULT_HEADING_LEVEL = 3;
  * @slot action-button - Contains the action-button for the item (renders if action-menu prop is not set).
  *
  */
-export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(LitElement)) {
+export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
   static elementDefinitions = {
     'pharos-heading': PharosHeading,
     'pharos-link': PharosLink,
@@ -122,7 +123,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(LitElement))
   private _handleClick(e: MouseEvent): void {
     const trigger = e.target as PharosButton;
     const menu: PharosDropdownMenu | null = document.querySelector(
-      `pharos-dropdown-menu#${this.actionMenu}`
+      `[data-pharos-component="PharosDropdownMenu"]#${this.actionMenu}`
     );
     menu?.openWithTrigger(trigger);
   }

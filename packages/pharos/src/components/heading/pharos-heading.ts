@@ -1,4 +1,5 @@
-import { LitElement, html } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { headingStyles } from './pharos-heading.css';
@@ -48,7 +49,7 @@ const PRESETS = [
  *
  * @slot - Contains the heading text (the default slot).
  */
-export class PharosHeading extends LitElement {
+export class PharosHeading extends PharosElement {
   /**
    * Indicates the heading tag level.
    * @attr level

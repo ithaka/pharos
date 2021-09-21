@@ -1,4 +1,5 @@
-import { html, LitElement, nothing } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -19,7 +20,7 @@ export type { IconName };
  * @slot - Contains the content of dropdown item.
  *
  */
-export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(LitElement)) {
+export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
   };
@@ -78,7 +79,7 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(LitEl
     this.addEventListener('mousedown', this._handleMousedown);
     this.addEventListener('mouseup', this._handleMouseup);
 
-    this._menu = this.closest('pharos-dropdown-menu') as PharosDropdownMenu;
+    this._menu = this.closest('[data-pharos-component="PharosDropdownMenu"]') as PharosDropdownMenu;
   }
 
   private _handleClick(event: MouseEvent): void {

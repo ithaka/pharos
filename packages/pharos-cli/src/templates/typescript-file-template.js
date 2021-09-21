@@ -1,9 +1,10 @@
 const template = ({ componentName, titleCaseName, camelCaseName }) => `
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { ${camelCaseName}Styles } from './pharos-${componentName}.css';
 
-export class Pharos${titleCaseName} extends LitElement {
+export class Pharos${titleCaseName} extends PharosElement {
   public static override get styles(): CSSResultArray {
     return [${camelCaseName}Styles];
   }

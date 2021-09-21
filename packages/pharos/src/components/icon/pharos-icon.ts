@@ -1,4 +1,5 @@
-import { LitElement, html } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
@@ -14,7 +15,7 @@ const LARGE_ICON_SIZE = 24;
 /**
  * Pharos icon component.
  */
-export class PharosIcon extends LitElement {
+export class PharosIcon extends PharosElement {
   /**
    * The name of the icon
    * @attr name

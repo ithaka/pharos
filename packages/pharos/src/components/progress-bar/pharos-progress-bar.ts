@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { progressBarStyles } from './pharos-progress-bar.css';
@@ -12,7 +13,7 @@ import { PharosColorGlacierBlueBase, PharosColorNightBlueBase } from '../../styl
  * @slot description - Contains additional text content to display below the bar.
  *
  */
-export class PharosProgressBar extends LitElement {
+export class PharosProgressBar extends PharosElement {
   /**
    * Indicates the value for the progress bar.
    * @attr value

@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { tabsStyles } from './pharos-tabs.css';
 
@@ -12,7 +13,7 @@ import type { PharosTabPanel } from './pharos-tab-panel';
  * @slot panel - Contains the panel to be shown for a tab.
  *
  */
-export class PharosTabs extends LitElement {
+export class PharosTabs extends PharosElement {
   public static override get styles(): CSSResultArray {
     return [tabsStyles];
   }
@@ -22,51 +23,62 @@ export class PharosTabs extends LitElement {
     this.addEventListener('keydown', this._handleKeydown);
     this.addEventListener('focusout', this._handleFocusout);
 
-    const tabs = this.querySelectorAll(`pharos-tab`) as NodeListOf<PharosTab>;
+    const tabs: NodeListOf<PharosTab> = this.querySelectorAll(
+      `[data-pharos-component="PharosTab"]`
+    );
 
     tabs.forEach((tab) => {
       const panel = this._queryPanelByTab(tab);
 
-      tab.setAttribute('aria-controls', panel.id);
-      panel.setAttribute('aria-labelledby', tab.id);
+      tab.setAttribute('aria-controls', panel?.id || '');
+      panel?.setAttribute('aria-labelledby', tab.id);
     });
 
     this._selectInitialTab(tabs);
   }
 
   private _selectInitialTab(tabs: NodeListOf<PharosTab>): void {
-    const selected = this.querySelector(`pharos-tab[selected]`) as PharosTab,
+    const selected: PharosTab | null = this.querySelector(
+        `[data-pharos-component="PharosTab"][selected]`
+      ),
       selectedTab: PharosTab = selected ? selected : tabs[0],
-      selectedPanel: PharosTabPanel = this._queryPanelByTab(selectedTab);
+      selectedPanel: PharosTabPanel | null = this._queryPanelByTab(selectedTab);
 
     selectedTab.selected = true;
-    selectedPanel.selected = true;
+    if (selectedPanel) {
+      selectedPanel.selected = true;
+    }
   }
 
-  private _queryPanelByTab(tab: PharosTab): PharosTabPanel {
+  private _queryPanelByTab(tab: PharosTab): PharosTabPanel | null {
     const panelId: string | undefined = tab.dataset.panelId;
 
-    return this.querySelector(`#${panelId}`) as PharosTabPanel;
+    return this.querySelector(`#${panelId}`);
   }
 
   private _handleTabSelected(event: Event): void {
     const selected = event.target as PharosTab;
-    const previous = this.querySelector(
-      `pharos-tab[selected]:not([id="${selected.id}"])`
-    ) as PharosTab;
+    const previous: PharosTab | null = this.querySelector(
+      `[data-pharos-component="PharosTab"][selected]:not([id="${selected.id}"])`
+    );
 
     if (previous) {
       previous.selected = false;
-      const panel = this.querySelector(
-        `pharos-tab-panel[id="${previous.getAttribute('aria-controls')}"]`
-      ) as PharosTabPanel;
-      panel.selected = false;
+      const panel: PharosTabPanel | null = this.querySelector(
+        `[data-pharos-component="PharosTabPanel"][id="${previous.getAttribute('aria-controls')}"]`
+      );
+
+      if (panel) {
+        panel.selected = false;
+      }
     }
 
-    const panel = this.querySelector(
-      `pharos-tab-panel[id="${selected.getAttribute('aria-controls')}"]`
-    ) as PharosTabPanel;
-    panel.selected = true;
+    const panel: PharosTabPanel | null = this.querySelector(
+      `[data-pharos-component="PharosTabPanel"][id="${selected.getAttribute('aria-controls')}"]`
+    );
+    if (panel) {
+      panel.selected = true;
+    }
   }
 
   private _handleKeydown(event: KeyboardEvent): void {
@@ -91,11 +103,13 @@ export class PharosTabs extends LitElement {
   }
 
   private async _handleArrowKeys(moveForward: boolean): Promise<void> {
-    const tabs = Array.prototype.slice.call(this.querySelectorAll(`pharos-tab`)) as PharosTab[];
+    const tabs: PharosTab[] = Array.prototype.slice.call(
+      this.querySelectorAll(`[data-pharos-component="PharosTab"]`)
+    );
     const ids = tabs.map((tab) => tab.id);
 
     const focused = document.activeElement as PharosTab;
-    if (!focused.matches('pharos-tab')) {
+    if (!focused.matches('[data-pharos-component="PharosTab"]')) {
       return;
     }
 
@@ -121,10 +135,15 @@ export class PharosTabs extends LitElement {
   }
 
   private _handleFocusout(event: FocusEvent): void {
-    if (event.relatedTarget && (event.relatedTarget as Element).matches('pharos-tab')) {
+    if (
+      event.relatedTarget &&
+      (event.relatedTarget as Element).matches('[data-pharos-component="PharosTab"]')
+    ) {
       return;
     }
-    const tabs = this.querySelectorAll(`pharos-tab`) as NodeListOf<PharosTab>;
+    const tabs: NodeListOf<PharosTab> = this.querySelectorAll(
+      `[data-pharos-component="PharosTab"]`
+    );
     tabs.forEach((tab) => {
       if (tab.hasAttribute('selected')) {
         tab['_focused'] = true;

@@ -27,7 +27,9 @@ export class PharosSidenavButton extends PharosButton {
   }
 
   private async _handleClickOpen(): Promise<void> {
-    const sidenav: PharosSidenav | null = document.querySelector('pharos-sidenav');
+    const sidenav: PharosSidenav | null = document.querySelector(
+      '[data-pharos-component="PharosSidenav"]'
+    );
     if (sidenav) {
       sidenav.slide = true;
       await sidenav.updateComplete;

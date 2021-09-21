@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
@@ -16,7 +17,7 @@ const PRESETS = ['1-col', '1-col--sidenav', '1-col--sidenav-comfy', '2-col'];
  * @slot - Content to be shown within the inner grid (the default slot).
  *
  */
-export class PharosLayout extends LitElement {
+export class PharosLayout extends PharosElement {
   /**
    * Indicates the type of layout to use.
    * @attr preset

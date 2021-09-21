@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { breadcrumbStyles } from './pharos-breadcrumb.css';
 import type { PharosBreadcrumbItem } from './pharos-breadcrumb-item';
@@ -16,15 +17,15 @@ import FocusMixin from '../../utils/mixins/focus';
  * @slot - Contains pharos-breadcrumb-items
  *
  */
-export class PharosBreadcrumb extends FocusMixin(LitElement) {
+export class PharosBreadcrumb extends FocusMixin(PharosElement) {
   public static override get styles(): CSSResultArray {
     return [breadcrumbStyles];
   }
 
   private _handleSlotchange(): void {
-    const items = this.querySelectorAll(
-      'pharos-breadcrumb-item'
-    ) as NodeListOf<PharosBreadcrumbItem>;
+    const items: NodeListOf<PharosBreadcrumbItem> = this.querySelectorAll(
+      '[data-pharos-component="PharosBreadcrumbItem"]'
+    );
     items.forEach((item, index) => {
       item['_last'] = false;
 

@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { queryAssignedNodes } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { footerStyles } from './pharos-footer.css';
@@ -19,7 +20,7 @@ import { PharosHeading } from '../heading/pharos-heading';
  * @slot google-widget - Contains the Google translate widget.
  *
  */
-export class PharosFooter extends ScopedRegistryMixin(LitElement) {
+export class PharosFooter extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
     'pharos-heading': PharosHeading,

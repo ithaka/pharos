@@ -60,7 +60,9 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
 
   private _handleClickClose(): void {
     this.slide = false;
-    const button: PharosSidenavButton | null = document.querySelector('pharos-sidenav-button');
+    const button: PharosSidenavButton | null = document.querySelector(
+      '[data-pharos-component="PharosSidenavButton"]'
+    );
     button?.focus();
   }
 

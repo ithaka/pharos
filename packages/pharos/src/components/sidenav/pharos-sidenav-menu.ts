@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -15,7 +16,7 @@ import { PharosIcon } from '../icon/pharos-icon';
  * @slot - Contains the items of the menu (the default slot).
  *
  */
-export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(LitElement)) {
+export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
   };
@@ -41,7 +42,7 @@ export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(LitElement
   }
 
   protected override firstUpdated(): void {
-    this._allLinks = this.querySelectorAll('pharos-sidenav-link');
+    this._allLinks = this.querySelectorAll('[data-pharos-component="PharosSidenavLink"]');
     this._allLinks.forEach((link) => {
       link.menuItem = true;
       link.setAttribute('role', 'menuitem');

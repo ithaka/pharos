@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { tabPanelStyles } from './pharos-tab-panel.css';
@@ -10,7 +11,7 @@ import focusable from '../../utils/focusable';
  * @slot - Contains the content of the panel.
  *
  */
-export class PharosTabPanel extends LitElement {
+export class PharosTabPanel extends PharosElement {
   /**
    * Indicates if the panel is selected.
    * @attr selected

@@ -1,4 +1,5 @@
-import { LitElement, html, nothing } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -43,7 +44,7 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
  * @cssprop {Color} --pharos-alert-color-background-error - The background color of an error alert
  * @cssprop {Color} --pharos-alert-color-icon-error - The fill color for an error alert icon
  */
-export class PharosAlert extends ScopedRegistryMixin(FocusMixin(LitElement)) {
+export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
     'pharos-button': PharosButton,
@@ -89,7 +90,7 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(LitElement)) {
   }
 
   private _handleSlotChange(): void {
-    this._allLinks = this.querySelectorAll('pharos-link');
+    this._allLinks = this.querySelectorAll('[data-pharos-component="PharosLink"]');
 
     this._allLinks.forEach((link) => {
       link['_alert'] = true;

@@ -1,4 +1,5 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { headerStyles } from './pharos-header.css';
 
@@ -11,7 +12,7 @@ import { headerStyles } from './pharos-header.css';
  * @slot end - Content to be shown at the end of the nav.
  *
  */
-export class PharosHeader extends LitElement {
+export class PharosHeader extends PharosElement {
   public static override get styles(): CSSResultArray {
     return [headerStyles];
   }

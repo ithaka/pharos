@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { PharosElement } from './pharos-element';
 import { property } from 'lit/decorators.js';
 import type { PropertyValues } from 'lit';
 import deepSelector from '../../utils/deepSelector';
@@ -13,7 +13,7 @@ const STRATEGIES = ['absolute', 'fixed'];
  * The base overlay element class to house shared properties, styles, and methods.
  *
  */
-export class OverlayElement extends LitElement {
+export class OverlayElement extends PharosElement {
   /**
    * Indicates if the overlay is open.
    * @attr open

@@ -337,7 +337,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
       (trigger) => trigger === (event.target as Element)?.closest(trigger.tagName)
     );
     const menuClicked =
-      this === ((event.target as Element)?.closest('pharos-dropdown-menu') as PharosDropdownMenu);
+      this === (event.target as Element)?.closest('[data-pharos-component="PharosDropdownMenu"]');
     if (!targetClicked && !menuClicked && this.open) {
       event.stopPropagation();
       this.open = false;
@@ -372,9 +372,9 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
   }
 
   private _focusFirstItem(): void {
-    const item = this.querySelector(
-      'pharos-dropdown-menu-item:not([disabled])'
-    ) as PharosDropdownMenuItem;
+    const item: PharosDropdownMenuItem | null = this.querySelector(
+      '[data-pharos-component="PharosDropdownMenuItem"]:not([disabled])'
+    );
     if (item) {
       item.focus();
     } else {
@@ -383,9 +383,9 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
   }
 
   private _focusLastItem(): void {
-    const items = Array.prototype.slice.call(
-      this.querySelectorAll('pharos-dropdown-menu-item:not([disabled])')
-    ) as PharosDropdownMenuItem[];
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
+      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]:not([disabled])')
+    );
     if (items.length) {
       items[items.length - 1].focus();
       this._moveFocusToLast = false;
@@ -401,9 +401,9 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
   }
 
   private _handleMenuClick(event: MouseEvent): void {
-    const clickedItem = (event.target as Element)?.closest(
-      'pharos-dropdown-menu-item'
-    ) as PharosDropdownMenuItem;
+    const clickedItem: PharosDropdownMenuItem | null = (event.target as Element)?.closest(
+      '[data-pharos-component="PharosDropdownMenuItem"]'
+    );
 
     if (clickedItem) {
       this._handleItemClick(clickedItem);
@@ -411,9 +411,9 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
   }
 
   private _handleItemClick(clickedItem: PharosDropdownMenuItem): void {
-    const items = Array.prototype.slice.call(
-      this.querySelectorAll('pharos-dropdown-menu-item')
-    ) as PharosDropdownMenuItem[];
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
+      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]')
+    );
     const details = {
       bubbles: true,
       composed: true,
@@ -468,9 +468,9 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
   private _handleNavigation(moveForward: boolean): void {
     const current = this.ownerDocument.activeElement;
 
-    const items = Array.prototype.slice.call(
-      this.querySelectorAll('pharos-dropdown-menu-item:not([disabled]')
-    ) as PharosDropdownMenuItem[];
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
+      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]:not([disabled]')
+    );
 
     let index = items.findIndex((item) => item === current);
 
@@ -529,9 +529,9 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
   }
 
   private _resetItemsState(): void {
-    const items = Array.prototype.slice.call(
-      this.querySelectorAll('pharos-dropdown-menu-item')
-    ) as PharosDropdownMenuItem[];
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
+      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]')
+    );
 
     debounce(() => {
       items.forEach((item) => (item['_active'] = false));
@@ -539,13 +539,13 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
   }
 
   private _hasItems(): boolean {
-    return this.querySelectorAll('pharos-dropdown-menu-item').length > 0;
+    return this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]').length > 0;
   }
 
   private _handleSlotChange(): void {
-    const items = Array.prototype.slice.call(
-      this.querySelectorAll('pharos-dropdown-menu-item')
-    ) as PharosDropdownMenuItem[];
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
+      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]')
+    );
 
     items.forEach((item, index) => {
       item['_last'] = false;

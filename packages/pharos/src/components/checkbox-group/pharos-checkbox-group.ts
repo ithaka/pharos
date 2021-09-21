@@ -40,7 +40,9 @@ export class PharosCheckboxGroup extends FormElement {
   protected override firstUpdated(): void {
     this._setBoxes();
 
-    const boxes = this.querySelectorAll('pharos-checkbox') as NodeListOf<PharosCheckbox>;
+    const boxes: NodeListOf<PharosCheckbox> = this.querySelectorAll(
+      '[data-pharos-component="PharosCheckbox"]'
+    );
     boxes.forEach((box) => {
       box.addEventListener('change', (event: Event) => {
         event.stopPropagation();
@@ -69,7 +71,9 @@ export class PharosCheckboxGroup extends FormElement {
   }
 
   private _setBoxes(): void {
-    const boxes = this.querySelectorAll('pharos-checkbox') as NodeListOf<PharosCheckbox>;
+    const boxes: NodeListOf<PharosCheckbox> = this.querySelectorAll(
+      '[data-pharos-component="PharosCheckbox"]'
+    );
     boxes.forEach((box) => {
       box.name = this.name;
       box.disabled = this.disabled;

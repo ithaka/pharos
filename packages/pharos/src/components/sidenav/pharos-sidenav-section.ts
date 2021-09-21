@@ -1,4 +1,5 @@
-import { html, LitElement, nothing } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { sidenavSectionStyles } from './pharos-sidenav-section.css';
@@ -12,7 +13,7 @@ import { PharosHeading } from '../heading/pharos-heading';
  * @slot - Contains the content of the section (the default slot).
  *
  */
-export class PharosSidenavSection extends ScopedRegistryMixin(LitElement) {
+export class PharosSidenavSection extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-heading': PharosHeading,
   };
