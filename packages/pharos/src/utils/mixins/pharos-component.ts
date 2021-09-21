@@ -11,9 +11,8 @@ const PharosComponentImplementation = <T extends Constructor<LitElement>>(Base: 
    * A mixin class to handle focusing pharos components.
    */
   class PharosComponent extends Base {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    constructor(...args: any[]) {
-      super(...args);
+    override connectedCallback(): void {
+      super.connectedCallback && super.connectedCallback();
       this.dataset.pharosComponent = this.constructor.name;
     }
   }

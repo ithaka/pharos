@@ -22,7 +22,6 @@ import { PharosHeading } from '../heading/pharos-heading';
  */
 export class PharosFooter extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
-    'pharos-icon': PharosIcon,
     'pharos-heading': PharosHeading,
   };
 
@@ -40,8 +39,10 @@ export class PharosFooter extends ScopedRegistryMixin(PharosElement) {
         '.goog-te-gadget-simple'
       ) as HTMLDivElement;
       const googleImg = widgetButton?.querySelector('.goog-te-gadget-icon') as HTMLImageElement;
-      const googleIcon = document.createElement('pharos-icon');
-      const chevronIcon = document.createElement('pharos-icon');
+
+      const iconTag = new PharosIcon().localName;
+      const googleIcon = document.createElement(iconTag);
+      const chevronIcon = document.createElement(iconTag);
 
       googleIcon.name = 'google';
       chevronIcon.name = 'chevron-down';
