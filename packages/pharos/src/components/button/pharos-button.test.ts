@@ -1,8 +1,8 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-button';
+
 import type { PharosButton } from './pharos-button';
-import '../text-input/pharos-text-input';
+import type { PharosTextInput } from '../text-input/pharos-text-input';
 import createFormData from '../../utils/createFormData';
 import { PharosColorBlack } from '../../styles/variables';
 
@@ -237,7 +237,7 @@ describe('pharos-button', () => {
         { parentNode }
       );
 
-      const input = document.querySelector('pharos-text-input');
+      const input = document.querySelector('pharos-text-input') as PharosTextInput;
       if (input) {
         input.value = 'otherValue';
       }

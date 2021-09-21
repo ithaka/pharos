@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-sidenav-link';
+
 import type { PharosSidenavLink } from './pharos-sidenav-link';
 
 describe('pharos-sidenav-link', () => {

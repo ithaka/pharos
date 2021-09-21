@@ -1,9 +1,9 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-alert';
-import '../link/pharos-link';
+
 import type { PharosAlert } from './pharos-alert';
 import type { PharosButton } from '../button/pharos-button';
+import type { PharosLink } from '../link/pharos-link';
 
 describe('pharos-alert', () => {
   let component: PharosAlert;
@@ -31,6 +31,7 @@ describe('pharos-alert', () => {
       >
         <pharos-icon
           class="alert__icon"
+          data-pharos-component="PharosIcon"
           description=""
           name="info-inverse"
         >
@@ -66,7 +67,7 @@ describe('pharos-alert', () => {
   });
 
   it('adds a class to slotted links', async () => {
-    const link = document.createElement('pharos-link');
+    const link = document.createElement('pharos-link') as PharosLink;
 
     component.appendChild(link);
     await component.updateComplete;

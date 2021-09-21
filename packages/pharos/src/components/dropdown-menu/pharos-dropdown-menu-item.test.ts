@@ -2,8 +2,7 @@ import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import sinon from 'sinon';
 import type { SinonSpy } from 'sinon';
-import './pharos-dropdown-menu';
-import './pharos-dropdown-menu-item';
+
 import { PharosIcon } from '../icon/pharos-icon';
 import type { PharosDropdownMenuItem } from './pharos-dropdown-menu-item';
 

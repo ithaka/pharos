@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-loading-spinner';
+
 import type { PharosLoadingSpinner } from './pharos-loading-spinner';
 
 describe('pharos-loading-spinner', () => {

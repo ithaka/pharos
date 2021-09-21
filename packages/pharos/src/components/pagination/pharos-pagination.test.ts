@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-pagination';
+
 import type { PharosPagination } from './pharos-pagination';
 
 describe('pharos-pagination', () => {
@@ -17,7 +17,7 @@ describe('pharos-pagination', () => {
   it('sets its default attributes', async () => {
     component = await fixture(html` <pharos-pagination></pharos-pagination> `);
     expect(component).dom.to.equal(
-      `<pharos-pagination current-page="1" total-results="0" page-size="25"></pharos-pagination>`
+      `<pharos-pagination current-page="1" data-pharos-component="PharosPagination" total-results="0" page-size="25"></pharos-pagination>`
     );
   });
 

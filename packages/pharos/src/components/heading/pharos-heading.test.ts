@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-heading';
+
 import type { PharosHeading } from './pharos-heading';
 
 describe('pharos-heading', () => {
@@ -21,7 +21,7 @@ describe('pharos-heading', () => {
       html` <pharos-heading level="1" preset="1"> This is a heading </pharos-heading> `
     );
     expect(component).dom.to.equal(
-      `<pharos-heading level="1" preset="1">This is a heading</pharos-heading>`
+      `<pharos-heading data-pharos-component="PharosHeading" level="1" preset="1">This is a heading</pharos-heading>`
     );
   });
 

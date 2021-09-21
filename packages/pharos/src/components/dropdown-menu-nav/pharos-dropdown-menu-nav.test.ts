@@ -1,9 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import '../dropdown-menu/pharos-dropdown-menu';
-import '../dropdown-menu/pharos-dropdown-menu-item';
-import './pharos-dropdown-menu-nav';
-import './pharos-dropdown-menu-nav-link';
+
 import type { PharosDropdownMenuNav } from './pharos-dropdown-menu-nav';
 import type { PharosDropdownMenuNavLink } from './pharos-dropdown-menu-nav-link';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';

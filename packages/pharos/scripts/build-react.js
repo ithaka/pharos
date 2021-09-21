@@ -92,7 +92,7 @@ const setup = async () => {
 
 export const buildReact = async () => {
   for await (const componentPath of globbyStream(
-    './src/components/**/pharos-!(*.css|*.test)*.ts'
+    './src/components/**/pharos-!(*.css|*.test|element)*.ts'
   )) {
     const dest = componentPath.replace('/components/', '/react-components/').replace('.ts', '.tsx');
     const webComponentFilePath = componentPath.split('components/')[1].split('.ts')[0];

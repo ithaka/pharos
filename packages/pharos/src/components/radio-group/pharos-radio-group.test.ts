@@ -2,8 +2,7 @@ import { fixture, expect, nextFrame } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import sinon from 'sinon';
 import type { SinonSpy } from 'sinon';
-import './pharos-radio-group';
-import '../radio-button/pharos-radio-button';
+
 import type { PharosRadioGroup } from './pharos-radio-group';
 import type { PharosRadioButton } from '../radio-button/pharos-radio-button';
 
@@ -290,7 +289,7 @@ describe('pharos-radio-group', () => {
       activeElement = event.composedPath()[0];
     };
     document.addEventListener('focusin', onFocusIn);
-    const radio = component.querySelector('pharos-radio-button');
+    const radio = component.querySelector('pharos-radio-button') as PharosRadioButton;
 
     component.focus();
 

@@ -18,6 +18,7 @@ export default {
           <body>
               <script type="module">
                   import '${testRunnerImport}';
+                  import './lib/test/initComponents.js';
                   window.process = window.process || {};
                   window.process.env = window.process.env || {};
                   window.process.env.NODE_ENV = window.process.env.NODE_ENV || 'production';

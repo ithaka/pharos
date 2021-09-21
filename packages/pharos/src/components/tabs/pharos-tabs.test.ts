@@ -1,8 +1,6 @@
 import { fixture, expect, aTimeout } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-tabs';
-import './pharos-tab';
-import './pharos-tab-panel';
+
 import type { PharosTabs } from './pharos-tabs';
 import type { PharosTab } from './pharos-tab';
 import type { PharosTabPanel } from './pharos-tab-panel';

@@ -1,9 +1,8 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-radio-button';
-import '../radio-group/pharos-radio-group';
-import '../link/pharos-link';
+
 import type { PharosRadioButton } from './pharos-radio-button';
+import type { PharosLink } from '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
 
 describe('pharos-radio-button', () => {
@@ -198,7 +197,7 @@ describe('pharos-radio-button', () => {
         ></pharos-radio-button
       >
     `);
-    const link = component.querySelector('pharos-link');
+    const link = component.querySelector('pharos-link') as PharosLink;
     const anchor = link?.renderRoot.querySelector('#link-element') as HTMLAnchorElement;
     anchor.click();
     await component.updateComplete;

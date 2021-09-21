@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-toast-button';
+
 import type { PharosToastButton } from './pharos-toast-button';
 import { PharosColorMarbleGray10 } from '../../styles/variables';
 

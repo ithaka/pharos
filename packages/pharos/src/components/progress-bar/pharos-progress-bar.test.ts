@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-progress-bar';
+
 import type { PharosProgressBar } from './pharos-progress-bar';
 
 describe('pharos-progress-bar', () => {
@@ -24,7 +24,7 @@ describe('pharos-progress-bar', () => {
       </pharos-progress-bar>
     `);
     expect(component).dom.to.equal(
-      `<pharos-progress-bar value="0">
+      `<pharos-progress-bar data-pharos-component="PharosProgressBar" value="0">
         <div slot="title">Click.xls</div>
         <div slot="description">Processing headers</div>
       </pharos-progress-bar>`

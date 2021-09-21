@@ -1,9 +1,6 @@
 import { fixture, expect, nextFrame } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-footer';
-import '../button/pharos-button';
-import '../icon/pharos-icon';
-import '../link/pharos-link';
+
 import type { PharosFooter } from './pharos-footer';
 
 describe('pharos-footer', () => {

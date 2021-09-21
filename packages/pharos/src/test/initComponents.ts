@@ -42,7 +42,7 @@ import {
   PharosToggleButton,
   PharosToggleButtonGroup,
   PharosTooltip,
-} from '../packages/pharos/src/index';
+} from '../index';
 
 customElements.define('pharos-alert', PharosAlert);
 customElements.define('pharos-breadcrumb', PharosBreadcrumb);

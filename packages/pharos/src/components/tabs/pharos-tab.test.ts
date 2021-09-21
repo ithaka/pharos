@@ -1,8 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-tab';
-import './pharos-tabs';
-import './pharos-tab-panel';
+
 import type { PharosTab } from './pharos-tab';
 
 describe('pharos-tab', () => {

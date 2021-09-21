@@ -1,6 +1,5 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-tab-panel';
 
 describe('pharos-tab-panel', () => {
   it('has a tabindex when it contains no focusable elements', async () => {
