@@ -16,7 +16,7 @@ div#google_translate_element div.goog-te-gadget-simple {
   border-color: var(--pharos-color-interactive-tertiary);
 }
 
-pharos-footer {
+[data-pharos-component='PharosFooter'] {
   ul[slot] li:not(:last-child) {
     margin-bottom: var(--pharos-spacing-three-quarters-x);
   }
@@ -24,7 +24,7 @@ pharos-footer {
   ul[slot='social-links'] {
     @include mixins.list-inline($margin-right: var(--pharos-spacing-1-x));
 
-    pharos-icon {
+    [data-pharos-component='PharosIcon'] {
       fill: var(--pharos-color-white);
       transition: opacity var(--pharos-transition-duration-default) ease-in-out;
 
@@ -52,7 +52,7 @@ div#google_translate_element div.goog-te-gadget-simple a.goog-te-menu-value {
   }
 }
 
-div#google_translate_element div.goog-te-gadget-simple pharos-icon {
+div#google_translate_element div.goog-te-gadget-simple [data-pharos-component='PharosIcon'] {
   fill: var(--pharos-color-interactive-tertiary);
 }
 
@@ -65,7 +65,7 @@ div#google_translate_element div.goog-te-gadget-simple:hover {
     color: var(--pharos-color-interactive-secondary);
   }
 
-  pharos-icon {
+  [data-pharos-component='PharosIcon'] {
     fill: var(--pharos-color-interactive-secondary);
   }
 }

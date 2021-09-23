@@ -62,7 +62,9 @@ module.exports = async ({ config, mode }) => {
   config.module.rules[0].options = { loader: 'tsx', target: TARGET_ENV };
 
   if (config.mode === 'production') {
-    config.optimization.minimizer = [new ESBuildMinifyPlugin({ target: TARGET_ENV })];
+    config.optimization.minimizer = [
+      new ESBuildMinifyPlugin({ target: TARGET_ENV, keepNames: true }),
+    ];
   }
 
   config.plugins.push(

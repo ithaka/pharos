@@ -1,4 +1,4 @@
-pharos-alert .pharos-alert__link {
+[data-pharos-component='PharosAlert'] .pharos-alert__link {
   color: var(--pharos-alert-color-link-base);
 
   &:hover {
