@@ -9,9 +9,11 @@ import { dropdownMenuStyles } from './pharos-dropdown-menu.css';
 import type { PharosDropdownMenuItem } from './pharos-dropdown-menu-item';
 import type { PharosDropdownMenuNavLink } from '../dropdown-menu-nav/pharos-dropdown-menu-nav-link';
 
-import '@ithaka/focus-trap';
 import { OverlayElement } from '../base/overlay-element';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import FocusMixin from '../../utils/mixins/focus';
+import { FocusTrap } from '@ithaka/focus-trap';
+
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
 export type { Placement, PositioningStrategy };
 
@@ -26,7 +28,11 @@ export type { Placement, PositioningStrategy };
  * @fires pharos-dropdown-menu-closed - Fires when the dropdown menu is closed
  *
  */
-export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
+export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayElement)) {
+  static elementDefinitions = {
+    'focus-trap': FocusTrap,
+  };
+
   /**
    * Indicates if the dropdown should display a checkmark on the selected item.
    * @attr show-selected

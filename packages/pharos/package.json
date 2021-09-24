@@ -47,7 +47,7 @@
   "author": "ITHAKA",
   "license": "MIT",
   "dependencies": {
-    "@ithaka/focus-trap": "1.0.6",
+    "@ithaka/focus-trap": "2.0.1",
     "@lit-labs/scoped-registry-mixin": "^1.0.0-rc.3",
     "@open-wc/dedupe-mixin": "^1.3.0",
     "@popperjs/core": "^2.10.1",

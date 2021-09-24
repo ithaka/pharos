@@ -10,7 +10,7 @@ import focusable from '../../utils/focusable';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosButton } from '../button/pharos-button';
 import { PharosHeading } from '../heading/pharos-heading';
-import '@ithaka/focus-trap';
+import { FocusTrap } from '@ithaka/focus-trap';
 
 const CLOSE_BUTTONS = `[data-modal-close],[data-pharos-component="PharosButton"]#close-button`;
 const FOCUS_ELEMENT = `[data-modal-focus]`;
@@ -36,6 +36,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-button': PharosButton,
     'pharos-heading': PharosHeading,
+    'focus-trap': FocusTrap,
   };
 
   /**

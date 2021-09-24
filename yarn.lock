@@ -2792,10 +2792,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@ithaka/focus-trap@1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@ithaka/focus-trap/-/focus-trap-1.0.6.tgz#caa649489948873767953f543bd156e6bd743538"
-  integrity sha512-RVlH72Wq4Ifs3YQ5SJ8lDytaf1pS+21c8LmEKplWOXt5Uun3nwA2bwS7GBoHAdnUkmu0HJRpq1oHc28JKotDSA==
+"@ithaka/focus-trap@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ithaka/focus-trap/-/focus-trap-2.0.1.tgz#d899a94a512c4fb491bfde4cb3484487fb816a8a"
+  integrity sha512-xfMhNF4Wqp/l8Ha1ArXpGfXjjIudPNYZMys+G2QaRigLCPBW38Vp+Rkp08+idiLoXHAp6YwoYli5nZRYkNuRug==
 
 "@jest/console@^27.0.1":
   version "27.0.1"
