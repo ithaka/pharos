@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "module": "lib/index.js",
   "scripts": {
-    "analyze": "cem analyze --litelement --globs \"./src/(components|styles|utils)/**/!(*.css|*.test)*.ts\"",
+    "analyze": "cem analyze --litelement --globs \"./src/(components|styles|utils|test)/**/!(*.css|*.test)*.ts\"",
     "build:tokens": "node --experimental-json-modules ./scripts/build-tokens.mjs",
     "prebuild": "yarn clean && yarn build:tokens && yarn analyze && yarn build:react && yarn build:assets && yarn build:sassdoc",
     "build": "yarn build:styles && yarn build:tsc && yarn build:replace:imports",
