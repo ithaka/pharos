@@ -42,12 +42,12 @@ Pharos uses <PharosLink href="https://developer.mozilla.org/en-US/docs/Web/Web_C
 To accomodate patterns of each framework, the implementations vary slightly.
 
 You need to first register components on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) for them to be usable in your code.
-To register a component, import the classes in your application's entrypoint and define the component with a tag name in the form of `pharos-{component}-{app/bundle}`:
+To register a component, import the classes in your application's entrypoint and define the component with a tag name in the form of `{app/bundle}-pharos-{component}`:
 
 ```javascript
 import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
 
-customElements.define('pharos-alert-homepage', PharosAlert);
+customElements.define('homepage-pharos-alert', PharosAlert);
 ```
 
 To demonstrate the usage in both Vue and React, you'll next see how to use the Button component.

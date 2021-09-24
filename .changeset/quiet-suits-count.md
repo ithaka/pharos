@@ -17,12 +17,12 @@ require manual component registration:
 
 1. Remove all individual imports of Pharos web components.
 
-2. Register them with a custom tag in your app's entrypoint:
+2. Register them with a custom tag in your app's entrypoint in the form of `{app/bundle}-pharos-{component}`:
 
     ```javascript
     import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
 
-    customElements.define('pharos-alert-homepage', PharosAlert);
+    customElements.define('homepage-pharos-alert', PharosAlert);
     ```
 
 3. Update templates, queries, unit tests, and integration tests with the newly defined tag names.

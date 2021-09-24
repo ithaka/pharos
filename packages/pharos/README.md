@@ -29,12 +29,12 @@ $ npm install @ithaka/pharos
 
 ## Registering components
 
-1. To allow multiple versions of Pharos to exist on a page, this package only exports component classes for you to register on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) in your application. To register a component, import the classes you wish to use in your application's entrypoint and define the component with a tag name in the form of `pharos-{component}-{app/bundle}`:
+1. To allow multiple versions of Pharos to exist on a page, this package only exports component classes for you to register on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) in your application. To register a component, import the classes you wish to use in your application's entrypoint and define the component with a tag name in the form of `{app/bundle}-pharos-{component}`:
 
 ```javascript
 import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
 
-customElements.define('pharos-alert-homepage', PharosAlert);
+customElements.define('homepage-pharos-alert', PharosAlert);
 ```
 
 **Note: If you register a name that already exists the browser will throw an error about the duplicate.**
