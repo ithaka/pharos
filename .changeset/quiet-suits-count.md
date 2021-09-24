@@ -25,9 +25,11 @@ require manual component registration:
     customElements.define('pharos-alert-homepage', PharosAlert);
     ```
 
-2. Add the [scoped custom element registry polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/scoped-custom-element-registry) to your app.
+3. Update templates, queries, unit tests, and integration tests with the newly defined tag names.
 
-3. Update your bundler's production build settings to keep class names unminified:
+4. Add the [scoped custom element registry polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/scoped-custom-element-registry) to a globally available location in your project.
+
+5. Update your bundler's production build settings to keep class names unminified:
 
     Webpack (Terser):
 

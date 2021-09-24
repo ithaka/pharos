@@ -133,15 +133,15 @@ The build system reads this SCSS file and generates a `.css.js` file you can imp
 Now create the `pharos-sparkly-text.ts` TypeScript file and import the following items:
 
 ```typescript
-import { LitElement, html } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 ```
 
-- `LitElement` is the base class all web components written using LitElement must use.
+- `PharosElement` is a base class that extends LitElement which all web components in the project must use.
 - `html` is the lit-html rendering helper you'll use when writing the component's HTML structure.
 - `TemplateResult` is the type `html` returns, and ultimately the type you'll return when you render SparklyText.
 - `CSSResultArray` is the type of SparklyText's calculated CSS styles.
-- `customElement` is a decorator that simplifies registering a component as a [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements).
 
 Next, you'll import the design tokens, transformed into CSS variables by the build, along with SparklyText's generated CSS:
 
@@ -152,8 +152,7 @@ import { sparklyTextStyles } from './pharos-sparkly-text.css';
 Now you've got all the ingredients needed to write the component definition. Add the following to `pharos-sparkly-text.ts`:
 
 ```typescript
-('pharos-sparkly-text');
-export class PharosSparklyText extends LitElement {
+export class PharosSparklyText extends PharosElement {
   public static override get styles(): CSSResultArray {
     return [sparklyTextStyles];
   }
@@ -168,7 +167,7 @@ export class PharosSparklyText extends LitElement {
 }
 ```
 
-The `PharosSparklyText` class extends `LitElement`, indicating that it will be a web component. It's also decorated with `customElement`, which registers the component as `<pharos-sparkly-text>`.
+The `PharosSparklyText` class extends `PharosElement`, indicating that it will be a Lit-based web component.
 
 The component has two methods:
 
