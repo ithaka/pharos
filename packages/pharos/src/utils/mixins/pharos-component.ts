@@ -8,7 +8,7 @@ import type { LitElement } from 'lit';
  */
 const PharosComponentImplementation = <T extends Constructor<LitElement>>(Base: T): T => {
   /**
-   * A mixin class to handle focusing pharos components.
+   * A mixin class to handle pharos-specific logic.
    */
   class PharosComponent extends Base {
     override connectedCallback(): void {
