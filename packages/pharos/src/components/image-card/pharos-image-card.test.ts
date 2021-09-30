@@ -263,4 +263,22 @@ describe('pharos-image-card', () => {
     const link = component.renderRoot.querySelector('pharos-link.card__link--collection');
     expect(link?.getAttribute('label')).to.equal('Label for card image link');
   });
+
+  it('renders the title via a slot when the title property is not set', async () => {
+    component = await fixture(html`<pharos-image-card link="#">
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <div slot="overlay">Card overlay</div>
+    </pharos-image-card>`);
+
+    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    imageLink?.dispatchEvent(new Event('mouseenter'));
+    await component.updateComplete;
+
+    const overlaySlot = component.renderRoot.querySelector('slot[name="overlay"]');
+    expect(overlaySlot).not.to.be.null;
+  });
 });
