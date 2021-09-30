@@ -279,14 +279,10 @@ describe('pharos-image-card', () => {
       console.log('INSIDE MOUSEENTER EVENT');
       hovered = true;
     };
-    document.addEventListener('pharos-image-card-image-mouseenter', onMouseEnter);
+    component.addEventListener('pharos-image-card-image-mouseenter', onMouseEnter);
 
-    const pharosLink = component.renderRoot.querySelector('pharos-link') as HTMLElement;
-    console.log('HEEERRRRREEE', pharosLink);
-
-    pharosLink.dispatchEvent(new MouseEvent('mouseenter'));
-    await aTimeout(150);
-    await component.updateComplete;
+    const pharosLink = component.renderRoot.querySelector('pharos-link');
+    pharosLink?.dispatchEvent(new MouseEvent('mouseenter'));
 
     expect(hovered).to.be.true;
   });
@@ -305,7 +301,7 @@ describe('pharos-image-card', () => {
     const onMouseLeave = (): void => {
       hovered = false;
     };
-    document.addEventListener('pharos-image-card-image-mouseleave', onMouseLeave);
+    component.addEventListener('pharos-image-card-image-mouseleave', onMouseLeave);
 
     const pharosLink = component.renderRoot.querySelector('pharos-link');
     pharosLink?.dispatchEvent(new Event('mouseleave'));
