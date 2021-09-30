@@ -165,7 +165,7 @@ export class PharosImageCard extends LitElement {
   }
 
   private _renderBaseImage(): TemplateResult {
-    return html`<div class="card__link--container">
+    return html`<div class="card__link-container">
       <pharos-link
         class="card__link--image"
         href="${this.link}"
