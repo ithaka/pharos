@@ -264,7 +264,7 @@ describe('pharos-image-card', () => {
     expect(link?.getAttribute('label')).to.equal('Label for card image link');
   });
 
-  it('renders the title via a slot when the title property is not set', async () => {
+  it('dispatches the mouseenter event on pharos link mouseenter', async () => {
     component = await fixture(html`<pharos-image-card link="#">
       <img
         slot="image"
@@ -274,11 +274,55 @@ describe('pharos-image-card', () => {
       <div slot="overlay">Card overlay</div>
     </pharos-image-card>`);
 
-    const imageLink = component.renderRoot.querySelector('.card__link--image');
-    imageLink?.dispatchEvent(new Event('mouseenter'));
+    let hovered = false;
+    const onMouseEnter = (): void => {
+      console.log('INSIDE MOUSEENTER EVENT');
+      hovered = true;
+    };
+    document.addEventListener('pharos-image-card-image-mouseenter', onMouseEnter);
+
+    const pharosLink = component.renderRoot.querySelector('pharos-link') as HTMLElement;
+    console.log('HEEERRRRREEE', pharosLink);
+
+    pharosLink.dispatchEvent(new MouseEvent('mouseenter'));
+    await aTimeout(150);
     await component.updateComplete;
 
-    const overlaySlot = component.renderRoot.querySelector('slot[name="overlay"]');
-    expect(overlaySlot).not.to.be.null;
+    expect(hovered).to.be.true;
+  });
+
+  it('dispatches the mouseleave event on pharos link mouseleave', async () => {
+    component = await fixture(html`<pharos-image-card link="#">
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <div slot="overlay">Card overlay</div>
+    </pharos-image-card>`);
+
+    let hovered = true;
+    const onMouseLeave = (): void => {
+      hovered = false;
+    };
+    document.addEventListener('pharos-image-card-image-mouseleave', onMouseLeave);
+
+    const pharosLink = component.renderRoot.querySelector('pharos-link');
+    pharosLink?.dispatchEvent(new Event('mouseleave'));
+
+    expect(hovered).to.be.false;
+  });
+
+  it('renders the overlay slot content', async () => {
+    component = await fixture(html`<pharos-image-card link="#">
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <div slot="overlay">Card overlay</div>
+    </pharos-image-card>`);
+
+    expect(component.innerHTML).contains('Card overlay');
   });
 });

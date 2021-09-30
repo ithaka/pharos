@@ -1,5 +1,5 @@
 import { html, LitElement, nothing } from 'lit';
-import { property, query, state } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
@@ -107,9 +107,6 @@ export class PharosImageCard extends LitElement {
     return [imageCardStyles];
   }
 
-  @state()
-  private _imgHover = false;
-
   protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
@@ -130,7 +127,13 @@ export class PharosImageCard extends LitElement {
 
   private _handleImageHover(event: Event): void {
     this._title['_hover'] = event.type === 'mouseenter';
-    this['_imgHover'] = event.type === 'mouseenter';
+
+    const mouseEvent = new CustomEvent(
+      event.type === 'mouseenter'
+        ? 'pharos-image-card-image-mouseenter'
+        : 'pharos-image-card-image-mouseleave'
+    );
+    this.dispatchEvent(mouseEvent);
   }
 
   private _renderCollectionImage(): TemplateResult {
@@ -175,9 +178,8 @@ export class PharosImageCard extends LitElement {
         no-hover
         @mouseenter=${this._handleImageHover}
         @mouseleave=${this._handleImageHover}
-        >${this._renderLinkContent()}${this._renderHoverMetadata()}</pharos-link
-      >
-      ${this._imgHover ? html`<slot name="overlay"></slot>` : nothing}
+        >${this._renderLinkContent()}${this._renderHoverMetadata()} <slot name="overlay"></slot
+      ></pharos-link>
     </div>`;
   }
 
