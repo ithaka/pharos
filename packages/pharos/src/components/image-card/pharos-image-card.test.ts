@@ -276,7 +276,6 @@ describe('pharos-image-card', () => {
 
     let hovered = false;
     const onMouseEnter = (): void => {
-      console.log('INSIDE MOUSEENTER EVENT');
       hovered = true;
     };
     component.addEventListener('pharos-image-card-image-mouseenter', onMouseEnter);
