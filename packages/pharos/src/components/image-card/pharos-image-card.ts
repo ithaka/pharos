@@ -171,19 +171,17 @@ export class PharosImageCard extends LitElement {
   }
 
   private _renderBaseImage(): TemplateResult {
-    return html`<div class="card__link-container">
-      <pharos-link
-        class="card__link--image"
-        href="${this.link}"
-        label=${ifDefined(this.imageLinkLabel)}
-        subtle
-        flex
-        no-hover
-        @mouseenter=${this._handleImageMouseEnter}
-        @mouseleave=${this._handleImageMouseLeave}
-        >${this._renderLinkContent()}${this._renderHoverMetadata()} <slot name="overlay"></slot
-      ></pharos-link>
-    </div>`;
+    return html`<pharos-link
+      class="card__link--image"
+      href="${this.link}"
+      label=${ifDefined(this.imageLinkLabel)}
+      subtle
+      flex
+      no-hover
+      @mouseenter=${this._handleImageMouseEnter}
+      @mouseleave=${this._handleImageMouseLeave}
+      >${this._renderLinkContent()}${this._renderHoverMetadata()} <slot name="overlay"></slot
+    ></pharos-link>`;
   }
 
   private _renderImage(): TemplateResult {

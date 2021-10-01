@@ -11,11 +11,8 @@
   width: 100%;
 }
 
-.card__link-container {
-  position: relative;
-}
-
 .card__link--image {
+  position: relative;
   height: 14rem;
   margin: 0 auto var(--pharos-spacing-1-x);
 }
