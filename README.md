@@ -94,6 +94,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/gbassham"><img src="https://avatars.githubusercontent.com/u/56835183?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gayla Bassham</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=gbassham" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/satya-achanta-venkata"><img src="https://avatars.githubusercontent.com/u/57365199?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Satya AchantaVenkata</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=satya-achanta-venkata" title="Code">💻</a> <a href="https://github.com/ithaka/pharos/commits?author=satya-achanta-venkata" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/facelessfool"><img src="https://avatars.githubusercontent.com/u/41726786?v=4?s=100" width="100px;" alt=""/><br /><sub><b>K Chingsubam</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=facelessfool" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/chrisjbrown"><img src="https://avatars.githubusercontent.com/u/1250638?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Brown</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=chrisjbrown" title="Code">💻</a></td>
   </tr>
 </table>
 
