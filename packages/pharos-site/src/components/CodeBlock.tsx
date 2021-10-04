@@ -4,9 +4,8 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import type { Language } from 'prism-react-renderer';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { mdx } from '@mdx-js/react';
-import prettier from 'prettier/esm/standalone.mjs';
-import parserHtml from 'prettier/esm/parser-html.mjs';
-import parserBabel from 'prettier/esm/parser-babel.mjs';
+import prettier from 'prettier';
+import parserHtml from 'prettier/parser-html';
 
 interface CodeBlockProps {
   className?: string;
@@ -20,8 +19,8 @@ const CodeBlock: FC<CodeBlockProps> = ({ children, className, live, render }) =>
   const code =
     snippet &&
     prettier.format(snippet, {
-      parser: 'babel',
-      plugins: [parserBabel, parserHtml],
+      parser: 'html',
+      plugins: [parserHtml],
     });
 
   if (live) {

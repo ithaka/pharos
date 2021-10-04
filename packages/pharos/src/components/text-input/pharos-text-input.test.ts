@@ -4,6 +4,12 @@ import './pharos-text-input';
 import type { PharosTextInput } from './pharos-text-input';
 import createFormData from '../../utils/createFormData';
 
+declare global {
+  interface Window {
+    FormDataEvent: FormData | undefined;
+  }
+}
+
 describe('pharos-text-input', () => {
   let component: PharosTextInput;
 
@@ -384,7 +390,7 @@ describe('pharos-text-input', () => {
   });
 
   it('updates the form value when FormDataEvent is undefined and creates hidden inputs', async () => {
-    window.FormDataEvent = undefined;
+    (window as Window).FormDataEvent = undefined;
     const parentNode = document.createElement('form');
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
