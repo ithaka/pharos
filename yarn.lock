@@ -3421,7 +3421,7 @@
   resolved "https://registry.yarnpkg.com/@open-wc/dedupe-mixin/-/dedupe-mixin-1.3.0.tgz#0df5d438285fc3482838786ee81895318f0ff778"
   integrity sha512-UfdK1MPnR6T7f3svzzYBfu3qBkkZ/KsPhcpc3JYhsUY4hbpwNF9wEQtD4Z+/mRqMTJrKg++YSxIxE0FBhY3RIw==
 
-"@open-wc/scoped-elements@^2.0.0-next.6":
+"@open-wc/scoped-elements@^2.0.0-next.0":
   version "2.0.0-next.6"
   resolved "https://registry.yarnpkg.com/@open-wc/scoped-elements/-/scoped-elements-2.0.0-next.6.tgz#55917adcab196d18574214db949bd2d3e9152753"
   integrity sha512-+3oreZWjqqmg+H4JzYx8MLthaXJU8ZcaiNGsMraZQxr81GwYPEkZX3+4Oe7fgdPt1zGStLYdkEGcrlk9MgIG0Q==
@@ -3443,13 +3443,13 @@
     "@types/chai" "^4.2.11"
     "@web/test-runner-commands" "^0.5.7"
 
-"@open-wc/testing-helpers@^2.0.0-next.2":
-  version "2.0.0-next.2"
-  resolved "https://registry.yarnpkg.com/@open-wc/testing-helpers/-/testing-helpers-2.0.0-next.2.tgz#0ef71f5bc3ba8a72116d729ac39a06911e34a82b"
-  integrity sha512-9XISyRej+Ko7fVn4Xzadg7S9MkRStPA2PRKXSEYWmW7eC8c1VCHEZFik42Q7qNqriBBPieAcbZbsfaECUARSgQ==
+"@open-wc/testing-helpers@2.0.0-next.0", "@open-wc/testing-helpers@^2.0.0-next.2":
+  version "2.0.0-next.0"
+  resolved "https://registry.yarnpkg.com/@open-wc/testing-helpers/-/testing-helpers-2.0.0-next.0.tgz#ece19e1c22ff91ae5f6ff2fae199719b7a7bfce7"
+  integrity sha512-94TL8IK05w1JyN8xt7t+vQBQYPdPy/JSJbWJ/ytvStou085SoDN6p1xCPh1PNhjm9LALc60nWM8qb2J2YRT8QA==
   dependencies:
-    "@open-wc/scoped-elements" "^2.0.0-next.6"
-    lit "^2.0.0"
+    "@open-wc/scoped-elements" "^2.0.0-next.0"
+    lit "^2.0.0-rc.1"
 
 "@open-wc/testing@^3.0.0-next.5":
   version "3.0.0-next.5"
@@ -14643,7 +14643,7 @@ lit-html@^2.0.0:
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@^2.0.0:
+lit@^2.0.0, lit@^2.0.0-rc.1:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/lit/-/lit-2.0.0.tgz#7710095dc518d9858dde579e9c76b9eed71e98ba"
   integrity sha512-pqi5O/wVzQ9Bn4ERRoYQlt1EAUWyY5Wv888vzpoArbtChc+zfUv1XohRqSdtQZYCogl0eHKd+MQwymg2XJfECg==
