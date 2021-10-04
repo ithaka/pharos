@@ -8,7 +8,7 @@
 #footer-element {
   background-color: var(--pharos-color-marble-gray-10);
   color: var(--pharos-color-white);
-  padding-top: var(--pharos-spacing-2-x);
+  padding: var(--pharos-spacing-2-x) var(--pharos-spacing-1-x);
   display: grid;
   grid-template-areas: '. main .';
   grid-template-columns: 1fr 8fr 1fr;
@@ -38,6 +38,7 @@
 .footer__row--bottom {
   grid-template-columns: 0.79fr 0.25fr;
   grid-template-rows: auto;
+  margin-top: var(--pharos-spacing-one-half-x);
 }
 
 @media (max-width: 1024px) {
