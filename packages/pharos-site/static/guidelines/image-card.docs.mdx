@@ -68,7 +68,7 @@ import baseImageExample from '../../../../.storybook/assets/images/item-detail/c
       corresponding information or metadata.
     </p>
     <Canvas>
-      <PharosImageCard title="Card title" link="#">
+      <PharosImageCard title="Card title" link="#" style={{ width: '150px' }}>
         <img id="image" src={baseImageExample} alt="south hall" slot="image" />
         <div id="creator" slot="metadata">
           Tubby, William Bunker (American architect,...
@@ -88,7 +88,12 @@ import baseImageExample from '../../../../.storybook/assets/images/item-detail/c
       aspect ratio format with corresponding information or metadata.
     </p>
     <Canvas>
-      <PharosImageCard title="Pratt Institute Buildings" link="#" variant="collection">
+      <PharosImageCard
+        title="Pratt Institute Buildings"
+        link="#"
+        variant="collection"
+        style={{ width: '250px' }}
+      >
         <img id="image" src={baseImageExample} alt="Collection image example" slot="image" />
         <strong id="item-number" slot="metadata">
           452 items
@@ -108,7 +113,7 @@ import baseImageExample from '../../../../.storybook/assets/images/item-detail/c
       information about the item to be shown with an overlay.
     </p>
     <Canvas>
-      <PharosImageCard title="Card title" link="#" subtle variant="base">
+      <PharosImageCard title="Card title" link="#" subtle variant="base" style={{ width: '150px' }}>
         <img id="image" src={baseImageExample} alt="south hall" slot="image" />
         <div id="creator" slot="metadata">
           Tubby, William Bunker (American architect,...
@@ -131,7 +136,7 @@ import baseImageExample from '../../../../.storybook/assets/images/item-detail/c
       server or access issue.
     </p>
     <Canvas>
-      <PharosImageCard title="Card title" link="#" error variant="base">
+      <PharosImageCard title="Card title" link="#" error variant="base" style={{ width: '150px' }}>
         <img id="image" src={baseImageExample} alt="south hall" slot="image" />
         <div id="creator" slot="metadata">
           Tubby, William Bunker (American architect,...
@@ -151,7 +156,13 @@ import baseImageExample from '../../../../.storybook/assets/images/item-detail/c
       taken on the item by rendering an action button that triggers a dropdown menu.
     </p>
     <Canvas>
-      <PharosImageCard title="Card title" link="#" action-menu="my-dropdown-menu" variant="base">
+      <PharosImageCard
+        title="Card title"
+        link="#"
+        action-menu="my-dropdown-menu"
+        variant="base"
+        style={{ width: '150px' }}
+      >
         <img id="image" src={baseImageExample} alt="south hall" slot="image" />
         <div id="creator" slot="metadata">
           Tubby, William Bunker (American architect,...
