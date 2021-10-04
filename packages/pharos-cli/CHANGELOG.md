@@ -1,5 +1,11 @@
 # @ithaka/pharos-cli
 
+## 5.1.3
+
+### Patch Changes
+
+- [#233](https://github.com/ithaka/pharos/pull/233) [`87cc04e`](https://github.com/ithaka/pharos/commit/87cc04e7ef80320aab8c67c8ed1cd27ac6f6c748) Thanks [@Niznikr](https://github.com/Niznikr)! - update Lit, TypeScript, and Prettier
+
 ## 5.1.2
 
 ### Patch Changes
