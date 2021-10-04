@@ -1,5 +1,20 @@
 # @ithaka/pharos-site
 
+## 5.8.2
+
+### Patch Changes
+
+- [#219](https://github.com/ithaka/pharos/pull/219) [`bc41af7`](https://github.com/ithaka/pharos/commit/bc41af7f8c331e425790ebc80dda628924e5be67) Thanks [@Niznikr](https://github.com/Niznikr)! - update Gatsby, Babel, and Storybook
+
+* [#233](https://github.com/ithaka/pharos/pull/233) [`87cc04e`](https://github.com/ithaka/pharos/commit/87cc04e7ef80320aab8c67c8ed1cd27ac6f6c748) Thanks [@Niznikr](https://github.com/Niznikr)! - update Lit, TypeScript, and Prettier
+
+- [#230](https://github.com/ithaka/pharos/pull/230) [`646311b`](https://github.com/ithaka/pharos/commit/646311bba86f934bcbb8704405b154e6bddef1fd) Thanks [@daneah](https://github.com/daneah)! - Update ImageCard examples to a reasonable width
+
+* [#223](https://github.com/ithaka/pharos/pull/223) [`df07519`](https://github.com/ithaka/pharos/commit/df0751956a5e8cfbb81d12a6c73d70319282c163) Thanks [@cosmicRover](https://github.com/cosmicRover)! - replaced google doc links with pdf, and external links. Improved overall readability of the site by fixing typos
+
+* Updated dependencies [[`48a35ef`](https://github.com/ithaka/pharos/commit/48a35efa185ba2e5952fd181fd29179ce08a3bce), [`87cc04e`](https://github.com/ithaka/pharos/commit/87cc04e7ef80320aab8c67c8ed1cd27ac6f6c748), [`819954c`](https://github.com/ithaka/pharos/commit/819954ce01b1a329a8e4d88c422b8e98b2a304f0), [`f4a738f`](https://github.com/ithaka/pharos/commit/f4a738ff4199744c6bf11c8d0bda84e9b33b6263)]:
+  - @ithaka/pharos@10.8.0
+
 ## 5.8.1
 
 ### Patch Changes

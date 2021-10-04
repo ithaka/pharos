@@ -17,7 +17,7 @@ interface SourceProps {
   pathname?: string;
 }
 
-const SEO: FC<SourceProps> = ({ description, lang, meta, title, pathname }) => {
+const SEO: FC<SourceProps> = ({ description, lang, title, pathname }) => {
   const { site } = useStaticQuery(
     graphql`
       query {

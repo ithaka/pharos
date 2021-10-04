@@ -444,6 +444,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
       <div class="input-wrapper">
         <input
           id="input-element"
+          class="input-element ${this._displayValue ? 'input-element--populated' : null}"
           name="${this.name}"
           type="text"
           .value="${this._displayValue}"

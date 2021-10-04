@@ -128,8 +128,18 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     menu?.openWithTrigger(trigger);
   }
 
-  private _handleImageHover(event: Event): void {
-    this._title['_hover'] = event.type === 'mouseenter';
+  private _handleImageMouseEnter(): void {
+    this._title['_hover'] = true;
+
+    const mouseEvent = new CustomEvent('pharos-image-card-image-mouseenter');
+    this.dispatchEvent(mouseEvent);
+  }
+
+  private _handleImageMouseLeave(): void {
+    this._title['_hover'] = false;
+
+    const mouseEvent = new CustomEvent('pharos-image-card-image-mouseleave');
+    this.dispatchEvent(mouseEvent);
   }
 
   private _renderCollectionImage(): TemplateResult {
@@ -140,8 +150,8 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       subtle
       flex
       no-hover
-      @mouseenter=${this._handleImageHover}
-      @mouseleave=${this._handleImageHover}
+      @mouseenter=${this._handleImageMouseEnter}
+      @mouseleave=${this._handleImageMouseLeave}
       ><svg class="card__svg" role="presentation" viewBox="0 0 4 3"></svg> <slot name="image"></slot
     ></pharos-link>`;
   }
@@ -171,10 +181,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       subtle
       flex
       no-hover
-      @mouseenter=${this._handleImageHover}
-      @mouseleave=${this._handleImageHover}
-      >${this._renderLinkContent()}${this._renderHoverMetadata()}</pharos-link
-    >`;
+      @mouseenter=${this._handleImageMouseEnter}
+      @mouseleave=${this._handleImageMouseLeave}
+      >${this._renderLinkContent()}${this._renderHoverMetadata()} <slot name="overlay"></slot
+    ></pharos-link>`;
   }
 
   private _renderImage(): TemplateResult {

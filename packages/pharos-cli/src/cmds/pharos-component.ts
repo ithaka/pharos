@@ -61,7 +61,8 @@ const createPharosComponent = async (componentName: ComponentName): Promise<void
     try {
       console.log(colors.yellow(`\nGenerating ${componentFile} file for ${titleCaseName}`));
       generateFile(fileProperties, nameOptions);
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       wasError = true;
       console.error(colors.red(error));
       break;
