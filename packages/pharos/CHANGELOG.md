@@ -1,5 +1,19 @@
 # @ithaka/pharos
 
+## 10.8.0
+
+### Minor Changes
+
+- [#229](https://github.com/ithaka/pharos/pull/229) [`f4a738f`](https://github.com/ithaka/pharos/commit/f4a738ff4199744c6bf11c8d0bda84e9b33b6263) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - added event emit for mouseenter and mouseleave on image
+
+### Patch Changes
+
+- [#231](https://github.com/ithaka/pharos/pull/231) [`48a35ef`](https://github.com/ithaka/pharos/commit/48a35efa185ba2e5952fd181fd29179ce08a3bce) Thanks [@daneah](https://github.com/daneah)! - Prevent any displayed text from overlapping with the clear icon
+
+* [#233](https://github.com/ithaka/pharos/pull/233) [`87cc04e`](https://github.com/ithaka/pharos/commit/87cc04e7ef80320aab8c67c8ed1cd27ac6f6c748) Thanks [@Niznikr](https://github.com/Niznikr)! - update Lit, TypeScript, and Prettier
+
+- [#232](https://github.com/ithaka/pharos/pull/232) [`819954c`](https://github.com/ithaka/pharos/commit/819954ce01b1a329a8e4d88c422b8e98b2a304f0) Thanks [@daneah](https://github.com/daneah)! - Add intrinsic padding around all footer content and spacing between footer rows
+
 ## 10.7.0
 
 ### Minor Changes
