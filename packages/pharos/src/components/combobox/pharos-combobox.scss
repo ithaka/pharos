@@ -63,7 +63,11 @@
   }
 }
 
-#input-element {
+.input-wrapper {
+  @include mixins.input-wrapper;
+}
+
+.input-element {
   @include mixins.input-base;
   @include mixins.input-required;
   @include mixins.input-placeholder;
@@ -75,23 +79,28 @@
     @include mixins.input-focus;
     @include mixins.input-padding-thick-border;
   }
+
+  &--populated,
+  &--populated:focus {
+    padding-right: var(--pharos-spacing-3-x);
+  }
 }
 
-:host([disabled]) #input-element {
+:host([disabled]) .input-element {
   @include mixins.input-disabled;
 
   border-color: var(--pharos-form-element-color-border-disabled);
 }
 
-.input-wrapper {
-  @include mixins.input-wrapper;
-}
-
-:host([invalidated]) #input-element {
+:host([invalidated]) .input-element {
   @include mixins.input-invalid;
   @include mixins.input-padding-thick-border;
 
   border-right: 0;
+
+  @at-root #{&}--populated {
+    padding-right: var(--pharos-spacing-3-x);
+  }
 }
 
 .combobox__list {
