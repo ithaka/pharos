@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 10.8.1
+
+### Patch Changes
+
+- [#236](https://github.com/ithaka/pharos/pull/236) [`d189737`](https://github.com/ithaka/pharos/commit/d189737be23a1bfd227c8284c8e4f331eb9658e8) Thanks [@Niznikr](https://github.com/Niznikr)! - await close transition before updating popper instance
+
 ## 10.8.0
 
 ### Minor Changes
