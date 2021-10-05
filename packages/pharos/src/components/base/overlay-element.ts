@@ -100,7 +100,7 @@ export class OverlayElement extends LitElement {
     }
   }
 
-  protected _setPopperListeners(): void {
+  protected async _setPopperListeners(): Promise<void> {
     // Enable listeners when open and disable them when closed
     if (this._options) {
       const listeners = this._options.modifiers.pop();
@@ -111,6 +111,10 @@ export class OverlayElement extends LitElement {
       }
 
       this._options.modifiers.push(listeners || {});
+
+      if (!this.open) {
+        await new Promise((r) => setTimeout(r, 100));
+      }
       this._popper?.setOptions(this._options);
     }
   }
