@@ -17,6 +17,7 @@ export default {
       <html>
           <body>
               <script type="module">
+                  import '@webcomponents/scoped-custom-element-registry';
                   import '${testRunnerImport}';
                   import './lib/test/initComponents.js';
                   window.process = window.process || {};

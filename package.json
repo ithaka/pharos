@@ -121,7 +121,6 @@
     ]
   },
   "resolutions": {
-    "@open-wc/testing-helpers": "2.0.0-next.0",
     "axe-core": "^4.3.3",
     "playwright": "^1.15.1",
     "webpack": "^5.50.0",
