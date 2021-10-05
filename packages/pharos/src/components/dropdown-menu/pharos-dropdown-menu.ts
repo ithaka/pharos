@@ -91,14 +91,14 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
     return [dropdownMenuStyles];
   }
 
-  public removeAllTriggers(): void {
+  public async removeAllTriggers(): Promise<void> {
+    await new Promise((r) => setTimeout(r, 100));
     this._removeTriggerListeners();
   }
 
   public async openWithTrigger(trigger: HTMLElement): Promise<void> {
     if (this._currentTrigger !== trigger) {
-      await new Promise((r) => setTimeout(r, 100));
-      this.removeAllTriggers();
+      await this.removeAllTriggers();
       this._addTriggerElement(trigger);
       this._currentTrigger = trigger;
       this.open = true;
