@@ -134,11 +134,17 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
         (this._currentTrigger as PharosDropdownMenuNavLink).isActive = this.open;
       }
 
+      if (this.open && !this._popper) {
+        this._setupMenu();
+      }
+
       if (
         this.open &&
-        (!this._popper || this._popper?.state.elements.reference !== this._currentTrigger)
+        this._popper &&
+        this._popper.state.elements.reference !== this._currentTrigger
       ) {
-        this._setupMenu();
+        this._popper.state.elements.reference = this._currentTrigger as Element;
+        this._popper.update();
       }
 
       if (!this._currentTrigger?.hasAttribute('data-dropdown-menu-hover') || this._enterByKey) {
