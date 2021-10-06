@@ -130,6 +130,8 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
 
   protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
+      const popperRefUpdated = this._popper?.state.elements.reference === this._currentTrigger;
+
       if (this._currentTrigger && this._navMenu) {
         (this._currentTrigger as PharosDropdownMenuNavLink).isActive = this.open;
       }
@@ -138,11 +140,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
         this._setupMenu();
       }
 
-      if (
-        this.open &&
-        this._popper &&
-        this._popper.state.elements.reference !== this._currentTrigger
-      ) {
+      if (this.open && this._popper && !popperRefUpdated) {
         this._popper.state.elements.reference = this._currentTrigger as Element;
         this._popper.update();
       }
@@ -152,10 +150,7 @@ export class PharosDropdownMenu extends FocusMixin(OverlayElement) {
           debounce(() => {
             this._focusContents();
           }, 1)();
-        } else if (
-          this._popper?.state.elements.reference === this._currentTrigger &&
-          !this._navMenu
-        ) {
+        } else if (popperRefUpdated && !this._navMenu) {
           this._returnTriggerFocus();
         }
       }
