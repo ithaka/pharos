@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 10.8.2
+
+### Patch Changes
+
+- [#239](https://github.com/ithaka/pharos/pull/239) [`7ea4edd`](https://github.com/ithaka/pharos/commit/7ea4edd662dafb0a584127006280e85f76d11805) Thanks [@Niznikr](https://github.com/Niznikr)! - update popper instance on trigger change for dropdown menus
+
 ## 10.8.1
 
 ### Patch Changes
