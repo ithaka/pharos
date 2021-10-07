@@ -1,5 +1,17 @@
 # @ithaka/pharos
 
+## 10.8.2
+
+### Patch Changes
+
+- [#239](https://github.com/ithaka/pharos/pull/239) [`7ea4edd`](https://github.com/ithaka/pharos/commit/7ea4edd662dafb0a584127006280e85f76d11805) Thanks [@Niznikr](https://github.com/Niznikr)! - update popper instance on trigger change for dropdown menus
+
+## 10.8.1
+
+### Patch Changes
+
+- [#236](https://github.com/ithaka/pharos/pull/236) [`d189737`](https://github.com/ithaka/pharos/commit/d189737be23a1bfd227c8284c8e4f331eb9658e8) Thanks [@Niznikr](https://github.com/Niznikr)! - await close transition before updating popper instance
+
 ## 10.8.0
 
 ### Minor Changes

@@ -131,15 +131,19 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
   protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
+      const popperRefUpdated = this._popper?.state.elements.reference === this._currentTrigger;
+
       if (this._currentTrigger && this._navMenu) {
         (this._currentTrigger as PharosDropdownMenuNavLink).isActive = this.open;
       }
 
-      if (
-        this.open &&
-        (!this._popper || this._popper?.state.elements.reference !== this._currentTrigger)
-      ) {
+      if (this.open && !this._popper) {
         this._setupMenu();
+      }
+
+      if (this.open && this._popper && !popperRefUpdated) {
+        this._popper.state.elements.reference = this._currentTrigger as Element;
+        this._popper.update();
       }
 
       if (!this._currentTrigger?.hasAttribute('data-dropdown-menu-hover') || this._enterByKey) {
@@ -147,10 +151,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
           debounce(() => {
             this._focusContents();
           }, 1)();
-        } else if (
-          this._popper?.state.elements.reference === this._currentTrigger &&
-          !this._navMenu
-        ) {
+        } else if (popperRefUpdated && !this._navMenu) {
           this._returnTriggerFocus();
         }
       }
