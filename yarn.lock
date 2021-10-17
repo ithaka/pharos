@@ -3429,10 +3429,10 @@
   resolved "https://registry.yarnpkg.com/@open-wc/dedupe-mixin/-/dedupe-mixin-1.3.0.tgz#0df5d438285fc3482838786ee81895318f0ff778"
   integrity sha512-UfdK1MPnR6T7f3svzzYBfu3qBkkZ/KsPhcpc3JYhsUY4hbpwNF9wEQtD4Z+/mRqMTJrKg++YSxIxE0FBhY3RIw==
 
-"@open-wc/scoped-elements@^2.0.0-next.6":
-  version "2.0.0-next.6"
-  resolved "https://registry.yarnpkg.com/@open-wc/scoped-elements/-/scoped-elements-2.0.0-next.6.tgz#55917adcab196d18574214db949bd2d3e9152753"
-  integrity sha512-+3oreZWjqqmg+H4JzYx8MLthaXJU8ZcaiNGsMraZQxr81GwYPEkZX3+4Oe7fgdPt1zGStLYdkEGcrlk9MgIG0Q==
+"@open-wc/scoped-elements@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@open-wc/scoped-elements/-/scoped-elements-2.0.1.tgz#6b1c3535f809bd90710574db80093a81e3a1fc2d"
+  integrity sha512-JS6ozxUFwFX3+Er91v9yQzNIaFn7OnE0iESKTbFvkkKdNwvAPtp1fpckBKIvWk8Ae9ZcoI9DYZuT2DDbMPcadA==
   dependencies:
     "@lit/reactive-element" "^1.0.0"
     "@open-wc/dedupe-mixin" "^1.3.0"
@@ -3443,35 +3443,35 @@
   resolved "https://registry.yarnpkg.com/@open-wc/semantic-dom-diff/-/semantic-dom-diff-0.13.21.tgz#718b9ec5f9a98935fc775e577ad094ae8d8b7dea"
   integrity sha512-BONpjHcGX2zFa9mfnwBCLEmlDsOHzT+j6Qt1yfK3MzFXFtAykfzFjAgaxPetu0YbBlCfXuMlfxI4vlRGCGMvFg==
 
-"@open-wc/semantic-dom-diff@^0.19.5-next.2":
-  version "0.19.5-next.2"
-  resolved "https://registry.yarnpkg.com/@open-wc/semantic-dom-diff/-/semantic-dom-diff-0.19.5-next.2.tgz#272acd6935a75e8fc5a287aff50c3b588b17004e"
-  integrity sha512-T7GPbhcXwbT+FriO/7aa3Kp5iIGqf8l7SL7rSNVa0mqzBUmZ1Gfyxy965ZS/kRtGc6ytnbJ1Gqnr2GHN/brftA==
+"@open-wc/semantic-dom-diff@^0.19.5":
+  version "0.19.5"
+  resolved "https://registry.yarnpkg.com/@open-wc/semantic-dom-diff/-/semantic-dom-diff-0.19.5.tgz#8d3d7f69140b9ba477a4adf8099c79e0efe18955"
+  integrity sha512-Wi0Fuj3dzqlWClU0y+J4k/nqTcH0uwgOWxZXPyeyG3DdvuyyjgiT4L4I/s6iVShWQvvEsyXnj7yVvixAo3CZvg==
   dependencies:
     "@types/chai" "^4.2.11"
     "@web/test-runner-commands" "^0.5.7"
 
-"@open-wc/testing-helpers@^2.0.0-next.2":
-  version "2.0.0-next.3"
-  resolved "https://registry.yarnpkg.com/@open-wc/testing-helpers/-/testing-helpers-2.0.0-next.3.tgz#229db107ce3f6b445721b60635e70fe0e50788e1"
-  integrity sha512-wt0sHRpcB3+5SgN6NEVSAXbFjEPK1+GSzR54BEELBj3iqd3JWMpYe6mz3gCHLtyhRAE89kD5KyoW11XlbZIJ7g==
+"@open-wc/testing-helpers@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@open-wc/testing-helpers/-/testing-helpers-2.0.1.tgz#b54ccb3d67d874baf57b66ad17d45d1eb56f30f9"
+  integrity sha512-kBg3TJeqVCvVhBLPGRnlgkkghl854Ohp8xt8vuyDwWJUSpM7eimaXbn/YbRVVT5PScodjvMO9HDl2U8LX63CIw==
   dependencies:
-    "@open-wc/scoped-elements" "^2.0.0-next.6"
+    "@open-wc/scoped-elements" "^2.0.1"
     lit "^2.0.0"
 
-"@open-wc/testing@^3.0.0-next.5":
-  version "3.0.0-next.5"
-  resolved "https://registry.yarnpkg.com/@open-wc/testing/-/testing-3.0.0-next.5.tgz#1631c80d4dbc835a0d4bfeef04cb2a0ca0f33700"
-  integrity sha512-n2NrCGql3daWKOuyvdwKqdnm2ArOch+U7yIuvLZGTwtlMXlvZjOAln3CKZCWEmN5lXcgIAb5czeY7CzOmP8QWg==
+"@open-wc/testing@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@open-wc/testing/-/testing-3.0.1.tgz#088fe295b0215f3267601db335eee4a23c0731c4"
+  integrity sha512-8ZVdmNT8e0hcB0tGrdfsvWydpDUr+1oeQ4XRm2T3Ck+nTJIddQO28tO0OvDLrJU/5WtT7LLZDqRpM32SPdcxjA==
   dependencies:
     "@esm-bundle/chai" "^4.3.4"
     "@open-wc/chai-dom-equals" "^0.12.36"
-    "@open-wc/semantic-dom-diff" "^0.19.5-next.2"
-    "@open-wc/testing-helpers" "^2.0.0-next.2"
+    "@open-wc/semantic-dom-diff" "^0.19.5"
+    "@open-wc/testing-helpers" "^2.0.1"
     "@types/chai" "^4.2.11"
     "@types/chai-dom" "^0.0.9"
     "@types/sinon-chai" "^3.2.3"
-    chai-a11y-axe "^1.3.2-next.0"
+    chai-a11y-axe "^1.3.2"
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.4.3":
   version "0.4.3"
@@ -7421,10 +7421,10 @@ cem-plugin-readonly@^0.0.1:
   resolved "https://registry.yarnpkg.com/cem-plugin-readonly/-/cem-plugin-readonly-0.0.1.tgz#d70a852c6dae75506d268281207a58a6a1d9ea0d"
   integrity sha512-Jc7SBzouNEwAuxKMrezuxMgyM8Qrj5c6vCEjUp+drRC0FG26kc8yRkepxCoRbACb4RJOGsyBvkW+w17hwBk1kg==
 
-chai-a11y-axe@^1.3.2-next.0:
-  version "1.3.2-next.2"
-  resolved "https://registry.yarnpkg.com/chai-a11y-axe/-/chai-a11y-axe-1.3.2-next.2.tgz#b1269c3e956ad675afcbf006ce629ee40f3ca5cb"
-  integrity sha512-pgTbA5Fbhbii6aDJh4N/w6Xd2EEI9OyXThRl5zxc/vphBNepijLDFXsMo+f78jwcyyKh6UTYHH8LN6xVZBgnGg==
+chai-a11y-axe@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/chai-a11y-axe/-/chai-a11y-axe-1.3.2.tgz#77dc5f503901fed4f6097b5b0213ddb00cc891ea"
+  integrity sha512-/jYczmhGUoCfEcsrkJwjecy3PJ31T9FxFdu2BDlAwR/sX1nN3L2XmuPP3tw8iYk6LPqdF7K11wwFr3yUZMv5MA==
   dependencies:
     axe-core "^4.3.3"
 
