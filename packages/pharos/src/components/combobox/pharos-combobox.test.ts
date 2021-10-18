@@ -1,6 +1,6 @@
 import { fixture, expect, aTimeout, elementUpdated } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-combobox';
+
 import type { PharosCombobox } from './pharos-combobox';
 import type { PharosTooltip } from '../tooltip/pharos-tooltip';
 import type { PharosButton } from '../button/pharos-button';

@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-input-group-select';
+
 import type { PharosInputGroupSelect } from './pharos-input-group-select';
 
 describe('pharos-input-group', () => {

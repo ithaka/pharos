@@ -1,24 +1,26 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { sidenavMenuStyles } from './pharos-sidenav-menu.css';
-import { customElement } from '../../utils/decorators';
-import FocusMixin from '../../utils/mixins/focus';
-
 import type { PharosSidenavLink } from './pharos-sidenav-link';
-import '../icon/pharos-icon';
+
+import FocusMixin from '../../utils/mixins/focus';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
 
 /**
  * Pharos sidenav menu component.
  *
- * @tag pharos-sidenav-menu
- *
  * @slot - Contains the items of the menu (the default slot).
  *
  */
-@customElement('pharos-sidenav-menu')
-export class PharosSidenavMenu extends FocusMixin(LitElement) {
+export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * Indicates the label of the menu.
    * @attr label
@@ -40,7 +42,7 @@ export class PharosSidenavMenu extends FocusMixin(LitElement) {
   }
 
   protected override firstUpdated(): void {
-    this._allLinks = this.querySelectorAll('pharos-sidenav-link');
+    this._allLinks = this.querySelectorAll('[data-pharos-component="PharosSidenavLink"]');
     this._allLinks.forEach((link) => {
       link.menuItem = true;
       link.setAttribute('role', 'menuitem');
@@ -96,11 +98,5 @@ export class PharosSidenavMenu extends FocusMixin(LitElement) {
       </button>
       ${this._renderMenu()}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-sidenav-menu': PharosSidenavMenu;
   }
 }

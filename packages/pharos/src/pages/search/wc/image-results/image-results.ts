@@ -2,9 +2,6 @@ import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
 import { ImageResultsItem } from './image-results-item';
-import '../../../../components/heading/pharos-heading';
-import '../../../../components/button/pharos-button';
-import '../../../../components/link/pharos-link';
 import { imageResults } from '../../mocks';
 
 export const ImageResults = (): TemplateResult => html`

@@ -1,14 +1,15 @@
-import { LitElement, html, nothing } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { alertStyles } from './pharos-alert.css';
-import { customElement } from '../../utils/decorators';
 import type { PharosLink } from '../link/pharos-link';
 
 import FocusMixin from '../../utils/mixins/focus';
-import '../icon/pharos-icon';
-import '../button/pharos-button';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosButton } from '../button/pharos-button';
 
 export type AlertStatus = 'info' | 'success' | 'warning' | 'error';
 
@@ -23,8 +24,6 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
 
 /**
  * Pharos alert component
- *
- * @tag pharos-alert
  *
  * @slot - Contains the alert message (the default slot).
  *
@@ -45,8 +44,12 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
  * @cssprop {Color} --pharos-alert-color-background-error - The background color of an error alert
  * @cssprop {Color} --pharos-alert-color-icon-error - The fill color for an error alert icon
  */
-@customElement('pharos-alert')
-export class PharosAlert extends FocusMixin(LitElement) {
+export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+    'pharos-button': PharosButton,
+  };
+
   /**
    * The status to reflect to the user
    * @attr status
@@ -87,7 +90,7 @@ export class PharosAlert extends FocusMixin(LitElement) {
   }
 
   private _handleSlotChange(): void {
-    this._allLinks = this.querySelectorAll('pharos-link');
+    this._allLinks = this.querySelectorAll('[data-pharos-component="PharosLink"]');
 
     this._allLinks.forEach((link) => {
       link['_alert'] = true;
@@ -134,11 +137,5 @@ export class PharosAlert extends FocusMixin(LitElement) {
         ${this._renderCloseButton()}
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-alert': PharosAlert;
   }
 }

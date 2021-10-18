@@ -9,6 +9,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@ithaka/pharos": "^10.8.0",
+    "@webcomponents/scoped-custom-element-registry": "^0.0.3",
     "gatsby": "^3.13.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-google-tagmanager": "^3.13.0",

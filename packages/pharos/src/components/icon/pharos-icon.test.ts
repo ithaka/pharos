@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-icon';
+
 import type { PharosIcon } from './pharos-icon';
 
 describe('pharos-icon', () => {

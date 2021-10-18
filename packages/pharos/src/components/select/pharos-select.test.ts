@@ -1,6 +1,6 @@
 import { fixture, expect, elementUpdated } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-select';
+
 import type { PharosSelect } from './pharos-select';
 import createFormData from '../../utils/createFormData';
 

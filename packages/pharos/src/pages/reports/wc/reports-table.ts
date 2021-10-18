@@ -2,8 +2,6 @@ import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 import type { HistoryRow, ScheduledRow, HistoryTable, ScheduledTable } from '../types';
 
-import '../../../components/button/pharos-button';
-
 export const ReportsTable = (table: HistoryTable | ScheduledTable): TemplateResult => {
   const isHistory = !Object.keys(table.rows[0]).includes('frequency');
   const tableCols = () => {

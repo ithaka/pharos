@@ -3,14 +3,11 @@ import { property } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { radioGroupStyles } from './pharos-radio-group.css';
 import type { PharosRadioButton } from '../radio-button/pharos-radio-button';
-import { customElement } from '../../utils/decorators';
 
 import { FormElement } from '../base/form-element';
 
 /**
  * Pharos radio group component.
- *
- * @tag pharos-radio-group
  *
  * @slot legend - Contains the fieldset legend content.
  * @slot - Contains the set of radio buttons (the default slot).
@@ -18,7 +15,6 @@ import { FormElement } from '../base/form-element';
  *
  * @fires change - Fires when the value has changed
  */
-@customElement('pharos-radio-group')
 export class PharosRadioGroup extends FormElement {
   /**
    * Dictate if radio buttons should be displayed horizontally
@@ -50,7 +46,9 @@ export class PharosRadioGroup extends FormElement {
     this._setRadios();
     this._addFocusListeners();
 
-    const radios = this.querySelectorAll('pharos-radio-button') as NodeListOf<PharosRadioButton>;
+    const radios: NodeListOf<PharosRadioButton> = this.querySelectorAll(
+      '[data-pharos-component="PharosRadioButton"]'
+    );
     radios.forEach((radio) => {
       radio.addEventListener('change', (event: Event) => {
         event.stopPropagation();
@@ -106,9 +104,9 @@ export class PharosRadioGroup extends FormElement {
   }
 
   private _handleArrowKeys(moveForward: boolean): void {
-    const radios = Array.prototype.slice.call(
-      this.querySelectorAll('pharos-radio-button:not([disabled])')
-    ) as PharosRadioButton[];
+    const radios: PharosRadioButton[] = Array.prototype.slice.call(
+      this.querySelectorAll('[data-pharos-component="PharosRadioButton"]:not([disabled])')
+    );
     const values = radios.map((radio) => radio.value);
 
     const focusedRadio = document.activeElement as PharosRadioButton;
@@ -128,9 +126,9 @@ export class PharosRadioGroup extends FormElement {
   }
 
   private _updateSelection(value: string): void {
-    const previouslyChecked = this.querySelector(
-      `pharos-radio-button[checked]:not([value="${value}"])`
-    ) as PharosRadioButton;
+    const previouslyChecked: PharosRadioButton | null = this.querySelector(
+      `[data-pharos-component="PharosRadioButton"][checked]:not([value="${value}"])`
+    );
 
     if (previouslyChecked) {
       previouslyChecked.checked = false;
@@ -138,7 +136,9 @@ export class PharosRadioGroup extends FormElement {
   }
 
   private _setRadios(): void {
-    const radios = this.querySelectorAll('pharos-radio-button') as NodeListOf<PharosRadioButton>;
+    const radios: NodeListOf<PharosRadioButton> = this.querySelectorAll(
+      '[data-pharos-component="PharosRadioButton"]'
+    );
     radios.forEach((radio) => {
       radio.name = this.name;
       radio.disabled = this.disabled;
@@ -148,7 +148,9 @@ export class PharosRadioGroup extends FormElement {
   }
 
   private _addFocusListeners(): void {
-    const radios = this.querySelectorAll('pharos-radio-button') as NodeListOf<PharosRadioButton>;
+    const radios: NodeListOf<PharosRadioButton> = this.querySelectorAll(
+      '[data-pharos-component="PharosRadioButton"]'
+    );
     radios.forEach((radio) => {
       // Disregard focus from clicks
       radio.addEventListener('mousedown', () => {
@@ -157,9 +159,9 @@ export class PharosRadioGroup extends FormElement {
 
       // Ensure focus is delegated to the selected radio when focus enters the group
       radio.addEventListener('focusin', (event: FocusEvent) => {
-        const checkedRadio = this.querySelector(
-          `pharos-radio-button[checked]`
-        ) as PharosRadioButton;
+        const checkedRadio: PharosRadioButton | null = this.querySelector(
+          `[data-pharos-component="PharosRadioButton"][checked]`
+        );
 
         const withinGroup =
           (event.relatedTarget as HTMLElement)?.tagName === (event.target as HTMLElement)?.tagName;
@@ -198,11 +200,5 @@ export class PharosRadioGroup extends FormElement {
         ${this.messageContent}
       </fieldset>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-radio-group': PharosRadioGroup;
   }
 }

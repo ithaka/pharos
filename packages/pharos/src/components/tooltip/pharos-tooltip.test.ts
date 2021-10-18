@@ -4,7 +4,6 @@ import sinon from 'sinon';
 import type { SinonSpy } from 'sinon';
 
 import type { Placement, Instance } from '../../utils/popper';
-import './pharos-tooltip';
 import type { PharosTooltip } from './pharos-tooltip';
 
 describe('pharos-tooltip', () => {
@@ -49,7 +48,7 @@ describe('pharos-tooltip', () => {
 
   it('sets its default attributes', async () => {
     expect(component).dom.to.equal(
-      `<pharos-tooltip id="my-tooltip" placement="top" strategy="absolute" boundary="clippingParents">Hi there!</pharos-tooltip>`
+      `<pharos-tooltip id="my-tooltip" placement="top" strategy="absolute" boundary="clippingParents" data-pharos-component="PharosTooltip">Hi there!</pharos-tooltip>`
     );
   });
 

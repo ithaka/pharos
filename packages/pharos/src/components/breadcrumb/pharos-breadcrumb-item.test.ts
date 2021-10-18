@@ -1,8 +1,8 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-breadcrumb';
-import './pharos-breadcrumb-item';
+
 import type { PharosBreadcrumbItem } from './pharos-breadcrumb-item';
+import type { PharosLink } from '../link/pharos-link';
 
 describe('pharos-breadcrumb-item', () => {
   let component: PharosBreadcrumbItem;
@@ -28,9 +28,8 @@ describe('pharos-breadcrumb-item', () => {
   });
 
   it('truncates long text', async () => {
-    await expect(component.shadowRoot?.querySelector('pharos-link')?.innerText).to.equal(
-      `${longText.substr(0, 40)}...`
-    );
+    const anchor = component.renderRoot.querySelector('pharos-link') as PharosLink;
+    await expect(anchor?.innerText).to.equal(`${longText.substr(0, 40)}...`);
   });
 
   it('contains tooltip with truncated text', async () => {
@@ -56,6 +55,7 @@ describe('pharos-breadcrumb-item', () => {
     const component: PharosBreadcrumbItem = await fixture(
       html`<pharos-breadcrumb-item href="#first">${shortText}</pharos-breadcrumb-item>`
     );
-    await expect(component.renderRoot.querySelector('pharos-link')?.innerText).to.equal(shortText);
+    const anchor = component.renderRoot.querySelector('pharos-link') as PharosLink;
+    await expect(anchor?.innerText).to.equal(shortText);
   });
 });

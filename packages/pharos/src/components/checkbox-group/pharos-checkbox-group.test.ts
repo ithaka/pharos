@@ -2,8 +2,7 @@ import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import sinon from 'sinon';
 import type { SinonSpy } from 'sinon';
-import './pharos-checkbox-group';
-import '../checkbox/pharos-checkbox';
+
 import type { PharosCheckboxGroup } from './pharos-checkbox-group';
 import type { PharosCheckbox } from '../checkbox/pharos-checkbox';
 
@@ -101,7 +100,7 @@ describe('pharos-checkbox-group', () => {
       activeElement = event.composedPath()[0];
     };
     document.addEventListener('focusin', onFocusIn);
-    const checkbox = component.querySelector('pharos-checkbox');
+    const checkbox = component.querySelector('pharos-checkbox') as PharosCheckbox;
 
     component.focus();
 

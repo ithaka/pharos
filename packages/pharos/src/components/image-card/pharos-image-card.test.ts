@@ -1,8 +1,6 @@
 import { fixture, expect, aTimeout, elementUpdated } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-image-card';
-import '../dropdown-menu/pharos-dropdown-menu';
-import '../dropdown-menu/pharos-dropdown-menu-item';
+
 import type { PharosImageCard } from './pharos-image-card';
 import type { PharosButton } from '../button/pharos-button';
 

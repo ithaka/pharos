@@ -1,17 +1,18 @@
-import { html, LitElement, nothing } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { modalStyles } from './pharos-modal.css';
 import focusable from '../../utils/focusable';
-import { customElement } from '../../utils/decorators';
 
-import '../button/pharos-button';
-import '../heading/pharos-heading';
-import '@ithaka/focus-trap';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosButton } from '../button/pharos-button';
+import { PharosHeading } from '../heading/pharos-heading';
+import { FocusTrap } from '@ithaka/focus-trap';
 
-const CLOSE_BUTTONS = `[data-modal-close],pharos-button#close-button`;
+const CLOSE_BUTTONS = `[data-modal-close],[data-pharos-component="PharosButton"]#close-button`;
 const FOCUS_ELEMENT = `[data-modal-focus]`;
 
 export type ModalSize = 'small' | 'medium' | 'large';
@@ -20,8 +21,6 @@ const SIZES = ['small', 'medium', 'large'];
 
 /**
  * Pharos modal component.
- *
- * @tag pharos-modal
  *
  * @slot description - Content that describes the primary message or purpose of the modal.
  * @slot - Contains the content of the modal body.
@@ -33,8 +32,13 @@ const SIZES = ['small', 'medium', 'large'];
  * @fires pharos-modal-closed - Fires when the modal has closed
  *
  */
-@customElement('pharos-modal')
-export class PharosModal extends LitElement {
+export class PharosModal extends ScopedRegistryMixin(PharosElement) {
+  static elementDefinitions = {
+    'pharos-button': PharosButton,
+    'pharos-heading': PharosHeading,
+    'focus-trap': FocusTrap,
+  };
+
   /**
    * Indicates if the modal is open.
    * @attr open
@@ -284,11 +288,5 @@ export class PharosModal extends LitElement {
         </div>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-modal': PharosModal;
   }
 }

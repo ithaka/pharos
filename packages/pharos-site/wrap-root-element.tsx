@@ -3,6 +3,7 @@ import type { FC, ReactNode } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import Canvas from './src/components/Canvas';
+import './initComponents';
 
 interface WrapperProps {
   element: ReactNode;

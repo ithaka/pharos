@@ -2,9 +2,6 @@ import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 import type { RadioGroupItem } from '../../types';
 
-import '../../../../components/radio-group/pharos-radio-group';
-import '../../../../components/radio-button/pharos-radio-button';
-
 export const SingleSelectFacet = (
   name: string,
   legend: string,

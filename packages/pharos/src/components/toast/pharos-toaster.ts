@@ -1,11 +1,9 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { toasterStyles } from './pharos-toaster.css';
 
-import { customElement } from '../../utils/decorators';
-
-import './pharos-toast';
-import type { PharosToast } from './pharos-toast';
+import { PharosToast } from './pharos-toast';
 import { DEFAULT_STATUS } from './pharos-toast';
 
 /**
@@ -20,14 +18,11 @@ import { DEFAULT_STATUS } from './pharos-toast';
 /**
  * Pharos toaster component.
  *
- * @tag pharos-toaster
- *
  * @slot - Contains the toasts (the default slot).
  *
  * @listens pharos-toast-open
  */
-@customElement('pharos-toaster')
-export class PharosToaster extends LitElement {
+export class PharosToaster extends PharosElement {
   constructor() {
     super();
     this._openToast = this._openToast.bind(this);
@@ -51,7 +46,8 @@ export class PharosToaster extends LitElement {
   }
 
   private async _openToast(event: Event): Promise<void> {
-    const toast = document.createElement('pharos-toast') as PharosToast;
+    const toastTag = new PharosToast().localName;
+    const toast = document.createElement(toastTag) as PharosToast;
     const { content, status } = (<CustomEvent>event).detail;
 
     toast.innerHTML = content;
@@ -71,11 +67,5 @@ export class PharosToaster extends LitElement {
         <slot></slot>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-toaster': PharosToaster;
   }
 }

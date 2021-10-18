@@ -4,14 +4,6 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import '../styles/header-revised.scss';
 
-import '../../../components/link/pharos-link';
-import '../../../components/dropdown-menu-nav/pharos-dropdown-menu-nav';
-import '../../../components/dropdown-menu-nav/pharos-dropdown-menu-nav-link';
-import '../../../components/dropdown-menu/pharos-dropdown-menu';
-import '../../../components/dropdown-menu/pharos-dropdown-menu-item';
-import '../../../components/button/pharos-button';
-import '../../../components/input-group/pharos-input-group';
-
 export const HeaderRevised = (showSearch = false): TemplateResult => html`
   <div
     class="${classMap({

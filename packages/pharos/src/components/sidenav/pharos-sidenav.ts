@@ -2,26 +2,27 @@ import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { sidenavStyles } from './pharos-sidenav.css';
-import { customElement } from '../../utils/decorators';
-
 import { SideElement } from '../base/side-element';
+import type { PharosSidenavButton } from './pharos-sidenav-button';
 
 import FocusMixin from '../../utils/mixins/focus';
-
-import '../button/pharos-button';
-import '../link/pharos-link';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosButton } from '../button/pharos-button';
+import { PharosLink } from '../link/pharos-link';
 
 /**
  * Pharos sidenav component.
- *
- * @tag pharos-sidenav
  *
  * @slot top - Content to be shown at the top of the sidenav.
  * @slot - Contains the sections of the sidenav (the default slot).
  *
  */
-@customElement('pharos-sidenav')
-export class PharosSidenav extends FocusMixin(SideElement) {
+export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) {
+  static elementDefinitions = {
+    'pharos-button': PharosButton,
+    'pharos-link': PharosLink,
+  };
+
   /**
    * Indicates that the sidenav should slide in.
    * @attr slide
@@ -59,7 +60,10 @@ export class PharosSidenav extends FocusMixin(SideElement) {
 
   private _handleClickClose(): void {
     this.slide = false;
-    document.querySelector('pharos-sidenav-button')?.focus();
+    const button: PharosSidenavButton | null = document.querySelector(
+      '[data-pharos-component="PharosSidenavButton"]'
+    );
+    button?.focus();
   }
 
   private _handleMediaChange(e: MediaQueryListEvent): void {
@@ -97,11 +101,5 @@ export class PharosSidenav extends FocusMixin(SideElement) {
         </div>
       </nav>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-sidenav': PharosSidenav;
   }
 }

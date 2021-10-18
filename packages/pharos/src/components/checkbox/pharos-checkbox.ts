@@ -5,7 +5,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { checkboxStyles } from './pharos-checkbox.css';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from '../../utils/decorators';
 import dashSmall from '../../styles/icons/dash-small';
 import checkmarkSmall from '../../styles/icons/checkmark-small';
 
@@ -17,14 +16,11 @@ const LINKS = `a[href],pharos-link[href]`;
 /**
  * Pharos checkbox component.
  *
- * @tag pharos-checkbox
- *
  * @slot label - Contains the label content.
  * @slot message - Contains message content to show below the input.
  *
  * @fires change - Fires when the value has changed
  */
-@customElement('pharos-checkbox')
 export class PharosCheckbox extends FormMixin(FormElement) {
   /**
    * Indicates if checkbox is checked.
@@ -166,11 +162,5 @@ export class PharosCheckbox extends FormMixin(FormElement) {
       </div>
       ${this.messageContent}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-checkbox': PharosCheckbox;
   }
 }

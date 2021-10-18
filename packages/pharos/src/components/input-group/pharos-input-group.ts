@@ -2,7 +2,6 @@ import { html } from 'lit';
 import { query, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { inputGroupStyles } from './pharos-input-group.css';
-import { customElement } from '../../utils/decorators';
 import { PharosTextInput } from '../text-input/pharos-text-input';
 import type { TextInputType, TextInputAutocomplete } from '../text-input/pharos-text-input';
 import { PharosSpacingOneAndAHalfX, PharosSpacingThreeQuartersX } from '../../styles/variables';
@@ -12,12 +11,9 @@ export type { TextInputType, TextInputAutocomplete };
 /**
  * Pharos input group component.
  *
- * @tag pharos-input-group
- *
  * @slot - Contains the elements to be appended to the input group (the default slot).
  * @slot prepend - Contains the elements to be prepended to the input group.
  */
-@customElement('pharos-input-group')
 export class PharosInputGroup extends PharosTextInput {
   @query('.input-group--append')
   private _appendGroup!: HTMLDivElement;
@@ -98,11 +94,5 @@ export class PharosInputGroup extends PharosTextInput {
 
   protected override render(): TemplateResult {
     return html` ${super.render()} `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-input-group': PharosInputGroup;
   }
 }

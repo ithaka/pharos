@@ -9,8 +9,6 @@ import { CreateReportModal } from './CreateReportModal';
 import { ReportsTable } from './ReportsTable';
 import { historyTable, scheduledTable } from '../mocks';
 
-import '../../../components/toast/pharos-toaster';
-
 import { PharosHeading } from '../../../react-components/heading/pharos-heading';
 import { PharosLink } from '../../../react-components/link/pharos-link';
 import { PharosButton } from '../../../react-components/button/pharos-button';

@@ -2,10 +2,9 @@ import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import sinon from 'sinon';
 import type { SinonSpy } from 'sinon';
-import './pharos-checkbox';
-import '../checkbox-group/pharos-checkbox-group';
-import '../link/pharos-link';
+
 import type { PharosCheckbox } from './pharos-checkbox';
+import type { PharosLink } from '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
 
 describe('pharos-checkbox', () => {
@@ -215,7 +214,7 @@ describe('pharos-checkbox', () => {
         ></pharos-checkbox
       >
     `);
-    const link = component.querySelector('pharos-link');
+    const link = component.querySelector('pharos-link') as PharosLink;
     const anchor = link?.renderRoot.querySelector('#link-element') as HTMLAnchorElement;
     anchor.click();
     await component.updateComplete;

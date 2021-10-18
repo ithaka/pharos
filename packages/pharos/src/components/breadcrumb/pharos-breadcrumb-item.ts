@@ -4,15 +4,14 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { breadcrumbItemStyles } from './pharos-breadcrumb-item.css';
-import { customElement } from '../../utils/decorators';
 
 import { AnchorElement } from '../base/anchor-element';
-import type { LinkTarget } from '../base/anchor-element';
 import FocusMixin from '../../utils/mixins/focus';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosTooltip } from '../tooltip/pharos-tooltip';
+import { PharosLink } from '../link/pharos-link';
 
-import '../tooltip/pharos-tooltip';
-import '../link/pharos-link';
-
+import type { LinkTarget } from '../base/anchor-element';
 export type { LinkTarget };
 
 const MAX_LENGTH = 40;
@@ -23,14 +22,15 @@ const MAX_LENGTH = 40;
  * content. This component is the "content" for breadcrumbs, which handles the
  * text and tooltip (if the text is truncated) logic and styling.
  *
- *
- * @tag pharos-breadcrumb-item
- *
  * @slot - Contains the links and text to convert into breadcrumbs
  *
  */
-@customElement('pharos-breadcrumb-item')
-export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
+export class PharosBreadcrumbItem extends ScopedRegistryMixin(FocusMixin(AnchorElement)) {
+  static elementDefinitions = {
+    'pharos-tooltip': PharosTooltip,
+    'pharos-link': PharosLink,
+  };
+
   @state()
   private _isTruncated = false;
 
@@ -98,11 +98,5 @@ export class PharosBreadcrumbItem extends FocusMixin(AnchorElement) {
         ? html`<pharos-tooltip id="truncate-tooltip">${this._fullText}</pharos-tooltip>`
         : null}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-breadcrumb-item': PharosBreadcrumbItem;
   }
 }

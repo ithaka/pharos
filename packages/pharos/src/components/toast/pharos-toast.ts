@@ -1,15 +1,16 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { toastStyles } from './pharos-toast.css';
-import { customElement } from '../../utils/decorators';
 import debounce from '../../utils/debounce';
+import type { Procedure } from '../../typings/procedure';
 
 import FocusMixin from '../../utils/mixins/focus';
-import '../icon/pharos-icon';
-import './pharos-toast-button';
-import type { Procedure } from '../../typings/procedure';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosToastButton } from './pharos-toast-button';
 
 export type ToastStatus = 'success' | 'error';
 
@@ -27,15 +28,17 @@ export const DEFAULT_STATUS = 'success';
 /**
  * Pharos toast component.
  *
- * @tag pharos-toast
- *
  * @slot - Content inside the toast (the default slot).
  *
  * @fires pharos-toast-close - Fires when the toast has closed
  *
  */
-@customElement('pharos-toast')
-export class PharosToast extends FocusMixin(LitElement) {
+export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+    'pharos-toast-button': PharosToastButton,
+  };
+
   /**
    * The status to reflect to the user.
    * @attr status
@@ -119,11 +122,5 @@ export class PharosToast extends FocusMixin(LitElement) {
         <pharos-toast-button class="toast__button" @click=${this.close}></pharos-toast-button>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-toast': PharosToast;
   }
 }

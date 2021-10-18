@@ -16,8 +16,8 @@ const toCamelCase = (str) => {
 };
 
 // Create prop interface using custom-elements.json
-const createComponentInterface = (component, reactName) => {
-  const item = modules.find((item) => item.tagName === component);
+const createComponentInterface = (reactName) => {
+  const item = modules.find((item) => item.name == reactName);
   const publicFields = item.members.filter(
     (member) => member.kind === 'field' && member.privacy === 'public'
   );
@@ -63,8 +63,8 @@ const createComponentInterface = (component, reactName) => {
 };
 
 // Define default prop values using custom-elements.json
-const createDefaultProps = (component, reactName) => {
-  const item = modules.find((item) => item.tagName === component);
+const createDefaultProps = (reactName) => {
+  const item = modules.find((item) => item.name == reactName);
   const defaultFields = item.members.filter(
     (member) => member.kind === 'field' && member.privacy === 'public' && member.default
   );
@@ -92,7 +92,7 @@ const setup = async () => {
 
 export const buildReact = async () => {
   for await (const componentPath of globbyStream(
-    './src/components/**/pharos-!(*.css|*.test)*.ts'
+    './src/components/**/pharos-!(*.css|*.test|element)*.ts'
   )) {
     const dest = componentPath.replace('/components/', '/react-components/').replace('.ts', '.tsx');
     const webComponentFilePath = componentPath.split('components/')[1].split('.ts')[0];
@@ -101,7 +101,7 @@ export const buildReact = async () => {
       webComponentName[0].toUpperCase() + webComponentName.substr(1)
     );
     const relativePath = `'../../components/${webComponentFilePath}'`;
-    const reactInterface = createComponentInterface(webComponentName, reactComponentName);
+    const reactInterface = createComponentInterface(reactComponentName);
 
     const component = await fs.readFile(componentPath, 'utf8');
 
@@ -109,18 +109,19 @@ export const buildReact = async () => {
     const reactComponent = `
           import type { FC, DetailedHTMLProps, HTMLAttributes } from 'react';
           import createReactComponent from '../../utils/createReactComponent';
-          import ${relativePath};
+          import { ${reactComponentName} as PharosClass } from ${relativePath};
 
           ${importTypes(component, relativePath)}
 
           ${reactInterface}
 
+          const tag = new PharosClass().localName;
           export const ${reactComponentName}: FC${
       reactInterface ? `<${reactComponentName}Props>` : `<${REACT_PROP_TYPE}>`
-    } = createReactComponent('${webComponentName}');
+    } = createReactComponent(tag);
           ${reactComponentName}.displayName = '${reactComponentName}';
 
-          ${createDefaultProps(webComponentName, reactComponentName)}
+          ${createDefaultProps(reactComponentName)}
         `;
 
     // Append React component export to index file

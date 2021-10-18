@@ -3,11 +3,11 @@ import { property, query } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { textInputStyles } from './pharos-text-input.css';
-import { customElement } from '../../utils/decorators';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
-import '../icon/pharos-icon';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
 
 export type TextInputType =
   | 'email'
@@ -26,12 +26,12 @@ const TYPES = ['email', 'hidden', 'number', 'password', 'search', 'tel', 'text',
 const SUBMITTABLE = [
   'input[type="submit"]:not([disabled])',
   'button[type="submit"]:not([disabled])',
-  'pharos-button[type="submit"]:not([disabled])',
+  '[data-pharos-component="PharosButton"][type="submit"]:not([disabled])',
 ];
 
 const BLOCKING = [
-  'pharos-text-input',
-  'pharos-input-group',
+  '[data-pharos-component="PharosTextInput"]',
+  '[data-pharos-component="PharosInputGroup"]',
   'input[type="text"]',
   'input[type="search"]',
   'input[type="url"]',
@@ -49,8 +49,6 @@ const BLOCKING = [
 /**
  * Pharos text input component.
  *
- * @tag pharos-text-input
- *
  * @slot label - Contains the label content.
  * @slot message - Contains message content to show below the input.
  *
@@ -61,8 +59,11 @@ const BLOCKING = [
  * @cssprop {Color} --pharos-text-input-color-icon-valid - Fill color for valid state icon.
  * @cssprop {Color} --pharos-text-input-color-icon-invalid - Fill color for invalidated state icon.
  */
-@customElement('pharos-text-input')
-export class PharosTextInput extends FormMixin(FormElement) {
+export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * Indicates input value.
    * @attr value
@@ -245,11 +246,5 @@ export class PharosTextInput extends FormMixin(FormElement) {
       </div>
       ${this.messageContent}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-text-input': PharosTextInput;
   }
 }

@@ -23,9 +23,8 @@ Once installed, the `node_modules/` directory should contain directories similar
 
 @ithaka/pharos/lib
 ├── assets/
-│   ├── fonts            // Font files used for Pharos
 │   ├── icons            // Pharos icons (used with the icon component)
-├── components/          // Folder containing Vue.js/Vanilla components
+├── components/          // Folder containing web components
 ├── react-components/    // Folder containing React components
 ├── styles/
 │   ├── _variables.css   // Commonly used tokens for styling
@@ -39,15 +38,19 @@ Once installed, the `node_modules/` directory should contain directories similar
 
 ## Using Pharos components
 
-Pharos uses <PharosLink href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</PharosLink> to remain compatible with React and Vue.
-To accomodate patterns of each framework, the implementations vary slightly. The usage of the components are similar
-to any other library used: import the desired component, use the base component, and add in the desired props.
+Pharos uses <PharosLink href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</PharosLink> to remain compatible with modern JavaScript frameworks, such as Vue or React.
+To accomodate patterns of each framework, the implementations vary slightly.
 
-> Note: There is a slight variation in the import paths. <br />
-> Developers using Pharos in React should import from `@ithaka/pharos/lib/react-components/` <br />
-> Otherwise, imports are from `@ithaka/pharos/lib/components/`
+You need to first register components on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) for them to be usable in your code.
+To register a component, import the classes in your application's entrypoint and define the component with a tag name in the form of `{app/bundle}-pharos-{component}`:
 
-To demonstrate the usage in both Vue and React, you'll next see how to use the base Pharos Button component.
+```javascript
+import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
+
+customElements.define('homepage-pharos-alert', PharosAlert);
+```
+
+To demonstrate the usage in both Vue and React, you'll next see how to use the Button component.
 
 <br />
 
@@ -75,12 +78,6 @@ import { PharosButton } from "@ithaka/pharos/lib/react-components/button/pharos-
 Similarly, the following code shows how to use Pharos's button component with **Vue** to produce a basic button, as seen below the code
 
 ```
-
-<script>
-  import "@ithaka/pharos/lib/components/button/pharos-button";
-  ...
-</script>
-
 <template>
   ...
   <pharos-button>
@@ -105,9 +102,13 @@ For a more interactive approach to understand props, Pharos provides a <PharosLi
 Our Storybook stories demonstrates the usage of props for each component, while providing the code used in the demonstration. Many components'
 stories allow you adjust the values of different props to preview and understand the impact of those props.
 
-<PharosLink href="#">Visit the Web Component (and Vue) Pharos Storybook</PharosLink>
+<PharosLink href="https://pharos.jstor.org/storybooks/wc/">
+  Visit the Web Component Pharos Storybook
+</PharosLink>
 <br />
-<PharosLink href="#">Visit the React Pharos Storybook</PharosLink>
+<PharosLink href="https://pharos.jstor.org/storybooks/react/">
+  Visit the React Pharos Storybook
+</PharosLink>
 
 <br />
 <br />
@@ -217,9 +218,7 @@ your web app. You can inspect the imported file to see all the tokens and their 
 
 Learn more about JSTOR's visual language and brand expressions that create consistency and clarity across our experiences.
 
-<PharosLink href="http://localhost:8000/brand-expressions/logos">
-  View our brand guidelines
-</PharosLink>
+<PharosLink href="/brand-expressions/logos">View our brand guidelines</PharosLink>
 
 <br />
 <br />

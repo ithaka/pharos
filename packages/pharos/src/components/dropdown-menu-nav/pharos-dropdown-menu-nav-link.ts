@@ -2,24 +2,25 @@ import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { dropdownMenuNavLinkStyles } from './pharos-dropdown-menu-nav-link.css';
-import { customElement } from '../../utils/decorators';
 import { PharosLink } from '../link/pharos-link';
-import '../icon/pharos-icon';
+
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
 
 import type { LinkTarget } from '../base/anchor-element';
-
 export type { LinkTarget };
 
 /**
  * Pharos dropdown menu nav link component.
  *
- * @tag pharos-dropdown-menu-nav-link
- *
  * @slot - Contains the content of the link (the default slot).
  *
  */
-@customElement('pharos-dropdown-menu-nav-link')
-export class PharosDropdownMenuNavLink extends PharosLink {
+export class PharosDropdownMenuNavLink extends ScopedRegistryMixin(PharosLink) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * Indicates the link is active
    * @attr is-active
@@ -45,11 +46,5 @@ export class PharosDropdownMenuNavLink extends PharosLink {
 
   protected override render(): TemplateResult {
     return html`${super.render()}`;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-dropdown-menu-nav-link': PharosDropdownMenuNavLink;
   }
 }

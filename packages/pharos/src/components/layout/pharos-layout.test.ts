@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-layout';
+
 import type { PharosLayout } from './pharos-layout';
 
 describe('pharos-layout', () => {

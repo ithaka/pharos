@@ -1,4 +1,5 @@
-import { LitElement, html, nothing } from 'lit';
+import { PharosElement } from './pharos-element';
+import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { formElementStyles } from './form-element.css';
@@ -16,7 +17,7 @@ import FocusMixin from '../../utils/mixins/focus';
  * @cssprop {Color} --pharos-form-element-color-border-focus - Focused form element border color.
  * @cssprop {Color} --pharos-form-element-color-border-invalid - Invalidated form element border color.
  */
-export class FormElement extends FocusMixin(LitElement) {
+export class FormElement extends FocusMixin(PharosElement) {
   /**
    * Name for the form element.
    * @attr name

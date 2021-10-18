@@ -3,19 +3,19 @@ import { property, query } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { buttonStyles } from './pharos-button.css';
-import { customElement } from '../../utils/decorators';
 
 import { AnchorElement } from '../base/anchor-element';
-import type { LinkTarget } from '../base/anchor-element';
 import FocusMixin from '../../utils/mixins/focus';
-import '../icon/pharos-icon';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
+
+import type { LinkTarget } from '../base/anchor-element';
 import type { IconName } from '../icon/pharos-icon';
+export type { LinkTarget, IconName };
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'subtle' | 'overlay';
-
-export type { LinkTarget, IconName };
 
 const TYPES = ['button', 'submit', 'reset'];
 
@@ -24,13 +24,14 @@ const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'];
 /**
  * Pharos button component.
  *
- * @tag pharos-button
- *
  * @slot - Contains the content of the button (the default slot).
  *
  */
-@customElement('pharos-button')
-export class PharosButton extends FocusMixin(AnchorElement) {
+export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * Indicates that the button should have input focus when the page loads.
    * @attr autofocus
@@ -260,11 +261,5 @@ export class PharosButton extends FocusMixin(AnchorElement) {
             ${this.buttonContent}
           </button>
         `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-button': PharosButton;
   }
 }

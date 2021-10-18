@@ -2,11 +2,6 @@ import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 import type { SearchResult } from '../../types';
 
-import '../../../../components/heading/pharos-heading';
-import '../../../../components/button/pharos-button';
-import '../../../../components/link/pharos-link';
-import '../../../../components/checkbox/pharos-checkbox';
-
 export const SearchResultsItem = (result: SearchResult): TemplateResult => html`
   <div class="search-page__grid--result">
     <div style="justify-self: center">

@@ -1,21 +1,17 @@
 import { property, state } from 'lit/decorators.js';
 import type { CSSResultArray, PropertyValues } from 'lit';
 import { toggleButtonStyles } from './pharos-toggle-button.css';
-import { customElement } from '../../utils/decorators';
 import { PharosButton } from '../button/pharos-button';
-import type { ButtonType, LinkTarget, IconName, ButtonVariant } from '../button/pharos-button';
 
+import type { ButtonType, LinkTarget, IconName, ButtonVariant } from '../button/pharos-button';
 export type { ButtonType, LinkTarget, IconName, ButtonVariant };
 
 /**
  * Pharos toggle button component.
  *
- * @tag pharos-toggle-button
- *
  * @slot - Contains the content of the button (the default slot).
  *
  */
-@customElement('pharos-toggle-button')
 export class PharosToggleButton extends PharosButton {
   /**
    * Indicates that the button is currently toggled on and cannot be pressed or focused by the user.
@@ -89,11 +85,5 @@ export class PharosToggleButton extends PharosButton {
     };
     this.selected = true;
     this.dispatchEvent(new CustomEvent('pharos-toggle-button-selected', details));
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-toggle-button': PharosToggleButton;
   }
 }

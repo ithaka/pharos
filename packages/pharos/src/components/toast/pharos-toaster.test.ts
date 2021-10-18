@@ -1,7 +1,8 @@
 import { fixture, expect, nextFrame } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-toaster';
+
 import type { PharosToaster } from './pharos-toaster';
+import type { PharosToast } from './pharos-toast';
 
 describe('pharos-toaster', () => {
   let component: PharosToaster;
@@ -57,9 +58,9 @@ describe('pharos-toaster', () => {
     await nextFrame();
 
     expect(component).dom.to.equal(`
-      <pharos-toaster>
-        <pharos-toast open="" status="success">I am a toast</pharos-toast>
-        <pharos-toast open="" status="success">I am a toast</pharos-toast>
+      <pharos-toaster data-pharos-component="PharosToaster">
+        <pharos-toast data-pharos-component="PharosToast" open="" status="success">I am a toast</pharos-toast>
+        <pharos-toast data-pharos-component="PharosToast" open="" status="success">I am a toast</pharos-toast>
       </pharos-toaster>
     `);
   });
@@ -78,7 +79,9 @@ describe('pharos-toaster', () => {
     trigger.click();
     await component.updateComplete;
 
-    const toast = component.querySelector('pharos-toast')?.renderRoot.querySelector('.toast');
+    const toast = (
+      component.querySelector('pharos-toast') as PharosToast
+    )?.renderRoot.querySelector('.toast');
     expect(activeElement === toast).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
   });

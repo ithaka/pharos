@@ -8,16 +8,6 @@ import { CreateReportModal } from './create-report-modal';
 import { ReportsTable } from './reports-table';
 import { historyTable, scheduledTable } from '../mocks';
 
-import '../../../components/heading/pharos-heading';
-import '../../../components/link/pharos-link';
-import '../../../components/tabs/pharos-tabs';
-import '../../../components/tabs/pharos-tab';
-import '../../../components/tabs/pharos-tab-panel';
-import '../../../components/button/pharos-button';
-import '../../../components/toast/pharos-toaster';
-import '../../../components/sidenav/pharos-sidenav-button';
-import '../../../components/layout/pharos-layout';
-
 export default {
   title: 'Pages/Reports',
   parameters: {

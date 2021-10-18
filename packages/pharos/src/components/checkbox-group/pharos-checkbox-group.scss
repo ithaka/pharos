@@ -20,14 +20,14 @@
   flex-direction: row;
 }
 
-::slotted(pharos-checkbox) {
+::slotted([data-pharos-component='PharosCheckbox']) {
   align-self: flex-start;
 }
 
-.checkbox-group--vertical ::slotted(pharos-checkbox:not(:last-child)) {
+.checkbox-group--vertical ::slotted([data-pharos-component='PharosCheckbox']:not(:last-child)) {
   margin-bottom: var(--pharos-checkbox-group-spacing-vertical);
 }
 
-.checkbox-group--horizontal ::slotted(pharos-checkbox:not(:last-child)) {
+.checkbox-group--horizontal ::slotted([data-pharos-component='PharosCheckbox']:not(:last-child)) {
   margin-right: var(--pharos-checkbox-group-spacing-horizontal);
 }

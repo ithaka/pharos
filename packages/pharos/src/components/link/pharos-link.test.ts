@@ -1,6 +1,6 @@
 import { fixture, expect, nextFrame } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-link';
+
 import type { PharosLink } from './pharos-link';
 import { PharosColorBlack } from '../../styles/variables';
 
@@ -64,7 +64,7 @@ describe('pharos-link', () => {
     component.href = '#test';
     await component.updateComplete;
 
-    const link = document.createElement('pharos-link');
+    const link = document.createElement('pharos-link') as PharosLink;
     link.id = 'test';
     link.href = '#';
     link.textContent = 'I am a link';

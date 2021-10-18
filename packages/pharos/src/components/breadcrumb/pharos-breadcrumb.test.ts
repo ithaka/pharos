@@ -1,7 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-breadcrumb';
-import './pharos-breadcrumb-item';
+
 import type { PharosBreadcrumb } from './pharos-breadcrumb';
 
 describe('pharos-breadcrumb', () => {

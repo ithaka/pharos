@@ -3,6 +3,7 @@
 <!-- toc -->
 
 - [Installation](#installation)
+- [Registering components](#registering-components)
 - [Using web components](#using-web-components)
 - [Using Pharos components in React](#using-pharos-components-in-react)
 - [Styling components](#styling-components)
@@ -26,15 +27,50 @@ If you're using Vue, you can use these components in the same manner specified, 
 $ npm install @ithaka/pharos
 ```
 
-## Using web components
+## Registering components
 
-After installing Pharos, you can find the built web components in the `lib/components/` directory of the package. To use a component, first import it:
+1. To allow multiple versions of Pharos to exist on a page, this package only exports component classes for you to register on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) in your application. To register a component, import the classes you wish to use in your application's entrypoint and define the component with a tag name in the form of `{app/bundle}-pharos-{component}`:
 
 ```javascript
-import '@ithaka/pharos/lib/components/tooltip/pharos-tooltip';
+import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
+
+customElements.define('homepage-pharos-alert', PharosAlert);
 ```
 
-Then, render the component in your template:
+**Note: If you register a name that already exists the browser will throw an error about the duplicate.**
+
+2. Internally, Pharos components that are composed of other Pharos components scope their registries to their shadow root to avoid duplicate registrations. Because the `Scoped Custom Element Registries` proposal is not yet finalized, you need to apply a [polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/scoped-custom-element-registry) to use our components.
+
+3. Every component sets a custom data attribute `data-pharos-component` on itself with its class name (such as `PharosAlert`) to allow you to query any instance of that component regardless of its defined tag. Components also use this attribute to locate slotted Pharos children. Bundlers minify these class names by default for production builds. To ensure components work as expected, update your configurations like so:
+
+Webpack (Terser):
+
+```javascript
+optimization: {
+  minimizer: [
+    new TerserPlugin({
+      terserOptions: {
+        keep_classnames: /^Pharos/,
+        keep_fnames: /^Pharos/,
+      }
+    }),
+  ],
+}
+```
+
+Vite (ESBuild):
+
+```javascript
+export default defineConfig({
+  esbuild: {
+    keepNames: true,
+  },
+});
+```
+
+## Using web components
+
+After installing Pharos and registering the components, you can render them in any of your templates:
 
 ```html
 <pharos-tooltip>
@@ -47,7 +83,7 @@ See the [web component Storybook](https://pharos.jstor.org/storybooks/wc/) for d
 
 ## Using Pharos components in React
 
-[React](https://reactjs.org/) is a JavaScript library used to build encapsulated components that manage their own state. React doesn't currently play perfectly with raw web components, so if you're developing a React application you should use the wrapper components provided in the `lib/react-components/` directory of the package. To use a component, first import it:
+[React](https://reactjs.org/) is a JavaScript library used to build encapsulated components that manage their own state. React doesn't currently play perfectly with native web components, so if you're developing a React application you need to use the wrapper components provided in the `lib/react-components/` directory of the package. To use a component, first import it:
 
 ```javascript
 import { PharosTooltip } from '@ithaka/pharos/lib/react-components/tooltip/pharos-tooltip';

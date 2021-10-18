@@ -2,10 +2,6 @@ import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
 import initTranslateWidget from '../../search/initTranslateWidget';
-import '../../../components/footer/pharos-footer';
-import '../../../components/button/pharos-button';
-import '../../../components/icon/pharos-icon';
-import '../../../components/link/pharos-link';
 
 export const Footer = (): TemplateResult => {
   initTranslateWidget();

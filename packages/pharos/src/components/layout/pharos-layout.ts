@@ -1,9 +1,9 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { layoutStyles } from './pharos-layout.css';
-import { customElement } from '../../utils/decorators';
 import { PharosSpacingThreeAndAHalfX } from '../../styles/variables';
 
 export type LayoutPreset = '1-col' | '1-col--sidenav' | '1-col--sidenav-comfy' | '2-col';
@@ -13,14 +13,11 @@ const PRESETS = ['1-col', '1-col--sidenav', '1-col--sidenav-comfy', '2-col'];
 /**
  * Pharos layout component.
  *
- * @tag pharos-layout
- *
  * @slot top - Content to be shown above the inner grid.
  * @slot - Content to be shown within the inner grid (the default slot).
  *
  */
-@customElement('pharos-layout')
-export class PharosLayout extends LitElement {
+export class PharosLayout extends PharosElement {
   /**
    * Indicates the type of layout to use.
    * @attr preset
@@ -90,11 +87,5 @@ export class PharosLayout extends LitElement {
   protected override render(): TemplateResult {
     const template = `<slot name="top"></slot><${this.tag} id="layout-container" class="layout"><slot></slot></${this.tag}>`;
     return html`${unsafeHTML(template)}`;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-layout': PharosLayout;
   }
 }

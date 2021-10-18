@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { PharosElement } from './pharos-element';
 import { property } from 'lit/decorators.js';
 import type { PropertyValues } from 'lit';
 
@@ -10,7 +10,7 @@ const TARGETS = ['_blank', '_parent', '_self', '_top'];
  * The base anchor element class to house shared properties, styles, and methods.
  *
  */
-export class AnchorElement extends LitElement {
+export class AnchorElement extends PharosElement {
   /**
    * Indicates to save the linked URL instead of navigating to it.
    * @attr download

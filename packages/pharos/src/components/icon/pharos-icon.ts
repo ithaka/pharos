@@ -1,9 +1,9 @@
-import { LitElement, html } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { iconStyles } from './pharos-icon.css';
-import { customElement } from '../../utils/decorators';
 
 import type tokens from '../../styles/tokens';
 
@@ -14,11 +14,8 @@ const LARGE_ICON_SIZE = 24;
 
 /**
  * Pharos icon component.
- *
- * @tag pharos-icon
  */
-@customElement('pharos-icon')
-export class PharosIcon extends LitElement {
+export class PharosIcon extends PharosElement {
   /**
    * The name of the icon
    * @attr name
@@ -75,11 +72,5 @@ export class PharosIcon extends LitElement {
         ${unsafeSVG(this._svg)}
       </svg>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-icon': PharosIcon;
   }
 }

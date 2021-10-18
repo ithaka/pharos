@@ -3,8 +3,6 @@ import type { TemplateResult } from 'lit';
 
 import { item, metadata } from '../mocks';
 
-import '../../../components/heading/pharos-heading';
-
 export const Metadata = (): TemplateResult => html`
   <div class="item-detail-page__container--metadata">
     <img

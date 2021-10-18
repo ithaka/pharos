@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-text-input';
+
 import type { PharosTextInput } from './pharos-text-input';
 import createFormData from '../../utils/createFormData';
 
@@ -50,7 +50,7 @@ describe('pharos-text-input', () => {
       </pharos-text-input>
     `);
     expect(component).dom.to.equal(
-      `<pharos-text-input message="" name="" placeholder="" type="text" value=""><span slot="label">I am a label</span></pharos-text-input>`
+      `<pharos-text-input data-pharos-component="PharosTextInput" message="" name="" placeholder="" type="text" value=""><span slot="label">I am a label</span></pharos-text-input>`
     );
   });
 
@@ -183,6 +183,7 @@ describe('pharos-text-input', () => {
         >
         <pharos-icon
           class="input__icon"
+          data-pharos-component="PharosIcon"
           description=""
           name="exclamation"
         >
@@ -214,6 +215,7 @@ describe('pharos-text-input', () => {
         >
         <pharos-icon
           class="input__icon"
+          data-pharos-component="PharosIcon"
           description=""
           name="checkmark"
         >

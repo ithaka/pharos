@@ -1,28 +1,30 @@
-import { html, LitElement, nothing } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { dropdownMenuItemStyles } from './pharos-dropdown-menu-item.css';
-import { customElement } from '../../utils/decorators';
 import type { PharosDropdownMenu } from './pharos-dropdown-menu';
 
 import FocusMixin from '../../utils/mixins/focus';
-import '../icon/pharos-icon';
-import type { IconName } from '../icon/pharos-icon';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
 
+import type { IconName } from '../icon/pharos-icon';
 export type { IconName };
 
 /**
  * Pharos dropdown menu item component.
  *
- * @tag pharos-dropdown-menu-item
- *
  * @slot description - Content that describes the item.
  * @slot - Contains the content of dropdown item.
  *
  */
-@customElement('pharos-dropdown-menu-item')
-export class PharosDropdownMenuItem extends FocusMixin(LitElement) {
+export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * The icon to be used for the item
    * @attr icon
@@ -77,7 +79,7 @@ export class PharosDropdownMenuItem extends FocusMixin(LitElement) {
     this.addEventListener('mousedown', this._handleMousedown);
     this.addEventListener('mouseup', this._handleMouseup);
 
-    this._menu = this.closest('pharos-dropdown-menu') as PharosDropdownMenu;
+    this._menu = this.closest('[data-pharos-component="PharosDropdownMenu"]') as PharosDropdownMenu;
   }
 
   private _handleClick(event: MouseEvent): void {
@@ -170,11 +172,5 @@ export class PharosDropdownMenuItem extends FocusMixin(LitElement) {
             </button>`}
       </li>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-dropdown-menu-item': PharosDropdownMenuItem;
   }
 }

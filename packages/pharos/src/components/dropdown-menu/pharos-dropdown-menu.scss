@@ -39,6 +39,6 @@
   min-width: var(--pharos-dropdown-menu-size-width-min);
 }
 
-:host(:not([full-width])) ::slotted(pharos-dropdown-menu-item) {
+:host(:not([full-width])) ::slotted([data-pharos-component='PharosDropdownMenuItem']) {
   max-width: var(--pharos-dropdown-menu-size-width-max);
 }

@@ -30,10 +30,10 @@ slot:not([name])::slotted(*) {
   margin-right: var(--pharos-spacing-one-quarter-x);
 }
 
-slot[name='prepend']::slotted(pharos-icon:first-child) {
+slot[name='prepend']::slotted([data-pharos-component='PharosIcon']:first-child) {
   margin-left: calc(var(--pharos-spacing-three-quarters-x) + 1px);
 }
 
-slot:not([name])::slotted(pharos-icon:last-child) {
+slot:not([name])::slotted([data-pharos-component='PharosIcon']:last-child) {
   margin-right: calc(var(--pharos-spacing-three-quarters-x) + 1px);
 }

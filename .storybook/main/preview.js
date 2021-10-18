@@ -5,6 +5,7 @@ import customElements from '../../packages/pharos/custom-elements.json';
 import a11yConfig from '../a11yConfig';
 import '../styleConfig';
 import theme from '../theme';
+import '../../packages/pharos/src/test/initComponents';
 
 window.process = window.process || {};
 window.process.env = window.process.env || {};

@@ -1,8 +1,8 @@
 import { fixture, expect, aTimeout } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-toast';
-import '../link/pharos-link';
+
 import type { PharosToast } from './pharos-toast';
+import type { PharosIcon } from '../icon/pharos-icon';
 
 describe('pharos-toast', () => {
   let component: PharosToast;
@@ -51,7 +51,7 @@ describe('pharos-toast', () => {
     component.status = 'error';
     await component.updateComplete;
 
-    const icon = component.renderRoot.querySelector('pharos-icon');
+    const icon = component.renderRoot.querySelector('pharos-icon') as PharosIcon;
     expect(icon?.name).to.equal('exclamation-inverse');
   });
 

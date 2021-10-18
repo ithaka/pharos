@@ -2,11 +2,6 @@ import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
 import { SearchResultsItem } from './search-results-item';
-import '../../../../components/heading/pharos-heading';
-import '../../../../components/button/pharos-button';
-import '../../../../components/dropdown-menu/pharos-dropdown-menu';
-import '../../../../components/dropdown-menu/pharos-dropdown-menu-item';
-import '../../../../components/pagination/pharos-pagination';
 import { searchResults } from '../../mocks';
 
 export const SearchResults = (): TemplateResult => html`

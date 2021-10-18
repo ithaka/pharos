@@ -1,11 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-header';
-import '../link/pharos-link';
-import '../dropdown-menu-nav/pharos-dropdown-menu-nav';
-import '../dropdown-menu-nav/pharos-dropdown-menu-nav-link';
-import '../dropdown-menu/pharos-dropdown-menu';
-import '../dropdown-menu/pharos-dropdown-menu-item';
+
 import type { PharosHeader } from './pharos-header';
 
 describe('pharos-header', () => {

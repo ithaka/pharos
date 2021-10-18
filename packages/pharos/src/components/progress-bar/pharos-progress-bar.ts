@@ -1,22 +1,19 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { progressBarStyles } from './pharos-progress-bar.css';
-import { customElement } from '../../utils/decorators';
 import { styleMap } from 'lit/directives/style-map.js';
 import { PharosColorGlacierBlueBase, PharosColorNightBlueBase } from '../../styles/variables';
 
 /**
  * Pharos progress bar component.
  *
- * @tag pharos-progress-bar
- *
  * @slot title - Contains the title of what the progress bar pertains to.
  * @slot description - Contains additional text content to display below the bar.
  *
  */
-@customElement('pharos-progress-bar')
-export class PharosProgressBar extends LitElement {
+export class PharosProgressBar extends PharosElement {
   /**
    * Indicates the value for the progress bar.
    * @attr value
@@ -55,11 +52,5 @@ export class PharosProgressBar extends LitElement {
         <slot name="description"></slot>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-progress-bar': PharosProgressBar;
   }
 }

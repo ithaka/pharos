@@ -1,14 +1,6 @@
 import { fixture, expect, nextFrame } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import { setViewport } from '@web/test-runner-commands';
-import './pharos-sidenav';
-import './pharos-sidenav-section';
-import './pharos-sidenav-link';
-import './pharos-sidenav-menu';
-import './pharos-sidenav-button';
-import '../input-group/pharos-input-group';
-import '../button/pharos-button';
-import '../link/pharos-link';
 
 import type { PharosSidenav } from './pharos-sidenav';
 import type { PharosButton } from '../button/pharos-button';

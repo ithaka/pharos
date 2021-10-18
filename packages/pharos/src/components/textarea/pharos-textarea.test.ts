@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import './pharos-textarea';
+
 import type { PharosTextarea } from './pharos-textarea';
 import createFormData from '../../utils/createFormData';
 
@@ -44,7 +44,7 @@ describe('pharos-textarea', () => {
       </pharos-textarea>
     `);
     expect(component).dom.to.equal(
-      `<pharos-textarea cols="20" dirname="" message="" name="" placeholder="" resize="both" rows="2" value="" wrap="soft"><span slot="label">I am a label</span></pharos-textarea>`
+      `<pharos-textarea cols="20" data-pharos-component="PharosTextarea" dirname="" message="" name="" placeholder="" resize="both" rows="2" value="" wrap="soft"><span slot="label">I am a label</span></pharos-textarea>`
     );
   });
 

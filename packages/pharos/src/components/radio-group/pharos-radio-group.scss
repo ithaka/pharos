@@ -20,14 +20,14 @@
   flex-direction: row;
 }
 
-::slotted(pharos-radio-button) {
+::slotted([data-pharos-component='PharosRadioButton']) {
   align-self: flex-start;
 }
 
-.radio-group--vertical ::slotted(pharos-radio-button:not(:last-child)) {
+.radio-group--vertical ::slotted([data-pharos-component='PharosRadioButton']:not(:last-child)) {
   margin-bottom: var(--pharos-radio-group-spacing-vertical);
 }
 
-.radio-group--horizontal ::slotted(pharos-radio-button:not(:last-child)) {
+.radio-group--horizontal ::slotted([data-pharos-component='PharosRadioButton']:not(:last-child)) {
   margin-right: var(--pharos-radio-group-spacing-horizontal);
 }

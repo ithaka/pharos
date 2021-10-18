@@ -1,16 +1,15 @@
-import { html, LitElement } from 'lit';
+import { PharosElement } from '../base/pharos-element';
+import { html } from 'lit';
 import { queryAssignedNodes } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { footerStyles } from './pharos-footer.css';
-import { customElement } from '../../utils/decorators';
 
-import '../heading/pharos-heading';
-import '../icon/pharos-icon';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosHeading } from '../heading/pharos-heading';
 
 /**
  * Pharos footer component.
- *
- * @tag pharos-footer
  *
  * @slot links-group - One or more lists of links to show in the middle of the footer.
  * @slot button-links - List of button links to show in the middle of the footer.
@@ -21,8 +20,11 @@ import '../icon/pharos-icon';
  * @slot google-widget - Contains the Google translate widget.
  *
  */
-@customElement('pharos-footer')
-export class PharosFooter extends LitElement {
+export class PharosFooter extends ScopedRegistryMixin(PharosElement) {
+  static elementDefinitions = {
+    'pharos-heading': PharosHeading,
+  };
+
   @queryAssignedNodes('google-widget', false, '#google_translate_element')
   private _widgetNodes!: NodeListOf<HTMLElement>;
 
@@ -37,8 +39,10 @@ export class PharosFooter extends LitElement {
         '.goog-te-gadget-simple'
       ) as HTMLDivElement;
       const googleImg = widgetButton?.querySelector('.goog-te-gadget-icon') as HTMLImageElement;
-      const googleIcon = document.createElement('pharos-icon');
-      const chevronIcon = document.createElement('pharos-icon');
+
+      const iconTag = new PharosIcon().localName;
+      const googleIcon = document.createElement(iconTag);
+      const chevronIcon = document.createElement(iconTag);
 
       googleIcon.name = 'google';
       chevronIcon.name = 'chevron-down';
@@ -91,11 +95,5 @@ export class PharosFooter extends LitElement {
         </div>
       </footer>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'pharos-footer': PharosFooter;
   }
 }
