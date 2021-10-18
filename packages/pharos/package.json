@@ -15,7 +15,7 @@
   "scripts": {
     "analyze": "cem analyze --litelement --globs \"./src/(components|styles|utils|test)/**/!(*.css|*.test)*.ts\"",
     "build:tokens": "node --experimental-json-modules ./scripts/build-tokens.mjs",
-    "prebuild": "yarn clean && yarn build:tokens && yarn analyze && yarn build:react && yarn build:assets && yarn build:sassdoc",
+    "prebuild": "yarn clean && yarn build:tokens && yarn analyze && yarn build:react && yarn build:assets && yarn build:sassdoc && yarn build:patches",
     "build": "yarn build:styles && yarn build:tsc && yarn build:replace:imports",
     "build:tsc": "tsc --project tsconfig.build.json",
     "build:tsc:watch": "tsc -w --project tsconfig.build.json",
@@ -23,6 +23,7 @@
     "build:styles": "node ./scripts/build-styles.js",
     "build:styles:watch": "node ./scripts/watch-styles.js",
     "build:assets": "node ./scripts/build-assets.js",
+    "build:patches": "node ./scripts/build-patches.js",
     "build:sassdoc": "node ./scripts/build-sassdoc.js",
     "build:tests": "tsc --project tsconfig.json",
     "build:replace": "replace-in-file \"/(import|from)( '[.]+/)(.*)(?<!.js)(';)/g\" \"\\$1\\$2\\$3.js\\$4\" \"lib/**/*.js, lib/**/*.d.ts\" --isRegex --verbose",

@@ -55,3 +55,10 @@ require manual component registration:
       },
     });
     ```
+
+6. Import the JSDOM patch in your Jest setup file if you use Jest for unit testing:
+
+    ```javascript
+    import "@ithaka/pharos/lib/patches/jsdom";
+    import "your-pharos-component-registration-file";
+    ```
