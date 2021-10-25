@@ -1,4 +1,4 @@
-@use "../../utils/scss/mixins";
+@use '../../utils/scss/mixins';
 
 :host {
   @include mixins.font-base;

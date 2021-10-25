@@ -26,7 +26,7 @@
 
   /* autoprefixer: ignore next */
   justify-content: center;
-  opacity: 0;
+  opacity: 0%;
   transform: translateY(calc(var(--pharos-spacing-1-x) * -1));
   transition: opacity var(--pharos-transition-duration-long) ease-in-out,
     transform var(--pharos-transition-duration-long) ease-in-out;
@@ -55,7 +55,7 @@
 }
 
 :host([open]) .toast {
-  opacity: 1;
+  opacity: 100%;
   transform: translateY(0);
 }
 

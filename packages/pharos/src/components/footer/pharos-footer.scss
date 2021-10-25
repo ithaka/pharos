@@ -47,6 +47,7 @@
     grid-template-rows: auto auto auto;
     column-gap: 0;
   }
+
   .footer__row--bottom {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -58,6 +59,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto auto auto;
   }
+
   .footer__row--bottom {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;

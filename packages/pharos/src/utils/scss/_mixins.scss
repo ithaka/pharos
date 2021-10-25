@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
 @use './variables';
 @use './functions';
 
@@ -23,7 +26,7 @@
 @mixin input-placeholder {
   &::placeholder {
     color: var(--pharos-form-element-color-text-placeholder);
-    opacity: 1;
+    opacity: 100%;
   }
 }
 
@@ -147,7 +150,7 @@
   } @else if $font-family == var(--pharos-font-family-serif) {
     @include letter-spacing-serif($font-size);
   } @else {
-    @error "Unknown font-family #{$font-family}.";
+    @error 'Unknown font-family #{$font-family}.';
   }
 
   font-family: $font-family;
@@ -370,10 +373,7 @@
 /// @access public
 /// @group links
 @mixin no-underline {
-  text-decoration: none;
-  text-decoration-color: transparent;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
+  text-decoration: solid underline transparent;
 }
 
 /// Removes bullets from lists.
@@ -432,12 +432,12 @@
 /// @group layout
 @mixin at-least($breakpoint) {
   @if map-has-key(variables.$breakpoints, $breakpoint) {
-    $width: map-get(variables.$breakpoints, $breakpoint, width);
+    $width: map.get(variables.$breakpoints, $breakpoint, width);
     @media screen and (min-width: $width) {
       @content;
     }
   } @else {
-    @error "Unknown breakpoint `#{$breakpoint}`. " + "Available breakpoints are: #{map-keys(variables.$breakpoints)}.";
+    @error 'Unknown breakpoint `#{$breakpoint}`. ' + 'Available breakpoints are: #{map.keys(variables.$breakpoints)}.';
   }
 }
 
@@ -447,12 +447,12 @@
 /// @group layout
 @mixin until($breakpoint) {
   @if map-has-key(variables.$breakpoints, $breakpoint) {
-    $width: map-get(variables.$breakpoints, $breakpoint, width);
+    $width: map.get(variables.$breakpoints, $breakpoint, width);
     @media screen and (max-width: $width) {
       @content;
     }
   } @else {
-    @error "Unknown breakpoint `#{$breakpoint}`. " + "Available breakpoints are: #{map-keys(variables.$breakpoints)}.";
+    @error 'Unknown breakpoint `#{$breakpoint}`. ' + 'Available breakpoints are: #{map.keys(variables.$breakpoints)}.';
   }
 }
 
@@ -463,13 +463,13 @@
 /// @group layout
 @mixin between($lower, $upper) {
   @if map-has-key(variables.$breakpoints, $lower) and map-has-key(variables.$breakpoints, $upper) {
-    $lower-width: functions.calculate-px(map-get(variables.$breakpoints, $lower, width));
-    $upper-width: functions.calculate-px(map-get(variables.$breakpoints, $upper, width));
+    $lower-width: functions.calculate-px(map.get(variables.$breakpoints, $lower, width));
+    $upper-width: functions.calculate-px(map.get(variables.$breakpoints, $upper, width));
     @media screen and (min-width: $lower-width) and (max-width: $upper-width - 1) {
       @content;
     }
   } @else {
-    @error "Unknown breakpoint range `#{$lower}` - `#{$upper}`. " + "Available breakpoints are: #{map-keys(variables.$breakpoints)}.";
+    @error 'Unknown breakpoint range `#{$lower}` - `#{$upper}`. ' + 'Available breakpoints are: #{map.keys(variables.$breakpoints)}.';
   }
 }
 
@@ -487,7 +487,7 @@
 @mixin layout-content {
   display: grid;
   grid-area: content;
-  grid-template-columns: repeat(map-get(variables.$breakpoints, large, columns), 1fr);
+  grid-template-columns: repeat(map.get(variables.$breakpoints, large, columns), 1fr);
   grid-template-rows: auto;
   column-gap: var(--pharos-spacing-gutter);
   padding: 0;
@@ -495,12 +495,12 @@
   list-style: none;
 
   @include until(medium) {
-    grid-template-columns: repeat(map-get(variables.$breakpoints, medium, columns), 1fr);
+    grid-template-columns: repeat(map.get(variables.$breakpoints, medium, columns), 1fr);
     grid-template-rows: auto;
   }
 
   @include until(small) {
-    grid-template-columns: repeat(map-get(variables.$breakpoints, small, columns), 1fr);
+    grid-template-columns: repeat(map.get(variables.$breakpoints, small, columns), 1fr);
     grid-template-rows: auto;
   }
 }
@@ -510,15 +510,15 @@
 /// @access public
 /// @group layout
 @mixin layout-base-columns($layout) {
-  $breakpoints: map-get(variables.$layouts, $layout);
+  $breakpoints: map.get(variables.$layouts, $layout);
   $fixed-margin: $layout != '1-col';
 
   @each $breakpoint, $margin in $breakpoints {
-    $i: index($breakpoints, $breakpoint $margin);
+    $i: list.index($breakpoints, $breakpoint $margin);
 
     @if $i != length($breakpoints) {
-      $upper: nth(map-keys($breakpoints), $i + 1);
-      $max-margin: nth(map-values($breakpoints), $i + 1);
+      $upper: list.nth(map.keys($breakpoints), $i + 1);
+      $max-margin: list.nth(map.values($breakpoints), $i + 1);
 
       @include between($breakpoint, $upper) {
         $layout-margin: if($fixed-margin, $margin, minmax($margin, $max-margin));
@@ -540,7 +540,7 @@
 /// @access public
 /// @group layout
 @mixin layout-content-width($layout) {
-  $breakpoints: map-get(variables.$layouts, $layout);
+  $breakpoints: map.get(variables.$layouts, $layout);
   $fixed-width: $layout == '1-col';
   $property: if($fixed-width, width, min-width);
 
@@ -551,31 +551,31 @@
   }
 
   @each $breakpoint, $margin in $breakpoints {
-    $i: index($breakpoints, $breakpoint $margin);
+    $i: list.index($breakpoints, $breakpoint $margin);
 
     @if $i == 1 {
       @include until($breakpoint) {
         #{$property}: functions.content-width(
-          map-get(variables.$breakpoints, $breakpoint, width),
+          map.get(variables.$breakpoints, $breakpoint, width),
           $margin
         );
       }
     } @else if $i != length($breakpoints) {
-      $upper: nth(map-keys($breakpoints), $i + 1);
+      $upper: list.nth(map.keys($breakpoints), $i + 1);
 
       @include between($breakpoint, $upper) {
         #{$property}: functions.content-width(
-          map-get(variables.$breakpoints, $breakpoint, width),
+          map.get(variables.$breakpoints, $breakpoint, width),
           $margin,
-          $sidenav: str-index($layout, '--sidenav') and $i > 2
+          $sidenav: string.index($layout, '--sidenav') and $i > 2
         );
       }
     } @else {
       @include at-least($breakpoint) {
         #{$property}: functions.content-width(
-          map-get(variables.$breakpoints, $breakpoint, width),
+          map.get(variables.$breakpoints, $breakpoint, width),
           $margin,
-          $sidenav: str-index($layout, '--sidenav')
+          $sidenav: string.index($layout, '--sidenav')
         );
       }
     }
@@ -590,6 +590,6 @@
   overflow: hidden;
   -webkit-line-clamp: $lines;
   -webkit-box-orient: vertical;
-  display: -webkit-box;
+  display: box;
   white-space: normal;
 }

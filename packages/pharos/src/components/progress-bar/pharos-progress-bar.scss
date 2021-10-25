@@ -27,7 +27,7 @@
 }
 
 .progress-bar__description {
-  @include mixins.font-base();
+  @include mixins.font-base;
 
   color: var(--pharos-color-text-40);
 }

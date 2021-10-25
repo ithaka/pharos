@@ -227,7 +227,7 @@ p.alert-example__content + p.alert-example__content {
   justify-content: center;
   grid-column: span 1;
   height: 100vh;
-  background-color: rgba(244, 215, 215, 0.6);
+  background-color: rgb(244 215 215 / 60%);
   padding-top: var(--pharos-spacing-1-x);
 }
 

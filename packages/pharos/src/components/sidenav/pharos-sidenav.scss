@@ -36,7 +36,7 @@
 
 .side-element__button {
   visibility: hidden;
-  opacity: 0;
+  opacity: 0%;
   position: absolute;
   top: var(--pharos-spacing-one-quarter-x);
   left: var(--pharos-spacing-one-quarter-x);
@@ -57,7 +57,7 @@
 
   .side-element__button {
     visibility: visible;
-    opacity: 1;
+    opacity: 100%;
     transition: visibility 0s var(--pharos-transition-duration-short),
       opacity var(--pharos-transition-duration-long) linear var(--pharos-transition-duration-short);
   }
