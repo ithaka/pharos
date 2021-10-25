@@ -47,12 +47,12 @@
   box-sizing: border-box;
   overflow: auto;
   color: var(--pharos-color-text-white);
-  background-color: rgb(0 0 0 / 0%);
+  background-color: rgb(0 0 0 / 0);
   padding: var(--pharos-spacing-three-quarters-x);
   position: absolute;
   visibility: hidden;
   pointer-events: none;
-  opacity: 0%;
+  opacity: 0;
   transform: translate3d(0, 0, 0);
   transition: visibility var(--pharos-transition-duration-default) ease-in-out,
     opacity var(--pharos-transition-duration-default) ease-in-out,
@@ -125,9 +125,9 @@
 
   &:hover {
     .card__metadata--hover {
-      background-color: rgb(0 0 0 / 75%);
+      background-color: rgb(0 0 0 / 0.75);
       visibility: visible;
-      opacity: 100%;
+      opacity: 1;
       pointer-events: auto;
     }
   }

@@ -26,7 +26,7 @@
 @mixin input-placeholder {
   &::placeholder {
     color: var(--pharos-form-element-color-text-placeholder);
-    opacity: 100%;
+    opacity: 1;
   }
 }
 
@@ -590,6 +590,6 @@
   overflow: hidden;
   -webkit-line-clamp: $lines;
   -webkit-box-orient: vertical;
-  display: box;
+  display: -webkit-box;
   white-space: normal;
 }
