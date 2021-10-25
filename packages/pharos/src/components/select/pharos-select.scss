@@ -12,7 +12,6 @@
   @include mixins.transition-base(border-color, color);
 
   appearance: none;
-  -webkit-appearance: none;
   cursor: pointer;
   background: none;
   padding-right: 2.5rem;

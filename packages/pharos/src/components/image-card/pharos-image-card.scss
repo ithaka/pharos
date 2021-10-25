@@ -47,7 +47,7 @@
   box-sizing: border-box;
   overflow: auto;
   color: var(--pharos-color-text-white);
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgb(0 0 0 / 0);
   padding: var(--pharos-spacing-three-quarters-x);
   position: absolute;
   visibility: hidden;
@@ -125,7 +125,7 @@
 
   &:hover {
     .card__metadata--hover {
-      background-color: rgba(0, 0, 0, 0.75);
+      background-color: rgb(0 0 0 / 0.75);
       visibility: visible;
       opacity: 1;
       pointer-events: auto;

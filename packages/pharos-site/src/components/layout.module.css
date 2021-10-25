@@ -17,12 +17,11 @@ a {
 
 .container {
   display: grid;
-  grid-template-areas:
-    'sidenav main'
-    'sidenav footer';
-  grid-template-columns: max-content 1fr;
+  grid:
+    'sidenav main' 1fr
+    'sidenav footer' auto
+    / max-content 1fr;
   min-height: 100vh;
-  grid-template-rows: 1fr auto;
 }
 
 @media screen and (max-width: 1055px) {

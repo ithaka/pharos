@@ -21,12 +21,12 @@
   background: var(--pharos-color-white);
   min-width: 11rem;
   white-space: nowrap;
-  box-shadow: 0 0 0 rgba(229, 229, 229, 0);
+  box-shadow: 0 0 0 rgb(229 229 229 / 0);
   transition: box-shadow var(--pharos-transition-duration-short) ease-in-out;
 }
 
 .stuck {
-  box-shadow: 0 12px 19px rgba(229, 229, 229, 0.4);
+  box-shadow: 0 12px 19px rgb(229 229 229 / 0.4);
 }
 
 .status__description {
