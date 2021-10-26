@@ -30,7 +30,7 @@ Once Yarn is installed, use it to install the dependencies for the Pharos projec
 $ yarn install
 ```
 
-Pharos supports the current long-term support (LTS) version of Node.js—currently version 14. Node can be installed from [its website](https://nodejs.org/en/) or with [nvm](https://github.com/nvm-sh/nvm#install--update-script). If you're using `nvm`, run the following command to switch to a Node version compatible with the project:
+Pharos supports the current long-term support (LTS) version of Node.js—currently version 16. Node can be installed from [its website](https://nodejs.org/en/) or with [nvm](https://github.com/nvm-sh/nvm#install--update-script). If you're using `nvm`, run the following command to switch to a Node version compatible with the project:
 
 ```shell
 $ nvm use
