@@ -33,43 +33,45 @@ interface StatusIconProps {
 
 const StatusIcon: FC<StatusIconProps> = ({ status, index }) => {
   const [StateIcon, setStateIcon] = useState<ReactElement | null>(null);
-  const Pharos =
-    typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
 
   useEffect(() => {
-    const { PharosTooltip } = Pharos;
+    (async () => {
+      const { PharosTooltip } = await import(
+        '@ithaka/pharos/lib/react-components/tooltip/pharos-tooltip'
+      );
 
-    const statusName = status.charAt(0).toUpperCase() + status.slice(1);
-    const iconClass = `icon${toCamelCase(statusName)}`;
-    const description = legend[status as keyof typeof legend].name;
+      const statusName = status.charAt(0).toUpperCase() + status.slice(1);
+      const iconClass = `icon${toCamelCase(statusName)}`;
+      const description = legend[status as keyof typeof legend].name;
 
-    const icon = (
-      <Fragment>
-        <div
-          role="button"
-          tabIndex={0}
-          style={{ display: 'table-cell' }}
-          data-tooltip-id={'status-tooltip' + index}
-        >
-          <img
-            src={icons[legend[status as keyof typeof legend].icon as keyof typeof icons]}
-            alt={description}
-            className={styles[iconClass]}
-            style={{
-              display: 'table-cell',
-            }}
-          />
-        </div>
-        {index ? (
-          <PharosTooltip id={'status-tooltip' + index} placement={'bottom'}>
-            {description}
-          </PharosTooltip>
-        ) : null}
-      </Fragment>
-    );
+      const icon = (
+        <Fragment>
+          <div
+            role="button"
+            tabIndex={0}
+            style={{ display: 'table-cell' }}
+            data-tooltip-id={'status-tooltip' + index}
+          >
+            <img
+              src={icons[legend[status as keyof typeof legend].icon as keyof typeof icons]}
+              alt={description}
+              className={styles[iconClass]}
+              style={{
+                display: 'table-cell',
+              }}
+            />
+          </div>
+          {index ? (
+            <PharosTooltip id={'status-tooltip' + index} placement={'bottom'}>
+              {description}
+            </PharosTooltip>
+          ) : null}
+        </Fragment>
+      );
 
-    setStateIcon(icon);
-  }, [Pharos, status, index]);
+      setStateIcon(icon);
+    })();
+  }, [status, index]);
 
   return StateIcon;
 };

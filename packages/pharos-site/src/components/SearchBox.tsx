@@ -4,22 +4,22 @@ import { searchBox__container, searchBox__input, searchBox__icon } from './Searc
 
 const SearchBox: FC = () => {
   const [Display, setDisplay] = useState<ReactElement | null>(null);
-  const Pharos =
-    typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
 
   useEffect(() => {
-    const { PharosIcon } = Pharos;
+    (async () => {
+      const { PharosIcon } = await import('@ithaka/pharos/lib/react-components/icon/pharos-icon');
 
-    const content = (
-      <div className={searchBox__container}>
-        <input className={searchBox__input} placeholder="Search" />
-        <div className={searchBox__icon}>
-          <PharosIcon name="search" />
+      const content = (
+        <div className={searchBox__container}>
+          <input className={searchBox__input} placeholder="Search" />
+          <div className={searchBox__icon}>
+            <PharosIcon name="search" />
+          </div>
         </div>
-      </div>
-    );
-    setDisplay(content);
-  }, [Pharos]);
+      );
+      setDisplay(content);
+    })();
+  }, []);
 
   return Display;
 };

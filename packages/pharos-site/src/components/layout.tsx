@@ -29,34 +29,39 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
   const path = location?.pathname.split('/');
   const pageName = path && getPageName(path[path.length - 1]);
 
-  const Pharos =
-    typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
-
   const [MainContent, setMainContent] = useState<ReactElement | null>(null);
 
   useEffect(() => {
-    const { PharosSidenavButton, PharosLink, PharosLayout } = Pharos;
+    (async () => {
+      const { PharosSidenavButton } = await import(
+        '@ithaka/pharos/lib/react-components/sidenav/pharos-sidenav-button'
+      );
+      const { PharosLink } = await import('@ithaka/pharos/lib/react-components/link/pharos-link');
+      const { PharosLayout } = await import(
+        '@ithaka/pharos/lib/react-components/layout/pharos-layout'
+      );
 
-    const body = (
-      <main className={main}>
-        <div className={topBar}>
-          <PharosSidenavButton onBackground />
-          <PharosLink id="skip-link" skip href="#sidenav-skip-link" onBackground>
-            Skip to main navigation
-          </PharosLink>
-        </div>
-        <PharosLayout
-          preset="1-col--sidenav-comfy"
-          className={`${content} ${fill ? content___fill : ''}`}
-          rowGap={fill ? PharosSpacing5X : '0'}
-        >
-          {fill ? children : <div className={page}>{children}</div>}
-        </PharosLayout>
-      </main>
-    );
+      const body = (
+        <main className={main}>
+          <div className={topBar}>
+            <PharosSidenavButton onBackground />
+            <PharosLink id="skip-link" skip href="#sidenav-skip-link" onBackground>
+              Skip to main navigation
+            </PharosLink>
+          </div>
+          <PharosLayout
+            preset="1-col--sidenav-comfy"
+            className={`${content} ${fill ? content___fill : ''}`}
+            rowGap={fill ? PharosSpacing5X : '0'}
+          >
+            {fill ? children : <div className={page}>{children}</div>}
+          </PharosLayout>
+        </main>
+      );
 
-    setMainContent(body);
-  }, [Pharos, children, fill]);
+      setMainContent(body);
+    })();
+  }, [children, fill]);
 
   return (
     <div className={container}>

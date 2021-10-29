@@ -16,32 +16,29 @@ interface IconDisplayProps {
 
 const Icons: FC<IconDisplayProps> = ({ title, iconsToShow, rows }) => {
   const [StateIcon, setStateIcon] = useState<ReactElement[] | null>(null);
-
-  const Pharos =
-    typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
-
   useEffect(() => {
-    const { PharosIcon } = Pharos;
+    (async () => {
+      const { PharosIcon } = await import('@ithaka/pharos/lib/react-components/icon/pharos-icon');
+      const allPharosIcons = iconsToShow
+        .filter((name) => iconsToShow.includes(name))
+        .map((name, i) => {
+          const displayName = name
+            .replace('-', ' ')
+            .replace(/\w\S*/g, (txt: string) => txt.toLowerCase());
 
-    const allPharosIcons = iconsToShow
-      .filter((name) => iconsToShow.includes(name))
-      .map((name, i) => {
-        const displayName = name
-          .replace('-', ' ')
-          .replace(/\w\S*/g, (txt: string) => txt.toLowerCase());
-
-        return (
-          <div className={iconContainer} key={i}>
-            <div className={icon}>
-              <PharosIcon name={name} />
+          return (
+            <div className={iconContainer} key={i}>
+              <div className={icon}>
+                <PharosIcon name={name} />
+              </div>
+              <div className={display__text}>{displayName}</div>
             </div>
-            <div className={display__text}>{displayName}</div>
-          </div>
-        );
-      });
+          );
+        });
 
-    setStateIcon(allPharosIcons);
-  }, [Pharos, iconsToShow]);
+      setStateIcon(allPharosIcons);
+    })();
+  }, [iconsToShow]);
 
   return (
     <>

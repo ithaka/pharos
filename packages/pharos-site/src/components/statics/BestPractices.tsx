@@ -19,50 +19,50 @@ interface BestPracticesProps {
 
 const BestPractices: FC<BestPracticesProps> = ({ Do, Dont }) => {
   const [Display, setDisplay] = useState<ReactElement | null>(null);
-  const Pharos =
-    typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
 
   useEffect(() => {
-    const { PharosIcon } = Pharos;
+    (async () => {
+      const { PharosIcon } = await import('@ithaka/pharos/lib/react-components/icon/pharos-icon');
 
-    const content = (
-      <Grid columns={2} hSpace={3} bottom={2}>
-        <div>
-          {Do ? (
-            <>
-              <hr className={line__do} />
-              <div className={container__practices}>
-                <PharosIcon
-                  name="checkmark"
-                  description="Check mark"
-                  className={icon__do}
-                ></PharosIcon>
-                <div>
-                  <div className={text__do}>Dos</div>
-                  <div className={text__guideline}>{Do}</div>
+      const content = (
+        <Grid columns={2} hSpace={3} bottom={2}>
+          <div>
+            {Do ? (
+              <>
+                <hr className={line__do} />
+                <div className={container__practices}>
+                  <PharosIcon
+                    name="checkmark"
+                    description="Check mark"
+                    className={icon__do}
+                  ></PharosIcon>
+                  <div>
+                    <div className={text__do}>Dos</div>
+                    <div className={text__guideline}>{Do}</div>
+                  </div>
                 </div>
-              </div>
-            </>
-          ) : null}
-        </div>
-        <div>
-          {Dont ? (
-            <>
-              <hr className={line__dont} />
-              <div className={container__practices}>
-                <PharosIcon name="close" description="X" className={icon__dont}></PharosIcon>
-                <div>
-                  <div className={text__dont}>Don&apos;ts</div>
-                  <div className={text__guideline}> {Dont} </div>
+              </>
+            ) : null}
+          </div>
+          <div>
+            {Dont ? (
+              <>
+                <hr className={line__dont} />
+                <div className={container__practices}>
+                  <PharosIcon name="close" description="X" className={icon__dont}></PharosIcon>
+                  <div>
+                    <div className={text__dont}>Don&apos;ts</div>
+                    <div className={text__guideline}> {Dont} </div>
+                  </div>
                 </div>
-              </div>
-            </>
-          ) : null}
-        </div>
-      </Grid>
-    );
-    setDisplay(content);
-  }, [Pharos, Dont, Do]);
+              </>
+            ) : null}
+          </div>
+        </Grid>
+      );
+      setDisplay(content);
+    })();
+  }, [Dont, Do]);
   return Display;
 };
 

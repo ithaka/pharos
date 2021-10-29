@@ -52,5 +52,11 @@
     "type": "git",
     "url": "git+https://github.com/ithaka/pharos.git",
     "directory": "site"
-  }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "not IE 11"
+  ]
 }

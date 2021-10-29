@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2019",
-    "module": "es2015",
+    "module": "es2020",
     "lib": ["es2019", "dom", "dom.iterable", "esnext.array"],
     "jsx": "react-jsx",
     "declaration": true,

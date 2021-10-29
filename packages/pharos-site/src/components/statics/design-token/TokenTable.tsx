@@ -9,26 +9,28 @@ interface TokenTableProps {
 
 export const TokenTable: FC<TokenTableProps> = ({ title, subtitle, children }) => {
   const [StateTable, setStateTable] = useState(<></>);
-  const Pharos =
-    typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
 
   useEffect(() => {
-    const { PharosHeading } = Pharos;
-    const table = (
-      <div>
-        {title ? (
-          <PharosHeading level={1} preset={'6'}>
-            {title}
-          </PharosHeading>
-        ) : null}
-        {subtitle ? <div>{subtitle}</div> : null}
-        <table className={tokenTable}>{children}</table>
-        <br />
-        <br />
-      </div>
-    );
-    setStateTable(table);
-  }, [Pharos, title, subtitle, children]);
+    (async () => {
+      const { PharosHeading } = await import(
+        '@ithaka/pharos/lib/react-components/heading/pharos-heading'
+      );
+      const table = (
+        <div>
+          {title ? (
+            <PharosHeading level={1} preset={'6'}>
+              {title}
+            </PharosHeading>
+          ) : null}
+          {subtitle ? <div>{subtitle}</div> : null}
+          <table className={tokenTable}>{children}</table>
+          <br />
+          <br />
+        </div>
+      );
+      setStateTable(table);
+    })();
+  }, [title, subtitle, children]);
 
   return StateTable;
 };
