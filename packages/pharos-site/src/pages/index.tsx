@@ -53,7 +53,7 @@ const IndexPage: FC = () => {
               <i>supportive, </i> and <i>beautiful</i> experiences for the{' '}
               <i>intellectually curious</i>.
             </h1>
-            <PharosHeading level="2" preset="1--bold" className={heading__status}>
+            <PharosHeading level={2} preset="1--bold" className={heading__status}>
               Get a detailed breakdown of components and the status of their implementation
             </PharosHeading>
             <PharosLink
@@ -180,7 +180,7 @@ const IndexPage: FC = () => {
             <div className={icon}>
               <PharosIcon name="question-inverse"></PharosIcon>
             </div>
-            <PharosHeading level="2" preset="4">
+            <PharosHeading level={2} preset="4">
               Support
             </PharosHeading>
             <p className={description}>
