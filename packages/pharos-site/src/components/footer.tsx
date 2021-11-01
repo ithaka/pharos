@@ -13,6 +13,7 @@ import {
   badge,
   container__link,
   logo__link,
+  footer__container,
 } from './footer.module.css';
 import logoWhite from '../../static/images/footer/logo-white.svg';
 
@@ -25,7 +26,7 @@ const Footer: FC = () => {
     const { PharosHeading, PharosLink, PharosLayout } = Pharos;
 
     const content = (
-      <footer>
+      <footer className={footer__container}>
         <PharosLayout preset="1-col--sidenav-comfy" rows="auto min-content" className={footer}>
           <div className={container__start}>
             <PharosLink className={logo__link} href="https://www.jstor.org/" target="_blank" flex>

@@ -1,8 +1,11 @@
+.footer__container {
+  grid-area: footer;
+}
+
 .footer {
   background: var(--pharos-color-marble-gray-10);
   color: var(--pharos-color-text-white);
   padding: var(--pharos-spacing-3-x) 0;
-  grid-area: footer;
 }
 
 .right-text {
