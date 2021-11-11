@@ -49,8 +49,7 @@
       "comment": "160px"
     },
     "gutter"  : {
-      "value": "{spacing.3-x.value}",
-      "comment": "48px"
+      "value": "3vw"
     }
   }
 }
