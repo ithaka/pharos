@@ -30,4 +30,5 @@ module.exports = {
     '@storybook/addon-backgrounds',
   ],
   stories: [],
+  staticDirs: ['../assets'],
 };
