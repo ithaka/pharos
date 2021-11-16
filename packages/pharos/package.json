@@ -12,7 +12,11 @@
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss",
+    "**/initComponents.ts"
+  ],
   "scripts": {
     "analyze": "cem analyze --litelement --globs \"./src/(components|styles|utils|test)/**/!(*.css|*.test)*.ts\"",
     "build:tokens": "node --experimental-json-modules ./scripts/build-tokens.mjs",
