@@ -12,6 +12,7 @@
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
+  "sideEffects": false,
   "scripts": {
     "analyze": "cem analyze --litelement --globs \"./src/(components|styles|utils|test)/**/!(*.css|*.test)*.ts\"",
     "build:tokens": "node --experimental-json-modules ./scripts/build-tokens.mjs",
@@ -38,7 +39,8 @@
   "browserslist": [
     "last 2 versions",
     "Firefox ESR",
-    "not dead"
+    "not dead",
+    "not IE 11"
   ],
   "repository": {
     "type": "git",
