@@ -2,4 +2,4 @@
 '@ithaka/pharos': patch
 ---
 
-mark package side effect free
+specify package side effects

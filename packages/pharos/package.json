@@ -15,7 +15,7 @@
   "sideEffects": [
     "**/*.css",
     "**/*.scss",
-    "**/initComponents.ts"
+    "./src/test/initComponents.ts"
   ],
   "scripts": {
     "analyze": "cem analyze --litelement --globs \"./src/(components|styles|utils|test)/**/!(*.css|*.test)*.ts\"",
