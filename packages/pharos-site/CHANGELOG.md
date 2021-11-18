@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 5.9.1
+
+### Patch Changes
+
+- [#248](https://github.com/ithaka/pharos/pull/248) [`0b79abc`](https://github.com/ithaka/pharos/commit/0b79abcae58e20899676a1e677df5deea228dab0) Thanks [@Niznikr](https://github.com/Niznikr)! - correct footer on smaller breakpoints
+
+- Updated dependencies [[`04a32cc`](https://github.com/ithaka/pharos/commit/04a32cc9e8987a79af84b826713613cd4da1d9af)]:
+  - @ithaka/pharos@11.0.1
+
 ## 5.9.0
 
 ### Minor Changes
