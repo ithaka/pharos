@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 11.0.1
+
+### Patch Changes
+
+- [#260](https://github.com/ithaka/pharos/pull/260) [`04a32cc`](https://github.com/ithaka/pharos/commit/04a32cc9e8987a79af84b826713613cd4da1d9af) Thanks [@Niznikr](https://github.com/Niznikr)! - specify package side effects
+
 ## 11.0.0
 
 ### Major Changes
