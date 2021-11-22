@@ -32,7 +32,7 @@
     "build:sassdoc": "node ./scripts/build-sassdoc.js",
     "build:tests": "tsc --project tsconfig.json",
     "build:replace": "replace-in-file \"/(import|from)( '[.]+/)(.*)(?<!.js)(';)/g\" \"\\$1\\$2\\$3.js\\$4\" \"lib/**/*.js, lib/**/*.d.ts\" --isRegex --verbose",
-    "build:replace:dynamic": "replace-in-file \"/(import[(].)([.]+/)(.*?)(?<!.js)(.[)])/g\" \"\\$1\\$2\\$3.js\\$4\" \"lib/**/*.js\" --isRegex --verbose",
+    "build:replace:dynamic": "replace-in-file \"/(import[(])(.)([.]+/)(.*?)(?<!.js)(.[)])/g\" \"\\$1/* webpackChunkName: '[request]' */ \\$2\\$3\\$4.js\\$5\" \"lib/**/*.js\" --isRegex --verbose",
     "build:replace:imports": "yarn build:replace && yarn build:replace:dynamic",
     "prepublishOnly": "yarn build",
     "clean": "rimraf lib src/react-components",
