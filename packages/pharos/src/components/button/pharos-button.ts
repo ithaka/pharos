@@ -37,7 +37,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
    * @attr autofocus
    */
   @property({ type: Boolean, reflect: true })
-  public autofocus = false;
+  public override autofocus = false;
 
   /**
    * Indicates that the button cannot be pressed or focused by the user.
