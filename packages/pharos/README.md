@@ -43,10 +43,10 @@ class HomepagePharosAlert extends PharosAlert {}
 customElements.define('homepage-pharos-alert', HomepagePharosAlert);
 ```
 
-> NOTE: Errors will occur in either of the following scenarios:
+> NOTE: Issues arise when you:
 >
 > - Define a tag name that has already been defined in the browser.
-> - Attempt to use the same `Pharos` component class to define custom elements with different names. This is especially important when the `@ithaka/pharos` dependency is shared across different apps on the page (ie. ModuleFederation).
+> - Attempt to use the same Pharos component class to define custom elements with different names. This is especially important when the `@ithaka/pharos` dependency is shared across different applications on the same page, for example through Webpack's module federation.
 
 2. Internally, Pharos components that are composed of other Pharos components scope their registries to their shadow root to avoid duplicate registrations. Because the `Scoped Custom Element Registries` proposal is not yet finalized, you need to apply a [polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/scoped-custom-element-registry) to use our components.
 
