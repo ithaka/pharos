@@ -153,6 +153,8 @@ Now you've got all the ingredients needed to write the component definition. Add
 
 ```typescript
 export class PharosSparklyText extends PharosElement {
+  componentName = 'PharosSparklyText';
+
   public static override get styles(): CSSResultArray {
     return [sparklyTextStyles];
   }

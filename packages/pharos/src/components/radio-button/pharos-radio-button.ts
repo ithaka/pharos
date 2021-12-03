@@ -15,6 +15,8 @@ const LINKS = `a[href],pharos-link[href]`;
  * @fires change - Fires when the value has changed
  */
 export class PharosRadioButton extends FormMixin(FormElement) {
+  componentName = 'PharosRadioButton';
+
   /**
    * Indicates if radio is checked.
    * @attr checked

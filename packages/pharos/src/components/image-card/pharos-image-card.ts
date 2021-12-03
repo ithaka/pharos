@@ -32,6 +32,8 @@ const DEFAULT_HEADING_LEVEL = 3;
  *
  */
 export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+  componentName = 'PharosImageCard';
+
   static elementDefinitions = {
     'pharos-heading': PharosHeading,
     'pharos-link': PharosLink,

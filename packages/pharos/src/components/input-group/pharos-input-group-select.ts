@@ -7,6 +7,8 @@ import { PharosSelect } from '../select/pharos-select';
  * Pharos input group select component.
  */
 export class PharosInputGroupSelect extends PharosSelect {
+  override componentName = 'PharosInputGroupSelect';
+
   public static override get styles(): CSSResultArray {
     return [super.styles, inputGroupSelectStyles];
   }

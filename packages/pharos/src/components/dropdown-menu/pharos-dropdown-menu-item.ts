@@ -21,6 +21,8 @@ export type { IconName };
  *
  */
 export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+  componentName = 'PharosDropdownMenuItem';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
   };

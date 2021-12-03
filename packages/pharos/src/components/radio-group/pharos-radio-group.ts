@@ -16,6 +16,8 @@ import { FormElement } from '../base/form-element';
  * @fires change - Fires when the value has changed
  */
 export class PharosRadioGroup extends FormElement {
+  componentName = 'PharosRadioGroup';
+
   /**
    * Dictate if radio buttons should be displayed horizontally
    * @attr horizontal

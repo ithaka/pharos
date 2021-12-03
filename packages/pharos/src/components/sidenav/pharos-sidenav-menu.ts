@@ -17,6 +17,8 @@ import { PharosIcon } from '../icon/pharos-icon';
  *
  */
 export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+  componentName = 'PharosSidenavMenu';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
   };

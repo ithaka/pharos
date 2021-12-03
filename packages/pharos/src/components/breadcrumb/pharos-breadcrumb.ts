@@ -18,6 +18,8 @@ import FocusMixin from '../../utils/mixins/focus';
  *
  */
 export class PharosBreadcrumb extends FocusMixin(PharosElement) {
+  componentName = 'PharosBreadcrumb';
+
   public static override get styles(): CSSResultArray {
     return [breadcrumbStyles];
   }

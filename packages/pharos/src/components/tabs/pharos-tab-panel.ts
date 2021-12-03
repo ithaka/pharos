@@ -12,6 +12,8 @@ import focusable from '../../utils/focusable';
  *
  */
 export class PharosTabPanel extends PharosElement {
+  componentName = 'PharosTabPanel';
+
   /**
    * Indicates if the panel is selected.
    * @attr selected

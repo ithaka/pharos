@@ -34,6 +34,8 @@ export const DEFAULT_STATUS = 'success';
  *
  */
 export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+  componentName = 'PharosToast';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
     'pharos-toast-button': PharosToastButton,

@@ -33,6 +33,8 @@ const SIZES = ['small', 'medium', 'large'];
  *
  */
 export class PharosModal extends ScopedRegistryMixin(PharosElement) {
+  componentName = 'PharosModal';
+
   static elementDefinitions = {
     'pharos-button': PharosButton,
     'pharos-heading': PharosHeading,

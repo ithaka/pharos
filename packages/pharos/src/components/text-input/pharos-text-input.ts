@@ -60,6 +60,8 @@ const BLOCKING = [
  * @cssprop {Color} --pharos-text-input-color-icon-invalid - Fill color for invalidated state icon.
  */
 export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement)) {
+  componentName = 'PharosTextInput';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
   };

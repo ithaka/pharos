@@ -15,6 +15,8 @@ import { FormElement } from '../base/form-element';
  * @fires change - Fires when the value has changed
  */
 export class PharosCheckboxGroup extends FormElement {
+  componentName = 'PharosCheckboxGroup';
+
   /**
    * Dictate if checkboxes should be displayed horizontally
    * @attr horizontal

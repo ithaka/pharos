@@ -28,6 +28,8 @@ const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'];
  *
  */
 export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement)) {
+  componentName = 'PharosButton';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
   };

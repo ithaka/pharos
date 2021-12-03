@@ -14,6 +14,8 @@ import { PharosHeading } from '../heading/pharos-heading';
  *
  */
 export class PharosSidenavSection extends ScopedRegistryMixin(PharosElement) {
+  componentName = 'PharosSidenavSection';
+
   static elementDefinitions = {
     'pharos-heading': PharosHeading,
   };

@@ -17,6 +17,8 @@ export type { LinkTarget };
  *
  */
 export class PharosSidenavLink extends ScopedRegistryMixin(PharosLink) {
+  override componentName = 'PharosSidenavLink';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
   };

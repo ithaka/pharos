@@ -14,6 +14,8 @@ import { PharosColorGlacierBlueBase, PharosColorNightBlueBase } from '../../styl
  *
  */
 export class PharosProgressBar extends PharosElement {
+  componentName = 'PharosProgressBar';
+
   /**
    * Indicates the value for the progress bar.
    * @attr value

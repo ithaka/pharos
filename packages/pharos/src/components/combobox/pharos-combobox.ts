@@ -34,6 +34,8 @@ import { PharosButton } from '../button/pharos-button';
  * @cssprop {Color} --pharos-combobox-size-height-clear - Height of the clear button.
  */
 export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) {
+  componentName = 'PharosCombobox';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
     'pharos-tooltip': PharosTooltip,

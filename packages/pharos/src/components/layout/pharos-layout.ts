@@ -18,6 +18,8 @@ const PRESETS = ['1-col', '1-col--sidenav', '1-col--sidenav-comfy', '2-col'];
  *
  */
 export class PharosLayout extends PharosElement {
+  componentName = 'PharosLayout';
+
   /**
    * Indicates the type of layout to use.
    * @attr preset

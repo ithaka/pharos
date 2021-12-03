@@ -11,6 +11,8 @@ import type { PharosToggleButton } from './pharos-toggle-button';
  *
  */
 export class PharosToggleButtonGroup extends PharosElement {
+  componentName = 'PharosToggleButtonGroup';
+
   public static override get styles(): CSSResultArray {
     return [toggleButtonGroupStyles];
   }

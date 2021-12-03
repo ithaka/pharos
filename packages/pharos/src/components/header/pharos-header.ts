@@ -13,6 +13,8 @@ import { headerStyles } from './pharos-header.css';
  *
  */
 export class PharosHeader extends PharosElement {
+  componentName = 'PharosHeader';
+
   public static override get styles(): CSSResultArray {
     return [headerStyles];
   }

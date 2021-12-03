@@ -22,6 +22,8 @@ const LINKS = `a[href],pharos-link[href]`;
  * @fires change - Fires when the value has changed
  */
 export class PharosCheckbox extends FormMixin(FormElement) {
+  componentName = 'PharosCheckbox';
+
   /**
    * Indicates if checkbox is checked.
    * @attr checked

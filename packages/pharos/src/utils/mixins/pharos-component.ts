@@ -11,9 +11,11 @@ const PharosComponentImplementation = <T extends Constructor<LitElement>>(Base: 
    * A mixin class to handle pharos-specific logic.
    */
   class PharosComponent extends Base {
+    componentName = 'PharosComponent';
+
     override connectedCallback(): void {
       super.connectedCallback && super.connectedCallback();
-      this.dataset.pharosComponent = this.constructor.name;
+      this.dataset.pharosComponent = this.componentName;
     }
   }
   return PharosComponent;

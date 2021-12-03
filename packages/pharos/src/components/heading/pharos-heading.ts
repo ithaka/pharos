@@ -50,6 +50,8 @@ const PRESETS = [
  * @slot - Contains the heading text (the default slot).
  */
 export class PharosHeading extends PharosElement {
+  componentName = 'PharosHeading';
+
   /**
    * Indicates the heading tag level.
    * @attr level

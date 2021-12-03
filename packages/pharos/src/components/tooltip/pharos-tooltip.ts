@@ -23,6 +23,8 @@ export type { Placement, PositioningStrategy };
  * @cssprop {Color} --pharos-tooltip-color-text-base - Font color for the text.
  */
 export class PharosTooltip extends OverlayElement {
+  componentName = 'PharosTooltip';
+
   /**
    * Indicates if the tooltip width should equal its target's width.
    * @attr full-width

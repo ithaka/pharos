@@ -28,6 +28,8 @@ const WRAPS = ['soft', 'hard'];
  * @cssprop {Length} --pharos-textarea-size-text-base - Text input font size.
  */
 export class PharosTextarea extends FormMixin(FormElement) {
+  componentName = 'PharosTextarea';
+
   /**
    * Indicates textarea value.
    * @attr value

@@ -15,6 +15,8 @@ import { PharosLink } from '../link/pharos-link';
  * @fires next-page - Fires when the next page link is clicked
  */
 export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
+  componentName = 'PharosPagination';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
     'pharos-link': PharosLink,

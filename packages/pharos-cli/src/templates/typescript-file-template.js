@@ -5,6 +5,8 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { ${camelCaseName}Styles } from './pharos-${componentName}.css';
 
 export class Pharos${titleCaseName} extends PharosElement {
+  componentName = "Pharos${titleCaseName}";
+
   public static override get styles(): CSSResultArray {
     return [${camelCaseName}Styles];
   }

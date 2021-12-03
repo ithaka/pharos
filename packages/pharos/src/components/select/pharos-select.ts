@@ -23,6 +23,8 @@ import { PharosIcon } from '../icon/pharos-icon';
 export class PharosSelect extends ScopedRegistryMixin(
   ObserveChildrenMixin(FormMixin(FormElement))
 ) {
+  componentName = 'PharosSelect';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
   };

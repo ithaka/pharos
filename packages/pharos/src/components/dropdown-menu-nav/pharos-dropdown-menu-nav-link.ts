@@ -17,6 +17,8 @@ export type { LinkTarget };
  *
  */
 export class PharosDropdownMenuNavLink extends ScopedRegistryMixin(PharosLink) {
+  override componentName = 'PharosDropdownMenuNavLink';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
   };

@@ -13,6 +13,8 @@ import { tabStyles } from './pharos-tab.css';
  *
  */
 export class PharosTab extends PharosElement {
+  componentName = 'PharosTab';
+
   /**
    * Indicates if the tab is selected.
    * @attr selected

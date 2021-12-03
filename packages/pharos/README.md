@@ -29,15 +29,24 @@ $ npm install @ithaka/pharos
 
 ## Registering components
 
-1. To allow multiple versions of Pharos to exist on a page, this package only exports component classes for you to register on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) in your application. To register a component, import the classes you wish to use in your application's entrypoint and define the component with a tag name in the form of `{app/bundle}-pharos-{component}`:
+1. To allow multiple versions of Pharos to exist on a page, this package only exports component classes for you to register on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) in your application.
+   To register a component:
+   - Import the classes you wish to use in your application's entrypoint
+   - Declare a trivial subclass the Pharos component in the form of `{app/bundle}Pharos{component}`
+   - Define the component with a tag name in the form of `{app/bundle}-pharos-{component}`
 
 ```javascript
 import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
 
-customElements.define('homepage-pharos-alert', PharosAlert);
+class HomepagePharosAlert extends PharosAlert {}
+
+customElements.define('homepage-pharos-alert', HomepagePharosAlert);
 ```
 
-**Note: If you register a name that already exists the browser will throw an error about the duplicate.**
+> NOTE: Errors will occur in either of the following scenarios:
+>
+> - Define a tag name that has already been defined in the browser.
+> - Attempt to use the same `Pharos` component class to define custom elements with different names. This is especially important when the `@ithaka/pharos` dependency is shared across different apps on the page (ie. ModuleFederation).
 
 2. Internally, Pharos components that are composed of other Pharos components scope their registries to their shadow root to avoid duplicate registrations. Because the `Scoped Custom Element Registries` proposal is not yet finalized, you need to apply a [polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/scoped-custom-element-registry) to use our components.
 
@@ -150,7 +159,7 @@ Pharos also provides SASS mixins which are reusable styles shared across multipl
 ```scss
 /* example-page.scss */
 
-@use "@ithaka/pharos/lib/styles/pharos";
+@use '@ithaka/pharos/lib/styles/pharos';
 
 .some-text {
   @include pharos.font-base;
@@ -175,7 +184,7 @@ You can access all Pharos variables, mixins, and functions from a single `pharos
 ```scss
 /* example-page.scss */
 
-@use "@ithaka/pharos/lib/styles/pharos";
+@use '@ithaka/pharos/lib/styles/pharos';
 
 .some-text {
   @include pharos.font-base;

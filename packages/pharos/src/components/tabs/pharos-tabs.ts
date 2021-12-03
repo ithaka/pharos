@@ -14,6 +14,8 @@ import type { PharosTabPanel } from './pharos-tab-panel';
  *
  */
 export class PharosTabs extends PharosElement {
+  componentName = 'PharosTabs';
+
   public static override get styles(): CSSResultArray {
     return [tabsStyles];
   }

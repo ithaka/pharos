@@ -15,6 +15,8 @@ export type { TextInputType, TextInputAutocomplete };
  * @slot prepend - Contains the elements to be prepended to the input group.
  */
 export class PharosInputGroup extends PharosTextInput {
+  override componentName = 'PharosInputGroup';
+
   @query('.input-group--append')
   private _appendGroup!: HTMLDivElement;
 

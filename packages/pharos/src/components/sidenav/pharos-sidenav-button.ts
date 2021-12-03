@@ -11,6 +11,8 @@ export type { LinkTarget, ButtonType, IconName, ButtonVariant };
  * Pharos sidenav button component.
  */
 export class PharosSidenavButton extends PharosButton {
+  override componentName = 'PharosSidenavButton';
+
   constructor() {
     super();
     this.icon = 'menu';

@@ -15,6 +15,8 @@ import {
  * @cssprop {Color} --pharos-loading-spinner-color-stroke-secondary - The secondary color of the spinner icon.
  */
 export class PharosLoadingSpinner extends PharosElement {
+  componentName = 'PharosLoadingSpinner';
+
   @query('.loading-spinner__icon')
   private _icon!: SVGElement;
 

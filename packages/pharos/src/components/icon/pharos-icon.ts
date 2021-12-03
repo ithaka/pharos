@@ -16,6 +16,8 @@ const LARGE_ICON_SIZE = 24;
  * Pharos icon component.
  */
 export class PharosIcon extends PharosElement {
+  componentName = 'PharosIcon';
+
   /**
    * The name of the icon
    * @attr name

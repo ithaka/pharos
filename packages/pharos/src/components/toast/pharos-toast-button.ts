@@ -11,6 +11,8 @@ export type { LinkTarget, ButtonType, IconName, ButtonVariant };
  * Pharos toast button component.
  */
 export class PharosToastButton extends PharosButton {
+  override componentName = 'PharosToastButton';
+
   constructor() {
     super();
     this.icon = 'close';

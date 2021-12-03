@@ -19,6 +19,8 @@ export type { LinkTarget };
  *
  */
 export class PharosLink extends FocusMixin(AnchorElement) {
+  componentName = 'PharosLink';
+
   /**
    * Indicates the MIME type of the target.
    * @attr type

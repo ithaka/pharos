@@ -26,6 +26,8 @@ const MAX_LENGTH = 40;
  *
  */
 export class PharosBreadcrumbItem extends ScopedRegistryMixin(FocusMixin(AnchorElement)) {
+  componentName = 'PharosBreadcrumbItem';
+
   static elementDefinitions = {
     'pharos-tooltip': PharosTooltip,
     'pharos-link': PharosLink,

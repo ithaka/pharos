@@ -45,6 +45,8 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
  * @cssprop {Color} --pharos-alert-color-icon-error - The fill color for an error alert icon
  */
 export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+  componentName = 'PharosAlert';
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
     'pharos-button': PharosButton,

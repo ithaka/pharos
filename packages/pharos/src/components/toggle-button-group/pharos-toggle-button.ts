@@ -13,6 +13,8 @@ export type { ButtonType, LinkTarget, IconName, ButtonVariant };
  *
  */
 export class PharosToggleButton extends PharosButton {
+  override componentName = 'PharosToggleButton';
+
   /**
    * Indicates that the button is currently toggled on and cannot be pressed or focused by the user.
    * @attr selected

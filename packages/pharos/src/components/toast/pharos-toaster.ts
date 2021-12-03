@@ -23,6 +23,8 @@ import { DEFAULT_STATUS } from './pharos-toast';
  * @listens pharos-toast-open
  */
 export class PharosToaster extends PharosElement {
+  componentName = 'PharosToaster';
+
   constructor() {
     super();
     this._openToast = this._openToast.bind(this);

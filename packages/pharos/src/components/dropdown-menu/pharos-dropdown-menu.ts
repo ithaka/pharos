@@ -29,6 +29,8 @@ export type { Placement, PositioningStrategy };
  *
  */
 export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayElement)) {
+  componentName = 'PharosDropdownMenu';
+
   static elementDefinitions = {
     'focus-trap': FocusTrap,
   };

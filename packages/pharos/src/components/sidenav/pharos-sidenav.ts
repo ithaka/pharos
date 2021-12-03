@@ -18,6 +18,8 @@ import { PharosLink } from '../link/pharos-link';
  *
  */
 export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) {
+  componentName = 'PharosSidenav';
+
   static elementDefinitions = {
     'pharos-button': PharosButton,
     'pharos-link': PharosLink,

@@ -21,6 +21,8 @@ import { PharosHeading } from '../heading/pharos-heading';
  *
  */
 export class PharosFooter extends ScopedRegistryMixin(PharosElement) {
+  componentName = 'PharosFooter';
+
   static elementDefinitions = {
     'pharos-heading': PharosHeading,
   };
