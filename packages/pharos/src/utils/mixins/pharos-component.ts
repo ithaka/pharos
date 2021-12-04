@@ -13,7 +13,7 @@ const PharosComponentImplementation = <T extends Constructor<LitElement>>(Base: 
   class PharosComponent extends Base {
     override connectedCallback(): void {
       super.connectedCallback && super.connectedCallback();
-      this.dataset.pharosComponent = this.constructor.name;
+      this.dataset.pharosComponent = Base.name;
     }
   }
   return PharosComponent;
