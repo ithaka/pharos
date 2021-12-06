@@ -1,5 +1,6 @@
 ---
 '@ithaka/pharos': minor
+'@ithaka/pharos-cli': minor
 '@ithaka/pharos-site': minor
 ---
 

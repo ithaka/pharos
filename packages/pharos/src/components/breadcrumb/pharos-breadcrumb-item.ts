@@ -22,6 +22,8 @@ const MAX_LENGTH = 40;
  * content. This component is the "content" for breadcrumbs, which handles the
  * text and tooltip (if the text is truncated) logic and styling.
  *
+ * @tag pharos-breadcrumb-item
+ *
  * @slot - Contains the links and text to convert into breadcrumbs
  *
  */

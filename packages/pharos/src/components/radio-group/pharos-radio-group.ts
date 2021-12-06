@@ -9,6 +9,8 @@ import { FormElement } from '../base/form-element';
 /**
  * Pharos radio group component.
  *
+ * @tag pharos-radio-group
+ *
  * @slot legend - Contains the fieldset legend content.
  * @slot - Contains the set of radio buttons (the default slot).
  * @slot message - Contains message content to show below the group.

@@ -10,6 +10,8 @@ const LINKS = `a[href],pharos-link[href]`;
 /**
  * Pharos radio button component.
  *
+ * @tag pharos-radio-button
+ *
  * @slot label - Contains the label content.
  *
  * @fires change - Fires when the value has changed

@@ -9,6 +9,8 @@ import { DEFAULT_STATUS } from './pharos-toast';
 /**
  * pharos-toast-open event.
  *
+ * @tag pharos-toaster
+ *
  * @event pharos-toast-open
  * @type {object}
  * @property {ToastStatus} status - The status for the toast.

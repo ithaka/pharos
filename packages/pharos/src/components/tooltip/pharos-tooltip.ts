@@ -16,6 +16,8 @@ export type { Placement, PositioningStrategy };
 /**
  * Pharos tooltip component.
  *
+ * @tag pharos-tooltip
+ *
  * @slot - Content inside the tooltip (the default slot).
  *
  * @cssprop {Length} --pharos-tooltip-size-text-base - Tooltip font size.

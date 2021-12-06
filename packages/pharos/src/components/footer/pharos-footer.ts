@@ -10,6 +10,8 @@ import { PharosHeading } from '../heading/pharos-heading';
 /**
  * Pharos footer component.
  *
+ * @tag pharos-footer
+ *
  * @slot links-group - One or more lists of links to show in the middle of the footer.
  * @slot button-links - List of button links to show in the middle of the footer.
  * @slot social-links - List of social media related links to show on the right side of the footer.

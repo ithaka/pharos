@@ -17,6 +17,8 @@ import { PharosButton } from '../button/pharos-button';
 /**
  * Pharos combobox component.
  *
+ * @tag pharos-combobox
+ *
  * @slot label - Contains the label content.
  * @slot - Contains the available options for the combobox (the default slot).
  * @slot message - Contains message content to show below the input.
