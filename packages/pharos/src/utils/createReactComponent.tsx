@@ -7,7 +7,7 @@ import {
   useContext,
 } from 'react';
 import type { RefObject, FC, Ref, DetailedHTMLProps, HTMLAttributes } from 'react';
-import { TagPrefixContext } from './TagPrefixContext';
+import { PharosContext } from './PharosContext';
 
 /**
  * Converts React event name to its web component counterpart.
@@ -80,8 +80,8 @@ const createReactComponent = (name: string): FC => {
       useImperativeHandle(ref, () => elementRef.current as HTMLElement);
 
       const { children, style } = props;
-      const prefix = useContext(TagPrefixContext);
-      const tagName = prefix ? `${prefix}-${name}` : name;
+      const context = useContext(PharosContext);
+      const tagName = context?.prefix ? `${context.prefix}-${name}` : name;
       return createElement(tagName, { ref: elementRef, style }, children);
     }
   );

@@ -29,12 +29,24 @@ $ npm install @ithaka/pharos
 
 ## Registering components
 
-1. To allow multiple versions of Pharos to exist on a page, this package only exports component classes for you to register on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) in your application. To register a component, import the classes you wish to use in your application's entrypoint and define the component with a tag name in the form of `{app/bundle}-pharos-{component}`:
+1. To allow multiple versions of Pharos to exist on a page, this package only exports component classes for you to register on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) in your application. To register components, you can use the register utility to define all the Pharos components your app/bundle references using `{app/bundle}` as the prefix:
 
 ```javascript
-import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
+import { PharosAlert, PharosButton, PharosIcon } from '@ithaka/pharos';
+import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
 
-customElements.define('homepage-pharos-alert', PharosAlert);
+registerComponents('{prefix}', [PharosAlert, PharosButton, PharosIcon]);
+```
+
+**Note: Micro frontend remotes and hosts that share Pharos must use the utility to avoid registering elements with the same class instance.**
+
+To manually register a component, import the classes you wish to use in your application's entrypoint and define the component with a tag name in the form of `{app/bundle}-pharos-{component}` and a trivial subclass that extends the Pharos class wrapped in the `PharosComponentMixin`:
+
+```javascript
+import { PharosAlert } from '@ithaka/pharos';
+import PharosComponentMixin from '@ithaka/pharos/lib/utils/mixins/pharos-component';
+
+customElements.define('homepage-pharos-alert', class extends PharosComponentMixin(PharosAlert) {});
 ```
 
 **Note: If you register a name that already exists the browser will throw an error about the duplicate.**
@@ -83,10 +95,26 @@ See the [web component Storybook](https://pharos.jstor.org/storybooks/wc/) for d
 
 ## Using Pharos components in React
 
-[React](https://reactjs.org/) is a JavaScript library used to build encapsulated components that manage their own state. React doesn't currently play perfectly with native web components, so if you're developing a React application you need to use the wrapper components provided in the `lib/react-components/` directory of the package. To use a component, first import it:
+[React](https://reactjs.org/) is a JavaScript library used to build encapsulated components that manage their own state. React doesn't currently play perfectly with native web components, so if you're developing a React application you need to use the wrapper components provided in the `lib/react-components/` directory of the package.
+
+To use the React components, first register the components using the register utility and then in your app's entry file use the context provider `PharosContext` to indicate the tag name prefix you registered them under:
+
+```jsx
+import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
+
+const context = { prefix: 'homepage' };
+```
+
+Then, render it in your JSX:
+
+```jsx
+<PharosContext.Provider value={context}>...app code</PharosContext.Provider>
+```
+
+To use a component first import it:
 
 ```javascript
-import { PharosTooltip } from '@ithaka/pharos/lib/react-components/tooltip/pharos-tooltip';
+import { PharosTooltip } from '@ithaka/pharos/lib/react-components';
 ```
 
 Then, render the component in your JSX:
@@ -150,7 +178,7 @@ Pharos also provides SASS mixins which are reusable styles shared across multipl
 ```scss
 /* example-page.scss */
 
-@use "@ithaka/pharos/lib/styles/pharos";
+@use '@ithaka/pharos/lib/styles/pharos';
 
 .some-text {
   @include pharos.font-base;
@@ -175,7 +203,7 @@ You can access all Pharos variables, mixins, and functions from a single `pharos
 ```scss
 /* example-page.scss */
 
-@use "@ithaka/pharos/lib/styles/pharos";
+@use '@ithaka/pharos/lib/styles/pharos';
 
 .some-text {
   @include pharos.font-base;
