@@ -3,6 +3,7 @@ import type { FC, ReactNode } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import Canvas from './src/components/Canvas';
+import { TagPrefixContext } from '@ithaka/pharos/lib/utils/TagPrefixContext';
 import './initComponents';
 
 interface WrapperProps {
@@ -71,5 +72,9 @@ const components =
     : {};
 
 export const wrapRootElement: FC<WrapperProps> = ({ element }) => {
-  return <MDXProvider components={{ ...components, Canvas, ...pharos }}>{element}</MDXProvider>;
+  return (
+    <MDXProvider components={{ ...components, Canvas, ...pharos }}>
+      <TagPrefixContext.Provider value={'site'}>{element}</TagPrefixContext.Provider>
+    </MDXProvider>
+  );
 };

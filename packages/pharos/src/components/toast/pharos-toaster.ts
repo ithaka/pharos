@@ -3,7 +3,7 @@ import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { toasterStyles } from './pharos-toaster.css';
 
-import { PharosToast } from './pharos-toast';
+import type { PharosToast } from './pharos-toast';
 import { DEFAULT_STATUS } from './pharos-toast';
 
 /**
@@ -46,7 +46,7 @@ export class PharosToaster extends PharosElement {
   }
 
   private async _openToast(event: Event): Promise<void> {
-    const toastTag = new PharosToast().localName;
+    const toastTag = this.localName.split('pharos-toaster')[0] + 'pharos-toast';
     const toast = document.createElement(toastTag) as PharosToast;
     const { content, status } = (<CustomEvent>event).detail;
 

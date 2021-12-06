@@ -1,5 +1,13 @@
-import { useLayoutEffect, useRef, createElement, forwardRef, useImperativeHandle } from 'react';
+import {
+  useLayoutEffect,
+  useRef,
+  createElement,
+  forwardRef,
+  useImperativeHandle,
+  useContext,
+} from 'react';
 import type { RefObject, FC, Ref, DetailedHTMLProps, HTMLAttributes } from 'react';
+import { TagPrefixContext } from './TagPrefixContext';
 
 /**
  * Converts React event name to its web component counterpart.
@@ -72,7 +80,9 @@ const createReactComponent = (name: string): FC => {
       useImperativeHandle(ref, () => elementRef.current as HTMLElement);
 
       const { children, style } = props;
-      return createElement(name, { ref: elementRef, style }, children);
+      const prefix = useContext(TagPrefixContext);
+      const tagName = prefix ? `${prefix}-${name}` : name;
+      return createElement(tagName, { ref: elementRef, style }, children);
     }
   );
 };

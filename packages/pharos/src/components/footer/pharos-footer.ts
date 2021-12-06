@@ -5,7 +5,6 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { footerStyles } from './pharos-footer.css';
 
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
-import { PharosIcon } from '../icon/pharos-icon';
 import { PharosHeading } from '../heading/pharos-heading';
 
 /**
@@ -40,7 +39,7 @@ export class PharosFooter extends ScopedRegistryMixin(PharosElement) {
       ) as HTMLDivElement;
       const googleImg = widgetButton?.querySelector('.goog-te-gadget-icon') as HTMLImageElement;
 
-      const iconTag = new PharosIcon().localName;
+      const iconTag = this.localName.split('pharos-footer')[0] + 'pharos-icon';
       const googleIcon = document.createElement(iconTag);
       const chevronIcon = document.createElement(iconTag);
 

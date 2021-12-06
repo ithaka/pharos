@@ -11,6 +11,8 @@ const registerComponents = (prefix: string, classes: typeof LitElement[]): void 
       .replace(/([a-z])([A-Z])/g, '$1-$2')
       .replace(/[\s_]+/g, '-')
       .toLowerCase();
+
+    // Define with a trivial subclass to ensure uniqueness and use Pharos component mixin to ensure base class name is used on attribute
     customElements.define(
       `${prefix ? prefix + '-' : ''}${kebab}`,
       class extends PharosComponentMixin(clazz) {}
