@@ -99,7 +99,7 @@ See the [web component Storybook](https://pharos.jstor.org/storybooks/wc/) for d
 
 To use the React components, first register the components using the register utility and then in your app's entry file use the context provider `PharosContext` to indicate the tag name prefix you registered them under:
 
-```jsx
+```javascript
 import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
 
 const context = { prefix: 'homepage' };
