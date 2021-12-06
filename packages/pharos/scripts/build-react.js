@@ -115,12 +115,18 @@ export const buildReact = async () => {
     const reactComponent = `
           import type { FC, DetailedHTMLProps, HTMLAttributes } from 'react';
           import createReactComponent from '../../utils/createReactComponent';
+          import { ${reactComponentName} as PharosClass } from ${relativePath};
 
           ${importTypes(component, relativePath)}
 
           ${reactInterface}
 
-          const tag = '${webComponentName}';
+          let registeredName;
+          try {
+            registeredName = new PharosClass().localName;
+          } catch(err) {}
+
+          const tag = registeredName ? registeredName : '${webComponentName}';
           export const ${reactComponentName}: FC${
       reactInterface ? `<${reactComponentName}Props>` : `<${REACT_PROP_TYPE}>`
     } = createReactComponent(tag);
