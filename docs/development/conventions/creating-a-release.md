@@ -65,8 +65,7 @@ Finally, be sure to follow the [post-release activities](#post-release-activitie
 
 ## Post release activities
 
-Following an automated or manual release, the latest changes of `main` must be merged into `develop`.
-It's important to do a fast-forward merge to avoid additional merge commits:
+Following an automated or manual release, the latest changes of `main` must be merged into `develop`. It's important to do a fast-forward merge to avoid additional merge commits:
 
 ```shell
 $ git checkout main
