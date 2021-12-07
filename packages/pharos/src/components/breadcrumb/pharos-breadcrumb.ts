@@ -14,6 +14,8 @@ import FocusMixin from '../../utils/mixins/focus';
  *
  * i.e. Language / Characters / Letters / Letter A
  *
+ * @tag pharos-breadcrumb
+ *
  * @slot - Contains pharos-breadcrumb-items
  *
  */

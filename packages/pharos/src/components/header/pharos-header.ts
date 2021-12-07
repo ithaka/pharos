@@ -6,6 +6,8 @@ import { headerStyles } from './pharos-header.css';
 /**
  * Pharos header component.
  *
+ * @tag pharos-header
+ *
  * @slot top - Content to be shown at the top of the nav.
  * @slot start - Content to be shown at the start of the nav.
  * @slot center - Content to be shown at the center of the nav.

@@ -13,6 +13,8 @@ import { PharosIcon } from '../icon/pharos-icon';
 /**
  * Pharos sidenav menu component.
  *
+ * @tag pharos-sidenav-menu
+ *
  * @slot - Contains the items of the menu (the default slot).
  *
  */

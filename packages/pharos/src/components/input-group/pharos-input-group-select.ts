@@ -5,6 +5,9 @@ import { PharosSelect } from '../select/pharos-select';
 
 /**
  * Pharos input group select component.
+ *
+ * @tag pharos-input-group-select
+ *
  */
 export class PharosInputGroupSelect extends PharosSelect {
   public static override get styles(): CSSResultArray {

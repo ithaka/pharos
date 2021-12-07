@@ -9,7 +9,7 @@
     "format": "prettier packages/* --write",
     "lint": "yarn lint:lit-analyzer && yarn lint:eslint && yarn lint:styles",
     "lint:eslint": "eslint 'packages/**/*.{ts,tsx,mdx,js,mjs}'",
-    "lint:lit-analyzer": "lit-analyzer 'packages/*/src/**/!(*.css|*.test).ts' --strict --rules.no-missing-import off",
+    "lint:lit-analyzer": "lit-analyzer 'packages/*/src/**/!(*.css|*.test).ts' --strict --rules.no-missing-import off --rules.no-unknown-tag-name off",
     "lint:styles": "stylelint 'packages/**/*.{scss,css}'",
     "test": "yarn workspace @ithaka/pharos test",
     "test:cli": "yarn workspace @ithaka/pharos-cli test",

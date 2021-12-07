@@ -11,6 +11,8 @@ import {
 /**
  * Pharos loading spinner component.
  *
+ * @tag pharos-loading-spinner
+ *
  * @cssprop {Color} --pharos-loading-spinner-color-stroke-primary - The primary color of the spinner icon.
  * @cssprop {Color} --pharos-loading-spinner-color-stroke-secondary - The secondary color of the spinner icon.
  */

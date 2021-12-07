@@ -9,7 +9,7 @@ import Intro from '../../../../static/guidelines/modal.docs.mdx';
   <PharosButton
     onClick={(e) => {
       e.target.focus();
-      const modal = document.querySelector('pharos-modal');
+      const modal = document.querySelector('[data-pharos-component="PharosModal"]');
       modal.open = true;
     }}
   >
@@ -24,7 +24,7 @@ import Intro from '../../../../static/guidelines/modal.docs.mdx';
       slot="footer"
       type="button"
       onClick={(e) => {
-        const modal = document.querySelector('pharos-modal');
+        const modal = document.querySelector('[data-pharos-component="PharosModal"]');
         modal.open = false;
       }}
     >

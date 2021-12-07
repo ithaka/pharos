@@ -1,4 +1,8 @@
 import { LitElement } from 'lit';
-import PharosComponent from '../../utils/mixins/pharos-component';
 
-export const PharosElement = PharosComponent(LitElement);
+export class PharosElement extends LitElement {
+  override connectedCallback(): void {
+    super.connectedCallback && super.connectedCallback();
+    this.dataset.pharosComponent = this.constructor.name;
+  }
+}
