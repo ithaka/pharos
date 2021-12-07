@@ -124,7 +124,9 @@ export const buildReact = async () => {
           let registeredName;
           try {
             registeredName = new PharosClass().localName;
-          } catch(err) {}
+          } catch(err) {
+            // Failed to execute 'define' on 'CustomElementRegistry': this constructor has already been used with this registry
+          }
 
           const tag = registeredName ? registeredName : '${webComponentName}';
           export const ${reactComponentName}: FC${
