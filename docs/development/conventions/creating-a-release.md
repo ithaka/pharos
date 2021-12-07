@@ -3,8 +3,9 @@
 <!-- toc -->
 
 - [Preparing for a release](#preparing-for-a-release)
-- [Publishing a release](#publishing-a-release)
-- [Manually publishing a release](#manually-publishing-a-release)
+- [Publishing a release (automated)](#publishing-a-release-automated)
+- [Publishing a release (manually)](#publishing-a-release-manually)
+- [Post release activities](#post-release-activities)
 
 <!-- tocstop -->
 
@@ -24,11 +25,13 @@ $ git push origin main
 
 This brings the set of changes onto the `main` branch for a stable release. If that's successful, you'll be ready to publish the release.
 
-## Publishing a release
+## Publishing a release (automated)
 
 After pushing the commits to `main`, the [Changesets action](https://github.com/changesets/action) will create a pull request, titled **Version Packages**, with all of the package versions and changelogs updated. This pull request will automatically update whenever new changesets are pushed to `main`. When you're ready, you can merge the pull request and the action will publish the new versions to NPM for you.
 
-## Manually publishing a release
+Finally, be sure to follow the [post-release activities](#post-release-activities).
+
+## Publishing a release (manually)
 
 If the Changesets action is not working as expected you can instead use the [Changesets cli](https://github.com/atlassian/changesets/tree/main/packages/pharos-cli) to version and publish the package manually. First you'll need to update the versions for all packages described in the changesets since last release:
 
@@ -58,7 +61,11 @@ This publishes the newly-versioned packages to [npm](https://www.npmjs.com/) and
 $ git push --follow-tags
 ```
 
-Lastly, the `main` branch's latest changes must be merged into the `develop` branch. It's important to do a fast-forward merge to avoid additional merge commits:
+Finally, be sure to follow the [post-release activities](#post-release-activities).
+
+## Post release activities
+
+Following an automated or manual release, the latest changes of `main` must be merged into `develop`. It's important to do a fast-forward merge to avoid additional merge commits:
 
 ```shell
 $ git checkout main
