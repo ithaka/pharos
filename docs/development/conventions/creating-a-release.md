@@ -5,7 +5,7 @@
 - [Preparing for a release](#preparing-for-a-release)
 - [Publishing a release (automated)](#publishing-a-release-automated)
 - [Publishing a release (manually)](#publishing-a-release-manually)
-- [Clean up](#clean-up)
+- [Post release activities](#post-release-activities)
 
 <!-- tocstop -->
 
@@ -29,7 +29,7 @@ This brings the set of changes onto the `main` branch for a stable release. If t
 
 After pushing the commits to `main`, the [Changesets action](https://github.com/changesets/action) will create a pull request, titled **Version Packages**, with all of the package versions and changelogs updated. This pull request will automatically update whenever new changesets are pushed to `main`. When you're ready, you can merge the pull request and the action will publish the new versions to NPM for you.
 
-Finally, be sure to follow the [clean-up steps](#clean-up).
+Finally, be sure to follow the [post-release activities](#post-release-activities).
 
 ## Publishing a release (manually)
 
@@ -61,9 +61,9 @@ This publishes the newly-versioned packages to [npm](https://www.npmjs.com/) and
 $ git push --follow-tags
 ```
 
-Finally, be sure to follow the [clean-up steps](#clean-up).
+Finally, be sure to follow the [post-release activities](#post-release-activities).
 
-## Clean up
+## Post release activities
 
 Following an automated or manual release, the latest changes of `main` must be merged into `develop`.
 It's important to do a fast-forward merge to avoid additional merge commits:
