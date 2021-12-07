@@ -1,5 +1,36 @@
 # @ithaka/pharos-cli
 
+## 5.3.0
+
+### Minor Changes
+
+- [#268](https://github.com/ithaka/pharos/pull/268) [`ffb2f63`](https://github.com/ithaka/pharos/commit/ffb2f63523bfe51ee2cc16de1740309590cded59) Thanks [@Niznikr](https://github.com/Niznikr)! - Add register utility:
+
+  - Update `PharosElement` to set `[data-pharos-component]` with `constructor.name`
+  - Update `PharosComponentMixin` to set `[data-pharos-component]` with base class name
+  - Add register utility to simplify component registration and ensure trivial classes are used for custom elements:
+
+    ```javascript
+    import { PharosAlert, PharosButton, PharosIcon } from '@ithaka/pharos';
+    import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
+
+    registerComponents('{prefix}', [PharosAlert, PharosButton, PharosIcon]);
+    ```
+
+  - Add a React Pharos context provider for consumers to indicate prefix used for registration:
+
+    ```jsx
+    import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
+
+    const context = { prefix: 'homepage' };
+
+    <PharosContext.Provider value={context}>...app code</PharosContext.Provider>;
+    ```
+
+### Patch Changes
+
+- [#264](https://github.com/ithaka/pharos/pull/264) [`988881d`](https://github.com/ithaka/pharos/commit/988881d2c10274c1fbffc23ab04f35397b6e5742) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies
+
 ## 5.2.0
 
 ### Minor Changes
