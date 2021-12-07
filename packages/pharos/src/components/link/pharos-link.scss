@@ -14,6 +14,17 @@
   }
 }
 
+:host(:not([href])) #link-element {
+  @include mixins.link-base;
+  @include mixins.link-hover;
+  @include mixins.interactive-focus;
+
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
 #link-element.link--alert:hover {
   color: var(--pharos-color-interactive-secondary);
 }
@@ -39,6 +50,16 @@
 :host([flex]) #link-element {
   display: inline-flex;
   min-width: 0;
+}
+
+:host([on-background]:not([href])) #link-element {
+  @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
+
+  color: var(--pharos-color-interactive-tertiary);
+}
+
+:host([subtle]:not([href])) #link-element {
+  @include mixins.no-underline;
 }
 
 :host([on-background]) #link-element:hover {

@@ -98,22 +98,35 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   }
 
   protected override render(): TemplateResult {
-    return html`<a
-      id="link-element"
-      class="${classMap({
-        [`link--alert`]: this._alert,
-        [`link--hover`]: this._hover,
-      })}"
-      download=${ifDefined(this.download)}
-      href=${ifDefined(this.href)}
-      hreflang=${ifDefined(this.hreflang)}
-      ping=${ifDefined(this.ping)}
-      rel=${ifDefined(this.rel)}
-      target=${ifDefined(this.target)}
-      type=${ifDefined(this.type)}
-      aria-label=${ifDefined(this.label)}
-      @click=${this._handleClick}
-      ><slot></slot>${this.appendContent}</a
-    >`;
+    return this.href
+      ? html`<a
+          id="link-element"
+          class="${classMap({
+            [`link--alert`]: this._alert,
+            [`link--hover`]: this._hover,
+          })}"
+          download=${ifDefined(this.download)}
+          href=${ifDefined(this.href)}
+          hreflang=${ifDefined(this.hreflang)}
+          ping=${ifDefined(this.ping)}
+          rel=${ifDefined(this.rel)}
+          target=${ifDefined(this.target)}
+          type=${ifDefined(this.type)}
+          aria-label=${ifDefined(this.label)}
+          @click=${this._handleClick}
+          ><slot></slot>${this.appendContent}</a
+        >`
+      : html`<button
+          id="link-element"
+          class="${classMap({
+            [`link--alert`]: this._alert,
+            [`link--hover`]: this._hover,
+          })}"
+          aria-label=${ifDefined(this.label)}
+          @click=${this._handleClick}
+        >
+          <slot></slot>
+          ${this.appendContent}
+        </button>`;
   }
 }

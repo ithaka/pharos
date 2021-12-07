@@ -15,6 +15,12 @@ describe('pharos-link', () => {
     await expect(component).to.be.accessible();
   });
 
+  it('is accessible as a button', async () => {
+    component.href = undefined;
+    await component.updateComplete;
+    await expect(component).to.be.accessible();
+  });
+
   it('is accessible in the subtle state', async () => {
     component.subtle = true;
     await component.updateComplete;
