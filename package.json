@@ -122,7 +122,7 @@
   },
   "resolutions": {
     "axe-core": "^4.3.3",
-    "playwright": "^1.16.0",
+    "playwright": "^1.17.1",
     "webpack": "^5.64.1",
     "dotenv-webpack": "^7.0.0",
     "html-webpack-plugin": "^5.0.0",
@@ -137,6 +137,7 @@
     "glob-parent": "^6.0.2",
     "browserslist": "^4.16.5",
     "trim": "^0.0.3",
-    "marked": "^0.7.0"
+    "marked": "^0.7.0",
+    "graphql-config": "^4.1.0"
   }
 }
