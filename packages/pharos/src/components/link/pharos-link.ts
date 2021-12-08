@@ -98,7 +98,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   }
 
   protected override render(): TemplateResult {
-    return this.href
+    return this.hasAttribute('href')
       ? html`<a
           id="link-element"
           class="${classMap({

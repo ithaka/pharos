@@ -28,7 +28,22 @@ import { PharosLink } from '../../react-components/link/pharos-link';
 
 <Canvas withToolbar>
   <Story name="Button">
-    <PharosLink>I am a button</PharosLink>
+    <div style={{ marginBottom: '1rem' }}>
+      <PharosLink name="primary" primary>
+        I am a button
+      </PharosLink>
+    </div>
+    <div
+      style={{
+        backgroundColor: '#000000',
+        padding: '1rem',
+        marginBottom: '1rem',
+      }}
+    >
+      <PharosLink name="on-background" onBackground>
+        On compliant background
+      </PharosLink>
+    </div>
   </Story>
 </Canvas>
 
