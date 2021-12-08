@@ -16,7 +16,7 @@ describe('pharos-link', () => {
   });
 
   it('is accessible as a button', async () => {
-    component.href = undefined;
+    component.removeAttribute('href');
     await component.updateComplete;
     await expect(component).to.be.accessible();
   });
