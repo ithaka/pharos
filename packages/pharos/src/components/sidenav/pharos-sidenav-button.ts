@@ -9,6 +9,9 @@ export type { LinkTarget, ButtonType, IconName, ButtonVariant };
 
 /**
  * Pharos sidenav button component.
+ *
+ * @tag pharos-sidenav-button
+ *
  */
 export class PharosSidenavButton extends PharosButton {
   constructor() {

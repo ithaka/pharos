@@ -14,6 +14,8 @@ import { PharosIcon } from '../icon/pharos-icon';
 /**
  * Pharos select component.
  *
+ * @tag pharos-select
+ *
  * @slot label - Contains the label content.
  * @slot - Contains the available options for the select (the default slot).
  * @slot message - Contains message content to show below the select.

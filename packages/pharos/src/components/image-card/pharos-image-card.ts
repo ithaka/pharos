@@ -25,6 +25,8 @@ const DEFAULT_HEADING_LEVEL = 3;
 /**
  * Pharos image card component.
  *
+ * @tag pharos-image-card
+ *
  * @slot image - Contains the image to display on the card.
  * @slot metadata - Contains the metadata for the item.
  * @slot title - Contains the title for the item (renders if title prop is not set).

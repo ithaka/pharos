@@ -1,5 +1,48 @@
 # @ithaka/pharos-site
 
+## 5.10.0
+
+### Minor Changes
+
+- [#268](https://github.com/ithaka/pharos/pull/268) [`ffb2f63`](https://github.com/ithaka/pharos/commit/ffb2f63523bfe51ee2cc16de1740309590cded59) Thanks [@Niznikr](https://github.com/Niznikr)! - Add register utility:
+
+  - Update `PharosElement` to set `[data-pharos-component]` with `constructor.name`
+  - Update `PharosComponentMixin` to set `[data-pharos-component]` with base class name
+  - Add register utility to simplify component registration and ensure trivial classes are used for custom elements:
+
+    ```javascript
+    import { PharosAlert, PharosButton, PharosIcon } from '@ithaka/pharos';
+    import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
+
+    registerComponents('{prefix}', [PharosAlert, PharosButton, PharosIcon]);
+    ```
+
+  - Add a React Pharos context provider for consumers to indicate prefix used for registration:
+
+    ```jsx
+    import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
+
+    const context = { prefix: 'homepage' };
+
+    <PharosContext.Provider value={context}>...app code</PharosContext.Provider>;
+    ```
+
+### Patch Changes
+
+- [#264](https://github.com/ithaka/pharos/pull/264) [`988881d`](https://github.com/ithaka/pharos/commit/988881d2c10274c1fbffc23ab04f35397b6e5742) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies
+
+- Updated dependencies [[`c0ee52f`](https://github.com/ithaka/pharos/commit/c0ee52f0ec5e8a05551fa9a5f0c84d3f7d15f920), [`de1938b`](https://github.com/ithaka/pharos/commit/de1938b96d54d63a13245db0dd4554e17438ec2d), [`988881d`](https://github.com/ithaka/pharos/commit/988881d2c10274c1fbffc23ab04f35397b6e5742), [`ffb2f63`](https://github.com/ithaka/pharos/commit/ffb2f63523bfe51ee2cc16de1740309590cded59)]:
+  - @ithaka/pharos@11.1.0
+
+## 5.9.1
+
+### Patch Changes
+
+- [#248](https://github.com/ithaka/pharos/pull/248) [`0b79abc`](https://github.com/ithaka/pharos/commit/0b79abcae58e20899676a1e677df5deea228dab0) Thanks [@Niznikr](https://github.com/Niznikr)! - correct footer on smaller breakpoints
+
+- Updated dependencies [[`04a32cc`](https://github.com/ithaka/pharos/commit/04a32cc9e8987a79af84b826713613cd4da1d9af)]:
+  - @ithaka/pharos@11.0.1
+
 ## 5.9.0
 
 ### Minor Changes

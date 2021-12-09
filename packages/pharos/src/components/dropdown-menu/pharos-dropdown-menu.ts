@@ -20,6 +20,8 @@ export type { Placement, PositioningStrategy };
 /**
  * Pharos dropdown menu component.
  *
+ * @tag pharos-dropdown-menu
+ *
  * @slot - Contains the menu items.
  *
  * @fires pharos-dropdown-menu-select - Fires when an item is about to be selected - cancelable

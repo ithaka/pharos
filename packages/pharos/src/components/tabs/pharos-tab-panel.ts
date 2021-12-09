@@ -8,6 +8,8 @@ import focusable from '../../utils/focusable';
 /**
  * Pharos tab panel component.
  *
+ * @tag pharos-tab-panel
+ *
  * @slot - Contains the content of the panel.
  *
  */

@@ -15,6 +15,8 @@ export type { LinkTarget };
 /**
  * Pharos link component.
  *
+ * @tag pharos-link
+ *
  * @slot - Contains the content of the link (the default slot).
  *
  */

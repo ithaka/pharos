@@ -10,6 +10,8 @@ import { PharosHeading } from '../heading/pharos-heading';
 /**
  * Pharos sidenav section component.
  *
+ * @tag pharos-sidenav-section
+ *
  * @slot - Contains the content of the section (the default slot).
  *
  */

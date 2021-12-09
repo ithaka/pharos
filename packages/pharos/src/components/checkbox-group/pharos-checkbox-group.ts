@@ -8,6 +8,8 @@ import { FormElement } from '../base/form-element';
 /**
  * Pharos checkbox group component.
  *
+ * @tag pharos-checkbox-group
+ *
  * @slot legend - Contains the fieldset legend content.
  * @slot - Contains the set of checkboxes (the default slot).
  * @slot message - Contains message content to show below the group.

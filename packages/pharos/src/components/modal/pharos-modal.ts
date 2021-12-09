@@ -22,6 +22,8 @@ const SIZES = ['small', 'medium', 'large'];
 /**
  * Pharos modal component.
  *
+ * @tag pharos-modal
+ *
  * @slot description - Content that describes the primary message or purpose of the modal.
  * @slot - Contains the content of the modal body.
  * @slot footer - Contains the content of the modal footer.

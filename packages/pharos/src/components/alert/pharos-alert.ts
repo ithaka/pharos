@@ -25,6 +25,8 @@ const STATUSES = ['info', 'success', 'warning', 'error'];
 /**
  * Pharos alert component
  *
+ * @tag pharos-alert
+ *
  * @slot - Contains the alert message (the default slot).
  *
  * @fires pharos-alert-closed - Fires when the alert has closed

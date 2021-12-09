@@ -12,6 +12,8 @@ import FocusMixin from '../../utils/mixins/focus';
 /**
  * Pharos dropdown menu nav component.
  *
+ * @tag pharos-dropdown-menu-nav
+ *
  * @slot - Contains the pharos-links and associated pharos-dropdown-menu.
  *
  */
