@@ -123,7 +123,6 @@ export class PharosLink extends FocusMixin(AnchorElement) {
             [`link--hover`]: this._hover,
           })}"
           aria-label=${ifDefined(this.label)}
-          @click=${this._handleClick}
         >
           <slot></slot>
           ${this.appendContent}
