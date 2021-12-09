@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 11.2.0
+
+### Minor Changes
+
+- [#274](https://github.com/ithaka/pharos/pull/274) [`03f222f`](https://github.com/ithaka/pharos/commit/03f222f48b4a247990239debca67e942173c4f56) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Added button that looks like link
+
 ## 11.1.0
 
 ### Minor Changes
