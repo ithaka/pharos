@@ -38,3 +38,7 @@
   line-height: 2rem;
   margin-bottom: var(--pharos-spacing-3-x);
 }
+
+.container__topMargin {
+  margin-top: var(--pharos-spacing-5-x);
+}

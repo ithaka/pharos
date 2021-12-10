@@ -8,7 +8,23 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   storyBookType="components"
 ></PageSection>
 
+## Examples
+
+```jsx live
+<>
+  <PharosButton id="my-button" data-dropdown-menu-id="my-menu" icon-right="chevron-down">
+    Click Me
+  </PharosButton>
+  <PharosDropdownMenu id="my-menu">
+    <PharosDropdownMenuItem>Menu item 1</PharosDropdownMenuItem>
+    <PharosDropdownMenuItem>Menu item 2</PharosDropdownMenuItem>
+    <PharosDropdownMenuItem>Menu item 3</PharosDropdownMenuItem>
+  </PharosDropdownMenu>
+</>
+```
+
 <PageSection
+  topMargin
   title="Usage"
   description="Dropdown menu navs include a list of links that move users between sections of the application."
 />

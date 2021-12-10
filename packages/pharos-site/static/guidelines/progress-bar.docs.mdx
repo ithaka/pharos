@@ -9,7 +9,16 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     task has been completed and how much is remaining."
 ></PageSection>
 
-<PageSection title="Usage">
+## Examples
+
+```jsx live
+<pharos-progress-bar value="75">
+  <div slot="title">A Title</div>
+  <div slot="description">Doing something...</div>
+</pharos-progress-bar>
+```
+
+<PageSection topMargin title="Usage">
   <p>
     This component can be used to visually represent the completion of a task, such as importing or
     uploading files or when a process time can be calculated and takes longer than 10 seconds.

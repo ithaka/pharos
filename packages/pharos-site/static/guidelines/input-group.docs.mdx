@@ -9,7 +9,16 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     icon, or select element on either side of the text input for extra functionality."
 ></PageSection>
 
-<PageSection title="Usage">
+## Examples
+
+```jsx live
+<PharosInputGroup name="my-input-group">
+  <span slot="label">Search</span>
+  <PharosButton name="search-button" icon="search" variant="subtle" label="search"></PharosButton>
+</PharosInputGroup>
+```
+
+<PageSection topMargin title="Usage">
   <p>
     Use an input group when additional functionality is required for a text input, such as a way to
     clear the field or to visually indicate the type of input.

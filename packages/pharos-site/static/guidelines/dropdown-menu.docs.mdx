@@ -8,7 +8,46 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   storyBookType="components"
 ></PageSection>
 
-<PageSection title="Usage">
+## Examples
+
+```jsx live
+<PharosDropdownMenuNav>
+  <PharosDropdownMenuNavLink
+    href="#"
+    id="smurfs-link"
+    data-dropdown-menu-id="smurfs-menu"
+    data-dropdown-menu-hover
+    target="_blank"
+  >
+    Smurfs
+  </PharosDropdownMenuNavLink>
+  <PharosDropdownMenu id="smurfs-menu" data-dropdown-menu-hover>
+    <PharosDropdownMenuItem link="/papa">Papa</PharosDropdownMenuItem>
+    <PharosDropdownMenuItem link="/slumsy">Clumsy</PharosDropdownMenuItem>
+    <PharosDropdownMenuItem link="/smurfette">Smurfette</PharosDropdownMenuItem>
+  </PharosDropdownMenu>
+  <PharosDropdownMenuNavLink
+    href="#"
+    id="tmnt-link"
+    data-dropdown-menu-id="tmnt-menu"
+    data-dropdown-menu-hover
+    target="_blank"
+  >
+    Ninja Turtles
+  </PharosDropdownMenuNavLink>
+  <PharosDropdownMenu id="tmnt-menu">
+    <PharosDropdownMenuItem link="/leonardo">Leonardo</PharosDropdownMenuItem>
+    <PharosDropdownMenuItem link="/donatello">Donatello</PharosDropdownMenuItem>
+    <PharosDropdownMenuItem link="/raphael">Raphael</PharosDropdownMenuItem>
+    <PharosDropdownMenuItem link="/michelangelo">Michelangelo</PharosDropdownMenuItem>
+  </PharosDropdownMenu>
+  <PharosDropdownMenuNavLink href="#" id="other-link" target="_blank">
+    Link to Other
+  </PharosDropdownMenuNavLink>
+</PharosDropdownMenuNav>
+```
+
+<PageSection topMargin title="Usage">
   <p>
     Dropdown menus are used with dropdown menu items to create options presented to the user. The
     dropdown menu can be triggered by matching the <code>data-dropdown-menu-id</code> on an element

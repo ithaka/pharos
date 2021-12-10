@@ -9,7 +9,20 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     and obtain context of various levels of hierarchy."
 ></PageSection>
 
+## Code example
+
+```jsx live
+<PharosBreadcrumb>
+  <PharosBreadcrumbItem href="#">
+    Mouse Over to See the Full Text of Long Content Which Are Truncated
+  </PharosBreadcrumbItem>
+  <PharosBreadcrumbItem href="#">Short Texts Will Not</PharosBreadcrumbItem>
+  <PharosBreadcrumbItem>The Current Place</PharosBreadcrumbItem>
+</PharosBreadcrumb>
+```
+
 <PageSection
+  topMargin
   title="Usage"
   description="Breadcrumbs are effective when content is organized in a hierarchy of more than two levels,
     providing context for the user's location."
