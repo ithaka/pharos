@@ -343,6 +343,7 @@
   @include font-base($font-size: inherit, $line-height: inherit);
   @include underline;
 
+  letter-spacing: inherit;
   color: var(--pharos-color-interactive-secondary);
   transition-property: color, text-decoration-color;
   transition-duration: 200ms;

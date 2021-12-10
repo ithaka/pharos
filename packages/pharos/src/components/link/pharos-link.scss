@@ -5,7 +5,6 @@
 }
 
 #link-element {
-  @include mixins.font-base;
   @include mixins.link-base;
   @include mixins.link-hover;
   @include mixins.interactive-focus;
