@@ -35,7 +35,7 @@ $ npm install @ithaka/pharos
 import { PharosAlert, PharosButton, PharosIcon } from '@ithaka/pharos';
 import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
 
-registerComponents('{prefix}', [PharosAlert, PharosButton, PharosIcon]);
+registerComponents('homepage', [PharosAlert, PharosButton, PharosIcon]);
 ```
 
 **Note: When using module federation, you may only share Pharos successfully by using the `registerComponents` utility. This avoids registering elements with the same underlying class instance, which would result in an error.**
