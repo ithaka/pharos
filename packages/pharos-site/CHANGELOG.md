@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 5.10.1
+
+### Patch Changes
+
+- [#277](https://github.com/ithaka/pharos/pull/277) [`915eda6`](https://github.com/ithaka/pharos/commit/915eda6c77dbd0d82621fd1d18966c924e81f817) Thanks [@Niznikr](https://github.com/Niznikr)! - check href prop for rendering links
+
+- Updated dependencies [[`915eda6`](https://github.com/ithaka/pharos/commit/915eda6c77dbd0d82621fd1d18966c924e81f817)]:
+  - @ithaka/pharos@11.2.1
+
 ## 5.10.0
 
 ### Minor Changes
