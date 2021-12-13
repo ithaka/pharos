@@ -32,7 +32,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       slot="footer"
       type="button"
       onClick={(e) => {
-        const modal = document.querySelector('pharos-modal');
+        const modal = document.querySelector('[data-pharos-component="PharosModal"]');
         modal.open = false;
       }}
     >
