@@ -17,7 +17,7 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
   <PharosButton
     onClick={(e) => {
       e.target.focus();
-      const modal = document.querySelector('pharos-modal');
+      const modal = document.querySelector('[data-pharos-component="PharosModal"]');
       modal.open = true;
     }}
   >
