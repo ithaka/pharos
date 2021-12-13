@@ -42,12 +42,22 @@ Pharos uses <PharosLink href="https://developer.mozilla.org/en-US/docs/Web/Web_C
 To accomodate patterns of each framework, the implementations vary slightly.
 
 You need to first register components on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) for them to be usable in your code.
-To register a component, import the classes in your application's entrypoint and define the component with a tag name in the form of `{app/bundle}-pharos-{component}`:
+To register components, you can use the `registerComponents` utility to define all the Pharos components your application uses, with a consistent scoping prefix:
 
 ```javascript
-import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
+import { PharosAlert, PharosButton, PharosIcon } from '@ithaka/pharos';
+import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
 
-customElements.define('homepage-pharos-alert', PharosAlert);
+registerComponents('homepage', [PharosAlert, PharosButton, PharosIcon]);
+```
+
+To manually register a component, import the classes you wish to use in your application's entrypoint and define the custom element with a tag name in the form of `{app/bundle}-pharos-{component}` and a trivial subclass that extends the Pharos class wrapped in the `PharosComponentMixin`:
+
+```javascript
+import { PharosAlert } from '@ithaka/pharos';
+import PharosComponentMixin from '@ithaka/pharos/lib/utils/mixins/pharos-component';
+
+customElements.define('homepage-pharos-alert', class extends PharosComponentMixin(PharosAlert) {});
 ```
 
 To demonstrate the usage in both Vue and React, you'll next see how to use the Button component.
@@ -59,7 +69,7 @@ To demonstrate the usage in both Vue and React, you'll next see how to use the B
 The following code shows how to use Pharos's button component with **React** to produce a basic button, as seen below the code
 
 ```jsx
-import { PharosButton } from "@ithaka/pharos/lib/react-components/button/pharos-button";
+import { PharosButton } from '@ithaka/pharos/lib/react-components';
   ...
 
 <PharosButton>

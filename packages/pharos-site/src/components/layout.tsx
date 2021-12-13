@@ -10,6 +10,8 @@ import { PharosSpacing5X } from '@ithaka/pharos/lib/styles/variables';
 
 import '@ithaka/pharos/lib/styles/variables.css';
 import '@ithaka/pharos/lib/styles/pharos-alert.css';
+import '@ithaka/pharos/lib/styles/pharos-modal.css';
+import '@ithaka/pharos/lib/styles/pharos-footer.css';
 import '../../static/styles/global.scss';
 
 const getPageName = (path: string) => {

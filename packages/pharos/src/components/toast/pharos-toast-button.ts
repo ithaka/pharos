@@ -9,6 +9,9 @@ export type { LinkTarget, ButtonType, IconName, ButtonVariant };
 
 /**
  * Pharos toast button component.
+ *
+ * @tag pharos-toast-button
+ *
  */
 export class PharosToastButton extends PharosButton {
   constructor() {

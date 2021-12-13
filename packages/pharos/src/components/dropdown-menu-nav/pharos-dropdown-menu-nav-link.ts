@@ -13,6 +13,8 @@ export type { LinkTarget };
 /**
  * Pharos dropdown menu nav link component.
  *
+ * @tag pharos-dropdown-menu-nav-link
+ *
  * @slot - Contains the content of the link (the default slot).
  *
  */

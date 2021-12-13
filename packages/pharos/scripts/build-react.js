@@ -121,7 +121,14 @@ export const buildReact = async () => {
 
           ${reactInterface}
 
-          const tag = new PharosClass().localName;
+          let registeredName;
+          try {
+            registeredName = new PharosClass().localName;
+          } catch(err) {
+            // Failed to execute 'define' on 'CustomElementRegistry': this constructor has already been used with this registry
+          }
+
+          const tag = registeredName ? registeredName : '${webComponentName}';
           export const ${reactComponentName}: FC${
       reactInterface ? `<${reactComponentName}Props>` : `<${REACT_PROP_TYPE}>`
     } = createReactComponent(tag);

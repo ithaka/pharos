@@ -16,6 +16,8 @@ const LINKS = `a[href],pharos-link[href]`;
 /**
  * Pharos checkbox component.
  *
+ * @tag pharos-checkbox
+ *
  * @slot label - Contains the label content.
  * @slot message - Contains message content to show below the input.
  *

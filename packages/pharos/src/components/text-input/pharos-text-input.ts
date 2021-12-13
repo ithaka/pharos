@@ -49,6 +49,8 @@ const BLOCKING = [
 /**
  * Pharos text input component.
  *
+ * @tag pharos-text-input
+ *
  * @slot label - Contains the label content.
  * @slot message - Contains message content to show below the input.
  *

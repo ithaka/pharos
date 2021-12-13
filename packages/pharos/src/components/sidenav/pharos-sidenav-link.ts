@@ -13,6 +13,8 @@ export type { LinkTarget };
 /**
  * Pharos sidenav link component.
  *
+ * @tag pharos-sidenav-link
+ *
  * @slot - Contains the content of the link (the default slot).
  *
  */

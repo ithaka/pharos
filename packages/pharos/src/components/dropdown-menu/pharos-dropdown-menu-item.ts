@@ -16,6 +16,8 @@ export type { IconName };
 /**
  * Pharos dropdown menu item component.
  *
+ * @tag pharos-dropdown-menu-item
+ *
  * @slot description - Content that describes the item.
  * @slot - Contains the content of dropdown item.
  *

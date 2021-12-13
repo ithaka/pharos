@@ -9,6 +9,8 @@ export type { ButtonType, LinkTarget, IconName, ButtonVariant };
 /**
  * Pharos toggle button component.
  *
+ * @tag pharos-toggle-button
+ *
  * @slot - Contains the content of the button (the default slot).
  *
  */

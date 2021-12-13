@@ -28,6 +28,8 @@ export const DEFAULT_STATUS = 'success';
 /**
  * Pharos toast component.
  *
+ * @tag pharos-toast
+ *
  * @slot - Content inside the toast (the default slot).
  *
  * @fires pharos-toast-close - Fires when the toast has closed

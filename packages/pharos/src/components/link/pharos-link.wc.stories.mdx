@@ -41,6 +41,32 @@ export const Template = (args) =>
   </Story>
 </Canvas>
 
+# Button
+
+<Canvas withToolbar>
+  <Story name="Button">
+    {html`
+      <div style="margin-bottom: 1rem">
+        <pharos-link name="primary">Primary link</pharos-link>
+      </div>
+      <div style="margin-bottom: 1rem">
+        <pharos-link name="subtle" subtle>Subtle link</pharos-link>
+      </div>
+      <div style="width:100px; margin-bottom: 1rem">
+        <pharos-link name="multi">I have text that spans multiple lines</pharos-link>
+      </div>
+      <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
+        <pharos-link name="on-background" on-background>On compliant background</pharos-link>
+      </div>
+      <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
+        <pharos-link name="on-background-subtle" on-background subtle
+          >On compliant background with subtle</pharos-link
+        >
+      </div>
+    `}
+  </Story>
+</Canvas>
+
 ## API
 
 <ArgsTable of="pharos-link" />

@@ -13,6 +13,8 @@ import { PharosLink } from '../link/pharos-link';
 /**
  * Pharos sidenav component.
  *
+ * @tag pharos-sidenav
+ *
  * @slot top - Content to be shown at the top of the sidenav.
  * @slot - Contains the sections of the sidenav (the default slot).
  *

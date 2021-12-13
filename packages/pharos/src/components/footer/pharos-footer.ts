@@ -5,11 +5,12 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { footerStyles } from './pharos-footer.css';
 
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
-import { PharosIcon } from '../icon/pharos-icon';
 import { PharosHeading } from '../heading/pharos-heading';
 
 /**
  * Pharos footer component.
+ *
+ * @tag pharos-footer
  *
  * @slot links-group - One or more lists of links to show in the middle of the footer.
  * @slot button-links - List of button links to show in the middle of the footer.
@@ -40,7 +41,7 @@ export class PharosFooter extends ScopedRegistryMixin(PharosElement) {
       ) as HTMLDivElement;
       const googleImg = widgetButton?.querySelector('.goog-te-gadget-icon') as HTMLImageElement;
 
-      const iconTag = new PharosIcon().localName;
+      const iconTag = this.localName.split('pharos-footer')[0] + 'pharos-icon';
       const googleIcon = document.createElement(iconTag);
       const chevronIcon = document.createElement(iconTag);
 

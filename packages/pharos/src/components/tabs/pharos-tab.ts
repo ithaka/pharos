@@ -7,6 +7,8 @@ import { tabStyles } from './pharos-tab.css';
 /**
  * Pharos tab component.
  *
+ * @tag pharos-tab
+ *
  * @slot - Contains the content of the tab.
  *
  * @fires pharos-tab-selected - Fires when the tab is selected.
