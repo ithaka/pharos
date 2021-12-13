@@ -241,6 +241,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "JoshAtITHAKA",
+      "name": "JoshAtITHAKA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59626212?v=4",
+      "profile": "https://github.com/JoshAtITHAKA",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7

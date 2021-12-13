@@ -9,7 +9,27 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
     quick, at-a-glance feedback on the outcome of an action."
 ></PageSection>
 
-<PageSection title="Usage">
+## Examples
+
+```jsx live
+<Fragment>
+  <PharosButton
+    onClick={() => {
+      const event = new CustomEvent('pharos-toast-open', {
+        detail: {
+          content: 'Hi there!',
+        },
+      });
+      document.dispatchEvent(event);
+    }}
+  >
+    Have a toast!
+  </PharosButton>
+  <PharosToaster></PharosToaster>
+</Fragment>
+```
+
+<PageSection topMargin title="Usage">
   <p>
     Use toasts to show a confirmation of non-critical actions from the user. For example, you might
     show a toast to inform the user that their recent action of saving an item to the workspace was

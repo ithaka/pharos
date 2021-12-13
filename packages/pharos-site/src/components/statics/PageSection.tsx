@@ -10,6 +10,7 @@ import {
   description__isHeader,
   description__base,
   container__lessMargin,
+  container__topMargin,
 } from './PageSection.module.css';
 
 interface PageSectionProps {
@@ -20,6 +21,7 @@ interface PageSectionProps {
   moreTitleSpace?: boolean;
   lessMargin?: boolean;
   storyBookType?: string;
+  topMargin?: boolean;
 }
 
 const PageSection: FC<PageSectionProps> = ({
@@ -30,6 +32,7 @@ const PageSection: FC<PageSectionProps> = ({
   children,
   moreTitleSpace,
   lessMargin,
+  topMargin,
   storyBookType,
 }) => {
   const [Display, setDisplay] = useState<ReactElement | null>(null);
@@ -115,7 +118,9 @@ const PageSection: FC<PageSectionProps> = ({
     const content = (
       <div
         className={
-          lessMargin
+          topMargin
+            ? container__topMargin
+            : lessMargin
             ? container__lessMargin
             : subSectionLevel === 1
             ? container__subsectionLevelOne
@@ -128,7 +133,7 @@ const PageSection: FC<PageSectionProps> = ({
       >
         {displayedTitle()}
         {description ? (
-          <div className={isHeader ? description__isHeader : description__base}>{description}</div>
+          <div className={isHeader ? description__isHeader : description__base}> {description}</div>
         ) : null}
         {storyBookType ? storyBookLink : null}
         {children}

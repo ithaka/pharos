@@ -9,7 +9,29 @@ import baseImageExample from '../../../../.storybook/assets/images/item-detail/c
   storyBookType="components"
 ></PageSection>
 
-<PageSection title="Usage">
+## Examples
+
+```jsx live
+<PharosImageCard title="Card title" link="#">
+  <img
+    id="image"
+    src="../images/components/image-card/collection_5.png"
+    alt="south hall"
+    slot="image"
+  />
+  <div id="creator" slot="metadata">
+    Tubby, William Bunker (American architect,...
+  </div>
+  <div id="item-date" slot="metadata">
+    1889-1892 (creation)
+  </div>
+  <div id="collection" slot="metadata">
+    From the <PharosLink href="#">Collection title</PharosLink>
+  </div>
+</PharosImageCard>
+```
+
+<PageSection topMargin title="Usage">
   <PageSection subSectionLevel={1} title="When to use">
     <p>
       Image cards are styled containers that group related content and actions. Image cards should
