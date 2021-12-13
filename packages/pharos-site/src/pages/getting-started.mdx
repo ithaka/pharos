@@ -48,7 +48,7 @@ To register components, you can use the `registerComponents` utility to define a
 import { PharosAlert, PharosButton, PharosIcon } from '@ithaka/pharos';
 import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
 
-registerComponents('{prefix}', [PharosAlert, PharosButton, PharosIcon]);
+registerComponents('homepage', [PharosAlert, PharosButton, PharosIcon]);
 ```
 
 To manually register a component, import the classes you wish to use in your application's entrypoint and define the custom element with a tag name in the form of `{app/bundle}-pharos-{component}` and a trivial subclass that extends the Pharos class wrapped in the `PharosComponentMixin`:
