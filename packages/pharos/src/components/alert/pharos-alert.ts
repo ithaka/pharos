@@ -22,6 +22,8 @@ export enum ALERT_ICON {
 
 const STATUSES = ['info', 'success', 'warning', 'error'];
 
+const HAMS = 'hams';
+
 /**
  * Pharos alert component
  *
@@ -66,6 +68,13 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
   @property({ type: Boolean, reflect: true })
   public closable = false;
 
+  /**
+   * The hams
+   * @attr hams
+   */
+  @property({ type: String, reflect: true })
+  public hams = 'hams';
+
   private _allLinks!: NodeListOf<PharosLink>;
 
   public static override get styles(): CSSResultArray {
@@ -100,6 +109,8 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
   }
 
   private close(): void {
+    this._getHams();
+    this._noMoreHams();
     this.remove();
     const details = {
       bubbles: true,
@@ -119,6 +130,18 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
           @click=${this.close}
         ></pharos-button>`
       : nothing;
+  }
+
+  private _getHams(): typeof HAMS {
+    const ham =
+      'hamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamhamham';
+    console.log(ham);
+    return HAMS;
+  }
+
+  private _noMoreHams(): boolean {
+    const numHams = 0;
+    return !!numHams;
   }
 
   protected override render(): TemplateResult {
