@@ -2923,12 +2923,13 @@
   resolved "https://registry.yarnpkg.com/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz#8da5c6530915653f3a1f38fd5f101d8c3f8079c5"
   integrity sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
 
-"@sitespeed.io/tracium@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@sitespeed.io/tracium/-/tracium-0.3.3.tgz#b497a4a8d5837db1fd9e3053c99b78f6c0e1f53b"
-  integrity sha512-dNZafjM93Y+F+sfwTO5gTpsGXlnc/0Q+c2+62ViqP3gkMWvHEMSKkaEHgVJLcLg3i/g19GSIPziiKpgyne07Bw==
+"@size-limit/esbuild@7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@size-limit/esbuild/-/esbuild-7.0.4.tgz#8f769c4e47c34711babf9148dc755fb22c4d6b3f"
+  integrity sha512-gfkr96LQ8zCWKDGTfnBed8K4kmQccB/cQxnqK7bMis/X0qSpeMFwDG9WO9JrjDgNRVjbncB26Qtnain58KC2Xw==
   dependencies:
-    debug "^4.1.1"
+    esbuild "^0.14.2"
+    nanoid "^3.1.30"
 
 "@size-limit/file@7.0.4":
   version "7.0.4"
@@ -2937,31 +2938,13 @@
   dependencies:
     semver "7.3.5"
 
-"@size-limit/preset-big-lib@^7.0.4":
+"@size-limit/preset-small-lib@^7.0.4":
   version "7.0.4"
-  resolved "https://registry.yarnpkg.com/@size-limit/preset-big-lib/-/preset-big-lib-7.0.4.tgz#390856b3e68ad4b968e944a04dc6012d5270790c"
-  integrity sha512-wYdmzT2q48FeQeoONL60ERsV97xbd8utJhBiX/si3wirNQCvj+Vxf+LFi7aXMDOG5wGxPQ3u8WOinH9HCw44eg==
+  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-7.0.4.tgz#d6d1771fdfbde03e81430ac097354f9d5dd29754"
+  integrity sha512-FS3qDDfcks3ZNKciGYxhSfiyVIQ64N6oZZABsWneHvZjOpR6KUjwPVboX2rBZGKT2an1KHs5CkHoM+oscxGWEw==
   dependencies:
+    "@size-limit/esbuild" "7.0.4"
     "@size-limit/file" "7.0.4"
-    "@size-limit/time" "7.0.4"
-    "@size-limit/webpack" "7.0.4"
-
-"@size-limit/time@7.0.4":
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/@size-limit/time/-/time-7.0.4.tgz#1ba5be8304941b696d963db69ec43deaf238f6d3"
-  integrity sha512-1ShT8uKNpSoR3AqBCbVOHY4p4i7guPgRNcTvmDXfv1XqcnBX20C45D8NPRZmDOp4+MMNkFtIOtfGsB+8abNyEQ==
-  dependencies:
-    estimo "^2.3.0"
-    react "^17.0.2"
-
-"@size-limit/webpack@7.0.4":
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-7.0.4.tgz#50e7e3614a9f85b27ca23a07f052384009683e7e"
-  integrity sha512-cFlExDyYBWBC+zJYkFUhco2XClzWImzz50M2prP79b6kl6EWTmgUcPBaWHKxM4ziiNuxmAlCtum9kFVFbB/2dQ==
-  dependencies:
-    escape-string-regexp "^4.0.0"
-    nanoid "^3.1.30"
-    webpack "^5.64.4"
 
 "@storybook/addon-a11y@^6.4.9":
   version "6.4.9"
@@ -8295,11 +8278,6 @@ devtools-protocol@0.0.901419:
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.901419.tgz#79b5459c48fe7e1c5563c02bd72f8fec3e0cebcd"
   integrity sha512-4INMPwNm9XRpBukhNbF7OB6fNTTCaI8pzy/fXg0xQzAy5h3zL1P8xT3QazgKqBrb/hAYwIBizqDBZ7GtJE74QQ==
 
-devtools-protocol@0.0.937139:
-  version "0.0.937139"
-  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.937139.tgz#bdee3751fdfdb81cb701fd3afa94b1065dafafcf"
-  integrity sha512-daj+rzR3QSxsPRy5vjjthn58axO8c11j58uY0lG5vvlJk/EiOdCWOptGdkXDjtuRHr78emKq0udHCXM4trhoDQ==
-
 diacritics-map@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/diacritics-map/-/diacritics-map-0.1.0.tgz#6dfc0ff9d01000a2edf2865371cac316e94977af"
@@ -9379,17 +9357,6 @@ esrecurse@^4.3.0:
   dependencies:
     estraverse "^5.2.0"
 
-estimo@^2.3.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/estimo/-/estimo-2.3.1.tgz#0adf3bebf7149d869921445febd3012588b9b899"
-  integrity sha512-IqQwkl4qQzajWPKa42K3t/l/wTe4jJdickc1i/fHYmX1SD7NexurWRkn15NwpOEkturUrqNiRHRCG+nBvxd/VA==
-  dependencies:
-    "@sitespeed.io/tracium" "^0.3.3"
-    commander "^8.3.0"
-    find-chrome-bin "^0.1.0"
-    nanoid "^3.1.30"
-    puppeteer-core "^12.0.1"
-
 estraverse@^4.1.1:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-4.3.0.tgz#398ad3f3c5a24948be7725e83d11a7de28cdbd1d"
@@ -9927,11 +9894,6 @@ find-cache-dir@^3.3.1, find-cache-dir@^3.3.2:
     commondir "^1.0.1"
     make-dir "^3.0.2"
     pkg-dir "^4.1.0"
-
-find-chrome-bin@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/find-chrome-bin/-/find-chrome-bin-0.1.0.tgz#9fa3e6f86c275762c6d8be9da9af71e6fef05373"
-  integrity sha512-XoFZwaEn1R3pE6zNG8kH64l2e093hgB9+78eEKPmJK0o1EXEou+25cEWdtu2qq4DBQPDSe90VJAWVI2Sz9pX6Q==
 
 find-index@^0.1.1:
   version "0.1.1"
@@ -17219,24 +17181,6 @@ puppeteer-core@^11.0.0:
     unbzip2-stream "1.4.3"
     ws "8.2.3"
 
-puppeteer-core@^12.0.1:
-  version "12.0.1"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-12.0.1.tgz#b647ef14e0118537f0843b56a82a32d73ba528b0"
-  integrity sha512-lty/1LQkl9zkMuQGwipHEBU8VD1m+SEWXG7zpdwzKet8P6L3taBNOt6Y1LpptakVejKz8TqMSjaWcEjqEKPfjw==
-  dependencies:
-    debug "4.3.2"
-    devtools-protocol "0.0.937139"
-    extract-zip "2.0.1"
-    https-proxy-agent "5.0.0"
-    node-fetch "2.6.5"
-    pkg-dir "4.2.0"
-    progress "2.0.3"
-    proxy-from-env "1.1.0"
-    rimraf "3.0.2"
-    tar-fs "2.1.1"
-    unbzip2-stream "1.4.3"
-    ws "8.2.3"
-
 q@1.*, q@^1.1.2, q@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
@@ -17615,7 +17559,7 @@ react@16.14.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
-react@^17.0.1, react@^17.0.2:
+react@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
@@ -21410,7 +21354,7 @@ webpack-virtual-modules@^0.2.2, webpack-virtual-modules@^0.3.2, webpack-virtual-
   resolved "https://registry.yarnpkg.com/webpack-virtual-modules/-/webpack-virtual-modules-0.4.3.tgz#cd597c6d51d5a5ecb473eea1983a58fa8a17ded9"
   integrity sha512-5NUqC2JquIL2pBAAo/VfBP6KuGkHIZQXW/lNKupLPfhViwh8wNsu0BObtl09yuKZszeEUfbXz8xhrHvSG16Nqw==
 
-webpack@4, webpack@^5.61.0, webpack@^5.64.1, webpack@^5.64.4, webpack@^5.9.0:
+webpack@4, webpack@^5.61.0, webpack@^5.64.1, webpack@^5.9.0:
   version "5.64.1"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.64.1.tgz#fd59840c16f04fe315f2b2598a85026f12dfa1bb"
   integrity sha512-b4FHmRgaaAjP+aVOVz41a9Qa5SmkUPQ+u8FntTQ1roPHahSComB6rXnLwc976VhUY4CqTaLu5mCswuHiNhOfVw==

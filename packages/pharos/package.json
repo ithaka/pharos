@@ -63,7 +63,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.5.6",
     "@open-wc/testing": "^3.0.1",
-    "@size-limit/preset-big-lib": "^7.0.4",
+    "@size-limit/preset-small-lib": "^7.0.4",
     "@types/react-dom": "^17.0.0",
     "@types/react": "^17.0.1",
     "@web/test-runner": "^0.13.16",
