@@ -1,4 +1,4 @@
-name: Size Limit
+name: Size Report
 
 on:
   pull_request:
