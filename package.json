@@ -1,7 +1,7 @@
 {
   "name": "pharos",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JSTOR's design system",
   "scripts": {
     "build:tokens": "yarn workspace @ithaka/pharos build:tokens",
