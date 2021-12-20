@@ -28,5 +28,5 @@ Indicate which version of Pharos you are using.
 - Version: [e.g. 88]
 
 **Additional information**
-Add any additional notes or further context about the issue here.
+Add any additional notes or further context about the issue here, including any known workarounds.
 
