@@ -21,6 +21,7 @@
     "importsNotUsedAsValues": "error",
     "resolveJsonModule": true,
     "noImplicitOverride": true,
+    "useDefineForClassFields": false,
     "types": ["mocha"],
     "plugins": [
       {
