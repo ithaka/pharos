@@ -68,6 +68,7 @@
   margin-right: var(--pharos-spacing-one-half-x);
 }
 
+:host([disabled]),
 :host([disabled]) .dropdown-menu-item__link,
 :host([disabled]) .dropdown-menu-item__button {
   pointer-events: none;
