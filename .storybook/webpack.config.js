@@ -47,6 +47,17 @@ module.exports = async ({ config, mode }) => {
 
   // TODO: Refactor when Chromatic updates Firefox
   const TARGET_ENV = process.env.GITHUB_WORKFLOW === 'Chromatic' ? 'firefox65' : 'esnext';
+
+  // https://github.com/evanw/esbuild/issues/1354#issuecomment-855452057
+  // https://www.typescriptlang.org/tsconfig#useDefineForClassFields
+  const TS_CONFIG_OPTIONS = {
+    tsconfigRaw: {
+      compilerOptions: {
+        useDefineForClassFields: false,
+      },
+    },
+  };
+
   config.module.rules.forEach((rule) => {
     if (
       /babel-loader/i.test(rule.loader) ||
@@ -55,15 +66,26 @@ module.exports = async ({ config, mode }) => {
     ) {
       delete rule.use;
       rule.loader = 'esbuild-loader';
-      rule.options = { target: TARGET_ENV };
+      rule.options = {
+        target: TARGET_ENV,
+        ...TS_CONFIG_OPTIONS,
+      };
     }
   });
 
-  config.module.rules[0].options = { loader: 'tsx', target: TARGET_ENV };
+  config.module.rules[0].options = {
+    loader: 'tsx',
+    target: TARGET_ENV,
+    ...TS_CONFIG_OPTIONS,
+  };
 
   if (config.mode === 'production') {
     config.optimization.minimizer = [
-      new ESBuildMinifyPlugin({ target: TARGET_ENV, keepNames: true }),
+      new ESBuildMinifyPlugin({
+        target: TARGET_ENV,
+        keepNames: true,
+        ...TS_CONFIG_OPTIONS,
+      }),
     ];
   }
 
