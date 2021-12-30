@@ -111,7 +111,7 @@ describe('pharos-dropdown-menu-item', () => {
     expect(clickSpy.callCount).to.equal(1);
   });
 
-  it('do not trigger click event when disabled and @click handler present', async () => {
+  it('does not propagate a click event when disabled with click handler present', async () => {
     const event = new MouseEvent('click');
     component = await fixture(html`
       <pharos-dropdown-menu-item disabled @click="${() => alert('clicked')}"
@@ -120,7 +120,9 @@ describe('pharos-dropdown-menu-item', () => {
     `);
     await component.updateComplete;
     const clickSpy: SinonSpy = sinon.spy(event, 'preventDefault');
+    const propagationSpy: SinonSpy = sinon.spy(event, 'stopPropagation');
     component.dispatchEvent(event);
     expect(clickSpy.callCount).to.equal(1);
+    expect(propagationSpy.callCount).to.equal(1);
   });
 });
