@@ -130,7 +130,7 @@ const Footer: FC = () => {
             </div>
           </div>
           <div className={`${note} ${copyrightStatement}`}>
-            &copy;{new Date().getFullYear()} ITHAKA. All Rights Reserved. JSTOR&reg;, the JSTOR
+            &copy;2021–{new Date().getFullYear()} ITHAKA. All Rights Reserved. JSTOR&reg;, the JSTOR
             logo, JPASS&reg;, Artstor&reg;, Reveal Digital&trade; and ITHAKA&reg; are registered
             trademarks of ITHAKA.
           </div>
