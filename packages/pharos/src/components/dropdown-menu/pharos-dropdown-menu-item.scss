@@ -68,9 +68,12 @@
   margin-right: var(--pharos-spacing-one-half-x);
 }
 
+:host([disabled]) {
+  pointer-events: none;
+}
+
 :host([disabled]) .dropdown-menu-item__link,
 :host([disabled]) .dropdown-menu-item__button {
-  pointer-events: none;
   color: var(--pharos-dropdown-menu-item-color-text-disabled);
   background-color: var(--pharos-dropdown-menu-item-color-background-disabled);
 }
