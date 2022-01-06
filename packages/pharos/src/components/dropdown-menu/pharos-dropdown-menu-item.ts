@@ -58,7 +58,7 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
   public target: '_blank' | '_parent' | '_self' | '_top' = '_self';
 
   /**
-   * Indicates the type of link.
+   * Indicates the relationship of the resource to the current document.
    * @attr rel
    */
   @property({ type: String, reflect: true })
