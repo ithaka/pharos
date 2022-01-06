@@ -3,6 +3,7 @@ import { html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { dropdownMenuItemStyles } from './pharos-dropdown-menu-item.css';
 import type { PharosDropdownMenu } from './pharos-dropdown-menu';
 
@@ -55,6 +56,13 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
    */
   @property({ type: String, reflect: true })
   public target: '_blank' | '_parent' | '_self' | '_top' = '_self';
+
+  /**
+   * Indicates the relationship of the resource to the current document.
+   * @attr rel
+   */
+  @property({ type: String, reflect: true })
+  public rel?: string;
 
   /**
    * Indicates if the item is disabled.
@@ -165,6 +173,7 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
               role="menuitem"
               href="${this.link}"
               target="${this.target}"
+              rel=${ifDefined(this.rel)}
               class="dropdown-menu-item__link"
             >
               ${this.itemContent}
