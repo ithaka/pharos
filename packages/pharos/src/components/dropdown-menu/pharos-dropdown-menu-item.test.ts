@@ -51,6 +51,18 @@ describe('pharos-dropdown-menu-item', () => {
     expect(link.getAttribute('href')).to.equal(href);
   });
 
+  it('passes rel attribute from dropdown menu item to anchor tag', async () => {
+    const href = 'https://www.google.com';
+    component.link = href;
+    component.setAttribute('rel', 'noopener');
+    await component.updateComplete;
+    const link = component.renderRoot.querySelector(
+      '.dropdown-menu-item__link'
+    ) as HTMLAnchorElement;
+    expect(link).not.to.be.null;
+    expect(link.getAttribute('rel')).to.equal('noopener');
+  });
+
   it('renders an icon when the icon attribute is set', async () => {
     component.icon = 'download';
     await component.updateComplete;
