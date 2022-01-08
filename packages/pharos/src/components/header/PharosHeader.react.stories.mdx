@@ -23,130 +23,7 @@ import { PharosIcon } from '../../react-components/icon/pharos-icon';
 
 <GuidelineLink path="header" />
 
-<Canvas withToolbar>
-  <Story name="Base">
-    <PharosHeader>
-      <div id="pds" slot="top">
-        <i>Have library access? </i>
-        <PharosLink href="//jstor.org/institutionSearch" target="_blank">
-          Log in through your library
-        </PharosLink>
-      </div>
-      <PharosLink slot="start" href="/" id="jstor-logo">
-        <img src="./images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
-      </PharosLink>
-      <div slot="center">
-        <div className="header-example__split-column">
-          <PharosDropdownMenuNav label="main navigation">
-            <PharosDropdownMenuNavLink
-              href="action/showAdvancedSearch"
-              id="adv-search-link"
-              className="hide-for-small"
-            >
-              Advanced Search
-            </PharosDropdownMenuNavLink>
-            <PharosDropdownMenuNavLink
-              href="/subjects"
-              id="browse-link"
-              data-dropdown-menu-id="browse-menu"
-              data-dropdown-menu-hover
-            >
-              Browse
-            </PharosDropdownMenuNavLink>
-            <PharosDropdownMenu id="browse-menu">
-              <PharosDropdownMenuItem link="/subjects">by Subject</PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/action/showJournals?browseType=title">
-                by Title
-              </PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/site/collection-list">
-                by Collections
-              </PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/publishers">by Publisher</PharosDropdownMenuItem>
-            </PharosDropdownMenu>
-            <PharosDropdownMenuNavLink
-              href="/account/workspace"
-              id="tools-link"
-              data-dropdown-menu-id="tools-menu"
-              data-dropdown-menu-hover
-              className="hide-for-small"
-            >
-              Tools
-            </PharosDropdownMenuNavLink>
-            <PharosDropdownMenu id="tools-menu">
-              <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/analyze">Text Analyzer</PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/understand">
-                The JSTOR Understanding Series
-              </PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/dfr">Data for Research</PharosDropdownMenuItem>
-            </PharosDropdownMenu>
-          </PharosDropdownMenuNav>
-          <div
-            className="show-for-large"
-            style={{
-              columnGap: '0.5rem',
-              gridTemplateColumns: '1fr 1fr',
-              display: 'none',
-              justifySelf: 'end',
-              alignSelf: 'center',
-            }}
-          >
-            <PharosLink href="#" target="_blank" bold>
-              Log In
-            </PharosLink>
-            <PharosLink href="#" target="_blank" bold>
-              Register
-            </PharosLink>
-          </div>
-        </div>
-      </div>
-      <div
-        slot="end"
-        style={{
-          display: 'grid',
-          rowGap: '1.5rem',
-          gridTemplateRows: '1fr 1fr',
-        }}
-        className="hide-for-large"
-      >
-        <div
-          style={{
-            display: 'grid',
-            columnGap: '0.5rem',
-            gridTemplateColumns: '1fr 1fr',
-          }}
-        >
-          <PharosLink href="#" target="_blank">
-            Log In
-          </PharosLink>
-          <PharosLink href="#" target="_blank">
-            Register
-          </PharosLink>
-        </div>
-        <div
-          style={{
-            display: 'grid',
-            columnGap: '0.5rem',
-            gridTemplateColumns: '1fr 1fr',
-          }}
-        >
-          <PharosLink href="//about.jstor.org" target="_blank" bold>
-            About
-          </PharosLink>
-          <PharosLink href="//support.jstor.org" target="_blank" bold>
-            Support
-          </PharosLink>
-        </div>
-      </div>
-    </PharosHeader>
-  </Story>
-</Canvas>
-
-## API
-
-<ArgsTable of={PharosHeader} />
-
-# Composition
+# Base
 
 export const accountNav = (section) => (
   <PharosDropdownMenuNav label="profile">
@@ -185,7 +62,7 @@ export const accountNav = (section) => (
 );
 
 <Canvas withToolbar>
-  <Story name="Composition">
+  <Story name="Base">
     <PharosHeader>
       <div id="pds" slot="top" className="hide-for-small">
         <div
@@ -230,13 +107,7 @@ export const accountNav = (section) => (
       <PharosLink slot="start" href="/" id="jstor-logo">
         <img src="./images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
       </PharosLink>
-      <div
-        slot="center"
-        style={{
-          display: 'grid',
-          gridTemplateRows: '1fr 1fr',
-        }}
-      >
+      <div slot="center">
         <PharosInputGroup
           name="my-input-group"
           hideLabel
@@ -251,92 +122,60 @@ export const accountNav = (section) => (
             label="search"
           ></PharosButton>
         </PharosInputGroup>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '3fr 1fr',
-          }}
-        >
-          <PharosDropdownMenuNav label="main navigation">
-            <PharosDropdownMenuNavLink
-              href="action/showAdvancedSearch"
-              id="adv-search-link"
-              className="hide-for-small"
-            >
-              Advanced Search
-            </PharosDropdownMenuNavLink>
-            <PharosDropdownMenuNavLink
-              href="/subjects"
-              id="browse-link"
-              data-dropdown-menu-id="browse-menu"
-              data-dropdown-menu-hover
-            >
-              Browse
-            </PharosDropdownMenuNavLink>
-            <PharosDropdownMenu id="browse-menu">
-              <PharosDropdownMenuItem link="/subjects">by Subject</PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/action/showJournals?browseType=title">
-                by Title
-              </PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/site/collection-list">
-                by Collections
-              </PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/publishers">by Publisher</PharosDropdownMenuItem>
-            </PharosDropdownMenu>
-            <PharosDropdownMenuNavLink
-              href="/account/workspace"
-              id="tools-link"
-              data-dropdown-menu-id="tools-menu"
-              data-dropdown-menu-hover
-              className="hide-for-small"
-            >
-              Tools
-            </PharosDropdownMenuNavLink>
-            <PharosDropdownMenu id="tools-menu">
-              <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/analyze">Text Analyzer</PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/understand">
-                The JSTOR Understanding Series
-              </PharosDropdownMenuItem>
-              <PharosDropdownMenuItem link="/dfr">Data for Research</PharosDropdownMenuItem>
-            </PharosDropdownMenu>
-          </PharosDropdownMenuNav>
-          <div
-            className="show-for-large"
-            style={{
-              justifySelf: 'end',
-              display: 'none',
-            }}
-          >
-            {accountNav('center')}
-          </div>
-        </div>
+      </div>
+      <div slot="end-top">
+        <div>{accountNav('end')}</div>
       </div>
       <div
-        slot="end"
+        slot="end-bottom"
         style={{
-          display: 'grid',
-          gridTemplateRows: '1fr 1fr',
+          display: 'flex',
         }}
-        className="hide-for-large"
       >
-        <div>{accountNav('end')}</div>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            alignItems: 'center',
-            justifyItems: 'center',
-          }}
-        >
-          <PharosLink href="//about.jstor.org" target="_blank" bold>
-            About
-          </PharosLink>
-          <PharosLink href="//support.jstor.org" target="_blank" bold>
-            Support
-          </PharosLink>
-        </div>
+        <PharosDropdownMenuNav label="main navigation">
+          <PharosDropdownMenuNavLink href="action/showAdvancedSearch" id="adv-search-link">
+            Advanced Search
+          </PharosDropdownMenuNavLink>
+          <PharosDropdownMenuNavLink
+            href="/subjects"
+            id="browse-link"
+            data-dropdown-menu-id="browse-menu"
+            data-dropdown-menu-hover
+          >
+            Browse
+          </PharosDropdownMenuNavLink>
+          <PharosDropdownMenu id="browse-menu">
+            <PharosDropdownMenuItem link="/subjects">by Subject</PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/action/showJournals?browseType=title">
+              by Title
+            </PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/site/collection-list">
+              by Collections
+            </PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/publishers">by Publisher</PharosDropdownMenuItem>
+          </PharosDropdownMenu>
+          <PharosDropdownMenuNavLink
+            href="/account/workspace"
+            id="tools-link"
+            data-dropdown-menu-id="tools-menu"
+            data-dropdown-menu-hover
+          >
+            Tools
+          </PharosDropdownMenuNavLink>
+          <PharosDropdownMenu id="tools-menu">
+            <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/analyze">Text Analyzer</PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/understand">
+              The JSTOR Understanding Series
+            </PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/dfr">Data for Research</PharosDropdownMenuItem>
+          </PharosDropdownMenu>
+        </PharosDropdownMenuNav>
       </div>
     </PharosHeader>
   </Story>
 </Canvas>
+
+## API
+
+<ArgsTable of={PharosHeader} />

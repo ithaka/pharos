@@ -13,108 +13,10 @@ import { GuidelineLink } from '@config/GuidelineLink';
 
 <GuidelineLink path="header" />
 
-<Canvas>
-  <Story name="Base">
-    {() => {
-      return html`
-        <pharos-header>
-          <div id="pds" slot="top">
-            <i>Have library access? </i>
-            <pharos-link href="//jstor.org/institutionSearch" target="_blank"
-              >Log in through your library</pharos-link
-            >
-          </div>
-          <pharos-link slot="start" href="/" id="jstor-logo">
-            <img src="./images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
-          </pharos-link>
-          <div slot="center">
-            <div class="header-example__split-column">
-              <pharos-dropdown-menu-nav label="main navigation">
-                <pharos-dropdown-menu-nav-link
-                  href="action/showAdvancedSearch"
-                  id="adv-search-link"
-                  class="hide-for-small"
-                  >Advanced Search</pharos-dropdown-menu-nav-link
-                >
-                <pharos-dropdown-menu-nav-link
-                  href="/subjects"
-                  id="browse-link"
-                  data-dropdown-menu-id="browse-menu"
-                  data-dropdown-menu-hover
-                  >Browse</pharos-dropdown-menu-nav-link
-                >
-                <pharos-dropdown-menu id="browse-menu">
-                  <pharos-dropdown-menu-item link="/subjects">by Subject</pharos-dropdown-menu-item>
-                  <pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
-                    >by Title</pharos-dropdown-menu-item
-                  >
-                  <pharos-dropdown-menu-item link="/site/collection-list"
-                    >by Collections</pharos-dropdown-menu-item
-                  >
-                  <pharos-dropdown-menu-item link="/publishers"
-                    >by Publisher</pharos-dropdown-menu-item
-                  >
-                </pharos-dropdown-menu>
-                <pharos-dropdown-menu-nav-link
-                  href="/account/workspace"
-                  id="tools-link"
-                  data-dropdown-menu-id="tools-menu"
-                  data-dropdown-menu-hover
-                  class="hide-for-small"
-                  >Tools</pharos-dropdown-menu-nav-link
-                >
-                <pharos-dropdown-menu id="tools-menu">
-                  <pharos-dropdown-menu-item link="/account/workspace"
-                    >Workspace</pharos-dropdown-menu-item
-                  >
-                  <pharos-dropdown-menu-item link="/analyze"
-                    >Text Analyzer</pharos-dropdown-menu-item
-                  >
-                  <pharos-dropdown-menu-item link="/understand"
-                    >The JSTOR Understanding Series</pharos-dropdown-menu-item
-                  >
-                  <pharos-dropdown-menu-item link="/dfr"
-                    >Data for Research</pharos-dropdown-menu-item
-                  >
-                </pharos-dropdown-menu>
-              </pharos-dropdown-menu-nav>
-              <div
-                class="show-for-large"
-                style="grid-template-columns: 1fr 1fr; column-gap: 0.5rem; justify-self: end; align-self: center; display: none"
-              >
-                <pharos-link href="#" target="_blank" bold>Log In</pharos-link>
-                <pharos-link href="#" target="_blank" bold>Register</pharos-link>
-              </div>
-            </div>
-          </div>
-          <div
-            slot="end"
-            style="display: grid; grid-template-rows: 1fr 1fr; row-gap: 1.5rem"
-            class="hide-for-large"
-          >
-            <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 0.5rem">
-              <pharos-link href="#" target="_blank">Log In</pharos-link>
-              <pharos-link href="#" target="_blank">Register</pharos-link>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 0.5rem">
-              <pharos-link href="//about.jstor.org" target="_blank" bold>About</pharos-link>
-              <pharos-link href="//support.jstor.org" target="_blank" bold>Support</pharos-link>
-            </div>
-          </div>
-        </pharos-header>
-      `;
-    }}
-  </Story>
-</Canvas>
-
-## API
-
-<ArgsTable of="pharos-header" />
-
-# Composition
+# Base
 
 <Canvas>
-  <Story name="Composition" parameters={{ chromatic: { viewports: [320, 1200] } }}>
+  <Story name="Base" parameters={{ chromatic: { viewports: [320, 1200] } }}>
     {() => {
       const accountNav = (section) => html`
         <pharos-dropdown-menu-nav label="profile">
@@ -179,7 +81,7 @@ import { GuidelineLink } from '@config/GuidelineLink';
           <pharos-link slot="start" href="/" id="jstor-logo">
             <img src="./images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
           </pharos-link>
-          <div slot="center" style="display: grid; grid-template-rows: 1fr 1fr;">
+          <div slot="center">
             <pharos-input-group
               name="my-input-group"
               hide-label
@@ -194,72 +96,65 @@ import { GuidelineLink } from '@config/GuidelineLink';
                 label="search"
               ></pharos-button>
             </pharos-input-group>
-            <div style="display: grid; grid-template-columns: 3fr 1fr">
-              <pharos-dropdown-menu-nav label="main navigation" style="display: inline-block">
-                <pharos-dropdown-menu-nav-link
-                  href="action/showAdvancedSearch"
-                  id="adv-search-link"
-                  class="hide-for-small"
-                  >Advanced Search</pharos-dropdown-menu-nav-link
-                >
-                <pharos-dropdown-menu-nav-link
-                  href="/subjects"
-                  id="browse-link"
-                  data-dropdown-menu-id="browse-menu"
-                  data-dropdown-menu-hover
-                  >Browse</pharos-dropdown-menu-nav-link
-                >
-                <pharos-dropdown-menu id="browse-menu">
-                  <pharos-dropdown-menu-item link="/subjects">by Subject</pharos-dropdown-menu-item>
-                  <pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
-                    >by Title</pharos-dropdown-menu-item
-                  >
-                  <pharos-dropdown-menu-item link="/site/collection-list"
-                    >by Collections</pharos-dropdown-menu-item
-                  >
-                  <pharos-dropdown-menu-item link="/publishers"
-                    >by Publisher</pharos-dropdown-menu-item
-                  >
-                </pharos-dropdown-menu>
-                <pharos-dropdown-menu-nav-link
-                  href="/account/workspace"
-                  id="tools-link"
-                  data-dropdown-menu-id="tools-menu"
-                  data-dropdown-menu-hover
-                  class="hide-for-small"
-                  >Tools</pharos-dropdown-menu-nav-link
-                >
-                <pharos-dropdown-menu id="tools-menu">
-                  <pharos-dropdown-menu-item link="/account/workspace"
-                    >Workspace</pharos-dropdown-menu-item
-                  >
-                  <pharos-dropdown-menu-item link="/analyze"
-                    >Text Analyzer</pharos-dropdown-menu-item
-                  >
-                  <pharos-dropdown-menu-item link="/understand"
-                    >The JSTOR Understanding Series</pharos-dropdown-menu-item
-                  >
-                  <pharos-dropdown-menu-item link="/dfr"
-                    >Data for Research</pharos-dropdown-menu-item
-                  >
-                </pharos-dropdown-menu>
-              </pharos-dropdown-menu-nav>
-              <div class="show-for-large" style="justify-self: end; display: none">
-                ${accountNav('center')}
-              </div>
-            </div>
           </div>
-          <div slot="end" style="display: grid; grid-template-rows: 1fr 1fr" class="hide-for-large">
+          <div slot="end-top"">
             <div>${accountNav('end')}</div>
-            <div
-              style="display: grid; grid-template-columns: 1fr 1fr; align-items: center; justify-items: center"
-            >
-              <pharos-link href="//about.jstor.org" target="_blank" bold>About</pharos-link>
-              <pharos-link href="//support.jstor.org" target="_blank" bold>Support</pharos-link>
-            </div>
+          </div>
+          <div slot="end-bottom" style="display: flex;">
+            <pharos-dropdown-menu-nav label="main navigation" style="display: inline-block">
+              <pharos-dropdown-menu-nav-link
+                href="action/showAdvancedSearch"
+                id="adv-search-link"
+                >Advanced Search</pharos-dropdown-menu-nav-link
+              >
+              <pharos-dropdown-menu-nav-link
+                href="/subjects"
+                id="browse-link"
+                data-dropdown-menu-id="browse-menu"
+                data-dropdown-menu-hover
+                >Browse</pharos-dropdown-menu-nav-link
+              >
+              <pharos-dropdown-menu id="browse-menu">
+                <pharos-dropdown-menu-item link="/subjects">by Subject</pharos-dropdown-menu-item>
+                <pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
+                  >by Title</pharos-dropdown-menu-item
+                >
+                <pharos-dropdown-menu-item link="/site/collection-list"
+                  >by Collections</pharos-dropdown-menu-item
+                >
+                <pharos-dropdown-menu-item link="/publishers"
+                  >by Publisher</pharos-dropdown-menu-item
+                >
+              </pharos-dropdown-menu>
+              <pharos-dropdown-menu-nav-link
+                href="/account/workspace"
+                id="tools-link"
+                data-dropdown-menu-id="tools-menu"
+                data-dropdown-menu-hover
+                >Tools</pharos-dropdown-menu-nav-link
+              >
+              <pharos-dropdown-menu id="tools-menu">
+                <pharos-dropdown-menu-item link="/account/workspace"
+                  >Workspace</pharos-dropdown-menu-item
+                >
+                <pharos-dropdown-menu-item link="/analyze"
+                  >Text Analyzer</pharos-dropdown-menu-item
+                >
+                <pharos-dropdown-menu-item link="/understand"
+                  >The JSTOR Understanding Series</pharos-dropdown-menu-item
+                >
+                <pharos-dropdown-menu-item link="/dfr"
+                  >Data for Research</pharos-dropdown-menu-item
+                >
+              </pharos-dropdown-menu>
+            </pharos-dropdown-menu-nav>
           </div>
         </pharos-header>
       `;
     }}
   </Story>
 </Canvas>
+
+## API
+
+<ArgsTable of="pharos-header" />

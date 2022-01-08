@@ -208,10 +208,8 @@ p.alert-example__content + p.alert-example__content {
   }
 }
 
-@media (min-width: 1024px) {
-  .header-example__input-group {
-    max-width: 80%;
-  }
+.header-example__input-group {
+  padding-bottom: var(--pharos-spacing-1-x);
 }
 
 .layout-example__item {

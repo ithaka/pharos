@@ -1,31 +1,30 @@
+@use '../../utils/scss/mixins';
+
 :host {
   display: block;
 }
 
-.header__container {
+.header__content {
+  grid-area: main;
   display: grid;
-  grid-template: '. main .' auto / minmax(1rem, 1fr) minmax(max-content, 70rem) minmax(1rem, 1fr);
-  padding-top: var(--pharos-spacing-one-half-x);
+  grid-template:
+    'start center end-top' auto
+    'start center end-bottom' auto
+    / 65px minmax(auto, 650px) auto;
+  column-gap: var(--pharos-spacing-1-x);
+  row-gap: var(--pharos-spacing-1-x);
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-one-and-a-half-x) 0;
   border-top: 1px solid var(--pharos-color-ui-40);
   border-bottom: 1px solid var(--pharos-color-ui-40);
 }
 
-.header__content {
-  grid-area: main;
-  max-width: 70rem;
-  display: grid;
-  grid-template: 'start center end' auto / max-content 1fr max-content;
-  column-gap: var(--pharos-spacing-1-x);
-}
-
-@media (max-width: 1024px) {
-  .header__container {
-    grid-template-columns: 1rem auto 1rem;
-    grid-template-rows: auto;
-  }
-
+@include mixins.until(medium) {
   .header__content {
-    grid-template: 'start center' auto / max-content 8fr;
+    grid-template:
+      '. . end-top' auto
+      'start center center' auto
+      '. end-bottom end-bottom' auto
+      / 65px minmax(auto, 650px) auto;
   }
 
   .header__content--end {
@@ -50,8 +49,15 @@
   align-self: end;
 }
 
-.header__content--end {
-  grid-area: end;
+.header__content--end-top {
+  grid-area: end-top;
   justify-self: end;
   align-self: center;
+}
+
+.header__content--end-bottom {
+  grid-area: end-bottom;
+  justify-self: end;
+  align-self: center;
+  display: flex;
 }
