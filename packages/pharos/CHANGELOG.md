@@ -1,5 +1,19 @@
 # @ithaka/pharos
 
+## 12.0.0
+
+### Major Changes
+
+- [#295](https://github.com/ithaka/pharos/pull/295) [`e84f4f6`](https://github.com/ithaka/pharos/commit/e84f4f607a52f6d0b5befb5b60a5dc337e1c5cde) Thanks [@daneah](https://github.com/daneah)! - Update the grid layout and slots to accommodate the latest branded updates for the header
+
+### Minor Changes
+
+- [#293](https://github.com/ithaka/pharos/pull/293) [`78f685e`](https://github.com/ithaka/pharos/commit/78f685e642c8cbd557548e43552b50a97d7009a2) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - pass rel attribute from menu item to underlying anchor tag
+
+* [#290](https://github.com/ithaka/pharos/pull/290) [`0874064`](https://github.com/ithaka/pharos/commit/0874064919d8be4d6dfa1cc690f0123b7940ccbe) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Stop triggering click event on disabled dropdown menu items
+
+- [#281](https://github.com/ithaka/pharos/pull/281) [`1c2d5d6`](https://github.com/ithaka/pharos/commit/1c2d5d6a9784c008ef1947cd90e5035991dd6851) Thanks [@Niznikr](https://github.com/Niznikr)! - add size-limit to measure package size
+
 ## 11.2.1
 
 ### Patch Changes

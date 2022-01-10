@@ -1,5 +1,18 @@
 # @ithaka/pharos-site
 
+## 5.11.0
+
+### Minor Changes
+
+- [#295](https://github.com/ithaka/pharos/pull/295) [`e84f4f6`](https://github.com/ithaka/pharos/commit/e84f4f607a52f6d0b5befb5b60a5dc337e1c5cde) Thanks [@daneah](https://github.com/daneah)! - Update the grid layout and slots to accommodate the latest branded updates for the header
+
+### Patch Changes
+
+- [#276](https://github.com/ithaka/pharos/pull/276) [`929083b`](https://github.com/ithaka/pharos/commit/929083b11253f789c6b8f7c1682baf4cba83f699) Thanks [@JoshAtITHAKA](https://github.com/JoshAtITHAKA)! - Show live component examples at the top of the documentation
+
+- Updated dependencies [[`e84f4f6`](https://github.com/ithaka/pharos/commit/e84f4f607a52f6d0b5befb5b60a5dc337e1c5cde), [`78f685e`](https://github.com/ithaka/pharos/commit/78f685e642c8cbd557548e43552b50a97d7009a2), [`0874064`](https://github.com/ithaka/pharos/commit/0874064919d8be4d6dfa1cc690f0123b7940ccbe), [`1c2d5d6`](https://github.com/ithaka/pharos/commit/1c2d5d6a9784c008ef1947cd90e5035991dd6851)]:
+  - @ithaka/pharos@12.0.0
+
 ## 5.10.1
 
 ### Patch Changes
