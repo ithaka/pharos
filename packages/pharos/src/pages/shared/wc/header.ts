@@ -56,7 +56,7 @@ export const Header = (): TemplateResult => html`
     <pharos-link slot="start" href="/" id="jstor-logo">
       <img src="./images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
     </pharos-link>
-    <div slot="center" style="display: grid; grid-template-rows: 1fr 1fr;">
+    <div slot="center">
       <pharos-input-group
         name="my-input-group"
         hide-label
@@ -71,63 +71,50 @@ export const Header = (): TemplateResult => html`
           label="search"
         ></pharos-button>
       </pharos-input-group>
-      <div style="display: grid; grid-template-columns: 3fr 1fr">
-        <pharos-dropdown-menu-nav label="main navigation" style="display: inline-block">
-          <pharos-dropdown-menu-nav-link
-            href="action/showAdvancedSearch"
-            id="adv-search-menu-link"
-            class="hide-for-small"
-            >Advanced Search</pharos-dropdown-menu-nav-link
-          >
-          <pharos-dropdown-menu-nav-link
-            href="/subjects"
-            id="browse-link"
-            data-dropdown-menu-id="browse-menu"
-            data-dropdown-menu-hover
-            >Browse</pharos-dropdown-menu-nav-link
-          >
-          <pharos-dropdown-menu id="browse-menu">
-            <pharos-dropdown-menu-item link="/subjects">by Subject</pharos-dropdown-menu-item>
-            <pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
-              >by Title</pharos-dropdown-menu-item
-            >
-            <pharos-dropdown-menu-item link="/site/collection-list"
-              >by Collections</pharos-dropdown-menu-item
-            >
-            <pharos-dropdown-menu-item link="/publishers">by Publisher</pharos-dropdown-menu-item>
-          </pharos-dropdown-menu>
-          <pharos-dropdown-menu-nav-link
-            href="/account/workspace"
-            id="tools-link"
-            data-dropdown-menu-id="tools-menu"
-            data-dropdown-menu-hover
-            class="hide-for-small"
-            >Tools</pharos-dropdown-menu-nav-link
-          >
-          <pharos-dropdown-menu id="tools-menu">
-            <pharos-dropdown-menu-item link="/account/workspace"
-              >Workspace</pharos-dropdown-menu-item
-            >
-            <pharos-dropdown-menu-item link="/analyze">Text Analyzer</pharos-dropdown-menu-item>
-            <pharos-dropdown-menu-item link="/understand"
-              >The JSTOR Understanding Series</pharos-dropdown-menu-item
-            >
-            <pharos-dropdown-menu-item link="/dfr">Data for Research</pharos-dropdown-menu-item>
-          </pharos-dropdown-menu>
-        </pharos-dropdown-menu-nav>
-        <div class="show-for-large" style="justify-self: end; display: none">
-          ${accountNav('center')}
-        </div>
-      </div>
     </div>
-    <div slot="end" style="display: grid; grid-template-rows: 1fr 1fr" class="hide-for-large">
-      <div>${accountNav('end')}</div>
-      <div
-        style="display: grid; grid-template-columns: 1fr 1fr; align-items: center; justify-items: center"
-      >
-        <pharos-link href="//about.jstor.org" target="_blank" bold>About</pharos-link>
-        <pharos-link href="//support.jstor.org" target="_blank" bold>Support</pharos-link>
-      </div>
+    <div slot="end-top">${accountNav('end')}</div>
+    <div slot="end-bottom" style="display: flex;">
+      <pharos-dropdown-menu-nav label="main navigation" style="display: inline-block">
+        <pharos-dropdown-menu-nav-link href="action/showAdvancedSearch" id="adv-search-menu-link">
+          Advanced Search
+        </pharos-dropdown-menu-nav-link>
+        <pharos-dropdown-menu-nav-link
+          href="/subjects"
+          id="browse-link"
+          data-dropdown-menu-id="browse-menu"
+          data-dropdown-menu-hover
+        >
+          Browse
+        </pharos-dropdown-menu-nav-link>
+        <pharos-dropdown-menu id="browse-menu">
+          <pharos-dropdown-menu-item link="/subjects">by Subject</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item link="/action/showJournals?browseType=title">
+            by Title
+          </pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item link="/site/collection-list">
+            by Collections
+          </pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item link="/publishers">by Publisher</pharos-dropdown-menu-item>
+        </pharos-dropdown-menu>
+        <pharos-dropdown-menu-nav-link
+          href="/account/workspace"
+          id="tools-link"
+          data-dropdown-menu-id="tools-menu"
+          data-dropdown-menu-hover
+        >
+          Tools
+        </pharos-dropdown-menu-nav-link>
+        <pharos-dropdown-menu id="tools-menu">
+          <pharos-dropdown-menu-item link="/account/workspace">
+            Workspace
+          </pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item link="/analyze">Text Analyzer</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item link="/understand">
+            The JSTOR Understanding Series
+          </pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item link="/dfr">Data for Research</pharos-dropdown-menu-item>
+        </pharos-dropdown-menu>
+      </pharos-dropdown-menu-nav>
     </div>
   </pharos-header>
 `;

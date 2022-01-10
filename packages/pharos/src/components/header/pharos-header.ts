@@ -25,17 +25,18 @@ export class PharosHeader extends PharosElement {
         <div class="header__top">
           <slot name="top"></slot>
         </div>
-        <div class="header__container">
-          <div class="header__content">
-            <div class="header__content--start">
-              <slot name="start"></slot>
-            </div>
-            <div class="header__content--center">
-              <slot name="center"></slot>
-            </div>
-            <div class="header__content--end">
-              <slot name="end"></slot>
-            </div>
+        <div class="header__content">
+          <div class="header__content--start">
+            <slot name="start"></slot>
+          </div>
+          <div class="header__content--center">
+            <slot name="center"></slot>
+          </div>
+          <div class="header__content--end-top">
+            <slot name="end-top"></slot>
+          </div>
+          <div class="header__content--end-bottom">
+            <slot name="end-bottom"></slot>
           </div>
         </div>
       </header>
