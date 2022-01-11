@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.0.1
+
+### Patch Changes
+
+- [#297](https://github.com/ithaka/pharos/pull/297) [`1ac0374`](https://github.com/ithaka/pharos/commit/1ac0374f7862c81c38f036bda3b2b70a87d74f73) Thanks [@daneah](https://github.com/daneah)! - Ensure proper spacing of new end top/bottom area content
+
 ## 12.0.0
 
 ### Major Changes
