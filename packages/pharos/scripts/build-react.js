@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import path from 'path';
 import { globbyStream } from 'globby';
-import customElementsManifest from '../custom-elements.json';
+import customElementsManifest from '../custom-elements.json' assert { type: 'json' };
 import prettier from 'prettier';
 
 const REACT_PROP_TYPE = 'DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>';
