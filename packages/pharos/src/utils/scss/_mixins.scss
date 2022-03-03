@@ -340,7 +340,7 @@
 /// @access public
 /// @group links
 @mixin link-base {
-  @include font-base($font-size: inherit, $line-height: inherit);
+  @include font-base($line-height: inherit);
   @include underline;
 
   letter-spacing: inherit;
