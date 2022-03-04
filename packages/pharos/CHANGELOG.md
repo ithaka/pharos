@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 12.1.0
+
+### Minor Changes
+
+- [#320](https://github.com/ithaka/pharos/pull/320) [`dfe88f9`](https://github.com/ithaka/pharos/commit/dfe88f9252854265f4e66f4b3349c2b7e576a537) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Add new icons checkmark-filled-circle, circle and partial-circle
+
+### Patch Changes
+
+- [#319](https://github.com/ithaka/pharos/pull/319) [`1dc856c`](https://github.com/ithaka/pharos/commit/1dc856c98514154faa6e5b8a5ad2b190deef1ee3) Thanks [@eslawski](https://github.com/eslawski)! - Enhance build process to minify component css
+
 ## 12.0.1
 
 ### Patch Changes
