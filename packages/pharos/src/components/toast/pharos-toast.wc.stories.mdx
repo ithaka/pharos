@@ -114,3 +114,35 @@ import { GuidelineLink } from '@config/GuidelineLink';
     }}
   </Story>
 </Canvas>
+
+## Info Toast
+
+<Canvas>
+  <Story name="Info">
+    {() => {
+      const effect = () => {
+        useEffect(() => {
+          document.querySelector('#info-toast-button').click();
+        });
+      };
+      effect();
+      return html`
+        <pharos-button
+          id="info-toast-button"
+          @click="${() => {
+            const event = new CustomEvent('pharos-toast-open', {
+              detail: {
+                status: 'info',
+                content: 'We are working on your request.',
+              },
+            });
+            document.dispatchEvent(event);
+          }}"
+        >
+          Click me to know more
+        </pharos-button>
+        <pharos-toaster></pharos-toaster>
+      `;
+    }}
+  </Story>
+</Canvas>
