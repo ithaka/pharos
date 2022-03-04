@@ -166,14 +166,18 @@
 /// @access public
 /// @group typography
 @mixin letter-spacing-serif($font-size: 1rem) {
-  letter-spacing: calc(#{$font-size} * -0.01);
+  @if $font-size != inherit {
+    letter-spacing: calc(#{$font-size} * -0.01);
+  }
 }
 
 /// Letter spacing for sans-serif type
 /// @access public
 /// @group typography
 @mixin letter-spacing-sans-serif($font-size: 1rem) {
-  letter-spacing: calc(#{$font-size} * -0.02);
+  @if $font-size != inherit {
+    letter-spacing: calc(#{$font-size} * -0.02);
+  }
 }
 
 /// Base styles for labels
