@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.2.0
+
+### Minor Changes
+
+- [#322](https://github.com/ithaka/pharos/pull/322) [`a5e99c6`](https://github.com/ithaka/pharos/commit/a5e99c6dfff6d22992168c61c12a61a2bf4152d9) Thanks [@jialin-he](https://github.com/jialin-he)! - Add info variation to toast
+
 ## 12.1.0
 
 ### Minor Changes
