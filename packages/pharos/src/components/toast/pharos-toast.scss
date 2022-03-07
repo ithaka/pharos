@@ -54,6 +54,10 @@
   fill: var(--pharos-color-feedback-error);
 }
 
+.toast--info .toast__icon {
+  fill: var(--pharos-color-feedback-info);
+}
+
 :host([open]) .toast {
   opacity: 1;
   transform: translateY(0);

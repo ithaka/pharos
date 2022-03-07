@@ -12,14 +12,15 @@ import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosIcon } from '../icon/pharos-icon';
 import { PharosToastButton } from './pharos-toast-button';
 
-export type ToastStatus = 'success' | 'error';
+export type ToastStatus = 'success' | 'error' | 'info';
 
 export enum TOAST_ICON {
   ERROR = 'exclamation-inverse',
   SUCCESS = 'checkmark-inverse',
+  INFO = 'exclamation-inverse',
 }
 
-const STATUSES = ['success', 'error'];
+const STATUSES = ['success', 'error', 'info'];
 
 const TOAST_LIFE = 6000;
 
