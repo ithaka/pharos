@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.2.2
+
+### Patch Changes
+
+- [#327](https://github.com/ithaka/pharos/pull/327) [`f859df6`](https://github.com/ithaka/pharos/commit/f859df698317e6f0c3cc4c6b29817dafe32f91c1) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - removed fill: #color property on newly added icons to set desired fill color as needed
+
 ## 12.2.1
 
 ### Patch Changes
