@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.2.1
+
+### Patch Changes
+
+- [#325](https://github.com/ithaka/pharos/pull/325) [`3576dbd`](https://github.com/ithaka/pharos/commit/3576dbd603248abc61c7a3b81a2c804a322b8abf) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - remove SVG tags around icon path
+
 ## 12.2.0
 
 ### Minor Changes
