@@ -141,5 +141,15 @@
     "trim": "^0.0.3",
     "marked": "^0.7.0",
     "graphql-config": "^4.1.0"
+  },
+  "dependencies": {
+    "axe-core": "^4.3.3",
+    "browserslist": "^4.16.5",
+    "dotenv-webpack": "^7.0.0",
+    "immer": "^9.0.6",
+    "playwright": "^1.17.1",
+    "terser-webpack-plugin": "^5.0.0",
+    "webpack": "^5.64.1",
+    "webpack-dev-middleware": "^5.2.2"
   }
 }
