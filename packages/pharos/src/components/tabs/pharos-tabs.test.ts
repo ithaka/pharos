@@ -245,15 +245,15 @@ describe('pharos-tabs', () => {
     expect(count).to.equal(0);
   });
 
-  it('does not render horizontal line', async () => {
-    const spanElement = component.renderRoot.querySelector('span') as HTMLDivElement;
+  it('does not render panel separator', async () => {
+    const spanElement = component.renderRoot.querySelector('.panel-separator') as HTMLDivElement;
 
     expect(spanElement).to.be.null;
   });
 
-  it('renders horizontal line', async () => {
+  it('renders panel separator', async () => {
     component = await fixture(html`
-      <pharos-tabs horizontalline="true">
+      <pharos-tabs panelseparator="true">
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
         <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
         <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
@@ -263,7 +263,7 @@ describe('pharos-tabs', () => {
       </pharos-tabs>
     `);
 
-    const spanElement = component.renderRoot.querySelector('span') as HTMLDivElement;
+    const spanElement = component.renderRoot.querySelector('.panel-separator') as HTMLDivElement;
 
     expect(spanElement).not.to.be.null;
   });

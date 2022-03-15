@@ -18,11 +18,11 @@ import type { PharosTabPanel } from './pharos-tab-panel';
  */
 export class PharosTabs extends PharosElement {
   /**
-   * If should display a horizontal line.
-   * @attr horizontalLine
+   * If should display a panel separator.
+   * @attr panelSeparator
    */
   @property({ type: Boolean, reflect: true })
-  public horizontalLine = false;
+  public panelSeparator = false;
 
   public static override get styles(): CSSResultArray {
     return [tabsStyles];
@@ -162,15 +162,15 @@ export class PharosTabs extends PharosElement {
       }
     });
   }
-  private _renderHorizontalLine() {
-    return this.horizontalLine ? html`<span class="horizontal-line"></span>` : null;
+  private _renderPanelSeparator() {
+    return this.panelSeparator ? html`<span class="panel-separator"></span>` : null;
   }
 
   private _renderTabList() {
     return html`
       <div class="tab__list" role="tablist">
         <slot></slot>
-        ${this._renderHorizontalLine()}
+        ${this._renderPanelSeparator()}
       </div>
     `;
   }
