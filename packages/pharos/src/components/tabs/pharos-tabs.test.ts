@@ -244,4 +244,27 @@ describe('pharos-tabs', () => {
     await component.updateComplete;
     expect(count).to.equal(0);
   });
+
+  it('does not render horizontal line', async () => {
+    const spanElement = component.renderRoot.querySelector('span') as HTMLDivElement;
+
+    expect(spanElement).to.be.null;
+  });
+
+  it('renders horizontal line', async () => {
+    component = await fixture(html`
+      <pharos-tabs horizontalline="true">
+        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
+        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
+        <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
+        <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
+        <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
+        <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
+      </pharos-tabs>
+    `);
+
+    const spanElement = component.renderRoot.querySelector('span') as HTMLDivElement;
+
+    expect(spanElement).not.to.be.null;
+  });
 });
