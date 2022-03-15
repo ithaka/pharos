@@ -1,6 +1,7 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
+import { property } from 'lit/decorators.js';
 import { tabsStyles } from './pharos-tabs.css';
 
 import type { PharosTab } from './pharos-tab';
@@ -16,6 +17,13 @@ import type { PharosTabPanel } from './pharos-tab-panel';
  *
  */
 export class PharosTabs extends PharosElement {
+  /**
+   * If should display a horizontal line.
+   * @attr horizontalLine
+   */
+  @property({ type: Boolean, reflect: true })
+  public horizontalLine = false;
+
   public static override get styles(): CSSResultArray {
     return [tabsStyles];
   }
@@ -155,14 +163,29 @@ export class PharosTabs extends PharosElement {
     });
   }
 
-  protected override render(): TemplateResult {
+  private _renderTabList() {
     return html`
       <div class="tab__list" role="tablist">
         <slot></slot>
       </div>
+    `;
+  }
+
+  private _renderHorizontalLine() {
+    return this.horizontalLine ? html`<span class="horizontal-line"></span>` : null;
+  }
+
+  private _renderTabPanels() {
+    return html`
       <div class="tab__panels">
         <slot name="panel"></slot>
       </div>
+    `;
+  }
+
+  protected override render(): TemplateResult {
+    return html`
+      ${this._renderTabList()} ${this._renderHorizontalLine()} ${this._renderTabPanels()}
     `;
   }
 }
