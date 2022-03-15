@@ -19,8 +19,6 @@
 
 .horizontal-line {
   border-bottom: 1px solid var(--pharos-color-ui-40);
-  position: fixed;
-  top: 2.5rem;
   width: 100%;
-  z-index: -1;
+  flex: 2;
 }

@@ -162,17 +162,17 @@ export class PharosTabs extends PharosElement {
       }
     });
   }
+  private _renderHorizontalLine() {
+    return this.horizontalLine ? html`<span class="horizontal-line"></span>` : null;
+  }
 
   private _renderTabList() {
     return html`
       <div class="tab__list" role="tablist">
         <slot></slot>
+        ${this._renderHorizontalLine()}
       </div>
     `;
-  }
-
-  private _renderHorizontalLine() {
-    return this.horizontalLine ? html`<span class="horizontal-line"></span>` : null;
   }
 
   private _renderTabPanels() {
@@ -184,8 +184,6 @@ export class PharosTabs extends PharosElement {
   }
 
   protected override render(): TemplateResult {
-    return html`
-      ${this._renderTabList()} ${this._renderHorizontalLine()} ${this._renderTabPanels()}
-    `;
+    return html` ${this._renderTabList()} ${this._renderTabPanels()} `;
   }
 }
