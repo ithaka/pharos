@@ -10,10 +10,6 @@
   margin-bottom: var(--pharos-spacing-one-and-a-half-x);
 }
 
-:host([horizontalline]) .tab__list {
-  margin-bottom: unset;
-}
-
 .tab__panels {
   display: flex;
   flex-direction: column;
@@ -23,5 +19,8 @@
 
 .horizontal-line {
   border-bottom: 1px solid var(--pharos-color-ui-40);
-  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+  position: fixed;
+  top: 2.5rem;
+  width: 100%;
+  z-index: -1;
 }
