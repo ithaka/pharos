@@ -253,7 +253,7 @@ describe('pharos-tabs', () => {
 
   it('renders panel separator', async () => {
     component = await fixture(html`
-      <pharos-tabs panelseparator="true">
+      <pharos-tabs panel-separator>
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
         <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
         <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
