@@ -19,9 +19,9 @@ import type { PharosTabPanel } from './pharos-tab-panel';
 export class PharosTabs extends PharosElement {
   /**
    * If should display a panel separator.
-   * @attr panelSeparator
+   * @attr panel-separator
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean, reflect: true, attribute: 'panel-separator' })
   public panelSeparator = false;
 
   public static override get styles(): CSSResultArray {
