@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.2.3
+
+### Patch Changes
+
+- [#330](https://github.com/ithaka/pharos/pull/330) [`732fe3e`](https://github.com/ithaka/pharos/commit/732fe3e51cb164c7fcb416fc2a70fa80b07e99f3) Thanks [@NazimHAli](https://github.com/NazimHAli)! - Add optional horizontal line to the tabs component
+
 ## 12.2.2
 
 ### Patch Changes
