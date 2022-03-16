@@ -1,6 +1,7 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
+import { property } from 'lit/decorators.js';
 import { tabsStyles } from './pharos-tabs.css';
 
 import type { PharosTab } from './pharos-tab';
@@ -16,6 +17,13 @@ import type { PharosTabPanel } from './pharos-tab-panel';
  *
  */
 export class PharosTabs extends PharosElement {
+  /**
+   * If should display a panel separator.
+   * @attr panel-separator
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'panel-separator' })
+  public panelSeparator = false;
+
   public static override get styles(): CSSResultArray {
     return [tabsStyles];
   }
@@ -154,15 +162,28 @@ export class PharosTabs extends PharosElement {
       }
     });
   }
+  private _renderPanelSeparator() {
+    return this.panelSeparator ? html`<span class="panel-separator"></span>` : null;
+  }
 
-  protected override render(): TemplateResult {
+  private _renderTabList() {
     return html`
       <div class="tab__list" role="tablist">
         <slot></slot>
+        ${this._renderPanelSeparator()}
       </div>
+    `;
+  }
+
+  private _renderTabPanels() {
+    return html`
       <div class="tab__panels">
         <slot name="panel"></slot>
       </div>
     `;
+  }
+
+  protected override render(): TemplateResult {
+    return html` ${this._renderTabList()} ${this._renderTabPanels()} `;
   }
 }

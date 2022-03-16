@@ -16,3 +16,9 @@
   overflow-y: hidden;
   padding: var(--pharos-spacing-one-quarter-x);
 }
+
+.panel-separator {
+  border-bottom: 1px solid var(--pharos-color-ui-40);
+  width: 100%;
+  flex: 2;
+}
