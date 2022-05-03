@@ -75,7 +75,7 @@ export const Header = (): TemplateResult => html`
     <div slot="end-top">${accountNav('end')}</div>
     <div slot="end-bottom" style="display: flex;">
       <pharos-dropdown-menu-nav label="main navigation" style="display: inline-block">
-        <pharos-dropdown-menu-nav-link href="action/showAdvancedSearch" id="adv-search-menu-link">
+        <pharos-dropdown-menu-nav-link href="/action/showAdvancedSearch" id="adv-search-menu-link">
           Advanced Search
         </pharos-dropdown-menu-nav-link>
         <pharos-dropdown-menu-nav-link
