@@ -107,7 +107,7 @@ export const Header: FC = () => (
     >
       <PharosDropdownMenuNav label="main navigation">
         <PharosDropdownMenuNavLink
-          href="action/showAdvancedSearch"
+          href="/action/showAdvancedSearch"
           id="adv-search-menu-link"
           className="hide-for-small"
         >

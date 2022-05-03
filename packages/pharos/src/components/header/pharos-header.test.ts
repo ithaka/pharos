@@ -14,7 +14,7 @@ describe('pharos-header', () => {
         </pharos-link>
         <div slot="center">
           <pharos-dropdown-menu-nav label="main navigation">
-            <pharos-dropdown-menu-nav-link href="action/showAdvancedSearch" id="adv-search-link"
+            <pharos-dropdown-menu-nav-link href="/action/showAdvancedSearch" id="adv-search-link"
               >Advanced Search</pharos-dropdown-menu-nav-link
             >
             <pharos-dropdown-menu-nav-link

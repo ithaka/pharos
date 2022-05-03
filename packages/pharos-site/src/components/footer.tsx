@@ -37,7 +37,7 @@ const Footer: FC = () => {
             <ul className={list}>
               <li>
                 <PharosLink
-                  href="components/component-status"
+                  href="/components/component-status"
                   onBackground
                   data-sc="link:component status footer"
                   onClick={handleLinkClick}
