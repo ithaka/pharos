@@ -64,6 +64,7 @@
     "@changesets/cli": "^2.18.0",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@size-limit/preset-small-lib": "^7.0.4",
     "@storybook/addon-a11y": "^6.5.0-alpha.5",
     "@storybook/addon-actions": "^6.5.0-alpha.5",
     "@storybook/addon-backgrounds": "^6.5.0-alpha.5",
@@ -111,6 +112,7 @@
     "react-dom": "^17.0.1",
     "sass": "^1.42.1",
     "sass-loader": "^12.3.0",
+    "size-limit": "^7.0.4",
     "style-loader": "^3.3.1",
     "stylelint": "^14.0.0",
     "stylelint-config-prettier": "^9.0.3",
@@ -141,5 +143,10 @@
     "trim": "^0.0.3",
     "marked": "^0.7.0",
     "graphql-config": "^4.1.0"
-  }
+  },
+  "size-limit": [
+    {
+      "path": "packages/pharos/lib/index.js"
+    }
+  ]
 }
