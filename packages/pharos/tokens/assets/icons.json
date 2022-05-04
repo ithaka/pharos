@@ -41,7 +41,7 @@
       "exclamation-inverse": { "value": "assets/icons/exclamation-inverse.svg" },
       "exclamation": { "value": "assets/icons/exclamation.svg" },
       "expand": {
-        "value": "assets/icons/expand.svg",
+        "value": "assets/icons/shift-left.svg",
         "deprecated": true,
         "deprecated_comment": "Use shift-<direction> instead"
       },
