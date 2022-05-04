@@ -26,7 +26,7 @@
       "close-inverse": { "value": "assets/icons/close-inverse.svg" },
       "close": { "value": "assets/icons/close.svg" },
       "collapse": {
-        "value": "assets/icons/collapse.svg",
+        "value": "assets/icons/shift-right.svg",
         "deprecated": true,
         "deprecated_comment": "Use shift-<direction> instead"
       },
