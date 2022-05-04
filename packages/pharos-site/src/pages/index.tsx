@@ -49,7 +49,7 @@ const IndexPage: FC = () => {
           </PharosHeading>
           <PharosLink
             className={link__status}
-            href="components/component-status"
+            href="/components/component-status"
             onBackground
             flex
             data-sc="link:component status hero"
@@ -74,7 +74,7 @@ const IndexPage: FC = () => {
           <PharosButton
             className={button__card}
             variant="secondary"
-            href="brand-expressions/color"
+            href="/brand-expressions/color"
             data-sc="link:logos"
             onClick={handleLinkClick}
           >
@@ -95,7 +95,7 @@ const IndexPage: FC = () => {
           <PharosButton
             className={button__card}
             variant="secondary"
-            href="components/component-status"
+            href="/components/component-status"
             data-sc="link:component status"
             onClick={handleLinkClick}
           >
@@ -116,7 +116,7 @@ const IndexPage: FC = () => {
           <PharosButton
             className={button__card}
             variant="secondary"
-            href="getting-started"
+            href="/getting-started"
             data-sc="link:getting started"
             onClick={handleLinkClick}
           >
