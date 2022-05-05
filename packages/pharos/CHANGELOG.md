@@ -1,5 +1,17 @@
 # @ithaka/pharos
 
+## 12.3.0
+
+### Minor Changes
+
+- [#339](https://github.com/ithaka/pharos/pull/339) [`815c516`](https://github.com/ithaka/pharos/commit/815c51682460782ec5f893d2e3f8f945282fcb50) Thanks [@jialin-he](https://github.com/jialin-he)! - Add new icons expand-vertical and collapse-vertical
+
+### Patch Changes
+
+- [#336](https://github.com/ithaka/pharos/pull/336) [`28dd444`](https://github.com/ithaka/pharos/commit/28dd444580d24c33625bfca74a7d0c0f03da3e9e) Thanks [@daneah](https://github.com/daneah)! - Update page-relative paths to domain-relative paths
+
+* [#338](https://github.com/ithaka/pharos/pull/338) [`54cb97b`](https://github.com/ithaka/pharos/commit/54cb97be3b88c738ddecec4c5369b96f69bebbfb) Thanks [@daneah](https://github.com/daneah)! - Move size-limit checks up to the project root
+
 ## 12.2.3
 
 ### Patch Changes
