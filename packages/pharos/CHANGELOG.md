@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.3.1
+
+### Patch Changes
+
+- [#342](https://github.com/ithaka/pharos/pull/342) [`f777f9e`](https://github.com/ithaka/pharos/commit/f777f9e99da158f51427cad18175086f3b320645) Thanks [@jialin-he](https://github.com/jialin-he)! - Remove fill attribute from shift icon svg
+
 ## 12.3.0
 
 ### Minor Changes
