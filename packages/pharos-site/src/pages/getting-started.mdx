@@ -41,6 +41,13 @@ Once installed, the `node_modules/` directory should contain directories similar
 Pharos uses <PharosLink href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</PharosLink> to remain compatible with modern JavaScript frameworks, such as Vue or React.
 To accomodate patterns of each framework, the implementations vary slightly.
 
+You will first need to provide the scoped custom element registry to your application.
+This is generally achieved by including this script tag in the head of your application.
+
+```javascript
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/scoped-custom-element-registry@0.0.3/scoped-custom-element-registry.min.js"></script>
+```
+
 You need to first register components on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) for them to be usable in your code.
 To register components, you can use the `registerComponents` utility to define all the Pharos components your application uses, with a consistent scoping prefix:
 
