@@ -55,6 +55,14 @@ describe('pharos-toast', () => {
     expect(icon?.name).to.equal('exclamation-inverse');
   });
 
+  it('renders an exclamation icon with info status', async () => {
+    component.status = 'info';
+    await component.updateComplete;
+
+    const icon = component.renderRoot.querySelector('pharos-icon') as PharosIcon;
+    expect(icon?.name).to.equal('exclamation-inverse');
+  });
+
   it('fires a custom event pharos-toast-close after closing', async () => {
     let detail = null;
     const handleClose = (e: Event): void => {

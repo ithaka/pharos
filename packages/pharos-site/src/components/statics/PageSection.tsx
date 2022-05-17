@@ -141,6 +141,7 @@ const PageSection: FC<PageSectionProps> = ({
     );
     setDisplay(content);
   }, [
+    topMargin,
     Pharos,
     children,
     description,

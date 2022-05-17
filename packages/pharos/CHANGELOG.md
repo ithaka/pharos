@@ -1,5 +1,57 @@
 # @ithaka/pharos
 
+## 12.3.0
+
+### Minor Changes
+
+- [#339](https://github.com/ithaka/pharos/pull/339) [`815c516`](https://github.com/ithaka/pharos/commit/815c51682460782ec5f893d2e3f8f945282fcb50) Thanks [@jialin-he](https://github.com/jialin-he)! - Add new icons expand-vertical and collapse-vertical
+
+### Patch Changes
+
+- [#336](https://github.com/ithaka/pharos/pull/336) [`28dd444`](https://github.com/ithaka/pharos/commit/28dd444580d24c33625bfca74a7d0c0f03da3e9e) Thanks [@daneah](https://github.com/daneah)! - Update page-relative paths to domain-relative paths
+
+* [#338](https://github.com/ithaka/pharos/pull/338) [`54cb97b`](https://github.com/ithaka/pharos/commit/54cb97be3b88c738ddecec4c5369b96f69bebbfb) Thanks [@daneah](https://github.com/daneah)! - Move size-limit checks up to the project root
+
+## 12.2.3
+
+### Patch Changes
+
+- [#330](https://github.com/ithaka/pharos/pull/330) [`732fe3e`](https://github.com/ithaka/pharos/commit/732fe3e51cb164c7fcb416fc2a70fa80b07e99f3) Thanks [@NazimHAli](https://github.com/NazimHAli)! - Add optional horizontal line to the tabs component
+
+## 12.2.2
+
+### Patch Changes
+
+- [#327](https://github.com/ithaka/pharos/pull/327) [`f859df6`](https://github.com/ithaka/pharos/commit/f859df698317e6f0c3cc4c6b29817dafe32f91c1) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - removed fill: #color property on newly added icons to set desired fill color as needed
+
+## 12.2.1
+
+### Patch Changes
+
+- [#325](https://github.com/ithaka/pharos/pull/325) [`3576dbd`](https://github.com/ithaka/pharos/commit/3576dbd603248abc61c7a3b81a2c804a322b8abf) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - remove SVG tags around icon path
+
+## 12.2.0
+
+### Minor Changes
+
+- [#322](https://github.com/ithaka/pharos/pull/322) [`a5e99c6`](https://github.com/ithaka/pharos/commit/a5e99c6dfff6d22992168c61c12a61a2bf4152d9) Thanks [@jialin-he](https://github.com/jialin-he)! - Add info variation to toast
+
+## 12.1.0
+
+### Minor Changes
+
+- [#320](https://github.com/ithaka/pharos/pull/320) [`dfe88f9`](https://github.com/ithaka/pharos/commit/dfe88f9252854265f4e66f4b3349c2b7e576a537) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Add new icons checkmark-filled-circle, circle and partial-circle
+
+### Patch Changes
+
+- [#319](https://github.com/ithaka/pharos/pull/319) [`1dc856c`](https://github.com/ithaka/pharos/commit/1dc856c98514154faa6e5b8a5ad2b190deef1ee3) Thanks [@eslawski](https://github.com/eslawski)! - Enhance build process to minify component css
+
+## 12.0.1
+
+### Patch Changes
+
+- [#297](https://github.com/ithaka/pharos/pull/297) [`1ac0374`](https://github.com/ithaka/pharos/commit/1ac0374f7862c81c38f036bda3b2b70a87d74f73) Thanks [@daneah](https://github.com/daneah)! - Ensure proper spacing of new end top/bottom area content
+
 ## 12.0.0
 
 ### Major Changes

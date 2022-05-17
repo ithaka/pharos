@@ -51,12 +51,12 @@
 .header__content--end-top {
   grid-area: end-top;
   justify-self: end;
-  align-self: center;
+  align-self: start;
 }
 
 .header__content--end-bottom {
   grid-area: end-bottom;
   justify-self: end;
-  align-self: center;
+  align-self: end;
   display: flex;
 }

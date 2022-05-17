@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "12.0.0",
+  "version": "12.3.0",
   "description": "Pharos web components for products and experiences",
   "files": [
     "lib",
@@ -63,7 +63,6 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.5.6",
     "@open-wc/testing": "^3.0.1",
-    "@size-limit/preset-small-lib": "^7.0.4",
     "@types/react-dom": "^17.0.0",
     "@types/react": "^17.0.1",
     "@web/test-runner": "^0.13.16",
@@ -82,15 +81,9 @@
     "sass": "^1.42.1",
     "sassdoc": "^2.7.3",
     "sinon": "^12.0.1",
-    "size-limit": "^7.0.4",
     "style-dictionary": "^3.0.1",
     "ts-lit-plugin": "^1.2.1",
     "typescript": "^4.5.2"
   },
-  "customElements": "custom-elements.json",
-  "size-limit": [
-    {
-      "path": "lib/index.js"
-    }
-  ]
+  "customElements": "custom-elements.json"
 }
