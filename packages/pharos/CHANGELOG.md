@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.4.0
+
+### Minor Changes
+
+- [#349](https://github.com/ithaka/pharos/pull/349) [`8f34535`](https://github.com/ithaka/pharos/commit/8f345353f0afacd6b334bd578ae8c74622045a1c) Thanks [@acjreno](https://github.com/acjreno)! - Addition: new icon for ZIP filetypes
+
 ## 12.3.1
 
 ### Patch Changes
