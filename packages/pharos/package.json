@@ -63,8 +63,8 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.5.6",
     "@open-wc/testing": "^3.0.1",
-    "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
+    "@types/react": "^17.0.1",
     "@web/test-runner": "^0.13.16",
     "@web/test-runner-commands": "^0.5.10",
     "@web/test-runner-playwright": "^0.8.8",
