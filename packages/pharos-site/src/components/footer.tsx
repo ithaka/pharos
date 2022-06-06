@@ -85,11 +85,7 @@ const Footer: FC = () => {
                 </PharosLink>
               </li>
               <li className={container__link}>
-                <PharosLink
-                  href="https://recruiting.ultipro.com/ITH1000ITHAK/JobBoard/5fe90ad4-9e26-490b-9c45-6c9669d4dcd0/?q=&o=postedDateDesc"
-                  onBackground
-                  target="_blank"
-                >
+                <PharosLink href="https://www.ithaka.org/careers/" onBackground target="_blank">
                   Careers
                 </PharosLink>
                 <strong className={badge}>We&apos;re hiring!</strong>
