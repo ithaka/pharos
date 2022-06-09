@@ -98,8 +98,8 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
    * Indicates the button is on a AA compliant background.
    * @attr on-background
    */
-  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
-  public onBackground = false;
+  @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
+  public isOnBackground = false;
 
   /**
    * Indicates the button has more padding.
