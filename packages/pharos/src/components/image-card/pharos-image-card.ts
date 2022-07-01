@@ -119,6 +119,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   @state()
   private _isHovered = false;
 
+  @state()
+  private _isSelected = false;
+
   @query('.card__link--title')
   private _title!: PharosLink;
 
@@ -144,8 +147,12 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     menu?.openWithTrigger(trigger);
   }
 
+  private _handleCheckboxClick(e: MouseEvent): void {
+    e.preventDefault();
+    this._isSelected = !this._isSelected;
+  }
+
   private _handleImageMouseEnter(): void {
-    console.log('ENTER');
     this._title['_hover'] = true;
     this._isHovered = true;
 
@@ -154,7 +161,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _handleImageMouseLeave(): void {
-    console.log('EXIT');
     this._title['_hover'] = false;
     this._isHovered = false;
 
@@ -198,7 +204,8 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return html`<pharos-link
       class=${classMap({
         [`card__link--image`]: true,
-        [`card__selected`]: this._isSelectHover(),
+        [`card__selectable`]: this._isSelectHover(),
+        [`card__selected`]: this._isSelected,
       })}
       href="${this.link}"
       label=${ifDefined(this.imageLinkLabel)}
@@ -274,13 +281,18 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _isSelectHover(): boolean {
-    console.log('HOV: ', Boolean(this.selectable && this._isHovered));
     return Boolean(this.selectable && this._isHovered);
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
     return this._isSelectHover()
-      ? html`<pharos-checkbox class="card__selector"></pharos-checkbox>`
+      ? html`<pharos-checkbox
+          class="card__selector"
+          ?checked=${this._isSelected}
+          @mouseenter=${this._handleImageMouseEnter}
+          @mouseleave=${this._handleImageMouseLeave}
+          @click=${this._handleCheckboxClick}
+        ></pharos-checkbox>`
       : nothing;
   }
 }
