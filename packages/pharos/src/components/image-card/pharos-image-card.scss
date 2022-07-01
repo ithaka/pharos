@@ -123,13 +123,6 @@
   height: 100%;
   width: 100%;
 }
-.checkboxNoHover {
-  display: none;
-}
-
-.checkboxHover {
-  display: inline;
-}
 
 :host([subtle]) .card__link--image {
   position: relative;
