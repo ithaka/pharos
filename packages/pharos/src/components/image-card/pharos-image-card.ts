@@ -1,5 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html, nothing } from 'lit';
+import { state } from 'lit/decorators.js';
 import { property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
@@ -15,6 +16,7 @@ import { PharosHeading } from '../heading/pharos-heading';
 import { PharosLink } from '../link/pharos-link';
 import { PharosIcon } from '../icon/pharos-icon';
 import { PharosButton } from '../button/pharos-button';
+import { PharosCheckbox } from '../checkbox/pharos-checkbox';
 
 export type ImageCardVariant = 'base' | 'collection' | 'promotional';
 
@@ -39,6 +41,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     'pharos-link': PharosLink,
     'pharos-icon': PharosIcon,
     'pharos-button': PharosButton,
+    'pharos-checkbox': PharosCheckbox,
   };
 
   /**
@@ -105,6 +108,16 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   @property({ type: Number, reflect: true, attribute: 'heading-level' })
   public headingLevel?: HeadingLevel;
 
+  /**
+   * Indicates if the image can be selected
+   * @attr selectable
+   */
+  @property({ type: String, reflect: true, attribute: 'selectable' })
+  public selectable?: string;
+
+  @state()
+  private _isHovered = false;
+
   @query('.card__link--title')
   private _title!: PharosLink;
 
@@ -131,17 +144,22 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _handleImageMouseEnter(): void {
+    console.log('ENTER');
     this._title['_hover'] = true;
+    this._isHovered = true;
 
     const mouseEvent = new CustomEvent('pharos-image-card-image-mouseenter');
     this.dispatchEvent(mouseEvent);
   }
 
   private _handleImageMouseLeave(): void {
+    console.log('EXIT');
     this._title['_hover'] = false;
+    this._isHovered = false;
 
     const mouseEvent = new CustomEvent('pharos-image-card-image-mouseleave');
     this.dispatchEvent(mouseEvent);
+    this._renderCheckbox();
   }
 
   private _renderCollectionImage(): TemplateResult {
@@ -245,9 +263,15 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   protected override render(): TemplateResult {
     return html`<div class="card">
-      ${this._renderImage()} ${this._renderSourceType()}
+      ${this._renderCheckbox()} ${this._renderImage()} ${this._renderSourceType()}
       <div class="card__title">${this.renderTitle} ${this._renderActionButton()}</div>
       ${this._renderMetadata()}
     </div>`;
+  }
+
+  private _renderCheckbox(): TemplateResult | typeof nothing {
+    return this.selectable && this._isHovered
+      ? html`<pharos-checkbox class="card__selector"></pharos-checkbox>`
+      : nothing;
   }
 }

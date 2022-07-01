@@ -123,6 +123,29 @@ export const PromotionalTemplate = () => html`<pharos-layout style="margin: 1rem
   </div>
 </pharos-layout>`;
 
+export const SelectableTemplate = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
+  ${items.map((item, index) => {
+    return html`<li style="grid-column: span 2">
+      <pharos-image-card id="card-${index}" title="Card Title" link="#" source-type="Image">
+        <img
+          id="image-${index}"
+          src="./images/item-detail/${item.image}"
+          alt="Card Title ${index}"
+          slot="image"
+        />
+        <div id="creator-${index}" slot="metadata">Creator of the item</div>
+        <div id="item-date-${index}" slot="metadata">1990-2000</div>
+        <div id="collection-${index}" slot="metadata">
+          Part of
+          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+            >An Example Collection</pharos-link
+          >
+        </div>
+      </pharos-image-card>
+    </li>`;
+  })}</pharos-layout
+>`;
+
 <Canvas>
   <Story name="Base">{MultipleTemplate.bind({})}</Story>
 </Canvas>
@@ -243,4 +266,36 @@ export const PromotionalTemplate = () => html`<pharos-layout style="margin: 1rem
 
 <Canvas>
   <Story name="Promotional">{PromotionalTemplate.bind({})}</Story>
+</Canvas>
+
+# Selectable
+
+<Canvas>
+  <Story name="Selectable">
+    {html`
+      <pharos-layout ">
+        <pharos-image-card
+          title="South Hall but you can select it"
+          link="https://www.jstor.org/stable/10.2307/community.26220188"
+          selectable="True"
+          style="grid-column: span 2"
+        >
+          <img
+            id="image"
+            src="./images/item-detail/collection_5.png"
+            alt="south hall"
+            slot="image"
+          />
+          <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
+          <div id="item-date" slot="metadata">1889-1892 (creation)</div>
+          <div id="collection" slot="metadata">
+            Part of
+            <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+              >Pratt Institute Buildings Image Collection</pharos-link
+            >
+          </div>
+        </pharos-image-card>
+      </pharos-layout>
+    `}
+  </Story>
 </Canvas>

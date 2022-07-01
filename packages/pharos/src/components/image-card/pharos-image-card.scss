@@ -107,6 +107,10 @@
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
+.card__selector {
+  position: absolute;
+}
+
 :host(:not([variant='promotional'])) {
   .card__heading,
   .card__title--hover {
@@ -118,6 +122,13 @@
   display: block;
   height: 100%;
   width: 100%;
+}
+.checkboxNoHover {
+  display: none;
+}
+
+.checkboxHover {
+  display: inline;
 }
 
 :host([subtle]) .card__link--image {
