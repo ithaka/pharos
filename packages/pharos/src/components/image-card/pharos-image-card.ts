@@ -1,5 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html, nothing } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators.js';
 import { property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -195,7 +196,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderBaseImage(): TemplateResult {
     return html`<pharos-link
-      class="card__link--image"
+      class=${classMap({
+        [`card__link--image`]: true,
+        [`card__selected`]: this._isSelectHover(),
+      })}
       href="${this.link}"
       label=${ifDefined(this.imageLinkLabel)}
       subtle
@@ -269,8 +273,13 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     </div>`;
   }
 
+  private _isSelectHover(): boolean {
+    console.log('HOV: ', Boolean(this.selectable && this._isHovered));
+    return Boolean(this.selectable && this._isHovered);
+  }
+
   private _renderCheckbox(): TemplateResult | typeof nothing {
-    return this.selectable && this._isHovered
+    return this._isSelectHover()
       ? html`<pharos-checkbox class="card__selector"></pharos-checkbox>`
       : nothing;
   }

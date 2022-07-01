@@ -14,7 +14,11 @@
 .card__link--image {
   position: relative;
   height: 14rem;
-  margin: 0 auto var(--pharos-spacing-1-x);
+  justify-content: center;
+}
+
+.card__selected {
+  background-color: var(--pharos-color-marble-gray-94);
 }
 
 .card__link--image,
@@ -109,6 +113,9 @@
 
 .card__selector {
   position: absolute;
+  z-index: 1;
+  margin-top: var(--pharos-spacing-one-quarter-x);
+  margin-left: var(--pharos-spacing-one-quarter-x);
 }
 
 :host(:not([variant='promotional'])) {
