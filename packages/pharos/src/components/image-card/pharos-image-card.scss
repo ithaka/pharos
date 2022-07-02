@@ -21,6 +21,10 @@
   background-color: var(--pharos-color-marble-gray-94);
 }
 
+.card__strong-selectable-hover {
+  background-color: var(--pharos-color-marble-gray-base);
+}
+
 slot[name='image']::slotted(img) {
   height: 100%;
   width: 100%;
@@ -31,6 +35,7 @@ slot[name='image']::slotted(img) {
 .card__selected {
   background-color: var(--pharos-color-white);
   border: solid 2px var(--pharos-color-interactive-secondary);
+  box-sizing: border-box;
 
   slot[name='image']::slotted(img) {
     height: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));

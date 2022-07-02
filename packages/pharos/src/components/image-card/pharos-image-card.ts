@@ -114,13 +114,25 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
    * @attr subtleselect
    */
   @property({ type: Boolean, reflect: true })
-  public subtleselect?: Boolean;
+  public subtleselect?: boolean;
+  // /**
+  //  * Indicates if the image can be selected
+  //  * @attr selectable
+  //  */
+  // @property({ type: String, reflect: true, attribute: 'selectable' })
+  // public selectable?: string;
 
   @state()
   private _isHovered = false;
 
-  @state()
-  private _isSelected = false;
+  // @state()
+  // private _isSelected = false;
+  /**
+   * Indicates if the image card is selected
+   * @attr selected
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'selected' })
+  public _isSelected = false;
 
   @query('.card__link--title')
   private _title!: PharosLink;
@@ -147,14 +159,14 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     menu?.openWithTrigger(trigger);
   }
 
-  private _handleCheckboxClick(e: MouseEvent): void {
-    e.preventDefault();
-    this._isSelected = !this._isSelected;
-  }
+  // private _handleCheckboxClick(e: MouseEvent): void {
+  //   e.preventDefault();
+  //   this._isSelected = !this._isSelected;
+  // }
 
   private _handleImageMouseEnter(): void {
     this._title['_hover'] = true;
-    this._isHovered = true;
+    this._handleMouseEnterSelectable();
 
     const mouseEvent = new CustomEvent('pharos-image-card-image-mouseenter');
     this.dispatchEvent(mouseEvent);
@@ -162,11 +174,19 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _handleImageMouseLeave(): void {
     this._title['_hover'] = false;
-    this._isHovered = false;
+    this._handleMouseLeaveSelectable();
 
     const mouseEvent = new CustomEvent('pharos-image-card-image-mouseleave');
     this.dispatchEvent(mouseEvent);
     this._renderCheckbox();
+  }
+
+  private _handleMouseEnterSelectable(): void {
+    this._isHovered = true;
+  }
+
+  private _handleMouseLeaveSelectable(): void {
+    this._isHovered = false;
   }
 
   private _renderCollectionImage(): TemplateResult {
@@ -203,10 +223,11 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderBaseImage(): TemplateResult {
     return html`<pharos-link
       class=${classMap({
-      [`card__link--image`]: true,
-      [`card__selectable`]: this._isSelectHover(),
-      [`card__selected`]: this._isSelected,
-    })}
+        [`card__link--image`]: true,
+        [`card__selectable`]: this._isSubtleSelectHover() || this._isStronglySelectable(),
+        [`card__selected`]: this._isSelected,
+        [`card__strong-selectable-hover`]: this._isStrongSelectHover(),
+      })}
       href="${this.link}"
       label=${ifDefined(this.imageLinkLabel)}
       subtle
@@ -214,6 +235,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       no-hover
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
+      @click=${this._cardSelected}
       >${this._renderLinkContent()}${this._renderHoverMetadata()} <slot name="overlay"></slot
     ></pharos-link>`;
   }
@@ -233,7 +255,12 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   protected get renderTitle(): TemplateResult {
-    return html`<pharos-link class="card__link--title" href="${this.link}" subtle flex
+    return html`<pharos-link
+      class="card__link--title"
+      href="${this.link}"
+      @click=${this._cardSelected}
+      subtle
+      flex
       >${this.title
         ? html`<pharos-heading
             class="card__heading"
@@ -276,24 +303,56 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   protected override render(): TemplateResult {
     return html`<div class="card">
       ${this._renderCheckbox()} ${this._renderImage()} ${this._renderSourceType()}
-      <div class="card__title">${this.renderTitle} ${this._renderActionButton()}</div>
+      <div
+        class="card__title"
+        @mouseenter=${this._handleMouseEnterSelectable}
+        @mouseleave=${this._handleMouseLeaveSelectable}
+      >
+        ${this.renderTitle} ${this._renderActionButton()}
+      </div>
       ${this._renderMetadata()}
     </div>`;
   }
 
-  private _isSelectHover(): boolean {
-    console.log("subtleselect: ", this.subtleselect);
-    return Boolean(this.variant == "selectable" && this._isHovered && this.subtleselect);
+  private _cardSelected(event: Event): void {
+    if (this._isStronglySelectable() || (event.target as Element)?.nodeName == 'PHAROS-CHECKBOX') {
+      // this is required to prevent navigation on the link click
+      event.preventDefault();
+      console.log('should fire event');
+      this._isSelected = !this._isSelected;
+      this.dispatchEvent(
+        new CustomEvent('pharos-image-card-selected', {
+          bubbles: true,
+          composed: true,
+          detail: {
+            event,
+            cardSelected: this._isSelected,
+          },
+        })
+      );
+    }
+  }
+
+  private _isSubtleSelectHover(): boolean {
+    return Boolean(this.variant == 'selectable' && this._isHovered && this.subtleselect);
+  }
+
+  private _isStrongSelectHover(): boolean {
+    return Boolean(this._isStronglySelectable() && this._isHovered);
+  }
+
+  private _isStronglySelectable(): boolean {
+    return Boolean(this.variant == 'selectable' && !this.subtleselect);
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
-    return this._isSelectHover()
+    return this._isSubtleSelectHover() || this._isStronglySelectable()
       ? html`<pharos-checkbox
           class="card__selector"
           ?checked=${this._isSelected}
-          @mouseenter=${this._handleImageMouseEnter}
-          @mouseleave=${this._handleImageMouseLeave}
-          @click=${this._handleCheckboxClick}
+          @mouseenter=${this._handleMouseEnterSelectable}
+          @mouseleave=${this._handleMouseLeaveSelectable}
+          @click="${this._cardSelected}"
         ></pharos-checkbox>`
       : nothing;
   }
