@@ -123,10 +123,17 @@ export const PromotionalTemplate = () => html`<pharos-layout style="margin: 1rem
   </div>
 </pharos-layout>`;
 
-export const SelectableTemplate = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
+export const Bruh = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
   ${items.map((item, index) => {
     return html`<li style="grid-column: span 2">
-      <pharos-image-card id="card-${index}" title="Card Title" link="#" source-type="Image">
+      <pharos-image-card
+        id="card-${index}"
+        title="Card Title"
+        link="#"
+        source-type="Image"
+        variant="selectable"
+        subtleselect
+      >
         <img
           id="image-${index}"
           src="./images/item-detail/${item.image}"
@@ -271,12 +278,19 @@ export const SelectableTemplate = () => html`<pharos-layout tag="ol" style="marg
 # Selectable
 
 <Canvas>
+  <Story name="bruh">{Bruh.bind({})}</Story>
+</Canvas>
+
+# Subtle Select
+
+<Canvas>
   <Story name="Selectable">
     {html`
       <pharos-image-card
         title="South Hall but you can select it"
         link="https://www.jstor.org/stable/10.2307/community.26220188"
-        selectable="True"
+        variant="selectable"
+        subtleselect
         style="grid-column: span 2"
       >
         <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
@@ -288,7 +302,7 @@ export const SelectableTemplate = () => html`<pharos-layout tag="ol" style="marg
             >Pratt Institute Buildings Image Collection</pharos-link
           >
         </div>
-      </pharos-image-card>
+      </pharos-image-card>  
     `}
   </Story>
 </Canvas>

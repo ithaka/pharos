@@ -19,9 +19,9 @@ import { PharosIcon } from '../icon/pharos-icon';
 import { PharosButton } from '../button/pharos-button';
 import { PharosCheckbox } from '../checkbox/pharos-checkbox';
 
-export type ImageCardVariant = 'base' | 'collection' | 'promotional';
+export type ImageCardVariant = 'base' | 'collection' | 'promotional' | 'selectable';
 
-const VARIANTS = ['base', 'collection', 'promotional'];
+const VARIANTS = ['base', 'collection', 'promotional', 'selectable'];
 
 const DEFAULT_HEADING_LEVEL = 3;
 
@@ -110,11 +110,11 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   public headingLevel?: HeadingLevel;
 
   /**
-   * Indicates if the image can be selected
-   * @attr selectable
+   * Indicates the link should not have text decoration by default.
+   * @attr subtleselect
    */
-  @property({ type: String, reflect: true, attribute: 'selectable' })
-  public selectable?: string;
+  @property({ type: Boolean, reflect: true })
+  public subtleselect?: Boolean;
 
   @state()
   private _isHovered = false;
@@ -203,10 +203,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderBaseImage(): TemplateResult {
     return html`<pharos-link
       class=${classMap({
-        [`card__link--image`]: true,
-        [`card__selectable`]: this._isSelectHover(),
-        [`card__selected`]: this._isSelected,
-      })}
+      [`card__link--image`]: true,
+      [`card__selectable`]: this._isSelectHover(),
+      [`card__selected`]: this._isSelected,
+    })}
       href="${this.link}"
       label=${ifDefined(this.imageLinkLabel)}
       subtle
@@ -228,6 +228,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       collection: '2',
       promotional: '4',
       base: '1--bold',
+      selectable: '1--bold',
     }[this.variant] as HeadingPreset;
   }
 
@@ -281,7 +282,8 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _isSelectHover(): boolean {
-    return Boolean(this.selectable && this._isHovered);
+    console.log("subtleselect: ", this.subtleselect);
+    return Boolean(this.variant == "selectable" && this._isHovered && this.subtleselect);
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
