@@ -110,30 +110,21 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   public headingLevel?: HeadingLevel;
 
   /**
-   * Indicates the link should not have text decoration by default.
+   * Indicates the subtle styling and hover behavior of a selectable  image card
    * @attr subtle-select
    */
   @property({ type: Boolean, reflect: true, attribute: 'subtle-select' })
   public subtleSelect?: boolean;
 
-  // /**
-  //  * Indicates if the image can be selected
-  //  * @attr selectable
-  //  */
-  // @property({ type: String, reflect: true, attribute: 'selectable' })
-  // public selectable?: string;
-
-  @state()
-  private _isHovered = false;
-
-  // @state()
-  // private _isSelected = false;
   /**
    * Indicates if the image card is selected
    * @attr selected
    */
   @property({ type: Boolean, reflect: true, attribute: 'selected' })
   public _isSelected = false;
+
+  @state()
+  private _isHovered = false;
 
   @query('.card__link--title')
   private _title!: PharosLink;
@@ -232,9 +223,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return html`<pharos-link
       class=${classMap({
         [`card__link--image`]: true,
-        [`card__selectable`]: this._isSubtleSelectHover() || this._isStronglySelectable(),
+        [`card__selectable`]: this._isSubtleSelectHover() || this._isSelectableViaCard(),
         [`card__selected`]: this._isSelected,
-        [`card__strong-selectable-hover`]: this._isStrongSelectHover(),
+        [`card__selectable-card-hover`]: this._isSelectableCardHover(),
       })}
       href="${this.link}"
       label=${ifDefined(this.imageLinkLabel)}
@@ -323,7 +314,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _cardToggleSelect(event: Event): void {
-    if (this._isStronglySelectable() || (event.target as Element)?.nodeName == 'PHAROS-CHECKBOX') {
+    if (this._isSelectableViaCard() || (event.target as Element)?.nodeName == 'PHAROS-CHECKBOX') {
       // this is required to prevent navigation on the link click
       event.preventDefault();
       this._isSelected = !this._isSelected;
@@ -344,16 +335,16 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return Boolean(this.variant == 'selectable' && this._isHovered && this.subtleSelect);
   }
 
-  private _isStrongSelectHover(): boolean {
-    return Boolean(this._isStronglySelectable() && this._isHovered);
+  private _isSelectableCardHover(): boolean {
+    return Boolean(this._isSelectableViaCard() && this._isHovered);
   }
 
-  private _isStronglySelectable(): boolean {
+  private _isSelectableViaCard(): boolean {
     return Boolean(this.variant == 'selectable' && !this.subtleSelect);
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
-    return this._isSubtleSelectHover() || this._isStronglySelectable()
+    return this._isSubtleSelectHover() || this._isSelectableViaCard()
       ? html`<pharos-checkbox
           class="card__selector"
           ?checked=${this._isSelected}
