@@ -23,6 +23,7 @@
 
 .card__selectable-card-hover {
   background-color: var(--pharos-color-marble-gray-base);
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
 }
 
 slot[name='image']::slotted(img) {

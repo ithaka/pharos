@@ -110,7 +110,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   public headingLevel?: HeadingLevel;
 
   /**
-   * Indicates the subtle styling and hover behavior of a selectable  image card
+   * Indicates subtler styling for the selectable card variant and that the card is only selectable by click on the checkbox.
    * @attr subtle-select
    */
   @property({ type: Boolean, reflect: true, attribute: 'subtle-select' })
@@ -143,14 +143,20 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     }
 
     if (
-      changedProperties.has('variant') &&
-      this.variant &&
       changedProperties.has('subtleSelect') &&
       this.subtleSelect &&
       this.variant !== 'selectable'
     ) {
       throw new Error(
-        `${this.variant} is not a valid variant to use with subtle-select. Only the selectable variant can be used with subtle-select}`
+        `${this.variant} is not a valid variant to use with subtle-select. Only the selectable variant can be used with subtle-select.}`
+      );
+    }
+
+    if (this.selected && this.variant !== 'selectable') {
+      throw new Error(
+        `Image card with variant type ${
+          this.variant ? this.variant : 'base'
+        } cannot be selected. Only the selectable variant can be selected.}`
       );
     }
   }
