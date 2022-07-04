@@ -123,7 +123,7 @@ export const PromotionalTemplate = () => html`<pharos-layout style="margin: 1rem
   </div>
 </pharos-layout>`;
 
-export const Bruh = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
+export const Selectable = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
   ${items.map((item, index) => {
     return html`<li style="grid-column: span 2">
       <pharos-image-card
@@ -277,19 +277,19 @@ export const Bruh = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
 # Selectable
 
 <Canvas>
-  <Story name="bruh">{Bruh.bind({})}</Story>
+  <Story name="Selectable">{Selectable.bind({})}</Story>
 </Canvas>
 
 # Subtle Select
 
 <Canvas>
-  <Story name="Selectable">
+  <Story name="Selectable (Subtle)">
     {html`
       <pharos-image-card
         title="South Hall but you can select it"
         link="https://www.jstor.org/stable/10.2307/community.26220188"
         variant="selectable"
-        subtleselect
+        subtle-select
         style="grid-column: span 2"
       >
         <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
