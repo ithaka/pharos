@@ -305,3 +305,37 @@ export const Selectable = () => html`<pharos-layout tag="ol" style="margin: 1rem
     `}
   </Story>
 </Canvas>
+
+# Selectable Collection
+
+<Canvas>
+  <Story name="Selectable Collection">{SelectableCollectionsTemplate.bind({})}</Story>
+</Canvas>
+
+export const SelectableCollectionsTemplate = () => html`<pharos-layout
+  tag="ol"
+  style="margin: 1rem 0"
+>
+  ${collections.map((collection, index) => {
+    return html`<li class="image-card-example__card--collection">
+      <pharos-image-card
+        id="card-${index}"
+        title="${collection.title}"
+        link="#"
+        variant="selectable-collection"
+        subtle-select
+      >
+        <img
+          id="image-${index}"
+          src="./images/item-detail/${collection.image}"
+          alt="${collection.title}"
+          slot="image"
+        />
+        <strong id="items-${index}" slot="metadata">${collection.items} items</strong>
+        <div id="description-${index}" slot="metadata">
+          Selections from the global permanent collection.
+        </div>
+      </pharos-image-card>
+    </li>`;
+  })}</pharos-layout
+>`;

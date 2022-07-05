@@ -19,9 +19,14 @@ import { PharosIcon } from '../icon/pharos-icon';
 import { PharosButton } from '../button/pharos-button';
 import { PharosCheckbox } from '../checkbox/pharos-checkbox';
 
-export type ImageCardVariant = 'base' | 'collection' | 'promotional' | 'selectable';
+export type ImageCardVariant =
+  | 'base'
+  | 'collection'
+  | 'promotional'
+  | 'selectable'
+  | 'selectable-collection';
 
-const VARIANTS = ['base', 'collection', 'promotional', 'selectable'];
+const VARIANTS = ['base', 'collection', 'promotional', 'selectable', 'selectable-collection'];
 
 const DEFAULT_HEADING_LEVEL = 3;
 
@@ -145,7 +150,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     if (
       changedProperties.has('subtleSelect') &&
       this.subtleSelect &&
-      this.variant !== 'selectable'
+      !this.variant.includes('selectable')
     ) {
       throw new Error(
         `${this.variant} is not a valid variant to use with subtle-select. Only the selectable variant can be used with subtle-select.}`
@@ -196,7 +201,12 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderCollectionImage(): TemplateResult {
     return html`<pharos-link
-      class="card__link--collection"
+      class=${classMap({
+        [`card__link--collection`]: true,
+        [`card__selectable`]: this._isSubtleSelectHover() || this._isSelectableViaCard(),
+        [`card__selected`]: this._isSelected,
+        [`card__selectable-card-hover`]: this._isSelectableCardHover(),
+      })}
       href="${this.link}"
       label="${ifDefined(this.imageLinkLabel)}"
       subtle
@@ -204,6 +214,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       no-hover
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
+      @click=${this._cardToggleSelect}
       ><svg class="card__svg" role="presentation" viewBox="0 0 4 3"></svg> <slot name="image"></slot
     ></pharos-link>`;
   }
@@ -247,12 +258,15 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderImage(): TemplateResult {
     // TODO: Refactor with _renderCollectionImage and _renderBaseImage when Playwright/Webkit is updated
-    return this.variant === 'collection' ? this._renderCollectionImage() : this._renderBaseImage();
+    return this.variant.includes('collection')
+      ? this._renderCollectionImage()
+      : this._renderBaseImage();
   }
 
   private _chooseHeadingPreset(): HeadingPreset {
     return {
       collection: '2',
+      'selectable-collection': '2',
       promotional: '4',
       base: '1--bold',
       selectable: '1--bold',
@@ -338,7 +352,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _isSubtleSelectHover(): boolean {
-    return Boolean(this.variant == 'selectable' && this._isHovered && this.subtleSelect);
+    return Boolean(this.variant.includes('selectable') && this._isHovered && this.subtleSelect);
   }
 
   private _isSelectableCardHover(): boolean {
