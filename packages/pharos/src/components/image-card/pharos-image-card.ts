@@ -203,7 +203,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return html`<pharos-link
       class=${classMap({
         [`card__link--collection`]: true,
-        [`card__selectable`]: this._isSubtleSelectHover() || this._isSelectableViaCard(),
         [`card__selected`]: this._isSelected,
         [`card__selectable-card-hover`]: this._isSelectableCardHover(),
       })}
