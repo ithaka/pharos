@@ -221,7 +221,13 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderLinkContent(): TemplateResult {
     return this.error
-      ? html`<div class="card__container--error">
+      ? html`<div
+          class=${classMap({
+            [`card__container--error`]: true,
+            [`card__container-selected--error`]: this._isSelected,
+            [`card__container-selectable-hover--error`]: this._isSelectableCardHover(),
+          })}
+        >
           <pharos-icon name="exclamation-inverse"></pharos-icon>
           <span class="unavailable-text">Preview not available</span>
         </div>`
@@ -360,11 +366,11 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _isSelectableViaCard(): boolean {
-    return Boolean(this.variant == 'selectable' && !this.subtleSelect);
+    return Boolean(this.variant.includes('selectable') && !this.subtleSelect);
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
-    return this._isSubtleSelectHover() || this._isSelectableViaCard()
+    return this._isSubtleSelectHover() || this._isSelectableViaCard() || this._isSelected
       ? html`<pharos-checkbox
           class="card__selector"
           ?checked=${this._isSelected}

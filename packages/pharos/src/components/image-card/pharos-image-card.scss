@@ -38,7 +38,7 @@ slot[name='image']::slotted(img) {
   border: solid 2px var(--pharos-color-interactive-secondary);
   box-sizing: border-box;
 
-  slot[name='image']::slotted(img) {
+  slot[name='image']::slotted(*) {
     height: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
     width: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
     padding: var(--pharos-spacing-three-quarters-x);
@@ -88,7 +88,7 @@ slot[name='image']::slotted(img) {
 }
 
 .card__container--error {
-  border: 1px solid var(--pharos-color-ui-40);
+  background-color: var(--pharos-color-marble-gray-94);
   height: 12.5rem;
   display: flex;
   flex-direction: column;
@@ -101,6 +101,16 @@ slot[name='image']::slotted(img) {
   .unavailable-text {
     max-width: 9rem;
   }
+}
+
+.card__container-selected--error {
+  background-color: inherit;
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
+}
+
+.card__container-selectable-hover--error {
+  background-color: inherit;
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
 }
 
 .card__source-type {
