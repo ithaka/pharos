@@ -280,7 +280,33 @@ export const Selectable = () => html`<pharos-layout tag="ol" style="margin: 1rem
   <Story name="Selectable">{Selectable.bind({})}</Story>
 </Canvas>
 
-# Subtle Select
+# Select Error
+
+<Canvas>
+  <Story name="Selectable Error">
+    {html`
+      <pharos-image-card
+        title="South Hall but you can select it"
+        link="https://www.jstor.org/stable/10.2307/community.26220188"
+        variant="selectable"
+        error="true"
+        style="grid-column: span 2"
+      >
+        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
+        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
+        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
+        <div id="collection" slot="metadata">
+          Part of
+          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+            >Pratt Institute Buildings Image Collection</pharos-link
+          >
+        </div>
+      </pharos-image-card>
+    `}
+  </Story>
+</Canvas>
+
+# Subtle Select Error
 
 <Canvas>
   <Story name="Selectable (Subtle)">
@@ -324,6 +350,7 @@ export const SelectableCollectionsTemplate = () => html`<pharos-layout
         title="${collection.title}"
         link="#"
         variant="selectable-collection"
+        subtle-select
       >
         <img
           id="image-${index}"

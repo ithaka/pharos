@@ -157,7 +157,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       );
     }
 
-    if (this.selected && this.variant !== 'selectable') {
+    if (this.selected && this.variant.includes('selectable')) {
       throw new Error(
         `Image card with variant type ${
           this.variant ? this.variant : 'base'
@@ -370,7 +370,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderCheckbox(): TemplateResult | typeof nothing {
     return this._isSubtleSelectHover() || this._isSelectableViaCard() || this._isSelected
       ? html`<pharos-checkbox
-          class="card__selector"
+          class="card__checkbox"
           ?checked=${this._isSelected}
           @mouseenter=${this._handleMouseEnterSelectable}
           @mouseleave=${this._handleMouseLeaveSelectable}

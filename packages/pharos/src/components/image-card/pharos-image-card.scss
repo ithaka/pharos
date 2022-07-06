@@ -17,32 +17,11 @@
   justify-content: center;
 }
 
-.card__selectable {
-  background-color: var(--pharos-color-marble-gray-94);
-}
-
-.card__selectable-card-hover {
-  background-color: var(--pharos-color-marble-gray-base);
-  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
-}
-
 slot[name='image']::slotted(img) {
   height: 100%;
   width: 100%;
   object-fit: contain;
   object-position: bottom;
-}
-
-.card__selected {
-  background-color: var(--pharos-color-white);
-  border: solid 2px var(--pharos-color-interactive-secondary);
-  box-sizing: border-box;
-
-  slot[name='image']::slotted(*) {
-    height: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
-    width: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
-    padding: var(--pharos-spacing-three-quarters-x);
-  }
 }
 
 .card__link--image,
@@ -103,16 +82,6 @@ slot[name='image']::slotted(img) {
   }
 }
 
-.card__container-selected--error {
-  background-color: inherit;
-  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
-}
-
-.card__container-selectable-hover--error {
-  background-color: inherit;
-  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
-}
-
 .card__source-type {
   @include mixins.font-base(
     $font-size: var(--pharos-font-size-small),
@@ -145,13 +114,6 @@ slot[name='image']::slotted(img) {
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.card__selector {
-  position: absolute;
-  z-index: 1;
-  margin-top: var(--pharos-spacing-one-quarter-x);
-  margin-left: var(--pharos-spacing-one-quarter-x);
-}
-
 :host(:not([variant='promotional'])) {
   .card__heading,
   .card__title--hover {
@@ -163,6 +125,45 @@ slot[name='image']::slotted(img) {
   display: block;
   height: 100%;
   width: 100%;
+}
+
+.card__checkbox {
+  position: absolute;
+  z-index: 1;
+  margin-top: var(--pharos-spacing-one-quarter-x);
+  margin-left: var(--pharos-spacing-one-quarter-x);
+}
+
+.card__selectable {
+  background-color: var(--pharos-color-marble-gray-94);
+}
+
+.card__selectable-card-hover {
+  background-color: var(--pharos-color-marble-gray-base);
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
+}
+
+.card__selected {
+  background-color: var(--pharos-color-white);
+  border: solid 2px var(--pharos-color-interactive-secondary);
+  box-sizing: border-box;
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
+
+  slot[name='image']::slotted(*) {
+    height: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
+    width: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
+    padding: var(--pharos-spacing-three-quarters-x);
+  }
+}
+
+.card__container-selected--error {
+  background-color: var(--pharos-color-white);
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
+}
+
+.card__container-selectable-hover--error {
+  background-color: inherit;
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
 }
 
 :host([subtle]) .card__link--image {
