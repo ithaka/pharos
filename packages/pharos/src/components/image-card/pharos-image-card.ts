@@ -128,6 +128,13 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   @property({ type: Boolean, reflect: true, attribute: 'selected' })
   public _isSelected = false;
 
+  /**
+   * Indicates if the image card is in a disabled state
+   * @attr selected
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'disabled' })
+  public disabled = false;
+
   @state()
   private _isHovered = false;
 
@@ -278,15 +285,11 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   protected get renderTitle(): TemplateResult {
-    return html`<pharos-link
-      class="card__link--title"
-      href="${this.link}"
-      @click=${this._cardToggleSelect}
-      subtle
-      flex
+    return html`<pharos-link class="card__link--title" href="${this.link}" subtle flex
       >${this.title
         ? html`<pharos-heading
             class="card__heading"
+            })}
             preset="${this._chooseHeadingPreset()}"
             level="${this.headingLevel || DEFAULT_HEADING_LEVEL}"
             no-margin
@@ -356,7 +359,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _isSubtleSelectHover(): boolean {
-    return Boolean(this.variant.includes('selectable') && this._isHovered && this.subtleSelect);
+    return Boolean(
+      this.variant.includes('selectable') && this._isHovered && this.subtleSelect && !this.disabled
+    );
   }
 
   private _isSelectableCardHover(): boolean {
@@ -368,10 +373,16 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
+    console.log('--START--');
+    console.log('variant: ', this.variant);
+    console.log('disabled: ', this.disabled);
+    console.log('this._isSelectableViaCard(): ', this._isSelectableViaCard());
+    console.log('--END----');
     return this._isSubtleSelectHover() || this._isSelectableViaCard() || this._isSelected
       ? html`<pharos-checkbox
           class="card__checkbox"
           ?checked=${this._isSelected}
+          ?disabled=${this.disabled}
           @mouseenter=${this._handleMouseEnterSelectable}
           @mouseleave=${this._handleMouseLeaveSelectable}
           @click="${this._cardToggleSelect}"

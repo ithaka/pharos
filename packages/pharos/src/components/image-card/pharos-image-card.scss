@@ -17,6 +17,41 @@
   justify-content: center;
 }
 
+.card__link--image,
+.card__link--title {
+  contain: unset;
+  display: inline-flex;
+  min-width: 0;
+}
+
+.card__selected {
+  background-color: var(--pharos-color-white);
+  border: solid 2px var(--pharos-color-interactive-secondary);
+  box-sizing: border-box;
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
+
+  slot[name='image']::slotted(*) {
+    height: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
+    width: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
+    padding: var(--pharos-spacing-three-quarters-x);
+  }
+}
+
+:host([disabled]) .card__selected {
+  border: solid 2px var(--pharos-color-marble-gray-50);
+}
+
+:host([disabled]) .card__link--image {
+  color: var(--pharos-color-marble-gray-50);
+  cursor: not-allowed;
+  text-decoration: none;
+  pointer-events: none;
+
+  slot[name='image']::slotted(*) {
+    opacity: 0.5;
+  }
+}
+
 slot[name='image']::slotted(img) {
   height: 100%;
   width: 100%;
@@ -24,11 +59,20 @@ slot[name='image']::slotted(img) {
   object-position: bottom;
 }
 
-.card__link--image,
-.card__link--title {
-  contain: unset;
-  display: inline-flex;
-  min-width: 0;
+:host([disabled]) .card__link--title {
+  color: var(--pharos-color-marble-gray-50);
+  cursor: not-allowed;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+:host([disabled]) .card__heading {
+  color: var(--pharos-color-marble-gray-50);
+}
+
+:host([disabled]) slot[name='metadata']::slotted(*) {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 :host([variant='promotional']) .card__link--image {
@@ -141,19 +185,6 @@ slot[name='image']::slotted(img) {
 .card__selectable-card-hover {
   background-color: var(--pharos-color-marble-gray-base);
   transition: background-color var(--pharos-transition-duration-short) ease-in-out;
-}
-
-.card__selected {
-  background-color: var(--pharos-color-white);
-  border: solid 2px var(--pharos-color-interactive-secondary);
-  box-sizing: border-box;
-  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
-
-  slot[name='image']::slotted(*) {
-    height: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
-    width: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
-    padding: var(--pharos-spacing-three-quarters-x);
-  }
 }
 
 .card__container-selected--error {
