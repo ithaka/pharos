@@ -282,7 +282,12 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   protected get renderTitle(): TemplateResult {
-    return html`<pharos-link class="card__link--title" href="${this.link}" subtle flex
+    return html`<pharos-link
+      class="card__link--title"
+      href="${this.link}"
+      subtle
+      flex
+      @click=${this._cardToggleSelect}
       >${this.title
         ? html`<pharos-heading
             class="card__heading"
@@ -375,12 +380,15 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return this._isSubtleSelectHover() || this._isSelectableViaCard() || this._isSelected
       ? html`<pharos-checkbox
           class="card__checkbox"
+          hide-label="true"
           ?checked=${this._isSelected}
           ?disabled=${this.disabled}
+          name="Select ${this.title}"
           @mouseenter=${this._handleMouseEnterSelectable}
           @mouseleave=${this._handleMouseLeaveSelectable}
           @click="${this._cardToggleSelect}"
-        ></pharos-checkbox>`
+          ><span slot="label">Select ${this.title}</span></pharos-checkbox
+        >`
       : nothing;
   }
 }

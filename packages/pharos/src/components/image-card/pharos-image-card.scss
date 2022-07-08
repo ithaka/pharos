@@ -70,11 +70,6 @@ slot[name='image']::slotted(img) {
   color: var(--pharos-color-marble-gray-50);
 }
 
-:host([disabled]) slot[name='metadata']::slotted(*) {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
 :host([variant='promotional']) .card__link--image {
   height: unset;
 }
