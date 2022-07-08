@@ -148,7 +148,7 @@ describe('pharos-image-card', () => {
     ).to.be.thrown;
   });
 
-  it('throws an error when using the select prop is used with a non-selectable variant', async () => {
+  it('throws an error when using the selected prop is used with a non-selectable variant', async () => {
     component = await fixture(html`
       <pharos-image-card
         title="Card Title"
@@ -417,16 +417,13 @@ describe('pharos-image-card', () => {
     </pharos-image-card>`);
 
     let checkboxElement = null;
-
-    const onMouseEnter = async (): Promise<void> => {
-      await component.updateComplete;
-      checkboxElement = component.renderRoot.querySelector('pharos-checkbox');
-      expect(checkboxElement).not.to.be.null;
-    };
-
     const pharosLink = component.renderRoot.querySelector('pharos-link');
-    component.addEventListener('pharos-image-card-image-mouseenter', onMouseEnter);
     pharosLink?.dispatchEvent(new MouseEvent('mouseenter'));
+    await aTimeout(100);
+    await elementUpdated(component);
+
+    checkboxElement = component.renderRoot.querySelector('pharos-checkbox');
+    expect(checkboxElement).not.to.be.null;
   });
 
   it('dispatches the mouseleave event on pharos link mouseleave', async () => {
