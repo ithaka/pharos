@@ -180,19 +180,22 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _handleImageMouseEnter(): void {
-    this._title['_hover'] = true;
-    this._handleMouseEnterSelectable();
-
-    const mouseEvent = new CustomEvent('pharos-image-card-image-mouseenter');
-    this.dispatchEvent(mouseEvent);
+    if (!this.disabled) {
+      this._title['_hover'] = true;
+      this._handleMouseEnterSelectable();
+      const mouseEvent = new CustomEvent('pharos-image-card-image-mouseenter');
+      this.dispatchEvent(mouseEvent);
+    }
   }
 
   private _handleImageMouseLeave(): void {
-    this._title['_hover'] = false;
-    this._handleMouseLeaveSelectable();
+    if (!this.disabled) {
+      this._title['_hover'] = false;
+      this._handleMouseLeaveSelectable();
 
-    const mouseEvent = new CustomEvent('pharos-image-card-image-mouseleave');
-    this.dispatchEvent(mouseEvent);
+      const mouseEvent = new CustomEvent('pharos-image-card-image-mouseleave');
+      this.dispatchEvent(mouseEvent);
+    }
   }
 
   private _handleMouseEnterSelectable(): void {
@@ -342,7 +345,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _cardToggleSelect(event: Event): void {
-    if (this._isSelectableViaCard() || (event.target as Element)?.nodeName == 'PHAROS-CHECKBOX') {
+    if (
+      !this.disabled &&
+      (this._isSelectableViaCard() || (event.target as Element)?.nodeName == 'PHAROS-CHECKBOX')
+    ) {
       // this is required to prevent navigation on the link click
       event.preventDefault();
       this._isSelected = !this._isSelected;
