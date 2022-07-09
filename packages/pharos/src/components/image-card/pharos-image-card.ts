@@ -251,9 +251,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return html`<pharos-link
       class=${classMap({
         [`card__link--image`]: true,
-        [`card__selectable`]: this._isSubtleSelectHover() || this._isSelectableViaCard(),
+        [`card__selectable`]:
+          (this._isSubtleSelectHover() || this._isSelectableViaCard()) && !this._isSelected,
         [`card__selected`]: this._isSelected,
-        [`card__selectable-card-hover`]: this._isSelectableCardHover(),
+        [`card__selectable-card-hover`]: this._isSelectableCardHover() && !this._isSelected,
       })}
       href="${this.link}"
       label=${ifDefined(this.imageLinkLabel)}
@@ -375,15 +376,21 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _isSelectableCardHover(): boolean {
-    return Boolean(this._isSelectableViaCard() && this._isSelectableHovered);
+    return Boolean(this._isSelectableViaCard() && this._isSelectableHovered) && !this.disabled;
   }
 
   private _isSelectableViaCard(): boolean {
-    return Boolean(this.variant.includes('selectable') && !this.subtleSelect);
+    return Boolean(
+      (this.variant.includes('selectable') && !this.subtleSelect && !this.disabled) ||
+        (this.disabled && this.variant.includes('selectable'))
+    );
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
-    return this._isSubtleSelectHover() || this._isSelectableViaCard() || this._isSelected
+    return this._isSubtleSelectHover() ||
+      this._isSelectableViaCard() ||
+      this._isSelected ||
+      (this.disabled && this.variant.includes('selectable'))
       ? html`<pharos-checkbox
           class="card__checkbox"
           hide-label="true"

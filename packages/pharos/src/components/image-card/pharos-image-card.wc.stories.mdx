@@ -124,33 +124,58 @@ export const PromotionalTemplate = () => html`<pharos-layout style="margin: 1rem
 </pharos-layout>`;
 
 export const Selectable = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
-  ${items.map((item, index) => {
-    return html`<li style="grid-column: span 2">
-      <pharos-image-card
-        id="card-${index}"
-        title="Select Me!"
-        link="#"
-        source-type="Image"
-        variant="selectable"
-      >
-        <img
-          id="image-${index}"
-          src="./images/item-detail/${item.image}"
-          alt="Card Title ${index}"
-          slot="image"
-        />
-        <div id="creator-${index}" slot="metadata">Creator of the item</div>
-        <div id="item-date-${index}" slot="metadata">1990-2000</div>
-        <div id="collection-${index}" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >An Example Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    </li>`;
-  })}</pharos-layout
->`;
+  <li style="grid-column: span 3">
+    <pharos-image-card title="Selectable" link="#" source-type="Image" variant="selectable">
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Subtle select"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      subtle-select="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selected Disabled"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      disabled="true"
+      selected="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selectable Error State"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      error="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Subtle Select Error State"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      error="true"
+      subtle-select="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+</pharos-layout>`;
 
 <Canvas>
   <Story name="Base">{MultipleTemplate.bind({})}</Story>
@@ -280,519 +305,83 @@ export const Selectable = () => html`<pharos-layout tag="ol" style="margin: 1rem
   <Story name="Selectable">{Selectable.bind({})}</Story>
 </Canvas>
 
-# Subtle Select Error
-
-<Canvas>
-  <Story name="Selectable (Subtle)">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="collection"
-        error="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
 # Selectable Collection
 
 <Canvas>
   <Story name="Selectable Collection">{SelectableCollectionsTemplate.bind({})}</Story>
 </Canvas>
 
-export const SelectableCollectionsTemplate = () => html`<pharos-layout
+export const SelectableCollectionsTemplate = () => html` <pharos-layout
   tag="ol"
   style="margin: 1rem 0"
 >
-  ${collections.map((collection, index) => {
-    return html`<li class="image-card-example__card--collection">
-      <pharos-image-card
-        id="card-${index}"
-        title="${collection.title}"
-        link="#"
-        variant="selectable-collection"
-        subtle-select
-      >
-        <img
-          id="image-${index}"
-          src="./images/item-detail/${collection.image}"
-          alt="${collection.title}"
-          slot="image"
-        />
-        <strong id="items-${index}" slot="metadata">${collection.items} items</strong>
-        <div id="description-${index}" slot="metadata">
-          Selections from the global permanent collection.
-        </div>
-      </pharos-image-card>
-    </li>`;
-  })}</pharos-layout
->`;
+  <li class="image-card-example__card--collection">
+    <pharos-image-card title="Selectalbe" link="#" variant="selectable-collection">
+      <img src="./images/item-detail/collection_1.png" slot="image" />
+      <strong slot="metadata">50 items</strong>
+      <div slot="metadata">Selections from the global permanent collection.</div>
+    </pharos-image-card>
+  </li>
+  <li class="image-card-example__card--collection">
+    <pharos-image-card
+      title="Subtle Select"
+      link="#"
+      variant="selectable-collection"
+      subtle-select="true"
+    >
+      <img src="./images/item-detail/collection_2.png" slot="image" />
+      <strong slot="metadata">50 items</strong>
+      <div slot="metadata">Selections from the global permanent collection.</div>
+    </pharos-image-card>
+  </li>
+  <li class="image-card-example__card--collection">
+    <pharos-image-card
+      title="Selected Disabled"
+      link="#"
+      variant="selectable-collection"
+      disabled="true"
+      selected="true"
+    >
+      <img src="./images/item-detail/collection_2.png" slot="image" />
+      <strong slot="metadata">50 items</strong>
+      <div slot="metadata">Selections from the global permanent collection.</div>
+    </pharos-image-card>
+  </li>
+</pharos-layout>`;
 
 # Disabled
 
 <Canvas>
-  <Story name="Disabled">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        disabled="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
+  <Story name="Disabled">{Disabled.bind({})}</Story>
 </Canvas>
 
-# Disabled Error
-
-<Canvas>
-  <Story name="Disabled Error">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        disabled="true"
-        error="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable Disabled
-
-<Canvas>
-  <Story name="Selectable Disabled">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        disabled="true"
-        variant="selectable"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable Selected
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable Selected">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        selected="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable Error
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable Error">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        error="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable Subtle Select
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable Subtle Select ">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        subtle-select="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable disabled selected
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable disabled selected">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        disabled="true"
-        selected="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable disabled error
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable disabled error">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        disabled="true"
-        error="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable disabled selected error subtle-select
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable disabled selected error subtle-select">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        disabled="true"
-        selected="true"
-        error="true"
-        subtle-select="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable disabled subtle-select Error
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable disabled subtle-select error">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        disabled="true"
-        subtle-select="true"
-        error="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable disabled selected error
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable disabled  subtle-select">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        disabled="true"
-        selected="true"
-        error="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable disabled selected subtle-select
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable disabled selected subtle-select">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        disabled="true"
-        selected="true"
-        subtle-select="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable selected error
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable selected error">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        selected="true"
-        error="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable selected subtle-select
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable selected  subtle-select">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        selected="true"
-        subtle-select="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable selected error subtle-select
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable selected error subtle-select">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        selected="true"
-        error="true"
-        subtle-select="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
-
-# Selectable error subtle-select
-
-{' '}
-
-<Canvas>
-  <Story name="Selectable error subtle-select">
-    {html`
-      <pharos-image-card
-        title="South Hall but you can select it"
-        link="https://www.jstor.org/stable/10.2307/community.26220188"
-        variant="selectable"
-        error="true"
-        subtle-select="true"
-        style="grid-column: span 2"
-      >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
-        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-        <div id="collection" slot="metadata">
-          Part of
-          <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-            >Pratt Institute Buildings Image Collection</pharos-link
-          >
-        </div>
-      </pharos-image-card>
-    `}
-  </Story>
-</Canvas>
+export const Disabled = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
+  <li style="grid-column: span 3">
+    <pharos-image-card title="Disabled" link="#" source-type="Image" disabled="true">
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selectable Disabled"
+      link="#"
+      source-type="Image"
+      disabled="true"
+      variant="selectable"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selected Disabled"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      disabled="true"
+      selected="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+</pharos-layout>`;
