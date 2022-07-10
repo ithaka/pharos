@@ -382,7 +382,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _isSelectableViaCard(): boolean {
     return Boolean(
       (this.variant.includes('selectable') && !this.subtleSelect && !this.disabled) ||
-        (this.disabled && this.variant.includes('selectable'))
+        (this.subtleSelect && this._isSelected && !this.disabled)
     );
   }
 
