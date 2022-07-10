@@ -27,7 +27,7 @@
 
 .card__selected {
   background-color: var(--pharos-color-white);
-  border: solid 2px var(--pharos-color-interactive-secondary);
+  outline: solid 2px var(--pharos-color-interactive-secondary);
   box-sizing: border-box;
   transition: background-color var(--pharos-transition-duration-short) ease-in-out;
 
@@ -39,7 +39,7 @@
 }
 
 :host([disabled]) .card__selected {
-  border: solid 2px var(--pharos-color-marble-gray-50);
+  outline: solid 2px var(--pharos-color-marble-gray-50);
 }
 
 :host([disabled]) .card__link--image {
@@ -143,7 +143,7 @@ slot[name='image']::slotted(img) {
 .card__link--collection {
   display: grid;
   position: relative;
-  height: 9rem;
+  height: auto;
   margin-bottom: var(--pharos-spacing-1-x);
 }
 
