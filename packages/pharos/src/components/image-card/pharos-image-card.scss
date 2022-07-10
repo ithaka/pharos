@@ -234,7 +234,7 @@ slot[name='metadata']::slotted(strong) {
   color: var(--pharos-color-text-20);
 }
 
-:host([varian='promotional']) .card__metadata {
+:host([variant='promotional']) .card__metadata {
   @include mixins.font-base;
 }
 
