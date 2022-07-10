@@ -143,7 +143,7 @@ slot[name='image']::slotted(img) {
 .card__link--collection {
   display: grid;
   position: relative;
-  height: auto;
+  height: 9rem;
   margin-bottom: var(--pharos-spacing-1-x);
 }
 
