@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.5.0
+
+### Minor Changes
+
+- [#366](https://github.com/ithaka/pharos/pull/366) [`febc324`](https://github.com/ithaka/pharos/commit/febc324287a21c0949477c6edbc89d2ca942af03) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add selectable card variants, add disabled card state, update styling of error state
+
 ## 12.4.0
 
 ### Minor Changes

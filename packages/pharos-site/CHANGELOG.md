@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 5.11.2
+
+### Patch Changes
+
+- [#360](https://github.com/ithaka/pharos/pull/360) [`ee7a692`](https://github.com/ithaka/pharos/commit/ee7a692070561cbbc2adecccd2029fc6f4e8d179) Thanks [@daneah](https://github.com/daneah)! - Use updated ITHAKA org links
+
+- Updated dependencies [[`febc324`](https://github.com/ithaka/pharos/commit/febc324287a21c0949477c6edbc89d2ca942af03)]:
+  - @ithaka/pharos@12.5.0
+
 ## 5.11.1
 
 ### Patch Changes
