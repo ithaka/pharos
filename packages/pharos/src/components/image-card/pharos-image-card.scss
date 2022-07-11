@@ -122,6 +122,16 @@ slot[name='image']::slotted(img) {
   }
 }
 
+.card__container--error.card__container--selectable-hover {
+  background-color: inherit;
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
+}
+
+.card__container--error.card__container--selected {
+  background-color: var(--pharos-color-white);
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
+}
+
 .card__source-type {
   @include mixins.font-base(
     $font-size: var(--pharos-font-size-small),
@@ -185,22 +195,12 @@ slot[name='image']::slotted(img) {
   margin-left: var(--pharos-spacing-one-quarter-x);
 }
 
-.card__selectable {
+.card__link--image.card__link--selectable {
   background-color: var(--pharos-color-marble-gray-94);
 }
 
-.card__selectable-card-hover {
+.card__link--image.card__link--select-hover {
   background-color: var(--pharos-color-marble-gray-base);
-  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
-}
-
-.card__container-selected--error {
-  background-color: var(--pharos-color-white);
-  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
-}
-
-.card__container-selectable-hover--error {
-  background-color: inherit;
   transition: background-color var(--pharos-transition-duration-short) ease-in-out;
 }
 
@@ -226,11 +226,13 @@ slot[name='metadata']::slotted(strong) {
   color: var(--pharos-color-text-base);
 }
 
-:host([variant*='collection']) .card__title {
+:host([variant='collection']) .card__title,
+:host([variant='selectable-collection']) .card__title {
   margin-bottom: var(--pharos-spacing-1-x);
 }
 
-:host([variant*='collection']) .card__metadata {
+:host([variant='collection']) .card__metadata,
+:host([variant='selectable-collection']) .card__metadata {
   color: var(--pharos-color-text-20);
 }
 
@@ -238,7 +240,8 @@ slot[name='metadata']::slotted(strong) {
   @include mixins.font-base;
 }
 
-:host([variant*='collection']) slot[name='image']::slotted(img) {
+:host([variant='collection']) slot[name='image']::slotted(img),
+:host([variant='selectable-collection']) slot[name='image']::slotted(img) {
   position: absolute;
   object-fit: cover;
   object-position: 50% 30%;
