@@ -25,7 +25,7 @@
   min-width: 0;
 }
 
-.card__selected {
+@mixin card-selected {
   background-color: var(--pharos-color-white);
   outline: solid 2px var(--pharos-color-interactive-secondary);
   box-sizing: border-box;
@@ -38,7 +38,11 @@
   }
 }
 
-:host([disabled]) .card__selected {
+.card__link--image.card__link--selected {
+  @include card-selected;
+}
+
+:host([disabled]) .card__link--image.card__link--selected {
   outline: solid 2px var(--pharos-color-marble-gray-50);
 }
 
@@ -155,6 +159,14 @@ slot[name='image']::slotted(img) {
   position: relative;
   height: auto;
   margin-bottom: var(--pharos-spacing-1-x);
+}
+
+.card__link--collection.card__link--selected {
+  @include card-selected;
+}
+
+:host([disabled]) .card__link--collection.card__link--selected {
+  outline: solid 2px var(--pharos-color-marble-gray-50);
 }
 
 :host([disabled]) .card__link--collection {

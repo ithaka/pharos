@@ -210,7 +210,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return html`<pharos-link
       class=${classMap({
         [`card__link--collection`]: true,
-        [`card__selected`]: this._isSelected,
+        [`card__link--selected`]: this._isSelected,
       })}
       href="${this.link}"
       label="${ifDefined(this.imageLinkLabel)}"
@@ -253,7 +253,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         [`card__link--image`]: true,
         [`card__link--selectable`]:
           (this._isSubtleSelectHover() || this._isSelectableViaCard()) && !this._isSelected,
-        [`card__selected`]: this._isSelected,
+        [`card__link--selected`]: this._isSelected,
         [`card__link--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
       })}
       href="${this.link}"
