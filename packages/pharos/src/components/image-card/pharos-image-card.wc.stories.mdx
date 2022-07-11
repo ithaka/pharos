@@ -123,6 +123,60 @@ export const PromotionalTemplate = () => html`<pharos-layout style="margin: 1rem
   </div>
 </pharos-layout>`;
 
+export const Selectable = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
+  <li style="grid-column: span 3">
+    <pharos-image-card title="Selectable" link="#" source-type="Image" variant="selectable">
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Subtle select"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      subtle-select="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selected Disabled"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      disabled="true"
+      selected="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selectable Error State"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      error="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Subtle Select Error State"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      error="true"
+      subtle-select="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+</pharos-layout>`;
+
 <Canvas>
   <Story name="Base">{MultipleTemplate.bind({})}</Story>
 </Canvas>
@@ -244,3 +298,90 @@ export const PromotionalTemplate = () => html`<pharos-layout style="margin: 1rem
 <Canvas>
   <Story name="Promotional">{PromotionalTemplate.bind({})}</Story>
 </Canvas>
+
+# Selectable
+
+<Canvas>
+  <Story name="Selectable">{Selectable.bind({})}</Story>
+</Canvas>
+
+# Selectable Collection
+
+<Canvas>
+  <Story name="Selectable Collection">{SelectableCollectionsTemplate.bind({})}</Story>
+</Canvas>
+
+export const SelectableCollectionsTemplate = () => html` <pharos-layout
+  tag="ol"
+  style="margin: 1rem 0"
+>
+  <li class="image-card-example__card--collection">
+    <pharos-image-card title="Selectable" link="#" variant="selectable-collection">
+      <img src="./images/item-detail/open_collection_1.png" slot="image" />
+      <strong slot="metadata">50 items</strong>
+      <div slot="metadata">Selections from the global permanent collection.</div>
+    </pharos-image-card>
+  </li>
+  <li class="image-card-example__card--collection">
+    <pharos-image-card
+      title="Subtle Select"
+      link="#"
+      variant="selectable-collection"
+      subtle-select="true"
+    >
+      <img src="./images/item-detail/open_collection_2.png" slot="image" />
+      <strong slot="metadata">50 items</strong>
+      <div slot="metadata">Selections from the global permanent collection.</div>
+    </pharos-image-card>
+  </li>
+  <li class="image-card-example__card--collection">
+    <pharos-image-card
+      title="Selected Disabled"
+      link="#"
+      variant="selectable-collection"
+      disabled="true"
+      selected="true"
+    >
+      <img src="./images/item-detail/open_collection_3.png" slot="image" />
+      <strong slot="metadata">50 items</strong>
+      <div slot="metadata">Selections from the global permanent collection.</div>
+    </pharos-image-card>
+  </li>
+</pharos-layout>`;
+
+# Disabled
+
+<Canvas>
+  <Story name="Disabled">{Disabled.bind({})}</Story>
+</Canvas>
+
+export const Disabled = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
+  <li style="grid-column: span 3">
+    <pharos-image-card title="Disabled" link="#" source-type="Image" disabled="true">
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selectable Disabled"
+      link="#"
+      source-type="Image"
+      disabled="true"
+      variant="selectable"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selected Disabled"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      disabled="true"
+      selected="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+</pharos-layout>`;
