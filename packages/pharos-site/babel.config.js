@@ -17,7 +17,7 @@ module.exports = {
     'babel-plugin-macros',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-nullish-coalescing-operator',
-    ['babel-plugin-emotion', { sourceMap: true, autoLabel: true }],
+    ['@emotion', { sourceMap: true, autoLabel: 'always' }],
   ],
   presets: [
     [
