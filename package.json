@@ -64,6 +64,7 @@
     "@changesets/cli": "^2.18.0",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@emotion/babel-plugin": "^11.9.2",
     "@size-limit/preset-small-lib": "^7.0.4",
     "@storybook/addon-a11y": "^6.5.9",
     "@storybook/addon-actions": "^6.5.9",
