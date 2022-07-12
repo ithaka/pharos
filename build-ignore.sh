@@ -4,7 +4,7 @@ echo "Checking for files changed between $CACHED_COMMIT_REF and $COMMIT_REF..."
 
 # Build if the compared commits are identical
 if [ "$CACHED_COMMIT_REF" == "$COMMIT_REF" ]; then
-  exit 0
+  exit 1
 fi
 
 if [ "$SITE_NAME" == "pharos-storybooks" ]
