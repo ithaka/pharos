@@ -252,7 +252,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       class=${classMap({
         [`card__link--image`]: true,
         [`card__link--selectable`]:
-          (this._isSubtleSelectHover() || this._isSelectableViaCard()) && !this._isSelected,
+          (this._isSubtleSelectHover() ||
+            this._isSelectableViaCard() ||
+            this._isDisabledSelectable()) &&
+          !this._isSelected,
         [`card__link--selected`]: this._isSelected,
         [`card__link--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
       })}
@@ -384,6 +387,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       (this.variant.includes('selectable') && !this.subtleSelect && !this.disabled) ||
         (this.subtleSelect && this._isSelected && !this.disabled)
     );
+  }
+
+  private _isDisabledSelectable(): boolean {
+    return this.disabled && this.variant.includes('selectable');
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
