@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.5.1
+
+### Patch Changes
+
+- [#373](https://github.com/ithaka/pharos/pull/373) [`60e1fef`](https://github.com/ithaka/pharos/commit/60e1fefdd7c113b9cc936ce877e544cd66317768) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add background color to selectable disabled card
+
 ## 12.5.0
 
 ### Minor Changes
