@@ -183,6 +183,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     if (!this.disabled) {
       this._title['_hover'] = true;
       this._handleMouseEnterSelectable();
+
       const mouseEvent = new CustomEvent('pharos-image-card-image-mouseenter');
       this.dispatchEvent(mouseEvent);
     }
@@ -267,8 +268,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
-      >${this._renderLinkContent()}${this._renderHoverMetadata()} <slot name="overlay"></slot
-    ></pharos-link>`;
+    >
+      ${this._renderCheckbox()} ${this._renderLinkContent()}${this._renderHoverMetadata()}
+      <slot name="overlay"></slot>
+    </pharos-link>`;
   }
 
   private _renderImage(): TemplateResult {
@@ -335,8 +338,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   protected override render(): TemplateResult {
+    console.log('Render');
+
     return html`<div class="card">
-      ${this._renderCheckbox()} ${this._renderImage()} ${this._renderSourceType()}
+      ${this._renderImage()} ${this._renderSourceType()}
       <div
         class="card__title"
         @mouseenter=${this._handleMouseEnterSelectable}
@@ -349,13 +354,23 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _cardToggleSelect(event: Event): void {
+    console.log(new Date());
+    console.log('Clicked');
+    console.log(!this.disabled);
+    console.log(this._isSelectableViaCard());
+    console.log((event.target as Element)?.nodeName);
+
     if (
       !this.disabled &&
       (this._isSelectableViaCard() || (event.target as Element)?.nodeName == 'PHAROS-CHECKBOX')
     ) {
       // this is required to prevent navigation on the link click
       event.preventDefault();
+      event.stopPropagation();
+      console.log('Select state');
+      console.log(this._isSelected);
       this._isSelected = !this._isSelected;
+      console.log(this._isSelected);
       this.dispatchEvent(
         new CustomEvent('pharos-image-card-selected', {
           bubbles: true,
@@ -394,6 +409,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
+    console.log('render checkbox');
+    console.log(this._isSelected);
+
     return this._isSubtleSelectHover() ||
       this._isSelectableViaCard() ||
       this._isSelected ||
@@ -404,8 +422,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           ?checked=${this._isSelected}
           ?disabled=${this.disabled}
           name="Select ${this.title}"
-          @mouseenter=${this._handleMouseEnterSelectable}
-          @mouseleave=${this._handleMouseLeaveSelectable}
           @click="${this._cardToggleSelect}"
           ><span slot="label">Select ${this.title}</span></pharos-checkbox
         >`
