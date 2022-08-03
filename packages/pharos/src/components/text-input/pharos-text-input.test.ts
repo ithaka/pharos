@@ -50,7 +50,7 @@ describe('pharos-text-input', () => {
       </pharos-text-input>
     `);
     expect(component).dom.to.equal(
-      `<pharos-text-input data-pharos-component="PharosTextInput" message="" name="" placeholder="" type="text" value=""><span slot="label">I am a label</span></pharos-text-input>`
+      `<pharos-text-input data-pharos-component="PharosTextInput" message="" name="" placeholder="" type="text" value="" variant="primary"><span slot="label">I am a label</span></pharos-text-input>`
     );
   });
 
