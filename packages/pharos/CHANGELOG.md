@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 12.6.0
+
+### Minor Changes
+
+- [#375](https://github.com/ithaka/pharos/pull/375) [`8d4d212`](https://github.com/ithaka/pharos/commit/8d4d2126f3fe3525847f027aca343d0154a03447) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Profile icon is added to our list of icons
+
+### Patch Changes
+
+- [#384](https://github.com/ithaka/pharos/pull/384) [`8cd06ef`](https://github.com/ithaka/pharos/commit/8cd06ef430f225730317aac22bf3d3573b858db0) Thanks [@michael-iden](https://github.com/michael-iden)! - Restructure card dom and remove checkbox mouseevent listeners to enable subtle selection in Safari
+
 ## 12.5.1
 
 ### Patch Changes

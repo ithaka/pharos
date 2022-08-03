@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 5.11.3
+
+### Patch Changes
+
+- [#380](https://github.com/ithaka/pharos/pull/380) [`00740c1`](https://github.com/ithaka/pharos/commit/00740c160748c3fba76bd36a899b62221661881f) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Fix broken link to icons on iconography page
+
+- Updated dependencies [[`8cd06ef`](https://github.com/ithaka/pharos/commit/8cd06ef430f225730317aac22bf3d3573b858db0), [`8d4d212`](https://github.com/ithaka/pharos/commit/8d4d2126f3fe3525847f027aca343d0154a03447)]:
+  - @ithaka/pharos@12.6.0
+
 ## 5.11.2
 
 ### Patch Changes
