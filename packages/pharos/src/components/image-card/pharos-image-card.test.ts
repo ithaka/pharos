@@ -197,9 +197,9 @@ describe('pharos-image-card', () => {
 
   it('sets title link hover state when the card image link is hovered', async () => {
     const imageLink = component.renderRoot.querySelector('.card__link--image');
-    imageLink?.dispatchEvent(new Event('mouseenter'));
-    await component.updateComplete;
+    imageLink?.parentElement?.dispatchEvent(new Event('mouseenter'));
 
+    await component.updateComplete;
     expect(component['_title']['_hover']).to.be.true;
   });
 
@@ -216,7 +216,7 @@ describe('pharos-image-card', () => {
       <div slot="metadata">Part of <pharos-link href="#">An Example Collection</pharos-link></div>
     </pharos-image-card>`);
     const imageLink = component.renderRoot.querySelector('.card__link--image');
-    imageLink?.dispatchEvent(new Event('mouseenter'));
+    imageLink?.parentElement?.dispatchEvent(new Event('mouseenter'));
 
     await component.updateComplete;
     expect(component['_title']['_hover']).to.be.false;
@@ -396,8 +396,8 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-image-mouseenter', onMouseEnter);
 
-    const pharosLink = component.renderRoot.querySelector('pharos-link');
-    pharosLink?.dispatchEvent(new MouseEvent('mouseenter'));
+    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
 
     expect(hovered).to.be.true;
   });
@@ -436,8 +436,9 @@ describe('pharos-image-card', () => {
     </pharos-image-card>`);
 
     let checkboxElement = null;
-    const pharosLink = component.renderRoot.querySelector('pharos-link');
-    pharosLink?.dispatchEvent(new MouseEvent('mouseenter'));
+    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
+
     await aTimeout(100);
     await elementUpdated(component);
 
@@ -461,8 +462,8 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-image-mouseleave', onMouseLeave);
 
-    const pharosLink = component.renderRoot.querySelector('pharos-link');
-    pharosLink?.dispatchEvent(new Event('mouseleave'));
+    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    imageLink?.parentElement?.dispatchEvent(new Event('mouseleave'));
 
     expect(hovered).to.be.false;
   });
