@@ -19,9 +19,13 @@ export type TextInputType =
   | 'text'
   | 'url';
 
+export type TextInputVariant = 'primary' | 'cozy';
+
 export type TextInputAutocomplete = 'on' | 'off';
 
 const TYPES = ['email', 'hidden', 'number', 'password', 'search', 'tel', 'text', 'url'];
+
+const VARIANTS = ['primary', 'cozy'];
 
 const SUBMITTABLE = [
   'input[type="submit"]:not([disabled])',
@@ -79,6 +83,13 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
    */
   @property({ type: String, reflect: true })
   public type: TextInputType = 'text';
+
+  /**
+   * Indicates the variant of button.
+   * @attr variant
+   */
+  @property({ type: String, reflect: true })
+  public variant: TextInputVariant = 'primary';
 
   /**
    * Indicates if input is readonly.
@@ -150,6 +161,12 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
     if (changedProperties.has('type') && !TYPES.includes(this.type)) {
       throw new Error(
         `${this.type} is not a valid text input type. Valid types are: ${TYPES.join(', ')}`
+      );
+    }
+
+    if (changedProperties.has('variant') && this.variant && !VARIANTS.includes(this.variant)) {
+      throw new Error(
+        `${this.variant} is not a valid variant. Valid variants are: ${VARIANTS.join(', ')}`
       );
     }
   }

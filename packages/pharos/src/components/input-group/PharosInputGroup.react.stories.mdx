@@ -43,6 +43,30 @@ import { PharosIcon } from '../../react-components/icon/pharos-icon';
 
 <ArgsTable of={PharosInputGroup} />
 
+# Cozy
+
+<Canvas withToolbar>
+  <Story name="Cozy">
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '1rem',
+        gridTemplateColumns: 'repeat(1, 524px)',
+      }}
+    >
+      <PharosInputGroup name="my-input-group" variant="cozy">
+        <span slot="label">Search</span>
+        <PharosButton
+          name="search-button"
+          icon="search"
+          variant="subtle"
+          label="search"
+        ></PharosButton>
+      </PharosInputGroup>
+    </div>
+  </Story>
+</Canvas>
+
 # Validity
 
 <Canvas withToolbar>

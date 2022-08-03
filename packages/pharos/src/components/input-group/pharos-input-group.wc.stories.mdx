@@ -30,6 +30,26 @@ import { GuidelineLink } from '@config/GuidelineLink';
 
 <ArgsTable of="pharos-input-group" />
 
+# Cozy
+
+<Canvas>
+  <Story name="Cozy">
+    {html`
+      <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
+        <pharos-input-group name="my-input-group" variant="cozy">
+          <span slot="label">Search</span>
+          <pharos-button
+            name="search-button"
+            icon="search"
+            variant="subtle"
+            label="search"
+          ></pharos-button>
+        </pharos-input-group>
+      </div>
+    `}
+  </Story>
+</Canvas>
+
 # Validity
 
 <Canvas>
