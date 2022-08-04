@@ -85,7 +85,7 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
   public type: TextInputType = 'text';
 
   /**
-   * Indicates the variant of button.
+   * Indicates the variant of text input.
    * @attr variant
    */
   @property({ type: String, reflect: true })
