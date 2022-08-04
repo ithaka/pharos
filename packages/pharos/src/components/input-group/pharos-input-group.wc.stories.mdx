@@ -45,6 +45,38 @@ import { GuidelineLink } from '@config/GuidelineLink';
             label="search"
           ></pharos-button>
         </pharos-input-group>
+        <pharos-input-group name="cozy-prepend" variant="cozy">
+          <pharos-button
+            name="book-button"
+            slot="prepend"
+            icon="book"
+            variant="subtle"
+            label="book"
+          ></pharos-button>
+          <span slot="label">Cozy Prepend</span>
+        </pharos-input-group>
+        <pharos-input-group name="cozy-buttons" variant="cozy">
+          <pharos-button
+            name="book-button"
+            slot="prepend"
+            icon="book"
+            variant="subtle"
+            label="book"
+          ></pharos-button>
+          <span slot="label">Multiple buttons</span>
+          <pharos-button
+            name="close-button"
+            icon="close"
+            variant="subtle"
+            label="close"
+          ></pharos-button>
+          <pharos-button
+            name="search-button"
+            icon="search"
+            variant="subtle"
+            label="search"
+          ></pharos-button>
+        </pharos-input-group>
       </div>
     `}
   </Story>

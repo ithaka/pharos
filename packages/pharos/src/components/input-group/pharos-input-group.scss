@@ -40,18 +40,18 @@ slot:not([name])::slotted([data-pharos-component='PharosIcon']:last-child) {
 
 :host([variant='cozy']) {
   slot[name='prepend']::slotted(*) {
-    margin-left: var(--pharos-spacing-one-and-a-half-x);
+    margin-left: var(--pharos-spacing-1-x);
   }
 
   slot[name='prepend']::slotted([data-pharos-component='PharosIcon']:first-child) {
-    margin-left: var(--pharos-spacing-one-and-a-half-x);
+    margin-left: var(--pharos-spacing-1-x);
   }
 
-  slot:not([name])::slotted(*) {
-    margin-right: var(--pharos-spacing-one-and-a-half-x);
+  slot:not([name])::slotted(:last-child) {
+    margin-right: var(--pharos-spacing-1-x);
   }
 
   slot:not([name])::slotted([data-pharos-component='PharosIcon']:last-child) {
-    margin-right: var(--pharos-spacing-one-and-a-half-x);
+    margin-right: var(--pharos-spacing-1-x);
   }
 }
