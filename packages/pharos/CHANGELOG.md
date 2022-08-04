@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.6.1
+
+### Patch Changes
+
+- [#386](https://github.com/ithaka/pharos/pull/386) [`9e555e4`](https://github.com/ithaka/pharos/commit/9e555e4edd965cc1965b0aeb507fea21153bacd8) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - Adds new variant to pharos-text-input to create an input box with more padding
+
 ## 12.6.0
 
 ### Minor Changes
