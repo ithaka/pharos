@@ -83,6 +83,13 @@
     calc(var(--pharos-spacing-three-quarters-x) - 1px);
 }
 
+/// Styles for prominent input states with thicker borders
+/// @access public
+/// @group form-elements
+@mixin input-padding-thick-border-prominent {
+  padding: calc(var(--pharos-spacing-1-x) - 1px);
+}
+
 /// Styles for inputs on a background
 /// @access public
 /// @group form-elements
