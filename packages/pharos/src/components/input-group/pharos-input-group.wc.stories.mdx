@@ -30,13 +30,13 @@ import { GuidelineLink } from '@config/GuidelineLink';
 
 <ArgsTable of="pharos-input-group" />
 
-# Cozy
+# Prominent
 
 <Canvas>
-  <Story name="Cozy">
+  <Story name="Prominent">
     {html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
-        <pharos-input-group name="my-input-group" variant="cozy">
+        <pharos-input-group name="my-input-group" variant="prominent">
           <span slot="label">Basic</span>
           <pharos-button
             name="search-button"
@@ -45,7 +45,7 @@ import { GuidelineLink } from '@config/GuidelineLink';
             label="search"
           ></pharos-button>
         </pharos-input-group>
-        <pharos-input-group name="my-input-group" variant="cozy" invalidated>
+        <pharos-input-group name="my-input-group" variant="prominent" invalidated>
           <span slot="label">invalidated</span>
           <pharos-button
             name="search-button"
@@ -54,7 +54,7 @@ import { GuidelineLink } from '@config/GuidelineLink';
             label="search"
           ></pharos-button>
         </pharos-input-group>
-        <pharos-input-group name="cozy-prepend" variant="cozy">
+        <pharos-input-group name="prominent-prepend" variant="prominent">
           <pharos-button
             name="book-button"
             slot="prepend"
@@ -62,9 +62,9 @@ import { GuidelineLink } from '@config/GuidelineLink';
             variant="subtle"
             label="book"
           ></pharos-button>
-          <span slot="label">Cozy Prepend</span>
+          <span slot="label">prominent Prepend</span>
         </pharos-input-group>
-        <pharos-input-group name="cozy-buttons" variant="cozy">
+        <pharos-input-group name="prominent-buttons" variant="prominent">
           <pharos-button
             name="book-button"
             slot="prepend"

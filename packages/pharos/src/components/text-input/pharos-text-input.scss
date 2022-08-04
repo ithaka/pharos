@@ -56,7 +56,7 @@
   }
 }
 
-:host([variant='cozy']) #input-element {
+:host([variant='prominent']) #input-element {
   padding: var(--pharos-spacing-1-x);
 }
 
@@ -69,17 +69,17 @@
   }
 }
 
-:host([variant='cozy']) #input-element:focus {
-  @include mixins.input-padding-thick-border-cozy;
+:host([variant='prominent']) #input-element:focus {
+  @include mixins.input-padding-thick-border-prominent;
 }
 
-:host([variant='cozy'][invalidated]),
-:host([variant='cozy'][validated]) {
+:host([variant='prominent'][invalidated]),
+:host([variant='prominent'][validated]) {
   #input-element {
     padding-right: 2.5rem;
   }
 }
 
-:host([invalidated][variant='cozy']) #input-element {
-  @include mixins.input-padding-thick-border-cozy;
+:host([invalidated][variant='prominent']) #input-element {
+  @include mixins.input-padding-thick-border-prominent;
 }

@@ -38,7 +38,7 @@ slot:not([name])::slotted([data-pharos-component='PharosIcon']:last-child) {
   margin-right: calc(var(--pharos-spacing-three-quarters-x) + 1px);
 }
 
-:host([variant='cozy']) {
+:host([variant='prominent']) {
   slot[name='prepend']::slotted(*) {
     margin-left: var(--pharos-spacing-three-quarters-x);
   }

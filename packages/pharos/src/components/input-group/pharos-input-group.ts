@@ -51,7 +51,7 @@ export class PharosInputGroup extends PharosTextInput {
 
     if (changedProperties.has('_prependGroupWidth')) {
       const updatedPaddingLeft =
-        this.variant === 'cozy' ? PharosSpacing1X : PharosSpacingThreeQuartersX;
+        this.variant === 'prominent' ? PharosSpacing1X : PharosSpacingThreeQuartersX;
       this._input.style.paddingLeft = `calc(${updatedPaddingLeft} + ${this._prependGroupWidth}px)`;
     }
     if (

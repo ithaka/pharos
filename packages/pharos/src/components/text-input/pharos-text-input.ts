@@ -19,13 +19,13 @@ export type TextInputType =
   | 'text'
   | 'url';
 
-export type TextInputVariant = 'primary' | 'cozy';
+export type TextInputVariant = 'primary' | 'prominent';
 
 export type TextInputAutocomplete = 'on' | 'off';
 
 const TYPES = ['email', 'hidden', 'number', 'password', 'search', 'tel', 'text', 'url'];
 
-const VARIANTS = ['primary', 'cozy'];
+const VARIANTS = ['primary', 'prominent'];
 
 const SUBMITTABLE = [
   'input[type="submit"]:not([disabled])',
