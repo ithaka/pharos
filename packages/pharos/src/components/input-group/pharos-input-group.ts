@@ -8,7 +8,11 @@ import type {
   TextInputAutocomplete,
   TextInputVariant,
 } from '../text-input/pharos-text-input';
-import { PharosSpacingOneAndAHalfX, PharosSpacingThreeQuartersX } from '../../styles/variables';
+import {
+  PharosSpacingOneAndAHalfX,
+  PharosSpacingThreeQuartersX,
+  PharosSpacing1X,
+} from '../../styles/variables';
 
 export type { TextInputType, TextInputAutocomplete, TextInputVariant };
 
@@ -46,7 +50,9 @@ export class PharosInputGroup extends PharosTextInput {
     super.updated(changedProperties);
 
     if (changedProperties.has('_prependGroupWidth')) {
-      this._input.style.paddingLeft = `calc(${PharosSpacingThreeQuartersX} + ${this._prependGroupWidth}px)`;
+      const updatedPaddingLeft =
+        this.variant === 'cozy' ? PharosSpacing1X : PharosSpacingThreeQuartersX;
+      this._input.style.paddingLeft = `calc(${updatedPaddingLeft} + ${this._prependGroupWidth}px)`;
     }
     if (
       ['invalidated', 'validated', '_appendGroupWidth'].some((key) => changedProperties.has(key))

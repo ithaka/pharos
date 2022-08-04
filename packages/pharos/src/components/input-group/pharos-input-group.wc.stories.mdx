@@ -37,7 +37,16 @@ import { GuidelineLink } from '@config/GuidelineLink';
     {html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
         <pharos-input-group name="my-input-group" variant="cozy">
-          <span slot="label">Search</span>
+          <span slot="label">Basic</span>
+          <pharos-button
+            name="search-button"
+            icon="search"
+            variant="subtle"
+            label="search"
+          ></pharos-button>
+        </pharos-input-group>
+        <pharos-input-group name="my-input-group" variant="cozy" invalidated>
+          <span slot="label">invalidated</span>
           <pharos-button
             name="search-button"
             icon="search"
