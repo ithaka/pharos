@@ -73,13 +73,6 @@
   @include mixins.input-padding-thick-border-prominent;
 }
 
-:host([variant='prominent'][invalidated]),
-:host([variant='prominent'][validated]) {
-  #input-element {
-    padding-right: 2.5rem;
-  }
-}
-
 :host([invalidated][variant='prominent']) #input-element {
   @include mixins.input-padding-thick-border-prominent;
 }
