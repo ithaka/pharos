@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.6.2
+
+### Patch Changes
+
+- [#388](https://github.com/ithaka/pharos/pull/388) [`0c8d58d`](https://github.com/ithaka/pharos/commit/0c8d58dc9ac6893e6469f7081e8212d25a6cadce) Thanks [@adandavati](https://github.com/adandavati)! - Remove overly strict contain property from text-input labels
+
 ## 12.6.1
 
 ### Patch Changes
