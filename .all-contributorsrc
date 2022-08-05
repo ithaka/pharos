@@ -251,6 +251,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "adandavati",
+      "name": "Armaan Dandavati",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13627169?v=4",
+      "profile": "https://github.com/adandavati",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
