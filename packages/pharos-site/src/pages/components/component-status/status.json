@@ -19,6 +19,10 @@
     "released": {
       "status": "na",
       "description": ""
+    },
+    "updated": {
+      "status": "na",
+      "description": ""
     }
   },
   "alert": {
@@ -40,6 +44,10 @@
     },
     "released": {
       "status": "0.0.4",
+      "description": ""
+    },
+    "updated": {
+      "status": "10.6.0",
       "description": ""
     }
   },
@@ -63,6 +71,10 @@
     "released": {
       "status": "7.22.0",
       "description": ""
+    },
+    "updated": {
+      "status": "10.6.1",
+      "description": ""
     }
   },
   "button": {
@@ -85,27 +97,9 @@
     "released": {
       "status": "7.0.0",
       "description": ""
-    }
-  },
-  "callout": {
-    "design": {
-      "status": "na",
-      "description": "Not doing"
     },
-    "development": {
-      "status": "deprecated",
-      "description": "Use alerts instead"
-    },
-    "tests": {
-      "status": "na",
-      "description": ""
-    },
-    "documentation": {
-      "status": "na",
-      "description": "Not doing"
-    },
-    "released": {
-      "status": "na",
+    "updated": {
+      "status": "11.2.0",
       "description": ""
     }
   },
@@ -129,6 +123,10 @@
     "released": {
       "status": "1.0.0",
       "description": ""
+    },
+    "updated": {
+      "status": "7.0.0",
+      "description": ""
     }
   },
   "checkbox-group": {
@@ -150,6 +148,10 @@
     },
     "released": {
       "status": "1.2.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "6.0.0",
       "description": ""
     }
   },
@@ -173,6 +175,10 @@
     "released": {
       "status": "3.1.0",
       "description": ""
+    },
+    "updated": {
+      "status": "10.6.0",
+      "description": ""
     }
   },
   "dropdown-menu": {
@@ -194,6 +200,10 @@
     },
     "released": {
       "status": "5.0.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "12.0.0",
       "description": ""
     }
   },
@@ -217,6 +227,10 @@
     "released": {
       "status": "7.7.0",
       "description": ""
+    },
+    "updated": {
+      "status": "7.23.3",
+      "description": ""
     }
   },
   "footer": {
@@ -238,6 +252,10 @@
     },
     "released": {
       "status": "7.10.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "10.8.0",
       "description": ""
     }
   },
@@ -261,6 +279,10 @@
     "released": {
       "status": "7.11.0",
       "description": ""
+    },
+    "updated": {
+      "status": "12.0.0",
+      "description": ""
     }
   },
   "heading": {
@@ -282,6 +304,10 @@
     },
     "released": {
       "status": "0.0.4",
+      "description": ""
+    },
+    "updated": {
+      "status": "10.0.0",
       "description": ""
     }
   },
@@ -305,6 +331,10 @@
     "released": {
       "status": "7.0.0",
       "description": ""
+    },
+    "updated": {
+      "status": "12.6.0",
+      "description": "New icon added"
     }
   },
   "image-card": {
@@ -326,6 +356,10 @@
     },
     "released": {
       "status": "9.2.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "10.6.0",
       "description": ""
     }
   },
@@ -349,6 +383,10 @@
     "released": {
       "status": "7.6.0",
       "description": ""
+    },
+    "updated": {
+      "status": "10.7.0",
+      "description": ""
     }
   },
   "layout": {
@@ -370,6 +408,10 @@
     },
     "released": {
       "status": "9.1.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "12.0.0",
       "description": ""
     }
   },
@@ -393,6 +435,10 @@
     "released": {
       "status": "7.0.0",
       "description": ""
+    },
+    "updated": {
+      "status": "11.2.1",
+      "description": ""
     }
   },
   "loading-spinner": {
@@ -414,6 +460,10 @@
     },
     "released": {
       "status": "4.1.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "4.3.2",
       "description": ""
     }
   },
@@ -437,6 +487,10 @@
     "released": {
       "status": "4.3.0",
       "description": ""
+    },
+    "updated": {
+      "status": "11.1.0",
+      "description": ""
     }
   },
   "pagination": {
@@ -459,6 +513,10 @@
     "released": {
       "status": "7.12.0",
       "description": ""
+    },
+    "updated": {
+      "status": "7.20.0",
+      "description": ""
     }
   },
   "progress-bar": {
@@ -479,6 +537,10 @@
       "description": ""
     },
     "released": {
+      "status": "7.0.0",
+      "description": ""
+    },
+    "updated": {
       "status": "7.0.0",
       "description": ""
     }
@@ -503,6 +565,10 @@
     "released": {
       "status": "1.0.0",
       "description": ""
+    },
+    "updated": {
+      "status": "5.0.0",
+      "description": ""
     }
   },
   "radio-group": {
@@ -524,6 +590,10 @@
     },
     "released": {
       "status": "1.1.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "6.0.0",
       "description": ""
     }
   },
@@ -547,6 +617,10 @@
     "released": {
       "status": "1.2.0",
       "description": ""
+    },
+    "updated": {
+      "status": "7.6.0",
+      "description": ""
     }
   },
   "sidenav": {
@@ -568,6 +642,10 @@
     },
     "released": {
       "status": "7.19.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "9.3.0",
       "description": ""
     }
   },
@@ -591,6 +669,10 @@
     "released": {
       "status": "7.3.0",
       "description": ""
+    },
+    "updated": {
+      "status": "12.2.3",
+      "description": ""
     }
   },
   "textarea": {
@@ -612,6 +694,10 @@
     },
     "released": {
       "status": "1.2.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "7.24.0",
       "description": ""
     }
   },
@@ -635,6 +721,10 @@
     "released": {
       "status": "1.0.0",
       "description": ""
+    },
+    "updated": {
+      "status": "12.6.2",
+      "description": ""
     }
   },
   "toast": {
@@ -657,6 +747,10 @@
     "released": {
       "status": "7.21.0",
       "description": ""
+    },
+    "updated": {
+      "status": "12.2.0",
+      "description": ""
     }
   },
   "toggle-button-group": {
@@ -677,7 +771,11 @@
       "description": ""
     },
     "released": {
-      "status": "na",
+      "status": "9.2.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "9.2.0",
       "description": ""
     }
   },
@@ -700,6 +798,10 @@
     },
     "released": {
       "status": "0.0.2",
+      "description": ""
+    },
+    "updated": {
+      "status": "10.1.0",
       "description": ""
     }
   }
