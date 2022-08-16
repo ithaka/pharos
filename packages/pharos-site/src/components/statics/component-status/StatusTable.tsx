@@ -22,7 +22,15 @@ const StatusTable: FC = () => {
   const [StateTable, setStateTable] = useState<ReactElement[] | null>(null);
   const [IsStuck, setIsStuck] = useState(false);
 
-  const columns = ['Component', 'Design', 'Development', 'Tests', 'Documentation', 'Released In'];
+  const columns = [
+    'Component',
+    'Design',
+    'Development',
+    'Tests',
+    'Documentation',
+    'Released in',
+    'Last updated',
+  ];
 
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
@@ -62,15 +70,25 @@ const StatusTable: FC = () => {
             const component = statuses[key as keyof typeof statuses];
             const status = component[lifecycle as keyof typeof component].status;
             const description = component[lifecycle as keyof typeof component].description;
+            const changelogUrl =
+              'https://github.com/ithaka/pharos/blob/develop/packages/pharos/CHANGELOG.md';
 
             return (
               <td key={j} className={table__cell}>
                 {legend[status as keyof typeof legend] ? (
                   <StatusIcon status={status} index={`${i}` + `${j}`} />
                 ) : (
-                  <strong>{status}</strong>
+                  <div>
+                    {['released', 'updated'].includes(lifecycle) ? (
+                      <PharosLink href={`${changelogUrl}#${status.replaceAll('.', '')}`}>
+                        <strong>{status}</strong>
+                      </PharosLink>
+                    ) : (
+                      <strong>{status}</strong>
+                    )}
+                  </div>
                 )}
-                {description ? <span className={status__description}>{description}</span> : null}
+                {description ? <div className={status__description}>{description}</div> : null}
               </td>
             );
           })}

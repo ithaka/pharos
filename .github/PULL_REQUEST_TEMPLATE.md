@@ -17,6 +17,7 @@
 - [ ] Test suite(s) passing?
 - [ ] Code coverage maximal?
 - [ ] Changeset added?
+- [ ] Component status page up to date?
 
 **What does this change address?**
 A clear and concise description or a direct link to an issue [e.g. #15]
