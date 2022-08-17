@@ -2,4 +2,4 @@
 '@ithaka/pharos': minor
 ---
 
-Adding keyboard accessibility to selectable iamge card variants
+Add keyboard accessibility to selectable image card variants
