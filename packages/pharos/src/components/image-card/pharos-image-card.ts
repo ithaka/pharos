@@ -141,6 +141,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   @query('.card__link--title')
   private _title!: PharosLink;
 
+  @query('#checkbox-element')
+  private _checkbox!: HTMLInputElement;
+
   public static override get styles(): CSSResultArray {
     return [imageCardStyles];
   }
@@ -264,6 +267,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       subtle
       flex
       no-hover
+      @keydown=${this._handleKeydown}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
@@ -336,7 +340,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   protected override render(): TemplateResult {
     return html`<div class="card">
-      ${this._renderCheckbox()} ${this._renderImage()} ${this._renderSourceType()}
+      ${this._renderImage()} ${this._renderCheckbox()} ${this._renderSourceType()}
       <div
         class="card__title"
         @mouseenter=${this._handleMouseEnterSelectable}
@@ -393,11 +397,23 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return this.disabled && this.variant.includes('selectable');
   }
 
-  private _renderCheckbox(): TemplateResult | typeof nothing {
-    return this._isSubtleSelectHover() ||
+  private _handleKeydown(event: KeyboardEvent): void {
+    if (event.key == 'Tab' && this.subtleSelect && !this._checkboxDisplayed()) {
+      this._isSelectableHovered = true;
+    }
+  }
+
+  private _checkboxDisplayed() {
+    return (
+      this._isSubtleSelectHover() ||
       this._isSelectableViaCard() ||
       this._isSelected ||
       (this.disabled && this.variant.includes('selectable'))
+    );
+  }
+
+  private _renderCheckbox(): TemplateResult | typeof nothing {
+    return this._checkboxDisplayed()
       ? html`<pharos-checkbox
           class="card__checkbox"
           hide-label="true"
@@ -407,6 +423,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           @mouseenter=${this._handleMouseEnterSelectable}
           @mouseleave=${this._handleMouseLeaveSelectable}
           @click="${this._cardToggleSelect}"
+          @blur="${this._handleMouseLeaveSelectable}"
           ><span slot="label">Select ${this.title}</span></pharos-checkbox
         >`
       : nothing;
