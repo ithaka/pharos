@@ -364,12 +364,13 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _cardToggleSelect(event: Event): void {
     if (
       !this.disabled &&
-      (this._isSelectableViaCard() || (event.target as Element)?.nodeName == 'PHAROS-CHECKBOX')
+      ((this._isSelectableViaCard() && (event.target as Element)?.nodeName != 'PHAROS-CHECKBOX') ||
+        (event.currentTarget as Element)?.nodeName == 'PHAROS-CHECKBOX')
     ) {
       // this is required to prevent navigation on the link click
       event.preventDefault();
-      event.stopPropagation();
       this._isSelected = !this._isSelected;
+
       this.dispatchEvent(
         new CustomEvent('pharos-image-card-selected', {
           bubbles: true,
