@@ -141,9 +141,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   @query('.card__link--title')
   private _title!: PharosLink;
 
-  @query('#checkbox-element')
-  private _checkbox!: HTMLInputElement;
-
   public static override get styles(): CSSResultArray {
     return [imageCardStyles];
   }
@@ -220,6 +217,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       subtle
       flex
       no-hover
+      @keydown=${this._handleKeydown}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
