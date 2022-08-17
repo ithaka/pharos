@@ -375,12 +375,16 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     }
 
     // tabbing backwards
-    if (event.key == 'Tab' && event.shiftKey && event.target.id === 'card-title') {
+    if (event.key == 'Tab' && event.shiftKey && (event.target as Element)?.id === 'card-title') {
       this._isSelectableHovered = true;
     }
 
     //tabbing forwards
-    if (event.key == 'Tab' && !event.shiftKey && event.target.id == 'card-image-link') {
+    if (
+      event.key == 'Tab' &&
+      !event.shiftKey &&
+      (event.target as Element)?.id == 'card-image-link'
+    ) {
       this._isSelectableHovered = true;
     }
   }
