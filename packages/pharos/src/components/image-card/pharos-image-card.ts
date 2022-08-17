@@ -210,13 +210,12 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderCollectionImage(): TemplateResult {
     return html`<div
       class="card__link-container"
-      @keydown=${this._handleKeydown}
+      @keydown=${this._handleForwardNavigation}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
     >
       <pharos-link
-        id="card-image-link"
         class=${classMap({
           [`card__link--collection`]: true,
           [`card__link--selected`]: this._isSelected,
@@ -260,13 +259,12 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderBaseImage(): TemplateResult {
     return html`<div
       class="card__link-container"
-      @keydown=${this._handleKeydown}
+      @keydown=${this._handleForwardNavigation}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
     >
       <pharos-link
-        id="card-image-link"
         class=${classMap({
           [`card__link--image`]: true,
           [`card__link--selectable`]:
@@ -309,8 +307,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   protected get renderTitle(): TemplateResult {
     return html`<pharos-link
-      @keydown=${this._handleKeydown}
-      id="card-title"
+      @keydown=${this._handleBackwardNavigation}
       class="card__link--title"
       href="${this.link}"
       subtle
@@ -369,22 +366,24 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     </div>`;
   }
 
-  private _handleKeydown(event: KeyboardEvent): void {
-    if (!this.subtleSelect || this._checkboxDisplayed()) {
+  private _handleBackwardNavigation(event: KeyboardEvent): void {
+    if (!this.subtleSelect || this._isCheckboxDisplayed()) {
       return;
     }
 
-    // tabbing backwards
-    if (event.key == 'Tab' && event.shiftKey && (event.target as Element)?.id === 'card-title') {
+    if (event.key == 'Tab' && event.shiftKey) {
+      console.log('HANDLE BACKWARD');
       this._isSelectableHovered = true;
     }
+  }
 
-    //tabbing forwards
-    if (
-      event.key == 'Tab' &&
-      !event.shiftKey &&
-      (event.target as Element)?.id == 'card-image-link'
-    ) {
+  private _handleForwardNavigation(event: KeyboardEvent): void {
+    if (!this.subtleSelect || this._isCheckboxDisplayed()) {
+      return;
+    }
+
+    if (event.key == 'Tab' && !event.shiftKey) {
+      console.log('HANDLE FORWARD');
       this._isSelectableHovered = true;
     }
   }
@@ -435,7 +434,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return this.disabled && this.variant.includes('selectable');
   }
 
-  private _checkboxDisplayed() {
+  private _isCheckboxDisplayed() {
     return (
       this._isSubtleSelectHover() ||
       this._isSelectableViaCard() ||
@@ -445,7 +444,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
-    return this._checkboxDisplayed()
+    return this._isCheckboxDisplayed()
       ? html`<pharos-checkbox
           @blur=${this._handleMouseLeaveSelectable}
           class="card__checkbox"
