@@ -209,7 +209,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderCollectionImage(): TemplateResult {
     return html`<div
-      class="card__link--container"
+      class="card__link-container"
       @keydown=${this._handleKeydown}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
@@ -259,7 +259,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderBaseImage(): TemplateResult {
     return html`<div
-      class="card__link--container"
+      class="card__link-container"
       @keydown=${this._handleKeydown}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
