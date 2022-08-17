@@ -609,4 +609,33 @@ describe('pharos-image-card', () => {
 
     expect(component.innerHTML).contains('Card overlay');
   });
+
+  it('the checkbox dispays when tab is pressed on the image link', async () => {
+    component = await fixture(html`<pharos-image-card
+      title="Card Title"
+      link="#"
+      variant="selectable"
+      subtle-select="true"
+    >
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <strong slot="metadata">100 items</strong>
+      <div slot="metadata">Description of collection.</div>
+    </pharos-image-card>`);
+
+    const imageLink = component.renderRoot.querySelector('.card__link--image');
+
+    imageLink?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
+    let checkboxElement = null;
+    imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
+
+    await aTimeout(100);
+    await elementUpdated(component);
+
+    checkboxElement = component.renderRoot.querySelector('pharos-checkbox');
+    expect(checkboxElement).not.to.be.null;
+  });
 });
