@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.7.1
+
+### Patch Changes
+
+- [#393](https://github.com/ithaka/pharos/pull/393) [`1bbe745`](https://github.com/ithaka/pharos/commit/1bbe745e1b99531c8e85f294ee804378a54f9caf) Thanks [@acjreno](https://github.com/acjreno)! - Remove event.stopPropagation from \_cardToggleSelect and logic updates
+
 ## 12.7.0
 
 ### Minor Changes
