@@ -141,6 +141,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   @query('.card__link--title')
   private _title!: PharosLink;
 
+  @query('.card__checkbox')
+  private _checkbox!: PharosLink;
+
   public static override get styles(): CSSResultArray {
     return [imageCardStyles];
   }
@@ -154,21 +157,21 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       );
     }
 
-    if (
-      changedProperties.has('subtleSelect') &&
-      this.subtleSelect &&
-      !this.variant.includes('selectable')
-    ) {
+    if (changedProperties.has('subtleSelect') && this.subtleSelect && !this._isSelectable()) {
       throw new Error(
         `${this.variant} is not a valid variant to use with subtle-select. Only the selectable variants can be used with subtle-select.}`
       );
     }
 
-    if (this.selected && this.variant.includes('selectable')) {
+    if (this.selected && this._isSelectable()) {
       throw new Error(
         `Image card with variant type ${this.variant} cannot be selected. Only the selectable variants can be selected.}`
       );
     }
+  }
+
+  private _isSelectable() {
+    return this.variant.includes('selectable');
   }
 
   private _handleClick(e: MouseEvent): void {
@@ -209,11 +212,12 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderCollectionImage(): TemplateResult {
     return html`<div
+      class="card__link-container"
+      @keydown=${this._handleForwardNavigation}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
     >
-      ${this._renderCheckbox()}
       <pharos-link
         class=${classMap({
           [`card__link--collection`]: true,
@@ -228,6 +232,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         <svg class="card__svg" role="presentation" viewBox="0 0 4 3"></svg>
         <slot name="image"></slot>
       </pharos-link>
+      ${this._renderCheckbox()}
     </div>`;
   }
 
@@ -256,11 +261,12 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderBaseImage(): TemplateResult {
     return html`<div
+      class="card__link-container"
+      @keydown=${this._handleForwardNavigation}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
     >
-      ${this._renderCheckbox()}
       <pharos-link
         class=${classMap({
           [`card__link--image`]: true,
@@ -281,6 +287,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         ${this._renderLinkContent()}${this._renderHoverMetadata()}
         <slot name="overlay"></slot>
       </pharos-link>
+      ${this._renderCheckbox()}
     </div>`;
   }
 
@@ -301,8 +308,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     }[this.variant] as HeadingPreset;
   }
 
-  protected get renderTitle(): TemplateResult {
+  private _renderTitle(): TemplateResult {
     return html`<pharos-link
+      @keydown=${this._handleBackwardNavigation}
       class="card__link--title"
       href="${this.link}"
       subtle
@@ -355,10 +363,32 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         @mouseenter=${this._handleMouseEnterSelectable}
         @mouseleave=${this._handleMouseLeaveSelectable}
       >
-        ${this.renderTitle} ${this._renderActionButton()}
+        ${this._renderTitle()} ${this._renderActionButton()}
       </div>
       ${this._renderMetadata()}
     </div>`;
+  }
+
+  private _handleNavigation(event: KeyboardEvent, directionMatches: boolean): void {
+    if (!this.subtleSelect || this._isCheckboxDisplayed()) {
+      return;
+    }
+
+    if (event.key == 'Tab' && directionMatches) {
+      event.preventDefault();
+      this._isSelectableHovered = true;
+      new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
+        this._checkbox.focus();
+      });
+    }
+  }
+
+  private _handleBackwardNavigation(event: KeyboardEvent): void {
+    this._handleNavigation(event, event.shiftKey);
+  }
+
+  private _handleForwardNavigation(event: KeyboardEvent): void {
+    this._handleNavigation(event, !event.shiftKey);
   }
 
   private _cardToggleSelect(event: Event): void {
@@ -385,10 +415,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _isSubtleSelectHover(): boolean {
     return Boolean(
-      this.variant.includes('selectable') &&
-        this._isSelectableHovered &&
-        this.subtleSelect &&
-        !this.disabled
+      this._isSelectable() && this._isSelectableHovered && this.subtleSelect && !this.disabled
     );
   }
 
@@ -398,21 +425,28 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _isSelectableViaCard(): boolean {
     return Boolean(
-      (this.variant.includes('selectable') && !this.subtleSelect && !this.disabled) ||
+      (this._isSelectable() && !this.subtleSelect && !this.disabled) ||
         (this.subtleSelect && this._isSelected && !this.disabled)
     );
   }
 
   private _isDisabledSelectable(): boolean {
-    return this.disabled && this.variant.includes('selectable');
+    return this.disabled && this._isSelectable();
+  }
+
+  private _isCheckboxDisplayed() {
+    return (
+      this._isSubtleSelectHover() ||
+      this._isSelectableViaCard() ||
+      this._isSelected ||
+      (this.disabled && this._isSelectable())
+    );
   }
 
   private _renderCheckbox(): TemplateResult | typeof nothing {
-    return this._isSubtleSelectHover() ||
-      this._isSelectableViaCard() ||
-      this._isSelected ||
-      (this.disabled && this.variant.includes('selectable'))
+    return this._isCheckboxDisplayed()
       ? html`<pharos-checkbox
+          @blur=${this._handleMouseLeaveSelectable}
           class="card__checkbox"
           hide-label="true"
           ?checked=${this._isSelected}

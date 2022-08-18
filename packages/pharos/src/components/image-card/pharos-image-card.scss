@@ -11,6 +11,10 @@
   width: 100%;
 }
 
+.card__link-container {
+  display: flex;
+}
+
 .card__link--image {
   position: relative;
   height: 14rem;

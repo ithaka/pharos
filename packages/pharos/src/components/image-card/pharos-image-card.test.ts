@@ -1,5 +1,6 @@
 import { fixture, expect, aTimeout, elementUpdated } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
+import { sendKeys } from '@web/test-runner-commands';
 
 import type { PharosImageCard } from './pharos-image-card';
 import type { PharosButton } from '../button/pharos-button';
@@ -608,5 +609,27 @@ describe('pharos-image-card', () => {
     </pharos-image-card>`);
 
     expect(component.innerHTML).contains('Card overlay');
+  });
+
+  it('can be navigated with a keyboard when subtle and selectable', async () => {
+    component = await fixture(html`<pharos-image-card
+      title="Card Title"
+      link="#"
+      variant="selectable"
+      subtle-select="true"
+    >
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <strong slot="metadata">100 items</strong>
+      <div slot="metadata">Description of collection.</div>
+    </pharos-image-card>`);
+
+    component.focus();
+    await sendKeys({ down: 'Tab' });
+    const checkboxElement = component.renderRoot.querySelector('pharos-checkbox');
+    expect(checkboxElement).not.to.be.null;
   });
 });
