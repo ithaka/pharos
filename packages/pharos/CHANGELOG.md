@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.7.0
+
+### Minor Changes
+
+- [#392](https://github.com/ithaka/pharos/pull/392) [`2c3056e`](https://github.com/ithaka/pharos/commit/2c3056eb6004f4602ffe34c1c97c75efa1419309) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add keyboard accessibility to selectable image card variants
+
 ## 12.6.2
 
 ### Patch Changes
