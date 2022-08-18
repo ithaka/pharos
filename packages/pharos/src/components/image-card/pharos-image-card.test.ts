@@ -1,5 +1,6 @@
 import { fixture, expect, aTimeout, elementUpdated } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
+import { sendKeys } from '@web/test-runner-commands';
 
 import type { PharosImageCard } from './pharos-image-card';
 import type { PharosButton } from '../button/pharos-button';
@@ -610,7 +611,7 @@ describe('pharos-image-card', () => {
     expect(component.innerHTML).contains('Card overlay');
   });
 
-  it('displays checkbox when tab is pressed on the image link', async () => {
+  it('can be navigated with a keyboard when subtle and selectable', async () => {
     component = await fixture(html`<pharos-image-card
       title="Card Title"
       link="#"
@@ -626,13 +627,8 @@ describe('pharos-image-card', () => {
       <div slot="metadata">Description of collection.</div>
     </pharos-image-card>`);
 
-    const imageLink = component.renderRoot.querySelector('.card__link--image');
-
-    imageLink?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
-
-    await aTimeout(100);
-    await elementUpdated(component);
-
+    component.focus();
+    await sendKeys({ down: 'Tab' });
     const checkboxElement = component.renderRoot.querySelector('pharos-checkbox');
     expect(checkboxElement).not.to.be.null;
   });
