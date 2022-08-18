@@ -154,21 +154,21 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       );
     }
 
-    if (
-      changedProperties.has('subtleSelect') &&
-      this.subtleSelect &&
-      !this.variant.includes('selectable')
-    ) {
+    if (changedProperties.has('subtleSelect') && this.subtleSelect && !this._isSelectable()) {
       throw new Error(
         `${this.variant} is not a valid variant to use with subtle-select. Only the selectable variants can be used with subtle-select.}`
       );
     }
 
-    if (this.selected && this.variant.includes('selectable')) {
+    if (this.selected && this._isSelectable()) {
       throw new Error(
         `Image card with variant type ${this.variant} cannot be selected. Only the selectable variants can be selected.}`
       );
     }
+  }
+
+  private _isSelectable() {
+    return this.variant.includes('selectable');
   }
 
   private _handleClick(e: MouseEvent): void {
@@ -305,7 +305,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     }[this.variant] as HeadingPreset;
   }
 
-  protected get renderTitle(): TemplateResult {
+  private _renderTitle(): TemplateResult {
     return html`<pharos-link
       @keydown=${this._handleBackwardNavigation}
       class="card__link--title"
@@ -360,7 +360,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         @mouseenter=${this._handleMouseEnterSelectable}
         @mouseleave=${this._handleMouseLeaveSelectable}
       >
-        ${this.renderTitle} ${this._renderActionButton()}
+        ${this._renderTitle()} ${this._renderActionButton()}
       </div>
       ${this._renderMetadata()}
     </div>`;
@@ -410,10 +410,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _isSubtleSelectHover(): boolean {
     return Boolean(
-      this.variant.includes('selectable') &&
-        this._isSelectableHovered &&
-        this.subtleSelect &&
-        !this.disabled
+      this._isSelectable() && this._isSelectableHovered && this.subtleSelect && !this.disabled
     );
   }
 
@@ -423,13 +420,13 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _isSelectableViaCard(): boolean {
     return Boolean(
-      (this.variant.includes('selectable') && !this.subtleSelect && !this.disabled) ||
+      (this._isSelectable() && !this.subtleSelect && !this.disabled) ||
         (this.subtleSelect && this._isSelected && !this.disabled)
     );
   }
 
   private _isDisabledSelectable(): boolean {
-    return this.disabled && this.variant.includes('selectable');
+    return this.disabled && this._isSelectable();
   }
 
   private _isCheckboxDisplayed() {
@@ -437,7 +434,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       this._isSubtleSelectHover() ||
       this._isSelectableViaCard() ||
       this._isSelected ||
-      (this.disabled && this.variant.includes('selectable'))
+      (this.disabled && this._isSelectable())
     );
   }
 
