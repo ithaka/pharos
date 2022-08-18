@@ -141,6 +141,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   @query('.card__link--title')
   private _title!: PharosLink;
 
+  @query('.card__checkbox')
+  private _checkbox!: PharosLink;
+
   public static override get styles(): CSSResultArray {
     return [imageCardStyles];
   }
@@ -366,24 +369,26 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     </div>`;
   }
 
-  private _handleBackwardNavigation(event: KeyboardEvent): void {
+  private _handleNavigation(event: KeyboardEvent, directionMatches: boolean): void {
     if (!this.subtleSelect || this._isCheckboxDisplayed()) {
       return;
     }
 
-    if (event.key == 'Tab' && event.shiftKey) {
+    if (event.key == 'Tab' && directionMatches) {
+      event.preventDefault();
       this._isSelectableHovered = true;
+      new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
+        this._checkbox.focus();
+      });
     }
   }
 
-  private _handleForwardNavigation(event: KeyboardEvent): void {
-    if (!this.subtleSelect || this._isCheckboxDisplayed()) {
-      return;
-    }
+  private _handleBackwardNavigation(event: KeyboardEvent): void {
+    this._handleNavigation(event, event.shiftKey);
+  }
 
-    if (event.key == 'Tab' && !event.shiftKey) {
-      this._isSelectableHovered = true;
-    }
+  private _handleForwardNavigation(event: KeyboardEvent): void {
+    this._handleNavigation(event, !event.shiftKey);
   }
 
   private _cardToggleSelect(event: Event): void {
