@@ -372,7 +372,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     }
 
     if (event.key == 'Tab' && event.shiftKey) {
-      console.log('HANDLE BACKWARD');
       this._isSelectableHovered = true;
     }
   }
@@ -383,7 +382,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     }
 
     if (event.key == 'Tab' && !event.shiftKey) {
-      console.log('HANDLE FORWARD');
       this._isSelectableHovered = true;
     }
   }
