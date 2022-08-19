@@ -10,6 +10,7 @@
 @mixin input-base {
   @include font-base;
 
+  margin: 0;
   padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
   width: 100%;
   display: block;
