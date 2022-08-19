@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.7.2
+
+### Patch Changes
+
+- [#397](https://github.com/ithaka/pharos/pull/397) [`cca3159`](https://github.com/ithaka/pharos/commit/cca3159ca24e449bc9b5b218bd58f3396cbb3a8b) Thanks [@daneah](https://github.com/daneah)! - Explicitly set input element margins to avoid undesired user agent styling
+
 ## 12.7.1
 
 ### Patch Changes
