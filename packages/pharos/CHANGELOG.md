@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.7.3
+
+### Patch Changes
+
+- [#400](https://github.com/ithaka/pharos/pull/400) [`abe0aa1`](https://github.com/ithaka/pharos/commit/abe0aa1d9673ee4017cf524e2b5d1cd1c5dd720d) Thanks [@daneah](https://github.com/daneah)! - Allow scoped Pharos Link elements to be clickable within a Pharos Checkbox or RadioButton
+
 ## 12.7.2
 
 ### Patch Changes
