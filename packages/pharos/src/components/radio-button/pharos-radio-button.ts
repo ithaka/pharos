@@ -5,7 +5,7 @@ import { radioButtonStyles } from './pharos-radio-button.css';
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
 
-const LINKS = `a[href],pharos-link[href]`;
+const LINKS = `a[href],pharos-link[href],[data-pharos-component='PharosLink'][href]`;
 
 /**
  * Pharos radio button component.

@@ -11,7 +11,7 @@ import checkmarkSmall from '../../styles/icons/checkmark-small';
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
 
-const LINKS = `a[href],pharos-link[href]`;
+const LINKS = `a[href],pharos-link[href],[data-pharos-component='PharosLink'][href]`;
 
 /**
  * Pharos checkbox component.
