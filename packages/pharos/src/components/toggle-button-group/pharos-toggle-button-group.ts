@@ -39,14 +39,12 @@ export class PharosToggleButtonGroup extends PharosElement {
     const selected: PharosToggleButton | null = this.querySelector(
       `[data-pharos-component="PharosToggleButton"][selected]`
     );
-
     const selectedButton: PharosToggleButton = selected ? selected : toggleButtons[0];
 
     selectedButton.selected = true;
   }
 
   private _handleButtonSelected(event: Event): void {
-    console.log('handling select');
     const selected = event.target as PharosToggleButton;
 
     const previous: PharosToggleButton | null = this.querySelector(
