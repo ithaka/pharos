@@ -25,7 +25,7 @@ export class PharosToggleButtonGroup extends PharosElement {
     const toggleButtons: NodeListOf<PharosToggleButton> = this.querySelectorAll(
       `[data-pharos-component="PharosToggleButton"]`
     );
-    this._selectInitialToggleButton(toggleButtons);
+    setTimeout(() => this._selectInitialToggleButton(toggleButtons));
 
     const maxIdx = toggleButtons.length - 1;
     toggleButtons.forEach((button, idx) => {
@@ -38,12 +38,19 @@ export class PharosToggleButtonGroup extends PharosElement {
     const selected: PharosToggleButton | null = this.querySelector(
       `[data-pharos-component="PharosToggleButton"][selected]`
     );
+    console.log('WHAT IS SELECTED');
+    console.log(selected);
+    console.log(toggleButtons);
+    console.log(toggleButtons[1]);
+    console.log(toggleButtons[1].hasAttribute('selected'));
+
     const selectedButton: PharosToggleButton = selected ? selected : toggleButtons[0];
 
     selectedButton.selected = true;
   }
 
   private _handleButtonSelected(event: Event): void {
+    console.log('handling select');
     const selected = event.target as PharosToggleButton;
 
     const previous: PharosToggleButton | null = this.querySelector(
