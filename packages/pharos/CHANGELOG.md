@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.7.4
+
+### Patch Changes
+
+- [#405](https://github.com/ithaka/pharos/pull/405) [`aec6483`](https://github.com/ithaka/pharos/commit/aec6483cb7732c8c88064d878dc06d307efdebe1) Thanks [@michael-iden](https://github.com/michael-iden)! - Wait for child `toggle-button` elements to initialize before referencing their state in the `toggle-button-group`
+
 ## 12.7.3
 
 ### Patch Changes
