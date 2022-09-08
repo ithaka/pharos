@@ -17,14 +17,15 @@ export class PharosToggleButtonGroup extends PharosElement {
     return [toggleButtonGroupStyles];
   }
 
-  protected override firstUpdated(): void {
+  protected override async firstUpdated(): Promise<void> {
     this.addEventListener('pharos-toggle-button-selected', this._handleButtonSelected);
     this.addEventListener('keydown', this._handleKeydown);
     this.addEventListener('focusout', this._handleFocusout);
 
-    const toggleButtons: NodeListOf<PharosToggleButton> = this.querySelectorAll(
-      `[data-pharos-component="PharosToggleButton"]`
+    const toggleButtons: PharosToggleButton[] = Array.from(
+      this.querySelectorAll(`[data-pharos-component="PharosToggleButton"]`)
     );
+    await Promise.all(toggleButtons.map((el) => el.updateComplete));
     this._selectInitialToggleButton(toggleButtons);
 
     const maxIdx = toggleButtons.length - 1;
@@ -34,7 +35,7 @@ export class PharosToggleButtonGroup extends PharosElement {
     });
   }
 
-  private _selectInitialToggleButton(toggleButtons: NodeListOf<PharosToggleButton>): void {
+  private _selectInitialToggleButton(toggleButtons: PharosToggleButton[]): void {
     const selected: PharosToggleButton | null = this.querySelector(
       `[data-pharos-component="PharosToggleButton"][selected]`
     );
