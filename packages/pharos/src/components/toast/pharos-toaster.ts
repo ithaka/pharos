@@ -4,8 +4,7 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { toasterStyles } from './pharos-toaster.css';
 
 import type { PharosToast } from './pharos-toast';
-import { DEFAULT_INDEFINITE } from './pharos-toast';
-import { DEFAULT_STATUS, DEFAULT_ID } from './pharos-toast';
+import { DEFAULT_STATUS, DEFAULT_ID, DEFAULT_INDEFINITE } from './pharos-toast';
 
 /**
  * pharos-toast-open event.

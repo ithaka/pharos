@@ -22,7 +22,7 @@ export enum TOAST_ICON {
 
 const STATUSES = ['success', 'error', 'info'];
 
-const TOAST_LIFE = 30000;
+const TOAST_LIFE = 6000;
 
 export const DEFAULT_STATUS = 'success';
 
@@ -61,7 +61,7 @@ export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
   public open = false;
 
   /**
-   * The optional id passed to the toast. Used as a handle to update for later.
+   * The optional id passed to the toast. Can be used as a handle so the toast can be updated.
    * @attr id
    */
   @property({ type: String, reflect: true })
