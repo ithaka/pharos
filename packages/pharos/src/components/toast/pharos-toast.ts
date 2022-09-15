@@ -65,7 +65,7 @@ export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
    * @attr id
    */
   @property({ type: String, reflect: true })
-  public id = DEFAULT_ID;
+  public override id = DEFAULT_ID;
 
   /**
    * Indicates if the toast should persist indefinitely
@@ -133,9 +133,9 @@ export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
         role="alert"
         id="${this.id}"
         class="${classMap({
-      [`toast`]: true,
-      [`toast--${this.status}`]: this.status,
-    })}"
+          [`toast`]: true,
+          [`toast--${this.status}`]: this.status,
+        })}"
         tabindex="0"
       >
         <pharos-icon class="toast__icon" name="${this._getIcon()}"></pharos-icon>

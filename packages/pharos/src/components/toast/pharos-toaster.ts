@@ -40,14 +40,12 @@ export class PharosToaster extends PharosElement {
     super.connectedCallback && super.connectedCallback();
     document.addEventListener('pharos-toast-open', this._openToast as EventListener);
     document.addEventListener('pharos-toast-update', this._updateToast as EventListener);
-    document.addEventListener('pharos-toast-dismiss', this._dismissToast as EventListener);
     document.addEventListener('pharos-toast-close', this._closeToast as EventListener);
   }
 
   override disconnectedCallback(): void {
     document.removeEventListener('pharos-toast-open', this._openToast as EventListener);
     document.removeEventListener('pharos-toast-update', this._updateToast as EventListener);
-    document.removeEventListener('pharos-toast-dismiss', this._dismissToast as EventListener);
     document.removeEventListener('pharos-toast-close', this._closeToast as EventListener);
     super.disconnectedCallback && super.disconnectedCallback();
   }
@@ -75,16 +73,12 @@ export class PharosToaster extends PharosElement {
     }
   }
 
-  private _dismissToast(event: CustomEvent): void {
+  private _closeToast(event: CustomEvent): void {
     const { id } = (<CustomEvent>event).detail;
     const toast = document.getElementById(id || DEFAULT_ID);
     if (toast) {
-      toast.open = false;
+      this.removeChild(toast);
     }
-  }
-
-  private _closeToast(event: CustomEvent): void {
-    this.removeChild(event.detail);
   }
 
   protected override render(): TemplateResult {

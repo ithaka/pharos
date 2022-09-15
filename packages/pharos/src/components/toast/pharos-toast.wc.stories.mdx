@@ -161,7 +161,6 @@ import { GuidelineLink } from '@config/GuidelineLink';
         <pharos-button
           id="info-toast-button"
           @click="${() => {
-            console.log("click");
             const event = new CustomEvent('pharos-toast-open', {
               detail: {
                 status: 'info',
@@ -182,7 +181,7 @@ import { GuidelineLink } from '@config/GuidelineLink';
               document.dispatchEvent(updateEvnt);
             }, '3000');
             setTimeout(() => {
-              const updateEvnt = new CustomEvent('pharos-toast-dismiss', {
+              const updateEvnt = new CustomEvent('pharos-toast-close', {
                 detail: {
                   id: 'my-updateable-toast',
                 },
