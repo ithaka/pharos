@@ -170,17 +170,17 @@ import { GuidelineLink } from '@config/GuidelineLink';
             });
             document.dispatchEvent(event);
             setTimeout(() => {
-              const updateEvnt = new CustomEvent('pharos-toast-update', {
+              const updateEvent = new CustomEvent('pharos-toast-update', {
                 detail: {
                   status: 'success',
                   content: '15 items succsessfully saved',
                 },
               });
-              document.dispatchEvent(updateEvnt);
+              document.dispatchEvent(updateEvent);
             }, '3000');
             setTimeout(() => {
-              const updateEvnt = new CustomEvent('pharos-toast-close', {});
-              document.dispatchEvent(updateEvnt);
+              const updateEvent = new CustomEvent('pharos-toast-close', {});
+              document.dispatchEvent(updateEvent);
             }, '6000');
           }}"
         >
