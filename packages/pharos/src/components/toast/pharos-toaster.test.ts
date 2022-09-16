@@ -14,6 +14,7 @@ describe('pharos-toaster', () => {
     });
     document.dispatchEvent(event);
   };
+
   const fireOpenUpdateableToastEvent = () => {
     const event = new CustomEvent('pharos-toast-open', {
       detail: {
