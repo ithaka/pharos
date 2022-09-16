@@ -50,6 +50,10 @@ export class PharosToaster extends PharosElement {
     super.disconnectedCallback && super.disconnectedCallback();
   }
 
+  private _getToastID(id: string | null) {
+    return id || DEFAULT_ID;
+  }
+
   private async _openToast(event: Event): Promise<void> {
     const toastTag = this.localName.split('pharos-toaster')[0] + 'pharos-toast';
     const toast = document.createElement(toastTag) as PharosToast;
@@ -57,7 +61,7 @@ export class PharosToaster extends PharosElement {
 
     toast.innerHTML = content;
     toast.status = status || DEFAULT_STATUS;
-    toast.id = id || DEFAULT_ID;
+    toast.id = this._getToastID(id);
     toast.indefinite = indefinite || DEFAULT_INDEFINITE;
     this.insertBefore(toast, this.childNodes[0] || null);
     await this.updateComplete;
@@ -66,7 +70,7 @@ export class PharosToaster extends PharosElement {
 
   private _updateToast(event: CustomEvent): void {
     const { content, status, id } = (<CustomEvent>event).detail;
-    const toast = document.getElementById(id || DEFAULT_ID);
+    const toast = document.getElementById(this._getToastID(id));
     if (toast) {
       toast.innerHTML = content;
       toast.status = status;
@@ -74,8 +78,8 @@ export class PharosToaster extends PharosElement {
   }
 
   private _closeToast(event: CustomEvent): void {
-    const { id } = (<CustomEvent>event).detail;
-    const toast = document.getElementById(id || DEFAULT_ID);
+    const { id } = (<CustomEvent>event).detail || {};
+    const toast = document.getElementById(this._getToastID(id));
     if (toast) {
       this.removeChild(toast);
     }

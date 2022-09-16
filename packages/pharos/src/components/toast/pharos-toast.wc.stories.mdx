@@ -164,7 +164,6 @@ import { GuidelineLink } from '@config/GuidelineLink';
             const event = new CustomEvent('pharos-toast-open', {
               detail: {
                 status: 'info',
-                id: 'my-updateable-toast',
                 content: 'Saving 15 items to your Workspace',
                 indefinite: true,
               },
@@ -174,18 +173,13 @@ import { GuidelineLink } from '@config/GuidelineLink';
               const updateEvnt = new CustomEvent('pharos-toast-update', {
                 detail: {
                   status: 'success',
-                  id: 'my-updateable-toast',
                   content: '15 items succsessfully saved',
                 },
               });
               document.dispatchEvent(updateEvnt);
             }, '3000');
             setTimeout(() => {
-              const updateEvnt = new CustomEvent('pharos-toast-close', {
-                detail: {
-                  id: 'my-updateable-toast',
-                },
-              });
+              const updateEvnt = new CustomEvent('pharos-toast-close', {});
               document.dispatchEvent(updateEvnt);
             }, '6000');
           }}"
