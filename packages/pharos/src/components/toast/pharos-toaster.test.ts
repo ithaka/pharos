@@ -139,7 +139,7 @@ describe('pharos-toaster', () => {
     expect(toast).to.be.null;
   });
 
-  it('does a things', async () => {
+  it('can update a toast', async () => {
     const trigger = document.createElement('button');
     trigger.addEventListener('click', fireOpenUpdateableToastEvent);
     document.body.appendChild(trigger);
