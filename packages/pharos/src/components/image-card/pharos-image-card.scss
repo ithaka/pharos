@@ -205,7 +205,11 @@ slot[name='image']::slotted(img) {
   width: 100%;
 }
 
-.card__checkbox--not-subtle {
+.card__checkbox--subtle {
+  margin-left: -4px;
+}
+
+.card__checkbox {
   position: absolute;
   z-index: 1;
   margin-top: var(--pharos-spacing-one-quarter-x);
