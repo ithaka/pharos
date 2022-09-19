@@ -152,7 +152,6 @@ describe('pharos-toaster', () => {
     document.body.appendChild(triggerUpdate);
     triggerUpdate.click();
     await component.updateComplete;
-    await nextFrame();
 
     expect(component).dom.to.equal(`
       <pharos-toaster data-pharos-component="PharosToaster">
