@@ -447,6 +447,53 @@ describe('pharos-image-card', () => {
     expect(checkboxElement).not.to.be.null;
   });
 
+  it('will show a checkbox when hovered while subtle and subtle-select are true', async () => {
+    component = await fixture(html`<pharos-image-card
+      variant="selectable"
+      subtle-select="true"
+      subtle="true"
+      link="#"
+    >
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <div slot="overlay">Card overlay</div>
+    </pharos-image-card>`);
+
+    let checkboxElement = null;
+    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
+
+    await aTimeout(100);
+    await elementUpdated(component);
+
+    checkboxElement = component.renderRoot.querySelector('pharos-checkbox');
+    expect(checkboxElement).not.to.be.null;
+  });
+
+  it('will show a checkbox when hovered while subtle is true', async () => {
+    component = await fixture(html`<pharos-image-card variant="selectable" subtle="true" link="#">
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <div slot="overlay">Card overlay</div>
+    </pharos-image-card>`);
+
+    let checkboxElement = null;
+    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
+
+    await aTimeout(100);
+    await elementUpdated(component);
+
+    checkboxElement = component.renderRoot.querySelector('pharos-checkbox');
+    expect(checkboxElement).not.to.be.null;
+  });
+
   it('dispatches the mouseleave event on pharos link mouseleave', async () => {
     component = await fixture(html`<pharos-image-card link="#">
       <img
@@ -496,6 +543,31 @@ describe('pharos-image-card', () => {
 
   it('dispatches pharos-image-card-selected when the thumbnail of the select variant is clicked', async () => {
     component = await fixture(html`<pharos-image-card variant="selectable" link="#">
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <div slot="overlay">Card overlay</div>
+    </pharos-image-card>`);
+
+    const title: PharosLink | null = component.renderRoot.querySelector(
+      'pharos-link.card__link--image'
+    );
+
+    let selected = false;
+    const onSelectCard = (): void => {
+      selected = true;
+    };
+    component.addEventListener('pharos-image-card-selected', onSelectCard);
+    title?.click();
+    await aTimeout(100);
+    await elementUpdated(component);
+    expect(selected).to.be.true;
+  });
+
+  it('dispatches pharos-image-card-selected when the thumbnail of the thumbnail of a select variant card is clicked', async () => {
+    component = await fixture(html`<pharos-image-card variant="selectable" subtle link="#">
       <img
         slot="image"
         alt="Card Title"
@@ -575,6 +647,36 @@ describe('pharos-image-card', () => {
 
   it('does not dispatch pharos-image-card-selected when the title of the select variant is clicked in subtle-select mode', async () => {
     component = await fixture(html`<pharos-image-card variant="selectable" subtle-select link="#">
+      <img
+        slot="image"
+        alt="Card Title"
+        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+      />
+      <div slot="overlay">Card overlay</div>
+    </pharos-image-card>`);
+
+    const title: PharosLink | null = component.renderRoot.querySelector(
+      'pharos-link.card__link--image'
+    );
+
+    let selected = false;
+    const onSelectCard = (): void => {
+      selected = true;
+    };
+    component.addEventListener('pharos-image-card-selected', onSelectCard);
+    title?.click();
+    await aTimeout(100);
+    await elementUpdated(component);
+    expect(selected).to.be.false;
+  });
+
+  it('does not dispatch pharos-image-card-selected when the title of the select variant is clicked in subtle/subtle-select mode', async () => {
+    component = await fixture(html`<pharos-image-card
+      variant="selectable"
+      subtle-select
+      subtle
+      link="#"
+    >
       <img
         slot="image"
         alt="Card Title"
