@@ -25,6 +25,7 @@ export const Template = (args) => html`<pharos-layout style="margin: 1rem 0"
     link="https://www.jstor.org/stable/10.2307/community.26220188"
     ?error=${args.error}
     ?subtle=${args.subtle}
+    variant=${args.variant}
     style="grid-column: span 2"
   >
     <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
@@ -203,6 +204,14 @@ export const Selectable = () => html`<pharos-layout tag="ol" style="margin: 1rem
 
 <Canvas>
   <Story name="Subtle State" args={{ subtle: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Subtle State With Selection
+
+<Canvas>
+  <Story name="Selectable Subtle State" args={{ subtle: true, variant: 'selectable' }}>
     {Template.bind({})}
   </Story>
 </Canvas>
