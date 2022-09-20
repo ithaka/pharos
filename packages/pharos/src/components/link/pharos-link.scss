@@ -95,6 +95,11 @@
   color: var(--pharos-color-interactive-secondary);
 }
 
+:host([visitable]) #link-element:visited {
+  color: var(--pharos-color-night-blue-base);
+  text-decoration-color: var(--pharos-color-night-blue-base);
+}
+
 :host([no-hover][subtle]) #link-element:hover {
   @include mixins.no-underline;
 }

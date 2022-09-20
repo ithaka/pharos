@@ -77,6 +77,13 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   @property({ type: Boolean, reflect: true, attribute: 'no-hover' })
   public noHover = false;
 
+  /**
+   * Indicates if the link should render the visited link styling.
+   * @attr bold
+   */
+  @property({ type: Boolean, reflect: true })
+  public visitable = false;
+
   @state()
   private _alert = false;
 
