@@ -1,6 +1,5 @@
 import { fixture, expect, aTimeout } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-
 import type { PharosToast } from './pharos-toast';
 import type { PharosIcon } from '../icon/pharos-icon';
 

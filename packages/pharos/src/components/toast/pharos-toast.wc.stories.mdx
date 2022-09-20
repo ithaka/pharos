@@ -147,3 +147,47 @@ import { GuidelineLink } from '@config/GuidelineLink';
     }}
   </Story>
 </Canvas>
+
+<Canvas>
+  <Story name="Updateable Toast">
+    {() => {
+      const effect = () => {
+        useEffect(() => {
+          document.querySelector('#info-toast-button').click();
+        });
+      };
+      effect();
+      return html`
+        <pharos-button
+          id="info-toast-button"
+          @click="${() => {
+            const event = new CustomEvent('pharos-toast-open', {
+              detail: {
+                status: 'info',
+                content: 'Saving 15 items to your Workspace',
+                indefinite: true,
+              },
+            });
+            document.dispatchEvent(event);
+            setTimeout(() => {
+              const updateEvent = new CustomEvent('pharos-toast-update', {
+                detail: {
+                  status: 'success',
+                  content: '15 items succsessfully saved',
+                },
+              });
+              document.dispatchEvent(updateEvent);
+            }, '3000');
+            setTimeout(() => {
+              const updateEvent = new CustomEvent('pharos-toast-close', {});
+              document.dispatchEvent(updateEvent);
+            }, '6000');
+          }}"
+        >
+          Save items to Workspace
+        </pharos-button>
+        <pharos-toaster></pharos-toaster>
+      `;
+    }}
+  </Story>
+</Canvas>
