@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.8.0
+
+### Minor Changes
+
+- [#407](https://github.com/ithaka/pharos/pull/407) [`30893f4`](https://github.com/ithaka/pharos/commit/30893f4eeb559c6c2de4fd16acfccc88c2a7f5b2) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add updateable toasts for async actions
+
 ## 12.7.4
 
 ### Patch Changes
