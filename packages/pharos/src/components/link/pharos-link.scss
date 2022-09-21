@@ -98,6 +98,10 @@
 :host([indicate-visited]) #link-element:visited {
   color: var(--pharos-color-night-blue-base);
   text-decoration-color: var(--pharos-color-night-blue-base);
+
+  &:hover {
+    color: var(--pharos-color-hover-primary);
+  }
 }
 
 :host([no-hover][subtle]) #link-element:hover {
