@@ -252,7 +252,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _renderHoverMetadata(): TemplateResult | typeof nothing {
-    return this.subtle
+    return this._showSubtleOverlay()
       ? html`<div class="card__metadata--hover">
           ${this._renderCheckbox()}
           <strong class="card__title--hover">${this.title}</strong>
@@ -289,7 +289,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         ${this._renderLinkContent()}${this._renderHoverMetadata()}
         <slot name="overlay"></slot>
       </pharos-link>
-      ${this.subtle ? nothing : this._renderCheckbox()}
+      ${this._showSubtleOverlay() ? nothing : this._renderCheckbox()}
     </div>`;
   }
 
@@ -425,6 +425,12 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return Boolean(this._isSelectable() && this.subtle && !this.disabled);
   }
 
+  private _showSubtleOverlay(): boolean {
+    return Boolean(
+      this.subtle && ((this.subtleSelect && !this._isSelected) || !this._isSelectable())
+    );
+  }
+
   private _isSelectableCardHover(): boolean {
     return Boolean(this._isSelectableViaCard() && this._isSelectableHovered) && !this.disabled;
   }
@@ -454,7 +460,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return this._isCheckboxDisplayed()
       ? html`<pharos-checkbox
           @blur=${this._handleMouseLeaveSelectable}
-          class="${this.subtle ? 'card__checkbox--subtle' : 'card__checkbox'}"
+          class="${this._showSubtleOverlay() ? 'card__checkbox--subtle' : 'card__checkbox'}"
           hide-label="true"
           ?checked=${this._isSelected}
           ?disabled=${this.disabled}
