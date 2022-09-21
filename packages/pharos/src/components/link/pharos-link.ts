@@ -79,10 +79,10 @@ export class PharosLink extends FocusMixin(AnchorElement) {
 
   /**
    * Indicates if the link should render the visited link styling.
-   * @attr bold
+   * @attr indicate-visited
    */
   @property({ type: Boolean, reflect: true })
-  public visitable = false;
+  public indicateVisited = false;
 
   @state()
   private _alert = false;
