@@ -18,7 +18,6 @@
 .card__link--image {
   position: relative;
   height: 14rem;
-  justify-content: center;
   margin-bottom: var(--pharos-spacing-1-x);
   width: 100%;
 }
@@ -67,6 +66,7 @@ slot[name='image']::slotted(img) {
   width: 100%;
   object-fit: contain;
   object-position: bottom;
+  position: absolute;
 }
 
 :host([disabled]) .card__link--title {
@@ -100,6 +100,7 @@ slot[name='image']::slotted(img) {
   );
 
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
   overflow: auto;
   color: var(--pharos-color-text-white);
@@ -116,8 +117,10 @@ slot[name='image']::slotted(img) {
 }
 
 .card__container--error {
+  position: absolute;
   background-color: var(--pharos-color-marble-gray-94);
   height: 12.5rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -179,6 +179,70 @@ export const Selectable = () => html`<pharos-layout tag="ol" style="margin: 1rem
   </li>
 </pharos-layout>`;
 
+export const SubtleSelectable = () => html`<pharos-layout tag="ol" style="margin: 1rem 0">
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selectable"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      subtle="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Subtle select"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      subtle="true"
+      subtle-select="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selected Disabled"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      subtle="true"
+      disabled="true"
+      selected="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Selectable Error State"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      subtle="true"
+      error="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+  <li style="grid-column: span 3">
+    <pharos-image-card
+      title="Subtle Select Error State"
+      link="#"
+      source-type="Image"
+      variant="selectable"
+      subtle="true"
+      error="true"
+      subtle-select="true"
+    >
+      <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+    </pharos-image-card>
+  </li>
+</pharos-layout>`;
+
 <Canvas>
   <Story name="Base">{MultipleTemplate.bind({})}</Story>
 </Canvas>
@@ -201,31 +265,10 @@ export const Selectable = () => html`<pharos-layout tag="ol" style="margin: 1rem
   </Story>
 </Canvas>
 
-# Subtle State
+# Subtle Selectable
 
 <Canvas>
-  <Story name="Subtle State" args={{ subtle: true }}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-# Subtle State With Selection
-
-<Canvas>
-  <Story name="Selectable Subtle State" args={{ subtle: true, variant: 'selectable' }}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-# Subtle State With Subtle Selection
-
-<Canvas>
-  <Story
-    name="Subtle Selectable on Subtle State"
-    args={{ subtle: true, variant: 'selectable', subtleSelect: true }}
-  >
-    {Template.bind({})}
-  </Story>
+  <Story name="Subtle Selectable">{SubtleSelectable.bind({})}</Story>
 </Canvas>
 
 # With Action Menu
