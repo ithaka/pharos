@@ -105,7 +105,7 @@ slot[name='image']::slotted(img) {
   overflow: auto;
   color: var(--pharos-color-text-white);
   background-color: rgb(0 0 0 / 0);
-  padding: var(--pharos-spacing-three-quarters-x);
+  padding: var(--pharos-spacing-one-half-x);
   position: absolute;
   top: 0;
   visibility: hidden;
@@ -208,7 +208,7 @@ slot[name='image']::slotted(img) {
 }
 
 .card__checkbox--subtle {
-  margin-left: -4px;
+  margin: -4px 0 0 -4px;
 }
 
 .card__checkbox {
