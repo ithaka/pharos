@@ -387,6 +387,7 @@
 /// @group links
 @mixin no-underline {
   text-decoration: solid underline transparent;
+  -webkit-text-decoration: solid underline transparent;
 }
 
 /// Removes bullets from lists.

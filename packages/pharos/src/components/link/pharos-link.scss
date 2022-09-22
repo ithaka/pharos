@@ -9,8 +9,16 @@
   @include mixins.link-hover;
   @include mixins.interactive-focus;
 
-  &:active {
+  @at-root &:active {
     @include mixins.underline($text-decoration-color: var(--pharos-color-hover-primary));
+  }
+
+  @at-root &.link--alert:hover {
+    color: var(--pharos-color-interactive-secondary);
+  }
+
+  @at-root &.link--alert:active {
+    @include mixins.underline;
   }
 }
 
@@ -26,22 +34,37 @@
   cursor: pointer;
 }
 
-#link-element.link--alert:hover {
-  color: var(--pharos-color-interactive-secondary);
-}
-
-#link-element.link--alert:active {
-  @include mixins.underline;
-}
-
 :host([on-background]) #link-element {
   @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
 
   color: var(--pharos-color-interactive-tertiary);
+
+  @at-root &:hover {
+    color: var(--pharos-color-interactive-tertiary);
+    @include mixins.no-underline;
+  }
+
+  @at-root &:active {
+    @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
+  }
 }
 
 :host([subtle]) #link-element {
   @include mixins.no-underline;
+
+  @at-root &:hover {
+    @include mixins.underline($text-decoration-color: var(--pharos-color-hover-primary));
+  }
+
+  @at-root &:active {
+    @include mixins.no-underline;
+  }
+
+  @at-root &.link--hover {
+    @include mixins.underline($text-decoration-color: var(--pharos-color-hover-primary));
+
+    color: var(--pharos-color-hover-primary);
+  }
 }
 
 :host([bold]) #link-element {
@@ -53,36 +76,22 @@
   min-width: 0;
 }
 
-:host([on-background]) #link-element:hover {
-  @include mixins.no-underline;
-}
+:host([indicate-visited]) #link-element {
+  @at-root &:visited {
+    @include mixins.underline($text-decoration-color: var(--pharos-color-night-blue-base));
 
-:host([on-background]) #link-element:active {
-  @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
-}
+    color: var(--pharos-color-night-blue-base);
 
-:host([subtle]) #link-element:hover {
-  @include mixins.underline($text-decoration-color: var(--pharos-color-hover-primary));
-}
+    @at-root &:hover {
+      @include mixins.no-underline;
 
-:host([subtle]) #link-element:active {
-  @include mixins.no-underline;
-}
-
-:host([on-background]:not([href])) #link-element {
-  @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
-
-  color: var(--pharos-color-interactive-tertiary);
+      color: var(--pharos-color-hover-primary);
+    }
+  }
 }
 
 :host([subtle]:not([href])) #link-element {
   @include mixins.no-underline;
-}
-
-:host([subtle]) #link-element.link--hover {
-  @include mixins.underline($text-decoration-color: var(--pharos-color-hover-primary));
-
-  color: var(--pharos-color-hover-primary);
 }
 
 :host([skip]:not(:focus-within)) {
@@ -95,23 +104,16 @@
   color: var(--pharos-color-interactive-secondary);
 }
 
-:host([indicate-visited]) #link-element:visited {
-  color: var(--pharos-color-night-blue-base);
-  text-decoration-color: var(--pharos-color-night-blue-base);
+:host([on-background][subtle]) #link-element {
+  @at-root &:hover {
+    @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
+  }
+
+  @at-root &:active {
+    @include mixins.no-underline;
+  }
 }
 
 :host([no-hover][subtle]) #link-element:hover {
   @include mixins.no-underline;
-}
-
-:host([on-background][subtle]) #link-element:hover {
-  @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
-}
-
-:host([on-background][subtle]) #link-element:active {
-  @include mixins.no-underline;
-}
-
-:host([indicate-visited]) #link-element:visited:hover {
-  color: var(--pharos-color-hover-primary);
 }
