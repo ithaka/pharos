@@ -119,7 +119,7 @@ slot[name='image']::slotted(img) {
 
 .card__container--error {
   background-color: var(--pharos-color-marble-gray-94);
-  height: 12.5rem;
+  height: 14rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -166,7 +166,6 @@ slot[name='image']::slotted(img) {
   display: grid;
   position: relative;
   height: auto;
-  margin-bottom: var(--pharos-spacing-1-x);
 }
 
 .card__link--collection.card__link--selected {
