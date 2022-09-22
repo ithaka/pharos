@@ -53,16 +53,6 @@
   min-width: 0;
 }
 
-:host([on-background]:not([href])) #link-element {
-  @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
-
-  color: var(--pharos-color-interactive-tertiary);
-}
-
-:host([subtle]:not([href])) #link-element {
-  @include mixins.no-underline;
-}
-
 :host([on-background]) #link-element:hover {
   @include mixins.no-underline;
 }
@@ -76,6 +66,16 @@
 }
 
 :host([subtle]) #link-element:active {
+  @include mixins.no-underline;
+}
+
+:host([on-background]:not([href])) #link-element {
+  @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
+
+  color: var(--pharos-color-interactive-tertiary);
+}
+
+:host([subtle]:not([href])) #link-element {
   @include mixins.no-underline;
 }
 
@@ -98,10 +98,6 @@
 :host([indicate-visited]) #link-element:visited {
   color: var(--pharos-color-night-blue-base);
   text-decoration-color: var(--pharos-color-night-blue-base);
-
-  &:hover {
-    color: var(--pharos-color-hover-primary);
-  }
 }
 
 :host([no-hover][subtle]) #link-element:hover {
@@ -114,4 +110,8 @@
 
 :host([on-background][subtle]) #link-element:active {
   @include mixins.no-underline;
+}
+
+:host([indicate-visited]) #link-element:visited:hover {
+  color: var(--pharos-color-hover-primary);
 }
