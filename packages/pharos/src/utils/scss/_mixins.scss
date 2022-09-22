@@ -382,10 +382,10 @@
   text-decoration-color: $text-decoration-color;
 }
 
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
 /// Removes underlines.
 /// @access public
 /// @group links
-/* stylelint-disable declaration-block-no-redundant-longhand-properties */
 @mixin no-underline {
   text-decoration-style: solid;
   text-decoration-line: underline;
