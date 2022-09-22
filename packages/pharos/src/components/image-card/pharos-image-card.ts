@@ -248,7 +248,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           <pharos-icon name="exclamation-inverse"></pharos-icon>
           <span class="unavailable-text">Preview not available</span>
         </div>`
-      : html`<slot name="image"></slot>`;
+      : html`<div style="width: 100%;height: 100%;">
+          <slot name="image"></slot>
+        </div>`;
   }
 
   private _renderHoverMetadata(): TemplateResult | typeof nothing {
@@ -283,7 +285,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         href="${this.link}"
         label=${ifDefined(this.imageLinkLabel)}
         subtle
-        flex
         no-hover
       >
         ${this._renderLinkContent()}${this._renderHoverMetadata()}

@@ -13,16 +13,17 @@
 
 .card__link-container {
   display: flex;
+  margin-bottom: var(--pharos-spacing-1-x);
 }
 
 .card__link--image {
+  contain: unset;
   position: relative;
+  display: block;
   height: 14rem;
-  margin-bottom: var(--pharos-spacing-1-x);
   width: 100%;
 }
 
-.card__link--image,
 .card__link--title {
   contain: unset;
   display: inline-flex;
@@ -66,7 +67,6 @@ slot[name='image']::slotted(img) {
   width: 100%;
   object-fit: contain;
   object-position: bottom;
-  position: absolute;
 }
 
 :host([disabled]) .card__link--title {
@@ -107,6 +107,7 @@ slot[name='image']::slotted(img) {
   background-color: rgb(0 0 0 / 0);
   padding: var(--pharos-spacing-three-quarters-x);
   position: absolute;
+  top: 0;
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
@@ -117,7 +118,6 @@ slot[name='image']::slotted(img) {
 }
 
 .card__container--error {
-  position: absolute;
   background-color: var(--pharos-color-marble-gray-94);
   height: 12.5rem;
   width: 100%;
@@ -229,8 +229,6 @@ slot[name='image']::slotted(img) {
 }
 
 :host([subtle]) .card__link--image {
-  position: relative;
-
   &:hover {
     .card__metadata--hover {
       background-color: rgb(0 0 0 / 0.75);
