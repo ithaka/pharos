@@ -385,9 +385,11 @@
 /// Removes underlines.
 /// @access public
 /// @group links
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
 @mixin no-underline {
-  text-decoration: solid underline transparent;
-  -webkit-text-decoration: solid underline transparent;
+  text-decoration-style: solid;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
 }
 
 /// Removes bullets from lists.
