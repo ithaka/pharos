@@ -1,4 +1,5 @@
 module.exports = {
+  ignorePatterns: ['**/*.css.ts'],
   extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   parser: '@babel/eslint-parser',
   parserOptions: {
