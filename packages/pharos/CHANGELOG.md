@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.9.1
+
+### Patch Changes
+
+- [#414](https://github.com/ithaka/pharos/pull/414) [`26d2536`](https://github.com/ithaka/pharos/commit/26d2536555088d08343e6ef303b9aaf6833d83ed) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - removes color inherit from pharos-heading
+
 ## 12.9.0
 
 ### Minor Changes
