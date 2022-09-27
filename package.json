@@ -149,6 +149,5 @@
     {
       "path": "packages/pharos/lib/index.js"
     }
-  ],
-  "packageManager": "yarn@1.22.19"
+  ]
 }
