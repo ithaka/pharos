@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.9.0
+
+### Minor Changes
+
+- [#409](https://github.com/ithaka/pharos/pull/409) [`c931566`](https://github.com/ithaka/pharos/commit/c931566b6aa73ea93946b20e5a61ab06e654b2e0) Thanks [@rehanabbasi](https://github.com/rehanabbasi)! - Supports visited links style on Pharos link component, when visited
+
 ## 12.8.0
 
 ### Minor Changes
