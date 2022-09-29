@@ -135,6 +135,13 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   @property({ type: Boolean, reflect: true, attribute: 'disabled' })
   public disabled = false;
 
+  /**
+   * Indicates if the image card title link should render the visited link styling.
+   * @attr indicate-link-visited
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'indicate-link-visited' })
+  public indicateLinkVisited = false;
+
   @state()
   private _isSelectableHovered = false;
 
@@ -316,6 +323,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       href="${this.link}"
       subtle
       flex
+      indicate-visited="${this.indicateLinkVisited}"
       @click=${this._cardToggleSelect}
       >${this.title
         ? html`<pharos-heading

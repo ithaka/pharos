@@ -196,6 +196,13 @@ describe('pharos-image-card', () => {
     expect(heading?.getAttribute('level')).to.equal('2');
   });
 
+  it('uses the supplied indicate link visited', async () => {
+    component.indicateLinkVisited = true;
+    await component.updateComplete;
+    const link = component.renderRoot.querySelector('pharos-link.card__link--title');
+    expect(link?.getAttribute('indicate-visited')).to.equal('true');
+  });
+
   it('sets title link hover state when the card image link is hovered', async () => {
     const imageLink = component.renderRoot.querySelector('.card__link--image');
     imageLink?.parentElement?.dispatchEvent(new Event('mouseenter'));
