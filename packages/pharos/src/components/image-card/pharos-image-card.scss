@@ -13,17 +13,17 @@
 
 .card__link-container {
   display: flex;
+  margin-bottom: var(--pharos-spacing-1-x);
 }
 
 .card__link--image {
+  contain: unset;
   position: relative;
+  display: block;
   height: 14rem;
-  justify-content: center;
-  margin-bottom: var(--pharos-spacing-1-x);
   width: 100%;
 }
 
-.card__link--image,
 .card__link--title {
   contain: unset;
   display: inline-flex;
@@ -100,12 +100,14 @@ slot[name='image']::slotted(img) {
   );
 
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
   overflow: auto;
   color: var(--pharos-color-text-white);
   background-color: rgb(0 0 0 / 0);
-  padding: var(--pharos-spacing-three-quarters-x);
+  padding: var(--pharos-spacing-one-half-x);
   position: absolute;
+  top: 0;
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
@@ -117,7 +119,8 @@ slot[name='image']::slotted(img) {
 
 .card__container--error {
   background-color: var(--pharos-color-marble-gray-94);
-  height: 12.5rem;
+  height: 14rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -163,7 +166,6 @@ slot[name='image']::slotted(img) {
   display: grid;
   position: relative;
   height: auto;
-  margin-bottom: var(--pharos-spacing-1-x);
 }
 
 .card__link--collection.card__link--selected {
@@ -205,6 +207,10 @@ slot[name='image']::slotted(img) {
   width: 100%;
 }
 
+.card__checkbox--subtle {
+  margin: -4px 0 0 -4px;
+}
+
 .card__checkbox {
   position: absolute;
   z-index: 1;
@@ -222,8 +228,6 @@ slot[name='image']::slotted(img) {
 }
 
 :host([subtle]) .card__link--image {
-  position: relative;
-
   &:hover {
     .card__metadata--hover {
       background-color: rgb(0 0 0 / 0.75);
