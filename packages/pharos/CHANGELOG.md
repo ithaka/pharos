@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.11.0
+
+### Minor Changes
+
+- [#408](https://github.com/ithaka/pharos/pull/408) [`041102f`](https://github.com/ithaka/pharos/commit/041102fe32a1093ec6e95bd13c03ac55e9535f6f) Thanks [@michael-iden](https://github.com/michael-iden)! - Add selectable states to subtle image cards
+
 ## 12.10.0
 
 ### Minor Changes
