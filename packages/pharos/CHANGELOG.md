@@ -1,5 +1,12 @@
 # @ithaka/pharos
 
+## 12.10.0
+
+### Minor Changes
+
+- [#416](https://github.com/ithaka/pharos/pull/416) [`ae1063c`](https://github.com/ithaka/pharos/commit/ae1063c065490389cfa4224d0893e202fbe84671) Thanks [@rehanabbasi](https://github.com/rehanabbasi)! - Link: Fix visited link hover state underline color
+  Image card: Add visited link support for title link
+
 ## 12.9.1
 
 ### Patch Changes
