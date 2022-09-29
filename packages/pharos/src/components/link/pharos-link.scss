@@ -86,6 +86,7 @@
       @include mixins.no-underline;
 
       color: var(--pharos-color-hover-primary);
+      text-decoration-color: var(--pharos-color-hover-primary);
     }
   }
 }
