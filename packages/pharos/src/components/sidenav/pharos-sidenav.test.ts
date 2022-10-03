@@ -98,6 +98,19 @@ describe('pharos-sidenav', () => {
     expect(component.slide).to.be.false;
   });
 
+  it('fires a custom event close after closing', async () => {
+    let eventTriggered = false;
+    const handleClose = (): void => {
+      eventTriggered = true;
+    };
+    component.addEventListener('close', handleClose);
+
+    const button = component.renderRoot.querySelector('.side-element__button') as PharosButton;
+    button?.click();
+    await component.updateComplete;
+    expect(eventTriggered).to.be.true;
+  });
+
   it('delegates focus to the sidenav button after the close button is clicked', async () => {
     const sidenavButton = document.createElement('pharos-sidenav-button');
     document.body.appendChild(sidenavButton);
