@@ -260,6 +260,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "shoupeva-ithaka",
+      "name": "Evan Shoup",
+      "avatar_url": "https://avatars.githubusercontent.com/u/112417900?v=4",
+      "profile": "https://github.com/shoupeva-ithaka",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
