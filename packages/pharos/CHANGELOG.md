@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- [#421](https://github.com/ithaka/pharos/pull/421) [`79c041e`](https://github.com/ithaka/pharos/commit/79c041e6861a30f69b30369b62add826f3063b1b) Thanks [@shoupeva-ithaka](https://github.com/shoupeva-ithaka)! - <pharos-sidenav> emits 'close' event when close button is clicked
+- [#421](https://github.com/ithaka/pharos/pull/421) [`79c041e`](https://github.com/ithaka/pharos/commit/79c041e6861a30f69b30369b62add826f3063b1b) Thanks [@shoupeva-ithaka](https://github.com/shoupeva-ithaka)! - pharos-sidenav emits 'close' event when close button is clicked
 
 ## 12.11.0
 
