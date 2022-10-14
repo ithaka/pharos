@@ -95,7 +95,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/shoupeva-ithaka"><img src="https://avatars.githubusercontent.com/u/112417900?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Evan Shoup</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=shoupeva-ithaka" title="Code">💻</a> <a href="https://github.com/ithaka/pharos/commits?author=shoupeva-ithaka" title="Documentation">📖</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/drewgingerich"><img src="https://avatars.githubusercontent.com/u/15133892?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Drew Gingerich</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=drewgingerich" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/drewgingerich"><img src="https://avatars.githubusercontent.com/u/15133892?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Drew Gingerich</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=drewgingerich" title="Documentation">📖</a> <a href="https://github.com/ithaka/pharos/commits?author=drewgingerich" title="Code">💻</a></td>
   </tr>
 </table>
 
