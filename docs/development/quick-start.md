@@ -26,7 +26,7 @@ If you're using `nvm`, run the following command to switch to a Node version com
 $ nvm use
 ```
 
-If you're using `asdf`, the compatible Node version is selected automatically. Run the following command to install the compatible Node version if it is not already installed:
+If you're using `asdf` then the compatible Node version is selected automatically if it's already installed. If it's not installed, run the following command to install the compatible Node version:
 
 ```shell
 $ asdf install
