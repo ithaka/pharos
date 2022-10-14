@@ -32,7 +32,7 @@ If you're using `asdf` then the compatible Node version is selected automaticall
 $ asdf install
 ```
 
-The Pharos repository contains multiple packages. [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) helps you manage dependencies and tasks across them. Use `npm` to install Yarn globally:
+The Pharos repository contains multiple packages, and [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) helps you manage dependencies and tasks across them. Use `npm` to install Yarn globally:
 
 ```shell
 npm install --global yarn
