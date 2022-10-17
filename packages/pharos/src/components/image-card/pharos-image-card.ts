@@ -407,6 +407,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     if (!this.disabled && (cardClicked || checkboxClicked)) {
       // this is required to prevent navigation on the link click
       event.preventDefault();
+      event.stopPropagation();
       this._isSelected = !this._isSelected;
 
       this.dispatchEvent(
