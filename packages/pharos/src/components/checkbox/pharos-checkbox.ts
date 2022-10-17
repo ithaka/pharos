@@ -134,7 +134,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
           height="24"
           class="input__icon"
           role="img"
-          aria-label="checkbox"
+          aria-hidden="true"
           focusable="false"
           @click="${this._handleClick}"
           @mousedown=${this._handleMousedown}
