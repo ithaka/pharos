@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 12.13.0
+
+### Minor Changes
+
+- [#428](https://github.com/ithaka/pharos/pull/428) [`3cd44b5`](https://github.com/ithaka/pharos/commit/3cd44b55421b89745960d11dd6e484dc412ec826) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - pharos-image card will only emit selected event or click instead of both
+
+### Patch Changes
+
+- [#425](https://github.com/ithaka/pharos/pull/425) [`3fd8e16`](https://github.com/ithaka/pharos/commit/3fd8e16ed66e9c26bbbf901a114f2f50b563a1f2) Thanks [@daneah](https://github.com/daneah)! - Update ARIA attribute to improve screen reading experience for checkboxes
+
 ## 12.12.0
 
 ### Minor Changes
