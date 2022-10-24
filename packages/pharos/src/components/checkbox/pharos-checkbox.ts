@@ -67,6 +67,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
     const notCancelled = this.dispatchEvent(
       new Event('change', {
         bubbles: true,
+        cancelable: true,
         composed: true,
       })
     );
