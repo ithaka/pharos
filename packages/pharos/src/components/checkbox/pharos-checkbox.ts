@@ -64,15 +64,17 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   }
 
   public onChange(): void {
-    this.indeterminate = false;
-    this.checked = this._checkbox.checked;
-
-    this.dispatchEvent(
+    const notCancelled = this.dispatchEvent(
       new Event('change', {
         bubbles: true,
         composed: true,
       })
     );
+
+    if (notCancelled) {
+      this.indeterminate = false;
+      this.checked = this._checkbox.checked;
+    }
   }
 
   _handleFormdata(event: CustomEvent): void {
