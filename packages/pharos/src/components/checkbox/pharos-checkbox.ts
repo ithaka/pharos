@@ -64,8 +64,9 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   }
 
   public onChange(): void {
-    this.checked = this._checkbox.checked;
+    const originalIndeterminateState = this.indeterminate;
     this.indeterminate = false;
+    this.checked = this._checkbox.checked;
 
     const notCancelled = this.dispatchEvent(
       new CustomEvent('change', {
@@ -79,6 +80,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
     );
 
     if (!notCancelled) {
+      this.indeterminate = originalIndeterminateState;
       this.checked = !this._checkbox.checked;
     }
   }
