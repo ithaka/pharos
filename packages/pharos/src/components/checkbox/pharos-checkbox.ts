@@ -64,15 +64,35 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   }
 
   public onChange(): void {
+    /**
+     * Store the original indeterminate and checked states
+     * The native checkbox state has already changed, so invert it
+     */
+    const originalIndeterminateState = this.indeterminate;
+    const originalCheckedState = !this._checkbox.checked;
+
     this.indeterminate = false;
     this.checked = this._checkbox.checked;
 
-    this.dispatchEvent(
-      new Event('change', {
+    const notCancelled = this.dispatchEvent(
+      new CustomEvent('change', {
         bubbles: true,
+        cancelable: true,
         composed: true,
+        detail: {
+          target: this._checkbox, // pass the the native checkbox in the event
+        },
       })
     );
+
+    /**
+     * if the event was prevented
+     * indeterminate and checked states return to their previous values
+     */
+    if (!notCancelled) {
+      this.indeterminate = originalIndeterminateState;
+      this.checked = originalCheckedState;
+    }
   }
 
   _handleFormdata(event: CustomEvent): void {
