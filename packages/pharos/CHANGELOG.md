@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.14.0
+
+### Minor Changes
+
+- [#431](https://github.com/ithaka/pharos/pull/431) [`b3c9c3b`](https://github.com/ithaka/pharos/commit/b3c9c3ba2870d458846ebf20301b10dfb21b714d) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - allow checkbox change event to be prevented
+
 ## 12.13.0
 
 ### Minor Changes
