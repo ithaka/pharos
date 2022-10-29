@@ -237,6 +237,20 @@ describe('pharos-checkbox', () => {
     expect(count).to.equal(1);
   });
 
+  it('fires a single click event but does not update if event prevented', async () => {
+    const onClick = (event: Event): void => {
+      event.preventDefault();
+    };
+    component = await fixture(html`
+      <pharos-checkbox @click=${onClick}><span slot="label">test checkbox</span></pharos-checkbox>
+    `);
+
+    const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
+    label?.click();
+    await component.updateComplete;
+    await expect(component.checked).to.be.false;
+  });
+
   it('is checked when clicked from indeterminate state', async () => {
     component = await fixture(html`
       <pharos-checkbox indeterminate><span slot="label">test checkbox</span></pharos-checkbox>
