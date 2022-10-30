@@ -5,6 +5,7 @@ import { PharosDropdownMenu } from '../../react-components/dropdown-menu/pharos-
 import { PharosDropdownMenuItem } from '../../react-components/dropdown-menu/pharos-dropdown-menu-item';
 import { PharosTooltip } from '../../react-components/tooltip/pharos-tooltip';
 import { PharosButton } from '../../react-components/button/pharos-button';
+import { useEffect } from '@storybook/client-api';
 
 <Meta
   title="Components/Tooltip"
@@ -19,27 +20,39 @@ import { PharosButton } from '../../react-components/button/pharos-button';
 
 <GuidelineLink path="tooltip" />
 
-export const Template = (args) => (
-  <div
-    style={{
-      display: 'grid',
-      gridGap: '8rem',
-      marginTop: '5rem',
-      justifyContent: 'space-evenly',
-    }}
-  >
-    <PharosButton data-tooltip-id={args.id}>{args.targetText}</PharosButton>
-    <PharosTooltip
-      id={args.id}
-      fullWidth={args.fullWidth}
-      open={args.open}
-      placement={args.placement}
-      fallbackPlacements={args.fallbackPlacements}
+export const Template = (args) => {
+  const effect = () => {
+    useEffect(() => {
+      setTimeout(() => {
+        document.querySelector('#my-button').dispatchEvent(new Event('mouseenter'));
+      }, 700);
+    });
+  };
+  effect();
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
     >
-      {args.tooltipText}
-    </PharosTooltip>
-  </div>
-);
+      <PharosButton id="my-button" data-tooltip-id={args.id}>
+        {args.targetText}
+      </PharosButton>
+      <PharosTooltip
+        id={args.id}
+        fullWidth={args.fullWidth}
+        open={args.open}
+        placement={args.placement}
+        fallbackPlacements={args.fallbackPlacements}
+      >
+        {args.tooltipText}
+      </PharosTooltip>
+    </div>
+  );
+};
 
 <Canvas withToolbar>
   <Story
@@ -74,7 +87,7 @@ export const Template = (args) => (
       id: 'my-placement-tooltip',
     }}
     argTypes={{
-      open: { table: { disable: true }, defaultValue: true },
+      open: { table: { disable: true }, defaultValue: false },
       placement: {
         options: [
           'top',
@@ -140,7 +153,7 @@ export const Template = (args) => (
         table: { disable: true },
         defaultValue: 'Hi there again!',
       },
-      open: { table: { disable: true }, defaultValue: true },
+      open: { table: { disable: true }, defaultValue: false },
       placement: {
         options: [
           'top',
@@ -164,7 +177,7 @@ export const Template = (args) => (
       },
       fallbackPlacements: {
         control: { type: 'array' },
-        defaultValue: ['auto'],
+        defaultValue: ['top'],
       },
     }}
   >
@@ -185,7 +198,7 @@ export const Template = (args) => (
     }}
     argTypes={{
       fullWidth: { table: { disable: true }, defaultValue: true },
-      open: { table: { disable: true }, defaultValue: true },
+      open: { table: { disable: true }, defaultValue: false },
       placement: { table: { disable: true }, defaultValue: 'auto' },
     }}
   >
