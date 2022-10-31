@@ -14,8 +14,5 @@ export const parameters = {
     components: {
       Canvas: Canvas,
     },
-    source: {
-      type: 'code',
-    },
   },
 };
