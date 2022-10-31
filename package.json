@@ -84,7 +84,6 @@
     "@storybook/web-components": "^6.5.9",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
-    "@typescript-eslint/typescript-estree": "^5.41.0",
     "all-contributors-cli": "^6.20.0",
     "concurrently": "^6.2.0",
     "css-loader": "^6.5.1",
@@ -127,6 +126,7 @@
     ]
   },
   "resolutions": {
+    "@typescript-eslint/parser": "^5.41.0",
     "axe-core": "^4.3.3",
     "playwright": "^1.17.1",
     "webpack": "^5.64.1",
