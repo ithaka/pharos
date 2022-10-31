@@ -63,6 +63,7 @@
   color: var(--pharos-color-hover-primary);
   background-color: var(--pharos-color-marble-gray-97);
   border-width: 1px;
+  border-left-width: 0;
   padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-three-quarters-x);
 
   [data-pharos-component='PharosIcon'] {
