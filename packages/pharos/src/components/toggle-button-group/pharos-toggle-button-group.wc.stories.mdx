@@ -27,7 +27,7 @@ import { html } from 'lit';
           id="view-list-button"
         >
           List </pharos-toggle-button
-        >{/** */}<pharos-toggle-button
+        ><pharos-toggle-button
           @click="${() => {
             document.querySelector('#list-view').style.display = 'none';
             document.querySelector('#gallery-view').style.display = 'block';
@@ -37,7 +37,7 @@ import { html } from 'lit';
           id="view-gallery-button"
         >
           Gallery </pharos-toggle-button
-        >{/** */}<pharos-toggle-button
+        ><pharos-toggle-button
           @click="${() => {
             document.querySelector('#list-view').style.display = 'none';
             document.querySelector('#gallery-view').style.display = 'none';
@@ -71,7 +71,7 @@ import { html } from 'lit';
       >
         <pharos-toggle-button id="list-mode-button" icon-left="view-list">
           List </pharos-toggle-button
-        >{/** */}<pharos-toggle-button id="gallery-mode-button" icon-left="view-gallery">
+        ><pharos-toggle-button id="gallery-mode-button" icon-left="view-gallery">
           Gallery
         </pharos-toggle-button>
       </pharos-toggle-button-group>
@@ -85,12 +85,9 @@ import { html } from 'lit';
   <Story name="Icons Only">
     {html`
       <pharos-toggle-button-group>
-        <pharos-toggle-button icon="view-list" id="view-list-button"></pharos-toggle-button>{/**
-        */}<pharos-toggle-button icon="view-gallery" id="view-gallery-button"></pharos-toggle-button
-        >{/** */}<pharos-toggle-button
-          icon="image"
-          id="view-presentation-button"
-        ></pharos-toggle-button>
+        <pharos-toggle-button icon="view-list" id="view-list-button"></pharos-toggle-button
+        ><pharos-toggle-button icon="view-gallery" id="view-gallery-button"></pharos-toggle-button
+        ><pharos-toggle-button icon="image" id="view-presentation-button"></pharos-toggle-button>
       </pharos-toggle-button-group>
     `}
   </Story>
