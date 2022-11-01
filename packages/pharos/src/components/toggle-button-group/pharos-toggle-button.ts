@@ -36,6 +36,7 @@ export class PharosToggleButton extends PharosButton {
 
   constructor() {
     super();
+    this.pressed = 'false';
     this.variant = 'secondary';
     this.type = 'button';
   }

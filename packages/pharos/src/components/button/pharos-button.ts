@@ -17,6 +17,8 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'subtle' | 'overlay';
 
+type PressedState = 'false' | 'true' | 'mixed' | 'undefined';
+
 const TYPES = ['button', 'submit', 'reset'];
 
 const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'];
@@ -136,6 +138,13 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   @property({ type: String, reflect: true })
   public value?: string;
 
+  /**
+   * Indicates this button is a toggle button and whether it is pressed or not.
+   * @attr value
+   */
+  @property({ type: String, reflect: true })
+  public pressed: PressedState = 'undefined';
+
   @query('#button-element')
   private _button!: HTMLButtonElement | HTMLAnchorElement;
 
@@ -245,6 +254,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             rel=${ifDefined(this.rel)}
             target=${ifDefined(this.target)}
             aria-label=${ifDefined(this.label)}
+            aria-pressed=${ifDefined(this.pressed)}
             @keyup=${this._handleKeyup}
           >
             ${this.buttonContent}
@@ -259,6 +269,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             ?disabled=${this.disabled}
             type="${ifDefined(this.type)}"
             aria-label=${ifDefined(this.label)}
+            aria-pressed=${ifDefined(this.pressed)}
           >
             ${this.buttonContent}
           </button>
