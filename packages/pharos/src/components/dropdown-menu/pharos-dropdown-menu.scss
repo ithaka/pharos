@@ -7,13 +7,13 @@
   pointer-events: none;
   top: 0;
   left: 0;
-  contain: layout;
 }
 
 .dropdown-menu__list {
   @include mixins.interactive-focus;
 
   background-color: var(--pharos-color-ui-10);
+  position: relative;
   margin: 0;
   list-style-type: none;
   padding-left: 0;

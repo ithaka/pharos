@@ -82,29 +82,6 @@
   padding: var(--pharos-spacing-one-half-x);
 }
 
-:host([icon]:not([disabled])) #button-element:hover,
-:host([icon]:not([disabled])) #button-element:active {
-  padding: calc(var(--pharos-spacing-one-quarter-x) - 1px);
-}
-
-:host([variant='subtle']:not([disabled])) #button-element:hover,
-:host([variant='subtle']:not([disabled])) #button-element:active {
-  @include mixins.button-color(
-    $color: var(--pharos-color-hover-primary),
-    $background-color: var(--pharos-color-ui-20),
-    $border-color: var(--pharos-color-ui-20)
-  );
-}
-
-:host([variant='overlay']:not([disabled])) #button-element:hover,
-:host([variant='overlay']:not([disabled])) #button-element:active {
-  @include mixins.button-color(
-    $color: var(--pharos-color-ui-10),
-    $background-color: var(--pharos-color-marble-gray-20),
-    $border-color: var(--pharos-color-marble-gray-20)
-  );
-}
-
 :host([on-background][variant='primary']:not([disabled])) #button-element {
   @include mixins.button-color(
     $color: var(--pharos-color-interactive-secondary),
@@ -126,6 +103,29 @@
     $color: var(--pharos-color-interactive-tertiary),
     $background-color: transparent,
     $border-color: transparent
+  );
+}
+
+:host([icon]:not([disabled])) #button-element:hover,
+:host([icon]:not([disabled])) #button-element:active {
+  padding: calc(var(--pharos-spacing-one-quarter-x) - 1px);
+}
+
+:host([variant='subtle']:not([disabled])) #button-element:hover,
+:host([variant='subtle']:not([disabled])) #button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-color-hover-primary),
+    $background-color: var(--pharos-color-ui-20),
+    $border-color: var(--pharos-color-ui-20)
+  );
+}
+
+:host([variant='overlay']:not([disabled])) #button-element:hover,
+:host([variant='overlay']:not([disabled])) #button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-color-ui-10),
+    $background-color: var(--pharos-color-marble-gray-20),
+    $border-color: var(--pharos-color-marble-gray-20)
   );
 }
 

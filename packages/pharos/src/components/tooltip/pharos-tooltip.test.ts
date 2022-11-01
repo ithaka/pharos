@@ -1,9 +1,7 @@
 import { fixture, expect, aTimeout, nextFrame } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import sinon from 'sinon';
-import type { SinonSpy } from 'sinon';
 
-import type { Placement, Instance } from '../../utils/popper';
+import type { Placement } from '../base/overlay-element';
 import type { PharosTooltip } from './pharos-tooltip';
 
 describe('pharos-tooltip', () => {
@@ -48,7 +46,7 @@ describe('pharos-tooltip', () => {
 
   it('sets its default attributes', async () => {
     expect(component).dom.to.equal(
-      `<pharos-tooltip id="my-tooltip" placement="top" strategy="absolute" boundary="clippingParents" data-pharos-component="PharosTooltip">Hi there!</pharos-tooltip>`
+      `<pharos-tooltip id="my-tooltip" placement="top" strategy="absolute" boundary="clippingAncestors" data-pharos-component="PharosTooltip">Hi there!</pharos-tooltip>`
     );
   });
 
@@ -156,11 +154,6 @@ describe('pharos-tooltip', () => {
   });
 
   it('opens the first one on hover and then closes it upon focusing the second', async () => {
-    const secondTrigger = addTrigger('my-second-trigger', 'my-second-tooltip');
-    secondComponent = await fixture(html`
-      <pharos-tooltip id="my-second-tooltip">Hi there again!</pharos-tooltip>
-    `);
-
     trigger.dispatchEvent(new Event('mouseenter'));
     await component.updateComplete;
     await aTimeout(100);
@@ -202,40 +195,6 @@ describe('pharos-tooltip', () => {
     expect(component['_bubble'].classList.contains('tooltip__bubble--text-wrap')).to.be.true;
   });
 
-  it('has an attribute to set tooltip width equal to target width', async () => {
-    component.fullWidth = true;
-    await component.updateComplete;
-    trigger.dispatchEvent(new Event('focusin'));
-    await component.updateComplete;
-    await aTimeout(100);
-
-    const { offsetWidth } = trigger;
-    const paddingLeft = parseInt(
-      window.getComputedStyle(component['_bubble'], null).getPropertyValue('padding-left'),
-      10
-    );
-    const paddingRight = parseInt(
-      window.getComputedStyle(component['_bubble'], null).getPropertyValue('padding-right'),
-      10
-    );
-    expect(component['_bubble'].style.width).to.equal(
-      `${offsetWidth - (paddingLeft + paddingRight)}px`
-    );
-  });
-
-  it('updates options of popper instance on placement change', async () => {
-    trigger.dispatchEvent(new Event('focusin'));
-    await component.updateComplete;
-    await nextFrame();
-    const popper = component['_popper'] as Instance;
-    const popperSpy: SinonSpy = sinon.spy(popper, 'setOptions');
-
-    component.placement = 'bottom';
-    await component.updateComplete;
-
-    expect(popperSpy.callCount).to.equal(1);
-  });
-
   it('sets aria attributes on the trigger element', async () => {
     trigger.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
@@ -246,7 +205,6 @@ describe('pharos-tooltip', () => {
     component.open = true;
     await component.updateComplete;
     expect(component.open).to.equal(true);
-    expect(component['_popper']?.state.elements.reference === trigger).to.be.true;
   });
 
   it('supports multiple triggers when open and another trigger is focused', async () => {
@@ -263,7 +221,6 @@ describe('pharos-tooltip', () => {
 
     await nextFrame();
     expect(component.open).to.be.true;
-    expect(component['_popper']?.state.elements.reference === thirdTrigger).to.be.true;
   });
 
   it('supports multiple triggers when open and another trigger is hovered', async () => {
@@ -280,7 +237,6 @@ describe('pharos-tooltip', () => {
 
     await nextFrame();
     expect(component.open).to.be.true;
-    expect(component['_popper']?.state.elements.reference === thirdTrigger).to.be.true;
   });
 
   it('has an attribute to set tooltip width to be within the boundary for short tooltip', async () => {

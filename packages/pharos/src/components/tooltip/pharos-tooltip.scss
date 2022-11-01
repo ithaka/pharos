@@ -7,18 +7,12 @@
   pointer-events: none;
   top: 0;
   left: 0;
-  contain: layout;
-}
-
-:host([data-popper-reference-hidden]) {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
 }
 
 .tooltip__body {
   visibility: hidden;
   pointer-events: none;
+  position: relative;
   opacity: 0;
   white-space: nowrap;
   transform: translate3d(0, 0, 0);
@@ -60,34 +54,8 @@
 
 .tooltip__caret {
   position: absolute;
-  height: 0;
-  width: 0;
-  border-top: 0.375rem solid var(--pharos-tooltip-color-background-base);
-  border-left: 0.375rem solid transparent;
-  border-right: 0.375rem solid transparent;
-  border-bottom: 0.375rem solid transparent;
-}
-
-:host([data-popper-placement*='right']) .tooltip__caret {
-  right: 100%;
-  border-right: 0.375rem solid var(--pharos-tooltip-color-background-base);
-  border-left: 0.375rem solid transparent;
-  border-top: 0.375rem solid transparent;
-  border-bottom: 0.375rem solid transparent;
-}
-
-:host([data-popper-placement*='left']) .tooltip__caret {
-  left: 100%;
-  border-left: 0.375rem solid var(--pharos-tooltip-color-background-base);
-  border-right: 0.375rem solid transparent;
-  border-top: 0.375rem solid transparent;
-  border-bottom: 0.375rem solid transparent;
-}
-
-:host([data-popper-placement*='bottom']) .tooltip__caret {
-  bottom: 100%;
-  border-bottom: 0.375rem solid var(--pharos-tooltip-color-background-base);
-  border-right: 0.375rem solid transparent;
-  border-top: 0.375rem solid transparent;
-  border-left: 0.375rem solid transparent;
+  height: 8px;
+  width: 8px;
+  transform: rotate(45deg);
+  background-color: var(--pharos-tooltip-color-background-base);
 }
