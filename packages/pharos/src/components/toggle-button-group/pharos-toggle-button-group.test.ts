@@ -5,7 +5,9 @@ import type { PharosToggleButtonGroup } from './pharos-toggle-button-group';
 import type { PharosToggleButton } from './pharos-toggle-button';
 
 describe('pharos-toggle-button-group', () => {
-  let component: PharosToggleButtonGroup, componentLastButtonSelected: PharosToggleButton;
+  let component: PharosToggleButtonGroup;
+  let componentLastButtonSelected: PharosToggleButton;
+  let componentWithLabel: PharosToggleButton;
 
   beforeEach(async () => {
     component = await fixture(html`
@@ -23,6 +25,14 @@ describe('pharos-toggle-button-group', () => {
         <pharos-toggle-button id="button-6" selected>Button 6</pharos-toggle-button>
       </pharos-toggle-button-group>
     `);
+
+    componentWithLabel = await fixture(html`
+      <pharos-toggle-button-group group-label="New options">
+        <pharos-toggle-button id="button-7">Button 7</pharos-toggle-button>
+        <pharos-toggle-button id="button-8">Button 8</pharos-toggle-button>
+        <pharos-toggle-button id="button-9" selected>Button 9</pharos-toggle-button>
+      </pharos-toggle-button-group>
+    `);
   });
 
   it('is accessible', async () => {
@@ -34,6 +44,20 @@ describe('pharos-toggle-button-group', () => {
       '[role="group"]'
     ) as HTMLDivElement;
     expect(toggleButtonGroup).not.to.be.null;
+  });
+
+  it('renders a default aria-label', async () => {
+    const toggleButtonGroup = component.renderRoot.querySelector(
+      '[role="group"]'
+    ) as HTMLDivElement;
+    expect(toggleButtonGroup.getAttribute('aria-label')).to.equal('Options');
+  });
+
+  it('renders the provided aria-label', async () => {
+    const toggleButtonGroup = componentWithLabel.renderRoot.querySelector(
+      '[role="group"]'
+    ) as HTMLDivElement;
+    expect(toggleButtonGroup.getAttribute('aria-label')).to.equal('New options');
   });
 
   it('has a slot to contain the toggle button elements', async () => {
@@ -57,8 +81,11 @@ describe('pharos-toggle-button-group', () => {
     ) as PharosToggleButton[];
 
     expect(toggleButtons[0].selected).to.be.true;
+    expect(toggleButtons[0].pressed).to.equal('true');
     expect(toggleButtons[1].selected).to.be.false;
+    expect(toggleButtons[1].pressed).to.equal('false');
     expect(toggleButtons[2].selected).to.be.false;
+    expect(toggleButtons[2].pressed).to.equal('false');
   });
 
   it('selects the defined toggle button', async () => {
@@ -67,8 +94,11 @@ describe('pharos-toggle-button-group', () => {
     ) as PharosToggleButton[];
 
     expect(toggleButtons[0].selected).to.be.false;
+    expect(toggleButtons[0].pressed).to.equal('false');
     expect(toggleButtons[1].selected).to.be.false;
+    expect(toggleButtons[1].pressed).to.equal('false');
     expect(toggleButtons[2].selected).to.be.true;
+    expect(toggleButtons[2].pressed).to.equal('true');
   });
 
   it('changes the focus right with the right arrow key', async () => {
@@ -111,8 +141,11 @@ describe('pharos-toggle-button-group', () => {
     await aTimeout(1);
 
     expect(toggleButtons[0].selected).to.be.false;
+    expect(toggleButtons[0].pressed).to.equal('false');
     expect(toggleButtons[1].selected).to.be.false;
+    expect(toggleButtons[1].pressed).to.equal('false');
     expect(toggleButtons[2].selected).to.be.true;
+    expect(toggleButtons[2].pressed).to.equal('true');
   });
 
   it('wraps focus to the last toggle button when left arrow is hit on the first button', async () => {
@@ -159,7 +192,10 @@ describe('pharos-toggle-button-group', () => {
     await aTimeout(1);
 
     expect(toggleButtons[0].selected).to.be.false;
+    expect(toggleButtons[0].pressed).to.equal('false');
     expect(toggleButtons[1].selected).to.be.true;
+    expect(toggleButtons[1].pressed).to.equal('true');
     expect(toggleButtons[2].selected).to.be.false;
+    expect(toggleButtons[2].pressed).to.equal('false');
   });
 });

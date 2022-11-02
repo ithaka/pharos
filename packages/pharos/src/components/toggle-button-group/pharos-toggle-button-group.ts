@@ -3,6 +3,7 @@ import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { toggleButtonGroupStyles } from './pharos-toggle-button-group.css';
 import type { PharosToggleButton } from './pharos-toggle-button';
+import { property } from 'lit/decorators.js';
 
 /**
  * Pharos toggle button group component.
@@ -13,6 +14,13 @@ import type { PharosToggleButton } from './pharos-toggle-button';
  *
  */
 export class PharosToggleButtonGroup extends PharosElement {
+  /**
+   * The label used to announce this group to assistive technologies.
+   * @attr group-label
+   */
+  @property({ type: String, reflect: true, attribute: 'group-label' })
+  public groupLabel = 'Options';
+
   public static override get styles(): CSSResultArray {
     return [toggleButtonGroupStyles];
   }
@@ -42,6 +50,7 @@ export class PharosToggleButtonGroup extends PharosElement {
     const selectedButton: PharosToggleButton = selected ? selected : toggleButtons[0];
 
     selectedButton.selected = true;
+    selectedButton.pressed = 'true';
   }
 
   private _handleButtonSelected(event: Event): void {
@@ -53,6 +62,7 @@ export class PharosToggleButtonGroup extends PharosElement {
 
     if (previous) {
       previous.selected = false;
+      previous.pressed = 'false';
     }
 
     const toggleButtons: PharosToggleButton[] = Array.prototype.slice.call(
@@ -136,7 +146,7 @@ export class PharosToggleButtonGroup extends PharosElement {
 
   protected override render(): TemplateResult {
     return html`
-      <div class="toggle-button__list" role="group">
+      <div class="toggle-button__list" role="group" aria-label="${this.groupLabel}">
         <slot></slot>
       </div>
     `;
