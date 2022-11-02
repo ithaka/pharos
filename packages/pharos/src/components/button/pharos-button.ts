@@ -17,7 +17,7 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'subtle' | 'overlay';
 
-type PressedState = 'false' | 'true' | 'mixed' | 'undefined';
+export type PressedState = 'false' | 'true' | 'mixed' | 'undefined';
 
 const TYPES = ['button', 'submit', 'reset'];
 
