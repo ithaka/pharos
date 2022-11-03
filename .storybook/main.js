@@ -1,4 +1,7 @@
 module.exports = {
+  features: {
+    previewCsfV3: true,
+  },
   core: {
     builder: 'webpack5',
   },
