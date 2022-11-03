@@ -47,14 +47,12 @@ import { PharosToggleButton } from '../../react-components/toggle-button-group/p
           document.querySelector('#presentation-view').style.display = 'block';
         }}
         id="view-presentation-button"
-        icon-left="view-gallery"
+        icon-left="image"
       >
         Presentation
       </PharosToggleButton>
     </PharosToggleButtonGroup>
-    <div id="list-view" style={{ display: 'none' }}>
-      List view
-    </div>
+    <div id="list-view">List view</div>
     <div id="gallery-view" style={{ display: 'none' }}>
       Gallery view
     </div>
@@ -74,10 +72,10 @@ import { PharosToggleButton } from '../../react-components/toggle-button-group/p
     }}
   >
     <PharosToggleButtonGroup onPharos-Toggle-Button-Selected={(e) => action('Select')(e.target.id)}>
-      <PharosToggleButton id="list-mode-button" icon-left="view-list">
+      <PharosToggleButton id="list-mode-button" selected icon-left="view-list">
         List
       </PharosToggleButton>
-      <PharosToggleButton id="gallery-mode-button" selected icon-left="view-gallery">
+      <PharosToggleButton id="gallery-mode-button" icon-left="view-gallery">
         Gallery
       </PharosToggleButton>
     </PharosToggleButtonGroup>
@@ -95,7 +93,7 @@ import { PharosToggleButton } from '../../react-components/toggle-button-group/p
       <PharosToggleButton icon="view-gallery" id="view-gallery-button">
         Gallery
       </PharosToggleButton>
-      <PharosToggleButton icon="view-presentation" id="view-presentation-button">
+      <PharosToggleButton icon="image" id="view-presentation-button">
         Presentation
       </PharosToggleButton>
     </PharosToggleButtonGroup>

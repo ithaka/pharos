@@ -3,14 +3,22 @@ import { property, queryAssignedNodes, query, state } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
-import { createPopper } from '../../utils/popper';
 import debounce from '../../utils/debounce';
+
 import observeResize from '../../utils/observeResize';
 import deepSelector from '../../utils/deepSelector';
 import { tooltipStyles } from './pharos-tooltip.css';
+import type { Placement, PositioningStrategy, Side } from '../base/overlay-element';
+import {
+  arrow,
+  autoUpdate,
+  computePosition,
+  flip,
+  offset,
+  shift,
+  OverlayElement,
+} from '../base/overlay-element';
 
-import { OverlayElement } from '../base/overlay-element';
-import type { Placement, PositioningStrategy } from '../base/overlay-element';
 export type { Placement, PositioningStrategy };
 
 /**
@@ -37,13 +45,16 @@ export class PharosTooltip extends OverlayElement {
    * @attr boundary
    */
   @property({ type: String, reflect: true })
-  public boundary = 'clippingParents';
+  public boundary = 'clippingAncestors';
 
   @queryAssignedNodes()
   private _contentNodes!: NodeListOf<HTMLElement>;
 
   @query('.tooltip__caret')
   private _caret!: HTMLSpanElement;
+
+  @query('.tooltip__body')
+  private _tooltip!: HTMLDivElement;
 
   @query('.tooltip__bubble')
   private _bubble!: HTMLSpanElement;
@@ -59,6 +70,7 @@ export class PharosTooltip extends OverlayElement {
   private _observeResizeTrigger: Handle | null = null;
   private _triggers!: HTMLElement[];
   private _currentTrigger: Element | null = null;
+  private _cleanup?: { (): void } = undefined;
 
   private _resizeObserver: ResizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
     const { offsetWidth } = entries[0].target as HTMLElement;
@@ -71,13 +83,11 @@ export class PharosTooltip extends OverlayElement {
       10
     );
     this._targetWidth = offsetWidth - (paddingLeft + paddingRight);
-    this._popper?.update();
   });
 
   private _contentObserver: MutationObserver = new MutationObserver(
     (mutationsList: MutationRecord[]) => {
       this._textLength = (mutationsList[0].target as CharacterData).length;
-      this._popper?.update();
     }
   );
 
@@ -122,10 +132,7 @@ export class PharosTooltip extends OverlayElement {
 
   protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
-      if (
-        this.open &&
-        (!this._popper || this._popper?.state.elements.reference !== this._currentTrigger)
-      ) {
+      if (this.open) {
         this._setup();
       }
 
@@ -133,7 +140,6 @@ export class PharosTooltip extends OverlayElement {
         this._currentTrigger = null;
       }
 
-      this._setPopperListeners();
       this._setupResizeObserver();
     }
 
@@ -191,60 +197,79 @@ export class PharosTooltip extends OverlayElement {
 
   private _setup(): void {
     this._findSingleTrigger();
-
-    if (this._currentTrigger && this._bubble) {
-      this._options = {
-        placement: this.placement,
-        modifiers: [
-          {
-            name: 'flip',
-            options: {
-              fallbackPlacements: this.fallbackPlacements,
-            },
-          },
-          {
-            name: 'arrow',
-            options: {
-              element: this._caret,
-              padding: 8,
-            },
-          },
-          {
-            name: 'offset',
-            options: {
-              offset: [0, 10],
-            },
-          },
-          {
-            name: 'eventListeners',
-            options: {
-              scroll: this.open,
-              resize: this.open,
-            },
-          },
-          {
-            name: 'preventOverflow',
-            options: {
-              boundary:
-                this.boundary === 'clippingParents'
-                  ? this.boundary
-                  : deepSelector(`#${this.boundary}`),
-            },
-          },
-        ],
-        strategy: this.strategy,
-      };
-
-      this._popper = createPopper(this._currentTrigger, this, this._options);
-    }
+    this._positionElements();
   }
 
   private _setOpen(): void {
     if (this._hasHover || this._hasFocus) {
       this._closeOpenTooltips();
       this.open = true;
+      this._positionElements();
     } else {
       this.open = false;
+      if (this._cleanup) {
+        this._cleanup();
+      }
+    }
+  }
+
+  private _positionCaret(
+    placement: Placement,
+    arrowX: number | undefined,
+    arrowY: number | undefined
+  ): void {
+    const staticSide = {
+      top: 'bottom',
+      right: 'left',
+      bottom: 'top',
+      left: 'right',
+    }[placement.split('-')[0] as Side];
+
+    Object.assign(this._caret.style, {
+      left: arrowX ? `${arrowX}px` : '',
+      top: arrowY ? `${arrowY}px` : '',
+      right: '',
+      bottom: '',
+      [staticSide]: '-4px',
+    });
+  }
+
+  private _positionTooltip(x: number, y: number): void {
+    Object.assign(this._tooltip.style, {
+      left: `${x}px`,
+      top: `${y}px`,
+    });
+  }
+
+  private _positionElements() {
+    if (this._currentTrigger && this._bubble) {
+      this._cleanup = autoUpdate(this._currentTrigger, this._tooltip, () => {
+        if (this._currentTrigger && this._bubble) {
+          computePosition(this._currentTrigger, this._tooltip, {
+            placement: this.placement === 'auto' ? 'top' : this.placement,
+            strategy: this.strategy,
+            middleware: [
+              offset(10),
+              flip({
+                fallbackPlacements: this._filteredFallbackPlacements,
+              }),
+              shift({
+                boundary:
+                  this.boundary === 'clippingAncestors'
+                    ? this.boundary
+                    : deepSelector(`#${this.boundary}`) || undefined,
+              }),
+              arrow({ element: this._caret }),
+            ],
+          }).then(({ middlewareData, placement, x, y }) => {
+            if (middlewareData.arrow) {
+              const { x: arrowX, y: arrowY } = middlewareData.arrow;
+              this._positionCaret(placement, arrowX, arrowY);
+            }
+            this._positionTooltip(x, y);
+          });
+        }
+      });
     }
   }
 

@@ -741,24 +741,4 @@ describe('pharos-dropdown-menu', () => {
 
     expect(lastItem['_last']).to.be.true;
   });
-
-  it('is placed "bottom-start" when opened in a menu nav', async () => {
-    const trigger = document.createElement('button');
-    const parentNode = document.createElement('pharos-dropdown-menu-nav');
-
-    trigger.setAttribute('id', 'trigger');
-    trigger.setAttribute('data-dropdown-menu-id', 'my-dropdown');
-    trigger.setAttribute('data-dropdown-menu-hover', '');
-    document.body.appendChild(trigger);
-
-    component = await fixture(getSimpleDropdown(), {
-      parentNode,
-    });
-
-    trigger.dispatchEvent(new MouseEvent('mouseenter'));
-    await aTimeout(150);
-    await component.updateComplete;
-
-    expect(component['_options']?.placement).to.equal('bottom-start');
-  });
 });

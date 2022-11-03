@@ -126,6 +126,7 @@
     ]
   },
   "resolutions": {
+    "@typescript-eslint/parser": "^5.41.0",
     "axe-core": "^4.3.3",
     "playwright": "^1.17.1",
     "webpack": "^5.64.1",
