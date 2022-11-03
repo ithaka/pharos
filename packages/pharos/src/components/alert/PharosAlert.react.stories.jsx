@@ -41,62 +41,68 @@ export default {
   },
 };
 
-const Template = ({ status, text, closable }) => {
-  return (
+const Base = {
+  render: ({ status, text, closable }) => (
     <PharosAlert status={status} closable={closable}>
       {text}
     </PharosAlert>
-  );
+  ),
+  args: {
+    status: 'base',
+    text: 'I am an alert.',
+  },
 };
 
-export const Info = Template.bind({});
-Info.args = {
-  status: 'info',
-  text: 'There will be maintenance tomorrow.',
+export const Info = {
+  ...Base,
+  args: {
+    status: 'info',
+    text: 'There will be maintenance tomorrow.',
+  },
 };
 
-export const Success = Template.bind({});
-Success.args = {
-  status: 'success',
-  text: 'Success!',
+export const Success = {
+  ...Base,
+  args: {
+    status: 'success',
+    text: 'Success!',
+  },
 };
 
-const WarningTemplate = ({ status, text, closable }) => {
-  return (
+export const Warning = {
+  render: ({ status, text, closable }) => (
     <PharosAlert status={status} closable={closable}>
       <p className="alert-example__content">{text}</p>
       <p className="alert-example__content">
         See <PharosLink href="#">how to fix this</PharosLink>.
       </p>
     </PharosAlert>
-  );
+  ),
+  args: {
+    status: 'warning',
+    text: 'Your profile is incomplete.',
+  },
 };
 
-export const Warning = WarningTemplate.bind({});
-Warning.args = {
-  status: 'warning',
-  text: 'Your profile is incomplete.',
-};
-
-const ErrorTemplate = ({ status, text, closable }) => {
-  return (
+export const Error = {
+  render: ({ status, text, closable }) => (
     <PharosAlert status={status} closable={closable}>
       <p className="alert-example__content">{text}</p>
       <p className="alert-example__content">
         For more information, <pharos-link href="#">read the documentation</pharos-link>.
       </p>
     </PharosAlert>
-  );
+  ),
+  args: {
+    status: 'error',
+    text: "Your password didn't meet the minimum requirements.",
+  },
 };
 
-export const Error = ErrorTemplate.bind({});
-Error.args = {
-  status: 'error',
-  text: "Your password didn't meet the minimum requirements.",
-};
-
-export const Closable = ErrorTemplate.bind({});
-Closable.args = {
-  ...Error.args,
-  closable: true,
+export const Closable = {
+  ...Error,
+  args: {
+    ...Error.args,
+    closable: true,
+  },
 };
