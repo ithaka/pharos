@@ -1,34 +1,13 @@
-import React from 'react';
-import {
-  Title,
-  Subtitle,
-  Description,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-} from '@storybook/addon-docs';
-
-import { GuidelineLink } from '@config/GuidelineLink';
 import { PharosAlert } from '../../react-components/alert/pharos-alert';
 import { PharosLink } from '../../react-components/link/pharos-link';
+import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
   title: 'Components/Alert',
   component: PharosAlert,
   parameters: {
     docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <GuidelineLink path={'alert'} />
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </>
-      ),
+      page: configureDocsPage('alert'),
     },
   },
   argTypes: {
