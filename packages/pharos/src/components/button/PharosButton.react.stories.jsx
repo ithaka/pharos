@@ -10,7 +10,7 @@ import {
   PharosTextarea,
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, storyArgTypes } from './storyArgs';
+import { defaultArgs } from './storyArgs';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -20,29 +20,30 @@ export default {
     docs: {
       page: configureDocsPage('button'),
     },
+    options: { selectedPanel: 'addon-controls' },
   },
-  argTypes: storyArgTypes,
 };
 
 export const Base = {
   render: (args) => (
     <PharosButton
       disabled={args.disabled}
-      variant={args.variant}
-      type={args.type}
+      download={args.download}
       icon={args.icon}
       iconCondensed={args.iconCondensed}
       iconLeft={args.iconLeft}
       iconRight={args.iconRight}
       fullWidth={args.fullWidth}
-      large={args.large}
-      download={args.download}
       href={args.href}
       hreflang={args.hreflang}
+      label={args.label}
+      large={args.large}
+      onBackground={args.onBackground}
       ping={args.ping}
       pressed={args.pressed}
       target={args.target}
-      label={args.label}
+      type={args.type}
+      variant={args.variant}
       onClick={(e) => action('Click')(e.target)}
     >
       {args.text}
@@ -52,7 +53,7 @@ export const Base = {
 };
 
 export const Variants = {
-  render: () => (
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -112,7 +113,7 @@ export const Variants = {
 };
 
 export const Large = {
-  render: () => (
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -174,7 +175,7 @@ export const Large = {
 };
 
 export const WithIcons = {
-  render: () => (
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -266,7 +267,7 @@ export const Link = {
 };
 
 export const Forms = {
-  render: () => (
+  render: (_) => (
     <div
       style={{
         display: 'grid',

@@ -1,55 +1,36 @@
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit';
 import { action } from '@storybook/addon-actions';
-import { GuidelineLink } from '@config/GuidelineLink';
+import { configureDocsPage } from '@config/docsPageConfig';
+import { defaultArgs } from './storyArgs';
 
-<Meta
-  title="Forms/Checkbox"
-  parameters={{
-    options: { selectedPanel: 'addon-controls' },
-  }}
-/>
-
-# Checkbox
-
-<GuidelineLink path="checkbox" />
-
-export const Template = (args) => {
-  return html`<pharos-checkbox
-    ?checked=${args.checked}
-    ?disabled=${args.disabled}
-    ?hide-label=${args.hideLabel}
-    ?required=${args.required}
-    ?invalidated=${args.invalidated}
-    .message=${args.message}
-  >
-    <span slot="label">${args.label}</span>
-  </pharos-checkbox>`;
+export default {
+  title: 'Forms/Checkbox',
+  parameters: {
+    docs: configureDocsPage('checkbox'),
+    options: {
+      selectedPanel: 'addon-controls',
+    },
+  },
 };
 
-<Canvas withToolbar>
-  <Story
-    name="Base"
-    args={{
-      checked: false,
-      disabled: false,
-      hideLabel: false,
-      label: 'I am a label',
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
+export const Base = {
+  render: (args) =>
+    html`<pharos-checkbox
+      ?checked=${args.checked}
+      ?disabled=${args.disabled}
+      ?hide-label=${args.hideLabel}
+      ?required=${args.required}
+      ?invalidated=${args.invalidated}
+      .message=${args.message}
+    >
+      <span slot="label">${args.label}</span>
+    </pharos-checkbox>`,
+  args: defaultArgs,
+};
 
-## API
-
-<ArgsTable of="pharos-checkbox" />
-
-# States
-
-<Canvas withToolbar>
-  <Story name="States">
-    {html`
+export const States = {
+  render: (_) =>
+    html`
       <div>
         <pharos-checkbox name="one"><span slot="label">Normal Checkbox</span></pharos-checkbox>
       </div>
@@ -91,55 +72,38 @@ export const Template = (args) => {
           ><span slot="label">Indeterminate checkbox</span></pharos-checkbox
         >
       </div>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-# Events
+export const Events = {
+  render: (_) =>
+    html` <pharos-checkbox
+      value="My value"
+      @change="${(e) => action('Change')(e.target.checked)}"
+      @input="${(e) => action('Input')(e.target.value)}"
+      @click="${(e) => action('Click')(e.target.checked)}"
+    >
+      <span slot="label">I fire events</span>
+    </pharos-checkbox>`,
+  parameters: {
+    options: { selectedPanel: 'addon-actions' },
+  },
+};
 
-<Canvas withToolbar>
-  <Story
-    name="Events"
-    parameters={{
-      options: { selectedPanel: 'addon-actions' },
-    }}
-  >
-    {() => {
-      return html`
-        <pharos-checkbox
-          value="My value"
-          @change="${(e) => action('Change')(e.target.checked)}"
-          @input="${(e) => action('Input')(e.target.value)}"
-          @click="${(e) => action('Click')(e.target.checked)}"
-        >
-          <span slot="label">I fire events</span>
-        </pharos-checkbox>
-      `;
-    }}
-  </Story>
-</Canvas>
+export const Validity = {
+  ...Base,
+  args: {
+    ...Base.args,
+    required: true,
+    invalidated: true,
+    message: 'This field is required, please make a selection',
+  },
+};
 
-# Validity
-
-<Canvas withToolbar>
-  <Story
-    name="Validity"
-    args={{
-      required: true,
-      invalidated: true,
-      label: 'I am a label',
-      message: 'This field is required, please make a selection',
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-# On background
-
-<Canvas withToolbar>
-  <Story name="On background">
-    {html`
+export const OnBackground = {
+  name: 'On background',
+  render: (_) =>
+    html`
       <div style="background-color: #000000; padding: 1rem;">
         <pharos-checkbox name="on-background" on-background>
           <span slot="label">Unchecked</span>
@@ -155,6 +119,5 @@ export const Template = (args) => {
           <span slot="label">Indeterminate</span>
         </pharos-checkbox>
       </div>
-    `}
-  </Story>
-</Canvas>
+    `,
+};

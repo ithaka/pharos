@@ -3,7 +3,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { action } from '@storybook/addon-actions';
 
 import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, storyArgTypes } from './storyArgs';
+import { defaultArgs } from './storyArgs';
 
 export default {
   title: 'Components/Button',
@@ -14,7 +14,6 @@ export default {
     },
     options: { selectedPanel: 'addon-controls' },
   },
-  argTypes: storyArgTypes,
 };
 
 export const Base = {
@@ -22,21 +21,22 @@ export const Base = {
     html`
       <pharos-button
         ?disabled=${ifDefined(args.disabled)}
-        variant=${ifDefined(args.variant)}
-        type=${ifDefined(args.type)}
+        download=${ifDefined(args.download)}
         icon=${ifDefined(args.icon)}
         ?icon-condensed=${ifDefined(args.iconCondensed)}
         icon-left=${ifDefined(args.iconLeft)}
         icon-right=${ifDefined(args.iconRight)}
         ?full-width=${ifDefined(args.fullWidth)}
-        ?large=${ifDefined(args.large)}
-        download=${ifDefined(args.download)}
         href=${ifDefined(args.href)}
         hreflang=${ifDefined(args.hreflang)}
+        label=${ifDefined(args.label)}
+        ?large=${ifDefined(args.large)}
+        ?on-background=${ifDefined(args.onBackground)}
         ping=${ifDefined(args.ping)}
         pressed=${ifDefined(args.pressed)}
         target=${ifDefined(args.target)}
-        label=${ifDefined(args.label)}
+        type=${ifDefined(args.type)}
+        variant=${ifDefined(args.variant)}
         @click="${(e) => action('Click')(e.target)}"
       >
         ${args.text}
