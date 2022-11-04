@@ -1,5 +1,4 @@
-import { PharosAlert } from '../../react-components/alert/pharos-alert';
-import { PharosLink } from '../../react-components/link/pharos-link';
+import { PharosAlert, PharosLink } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {

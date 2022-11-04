@@ -1,96 +1,58 @@
-import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
-import { GuidelineLink } from '@config/GuidelineLink';
+import {
+  PharosButton,
+  PharosCheckbox,
+  PharosCheckboxGroup,
+  PharosCombobox,
+  PharosRadioButton,
+  PharosRadioGroup,
+  PharosSelect,
+  PharosTextInput,
+  PharosTextarea,
+} from '../../react-components';
+import { configureDocsPage } from '@config/docsPageConfig';
+import { defaultArgs, storyArgTypes } from './storyArgs';
+import { action } from '@storybook/addon-actions';
 
-import { PharosButton } from '../../react-components/button/pharos-button';
-import { iconNames } from '../../utils/iconNames';
+export default {
+  title: 'Components/Button',
+  component: PharosButton,
+  parameters: {
+    docs: {
+      page: configureDocsPage('button'),
+    },
+  },
+  argTypes: storyArgTypes,
+};
 
-import { PharosCheckbox } from '../../react-components/checkbox/pharos-checkbox';
-import { PharosCheckboxGroup } from '../../react-components/checkbox-group/pharos-checkbox-group';
-import { PharosCombobox } from '../../react-components/combobox/pharos-combobox';
-import { PharosRadioButton } from '../../react-components/radio-button/pharos-radio-button';
-import { PharosRadioGroup } from '../../react-components/radio-group/pharos-radio-group';
-import { PharosSelect } from '../../react-components/select/pharos-select';
-import { PharosTextInput } from '../../react-components/text-input/pharos-text-input';
-import { PharosTextarea } from '../../react-components/textarea/pharos-textarea';
+export const Base = {
+  render: (args) => (
+    <PharosButton
+      disabled={args.disabled}
+      variant={args.variant}
+      type={args.type}
+      icon={args.icon}
+      iconCondensed={args.iconCondensed}
+      iconLeft={args.iconLeft}
+      iconRight={args.iconRight}
+      fullWidth={args.fullWidth}
+      large={args.large}
+      download={args.download}
+      href={args.href}
+      hreflang={args.hreflang}
+      ping={args.ping}
+      pressed={args.pressed}
+      target={args.target}
+      label={args.label}
+      onClick={(e) => action('Click')(e.target)}
+    >
+      {args.text}
+    </PharosButton>
+  ),
+  args: defaultArgs,
+};
 
-<Meta
-  title="Components/Button"
-  parameters={{
-    component: PharosButton,
-  }}
-/>
-
-export const Template = (args) => (
-  <PharosButton
-    disabled={args.disabled}
-    variant={args.variant}
-    type={args.type}
-    icon={args.icon}
-    iconCondensed={args.iconCondensed}
-    iconLeft={args.iconLeft}
-    iconRight={args.iconRight}
-    large={args.large}
-    href={args.href}
-    target={args.target}
-    label={args.label}
-  >
-    {args.text}
-  </PharosButton>
-);
-
-# Button
-
-<GuidelineLink path="button" />
-
-<Canvas>
-  <Story
-    name="Base"
-    argTypes={{
-      variant: {
-        options: ['primary', 'secondary', 'subtle'],
-        control: {
-          type: 'inline-radio',
-        },
-        defaultValue: 'primary',
-      },
-      type: {
-        options: ['button', 'submit', 'reset'],
-        control: {
-          type: 'inline-radio',
-        },
-        defaultValue: 'button',
-      },
-      iconLeft: {
-        options: iconNames,
-        control: {
-          type: 'select',
-        },
-      },
-      iconRight: {
-        options: iconNames,
-        control: {
-          type: 'select',
-        },
-      },
-    }}
-    args={{
-      text: 'I am a button',
-      disabled: false,
-      large: false,
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-## API
-
-<ArgsTable of={PharosButton} />
-
-# Variants
-
-<Canvas withToolbar>
-  <Story name="Variants">
+export const Variants = {
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -146,13 +108,11 @@ export const Template = (args) => (
         </PharosButton>
       </div>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Large
-
-<Canvas withToolbar>
-  <Story name="Large">
+export const Large = {
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -210,13 +170,11 @@ export const Template = (args) => (
         </PharosButton>
       </div>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# With Icons
-
-<Canvas withToolbar>
-  <Story name="With Icons">
+export const WithIcons = {
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -275,135 +233,40 @@ export const Template = (args) => (
         </PharosButton>
       </div>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Icon only
+export const IconOnly = {
+  ...Base,
+  name: 'Icon only',
+  args: {
+    ...Base.args,
+    text: undefined,
+    icon: 'download',
+    label: 'download',
+  },
+};
 
-<Canvas>
-  <Story
-    name="Icon only"
-    argTypes={{
-      variant: {
-        options: ['primary', 'secondary', 'subtle'],
-        control: {
-          type: 'inline-radio',
-        },
-        defaultValue: 'primary',
-      },
-      type: {
-        options: ['button', 'submit', 'reset'],
-        control: {
-          type: 'inline-radio',
-        },
-        defaultValue: 'button',
-      },
-      icon: {
-        options: iconNames,
-        control: {
-          type: 'select',
-        },
-      },
-    }}
-    args={{
-      icon: 'download',
-      disabled: false,
-      large: false,
-      label: 'download',
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
+export const IconOnlyCondensed = {
+  ...IconOnly,
+  name: 'Icon only (condensed)',
+  args: {
+    ...IconOnly.args,
+    iconCondensed: true,
+  },
+};
 
-# Icon only (condensed)
+export const Link = {
+  ...Base,
+  args: {
+    ...Base.args,
+    href: 'https://google.com',
+    target: '_blank',
+  },
+};
 
-<Canvas>
-  <Story
-    name="Icon only (condensed)"
-    argTypes={{
-      variant: {
-        options: ['primary', 'secondary', 'subtle'],
-        control: {
-          type: 'inline-radio',
-        },
-        defaultValue: 'primary',
-      },
-      type: {
-        options: ['button', 'submit', 'reset'],
-        control: {
-          type: 'inline-radio',
-        },
-        defaultValue: 'button',
-      },
-      icon: {
-        options: iconNames,
-        control: {
-          type: 'select',
-        },
-      },
-    }}
-    args={{
-      icon: 'download',
-      disabled: false,
-      large: false,
-      label: 'download',
-      iconCondensed: true,
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-# Link
-
-<Canvas>
-  <Story
-    name="Link"
-    argTypes={{
-      variant: {
-        options: ['primary', 'secondary', 'subtle'],
-        control: {
-          type: 'inline-radio',
-        },
-        defaultValue: 'primary',
-      },
-      type: {
-        options: ['button', 'submit', 'reset'],
-        control: {
-          type: 'inline-radio',
-        },
-        defaultValue: 'button',
-      },
-      iconLeft: {
-        options: iconNames,
-        control: {
-          type: 'select',
-        },
-      },
-      iconRight: {
-        options: iconNames,
-        control: {
-          type: 'select',
-        },
-      },
-    }}
-    args={{
-      text: 'I am a button',
-      disabled: false,
-      large: false,
-      href: 'https://google.com',
-      target: '_blank',
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-# Forms
-
-<Canvas withToolbar>
-  <Story name="Forms">
+export const Forms = {
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -453,10 +316,11 @@ export const Template = (args) => (
         <PharosButton type="reset" variant="secondary" style={{ marginTop: '1.5rem' }}>
           Reset
         </PharosButton>
+
         <PharosButton type="submit" style={{ marginTop: '1.5rem' }}>
           Submit
         </PharosButton>
       </form>
     </div>
-  </Story>
-</Canvas>
+  ),
+};

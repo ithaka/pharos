@@ -1,5 +1,4 @@
-import { PharosBreadcrumb } from '../../react-components/breadcrumb/pharos-breadcrumb';
-import { PharosBreadcrumbItem } from '../../react-components/breadcrumb/pharos-breadcrumb-item';
+import { PharosBreadcrumb, PharosBreadcrumbItem } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
