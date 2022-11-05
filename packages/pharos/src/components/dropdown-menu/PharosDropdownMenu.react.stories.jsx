@@ -8,12 +8,17 @@ import {
   PharosLink,
   PharosButton,
 } from '../../react-components';
+import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
   title: 'Components/Dropdown Menu',
   component: PharosDropdownMenu,
   subcomponents: { PharosDropdownMenuItem },
-  options: { selectedPanel: 'addon-controls' },
+  parameters: {
+    docs: { page: configureDocsPage('dropdown-menu') },
+    options: { selectedPanel: 'addon-controls' },
+    chromatic: { delay: 800 },
+  },
 };
 
 export const Base = {

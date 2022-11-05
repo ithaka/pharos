@@ -1,19 +1,26 @@
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
-import { GuidelineLink } from '@config/GuidelineLink';
+import {
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosDropdownMenuNav,
+  PharosDropdownMenuNavLink,
+} from '../../react-components';
+import { configureDocsPage } from '@config/docsPageConfig';
 
-import { PharosDropdownMenuNav } from '../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav';
-import { PharosDropdownMenuNavLink } from '../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav-link';
-import { PharosDropdownMenu } from '../../react-components/dropdown-menu/pharos-dropdown-menu';
-import { PharosDropdownMenuItem } from '../../react-components/dropdown-menu/pharos-dropdown-menu-item';
+export default {
+  title: 'Components/Dropdown Menu Nav',
+  component: PharosDropdownMenuNav,
+  subcomponents: {
+    PharosDropdownMenuNavLink,
+    PharosDropdownMenu,
+    PharosDropdownMenuItem,
+  },
+  parameters: {
+    docs: { page: configureDocsPage('dropdown-menu-nav') },
+  },
+};
 
-<Meta title="Components/Dropdown Menu Nav" />
-
-# Dropdown Menu Nav
-
-<GuidelineLink path="dropdown-menu-nav" />
-
-<Canvas>
-  <Story name="Base">
+export const Base = {
+  render: (_) => (
     <PharosDropdownMenuNav>
       <PharosDropdownMenuNavLink
         href="#"
@@ -48,9 +55,5 @@ import { PharosDropdownMenuItem } from '../../react-components/dropdown-menu/pha
         Link
       </PharosDropdownMenuNavLink>
     </PharosDropdownMenuNav>
-  </Story>
-</Canvas>
-
-## API
-
-<ArgsTable of={PharosDropdownMenuNav} />
+  ),
+};
