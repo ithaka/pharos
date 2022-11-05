@@ -1,5 +1,6 @@
 import { PharosAlert, PharosLink } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
+import { defaultArgs, argTypes } from './storyArgs';
 
 export default {
   title: 'Components/Alert',
@@ -9,14 +10,7 @@ export default {
       page: configureDocsPage('alert'),
     },
   },
-  argTypes: {
-    status: {
-      options: ['info', 'success', 'warning', 'error'],
-      control: { type: 'radio' },
-    },
-    text: { control: { type: 'text' }, defaultValue: 'Alert message' },
-    closable: { control: { type: 'boolean' }, defaultValue: false },
-  },
+  argTypes,
 };
 
 const Base = {
@@ -25,10 +19,7 @@ const Base = {
       {text}
     </PharosAlert>
   ),
-  args: {
-    status: 'base',
-    text: 'I am an alert.',
-  },
+  args: defaultArgs,
 };
 
 export const Info = {

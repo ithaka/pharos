@@ -3,7 +3,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { action } from '@storybook/addon-actions';
 
 import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { defaultArgs, argTypes } from './storyArgs';
 
 export default {
   title: 'Components/Button',
@@ -14,6 +14,7 @@ export default {
     },
     options: { selectedPanel: 'addon-controls' },
   },
+  argTypes,
 };
 
 export const Base = {

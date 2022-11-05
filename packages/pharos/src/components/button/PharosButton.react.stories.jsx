@@ -10,7 +10,7 @@ import {
   PharosTextarea,
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { defaultArgs, argTypes } from './storyArgs';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -22,6 +22,7 @@ export default {
     },
     options: { selectedPanel: 'addon-controls' },
   },
+  argTypes,
 };
 
 export const Base = {

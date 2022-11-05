@@ -5,8 +5,9 @@ import { defaultArgs } from './storyArgs';
 
 export default {
   title: 'Forms/Checkbox',
+  component: 'pharos-checkbox',
   parameters: {
-    docs: configureDocsPage('checkbox'),
+    docs: { page: configureDocsPage('checkbox') },
     options: {
       selectedPanel: 'addon-controls',
     },
