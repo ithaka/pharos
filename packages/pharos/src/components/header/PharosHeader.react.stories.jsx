@@ -1,68 +1,27 @@
-import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
-import { GuidelineLink } from '@config/GuidelineLink';
+import {
+  PharosHeader,
+  PharosLink,
+  PharosDropdownMenuNav,
+  PharosDropdownMenuNavLink,
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosInputGroup,
+  PharosButton,
+  PharosIcon,
+} from '../../react-components';
+import { configureDocsPage } from '@config/docsPageConfig';
 
-import { PharosHeader } from '../../react-components/header/pharos-header';
-import { PharosLink } from '../../react-components/link/pharos-link';
-import { PharosDropdownMenuNav } from '../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav';
-import { PharosDropdownMenuNavLink } from '../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav-link';
-import { PharosDropdownMenu } from '../../react-components/dropdown-menu/pharos-dropdown-menu';
-import { PharosDropdownMenuItem } from '../../react-components/dropdown-menu/pharos-dropdown-menu-item';
-import { PharosInputGroup } from '../../react-components/input-group/pharos-input-group';
-import { PharosButton } from '../../react-components/button/pharos-button';
-import { PharosIcon } from '../../react-components/icon/pharos-icon';
-
-<Meta
-  title="Organisms/Header"
-  parameters={{
-    component: PharosHeader,
+export default {
+  title: 'Organisms/Header',
+  component: PharosHeader,
+  parameters: {
+    docs: { page: configureDocsPage('haeder') },
     layout: 'fullscreen',
-  }}
-/>
+  },
+};
 
-# Header
-
-<GuidelineLink path="header" />
-
-# Base
-
-export const accountNav = (section) => (
-  <PharosDropdownMenuNav label="profile">
-    <PharosDropdownMenuNavLink
-      href="/account/profile"
-      id={`profile-link-${section}`}
-      data-dropdown-menu-id={`profile-menu-${section}`}
-      data-dropdown-menu-hover
-    >
-      <span className="hide-for-small">human@ithaka.org</span>
-      <span className="show-for-small" style={{ display: 'none' }}>
-        Account
-      </span>
-    </PharosDropdownMenuNavLink>
-    <PharosDropdownMenu id={`profile-menu-${section}`}>
-      <PharosDropdownMenuItem link="/account/profile" id={`profile-link-${section}`}>
-        Profile
-      </PharosDropdownMenuItem>
-      <PharosDropdownMenuItem link="/account/workspace" id={`workspace-link-${section}`}>
-        Workspace
-      </PharosDropdownMenuItem>
-      <PharosDropdownMenuItem link="/account/read-online" id={`article-link-${section}`}>
-        Free Article Views
-      </PharosDropdownMenuItem>
-      <PharosDropdownMenuItem link="/account/subscriptions" id={`jpass-link-${section}`}>
-        JPASS Downloads
-      </PharosDropdownMenuItem>
-      <PharosDropdownMenuItem link="/account/purchases" id={`purchase-link-${section}`}>
-        Purchase History
-      </PharosDropdownMenuItem>
-      <PharosDropdownMenuItem link="/action/doLogout" id={`logout-link-${section}`}>
-        Logout
-      </PharosDropdownMenuItem>
-    </PharosDropdownMenu>
-  </PharosDropdownMenuNav>
-);
-
-<Canvas withToolbar>
-  <Story name="Base">
+export const Base = {
+  render: (_) => (
     <PharosHeader>
       <div id="pds" slot="top" className="hide-for-small">
         <div
@@ -124,7 +83,7 @@ export const accountNav = (section) => (
         </PharosInputGroup>
       </div>
       <div slot="end-top">
-        <div>{accountNav('end')}</div>
+        <div>{_accountNav('end')}</div>
       </div>
       <div
         slot="end-bottom"
@@ -173,9 +132,41 @@ export const accountNav = (section) => (
         </PharosDropdownMenuNav>
       </div>
     </PharosHeader>
-  </Story>
-</Canvas>
+  ),
+};
 
-## API
-
-<ArgsTable of={PharosHeader} />
+const _accountNav = (section) => (
+  <PharosDropdownMenuNav label="profile">
+    <PharosDropdownMenuNavLink
+      href="/account/profile"
+      id={`profile-link-${section}`}
+      data-dropdown-menu-id={`profile-menu-${section}`}
+      data-dropdown-menu-hover
+    >
+      <span className="hide-for-small">human@ithaka.org</span>
+      <span className="show-for-small" style={{ display: 'none' }}>
+        Account
+      </span>
+    </PharosDropdownMenuNavLink>
+    <PharosDropdownMenu id={`profile-menu-${section}`}>
+      <PharosDropdownMenuItem link="/account/profile" id={`profile-link-${section}`}>
+        Profile
+      </PharosDropdownMenuItem>
+      <PharosDropdownMenuItem link="/account/workspace" id={`workspace-link-${section}`}>
+        Workspace
+      </PharosDropdownMenuItem>
+      <PharosDropdownMenuItem link="/account/read-online" id={`article-link-${section}`}>
+        Free Article Views
+      </PharosDropdownMenuItem>
+      <PharosDropdownMenuItem link="/account/subscriptions" id={`jpass-link-${section}`}>
+        JPASS Downloads
+      </PharosDropdownMenuItem>
+      <PharosDropdownMenuItem link="/account/purchases" id={`purchase-link-${section}`}>
+        Purchase History
+      </PharosDropdownMenuItem>
+      <PharosDropdownMenuItem link="/action/doLogout" id={`logout-link-${section}`}>
+        Logout
+      </PharosDropdownMenuItem>
+    </PharosDropdownMenu>
+  </PharosDropdownMenuNav>
+);
