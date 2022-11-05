@@ -1,24 +1,22 @@
-import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
-import { GuidelineLink } from '@config/GuidelineLink';
+import {
+  PharosInputGroup,
+  PharosInputGroupSelect,
+  PharosButton,
+  PharosIcon,
+} from '../../react-components';
+import { configureDocsPage } from '@config/docsPageConfig';
 
-import { PharosInputGroup } from '../../react-components/input-group/pharos-input-group';
-import { PharosInputGroupSelect } from '../../react-components/input-group/pharos-input-group-select';
-import { PharosButton } from '../../react-components/button/pharos-button';
-import { PharosIcon } from '../../react-components/icon/pharos-icon';
+export default {
+  title: 'Forms/Input Group',
+  component: PharosInputGroup,
+  subcomponents: { PharosInputGroupSelect },
+  parameters: {
+    docs: { page: configureDocsPage('input-group') },
+  },
+};
 
-<Meta
-  title="Forms/Input Group"
-  parameters={{
-    component: PharosInputGroup,
-  }}
-/>
-
-# Input Group
-
-<GuidelineLink path="input-group" />
-
-<Canvas withToolbar>
-  <Story name="Base">
+export const Base = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -36,17 +34,11 @@ import { PharosIcon } from '../../react-components/icon/pharos-icon';
         ></PharosButton>
       </PharosInputGroup>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-## API
-
-<ArgsTable of={PharosInputGroup} />
-
-# Prominent
-
-<Canvas withToolbar>
-  <Story name="Prominent">
+export const Prominent = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -64,13 +56,11 @@ import { PharosIcon } from '../../react-components/icon/pharos-icon';
         ></PharosButton>
       </PharosInputGroup>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Validity
-
-<Canvas withToolbar>
-  <Story name="Validity">
+export const Validity = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -97,13 +87,11 @@ import { PharosIcon } from '../../react-components/icon/pharos-icon';
         ></PharosButton>
       </PharosInputGroup>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Composition
-
-<Canvas withToolbar>
-  <Story name="Composition">
+export const Composition = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -155,5 +143,5 @@ import { PharosIcon } from '../../react-components/icon/pharos-icon';
         <span slot="label">Prepend</span>
       </PharosInputGroup>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
