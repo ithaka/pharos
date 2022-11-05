@@ -1,19 +1,22 @@
 import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit';
 import { viewports, breakpoints } from '../../pages/shared/viewports';
+import { configureDocsPage } from '../../../../../.storybook/docsPageConfig.jsx';
 
-<Meta
-  title="Components/Layout"
-  parameters={{
+export default {
+  title: 'Components/Layout',
+  component: 'pharos-layout',
+  parameters: {
+    docs: { page: configureDocsPage('layout') },
     chromatic: { viewports: breakpoints },
-    layout: 'fullscreen',
     viewport: {
       viewports,
     },
-  }}
-/>
+    layout: 'fullscreen',
+  },
+};
 
-export const gridItems = (rows) => {
+const _gridItems = (rows) => {
   const arr = [];
   rows.forEach((items) => {
     for (let i = 0; i < items; i++) {
@@ -27,7 +30,7 @@ export const gridItems = (rows) => {
   );
 };
 
-export const comboItems = (rows) => {
+const _comboItems = (rows) => {
   const arr = [];
   rows.forEach((item) => {
     arr.push({ span: item, cols: item });
@@ -40,7 +43,7 @@ export const comboItems = (rows) => {
   );
 };
 
-export const gridColumns = () => {
+const _gridColumns = () => {
   const arr = [];
   for (let i = 1; i <= 12; i++) {
     arr.push(html`<div class="layout-example__column">${i}</div>`);
@@ -48,21 +51,15 @@ export const gridColumns = () => {
   return arr;
 };
 
-# Layout
+export const OneColumn = {
+  name: 'One column',
+  render: (_) => html` <pharos-layout>${_gridColumns()}</pharos-layout> `,
+};
 
-<Canvas>
-  <Story name="One column">{html` <pharos-layout>${gridColumns()}</pharos-layout> `}</Story>
-</Canvas>
-
-## API
-
-<ArgsTable of="pharos-layout" />
-
-# One column with sidenav
-
-<Canvas>
-  <Story name="One column with sidenav" parameters={{ docs: { disable: true } }}>
-    {html`
+export const OneColumnWithSidenav = {
+  name: 'One column with sidenav',
+  render: (_) =>
+    html`
       <div
         style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
       >
@@ -72,18 +69,16 @@ export const gridColumns = () => {
           </pharos-link>
         </pharos-sidenav>
         <main style="grid-area: main">
-          <pharos-layout preset="1-col--sidenav">${gridColumns()}</pharos-layout>
+          <pharos-layout preset="1-col--sidenav">${_gridColumns()}</pharos-layout>
         </main>
       </div>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-# One column with sidenav and comfy spacing
-
-<Canvas>
-  <Story name="One column with sidenav and comfy spacing" parameters={{ docs: { disable: true } }}>
-    {html`
+export const OneColumnWithSidenavAndComfySpacing = {
+  name: 'One column with sidenav and comfy spacing',
+  render: (_) =>
+    html`
       <div
         style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
       >
@@ -93,38 +88,33 @@ export const gridColumns = () => {
           </pharos-link>
         </pharos-sidenav>
         <main style="grid-area: main">
-          <pharos-layout preset="1-col--sidenav-comfy">${gridColumns()}</pharos-layout>
+          <pharos-layout preset="1-col--sidenav-comfy">${_gridColumns()}</pharos-layout>
         </main>
       </div>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-# Two column
-
-<Canvas>
-  <Story name="Two column">
-    {html`
+export const TwoColumn = {
+  name: 'Two column',
+  render: (_) =>
+    html`
       <pharos-layout preset="2-col">
         <div class="layout-example__container--first"></div>
         <div class="layout-example__container--second"></div>
         <div class="layout-example__container--third"></div>
       </pharos-layout>
       <pharos-layout preset="2-col" style="position: absolute; top: 0; width: 100%"
-        >${gridColumns()}</pharos-layout
+        >${_gridColumns()}</pharos-layout
       >
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-# Column layouts
-
-<Canvas>
-  <Story name="Column layouts">
-    {html`
+export const ColumnLayouts = {
+  name: 'Column layouts',
+  render: (_) =>
+    html`
       <pharos-layout style="margin: 1rem 0">
-        ${gridItems([1, 2, 3, 4, 6])} ${comboItems([7, 8, 9, 10])}
+        ${_gridItems([1, 2, 3, 4, 6])} ${_comboItems([7, 8, 9, 10])}
       </pharos-layout>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
