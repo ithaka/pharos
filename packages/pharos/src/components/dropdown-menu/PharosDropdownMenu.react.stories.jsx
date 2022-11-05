@@ -1,28 +1,23 @@
-import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
-import { GuidelineLink } from '@config/GuidelineLink';
 
-import { PharosDropdownMenu } from '../../react-components/dropdown-menu/pharos-dropdown-menu';
-import { PharosDropdownMenuItem } from '../../react-components/dropdown-menu/pharos-dropdown-menu-item';
-import { PharosHeading } from '../../react-components/heading/pharos-heading';
-import { PharosTextInput } from '../../react-components/text-input/pharos-text-input';
-import { PharosLink } from '../../react-components/link/pharos-link';
-import { PharosButton } from '../../react-components/button/pharos-button';
+import {
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosHeading,
+  PharosTextInput,
+  PharosLink,
+  PharosButton,
+} from '../../react-components';
 
-<Meta
-  title="Components/Dropdown Menu"
-  parameters={{
-    options: { selectedPanel: 'addon-controls' },
-    component: PharosDropdownMenu,
-  }}
-/>
+export default {
+  title: 'Components/Dropdown Menu',
+  component: PharosDropdownMenu,
+  subcomponents: { PharosDropdownMenuItem },
+  options: { selectedPanel: 'addon-controls' },
+};
 
-# Dropdown Menu
-
-<GuidelineLink path="dropdown-menu" />
-
-<Canvas withToolbar>
-  <Story name="Base">
+export const Base = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -38,28 +33,11 @@ import { PharosButton } from '../../react-components/button/pharos-button';
         <PharosDropdownMenuItem>Menu item 3</PharosDropdownMenuItem>
       </PharosDropdownMenu>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-## API
-
-### PharosDropdownMenu
-
-<ArgsTable of={PharosDropdownMenu} />
-
-### PharosDropdownMenuItem
-
-<ArgsTable of={PharosDropdownMenuItem} />
-
-# Events
-
-<Canvas withToolbar>
-  <Story
-    name="Events"
-    parameters={{
-      options: { selectedPanel: 'addon-actions' },
-    }}
-  >
+export const Events = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -82,13 +60,14 @@ import { PharosButton } from '../../react-components/button/pharos-button';
         <PharosDropdownMenuItem>Menu item 3</PharosDropdownMenuItem>
       </PharosDropdownMenu>
     </div>
-  </Story>
-</Canvas>
+  ),
+  parameters: {
+    options: { selectedPanel: 'addon-actions' },
+  },
+};
 
-# Icons
-
-<Canvas>
-  <Story name="Icons">
+export const Icons = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -112,13 +91,11 @@ import { PharosButton } from '../../react-components/button/pharos-button';
         <PharosDropdownMenuItem icon="image">Item three</PharosDropdownMenuItem>
       </PharosDropdownMenu>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Descriptions
-
-<Canvas>
-  <Story name="Descriptions">
+export const Descriptions = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -153,13 +130,11 @@ import { PharosButton } from '../../react-components/button/pharos-button';
         </PharosDropdownMenuItem>
       </PharosDropdownMenu>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Full Width
-
-<Canvas>
-  <Story name="Full Width">
+export const FullWidth = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -187,13 +162,11 @@ import { PharosButton } from '../../react-components/button/pharos-button';
         </PharosDropdownMenuItem>
       </PharosDropdownMenu>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Links
-
-<Canvas>
-  <Story name="Links">
+export const Links = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -223,13 +196,11 @@ import { PharosButton } from '../../react-components/button/pharos-button';
         </PharosDropdownMenuItem>
       </PharosDropdownMenu>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Multiple Triggers
-
-<Canvas>
-  <Story name="Multiple Triggers">
+export const MultipleTriggers = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -260,13 +231,11 @@ import { PharosButton } from '../../react-components/button/pharos-button';
         Click Me Too
       </PharosButton>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Multiple Dynamic Triggers
-
-<Canvas>
-  <Story name="Multiple Dynamic Triggers">
+export const MultipleDynamicTriggers = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -309,13 +278,11 @@ import { PharosButton } from '../../react-components/button/pharos-button';
         Three
       </PharosButton>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Composition
-
-<Canvas>
-  <Story name="Composition">
+export const Composition = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -394,13 +361,11 @@ import { PharosButton } from '../../react-components/button/pharos-button';
         </div>
       </PharosDropdownMenu>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
 
-# Coordinating Dropdowns
-
-<Canvas>
-  <Story name="Coordinating Dropdowns">
+export const CoordinatingDropdowns = {
+  render: (_) => (
     <div
       style={{
         display: 'grid',
@@ -439,5 +404,5 @@ import { PharosButton } from '../../react-components/button/pharos-button';
         <PharosDropdownMenuItem>dropdown!</PharosDropdownMenuItem>
       </PharosDropdownMenu>
     </div>
-  </Story>
-</Canvas>
+  ),
+};
