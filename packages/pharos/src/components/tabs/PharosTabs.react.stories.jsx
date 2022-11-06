@@ -1,24 +1,20 @@
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
-import { GuidelineLink } from '@config/GuidelineLink';
 
-import { PharosTabs } from '../../react-components/tabs/pharos-tabs';
-import { PharosTab } from '../../react-components/tabs/pharos-tab';
-import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
+import { PharosTabs, PharosTab, PharosTabPanel } from '../../react-components';
+import { configureDocsPage } from '@config/docsPageConfig';
 
-<Meta
-  title="Components/Tabs"
-  parameters={{
+export default {
+  title: 'Components/Tabs',
+  component: PharosTabs,
+  subcomponents: { PharosTab, PharosTabPanel },
+  parameters: {
+    docs: { page: configureDocsPage('tabs') },
     options: { selectedPanel: 'addon-controls' },
-  }}
-/>
+  },
+};
 
-# Tabs
-
-<GuidelineLink path="tabs" />
-
-<Canvas withToolbar>
-  <Story name="Base">
+export const Base = {
+  render: (_) => (
     <PharosTabs>
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1
@@ -39,32 +35,11 @@ import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
         Panel 3
       </PharosTabPanel>
     </PharosTabs>
-  </Story>
-</Canvas>
+  ),
+};
 
-## API
-
-### pharos-tabs
-
-<ArgsTable of={PharosTabs} />
-
-### pharos-tab
-
-<ArgsTable of={PharosTab} />
-
-### pharos-tab-panel
-
-<ArgsTable of={PharosTabPanel} />
-
-## Event handling
-
-<Canvas withToolbar>
-  <Story
-    name="Events"
-    parameters={{
-      options: { selectedPanel: 'addon-actions' },
-    }}
-  >
+export const Events = {
+  render: (_) => (
     <PharosTabs onPharos-Tab-Selected={(e) => action('Select')(e.target.id)}>
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1
@@ -85,13 +60,12 @@ import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
         Panel 3
       </PharosTabPanel>
     </PharosTabs>
-  </Story>
-</Canvas>
+  ),
+  parameters: { options: { selectedPanel: 'addon-actions' } },
+};
 
-## Panel order
-
-<Canvas withToolbar>
-  <Story name="Panel Order">
+export const PanelOrder = {
+  render: (_) => (
     <PharosTabs>
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1
@@ -112,5 +86,30 @@ import { PharosTabPanel } from '../../react-components/tabs/pharos-tab-panel';
         I am the panel for tab 1 but listed 3rd in the DOM
       </PharosTabPanel>
     </PharosTabs>
-  </Story>
-</Canvas>
+  ),
+};
+
+export const PanelSeparator = {
+  render: (_) => (
+    <PharosTabs panel-separator style="width: 100%">
+      <PharosTab id="tab-1" data-panel-id="panel-1">
+        Tab 1
+      </PharosTab>
+      <PharosTab id="tab-2" data-panel-id="panel-2">
+        Tab 2
+      </PharosTab>
+      <PharosTab id="tab-3" data-panel-id="panel-3">
+        Tab 3
+      </PharosTab>
+      <PharosTabPanel id="panel-1" slot="panel">
+        Panel 1 with a panel separator
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-2" slot="panel">
+        Panel 2 with a panel separator
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-3" slot="panel">
+        Panel 3 with a panel separator
+      </PharosTabPanel>
+    </PharosTabs>
+  ),
+};

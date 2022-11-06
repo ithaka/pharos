@@ -1,22 +1,21 @@
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 import { html } from 'lit';
-import { GuidelineLink } from '@config/GuidelineLink';
 
-<Meta
-  title="Components/Tabs"
-  parameters={{
+import { configureDocsPage } from '@config/docsPageConfig';
+
+export default {
+  title: 'Components/Tabs',
+  component: 'pharos-tabs',
+  subcomponents: { PharosTab: 'pharos-tab', PharosTabPanel: 'pharos-tab-panel' },
+  parameters: {
+    docs: { page: configureDocsPage('tabs') },
     options: { selectedPanel: 'addon-controls' },
-  }}
-/>
+  },
+};
 
-# Tabs
-
-<GuidelineLink path="tabs" />
-
-<Canvas>
-  <Story name="Base">
-    {html`
+export const Base = {
+  render: (_) =>
+    html`
       <pharos-tabs>
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
         <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
@@ -25,34 +24,12 @@ import { GuidelineLink } from '@config/GuidelineLink';
         <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
         <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
       </pharos-tabs>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-## API
-
-### pharos-tabs
-
-<ArgsTable of="pharos-tabs" />
-
-### pharos-tab
-
-<ArgsTable of="pharos-tab" />
-
-### pharos-tab-panel
-
-<ArgsTable of="pharos-tab-panel" />
-
-## Event handling
-
-<Canvas>
-  <Story
-    name="Events"
-    parameters={{
-      options: { selectedPanel: 'addon-actions' },
-    }}
-  >
-    {html`
+export const Events = {
+  render: (_) =>
+    html`
       <pharos-tabs @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}">
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
         <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
@@ -61,15 +38,13 @@ import { GuidelineLink } from '@config/GuidelineLink';
         <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
         <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
       </pharos-tabs>
-    `}
-  </Story>
-</Canvas>
+    `,
+  parameters: { options: { selectedPanel: 'addon-controls' } },
+};
 
-## Panel order
-
-<Canvas>
-  <Story name="Panel Order">
-    {html`
+export const PanelOrder = {
+  render: (_) =>
+    html`
       <pharos-tabs>
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
         <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
@@ -84,15 +59,12 @@ import { GuidelineLink } from '@config/GuidelineLink';
           >I am the panel for tab 1 but listed 3rd in the DOM</pharos-tab-panel
         >
       </pharos-tabs>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-## Panel Separator
-
-<Canvas>
-  <Story name="Panel Separator">
-    {html`
+export const PanelSeparator = {
+  render: (_) =>
+    html`
       <pharos-tabs panel-separator style="width: 100%">
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
         <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
@@ -107,6 +79,5 @@ import { GuidelineLink } from '@config/GuidelineLink';
           >Panel 3 with a panel separator</pharos-tab-panel
         >
       </pharos-tabs>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
