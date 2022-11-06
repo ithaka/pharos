@@ -1,82 +1,71 @@
 import { action } from '@storybook/addon-actions';
 
-import { PharosTextInput, PharosButton } from '../../react-components';
+import { PharosTextarea, PharosButton } from '../../react-components';
 import createFormData from '../../utils/createFormData';
 import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { defaultArgs } from './storyArgs';
 
 export default {
-  title: 'Forms/Text Input',
-  components: PharosTextInput,
+  title: 'Forms/Textarea',
+  component: PharosTextarea,
   parameters: {
-    docs: { page: configureDocsPage('text-input') },
+    docs: { page: configureDocsPage('textarea') },
     options: { selectedPanel: 'addon-controls' },
   },
-  argTypes,
 };
 
 export const Base = {
-  render: (args) => (
+  render: (args = (
     <div
       style={{
         display: 'grid',
         gridGap: '1rem',
-        gridTemplateColumns: 'repeat(1, 300px)',
+        gridTemplateColumns: 'repeat(1, 250px)',
       }}
     >
-      <PharosTextInput
-        name={args.name}
-        type={args.type}
+      <PharosTextarea
+        name="story-input"
+        cols={args.columns}
+        disabled={args.disabled}
         hideLabel={args.hideLabel}
-        validated={args.validated}
         invalidated={args.invalidated}
-        required={args.required}
         message={args.message}
         placeholder={args.placeholder}
-        disabled={args.disabled}
+        resize={args.resize}
         readonly={args.readonly}
+        required={args.required}
+        rows={args.rows}
+        validated={args.validated}
         value={args.value}
       >
         <span slot="label">{args.label}</span>
-      </PharosTextInput>
+      </PharosTextarea>
     </div>
-  ),
+  )),
   args: defaultArgs,
 };
 
 export const States = {
   render: (_) => (
-    <div
-      style={{
-        display: 'grid',
-        gridGap: '1rem',
-        gridTemplateColumns: 'repeat(2, 300px)',
-      }}
-    >
-      <PharosTextInput>
-        <span slot="label">Empty input</span>
-      </PharosTextInput>
-      <PharosTextInput disabled>
-        <span slot="label">Disabled input</span>
-      </PharosTextInput>
-      <PharosTextInput readonly value="Example text">
-        <span slot="label">Read only input</span>
-      </PharosTextInput>
-      <PharosTextInput placeholder="example placeholder text">
-        <span slot="label">Placeholder for input</span>
-      </PharosTextInput>
-      <PharosTextInput value="This value was provided">
-        <span slot="label">Value provided</span>
-      </PharosTextInput>
-      <PharosTextInput hideLabel value="Hidden label input">
-        <span slot="label">Hidden label</span>
-      </PharosTextInput>
-      <PharosTextInput value="A validated value" validated>
-        <span slot="label">Validated input</span>
-      </PharosTextInput>
-      <PharosTextInput variant="prominent">
-        <span slot="label">Prominent input</span>
-      </PharosTextInput>
+    <div style={{ display: 'grid', gridGap: '1rem', gridTemplateColumns: 'repeat(2, 250px)' }}>
+      <PharosTextarea>
+        <span slot="label">Empty textarea</span>
+      </PharosTextarea>
+      <PharosTextarea disabled>
+        <span slot="label">Disabled textarea</span>
+      </PharosTextarea>
+      <PharosTextarea readonly value="Example text">
+        <span slot="label">Read only textarea</span>
+      </PharosTextarea>
+      <PharosTextarea placeholder="Placeholder text">
+        <span slot="label">Placeholder for textarea</span>
+      </PharosTextarea>
+      <PharosTextarea value="This value is provided">
+        <span slot="label">Value provided textarea</span>
+      </PharosTextarea>
+      <PharosTextarea resize="none">
+        <span slot="label">non-resizeable textarea</span>
+      </PharosTextarea>
     </div>
   ),
 };
@@ -90,13 +79,13 @@ export const Events = {
         gridTemplateColumns: 'repeat(1, 250px)',
       }}
     >
-      <PharosTextInput
+      <PharosTextarea
         placeholder="Enter some text"
         onChange={(e) => action('Change')(e.target.value)}
         onInput={(e) => action('Input')(e.target.value)}
       >
         <span slot="label">I fire events on input</span>
-      </PharosTextInput>
+      </PharosTextarea>
     </div>
   ),
   parameters: { options: { selectedPanel: 'addon-actions' } },
@@ -107,22 +96,24 @@ export const Validity = {
   args: {
     ...Base.args,
     label: 'Test me out',
+    value: '',
+    placeholder: '',
     required: true,
     invalidated: true,
-    message: 'This password does not meet the requirements',
+    message: 'This field does not meet the requirements',
   },
 };
 
 export const CustomErrorMessage = {
-  render: (args) => (
+  render: (_) => (
     <div
       style={{
         display: 'grid',
         gridGap: '1rem',
-        gridTemplateColumns: 'repeat(1, 300px)',
+        gridTemplateColumns: 'repeat(1, 250px)',
       }}
     >
-      <PharosTextInput
+      <PharosTextarea
         placeholder="Enter some text"
         onChange={(e) => action('Change')(e.target.value)}
         onInput={(e) => action('Input')(e.target.value)}
@@ -133,20 +124,15 @@ export const CustomErrorMessage = {
       >
         <span slot="label">I am invalid</span>
         <span slot="message">
-          <ul style={{ margin: 0, paddingInlineStart: '1.5rem' }}>
-            <li>One upper or lowercase letter</li>
-            <li>One number or special character</li>
-            <li>6 character minimum</li>
-            <li>No whitespace</li>
-          </ul>
+          <p>Must be over 100 characters long</p>
         </span>
-      </PharosTextInput>
+      </PharosTextarea>
     </div>
   ),
   args: {
     ...Base.args,
     invalidated: true,
-    message: 'This password does not meet the requirements',
+    message: 'This field does not meet the requirements',
   },
 };
 
@@ -156,20 +142,20 @@ export const FormData = {
       style={{
         display: 'grid',
         gridGap: '1rem',
-        gridTemplateColumns: 'repeat(1, 300px)',
+        gridTemplateColumns: 'repeat(1, 250px)',
       }}
     >
       <form name="my-form" action="https://httpbin.org/post" method="POST">
-        <PharosTextInput
-          style={{ marginBottom: '0.5rem' }}
-          name="my-text-input"
+        <PharosTextarea
+          name="my-textarea"
           placeholder="Enter some text"
+          style={{ marginBottom: '0.5rem' }}
           onChange={(e) => action('Change')(e.target.value)}
           onInput={(e) => action('Input')(e.target.value)}
           required
         >
-          <span slot="label">Test me out</span>
-        </PharosTextInput>
+          <span slot="label">I am invalid</span>
+        </PharosTextarea>
         <PharosButton
           type="submit"
           value="Submit"

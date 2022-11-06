@@ -21,7 +21,7 @@ export const Base = {
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
         <pharos-text-input
-          name="story-input"
+          name="${args.name}"
           type="${ifDefined(args.type)}"
           ?hide-label="${args.hideLabel}"
           ?validated="${args.validated}"
