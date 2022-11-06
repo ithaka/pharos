@@ -16,16 +16,19 @@ export default {
   },
 };
 
-export const Search = (): TemplateResult => html`
-  <div class="search-page__container">
-    ${Header()}
-    <main class="search-page__container--main-content">
-      <div class="search-page__container--results-content">
-        <pharos-heading level="2" preset="5--bold">722,549 search results</pharos-heading>
-        <pharos-link href="/help" style="margin-left: auto">Search help</pharos-link>
-      </div>
-      ${ImageResults()} ${SearchResults()}
-    </main>
-    ${FacetFilters()} ${Footer()}
-  </div>
-`;
+export const Search = {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  render: (_): TemplateResult => html`
+    <div class="search-page__container">
+      ${Header()}
+      <main class="search-page__container--main-content">
+        <div class="search-page__container--results-content">
+          <pharos-heading level="2" preset="5--bold">722,549 search results</pharos-heading>
+          <pharos-link href="/help" style="margin-left: auto">Search help</pharos-link>
+        </div>
+        ${ImageResults()} ${SearchResults()}
+      </main>
+      ${FacetFilters()} ${Footer()}
+    </div>
+  `,
+};
