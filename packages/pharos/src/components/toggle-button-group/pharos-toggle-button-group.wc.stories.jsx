@@ -1,21 +1,21 @@
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 import { html } from 'lit';
 
-<Meta
-  title="Components/Toggle Button Group"
-  parameters={{
+import { configureDocsPage } from '@config/docsPageConfig';
+
+export default {
+  title: 'Components/Toggle Button Group',
+  component: 'pharos-toggle-button-group',
+  subcomponents: { PharosToggleButton: 'pharos-toggle-button' },
+  parameters: {
+    docs: { page: configureDocsPage('toggle-button-group') },
     options: { selectedPanel: 'addon-controls' },
-  }}
-/>
+  },
+};
 
-# Toggle Button Group
-
-## Basic
-
-<Canvas withToolbar>
-  <Story name="Base">
-    {html`
+export const Base = {
+  render: (_) =>
+    html`
       <pharos-toggle-button-group>
         <pharos-toggle-button
           @click="${() => {
@@ -52,20 +52,12 @@ import { html } from 'lit';
       <div id="list-view">List view</div>
       <div id="gallery-view" style="display: none">Gallery view</div>
       <div id="presentation-view" style="display: none">Presentation view</div>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-## Event handling
-
-<Canvas>
-  <Story
-    name="Events"
-    parameters={{
-      options: { selectedPanel: 'addon-actions' },
-    }}
-  >
-    {html`
+export const Events = {
+  render: (_) =>
+    html`
       <pharos-toggle-button-group
         @pharos-toggle-button-selected="${(e) => action('Selected')(e.target.id)}"
       >
@@ -75,30 +67,17 @@ import { html } from 'lit';
           Gallery
         </pharos-toggle-button>
       </pharos-toggle-button-group>
-    `}
-  </Story>
-</Canvas>
+    `,
+  parameters: { options: { selectedPanel: 'addon-actions' } },
+};
 
-## Icons Only
-
-<Canvas withToolbar>
-  <Story name="Icons Only">
-    {html`
+export const IconsOnly = {
+  render: (_) =>
+    html`
       <pharos-toggle-button-group>
         <pharos-toggle-button icon="view-list" id="view-list-button"></pharos-toggle-button
         ><pharos-toggle-button icon="view-gallery" id="view-gallery-button"></pharos-toggle-button
         ><pharos-toggle-button icon="image" id="view-presentation-button"></pharos-toggle-button>
       </pharos-toggle-button-group>
-    `}
-  </Story>
-</Canvas>
-
-## API
-
-### pharos-toggle-button-groups
-
-<ArgsTable of="pharos-toggle-button-group" />
-
-### pharos-toggle-button
-
-<ArgsTable of="pharos-toggle-button" />
+    `,
+};
