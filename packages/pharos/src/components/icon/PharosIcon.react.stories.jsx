@@ -1,6 +1,6 @@
-import { PharosIcon } from '../../react-components/icon/pharos-icon';
+import { PharosIcon } from '../../react-components';
 import { iconNames } from '../../utils/iconNames';
-import { configureDocsPage } from '../../../../../.storybook/docsPageConfig.jsx';
+import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
 
 export default {

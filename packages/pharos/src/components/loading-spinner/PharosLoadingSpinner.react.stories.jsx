@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 
 import { PharosLoadingSpinner, PharosHeading, PharosButton } from '../../react-components';
-import { configureDocsPage } from '../../../../../.storybook/docsPageConfig.jsx';
+import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
   title: 'Components/Loading Spinner',

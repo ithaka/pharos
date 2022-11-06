@@ -1,11 +1,10 @@
 import { action } from '@storybook/addon-actions';
 
-import { PharosToggleButtonGroup } from '../../react-components/toggle-button-group/pharos-toggle-button-group';
-import { PharosToggleButton } from '../../react-components/toggle-button-group/pharos-toggle-button';
+import { PharosToggleButtonGroup, PharosToggleButton } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
-  title: 'Components/Toggle Button Grou',
+  title: 'Components/Toggle Button Group',
   component: PharosToggleButtonGroup,
   subcomponents: { PharosToggleButton },
   parameters: {

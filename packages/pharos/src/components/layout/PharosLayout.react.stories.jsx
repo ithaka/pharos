@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { viewports } from '../../pages/shared/viewports';
 
 import { PharosLayout, PharosSidenav, PharosLink } from '../../react-components';
-import { configureDocsPage } from '../../../../../.storybook/docsPageConfig.jsx';
+import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
   title: 'Components/Layout',

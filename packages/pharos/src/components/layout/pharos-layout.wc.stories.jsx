@@ -1,7 +1,7 @@
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit';
+
 import { viewports, breakpoints } from '../../pages/shared/viewports';
-import { configureDocsPage } from '../../../../../.storybook/docsPageConfig.jsx';
+import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
   title: 'Components/Layout',
