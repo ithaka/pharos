@@ -1,16 +1,13 @@
-import { Story, Canvas, Meta } from '@storybook/addon-docs';
 import { html } from 'lit';
 
 import tokens from './tokens.ts';
 
-<Meta
-  title="Styles/Design Tokens"
-  parameters={{
-    options: { selectedPanel: 'addon-controls' },
-  }}
-/>
+export default {
+  title: 'Styles/Design Tokens',
+  parameters: { options: { selectedPanel: 'addon-controls' } },
+};
 
-export const toTokenFormat = (text) => {
+const toTokenFormat = (text) => {
   return html`<code style="font-size:var(--pharos-font-size-small);"
     >$${text
       .replace(/([a-z])([A-Z]|[0-9])/g, '$1-$2')
@@ -20,9 +17,7 @@ export const toTokenFormat = (text) => {
   </code>`;
 };
 
-# Examples
-
-export const ColorRow = (color) => {
+const ColorRow = (color) => {
   let OGColorHtml = html``;
   if (color.original.value.startsWith('{color.')) {
     const OGColorToken =
@@ -50,7 +45,7 @@ export const ColorRow = (color) => {
   `;
 };
 
-export const TokenTable = (title, content) => {
+const TokenTable = (title, content) => {
   return html`
     <div class="token-table-container">
       <h2>${title}</h2>
@@ -63,7 +58,7 @@ export const TokenTable = (title, content) => {
   `;
 };
 
-export const UiColorTokens = () => html`
+const UiColorTokens = () => html`
   ${TokenTable(
     'Alias color tokens',
     html`
@@ -77,14 +72,14 @@ export const UiColorTokens = () => html`
       <tbody>
         ${Object.keys(tokens.color.interactive).map((key) =>
           ColorRow(tokens.color.interactive[key])
-        )} ${Object.keys(tokens.color.ui).map((key) => ColorRow(tokens.color.ui[key]))} ${ColorRow(
-          tokens.color.disabled
-        )} ${ColorRow(tokens.color.overlay)} ${Object.keys(tokens.color.feedback).map((key) =>
-          ColorRow(tokens.color.feedback[key])
         )}
+        ${Object.keys(tokens.color.ui).map((key) => ColorRow(tokens.color.ui[key]))}
+        ${ColorRow(tokens.color.disabled)} ${ColorRow(tokens.color.overlay)}
+        ${Object.keys(tokens.color.feedback).map((key) => ColorRow(tokens.color.feedback[key]))}
       </tbody>
     `
-  )} ${TokenTable(
+  )}
+  ${TokenTable(
     'Text color tokens',
     html`
       <thead>
@@ -98,7 +93,8 @@ export const UiColorTokens = () => html`
         ${Object.keys(tokens.color.text).map((key) => ColorRow(tokens.color.text[key]))}
       </tbody>
     `
-  )} ${TokenTable(
+  )}
+  ${TokenTable(
     'Interaction color tokens',
     html`
       <thead>
@@ -109,19 +105,18 @@ export const UiColorTokens = () => html`
         </tr>
       </thead>
       <tbody>
-        ${ColorRow(tokens.color.focus)} ${Object.keys(tokens.color.hover).map((key) =>
-          ColorRow(tokens.color.hover[key])
-        )}
+        ${ColorRow(tokens.color.focus)}
+        ${Object.keys(tokens.color.hover).map((key) => ColorRow(tokens.color.hover[key]))}
       </tbody>
     `
   )}
 `;
 
-<Canvas withToolbar>
-  <Story name="Alias Colors">{UiColorTokens()}</Story>
-</Canvas>
+export const AliasColors = {
+  render: (_) => UiColorTokens(),
+};
 
-export const GlobalColorTokens = () => {
+const GlobalColorTokens = () => {
   let colorTokens = [];
   Object.keys(tokens.color)
     .filter((key) => key !== 'brand' && key !== 'base')
@@ -154,7 +149,8 @@ export const GlobalColorTokens = () => {
             .map((color) => ColorRow(color))}
         </tbody>
       `
-    )} ${TokenTable(
+    )}
+    ${TokenTable(
       'Secondary colors',
       html`
         <thead>
@@ -167,10 +163,12 @@ export const GlobalColorTokens = () => {
         <tbody>
           ${colorTokens
             .filter((color) => color.group === 'secondary')
-            .map((color) => ColorRow(color))} ${ColorRow(tokens.color['Marble gray'].base)}
+            .map((color) => ColorRow(color))}
+          ${ColorRow(tokens.color['Marble gray'].base)}
         </tbody>
       `
-    )} ${TokenTable(
+    )}
+    ${TokenTable(
       'Grayscale colors',
       html`
         <thead>
@@ -186,7 +184,8 @@ export const GlobalColorTokens = () => {
             .map((color) => ColorRow(color))}
         </tbody>
       `
-    )} ${TokenTable(
+    )}
+    ${TokenTable(
       'Tints',
       html`
         <thead>
@@ -200,7 +199,8 @@ export const GlobalColorTokens = () => {
           ${colorTokens.filter((color) => color.group === 'tint').map((color) => ColorRow(color))}
         </tbody>
       `
-    )} ${TokenTable(
+    )}
+    ${TokenTable(
       'Feedback color',
       html`
         <thead>
@@ -220,11 +220,11 @@ export const GlobalColorTokens = () => {
   `;
 };
 
-<Canvas withToolbar>
-  <Story name="Global Colors">{GlobalColorTokens()}</Story>
-</Canvas>
+export const GlobalColors = {
+  render: (_) => GlobalColorTokens(),
+};
 
-export const FontFamilyTokens = () => html`
+const FontFamilyTokens = () => html`
   ${TokenTable(
     'Font family tokens',
     html`
@@ -263,11 +263,11 @@ export const FontFamilyTokens = () => html`
   )}
 `;
 
-<Canvas withToolbar>
-  <Story name="Font Family">{FontFamilyTokens()}</Story>
-</Canvas>
+export const FontFamily = {
+  render: (_) => FontFamilyTokens(),
+};
 
-export const FontWeightTokens = () => html`
+const FontWeightTokens = () => html`
   ${TokenTable(
     'Font weight tokens',
     html`
@@ -301,11 +301,11 @@ export const FontWeightTokens = () => html`
   )}
 `;
 
-<Canvas withToolbar>
-  <Story name="Font Weight">{FontWeightTokens()}</Story>
-</Canvas>
+export const FontWeight = {
+  render: (_) => FontWeightTokens(),
+};
 
-export const FontSizeTokens = () => {
+const FontSizeTokens = () => {
   const baseValue = tokens.font.size['base'].value;
   const basePixels = tokens.type.scale[baseValue].comment;
   const basePx = basePixels.substring(0, basePixels.length - 2);
@@ -346,11 +346,11 @@ export const FontSizeTokens = () => {
   `;
 };
 
-<Canvas withToolbar>
-  <Story name="Font Size">{FontSizeTokens()}</Story>
-</Canvas>
+export const FontSize = {
+  render: (_) => FontSizeTokens(),
+};
 
-export const LineHeightToken = () => {
+const LineHeightToken = () => {
   const fontSizeMap = [12, 14, 16, 24, 32, 54, 16];
   return html`
     ${TokenTable(
@@ -395,11 +395,11 @@ export const LineHeightToken = () => {
   `;
 };
 
-<Canvas withToolbar>
-  <Story name="Line Height">{LineHeightToken()}</Story>
-</Canvas>
+export const LineHeight = {
+  render: (_) => LineHeightToken(),
+};
 
-export const SpacingTokens = () => html`
+const SpacingTokens = () => html`
   ${TokenTable(
     'Spacing tokens',
     html`
@@ -429,11 +429,11 @@ export const SpacingTokens = () => html`
   )}
 `;
 
-<Canvas withToolbar>
-  <Story name="Spacing">{SpacingTokens()}</Story>
-</Canvas>
+export const Spacing = {
+  render: (_) => SpacingTokens(),
+};
 
-export const RadiusTokens = () => html`
+const RadiusTokens = () => html`
   ${TokenTable(
     'Border radius tokens',
     html`
@@ -464,11 +464,11 @@ export const RadiusTokens = () => html`
   )}
 `;
 
-<Canvas withToolbar>
-  <Story name="Radius">{RadiusTokens()}</Story>
-</Canvas>
+export const Radius = {
+  render: (_) => RadiusTokens(),
+};
 
-export const TransitionRow = (transition, widthRem, color) => {
+const TransitionRow = (transition, widthRem, color) => {
   return html`
     <tr>
       <td>${toTokenFormat(transition.name)}</td>
@@ -485,7 +485,7 @@ export const TransitionRow = (transition, widthRem, color) => {
   `;
 };
 
-export const TransitionTokens = () => {
+const TransitionTokens = () => {
   const exampleRems = [1, 2, 5, 10, 20];
   const exampleColors = [
     '--pharos-color-living-coral-90',
@@ -506,9 +506,8 @@ export const TransitionTokens = () => {
           </tr>
         </thead>
         <tbody>
-          ${TransitionRow(tokens.transition.base, 5, '--pharos-color-living-coral-80')} ${Object.keys(
-            tokens.transition.duration
-          ).map((key, i) =>
+          ${TransitionRow(tokens.transition.base, 5, '--pharos-color-living-coral-80')}
+          ${Object.keys(tokens.transition.duration).map((key, i) =>
             TransitionRow(tokens.transition.duration[key], exampleRems[i], exampleColors[i])
           )}
         </tbody>
@@ -517,11 +516,11 @@ export const TransitionTokens = () => {
   `;
 };
 
-<Canvas withToolbar>
-  <Story name="Transitions">{TransitionTokens()}</Story>
-</Canvas>
+export const Transitions = {
+  render: (_) => TransitionTokens(),
+};
 
-export const TypeTokens = () => html`
+const TypeTokens = () => html`
   ${TokenTable(
     'Type scale tokens',
     html`
@@ -539,7 +538,8 @@ export const TypeTokens = () => html`
             <tr>
               <td>${toTokenFormat(tokens.type.scale[key].name)}</td>
               <td>
-                ${tokens.type.scale[key].comment} | ${tokens.type.scale[key].comment.substring(
+                ${tokens.type.scale[key].comment} |
+                ${tokens.type.scale[key].comment.substring(
                   0,
                   tokens.type.scale[key].comment.length - 2
                 ) / 16}rem
@@ -570,6 +570,6 @@ export const TypeTokens = () => html`
   )}
 `;
 
-<Canvas withToolbar>
-  <Story name="Type Scale">{TypeTokens()}</Story>
-</Canvas>
+export const TypeScale = {
+  render: (_) => TypeTokens(),
+};

@@ -1,17 +1,14 @@
-import { Story, Canvas, Meta } from '@storybook/addon-docs';
 import { useState } from 'react';
 
 import tokens from './tokens.ts';
-import { PharosIcon } from '../react-components/icon/pharos-icon';
+import { PharosIcon } from '../react-components';
 
-<Meta
-  title="Styles/Design Tokens"
-  parameters={{
-    options: { selectedPanel: 'addon-controls' },
-  }}
-/>
+export default {
+  title: 'Styles/Design Tokens',
+  parameters: { options: { selectedPanel: 'addon-controls' } },
+};
 
-export const toTokenFormat = (text) => {
+const toTokenFormat = (text) => {
   return (
     <code style={{ fontSize: 'var(--pharos-font-size-small)' }}>
       {text
@@ -23,9 +20,7 @@ export const toTokenFormat = (text) => {
   );
 };
 
-# Examples
-
-export const ColorRow = (color) => {
+const ColorRow = (color) => {
   let OGColorHtml;
   if (color.original.value.startsWith('{color.')) {
     const OGColorToken =
@@ -53,7 +48,7 @@ export const ColorRow = (color) => {
   );
 };
 
-export const TokenTable = (title, content) => {
+const TokenTable = (title, content) => {
   return (
     <div className="token-table-container">
       <h2>{title}</h2>
@@ -64,7 +59,7 @@ export const TokenTable = (title, content) => {
   );
 };
 
-export const UiColorTokens = () => (
+const UiColorTokens = () => (
   <>
     {TokenTable(
       'Alias color tokens',
@@ -121,11 +116,11 @@ export const UiColorTokens = () => (
   </>
 );
 
-<Canvas withToolbar>
-  <Story name="Alias Colors">{UiColorTokens()}</Story>
-</Canvas>
+export const AliasColors = {
+  render: (_) => UiColorTokens(),
+};
 
-export const GlobalColorTokens = () => {
+const GlobalColorTokens = () => {
   let colorTokens = [];
   Object.keys(tokens.color)
     .filter((key) => key !== 'brand' && key !== 'base')
@@ -231,11 +226,11 @@ export const GlobalColorTokens = () => {
   );
 };
 
-<Canvas withToolbar>
-  <Story name="Global Colors">{GlobalColorTokens()}</Story>
-</Canvas>
+export const GlobalColors = {
+  render: (_) => GlobalColorTokens(),
+};
 
-export const FontFamilyTokens = () => (
+const FontFamilyTokens = () => (
   <>
     {TokenTable(
       'Font family tokens',
@@ -280,11 +275,11 @@ export const FontFamilyTokens = () => (
   </>
 );
 
-<Canvas withToolbar>
-  <Story name="Font Family">{FontFamilyTokens()}</Story>
-</Canvas>
+export const FontFamily = {
+  render: (_) => FontFamilyTokens(),
+};
 
-export const FontWeightTokens = () => (
+const FontWeightTokens = () => (
   <>
     {TokenTable(
       'Font weight tokens',
@@ -327,11 +322,11 @@ export const FontWeightTokens = () => (
   </>
 );
 
-<Canvas withToolbar>
-  <Story name="Font Weight">{FontWeightTokens()}</Story>
-</Canvas>
+export const FontWeight = {
+  render: (_) => FontWeightTokens(),
+};
 
-export const FontSizeTokens = () => {
+const FontSizeTokens = () => {
   const baseValue = tokens.font.size['base'].value;
   const basePixels = tokens.type.scale[baseValue].comment;
   const basePx = basePixels.substring(0, basePixels.length - 2);
@@ -376,11 +371,11 @@ export const FontSizeTokens = () => {
   );
 };
 
-<Canvas withToolbar>
-  <Story name="Font Size">{FontSizeTokens()}</Story>
-</Canvas>
+export const FontSize = {
+  render: (_) => FontSizeTokens(),
+};
 
-export const LineHeightToken = () => {
+const LineHeightToken = () => {
   const fontSizeMap = [12, 14, 16, 24, 32, 54, 16];
   return (
     <>
@@ -432,11 +427,11 @@ export const LineHeightToken = () => {
   );
 };
 
-<Canvas withToolbar>
-  <Story name="Line Height">{LineHeightToken()}</Story>
-</Canvas>
+export const LineHeight = {
+  render: (_) => LineHeightToken(),
+};
 
-export const SpacingTokens = () => (
+const SpacingTokens = () => (
   <>
     {TokenTable(
       'Spacing tokens',
@@ -468,11 +463,11 @@ export const SpacingTokens = () => (
   </>
 );
 
-<Canvas withToolbar>
-  <Story name="Spacing">{SpacingTokens()}</Story>
-</Canvas>
+export const Spacing = {
+  render: (_) => SpacingTokens(),
+};
 
-export const RadiusTokens = () => (
+const RadiusTokens = () => (
   <>
     {TokenTable(
       'Border radius tokens',
@@ -505,11 +500,11 @@ export const RadiusTokens = () => (
   </>
 );
 
-<Canvas withToolbar>
-  <Story name="Radius">{RadiusTokens()}</Story>
-</Canvas>
+export const Radius = {
+  render: (_) => RadiusTokens(),
+};
 
-export const TransitionRow = (transition, widthRem, color) => {
+const TransitionRow = (transition, widthRem, color) => {
   const [bgc, setBgc] = useState(color);
   const HandleMouseEnter = () => {
     setBgc('--pharos-color-jstor-red');
@@ -537,7 +532,7 @@ export const TransitionRow = (transition, widthRem, color) => {
   );
 };
 
-export const TransitionTokens = () => {
+const TransitionTokens = () => {
   const exampleRems = [1, 2, 5, 10, 20];
   const exampleColors = [
     '--pharos-color-living-coral-90',
@@ -570,11 +565,11 @@ export const TransitionTokens = () => {
   );
 };
 
-<Canvas withToolbar>
-  <Story name="Transitions">{TransitionTokens()}</Story>
-</Canvas>
+export const Transitions = {
+  render: (_) => TransitionTokens(),
+};
 
-export const TypeTokens = () => (
+const TypeTokens = () => (
   <>
     {TokenTable(
       'Type scale tokens',
@@ -631,6 +626,6 @@ export const TypeTokens = () => (
   </>
 );
 
-<Canvas withToolbar>
-  <Story name="Type Scale">{TypeTokens()}</Story>
-</Canvas>
+export const TypeScale = {
+  render: (_) => TypeTokens(),
+};

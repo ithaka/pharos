@@ -1,23 +1,20 @@
-import { Story, Canvas, Meta } from '@storybook/addon-docs';
 import { html } from 'lit';
 
 import sassDoc from '../../sass.json';
 
-<Meta
-  title="Styles/Sass"
-  parameters={{
-    options: { selectedPanel: 'addon-controls' },
-  }}
-/>
+export default {
+  title: 'Styles/Sass',
+  parameters: { options: { selectedPanel: 'addon-controls' } },
+};
 
-export const tableTitle = (title) => {
+const tableTitle = (title) => {
   return title
     .split('-')
     .map((str) => str[0].toUpperCase() + str.slice(1))
     .join(' ');
 };
 
-export const MixinTable = (title) => {
+const MixinTable = (title) => {
   const mixins = sassDoc.filter((value) => value.context.type === 'mixin');
   return html`
     <div class="token-table-container" style="width: 100%">
@@ -54,7 +51,7 @@ export const MixinTable = (title) => {
                   </td>
                 </tr>
               `;
-            } else return;
+            }
           })}
         </tbody>
       </table>
@@ -64,12 +61,9 @@ export const MixinTable = (title) => {
   `;
 };
 
-export const PharosMixins = () => html`
-  ${MixinTable('buttons')} ${MixinTable('form-elements')} ${MixinTable('interaction')} ${MixinTable(
-    'layout'
-  )} ${MixinTable('links')} ${MixinTable('typography')}
-`;
-
-<Canvas withToolbar>
-  <Story name="Mixins">{PharosMixins()}</Story>
-</Canvas>
+export const Mixins = {
+  render: (_) => html`
+    ${MixinTable('buttons')} ${MixinTable('form-elements')} ${MixinTable('interaction')}
+    ${MixinTable('layout')} ${MixinTable('links')} ${MixinTable('typography')}
+  `,
+};

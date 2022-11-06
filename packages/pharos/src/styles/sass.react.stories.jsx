@@ -1,12 +1,9 @@
-import { Story, Canvas, Meta } from '@storybook/addon-docs';
 import sassDoc from '../../sass.json';
 
-<Meta
-  title="Styles/Sass"
-  parameters={{
-    options: { selectedPanel: 'addon-controls' },
-  }}
-/>
+export default {
+  title: 'Styles/Sass',
+  parameters: { options: { selectedPanel: 'addon-controls' } },
+};
 
 export const tableTitle = (title) => {
   return title
@@ -62,7 +59,7 @@ export const MixinTable = (title) => {
                   </td>
                 </tr>
               );
-            } else return;
+            }
           })}
         </tbody>
       </table>
@@ -72,13 +69,11 @@ export const MixinTable = (title) => {
   );
 };
 
-export const PharosMixins = () => (
-  <>
-    {MixinTable('buttons')} {MixinTable('form-elements')} {MixinTable('interaction')}
-    {MixinTable('layout')} {MixinTable('links')} {MixinTable('typography')}
-  </>
-);
-
-<Canvas withToolbar>
-  <Story name="Mixins">{PharosMixins()}</Story>
-</Canvas>
+export const Mixins = {
+  render: (_) => (
+    <>
+      {MixinTable('buttons')} {MixinTable('form-elements')} {MixinTable('interaction')}
+      {MixinTable('layout')} {MixinTable('links')} {MixinTable('typography')}
+    </>
+  ),
+};

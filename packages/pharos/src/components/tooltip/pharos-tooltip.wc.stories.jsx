@@ -11,6 +11,7 @@ export default {
   parameters: {
     docs: { page: configureDocsPage('tooltip') },
     options: { selectedPanel: 'addon-controls' },
+    chromatic: { delay: 800 },
   },
   argTypes,
 };
