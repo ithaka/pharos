@@ -46,8 +46,8 @@ export const Reports = {
               Welcome to the COUNTER 5 reporting service for participating institutions. JSTOR
               offers COUNTER 5 compliant reports for usage beginning January 2019. COUNTER 4 reports
               are still available for usage from January 2017 - April 2019 from the
-              <pharos-link href="#">COUNTER 4 reporting service</pharos-link>
-              . Please visit our COUNTER 5
+              <pharos-link href="#">COUNTER 4 reporting service</pharos-link>. Please visit our
+              COUNTER 5
               <pharos-link href="#">support page</pharos-link>
               for more information on JSTOR usage reports.
             </p>

@@ -17,7 +17,7 @@ export const PlainText = {
   args: { text: 'I am plain text' },
 };
 
-export const BringAttention = {
+export const BringToAttentionText = {
   name: 'Bring to Attention Text',
   render: (args) =>
     html` <span> This is an example of how to bring attention to <b>${args.text}</b>. </span>`,
