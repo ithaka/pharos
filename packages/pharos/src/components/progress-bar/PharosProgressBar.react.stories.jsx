@@ -1,6 +1,6 @@
 import { PharosProgressBar } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs.js';
+import { defaultArgs, argTypes } from './storyArgs';
 
 export default {
   title: 'Components/Progress Bar',

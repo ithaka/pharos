@@ -1,7 +1,7 @@
 import { PharosHeading, PharosCheckboxGroup, PharosCheckbox } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
-import { allPresets } from './pharos-heading.js';
+import { allPresets } from './pharos-heading';
 
 export default {
   title: 'Components/Heading',

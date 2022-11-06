@@ -15,7 +15,7 @@ export default {
 };
 
 export const Base = {
-  render: (args = (
+  render: (args) => (
     <div
       style={{
         display: 'grid',
@@ -41,7 +41,7 @@ export const Base = {
         <span slot="label">{args.label}</span>
       </PharosTextarea>
     </div>
-  )),
+  ),
   args: defaultArgs,
 };
 

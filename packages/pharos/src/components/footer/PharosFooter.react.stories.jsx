@@ -1,4 +1,4 @@
-import { Footer } from '../../pages/shared/react/footer';
+import { Footer } from '../../pages/shared/react/Footer';
 import { PharosFooter } from '../../../lib/react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 
