@@ -11,13 +11,13 @@ export { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floati
 
 export type { Placement, PositioningStrategy, Side };
 
-export const allStrategies: PositioningStrategy[] = ['absolute', 'fixed'];
-const SIDES: Side[] = ['top', 'right', 'bottom', 'left'];
-export const allPlacements: Placement[] = SIDES.reduce(
+export const allStrategies = ['absolute', 'fixed'] as PositioningStrategy[];
+const SIDES = ['top', 'right', 'bottom', 'left'] as Side[];
+export const allPlacements = SIDES.reduce(
   (acc: Placement[], side) =>
     acc.concat(side, `${side}-start` as AlignedPlacement, `${side}-end` as AlignedPlacement),
   []
-);
+) as Placement[];
 
 /**
  * The base overlay element class to house shared properties, styles, and methods.

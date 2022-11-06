@@ -24,7 +24,7 @@ export type HeadingPreset =
   | '7--bold'
   | 'legend';
 
-export const allLevels = [1, 2, 3, 4, 5, 6];
+export const allLevels = [1, 2, 3, 4, 5, 6] as HeadingLevel[];
 
 export const allPresets = [
   '1',
@@ -42,7 +42,7 @@ export const allPresets = [
   '7',
   '7--bold',
   'legend',
-];
+] as HeadingPreset[];
 
 /**
  * Pharos heading component.

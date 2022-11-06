@@ -1,71 +1,60 @@
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { action } from '@storybook/addon-actions';
-import { GuidelineLink } from '@config/GuidelineLink';
 
-<Meta
-  title="Components/Modal"
-  parameters={{
+import { argTypes, defaultArgs } from './storyArgs';
+import { configureDocsPage } from '@config/docsPageConfig';
+
+export default {
+  title: 'Components/Modal',
+  component: 'pharos-modal',
+  parameters: {
+    docs: { page: configureDocsPage('modal') },
     options: { selectedPanel: 'addon-controls' },
-  }}
-/>
+  },
+  argTypes,
+};
 
-export const Template = (args) =>
-  html`
-    <pharos-button
-      @click="${(e) => {
-        e.target.focus();
-        const modal = document.querySelector('pharos-modal');
-        modal.open = true;
-      }}"
-    >
-      Open modal
-    </pharos-button>
-    <pharos-modal header="Pharos modal" footer-divider size=${ifDefined(args.size)}>
-      <p>I am a modal</p>
-      <pharos-button slot="footer" type="button" variant="secondary" data-modal-close>
-        Cancel
-      </pharos-button>
+export const Base = {
+  render: (args) =>
+    html`
       <pharos-button
-        slot="footer"
-        type="button"
-        @click="${() => {
+        @click="${(e) => {
+          e.target.focus();
           const modal = document.querySelector('pharos-modal');
-          modal.open = false;
+          modal.open = true;
         }}"
       >
-        Ok
+        Open modal
       </pharos-button>
-    </pharos-modal>
-  `;
+      <pharos-modal
+        ?footer-divider=${ifDefined(args.footerDivider)}
+        header=${ifDefined(args.header)}
+        ?open=${ifDefined(args.open)}
+        size=${ifDefined(args.size)}
+      >
+        <p>I am a modal</p>
+        <pharos-button slot="footer" type="button" variant="secondary" data-modal-close>
+          Cancel
+        </pharos-button>
+        <pharos-button
+          slot="footer"
+          type="button"
+          @click="${() => {
+            const modal = document.querySelector('pharos-modal');
+            modal.open = false;
+          }}"
+        >
+          Ok
+        </pharos-button>
+      </pharos-modal>
+    `,
+  args: defaultArgs,
+};
 
-# Modal
-
-<GuidelineLink path="modal" />
-
-<Canvas>
-  <Story
-    name="Base"
-    argTypes={{
-      size: {
-        options: ['small', 'medium', 'large'],
-        control: {
-          type: 'inline-radio',
-        },
-        defaultValue: 'medium',
-      },
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-# Modal without footer
-
-<Canvas>
-  <Story name="No Footer">
-    {html`
+export const NoFooter = {
+  render: (_) =>
+    html`
       <pharos-button
         @click="${(e) => {
           e.target.focus();
@@ -78,24 +67,12 @@ export const Template = (args) =>
       <pharos-modal header="Pharos modal" size="medium">
         <p>I am a modal</p>
       </pharos-modal>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-## API
-
-<ArgsTable of="pharos-modal" />
-
-# Events
-
-<Canvas>
-  <Story
-    name="Events"
-    parameters={{
-      options: { selectedPanel: 'addon-actions' },
-    }}
-  >
-    {html`
+export const Events = {
+  render: (_) =>
+    html`
       <pharos-button
         type="button"
         data-modal-id="my-event-modal"
@@ -129,15 +106,13 @@ export const Template = (args) =>
         </pharos-button>
         <pharos-button slot="footer" type="button">Submit</pharos-button>
       </pharos-modal>
-    `}
-  </Story>
-</Canvas>
+    `,
+  parameters: { selectedPanel: 'addon-actions' },
+};
 
-# Composition
-
-<Canvas>
-  <Story name="Composition" parameters={{ chromatic: { viewports: [320, 1200] } }}>
-    {html`
+export const Composition = {
+  render: (_) =>
+    html`
       <pharos-button
         type="button"
         data-modal-id="my-alert-modal"
@@ -172,6 +147,6 @@ export const Template = (args) =>
         </pharos-button>
         <pharos-button id="add-button" slot="footer" type="button">Add</pharos-button>
       </pharos-modal>
-    `}
-  </Story>
-</Canvas>
+    `,
+  parameters: { chromatic: { viewports: [320, 1200] } },
+};
