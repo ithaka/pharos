@@ -1,98 +1,80 @@
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { GuidelineLink } from '@config/GuidelineLink';
 
-<Meta
-  title="Components/Link"
-  parameters={{
-    options: { selectedPanel: 'addon-controls' },
-  }}
-/>
+import { configureDocsPage } from '@config/docsPageConfig';
+import { defaultArgs } from './storyArgs';
 
-export const Template = (args) =>
-  html` <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
-    <pharos-link
-      download=${ifDefined(args.download)}
-      href=${ifDefined(args.href)}
-      hreflang=${ifDefined(args.hreflang)}
-      ping=${ifDefined(args.ping)}
-      rel=${ifDefined(args.rel)}
-      target=${ifDefined(args.target)}
-      type=${ifDefined(args.type)}
-    >
-      ${args.text}
-    </pharos-link>
-  </div>`;
+export default {
+  title: 'Components/Link',
+  component: 'pharos-link',
+  parameters: {
+    docs: { page: configureDocsPage('link') },
+  },
+};
 
-# Link
+export const Base = {
+  render: (args) =>
+    html` <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
+      <pharos-link
+        ?bold=${args.bold}
+        download=${ifDefined(args.download)}
+        ?flex=${args.flex}
+        href=${ifDefined(args.href)}
+        hreflang=${ifDefined(args.hreflang)}
+        ?indicate-visited=${args.indicateVisited}
+        label=${ifDefined(args.label)}
+        ?no-hover=${args.noHover}
+        ?on-background=${args.onBackground}
+        ping=${ifDefined(args.ping)}
+        rel=${ifDefined(args.rel)}
+        ?skip=${args.skip}
+        ?subtle=${args.subtle}
+        target=${ifDefined(args.target)}
+        type=${ifDefined(args.type)}
+      >
+        ${args.text}
+      </pharos-link>
+    </div>`,
+  args: defaultArgs,
+};
 
-<GuidelineLink path="link" />
-
-<Canvas withToolbar>
-  <Story
-    name="Base"
-    args={{
-      text: 'I am a link',
-      href: '#',
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-# Visited Link
-
-<Canvas withToolbar>
-  <Story name="Visited Link">
-    {html`
+export const VisitedLink = {
+  render: (_) =>
+    html`
       <div style="margin-bottom: 1rem">
         <pharos-link href="https://www.google.com" target="_blank" indicate-visited
           >Visited link</pharos-link
         >
       </div>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-# Visited Link Heading
-
-<Canvas withToolbar>
-  <Story name="Visited Link Heading">
-    {html`
+export const VisitedLinkHeading = {
+  render: (_) =>
+    html`
       <div style="margin-bottom: 1rem">
         <pharos-link href="https://www.google.com" target="_blank" indicate-visited>
           <pharos-heading level="1"> Visited link heading </pharos-heading>
         </pharos-link>
       </div>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-# Button
-
-<Canvas withToolbar>
-  <Story name="Button">
-    {html`
+export const Button = {
+  render: (_) =>
+    html`
       <div style="margin-bottom: 1rem">
         <pharos-link name="primary">I am a button</pharos-link>
       </div>
       <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
         <pharos-link name="on-background" on-background>On compliant background</pharos-link>
       </div>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
 
-## API
-
-<ArgsTable of="pharos-link" />
-
-# Variants
-
-<Canvas withToolbar>
-  <Story name="Variants">
-    {html`
+export const Variants = {
+  render: (_) =>
+    html`
       <div style="margin-bottom: 1rem">
         <pharos-link name="primary" href="#">Primary link</pharos-link>
       </div>
@@ -112,6 +94,5 @@ export const Template = (args) =>
           >On compliant background with subtle</pharos-link
         >
       </div>
-    `}
-  </Story>
-</Canvas>
+    `,
+};
