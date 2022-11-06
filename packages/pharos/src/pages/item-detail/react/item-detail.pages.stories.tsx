@@ -22,7 +22,7 @@ export default {
 
 export const ItemDetail = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  render: (_) => (
+  render: (_: object) => (
     <div className="item-detail-page__container">
       <HeaderRevised showSearch={true} />
       <main>

@@ -22,7 +22,7 @@ export default {
 
 export const ItemDetail = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  render: (_): TemplateResult => html`
+  render: (_: object): TemplateResult => html`
     <div class="item-detail-page__container">
       ${HeaderRevised(true)}
       <main>

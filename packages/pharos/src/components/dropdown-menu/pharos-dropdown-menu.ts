@@ -237,7 +237,6 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
     if (this._currentTrigger) {
       this._cleanup = autoUpdate(this._currentTrigger, this, () => {
         if (this._currentTrigger && this._menu) {
-          console.log(this._filteredFallbackPlacements);
           computePosition(this._currentTrigger, this, {
             placement: this._navMenu ? 'bottom-start' : placement,
             strategy: this.strategy,

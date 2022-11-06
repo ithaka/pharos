@@ -16,7 +16,7 @@ export default {
 
 export const Search = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  render: (_) => (
+  render: (_: object) => (
     <div className="search-page__container">
       <Header />
       <main className="search-page__container--main-content">

@@ -23,7 +23,7 @@ export default {
 
 export const Home = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  render: (_): TemplateResult => html`
+  render: (_: object): TemplateResult => html`
     <div class="home-page__container">
       ${HeaderRevised()}
       <main>
