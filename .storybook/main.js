@@ -37,4 +37,16 @@ module.exports = {
   ],
   stories: [],
   staticDirs: ['../assets'],
+  webpackFinal: async (config, { configType }) => {
+    config.resolve = {
+      ...config.resolve,
+      fallback: {
+        ...(config.resolve || {}).fallback,
+        fs: false, // Resolve issues with GitHub Actions builds
+        stream: false,
+        os: false,
+      },
+    };
+    return config;
+  },
 };
