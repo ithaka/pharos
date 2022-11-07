@@ -1,0 +1,79 @@
+import sassDoc from '../../sass.json';
+
+export default {
+  title: 'Styles/Sass',
+  parameters: { options: { selectedPanel: 'addon-controls' } },
+};
+
+export const tableTitle = (title) => {
+  return title
+    .split('-')
+    .map((str) => str[0].toUpperCase() + str.slice(1))
+    .join(' ');
+};
+
+export const MixinTable = (title) => {
+  const mixins = sassDoc.filter((value) => value.context.type === 'mixin');
+  return (
+    <div className="token-table-container" style={{ width: '100%' }}>
+      <h2>{tableTitle(title)}</h2>
+      <table className="token-table" style={{ tableLayout: 'fixed' }}>
+        <thead>
+          <tr>
+            <th style={{ width: '20%' }}>Name</th>
+            <th style={{ width: '20%' }}>Description</th>
+            <th style={{ width: '60%' }}>Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          {mixins.map((mixin, index) => {
+            if (mixin.group.includes(title)) {
+              return (
+                <tr key={index}>
+                  <td>
+                    <code style={{ fontSize: 'var(--pharos-font-size-small)' }}>
+                      {mixin.context.name}
+                    </code>
+                  </td>
+                  <td>{mixin.description}</td>
+                  <td>
+                    <div
+                      style={{
+                        backgroundColor: 'var(--pharos-color-marble-gray-97)',
+                        borderStyle: 'solid',
+                        borderColor: 'var(--pharos-color-marble-gray-80)',
+                        paddingBottom: 'var(--pharos-spacing-one-eighth-x)',
+                        borderWidth: '1px',
+                      }}
+                    >
+                      <code
+                        style={{
+                          backgroundColor: 'var(--pharos-color-marble-gray-97)',
+                          fontSize: 'var(--pharos-font-size-micro)',
+                          whiteSpace: 'pre',
+                        }}
+                      >
+                        {mixin.context.code}
+                      </code>
+                    </div>
+                  </td>
+                </tr>
+              );
+            }
+          })}
+        </tbody>
+      </table>
+      <br />
+      <br />
+    </div>
+  );
+};
+
+export const Mixins = {
+  render: (_) => (
+    <>
+      {MixinTable('buttons')} {MixinTable('form-elements')} {MixinTable('interaction')}
+      {MixinTable('layout')} {MixinTable('links')} {MixinTable('typography')}
+    </>
+  ),
+};

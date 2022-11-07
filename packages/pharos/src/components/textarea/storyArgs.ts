@@ -1,0 +1,15 @@
+export const defaultArgs = {
+  name: 'story-input',
+  label: 'I am a label',
+  disabled: false,
+  hideLabel: false,
+  invalidated: false,
+  validated: false,
+  message: '',
+  placeholder: 'Enter some text',
+  readonly: false,
+  required: false,
+  value: 'Some text',
+  rows: 2,
+  columns: 20,
+};

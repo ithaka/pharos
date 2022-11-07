@@ -342,11 +342,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _setOpen(): void {
-    if (this._hasHover) {
-      this.open = true;
-    } else {
-      this.open = false;
-    }
+    this.open = this._hasHover;
   }
 
   private _handleHover(event: MouseEvent): void {
@@ -430,11 +426,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
       debounce(() => {
         items.forEach((item) => {
-          if (item === clickedItem) {
-            item.selected = true;
-          } else {
-            item.selected = false;
-          }
+          item.selected = item === clickedItem;
         });
       }, 150)();
     }
@@ -545,10 +537,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
     );
 
     items.forEach((item, index) => {
-      item['_last'] = false;
-      if (index === items.length - 1) {
-        item['_last'] = true;
-      }
+      item['_last'] = index === items.length - 1;
     });
   }
 

@@ -20,7 +20,7 @@ export enum ALERT_ICON {
   WARNING = 'exclamation-inverse',
 }
 
-const STATUSES = ['info', 'success', 'warning', 'error'];
+const STATUSES = ['info', 'success', 'warning', 'error'] as AlertStatus[];
 
 /**
  * Pharos alert component

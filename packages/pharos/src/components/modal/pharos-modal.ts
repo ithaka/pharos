@@ -17,7 +17,7 @@ const FOCUS_ELEMENT = `[data-modal-focus]`;
 
 export type ModalSize = 'small' | 'medium' | 'large';
 
-const SIZES = ['small', 'medium', 'large'];
+export const allSizes = ['small', 'medium', 'large'] as ModalSize[];
 
 /**
  * Pharos modal component.
@@ -93,8 +93,8 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
   protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
-    if (changedProperties.has('size') && !SIZES.includes(this.size)) {
-      throw new Error(`${this.size} is not a valid size. Valid sizes are: ${SIZES.join(', ')}`);
+    if (changedProperties.has('size') && !allSizes.includes(this.size)) {
+      throw new Error(`${this.size} is not a valid size. Valid sizes are: ${allSizes.join(', ')}`);
     }
   }
 
