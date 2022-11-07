@@ -24,9 +24,9 @@ export type HeadingPreset =
   | '7--bold'
   | 'legend';
 
-const LEVELS = [1, 2, 3, 4, 5, 6];
+export const allLevels = [1, 2, 3, 4, 5, 6] as HeadingLevel[];
 
-const PRESETS = [
+export const allPresets = [
   '1',
   '1--bold',
   '2',
@@ -42,7 +42,7 @@ const PRESETS = [
   '7',
   '7--bold',
   'legend',
-];
+] as HeadingPreset[];
 
 /**
  * Pharos heading component.
@@ -84,15 +84,15 @@ export class PharosHeading extends PharosElement {
       throw new Error(`level is a required attribute.`);
     }
 
-    if (changedProperties.has('level') && !LEVELS.includes(this.level)) {
+    if (changedProperties.has('level') && !allLevels.includes(this.level)) {
       throw new Error(
-        `${this.level} is not a valid heading level. Valid levels are: ${LEVELS.join(', ')}`
+        `${this.level} is not a valid heading level. Valid levels are: ${allLevels.join(', ')}`
       );
     }
-    if (changedProperties.has('preset') && !PRESETS.includes(this.preset)) {
+    if (changedProperties.has('preset') && !allPresets.includes(this.preset)) {
       throw new Error(
         `${this.preset} is not a valid preset.
-        Available presets are ${PRESETS.join(', ')}.`
+        Available presets are ${allPresets.join(', ')}.`
       );
     }
   }

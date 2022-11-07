@@ -19,9 +19,9 @@ export type ButtonVariant = 'primary' | 'secondary' | 'subtle' | 'overlay';
 
 export type PressedState = 'false' | 'true' | 'mixed' | 'undefined';
 
-const TYPES = ['button', 'submit', 'reset'];
+const TYPES = ['button', 'submit', 'reset'] as ButtonType[];
 
-const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'];
+const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'] as ButtonVariant[];
 
 /**
  * Pharos button component.
