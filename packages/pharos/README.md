@@ -1,4 +1,8 @@
+<div class="hide-in-storybook">
+
 # Pharos Web Components
+
+</div>
 
 <!-- toc -->
 
