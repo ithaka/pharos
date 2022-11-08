@@ -129,8 +129,8 @@ export const Composition = {
       <PharosModal id="my-alert-modal" header="Add external link" open>
         <div style={{ maxWidth: '36rem' }}>
           <PharosAlert status="error">
-            We're sorry, we experienced an issue submitting your report. Please try again. If the
-            issue persists, contact
+            We&apos;re sorry, we experienced an issue submitting your report. Please try again. If
+            the issue persists, contact
             <PharosLink id="support-link" href="#">
               support@jstor.org
             </PharosLink>

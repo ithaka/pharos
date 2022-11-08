@@ -105,7 +105,7 @@ export const Validity = {
 };
 
 export const CustomErrorMessage = {
-  render: (_) => (
+  render: (args) => (
     <div
       style={{
         display: 'grid',

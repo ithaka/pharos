@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { PharosLink } from '../../react-components';
+import { PharosLink, PharosHeading } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
 
@@ -13,7 +13,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: (args) => (
     <PharosLink
       bold={args.bold}
       download={args.download}

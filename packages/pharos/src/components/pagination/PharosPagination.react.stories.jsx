@@ -14,7 +14,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: (args) => (
     <PharosPagination
       totalResults={args.totalResults}
       pageSize={args.pageSize}

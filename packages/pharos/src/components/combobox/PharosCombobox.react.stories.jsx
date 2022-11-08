@@ -117,7 +117,7 @@ export const SearchMode = {
       searchMode
       style={{ display: 'grid', gridTemplateColumns: '300px' }}
     >
-      <span slot="label">I'm searching for</span>
+      <span slot="label">I&apos;m searching for</span>
       <option value="1">Bulbasaur</option>
       <option value="2">Charmander</option>
       <option value="3">Squirtle</option>

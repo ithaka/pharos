@@ -19,7 +19,7 @@ export const Base = {
       <PharosHeading level={1} preset={'5'}>
         Loading spinner demonstration
       </PharosHeading>
-      <PharosButton onClick={() => action('Click')('Clicked')}>Can't press me!</PharosButton>
+      <PharosButton onClick={() => action('Click')('Clicked')}>Can&apos;t press me!</PharosButton>
     </div>
   ),
 };

@@ -406,14 +406,14 @@ export const WithActionButtonSlot = {
 export const SelectableCollection = {
   render: (_) => (
     <PharosLayout tag="ol" style="margin: 1rem 0">
-      <li class="image-card-example__card--collection">
+      <li className="image-card-example__card--collection">
         <PharosImageCard title="Selectable" link="#" variant="selectable-collection">
           <img src="./images/item-detail/open_collection_1.png" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </PharosImageCard>
       </li>
-      <li class="image-card-example__card--collection">
+      <li className="image-card-example__card--collection">
         <PharosImageCard
           title="Subtle Select"
           link="#"
@@ -425,7 +425,7 @@ export const SelectableCollection = {
           <div slot="metadata">Selections from the global permanent collection.</div>
         </PharosImageCard>
       </li>
-      <li class="image-card-example__card--collection">
+      <li className="image-card-example__card--collection">
         <PharosImageCard
           title="Selected Disabled"
           link="#"
