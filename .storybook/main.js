@@ -19,6 +19,8 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-a11y',
     '@storybook/addon-viewport',
+    '@storybook/addon-measure',
+    '@storybook/addon-outline',
     '@storybook/addon-controls',
     '@storybook/addon-google-analytics',
     {
@@ -29,7 +31,6 @@ module.exports = {
         },
       },
     },
-    '@storybook/addon-storysource',
     '@storybook/addon-backgrounds',
   ],
   stories: [],
