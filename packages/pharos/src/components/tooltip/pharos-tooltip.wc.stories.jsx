@@ -55,7 +55,7 @@ export const Placement = {
 };
 
 export const DismissBehavior = {
-  render: (_) =>
+  render: () =>
     html`
       <div
         style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
@@ -94,7 +94,7 @@ export const FullWidth = {
 };
 
 export const MultipleTriggers = {
-  render: (_) =>
+  render: () =>
     html`
       <div
         style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
@@ -108,7 +108,7 @@ export const MultipleTriggers = {
 };
 
 export const CustomBoundary = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
         <pharos-button id="my-button" data-dropdown-menu-id="my-menu" icon-right="chevron-down"

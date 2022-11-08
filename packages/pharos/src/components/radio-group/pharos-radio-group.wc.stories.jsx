@@ -47,7 +47,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html` <pharos-radio-group
       @change="${(e) => action('Change')(e.target.value)}"
       name="radio-group2"
@@ -73,7 +73,7 @@ export const Validity = {
 };
 
 export const FormData = {
-  render: (_) =>
+  render: () =>
     html`
       <form name="my-form" action="https://httpbin.org/post" method="POST">
         <pharos-radio-group

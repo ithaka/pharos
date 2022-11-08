@@ -113,7 +113,7 @@ const UiColorTokens = () => html`
 `;
 
 export const AliasColors = {
-  render: (_) => UiColorTokens(),
+  render: () => UiColorTokens(),
 };
 
 const GlobalColorTokens = () => {
@@ -221,7 +221,7 @@ const GlobalColorTokens = () => {
 };
 
 export const GlobalColors = {
-  render: (_) => GlobalColorTokens(),
+  render: () => GlobalColorTokens(),
 };
 
 const FontFamilyTokens = () => html`
@@ -264,7 +264,7 @@ const FontFamilyTokens = () => html`
 `;
 
 export const FontFamily = {
-  render: (_) => FontFamilyTokens(),
+  render: () => FontFamilyTokens(),
 };
 
 const FontWeightTokens = () => html`
@@ -302,7 +302,7 @@ const FontWeightTokens = () => html`
 `;
 
 export const FontWeight = {
-  render: (_) => FontWeightTokens(),
+  render: () => FontWeightTokens(),
 };
 
 const FontSizeTokens = () => {
@@ -347,7 +347,7 @@ const FontSizeTokens = () => {
 };
 
 export const FontSize = {
-  render: (_) => FontSizeTokens(),
+  render: () => FontSizeTokens(),
 };
 
 const LineHeightToken = () => {
@@ -396,7 +396,7 @@ const LineHeightToken = () => {
 };
 
 export const LineHeight = {
-  render: (_) => LineHeightToken(),
+  render: () => LineHeightToken(),
 };
 
 const SpacingTokens = () => html`
@@ -430,7 +430,7 @@ const SpacingTokens = () => html`
 `;
 
 export const Spacing = {
-  render: (_) => SpacingTokens(),
+  render: () => SpacingTokens(),
 };
 
 const RadiusTokens = () => html`
@@ -465,7 +465,7 @@ const RadiusTokens = () => html`
 `;
 
 export const Radius = {
-  render: (_) => RadiusTokens(),
+  render: () => RadiusTokens(),
 };
 
 const TransitionRow = (transition, widthRem, color) => {
@@ -517,7 +517,7 @@ const TransitionTokens = () => {
 };
 
 export const Transitions = {
-  render: (_) => TransitionTokens(),
+  render: () => TransitionTokens(),
 };
 
 const TypeTokens = () => html`
@@ -571,5 +571,5 @@ const TypeTokens = () => html`
 `;
 
 export const TypeScale = {
-  render: (_) => TypeTokens(),
+  render: () => TypeTokens(),
 };

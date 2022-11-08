@@ -30,7 +30,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (_) =>
+  render: () =>
     html`
       <div>
         <pharos-radio-button name="base"><span slot="label">Default Radio Button</span></pharos-radio-button>
@@ -68,7 +68,7 @@ export const States = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-radio-button
         value="My value"

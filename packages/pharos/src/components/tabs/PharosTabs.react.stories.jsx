@@ -14,7 +14,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: () => (
     <PharosTabs>
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1
@@ -39,7 +39,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <PharosTabs onPharos-Tab-Selected={(e) => action('Select')(e.target.id)}>
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1
@@ -65,7 +65,7 @@ export const Events = {
 };
 
 export const PanelOrder = {
-  render: (_) => (
+  render: () => (
     <PharosTabs>
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1
@@ -90,7 +90,7 @@ export const PanelOrder = {
 };
 
 export const PanelSeparator = {
-  render: (_) => (
+  render: () => (
     <PharosTabs panel-separator style="width: 100%">
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1

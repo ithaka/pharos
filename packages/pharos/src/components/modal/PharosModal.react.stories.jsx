@@ -53,7 +53,7 @@ export const Base = {
 };
 
 export const NoFooter = {
-  render: (_) => (
+  render: () => (
     <Fragment>
       <PharosButton
         type="button"
@@ -72,7 +72,7 @@ export const NoFooter = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <Fragment>
       <PharosButton
         type="button"
@@ -115,7 +115,7 @@ export const Events = {
 };
 
 export const Composition = {
-  render: (_) => (
+  render: () => (
     <Fragment>
       <PharosButton
         type="button"

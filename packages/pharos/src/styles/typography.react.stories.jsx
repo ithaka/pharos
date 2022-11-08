@@ -88,20 +88,20 @@ export const Tables = {
 };
 
 export const OrderedList = {
-  render: (_) => <ol>{list}</ol>,
+  render: () => <ol>{list}</ol>,
 };
 
 export const UnorderedList = {
-  render: (_) => <ul>{list}</ul>,
+  render: () => <ul>{list}</ul>,
 };
 
 export const ListWithoutBullets = {
   name: 'List without Bullets',
-  render: (_) => <ul className="list-example__no-bullets">{list}</ul>,
+  render: () => <ul className="list-example__no-bullets">{list}</ul>,
 };
 
 export const NestedLists = {
-  render: (_) => (
+  render: () => (
     <ul className="list-example__nested">
       <li>
         Item 1
@@ -120,5 +120,5 @@ export const NestedLists = {
 };
 
 export const InlineList = {
-  render: (_) => <ul className="list-example__inline">{list}</ul>,
+  render: () => <ul className="list-example__inline">{list}</ul>,
 };

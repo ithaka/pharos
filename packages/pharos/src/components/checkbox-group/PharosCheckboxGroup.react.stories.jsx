@@ -35,7 +35,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <PharosCheckboxGroup
       onChange={(e) => action('Change')(JSON.stringify(e.target.value))}
       name="group2"
@@ -65,7 +65,7 @@ export const Validity = {
 };
 
 export const FormData = {
-  render: (_) => (
+  render: () => (
     <form name="my-form" action="https://httpbin.org/post" method="POST">
       <PharosCheckboxGroup
         style={{ marginBottom: '0.5rem' }}

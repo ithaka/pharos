@@ -70,7 +70,7 @@ const MixinTable = (title) => {
 };
 
 export const Mixins = {
-  render: (_) => (
+  render: () => (
     <>
       {MixinTable('buttons')} {MixinTable('form-elements')} {MixinTable('interaction')}
       {MixinTable('layout')} {MixinTable('links')} {MixinTable('typography')}

@@ -45,7 +45,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -82,7 +82,7 @@ export const States = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -151,7 +151,7 @@ export const CustomErrorMessage = {
 };
 
 export const FormData = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',

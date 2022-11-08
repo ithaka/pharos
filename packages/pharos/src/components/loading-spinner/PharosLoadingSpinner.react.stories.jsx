@@ -13,7 +13,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: () => (
     <div>
       <PharosLoadingSpinner></PharosLoadingSpinner>
       <PharosHeading level={1} preset={'5'}>
@@ -25,7 +25,7 @@ export const Base = {
 };
 
 export const Scoped = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         height: '5rem',

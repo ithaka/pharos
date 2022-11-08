@@ -42,7 +42,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: repeat(2, 250px);">
         <pharos-textarea name="default"><span slot="label">Empty textarea</span></pharos-textarea>
@@ -66,7 +66,7 @@ export const States = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 250px;">
         <pharos-textarea
@@ -122,7 +122,7 @@ export const CustomErrorMessage = {
 };
 
 export const FormData = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 350px;">
         <form name="my-form" action="https://httpbin.org/post" method="POST">

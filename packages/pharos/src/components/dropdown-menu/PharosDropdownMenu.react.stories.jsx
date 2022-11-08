@@ -22,7 +22,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -42,7 +42,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -72,7 +72,7 @@ export const Events = {
 };
 
 export const Icons = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -100,7 +100,7 @@ export const Icons = {
 };
 
 export const Descriptions = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -139,7 +139,7 @@ export const Descriptions = {
 };
 
 export const FullWidth = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -171,7 +171,7 @@ export const FullWidth = {
 };
 
 export const Links = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -205,7 +205,7 @@ export const Links = {
 };
 
 export const MultipleTriggers = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -240,7 +240,7 @@ export const MultipleTriggers = {
 };
 
 export const MultipleDynamicTriggers = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -287,7 +287,7 @@ export const MultipleDynamicTriggers = {
 };
 
 export const Composition = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -370,7 +370,7 @@ export const Composition = {
 };
 
 export const CoordinatingDropdowns = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',

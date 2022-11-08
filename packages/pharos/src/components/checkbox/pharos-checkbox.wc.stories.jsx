@@ -30,7 +30,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (_) =>
+  render: () =>
     html`
       <div>
         <pharos-checkbox name="one"><span slot="label">Normal Checkbox</span></pharos-checkbox>
@@ -77,7 +77,7 @@ export const States = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html` <pharos-checkbox
       value="My value"
       @change="${(e) => action('Change')(e.target.checked)}"
@@ -103,7 +103,7 @@ export const Validity = {
 
 export const OnBackground = {
   name: 'On background',
-  render: (_) =>
+  render: () =>
     html`
       <div style="background-color: #000000; padding: 1rem;">
         <pharos-checkbox name="on-background" on-background>

@@ -38,7 +38,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (_) => (
+  render: () => (
     <Fragment>
       <PharosSelect>
         <span slot="label">Normal Select</span>
@@ -61,7 +61,7 @@ export const States = {
 
 export const WithOptionGroups = {
   name: 'With option groups',
-  render: (_) => (
+  render: () => (
     <PharosSelect>
       <span slot="label">Normal Select</span>
       <optgroup label="Group 1">
@@ -77,7 +77,7 @@ export const WithOptionGroups = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <PharosSelect onChange={(e) => action('Change')(e.target.value)}>
       <span slot="label">Normal Select</span>
       <option value="1">Option 1 (Value is 1)</option>
@@ -98,7 +98,7 @@ export const Validity = {
 };
 
 export const FormData = {
-  render: (_) => (
+  render: () => (
     <form name="my-form" action="https://httpbin.org/post" method="POST">
       <PharosSelect name="my-select" required style={{ marginBottom: '0.5rem' }}>
         <span slot="label">Select Demo</span>

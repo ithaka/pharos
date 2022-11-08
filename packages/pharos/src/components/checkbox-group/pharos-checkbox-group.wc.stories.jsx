@@ -36,7 +36,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html` <pharos-checkbox-group
       @change="${(e) => action('Change')(JSON.stringify(e.target.value))}"
       name="checkbox-group2"
@@ -61,7 +61,7 @@ export const Validity = {
 };
 
 export const FormData = {
-  render: (_) =>
+  render: () =>
     html` <form name="my-form" action="https://httpbin.org/post" method="POST">
       <pharos-checkbox-group
         @change="${(e) => action('Change')(e.target.value)}"

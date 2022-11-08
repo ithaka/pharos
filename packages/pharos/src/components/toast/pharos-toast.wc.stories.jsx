@@ -15,7 +15,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         document.querySelector('#success-toast-button').click();
@@ -44,7 +44,7 @@ export const Base = {
 };
 
 export const Error = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         document.querySelector('#error-toast-button').click();
@@ -73,7 +73,7 @@ export const Error = {
 };
 
 export const LongContent = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
@@ -104,7 +104,7 @@ export const LongContent = {
 };
 
 export const Info = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         document.querySelector('#info-toast-button').click();
@@ -132,7 +132,7 @@ export const Info = {
 };
 
 export const UpdateableToast = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         document.querySelector('#info-toast-button').click();

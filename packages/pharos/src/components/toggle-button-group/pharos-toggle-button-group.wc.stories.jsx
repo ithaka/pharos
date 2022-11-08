@@ -14,7 +14,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-toggle-button-group>
         <pharos-toggle-button
@@ -56,7 +56,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-toggle-button-group
         @pharos-toggle-button-selected="${(e) => action('Selected')(e.target.id)}"
@@ -72,7 +72,7 @@ export const Events = {
 };
 
 export const IconsOnly = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-toggle-button-group>
         <pharos-toggle-button icon="view-list" id="view-list-button"></pharos-toggle-button

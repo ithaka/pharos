@@ -41,7 +41,7 @@ const Template = {
 };
 
 export const Base = {
-  render: (_) =>
+  render: () =>
     html` <pharos-layout tag="ol" style="margin: 1rem 0">
       ${items.map((item, index) => {
         return html` <li style="grid-column: span 2">
@@ -67,7 +67,7 @@ export const Base = {
 };
 
 export const WithSourceTypes = {
-  render: (_) =>
+  render: () =>
     html` <pharos-layout tag="ol" style="margin: 1rem 0">
       ${items.map((item, index) => {
         return html` <li style="grid-column: span 2">
@@ -93,7 +93,7 @@ export const WithSourceTypes = {
 };
 
 export const Collection = {
-  render: (_) =>
+  render: () =>
     html` <pharos-layout tag="ol" style="margin: 1rem 0">
       ${collections.map((collection, index) => {
         return html` <li class="image-card-example__card--collection">
@@ -120,7 +120,7 @@ export const Collection = {
 };
 
 export const Promotional = {
-  render: (_) =>
+  render: () =>
     html` <pharos-layout style="margin: 1rem 0">
       <div class="image-card-example__card--promotional">
         <pharos-image-card
@@ -139,7 +139,7 @@ export const Promotional = {
 };
 
 export const Selectable = {
-  render: (_) =>
+  render: () =>
     html` <pharos-layout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
         <pharos-image-card title="Selectable" link="#" source-type="Image" variant="selectable">
@@ -287,7 +287,7 @@ export const VisitedTitleLink = {
 };
 
 export const WithActionMenu = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-layout style="margin: 1rem 0">
         <pharos-image-card
@@ -321,7 +321,7 @@ export const WithActionMenu = {
 };
 
 export const WithActionButtonSlot = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-layout style="margin: 1rem 0">
         <pharos-image-card
@@ -361,7 +361,7 @@ export const WithActionButtonSlot = {
 };
 
 export const SelectableCollection = {
-  render: (_) =>
+  render: () =>
     html` <pharos-layout tag="ol" style="margin: 1rem 0">
       <li class="image-card-example__card--collection">
         <pharos-image-card title="Selectable" link="#" variant="selectable-collection">
@@ -399,7 +399,7 @@ export const SelectableCollection = {
 };
 
 export const Disabled = {
-  render: (_) =>
+  render: () =>
     html` <pharos-layout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
         <pharos-image-card title="Disabled" link="#" source-type="Image" disabled="true">

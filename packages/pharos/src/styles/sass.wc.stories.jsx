@@ -62,7 +62,7 @@ const MixinTable = (title) => {
 };
 
 export const Mixins = {
-  render: (_) => html`
+  render: () => html`
     ${MixinTable('buttons')} ${MixinTable('form-elements')} ${MixinTable('interaction')}
     ${MixinTable('layout')} ${MixinTable('links')} ${MixinTable('typography')}
   `,

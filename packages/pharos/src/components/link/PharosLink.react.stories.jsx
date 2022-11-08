@@ -38,7 +38,7 @@ export const Base = {
 };
 
 export const VisitedLink = {
-  render: (_) => (
+  render: () => (
     <div style={{ marginBottom: '1rem' }}>
       <PharosLink href="https://www.google.com" target="_blank" indicateVisited>
         Visited link
@@ -48,7 +48,7 @@ export const VisitedLink = {
 };
 
 export const VisitedLinkHeading = {
-  render: (_) => (
+  render: () => (
     <div style={{ marginBottom: '1rem' }}>
       <PharosLink href="https://www.google.com" target="_blank" indicateVisited>
         <PharosHeading level="1"> Visited link heading </PharosHeading>
@@ -58,7 +58,7 @@ export const VisitedLinkHeading = {
 };
 
 export const Button = {
-  render: (_) => (
+  render: () => (
     <Fragment>
       <div style={{ marginBottom: '1rem' }}>
         <PharosLink name="primary" primary>
@@ -81,7 +81,7 @@ export const Button = {
 };
 
 export const Variants = {
-  render: (_) => (
+  render: () => (
     <Fragment>
       <div style={{ marginBottom: '1rem' }}>
         <PharosLink name="primary" href="#">

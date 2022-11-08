@@ -37,7 +37,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-select>
         <span slot="label">Normal Select</span>
@@ -59,7 +59,7 @@ export const States = {
 
 export const WithOptionGroups = {
   name: 'With option groups',
-  render: (_) =>
+  render: () =>
     html`
       <pharos-select>
         <span slot="label">Normal Select</span>
@@ -76,7 +76,7 @@ export const WithOptionGroups = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-select @change="${(e) => action('Change')(e.target.value)}">
         <span slot="label">Normal Select</span>
@@ -98,7 +98,7 @@ export const Validity = {
 };
 
 export const FormData = {
-  render: (_) =>
+  render: () =>
     html`
       <form name="my-form" action="https://httpbin.org/post" method="POST">
         <pharos-select name="my-select" required style="margin-bottom: 0.5rem;">

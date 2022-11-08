@@ -14,7 +14,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: () => (
     <>
       <PharosToggleButtonGroup>
         <PharosToggleButton
@@ -63,7 +63,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <PharosToggleButtonGroup onPharos-Toggle-Button-Selected={(e) => action('Select')(e.target.id)}>
       <PharosToggleButton id="list-mode-button" selected icon-left="view-list">
         List
@@ -77,7 +77,7 @@ export const Events = {
 };
 
 export const IconsOnly = {
-  render: (_) => (
+  render: () => (
     <PharosToggleButtonGroup>
       <PharosToggleButton icon="view-list" id="view-list-button">
         List

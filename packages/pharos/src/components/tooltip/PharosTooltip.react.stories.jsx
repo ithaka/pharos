@@ -65,7 +65,7 @@ export const Placement = {
 };
 
 export const DismissBehavior = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -109,7 +109,7 @@ export const FullWidth = {
 };
 
 export const MultipleTriggers = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -130,7 +130,7 @@ export const MultipleTriggers = {
 };
 
 export const CustomBoundary = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',

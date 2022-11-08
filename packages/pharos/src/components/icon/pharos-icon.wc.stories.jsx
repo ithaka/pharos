@@ -21,7 +21,7 @@ export const Base = {
 };
 
 export const Names = {
-  render: (_) =>
+  render: () =>
     html`
       <div
         style="display: grid; grid-template-columns: repeat(4, auto); grid-gap: 2rem; margin-top: 2rem; justify-content: space-evenly;"

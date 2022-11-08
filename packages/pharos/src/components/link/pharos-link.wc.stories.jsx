@@ -39,7 +39,7 @@ export const Base = {
 };
 
 export const VisitedLink = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="margin-bottom: 1rem">
         <pharos-link href="https://www.google.com" target="_blank" indicate-visited
@@ -50,7 +50,7 @@ export const VisitedLink = {
 };
 
 export const VisitedLinkHeading = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="margin-bottom: 1rem">
         <pharos-link href="https://www.google.com" target="_blank" indicate-visited>
@@ -61,7 +61,7 @@ export const VisitedLinkHeading = {
 };
 
 export const Button = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="margin-bottom: 1rem">
         <pharos-link name="primary">I am a button</pharos-link>
@@ -73,7 +73,7 @@ export const Button = {
 };
 
 export const Variants = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="margin-bottom: 1rem">
         <pharos-link name="primary" href="#">Primary link</pharos-link>

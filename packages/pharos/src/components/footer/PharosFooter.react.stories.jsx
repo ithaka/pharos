@@ -12,7 +12,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => <Footer />,
+  render: () => <Footer />,
   parameters: {
     chromatic: { viewports: [320, 1024, 1200] },
   },

@@ -14,7 +14,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-tabs>
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
@@ -28,7 +28,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-tabs @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}">
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
@@ -43,7 +43,7 @@ export const Events = {
 };
 
 export const PanelOrder = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-tabs>
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
@@ -63,7 +63,7 @@ export const PanelOrder = {
 };
 
 export const PanelSeparator = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-tabs panel-separator style="width: 100%">
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>

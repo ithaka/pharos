@@ -16,7 +16,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-dropdown-menu-nav>
         <pharos-dropdown-menu-nav-link

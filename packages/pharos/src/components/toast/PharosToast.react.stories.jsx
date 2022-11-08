@@ -15,7 +15,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: () => (
     <>
       <PharosButton
         id="success-toast-button"
@@ -37,7 +37,7 @@ export const Base = {
 };
 
 export const Error = {
-  render: (_) => (
+  render: () => (
     <>
       <PharosButton
         id="error-toast-button"
@@ -60,7 +60,7 @@ export const Error = {
 };
 
 export const LongContent = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
@@ -92,7 +92,7 @@ export const LongContent = {
 };
 
 export const Info = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         document.querySelector('#info-toast-button').click();
@@ -122,7 +122,7 @@ export const Info = {
 };
 
 export const UpdateableToast = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         document.querySelector('#info-toast-button').click();

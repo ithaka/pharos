@@ -56,7 +56,7 @@ const Template = {
 };
 
 export const Base = {
-  render: (_) => (
+  render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       {items.map((item, index) => {
         return (
@@ -89,7 +89,7 @@ export const Base = {
 };
 
 export const WithSourceTypes = {
-  render: (_) => (
+  render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       {items.map((item, index) => {
         return (
@@ -122,7 +122,7 @@ export const WithSourceTypes = {
 };
 
 export const Collection = {
-  render: (_) => (
+  render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       {collections.map((collection, index) => {
         return (
@@ -154,7 +154,7 @@ export const Collection = {
 };
 
 export const Promotional = {
-  render: (_) => (
+  render: () => (
     <PharosLayout style={{ margin: '1rem 0' }}>
       <div className="image-card-example__card--promotional">
         <PharosImageCard title="Bring your work to life with images" link="#" variant="promotional">
@@ -170,7 +170,7 @@ export const Promotional = {
 };
 
 export const Selectable = {
-  render: (_) => (
+  render: () => (
     <PharosLayout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
         <PharosImageCard title="Selectable" link="#" source-type="Image" variant="selectable">
@@ -228,7 +228,7 @@ export const Selectable = {
 };
 
 export const SubtleSelectable = {
-  render: (_) => (
+  render: () => (
     <PharosLayout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
         <PharosImageCard
@@ -320,7 +320,7 @@ export const VisitedTitleLink = {
 };
 
 export const WithActionMenu = {
-  render: (_) => (
+  render: () => (
     <Fragment>
       <PharosLayout style={{ margin: '1rem 0' }}>
         <PharosImageCard
@@ -359,7 +359,7 @@ export const WithActionMenu = {
 };
 
 export const WithActionButtonSlot = {
-  render: (_) => (
+  render: () => (
     <Fragment>
       <PharosLayout style={{ margin: '1rem 0' }}>
         <PharosImageCard
@@ -404,7 +404,7 @@ export const WithActionButtonSlot = {
 };
 
 export const SelectableCollection = {
-  render: (_) => (
+  render: () => (
     <PharosLayout tag="ol" style="margin: 1rem 0">
       <li className="image-card-example__card--collection">
         <PharosImageCard title="Selectable" link="#" variant="selectable-collection">
@@ -443,7 +443,7 @@ export const SelectableCollection = {
 };
 
 export const Disabled = {
-  render: (_) => (
+  render: () => (
     <PharosLayout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
         <PharosImageCard title="Disabled" link="#" source-type="Image" disabled="true">

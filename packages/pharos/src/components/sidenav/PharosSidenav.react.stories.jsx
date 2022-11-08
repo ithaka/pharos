@@ -27,7 +27,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: () => (
     <Fragment>
       <PharosSidenavButton />
       <PharosSidenav>

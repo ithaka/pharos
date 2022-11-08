@@ -14,7 +14,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-loading-spinner></pharos-loading-spinner>
       <pharos-heading level="1" preset="5">Loading spinner demonstration</pharos-heading>
@@ -23,7 +23,7 @@ export const Base = {
 };
 
 export const Scoped = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="height: 5rem; width: 5rem; border: 1px solid black; position: relative;">
         <pharos-loading-spinner></pharos-loading-spinner>
