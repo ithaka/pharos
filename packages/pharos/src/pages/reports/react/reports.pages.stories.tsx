@@ -30,8 +30,7 @@ export default {
 } as Meta;
 
 export const Reports = {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  render: (_: object) => (
+  render: () => (
     <>
       <div className="reports-page__container">
         <Sidenav />

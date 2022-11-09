@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 
-// eslint-disable-next-line no-unused-vars
-import { PharosToast, PharosToaster, PharosButton, PharosLink } from '../../react-components';
+import { PharosToast, PharosToaster, PharosButton } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
@@ -23,7 +22,7 @@ export const Base = {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
               content:
-                'The item has moved to your <PharosLink href="#" onBackground bold>Workspace</PharosLink>.',
+                'The item has moved to your <pharos-link href="#" on-background bold>Workspace</pharos-link>.',
             },
           });
           document.dispatchEvent(event);
@@ -46,7 +45,7 @@ export const Error = {
             detail: {
               status: 'error',
               content:
-                'Sorry, we were unable to move the item. Please try again later. If the issue persists, <PharosLink href="#" onBackground bold>contact JSTOR Support</PharosLink>.',
+                'Sorry, we were unable to move the item. Please try again later. If the issue persists, <pharos-link href="#" on-background bold>contact JSTOR Support</pharos-link>.',
             },
           });
           document.dispatchEvent(event);
