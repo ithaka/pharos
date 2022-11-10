@@ -1,7 +1,8 @@
-import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
+
+import { PharosElement } from '../base/pharos-element';
 import { tabStyles } from './pharos-tab.css';
 
 /**
@@ -43,19 +44,26 @@ export class PharosTab extends PharosElement {
     if (changedProperties.has('selected')) {
       this._focused = this.selected;
       this.setAttribute('aria-selected', this.selected ? 'true' : 'false');
+      if (this.selected) {
+        this._triggerSelectedEvent();
+      }
     }
+
     if (changedProperties.has('_focused')) {
       this.setAttribute('tabindex', this._focused ? '0' : '-1');
     }
   }
 
-  private _handleClick(): void {
+  private _triggerSelectedEvent() {
     const details = {
       bubbles: true,
       composed: true,
     };
-    this.selected = true;
     this.dispatchEvent(new CustomEvent('pharos-tab-selected', details));
+  }
+
+  private _handleClick(): void {
+    this._triggerSelectedEvent();
   }
 
   protected override render(): TemplateResult {

@@ -1,6 +1,6 @@
-import PageSection from '../../src/components/statics/PageSection.tsx';
-import BestPractices from '../../src/components/statics/BestPractices.tsx';
-import ellipsesExample from '../images/components/button/buttons_ellipses-example.png';
+import PageSection from '@components/statics/PageSection.tsx';
+import BestPractices from '@components/statics/BestPractices.tsx';
+import ellipsesExample from '@images/components/button/buttons_ellipses-example.png';
 
 <PageSection
   title="Button"
@@ -299,12 +299,9 @@ import ellipsesExample from '../images/components/button/buttons_ellipses-exampl
   </PageSection>
   <PageSection title="Buttons on dark background" subSectionLevel={1}>
     <p>
-      Use the disabled state of a button when a user can't perform an action at the time of their
-      experience. They should be used sparingly and only for actions that they are unable to take.
-      The user shouldn't have to guess why a button is disabled. It should be immediately obvious as
-      to why the button might be disabled (e.g., an item can't be downloaded due to access).
-      Otherwise, show the button in its default state, then provide helpful error text after it's
-      been clicked.
+      When a button is used on a darker background (e.g., black or marble-gray-20), use the
+      on-background attribute. The four variants described above can all be used on dark backgrounds
+      and follow the same guidelines.
     </p>
     <div
       style={{

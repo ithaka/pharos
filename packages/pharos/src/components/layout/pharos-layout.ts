@@ -8,7 +8,7 @@ import { PharosSpacingThreeAndAHalfX } from '../../styles/variables';
 
 export type LayoutPreset = '1-col' | '1-col--sidenav' | '1-col--sidenav-comfy' | '2-col';
 
-const PRESETS = ['1-col', '1-col--sidenav', '1-col--sidenav-comfy', '2-col'];
+const PRESETS = ['1-col', '1-col--sidenav', '1-col--sidenav-comfy', '2-col'] as LayoutPreset[];
 
 /**
  * Pharos layout component.

@@ -1,9 +1,9 @@
-import tooltipViewer from '../images/components/tooltip/tooltip_viewer-1.png';
-import tooltipViewerTwo from '../images/components/tooltip/tooltip_viewer-2.png';
-import tooltipOverflow from '../images/components/tooltip/tooltip_overflow.gif';
+import tooltipViewer from '@images/components/tooltip/tooltip_viewer-1.png';
+import tooltipViewerTwo from '@images/components/tooltip/tooltip_viewer-2.png';
+import tooltipOverflow from '@images/components/tooltip/tooltip_overflow.gif';
 
-import PageSection from '../../src/components/statics/PageSection.tsx';
-import BestPractices from '../../src/components/statics/BestPractices.tsx';
+import PageSection from '@components/statics/PageSection.tsx';
+import BestPractices from '@components/statics/BestPractices.tsx';
 
 <PageSection
   isHeader
@@ -146,13 +146,14 @@ import BestPractices from '../../src/components/statics/BestPractices.tsx';
       </PageSection>
       <PageSection subSectionLevel={3} title="Caret placement">
         <p>
-          We use <PharosLink href="https://popper.js.org/">Popper.js</PharosLink> to position our
-          tooltips. By default, tooltips are placed in the center of the trigger, but the
-          caret/arrow will move and remain "attached" with Popper's overflow functionality.
+          We use <PharosLink href="https://floating-ui.com/">Floating UI</PharosLink> to position
+          our tooltips. By default, tooltips are placed in the center of the trigger, but the
+          caret/arrow will move and remain "attached" with Floating UI's flip and shift
+          functionality.
         </p>
         <img
           src={tooltipOverflow}
-          alt="Popper tooltip overflow example"
+          alt="Tooltip overflow example"
           className="pharos-storybook__image"
           width="300"
         />

@@ -1,6 +1,13 @@
 import { Meta } from '@storybook/addon-docs';
+
 import Intro from '../README.md';
-import PHAROS_TITLE from '../../../.storybook/pharosTitle';
+import PHAROS_TITLE from '@config/pharosTitle';
+
+<Meta title="Pharos/Intro" />
+
+export const Title = () => PHAROS_TITLE;
+
+# <Title /> Web Components
 
 <Intro />
 
@@ -10,5 +17,3 @@ JSTOR is part of ITHAKA, a not-for-profit dedicated to expanding access to knowl
 
 - [See career opportunities](https://www.ithaka.org/careers/)
 - [Learn more about ITHAKA](https://www.ithaka.org/)
-
-<Meta title={`${PHAROS_TITLE}/Intro`} />

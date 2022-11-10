@@ -26,9 +26,15 @@ export type ImageCardVariant =
   | 'selectable'
   | 'selectable-collection';
 
-const VARIANTS = ['base', 'collection', 'promotional', 'selectable', 'selectable-collection'];
+const VARIANTS = [
+  'base',
+  'collection',
+  'promotional',
+  'selectable',
+  'selectable-collection',
+] as ImageCardVariant[];
 
-const DEFAULT_HEADING_LEVEL = 3;
+const DEFAULT_HEADING_LEVEL = 3 as HeadingLevel;
 
 /**
  * Pharos image card component.

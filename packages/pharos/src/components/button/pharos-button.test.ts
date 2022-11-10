@@ -103,6 +103,13 @@ describe('pharos-button', () => {
       );
       await expect(component).to.be.accessible();
     });
+
+    it('is accessible when pressed', async () => {
+      component = await fixture(
+        html`<pharos-button pressed="true">I am a pressed button</pharos-button>`
+      );
+      await expect(component).to.be.accessible();
+    });
   });
 
   describe('API', () => {

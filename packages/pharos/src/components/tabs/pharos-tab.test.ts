@@ -22,12 +22,6 @@ describe('pharos-tab', () => {
     await expect(component).to.be.accessible();
   });
 
-  it('updates selected state when clicked', async () => {
-    component.click();
-    await component.updateComplete;
-    expect(component.selected).to.be.true;
-  });
-
   it('fires a custom event pharos-tab-selected when clicked', async () => {
     let selected = null;
     const handleSelected = (e: Event): void => {
