@@ -171,13 +171,13 @@ export const Promotional = {
 
 export const Selectable = {
   render: () => (
-    <PharosLayout tag="ol" style="margin: 1rem 0">
-      <li style="grid-column: span 3">
+    <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard title="Selectable" link="#" source-type="Image" variant="selectable">
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
-      <li style="grid-column: span 3">
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Subtle select"
           link="#"
@@ -188,7 +188,7 @@ export const Selectable = {
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
-      <li style="grid-column: span 3">
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Selected Disabled"
           link="#"
@@ -200,7 +200,7 @@ export const Selectable = {
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
-      <li style="grid-column: span 3">
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Selectable Error State"
           link="#"
@@ -211,7 +211,7 @@ export const Selectable = {
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
-      <li style="grid-column: span 3">
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Subtle Select Error State"
           link="#"
@@ -229,8 +229,8 @@ export const Selectable = {
 
 export const SubtleSelectable = {
   render: () => (
-    <PharosLayout tag="ol" style="margin: 1rem 0">
-      <li style="grid-column: span 3">
+    <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Selectable"
           link="#"
@@ -241,7 +241,7 @@ export const SubtleSelectable = {
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
-      <li style="grid-column: span 3">
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Subtle select"
           link="#"
@@ -253,7 +253,7 @@ export const SubtleSelectable = {
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
-      <li style="grid-column: span 3">
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Selected Disabled"
           link="#"
@@ -266,7 +266,7 @@ export const SubtleSelectable = {
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
-      <li style="grid-column: span 3">
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Selectable Error State"
           link="#"
@@ -278,7 +278,7 @@ export const SubtleSelectable = {
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
-      <li style="grid-column: span 3">
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Subtle Select Error State"
           link="#"
@@ -405,7 +405,7 @@ export const WithActionButtonSlot = {
 
 export const SelectableCollection = {
   render: () => (
-    <PharosLayout tag="ol" style="margin: 1rem 0">
+    <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       <li className="image-card-example__card--collection">
         <PharosImageCard title="Selectable" link="#" variant="selectable-collection">
           <img src="./images/item-detail/open_collection_1.png" slot="image" />
@@ -444,13 +444,13 @@ export const SelectableCollection = {
 
 export const Disabled = {
   render: () => (
-    <PharosLayout tag="ol" style="margin: 1rem 0">
-      <li style="grid-column: span 3">
+    <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard title="Disabled" link="#" source-type="Image" disabled="true">
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
-      <li style="grid-column: span 3">
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Selectable Disabled"
           link="#"
@@ -461,7 +461,7 @@ export const Disabled = {
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
-      <li style="grid-column: span 3">
+      <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard
           title="Selected Disabled"
           link="#"

@@ -91,7 +91,7 @@ export const PanelOrder = {
 
 export const PanelSeparator = {
   render: () => (
-    <PharosTabs panel-separator style="width: 100%">
+    <PharosTabs panelSeparator style={{ width: '100%' }}>
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1
       </PharosTab>

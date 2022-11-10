@@ -21,6 +21,5 @@ export const argTypes = {
     control: {
       type: 'inline-radio',
     },
-    defaultValue: 'text',
   },
 };

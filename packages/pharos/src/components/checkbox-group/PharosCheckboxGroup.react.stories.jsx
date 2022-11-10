@@ -3,12 +3,16 @@ import { action } from '@storybook/addon-actions';
 import { PharosButton, PharosCheckbox, PharosCheckboxGroup } from '../../react-components';
 import createFormData from '../../utils/createFormData';
 import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
   title: 'Forms/Checkbox Group',
   component: PharosCheckboxGroup,
   subcomponents: { PharosCheckbox },
-  options: { selectedPanel: 'addon-controls' },
+  parameters: {
+    docs: { page: configureDocsPage('checkbox') },
+    options: { selectedPanel: 'addon-controls' },
+  },
 };
 
 export const Base = {

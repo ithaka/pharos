@@ -136,7 +136,7 @@ export const SearchMode = {
 
 export const Validity = {
   render: (args) => (
-    <div style="display: grid; grid-template-columns: 300px;">
+    <div style={{ display: 'grid', gridTemplateColumns: '300px' }}>
       <PharosCombobox
         name="my-combobox"
         placeholder="Enter some text"
