@@ -44,10 +44,9 @@ export class PharosTab extends PharosElement {
     if (changedProperties.has('selected')) {
       this._focused = this.selected;
       this.setAttribute('aria-selected', this.selected ? 'true' : 'false');
-    }
-
-    if (this.selected) {
-      this._triggerSelectedEvent();
+      if (this.selected) {
+        this._triggerSelectedEvent();
+      }
     }
 
     if (changedProperties.has('_focused')) {
