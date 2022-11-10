@@ -54,7 +54,7 @@ export class PharosTabs extends PharosElement {
 
   private _selectInitialTab(): void {
     const selected: PharosTab | null = this.querySelector(`${_allTabsSelector}[selected]`);
-    const selectedTab: PharosTab = selected ? selected : this._tabs[0];
+    const selectedTab: PharosTab = selected || this._tabs[0];
     this._handleTabSelected(selectedTab);
   }
 
