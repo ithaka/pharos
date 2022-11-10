@@ -81,6 +81,9 @@ describe('pharos-tabs', () => {
       componentLastTabSelected.querySelectorAll(`pharos-tab-panel`)
     ) as PharosTabPanel[];
 
+    await Promise.all(Array.from(tabs).map((tab) => tab.updateComplete));
+    await Promise.all(Array.from(panels).map((panel) => panel.updateComplete));
+
     expect(tabs[0].selected).to.be.false;
     expect(tabs[1].selected).to.be.false;
     expect(tabs[2].selected).to.be.true;

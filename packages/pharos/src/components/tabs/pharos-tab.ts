@@ -44,21 +44,27 @@ export class PharosTab extends PharosElement {
     if (changedProperties.has('selected')) {
       this._focused = this.selected;
       this.setAttribute('aria-selected', this.selected ? 'true' : 'false');
-      if (this.selected) {
-        const details = {
-          bubbles: true,
-          composed: true,
-        };
-        this.dispatchEvent(new CustomEvent('pharos-tab-selected', details));
-      }
     }
+
+    if (this.selected) {
+      this._triggerSelectedEvent();
+    }
+
     if (changedProperties.has('_focused')) {
       this.setAttribute('tabindex', this._focused ? '0' : '-1');
     }
   }
 
+  private _triggerSelectedEvent() {
+    const details = {
+      bubbles: true,
+      composed: true,
+    };
+    this.dispatchEvent(new CustomEvent('pharos-tab-selected', details));
+  }
+
   private _handleClick(): void {
-    this.selected = true;
+    this._triggerSelectedEvent();
   }
 
   protected override render(): TemplateResult {
