@@ -19,7 +19,7 @@ export const Base = {
 };
 
 export const Names = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',

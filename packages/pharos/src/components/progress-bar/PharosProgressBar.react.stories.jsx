@@ -13,7 +13,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: (args) => (
     <PharosProgressBar value={args.value}>
       <div slot="title">{args.title}</div>
       <div slot="description">{args.description}</div>

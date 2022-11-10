@@ -12,7 +12,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
         <pharos-input-group name="my-input-group">
@@ -29,7 +29,7 @@ export const Base = {
 };
 
 export const Prominent = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
         <pharos-input-group name="my-input-group" variant="prominent">
@@ -87,7 +87,7 @@ export const Prominent = {
 };
 
 export const Validity = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
         <pharos-input-group invalidated value="not an email" name="my-input-group">
@@ -113,7 +113,7 @@ export const Validity = {
 };
 
 export const Composition = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
         <pharos-input-group name="my-input-group-icon">

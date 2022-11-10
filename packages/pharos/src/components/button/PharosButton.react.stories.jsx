@@ -54,7 +54,7 @@ export const Base = {
 };
 
 export const Variants = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -114,7 +114,7 @@ export const Variants = {
 };
 
 export const Large = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -176,7 +176,7 @@ export const Large = {
 };
 
 export const WithIcons = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -268,7 +268,7 @@ export const Link = {
 };
 
 export const Forms = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',

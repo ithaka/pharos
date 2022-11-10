@@ -46,7 +46,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (_) => (
+  render: () => (
     <div style={{ display: 'grid', gridGap: '1rem', gridTemplateColumns: 'repeat(2, 250px)' }}>
       <PharosTextarea>
         <span slot="label">Empty textarea</span>
@@ -71,7 +71,7 @@ export const States = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -105,7 +105,7 @@ export const Validity = {
 };
 
 export const CustomErrorMessage = {
-  render: (_) => (
+  render: (args) => (
     <div
       style={{
         display: 'grid',
@@ -137,7 +137,7 @@ export const CustomErrorMessage = {
 };
 
 export const FormData = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',

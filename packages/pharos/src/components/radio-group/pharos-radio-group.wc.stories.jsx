@@ -1,4 +1,3 @@
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
 import { html } from 'lit';
 import { action } from '@storybook/addon-actions';
 
@@ -48,7 +47,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html` <pharos-radio-group
       @change="${(e) => action('Change')(e.target.value)}"
       name="radio-group2"
@@ -74,7 +73,7 @@ export const Validity = {
 };
 
 export const FormData = {
-  render: (_) =>
+  render: () =>
     html`
       <form name="my-form" action="https://httpbin.org/post" method="POST">
         <pharos-radio-group

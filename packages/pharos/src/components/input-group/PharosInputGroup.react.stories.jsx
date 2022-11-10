@@ -16,7 +16,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -38,7 +38,7 @@ export const Base = {
 };
 
 export const Prominent = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -60,7 +60,7 @@ export const Prominent = {
 };
 
 export const Validity = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -91,7 +91,7 @@ export const Validity = {
 };
 
 export const Composition = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',

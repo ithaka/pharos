@@ -30,7 +30,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (_) => (
+  render: () => (
     <Fragment>
       <div>
         <div>
@@ -79,7 +79,7 @@ export const States = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',

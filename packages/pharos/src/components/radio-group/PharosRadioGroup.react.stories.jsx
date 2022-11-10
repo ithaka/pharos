@@ -46,7 +46,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <PharosRadioGroup onChange={(e) => action('Change')(e.target.value)} name="group2">
       <span slot="legend">Radio Group Header</span>
       <PharosRadioButton value="1">
@@ -74,7 +74,7 @@ export const Validity = {
 };
 
 export const FormData = {
-  render: (_) => (
+  render: () => (
     <form name="my-form" action="https://httpbin.org/post" method="POST">
       <PharosRadioGroup
         style={{ marginBottom: '0.5rem' }}

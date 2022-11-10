@@ -76,7 +76,7 @@ export const States = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -111,13 +111,13 @@ export const Events = {
 };
 
 export const SearchMode = {
-  render: (_) => (
+  render: () => (
     <PharosCombobox
       placeholder="Search..."
       searchMode
       style={{ display: 'grid', gridTemplateColumns: '300px' }}
     >
-      <span slot="label">I'm searching for</span>
+      <span slot="label">I&apos;m searching for</span>
       <option value="1">Bulbasaur</option>
       <option value="2">Charmander</option>
       <option value="3">Squirtle</option>
@@ -136,7 +136,7 @@ export const SearchMode = {
 
 export const Validity = {
   render: (args) => (
-    <div style="display: grid; grid-template-columns: 300px;">
+    <div style={{ display: 'grid', gridTemplateColumns: '300px' }}>
       <PharosCombobox
         name="my-combobox"
         placeholder="Enter some text"
@@ -163,7 +163,7 @@ export const Validity = {
 };
 
 export const FormData = {
-  render: (_) => (
+  render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: '300px' }}>
       <form name="my-form" action="https://httpbin.org/post" method="POST">
         <PharosCombobox

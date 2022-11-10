@@ -8,7 +8,7 @@ export default {
   title: 'Forms/Checkbox',
   component: PharosCheckbox,
   parameters: {
-    docs: configureDocsPage('checkbox'),
+    docs: { page: configureDocsPage('checkbox') },
     options: {
       selectedPanel: 'addon-controls',
     },

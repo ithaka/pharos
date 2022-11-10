@@ -20,7 +20,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: () => (
     <PharosDropdownMenuNav>
       <PharosDropdownMenuNavLink
         href="#"

@@ -9,6 +9,7 @@ export const parameters = {
   a11y: a11yConfig,
   controls: { expanded: true },
   docs: {
+    source: { type: 'dynamic' },
     inlineStories: true,
     theme: theme,
     components: {

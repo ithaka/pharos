@@ -53,12 +53,12 @@ const _gridColumns = () => {
 
 export const OneColumn = {
   name: 'One column',
-  render: (_) => html` <pharos-layout>${_gridColumns()}</pharos-layout> `,
+  render: () => html` <pharos-layout>${_gridColumns()}</pharos-layout> `,
 };
 
 export const OneColumnWithSidenav = {
   name: 'One column with sidenav',
-  render: (_) =>
+  render: () =>
     html`
       <div
         style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
@@ -77,7 +77,7 @@ export const OneColumnWithSidenav = {
 
 export const OneColumnWithSidenavAndComfySpacing = {
   name: 'One column with sidenav and comfy spacing',
-  render: (_) =>
+  render: () =>
     html`
       <div
         style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
@@ -96,7 +96,7 @@ export const OneColumnWithSidenavAndComfySpacing = {
 
 export const TwoColumn = {
   name: 'Two column',
-  render: (_) =>
+  render: () =>
     html`
       <pharos-layout preset="2-col">
         <div class="layout-example__container--first"></div>
@@ -111,7 +111,7 @@ export const TwoColumn = {
 
 export const ColumnLayouts = {
   name: 'Column layouts',
-  render: (_) =>
+  render: () =>
     html`
       <pharos-layout style="margin: 1rem 0">
         ${_gridItems([1, 2, 3, 4, 6])} ${_comboItems([7, 8, 9, 10])}

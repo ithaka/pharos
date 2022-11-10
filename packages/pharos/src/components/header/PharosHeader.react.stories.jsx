@@ -21,7 +21,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => (
+  render: () => (
     <PharosHeader>
       <div id="pds" slot="top" className="hide-for-small">
         <div

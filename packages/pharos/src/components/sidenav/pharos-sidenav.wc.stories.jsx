@@ -17,7 +17,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-sidenav-button></pharos-sidenav-button>
       <pharos-sidenav>

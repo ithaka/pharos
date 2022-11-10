@@ -53,12 +53,12 @@ const _gridColumns = () => {
 
 export const OneColumn = {
   name: 'One column',
-  render: (_) => <PharosLayout>{_gridColumns()}</PharosLayout>,
+  render: () => <PharosLayout>{_gridColumns()}</PharosLayout>,
 };
 
 export const OneColumnWithSidenav = {
   name: 'One column with sidenav',
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -81,7 +81,7 @@ export const OneColumnWithSidenav = {
 
 export const OneColumnWithSidenavAndComfySpacing = {
   name: 'One column with sidenav and comfy spacing',
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -104,7 +104,7 @@ export const OneColumnWithSidenavAndComfySpacing = {
 
 export const TwoColumn = {
   name: 'Two column',
-  render: (_) => (
+  render: () => (
     <Fragment>
       <PharosLayout preset="2-col">
         <div className="layout-example__container--first"></div>
@@ -120,7 +120,7 @@ export const TwoColumn = {
 
 export const ColumnLayouts = {
   name: 'Column layouts',
-  render: (_) => (
+  render: () => (
     <PharosLayout style={{ margin: '1rem 0' }}>
       {_gridItems([1, 2, 3, 4, 6])}
       {_comboItems([7, 8, 9, 10])}

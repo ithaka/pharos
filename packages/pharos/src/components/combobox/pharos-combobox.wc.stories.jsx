@@ -54,7 +54,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 7rem; grid-template-columns: repeat(2, 300px);">
         <pharos-combobox name="default">
@@ -92,7 +92,7 @@ export const States = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-template-columns: 300px;">
         <pharos-combobox
@@ -123,7 +123,7 @@ export const Events = {
 };
 
 export const SearchMode = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-combobox
         placeholder="Search..."
@@ -168,7 +168,7 @@ export const Validity = {
 };
 
 export const FormData = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-template-columns: 300px;">
         <form name="my-form" action="https://httpbin.org/post" method="POST">

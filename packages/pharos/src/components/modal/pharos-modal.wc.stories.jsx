@@ -53,7 +53,7 @@ export const Base = {
 };
 
 export const NoFooter = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-button
         @click="${(e) => {
@@ -71,7 +71,7 @@ export const NoFooter = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-button
         type="button"
@@ -111,7 +111,7 @@ export const Events = {
 };
 
 export const Composition = {
-  render: (_) =>
+  render: () =>
     html`
       <pharos-button
         type="button"

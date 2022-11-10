@@ -17,7 +17,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
         <pharos-button id="my-button" data-dropdown-menu-id="my-menu" icon-right="chevron-down"
@@ -34,7 +34,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
         <pharos-button
@@ -60,7 +60,7 @@ export const Events = {
 };
 
 export const Icons = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
@@ -89,7 +89,7 @@ export const Icons = {
 };
 
 export const Descriptions = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
@@ -135,7 +135,7 @@ export const Descriptions = {
 };
 
 export const FullWidth = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
@@ -170,7 +170,7 @@ export const FullWidth = {
 };
 
 export const Links = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
@@ -213,7 +213,7 @@ export const Links = {
 };
 
 export const MultipleTriggers = {
-  render: (_) =>
+  render: () =>
     html`
       <div
         style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
@@ -243,7 +243,7 @@ export const MultipleTriggers = {
 };
 
 export const MultipleDynamicTriggers = {
-  render: (_) =>
+  render: () =>
     html`
       <div
         style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
@@ -285,7 +285,7 @@ export const MultipleDynamicTriggers = {
 };
 
 export const Composition = {
-  render: (_) => {
+  render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
@@ -345,7 +345,7 @@ export const Composition = {
 };
 
 export const CoordinatingDropdowns = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
         <pharos-button

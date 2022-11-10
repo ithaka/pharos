@@ -41,7 +41,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (_) =>
+  render: () =>
     html`
       <div
         style="display: grid; grid-gap: 1rem; grid-template-columns: repeat(2, 300px); 1rem 300px"
@@ -73,7 +73,7 @@ export const States = {
 };
 
 export const Events = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
         <pharos-text-input
@@ -132,7 +132,7 @@ export const CustomErrorMessage = {
 };
 
 export const FormData = {
-  render: (_) =>
+  render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
         <form name="my-form" action="https://httpbin.org/post" method="POST">

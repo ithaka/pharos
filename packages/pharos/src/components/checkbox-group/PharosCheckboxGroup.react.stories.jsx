@@ -3,12 +3,16 @@ import { action } from '@storybook/addon-actions';
 import { PharosButton, PharosCheckbox, PharosCheckboxGroup } from '../../react-components';
 import createFormData from '../../utils/createFormData';
 import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
   title: 'Forms/Checkbox Group',
   component: PharosCheckboxGroup,
   subcomponents: { PharosCheckbox },
-  options: { selectedPanel: 'addon-controls' },
+  parameters: {
+    docs: { page: configureDocsPage('checkbox') },
+    options: { selectedPanel: 'addon-controls' },
+  },
 };
 
 export const Base = {
@@ -35,7 +39,7 @@ export const Base = {
 };
 
 export const Events = {
-  render: (_) => (
+  render: () => (
     <PharosCheckboxGroup
       onChange={(e) => action('Change')(JSON.stringify(e.target.value))}
       name="group2"
@@ -65,7 +69,7 @@ export const Validity = {
 };
 
 export const FormData = {
-  render: (_) => (
+  render: () => (
     <form name="my-form" action="https://httpbin.org/post" method="POST">
       <PharosCheckboxGroup
         style={{ marginBottom: '0.5rem' }}

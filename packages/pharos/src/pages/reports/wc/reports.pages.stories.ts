@@ -20,8 +20,7 @@ export default {
 };
 
 export const Reports = {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  render: (_: object): TemplateResult => html`
+  render: (): TemplateResult => html`
     <div class="reports-page__container">
       ${Sidenav()}
       <main id="main-content">

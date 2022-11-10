@@ -22,8 +22,7 @@ export default {
 } as Meta;
 
 export const Home = {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  render: (_: object) => (
+  render: () => (
     <div className="home-page__container">
       <HeaderRevised />
       <main>

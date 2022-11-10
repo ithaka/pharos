@@ -65,7 +65,7 @@ export const Placement = {
 };
 
 export const DismissBehavior = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -109,7 +109,7 @@ export const FullWidth = {
 };
 
 export const MultipleTriggers = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -130,7 +130,7 @@ export const MultipleTriggers = {
 };
 
 export const CustomBoundary = {
-  render: (_) => (
+  render: () => (
     <div
       style={{
         display: 'grid',
@@ -147,7 +147,7 @@ export const CustomBoundary = {
         <PharosDropdownMenuItem>Menu item 2</PharosDropdownMenuItem>
         <PharosDropdownMenuItem data-tooltip-id="my-tooltip">Hover on Me</PharosDropdownMenuItem>
         <PharosTooltip id="my-tooltip" boundary="my-menu">
-          this is a very long tooltip but I stay in the dropdown menu's boundary!!!
+          this is a very long tooltip but I stay in the dropdown menu&apos;s boundary!!!
         </PharosTooltip>
       </PharosDropdownMenu>
     </div>

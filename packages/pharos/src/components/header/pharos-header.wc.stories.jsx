@@ -12,7 +12,7 @@ export default {
 };
 
 export const Base = {
-  render: (_) => {
+  render: () => {
     const accountNav = (section) => html`
       <pharos-dropdown-menu-nav label="profile">
         <pharos-dropdown-menu-nav-link
