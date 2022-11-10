@@ -1,5 +1,25 @@
 # @ithaka/pharos
 
+## 12.15.0
+
+### Minor Changes
+
+- [#434](https://github.com/ithaka/pharos/pull/434) [`080c496`](https://github.com/ithaka/pharos/commit/080c496fedd4be13bd7f63c92332b9e1f6e32069) Thanks [@daneah](https://github.com/daneah)! - \* Replace PopperJS with Floating UI for tooltips and dropdown menus
+
+  - Update GitHub Actions to use environment files instead of `set-output`
+  - Update GitHub Actions action versions
+  - Fix stylelint errors for Link, ToggleButton, TextInput
+
+- [#442](https://github.com/ithaka/pharos/pull/442) [`bc05bbc`](https://github.com/ithaka/pharos/commit/bc05bbcf3215baa78755d60436bb720b844da7fd) Thanks [@daneah](https://github.com/daneah)! - Fire pharos-tab-selected in response to tab being selected programmatically in addition to user clicks
+
+### Patch Changes
+
+- [#438](https://github.com/ithaka/pharos/pull/438) [`4f56c1b`](https://github.com/ithaka/pharos/commit/4f56c1b062fa160cd5aac6c96d96a39a5df5fbdb) Thanks [@daneah](https://github.com/daneah)! - Improve accessibility for toggle button groups
+
+- [#435](https://github.com/ithaka/pharos/pull/435) [`6cbeb91`](https://github.com/ithaka/pharos/commit/6cbeb91cc5942c492222a797ab3efd710b15ed1c) Thanks [@daneah](https://github.com/daneah)! - Update Storybook stories to Component Story Format (CSF) version 3
+
+- [#449](https://github.com/ithaka/pharos/pull/449) [`50e665d`](https://github.com/ithaka/pharos/commit/50e665dbdb0a19c50df68b99e266f2fd7bb5aedd) Thanks [@daneah](https://github.com/daneah)! - Fix initial tab selection in more use cases
+
 ## 12.14.0
 
 ### Minor Changes

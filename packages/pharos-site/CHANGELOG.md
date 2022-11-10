@@ -1,5 +1,23 @@
 # @ithaka/pharos-site
 
+## 5.12.0
+
+### Minor Changes
+
+- [#434](https://github.com/ithaka/pharos/pull/434) [`080c496`](https://github.com/ithaka/pharos/commit/080c496fedd4be13bd7f63c92332b9e1f6e32069) Thanks [@daneah](https://github.com/daneah)! - \* Replace PopperJS with Floating UI for tooltips and dropdown menus
+  - Update GitHub Actions to use environment files instead of `set-output`
+  - Update GitHub Actions action versions
+  - Fix stylelint errors for Link, ToggleButton, TextInput
+
+### Patch Changes
+
+- [#433](https://github.com/ithaka/pharos/pull/433) [`67fba0f`](https://github.com/ithaka/pharos/commit/67fba0f404018c581932b4d9bd627571df7f9ca5) Thanks [@daneah](https://github.com/daneah)! - Improve imports with path aliases
+
+- [#444](https://github.com/ithaka/pharos/pull/444) [`237339f`](https://github.com/ithaka/pharos/commit/237339f5130c4809c2f8e807d5a463edd8e63b13) Thanks [@daneah](https://github.com/daneah)! - Fix documentation for Button's on-background usage
+
+- Updated dependencies [[`080c496`](https://github.com/ithaka/pharos/commit/080c496fedd4be13bd7f63c92332b9e1f6e32069), [`4f56c1b`](https://github.com/ithaka/pharos/commit/4f56c1b062fa160cd5aac6c96d96a39a5df5fbdb), [`bc05bbc`](https://github.com/ithaka/pharos/commit/bc05bbcf3215baa78755d60436bb720b844da7fd), [`6cbeb91`](https://github.com/ithaka/pharos/commit/6cbeb91cc5942c492222a797ab3efd710b15ed1c), [`50e665d`](https://github.com/ithaka/pharos/commit/50e665dbdb0a19c50df68b99e266f2fd7bb5aedd)]:
+  - @ithaka/pharos@12.15.0
+
 ## 5.11.3
 
 ### Patch Changes
