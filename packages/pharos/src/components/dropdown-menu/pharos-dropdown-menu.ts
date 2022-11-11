@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { property, query, state } from 'lit/decorators.js';
+import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { styleMap } from 'lit/directives/style-map.js';
 import debounce from '../../utils/debounce';
@@ -16,6 +16,8 @@ import { FocusTrap } from '@ithaka/focus-trap';
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
 import { autoUpdate, computePosition, flip, offset } from '../base/overlay-element';
 export type { Placement, PositioningStrategy };
+
+const _allMenuItemsSelector = '[data-pharos-component="PharosDropdownMenuItem"]';
 
 /**
  * Pharos dropdown menu component.
@@ -54,6 +56,12 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
   @query('.dropdown-menu__list')
   private _menu!: HTMLUListElement;
+
+  @queryAssignedElements({ selector: _allMenuItemsSelector })
+  private _allMenuItems!: NodeListOf<PharosDropdownMenuItem>;
+
+  @queryAssignedElements({ selector: `${_allMenuItemsSelector}:not([disabled])` })
+  private _activeMenuItems!: NodeListOf<PharosDropdownMenuItem>;
 
   @state()
   private _targetWidth = 0;
@@ -365,20 +373,12 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _focusFirstItem(): void {
-    const item: PharosDropdownMenuItem | null = this.querySelector(
-      '[data-pharos-component="PharosDropdownMenuItem"]:not([disabled])'
-    );
-    if (item) {
-      item.focus();
-    } else {
-      this.focus();
-    }
+    const item: PharosDropdownMenuItem | null = this._activeMenuItems[0];
+    (item || this).focus();
   }
 
   private _focusLastItem(): void {
-    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]:not([disabled])')
-    );
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._activeMenuItems);
     if (items.length) {
       items[items.length - 1].focus();
       this._moveFocusToLast = false;
@@ -395,7 +395,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
   private _handleMenuClick(event: MouseEvent): void {
     const clickedItem: PharosDropdownMenuItem | null = (event.target as Element)?.closest(
-      '[data-pharos-component="PharosDropdownMenuItem"]'
+      _allMenuItemsSelector
     );
 
     if (clickedItem) {
@@ -404,9 +404,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _handleItemClick(clickedItem: PharosDropdownMenuItem): void {
-    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]')
-    );
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._allMenuItems);
     const details = {
       bubbles: true,
       composed: true,
@@ -457,9 +455,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   private _handleNavigation(moveForward: boolean): void {
     const current = this.ownerDocument.activeElement;
 
-    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]:not([disabled]')
-    );
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._activeMenuItems);
 
     let index = items.findIndex((item) => item === current);
 
@@ -518,9 +514,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _resetItemsState(): void {
-    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]')
-    );
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._allMenuItems);
 
     debounce(() => {
       items.forEach((item) => (item['_active'] = false));
@@ -528,13 +522,11 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _hasItems(): boolean {
-    return this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]').length > 0;
+    return this._allMenuItems.length > 0;
   }
 
   private _handleSlotChange(): void {
-    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]')
-    );
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._allMenuItems);
 
     items.forEach((item, index) => {
       item['_last'] = index === items.length - 1;
