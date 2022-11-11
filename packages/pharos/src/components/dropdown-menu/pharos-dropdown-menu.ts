@@ -245,7 +245,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
     if (this._currentTrigger) {
       this._cleanup = autoUpdate(this._currentTrigger, this, () => {
         if (this._currentTrigger && this._menu) {
-          computePosition(this._currentTrigger, this, {
+          computePosition(this._currentTrigger, this._menu, {
             placement: this._navMenu ? 'bottom-start' : placement,
             strategy: this.strategy,
             middleware: [
@@ -255,7 +255,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
               }),
             ],
           }).then(({ x, y }) => {
-            Object.assign(this.style, {
+            Object.assign(this._menu.style, {
               left: `${x}px`,
               top: `${y}px`,
             });
