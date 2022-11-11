@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.15.1
+
+### Patch Changes
+
+- [#451](https://github.com/ithaka/pharos/pull/451) [`d4149c2`](https://github.com/ithaka/pharos/commit/d4149c2bdee9024b204e439ce839759bd5107d01) Thanks [@daneah](https://github.com/daneah)! - Apply position computation and resulting styles to the proper menu element instead of the host container
+
 ## 12.15.0
 
 ### Minor Changes
