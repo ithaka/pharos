@@ -15,7 +15,7 @@ import { FocusTrap } from '@ithaka/focus-trap';
 
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
 import { autoUpdate, computePosition, flip, offset } from '../base/overlay-element';
-import { modulo } from '../../utils/math';
+import { loopWrapIndex } from '../../utils/math';
 export type { Placement, PositioningStrategy };
 
 const _allMenuItemsSelector = '[data-pharos-component="PharosDropdownMenuItem"]';
@@ -458,10 +458,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
     const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._activeMenuItems);
 
-    let index = items.findIndex((item) => item === current);
-    index = moveForward ? index : Math.max(index, 0);
-    const nextItemIndex = modulo(index + (moveForward ? 1 : -1), items.length);
-
+    const nextItemIndex = loopWrapIndex(items, (item) => item === current, moveForward);
     items[nextItemIndex]?.focus();
   }
 

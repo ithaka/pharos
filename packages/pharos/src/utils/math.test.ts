@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { modulo } from './math';
+import { loopWrapIndex, modulo } from './math';
 
 describe('modulo', () => {
   it('rolls over to zero at the modulus', () => {
@@ -20,5 +20,23 @@ describe('modulo', () => {
 
   it('works for negative numbers', () => {
     expect(modulo(-3, 17)).to.equal(14);
+  });
+});
+
+describe('loopWrapIndex', () => {
+  it('returns the last item if moving backward from first item', () => {
+    expect(loopWrapIndex([0, 1, 2], (i) => i === 0, false)).to.equal(2);
+  });
+
+  it('returns the last item if moving backward and no current index', () => {
+    expect(loopWrapIndex([0, 1, 2], (i) => i === 42, false)).to.equal(2);
+  });
+
+  it('returns the first item if moving forward from last item', () => {
+    expect(loopWrapIndex([0, 1, 2], (i) => i === 2, true)).to.equal(0);
+  });
+
+  it('returns the first item if moving forward and no current index', () => {
+    expect(loopWrapIndex([0, 1, 2], (i) => i === 42, true)).to.equal(0);
   });
 });
