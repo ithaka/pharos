@@ -115,7 +115,8 @@ export class PharosRadioGroup extends FormElement {
     const values = radios.map((radio) => radio.value);
 
     const focusedRadio = document.activeElement as PharosRadioButton;
-    const index = values.findIndex((v) => v === focusedRadio.value);
+    let index = values.findIndex((v) => v === focusedRadio.value);
+    index = moveForward ? index : Math.max(index, 0);
     const nextRadioIndex = modulo(index + (moveForward ? 1 : -1), values.length);
 
     const checkedRadio = radios[nextRadioIndex];

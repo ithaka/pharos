@@ -372,7 +372,8 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
       '.combobox__option[highlighted]'
     ) as HTMLLIElement;
 
-    const index = values.findIndex((v) => v === highlightedOption?.innerText.trim());
+    let index = values.findIndex((v) => v === highlightedOption?.innerText.trim());
+    index = moveForward ? index : Math.max(index, 0);
     const nextOptionIndex = modulo(index + (moveForward ? 1 : -1), values.length);
 
     highlightedOption?.removeAttribute('highlighted');

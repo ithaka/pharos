@@ -107,7 +107,8 @@ export class PharosToggleButtonGroup extends PharosElement {
       return;
     }
 
-    const index = toggleButtons.findIndex((button) => button.id === focused.id);
+    let index = toggleButtons.findIndex((button) => button.id === focused.id);
+    index = moveForward ? index : Math.max(index, 0);
     const nextButtonIndex = modulo(index + (moveForward ? 1 : -1), toggleButtons.length);
 
     focused['_focused'] = false;

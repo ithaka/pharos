@@ -121,7 +121,8 @@ export class PharosTabs extends PharosElement {
       return;
     }
 
-    const index = ids.findIndex((v) => v === focused.id);
+    let index = ids.findIndex((v) => v === focused.id);
+    index = moveForward ? index : Math.max(index, 0);
     const nextTabIndex = modulo(index + (moveForward ? 1 : -1), ids.length);
 
     focused['_focused'] = false;

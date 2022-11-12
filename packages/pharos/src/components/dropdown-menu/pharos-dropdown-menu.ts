@@ -458,7 +458,8 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
     const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._activeMenuItems);
 
-    const index = items.findIndex((item) => item === current);
+    let index = items.findIndex((item) => item === current);
+    index = moveForward ? index : Math.max(index, 0);
     const nextItemIndex = modulo(index + (moveForward ? 1 : -1), items.length);
 
     items[nextItemIndex]?.focus();
