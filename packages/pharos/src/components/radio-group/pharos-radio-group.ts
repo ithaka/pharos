@@ -5,6 +5,7 @@ import { radioGroupStyles } from './pharos-radio-group.css';
 import type { PharosRadioButton } from '../radio-button/pharos-radio-button';
 
 import { FormElement } from '../base/form-element';
+import { modulo } from '../../utils/math';
 
 const _allRadioButtonsSelector = '[data-pharos-component="PharosRadioButton"]';
 
@@ -114,17 +115,10 @@ export class PharosRadioGroup extends FormElement {
     const values = radios.map((radio) => radio.value);
 
     const focusedRadio = document.activeElement as PharosRadioButton;
-    let index = values.findIndex((v) => v === focusedRadio.value);
+    const index = values.findIndex((v) => v === focusedRadio.value);
+    const nextRadioIndex = modulo(index + (moveForward ? 1 : -1), values.length);
 
-    if (moveForward) {
-      // move forward/loop
-      index = index === values.length - 1 ? 0 : index + 1;
-    } else {
-      // move backwards/loop
-      index = index === 0 ? values.length - 1 : index - 1;
-    }
-
-    const checkedRadio = radios[index];
+    const checkedRadio = radios[nextRadioIndex];
     checkedRadio['_radio'].click();
     checkedRadio['_radio'].focus();
   }

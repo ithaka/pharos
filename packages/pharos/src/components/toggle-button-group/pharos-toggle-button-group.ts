@@ -4,6 +4,7 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { toggleButtonGroupStyles } from './pharos-toggle-button-group.css';
 import type { PharosToggleButton } from './pharos-toggle-button';
 import { property, queryAssignedElements } from 'lit/decorators.js';
+import { modulo } from '../../utils/math';
 
 const _allToggleButtonsSelector = '[data-pharos-component="PharosToggleButton"]';
 
@@ -51,7 +52,7 @@ export class PharosToggleButtonGroup extends PharosElement {
 
   private _selectInitialToggleButton(toggleButtons: PharosToggleButton[]): void {
     const selected: PharosToggleButton | null = this._selectedToggleButtons[0];
-    const selectedButton: PharosToggleButton = selected ? selected : toggleButtons[0];
+    const selectedButton: PharosToggleButton = selected || toggleButtons[0];
 
     selectedButton.selected = true;
     selectedButton.pressed = 'true';
@@ -106,18 +107,11 @@ export class PharosToggleButtonGroup extends PharosElement {
       return;
     }
 
-    const focusedButtonIndex = toggleButtons.findIndex((button) => button.id === focused.id);
-    const lastButton = toggleButtons.length - 1;
-    const firstButton = 0;
-    let moveToIndex;
-    if (moveForward) {
-      moveToIndex = focusedButtonIndex === lastButton ? firstButton : focusedButtonIndex + 1;
-    } else {
-      moveToIndex = focusedButtonIndex === firstButton ? lastButton : focusedButtonIndex - 1;
-    }
+    const index = toggleButtons.findIndex((button) => button.id === focused.id);
+    const nextButtonIndex = modulo(index + (moveForward ? 1 : -1), toggleButtons.length);
 
     focused['_focused'] = false;
-    const moveFocusTo = toggleButtons[moveToIndex];
+    const moveFocusTo = toggleButtons[nextButtonIndex];
     moveFocusTo['_focused'] = true;
 
     await moveFocusTo.updateComplete;

@@ -6,6 +6,7 @@ import { tabsStyles } from './pharos-tabs.css';
 
 import type { PharosTab } from './pharos-tab';
 import type { PharosTabPanel } from './pharos-tab-panel';
+import { modulo } from '../../utils/math';
 
 const _allTabsSelector = '[data-pharos-component="PharosTab"]';
 const _allTabPanelsSelector = '[data-pharos-component="PharosTabPanel"]';
@@ -120,16 +121,11 @@ export class PharosTabs extends PharosElement {
       return;
     }
 
-    let index = ids.findIndex((v) => v === focused.id);
-
-    if (moveForward) {
-      index = index === ids.length - 1 ? 0 : index + 1;
-    } else {
-      index = index === 0 ? ids.length - 1 : index - 1;
-    }
+    const index = ids.findIndex((v) => v === focused.id);
+    const nextTabIndex = modulo(index + (moveForward ? 1 : -1), ids.length);
 
     focused['_focused'] = false;
-    const moveFocusTo = tabs[index];
+    const moveFocusTo = tabs[nextTabIndex];
     moveFocusTo['_focused'] = true;
 
     await moveFocusTo.updateComplete;
