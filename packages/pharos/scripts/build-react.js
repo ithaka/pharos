@@ -1,4 +1,4 @@
-import { promises as fsPromises } from 'fs';
+import * as fs from 'fs/promises';
 import path from 'path';
 import { globbyStream } from 'globby';
 import customElementsManifest from '../custom-elements.json' assert { type: 'json' };
@@ -93,7 +93,7 @@ const importTypes = (file, filePath) => {
 };
 
 const setup = async () => {
-  await fsPromises.mkdir('./src/react-components', { recursive: true });
+  await fs.mkdir('./src/react-components', { recursive: true });
 };
 
 export const buildReact = async () => {
@@ -109,7 +109,7 @@ export const buildReact = async () => {
     const relativePath = `'../../components/${webComponentFilePath}'`;
     const reactInterface = createComponentInterface(reactComponentName);
 
-    const component = await fsPromises.readFile(componentPath, 'utf8');
+    const component = await fs.readFile(componentPath, 'utf8');
 
     // Generate React component using our wrapper
     const reactComponent = `
@@ -138,7 +138,7 @@ export const buildReact = async () => {
         `;
 
     // Append React component export to index file
-    await fsPromises.appendFile(
+    await fs.appendFile(
       './src/react-components/index.ts',
       `export { ${reactComponentName} } from './${webComponentFilePath}';\n`,
       (err) => {
@@ -149,8 +149,8 @@ export const buildReact = async () => {
     const options = prettier.resolveConfig.sync(componentPath);
     options.parser = 'typescript';
     const formatted = prettier.format(reactComponent, options);
-    await fsPromises.mkdir(path.dirname(dest), { recursive: true });
-    await fsPromises.writeFile(dest, formatted, { flag: 'w' });
+    await fs.mkdir(path.dirname(dest), { recursive: true });
+    await fs.writeFile(dest, formatted, { flag: 'w' });
   }
 };
 

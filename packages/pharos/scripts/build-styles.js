@@ -1,4 +1,4 @@
-import { promises as fsPromises } from 'fs';
+import * as fs from 'fs/promises';
 import path from 'path';
 import { globbyStream } from 'globby';
 import sass from 'sass';
@@ -17,7 +17,7 @@ const toCamelCase = (str) => {
 };
 
 const setup = async () => {
-  await fsPromises.mkdir('./lib/styles', { recursive: true });
+  await fs.mkdir('./lib/styles', { recursive: true });
 };
 
 export const buildStyles = async () => {
@@ -49,7 +49,7 @@ export const buildStyles = async () => {
       \`;
     `;
 
-    await fsPromises.writeFile(dest, litStyles, { flag: 'w' });
+    await fs.writeFile(dest, litStyles, { flag: 'w' });
   }
 };
 
@@ -68,7 +68,7 @@ export const buildSlotStyles = async () => {
         return result;
       });
 
-    await fsPromises.writeFile(path.join('./lib/styles', dest), processedCSS.css, { flag: 'w' });
+    await fs.writeFile(path.join('./lib/styles', dest), processedCSS.css, { flag: 'w' });
   }
 };
 
@@ -78,13 +78,13 @@ export const buildSassUtils = async () => {
 
 export const buildSassStyles = async () => {
   for await (const sassPath of globbyStream('./src/styles/*.scss')) {
-    await fsPromises.copyFile(sassPath, path.join('./lib/styles', path.basename(sassPath)));
+    await fs.copyFile(sassPath, path.join('./lib/styles', path.basename(sassPath)));
   }
 };
 
 export const buildCssStyles = async () => {
   for await (const cssPath of globbyStream('./src/styles/*.css')) {
-    await fsPromises.copyFile(cssPath, path.join('./lib/styles', path.basename(cssPath)));
+    await fs.copyFile(cssPath, path.join('./lib/styles', path.basename(cssPath)));
   }
 };
 

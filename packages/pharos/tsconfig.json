@@ -22,7 +22,7 @@
     "resolveJsonModule": true,
     "noImplicitOverride": true,
     "useDefineForClassFields": false,
-    "types": ["mocha", "node"],
+    "types": ["mocha"],
     "plugins": [
       {
         "name": "ts-lit-plugin",
