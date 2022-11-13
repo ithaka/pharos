@@ -131,6 +131,7 @@
   "resolutions": {
     "@typescript-eslint/parser": "^5.41.0",
     "axe-core": "^4.3.3",
+    "babel-loader": "^9.1.0",
     "playwright": "^1.17.1",
     "webpack": "^5.64.1",
     "dotenv-webpack": "^7.0.0",
