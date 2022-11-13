@@ -1,6 +1,8 @@
 module.exports = {
   features: {
+    babelModeV7: true,
     previewCsfV3: true,
+    storyStoreV7: true,
   },
   core: {
     builder: 'webpack5',
