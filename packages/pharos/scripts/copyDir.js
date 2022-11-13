@@ -1,14 +1,16 @@
-import * as fs from 'fs/promises';
+import { promises as fsPromises } from 'fs';
 import path from 'path';
 
 export const copyDir = async (src, dest) => {
-  await fs.mkdir(dest, { recursive: true });
-  let entries = await fs.readdir(src, { withFileTypes: true });
+  await fsPromises.mkdir(dest, { recursive: true });
+  let entries = await fsPromises.readdir(src, { withFileTypes: true });
 
   for (let entry of entries) {
     let srcPath = path.join(src, entry.name);
     let destPath = path.join(dest, entry.name);
 
-    entry.isDirectory() ? await copyDir(srcPath, destPath) : await fs.copyFile(srcPath, destPath);
+    entry.isDirectory()
+      ? await copyDir(srcPath, destPath)
+      : await fsPromises.copyFile(srcPath, destPath);
   }
 };
