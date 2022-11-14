@@ -7,10 +7,11 @@
     "build:tokens": "yarn workspace @ithaka/pharos build:tokens",
     "analyze": "yarn workspace @ithaka/pharos analyze",
     "format": "prettier packages/* --write",
-    "lint": "yarn lint:lit-analyzer && yarn lint:eslint && yarn lint:styles",
+    "lint": "yarn lint:lit-analyzer && yarn lint:eslint && yarn lint:styles && yarn lint:icons",
     "lint:eslint": "eslint 'packages/**/*.{ts,tsx,mdx,js,jsx,mjs}'",
     "lint:lit-analyzer": "lit-analyzer 'packages/*/src/**/!(*.css|*.test).ts' --strict --rules.no-missing-import off --rules.no-unknown-tag-name off",
     "lint:styles": "stylelint 'packages/**/*.{scss,css}'",
+    "lint:icons": "svglint --ci packages/pharos/assets/icons/*.svg",
     "test": "yarn workspace @ithaka/pharos test",
     "test:cli": "yarn workspace @ithaka/pharos-cli test",
     "watch:tsc": "yarn workspace @ithaka/pharos build:tsc:watch",
@@ -121,7 +122,8 @@
     "stylelint": "^14.0.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard-scss": "^3.0.0",
-    "stylelint-scss": "^4.0.0"
+    "stylelint-scss": "^4.0.0",
+    "svglint": "^2.2.0"
   },
   "workspaces": {
     "packages": [
