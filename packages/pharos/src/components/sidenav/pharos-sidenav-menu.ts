@@ -1,6 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, queryAssignedElements } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { sidenavMenuStyles } from './pharos-sidenav-menu.css';
@@ -37,6 +37,7 @@ export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(PharosElem
   @property({ type: Boolean, reflect: true })
   public expanded = false;
 
+  @queryAssignedElements({ selector: '[data-pharos-component="PharosSidenavLink"]' })
   private _allLinks!: NodeListOf<PharosSidenavLink>;
 
   public static override get styles(): CSSResultArray {
@@ -44,7 +45,6 @@ export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(PharosElem
   }
 
   protected override firstUpdated(): void {
-    this._allLinks = this.querySelectorAll('[data-pharos-component="PharosSidenavLink"]');
     this._allLinks.forEach((link) => {
       link.menuItem = true;
       link.setAttribute('role', 'menuitem');

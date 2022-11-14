@@ -1,10 +1,13 @@
 import { html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, queryAssignedElements } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { radioGroupStyles } from './pharos-radio-group.css';
 import type { PharosRadioButton } from '../radio-button/pharos-radio-button';
 
 import { FormElement } from '../base/form-element';
+import { loopWrapIndex } from '../../utils/math';
+
+const _allRadioButtonsSelector = '[data-pharos-component="PharosRadioButton"]';
 
 /**
  * Pharos radio group component.
@@ -38,6 +41,9 @@ export class PharosRadioGroup extends FormElement {
     )?.value;
   }
 
+  @queryAssignedElements({ selector: _allRadioButtonsSelector })
+  private _radioButtons!: NodeListOf<PharosRadioButton>;
+
   private _clicked = false;
 
   public static override get styles(): CSSResultArray {
@@ -48,10 +54,7 @@ export class PharosRadioGroup extends FormElement {
     this._setRadios();
     this._addFocusListeners();
 
-    const radios: NodeListOf<PharosRadioButton> = this.querySelectorAll(
-      '[data-pharos-component="PharosRadioButton"]'
-    );
-    radios.forEach((radio) => {
+    this._radioButtons.forEach((radio) => {
       radio.addEventListener('change', (event: Event) => {
         event.stopPropagation();
 
@@ -107,29 +110,20 @@ export class PharosRadioGroup extends FormElement {
 
   private _handleArrowKeys(moveForward: boolean): void {
     const radios: PharosRadioButton[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosRadioButton"]:not([disabled])')
+      this.querySelectorAll(`${_allRadioButtonsSelector}:not([disabled])`)
     );
     const values = radios.map((radio) => radio.value);
-
     const focusedRadio = document.activeElement as PharosRadioButton;
-    let index = values.findIndex((v) => v === focusedRadio.value);
+    const nextRadioIndex = loopWrapIndex(values, (v) => v === focusedRadio.value, moveForward);
+    const checkedRadio = radios[nextRadioIndex];
 
-    if (moveForward) {
-      // move forward/loop
-      index = index === values.length - 1 ? 0 : index + 1;
-    } else {
-      // move backwards/loop
-      index = index === 0 ? values.length - 1 : index - 1;
-    }
-
-    const checkedRadio = radios[index];
     checkedRadio['_radio'].click();
     checkedRadio['_radio'].focus();
   }
 
   private _updateSelection(value: string): void {
     const previouslyChecked: PharosRadioButton | null = this.querySelector(
-      `[data-pharos-component="PharosRadioButton"][checked]:not([value="${value}"])`
+      `${_allRadioButtonsSelector}[checked]:not([value="${value}"])`
     );
 
     if (previouslyChecked) {
@@ -138,10 +132,7 @@ export class PharosRadioGroup extends FormElement {
   }
 
   private _setRadios(): void {
-    const radios: NodeListOf<PharosRadioButton> = this.querySelectorAll(
-      '[data-pharos-component="PharosRadioButton"]'
-    );
-    radios.forEach((radio) => {
+    this._radioButtons.forEach((radio) => {
       radio.name = this.name;
       radio.disabled = this.disabled;
       radio.validated = this.validated;
@@ -150,10 +141,7 @@ export class PharosRadioGroup extends FormElement {
   }
 
   private _addFocusListeners(): void {
-    const radios: NodeListOf<PharosRadioButton> = this.querySelectorAll(
-      '[data-pharos-component="PharosRadioButton"]'
-    );
-    radios.forEach((radio) => {
+    this._radioButtons.forEach((radio) => {
       // Disregard focus from clicks
       radio.addEventListener('mousedown', () => {
         this._clicked = true;
@@ -162,7 +150,7 @@ export class PharosRadioGroup extends FormElement {
       // Ensure focus is delegated to the selected radio when focus enters the group
       radio.addEventListener('focusin', (event: FocusEvent) => {
         const checkedRadio: PharosRadioButton | null = this.querySelector(
-          `[data-pharos-component="PharosRadioButton"][checked]`
+          `${_allRadioButtonsSelector}[checked]`
         );
 
         const withinGroup =

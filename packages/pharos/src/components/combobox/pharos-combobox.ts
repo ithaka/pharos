@@ -13,6 +13,7 @@ import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosIcon } from '../icon/pharos-icon';
 import { PharosTooltip } from '../tooltip/pharos-tooltip';
 import { PharosButton } from '../button/pharos-button';
+import { loopWrapIndex } from '../../utils/math';
 
 /**
  * Pharos combobox component.
@@ -371,18 +372,15 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
       '.combobox__option[highlighted]'
     ) as HTMLLIElement;
 
-    let index = values.findIndex((v) => v === highlightedOption?.innerText.trim());
-
-    if (moveForward) {
-      index = index === values.length - 1 ? 0 : index + 1;
-    } else {
-      index = index === 0 || index === -1 ? values.length - 1 : index - 1;
-    }
-
+    const nextOptionIndex = loopWrapIndex(
+      values,
+      (v) => v === highlightedOption?.innerText.trim(),
+      moveForward
+    );
     highlightedOption?.removeAttribute('highlighted');
     highlightedOption?.setAttribute('aria-selected', 'false');
 
-    const nextOption = options[index];
+    const nextOption = options[nextOptionIndex];
 
     nextOption.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     nextOption.setAttribute('highlighted', '');

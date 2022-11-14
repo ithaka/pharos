@@ -1,6 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, queryAssignedElements } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { dropdownMenuNavStyles } from './pharos-dropdown-menu-nav.css';
@@ -25,7 +25,10 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
   @property({ type: String, reflect: true })
   public label?: string;
 
+  @queryAssignedElements({ selector: '[data-pharos-component="PharosDropdownMenuNavLink"]' })
   private _allLinks!: NodeListOf<PharosDropdownMenuNavLink>;
+
+  @queryAssignedElements({ selector: '[data-pharos-component="PharosDropdownMenu"]' })
   private _allMenus!: NodeListOf<PharosDropdownMenu>;
 
   public static override get styles(): CSSResultArray {
@@ -46,9 +49,6 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
   }
 
   private _handleSlotChange(): void {
-    this._allLinks = this.querySelectorAll('[data-pharos-component="PharosDropdownMenuNavLink"]');
-    this._allMenus = this.querySelectorAll('[data-pharos-component="PharosDropdownMenu"]');
-
     this._allLinks.forEach((link) => {
       link.addEventListener('focusin', () => this._closeAllMenus());
       link.addEventListener('mouseenter', () => this._closeAllMenus(link));
