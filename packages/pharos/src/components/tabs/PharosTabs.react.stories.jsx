@@ -174,8 +174,7 @@ export const HorizontalScrolling = {
     </PharosTabs>
   ),
   parameters: {
-    viewport: {
-      defaultViewport: 'mobile1',
-    },
+    viewport: { defaultViewport: 'mobile1' },
+    chromatic: { viewports: [320, 1200] },
   },
 };
