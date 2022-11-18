@@ -40,16 +40,24 @@ export class PharosTab extends PharosElement {
     this.dataset.text = this.textContent || '';
   }
 
-  protected override updated(changedProperties: PropertyValues): void {
+  private async _ensureVisible(): Promise<void> {
+    setTimeout(() => this.scrollIntoView(), 1);
+  }
+
+  protected override async updated(changedProperties: PropertyValues): Promise<void> {
     if (changedProperties.has('selected')) {
       this._focused = this.selected;
       this.setAttribute('aria-selected', this.selected ? 'true' : 'false');
       if (this.selected) {
         this._triggerSelectedEvent();
+        await this._ensureVisible();
       }
     }
 
     if (changedProperties.has('_focused')) {
+      if (this._focused) {
+        await this._ensureVisible();
+      }
       this.setAttribute('tabindex', this._focused ? '0' : '-1');
     }
   }

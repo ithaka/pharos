@@ -6,6 +6,7 @@ import a11yConfig from '../a11yConfig';
 import '../styleConfig';
 import theme from '../theme';
 import '../../packages/pharos/src/test/initComponents';
+import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 window.process = window.process || {};
 window.process.env = window.process.env || {};
@@ -22,5 +23,12 @@ export const parameters = {
     components: {
       Canvas: Canvas,
     },
+  },
+  viewport: {
+    viewports: {
+      ...MINIMAL_VIEWPORTS,
+      ...INITIAL_VIEWPORTS,
+    },
+    defaultViewport: 'responsive',
   },
 };

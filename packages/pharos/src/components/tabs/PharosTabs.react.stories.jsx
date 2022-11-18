@@ -113,3 +113,69 @@ export const PanelSeparator = {
     </PharosTabs>
   ),
 };
+
+export const HorizontalScrolling = {
+  render: () => (
+    <PharosTabs panelSeparator style={{ width: '100%' }}>
+      <PharosTab id="tab-1" data-panel-id="panel-1">
+        Tab 1
+      </PharosTab>
+      <PharosTab id="tab-2" data-panel-id="panel-2">
+        Tab 2
+      </PharosTab>
+      <PharosTab id="tab-3" data-panel-id="panel-3">
+        Tab 3
+      </PharosTab>
+      <PharosTab id="tab-4" data-panel-id="panel-4">
+        Tab 4
+      </PharosTab>
+      <PharosTab id="tab-5" data-panel-id="panel-5">
+        Tab 5
+      </PharosTab>
+      <PharosTab id="tab-6" data-panel-id="panel-6">
+        Tab 6
+      </PharosTab>
+      <PharosTab id="tab-7" data-panel-id="panel-7" selected>
+        Tab 7
+      </PharosTab>
+      <PharosTab id="tab-8" data-panel-id="panel-8">
+        Tab 8
+      </PharosTab>
+      <PharosTab id="tab-9" data-panel-id="panel-9">
+        Tab 9
+      </PharosTab>
+      <PharosTabPanel id="panel-1" slot="panel">
+        Panel 1 with a panel separator
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-2" slot="panel">
+        Panel 2 with a panel separator
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-3" slot="panel">
+        Panel 3 with a panel separator
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-4" slot="panel">
+        Panel 4 with a panel separator
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-5" slot="panel">
+        Panel 5 with a panel separator
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-6" slot="panel">
+        Panel 6 with a panel separator
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-7" slot="panel">
+        Panel 7 with a panel separator
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-8" slot="panel">
+        Panel 8 with a panel separator
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-9" slot="panel">
+        Panel 9 with a panel separator
+      </PharosTabPanel>
+    </PharosTabs>
+  ),
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+  },
+};
