@@ -8,7 +8,7 @@ export const modulo = (num: number, modulus: number): number => {
 };
 
 interface FilterFunction {
-  (item: any): boolean;
+  <Type>(item: Type): boolean;
 }
 
 /**
@@ -17,8 +17,8 @@ interface FilterFunction {
  * @param currentItemFilterFunction
  * @param moveForward
  */
-export const loopWrapIndex = (
-  items: Array<any>,
+export const loopWrapIndex = <Type>(
+  items: Array<Type>,
   currentItemFilterFunction: FilterFunction,
   moveForward: boolean
 ): number => {
