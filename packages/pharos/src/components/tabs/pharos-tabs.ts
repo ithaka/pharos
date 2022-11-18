@@ -68,39 +68,40 @@ export class PharosTabs extends PharosElement {
     this._watchResize();
   }
 
-  private _tabOverflowObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.target === this._tabs[0]) {
-          this._overflowingLeft = entry.intersectionRatio < 1;
-        }
-
-        if (entry.target === this._tabs[this._tabs.length - 1]) {
-          this._overflowingRight = entry.intersectionRatio < 1;
-        }
-      });
-    },
-    {
-      root: this._tabList,
-      rootMargin: '1px',
-      threshold: 1,
-    }
-  );
+  private _tabOverflowObserver!: IntersectionObserver;
+  private _tabListResizeObserver!: ResizeObserver;
 
   private _watchTablistScrolling(): void {
+    this._tabOverflowObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === this._tabs[0]) {
+            this._overflowingLeft = entry.intersectionRatio < 1;
+          }
+
+          if (entry.target === this._tabs[this._tabs.length - 1]) {
+            this._overflowingRight = entry.intersectionRatio < 1;
+          }
+        });
+      },
+      {
+        root: this._tabList,
+        rootMargin: '1px',
+        threshold: 1,
+      }
+    );
     this._tabOverflowObserver.observe(this._tabs[0]);
     this._tabOverflowObserver.observe(this._tabs[this._tabs.length - 1]);
   }
 
-  private _tabListResizeObserver = new ResizeObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.target === this._tabList) {
-        this._selectedTabs[0].scrollIntoView();
-      }
-    });
-  });
-
   private _watchResize(): void {
+    this._tabListResizeObserver = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === this._tabList) {
+          this._selectedTabs[0].scrollIntoView();
+        }
+      });
+    });
     this._tabListResizeObserver.observe(this._tabList);
   }
 
