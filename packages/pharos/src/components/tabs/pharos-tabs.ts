@@ -41,6 +41,9 @@ export class PharosTabs extends PharosElement {
   @queryAssignedElements({ selector: _allTabsSelector })
   private _tabs!: NodeListOf<PharosTab>;
 
+  @queryAssignedElements({ selector: `${_allTabsSelector}[selected]` })
+  private _selectedTabs!: NodeListOf<PharosTab>;
+
   public static override get styles(): CSSResultArray {
     return [tabsStyles];
   }
@@ -62,15 +65,11 @@ export class PharosTabs extends PharosElement {
 
     this._selectInitialTab();
     this._watchTablistScrolling();
+    this._watchResize();
   }
 
-  private _watchTablistScrolling(): void {
-    const options = {
-      root: this._tabList,
-      rootMargin: '1px',
-      threshold: 1,
-    };
-    const observer = new IntersectionObserver((entries) => {
+  private _tabOverflowObserver = new IntersectionObserver(
+    (entries) => {
       entries.forEach((entry) => {
         if (entry.target === this._tabs[0]) {
           this._overflowingLeft = entry.intersectionRatio < 1;
@@ -80,9 +79,35 @@ export class PharosTabs extends PharosElement {
           this._overflowingRight = entry.intersectionRatio < 1;
         }
       });
-    }, options);
-    observer.observe(this._tabs[0]);
-    observer.observe(this._tabs[this._tabs.length - 1]);
+    },
+    {
+      root: this._tabList,
+      rootMargin: '1px',
+      threshold: 1,
+    }
+  );
+
+  private _watchTablistScrolling(): void {
+    this._tabOverflowObserver.observe(this._tabs[0]);
+    this._tabOverflowObserver.observe(this._tabs[this._tabs.length - 1]);
+  }
+
+  private _tabListResizeObserver = new ResizeObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.target === this._tabList) {
+        this._selectedTabs[0].scrollIntoView();
+      }
+    });
+  });
+
+  private _watchResize(): void {
+    this._tabListResizeObserver.observe(this._tabList);
+  }
+
+  override disconnectedCallback() {
+    this._tabOverflowObserver.disconnect();
+    this._tabListResizeObserver.disconnect();
+    super.disconnectedCallback();
   }
 
   private _selectInitialTab(): void {

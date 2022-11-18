@@ -1,10 +1,10 @@
 import { Canvas } from '@storybook/addon-docs';
+import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 import a11yConfig from '../a11yConfig';
 import '../styleConfig';
 import theme from '../theme';
 import '../../packages/pharos/src/test/initComponents';
-import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 export const parameters = {
   a11y: a11yConfig,
