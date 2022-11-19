@@ -12,7 +12,6 @@
   contain: content;
   display: grid;
   grid-template-columns: max-content;
-  scroll-margin-inline: var(--pharos-spacing-3-x);
 
   &::after {
     content: attr(data-text);

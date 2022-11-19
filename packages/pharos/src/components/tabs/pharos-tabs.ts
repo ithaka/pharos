@@ -94,11 +94,15 @@ export class PharosTabs extends PharosElement {
     this._tabOverflowObserver.observe(this._tabs[this._tabs.length - 1]);
   }
 
+  private _makeTabVisible(tab: PharosTab) {
+    this._tabList.scroll({ left: tab.offsetLeft - 3 * 16, behavior: 'smooth' });
+  }
+
   private _watchResize(): void {
     this._tabListResizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.target === this._tabList) {
-          this._selectedTabs[0].scrollIntoView();
+          this._makeTabVisible(this._selectedTabs[0]);
         }
       });
     });
@@ -125,6 +129,7 @@ export class PharosTabs extends PharosElement {
 
   private _handleTabSelected(selectedTab: PharosTab): void {
     selectedTab.selected = true;
+    this._makeTabVisible(selectedTab);
 
     const previousTab: PharosTab | null = this.querySelector(
       `${_allTabsSelector}[selected]:not([id="${selectedTab.id}"])`
@@ -187,6 +192,7 @@ export class PharosTabs extends PharosElement {
 
     await moveFocusTo.updateComplete;
     moveFocusTo.focus();
+    this._makeTabVisible(moveFocusTo);
   }
 
   private _handleEnterKey(): void {
