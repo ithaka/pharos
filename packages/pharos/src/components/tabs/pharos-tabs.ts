@@ -1,7 +1,8 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
-import { property, queryAssignedElements } from 'lit/decorators.js';
+import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { tabsStyles } from './pharos-tabs.css';
 
 import type { PharosTab } from './pharos-tab';
@@ -28,8 +29,20 @@ export class PharosTabs extends PharosElement {
   @property({ type: Boolean, reflect: true, attribute: 'panel-separator' })
   public panelSeparator = false;
 
+  @query('.tab__list')
+  private _tabList!: HTMLElement;
+
+  @state()
+  private _overflowingLeft = false;
+
+  @state()
+  private _overflowingRight = false;
+
   @queryAssignedElements({ selector: _allTabsSelector })
   private _tabs!: NodeListOf<PharosTab>;
+
+  @queryAssignedElements({ selector: `${_allTabsSelector}[selected]` })
+  private _selectedTabs!: NodeListOf<PharosTab>;
 
   public static override get styles(): CSSResultArray {
     return [tabsStyles];
@@ -51,6 +64,55 @@ export class PharosTabs extends PharosElement {
     }
 
     this._selectInitialTab();
+    this._watchTablistScrolling();
+    this._watchResize();
+  }
+
+  private _tabOverflowObserver!: IntersectionObserver;
+  private _tabListResizeObserver!: ResizeObserver;
+
+  private _watchTablistScrolling(): void {
+    this._tabOverflowObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === this._tabs[0]) {
+            this._overflowingLeft = entry.intersectionRatio < 1;
+          }
+
+          if (entry.target === this._tabs[this._tabs.length - 1]) {
+            this._overflowingRight = entry.intersectionRatio < 1;
+          }
+        });
+      },
+      {
+        root: this._tabList,
+        rootMargin: '1px',
+        threshold: 1,
+      }
+    );
+    this._tabOverflowObserver.observe(this._tabs[0]);
+    this._tabOverflowObserver.observe(this._tabs[this._tabs.length - 1]);
+  }
+
+  private _makeTabVisible(tab: PharosTab) {
+    this._tabList.scroll({ left: tab.offsetLeft - 3 * 16, behavior: 'smooth' });
+  }
+
+  private _watchResize(): void {
+    this._tabListResizeObserver = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === this._tabList) {
+          this._makeTabVisible(this._selectedTabs[0]);
+        }
+      });
+    });
+    this._tabListResizeObserver.observe(this._tabList);
+  }
+
+  override disconnectedCallback() {
+    this._tabOverflowObserver.disconnect();
+    this._tabListResizeObserver.disconnect();
+    super.disconnectedCallback();
   }
 
   private _selectInitialTab(): void {
@@ -67,6 +129,7 @@ export class PharosTabs extends PharosElement {
 
   private _handleTabSelected(selectedTab: PharosTab): void {
     selectedTab.selected = true;
+    this._makeTabVisible(selectedTab);
 
     const previousTab: PharosTab | null = this.querySelector(
       `${_allTabsSelector}[selected]:not([id="${selectedTab.id}"])`
@@ -129,6 +192,7 @@ export class PharosTabs extends PharosElement {
 
     await moveFocusTo.updateComplete;
     moveFocusTo.focus();
+    this._makeTabVisible(moveFocusTo);
   }
 
   private _handleEnterKey(): void {
@@ -151,9 +215,17 @@ export class PharosTabs extends PharosElement {
 
   private _renderTabList() {
     return html`
-      <div class="tab__list" role="tablist">
-        <slot></slot>
-        ${this._renderPanelSeparator()}
+      <div
+        class="${classMap({
+          ['cloak']: true,
+          ['cloak--cloak-left']: this._overflowingLeft,
+          ['cloak--cloak-right']: this._overflowingRight,
+        })}"
+      >
+        <div class="tab__list" role="tablist">
+          <slot></slot>
+          ${this._renderPanelSeparator()}
+        </div>
       </div>
     `;
   }

@@ -81,3 +81,51 @@ export const PanelSeparator = {
       </pharos-tabs>
     `,
 };
+
+export const HorizontalScrolling = {
+  render: () =>
+    html`
+      <pharos-tabs panel-separator style="width: 100%">
+        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
+        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
+        <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
+        <pharos-tab id="tab-4" data-panel-id="panel-4">Tab 4</pharos-tab>
+        <pharos-tab id="tab-5" data-panel-id="panel-5">Tab 5</pharos-tab>
+        <pharos-tab id="tab-6" data-panel-id="panel-6">Tab 6</pharos-tab>
+        <pharos-tab id="tab-7" data-panel-id="panel-7" selected>Tab 7</pharos-tab>
+        <pharos-tab id="tab-8" data-panel-id="panel-8">Tab 8</pharos-tab>
+        <pharos-tab id="tab-9" data-panel-id="panel-9">Tab 9</pharos-tab>
+        <pharos-tab-panel id="panel-1" slot="panel"
+          >Panel 1 with a panel separator</pharos-tab-panel
+        >
+        <pharos-tab-panel id="panel-2" slot="panel"
+          >Panel 2 with a panel separator</pharos-tab-panel
+        >
+        <pharos-tab-panel id="panel-3" slot="panel"
+          >Panel 3 with a panel separator</pharos-tab-panel
+        >
+        <pharos-tab-panel id="panel-4" slot="panel"
+          >Panel 4 with a panel separator</pharos-tab-panel
+        >
+        <pharos-tab-panel id="panel-5" slot="panel"
+          >Panel 5 with a panel separator</pharos-tab-panel
+        >
+        <pharos-tab-panel id="panel-6" slot="panel"
+          >Panel 6 with a panel separator</pharos-tab-panel
+        >
+        <pharos-tab-panel id="panel-7" slot="panel"
+          >Panel 7 with a panel separator</pharos-tab-panel
+        >
+        <pharos-tab-panel id="panel-8" slot="panel"
+          >Panel 8 with a panel separator</pharos-tab-panel
+        >
+        <pharos-tab-panel id="panel-9" slot="panel"
+          >Panel 9 with a panel separator</pharos-tab-panel
+        >
+      </pharos-tabs>
+    `,
+  parameters: {
+    viewport: { defaultViewport: 'mobile1' },
+    chromatic: { viewports: [320, 1200] },
+  },
+};
