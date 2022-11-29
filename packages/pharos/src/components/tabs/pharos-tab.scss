@@ -4,14 +4,14 @@
   @include mixins.font-base;
   @include mixins.transition-base(color, border-bottom-color);
 
-  display: inline-block;
-  align-self: flex-start;
   color: var(--pharos-color-text-20);
   padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-1-x);
   border: none;
   background: none;
   border-bottom: 1px solid var(--pharos-color-ui-40);
   contain: content;
+  display: grid;
+  grid-template-columns: max-content;
 
   &::after {
     content: attr(data-text);

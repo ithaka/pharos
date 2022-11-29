@@ -40,7 +40,7 @@ export class PharosTab extends PharosElement {
     this.dataset.text = this.textContent || '';
   }
 
-  protected override updated(changedProperties: PropertyValues): void {
+  protected override async updated(changedProperties: PropertyValues): Promise<void> {
     if (changedProperties.has('selected')) {
       this._focused = this.selected;
       this.setAttribute('aria-selected', this.selected ? 'true' : 'false');
