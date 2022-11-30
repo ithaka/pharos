@@ -250,3 +250,76 @@ export const Forms = {
       </div>
     `,
 };
+
+export const AllVariants = {
+  render: () =>
+    html`
+      <section style="padding: var(--pharos-spacing-3-x)">
+        <table>
+          <thead style="border-bottom: 1px solid gray">
+            <th>Variant</th>
+            <th>Default</th>
+            <th>Disabled</th>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Primary</th>
+              <td><pharos-button>Primary</pharos-button></td>
+              <td><pharos-button disabled>Primary</pharos-button></td>
+            </tr>
+            <tr>
+              <th>Secondary</th>
+              <td><pharos-button variant="secondary">Secondary</pharos-button></td>
+              <td><pharos-button variant="secondary" disabled>Secondary</pharos-button></td>
+            </tr>
+            <tr>
+              <th>Subtle</th>
+              <td><pharos-button variant="subtle">Subtle</pharos-button></td>
+              <td><pharos-button variant="subtle" disabled>Subtle</pharos-button></td>
+            </tr>
+            <tr>
+              <th>Overlay</th>
+              <td><pharos-button variant="overlay">Overlay</pharos-button></td>
+              <td><pharos-button variant="overlay" disabled>Overlay</pharos-button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section style="background: var(--pharos-color-black); padding: var(--pharos-spacing-3-x)">
+        <table>
+          <thead>
+            <th>Variant</th>
+            <th style="color: var(--pharos-color-text-white);">Default</th>
+            <th style="color: var(--pharos-color-text-white);">Disabled</th>
+          </thead>
+          <tbody>
+            <tr>
+              <th style="color: var(--pharos-color-text-white);">Primary</th>
+              <td><pharos-button on-background>Primary</pharos-button></td>
+              <td><pharos-button disabled on-background>Primary</pharos-button></td>
+            </tr>
+            <tr>
+              <th style="color: var(--pharos-color-text-white);">Secondary</th>
+              <td><pharos-button variant="secondary" on-background>Secondary</pharos-button></td>
+              <td>
+                <pharos-button variant="secondary" disabled on-background>Secondary</pharos-button>
+              </td>
+            </tr>
+            <tr>
+              <th style="color: var(--pharos-color-text-white);">Subtle</th>
+              <td><pharos-button variant="subtle" on-background>Subtle</pharos-button></td>
+              <td><pharos-button variant="subtle" disabled on-background>Subtle</pharos-button></td>
+            </tr>
+            <tr>
+              <th style="color: var(--pharos-color-text-white);">Overlay</th>
+              <td><pharos-button variant="overlay" on-background>Overlay</pharos-button></td>
+              <td>
+                <pharos-button variant="overlay" disabled on-background>Overlay</pharos-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    `,
+};
