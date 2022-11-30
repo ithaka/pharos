@@ -18,7 +18,7 @@
   @include mixins.button-base(
     $color: var(--pharos-color-text-base),
     $background-color: transparent,
-    $border-color: var(--pharos-color-ui-40)
+    $border-color: var(--pharos-color-marble-gray-80)
   );
 }
 
@@ -82,25 +82,33 @@
   padding: var(--pharos-spacing-one-half-x);
 }
 
-:host([on-background][variant='primary']:not([disabled])) #button-element {
-  @include mixins.button-color(
-    $color: var(--pharos-color-interactive-secondary),
-    $background-color: var(--pharos-color-interactive-tertiary),
-    $border-color: var(--pharos-color-interactive-tertiary)
-  );
-}
-
 :host([on-background][variant='secondary']:not([disabled])) #button-element {
   @include mixins.button-color(
     $color: var(--pharos-color-interactive-tertiary),
     $background-color: transparent,
-    $border-color: var(--pharos-color-interactive-tertiary)
+    $border-color: var(--pharos-color-marble-gray-50)
   );
 }
 
 :host([on-background][variant='subtle']:not([disabled])) #button-element {
   @include mixins.button-color(
     $color: var(--pharos-color-interactive-tertiary),
+    $background-color: transparent,
+    $border-color: transparent
+  );
+}
+
+:host([on-background][disabled]) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-marble-gray-50),
+    $background-color: var(--pharos-color-marble-gray-20),
+    $border-color: var(--pharos-color-marble-gray-20)
+  );
+}
+
+:host([variant='subtle'][disabled]) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-text-disabled),
     $background-color: transparent,
     $border-color: transparent
   );
@@ -135,7 +143,9 @@
 }
 
 :host([on-background][variant='primary']:not([disabled])) #button-element:hover,
-:host([on-background][variant='primary']:not([disabled])) #button-element:active {
+:host([on-background][variant='primary']:not([disabled])) #button-element:active,
+:host([on-background][variant='secondary']:not([disabled])) #button-element:hover,
+:host([on-background][variant='secondary']:not([disabled])) #button-element:active {
   @include mixins.button-color(
     $color: var(--pharos-color-interactive-tertiary),
     $background-color: transparent,
@@ -143,21 +153,12 @@
   );
 }
 
-:host([on-background][variant='secondary']:not([disabled])) #button-element:hover,
-:host([on-background][variant='secondary']:not([disabled])) #button-element:active {
-  @include mixins.button-color(
-    $color: var(--pharos-color-interactive-secondary),
-    $background-color: var(--pharos-color-interactive-tertiary),
-    $border-color: var(--pharos-color-interactive-tertiary)
-  );
-}
-
 :host([on-background][variant='subtle']:not([disabled])) #button-element:hover,
 :host([on-background][variant='subtle']:not([disabled])) #button-element:active {
   @include mixins.button-color(
-    $color: var(--pharos-color-interactive-secondary),
-    $background-color: var(--pharos-color-interactive-tertiary),
-    $border-color: var(--pharos-color-interactive-tertiary)
+    $color: var(--pharos-color-interactive-tertiary),
+    $background-color: var(--pharos-color-marble-gray-20),
+    $border-color: var(--pharos-color-marble-gray-20)
   );
 }
 
