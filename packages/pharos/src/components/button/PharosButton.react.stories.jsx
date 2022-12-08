@@ -326,3 +326,125 @@ export const Forms = {
     </div>
   ),
 };
+
+export const AllVariants = {
+  render: () => (
+    <div>
+      <section style="padding: var(--pharos-spacing-3-x)">
+        <table>
+          <thead style="border-bottom: 1px solid gray">
+            <th>Variant</th>
+            <th>Default</th>
+            <th>Disabled</th>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Primary</th>
+              <td>
+                <PharosButton>Primary</PharosButton>
+              </td>
+              <td>
+                <PharosButton disabled>Primary</PharosButton>
+              </td>
+            </tr>
+            <tr>
+              <th>Secondary</th>
+              <td>
+                <PharosButton variant="secondary">Secondary</PharosButton>
+              </td>
+              <td>
+                <PharosButton variant="secondary" disabled>
+                  Secondary
+                </PharosButton>
+              </td>
+            </tr>
+            <tr>
+              <th>Subtle</th>
+              <td>
+                <PharosButton variant="subtle">Subtle</PharosButton>
+              </td>
+              <td>
+                <PharosButton variant="subtle" disabled>
+                  Subtle
+                </PharosButton>
+              </td>
+            </tr>
+            <tr>
+              <th>Overlay</th>
+              <td>
+                <PharosButton variant="overlay">Overlay</PharosButton>
+              </td>
+              <td>
+                <PharosButton variant="overlay" disabled>
+                  Overlay
+                </PharosButton>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section style="background: var(--pharos-color-black); padding: var(--pharos-spacing-3-x)">
+        <table>
+          <thead>
+            <th>Variant</th>
+            <th style="color: var(--pharos-color-text-white);">Default</th>
+            <th style="color: var(--pharos-color-text-white);">Disabled</th>
+          </thead>
+          <tbody>
+            <tr>
+              <th style="color: var(--pharos-color-text-white);">Primary</th>
+              <td>
+                <PharosButton on-background>Primary</PharosButton>
+              </td>
+              <td>
+                <PharosButton disabled on-background>
+                  Primary
+                </PharosButton>
+              </td>
+            </tr>
+            <tr>
+              <th style="color: var(--pharos-color-text-white);">Secondary</th>
+              <td>
+                <PharosButton variant="secondary" on-background>
+                  Secondary
+                </PharosButton>
+              </td>
+              <td>
+                <PharosButton variant="secondary" disabled on-background>
+                  Secondary
+                </PharosButton>
+              </td>
+            </tr>
+            <tr>
+              <th style="color: var(--pharos-color-text-white);">Subtle</th>
+              <td>
+                <PharosButton variant="subtle" on-background>
+                  Subtle
+                </PharosButton>
+              </td>
+              <td>
+                <PharosButton variant="subtle" disabled on-background>
+                  Subtle
+                </PharosButton>
+              </td>
+            </tr>
+            <tr>
+              <th style="color: var(--pharos-color-text-white);">Overlay</th>
+              <td>
+                <PharosButton variant="overlay" on-background>
+                  Overlay
+                </PharosButton>
+              </td>
+              <td>
+                <PharosButton variant="overlay" disabled on-background>
+                  Overlay
+                </PharosButton>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  ),
+};
