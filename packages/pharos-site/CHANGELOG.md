@@ -1,5 +1,18 @@
 # @ithaka/pharos-site
 
+## 5.13.0
+
+### Minor Changes
+
+- [#456](https://github.com/ithaka/pharos/pull/456) [`83cd01a`](https://github.com/ithaka/pharos/commit/83cd01ad5c90028039787c911d0d87d8dba2f45f) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - add documentation for overlay button
+
+- [#459](https://github.com/ithaka/pharos/pull/459) [`bcfd018`](https://github.com/ithaka/pharos/commit/bcfd01805d24aac955a6b70e3677192b79ed9664) Thanks [@michael-iden](https://github.com/michael-iden)! - Add fit to width icon
+
+### Patch Changes
+
+- Updated dependencies [[`f02735b`](https://github.com/ithaka/pharos/commit/f02735b0f5237dc66e7c8823422bc132c83e58bd), [`bcfd018`](https://github.com/ithaka/pharos/commit/bcfd01805d24aac955a6b70e3677192b79ed9664), [`2977fae`](https://github.com/ithaka/pharos/commit/2977fae5d5449744d1b7b3aa8ca58811c54bd043)]:
+  - @ithaka/pharos@12.16.0
+
 ## 5.12.0
 
 ### Minor Changes

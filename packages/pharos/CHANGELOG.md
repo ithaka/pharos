@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 12.16.0
+
+### Minor Changes
+
+- [#457](https://github.com/ithaka/pharos/pull/457) [`f02735b`](https://github.com/ithaka/pharos/commit/f02735b0f5237dc66e7c8823422bc132c83e58bd) Thanks [@daneah](https://github.com/daneah)! - Allow tabs to scroll horizontally when cramped
+
+- [#459](https://github.com/ithaka/pharos/pull/459) [`bcfd018`](https://github.com/ithaka/pharos/commit/bcfd01805d24aac955a6b70e3677192b79ed9664) Thanks [@michael-iden](https://github.com/michael-iden)! - Add fit to width icon
+
+- [#453](https://github.com/ithaka/pharos/pull/453) [`2977fae`](https://github.com/ithaka/pharos/commit/2977fae5d5449744d1b7b3aa8ca58811c54bd043) Thanks [@daneah](https://github.com/daneah)! - use queryAssignedElements and simplify focus loops
+
 ## 12.15.1
 
 ### Patch Changes
