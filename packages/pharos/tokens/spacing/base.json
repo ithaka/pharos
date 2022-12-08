@@ -5,42 +5,42 @@
       "comment": "2px"
     },
     "one-quarter-x": {
-        "value": "0.25rem",
-        "comment": "4px"
+      "value": "0.25rem",
+      "comment": "4px"
     },
-    "one-half-x" : {
+    "one-half-x": {
       "value": "0.5rem",
       "comment": "8px"
     },
-    "three-quarters-x"   : {
+    "three-quarters-x": {
       "value": "0.75rem",
       "comment": "12px"
     },
-    "1-x"  : {
+    "1-x": {
       "value": "1rem",
       "comment": "16px"
     },
-    "one-and-a-half-x"   : {
+    "one-and-a-half-x": {
       "value": "1.5rem",
       "comment": "24px"
     },
-    "2-x"  : {
+    "2-x": {
       "value": "2rem",
       "comment": "32px"
     },
-    "3-x"  : {
+    "3-x": {
       "value": "3rem",
       "comment": "48px"
     },
-    "three-and-a-half-x"   : {
+    "three-and-a-half-x": {
       "value": "3.5rem",
       "comment": "56px"
     },
-    "5-x"  : {
+    "5-x": {
       "value": "5rem",
       "comment": "80px"
     },
-    "7-x"  : {
+    "7-x": {
       "value": "7rem",
       "comment": "112px"
     },
@@ -48,7 +48,7 @@
       "value": "10rem",
       "comment": "160px"
     },
-    "gutter"  : {
+    "gutter": {
       "value": "{spacing.3-x.value}",
       "comment": "48px"
     }
