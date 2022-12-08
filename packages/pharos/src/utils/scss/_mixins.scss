@@ -253,7 +253,7 @@
 /// @group buttons
 @mixin button-base(
   $color: var(--pharos-color-text-white),
-  $background-color: var(--pharos-button-color-background-base-primary),
+  $background-color: var(--pharos-color-interactive-primary),
   $border-color: var(--pharos-color-interactive-primary)
 ) {
   @include font-base($font-weight: var(--pharos-font-weight-bold));
@@ -296,7 +296,7 @@
 /// @group buttons
 @mixin button-hover(
   $color: var(--pharos-color-hover-primary),
-  $background-color: var(--pharos-button-color-background-base-secondary),
+  $background-color: transparent,
   $border-color: var(--pharos-color-hover-primary)
 ) {
   &:hover:not([disabled]),
@@ -335,7 +335,7 @@
 /// @group buttons
 @mixin button-color(
   $color: var(--pharos-color-text-white),
-  $background-color: var(--pharos-button-color-background-base-primary),
+  $background-color: var(--pharos-color-interactive-primary),
   $border-color: var(--pharos-color-interactive-primary)
 ) {
   color: $color;
