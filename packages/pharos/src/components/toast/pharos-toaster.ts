@@ -53,7 +53,7 @@ export class PharosToaster extends PharosElement {
   }
 
   private _getToastID(id: string | null) {
-    return id || DEFAULT_ID + uuidv4();
+    return id || DEFAULT_ID + '_' + uuidv4();
   }
 
   private async _openToast(event: Event): Promise<void> {
