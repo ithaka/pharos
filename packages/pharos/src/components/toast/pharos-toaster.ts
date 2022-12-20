@@ -4,7 +4,7 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { toasterStyles } from './pharos-toaster.css';
 
 import type { PharosToast } from './pharos-toast';
-import { DEFAULT_STATUS, DEFAULT_ID, DEFAULT_INDEFINITE } from './pharos-toast';
+import { DEFAULT_STATUS, DEFAULT_INDEFINITE } from './pharos-toast';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -53,7 +53,7 @@ export class PharosToaster extends PharosElement {
   }
 
   private _getToastID(id: string | null) {
-    return id || DEFAULT_ID + '_' + uuidv4();
+    return id || `toast_${uuidv4()}`;
   }
 
   private async _openToast(event: Event): Promise<void> {
