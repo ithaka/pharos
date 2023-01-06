@@ -58,7 +58,8 @@
     "@ithaka/focus-trap": "2.0.1",
     "@lit-labs/scoped-registry-mixin": "^1.0.0",
     "@open-wc/dedupe-mixin": "^1.3.0",
-    "lit": "^2.0.0"
+    "lit": "^2.0.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.5.6",
