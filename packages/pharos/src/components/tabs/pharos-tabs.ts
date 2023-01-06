@@ -1,6 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
-import type { TemplateResult, CSSResultArray } from 'lit';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { tabsStyles } from './pharos-tabs.css';
@@ -28,6 +28,13 @@ export class PharosTabs extends PharosElement {
    */
   @property({ type: Boolean, reflect: true, attribute: 'panel-separator' })
   public panelSeparator = false;
+
+  /**
+   * Indicates if the tab is selected-tab.
+   * @attr selected-tab
+   */
+  @property({ type: Number, reflect: true })
+  public selectedTab = 0;
 
   @query('.tab__list')
   private _tabList!: HTMLElement;
@@ -66,6 +73,12 @@ export class PharosTabs extends PharosElement {
     this._selectInitialTab();
     this._watchTablistScrolling();
     this._watchResize();
+  }
+
+  protected override async updated(changedProperties: PropertyValues): Promise<void> {
+    if (changedProperties.has('selected-tab')) {
+      this._handleTabSelected(this._tabs[this.selectedTab]);
+    }
   }
 
   private _tabOverflowObserver!: IntersectionObserver;
@@ -128,6 +141,9 @@ export class PharosTabs extends PharosElement {
   }
 
   private _handleTabSelected(selectedTab: PharosTab): void {
+    this.selectedTab = Array.from(this._tabs).findIndex(
+      (tab: PharosTab) => tab.id === selectedTab.id
+    );
     selectedTab.selected = true;
     this._makeTabVisible(selectedTab);
 
