@@ -31,7 +31,7 @@ describe('pharos-toast', () => {
     await component.updateComplete;
 
     component.dispatchEvent(new FocusEvent('focusout'));
-    await aTimeout(6000);
+    await aTimeout(7000);
     await component.updateComplete;
 
     expect(component.open).to.be.false;

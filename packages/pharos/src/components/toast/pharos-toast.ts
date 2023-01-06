@@ -26,8 +26,6 @@ const TOAST_LIFE = 6000;
 
 export const DEFAULT_STATUS = 'success';
 
-export const DEFAULT_ID = 'toast';
-
 export const DEFAULT_INDEFINITE = false;
 
 /**
@@ -65,7 +63,7 @@ export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
    * @attr id
    */
   @property({ type: String, reflect: true })
-  public override id = DEFAULT_ID;
+  public override id = 'toast';
 
   /**
    * Indicates if the toast should persist indefinitely
