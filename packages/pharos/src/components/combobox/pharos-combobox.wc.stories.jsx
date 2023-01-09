@@ -25,6 +25,7 @@ export const Base = {
         .value=${ifDefined(args.value)}
         .name=${ifDefined(args.name)}
         ?open=${args.open}
+        ?loose-match=${args.looseMatch}
         ?disabled=${args.disabled}
         ?hide-label=${args.hideLabel}
         ?invalidated=${args.invalidated}

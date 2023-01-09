@@ -68,6 +68,13 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
   public searchMode = false;
 
   /**
+   * Use loose matching when comparing input value to options.
+   * @attr looseMatch
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'loose-match' })
+  public looseMatch = false;
+
+  /**
    * The list of options available in the combobox dropdown list
    * @readonly
    */
@@ -166,9 +173,15 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
 
   private _renderList(): TemplateResult | typeof nothing {
     if (this.open) {
-      const regex = new RegExp(this._query, 'gi');
+      const queryToCompare = this.looseMatch ? this._normalizeString(this._query) : this._query;
+      const regex = new RegExp(queryToCompare, 'gi');
       const matchingOptions = this.options.filter((child) => {
-        return this.searchMode ? child : child.text.match(regex);
+        if (this.searchMode) {
+          return child;
+        }
+
+        const childText = this.looseMatch ? this._normalizeString(child.text) : child.text;
+        return childText.match(regex);
       });
       this._noResults = matchingOptions.length === 0;
 
@@ -433,6 +446,13 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
 
   private _handleInputClick(): void {
     this.open = !this.open;
+  }
+
+  private _normalizeString(textString: string) {
+    return textString
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
   }
 
   protected override render(): TemplateResult {
