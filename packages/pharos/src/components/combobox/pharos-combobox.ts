@@ -448,6 +448,15 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
     this.open = !this.open;
   }
 
+  /**
+   * Normalizes a string in the following order:
+   *
+   * 1 - Applies https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+   *     with the 'NFKD' parameters for compatibility
+   * 2 - Removes all diacritic characters using a global regex
+   * 3 - Lower case all characters
+   *
+   */
   private _normalizeString(textString: string) {
     return textString
       .normalize('NFKD')
