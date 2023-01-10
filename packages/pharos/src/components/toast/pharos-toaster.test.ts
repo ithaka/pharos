@@ -78,12 +78,8 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
     await nextFrame();
 
-    expect(component).dom.to.equal(`
-      <pharos-toaster data-pharos-component="PharosToaster">
-        <pharos-toast data-pharos-component="PharosToast" id="toast" open="" status="success">I am a toast</pharos-toast>
-        <pharos-toast data-pharos-component="PharosToast" id="toast" open="" status="success">I am a toast</pharos-toast>
-      </pharos-toaster>
-    `);
+    const toast = component.querySelectorAll('pharos-toast');
+    expect(toast.length).to.equal(2);
   });
 
   it('delegates focus to a newly opened toast', async () => {

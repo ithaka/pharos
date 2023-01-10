@@ -29,6 +29,18 @@ export const parameters = {
       ...MINIMAL_VIEWPORTS,
       ...INITIAL_VIEWPORTS,
     },
-    defaultViewport: 'responsive',
+  },
+  backgrounds: {
+    default: 'White',
+    values: [
+      {
+        name: 'White',
+        value: '#FFFFFF',
+      },
+      {
+        name: 'Black',
+        value: '#000000',
+      },
+    ],
   },
 };
