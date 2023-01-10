@@ -3,6 +3,7 @@ export const defaultArgs = {
   hideLabel: false,
   invalidated: false,
   label: 'Combobox Label',
+  looseMatch: false,
   message: '',
   name: '',
   open: false,
