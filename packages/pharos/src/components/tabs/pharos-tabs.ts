@@ -33,7 +33,7 @@ export class PharosTabs extends PharosElement {
    * Indicates if the tab is selected-tab.
    * @attr selected-tab
    */
-  @property({ type: Number, reflect: true })
+  @property({ type: Number, reflect: true, attribute: 'selected-tab' })
   public selectedTab = 0;
 
   @query('.tab__list')
@@ -76,7 +76,9 @@ export class PharosTabs extends PharosElement {
   }
 
   protected override async updated(changedProperties: PropertyValues): Promise<void> {
-    if (changedProperties.has('selected-tab')) {
+    console.log('Changed');
+    console.log(changedProperties);
+    if (changedProperties.has('selectedTab')) {
       this._handleTabSelected(this._tabs[this.selectedTab]);
     }
   }
