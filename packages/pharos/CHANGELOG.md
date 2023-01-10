@@ -1,5 +1,17 @@
 # @ithaka/pharos
 
+## 12.17.0
+
+### Minor Changes
+
+- [#470](https://github.com/ithaka/pharos/pull/470) [`6219789`](https://github.com/ithaka/pharos/commit/6219789d71f135921726f9c0323cc00ae3a666e4) Thanks [@NazimHAli](https://github.com/NazimHAli)! - Add loose-match option to the combobox for query matching
+
+### Patch Changes
+
+- [#463](https://github.com/ithaka/pharos/pull/463) [`584c12e`](https://github.com/ithaka/pharos/commit/584c12e4f8f1903562bf7dbc2edd82118f371913) Thanks [@daneah](https://github.com/daneah)! - Align button variant visual design implementations with UI kit designs
+
+- [#466](https://github.com/ithaka/pharos/pull/466) [`3620b76`](https://github.com/ithaka/pharos/commit/3620b76cc9bde9fdd0f4ed88c2053d0bfd359ea8) Thanks [@jialin-he](https://github.com/jialin-he)! - Fix duplicate id in toast
+
 ## 12.16.0
 
 ### Minor Changes
