@@ -135,6 +135,13 @@ export class PharosTabs extends PharosElement {
     const selectedTab: PharosTab = this._tabs[this.selectedTab];
     selectedTab.selected = true;
     this._makeTabVisible(selectedTab);
+
+    const selectedPanel: PharosTabPanel | null = this.querySelector(
+      `${_allTabPanelsSelector}[id="${selectedTab.getAttribute('aria-controls')}"]`
+    );
+    if (selectedPanel) {
+      selectedPanel.selected = true;
+    }
   }
 
   private _queryPanelByTab(tab: PharosTab): PharosTabPanel | null {
