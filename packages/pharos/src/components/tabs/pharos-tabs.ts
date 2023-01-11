@@ -132,7 +132,7 @@ export class PharosTabs extends PharosElement {
     if (this._selectedTabs?.[0]) {
       this.selectedTab = this._findTabIndex(this._selectedTabs[0]);
     }
-    const selectedTab: PharosTab = this._tabs[this.selectedTab || 0];
+    const selectedTab: PharosTab = this._tabs[this.selectedTab];
     selectedTab.selected = true;
     this._makeTabVisible(selectedTab);
   }
