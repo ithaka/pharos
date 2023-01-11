@@ -30,10 +30,13 @@ export const Base = {
 export const Events = {
   render: () =>
     html`
-      <pharos-tabs @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}">
+      <pharos-tabs
+        selected-tab="2"
+        @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}"
+      >
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
-        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
-        <pharos-tab id="tab-3" data-panel-id="panel-3" selected>Tab 3</pharos-tab>
+        <pharos-tab id="tab-2" selected data-panel-id="panel-2">Tab 2</pharos-tab>
+        <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
         <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
         <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
         <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>

@@ -76,9 +76,7 @@ export class PharosTabs extends PharosElement {
   }
 
   protected override async updated(changedProperties: PropertyValues): Promise<void> {
-    console.log('Changed');
-    console.log(changedProperties);
-    if (changedProperties.has('selectedTab')) {
+    if (changedProperties.has('selectedTab') && this._tabs[this.selectedTab]) {
       this._handleTabSelected(this._tabs[this.selectedTab]);
     }
   }
@@ -117,7 +115,7 @@ export class PharosTabs extends PharosElement {
     this._tabListResizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.target === this._tabList) {
-          this._makeTabVisible(this._selectedTabs[0]);
+          this._makeTabVisible(this._tabs[this.selectedTab]);
         }
       });
     });
@@ -131,9 +129,12 @@ export class PharosTabs extends PharosElement {
   }
 
   private _selectInitialTab(): void {
-    const selected: PharosTab | null = this.querySelector(`${_allTabsSelector}[selected]`);
-    const selectedTab: PharosTab = selected || this._tabs[0];
-    this._handleTabSelected(selectedTab);
+    if (this._selectedTabs?.[0]) {
+      this.selectedTab = this._findTabIndex(this._selectedTabs[0]);
+    }
+    const selectedTab: PharosTab = this._tabs[this.selectedTab || 0];
+    selectedTab.selected = true;
+    this._makeTabVisible(selectedTab);
   }
 
   private _queryPanelByTab(tab: PharosTab): PharosTabPanel | null {
@@ -142,10 +143,12 @@ export class PharosTabs extends PharosElement {
     return this.querySelector(`#${panelId}`);
   }
 
+  private _findTabIndex(tabToFind: PharosTab): number {
+    return Array.from(this._tabs).findIndex((tab: PharosTab) => tab.id === tabToFind.id);
+  }
+
   private _handleTabSelected(selectedTab: PharosTab): void {
-    this.selectedTab = Array.from(this._tabs).findIndex(
-      (tab: PharosTab) => tab.id === selectedTab.id
-    );
+    this.selectedTab = this._findTabIndex(selectedTab);
     selectedTab.selected = true;
     this._makeTabVisible(selectedTab);
 
