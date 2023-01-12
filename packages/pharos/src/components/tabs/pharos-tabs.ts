@@ -76,6 +76,13 @@ export class PharosTabs extends PharosElement {
 
   protected override async updated(changedProperties: PropertyValues): Promise<void> {
     if (changedProperties.has('selectedTab') && this._tabs[this.selectedTab]) {
+      const details = {
+        bubbles: true,
+        composed: true,
+        detail: this._tabs[this.selectedTab],
+      };
+      this.dispatchEvent(new CustomEvent('pharos-tabs-tab-selected', details));
+
       this._handleTabSelected(this._tabs[this.selectedTab]);
     }
   }
@@ -151,13 +158,6 @@ export class PharosTabs extends PharosElement {
   }
 
   private _handleTabSelected(selectedTab: PharosTab): void {
-    const details = {
-      bubbles: true,
-      composed: true,
-      detail: selectedTab,
-    };
-    this.dispatchEvent(new CustomEvent('pharos-tabs-tab-selected', details));
-
     this.selectedTab = this._findTabIndex(selectedTab);
     selectedTab.selected = true;
     this._makeTabVisible(selectedTab);
