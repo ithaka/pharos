@@ -60,7 +60,9 @@ export class PharosTab extends PharosElement {
   }
 
   private _handleClick(): void {
-    this._triggerSelectedEvent();
+    if (!this.selected) {
+      this._triggerSelectedEvent();
+    }
   }
 
   protected override render(): TemplateResult {

@@ -48,9 +48,6 @@ export class PharosTabs extends PharosElement {
   @queryAssignedElements({ selector: _allTabsSelector })
   private _tabs!: NodeListOf<PharosTab>;
 
-  @queryAssignedElements({ selector: `${_allTabsSelector}[selected]` })
-  private _selectedTabs!: NodeListOf<PharosTab>;
-
   public static override get styles(): CSSResultArray {
     return [tabsStyles];
   }
@@ -129,9 +126,6 @@ export class PharosTabs extends PharosElement {
   }
 
   private _selectInitialTab(): void {
-    if (this._selectedTabs?.[0]) {
-      this.selectedTab = this._findTabIndex(this._selectedTabs[0]);
-    }
     const selectedTab: PharosTab = this._tabs[this.selectedTab];
     selectedTab.selected = true;
     this._makeTabVisible(selectedTab);
