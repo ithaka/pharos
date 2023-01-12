@@ -20,6 +20,8 @@ const _allTabPanelsSelector = '[data-pharos-component="PharosTabPanel"]';
  * @slot - Contains the tabs.
  * @slot panel - Contains the panel to be shown for a tab.
  *
+ * @fires pharos-tabs-tab-selected - Fires when the tab is selected.
+ *
  */
 export class PharosTabs extends PharosElement {
   /**
@@ -149,6 +151,13 @@ export class PharosTabs extends PharosElement {
   }
 
   private _handleTabSelected(selectedTab: PharosTab): void {
+    const details = {
+      bubbles: true,
+      composed: true,
+      detail: selectedTab,
+    };
+    this.dispatchEvent(new CustomEvent('pharos-tabs-tab-selected', details));
+
     this.selectedTab = this._findTabIndex(selectedTab);
     selectedTab.selected = true;
     this._makeTabVisible(selectedTab);
