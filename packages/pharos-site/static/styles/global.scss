@@ -1,5 +1,6 @@
 @use '@ithaka/pharos/lib/styles/pharos';
-@use '@ithaka/pharos/lib/utils/scss/mixins';
+
+// @use '@ithaka/pharos/lib/utils/scss/mixins';
 
 .pharos-storybook__image {
   margin-top: var(--pharos-spacing-three-quarters-x);
@@ -273,5 +274,5 @@ p.alert-example__content + p.alert-example__content {
 }
 
 .hide-in-storybook {
-  @include mixins.hidden;
+  // @include mixins.hidden;
 }

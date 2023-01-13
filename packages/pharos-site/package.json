@@ -53,5 +53,9 @@
     "type": "git",
     "url": "git+https://github.com/ithaka/pharos.git",
     "directory": "site"
+  },
+  "exports": {
+    "./lib/utils/scss/mixins": "./lib/utils/scss/mixins.scss",
+    "./lib/utils/scss/mixins.scss": "./lib/utils/scss/mixins.scss"
   }
 }
