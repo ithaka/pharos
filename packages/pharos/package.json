@@ -92,6 +92,10 @@
     "./lib": "./lib/index.js",
     "./lib/index": "./lib/index.js",
     "./lib/index.js": "./lib/index.js",
+    "./lib/styles/pharos": "./lib/styles/pharos.scss",
+    "./lib/styles/pharos.scss": "./lib/styles/pharos.scss",
+    "./lib/utils/scss/mixins": "./lib/utils/scss/mixins.scss",
+    "./lib/utils/scss/mixins.scss": "./lib/utils/scss/mixins.scss",
     "./package.json": "./package.json",
     "./custom-elements.json": "./custom-elements.json"
   }
