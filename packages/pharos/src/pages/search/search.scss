@@ -1,4 +1,4 @@
-// @use '@ithaka/pharos/lib/utils/scss/mixins';
+@use '@ithaka/pharos/lib/utils/scss/mixins';
 
 .search-page__container {
   display: grid;
@@ -59,7 +59,7 @@
 }
 
 .search-page__list--results {
-  // @include mixins.no-bullet;
+  @include mixins.no-bullet;
 
   padding-left: 0;
 
@@ -69,7 +69,7 @@
 }
 
 .search-page__list--action-buttons {
-  // @include mixins.no-bullet;
+  @include mixins.no-bullet;
 
   padding-left: 0;
   display: grid;
@@ -93,7 +93,7 @@
 }
 
 .search-page__text--content-type {
-  // @include mixins.content-label;
+  @include mixins.content-label;
 
   color: var(--pharos-color-marble-gray-40);
 }
