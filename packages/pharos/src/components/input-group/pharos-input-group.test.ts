@@ -95,7 +95,7 @@ describe('pharos-input-group', () => {
     component.validated = true;
     await component.updateComplete;
     await nextFrame();
-    expect(component['_inputIcon'].style.right).to.equal('26px');
+    expect(component['_inputIcon'].style.right).to.equal('24px');
   });
 
   it('adjusts the validated icon position when elements are dynamically appended to the group', async () => {
@@ -106,6 +106,6 @@ describe('pharos-input-group', () => {
 
     await component.updateComplete;
     await nextFrame();
-    expect(component['_inputIcon'].style.right).to.equal('50px');
+    expect(component['_inputIcon'].style.right).to.equal('48px');
   });
 });

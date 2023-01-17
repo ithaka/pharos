@@ -37,3 +37,21 @@ slot[name='prepend']::slotted([data-pharos-component='PharosIcon']:first-child) 
 slot:not([name])::slotted([data-pharos-component='PharosIcon']:last-child) {
   margin-right: calc(var(--pharos-spacing-three-quarters-x) + 1px);
 }
+
+:host([variant='prominent']) {
+  slot[name='prepend']::slotted(*) {
+    margin-left: var(--pharos-spacing-three-quarters-x);
+  }
+
+  slot[name='prepend']::slotted([data-pharos-component='PharosIcon']:first-child) {
+    margin-left: var(--pharos-spacing-three-quarters-x);
+  }
+
+  slot:not([name])::slotted(:last-child) {
+    margin-right: var(--pharos-spacing-three-quarters-x);
+  }
+
+  slot:not([name])::slotted([data-pharos-component='PharosIcon']:last-child) {
+    margin-right: var(--pharos-spacing-three-quarters-x);
+  }
+}

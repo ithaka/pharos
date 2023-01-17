@@ -11,17 +11,73 @@
   width: 100%;
 }
 
-.card__link--image {
-  position: relative;
-  height: 14rem;
-  margin: 0 auto var(--pharos-spacing-1-x);
+.card__link-container {
+  display: flex;
+  margin-bottom: var(--pharos-spacing-1-x);
 }
 
-.card__link--image,
+.card__link--image {
+  contain: unset;
+  position: relative;
+  display: block;
+  height: 14rem;
+  width: 100%;
+}
+
 .card__link--title {
   contain: unset;
   display: inline-flex;
   min-width: 0;
+}
+
+@mixin card-selected {
+  background-color: var(--pharos-color-white);
+  outline: solid 2px var(--pharos-color-interactive-secondary);
+  box-sizing: border-box;
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
+
+  slot[name='image']::slotted(*) {
+    height: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
+    width: calc(100% - 2 * var(--pharos-spacing-three-quarters-x));
+    padding: var(--pharos-spacing-three-quarters-x);
+  }
+}
+
+.card__link--image.card__link--selected {
+  @include card-selected;
+}
+
+:host([disabled]) .card__link--image.card__link--selected {
+  outline: solid 2px var(--pharos-color-marble-gray-50);
+}
+
+:host([disabled]) .card__link--image {
+  color: var(--pharos-color-marble-gray-50);
+  cursor: not-allowed;
+  text-decoration: none;
+  pointer-events: none;
+
+  slot[name='image']::slotted(*) {
+    opacity: 0.5;
+  }
+}
+
+slot[name='image']::slotted(img) {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+:host([disabled]) .card__link--title {
+  color: var(--pharos-color-marble-gray-50);
+  cursor: not-allowed;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+:host([disabled]) .card__heading {
+  color: var(--pharos-color-marble-gray-50);
 }
 
 :host([variant='promotional']) .card__link--image {
@@ -44,12 +100,14 @@
   );
 
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
   overflow: auto;
   color: var(--pharos-color-text-white);
   background-color: rgb(0 0 0 / 0);
-  padding: var(--pharos-spacing-three-quarters-x);
+  padding: var(--pharos-spacing-one-half-x);
   position: absolute;
+  top: 0;
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
@@ -60,8 +118,9 @@
 }
 
 .card__container--error {
-  border: 1px solid var(--pharos-color-ui-40);
-  height: 12.5rem;
+  background-color: var(--pharos-color-marble-gray-94);
+  height: 14rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,6 +132,16 @@
   .unavailable-text {
     max-width: 9rem;
   }
+}
+
+.card__container--error.card__container--selectable-hover {
+  background-color: inherit;
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
+}
+
+.card__container--error.card__container--selected {
+  background-color: var(--pharos-color-white);
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
 }
 
 .card__source-type {
@@ -97,7 +166,25 @@
   display: grid;
   position: relative;
   height: auto;
-  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+.card__link--collection.card__link--selected {
+  @include card-selected;
+}
+
+:host([disabled]) .card__link--collection.card__link--selected {
+  outline: solid 2px var(--pharos-color-marble-gray-50);
+}
+
+:host([disabled]) .card__link--collection {
+  color: var(--pharos-color-marble-gray-50);
+  cursor: not-allowed;
+  text-decoration: none;
+  pointer-events: none;
+
+  slot[name='image']::slotted(*) {
+    opacity: 0.5;
+  }
 }
 
 .card__title--hover {
@@ -120,9 +207,27 @@
   width: 100%;
 }
 
-:host([subtle]) .card__link--image {
-  position: relative;
+.card__checkbox--subtle {
+  margin: -4px 0 0 -4px;
+}
 
+.card__checkbox {
+  position: absolute;
+  z-index: 1;
+  margin-top: var(--pharos-spacing-one-quarter-x);
+  margin-left: var(--pharos-spacing-one-quarter-x);
+}
+
+.card__link--image.card__link--selectable {
+  background-color: var(--pharos-color-marble-gray-94);
+}
+
+.card__link--image.card__link--select-hover {
+  background-color: var(--pharos-color-marble-gray-base);
+  transition: background-color var(--pharos-transition-duration-short) ease-in-out;
+}
+
+:host([subtle]) .card__link--image {
   &:hover {
     .card__metadata--hover {
       background-color: rgb(0 0 0 / 0.75);
@@ -131,13 +236,6 @@
       pointer-events: auto;
     }
   }
-}
-
-slot[name='image']::slotted(img) {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
-  object-position: bottom;
 }
 
 slot[name='metadata']::slotted(*:not(:last-child)) {
@@ -149,11 +247,13 @@ slot[name='metadata']::slotted(strong) {
   color: var(--pharos-color-text-base);
 }
 
-:host([variant='collection']) .card__title {
+:host([variant='collection']) .card__title,
+:host([variant='selectable-collection']) .card__title {
   margin-bottom: var(--pharos-spacing-1-x);
 }
 
-:host([variant='collection']) .card__metadata {
+:host([variant='collection']) .card__metadata,
+:host([variant='selectable-collection']) .card__metadata {
   color: var(--pharos-color-text-20);
 }
 
@@ -161,7 +261,8 @@ slot[name='metadata']::slotted(strong) {
   @include mixins.font-base;
 }
 
-:host([variant='collection']) slot[name='image']::slotted(img) {
+:host([variant='collection']) slot[name='image']::slotted(img),
+:host([variant='selectable-collection']) slot[name='image']::slotted(img) {
   position: absolute;
   object-fit: cover;
   object-position: 50% 30%;

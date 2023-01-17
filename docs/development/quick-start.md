@@ -18,29 +18,35 @@ Start by cloning the Pharos repository:
 $ git clone git@github.com:ithaka/pharos.git
 ```
 
-The Pharos repository contains multiple packages. [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) helps you manage dependencies and tasks across them. Use `npm` to install Yarn globally:
+Pharos supports the current long-term support (LTS) version of Node.js—currently version 16. Node can be installed from [its website](https://nodejs.org/en/), with [nvm](https://github.com/nvm-sh/nvm#install--update-script), or with [asdf](https://asdf-vm.com/) and its [Node.js plugin](https://github.com/asdf-vm/asdf-nodejs).
 
-```shell
-npm install --global yarn
-```
-
-Once Yarn is installed, use it to install the dependencies for the Pharos project and its packages:
-
-```shell
-$ yarn install
-```
-
-Pharos supports the current long-term support (LTS) version of Node.js—currently version 16. Node can be installed from [its website](https://nodejs.org/en/) or with [nvm](https://github.com/nvm-sh/nvm#install--update-script). If you're using `nvm`, run the following command to switch to a Node version compatible with the project:
+If you're using `nvm`, run the following command to switch to a Node version compatible with the project:
 
 ```shell
 $ nvm use
 ```
 
-The packages in Pharos are written in [TypeScript](https://www.typescriptlang.org/) which is a superset of JavaScript that adds static typing to the language. The minimal supported version in this project is `3.8`. Use `npm` to install the latest version globally:
+If you're using `asdf` then the compatible Node version is selected automatically if it's already installed. If it's not installed, run the following command to install the compatible Node version:
 
 ```shell
-$ npm install --global typescript
+$ asdf install
 ```
+
+The Pharos repository contains multiple packages, and [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) helps you manage dependencies and tasks across them. Use `npm` to install Yarn globally:
+
+```shell
+npm install --global yarn
+```
+
+The Pharos repository uses Yarn version 1, also known as Yarn classic. The repository contains Yarn configuration that should select the right verion of Yarn to run automatically.
+
+Once Yarn is installed, use it to install the dependencies for the Pharos project and its packages. From the root folder of the project run:
+
+```shell
+$ yarn install
+```
+
+Pharos packages are written in [TypeScript](https://www.typescriptlang.org/), a superset of JavaScript that adds static typing. Each package contains Typescript as a development dependency, so Typescript is automatically installed when running Yarn.
 
 ## Tests
 

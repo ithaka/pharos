@@ -1,6 +1,5 @@
 import { fixture, expect, aTimeout } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-
 import type { PharosToast } from './pharos-toast';
 import type { PharosIcon } from '../icon/pharos-icon';
 
@@ -32,7 +31,7 @@ describe('pharos-toast', () => {
     await component.updateComplete;
 
     component.dispatchEvent(new FocusEvent('focusout'));
-    await aTimeout(6000);
+    await aTimeout(7000);
     await component.updateComplete;
 
     expect(component.open).to.be.false;
@@ -49,6 +48,14 @@ describe('pharos-toast', () => {
 
   it('renders an exclamation icon with error status', async () => {
     component.status = 'error';
+    await component.updateComplete;
+
+    const icon = component.renderRoot.querySelector('pharos-icon') as PharosIcon;
+    expect(icon?.name).to.equal('exclamation-inverse');
+  });
+
+  it('renders an exclamation icon with info status', async () => {
+    component.status = 'info';
     await component.updateComplete;
 
     const icon = component.renderRoot.querySelector('pharos-icon') as PharosIcon;

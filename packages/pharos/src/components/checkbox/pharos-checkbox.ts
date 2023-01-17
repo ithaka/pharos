@@ -11,7 +11,7 @@ import checkmarkSmall from '../../styles/icons/checkmark-small';
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
 
-const LINKS = `a[href],pharos-link[href]`;
+const LINKS = `a[href],pharos-link[href],[data-pharos-component='PharosLink'][href]`;
 
 /**
  * Pharos checkbox component.
@@ -64,15 +64,35 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   }
 
   public onChange(): void {
+    /**
+     * Store the original indeterminate and checked states
+     * The native checkbox state has already changed, so invert it
+     */
+    const originalIndeterminateState = this.indeterminate;
+    const originalCheckedState = !this._checkbox.checked;
+
     this.indeterminate = false;
     this.checked = this._checkbox.checked;
 
-    this.dispatchEvent(
-      new Event('change', {
+    const notCancelled = this.dispatchEvent(
+      new CustomEvent('change', {
         bubbles: true,
+        cancelable: true,
         composed: true,
+        detail: {
+          target: this._checkbox, // pass the the native checkbox in the event
+        },
       })
     );
+
+    /**
+     * if the event was prevented
+     * indeterminate and checked states return to their previous values
+     */
+    if (!notCancelled) {
+      this.indeterminate = originalIndeterminateState;
+      this.checked = originalCheckedState;
+    }
   }
 
   _handleFormdata(event: CustomEvent): void {
@@ -134,7 +154,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
           height="24"
           class="input__icon"
           role="img"
-          aria-label="checkbox"
+          aria-hidden="true"
           focusable="false"
           @click="${this._handleClick}"
           @mousedown=${this._handleMousedown}

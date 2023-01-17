@@ -18,6 +18,8 @@ import { PharosLink } from '../link/pharos-link';
  * @slot top - Content to be shown at the top of the sidenav.
  * @slot - Contains the sections of the sidenav (the default slot).
  *
+ * @fires pharos-sidenav-close - Fires when the sidenav has closed
+ *
  */
 export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) {
   static elementDefinitions = {
@@ -60,12 +62,22 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
     return [super.styles, sidenavStyles];
   }
 
-  private _handleClickClose(): void {
+  private _handleClickClose(event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
+
     this.slide = false;
     const button: PharosSidenavButton | null = document.querySelector(
       '[data-pharos-component="PharosSidenavButton"]'
     );
     button?.focus();
+
+    const details = {
+      bubbles: true,
+      composed: true,
+      detail: this,
+    };
+    this.dispatchEvent(new CustomEvent('pharos-sidenav-close', details));
   }
 
   private _handleMediaChange(e: MediaQueryListEvent): void {

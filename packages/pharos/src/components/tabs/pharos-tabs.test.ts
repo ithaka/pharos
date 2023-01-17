@@ -81,6 +81,9 @@ describe('pharos-tabs', () => {
       componentLastTabSelected.querySelectorAll(`pharos-tab-panel`)
     ) as PharosTabPanel[];
 
+    await Promise.all(Array.from(tabs).map((tab) => tab.updateComplete));
+    await Promise.all(Array.from(panels).map((panel) => panel.updateComplete));
+
     expect(tabs[0].selected).to.be.false;
     expect(tabs[1].selected).to.be.false;
     expect(tabs[2].selected).to.be.true;
@@ -243,5 +246,28 @@ describe('pharos-tabs', () => {
     input?.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true, composed: true }));
     await component.updateComplete;
     expect(count).to.equal(0);
+  });
+
+  it('does not render panel separator', async () => {
+    const spanElement = component.renderRoot.querySelector('.panel-separator') as HTMLDivElement;
+
+    expect(spanElement).to.be.null;
+  });
+
+  it('renders panel separator', async () => {
+    component = await fixture(html`
+      <pharos-tabs panel-separator>
+        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
+        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
+        <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
+        <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
+        <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
+        <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
+      </pharos-tabs>
+    `);
+
+    const spanElement = component.renderRoot.querySelector('.panel-separator') as HTMLDivElement;
+
+    expect(spanElement).not.to.be.null;
   });
 });

@@ -7,7 +7,6 @@
 :host {
   display: block;
   width: 100%;
-  contain: content;
 }
 
 #input-element {
@@ -21,15 +20,13 @@
   }
 }
 
-:host([invalidated]),
-:host([validated]) {
-  #input-element {
-    padding-right: 2.5rem;
-  }
-}
-
 :host([disabled]) #input-element {
   @include mixins.input-disabled;
+}
+
+:host([invalidated]) #input-element {
+  @include mixins.input-padding-thick-border;
+  @include mixins.input-invalid;
 }
 
 .input-wrapper {
@@ -51,9 +48,19 @@
   fill: var(--pharos-text-input-color-icon-valid);
 }
 
-:host([invalidated]) #input-element {
-  @include mixins.input-padding-thick-border;
-  @include mixins.input-invalid;
+:host([invalidated]),
+:host([validated]) {
+  #input-element {
+    padding-right: 2.5rem;
+  }
+}
+
+:host([variant='prominent']) #input-element {
+  padding: var(--pharos-spacing-1-x);
+}
+
+:host([invalidated][variant='prominent']) #input-element {
+  @include mixins.input-padding-thick-border-prominent;
 }
 
 :host([on-background]) #input-element {
@@ -63,4 +70,8 @@
     @include mixins.input-padding-thick-border;
     @include mixins.input-focus;
   }
+}
+
+:host([variant='prominent']) #input-element:focus {
+  @include mixins.input-padding-thick-border-prominent;
 }

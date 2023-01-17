@@ -10,6 +10,7 @@
 @mixin input-base {
   @include font-base;
 
+  margin: 0;
   padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
   width: 100%;
   display: block;
@@ -81,6 +82,13 @@
 @mixin input-padding-thick-border {
   padding: calc(var(--pharos-spacing-one-half-x) - 1px)
     calc(var(--pharos-spacing-three-quarters-x) - 1px);
+}
+
+/// Styles for prominent input states with thicker borders
+/// @access public
+/// @group form-elements
+@mixin input-padding-thick-border-prominent {
+  padding: calc(var(--pharos-spacing-1-x) - 1px);
 }
 
 /// Styles for inputs on a background
@@ -157,7 +165,7 @@
   font-size: $font-size;
   font-weight: $font-weight;
   line-height: $line-height;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -166,14 +174,18 @@
 /// @access public
 /// @group typography
 @mixin letter-spacing-serif($font-size: 1rem) {
-  letter-spacing: calc(#{$font-size} * -0.01);
+  @if $font-size != inherit {
+    letter-spacing: calc(#{$font-size} * -0.01);
+  }
 }
 
 /// Letter spacing for sans-serif type
 /// @access public
 /// @group typography
 @mixin letter-spacing-sans-serif($font-size: 1rem) {
-  letter-spacing: calc(#{$font-size} * -0.02);
+  @if $font-size != inherit {
+    letter-spacing: calc(#{$font-size} * -0.02);
+  }
 }
 
 /// Base styles for labels
@@ -234,15 +246,15 @@
 }
 
 /// Base styles for buttons.
-/// @param {string} $color [var(--pharos-color-text-white)] - The color of the text
-/// @param {string} $background-color [var(--pharos-color-interactive-primary)] - The color of the background
-/// @param {string} $border-color [var(--pharos-color-interactive-primary)] - The color of the border
+/// @param {string} $color [var(--pharos-button-color-base-primary-text-base)] - The color of the text
+/// @param {string} $background-color [vvar(--pharos-button-color-base-primary-background-base)] - The color of the background
+/// @param {string} $border-color [var(--pharos-button-color-base-primary-border-base)] - The color of the border
 /// @access public
 /// @group buttons
 @mixin button-base(
-  $color: var(--pharos-color-text-white),
-  $background-color: var(--pharos-color-interactive-primary),
-  $border-color: var(--pharos-color-interactive-primary)
+  $color: var(--pharos-button-color-base-primary-text-base),
+  $background-color: var(--pharos-button-color-base-primary-background-base),
+  $border-color: var(--pharos-button-color-base-primary-border-base)
 ) {
   @include font-base($font-weight: var(--pharos-font-weight-bold));
   @include transition-base(border-color, background, color);
@@ -259,7 +271,7 @@
   margin: 0;
   appearance: none;
 
-  pharos-icon {
+  [data-pharos-component='PharosIcon'] {
     @include transition-base(fill, stroke);
 
     fill: $color;
@@ -267,25 +279,25 @@
     stroke-width: 0;
   }
 
-  pharos-icon:first-child:not(:only-child) {
+  [data-pharos-component='PharosIcon']:first-child:not(:only-child) {
     margin-right: var(--pharos-spacing-one-quarter-x);
   }
 
-  pharos-icon:last-child:not(:only-child) {
+  [data-pharos-component='PharosIcon']:last-child:not(:only-child) {
     margin-left: var(--pharos-spacing-one-quarter-x);
   }
 }
 
 /// Hover styles for buttons.
-/// @param {string} $color [var(--pharos-color-hover-primary)] - The color of the text
-/// @param {string} $background-color [transparent] - The color of the background
-/// @param {string} $border-color [var(--pharos-color-hover-primary)] - The color of the border
+/// @param {string} $color [var(--pharos-button-color-base-primary-text-hover)] - The color of the text
+/// @param {string} $background-color [var(--pharos-button-color-base-primary-background-hover)] - The color of the background
+/// @param {string} $border-color [var(--pharos-button-color-base-primary-border-hover)] - The color of the border
 /// @access public
 /// @group buttons
 @mixin button-hover(
-  $color: var(--pharos-color-hover-primary),
-  $background-color: transparent,
-  $border-color: var(--pharos-color-hover-primary)
+  $color: var(--pharos-button-color-base-primary-text-hover),
+  $background-color: var(--pharos-button-color-base-primary-background-hover),
+  $border-color: var(--pharos-button-color-base-primary-border-hover)
 ) {
   &:hover:not([disabled]),
   &:active:not([disabled]) {
@@ -295,7 +307,7 @@
     padding: calc(var(--pharos-spacing-one-quarter-x) - 1px)
       calc(var(--pharos-spacing-three-quarters-x) - 1px);
 
-    pharos-icon {
+    [data-pharos-component='PharosIcon'] {
       fill: $color;
       stroke: $color;
     }
@@ -316,21 +328,21 @@
 }
 
 /// Color styles for buttons.
-/// @param {string} $color [var(--pharos-color-text-white)] - The color of the text
-/// @param {string} $background-color [var(--pharos-color-interactive-primary)] - The color of the background
-/// @param {string} $border-color [var(--pharos-color-interactive-primary)] - The color of the border
+/// @param {string} $color [var(--pharos-button-color-base-primary-text-base)] - The color of the text
+/// @param {string} $background-color [var(--pharos-button-color-base-primary-background-base)] - The color of the background
+/// @param {string} $border-color [var(--pharos-button-color-base-primary-border-base)] - The color of the border
 /// @access public
 /// @group buttons
 @mixin button-color(
-  $color: var(--pharos-color-text-white),
-  $background-color: var(--pharos-color-interactive-primary),
-  $border-color: var(--pharos-color-interactive-primary)
+  $color: var(--pharos-button-color-base-primary-text-base),
+  $background-color: var(--pharos-button-color-base-primary-background-base),
+  $border-color: var(--pharos-button-color-base-primary-border-base)
 ) {
   color: $color;
   background-color: $background-color;
   border-color: $border-color;
 
-  pharos-icon {
+  [data-pharos-component='PharosIcon'] {
     fill: $color;
     stroke: $color;
   }
@@ -370,11 +382,14 @@
   text-decoration-color: $text-decoration-color;
 }
 
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
 /// Removes underlines.
 /// @access public
 /// @group links
 @mixin no-underline {
-  text-decoration: solid underline transparent;
+  text-decoration-style: solid;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
 }
 
 /// Removes bullets from lists.

@@ -1,8 +1,7 @@
 import { html } from 'lit';
-import { property, query, state } from 'lit/decorators.js';
+import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { styleMap } from 'lit/directives/style-map.js';
-import { createPopper } from '../../utils/popper';
 import debounce from '../../utils/debounce';
 import observeResize from '../../utils/observeResize';
 import { dropdownMenuStyles } from './pharos-dropdown-menu.css';
@@ -15,7 +14,11 @@ import FocusMixin from '../../utils/mixins/focus';
 import { FocusTrap } from '@ithaka/focus-trap';
 
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
+import { autoUpdate, computePosition, flip, offset } from '../base/overlay-element';
+import { loopWrapIndex } from '../../utils/math';
 export type { Placement, PositioningStrategy };
+
+const _allMenuItemsSelector = '[data-pharos-component="PharosDropdownMenuItem"]';
 
 /**
  * Pharos dropdown menu component.
@@ -55,6 +58,12 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   @query('.dropdown-menu__list')
   private _menu!: HTMLUListElement;
 
+  @queryAssignedElements({ selector: _allMenuItemsSelector })
+  private _allMenuItems!: NodeListOf<PharosDropdownMenuItem>;
+
+  @queryAssignedElements({ selector: `${_allMenuItemsSelector}:not([disabled])` })
+  private _activeMenuItems!: NodeListOf<PharosDropdownMenuItem>;
+
   @state()
   private _targetWidth = 0;
 
@@ -63,6 +72,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   private _hasHover = false;
   private _moveFocusToLast = false;
   private _enterByKey = false;
+  private _cleanup?: { (): void } = undefined;
 
   private _observeResizeTrigger: Handle | null = null;
 
@@ -77,7 +87,6 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
       10
     );
     this._targetWidth = offsetWidth - (borderLeft + borderRight);
-    this._popper?.update();
   });
 
   constructor() {
@@ -133,19 +142,12 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
   protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
-      const popperRefUpdated = this._popper?.state.elements.reference === this._currentTrigger;
-
       if (this._currentTrigger && this._navMenu) {
         (this._currentTrigger as PharosDropdownMenuNavLink).isActive = this.open;
       }
 
-      if (this.open && !this._popper) {
+      if (this.open) {
         this._setupMenu();
-      }
-
-      if (this.open && this._popper && !popperRefUpdated) {
-        this._popper.state.elements.reference = this._currentTrigger as Element;
-        this._popper.update();
       }
 
       if (!this._currentTrigger?.hasAttribute('data-dropdown-menu-hover') || this._enterByKey) {
@@ -153,7 +155,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
           debounce(() => {
             this._focusContents();
           }, 1)();
-        } else if (popperRefUpdated && !this._navMenu) {
+        } else if (!this._navMenu) {
           this._returnTriggerFocus();
         }
       }
@@ -162,10 +164,12 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
         this._currentTrigger = null;
         this._enterByKey = false;
         this._resetItemsState();
+        if (this._cleanup) {
+          this._cleanup();
+        }
       }
 
       this._setHoverListeners();
-      this._setPopperListeners();
       this._setupResizeObserver();
       this._setTriggerAttributes();
       this._emitVisibilityChange();
@@ -238,34 +242,27 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
   private _setupMenu(): void {
     const yOffset = this._navMenu ? 0 : 8;
-    if (this._currentTrigger && this._menu) {
-      this._options = {
-        placement: this._navMenu ? 'bottom-start' : this.placement,
-        modifiers: [
-          {
-            name: 'flip',
-            options: {
-              fallbackPlacements: this.fallbackPlacements,
-            },
-          },
-          {
-            name: 'offset',
-            options: {
-              offset: [0, yOffset],
-            },
-          },
-          {
-            name: 'eventListeners',
-            options: {
-              scroll: this.open,
-              resize: this.open,
-            },
-          },
-        ],
-        strategy: this.strategy,
-      };
-
-      this._popper = createPopper(this._currentTrigger, this, this._options);
+    const placement = this.placement === 'auto' ? 'bottom-start' : this.placement;
+    if (this._currentTrigger) {
+      this._cleanup = autoUpdate(this._currentTrigger, this, () => {
+        if (this._currentTrigger && this._menu) {
+          computePosition(this._currentTrigger, this._menu, {
+            placement: this._navMenu ? 'bottom-start' : placement,
+            strategy: this.strategy,
+            middleware: [
+              offset(yOffset),
+              flip({
+                fallbackPlacements: this._filteredFallbackPlacements,
+              }),
+            ],
+          }).then(({ x, y }) => {
+            Object.assign(this._menu.style, {
+              left: `${x}px`,
+              top: `${y}px`,
+            });
+          });
+        }
+      });
     }
   }
 
@@ -354,11 +351,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _setOpen(): void {
-    if (this._hasHover) {
-      this.open = true;
-    } else {
-      this.open = false;
-    }
+    this.open = this._hasHover;
   }
 
   private _handleHover(event: MouseEvent): void {
@@ -381,20 +374,12 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _focusFirstItem(): void {
-    const item: PharosDropdownMenuItem | null = this.querySelector(
-      '[data-pharos-component="PharosDropdownMenuItem"]:not([disabled])'
-    );
-    if (item) {
-      item.focus();
-    } else {
-      this.focus();
-    }
+    const item: PharosDropdownMenuItem | null = this._activeMenuItems[0];
+    (item || this).focus();
   }
 
   private _focusLastItem(): void {
-    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]:not([disabled])')
-    );
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._activeMenuItems);
     if (items.length) {
       items[items.length - 1].focus();
       this._moveFocusToLast = false;
@@ -411,7 +396,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
   private _handleMenuClick(event: MouseEvent): void {
     const clickedItem: PharosDropdownMenuItem | null = (event.target as Element)?.closest(
-      '[data-pharos-component="PharosDropdownMenuItem"]'
+      _allMenuItemsSelector
     );
 
     if (clickedItem) {
@@ -420,9 +405,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _handleItemClick(clickedItem: PharosDropdownMenuItem): void {
-    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]')
-    );
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._allMenuItems);
     const details = {
       bubbles: true,
       composed: true,
@@ -442,11 +425,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
       debounce(() => {
         items.forEach((item) => {
-          if (item === clickedItem) {
-            item.selected = true;
-          } else {
-            item.selected = false;
-          }
+          item.selected = item === clickedItem;
         });
       }, 150)();
     }
@@ -477,19 +456,10 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   private _handleNavigation(moveForward: boolean): void {
     const current = this.ownerDocument.activeElement;
 
-    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]:not([disabled]')
-    );
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._activeMenuItems);
 
-    let index = items.findIndex((item) => item === current);
-
-    if (moveForward) {
-      index = index === items.length - 1 ? 0 : index + 1;
-    } else {
-      index = index === 0 || index === -1 ? items.length - 1 : index - 1;
-    }
-
-    items[index]?.focus();
+    const nextItemIndex = loopWrapIndex(items, (item) => item === current, moveForward);
+    items[nextItemIndex]?.focus();
   }
 
   private _setupResizeObserver(): void {
@@ -538,9 +508,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _resetItemsState(): void {
-    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]')
-    );
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._allMenuItems);
 
     debounce(() => {
       items.forEach((item) => (item['_active'] = false));
@@ -548,19 +516,14 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _hasItems(): boolean {
-    return this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]').length > 0;
+    return this._allMenuItems.length > 0;
   }
 
   private _handleSlotChange(): void {
-    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(
-      this.querySelectorAll('[data-pharos-component="PharosDropdownMenuItem"]')
-    );
+    const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._allMenuItems);
 
     items.forEach((item, index) => {
-      item['_last'] = false;
-      if (index === items.length - 1) {
-        item['_last'] = true;
-      }
+      item['_last'] = index === items.length - 1;
     });
   }
 

@@ -12,18 +12,21 @@ import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosIcon } from '../icon/pharos-icon';
 import { PharosToastButton } from './pharos-toast-button';
 
-export type ToastStatus = 'success' | 'error';
+export type ToastStatus = 'success' | 'error' | 'info';
 
 export enum TOAST_ICON {
   ERROR = 'exclamation-inverse',
   SUCCESS = 'checkmark-inverse',
+  INFO = 'exclamation-inverse',
 }
 
-const STATUSES = ['success', 'error'];
+const STATUSES = ['success', 'error', 'info'];
 
 const TOAST_LIFE = 6000;
 
 export const DEFAULT_STATUS = 'success';
+
+export const DEFAULT_INDEFINITE = false;
 
 /**
  * Pharos toast component.
@@ -55,6 +58,20 @@ export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
   @property({ type: Boolean, reflect: true })
   public open = false;
 
+  /**
+   * The optional id passed to the toast. Can be used as a handle so the toast can be updated.
+   * @attr id
+   */
+  @property({ type: String, reflect: true })
+  public override id = 'toast';
+
+  /**
+   * Indicates if the toast should persist indefinitely
+   * @attr indefinite
+   */
+  @property({ type: Boolean, reflect: true })
+  public indefinite = false;
+
   private _timer: number | void = 0;
   private _debouncer: Procedure = debounce(() => {
     this.close();
@@ -65,9 +82,10 @@ export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
   }
 
   protected override firstUpdated(): void {
-    this.addEventListener('focusin', this._handleTimer);
-    this.addEventListener('focusout', this._handleTimer);
-
+    if (!this.indefinite) {
+      this.addEventListener('focusin', this._handleTimer);
+      this.addEventListener('focusout', this._handleTimer);
+    }
     this.open = true;
   }
 
@@ -111,6 +129,7 @@ export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
     return html`
       <div
         role="alert"
+        id="${this.id}"
         class="${classMap({
           [`toast`]: true,
           [`toast--${this.status}`]: this.status,

@@ -251,6 +251,35 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "adandavati",
+      "name": "Armaan Dandavati",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13627169?v=4",
+      "profile": "https://github.com/adandavati",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "shoupeva-ithaka",
+      "name": "Evan Shoup",
+      "avatar_url": "https://avatars.githubusercontent.com/u/112417900?v=4",
+      "profile": "https://github.com/shoupeva-ithaka",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "drewgingerich",
+      "name": "Drew Gingerich",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15133892?v=4",
+      "profile": "https://github.com/drewgingerich",
+      "contributions": [
+        "doc",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7

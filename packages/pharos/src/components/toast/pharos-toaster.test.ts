@@ -1,6 +1,5 @@
 import { fixture, expect, nextFrame } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-
 import type { PharosToaster } from './pharos-toaster';
 import type { PharosToast } from './pharos-toast';
 
@@ -11,6 +10,28 @@ describe('pharos-toaster', () => {
     const event = new CustomEvent('pharos-toast-open', {
       detail: {
         content: 'I am a toast',
+      },
+    });
+    document.dispatchEvent(event);
+  };
+
+  const fireOpenUpdateableToastEvent = () => {
+    const event = new CustomEvent('pharos-toast-open', {
+      detail: {
+        content: 'I am imortal toast',
+        indefinite: true,
+        id: 'my-updateable-toast',
+      },
+    });
+    document.dispatchEvent(event);
+  };
+
+  const fireUpdateToastEvent = () => {
+    const event = new CustomEvent('pharos-toast-update', {
+      detail: {
+        status: 'success',
+        id: 'my-updateable-toast',
+        content: 'Toast has been updated',
       },
     });
     document.dispatchEvent(event);
@@ -57,12 +78,8 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
     await nextFrame();
 
-    expect(component).dom.to.equal(`
-      <pharos-toaster data-pharos-component="PharosToaster">
-        <pharos-toast data-pharos-component="PharosToast" open="" status="success">I am a toast</pharos-toast>
-        <pharos-toast data-pharos-component="PharosToast" open="" status="success">I am a toast</pharos-toast>
-      </pharos-toaster>
-    `);
+    const toast = component.querySelectorAll('pharos-toast');
+    expect(toast.length).to.equal(2);
   });
 
   it('delegates focus to a newly opened toast', async () => {
@@ -117,5 +134,25 @@ describe('pharos-toaster', () => {
 
     const toast = component.querySelector('pharos-toast');
     expect(toast).to.be.null;
+  });
+
+  it('can update an existing toast', async () => {
+    const trigger = document.createElement('button');
+    trigger.addEventListener('click', fireOpenUpdateableToastEvent);
+    document.body.appendChild(trigger);
+    trigger.click();
+    await component.updateComplete;
+    await nextFrame();
+    const triggerUpdate = document.createElement('button');
+    triggerUpdate.addEventListener('click', fireUpdateToastEvent);
+    document.body.appendChild(triggerUpdate);
+    triggerUpdate.click();
+    await component.updateComplete;
+
+    expect(component).dom.to.equal(`
+      <pharos-toaster data-pharos-component="PharosToaster">
+        <pharos-toast data-pharos-component="PharosToast" id="my-updateable-toast" indefinite="" open="" status="success">Toast has been updated</pharos-toast>
+      </pharos-toaster>
+    `);
   });
 });

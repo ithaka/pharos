@@ -1,5 +1,228 @@
 # @ithaka/pharos
 
+## 12.17.0
+
+### Minor Changes
+
+- [#470](https://github.com/ithaka/pharos/pull/470) [`6219789`](https://github.com/ithaka/pharos/commit/6219789d71f135921726f9c0323cc00ae3a666e4) Thanks [@NazimHAli](https://github.com/NazimHAli)! - Add loose-match option to the combobox for query matching
+
+### Patch Changes
+
+- [#463](https://github.com/ithaka/pharos/pull/463) [`584c12e`](https://github.com/ithaka/pharos/commit/584c12e4f8f1903562bf7dbc2edd82118f371913) Thanks [@daneah](https://github.com/daneah)! - Align button variant visual design implementations with UI kit designs
+
+- [#466](https://github.com/ithaka/pharos/pull/466) [`3620b76`](https://github.com/ithaka/pharos/commit/3620b76cc9bde9fdd0f4ed88c2053d0bfd359ea8) Thanks [@jialin-he](https://github.com/jialin-he)! - Fix duplicate id in toast
+
+## 12.16.0
+
+### Minor Changes
+
+- [#457](https://github.com/ithaka/pharos/pull/457) [`f02735b`](https://github.com/ithaka/pharos/commit/f02735b0f5237dc66e7c8823422bc132c83e58bd) Thanks [@daneah](https://github.com/daneah)! - Allow tabs to scroll horizontally when cramped
+
+- [#459](https://github.com/ithaka/pharos/pull/459) [`bcfd018`](https://github.com/ithaka/pharos/commit/bcfd01805d24aac955a6b70e3677192b79ed9664) Thanks [@michael-iden](https://github.com/michael-iden)! - Add fit to width icon
+
+- [#453](https://github.com/ithaka/pharos/pull/453) [`2977fae`](https://github.com/ithaka/pharos/commit/2977fae5d5449744d1b7b3aa8ca58811c54bd043) Thanks [@daneah](https://github.com/daneah)! - use queryAssignedElements and simplify focus loops
+
+## 12.15.1
+
+### Patch Changes
+
+- [#451](https://github.com/ithaka/pharos/pull/451) [`d4149c2`](https://github.com/ithaka/pharos/commit/d4149c2bdee9024b204e439ce839759bd5107d01) Thanks [@daneah](https://github.com/daneah)! - Apply position computation and resulting styles to the proper menu element instead of the host container
+
+## 12.15.0
+
+### Minor Changes
+
+- [#434](https://github.com/ithaka/pharos/pull/434) [`080c496`](https://github.com/ithaka/pharos/commit/080c496fedd4be13bd7f63c92332b9e1f6e32069) Thanks [@daneah](https://github.com/daneah)! - \* Replace PopperJS with Floating UI for tooltips and dropdown menus
+
+  - Update GitHub Actions to use environment files instead of `set-output`
+  - Update GitHub Actions action versions
+  - Fix stylelint errors for Link, ToggleButton, TextInput
+
+- [#442](https://github.com/ithaka/pharos/pull/442) [`bc05bbc`](https://github.com/ithaka/pharos/commit/bc05bbcf3215baa78755d60436bb720b844da7fd) Thanks [@daneah](https://github.com/daneah)! - Fire pharos-tab-selected in response to tab being selected programmatically in addition to user clicks
+
+### Patch Changes
+
+- [#438](https://github.com/ithaka/pharos/pull/438) [`4f56c1b`](https://github.com/ithaka/pharos/commit/4f56c1b062fa160cd5aac6c96d96a39a5df5fbdb) Thanks [@daneah](https://github.com/daneah)! - Improve accessibility for toggle button groups
+
+- [#435](https://github.com/ithaka/pharos/pull/435) [`6cbeb91`](https://github.com/ithaka/pharos/commit/6cbeb91cc5942c492222a797ab3efd710b15ed1c) Thanks [@daneah](https://github.com/daneah)! - Update Storybook stories to Component Story Format (CSF) version 3
+
+- [#449](https://github.com/ithaka/pharos/pull/449) [`50e665d`](https://github.com/ithaka/pharos/commit/50e665dbdb0a19c50df68b99e266f2fd7bb5aedd) Thanks [@daneah](https://github.com/daneah)! - Fix initial tab selection in more use cases
+
+## 12.14.0
+
+### Minor Changes
+
+- [#431](https://github.com/ithaka/pharos/pull/431) [`b3c9c3b`](https://github.com/ithaka/pharos/commit/b3c9c3ba2870d458846ebf20301b10dfb21b714d) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - allow checkbox change event to be prevented
+
+## 12.13.0
+
+### Minor Changes
+
+- [#428](https://github.com/ithaka/pharos/pull/428) [`3cd44b5`](https://github.com/ithaka/pharos/commit/3cd44b55421b89745960d11dd6e484dc412ec826) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - pharos-image card will only emit selected event or click instead of both
+
+### Patch Changes
+
+- [#425](https://github.com/ithaka/pharos/pull/425) [`3fd8e16`](https://github.com/ithaka/pharos/commit/3fd8e16ed66e9c26bbbf901a114f2f50b563a1f2) Thanks [@daneah](https://github.com/daneah)! - Update ARIA attribute to improve screen reading experience for checkboxes
+
+## 12.12.0
+
+### Minor Changes
+
+- [#421](https://github.com/ithaka/pharos/pull/421) [`79c041e`](https://github.com/ithaka/pharos/commit/79c041e6861a30f69b30369b62add826f3063b1b) Thanks [@shoupeva-ithaka](https://github.com/shoupeva-ithaka)! - pharos-sidenav emits 'close' event when close button is clicked
+
+## 12.11.0
+
+### Minor Changes
+
+- [#408](https://github.com/ithaka/pharos/pull/408) [`041102f`](https://github.com/ithaka/pharos/commit/041102fe32a1093ec6e95bd13c03ac55e9535f6f) Thanks [@michael-iden](https://github.com/michael-iden)! - Add selectable states to subtle image cards
+
+## 12.10.0
+
+### Minor Changes
+
+- [#416](https://github.com/ithaka/pharos/pull/416) [`ae1063c`](https://github.com/ithaka/pharos/commit/ae1063c065490389cfa4224d0893e202fbe84671) Thanks [@rehanabbasi](https://github.com/rehanabbasi)! - Link: Fix visited link hover state underline color
+  Image card: Add visited link support for title link
+
+## 12.9.1
+
+### Patch Changes
+
+- [#414](https://github.com/ithaka/pharos/pull/414) [`26d2536`](https://github.com/ithaka/pharos/commit/26d2536555088d08343e6ef303b9aaf6833d83ed) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - removes color inherit from pharos-heading
+
+## 12.9.0
+
+### Minor Changes
+
+- [#409](https://github.com/ithaka/pharos/pull/409) [`c931566`](https://github.com/ithaka/pharos/commit/c931566b6aa73ea93946b20e5a61ab06e654b2e0) Thanks [@rehanabbasi](https://github.com/rehanabbasi)! - Supports visited links style on Pharos link component, when visited
+
+## 12.8.0
+
+### Minor Changes
+
+- [#407](https://github.com/ithaka/pharos/pull/407) [`30893f4`](https://github.com/ithaka/pharos/commit/30893f4eeb559c6c2de4fd16acfccc88c2a7f5b2) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add updateable toasts for async actions
+
+## 12.7.4
+
+### Patch Changes
+
+- [#405](https://github.com/ithaka/pharos/pull/405) [`aec6483`](https://github.com/ithaka/pharos/commit/aec6483cb7732c8c88064d878dc06d307efdebe1) Thanks [@michael-iden](https://github.com/michael-iden)! - Wait for child `toggle-button` elements to initialize before referencing their state in the `toggle-button-group`
+
+## 12.7.3
+
+### Patch Changes
+
+- [#400](https://github.com/ithaka/pharos/pull/400) [`abe0aa1`](https://github.com/ithaka/pharos/commit/abe0aa1d9673ee4017cf524e2b5d1cd1c5dd720d) Thanks [@daneah](https://github.com/daneah)! - Allow scoped Pharos Link elements to be clickable within a Pharos Checkbox or RadioButton
+
+## 12.7.2
+
+### Patch Changes
+
+- [#397](https://github.com/ithaka/pharos/pull/397) [`cca3159`](https://github.com/ithaka/pharos/commit/cca3159ca24e449bc9b5b218bd58f3396cbb3a8b) Thanks [@daneah](https://github.com/daneah)! - Explicitly set input element margins to avoid undesired user agent styling
+
+## 12.7.1
+
+### Patch Changes
+
+- [#393](https://github.com/ithaka/pharos/pull/393) [`1bbe745`](https://github.com/ithaka/pharos/commit/1bbe745e1b99531c8e85f294ee804378a54f9caf) Thanks [@acjreno](https://github.com/acjreno)! - Remove event.stopPropagation from \_cardToggleSelect and logic updates
+
+## 12.7.0
+
+### Minor Changes
+
+- [#392](https://github.com/ithaka/pharos/pull/392) [`2c3056e`](https://github.com/ithaka/pharos/commit/2c3056eb6004f4602ffe34c1c97c75efa1419309) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add keyboard accessibility to selectable image card variants
+
+## 12.6.2
+
+### Patch Changes
+
+- [#388](https://github.com/ithaka/pharos/pull/388) [`0c8d58d`](https://github.com/ithaka/pharos/commit/0c8d58dc9ac6893e6469f7081e8212d25a6cadce) Thanks [@adandavati](https://github.com/adandavati)! - Remove overly strict contain property from text-input labels
+
+## 12.6.1
+
+### Patch Changes
+
+- [#386](https://github.com/ithaka/pharos/pull/386) [`9e555e4`](https://github.com/ithaka/pharos/commit/9e555e4edd965cc1965b0aeb507fea21153bacd8) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - Adds new variant to pharos-text-input to create an input box with more padding
+
+## 12.6.0
+
+### Minor Changes
+
+- [#375](https://github.com/ithaka/pharos/pull/375) [`8d4d212`](https://github.com/ithaka/pharos/commit/8d4d2126f3fe3525847f027aca343d0154a03447) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Profile icon is added to our list of icons
+
+### Patch Changes
+
+- [#384](https://github.com/ithaka/pharos/pull/384) [`8cd06ef`](https://github.com/ithaka/pharos/commit/8cd06ef430f225730317aac22bf3d3573b858db0) Thanks [@michael-iden](https://github.com/michael-iden)! - Restructure card dom and remove checkbox mouseevent listeners to enable subtle selection in Safari
+
+## 12.5.1
+
+### Patch Changes
+
+- [#373](https://github.com/ithaka/pharos/pull/373) [`60e1fef`](https://github.com/ithaka/pharos/commit/60e1fefdd7c113b9cc936ce877e544cd66317768) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add background color to selectable disabled card
+
+## 12.5.0
+
+### Minor Changes
+
+- [#366](https://github.com/ithaka/pharos/pull/366) [`febc324`](https://github.com/ithaka/pharos/commit/febc324287a21c0949477c6edbc89d2ca942af03) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add selectable card variants, add disabled card state, update styling of error state
+
+## 12.4.0
+
+### Minor Changes
+
+- [#349](https://github.com/ithaka/pharos/pull/349) [`8f34535`](https://github.com/ithaka/pharos/commit/8f345353f0afacd6b334bd578ae8c74622045a1c) Thanks [@acjreno](https://github.com/acjreno)! - Addition: new icon for ZIP filetypes
+
+## 12.3.1
+
+### Patch Changes
+
+- [#342](https://github.com/ithaka/pharos/pull/342) [`f777f9e`](https://github.com/ithaka/pharos/commit/f777f9e99da158f51427cad18175086f3b320645) Thanks [@jialin-he](https://github.com/jialin-he)! - Remove fill attribute from shift icon svg
+
+## 12.3.0
+
+### Minor Changes
+
+- [#339](https://github.com/ithaka/pharos/pull/339) [`815c516`](https://github.com/ithaka/pharos/commit/815c51682460782ec5f893d2e3f8f945282fcb50) Thanks [@jialin-he](https://github.com/jialin-he)! - Add new icons expand-vertical and collapse-vertical
+
+### Patch Changes
+
+- [#336](https://github.com/ithaka/pharos/pull/336) [`28dd444`](https://github.com/ithaka/pharos/commit/28dd444580d24c33625bfca74a7d0c0f03da3e9e) Thanks [@daneah](https://github.com/daneah)! - Update page-relative paths to domain-relative paths
+
+* [#338](https://github.com/ithaka/pharos/pull/338) [`54cb97b`](https://github.com/ithaka/pharos/commit/54cb97be3b88c738ddecec4c5369b96f69bebbfb) Thanks [@daneah](https://github.com/daneah)! - Move size-limit checks up to the project root
+
+## 12.2.3
+
+### Patch Changes
+
+- [#330](https://github.com/ithaka/pharos/pull/330) [`732fe3e`](https://github.com/ithaka/pharos/commit/732fe3e51cb164c7fcb416fc2a70fa80b07e99f3) Thanks [@NazimHAli](https://github.com/NazimHAli)! - Add optional horizontal line to the tabs component
+
+## 12.2.2
+
+### Patch Changes
+
+- [#327](https://github.com/ithaka/pharos/pull/327) [`f859df6`](https://github.com/ithaka/pharos/commit/f859df698317e6f0c3cc4c6b29817dafe32f91c1) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - removed fill: #color property on newly added icons to set desired fill color as needed
+
+## 12.2.1
+
+### Patch Changes
+
+- [#325](https://github.com/ithaka/pharos/pull/325) [`3576dbd`](https://github.com/ithaka/pharos/commit/3576dbd603248abc61c7a3b81a2c804a322b8abf) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - remove SVG tags around icon path
+
+## 12.2.0
+
+### Minor Changes
+
+- [#322](https://github.com/ithaka/pharos/pull/322) [`a5e99c6`](https://github.com/ithaka/pharos/commit/a5e99c6dfff6d22992168c61c12a61a2bf4152d9) Thanks [@jialin-he](https://github.com/jialin-he)! - Add info variation to toast
+
+## 12.1.0
+
+### Minor Changes
+
+- [#320](https://github.com/ithaka/pharos/pull/320) [`dfe88f9`](https://github.com/ithaka/pharos/commit/dfe88f9252854265f4e66f4b3349c2b7e576a537) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Add new icons checkmark-filled-circle, circle and partial-circle
+
+### Patch Changes
+
+- [#319](https://github.com/ithaka/pharos/pull/319) [`1dc856c`](https://github.com/ithaka/pharos/commit/1dc856c98514154faa6e5b8a5ad2b190deef1ee3) Thanks [@eslawski](https://github.com/eslawski)! - Enhance build process to minify component css
+
 ## 12.0.1
 
 ### Patch Changes

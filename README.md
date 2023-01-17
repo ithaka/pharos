@@ -91,6 +91,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/facelessfool"><img src="https://avatars.githubusercontent.com/u/41726786?v=4?s=100" width="100px;" alt=""/><br /><sub><b>K Chingsubam</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=facelessfool" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/chrisjbrown"><img src="https://avatars.githubusercontent.com/u/1250638?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Brown</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=chrisjbrown" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/JoshAtITHAKA"><img src="https://avatars.githubusercontent.com/u/59626212?v=4?s=100" width="100px;" alt=""/><br /><sub><b>JoshAtITHAKA</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=JoshAtITHAKA" title="Code">💻</a> <a href="https://github.com/ithaka/pharos/commits?author=JoshAtITHAKA" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/adandavati"><img src="https://avatars.githubusercontent.com/u/13627169?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Armaan Dandavati</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=adandavati" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/shoupeva-ithaka"><img src="https://avatars.githubusercontent.com/u/112417900?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Evan Shoup</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=shoupeva-ithaka" title="Code">💻</a> <a href="https://github.com/ithaka/pharos/commits?author=shoupeva-ithaka" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/drewgingerich"><img src="https://avatars.githubusercontent.com/u/15133892?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Drew Gingerich</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=drewgingerich" title="Documentation">📖</a> <a href="https://github.com/ithaka/pharos/commits?author=drewgingerich" title="Code">💻</a></td>
   </tr>
 </table>
 
@@ -108,8 +113,8 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 JSTOR is part of ITHAKA, a not-for-profit dedicated to expanding access to knowledge and education worldwide. Our staff makes us who we are. We’re hiring — join us!
 
-- [See career opportunities](https://recruiting.ultipro.com/ITH1000ITHAK/JobBoard/5fe90ad4-9e26-490b-9c45-6c9669d4dcd0/?q=&o=postedDateDesc)
-- [Learn more about ITHAKA](https://ithaka.org/)
+- [See career opportunities](https://www.ithaka.org/careers/)
+- [Learn more about ITHAKA](https://www.ithaka.org/)
 
 ## License
 

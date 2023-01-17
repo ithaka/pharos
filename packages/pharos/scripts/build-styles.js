@@ -4,7 +4,7 @@ import { globbyStream } from 'globby';
 import sass from 'sass';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
-import prettier from 'prettier';
+import cssnano from 'cssnano';
 import { promisify } from 'util';
 import { copyDir } from './copyDir.js';
 
@@ -27,7 +27,8 @@ export const buildStyles = async () => {
       file: sassPath,
       outFile: dest,
     });
-    const processedCSS = await postcss([autoprefixer])
+
+    const processedCSS = await postcss([autoprefixer, cssnano])
       .process(cssResult.css, {
         from: undefined,
       })
@@ -48,10 +49,7 @@ export const buildStyles = async () => {
       \`;
     `;
 
-    const options = prettier.resolveConfig.sync(sassPath);
-    options.parser = 'typescript';
-    const formatted = prettier.format(litStyles, options);
-    await fs.writeFile(dest, formatted, { flag: 'w' });
+    await fs.writeFile(dest, litStyles, { flag: 'w' });
   }
 };
 
@@ -70,10 +68,7 @@ export const buildSlotStyles = async () => {
         return result;
       });
 
-    const options = prettier.resolveConfig.sync(slotPath);
-    options.parser = 'css';
-    const formatted = prettier.format(processedCSS.css, options);
-    await fs.writeFile(path.join('./lib/styles', dest), formatted, { flag: 'w' });
+    await fs.writeFile(path.join('./lib/styles', dest), processedCSS.css, { flag: 'w' });
   }
 };
 

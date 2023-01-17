@@ -1,10 +1,20 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  ignorePatterns: ['**/*.css.ts'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+    'plugin:storybook/recommended',
+  ],
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
+    },
+    babelOptions: {
+      presets: ['@babel/preset-react'],
     },
   },
   plugins: ['react', '@typescript-eslint', 'no-smart-quotes'],
@@ -19,6 +29,7 @@ module.exports = {
   },
   rules: {
     'no-smart-quotes/no-smart-quotes': 'error',
+    'react/react-in-jsx-scope': 'off',
   },
   overrides: [
     {

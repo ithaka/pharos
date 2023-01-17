@@ -19,9 +19,22 @@ export type TextInputType =
   | 'text'
   | 'url';
 
+export type TextInputVariant = 'primary' | 'prominent';
+
 export type TextInputAutocomplete = 'on' | 'off';
 
-const TYPES = ['email', 'hidden', 'number', 'password', 'search', 'tel', 'text', 'url'];
+export const allTypes = [
+  'email',
+  'hidden',
+  'number',
+  'password',
+  'search',
+  'tel',
+  'text',
+  'url',
+] as TextInputType[];
+
+const VARIANTS = ['primary', 'prominent'] as TextInputVariant[];
 
 const SUBMITTABLE = [
   'input[type="submit"]:not([disabled])',
@@ -79,6 +92,13 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
    */
   @property({ type: String, reflect: true })
   public type: TextInputType = 'text';
+
+  /**
+   * Indicates the variant of text input.
+   * @attr variant
+   */
+  @property({ type: String, reflect: true })
+  public variant: TextInputVariant = 'primary';
 
   /**
    * Indicates if input is readonly.
@@ -147,9 +167,15 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
   protected override update(changedProperties: PropertyValues): void {
     super.update && super.update(changedProperties);
 
-    if (changedProperties.has('type') && !TYPES.includes(this.type)) {
+    if (changedProperties.has('type') && !allTypes.includes(this.type)) {
       throw new Error(
-        `${this.type} is not a valid text input type. Valid types are: ${TYPES.join(', ')}`
+        `${this.type} is not a valid text input type. Valid types are: ${allTypes.join(', ')}`
+      );
+    }
+
+    if (changedProperties.has('variant') && this.variant && !VARIANTS.includes(this.variant)) {
+      throw new Error(
+        `${this.variant} is not a valid variant. Valid variants are: ${VARIANTS.join(', ')}`
       );
     }
   }

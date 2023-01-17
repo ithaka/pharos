@@ -1,5 +1,6 @@
 import { setCustomElements } from '@storybook/web-components';
 import { Canvas } from '@storybook/addon-docs';
+import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 import customElements from '../../packages/pharos/custom-elements.json';
 import a11yConfig from '../a11yConfig';
@@ -22,5 +23,24 @@ export const parameters = {
     components: {
       Canvas: Canvas,
     },
+  },
+  viewport: {
+    viewports: {
+      ...MINIMAL_VIEWPORTS,
+      ...INITIAL_VIEWPORTS,
+    },
+  },
+  backgrounds: {
+    default: 'White',
+    values: [
+      {
+        name: 'White',
+        value: '#FFFFFF',
+      },
+      {
+        name: 'Black',
+        value: '#000000',
+      },
+    ],
   },
 };

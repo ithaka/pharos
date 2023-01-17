@@ -1,6 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html, nothing } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, queryAssignedElements } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { alertStyles } from './pharos-alert.css';
@@ -20,7 +20,7 @@ export enum ALERT_ICON {
   WARNING = 'exclamation-inverse',
 }
 
-const STATUSES = ['info', 'success', 'warning', 'error'];
+const STATUSES = ['info', 'success', 'warning', 'error'] as AlertStatus[];
 
 /**
  * Pharos alert component
@@ -66,6 +66,7 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
   @property({ type: Boolean, reflect: true })
   public closable = false;
 
+  @queryAssignedElements({ selector: '[data-pharos-component="PharosLink"]' })
   private _allLinks!: NodeListOf<PharosLink>;
 
   public static override get styles(): CSSResultArray {
@@ -92,8 +93,6 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
   }
 
   private _handleSlotChange(): void {
-    this._allLinks = this.querySelectorAll('[data-pharos-component="PharosLink"]');
-
     this._allLinks.forEach((link) => {
       link['_alert'] = true;
     });

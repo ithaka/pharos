@@ -13,6 +13,7 @@ import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosIcon } from '../icon/pharos-icon';
 import { PharosTooltip } from '../tooltip/pharos-tooltip';
 import { PharosButton } from '../button/pharos-button';
+import { loopWrapIndex } from '../../utils/math';
 
 /**
  * Pharos combobox component.
@@ -65,6 +66,13 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
 
   @property({ type: Boolean, reflect: true, attribute: 'search-mode' })
   public searchMode = false;
+
+  /**
+   * Use loose matching when comparing input value to options.
+   * @attr looseMatch
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'loose-match' })
+  public looseMatch = false;
 
   /**
    * The list of options available in the combobox dropdown list
@@ -165,9 +173,15 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
 
   private _renderList(): TemplateResult | typeof nothing {
     if (this.open) {
-      const regex = new RegExp(this._query, 'gi');
+      const queryToCompare = this.looseMatch ? this._normalizeString(this._query) : this._query;
+      const regex = new RegExp(queryToCompare, 'gi');
       const matchingOptions = this.options.filter((child) => {
-        return this.searchMode ? child : child.text.match(regex);
+        if (this.searchMode) {
+          return child;
+        }
+
+        const childText = this.looseMatch ? this._normalizeString(child.text) : child.text;
+        return childText.match(regex);
       });
       this._noResults = matchingOptions.length === 0;
 
@@ -371,18 +385,15 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
       '.combobox__option[highlighted]'
     ) as HTMLLIElement;
 
-    let index = values.findIndex((v) => v === highlightedOption?.innerText.trim());
-
-    if (moveForward) {
-      index = index === values.length - 1 ? 0 : index + 1;
-    } else {
-      index = index === 0 || index === -1 ? values.length - 1 : index - 1;
-    }
-
+    const nextOptionIndex = loopWrapIndex(
+      values,
+      (v) => v === highlightedOption?.innerText.trim(),
+      moveForward
+    );
     highlightedOption?.removeAttribute('highlighted');
     highlightedOption?.setAttribute('aria-selected', 'false');
 
-    const nextOption = options[index];
+    const nextOption = options[nextOptionIndex];
 
     nextOption.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     nextOption.setAttribute('highlighted', '');
@@ -435,6 +446,22 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
 
   private _handleInputClick(): void {
     this.open = !this.open;
+  }
+
+  /**
+   * Normalizes a string in the following order:
+   *
+   * 1 - Applies https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+   *     with the 'NFKD' parameters for compatibility
+   * 2 - Removes all diacritic characters using a global regex
+   * 3 - Lower case all characters
+   *
+   */
+  private _normalizeString(textString: string) {
+    return textString
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
   }
 
   protected override render(): TemplateResult {

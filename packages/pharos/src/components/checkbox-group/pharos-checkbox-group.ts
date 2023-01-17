@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, queryAssignedElements } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { checkboxGroupStyles } from './pharos-checkbox-group.css';
 import type { PharosCheckbox } from '../checkbox/pharos-checkbox';
@@ -35,17 +35,16 @@ export class PharosCheckboxGroup extends FormElement {
       .map((box) => (box as PharosCheckbox).value);
   }
 
+  @queryAssignedElements({ selector: '[data-pharos-component="PharosCheckbox"]' })
+  private _checkboxes!: NodeListOf<PharosCheckbox>;
+
   public static override get styles(): CSSResultArray {
     return [super.styles, checkboxGroupStyles];
   }
 
   protected override firstUpdated(): void {
     this._setBoxes();
-
-    const boxes: NodeListOf<PharosCheckbox> = this.querySelectorAll(
-      '[data-pharos-component="PharosCheckbox"]'
-    );
-    boxes.forEach((box) => {
+    this._checkboxes.forEach((box) => {
       box.addEventListener('change', (event: Event) => {
         event.stopPropagation();
 
@@ -73,10 +72,7 @@ export class PharosCheckboxGroup extends FormElement {
   }
 
   private _setBoxes(): void {
-    const boxes: NodeListOf<PharosCheckbox> = this.querySelectorAll(
-      '[data-pharos-component="PharosCheckbox"]'
-    );
-    boxes.forEach((box) => {
+    this._checkboxes.forEach((box) => {
       box.name = this.name;
       box.disabled = this.disabled;
       box.validated = this.validated;

@@ -165,6 +165,30 @@ describe('pharos-combobox', () => {
     expect(component['_input'].value).to.equal('Gobbledegook');
   });
 
+  it('query matches text when loose-match is enabled and query contains accent', async () => {
+    component = await fixture(html`
+      <pharos-combobox loose-match>
+        <span slot="label">I am a label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Oṕtion 2</option>
+        <option value="3">Option 3</option>
+      </pharos-combobox>
+    `);
+    component['_input'].value = 'Oṕtion';
+    component['_input'].dispatchEvent(new Event('input'));
+    await component.updateComplete;
+
+    const options = component.renderRoot.querySelectorAll(
+      '.combobox__option'
+    ) as NodeListOf<HTMLLIElement>;
+    const firstOption = options[0];
+    const expectedHTML = '<mark class="combobox__mark">Option</mark> 1';
+    const optionHTML = firstOption.innerHTML.replace(/<!--.*?-->/g, '').trim();
+
+    expect(optionHTML).to.equal(expectedHTML);
+    expect(options.length).to.equal(3);
+  });
+
   it('highlights text in the option that match the query', async () => {
     component['_input'].value = 'o';
     component['_input'].dispatchEvent(new Event('input'));

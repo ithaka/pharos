@@ -1,5 +1,63 @@
 # @ithaka/pharos-site
 
+## 5.13.0
+
+### Minor Changes
+
+- [#456](https://github.com/ithaka/pharos/pull/456) [`83cd01a`](https://github.com/ithaka/pharos/commit/83cd01ad5c90028039787c911d0d87d8dba2f45f) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - add documentation for overlay button
+
+- [#459](https://github.com/ithaka/pharos/pull/459) [`bcfd018`](https://github.com/ithaka/pharos/commit/bcfd01805d24aac955a6b70e3677192b79ed9664) Thanks [@michael-iden](https://github.com/michael-iden)! - Add fit to width icon
+
+### Patch Changes
+
+- Updated dependencies [[`f02735b`](https://github.com/ithaka/pharos/commit/f02735b0f5237dc66e7c8823422bc132c83e58bd), [`bcfd018`](https://github.com/ithaka/pharos/commit/bcfd01805d24aac955a6b70e3677192b79ed9664), [`2977fae`](https://github.com/ithaka/pharos/commit/2977fae5d5449744d1b7b3aa8ca58811c54bd043)]:
+  - @ithaka/pharos@12.16.0
+
+## 5.12.0
+
+### Minor Changes
+
+- [#434](https://github.com/ithaka/pharos/pull/434) [`080c496`](https://github.com/ithaka/pharos/commit/080c496fedd4be13bd7f63c92332b9e1f6e32069) Thanks [@daneah](https://github.com/daneah)! - \* Replace PopperJS with Floating UI for tooltips and dropdown menus
+  - Update GitHub Actions to use environment files instead of `set-output`
+  - Update GitHub Actions action versions
+  - Fix stylelint errors for Link, ToggleButton, TextInput
+
+### Patch Changes
+
+- [#433](https://github.com/ithaka/pharos/pull/433) [`67fba0f`](https://github.com/ithaka/pharos/commit/67fba0f404018c581932b4d9bd627571df7f9ca5) Thanks [@daneah](https://github.com/daneah)! - Improve imports with path aliases
+
+- [#444](https://github.com/ithaka/pharos/pull/444) [`237339f`](https://github.com/ithaka/pharos/commit/237339f5130c4809c2f8e807d5a463edd8e63b13) Thanks [@daneah](https://github.com/daneah)! - Fix documentation for Button's on-background usage
+
+- Updated dependencies [[`080c496`](https://github.com/ithaka/pharos/commit/080c496fedd4be13bd7f63c92332b9e1f6e32069), [`4f56c1b`](https://github.com/ithaka/pharos/commit/4f56c1b062fa160cd5aac6c96d96a39a5df5fbdb), [`bc05bbc`](https://github.com/ithaka/pharos/commit/bc05bbcf3215baa78755d60436bb720b844da7fd), [`6cbeb91`](https://github.com/ithaka/pharos/commit/6cbeb91cc5942c492222a797ab3efd710b15ed1c), [`50e665d`](https://github.com/ithaka/pharos/commit/50e665dbdb0a19c50df68b99e266f2fd7bb5aedd)]:
+  - @ithaka/pharos@12.15.0
+
+## 5.11.3
+
+### Patch Changes
+
+- [#380](https://github.com/ithaka/pharos/pull/380) [`00740c1`](https://github.com/ithaka/pharos/commit/00740c160748c3fba76bd36a899b62221661881f) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Fix broken link to icons on iconography page
+
+- Updated dependencies [[`8cd06ef`](https://github.com/ithaka/pharos/commit/8cd06ef430f225730317aac22bf3d3573b858db0), [`8d4d212`](https://github.com/ithaka/pharos/commit/8d4d2126f3fe3525847f027aca343d0154a03447)]:
+  - @ithaka/pharos@12.6.0
+
+## 5.11.2
+
+### Patch Changes
+
+- [#360](https://github.com/ithaka/pharos/pull/360) [`ee7a692`](https://github.com/ithaka/pharos/commit/ee7a692070561cbbc2adecccd2029fc6f4e8d179) Thanks [@daneah](https://github.com/daneah)! - Use updated ITHAKA org links
+
+- Updated dependencies [[`febc324`](https://github.com/ithaka/pharos/commit/febc324287a21c0949477c6edbc89d2ca942af03)]:
+  - @ithaka/pharos@12.5.0
+
+## 5.11.1
+
+### Patch Changes
+
+- [#336](https://github.com/ithaka/pharos/pull/336) [`28dd444`](https://github.com/ithaka/pharos/commit/28dd444580d24c33625bfca74a7d0c0f03da3e9e) Thanks [@daneah](https://github.com/daneah)! - Update page-relative paths to domain-relative paths
+
+- Updated dependencies [[`28dd444`](https://github.com/ithaka/pharos/commit/28dd444580d24c33625bfca74a7d0c0f03da3e9e), [`54cb97b`](https://github.com/ithaka/pharos/commit/54cb97be3b88c738ddecec4c5369b96f69bebbfb), [`815c516`](https://github.com/ithaka/pharos/commit/815c51682460782ec5f893d2e3f8f945282fcb50)]:
+  - @ithaka/pharos@12.3.0
+
 ## 5.11.0
 
 ### Minor Changes

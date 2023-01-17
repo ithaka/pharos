@@ -3,10 +3,18 @@ import { query, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { inputGroupStyles } from './pharos-input-group.css';
 import { PharosTextInput } from '../text-input/pharos-text-input';
-import type { TextInputType, TextInputAutocomplete } from '../text-input/pharos-text-input';
-import { PharosSpacingOneAndAHalfX, PharosSpacingThreeQuartersX } from '../../styles/variables';
+import type {
+  TextInputType,
+  TextInputAutocomplete,
+  TextInputVariant,
+} from '../text-input/pharos-text-input';
+import {
+  PharosSpacingOneAndAHalfX,
+  PharosSpacingThreeQuartersX,
+  PharosSpacing1X,
+} from '../../styles/variables';
 
-export type { TextInputType, TextInputAutocomplete };
+export type { TextInputType, TextInputAutocomplete, TextInputVariant };
 
 /**
  * Pharos input group component.
@@ -42,7 +50,9 @@ export class PharosInputGroup extends PharosTextInput {
     super.updated(changedProperties);
 
     if (changedProperties.has('_prependGroupWidth')) {
-      this._input.style.paddingLeft = `calc(${PharosSpacingThreeQuartersX} + ${this._prependGroupWidth}px)`;
+      const updatedPaddingLeft =
+        this.variant === 'prominent' ? PharosSpacing1X : PharosSpacingThreeQuartersX;
+      this._input.style.paddingLeft = `calc(${updatedPaddingLeft} + ${this._prependGroupWidth}px)`;
     }
     if (
       ['invalidated', 'validated', '_appendGroupWidth'].some((key) => changedProperties.has(key))
