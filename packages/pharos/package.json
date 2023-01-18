@@ -92,6 +92,7 @@
     "./lib": "./lib/index.js",
     "./lib/index": "./lib/index.js",
     "./lib/index.js": "./lib/index.js",
+    "./lib/react-components": "./lib/react-components/index.js",
     "./lib/styles/pharos": "./lib/styles/pharos.scss",
     "./lib/styles/pharos.scss": "./lib/styles/pharos.scss",
     "./lib/utils/scss/mixins": "./lib/utils/scss/_mixins.scss",
