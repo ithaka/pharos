@@ -55,7 +55,6 @@
     "directory": "site"
   },
   "exports": {
-    "./lib/utils/scss/mixins": "./lib/utils/scss/mixins.scss",
     "./lib/utils/scss/mixins.scss": "./lib/utils/scss/mixins.scss"
   }
 }
