@@ -95,6 +95,7 @@
     "./lib/styles/*": "./lib/styles/*.js",
     "./lib/styles/*.css": "./lib/styles/*.css",
     "./lib/styles/*.scss": "./lib/styles/*.scss",
+    "./lib/styles/pharos": "./lib/styles/pharos.scss",
     "./lib/utils/scss/mixins": "./lib/utils/scss/_mixins.scss",
     "./lib/utils/registerComponents": "./lib/utils/registerComponents.js",
     "./lib/utils/PharosContext": "./lib/utils/PharosContext.js",
