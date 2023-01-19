@@ -6,7 +6,7 @@ import {
   PharosColorMarbleGray50,
   PharosColorMarbleGray20,
   PharosFontFamilyBody,
-} from '../packages/pharos/lib/styles/variables.js';
+} from '../packages/pharos/lib/styles/variables';
 import '../packages/pharos/lib/styles/fonts.css';
 
 export default create({
