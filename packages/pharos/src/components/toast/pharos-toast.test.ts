@@ -77,6 +77,6 @@ describe('pharos-toast', () => {
     await component.updateComplete;
     await aTimeout(500);
 
-    expect(detail === component).to.be.true;
+    expect((detail as any).id === component.id).to.be.true;
   });
 });
