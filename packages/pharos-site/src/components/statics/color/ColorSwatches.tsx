@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { FC, ReactElement, CSSProperties } from 'react';
-import tokens from '@ithaka/pharos/lib/styles/tokens.js';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
 import {
   figure,
   colorSwatch,
