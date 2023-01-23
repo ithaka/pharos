@@ -30,14 +30,16 @@ export const Base = {
 export const Events = {
   render: () =>
     html`
-      <pharos-tabs @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}">
-        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
-        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
-        <pharos-tab id="tab-3" data-panel-id="panel-3" selected>Tab 3</pharos-tab>
-        <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
-        <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
-        <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
-      </pharos-tabs>
+      <div @pharos-tabs-tab-selected="${(e) => action('Selected')(e.detail.id)}">
+        <pharos-tabs selected-tab="2">
+          <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
+          <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
+          <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
+          <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
+          <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
+          <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
+        </pharos-tabs>
+      </div>
     `,
   parameters: { options: { selectedPanel: 'addon-controls' } },
 };
@@ -85,14 +87,14 @@ export const PanelSeparator = {
 export const HorizontalScrolling = {
   render: () =>
     html`
-      <pharos-tabs panel-separator style="width: 100%">
+      <pharos-tabs selected-tab="6" panel-separator style="width: 100%">
         <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
         <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
         <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
         <pharos-tab id="tab-4" data-panel-id="panel-4">Tab 4</pharos-tab>
         <pharos-tab id="tab-5" data-panel-id="panel-5">Tab 5</pharos-tab>
         <pharos-tab id="tab-6" data-panel-id="panel-6">Tab 6</pharos-tab>
-        <pharos-tab id="tab-7" data-panel-id="panel-7" selected>Tab 7</pharos-tab>
+        <pharos-tab id="tab-7" data-panel-id="panel-7">Tab 7</pharos-tab>
         <pharos-tab id="tab-8" data-panel-id="panel-8">Tab 8</pharos-tab>
         <pharos-tab id="tab-9" data-panel-id="panel-9">Tab 9</pharos-tab>
         <pharos-tab-panel id="panel-1" slot="panel"

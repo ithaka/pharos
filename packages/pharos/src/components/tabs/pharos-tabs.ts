@@ -1,6 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
-import type { TemplateResult, CSSResultArray } from 'lit';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { tabsStyles } from './pharos-tabs.css';
@@ -20,6 +20,8 @@ const _allTabPanelsSelector = '[data-pharos-component="PharosTabPanel"]';
  * @slot - Contains the tabs.
  * @slot panel - Contains the panel to be shown for a tab.
  *
+ * @fires pharos-tabs-tab-selected - Fires when the tab is selected.
+ *
  */
 export class PharosTabs extends PharosElement {
   /**
@@ -28,6 +30,13 @@ export class PharosTabs extends PharosElement {
    */
   @property({ type: Boolean, reflect: true, attribute: 'panel-separator' })
   public panelSeparator = false;
+
+  /**
+   * The 0-based index of the tab that is initially selected.
+   * @attr selected-tab
+   */
+  @property({ type: Number, reflect: true, attribute: 'selected-tab' })
+  public selectedTab = 0;
 
   @query('.tab__list')
   private _tabList!: HTMLElement;
@@ -40,9 +49,6 @@ export class PharosTabs extends PharosElement {
 
   @queryAssignedElements({ selector: _allTabsSelector })
   private _tabs!: NodeListOf<PharosTab>;
-
-  @queryAssignedElements({ selector: `${_allTabsSelector}[selected]` })
-  private _selectedTabs!: NodeListOf<PharosTab>;
 
   public static override get styles(): CSSResultArray {
     return [tabsStyles];
@@ -66,6 +72,19 @@ export class PharosTabs extends PharosElement {
     this._selectInitialTab();
     this._watchTablistScrolling();
     this._watchResize();
+  }
+
+  protected override async updated(changedProperties: PropertyValues): Promise<void> {
+    if (changedProperties.has('selectedTab') && this._tabs[this.selectedTab]) {
+      const details = {
+        bubbles: true,
+        composed: true,
+        detail: this._tabs[this.selectedTab],
+      };
+      this.dispatchEvent(new CustomEvent('pharos-tabs-tab-selected', details));
+
+      this._handleTabSelected(this._tabs[this.selectedTab]);
+    }
   }
 
   private _tabOverflowObserver!: IntersectionObserver;
@@ -102,7 +121,7 @@ export class PharosTabs extends PharosElement {
     this._tabListResizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.target === this._tabList) {
-          this._makeTabVisible(this._selectedTabs[0]);
+          this._makeTabVisible(this._tabs[this.selectedTab]);
         }
       });
     });
@@ -116,9 +135,16 @@ export class PharosTabs extends PharosElement {
   }
 
   private _selectInitialTab(): void {
-    const selected: PharosTab | null = this.querySelector(`${_allTabsSelector}[selected]`);
-    const selectedTab: PharosTab = selected || this._tabs[0];
-    this._handleTabSelected(selectedTab);
+    const selectedTab: PharosTab = this._tabs[this.selectedTab];
+    selectedTab.selected = true;
+    this._makeTabVisible(selectedTab);
+
+    const selectedPanel: PharosTabPanel | null = this.querySelector(
+      `${_allTabPanelsSelector}[id="${selectedTab.getAttribute('aria-controls')}"]`
+    );
+    if (selectedPanel) {
+      selectedPanel.selected = true;
+    }
   }
 
   private _queryPanelByTab(tab: PharosTab): PharosTabPanel | null {
@@ -127,7 +153,12 @@ export class PharosTabs extends PharosElement {
     return this.querySelector(`#${panelId}`);
   }
 
+  private _findTabIndex(tabToFind: PharosTab): number {
+    return Array.from(this._tabs).findIndex((tab: PharosTab) => tab.id === tabToFind.id);
+  }
+
   private _handleTabSelected(selectedTab: PharosTab): void {
+    this.selectedTab = this._findTabIndex(selectedTab);
     selectedTab.selected = true;
     this._makeTabVisible(selectedTab);
 
