@@ -32,7 +32,6 @@ if (typeof window !== `undefined`) {
     pharos.PharosRadioGroup,
     pharos.PharosSelect,
     pharos.PharosSidenav,
-    pharos.PharosSidenavButton,
     pharos.PharosSidenavLink,
     pharos.PharosSidenavMenu,
     pharos.PharosSidenavSection,

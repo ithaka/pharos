@@ -7,7 +7,6 @@ import {
   PharosSidenavMenu,
   PharosInputGroup,
   PharosButton,
-  PharosSidenavButton,
   PharosLink,
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
@@ -19,7 +18,6 @@ export default {
     PharosSidenavMenu,
     PharosSidenavSection,
     PharosSidenavLink,
-    PharosSidenavButton,
   },
   parameters: {
     docs: { page: configureDocsPage('sidenav') },
@@ -29,7 +27,6 @@ export default {
 export const Base = {
   render: () => (
     <Fragment>
-      <PharosSidenavButton />
       <PharosSidenav>
         <PharosLink slot="top" href="/" id="jstor-logo">
           <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />

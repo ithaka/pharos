@@ -9,7 +9,6 @@ export default {
     PharosSideNavMenu: 'pharos-sidenav-menu',
     PharosSidenavSection: 'pharos-sidenav-section',
     PharosSidenavLink: 'pharos-sidenav-link',
-    PharosSidenavButton: 'pharos-sidenav-button',
   },
   parameters: {
     docs: { page: configureDocsPage('sidenav') },

@@ -115,8 +115,6 @@ describe('pharos-sidenav', () => {
   });
 
   it('delegates focus to the sidenav button after the close button is clicked', async () => {
-    const sidenavButton = document.createElement('pharos-sidenav-button');
-    document.body.appendChild(sidenavButton);
     await setViewport({ width: 1055, height: 768 });
     component.slide = true;
     await component.updateComplete;

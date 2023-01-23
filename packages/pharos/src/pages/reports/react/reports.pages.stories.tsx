@@ -15,7 +15,6 @@ import {
   PharosTab,
   PharosTabPanel,
   PharosToaster,
-  PharosSidenavButton,
   PharosLayout,
 } from '../../../react-components';
 
@@ -38,7 +37,6 @@ export const Reports = {
           <PharosLayout preset="1-col--sidenav" className="reports-page__container--main-content">
             <div className="reports-page__container--top" slot="top">
               <div className="reports-page__container--nav-header">
-                <PharosSidenavButton />
                 <img
                   src="./images/reports/jstor-horizontal.svg"
                   alt="logo"

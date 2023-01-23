@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { sidenavStyles } from './pharos-sidenav.css';
 import { SideElement } from '../base/side-element';
-import type { PharosSidenavButton } from './pharos-sidenav-button';
 
 import FocusMixin from '../../utils/mixins/focus';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
@@ -67,10 +66,6 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
     event.stopPropagation();
 
     this.slide = false;
-    const button: PharosSidenavButton | null = document.querySelector(
-      '[data-pharos-component="PharosSidenavButton"]'
-    );
-    button?.focus();
 
     const details = {
       bubbles: true,
