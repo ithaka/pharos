@@ -32,7 +32,7 @@ export class PharosTabs extends PharosElement {
   public panelSeparator = false;
 
   /**
-   * Indicates if the tab is selected-tab.
+   * The 0-based index of the tab that is initially selected.
    * @attr selected-tab
    */
   @property({ type: Number, reflect: true, attribute: 'selected-tab' })
