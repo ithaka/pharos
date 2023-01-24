@@ -5,7 +5,7 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { dropdownMenuNavStyles } from './pharos-dropdown-menu-nav.css';
 import type { PharosDropdownMenuNavLink } from './pharos-dropdown-menu-nav-link';
-import type { PharosDropdownMenuNavHeading } from './pharos-dropdown-menu-nav-heading';
+import type { DropdownMenuNavCategory } from './pharos-dropdown-menu-nav-category';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
 
 import FocusMixin from '../../utils/mixins/focus';
@@ -27,7 +27,7 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
   public label?: string;
 
   @queryAssignedElements({ selector: '[data-pharos-component="PharosDropdownMenuNavLink"]' })
-  private _allLinks!: NodeListOf<PharosDropdownMenuNavLink | PharosDropdownMenuNavHeading>;
+  private _allLinks!: NodeListOf<PharosDropdownMenuNavLink | DropdownMenuNavCategory>;
 
   @queryAssignedElements({ selector: '[data-pharos-component="PharosDropdownMenu"]' })
   private _allMenus!: NodeListOf<PharosDropdownMenu>;
@@ -41,7 +41,7 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
   }
 
   private _closeAllMenus(
-    link: PharosDropdownMenuNavLink | PharosDropdownMenuNavHeading | undefined = undefined
+    link: PharosDropdownMenuNavLink | DropdownMenuNavCategory | undefined = undefined
   ) {
     const menu: PharosDropdownMenu | null = this.querySelector(
       '[data-pharos-component="PharosDropdownMenu"][open]'

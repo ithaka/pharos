@@ -5,7 +5,7 @@ import { state } from 'lit/decorators.js';
 
 import { PharosElement } from '../base/pharos-element';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
-import { dropdownMenuNavHeadingStyles } from './pharos-dropdown-menu-nav-heading.css';
+import { dropdownMenuNavCategoryStyles } from './pharos-dropdown-menu-nav-category.css';
 import { PharosIcon } from '../icon/pharos-icon';
 
 import FocusMixin from '../../utils/mixins/focus';
@@ -19,7 +19,7 @@ import FocusMixin from '../../utils/mixins/focus';
  *
  */
 
-export class PharosDropdownMenuNavHeading extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+export class DropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
   @state()
   private _alert = false;
 
@@ -31,7 +31,7 @@ export class PharosDropdownMenuNavHeading extends ScopedRegistryMixin(FocusMixin
   };
 
   public static override get styles(): CSSResultArray {
-    return [dropdownMenuNavHeadingStyles];
+    return [dropdownMenuNavCategoryStyles];
   }
 
   protected override render(): TemplateResult {
