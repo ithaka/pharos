@@ -25,7 +25,7 @@ export const Base = {
           data-dropdown-menu-id="category1-menu"
           data-dropdown-menu-hover
           target="_blank"
-          >Category 1</pharos-dropdown-menu-nav-category
+          ><span slot="category">Category 1<span></pharos-dropdown-menu-nav-category
         >
         <pharos-dropdown-menu id="category1-menu" data-dropdown-menu-hover>
           <pharos-dropdown-menu-item>Item 1.1</pharos-dropdown-menu-item>
@@ -37,7 +37,7 @@ export const Base = {
           data-dropdown-menu-id="category2-menu"
           data-dropdown-menu-hover
           target="_blank"
-          >Category 2</pharos-dropdown-menu-nav-category
+          ><span slot="category">Category 2<span></pharos-dropdown-menu-nav-category
         >
         <pharos-dropdown-menu id="category2-menu">
           <pharos-dropdown-menu-item>Item 2.1</pharos-dropdown-menu-item>

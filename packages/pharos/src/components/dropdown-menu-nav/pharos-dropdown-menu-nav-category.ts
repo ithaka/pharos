@@ -43,7 +43,7 @@ export class DropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixin(Phar
         [`link--hover`]: this._hover,
       })}"
     >
-      <slot></slot>
+      <slot name="category"></slot>
       <pharos-icon name="chevron-down" class="link__icon"></pharos-icon>
     </div>`;
   }
