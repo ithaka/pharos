@@ -1,0 +1,27 @@
+#heading-element {
+  padding: var(--pharos-spacing-three-quarters-x);
+  text-decoration: none;
+  font-weight: var(--pharos-font-weight-bold);
+  display: inline-flex;
+  min-width: 0;
+}
+
+#heading-element:hover,
+:host([is-active]) #heading-element {
+  color: var(--pharos-color-interactive-primary);
+  background-color: var(--pharos-color-marble-gray-94);
+  border-bottom: 2px solid var(--pharos-color-hover-primary);
+  padding-bottom: calc(var(--pharos-spacing-three-quarters-x) - 2px);
+  fill: var(--pharos-color-interactive-primary);
+  text-decoration: none;
+}
+
+.heading__icon {
+  fill: var(--pharos-color-interactive-secondary);
+  margin-left: var(--pharos-spacing-one-quarter-x);
+}
+
+:host([is-active]) .heading__icon,
+#heading-element:hover .heading__icon {
+  fill: var(--pharos-color-interactive-primary);
+}
