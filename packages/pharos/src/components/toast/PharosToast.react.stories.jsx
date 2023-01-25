@@ -135,6 +135,7 @@ export const UpdateableToast = {
           onClick={() => {
             const event = new CustomEvent('pharos-toast-open', {
               detail: {
+                id: 'the-toast',
                 status: 'info',
                 content: 'Saving 15 items to your Workspace',
                 indefinite: true,
@@ -144,14 +145,19 @@ export const UpdateableToast = {
             setTimeout(() => {
               const updateEvent = new CustomEvent('pharos-toast-update', {
                 detail: {
+                  id: 'the-toast',
                   status: 'success',
-                  content: '15 items succsessfully saved',
+                  content: '15 items successfully saved',
                 },
               });
               document.dispatchEvent(updateEvent);
             }, '3000');
             setTimeout(() => {
-              const updateEvent = new CustomEvent('pharos-toast-close', {});
+              const updateEvent = new CustomEvent('pharos-toast-close', {
+                detail: {
+                  id: 'the-toast',
+                },
+              });
               document.dispatchEvent(updateEvent);
             }, '6000');
           }}

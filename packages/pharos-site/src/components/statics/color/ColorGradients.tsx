@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { FC, ReactElement } from 'react';
-import tokens from '@ithaka/pharos/lib/styles/tokens';
+import tokens from '@ithaka/pharos/lib/styles/tokens.js';
 import { colorGradient, gradientLabel, gradientContainer } from './ColorGradients.module.css';
 
 interface Gradient {
