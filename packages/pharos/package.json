@@ -86,5 +86,20 @@
     "ts-lit-plugin": "^1.2.1",
     "typescript": "^4.9.4"
   },
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "exports": {
+    ".": "./lib/index.js",
+    "./lib": "./lib/index.js",
+    "./lib/index": "./lib/index.js",
+    "./lib/react-components": "./lib/react-components/index.js",
+    "./lib/styles/*": "./lib/styles/*.js",
+    "./lib/styles/*.css": "./lib/styles/*.css",
+    "./lib/styles/*.scss": "./lib/styles/*.scss",
+    "./lib/styles/pharos": "./lib/styles/pharos.scss",
+    "./lib/utils/scss/mixins": "./lib/utils/scss/_mixins.scss",
+    "./lib/utils/registerComponents": "./lib/utils/registerComponents.js",
+    "./lib/utils/PharosContext": "./lib/utils/PharosContext.js",
+    "./package.json": "./package.json",
+    "./custom-elements.json": "./custom-elements.json"
+  }
 }
