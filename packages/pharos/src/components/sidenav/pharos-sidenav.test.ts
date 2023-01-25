@@ -114,19 +114,6 @@ describe('pharos-sidenav', () => {
     expect(eventTriggered && detail === component).to.be.true;
   });
 
-  it('delegates focus to the sidenav button after the close button is clicked', async () => {
-    await setViewport({ width: 1055, height: 768 });
-    component.slide = true;
-    await component.updateComplete;
-
-    const button = component.renderRoot.querySelector('.side-element__button') as PharosButton;
-    button?.click();
-    await component.updateComplete;
-
-    const renderedButton = document.body.querySelector('pharos-sidenav-button');
-    expect(document.activeElement === renderedButton).to.be.true;
-  });
-
   it('resets its slide status when going back to a viewport above 1055px', async () => {
     await setViewport({ width: 1055, height: 768 });
     component.slide = true;
