@@ -147,8 +147,9 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _renderToast(toast: ToastDetail): TemplateResult {
-    // This is used to properly render any Pharos components present in the supplied content.
-    // unsafeHTML will render content in general, but does not appear to render components.
+    // This is used to properly render any scoped Pharos components present in the supplied content.
+    // unsafeHTML will render content in the scope of the current component,
+    // so any components not explicitly registered in elementDefinitions above will not render.
     const toastContentElement = document.createElement('div');
     toastContentElement.innerHTML = toast.content;
 
