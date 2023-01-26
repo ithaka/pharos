@@ -9,7 +9,7 @@ export default {
     PharosDropdownMenuNavLink: 'pharos-dropdown-menu-nav-link',
     PharosDropdownMenu: 'pharos-dropdown-menu',
     PharosDropdownMenuItem: 'pharos-dropdown-menu-item',
-    DropdownMenuNavCategory: 'pharos-dropdown-menu-nav-category',
+    PharosDropdownMenuNavCategory: 'pharos-dropdown-menu-nav-category',
   },
   parameters: {
     docs: { page: configureDocsPage('dropdown-menu-nav') },

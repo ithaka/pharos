@@ -4,7 +4,7 @@ import '../styles/header-revised.scss';
 
 import { PharosLink } from '../../../react-components/link/pharos-link';
 import { PharosDropdownMenuNav } from '../../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav';
-import { PharosDropdownMenuNavLink } from '../../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav-link';
+import { PharosDropdownMenuNavCategory } from '../../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav-category';
 import { PharosDropdownMenu } from '../../../react-components/dropdown-menu/pharos-dropdown-menu';
 import { PharosDropdownMenuItem } from '../../../react-components/dropdown-menu/pharos-dropdown-menu-item';
 import { PharosButton } from '../../../react-components/button/pharos-button';
@@ -61,14 +61,14 @@ export const HeaderRevised: FC<Header> = ({ showSearch = false }) => (
           ></PharosButton>
         </PharosInputGroup>
         <PharosDropdownMenuNav label="main navigation">
-          <PharosDropdownMenuNavLink
+          <PharosDropdownMenuNavCategory
             href="/action/showAdvancedSearch"
             id="adv-search-menu-link"
             data-dropdown-menu-id="search-menu"
             data-dropdown-menu-hover
           >
             Search
-          </PharosDropdownMenuNavLink>
+          </PharosDropdownMenuNavCategory>
           <PharosDropdownMenu id="search-menu">
             <PharosDropdownMenuItem link="/action/showAdvancedSearch">
               Advanced Search
@@ -77,14 +77,14 @@ export const HeaderRevised: FC<Header> = ({ showSearch = false }) => (
               Image Search
             </PharosDropdownMenuItem>
           </PharosDropdownMenu>
-          <PharosDropdownMenuNavLink
+          <PharosDropdownMenuNavCategory
             href="/subjects"
             id="browse-link"
             data-dropdown-menu-id="browse-menu"
             data-dropdown-menu-hover
           >
             Browse
-          </PharosDropdownMenuNavLink>
+          </PharosDropdownMenuNavCategory>
           <PharosDropdownMenu id="browse-menu">
             <PharosDropdownMenuItem link="/subjects">by Subject</PharosDropdownMenuItem>
             <PharosDropdownMenuItem link="/action/showJournals?browseType=title">
@@ -95,7 +95,7 @@ export const HeaderRevised: FC<Header> = ({ showSearch = false }) => (
             </PharosDropdownMenuItem>
             <PharosDropdownMenuItem link="/publishers">by Publisher</PharosDropdownMenuItem>
           </PharosDropdownMenu>
-          <PharosDropdownMenuNavLink
+          <PharosDropdownMenuNavCategory
             href="/account/workspace"
             id="tools-link"
             data-dropdown-menu-id="tools-menu"
@@ -103,7 +103,7 @@ export const HeaderRevised: FC<Header> = ({ showSearch = false }) => (
             className="hide-for-small"
           >
             Tools
-          </PharosDropdownMenuNavLink>
+          </PharosDropdownMenuNavCategory>
           <PharosDropdownMenu id="tools-menu">
             <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>
             <PharosDropdownMenuItem link="/analyze">Text Analyzer</PharosDropdownMenuItem>

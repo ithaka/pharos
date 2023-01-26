@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import { PharosHeader } from '../../../react-components/header/pharos-header';
 import { PharosLink } from '../../../react-components/link/pharos-link';
 import { PharosDropdownMenuNav } from '../../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav';
+import { PharosDropdownMenuNavCategory } from '../../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav-category';
 import { PharosDropdownMenuNavLink } from '../../../react-components/dropdown-menu-nav/pharos-dropdown-menu-nav-link';
 import { PharosDropdownMenu } from '../../../react-components/dropdown-menu/pharos-dropdown-menu';
 import { PharosDropdownMenuItem } from '../../../react-components/dropdown-menu/pharos-dropdown-menu-item';
@@ -12,7 +13,7 @@ import { PharosIcon } from '../../../react-components/icon/pharos-icon';
 
 const accountNav = (section: string) => (
   <PharosDropdownMenuNav label="profile">
-    <PharosDropdownMenuNavLink
+    <PharosDropdownMenuNavCategory
       href="/account/profile"
       id={`profile-link-${section}`}
       data-dropdown-menu-id={`profile-menu-${section}`}
@@ -22,7 +23,7 @@ const accountNav = (section: string) => (
       <span className="show-for-small" style={{ display: 'none' }}>
         Account
       </span>
-    </PharosDropdownMenuNavLink>
+    </PharosDropdownMenuNavCategory>
     <PharosDropdownMenu id={`profile-menu-${section}`}>
       <PharosDropdownMenuItem link="/account/profile">Profile</PharosDropdownMenuItem>
       <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>
@@ -113,14 +114,14 @@ export const Header: FC = () => (
         >
           Advanced Search
         </PharosDropdownMenuNavLink>
-        <PharosDropdownMenuNavLink
+        <PharosDropdownMenuNavCategory
           href="/subjects"
           id="browse-link"
           data-dropdown-menu-id="browse-menu"
           data-dropdown-menu-hover
         >
           Browse
-        </PharosDropdownMenuNavLink>
+        </PharosDropdownMenuNavCategory>
         <PharosDropdownMenu id="browse-menu">
           <PharosDropdownMenuItem link="/subjects">by Subject</PharosDropdownMenuItem>
           <PharosDropdownMenuItem link="/action/showJournals?browseType=title">
@@ -131,7 +132,7 @@ export const Header: FC = () => (
           </PharosDropdownMenuItem>
           <PharosDropdownMenuItem link="/publishers">by Publisher</PharosDropdownMenuItem>
         </PharosDropdownMenu>
-        <PharosDropdownMenuNavLink
+        <PharosDropdownMenuNavCategory
           href="/account/workspace"
           id="tools-link"
           data-dropdown-menu-id="tools-menu"
@@ -139,7 +140,7 @@ export const Header: FC = () => (
           className="hide-for-small"
         >
           Tools
-        </PharosDropdownMenuNavLink>
+        </PharosDropdownMenuNavCategory>
         <PharosDropdownMenu id="tools-menu">
           <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>
           <PharosDropdownMenuItem link="/analyze">Text Analyzer</PharosDropdownMenuItem>

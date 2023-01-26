@@ -19,7 +19,7 @@ import FocusMixin from '../../utils/mixins/focus';
  *
  */
 
-export class DropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
+export class PharosDropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
   @state()
   private _alert = false;
 
