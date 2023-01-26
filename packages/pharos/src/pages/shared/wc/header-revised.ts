@@ -53,12 +53,11 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
           ></pharos-button>
         </pharos-input-group>
         <pharos-dropdown-menu-nav label="main navigation">
-          <pharos-dropdown-menu-nav-link
-            href="/action/showAdvancedSearch"
+          <pharos-dropdown-menu-nav-category
             id="adv-search-menu-link"
             data-dropdown-menu-id="search-menu"
             data-dropdown-menu-hover
-            >Search</pharos-dropdown-menu-nav-link
+            >Search</pharos-dropdown-menu-nav-category
           >
           <pharos-dropdown-menu id="search-menu">
             <pharos-dropdown-menu-item link="/action/showAdvancedSearch"
@@ -68,12 +67,11 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
               >Image Search</pharos-dropdown-menu-item
             >
           </pharos-dropdown-menu>
-          <pharos-dropdown-menu-nav-link
-            href="/subjects"
+          <pharos-dropdown-menu-nav-category
             id="browse-link"
             data-dropdown-menu-id="browse-menu"
             data-dropdown-menu-hover
-            >Browse</pharos-dropdown-menu-nav-link
+            >Browse</pharos-dropdown-menu-nav-category
           >
           <pharos-dropdown-menu id="browse-menu">
             <pharos-dropdown-menu-item link="/subjects">by Subject</pharos-dropdown-menu-item>
@@ -85,13 +83,12 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
             >
             <pharos-dropdown-menu-item link="/publishers">by Publisher</pharos-dropdown-menu-item>
           </pharos-dropdown-menu>
-          <pharos-dropdown-menu-nav-link
-            href="/account/workspace"
+          <pharos-dropdown-menu-nav-category
             id="tools-link"
             data-dropdown-menu-id="tools-menu"
             data-dropdown-menu-hover
             class="hide-for-small"
-            >Tools</pharos-dropdown-menu-nav-link
+            >Tools</pharos-dropdown-menu-nav-category
           >
           <pharos-dropdown-menu id="tools-menu">
             <pharos-dropdown-menu-item link="/account/workspace"

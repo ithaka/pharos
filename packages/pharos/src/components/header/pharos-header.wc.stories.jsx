@@ -102,12 +102,11 @@ export const Base = {
               id="adv-search-link"
               >Advanced Search</pharos-dropdown-menu-nav-link
             >
-            <pharos-dropdown-menu-nav-link
-              href="/subjects"
+            <pharos-dropdown-menu-nav-category
               id="browse-link"
               data-dropdown-menu-id="browse-menu"
               data-dropdown-menu-hover
-              >Browse</pharos-dropdown-menu-nav-link
+              >Browse</pharos-dropdown-menu-nav-category
             >
             <pharos-dropdown-menu id="browse-menu">
               <pharos-dropdown-menu-item link="/subjects">by Subject</pharos-dropdown-menu-item>
@@ -121,12 +120,11 @@ export const Base = {
                 >by Publisher</pharos-dropdown-menu-item
               >
             </pharos-dropdown-menu>
-            <pharos-dropdown-menu-nav-link
-              href="/account/workspace"
+            <pharos-dropdown-menu-nav-category
               id="tools-link"
               data-dropdown-menu-id="tools-menu"
               data-dropdown-menu-hover
-              >Tools</pharos-dropdown-menu-nav-link
+              >Tools</pharos-dropdown-menu-nav-category
             >
             <pharos-dropdown-menu id="tools-menu">
               <pharos-dropdown-menu-item link="/account/workspace"
