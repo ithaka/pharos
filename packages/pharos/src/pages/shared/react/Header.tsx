@@ -14,7 +14,6 @@ import { PharosIcon } from '../../../react-components/icon/pharos-icon';
 const accountNav = (section: string) => (
   <PharosDropdownMenuNav label="profile">
     <PharosDropdownMenuNavCategory
-      href="/account/profile"
       id={`profile-link-${section}`}
       data-dropdown-menu-id={`profile-menu-${section}`}
       data-dropdown-menu-hover
@@ -115,7 +114,6 @@ export const Header: FC = () => (
           Advanced Search
         </PharosDropdownMenuNavLink>
         <PharosDropdownMenuNavCategory
-          href="/subjects"
           id="browse-link"
           data-dropdown-menu-id="browse-menu"
           data-dropdown-menu-hover
@@ -133,7 +131,6 @@ export const Header: FC = () => (
           <PharosDropdownMenuItem link="/publishers">by Publisher</PharosDropdownMenuItem>
         </PharosDropdownMenu>
         <PharosDropdownMenuNavCategory
-          href="/account/workspace"
           id="tools-link"
           data-dropdown-menu-id="tools-menu"
           data-dropdown-menu-hover
