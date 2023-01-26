@@ -3,6 +3,7 @@ import {
   PharosLink,
   PharosDropdownMenuNav,
   PharosDropdownMenuNavLink,
+  PharosDropdownMenuNavCategory,
   PharosDropdownMenu,
   PharosDropdownMenuItem,
   PharosInputGroup,
