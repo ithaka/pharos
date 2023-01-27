@@ -31,6 +31,7 @@ const Template = {
         link="https://www.jstor.org/stable/10.2307/community.26220188"
         error={args.error}
         subtle={args.subtle}
+        indicateLinkVisited={args.indicateLinkVisited}
         style={{ gridColumn: 'span 2' }}
       >
         <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
