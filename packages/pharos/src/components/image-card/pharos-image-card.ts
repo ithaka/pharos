@@ -329,7 +329,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       href="${this.link}"
       subtle
       flex
-      indicate-visited="${this.indicateLinkVisited}"
+      ?indicate-visited="${this.indicateLinkVisited}"
       @click=${this._cardToggleSelect}
       >${this.title
         ? html`<pharos-heading

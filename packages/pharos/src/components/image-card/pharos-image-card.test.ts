@@ -200,7 +200,7 @@ describe('pharos-image-card', () => {
     component.indicateLinkVisited = true;
     await component.updateComplete;
     const link = component.renderRoot.querySelector('pharos-link.card__link--title');
-    expect(link?.getAttribute('indicate-visited')).to.equal('true');
+    expect(link?.hasAttribute('indicate-visited')).to.be.true;
   });
 
   it('sets title link hover state when the card image link is hovered', async () => {

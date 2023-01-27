@@ -22,6 +22,7 @@ const Template = {
         link="https://www.jstor.org/stable/10.2307/community.26220188"
         ?error=${args.error}
         ?subtle=${args.subtle}
+        ?indicate-link-visited=${args.indicateLinkVisited}
         style="grid-column: span 2"
       >
         <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
@@ -282,7 +283,7 @@ export const VisitedTitleLink = {
   ...Template,
   args: {
     ...Template.args,
-    indicatedLinkVisited: true,
+    indicateLinkVisited: true,
   },
 };
 
