@@ -228,7 +228,8 @@ slot[name='image']::slotted(img) {
 }
 
 :host([subtle]) .card__link--image {
-  &:hover {
+  &:hover,
+  &:focus-within {
     .card__metadata--hover {
       background-color: rgb(0 0 0 / 0.75);
       visibility: visible;
