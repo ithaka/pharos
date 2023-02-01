@@ -220,6 +220,12 @@ export const SubtleSelectable = {
           subtle-select="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <pharos-button
+            slot="overlay"
+            variant="overlay"
+            icon="save"
+            style="float:right;margin-top:-40px;margin-right:20px;"
+          ></pharos-button>
         </pharos-image-card>
       </li>
       <li style="grid-column: span 3">
