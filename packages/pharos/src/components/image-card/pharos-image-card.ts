@@ -435,10 +435,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     );
   }
 
-  private _isSubtleAndSelectable(): boolean {
-    return Boolean(this._isSelectable() && this.subtle && !this.disabled);
-  }
-
   private _showSubtleOverlay(): boolean {
     return Boolean(
       this.subtle && ((this.subtleSelect && !this._isSelected) || !this._isSelectable())
@@ -463,7 +459,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _isCheckboxDisplayed() {
     return (
       this._isSubtleSelectHover() ||
-      this._isSubtleAndSelectable() ||
       this._isSelectableViaCard() ||
       this._isSelected ||
       (this.disabled && this._isSelectable())
