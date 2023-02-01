@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 12.17.1
+
+### Patch Changes
+
+- [#483](https://github.com/ithaka/pharos/pull/483) [`23bd549`](https://github.com/ithaka/pharos/commit/23bd5496864408aebe5fa0edb96eedbbbe215bbb) Thanks [@daneah](https://github.com/daneah)! - Render the indicate-visited attribute on the title link only when indicateVisitedLink is true
+
+- [#486](https://github.com/ithaka/pharos/pull/486) [`9d38423`](https://github.com/ithaka/pharos/commit/9d384231f1fab9d6edf49579d24a7c03cc42fb9b) Thanks [@jialin-he](https://github.com/jialin-he)! - Fix subtle select image card accessibility
+
 ## 12.17.0
 
 ### Minor Changes
