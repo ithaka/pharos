@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.17.2
+
+### Patch Changes
+
+- [#488](https://github.com/ithaka/pharos/pull/488) [`497fdbb`](https://github.com/ithaka/pharos/commit/497fdbb50521dc49fdfde483cf98509328ebc305) Thanks [@jialin-he](https://github.com/jialin-he)! - Fix subtle select image card accessibility with overlay
+
 ## 12.17.1
 
 ### Patch Changes
