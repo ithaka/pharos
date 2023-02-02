@@ -20,6 +20,8 @@
   @at-root &.link--alert:active {
     @include mixins.underline;
   }
+
+  display: inline-block;
 }
 
 :host(:not([href])) #link-element {
