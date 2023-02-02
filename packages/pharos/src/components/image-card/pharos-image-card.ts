@@ -468,7 +468,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderCheckbox(): TemplateResult | typeof nothing {
     return this._isCheckboxDisplayed()
       ? html`<pharos-checkbox
-          @blur=${this._handleMouseLeaveSelectable}
           class="${this._showSubtleOverlay() ? 'card__checkbox--subtle' : 'card__checkbox'}"
           hide-label="true"
           ?checked=${this._isSelected}
