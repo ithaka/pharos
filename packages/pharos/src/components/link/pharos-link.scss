@@ -21,7 +21,7 @@
     @include mixins.underline;
   }
 
-  display: inline-block;
+  display: block;
 }
 
 :host(:not([href])) #link-element {
