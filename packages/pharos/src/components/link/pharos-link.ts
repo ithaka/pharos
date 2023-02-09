@@ -57,7 +57,8 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   public bold = false;
 
   /**
-   * Indicates if the link should display as a flex container.
+   * Indicates if the link should display as a flex container. Enable this with a link heading so that
+   * the blue outline is rendered on focus.
    * @attr flex
    */
   @property({ type: Boolean, reflect: true })
