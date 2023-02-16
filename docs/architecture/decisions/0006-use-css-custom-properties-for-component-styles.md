@@ -8,10 +8,6 @@ Accepted
 
 Enhanced by [8. Evolve tokens in backward compatible manner](0008-evolve-tokens-in-backward-compatible-manner.md)
 
-Enhanced by [8. Evolve tokens in backward compatible manner](0008-evolve-tokens-in-backward-compatible-manner.md)
-
-Enhanced by [8. Evolve tokens in backward compatible manner](0008-evolve-tokens-in-backward-compatible-manner.md)
-
 ## Context
 
 Web components tend toward full isolation from the host for a variety of good reasons.
