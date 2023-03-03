@@ -10,4 +10,4 @@ window.process.env.NODE_ENV = window.process.env.NODE_ENV || 'production';
 
 setCustomElementsManifest(customElementsManifest);
 
-export { parameters } from '../main/preview';
+export { parameters } from '../parameters';
