@@ -18,7 +18,7 @@ describe('pharos-icon', () => {
     component = await fixture(html` <test-pharos-icon name="fake"></test-pharos-icon> `).catch(
       (e) => e
     );
-    expect('No icon named "fake"').to.be.thrown;
+    expect('Could not get icon named "fake"').to.be.thrown;
   });
 
   it('uses dimensions 24x24 when the icon name does not end in "-small"', async () => {
