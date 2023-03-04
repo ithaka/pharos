@@ -3,10 +3,18 @@ import { viewports } from '../../pages/shared/viewports';
 
 import { PharosLayout, PharosSidenav, PharosLink } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Layout',
   component: PharosLayout,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('layout') },
     viewport: {

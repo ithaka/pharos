@@ -7,7 +7,7 @@ describe('pharos-icon', () => {
   let component: PharosIcon;
 
   beforeEach(async () => {
-    component = await fixture(html`<pharos-icon name="base"></pharos-icon>`);
+    component = await fixture(html`<test-pharos-icon name="base"></test-pharos-icon>`);
   });
 
   it('is accessible', async () => {
@@ -15,7 +15,9 @@ describe('pharos-icon', () => {
   });
 
   it('throws an error for an invalid icon name', async () => {
-    component = await fixture(html` <pharos-icon name="fake"></pharos-icon> `).catch((e) => e);
+    component = await fixture(html` <test-pharos-icon name="fake"></test-pharos-icon> `).catch(
+      (e) => e
+    );
     expect('No icon named "fake"').to.be.thrown;
   });
 

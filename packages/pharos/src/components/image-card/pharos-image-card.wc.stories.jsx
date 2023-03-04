@@ -16,8 +16,8 @@ export default {
 
 const Template = {
   render: (args) =>
-    html`<pharos-layout style="margin: 1rem 0"
-      ><pharos-image-card
+    html`<storybook-pharos-layout style="margin: 1rem 0"
+      ><storybook-pharos-image-card
         title="South Hall"
         link="https://www.jstor.org/stable/10.2307/community.26220188"
         ?error=${args.error}
@@ -30,23 +30,23 @@ const Template = {
         <div id="item-date" slot="metadata">1889-1892 (creation)</div>
         <div id="collection" slot="metadata">
           Part of
-          <pharos-link
+          <storybook-pharos-link
             href="https://www.jstor.org/site/pratt/buildings-image"
             ?on-background=${args.subtle}
-            >Pratt Institute Buildings Image Collection</pharos-link
+            >Pratt Institute Buildings Image Collection</storybook-pharos-link
           >
         </div>
-      </pharos-image-card></pharos-layout
+      </storybook-pharos-image-card></storybook-pharos-layout
     >`,
   args: defaultArgs,
 };
 
 export const Base = {
   render: () =>
-    html` <pharos-layout tag="ol" style="margin: 1rem 0">
+    html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       ${items.map((item, index) => {
         return html` <li style="grid-column: span 2">
-          <pharos-image-card id="card-${index}" title="Card Title" link="#">
+          <storybook-pharos-image-card id="card-${index}" title="Card Title" link="#">
             <img
               id="image-${index}"
               src="./images/item-detail/${item.image}"
@@ -57,22 +57,27 @@ export const Base = {
             <div id="item-date-${index}" slot="metadata">1990-2000</div>
             <div id="collection-${index}" slot="metadata">
               Part of
-              <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+              <storybook-pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
                 >An Example Collection
-              </pharos-link>
+              </storybook-pharos-link>
             </div>
-          </pharos-image-card>
+          </storybook-pharos-image-card>
         </li>`;
       })}
-    </pharos-layout>`,
+    </storybook-pharos-layout>`,
 };
 
 export const WithSourceTypes = {
   render: () =>
-    html` <pharos-layout tag="ol" style="margin: 1rem 0">
+    html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       ${items.map((item, index) => {
         return html` <li style="grid-column: span 2">
-          <pharos-image-card id="card-${index}" title="Card Title" link="#" source-type="Image">
+          <storybook-pharos-image-card
+            id="card-${index}"
+            title="Card Title"
+            link="#"
+            source-type="Image"
+          >
             <img
               id="image-${index}"
               src="./images/item-detail/${item.image}"
@@ -83,22 +88,22 @@ export const WithSourceTypes = {
             <div id="item-date-${index}" slot="metadata">1990-2000</div>
             <div id="collection-${index}" slot="metadata">
               Part of
-              <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+              <storybook-pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
                 >An Example Collection
-              </pharos-link>
+              </storybook-pharos-link>
             </div>
-          </pharos-image-card>
+          </storybook-pharos-image-card>
         </li>`;
       })}
-    </pharos-layout>`,
+    </storybook-pharos-layout>`,
 };
 
 export const Collection = {
   render: () =>
-    html` <pharos-layout tag="ol" style="margin: 1rem 0">
+    html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       ${collections.map((collection, index) => {
         return html` <li class="image-card-example__card--collection">
-          <pharos-image-card
+          <storybook-pharos-image-card
             id="card-${index}"
             title="${collection.title}"
             link="#"
@@ -114,17 +119,17 @@ export const Collection = {
             <div id="description-${index}" slot="metadata">
               Selections from the global permanent collection.
             </div>
-          </pharos-image-card>
+          </storybook-pharos-image-card>
         </li>`;
       })}
-    </pharos-layout>`,
+    </storybook-pharos-layout>`,
 };
 
 export const Promotional = {
   render: () =>
-    html` <pharos-layout style="margin: 1rem 0">
+    html` <storybook-pharos-layout style="margin: 1rem 0">
       <div class="image-card-example__card--promotional">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Bring your work to life with images"
           link="#"
           variant="promotional"
@@ -133,22 +138,27 @@ export const Promotional = {
           <p slot="metadata">
             Harness the power of visual materials—explore more than 3 million images now on JSTOR.
           </p>
-        </pharos-image-card>
-        <pharos-button variant="secondary">Search for images</pharos-button>
+        </storybook-pharos-image-card>
+        <storybook-pharos-button variant="secondary">Search for images</storybook-pharos-button>
       </div>
-    </pharos-layout>`,
+    </storybook-pharos-layout>`,
 };
 
 export const Selectable = {
   render: () =>
-    html` <pharos-layout tag="ol" style="margin: 1rem 0">
+    html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
-        <pharos-image-card title="Selectable" link="#" source-type="Image" variant="selectable">
+        <storybook-pharos-image-card
+          title="Selectable"
+          link="#"
+          source-type="Image"
+          variant="selectable"
+        >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Subtle select"
           link="#"
           source-type="Image"
@@ -156,10 +166,10 @@ export const Selectable = {
           subtle-select="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Selected Disabled"
           link="#"
           source-type="Image"
@@ -168,10 +178,10 @@ export const Selectable = {
           selected="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Selectable Error State"
           link="#"
           source-type="Image"
@@ -179,10 +189,10 @@ export const Selectable = {
           error="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Subtle Select Error State"
           link="#"
           source-type="Image"
@@ -191,16 +201,16 @@ export const Selectable = {
           subtle-select="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
-    </pharos-layout>`,
+    </storybook-pharos-layout>`,
 };
 
 export const SubtleSelectable = {
   render: () =>
-    html` <pharos-layout tag="ol" style="margin: 1rem 0">
+    html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Selectable"
           link="#"
           source-type="Image"
@@ -208,10 +218,10 @@ export const SubtleSelectable = {
           subtle="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Subtle select"
           link="#"
           source-type="Image"
@@ -220,16 +230,16 @@ export const SubtleSelectable = {
           subtle-select="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-          <pharos-button
+          <storybook-pharos-button
             slot="overlay"
             variant="overlay"
             icon="save"
             style="float:right;margin-top:-40px;margin-right:20px;"
-          ></pharos-button>
-        </pharos-image-card>
+          ></storybook-pharos-button>
+        </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Selected Disabled"
           link="#"
           source-type="Image"
@@ -239,10 +249,10 @@ export const SubtleSelectable = {
           selected="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Selectable Error State"
           link="#"
           source-type="Image"
@@ -251,10 +261,10 @@ export const SubtleSelectable = {
           error="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Subtle Select Error State"
           link="#"
           source-type="Image"
@@ -264,9 +274,9 @@ export const SubtleSelectable = {
           subtle-select="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
-    </pharos-layout>`,
+    </storybook-pharos-layout>`,
 };
 
 export const ErrorState = {
@@ -296,8 +306,8 @@ export const VisitedTitleLink = {
 export const WithActionMenu = {
   render: () =>
     html`
-      <pharos-layout style="margin: 1rem 0">
-        <pharos-image-card
+      <storybook-pharos-layout style="margin: 1rem 0">
+        <storybook-pharos-image-card
           title="South Hall"
           link="https://www.jstor.org/stable/10.2307/community.26220188"
           action-menu="my-dropdown-menu"
@@ -313,25 +323,25 @@ export const WithActionMenu = {
           <div id="item-date" slot="metadata">1889-1892 (creation)</div>
           <div id="collection" slot="metadata">
             Part of
-            <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-              >Pratt Institute Buildings Image Collection</pharos-link
+            <storybook-pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+              >Pratt Institute Buildings Image Collection</storybook-pharos-link
             >
           </div>
-        </pharos-image-card>
-      </pharos-layout>
-      <pharos-dropdown-menu id="my-dropdown-menu">
-        <pharos-dropdown-menu-item>Item 1</pharos-dropdown-menu-item>
-        <pharos-dropdown-menu-item>Item 2</pharos-dropdown-menu-item>
-        <pharos-dropdown-menu-item>Item 3</pharos-dropdown-menu-item>
-      </pharos-dropdown-menu>
+        </storybook-pharos-image-card>
+      </storybook-pharos-layout>
+      <storybook-pharos-dropdown-menu id="my-dropdown-menu">
+        <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
+      </storybook-pharos-dropdown-menu>
     `,
 };
 
 export const WithActionButtonSlot = {
   render: () =>
     html`
-      <pharos-layout style="margin: 1rem 0">
-        <pharos-image-card
+      <storybook-pharos-layout style="margin: 1rem 0">
+        <storybook-pharos-image-card
           title="South Hall"
           link="https://www.jstor.org/stable/10.2307/community.26220188"
           style="grid-column: span 2"
@@ -346,39 +356,39 @@ export const WithActionButtonSlot = {
           <div id="item-date" slot="metadata">1889-1892 (creation)</div>
           <div id="collection" slot="metadata">
             Part of
-            <pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-              >Pratt Institute Buildings Image Collection</pharos-link
+            <storybook-pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+              >Pratt Institute Buildings Image Collection</storybook-pharos-link
             >
           </div>
-          <pharos-button
+          <storybook-pharos-button
             slot="action-button"
             data-dropdown-menu-id="dropdownId"
             icon="ellipses-vertical"
             icon-condensed
             variant="subtle"
-          ></pharos-button>
-        </pharos-image-card>
-        <pharos-dropdown-menu id="dropdownId">
-          <pharos-dropdown-menu-item>Item 1</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Item 2</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Item 3</pharos-dropdown-menu-item>
-        </pharos-dropdown-menu>
-      </pharos-layout>
+          ></storybook-pharos-button>
+        </storybook-pharos-image-card>
+        <storybook-pharos-dropdown-menu id="dropdownId">
+          <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
+          <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
+          <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
+        </storybook-pharos-dropdown-menu>
+      </storybook-pharos-layout>
     `,
 };
 
 export const SelectableCollection = {
   render: () =>
-    html` <pharos-layout tag="ol" style="margin: 1rem 0">
+    html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li class="image-card-example__card--collection">
-        <pharos-image-card title="Selectable" link="#" variant="selectable-collection">
+        <storybook-pharos-image-card title="Selectable" link="#" variant="selectable-collection">
           <img src="./images/item-detail/open_collection_1.png" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li class="image-card-example__card--collection">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Subtle Select"
           link="#"
           variant="selectable-collection"
@@ -387,10 +397,10 @@ export const SelectableCollection = {
           <img src="./images/item-detail/open_collection_2.png" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li class="image-card-example__card--collection">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Selected Disabled"
           link="#"
           variant="selectable-collection"
@@ -400,21 +410,21 @@ export const SelectableCollection = {
           <img src="./images/item-detail/open_collection_3.png" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
-    </pharos-layout>`,
+    </storybook-pharos-layout>`,
 };
 
 export const Disabled = {
   render: () =>
-    html` <pharos-layout tag="ol" style="margin: 1rem 0">
+    html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
-        <pharos-image-card title="Disabled" link="#" source-type="Image" disabled="true">
+        <storybook-pharos-image-card title="Disabled" link="#" source-type="Image" disabled="true">
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Selectable Disabled"
           link="#"
           source-type="Image"
@@ -422,10 +432,10 @@ export const Disabled = {
           variant="selectable"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
-        <pharos-image-card
+        <storybook-pharos-image-card
           title="Selected Disabled"
           link="#"
           source-type="Image"
@@ -434,7 +444,7 @@ export const Disabled = {
           selected="true"
         >
           <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
-        </pharos-image-card>
+        </storybook-pharos-image-card>
       </li>
-    </pharos-layout>`,
+    </storybook-pharos-layout>`,
 };

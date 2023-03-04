@@ -17,9 +17,13 @@ export default {
 export const Base = {
   render: (args) =>
     html`
-      <pharos-heading level=${args.level} preset=${args.preset} ?no-margin=${args.noMargin}>
+      <storybook-pharos-heading
+        level=${args.level}
+        preset=${args.preset}
+        ?no-margin=${args.noMargin}
+      >
         ${args.text}<br />second line
-      </pharos-heading>
+      </storybook-pharos-heading>
     `,
   args: defaultArgs,
   argTypes: {
@@ -49,13 +53,17 @@ export const Bold = {
 export const Legend = {
   render: (args) =>
     html`
-      <pharos-checkbox-group>
-        <pharos-heading slot="legend" level="${args.level}" preset="${args.preset}"
-          >${args.text}</pharos-heading
+      <storybook-pharos-checkbox-group>
+        <storybook-pharos-heading slot="legend" level="${args.level}" preset="${args.preset}"
+          >${args.text}</storybook-pharos-heading
         >
-        <pharos-checkbox value="1"><span slot="label">Checkbox 1</span></pharos-checkbox>
-        <pharos-checkbox value="2"><span slot="label">Checkbox 2</span></pharos-checkbox>
-      </pharos-checkbox-group>
+        <storybook-pharos-checkbox value="1"
+          ><span slot="label">Checkbox 1</span></storybook-pharos-checkbox
+        >
+        <storybook-pharos-checkbox value="2"
+          ><span slot="label">Checkbox 2</span></storybook-pharos-checkbox
+        >
+      </storybook-pharos-checkbox-group>
     `,
   args: {
     ...Base.args,

@@ -10,10 +10,18 @@ import {
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Modal',
   component: PharosModal,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('modal') },
     options: { selectedPanel: 'addon-controls' },

@@ -16,13 +16,13 @@ export default {
 export const Base = {
   render: (args) =>
     html`
-      <pharos-pagination
+      <storybook-pharos-pagination
         total-results=${args.totalResults}
         page-size=${args.pageSize}
         current-page=${args.currentPage}
         @prev-page="${(e) => action('Prev Page')(JSON.stringify(e))}"
         @next-page="${(e) => action('Next Page')(JSON.stringify(e))}"
-      ></pharos-pagination>
+      ></storybook-pharos-pagination>
     `,
   args: defaultArgs,
 };

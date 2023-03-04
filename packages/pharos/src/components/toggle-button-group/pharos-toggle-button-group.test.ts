@@ -11,27 +11,27 @@ describe('pharos-toggle-button-group', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-toggle-button-group>
-        <pharos-toggle-button id="button-1">Button 1</pharos-toggle-button>
-        <pharos-toggle-button id="button-2">Button 2</pharos-toggle-button>
-        <pharos-toggle-button id="button-3">Button 3</pharos-toggle-button>
-      </pharos-toggle-button-group>
+      <test-pharos-toggle-button-group>
+        <test-pharos-toggle-button id="button-1">Button 1</test-pharos-toggle-button>
+        <test-pharos-toggle-button id="button-2">Button 2</test-pharos-toggle-button>
+        <test-pharos-toggle-button id="button-3">Button 3</test-pharos-toggle-button>
+      </test-pharos-toggle-button-group>
     `);
 
     componentLastButtonSelected = await fixture(html`
-      <pharos-toggle-button-group>
-        <pharos-toggle-button id="button-4">Button 4</pharos-toggle-button>
-        <pharos-toggle-button id="button-5">Button 5</pharos-toggle-button>
-        <pharos-toggle-button id="button-6" selected>Button 6</pharos-toggle-button>
-      </pharos-toggle-button-group>
+      <test-pharos-toggle-button-group>
+        <test-pharos-toggle-button id="button-4">Button 4</test-pharos-toggle-button>
+        <test-pharos-toggle-button id="button-5">Button 5</test-pharos-toggle-button>
+        <test-pharos-toggle-button id="button-6" selected>Button 6</test-pharos-toggle-button>
+      </test-pharos-toggle-button-group>
     `);
 
     componentWithLabel = await fixture(html`
-      <pharos-toggle-button-group group-label="New options">
-        <pharos-toggle-button id="button-7">Button 7</pharos-toggle-button>
-        <pharos-toggle-button id="button-8">Button 8</pharos-toggle-button>
-        <pharos-toggle-button id="button-9" selected>Button 9</pharos-toggle-button>
-      </pharos-toggle-button-group>
+      <test-pharos-toggle-button-group group-label="New options">
+        <test-pharos-toggle-button id="button-7">Button 7</test-pharos-toggle-button>
+        <test-pharos-toggle-button id="button-8">Button 8</test-pharos-toggle-button>
+        <test-pharos-toggle-button id="button-9" selected>Button 9</test-pharos-toggle-button>
+      </test-pharos-toggle-button-group>
     `);
   });
 
@@ -69,7 +69,7 @@ describe('pharos-toggle-button-group', () => {
 
   it('has 3 toggle buttons within the slot', async () => {
     const toggleButtons = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-toggle-button`)
+      component.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
     expect(toggleButtons.length).to.be.eq(3);
@@ -77,7 +77,7 @@ describe('pharos-toggle-button-group', () => {
 
   it('selects the first toggle button if no selection is defined', async () => {
     const toggleButtons = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-toggle-button`)
+      component.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
     expect(toggleButtons[0].selected).to.be.true;
@@ -90,7 +90,7 @@ describe('pharos-toggle-button-group', () => {
 
   it('selects the defined toggle button', async () => {
     const toggleButtons = Array.prototype.slice.call(
-      componentLastButtonSelected.querySelectorAll(`pharos-toggle-button`)
+      componentLastButtonSelected.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
     expect(toggleButtons[0].selected).to.be.false;
@@ -103,7 +103,7 @@ describe('pharos-toggle-button-group', () => {
 
   it('changes the focus right with the right arrow key', async () => {
     const toggleButtons = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-toggle-button`)
+      component.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
     toggleButtons[1].focus();
@@ -116,7 +116,7 @@ describe('pharos-toggle-button-group', () => {
 
   it('changes the focus left with the left arrow key', async () => {
     const toggleButtons = Array.prototype.slice.call(
-      componentLastButtonSelected.querySelectorAll(`pharos-toggle-button`)
+      componentLastButtonSelected.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
     toggleButtons[1].focus();
@@ -129,7 +129,7 @@ describe('pharos-toggle-button-group', () => {
 
   it('changes the selection with keyboard', async () => {
     const toggleButtons = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-toggle-button`)
+      component.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
     toggleButtons[1].focus();
@@ -150,7 +150,7 @@ describe('pharos-toggle-button-group', () => {
 
   it('wraps focus to the last toggle button when left arrow is hit on the first button', async () => {
     const toggleButtons = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-toggle-button`)
+      component.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
     toggleButtons[1].focus();
@@ -167,7 +167,7 @@ describe('pharos-toggle-button-group', () => {
 
   it('wraps focus to the first button when left arrow is hit on the last button', async () => {
     const toggleButtons = Array.prototype.slice.call(
-      componentLastButtonSelected.querySelectorAll(`pharos-toggle-button`)
+      componentLastButtonSelected.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
     toggleButtons[1].focus();
@@ -184,7 +184,7 @@ describe('pharos-toggle-button-group', () => {
 
   it('changes the selected button on click', async () => {
     const toggleButtons = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-toggle-button`)
+      component.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
     toggleButtons[1].click();

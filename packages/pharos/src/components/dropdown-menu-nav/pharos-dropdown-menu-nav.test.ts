@@ -11,37 +11,37 @@ describe('pharos-dropdown-menu-nav', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-dropdown-menu-nav>
-        <pharos-dropdown-menu-nav-link
+      <test-pharos-dropdown-menu-nav>
+        <test-pharos-dropdown-menu-nav-link
           href="#"
           id="smurfs-link"
           data-dropdown-menu-id="smurfs-menu"
           data-dropdown-menu-hover
-          >Smurfs</pharos-dropdown-menu-nav-link
+          >Smurfs</test-pharos-dropdown-menu-nav-link
         >
-        <pharos-dropdown-menu id="smurfs-menu" data-dropdown-menu-hover>
-          <pharos-dropdown-menu-item>Papa</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Clumsy</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Smurfette</pharos-dropdown-menu-item>
-        </pharos-dropdown-menu>
-        <pharos-dropdown-menu-nav-link
+        <test-pharos-dropdown-menu id="smurfs-menu" data-dropdown-menu-hover>
+          <test-pharos-dropdown-menu-item>Papa</test-pharos-dropdown-menu-item>
+          <test-pharos-dropdown-menu-item>Clumsy</test-pharos-dropdown-menu-item>
+          <test-pharos-dropdown-menu-item>Smurfette</test-pharos-dropdown-menu-item>
+        </test-pharos-dropdown-menu>
+        <test-pharos-dropdown-menu-nav-link
           href="#"
           id="tmnt-link"
           data-dropdown-menu-id="tmnt-menu"
           data-dropdown-menu-hover
-          >Ninja Turtles</pharos-dropdown-menu-nav-link
+          >Ninja Turtles</test-pharos-dropdown-menu-nav-link
         >
-        <pharos-dropdown-menu id="tmnt-menu">
-          <pharos-dropdown-menu-item>Leonardo</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Donatello</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Raphael</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Michelangelo</pharos-dropdown-menu-item>
-          <pharos-dropdown-menu-item>Master Splinter</pharos-dropdown-menu-item>
-        </pharos-dropdown-menu>
-        <pharos-dropdown-menu-nav-link href="#" id="other-link"
-          >Link to Other</pharos-dropdown-menu-nav-link
+        <test-pharos-dropdown-menu id="tmnt-menu">
+          <test-pharos-dropdown-menu-item>Leonardo</test-pharos-dropdown-menu-item>
+          <test-pharos-dropdown-menu-item>Donatello</test-pharos-dropdown-menu-item>
+          <test-pharos-dropdown-menu-item>Raphael</test-pharos-dropdown-menu-item>
+          <test-pharos-dropdown-menu-item>Michelangelo</test-pharos-dropdown-menu-item>
+          <test-pharos-dropdown-menu-item>Master Splinter</test-pharos-dropdown-menu-item>
+        </test-pharos-dropdown-menu>
+        <test-pharos-dropdown-menu-nav-link href="#" id="other-link"
+          >Link to Other</test-pharos-dropdown-menu-nav-link
         >
-      </pharos-dropdown-menu-nav>
+      </test-pharos-dropdown-menu-nav>
     `);
   });
 
@@ -78,7 +78,7 @@ describe('pharos-dropdown-menu-nav', () => {
     menu.open = true;
     await menu.updateComplete;
 
-    const item = menu.querySelector('pharos-dropdown-menu-item') as PharosDropdownMenuItem;
+    const item = menu.querySelector('test-pharos-dropdown-menu-item') as PharosDropdownMenuItem;
     item.focus();
     await component.updateComplete;
 

@@ -2,11 +2,19 @@ import { useEffect } from 'react';
 
 import { PharosToast, PharosToaster, PharosButton } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Toast',
   component: PharosToast,
   subcomponents: { PharosToaster },
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('toast') },
     options: { selectedPanel: 'addon-controls' },

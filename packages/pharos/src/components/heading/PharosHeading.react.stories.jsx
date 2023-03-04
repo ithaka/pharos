@@ -2,10 +2,18 @@ import { PharosHeading, PharosCheckboxGroup, PharosCheckbox } from '../../react-
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
 import { allPresets } from './pharos-heading';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Heading',
   component: PharosHeading,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('heading') },
     options: { selectedPanel: 'addon-controls' },

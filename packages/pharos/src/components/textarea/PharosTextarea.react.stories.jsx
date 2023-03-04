@@ -4,10 +4,18 @@ import { PharosTextarea, PharosButton } from '../../react-components';
 import createFormData from '../../utils/createFormData';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Forms/Textarea',
   component: PharosTextarea,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('textarea') },
     options: { selectedPanel: 'addon-controls' },

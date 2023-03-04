@@ -1,4 +1,4 @@
 import '../styleConfig';
-import '../../packages/pharos/src/test/initComponents';
+import '../initComponents';
 
 export { parameters } from '../parameters';

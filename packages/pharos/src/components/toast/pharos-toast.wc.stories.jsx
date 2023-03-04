@@ -23,21 +23,21 @@ export const Base = {
     };
     effect();
     return html`
-      <pharos-button
+      <storybook-pharos-button
         id="success-toast-button"
         @click="${() => {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
               content:
-                'The item has moved to your <pharos-link href="#" on-background bold>Workspace</pharos-link>.',
+                'The item has moved to your <storybook-pharos-link href="#" on-background bold>Workspace</storybook-pharos-link>.',
             },
           });
           document.dispatchEvent(event);
         }}"
       >
         Have a toast!
-      </pharos-button>
-      <pharos-toaster></pharos-toaster>
+      </storybook-pharos-button>
+      <storybook-pharos-toaster></storybook-pharos-toaster>
     `;
   },
   parameters: { chromatic: { viewports: [320, 1200] } },
@@ -52,22 +52,22 @@ export const Error = {
     };
     effect();
     return html`
-      <pharos-button
+      <storybook-pharos-button
         id="error-toast-button"
         @click="${() => {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
               status: 'error',
               content:
-                'Sorry, we were unable to move the item. Please try again later. If the issue persists, <pharos-link href="#" on-background bold>contact JSTOR Support</pharos-link>.',
+                'Sorry, we were unable to move the item. Please try again later. If the issue persists, <storybook-pharos-link href="#" on-background bold>contact JSTOR Support</storybook-pharos-link>.',
             },
           });
           document.dispatchEvent(event);
         }}"
       >
         I have a bad feeling about this
-      </pharos-button>
-      <pharos-toaster></pharos-toaster>
+      </storybook-pharos-button>
+      <storybook-pharos-toaster></storybook-pharos-toaster>
     `;
   },
 };
@@ -83,21 +83,21 @@ export const LongContent = {
     };
     effect();
     return html`
-      <pharos-button
+      <storybook-pharos-button
         id="long-toast-button"
         @click="${() => {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
               content:
-                'This is a notification for longer content, which may even include a <pharos-link href="#" on-background bold>link</pharos-link>.',
+                'This is a notification for longer content, which may even include a <storybook-pharos-link href="#" on-background bold>link</storybook-pharos-link>.',
             },
           });
           document.dispatchEvent(event);
         }}"
       >
         Click to me see a long name
-      </pharos-button>
-      <pharos-toaster></pharos-toaster>
+      </storybook-pharos-button>
+      <storybook-pharos-toaster></storybook-pharos-toaster>
     `;
   },
   parameters: { chromatic: { viewports: [320, 1200] } },
@@ -112,7 +112,7 @@ export const Info = {
     };
     effect();
     return html`
-      <pharos-button
+      <storybook-pharos-button
         id="info-toast-button"
         @click="${() => {
           const event = new CustomEvent('pharos-toast-open', {
@@ -125,8 +125,8 @@ export const Info = {
         }}"
       >
         Click me to know more
-      </pharos-button>
-      <pharos-toaster></pharos-toaster>
+      </storybook-pharos-button>
+      <storybook-pharos-toaster></storybook-pharos-toaster>
     `;
   },
 };
@@ -140,7 +140,7 @@ export const UpdateableToast = {
     };
     effect();
     return html`
-      <pharos-button
+      <storybook-pharos-button
         id="info-toast-button"
         @click="${() => {
           const event = new CustomEvent('pharos-toast-open', {
@@ -167,8 +167,8 @@ export const UpdateableToast = {
         }}"
       >
         Save items to Workspace
-      </pharos-button>
-      <pharos-toaster></pharos-toaster>
+      </storybook-pharos-button>
+      <storybook-pharos-toaster></storybook-pharos-toaster>
     `;
   },
 };

@@ -19,7 +19,7 @@ export const Base = {
   render: (args) =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 250px;">
-        <pharos-textarea
+        <storybook-pharos-textarea
           name="story-input"
           .cols="${args.columns}"
           ?disabled=${args.disabled}
@@ -35,7 +35,7 @@ export const Base = {
           .value=${args.value}
         >
           <span slot="label">${args.label}</span>
-        </pharos-textarea>
+        </storybook-pharos-textarea>
       </div>
     `,
   args: defaultArgs,
@@ -45,21 +45,23 @@ export const States = {
   render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: repeat(2, 250px);">
-        <pharos-textarea name="default"><span slot="label">Empty textarea</span></pharos-textarea>
-        <pharos-textarea name="disabled" disabled
-          ><span slot="label">Disabled textarea</span></pharos-textarea
+        <storybook-pharos-textarea name="default"
+          ><span slot="label">Empty textarea</span></storybook-pharos-textarea
         >
-        <pharos-textarea name="readonly" readonly value="Example text"
-          ><span slot="label">Read only textarea</span></pharos-textarea
+        <storybook-pharos-textarea name="disabled" disabled
+          ><span slot="label">Disabled textarea</span></storybook-pharos-textarea
         >
-        <pharos-textarea name="placeholder" placeholder="Placeholder text"
-          ><span slot="label">Placeholder for textarea</span></pharos-textarea
+        <storybook-pharos-textarea name="readonly" readonly value="Example text"
+          ><span slot="label">Read only textarea</span></storybook-pharos-textarea
         >
-        <pharos-textarea name="provided" value="This value is provided"
-          ><span slot="label">Value provided textarea</span></pharos-textarea
+        <storybook-pharos-textarea name="placeholder" placeholder="Placeholder text"
+          ><span slot="label">Placeholder for textarea</span></storybook-pharos-textarea
         >
-        <pharos-textarea name="resize" resize="none"
-          ><span slot="label">non-resizeable textarea</span></pharos-textarea
+        <storybook-pharos-textarea name="provided" value="This value is provided"
+          ><span slot="label">Value provided textarea</span></storybook-pharos-textarea
+        >
+        <storybook-pharos-textarea name="resize" resize="none"
+          ><span slot="label">non-resizeable textarea</span></storybook-pharos-textarea
         >
       </div>
     `,
@@ -69,13 +71,13 @@ export const Events = {
   render: () =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 250px;">
-        <pharos-textarea
+        <storybook-pharos-textarea
           placeholder="Enter some text"
           @change="${(e) => action('Change')(e.target.value)}"
           @input="${(e) => action('Input')(e.target.value)}"
         >
           <span slot="label">I fire events on input</span>
-        </pharos-textarea>
+        </storybook-pharos-textarea>
       </div>
     `,
   parameters: { options: { selectedPanel: 'addon-actions' } },
@@ -98,7 +100,7 @@ export const CustomErrorMessage = {
   render: (args) =>
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 350px;">
-        <pharos-textarea
+        <storybook-pharos-textarea
           placeholder="Enter some text"
           @change="${(e) => action('Change')(e.target.value)}"
           @input="${(e) => action('Input')(e.target.value)}"
@@ -111,7 +113,7 @@ export const CustomErrorMessage = {
           <span slot="message">
             <p>Must be over 100 characters long</p>
           </span>
-        </pharos-textarea>
+        </storybook-pharos-textarea>
       </div>
     `,
   args: {
@@ -126,7 +128,7 @@ export const FormData = {
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 350px;">
         <form name="my-form" action="https://httpbin.org/post" method="POST">
-          <pharos-textarea
+          <storybook-pharos-textarea
             name="my-textarea"
             placeholder="Enter some text"
             style="margin-bottom: 0.5rem;"
@@ -135,8 +137,8 @@ export const FormData = {
             required
           >
             <span slot="label">I am invalid</span>
-          </pharos-textarea>
-          <pharos-button
+          </storybook-pharos-textarea>
+          <storybook-pharos-button
             type="submit"
             value="Submit"
             @click="${(e) => {
@@ -153,7 +155,7 @@ export const FormData = {
             }}"
           >
             Submit
-          </pharos-button>
+          </storybook-pharos-button>
         </form>
       </div>
     `,

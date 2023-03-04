@@ -42,10 +42,10 @@ import {
   PharosToggleButton,
   PharosToggleButtonGroup,
   PharosTooltip,
-} from '../index';
-import registerComponents from '../utils/registerComponents';
+} from '../packages/pharos/lib/index';
+import registerComponents from '../packages/pharos/lib/utils/registerComponents';
 
-registerComponents('test', [
+registerComponents('storybook', [
   PharosAlert,
   PharosBreadcrumb,
   PharosBreadcrumbItem,

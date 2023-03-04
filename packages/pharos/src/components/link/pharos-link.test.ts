@@ -8,7 +8,7 @@ describe('pharos-link', () => {
   let component: PharosLink;
 
   beforeEach(async () => {
-    component = await fixture(html`<pharos-link href="#">I am a link</pharos-link>`);
+    component = await fixture(html`<test-pharos-link href="#">I am a link</test-pharos-link>`);
   });
 
   it('is accessible', async () => {
@@ -31,9 +31,12 @@ describe('pharos-link', () => {
     const parentNode = document.createElement('div');
     parentNode.style.backgroundColor = PharosColorBlack;
 
-    component = await fixture(html`<pharos-link href="#" on-background>I am a link</pharos-link>`, {
-      parentNode,
-    });
+    component = await fixture(
+      html`<test-pharos-link href="#" on-background>I am a link</test-pharos-link>`,
+      {
+        parentNode,
+      }
+    );
     await expect(component).to.be.accessible();
   });
 
@@ -53,7 +56,7 @@ describe('pharos-link', () => {
 
   it('throws an error for an invalid target value', async () => {
     component = await fixture(html`
-      <pharos-link href="#" target="fake">I am a link</pharos-link>
+      <test-pharos-link href="#" target="fake">I am a link</test-pharos-link>
     `).catch((e) => e);
     expect('fake is not a valid target. Valid targets are: _blank, _parent, _self, _top').to.be
       .thrown;
@@ -70,7 +73,7 @@ describe('pharos-link', () => {
     component.href = '#test';
     await component.updateComplete;
 
-    const link = document.createElement('pharos-link') as PharosLink;
+    const link = document.createElement('test-pharos-link') as PharosLink;
     link.id = 'test';
     link.href = '#';
     link.textContent = 'I am a link';
