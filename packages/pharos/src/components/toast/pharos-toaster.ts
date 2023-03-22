@@ -1,4 +1,5 @@
 import { PharosElement } from '../base/pharos-element';
+import { property } from 'lit/decorators.js';
 import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { toasterStyles } from './pharos-toaster.css';
@@ -27,6 +28,13 @@ import { v4 as uuidv4 } from 'uuid';
  * @listens pharos-toast-open
  */
 export class PharosToaster extends PharosElement {
+  /**
+   * The elements to return focus to after closing the toast
+   * @attr returnElements
+   */
+  @property({ type: Array, reflect: true })
+  public returnElements: Array<HTMLElement> = [];
+
   constructor() {
     super();
     this._openToast = this._openToast.bind(this);
@@ -59,8 +67,9 @@ export class PharosToaster extends PharosElement {
   private async _openToast(event: Event): Promise<void> {
     const toastTag = this.localName.split('pharos-toaster')[0] + 'pharos-toast';
     const toast = document.createElement(toastTag) as PharosToast;
-    const { content, status, id, indefinite } = (<CustomEvent>event).detail;
+    const { content, status, id, indefinite, returnElements } = (<CustomEvent>event).detail;
 
+    this.returnElements = returnElements;
     toast.innerHTML = content;
     toast.status = status || DEFAULT_STATUS;
     toast.id = this._getToastID(id);
@@ -84,6 +93,12 @@ export class PharosToaster extends PharosElement {
     const toast = document.getElementById(this._getToastID(id));
     if (toast) {
       this.removeChild(toast);
+    }
+    for (const element of this.returnElements) {
+      if (element) {
+        element.focus();
+        break;
+      }
     }
   }
 

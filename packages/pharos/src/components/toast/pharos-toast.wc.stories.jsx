@@ -30,6 +30,7 @@ export const Base = {
             detail: {
               content:
                 'The item has moved to your <pharos-link href="#" on-background bold>Workspace</pharos-link>.',
+              returnElements: [document.querySelector('#success-toast-button')],
             },
           });
           document.dispatchEvent(event);
@@ -60,6 +61,7 @@ export const Error = {
               status: 'error',
               content:
                 'Sorry, we were unable to move the item. Please try again later. If the issue persists, <pharos-link href="#" on-background bold>contact JSTOR Support</pharos-link>.',
+              returnElements: [document.querySelector('#error-toast-button')],
             },
           });
           document.dispatchEvent(event);
@@ -90,6 +92,7 @@ export const LongContent = {
             detail: {
               content:
                 'This is a notification for longer content, which may even include a <pharos-link href="#" on-background bold>link</pharos-link>.',
+              returnElements: [document.querySelector('#long-toast-button')],
             },
           });
           document.dispatchEvent(event);
@@ -119,6 +122,7 @@ export const Info = {
             detail: {
               status: 'info',
               content: 'We are working on your request.',
+              returnElements: [document.querySelector('#info-toast-button')],
             },
           });
           document.dispatchEvent(event);
@@ -148,6 +152,7 @@ export const UpdateableToast = {
               status: 'info',
               content: 'Saving 15 items to your Workspace',
               indefinite: true,
+              returnElements: [document.querySelector('#info-toast-button')],
             },
           });
           document.dispatchEvent(event);
@@ -156,6 +161,7 @@ export const UpdateableToast = {
               detail: {
                 status: 'success',
                 content: '15 items succsessfully saved',
+                returnElements: [document.querySelector('#info-toast-button')],
               },
             });
             document.dispatchEvent(updateEvent);
