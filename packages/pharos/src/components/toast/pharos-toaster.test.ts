@@ -10,6 +10,7 @@ describe('pharos-toaster', () => {
     const event = new CustomEvent('pharos-toast-open', {
       detail: {
         content: 'I am a toast',
+        returnElements: [],
       },
     });
     document.dispatchEvent(event);
