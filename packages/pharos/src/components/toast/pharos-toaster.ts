@@ -32,7 +32,7 @@ export class PharosToaster extends PharosElement {
    * The elements to return focus to after closing the toast
    * @attr returnElements
    */
-  @property({ type: Array, reflect: true })
+  @property({ type: Array, reflect: false })
   public returnElements: Array<HTMLElement> = [];
 
   constructor() {
