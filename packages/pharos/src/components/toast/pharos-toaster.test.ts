@@ -199,18 +199,16 @@ describe('pharos-toaster', () => {
     document.addEventListener('focusin', onFocusIn);
 
     const trigger = document.createElement('button');
-    const mainContent = document.createElement('link');
     trigger.addEventListener('click', () => {
       const event = new CustomEvent('pharos-toast-open', {
         detail: {
           content: 'I am a toast',
-          returnElements: [document.querySelector('something-does-not-exist'), mainContent],
+          returnElements: [document.querySelector('something-does-not-exist'), trigger],
         },
       });
       document.dispatchEvent(event);
     });
     document.body.appendChild(trigger);
-    document.body.appendChild(mainContent);
     trigger.click();
     await component.updateComplete;
 
@@ -223,7 +221,7 @@ describe('pharos-toaster', () => {
     component.dispatchEvent(new CustomEvent('pharos-toast-close', details));
     await component.updateComplete;
 
-    expect(activeElement === mainContent).to.be.true;
+    expect(activeElement === trigger).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
   });
 });
