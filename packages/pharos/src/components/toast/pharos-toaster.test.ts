@@ -210,6 +210,7 @@ describe('pharos-toaster', () => {
       document.dispatchEvent(event);
     });
     document.body.appendChild(trigger);
+    document.body.appendChild(mainContent);
     trigger.click();
     await component.updateComplete;
 
