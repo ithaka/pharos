@@ -90,7 +90,7 @@ export class PharosToaster extends PharosElement {
 
   private _focusOnReturnElements(returnElements: Array<HTMLElement>): void {
     for (const element of returnElements) {
-      if (element && element.isConnected) {
+      if (element?.isConnected) {
         element.focus();
         return;
       }
