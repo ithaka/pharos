@@ -88,18 +88,22 @@ export class PharosToaster extends PharosElement {
     }
   }
 
+  private _focusOnReturnElements(returnElements: Array<HTMLElement>): void {
+    for (const element of returnElements) {
+      if (element.isConnected) {
+        element.focus();
+        return;
+      }
+    }
+  }
+
   private _closeToast(event: CustomEvent): void {
     const { id } = (<CustomEvent>event).detail || {};
     const toast = document.getElementById(this._getToastID(id));
     if (toast) {
       this.removeChild(toast);
     }
-    for (const element of this.returnElements) {
-      if (element) {
-        element.focus();
-        break;
-      }
-    }
+    this._focusOnReturnElements(this.returnElements);
   }
 
   protected override render(): TemplateResult {
