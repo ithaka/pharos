@@ -203,7 +203,7 @@ describe('pharos-toaster', () => {
       const event = new CustomEvent('pharos-toast-open', {
         detail: {
           content: 'I am a toast',
-          returnElements: [document.querySelector('something-does-not-exist'), trigger],
+          returnElements: [document.querySelector('#something-does-not-exist'), trigger],
         },
       });
       document.dispatchEvent(event);
