@@ -27,6 +27,8 @@ import { v4 as uuidv4 } from 'uuid';
  * @listens pharos-toast-open
  */
 export class PharosToaster extends PharosElement {
+  private returnElements: Array<HTMLElement> = [];
+
   constructor() {
     super();
     this._openToast = this._openToast.bind(this);
@@ -59,8 +61,9 @@ export class PharosToaster extends PharosElement {
   private async _openToast(event: Event): Promise<void> {
     const toastTag = this.localName.split('pharos-toaster')[0] + 'pharos-toast';
     const toast = document.createElement(toastTag) as PharosToast;
-    const { content, status, id, indefinite } = (<CustomEvent>event).detail;
+    const { content, status, id, indefinite, returnElements } = (<CustomEvent>event).detail;
 
+    this.returnElements = returnElements;
     toast.innerHTML = content;
     toast.status = status || DEFAULT_STATUS;
     toast.id = this._getToastID(id);
@@ -79,12 +82,22 @@ export class PharosToaster extends PharosElement {
     }
   }
 
+  private _focusOnReturnElements(returnElements: Array<HTMLElement>): void {
+    for (const element of returnElements) {
+      if (element?.isConnected) {
+        element.focus();
+        return;
+      }
+    }
+  }
+
   private _closeToast(event: CustomEvent): void {
     const { id } = (<CustomEvent>event).detail || {};
     const toast = document.getElementById(this._getToastID(id));
     if (toast) {
       this.removeChild(toast);
     }
+    this._focusOnReturnElements(this.returnElements);
   }
 
   protected override render(): TemplateResult {
