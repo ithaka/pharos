@@ -1,5 +1,4 @@
 import { PharosElement } from '../base/pharos-element';
-import { property } from 'lit/decorators.js';
 import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { toasterStyles } from './pharos-toaster.css';
@@ -28,12 +27,7 @@ import { v4 as uuidv4 } from 'uuid';
  * @listens pharos-toast-open
  */
 export class PharosToaster extends PharosElement {
-  /**
-   * The elements to return focus to after closing the toast
-   * @attr returnElements
-   */
-  @property({ type: Array, reflect: false })
-  public returnElements: Array<HTMLElement> = [];
+  private returnElements: Array<HTMLElement> = [];
 
   constructor() {
     super();
