@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 5.13.1
+
+### Patch Changes
+
+- [#499](https://github.com/ithaka/pharos/pull/499) [`5e78e1b`](https://github.com/ithaka/pharos/commit/5e78e1ba4881057dd43c6db8ae0ecea850c2be23) Thanks [@jialin-he](https://github.com/jialin-he)! - Fix local development for pharos site
+
+- Updated dependencies [[`6667338`](https://github.com/ithaka/pharos/commit/66673386f4c9694e32c5a7d000db445eea3f427e)]:
+  - @ithaka/pharos@12.19.0
+
 ## 5.13.0
 
 ### Minor Changes

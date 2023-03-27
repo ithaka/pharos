@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.19.0
+
+### Minor Changes
+
+- [#503](https://github.com/ithaka/pharos/pull/503) [`6667338`](https://github.com/ithaka/pharos/commit/66673386f4c9694e32c5a7d000db445eea3f427e) Thanks [@jialin-he](https://github.com/jialin-he)! - Allow toast to return focus to consumer defined elements after close
+
 ## 12.18.0
 
 ### Minor Changes
