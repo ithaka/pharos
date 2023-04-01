@@ -115,6 +115,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   protected override render(): TemplateResult {
     return this.href !== undefined
       ? html`<a
+          href = "#"
           id="link-element"
           class="${classMap({
             [`link--alert`]: this._alert,
@@ -133,6 +134,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
         >`
       : html`<button
           id="link-element"
+          href = "#"
           class="${classMap({
             [`link--alert`]: this._alert,
             [`link--hover`]: this._hover,
