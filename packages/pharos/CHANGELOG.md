@@ -1,5 +1,23 @@
 # @ithaka/pharos
 
+## 12.19.0
+
+### Minor Changes
+
+- [#503](https://github.com/ithaka/pharos/pull/503) [`6667338`](https://github.com/ithaka/pharos/commit/66673386f4c9694e32c5a7d000db445eea3f427e) Thanks [@jialin-he](https://github.com/jialin-he)! - Allow toast to return focus to consumer defined elements after close
+
+## 12.18.0
+
+### Minor Changes
+
+- [#497](https://github.com/ithaka/pharos/pull/497) [`48f7cb8`](https://github.com/ithaka/pharos/commit/48f7cb89c04c7389bba84e136917cd43d356747a) Thanks [@jialin-he](https://github.com/jialin-he)! - Add audio icons
+
+### Patch Changes
+
+- [#496](https://github.com/ithaka/pharos/pull/496) [`01e4f69`](https://github.com/ithaka/pharos/commit/01e4f69e384d0b1fd049ef658d83b2209c201702) Thanks [@daneah](https://github.com/daneah)! - Fix styling of Google Translate widget
+
+- [#493](https://github.com/ithaka/pharos/pull/493) [`5c45ee8`](https://github.com/ithaka/pharos/commit/5c45ee881e39aad966f67f3b5e540477c3e079c2) Thanks [@NazimHAli](https://github.com/NazimHAli)! - Update link docs
+
 ## 12.17.2
 
 ### Patch Changes
