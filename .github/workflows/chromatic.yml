@@ -7,6 +7,7 @@ on:
       - '.storybook/**'
       - 'yarn.lock'
       - 'package.json'
+      - '.github/workflows/chromatic.yml'
     branches-ignore:
       - main
 
