@@ -25,37 +25,37 @@ export const ItemDetail = {
     <div class="item-detail-page__container">
       ${HeaderRevised(true)}
       <main>
-        <pharos-layout
+        <storybook-pharos-layout
           preset="2-col"
           rows="max-content 1fr"
           class="item-detail-page__container--main-content"
         >
           <div class="item-detail-page__container--top" slot="top">
-            <pharos-link href="#" class="item-detail-page__button--back" subtle flex>
-              <pharos-icon
+            <storybook-pharos-link href="#" class="item-detail-page__button--back" subtle flex>
+              <storybook-pharos-icon
                 name="arrow-left"
                 style="margin-right: var(--pharos-spacing-one-quarter-x)"
-              ></pharos-icon>
+              ></storybook-pharos-icon>
               Back to results
-            </pharos-link>
-            <pharos-button
+            </storybook-pharos-link>
+            <storybook-pharos-button
               variant="subtle"
               icon="arrow-left"
               href="#"
               label="Back to results"
               class="item-detail-page__button--mobile-back"
-            ></pharos-button>
+            ></storybook-pharos-button>
             <div class="item-detail-page__container--action-buttons">
-              <pharos-button variant="secondary" icon-left="cite">Cite</pharos-button>
-              <pharos-button variant="secondary" icon-left="share">Share</pharos-button>
-              <pharos-button variant="secondary" icon-left="save">Save</pharos-button>
-              <pharos-button variant="secondary" icon-left="download">Download</pharos-button>
+              <storybook-pharos-button variant="secondary" icon-left="cite">Cite</storybook-pharos-button>
+              <storybook-pharos-button variant="secondary" icon-left="share">Share</storybook-pharos-button>
+              <storybook-pharos-button variant="secondary" icon-left="save">Save</storybook-pharos-button>
+              <storybook-pharos-button variant="secondary" icon-left="download">Download</storybook-pharos-button>
             </div>
             <div class="item-detail-page__container--mobile-buttons">
-              <pharos-button variant="subtle" icon="cite" label="Cite"></pharos-button>
-              <pharos-button variant="subtle" icon="share" label="Share"></pharos-button>
-              <pharos-button variant="subtle" icon="save" label="Save"></pharos-button>
-              <pharos-button variant="subtle" icon="download" label="Download"></pharos-button>
+              <storybook-pharos-button variant="subtle" icon="cite" label="Cite"></storybook-pharos-button>
+              <storybook-pharos-button variant="subtle" icon="share" label="Share"></storybook-pharos-button>
+              <storybook-pharos-button variant="subtle" icon="save" label="Save"></storybook-pharos-button>
+              <storybook-pharos-button variant="subtle" icon="download" label="Download"></storybook-pharos-button>
             </div>
           </div>
           <div class="item-detail-page__container--viewer"></div>
@@ -63,7 +63,7 @@ export const ItemDetail = {
             ${ItemCarousel()} ${CollectionCarousel()}
           </div>
           ${Metadata()}
-        </pharos-layout>
+        </storybook-pharos-layout>
       </main>
       ${Footer()}
     </div>

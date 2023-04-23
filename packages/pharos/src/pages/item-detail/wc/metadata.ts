@@ -11,8 +11,8 @@ export const Metadata = (): TemplateResult => html`
       class="item-detail-page__image--collection"
     />
     <div class="item-detail-page__label--type">${item.type}</div>
-    <pharos-heading level="1" preset="3" class="item-detail-page__heading--metadata"
-      >${item.title}</pharos-heading
+    <storybook-pharos-heading level="1" preset="3" class="item-detail-page__heading--metadata"
+      >${item.title}</storybook-pharos-heading
     >
     <div class="item-detail-page__grid--metadata">
       ${metadata.map(
