@@ -46,16 +46,40 @@ export const ItemDetail = {
               class="item-detail-page__button--mobile-back"
             ></storybook-pharos-button>
             <div class="item-detail-page__container--action-buttons">
-              <storybook-pharos-button variant="secondary" icon-left="cite">Cite</storybook-pharos-button>
-              <storybook-pharos-button variant="secondary" icon-left="share">Share</storybook-pharos-button>
-              <storybook-pharos-button variant="secondary" icon-left="save">Save</storybook-pharos-button>
-              <storybook-pharos-button variant="secondary" icon-left="download">Download</storybook-pharos-button>
+              <storybook-pharos-button variant="secondary" icon-left="cite"
+                >Cite</storybook-pharos-button
+              >
+              <storybook-pharos-button variant="secondary" icon-left="share"
+                >Share</storybook-pharos-button
+              >
+              <storybook-pharos-button variant="secondary" icon-left="save"
+                >Save</storybook-pharos-button
+              >
+              <storybook-pharos-button variant="secondary" icon-left="download"
+                >Download</storybook-pharos-button
+              >
             </div>
             <div class="item-detail-page__container--mobile-buttons">
-              <storybook-pharos-button variant="subtle" icon="cite" label="Cite"></storybook-pharos-button>
-              <storybook-pharos-button variant="subtle" icon="share" label="Share"></storybook-pharos-button>
-              <storybook-pharos-button variant="subtle" icon="save" label="Save"></storybook-pharos-button>
-              <storybook-pharos-button variant="subtle" icon="download" label="Download"></storybook-pharos-button>
+              <storybook-pharos-button
+                variant="subtle"
+                icon="cite"
+                label="Cite"
+              ></storybook-pharos-button>
+              <storybook-pharos-button
+                variant="subtle"
+                icon="share"
+                label="Share"
+              ></storybook-pharos-button>
+              <storybook-pharos-button
+                variant="subtle"
+                icon="save"
+                label="Save"
+              ></storybook-pharos-button>
+              <storybook-pharos-button
+                variant="subtle"
+                icon="download"
+                label="Download"
+              ></storybook-pharos-button>
             </div>
           </div>
           <div class="item-detail-page__container--viewer"></div>

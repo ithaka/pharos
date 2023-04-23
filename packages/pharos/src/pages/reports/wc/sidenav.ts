@@ -16,8 +16,12 @@ export const Sidenav = (): TemplateResult => html`
       <storybook-pharos-sidenav-link href="#">Holdings</storybook-pharos-sidenav-link>
       <storybook-pharos-sidenav-link href="#">Access Methods</storybook-pharos-sidenav-link>
       <storybook-pharos-sidenav-link href="#">Account</storybook-pharos-sidenav-link>
-      <storybook-pharos-sidenav-link href="#" target="_blank" external>Support</storybook-pharos-sidenav-link>
-      <storybook-pharos-sidenav-link href="#" target="_blank" external>For Librarians</storybook-pharos-sidenav-link>
+      <storybook-pharos-sidenav-link href="#" target="_blank" external
+        >Support</storybook-pharos-sidenav-link
+      >
+      <storybook-pharos-sidenav-link href="#" target="_blank" external
+        >For Librarians</storybook-pharos-sidenav-link
+      >
     </storybook-pharos-sidenav-section>
   </storybook-pharos-sidenav>
 `;

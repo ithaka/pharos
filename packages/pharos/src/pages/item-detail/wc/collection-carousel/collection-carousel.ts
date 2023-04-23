@@ -6,7 +6,9 @@ import { collections } from '../../mocks';
 
 export const CollectionCarousel = (): TemplateResult => html`
   <div class="item-detail-page__container--top-bar">
-    <storybook-pharos-heading level="2" preset="3" no-margin>Explore our open collections</storybook-pharos-heading>
+    <storybook-pharos-heading level="2" preset="3" no-margin
+      >Explore our open collections</storybook-pharos-heading
+    >
     <div class="item-detail-page__container--carousel-buttons">
       <storybook-pharos-button
         label="backward"

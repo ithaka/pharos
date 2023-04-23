@@ -14,8 +14,12 @@ const accountNav = (section: string) => html`
       ></storybook-pharos-dropdown-menu-nav-link
     >
     <storybook-pharos-dropdown-menu id="profile-menu-${section}">
-      <storybook-pharos-dropdown-menu-item link="/account/profile">Profile</storybook-pharos-dropdown-menu-item>
-      <storybook-pharos-dropdown-menu-item link="/account/workspace">Workspace</storybook-pharos-dropdown-menu-item>
+      <storybook-pharos-dropdown-menu-item link="/account/profile"
+        >Profile</storybook-pharos-dropdown-menu-item
+      >
+      <storybook-pharos-dropdown-menu-item link="/account/workspace"
+        >Workspace</storybook-pharos-dropdown-menu-item
+      >
       <storybook-pharos-dropdown-menu-item link="/account/read-online"
         >Free Article Views</storybook-pharos-dropdown-menu-item
       >
@@ -25,7 +29,9 @@ const accountNav = (section: string) => html`
       <storybook-pharos-dropdown-menu-item link="/account/purchases"
         >Puchase History</storybook-pharos-dropdown-menu-item
       >
-      <storybook-pharos-dropdown-menu-item link="/action/doLogout">Logout</storybook-pharos-dropdown-menu-item>
+      <storybook-pharos-dropdown-menu-item link="/action/doLogout"
+        >Logout</storybook-pharos-dropdown-menu-item
+      >
     </storybook-pharos-dropdown-menu>
   </storybook-pharos-dropdown-menu-nav>
 `;
@@ -41,13 +47,17 @@ export const Header = (): TemplateResult => html`
       >
         <span>Access provided by&nbsp;</span>
         <span style="font-weight: bold">JSTOR</span>
-        <storybook-pharos-icon name="chevron-down" style="margin-left: 1rem"></storybook-pharos-icon>
+        <storybook-pharos-icon
+          name="chevron-down"
+          style="margin-left: 1rem"
+        ></storybook-pharos-icon>
       </div>
       <storybook-pharos-dropdown-menu id="pds-menu" placement="bottom">
         <div style="padding: 1rem">
           <p>
             Please contact
-            <storybook-pharos-link href="//jstor.org">JSTOR</storybook-pharos-link> for additional help and information.
+            <storybook-pharos-link href="//jstor.org">JSTOR</storybook-pharos-link> for additional
+            help and information.
           </p>
         </div>
       </storybook-pharos-dropdown-menu>
@@ -75,7 +85,10 @@ export const Header = (): TemplateResult => html`
     <div slot="end-top">${accountNav('end')}</div>
     <div slot="end-bottom" style="display: flex;">
       <storybook-pharos-dropdown-menu-nav label="main navigation" style="display: inline-block">
-        <storybook-pharos-dropdown-menu-nav-link href="/action/showAdvancedSearch" id="adv-search-menu-link">
+        <storybook-pharos-dropdown-menu-nav-link
+          href="/action/showAdvancedSearch"
+          id="adv-search-menu-link"
+        >
           Advanced Search
         </storybook-pharos-dropdown-menu-nav-link>
         <storybook-pharos-dropdown-menu-nav-link
@@ -87,14 +100,18 @@ export const Header = (): TemplateResult => html`
           Browse
         </storybook-pharos-dropdown-menu-nav-link>
         <storybook-pharos-dropdown-menu id="browse-menu">
-          <storybook-pharos-dropdown-menu-item link="/subjects">by Subject</storybook-pharos-dropdown-menu-item>
+          <storybook-pharos-dropdown-menu-item link="/subjects"
+            >by Subject</storybook-pharos-dropdown-menu-item
+          >
           <storybook-pharos-dropdown-menu-item link="/action/showJournals?browseType=title">
             by Title
           </storybook-pharos-dropdown-menu-item>
           <storybook-pharos-dropdown-menu-item link="/site/collection-list">
             by Collections
           </storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item link="/publishers">by Publisher</storybook-pharos-dropdown-menu-item>
+          <storybook-pharos-dropdown-menu-item link="/publishers"
+            >by Publisher</storybook-pharos-dropdown-menu-item
+          >
         </storybook-pharos-dropdown-menu>
         <storybook-pharos-dropdown-menu-nav-link
           href="/account/workspace"
@@ -108,11 +125,15 @@ export const Header = (): TemplateResult => html`
           <storybook-pharos-dropdown-menu-item link="/account/workspace">
             Workspace
           </storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item link="/analyze">Text Analyzer</storybook-pharos-dropdown-menu-item>
+          <storybook-pharos-dropdown-menu-item link="/analyze"
+            >Text Analyzer</storybook-pharos-dropdown-menu-item
+          >
           <storybook-pharos-dropdown-menu-item link="/understand">
             The JSTOR Understanding Series
           </storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item link="/dfr">Data for Research</storybook-pharos-dropdown-menu-item>
+          <storybook-pharos-dropdown-menu-item link="/dfr"
+            >Data for Research</storybook-pharos-dropdown-menu-item
+          >
         </storybook-pharos-dropdown-menu>
       </storybook-pharos-dropdown-menu-nav>
     </div>

@@ -21,13 +21,19 @@ export const SearchResultsItem = (result: SearchResult): TemplateResult => html`
     <div class="search-page__container--action-buttons">
       <ul class="search-page__list--action-buttons">
         <li class="search-page__list-item--action-buttons">
-          <storybook-pharos-button icon-left="download" full-width>Download PDF</storybook-pharos-button>
+          <storybook-pharos-button icon-left="download" full-width
+            >Download PDF</storybook-pharos-button
+          >
         </li>
         <li class="search-page__list-item--action-buttons">
-          <storybook-pharos-button icon-left="save" variant="secondary" full-width>Save</storybook-pharos-button>
+          <storybook-pharos-button icon-left="save" variant="secondary" full-width
+            >Save</storybook-pharos-button
+          >
         </li>
         <li class="search-page__list-item--action-buttons">
-          <storybook-pharos-button icon-left="cite" variant="secondary" full-width>Cite</storybook-pharos-button>
+          <storybook-pharos-button icon-left="cite" variant="secondary" full-width
+            >Cite</storybook-pharos-button
+          >
         </li>
       </ul>
     </div>

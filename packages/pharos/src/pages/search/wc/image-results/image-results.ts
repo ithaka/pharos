@@ -8,7 +8,10 @@ export const ImageResults = (): TemplateResult => html`
   <div class="search-page__container--image-results">
     <div class="search-page__container--results-top-bar">
       <storybook-pharos-heading level="3" preset="2">1,429 image results</storybook-pharos-heading>
-      <storybook-pharos-button variant="secondary" icon-right="arrow-right" style="margin-left: auto"
+      <storybook-pharos-button
+        variant="secondary"
+        icon-right="arrow-right"
+        style="margin-left: auto"
         >View all image results</storybook-pharos-button
       >
     </div>

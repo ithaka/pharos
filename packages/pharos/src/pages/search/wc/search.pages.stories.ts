@@ -22,8 +22,12 @@ export const Search = {
       ${Header()}
       <main class="search-page__container--main-content">
         <div class="search-page__container--results-content">
-          <storybook-pharos-heading level="2" preset="5--bold">722,549 search results</storybook-pharos-heading>
-          <storybook-pharos-link href="/help" style="margin-left: auto">Search help</storybook-pharos-link>
+          <storybook-pharos-heading level="2" preset="5--bold"
+            >722,549 search results</storybook-pharos-heading
+          >
+          <storybook-pharos-link href="/help" style="margin-left: auto"
+            >Search help</storybook-pharos-link
+          >
         </div>
         ${ImageResults()} ${SearchResults()}
       </main>

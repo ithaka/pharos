@@ -18,7 +18,9 @@ export const CreateReportModal = (): TemplateResult => html`
         <legend class="reports-page__legend">
           <span>Report Type</span>
         </legend>
-        <storybook-pharos-button name="is-scheduled" value="yes" disabled>Scheduled</storybook-pharos-button>
+        <storybook-pharos-button name="is-scheduled" value="yes" disabled
+          >Scheduled</storybook-pharos-button
+        >
         <storybook-pharos-button name="is-scheduled" value="no">One-time</storybook-pharos-button>
       </fieldset>
       <fieldset class="reports-page__fieldset--date">
@@ -51,8 +53,12 @@ export const CreateReportModal = (): TemplateResult => html`
         <storybook-pharos-radio-button value="xlsx" checked
           ><span slot="label">XLSX</span></storybook-pharos-radio-button
         >
-        <storybook-pharos-radio-button value="tsv"><span slot="label">TSV</span></storybook-pharos-radio-button>
-        <storybook-pharos-radio-button value="json"><span slot="label">JSON</span></storybook-pharos-radio-button>
+        <storybook-pharos-radio-button value="tsv"
+          ><span slot="label">TSV</span></storybook-pharos-radio-button
+        >
+        <storybook-pharos-radio-button value="json"
+          ><span slot="label">JSON</span></storybook-pharos-radio-button
+        >
       </storybook-pharos-radio-group>
       <storybook-pharos-text-input name="name" required>
         <span slot="label">Report Name</span>

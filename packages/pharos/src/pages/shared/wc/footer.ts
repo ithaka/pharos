@@ -9,7 +9,12 @@ export const Footer = (): TemplateResult => {
     <storybook-pharos-footer>
       <ul slot="links-group">
         <li>
-          <storybook-pharos-link id="subject-link" on-background subtle href="/subjects" target="_blank"
+          <storybook-pharos-link
+            id="subject-link"
+            on-background
+            subtle
+            href="/subjects"
+            target="_blank"
             >By Subject</storybook-pharos-link
           >
         </li>
@@ -34,7 +39,12 @@ export const Footer = (): TemplateResult => {
           >
         </li>
         <li>
-          <storybook-pharos-link id="publisher-link" on-background subtle href="/publishers" target="_blank"
+          <storybook-pharos-link
+            id="publisher-link"
+            on-background
+            subtle
+            href="/publishers"
+            target="_blank"
             >By Publisher</storybook-pharos-link
           >
         </li>
@@ -190,7 +200,12 @@ export const Footer = (): TemplateResult => {
           >
         </li>
         <li>
-          <storybook-pharos-link id="contact-link" on-background subtle href="/contact-us/" target="_blank"
+          <storybook-pharos-link
+            id="contact-link"
+            on-background
+            subtle
+            href="/contact-us/"
+            target="_blank"
             >Contact Us</storybook-pharos-link
           >
         </li>
@@ -281,8 +296,9 @@ export const Footer = (): TemplateResult => {
       </ul>
       <span id="misson-text" slot="mission-statement"
         >JSTOR is part of
-        <storybook-pharos-link on-background href="https://www.ithaka.org">ITHAKA</storybook-pharos-link>, a
-        not-for-profit organization helping the academic community use digital technologies to
+        <storybook-pharos-link on-background href="https://www.ithaka.org"
+          >ITHAKA</storybook-pharos-link
+        >, a not-for-profit organization helping the academic community use digital technologies to
         preserve the scholarly record and to advance research and teaching in sustainable
         ways.</span
       >

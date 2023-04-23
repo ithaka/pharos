@@ -76,14 +76,18 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
             >Browse</storybook-pharos-dropdown-menu-nav-link
           >
           <storybook-pharos-dropdown-menu id="browse-menu">
-            <storybook-pharos-dropdown-menu-item link="/subjects">by Subject</storybook-pharos-dropdown-menu-item>
+            <storybook-pharos-dropdown-menu-item link="/subjects"
+              >by Subject</storybook-pharos-dropdown-menu-item
+            >
             <storybook-pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
               >by Title</storybook-pharos-dropdown-menu-item
             >
             <storybook-pharos-dropdown-menu-item link="/site/collection-list"
               >by Collections</storybook-pharos-dropdown-menu-item
             >
-            <storybook-pharos-dropdown-menu-item link="/publishers">by Publisher</storybook-pharos-dropdown-menu-item>
+            <storybook-pharos-dropdown-menu-item link="/publishers"
+              >by Publisher</storybook-pharos-dropdown-menu-item
+            >
           </storybook-pharos-dropdown-menu>
           <storybook-pharos-dropdown-menu-nav-link
             href="/account/workspace"
@@ -97,11 +101,15 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
             <storybook-pharos-dropdown-menu-item link="/account/workspace"
               >Workspace</storybook-pharos-dropdown-menu-item
             >
-            <storybook-pharos-dropdown-menu-item link="/analyze">Text Analyzer</storybook-pharos-dropdown-menu-item>
+            <storybook-pharos-dropdown-menu-item link="/analyze"
+              >Text Analyzer</storybook-pharos-dropdown-menu-item
+            >
             <storybook-pharos-dropdown-menu-item link="/understand"
               >The JSTOR Understanding Series</storybook-pharos-dropdown-menu-item
             >
-            <storybook-pharos-dropdown-menu-item link="/dfr">Data for Research</storybook-pharos-dropdown-menu-item>
+            <storybook-pharos-dropdown-menu-item link="/dfr"
+              >Data for Research</storybook-pharos-dropdown-menu-item
+            >
           </storybook-pharos-dropdown-menu>
         </storybook-pharos-dropdown-menu-nav>
       </div>
@@ -115,14 +123,20 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
         >
         <div class="header-revised__grid--account">
           <div class="header-revised__grid--account-links">
-            <storybook-pharos-link href="//about.jstor.org" target="_blank" bold>About</storybook-pharos-link>
-            <storybook-pharos-link href="//support.jstor.org" target="_blank" bold>Support</storybook-pharos-link>
+            <storybook-pharos-link href="//about.jstor.org" target="_blank" bold
+              >About</storybook-pharos-link
+            >
+            <storybook-pharos-link href="//support.jstor.org" target="_blank" bold
+              >Support</storybook-pharos-link
+            >
           </div>
           <div class="header-revised__grid--account-buttons">
             <storybook-pharos-button variant="secondary" href="//support.jstor.org" target="_blank"
               >Register</storybook-pharos-button
             >
-            <storybook-pharos-button href="//support.jstor.org" target="_blank">Log in</storybook-pharos-button>
+            <storybook-pharos-button href="//support.jstor.org" target="_blank"
+              >Log in</storybook-pharos-button
+            >
           </div>
         </div>
         <svg

@@ -26,7 +26,10 @@ export const Home = {
     <div class="home-page__container">
       ${HeaderRevised()}
       <main>
-        <storybook-pharos-layout class="home-page__container--main-content" row-gap="${PharosSpacing7X}">
+        <storybook-pharos-layout
+          class="home-page__container--main-content"
+          row-gap="${PharosSpacing7X}"
+        >
           <div class="home-page__container--top" slot="top">
             <storybook-pharos-heading level="1" preset="7" no-margin class="home-page__heading"
               >Knowledge for everyone

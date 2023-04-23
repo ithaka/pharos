@@ -6,7 +6,9 @@ export const CollectionCarouselItem = (collection: Collection): TemplateResult =
   <storybook-pharos-link href="#" subtle flex>
     <div class="item-detail-page__grid--carousel-item item-detail-page__grid--open-collection">
       <img src="./images/item-detail/${collection.image}" alt="${collection.title}" />
-      <storybook-pharos-heading preset="1--bold" level="3" no-margin>${collection.title}</storybook-pharos-heading>
+      <storybook-pharos-heading preset="1--bold" level="3" no-margin
+        >${collection.title}</storybook-pharos-heading
+      >
     </div>
   </storybook-pharos-link>
   <span class="item-detail-page__text--collection-items">${collection.items} items</span>

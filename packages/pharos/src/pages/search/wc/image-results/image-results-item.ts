@@ -6,7 +6,9 @@ export const ImageResultsItem = (result: ImageResult): TemplateResult => html`
   <storybook-pharos-link href="#" subtle flex>
     <div class="search-page__grid--image">
       <img src="./images/search/${result.image}" alt="${result.title}" width="99%" />
-      <storybook-pharos-heading preset="1--bold" level="3" no-margin>${result.title}</storybook-pharos-heading>
+      <storybook-pharos-heading preset="1--bold" level="3" no-margin
+        >${result.title}</storybook-pharos-heading
+      >
     </div>
   </storybook-pharos-link>
 `;
