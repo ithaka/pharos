@@ -8,11 +8,11 @@ describe('pharos-input-group', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-input-group-select hide-label>
+      <test-pharos-input-group-select hide-label>
         <span slot="label">Search</span>
         <option value="">Search all content</option>
         <option value="book">Search within this book</option>
-      </pharos-input-group-select>
+      </test-pharos-input-group-select>
     `);
   });
 

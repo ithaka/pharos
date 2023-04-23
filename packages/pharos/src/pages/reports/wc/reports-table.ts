@@ -48,19 +48,19 @@ export const ReportsTable = (table: HistoryTable | ScheduledTable): TemplateResu
               })}
               ${isHistory
                 ? html`<td class="reports-page__table-cell--download">
-                    <pharos-button
+                    <storybook-pharos-button
                       variant="secondary"
                       @click="${() => {
                         const event = new CustomEvent('pharos-toast-open', {
                           detail: {
                             status: 'error',
                             content:
-                              'Sorry, we were unable to process your download. Please try again later. If the issue persists, <pharos-link href="#" on-background bold>contact JSTOR Support</pharos-link>.',
+                              'Sorry, we were unable to process your download. Please try again later. If the issue persists, <storybook-pharos-link href="#" on-background bold>contact JSTOR Support</storybook-pharos-link>.',
                           },
                         });
                         document.dispatchEvent(event);
                       }}"
-                      >Download</pharos-button
+                      >Download</storybook-pharos-button
                     >
                   </td>`
                 : null}

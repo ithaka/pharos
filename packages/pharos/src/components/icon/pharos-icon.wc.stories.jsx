@@ -16,7 +16,9 @@ export default {
 
 export const Base = {
   render: (args) =>
-    html` <pharos-icon name=${args.name} class="icon-example__icon"></pharos-icon> `,
+    html`
+      <storybook-pharos-icon name=${args.name} class="icon-example__icon"></storybook-pharos-icon>
+    `,
   args: defaultArgs,
 };
 
@@ -28,7 +30,10 @@ export const Names = {
       >
         ${iconNames.map((name) => {
           return html` <div class="icon-example__container">
-            <pharos-icon name="${name}" class="icon-example__icon"></pharos-icon>
+            <storybook-pharos-icon
+              name="${name}"
+              class="icon-example__icon"
+            ></storybook-pharos-icon>
             <div class="icon-example__name">${name}</div>
           </div>`;
         })}

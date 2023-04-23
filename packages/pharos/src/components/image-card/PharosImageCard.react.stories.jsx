@@ -13,10 +13,18 @@ import {
 import { items, collections } from '../../pages/item-detail/mocks';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Image Card',
   component: PharosImageCard,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('image-card') },
     viewport: viewports,

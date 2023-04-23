@@ -11,10 +11,18 @@ import {
   PharosLink,
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Sidenav',
   component: PharosSidenav,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   subcomponents: {
     PharosSidenavMenu,
     PharosSidenavSection,

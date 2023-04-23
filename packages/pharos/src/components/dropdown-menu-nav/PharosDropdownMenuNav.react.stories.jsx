@@ -5,6 +5,7 @@ import {
   PharosDropdownMenuNavLink,
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Dropdown Menu Nav',
@@ -14,6 +15,13 @@ export default {
     PharosDropdownMenu,
     PharosDropdownMenuItem,
   },
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('dropdown-menu-nav') },
   },

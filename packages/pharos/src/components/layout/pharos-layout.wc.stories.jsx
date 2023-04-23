@@ -53,7 +53,7 @@ const _gridColumns = () => {
 
 export const OneColumn = {
   name: 'One column',
-  render: () => html` <pharos-layout>${_gridColumns()}</pharos-layout> `,
+  render: () => html` <storybook-pharos-layout>${_gridColumns()}</storybook-pharos-layout> `,
 };
 
 export const OneColumnWithSidenav = {
@@ -63,13 +63,15 @@ export const OneColumnWithSidenav = {
       <div
         style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
       >
-        <pharos-sidenav style="grid-area: sidenav">
-          <pharos-link slot="top" href="/" id="jstor-logo">
+        <storybook-pharos-sidenav style="grid-area: sidenav">
+          <storybook-pharos-link slot="top" href="/" id="jstor-logo">
             <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
-          </pharos-link>
-        </pharos-sidenav>
+          </storybook-pharos-link>
+        </storybook-pharos-sidenav>
         <main style="grid-area: main">
-          <pharos-layout preset="1-col--sidenav">${_gridColumns()}</pharos-layout>
+          <storybook-pharos-layout preset="1-col--sidenav"
+            >${_gridColumns()}</storybook-pharos-layout
+          >
         </main>
       </div>
     `,
@@ -82,13 +84,15 @@ export const OneColumnWithSidenavAndComfySpacing = {
       <div
         style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
       >
-        <pharos-sidenav style="grid-area: sidenav">
-          <pharos-link slot="top" href="/" id="jstor-logo">
+        <storybook-pharos-sidenav style="grid-area: sidenav">
+          <storybook-pharos-link slot="top" href="/" id="jstor-logo">
             <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
-          </pharos-link>
-        </pharos-sidenav>
+          </storybook-pharos-link>
+        </storybook-pharos-sidenav>
         <main style="grid-area: main">
-          <pharos-layout preset="1-col--sidenav-comfy">${_gridColumns()}</pharos-layout>
+          <storybook-pharos-layout preset="1-col--sidenav-comfy"
+            >${_gridColumns()}</storybook-pharos-layout
+          >
         </main>
       </div>
     `,
@@ -98,13 +102,13 @@ export const TwoColumn = {
   name: 'Two column',
   render: () =>
     html`
-      <pharos-layout preset="2-col">
+      <storybook-pharos-layout preset="2-col">
         <div class="layout-example__container--first"></div>
         <div class="layout-example__container--second"></div>
         <div class="layout-example__container--third"></div>
-      </pharos-layout>
-      <pharos-layout preset="2-col" style="position: absolute; top: 0; width: 100%"
-        >${_gridColumns()}</pharos-layout
+      </storybook-pharos-layout>
+      <storybook-pharos-layout preset="2-col" style="position: absolute; top: 0; width: 100%"
+        >${_gridColumns()}</storybook-pharos-layout
       >
     `,
 };
@@ -113,8 +117,8 @@ export const ColumnLayouts = {
   name: 'Column layouts',
   render: () =>
     html`
-      <pharos-layout style="margin: 1rem 0">
+      <storybook-pharos-layout style="margin: 1rem 0">
         ${_gridItems([1, 2, 3, 4, 6])} ${_comboItems([7, 8, 9, 10])}
-      </pharos-layout>
+      </storybook-pharos-layout>
     `,
 };

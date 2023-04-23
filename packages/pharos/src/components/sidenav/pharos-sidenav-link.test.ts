@@ -7,7 +7,9 @@ describe('pharos-sidenav-link', () => {
   let component: PharosSidenavLink;
 
   beforeEach(async () => {
-    component = await fixture(html` <pharos-sidenav-link href="#">Link</pharos-sidenav-link> `);
+    component = await fixture(
+      html`<test-pharos-sidenav-link href="#">Link</test-pharos-sidenav-link>`
+    );
   });
 
   it('is accessible', async () => {
@@ -18,7 +20,9 @@ describe('pharos-sidenav-link', () => {
     component.external = true;
     await component.updateComplete;
 
-    const icon = component.renderRoot.querySelector('pharos-icon[name="link-external"]');
+    const icon = component.renderRoot.querySelector(
+      '[data-pharos-component="PharosIcon"][name="link-external"]'
+    );
     expect(icon).not.to.be.null;
   });
 });

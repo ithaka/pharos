@@ -9,7 +9,9 @@ describe('pharos-alert', () => {
   let component: PharosAlert;
 
   beforeEach(async () => {
-    component = await fixture(html` <pharos-alert status="success"> It worked! </pharos-alert> `);
+    component = await fixture(
+      html` <test-pharos-alert status="success"> It worked! </test-pharos-alert> `
+    );
   });
 
   it('is accessible', async () => {
@@ -17,12 +19,16 @@ describe('pharos-alert', () => {
   });
 
   it('throws an error for missing status attribute', async () => {
-    component = await fixture(html` <pharos-alert> It worked! </pharos-alert> `).catch((e) => e);
+    component = await fixture(html` <test-pharos-alert> It worked! </test-pharos-alert> `).catch(
+      (e) => e
+    );
     expect('status is a required attribute.').to.be.thrown;
   });
 
   it('renders the alert when a status is provided', async () => {
-    component = await fixture(html` <pharos-alert status="info"> It worked! </pharos-alert> `);
+    component = await fixture(
+      html` <test-pharos-alert status="info"> It worked! </test-pharos-alert> `
+    );
     expect(component).shadowDom.to.equal(`
       <div
         class="alert alert--info"
@@ -46,7 +52,7 @@ describe('pharos-alert', () => {
 
   it('throws an error for an invalid status value', async () => {
     component = await fixture(html`
-      <pharos-alert status="fake"> It worked! </pharos-alert>
+      <test-pharos-alert status="fake"> It worked! </test-pharos-alert>
     `).catch((e) => e);
     expect('fake is not a valid status. Valid statuses are: info, success, warning, error').to.be
       .thrown;
@@ -67,7 +73,7 @@ describe('pharos-alert', () => {
   });
 
   it('adds a class to slotted links', async () => {
-    const link = document.createElement('pharos-link') as PharosLink;
+    const link = document.createElement('test-pharos-link') as PharosLink;
 
     component.appendChild(link);
     await component.updateComplete;
@@ -79,7 +85,9 @@ describe('pharos-alert', () => {
   it('is closable', async () => {
     component = await fixture(
       html`
-        <pharos-alert status="success" closable id="closable-alert"> It worked! </pharos-alert>
+        <test-pharos-alert status="success" closable id="closable-alert">
+          It worked!
+        </test-pharos-alert>
       `
     );
 
@@ -94,7 +102,9 @@ describe('pharos-alert', () => {
   it('fires a custom event pharos-alert-closed when closed by user interaction', async () => {
     component = await fixture(
       html`
-        <pharos-alert status="success" closable id="closable-alert"> It worked! </pharos-alert>
+        <test-pharos-alert status="success" closable id="closable-alert">
+          It worked!
+        </test-pharos-alert>
       `
     );
     let wasFired = false;

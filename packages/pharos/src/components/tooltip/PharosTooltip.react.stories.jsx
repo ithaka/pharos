@@ -7,10 +7,18 @@ import {
 import { useEffect } from '@storybook/client-api';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Tooltip',
   component: PharosTooltip,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('tooltip') },
     options: { selectedPanel: 'addon-controls' },

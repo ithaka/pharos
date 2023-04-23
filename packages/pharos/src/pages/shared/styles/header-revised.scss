@@ -10,7 +10,7 @@
     grid-template-columns: var(--pharos-spacing-1-x) 1fr var(--pharos-spacing-1-x);
   }
 
-  .header-revised__nav pharos-dropdown-menu-nav,
+  .header-revised__nav [data-pharos-component='PharosDropdownMenuNav'],
   .header-revised__button--pds,
   .header-revised__grid--account {
     display: none;

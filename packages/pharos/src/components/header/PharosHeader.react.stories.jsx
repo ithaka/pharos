@@ -10,10 +10,18 @@ import {
   PharosIcon,
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Organisms/Header',
   component: PharosHeader,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('haeder') },
     layout: 'fullscreen',
