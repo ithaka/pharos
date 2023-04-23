@@ -45,8 +45,7 @@ module.exports = async ({ config, mode }) => {
 
   config.module.rules[1].exclude = /node_modules/;
 
-  // TODO: Refactor when Chromatic updates Firefox
-  const TARGET_ENV = process.env.GITHUB_WORKFLOW === 'Chromatic' ? 'firefox65' : 'esnext';
+  const TARGET_ENV = 'esnext';
 
   // https://github.com/evanw/esbuild/issues/1354#issuecomment-855452057
   // https://www.typescriptlang.org/tsconfig#useDefineForClassFields
