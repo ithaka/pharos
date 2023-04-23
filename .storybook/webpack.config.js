@@ -95,6 +95,10 @@ module.exports = async ({ config, mode }) => {
     })
   );
 
+  config.experiments = {
+    outputModule: true,
+  };
+
   // Return the altered config
   return config;
 };
