@@ -385,6 +385,17 @@ describe('pharos-image-card', () => {
     expect(link).not.to.be.null;
   });
 
+  it('renders an exclamation icon in the error state for collection variant', async () => {
+    component.variant = 'collection';
+    component.error = true;
+    await component.updateComplete;
+
+    const icon = component.renderRoot.querySelector(
+      '[data-pharos-component="PharosIcon"][name="exclamation-inverse"]'
+    );
+    expect(icon).not.to.be.null;
+  });
+
   it('renders a label for the link around the image for the base variant', async () => {
     const link = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--image'
