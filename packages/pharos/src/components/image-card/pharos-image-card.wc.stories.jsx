@@ -108,6 +108,7 @@ export const Collection = {
             title="${collection.title}"
             link="#"
             variant="collection"
+            ?error=${collection.error}
           >
             <img
               id="image-${index}"

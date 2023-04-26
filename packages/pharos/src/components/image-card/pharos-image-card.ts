@@ -223,6 +223,24 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     this._isSelectableHovered = false;
   }
 
+  private _renderCollectionImageLinkContent(): TemplateResult {
+    return this.error
+      ? html`
+          <div
+            class=${classMap({
+              [`card__link--collection--error`]: true,
+            })}
+          >
+            <pharos-icon name="exclamation-inverse"></pharos-icon>
+            <span class="unavailable-text">Preview not available</span>
+          </div>
+        `
+      : html`
+          <svg class="card__svg" role="presentation" viewBox="0 0 4 3"></svg>
+          <slot name="image"></slot>
+        `;
+  }
+
   private _renderCollectionImage(): TemplateResult {
     return html`<div
       class="card__link-container"
@@ -242,8 +260,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         flex
         no-hover
       >
-        <svg class="card__svg" role="presentation" viewBox="0 0 4 3"></svg>
-        <slot name="image"></slot>
+        ${this._renderCollectionImageLinkContent()}
       </pharos-link>
       ${this._renderCheckbox()}
     </div>`;
