@@ -5,6 +5,7 @@ const registerComponents =
 if (typeof window !== `undefined`) {
   registerComponents.default('site', [
     pharos.PharosAlert,
+    pharos.PharosCarousel,
     pharos.PharosBreadcrumb,
     pharos.PharosBreadcrumbItem,
     pharos.PharosButton,

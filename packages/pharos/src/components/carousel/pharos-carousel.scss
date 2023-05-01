@@ -1,0 +1,30 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  contain: layout;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  display: flex;
+  overflow-y: scroll;
+
+  slot[name='item']::slotted(*) {
+    flex-shrink: 0;
+    border: 1px solid black;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
