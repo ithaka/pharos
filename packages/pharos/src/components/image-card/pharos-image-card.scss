@@ -165,12 +165,12 @@ slot[name='image']::slotted(img) {
 .card__link--collection {
   display: grid;
   position: relative;
-  height: 14rem;
+  height: 11rem;
 }
 
 .card__link--collection--error {
   background-color: var(--pharos-color-marble-gray-94);
-  height: 14rem;
+  height: 11rem;
   width: 100vw;
   display: flex;
   flex-direction: column;
