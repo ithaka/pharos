@@ -81,9 +81,9 @@ export class FormElement extends FocusMixin(PharosElement) {
 
   protected get requiredIndicator(): TemplateResult | typeof nothing {
     const content = this.required
-      ? html`<span class="required-indicator"
-          >*<span class="required-indicator__text">required</span></span
-        >`
+      ? html`&nbsp;<span class="required-indicator"
+            >*<span class="required-indicator__text">required</span></span
+          >`
       : nothing;
 
     return content;
