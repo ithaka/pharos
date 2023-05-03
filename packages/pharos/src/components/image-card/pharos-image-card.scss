@@ -273,11 +273,6 @@ slot[name='metadata']::slotted(strong) {
   color: var(--pharos-color-text-20);
 }
 
-:host([variant='collection']) .card__link-container {
-  overflow: hidden;
-  height: auto;
-}
-
 :host([variant='promotional']) .card__metadata {
   @include mixins.font-base;
 }
