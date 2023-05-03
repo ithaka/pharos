@@ -278,7 +278,7 @@ slot[name='metadata']::slotted(strong) {
   overflow: hidden;
   height: auto;
 
-  @include mixins.at-least(medium) {
+  @include mixins.at-least(small) {
     height: 7rem;
   }
 
