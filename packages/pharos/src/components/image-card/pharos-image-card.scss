@@ -169,15 +169,14 @@ slot[name='image']::slotted(img) {
 
 .card__link--collection--error {
   background-color: var(--pharos-color-marble-gray-94);
-  height: 13.5rem;
-  width: 100vw;
   display: flex;
+  width: 100vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   row-gap: var(--pharos-spacing-1-x);
-  align-self: flex-end;
+  aspect-ratio: 4/3;
 
   .unavailable-text {
     max-width: 9rem;
@@ -277,18 +276,6 @@ slot[name='metadata']::slotted(strong) {
 :host([variant='collection']) .card__link-container {
   overflow: hidden;
   height: auto;
-
-  @include mixins.at-least(small) {
-    height: 7rem;
-  }
-
-  @include mixins.at-least(medium) {
-    height: 10rem;
-  }
-
-  @include mixins.at-least(large) {
-    height: 13.5rem;
-  }
 }
 
 :host([variant='promotional']) .card__metadata {
