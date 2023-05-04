@@ -175,7 +175,7 @@ slot[name='image']::slotted(img) {
   justify-content: center;
   align-items: center;
   text-align: center;
-  row-gap: var(--pharos-spacing-1-x);
+  row-gap: var(--pharos-spacing-one-half-x);
   aspect-ratio: 4/3;
 
   .unavailable-text {
