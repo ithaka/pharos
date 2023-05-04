@@ -44,19 +44,16 @@ export const collections = [
     title: 'Pratt Institute Buildings',
     items: 546,
     image: 'open_collection_1.png',
-    error: false,
   },
   {
     title: 'Roanoke College Freshwater Fish Collection',
     items: 839,
     image: 'open_collection_2.png',
-    error: false,
   },
   {
     title: 'Folger Shakespeare Library',
     items: 84,
     image: 'open_collection_3.png',
-    error: true,
   },
 ];
 
