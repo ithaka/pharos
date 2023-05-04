@@ -125,7 +125,7 @@ export const Collection = {
     </storybook-pharos-layout>`,
 };
 
-export const CollectionErrorState = {
+export const ErrorStateCollection = {
   render: () =>
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       ${collections.map((collection, index) => {
