@@ -164,8 +164,23 @@ slot[name='image']::slotted(img) {
 
 .card__link--collection {
   display: grid;
-  position: relative;
-  height: auto;
+  align-self: end;
+}
+
+.card__link--collection--error {
+  background-color: var(--pharos-color-marble-gray-94);
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  row-gap: var(--pharos-spacing-one-half-x);
+  aspect-ratio: 4/3;
+
+  .unavailable-text {
+    max-width: 9rem;
+  }
 }
 
 .card__link--collection.card__link--selected {

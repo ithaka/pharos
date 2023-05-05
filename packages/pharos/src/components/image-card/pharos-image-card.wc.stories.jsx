@@ -125,6 +125,34 @@ export const Collection = {
     </storybook-pharos-layout>`,
 };
 
+export const ErrorStateCollection = {
+  render: () =>
+    html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
+      ${collections.map((collection, index) => {
+        return html` <li class="image-card-example__card--collection">
+          <storybook-pharos-image-card
+            id="card-${index}"
+            title="${collection.title}"
+            link="#"
+            variant="collection"
+            ?error=${index === 2}
+          >
+            <img
+              id="image-${index}"
+              src="./images/item-detail/${collection.image}"
+              alt="${collection.title}"
+              slot="image"
+            />
+            <strong id="items-${index}" slot="metadata">${collection.items} items</strong>
+            <div id="description-${index}" slot="metadata">
+              Selections from the global permanent collection.
+            </div>
+          </storybook-pharos-image-card>
+        </li>`;
+      })}
+    </storybook-pharos-layout>`,
+};
+
 export const Promotional = {
   render: () =>
     html` <storybook-pharos-layout style="margin: 1rem 0">
