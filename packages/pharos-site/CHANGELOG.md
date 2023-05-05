@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 5.13.2
+
+### Patch Changes
+
+- [#521](https://github.com/ithaka/pharos/pull/521) [`546811c`](https://github.com/ithaka/pharos/commit/546811cf18aa484fc80e1064ea0eac306c5472f6) Thanks [@daneah](https://github.com/daneah)! - Add missing href to example Link
+
+- Updated dependencies [[`2238b64`](https://github.com/ithaka/pharos/commit/2238b64186453fffec6b17273e2d55d632316b57), [`14d0484`](https://github.com/ithaka/pharos/commit/14d0484d139ad6a97a58d97f9fb9957dcf9d0ac3)]:
+  - @ithaka/pharos@12.19.1
+
 ## 5.13.1
 
 ### Patch Changes

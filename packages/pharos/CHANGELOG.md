@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 12.19.1
+
+### Patch Changes
+
+- [#517](https://github.com/ithaka/pharos/pull/517) [`2238b64`](https://github.com/ithaka/pharos/commit/2238b64186453fffec6b17273e2d55d632316b57) Thanks [@daneah](https://github.com/daneah)! - Use minified HTML template literals in component code
+
+- [#516](https://github.com/ithaka/pharos/pull/516) [`14d0484`](https://github.com/ithaka/pharos/commit/14d0484d139ad6a97a58d97f9fb9957dcf9d0ac3) Thanks [@NazimHAli](https://github.com/NazimHAli)! - Fix image card collection variant image error
+
 ## 12.19.0
 
 ### Minor Changes
