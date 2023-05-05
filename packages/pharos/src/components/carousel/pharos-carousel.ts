@@ -1,6 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html, nothing } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { property, state, query } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { carouselStyles } from './pharos-carousel.css';
 
@@ -24,11 +24,14 @@ export class PharosCarousel extends ScopedRegistryMixin(FocusMixin(PharosElement
     'pharos-link': PharosLink,
   };
 
+  @query('#slider')
+  private _slider!: HTMLElement;
+
   /**
    * Indicates how many items should be shown in carousel at a time
    * @attr perView
    */
-  @property({ type: Number, reflect: true })
+  @property({ type: Number, reflect: true, attribute: 'per-view' })
   public perView = 1;
 
   /**
@@ -75,10 +78,10 @@ export class PharosCarousel extends ScopedRegistryMixin(FocusMixin(PharosElement
   }
 
   private next(): void {
-    console.log('next');
+    this._slider?.scrollBy(this._carouselWidth, 0);
   }
   private previous(): void {
-    console.log('previous');
+    this._slider?.scrollBy(-this._carouselWidth, 0);
   }
 
   private _renderViewAll(): TemplateResult | typeof nothing {
@@ -128,7 +131,7 @@ export class PharosCarousel extends ScopedRegistryMixin(FocusMixin(PharosElement
             ></pharos-button>
           </div>
         </div>
-        <div class="slider">
+        <div id="slider" class="slider">
           <slot name="item"></slot>
         </div>
       </div>

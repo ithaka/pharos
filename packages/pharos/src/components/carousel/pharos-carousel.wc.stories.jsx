@@ -18,6 +18,7 @@ const Base = {
     html`<pharos-carousel
       heading="Carousel heading"
       description="carousel description"
+      per-view="3"
       viewAllLink="/view-all"
     >
       <div slot="item">item 1</div>

@@ -18,6 +18,7 @@
 .slider {
   display: flex;
   overflow-y: scroll;
+  scroll-behavior: smooth;
 
   slot[name='item']::slotted(*) {
     flex-shrink: 0;
