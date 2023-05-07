@@ -32,7 +32,8 @@
   overflow-x: scroll;
   scroll-behavior: smooth;
   margin-bottom: var(--pharos-spacing-one-half-x);
-  padding-bottom: var(--pharos-spacing-1-x);
+  padding-bottom: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-quarter-x)
+    var(--pharos-spacing-1-x);
 }
 
 .tab__panels {
