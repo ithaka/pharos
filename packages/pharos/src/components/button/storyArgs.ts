@@ -14,7 +14,7 @@ export const argTypes = {
     control: { type: 'select' },
   },
   pressed: {
-    options: ['false', 'true', 'mixed', 'undefined'],
+    options: ['false', 'true', 'mixed', 'undefined', undefined],
     control: { type: 'inline-radio' },
   },
   type: {
@@ -37,7 +37,7 @@ export const defaultArgs = {
   iconCondensed: false,
   large: false,
   onBackground: false,
-  pressed: 'undefined',
+  pressed: undefined,
   type: 'button',
   variant: 'primary',
 };
