@@ -2,6 +2,8 @@ module.exports = {
   features: {
     previewCsfV3: true,
     storyStoreV7: true,
+    babelModeV7: true,
+    modernInlineRender: true,
   },
   core: {
     builder: 'webpack5',
