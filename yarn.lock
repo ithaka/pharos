@@ -4,7 +4,7 @@
 
 "@75lb/deep-merge@^1.1.1":
   version "1.1.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@75lb/deep-merge/-/deep-merge-1.1.1.tgz#3b06155b90d34f5f8cc2107d796f1853ba02fd6d"
+  resolved "https://registry.yarnpkg.com/@75lb/deep-merge/-/deep-merge-1.1.1.tgz#3b06155b90d34f5f8cc2107d796f1853ba02fd6d"
   integrity sha512-xvgv6pkMGBA6GwdyJbNAnDmfAIR/DfWhrj9jgWh3TY7gRm3KO46x/GPjRg6wJ0nOepwqrNxFfojebh0Df4h4Tw==
   dependencies:
     lodash.assignwith "^4.2.0"
@@ -3169,7 +3169,7 @@
 
 "@puppeteer/browsers@0.5.0":
   version "0.5.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@puppeteer/browsers/-/browsers-0.5.0.tgz#1a1ee454b84a986b937ca2d93146f25a3fe8b670"
+  resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-0.5.0.tgz#1a1ee454b84a986b937ca2d93146f25a3fe8b670"
   integrity sha512-Uw6oB7VvmPRLE4iKsjuOh8zgDabhNX67dzo8U/BB0f9527qx+4eeUs+korU98OhG5C4ubg7ufBgVi63XYwS6TQ==
   dependencies:
     debug "4.3.4"
@@ -3188,7 +3188,7 @@
 
 "@rollup/plugin-node-resolve@^15.0.1":
   version "15.0.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@rollup/plugin-node-resolve/-/plugin-node-resolve-15.0.2.tgz#8183a80c2cbf7b471f5ac86b16747997f3b5d185"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-15.0.2.tgz#8183a80c2cbf7b471f5ac86b16747997f3b5d185"
   integrity sha512-Y35fRGUjC3FaurG722uhUuG8YHOJRJQbI6/CkbRkdPotSpDj9NtIN85z1zrcyDcCQIW4qp5mgG72U+gJ0TAFEg==
   dependencies:
     "@rollup/pluginutils" "^5.0.1"
@@ -3200,7 +3200,7 @@
 
 "@rollup/pluginutils@^5.0.1":
   version "5.0.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@rollup/pluginutils/-/pluginutils-5.0.2.tgz#012b8f53c71e4f6f9cb317e311df1404f56e7a33"
+  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.0.2.tgz#012b8f53c71e4f6f9cb317e311df1404f56e7a33"
   integrity sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==
   dependencies:
     "@types/estree" "^1.0.0"
@@ -4442,7 +4442,7 @@
 
 "@types/convert-source-map@^2.0.0":
   version "2.0.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@types/convert-source-map/-/convert-source-map-2.0.0.tgz#a36c2d21963caa18fe32de6cdec3d21a7d2c92b3"
+  resolved "https://registry.yarnpkg.com/@types/convert-source-map/-/convert-source-map-2.0.0.tgz#a36c2d21963caa18fe32de6cdec3d21a7d2c92b3"
   integrity sha512-QUm4YOC/ENo0VjPVl2o8HGyTbHHQGDOw8PCg3rXBucYHKyZN/XjXRbPFAV1tB2FvM0/wyFoDct4cTIctzKrQFg==
 
 "@types/cookie@^0.4.0":
@@ -4742,7 +4742,7 @@
 
 "@types/mocha@^10.0.1":
   version "10.0.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@types/mocha/-/mocha-10.0.1.tgz#2f4f65bb08bc368ac39c96da7b2f09140b26851b"
+  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-10.0.1.tgz#2f4f65bb08bc368ac39c96da7b2f09140b26851b"
   integrity sha512-/fvYntiO1GeICvqbQ3doGDIP97vWmvFt83GKguJ6prmQM2iXZfFcq6YE8KteFyRtX2/h5Hf91BYvPodJKFYv5Q==
 
 "@types/node-fetch@2", "@types/node-fetch@^2.5.7":
@@ -4874,7 +4874,7 @@
 
 "@types/resolve@1.20.2":
   version "1.20.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@types/resolve/-/resolve-1.20.2.tgz#97d26e00cd4a0423b4af620abecf3e6f442b7975"
+  resolved "https://registry.yarnpkg.com/@types/resolve/-/resolve-1.20.2.tgz#97d26e00cd4a0423b4af620abecf3e6f442b7975"
   integrity sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==
 
 "@types/responselike@*", "@types/responselike@^1.0.0":
@@ -5284,7 +5284,7 @@
 
 "@web/browser-logs@^0.3.1":
   version "0.3.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/browser-logs/-/browser-logs-0.3.1.tgz#970ccd6afab5f50628dfc6837774da1b79a8ec4a"
+  resolved "https://registry.yarnpkg.com/@web/browser-logs/-/browser-logs-0.3.1.tgz#970ccd6afab5f50628dfc6837774da1b79a8ec4a"
   integrity sha512-zt7KvGZzHQgULw2cQkX3v9Yo8b6X+ualFJKJ+6so652LyNcoUis8tzHIF4zbcJzXKsZ7knZPasmc/2in+Cw+WQ==
   dependencies:
     errorstacks "^2.2.0"
@@ -5298,7 +5298,7 @@
 
 "@web/config-loader@^0.2.1":
   version "0.2.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/config-loader/-/config-loader-0.2.1.tgz#a5ff416922994d698e1df8c3613715bde47ecf79"
+  resolved "https://registry.yarnpkg.com/@web/config-loader/-/config-loader-0.2.1.tgz#a5ff416922994d698e1df8c3613715bde47ecf79"
   integrity sha512-cQvTYA5lWLyyO8/R2aOReiudLa8r0LFHvMNYCwSAjzvrghb+AHxaW3BJWP9ORx6OaDcI7g5X8OATA81LSJce4A==
   dependencies:
     semver "^7.3.4"
@@ -5329,7 +5329,7 @@
 
 "@web/dev-server-core@^0.5.0", "@web/dev-server-core@^0.5.1":
   version "0.5.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/dev-server-core/-/dev-server-core-0.5.1.tgz#80e5a059f2abf5d1d40bd123c2b539ae86640e2c"
+  resolved "https://registry.yarnpkg.com/@web/dev-server-core/-/dev-server-core-0.5.1.tgz#80e5a059f2abf5d1d40bd123c2b539ae86640e2c"
   integrity sha512-pXgb4bjDmPIaIQT9luixTSqTvRQxttUEzSKOZqLNl6pVgrl4n47ZtmZte936G2tM7nHmpT+oaMDDtCM0CgbQNQ==
   dependencies:
     "@types/koa" "^2.11.6"
@@ -5353,7 +5353,7 @@
 
 "@web/dev-server-rollup@^0.5.0":
   version "0.5.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/dev-server-rollup/-/dev-server-rollup-0.5.0.tgz#dfe35808bd0aa258971fb193bf6793652581d21b"
+  resolved "https://registry.yarnpkg.com/@web/dev-server-rollup/-/dev-server-rollup-0.5.0.tgz#dfe35808bd0aa258971fb193bf6793652581d21b"
   integrity sha512-5bdMynXaNqY2+zDLk0FNQSqGpAazewTVZV8zUBnz790RxayYeITIWQLpBA6pnKZWEBQsh9ITbXoK2a4AVm9xSQ==
   dependencies:
     "@rollup/plugin-node-resolve" "^15.0.1"
@@ -5365,7 +5365,7 @@
 
 "@web/dev-server@^0.2.1":
   version "0.2.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/dev-server/-/dev-server-0.2.1.tgz#b0d56c6cc2a3a13ab99edac8e4672d485c760b36"
+  resolved "https://registry.yarnpkg.com/@web/dev-server/-/dev-server-0.2.1.tgz#b0d56c6cc2a3a13ab99edac8e4672d485c760b36"
   integrity sha512-gIiED5tzMv+0fHFMfxzNTPGyrkYQbSpOlM7mfOUh7b1Qftw4rj8l/vfAIUHUNlqLUh4MqFhwcvtzj7dg05h9qA==
   dependencies:
     "@babel/code-frame" "^7.12.11"
@@ -5393,7 +5393,7 @@
 
 "@web/parse5-utils@^2.0.0":
   version "2.0.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/parse5-utils/-/parse5-utils-2.0.0.tgz#15ac70e8792a115ef05baa0eab2631fb8ffd3004"
+  resolved "https://registry.yarnpkg.com/@web/parse5-utils/-/parse5-utils-2.0.0.tgz#15ac70e8792a115ef05baa0eab2631fb8ffd3004"
   integrity sha512-9pxjAg1k0Ie3t4gTQr/nmoTrvq6wmP40MNPwaetaN+jPc328MpO+WzmEApvJOW65v7lamjlvYFDsdvG8Lrd87Q==
   dependencies:
     "@types/parse5" "^6.0.1"
@@ -5401,7 +5401,7 @@
 
 "@web/test-runner-chrome@^0.13.0":
   version "0.13.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/test-runner-chrome/-/test-runner-chrome-0.13.0.tgz#737ae914b747602e61ebe0fe4054b940f446067b"
+  resolved "https://registry.yarnpkg.com/@web/test-runner-chrome/-/test-runner-chrome-0.13.0.tgz#737ae914b747602e61ebe0fe4054b940f446067b"
   integrity sha512-kC2fZPG+PbOb0WiTw1xZV7AhA9xXDf9rkDjKjaTlgynQoPC5e53nG1isTQ5iUpULGa/21SW3h4gRGJWN6cVEDA==
   dependencies:
     "@web/test-runner-core" "^0.11.0"
@@ -5419,7 +5419,7 @@
 
 "@web/test-runner-commands@^0.7.0":
   version "0.7.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/test-runner-commands/-/test-runner-commands-0.7.0.tgz#c9693e4e8b05ef06a2102e03ac924bcbf7985312"
+  resolved "https://registry.yarnpkg.com/@web/test-runner-commands/-/test-runner-commands-0.7.0.tgz#c9693e4e8b05ef06a2102e03ac924bcbf7985312"
   integrity sha512-3aXeGrkynOdJ5jgZu5ZslcWmWuPVY9/HNdWDUqPyNePG08PKmLV9Ij342ODDL6OVsxF5dvYn1312PhDqu5AQNw==
   dependencies:
     "@web/test-runner-core" "^0.11.0"
@@ -5459,7 +5459,7 @@
 
 "@web/test-runner-core@^0.11.0", "@web/test-runner-core@^0.11.1":
   version "0.11.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/test-runner-core/-/test-runner-core-0.11.1.tgz#5feb6ca50635f878d3f6abb9d1abc1e5a662d70e"
+  resolved "https://registry.yarnpkg.com/@web/test-runner-core/-/test-runner-core-0.11.1.tgz#5feb6ca50635f878d3f6abb9d1abc1e5a662d70e"
   integrity sha512-4Jt7BcmBXXYCCs/k71SFqKFUTYDSEFak4IaubFIyDohnlkyeun8tF+YBZoK8W/7/kPNozzvJC68O9Nr44Q5KXg==
   dependencies:
     "@babel/code-frame" "^7.12.11"
@@ -5491,7 +5491,7 @@
 
 "@web/test-runner-coverage-v8@^0.6.0":
   version "0.6.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/test-runner-coverage-v8/-/test-runner-coverage-v8-0.6.1.tgz#2814af34811dbc475e92f240b35afb026f693bcd"
+  resolved "https://registry.yarnpkg.com/@web/test-runner-coverage-v8/-/test-runner-coverage-v8-0.6.1.tgz#2814af34811dbc475e92f240b35afb026f693bcd"
   integrity sha512-kqIC2iR5QgpwVU0rmOjknRyMmRbj+LNTEomBP50ycYfOEPDC0SWhUolfSh4Nb5eC+LVUm4zGxN5LsnBwB6d0xg==
   dependencies:
     "@web/test-runner-core" "^0.11.0"
@@ -5502,7 +5502,7 @@
 
 "@web/test-runner-mocha@^0.8.1":
   version "0.8.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/test-runner-mocha/-/test-runner-mocha-0.8.1.tgz#ef5744064bd9619c562cfa01c0b642e52757e4f7"
+  resolved "https://registry.yarnpkg.com/@web/test-runner-mocha/-/test-runner-mocha-0.8.1.tgz#ef5744064bd9619c562cfa01c0b642e52757e4f7"
   integrity sha512-CfYNZBbUSBiPNKkbF/dhxayecLCYZnu3g4cfgpfgmvLewlVOO6gNxaPt2c1/QhZutzTvXcMlsmaoWyk08F+V6A==
   dependencies:
     "@types/mocha" "^10.0.1"
@@ -5510,7 +5510,7 @@
 
 "@web/test-runner-playwright@^0.10.0":
   version "0.10.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/test-runner-playwright/-/test-runner-playwright-0.10.0.tgz#fd9db3f4915828dd296f07c13f69063ced1c5dfb"
+  resolved "https://registry.yarnpkg.com/@web/test-runner-playwright/-/test-runner-playwright-0.10.0.tgz#fd9db3f4915828dd296f07c13f69063ced1c5dfb"
   integrity sha512-30AFGe7glWV1vKlkeW3aPdQgfLNNeiEDCiskIqqMosJGdIAx+1HuzAoMj+fBk9hREhQI9Q6xvvhJVsM9ZI/zcQ==
   dependencies:
     "@web/test-runner-core" "^0.11.0"
@@ -5519,7 +5519,7 @@
 
 "@web/test-runner@^0.16.1":
   version "0.16.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@web/test-runner/-/test-runner-0.16.1.tgz#e7ac23542d43df032ba5f574635feffb7fe31d09"
+  resolved "https://registry.yarnpkg.com/@web/test-runner/-/test-runner-0.16.1.tgz#e7ac23542d43df032ba5f574635feffb7fe31d09"
   integrity sha512-vXq9l31tddF/LfIqoycjyJBdmxAnYBaxfjAbuTvN603y8Rtnf6RzRtpJ18WWmVfTmNoVL4C40V4MZNcp4VIZkQ==
   dependencies:
     "@web/browser-logs" "^0.3.1"
@@ -7162,7 +7162,7 @@ chai-a11y-axe@^1.3.2:
 
 chalk-template@^0.4.0:
   version "0.4.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/chalk-template/-/chalk-template-0.4.0.tgz#692c034d0ed62436b9062c1707fadcd0f753204b"
+  resolved "https://registry.yarnpkg.com/chalk-template/-/chalk-template-0.4.0.tgz#692c034d0ed62436b9062c1707fadcd0f753204b"
   integrity sha512-/ghrgmhfY8RaSdeo43hNXxpoHAtxdbskUHjPpfqUWGttFgycUhYPGx3YZBCnUCvOa7Doivn1IZec3DEGFoMgLg==
   dependencies:
     chalk "^4.1.2"
@@ -7389,7 +7389,7 @@ chrome-trace-event@^1.0.2:
 
 chromium-bidi@0.4.7:
   version "0.4.7"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/chromium-bidi/-/chromium-bidi-0.4.7.tgz#4c022c2b0fb1d1c9b571fadf373042160e71d236"
+  resolved "https://registry.yarnpkg.com/chromium-bidi/-/chromium-bidi-0.4.7.tgz#4c022c2b0fb1d1c9b571fadf373042160e71d236"
   integrity sha512-6+mJuFXwTMU6I3vYLs6IL8A1DyQTPjCfIL971X0aMPVGRbGnNfl6i6Cl0NMbxi2bRYLGESt9T2ZIMRM5PAEcIQ==
   dependencies:
     mitt "3.0.0"
@@ -7725,7 +7725,7 @@ command-line-args@^5.1.1, command-line-args@^5.2.1:
 
 command-line-usage@^7.0.0, command-line-usage@^7.0.1:
   version "7.0.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/command-line-usage/-/command-line-usage-7.0.1.tgz#e540afef4a4f3bc501b124ffde33956309100655"
+  resolved "https://registry.yarnpkg.com/command-line-usage/-/command-line-usage-7.0.1.tgz#e540afef4a4f3bc501b124ffde33956309100655"
   integrity sha512-NCyznE//MuTjwi3y84QVUGEOT+P5oto1e1Pk/jFPVdPPfsG03qpTIl3yw6etR+v73d0lXsoojRpvbru2sqePxQ==
   dependencies:
     array-back "^6.2.2"
@@ -7993,7 +7993,7 @@ convert-source-map@^1.4.0, convert-source-map@^1.5.0, convert-source-map@^1.6.0,
 
 convert-source-map@^2.0.0:
   version "2.0.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/convert-source-map/-/convert-source-map-2.0.0.tgz#4b560f649fc4e918dd0ab75cf4961e8bc882d82a"
+  resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-2.0.0.tgz#4b560f649fc4e918dd0ab75cf4961e8bc882d82a"
   integrity sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==
 
 cookie-signature@1.0.6:
@@ -8777,7 +8777,7 @@ devcert@^1.2.0:
 
 devtools-protocol@0.0.1107588:
   version "0.0.1107588"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/devtools-protocol/-/devtools-protocol-0.0.1107588.tgz#f8cac707840b97cc30b029359341bcbbb0ad8ffa"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1107588.tgz#f8cac707840b97cc30b029359341bcbbb0ad8ffa"
   integrity sha512-yIR+pG9x65Xko7bErCUSQaDLrO/P1p3JUzEk7JCU4DowPcGHkTGUGQapcfcLc4qj0UaALwZ+cr0riFgiqpixcg==
 
 diacritics-map@^0.1.0:
@@ -10058,7 +10058,7 @@ estree-to-babel@^3.1.0:
 
 estree-walker@^2.0.2:
   version "2.0.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
   integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
 
 esutils@^2.0.2:
@@ -12583,7 +12583,7 @@ is-buffer@^2.0.0:
 
 is-builtin-module@^3.2.1:
   version "3.2.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/is-builtin-module/-/is-builtin-module-3.2.1.tgz#f03271717d8654cfcaf07ab0463faa3571581169"
+  resolved "https://registry.yarnpkg.com/is-builtin-module/-/is-builtin-module-3.2.1.tgz#f03271717d8654cfcaf07ab0463faa3571581169"
   integrity sha512-BSLE3HnV2syZ0FK0iMA/yUGplUeMmNz4AW5fnTunbCIqZi4vG3WjJT9FHMy5D69xmAYBHXQhJdALdpwVxV501A==
   dependencies:
     builtin-modules "^3.3.0"
@@ -12609,7 +12609,7 @@ is-ci@^3.0.1:
 
 is-core-module@^2.11.0:
   version "2.12.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/is-core-module/-/is-core-module-2.12.1.tgz#0c0b6885b6f80011c71541ce15c8d66cf5a4f9fd"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.12.1.tgz#0c0b6885b6f80011c71541ce15c8d66cf5a4f9fd"
   integrity sha512-Q4ZuBAe2FUsKtyQJoQHlvP8OvBERxO3jEmy1I7hcRXcJBGGHFh/aJBswbXuS9sgrDH2QUO8ilkwNPHvHMd8clg==
   dependencies:
     has "^1.0.3"
@@ -13115,7 +13115,7 @@ isbinaryfile@^4.0.6:
 
 isbinaryfile@^5.0.0:
   version "5.0.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/isbinaryfile/-/isbinaryfile-5.0.0.tgz#034b7e54989dab8986598cbcea41f66663c65234"
+  resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-5.0.0.tgz#034b7e54989dab8986598cbcea41f66663c65234"
   integrity sha512-UDdnyGvMajJUWCkib7Cei/dvyJrrvo4FIrsvSFWdPpXSUorzXrDJ0S+X5Q4ZlasfPjca4yqCNNsjbCeiy8FFeg==
 
 isexe@^2.0.0:
@@ -14437,7 +14437,7 @@ lodash.assignin@^4.0.9:
 
 lodash.assignwith@^4.2.0:
   version "4.2.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/lodash.assignwith/-/lodash.assignwith-4.2.0.tgz#127a97f02adc41751a954d24b0de17e100e038eb"
+  resolved "https://registry.yarnpkg.com/lodash.assignwith/-/lodash.assignwith-4.2.0.tgz#127a97f02adc41751a954d24b0de17e100e038eb"
   integrity sha512-ZznplvbvtjK2gMvnQ1BR/zqPFZmS6jbK4p+6Up4xcRYA7yMIwxHCfbTcrYxXKzzqLsQ05eJPVznEW3tuwV7k1g==
 
 lodash.bind@^4.1.4:
@@ -14728,7 +14728,7 @@ lru-cache@^6.0.0:
 
 lru-cache@^8.0.4:
   version "8.0.5"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/lru-cache/-/lru-cache-8.0.5.tgz#983fe337f3e176667f8e567cfcce7cb064ea214e"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-8.0.5.tgz#983fe337f3e176667f8e567cfcce7cb064ea214e"
   integrity sha512-MhWWlVnuab1RG5/zMRRcVGXZLCXrZTgfwMikgzCegsPnG62yDQo5JnqKkrK4jO5iKqDAZGItAqN5CtKBCBWRUA==
 
 lru-queue@^0.1.0:
@@ -15262,7 +15262,7 @@ minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.3, minimist@^1.
 
 mitt@3.0.0:
   version "3.0.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/mitt/-/mitt-3.0.0.tgz#69ef9bd5c80ff6f57473e8d89326d01c414be0bd"
+  resolved "https://registry.yarnpkg.com/mitt/-/mitt-3.0.0.tgz#69ef9bd5c80ff6f57473e8d89326d01c414be0bd"
   integrity sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==
 
 mitt@^1.2.0:
@@ -17359,7 +17359,7 @@ pupa@^2.0.1, pupa@^2.1.1:
 
 puppeteer-core@^19.8.1:
   version "19.11.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/puppeteer-core/-/puppeteer-core-19.11.1.tgz#4c63d7a0a6cd268ff054ebcac315b646eee32667"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.11.1.tgz#4c63d7a0a6cd268ff054ebcac315b646eee32667"
   integrity sha512-qcuC2Uf0Fwdj9wNtaTZ2OvYRraXpAK+puwwVW8ofOhOgLPZyz1c68tsorfIZyCUOpyBisjr+xByu7BMbEYMepA==
   dependencies:
     "@puppeteer/browsers" "0.5.0"
@@ -18346,7 +18346,7 @@ resolve@^1.1.7, resolve@^1.10.0, resolve@^1.14.2, resolve@^1.19.0, resolve@^1.20
 
 resolve@^1.22.1:
   version "1.22.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/resolve/-/resolve-1.22.2.tgz#0ed0943d4e301867955766c9f3e1ae6d01c6845f"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.2.tgz#0ed0943d4e301867955766c9f3e1ae6d01c6845f"
   integrity sha512-Sb+mjNHOULsBv818T40qSPeRiuWLyaGMa5ewydRLFimneixmVy2zdivRl+AF6jaYPC8ERxGDmFSiqui6SfPd+g==
   dependencies:
     is-core-module "^2.11.0"
@@ -18449,7 +18449,7 @@ rimraf@^3.0.0, rimraf@^3.0.2:
 
 rollup@^3.15.0:
   version "3.22.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/rollup/-/rollup-3.22.0.tgz#e6671baebdd473154ac7998bbc57faabcd7bba20"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-3.22.0.tgz#e6671baebdd473154ac7998bbc57faabcd7bba20"
   integrity sha512-imsigcWor5Y/dC0rz2q0bBt9PabcL3TORry2hAa6O6BuMvY71bqHyfReAz5qyAqiQATD1m70qdntqBfBQjVWpQ==
   optionalDependencies:
     fsevents "~2.3.2"
@@ -19378,7 +19378,7 @@ stream-parser@~0.3.1:
 
 stream-read-all@^3.0.1:
   version "3.0.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/stream-read-all/-/stream-read-all-3.0.1.tgz#60762ae45e61d93ba0978cda7f3913790052ad96"
+  resolved "https://registry.yarnpkg.com/stream-read-all/-/stream-read-all-3.0.1.tgz#60762ae45e61d93ba0978cda7f3913790052ad96"
   integrity sha512-EWZT9XOceBPlVJRrYcykW8jyRSZYbkb/0ZK36uLEmoWVO5gxBOnntNTseNzfREsqxqdfEGQrD8SXQ3QWbBmq8A==
 
 stream-shift@^1.0.0:
@@ -19955,7 +19955,7 @@ synckit@^0.4.1:
 
 table-layout@^3.0.0:
   version "3.0.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/table-layout/-/table-layout-3.0.2.tgz#69c2be44388a5139b48c59cf21e73b488021769a"
+  resolved "https://registry.yarnpkg.com/table-layout/-/table-layout-3.0.2.tgz#69c2be44388a5139b48c59cf21e73b488021769a"
   integrity sha512-rpyNZYRw+/C+dYkcQ3Pr+rLxW4CfHpXjPDnG7lYhdRoUcZTUt+KEsX+94RGp/aVp/MQU35JCITv2T/beY4m+hw==
   dependencies:
     "@75lb/deep-merge" "^1.1.1"
@@ -20574,7 +20574,7 @@ typical@^4.0.0:
 
 typical@^7.1.1:
   version "7.1.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/typical/-/typical-7.1.1.tgz#ba177ab7ab103b78534463ffa4c0c9754523ac1f"
+  resolved "https://registry.yarnpkg.com/typical/-/typical-7.1.1.tgz#ba177ab7ab103b78534463ffa4c0c9754523ac1f"
   integrity sha512-T+tKVNs6Wu7IWiAce5BgMd7OZfNYUndHwc5MknN+UHOudi7sGZzuHdCadllRuqJ3fPtgFtIH9+lt9qRv6lmpfA==
 
 ua-parser-js@^0.7.30:
@@ -21618,7 +21618,7 @@ wordwrap@^1.0.0:
 
 wordwrapjs@^5.1.0:
   version "5.1.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/wordwrapjs/-/wordwrapjs-5.1.0.tgz#4c4d20446dcc670b14fa115ef4f8fd9947af2b3a"
+  resolved "https://registry.yarnpkg.com/wordwrapjs/-/wordwrapjs-5.1.0.tgz#4c4d20446dcc670b14fa115ef4f8fd9947af2b3a"
   integrity sha512-JNjcULU2e4KJwUNv6CHgI46UvDGitb6dGryHajXTDiLgg1/RiGoPSDw4kZfYnwGtEXf2ZMeIewDQgFGzkCB2Sg==
 
 workbox-background-sync@^4.3.1:
@@ -21932,7 +21932,7 @@ yargs-parser@^21.0.0, yargs-parser@^21.1.1:
 
 yargs@17.7.1:
   version "17.7.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/yargs/-/yargs-17.7.1.tgz#34a77645201d1a8fc5213ace787c220eabbd0967"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.7.1.tgz#34a77645201d1a8fc5213ace787c220eabbd0967"
   integrity sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==
   dependencies:
     cliui "^8.0.1"
