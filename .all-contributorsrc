@@ -280,6 +280,15 @@
         "doc",
         "code"
       ]
+    },
+    {
+      "login": "HassanTanveer",
+      "name": "Hassan Tanveer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57575219?v=4",
+      "profile": "https://github.com/HassanTanveer",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
