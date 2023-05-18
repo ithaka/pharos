@@ -33,15 +33,16 @@ export const Base = {
   render: (args) => (
     <Fragment>
       <PharosButton
+        type="button"
+        data-modal-id="my-base-modal"
         onClick={(e) => {
           e.target.focus();
-          const modal = document.querySelector('pharos-modal');
-          modal.open = true;
         }}
       >
         Open modal
       </PharosButton>
       <PharosModal
+        id="my-base-modal"
         footerDivider={args.footerDivider}
         header={args.header}
         open={args.open}
