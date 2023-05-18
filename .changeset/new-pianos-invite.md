@@ -1,5 +1,5 @@
 ---
-'@ithaka/pharos': major
+'@ithaka/pharos': patch
 ---
 
 Fixed modal storybook
