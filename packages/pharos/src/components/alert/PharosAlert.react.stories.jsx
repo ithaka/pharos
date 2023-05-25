@@ -66,7 +66,7 @@ export const Error = {
     <PharosAlert status={status} closable={closable}>
       <p className="alert-example__content">{text}</p>
       <p className="alert-example__content">
-        For more information, <pharos-link href="#">read the documentation</pharos-link>.
+        For more information, <PharosLink href="#">read the documentation</PharosLink>.
       </p>
     </PharosAlert>
   ),
