@@ -1,4 +1,4 @@
-import { fixture, expect, nextFrame } from '@open-wc/testing';
+import { aTimeout, fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import { setViewport } from '@web/test-runner-commands';
 
@@ -136,7 +136,7 @@ describe('pharos-sidenav', () => {
 
     await setViewport({ width: 1056, height: 768 });
     await component.updateComplete;
-    await nextFrame();
+    await aTimeout(1000);
     expect(component.slide).to.be.false;
   });
 
