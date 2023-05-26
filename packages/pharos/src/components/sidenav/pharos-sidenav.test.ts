@@ -136,7 +136,7 @@ describe('pharos-sidenav', () => {
 
     await setViewport({ width: 1056, height: 768 });
     await component.updateComplete;
-    await aTimeout(1);
+    await aTimeout(100);
     expect(component.slide).to.be.false;
   });
 
