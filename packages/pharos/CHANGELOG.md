@@ -1,5 +1,19 @@
 # @ithaka/pharos
 
+## 12.19.2
+
+### Patch Changes
+
+- [#533](https://github.com/ithaka/pharos/pull/533) [`3cc1fe3`](https://github.com/ithaka/pharos/commit/3cc1fe34e98c6ee3d96999507cc89928e848bc74) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - Add scrolling and pagination icons
+
+- [#524](https://github.com/ithaka/pharos/pull/524) [`9320ee6`](https://github.com/ithaka/pharos/commit/9320ee6845fabc16e18e6fba3eb633e6ef57c712) Thanks [@daneah](https://github.com/daneah)! - Only render aria-pressed when explicitly defined
+
+- [#536](https://github.com/ithaka/pharos/pull/536) [`954a259`](https://github.com/ithaka/pharos/commit/954a2595187b46b34151721fe9ad229abfac8a56) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - update paging icon
+
+- [#530](https://github.com/ithaka/pharos/pull/530) [`a960ba4`](https://github.com/ithaka/pharos/commit/a960ba44526f4bf06406ac6ee69f7237fc2f22d3) Thanks [@HassanTanveer](https://github.com/HassanTanveer)! - Fixed modal storybook
+
+- [#525](https://github.com/ithaka/pharos/pull/525) [`5369a9a`](https://github.com/ithaka/pharos/commit/5369a9afe6e0df5a94645bfacdba70a48d1a2edb) Thanks [@daneah](https://github.com/daneah)! - Make selected tab outline fully visible
+
 ## 12.19.1
 
 ### Patch Changes
