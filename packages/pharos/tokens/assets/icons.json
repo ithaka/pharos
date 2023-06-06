@@ -80,6 +80,7 @@
       "primary-source": { "value": "assets/icons/primary-source.svg" },
       "profile": { "value": "assets/icons/profile.svg" },
       "question-inverse": { "value": "assets/icons/question-inverse.svg" },
+      "reorder": { "value": "assets/icons/reorder.svg" },
       "save": { "value": "assets/icons/save.svg" },
       "saved": { "value": "assets/icons/saved.svg" },
       "search": { "value": "assets/icons/search.svg" },
