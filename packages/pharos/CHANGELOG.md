@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.19.3
+
+### Patch Changes
+
+- [#539](https://github.com/ithaka/pharos/pull/539) [`6a9bf6d`](https://github.com/ithaka/pharos/commit/6a9bf6d763d1d443e4711636ac66df04f26c9340) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - add reorder icon
+
 ## 12.19.2
 
 ### Patch Changes
