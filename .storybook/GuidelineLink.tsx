@@ -1,3 +1,4 @@
+import React from 'react';
 import type { FC } from 'react';
 
 import { PharosLink } from '../packages/pharos/src/react-components/link/pharos-link';

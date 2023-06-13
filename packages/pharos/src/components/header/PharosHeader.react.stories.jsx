@@ -11,6 +11,7 @@ import {
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import logo from '@config/assets/images/jstor-logo.svg';
 
 export default {
   title: 'Organisms/Header',
@@ -72,7 +73,7 @@ export const Base = {
         </PharosDropdownMenu>
       </div>
       <PharosLink slot="start" href="/" id="jstor-logo">
-        <img src="./images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
+        <img src={logo} alt="JSTOR Home" width="65" height="90" />
       </PharosLink>
       <div slot="center">
         <PharosInputGroup

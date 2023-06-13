@@ -6,12 +6,7 @@ import { PharosHeading } from '../../../react-components/heading/pharos-heading'
 
 export const CollectionCard: FC<Card> = ({ title, link, image }) => (
   <div>
-    <img
-      src={`./images/home/${image}`}
-      alt={title}
-      width="99.9%"
-      className="home-page__image--collection"
-    />
+    <img src={image} alt={title} width="99.9%" className="home-page__image--collection" />
     <PharosHeading level={2} preset="3">
       {title}
     </PharosHeading>
