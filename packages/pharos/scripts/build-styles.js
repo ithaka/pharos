@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import path from 'path';
 import { globbyStream } from 'globby';
-import * as sass from 'sass';
+import sass from 'sass';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
