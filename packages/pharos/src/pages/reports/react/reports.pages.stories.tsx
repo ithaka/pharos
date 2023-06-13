@@ -6,6 +6,7 @@ import { Sidenav } from './Sidenav';
 import { CreateReportModal } from './CreateReportModal';
 import { ReportsTable } from './ReportsTable';
 import { historyTable, scheduledTable } from '../mocks';
+import logo from '@config/assets/images/reports/jstor-horizontal.svg';
 
 import {
   PharosHeading,
@@ -39,12 +40,7 @@ export const Reports = {
             <div className="reports-page__container--top" slot="top">
               <div className="reports-page__container--nav-header">
                 <PharosSidenavButton />
-                <img
-                  src="./images/reports/jstor-horizontal.svg"
-                  alt="logo"
-                  width="96"
-                  height="24"
-                />
+                <img src={logo} alt="logo" width="96" height="24" />
                 <span className="reports-page__separator">/</span>
                 <PharosHeading level={1} preset="4" noMargin>
                   Admin

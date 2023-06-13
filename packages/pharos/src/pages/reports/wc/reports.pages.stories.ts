@@ -7,6 +7,7 @@ import { Sidenav } from './sidenav';
 import { CreateReportModal } from './create-report-modal';
 import { ReportsTable } from './reports-table';
 import { historyTable, scheduledTable } from '../mocks';
+import logo from '@config/assets/images/reports/jstor-horizontal.svg';
 
 export default {
   title: 'Pages/Reports',
@@ -31,7 +32,7 @@ export const Reports = {
           <div class="reports-page__container--top" slot="top">
             <div class="reports-page__container--nav-header">
               <storybook-pharos-sidenav-button></storybook-pharos-sidenav-button>
-              <img src="./images/reports/jstor-horizontal.svg" alt="logo" width="96" height="24" />
+              <img src="${logo}" alt="logo" width="96" height="24" />
               <span class="reports-page__separator">/</span>
               <storybook-pharos-heading level="1" preset="4" no-margin
                 >Admin</storybook-pharos-heading
