@@ -5,7 +5,7 @@ import type { Card } from '../types';
 export const CollectionCard = (card: Card): TemplateResult => html`
   <div>
     <img
-      src="./images/home/${card.image}"
+      src="${card.image}"
       alt="${card.title}"
       width="99.9%"
       class="home-page__image--collection"

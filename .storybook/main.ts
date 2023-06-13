@@ -17,7 +17,6 @@ const config = {
       esbuild: {
         keepNames: true,
       },
-      assetsInclude: ['**/*.md'],
       resolve: {
         alias: {
           '@lib': path.resolve(__dirname, '../packages/pharos/lib'),
@@ -27,8 +26,11 @@ const config = {
       optimizeDeps: {
         include: [
           '@storybook/addon-viewport',
+          '@storybook/blocks',
           '@storybook/theming/create',
           '@storybook/web-components',
+          'lit/directives/style-map.js',
+          'uuid',
         ],
       },
     });

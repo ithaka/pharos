@@ -7,7 +7,7 @@ import {
   PharosColorMarbleGray20,
   PharosFontFamilyBody,
 } from '../packages/pharos/lib/styles/variables.js';
-import '../packages/pharos/lib/styles/fonts.css';
+import logo from './assets/images/jstor-logo.svg';
 
 export default create({
   base: 'light',
@@ -42,5 +42,5 @@ export default create({
 
   brandTitle: 'Pharos Storybook',
   brandUrl: '#',
-  brandImage: './images/jstor-logo.svg',
+  brandImage: logo,
 });

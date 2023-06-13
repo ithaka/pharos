@@ -5,7 +5,7 @@ import type { Collection } from '../../types';
 export const CollectionCarouselItem = (collection: Collection): TemplateResult => html`
   <storybook-pharos-link href="#" subtle flex>
     <div class="item-detail-page__grid--carousel-item item-detail-page__grid--open-collection">
-      <img src="./images/item-detail/${collection.image}" alt="${collection.title}" />
+      <img src="${collection.image}" alt="${collection.title}" />
       <storybook-pharos-heading preset="1--bold" level="3" no-margin
         >${collection.title}</storybook-pharos-heading
       >
