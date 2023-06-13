@@ -2,6 +2,7 @@ import { html } from 'lit';
 
 import { viewports, breakpoints } from '../../pages/shared/viewports';
 import { configureDocsPage } from '@config/docsPageConfig';
+import logo from '@config/assets/images/jstor-logo-inverse.svg';
 
 export default {
   title: 'Components/Layout',
@@ -65,7 +66,7 @@ export const OneColumnWithSidenav = {
       >
         <storybook-pharos-sidenav style="grid-area: sidenav">
           <storybook-pharos-link slot="top" href="/" id="jstor-logo">
-            <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
+            <img src="${logo}" alt="Pharos Home" width="72" height="100" />
           </storybook-pharos-link>
         </storybook-pharos-sidenav>
         <main style="grid-area: main">
@@ -86,7 +87,7 @@ export const OneColumnWithSidenavAndComfySpacing = {
       >
         <storybook-pharos-sidenav style="grid-area: sidenav">
           <storybook-pharos-link slot="top" href="/" id="jstor-logo">
-            <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
+            <img src="${logo}" alt="Pharos Home" width="72" height="100" />
           </storybook-pharos-link>
         </storybook-pharos-sidenav>
         <main style="grid-area: main">

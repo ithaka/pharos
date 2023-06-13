@@ -1,6 +1,7 @@
 import { html } from 'lit';
 
 import { configureDocsPage } from '@config/docsPageConfig';
+import logo from '@config/assets/images/jstor-logo.svg';
 
 export default {
   title: 'Organisms/Header',
@@ -82,7 +83,7 @@ export const Base = {
           >JSTOR</span
         >
         <storybook-pharos-link slot="start" href="/" id="jstor-logo">
-          <img src="./images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
+          <img src="${logo}" alt="JSTOR Home" width="65" height="90" />
         </storybook-pharos-link>
         <div slot="center">
           <storybook-pharos-input-group
