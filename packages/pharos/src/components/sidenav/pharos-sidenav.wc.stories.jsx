@@ -1,6 +1,7 @@
 import { html } from 'lit';
 
 import { configureDocsPage } from '@config/docsPageConfig';
+import logo from '@config/assets/images/jstor-logo-inverse.svg';
 
 export default {
   title: 'Components/Sidenav',
@@ -22,7 +23,7 @@ export const Base = {
       <storybook-pharos-sidenav-button></storybook-pharos-sidenav-button>
       <storybook-pharos-sidenav>
         <storybook-pharos-link slot="top" href="/" id="jstor-logo">
-          <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
+          <img src="${logo}" alt="Pharos Home" width="72" height="100" />
         </storybook-pharos-link>
         <storybook-pharos-input-group
           slot="top"

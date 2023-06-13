@@ -9,6 +9,7 @@ import { CollectionCard } from './collection-card';
 import { HeroSearch } from './hero-search';
 import { publicCollectionCards, communityCollectionCards } from '../mocks';
 import { PharosSpacing7X } from '../../../styles/variables';
+import hero from '@config/assets/images/home/hero.jpg';
 
 export default {
   title: 'Pages/Home',
@@ -36,11 +37,7 @@ export const Home = {
             </storybook-pharos-heading>
             ${HeroSearch()}
           </div>
-          <div
-            class="home-page__hero"
-            slot="top"
-            style="background-image: url('./images/home/hero.jpg')"
-          ></div>
+          <div class="home-page__hero" slot="top" style="background-image: url(${hero})"></div>
           <storybook-pharos-link href="#" class="home-page__hero-link"
             >Tō kaidō gojo santsugi. Okazaki. Plate No 39. From the series: Fifty-three stations of
             the Tō kaidō Road, Kihei Sanoya, circa 1838.

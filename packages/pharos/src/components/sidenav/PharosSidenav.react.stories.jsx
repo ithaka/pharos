@@ -12,6 +12,7 @@ import {
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import logo from '@config/assets/images/jstor-logo-inverse.svg';
 
 export default {
   title: 'Components/Sidenav',
@@ -40,7 +41,7 @@ export const Base = {
       <PharosSidenavButton />
       <PharosSidenav>
         <PharosLink slot="top" href="/" id="jstor-logo">
-          <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
+          <img src={logo} alt="Pharos Home" width="72" height="100" />
         </PharosLink>
         <PharosInputGroup
           slot="top"
