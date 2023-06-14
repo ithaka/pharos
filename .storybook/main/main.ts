@@ -2,6 +2,10 @@ import config from '../main';
 
 const fullConfig = {
   ...config,
+  framework: {
+    name: '@storybook/web-components-vite',
+    options: {},
+  },
   stories: ['../../packages/pharos/**/*.docs.stories.mdx'],
   refs: (config, { configType }) => {
     if (configType === 'DEVELOPMENT') {
