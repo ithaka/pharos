@@ -9,7 +9,7 @@ const fullConfig = {
   stories: [
     {
       directory: '../../packages/pharos',
-      files: '**/*.@(react|docs|pages).stories.@(js|jsx|mdx|ts)',
+      files: '**/*.@(react|docs|pages).stories.@(js|jsx|mdx|tsx)',
     },
   ],
 };
