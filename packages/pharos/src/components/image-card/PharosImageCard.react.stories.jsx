@@ -167,6 +167,39 @@ export const Collection = {
   ),
 };
 
+export const ErrorStateCollection = {
+  render: () => (
+    <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
+      {collections.map((collection, index) => {
+        return (
+          <li className="image-card-example__card--collection" key={index}>
+            <PharosImageCard
+              id={`card-${index}`}
+              title={collection.title}
+              link="#"
+              variant="collection"
+              error={index === 2}
+            >
+              <img
+                id={`image-${index}`}
+                src={collection.image}
+                alt={collection.title}
+                slot="image"
+              />
+              <strong id={`items-${index}`} slot="metadata">
+                {collection.items} items
+              </strong>
+              <div id={`description-${index}`} slot="metadata">
+                Selections from the global permanent collection.
+              </div>
+            </PharosImageCard>
+          </li>
+        );
+      })}
+    </PharosLayout>
+  ),
+};
+
 export const Promotional = {
   render: () => (
     <PharosLayout style={{ margin: '1rem 0' }}>
