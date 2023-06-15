@@ -19,9 +19,17 @@ import {
   PharosSidenavButton,
   PharosLayout,
 } from '../../../react-components';
+import { PharosContext } from '../../../utils/PharosContext';
 
 export default {
   title: 'Pages/Reports',
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     layout: 'fullscreen',
     viewport: {

@@ -1,33 +1,23 @@
+import type { StorybookConfig } from '@storybook/web-components-vite';
 import config from '../main';
 
-const fullConfig = {
+const fullConfig: StorybookConfig = {
   ...config,
   framework: {
     name: '@storybook/web-components-vite',
     options: {},
   },
-  stories: ['../../packages/pharos/**/*.docs.stories.mdx'],
+  stories: [...config.stories, '../../packages/pharos/**/*.docs.stories.mdx'],
   refs: (config, { configType }) => {
-    if (configType === 'DEVELOPMENT') {
-      return {
-        webComponents: {
-          title: 'Web Components',
-          url: 'http://localhost:9000',
-        },
-        react: {
-          title: 'React',
-          url: 'http://localhost:9001',
-        },
-      };
-    }
+    const isDevelopment = configType === 'DEVELOPMENT';
     return {
-      webComponents: {
+      'web-components': {
         title: 'Web Components',
-        url: 'https://pharos-storybooks.netlify.app/wc/',
+        url: isDevelopment ? 'http://localhost:9000' : 'https://pharos.jstor.org/storybooks/wc/',
       },
       react: {
         title: 'React',
-        url: 'https://pharos-storybooks.netlify.app/react/',
+        url: isDevelopment ? 'http://localhost:9001' : 'https://pharos.jstor.org/storybooks/react/',
       },
     };
   },
