@@ -49,7 +49,7 @@ describe('pharos-toaster', () => {
   };
 
   beforeEach(async () => {
-    component = await fixture(html` <pharos-toaster></pharos-toaster> `);
+    component = await fixture(html` <test-pharos-toaster></test-pharos-toaster> `);
   });
 
   it('is accessible', async () => {
@@ -64,7 +64,7 @@ describe('pharos-toaster', () => {
     trigger.click();
     await component.updateComplete;
 
-    const toast = component.querySelector('pharos-toast');
+    const toast = component.querySelector('test-pharos-toast');
     expect(toast).to.not.be.null;
   });
 
@@ -79,7 +79,7 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
     await nextFrame();
 
-    const toast = component.querySelectorAll('pharos-toast');
+    const toast = component.querySelectorAll('test-pharos-toast');
     expect(toast.length).to.equal(2);
   });
 
@@ -98,7 +98,7 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
 
     const toast = (
-      component.querySelector('pharos-toast') as PharosToast
+      component.querySelector('test-pharos-toast') as PharosToast
     )?.renderRoot.querySelector('.toast');
     expect(activeElement === toast).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
@@ -112,7 +112,7 @@ describe('pharos-toaster', () => {
     trigger.click();
     await component.updateComplete;
 
-    const toast = component.querySelector('pharos-toast');
+    const toast = component.querySelector('test-pharos-toast');
     expect(toast).to.not.be.null;
   });
 
@@ -124,7 +124,7 @@ describe('pharos-toaster', () => {
     trigger.click();
     await component.updateComplete;
 
-    const openToast = component.querySelector('pharos-toast');
+    const openToast = component.querySelector('test-pharos-toast');
     const details = {
       bubbles: true,
       composed: true,
@@ -133,7 +133,7 @@ describe('pharos-toaster', () => {
     component.dispatchEvent(new CustomEvent('pharos-toast-close', details));
     await component.updateComplete;
 
-    const toast = component.querySelector('pharos-toast');
+    const toast = component.querySelector('test-pharos-toast');
     expect(toast).to.be.null;
   });
 
@@ -151,9 +151,9 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
 
     expect(component).dom.to.equal(`
-      <pharos-toaster data-pharos-component="PharosToaster">
-        <pharos-toast data-pharos-component="PharosToast" id="my-updateable-toast" indefinite="" open="" status="success">Toast has been updated</pharos-toast>
-      </pharos-toaster>
+      <test-pharos-toaster data-pharos-component="PharosToaster">
+        <test-pharos-toast data-pharos-component="PharosToast" id="my-updateable-toast" indefinite="" open="" status="success">Toast has been updated</test-pharos-toast>
+      </test-pharos-toaster>
     `);
   });
 

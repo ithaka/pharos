@@ -8,10 +8,10 @@ describe('pharos-toast', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-toast open>
+      <test-pharos-toast open>
         The item has moved to your
-        <pharos-link href="#" on-background bold>Workspace</pharos-link>.
-      </pharos-toast>
+        <test-pharos-link href="#" on-background bold>Workspace</test-pharos-link>.
+      </test-pharos-toast>
     `);
   });
 
@@ -21,7 +21,7 @@ describe('pharos-toast', () => {
 
   it('throws an error for an invalid status value', async () => {
     component = await fixture(html`
-      <pharos-toast status="fake">I am a toast</pharos-toast>
+      <test-pharos-toast status="fake">I am a toast</test-pharos-toast>
     `).catch((e) => e);
     expect('fake is not a valid status. Valid statuses are: success, error').to.be.thrown;
   });
@@ -50,7 +50,9 @@ describe('pharos-toast', () => {
     component.status = 'error';
     await component.updateComplete;
 
-    const icon = component.renderRoot.querySelector('pharos-icon') as PharosIcon;
+    const icon = component.renderRoot.querySelector(
+      '[data-pharos-component="PharosIcon"]'
+    ) as PharosIcon;
     expect(icon?.name).to.equal('exclamation-inverse');
   });
 
@@ -58,7 +60,9 @@ describe('pharos-toast', () => {
     component.status = 'info';
     await component.updateComplete;
 
-    const icon = component.renderRoot.querySelector('pharos-icon') as PharosIcon;
+    const icon = component.renderRoot.querySelector(
+      '[data-pharos-component="PharosIcon"]'
+    ) as PharosIcon;
     expect(icon?.name).to.equal('exclamation-inverse');
   });
 

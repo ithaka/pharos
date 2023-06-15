@@ -7,13 +7,13 @@ export const MultiSelectFacet = (
   legend: string,
   items: CheckboxGroupItem[]
 ): TemplateResult => html`
-  <pharos-checkbox-group name="${name}">
+  <storybook-pharos-checkbox-group name="${name}">
     <span slot="legend">${legend}</span>
     ${items.map(
       (item) =>
-        html`<pharos-checkbox value="${item.value}"
-          ><span slot="label">${item.label}</span></pharos-checkbox
+        html`<storybook-pharos-checkbox value="${item.value}"
+          ><span slot="label">${item.label}</span></storybook-pharos-checkbox
         >`
     )}
-  </pharos-checkbox-group>
+  </storybook-pharos-checkbox-group>
 `;
