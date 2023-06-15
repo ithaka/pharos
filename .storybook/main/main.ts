@@ -1,10 +1,10 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+import type { StorybookConfig } from '@storybook/web-components-vite';
 import config from '../main';
 
 const fullConfig: StorybookConfig = {
   ...config,
   framework: {
-    name: '@storybook/react-vite',
+    name: '@storybook/web-components-vite',
     options: {},
   },
   stories: [...config.stories, '../../packages/pharos/**/*.docs.stories.mdx'],
