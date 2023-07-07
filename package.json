@@ -108,7 +108,7 @@
     "sass": "^1.63.3",
     "size-limit": "^7.0.4",
     "storybook": "^7.0.21",
-    "stylelint": "^14.0.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard-scss": "^3.0.0",
     "stylelint-scss": "^4.0.0",
