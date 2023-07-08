@@ -62,6 +62,9 @@
     "lit": "^2.0.0",
     "uuid": "^9.0.0"
   },
+  "peerDependencies": {
+    "sass": "^1.42.1"
+  },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.5.6",
     "@open-wc/testing": "^3.0.1",
@@ -81,7 +84,6 @@
     "react-dom": "^17.0.1",
     "replace-in-file": "^6.3.2",
     "rimraf": "^3.0.2",
-    "sass": "^1.42.1",
     "sassdoc": "^2.7.3",
     "sinon": "^12.0.1",
     "style-dictionary": "^3.0.1",
