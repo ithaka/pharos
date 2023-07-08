@@ -161,7 +161,7 @@ figure {
   column-gap: var(--pharos-spacing-three-quarters-x);
 }
 
-@media screen and (max-width: 48rem) {
+@media screen and (width <= 48rem) {
   hr,
   .heading__status,
   .link__status,
@@ -175,7 +175,7 @@ figure {
   }
 }
 
-@media screen and (max-width: 22.5rem) {
+@media screen and (width <= 22.5rem) {
   hr,
   .heading__status,
   .link__status,
