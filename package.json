@@ -109,9 +109,9 @@
     "size-limit": "^7.0.4",
     "storybook": "^7.0.21",
     "stylelint": "^15.10.1",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard-scss": "^3.0.0",
-    "stylelint-scss": "^4.0.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint-scss": "^5.0.1",
     "svglint": "^2.2.0",
     "vite": "^4.3.9"
   },
