@@ -29,7 +29,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-live": "^2.3.0",
-    "sass": "^1.42.1"
+    "sass": "^1.63.6"
   },
   "devDependencies": {
     "@types/mdx-js__react": "^1.5.3",

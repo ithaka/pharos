@@ -1,5 +1,5 @@
 const template = ({ titleCaseName, componentName }) => `
-import { Story, Canvas, Meta, ArgsTable } from '@storybook/addon-docs';
+import { Story, Canvas, Meta, ArgsTable } from '@storybook/blocks';
 import { html } from 'lit';
 
 <Meta
