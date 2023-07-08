@@ -100,6 +100,7 @@
     "markdown-toc": "^1.2.0",
     "postcss": "^8.4.0",
     "postcss-import": "^14.0.0",
+    "postcss-media-minmax": "^5.0.0",
     "postcss-preset-env": "^8.4.2",
     "prettier": "^2.5.0",
     "pretty-quick": "^3.1.1",

@@ -5,6 +5,7 @@ import sass from 'sass';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
+import mediaMinMax from 'postcss-media-minmax';
 import { promisify } from 'util';
 import { copyDir } from './copyDir.js';
 
@@ -28,7 +29,7 @@ export const buildStyles = async () => {
       outFile: dest,
     });
 
-    const processedCSS = await postcss([autoprefixer, cssnano])
+    const processedCSS = await postcss([autoprefixer, mediaMinMax, cssnano])
       .process(cssResult.css, {
         from: undefined,
       })
