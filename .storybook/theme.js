@@ -1,19 +1,22 @@
 import { create } from '@storybook/theming/create';
 import {
-  PharosColorJstorRed,
   PharosColorWhite,
   PharosColorBlack,
   PharosColorMarbleGray50,
   PharosColorMarbleGray20,
   PharosFontFamilyBody,
+  PharosColorInteractivePrimary,
+  PharosColorInteractiveSecondary,
+  PharosColorTextBase,
+  PharosColorTextWhite,
 } from '../packages/pharos/lib/styles/variables.js';
 import logo from './assets/images/jstor-logo.svg';
 
 export default create({
   base: 'light',
 
-  colorPrimary: PharosColorJstorRed,
-  colorSecondary: PharosColorJstorRed,
+  colorPrimary: PharosColorInteractivePrimary,
+  colorSecondary: PharosColorInteractiveSecondary,
 
   // UI
   appBg: PharosColorWhite,
@@ -26,8 +29,8 @@ export default create({
   fontCode: 'monospace',
 
   // Text colors
-  textColor: PharosColorBlack,
-  textInverseColor: PharosColorWhite,
+  textColor: PharosColorTextBase,
+  textInverseColor: PharosColorTextWhite,
 
   // Toolbar default and active colors
   barTextColor: PharosColorMarbleGray20,

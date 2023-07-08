@@ -1,5 +1,5 @@
 const template = ({ componentName, titleCaseName }) => `
-import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs';
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/blocks';
 
 import { Pharos${titleCaseName} } from '../../react-components/${componentName}/pharos-${componentName}';
 
