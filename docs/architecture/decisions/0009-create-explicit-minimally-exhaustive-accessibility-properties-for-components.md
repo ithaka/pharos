@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-Pharos uses web components, a set of standards that allow web developers to create custom elements with isolated styling and behavior. The web component standards have not brought accessibility along with them, and the accessibility object model (AOM) has not yet been standardized across all browsers with first-class support for web components.
+Pharos uses Web Components, a set of standards that allow web developers to create custom elements with isolated styling and behavior. The web component standards have not brought accessibility along with them, and the accessibility object model (AOM) has not yet been standardized across all browsers with first-class support for web components.
 
 In particular, placing ARIA attributes on custom elements doesn’t produce the proper outcomes in the accessibility tree, resulting in issues parsing the intended calculated values and relationships while using assistive technologies.
 
