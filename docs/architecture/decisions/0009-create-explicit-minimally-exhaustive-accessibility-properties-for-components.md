@@ -12,7 +12,7 @@ Pharos uses Web Components, a set of standards that allow web developers to crea
 
 In particular, placing ARIA attributes on custom elements doesn’t produce the proper outcomes in the accessibility tree, resulting in issues parsing the intended calculated values and relationships while using assistive technologies.
 
-Consumers of these components should not need to access the shadow DOM directly to get their work done—they care about using components, and that those components do the right thing. Components should not need to access the shadow DOM directly to get their work done—a Tooltip should not need to know about a Button’s underlying <button>. Management of attributes deferred to underlying native elements should be as painless as possible—explicitly deferring each and every possible attribute will not fly.
+Consumers of these components should not need to access the shadow DOM directly to get their work done—they care about using components, and that those components do the right thing. Components should not need to access the shadow DOM directly to get their work done—a Tooltip should not need to know about a Button’s underlying `<button>`. Management of attributes deferred to underlying native elements should be as painless as possible—explicitly deferring each and every possible attribute will not fly.
 
 ## Decision
 
