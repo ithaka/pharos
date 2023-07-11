@@ -6,7 +6,6 @@ import {
   PharosColorMarbleGray20,
   PharosFontFamilyBody,
   PharosColorInteractivePrimary,
-  PharosColorInteractiveSecondary,
   PharosColorTextBase,
   PharosColorTextWhite,
 } from '../packages/pharos/lib/styles/variables.js';
@@ -16,7 +15,7 @@ export default create({
   base: 'light',
 
   colorPrimary: PharosColorInteractivePrimary,
-  colorSecondary: PharosColorInteractiveSecondary,
+  colorSecondary: PharosColorInteractivePrimary,
 
   // UI
   appBg: PharosColorWhite,
