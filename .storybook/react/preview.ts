@@ -1,4 +1,4 @@
 import '../styleConfig';
 import '../initComponents';
 
-export { parameters } from '../parameters';
+export { preview } from '../preview';

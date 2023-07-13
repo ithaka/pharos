@@ -8,9 +8,17 @@ import { SearchResults } from './search-results/SearchResults';
 import { ImageResults } from './image-results/ImageResults';
 
 import { PharosHeading, PharosLink } from '../../../react-components';
+import { PharosContext } from '../../../utils/PharosContext';
 
 export default {
   title: 'Pages/Search',
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: { layout: 'fullscreen' },
 } as Meta;
 

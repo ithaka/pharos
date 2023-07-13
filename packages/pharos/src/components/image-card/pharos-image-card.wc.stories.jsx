@@ -5,6 +5,11 @@ import { items, collections } from '../../pages/item-detail/mocks';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
 
+import collection5 from '@config/assets/images/item-detail/collection_5.png';
+import collection1 from '@config/assets/images/item-detail/open_collection_1.png';
+import collection2 from '@config/assets/images/item-detail/open_collection_2.png';
+import collection3 from '@config/assets/images/item-detail/open_collection_3.png';
+
 export default {
   title: 'Components/Image Card',
   component: 'pharos-image-card',
@@ -25,7 +30,7 @@ const Template = {
         ?indicate-link-visited=${args.indicateLinkVisited}
         style="grid-column: span 2"
       >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
+        <img id="image" src="${collection5}" alt="south hall" slot="image" />
         <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
         <div id="item-date" slot="metadata">1889-1892 (creation)</div>
         <div id="collection" slot="metadata">
@@ -47,12 +52,7 @@ export const Base = {
       ${items.map((item, index) => {
         return html` <li style="grid-column: span 2">
           <storybook-pharos-image-card id="card-${index}" title="Card Title" link="#">
-            <img
-              id="image-${index}"
-              src="./images/item-detail/${item.image}"
-              alt="Card Title ${index}"
-              slot="image"
-            />
+            <img id="image-${index}" src="${item.image}" alt="Card Title ${index}" slot="image" />
             <div id="creator-${index}" slot="metadata">Creator of the item</div>
             <div id="item-date-${index}" slot="metadata">1990-2000</div>
             <div id="collection-${index}" slot="metadata">
@@ -78,12 +78,7 @@ export const WithSourceTypes = {
             link="#"
             source-type="Image"
           >
-            <img
-              id="image-${index}"
-              src="./images/item-detail/${item.image}"
-              alt="Card Title ${index}"
-              slot="image"
-            />
+            <img id="image-${index}" src="${item.image}" alt="Card Title ${index}" slot="image" />
             <div id="creator-${index}" slot="metadata">Creator of the item</div>
             <div id="item-date-${index}" slot="metadata">1990-2000</div>
             <div id="collection-${index}" slot="metadata">
@@ -111,7 +106,7 @@ export const Collection = {
           >
             <img
               id="image-${index}"
-              src="./images/item-detail/${collection.image}"
+              src="${collection.image}"
               alt="${collection.title}"
               slot="image"
             />
@@ -139,7 +134,7 @@ export const ErrorStateCollection = {
           >
             <img
               id="image-${index}"
-              src="./images/item-detail/${collection.image}"
+              src="${collection.image}"
               alt="${collection.title}"
               slot="image"
             />
@@ -162,7 +157,7 @@ export const Promotional = {
           link="#"
           variant="promotional"
         >
-          <img src="./images/item-detail/open_collection_3.png" alt="" slot="image" />
+          <img src="${collection3}" alt="" slot="image" />
           <p slot="metadata">
             Harness the power of visual materials—explore more than 3 million images now on JSTOR.
           </p>
@@ -182,7 +177,7 @@ export const Selectable = {
           source-type="Image"
           variant="selectable"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
@@ -193,7 +188,7 @@ export const Selectable = {
           variant="selectable"
           subtle-select="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
@@ -205,7 +200,7 @@ export const Selectable = {
           disabled="true"
           selected="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
@@ -216,7 +211,7 @@ export const Selectable = {
           variant="selectable"
           error="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
@@ -228,7 +223,7 @@ export const Selectable = {
           error="true"
           subtle-select="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
     </storybook-pharos-layout>`,
@@ -245,7 +240,7 @@ export const SubtleSelectable = {
           variant="selectable"
           subtle="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
@@ -257,7 +252,7 @@ export const SubtleSelectable = {
           subtle="true"
           subtle-select="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
           <storybook-pharos-button
             slot="overlay"
             variant="overlay"
@@ -276,7 +271,7 @@ export const SubtleSelectable = {
           disabled="true"
           selected="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
@@ -288,7 +283,7 @@ export const SubtleSelectable = {
           subtle="true"
           error="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
@@ -301,7 +296,7 @@ export const SubtleSelectable = {
           error="true"
           subtle-select="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
     </storybook-pharos-layout>`,
@@ -341,12 +336,7 @@ export const WithActionMenu = {
           action-menu="my-dropdown-menu"
           style="grid-column: span 2"
         >
-          <img
-            id="image"
-            src="./images/item-detail/collection_5.png"
-            alt="south hall"
-            slot="image"
-          />
+          <img id="image" src="${collection5}" alt="south hall" slot="image" />
           <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
           <div id="item-date" slot="metadata">1889-1892 (creation)</div>
           <div id="collection" slot="metadata">
@@ -374,12 +364,7 @@ export const WithActionButtonSlot = {
           link="https://www.jstor.org/stable/10.2307/community.26220188"
           style="grid-column: span 2"
         >
-          <img
-            id="image"
-            src="./images/item-detail/collection_5.png"
-            alt="south hall"
-            slot="image"
-          />
+          <img id="image" src="${collection5}" alt="south hall" slot="image" />
           <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
           <div id="item-date" slot="metadata">1889-1892 (creation)</div>
           <div id="collection" slot="metadata">
@@ -410,7 +395,7 @@ export const SelectableCollection = {
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li class="image-card-example__card--collection">
         <storybook-pharos-image-card title="Selectable" link="#" variant="selectable-collection">
-          <img src="./images/item-detail/open_collection_1.png" slot="image" />
+          <img src="${collection1}" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </storybook-pharos-image-card>
@@ -422,7 +407,7 @@ export const SelectableCollection = {
           variant="selectable-collection"
           subtle-select="true"
         >
-          <img src="./images/item-detail/open_collection_2.png" slot="image" />
+          <img src="${collection2}" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </storybook-pharos-image-card>
@@ -435,7 +420,7 @@ export const SelectableCollection = {
           disabled="true"
           selected="true"
         >
-          <img src="./images/item-detail/open_collection_3.png" slot="image" />
+          <img src="${collection3}" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </storybook-pharos-image-card>
@@ -448,7 +433,7 @@ export const Disabled = {
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
         <storybook-pharos-image-card title="Disabled" link="#" source-type="Image" disabled="true">
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
@@ -459,7 +444,7 @@ export const Disabled = {
           disabled="true"
           variant="selectable"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
       <li style="grid-column: span 3">
@@ -471,7 +456,7 @@ export const Disabled = {
           disabled="true"
           selected="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src="${collection5}" alt="Card Title" slot="image" />
         </storybook-pharos-image-card>
       </li>
     </storybook-pharos-layout>`,

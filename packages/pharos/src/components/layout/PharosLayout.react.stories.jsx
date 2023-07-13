@@ -4,6 +4,7 @@ import { viewports } from '../../pages/shared/viewports';
 import { PharosLayout, PharosSidenav, PharosLink } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import logo from '@config/assets/images/jstor-logo-inverse.svg';
 
 export default {
   title: 'Components/Layout',
@@ -76,7 +77,7 @@ export const OneColumnWithSidenav = {
     >
       <PharosSidenav style={{ gridArea: 'sidenav' }}>
         <PharosLink slot="top" href="/" id="jstor-logo">
-          <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
+          <img src={logo} alt="Pharos Home" width="72" height="100" />
         </PharosLink>
       </PharosSidenav>
       <main style={{ gridArea: 'main' }}>
@@ -99,7 +100,7 @@ export const OneColumnWithSidenavAndComfySpacing = {
     >
       <PharosSidenav style={{ gridArea: 'sidenav' }}>
         <PharosLink slot="top" href="/" id="jstor-logo">
-          <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
+          <img src={logo} alt="Pharos Home" width="72" height="100" />
         </PharosLink>
       </PharosSidenav>
       <main style={{ gridArea: 'main' }}>

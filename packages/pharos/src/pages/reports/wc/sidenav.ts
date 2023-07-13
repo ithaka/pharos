@@ -1,10 +1,12 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
+import logo from '@config/assets/images/jstor-logo-inverse.svg';
+
 export const Sidenav = (): TemplateResult => html`
   <storybook-pharos-sidenav class="reports-page__sidenav" main-content-id="main-content">
     <storybook-pharos-link slot="top" href="/" id="jstor-logo">
-      <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
+      <img src="${logo}" alt="Pharos Home" width="72" height="100" />
     </storybook-pharos-link>
     <storybook-pharos-sidenav-section>
       <storybook-pharos-sidenav-link href="#">Home</storybook-pharos-sidenav-link>

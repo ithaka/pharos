@@ -10,7 +10,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@webcomponents/scoped-custom-element-registry": "^0.0.3",
-    "gatsby": "^4.2.0",
+    "gatsby": "^4.25.7",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-google-tagmanager": "^4.2.0",
     "gatsby-plugin-image": "^2.2.0",
@@ -29,7 +29,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-live": "^2.3.0",
-    "sass": "^1.42.1"
+    "sass": "^1.63.6"
   },
   "devDependencies": {
     "@types/mdx-js__react": "^1.5.3",
