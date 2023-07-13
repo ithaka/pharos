@@ -26,8 +26,8 @@
       "cite": { "value": "assets/icons/cite.svg" },
       "close-inverse": { "value": "assets/icons/close-inverse.svg" },
       "close": { "value": "assets/icons/close.svg" },
-      "closed-captions-off": { "value": "assets/icons/closed-captions-off.svg"},
-      "closed-captions-on": { "value": "assets/icons/closed-captions-on.svg"},
+      "closed-captions-off": { "value": "assets/icons/closed-captions-off.svg" },
+      "closed-captions-on": { "value": "assets/icons/closed-captions-on.svg" },
       "collapse": {
         "value": "assets/icons/shift-right.svg",
         "deprecated": true,
