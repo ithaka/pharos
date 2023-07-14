@@ -1,5 +1,16 @@
 # @ithaka/pharos-site
 
+## 5.13.3
+
+### Patch Changes
+
+- [#551](https://github.com/ithaka/pharos/pull/551) [`ce55ca7`](https://github.com/ithaka/pharos/commit/ce55ca703e07f15348e1eb95411ecceb6f3ffec3) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - Fix Storybook links
+
+- [#552](https://github.com/ithaka/pharos/pull/552) [`2a1f282`](https://github.com/ithaka/pharos/commit/2a1f282eafe3af4e5ae1dd397125e258ee6ae55a) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update SCSS to meet linting standards
+
+- Updated dependencies [[`c18e46a`](https://github.com/ithaka/pharos/commit/c18e46a7eead95af68ad284cb9a568e53abd2277), [`578d38e`](https://github.com/ithaka/pharos/commit/578d38e36a26e1bc5d801d4539479cf2de0ece72), [`8ea7190`](https://github.com/ithaka/pharos/commit/8ea7190ced34cc9a0b50a13ba0edc2c072244a56), [`5913a6f`](https://github.com/ithaka/pharos/commit/5913a6ff2e83766797548a78e9de682650b0b73b), [`2a1f282`](https://github.com/ithaka/pharos/commit/2a1f282eafe3af4e5ae1dd397125e258ee6ae55a)]:
+  - @ithaka/pharos@12.20.0
+
 ## 5.13.2
 
 ### Patch Changes

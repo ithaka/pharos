@@ -1,5 +1,21 @@
 # @ithaka/pharos
 
+## 12.20.0
+
+### Minor Changes
+
+- [#555](https://github.com/ithaka/pharos/pull/555) [`8ea7190`](https://github.com/ithaka/pharos/commit/8ea7190ced34cc9a0b50a13ba0edc2c072244a56) Thanks [@daneah](https://github.com/daneah)! - Specify sass as a peer dependency of @ithaka/pharos
+
+- [#558](https://github.com/ithaka/pharos/pull/558) [`5913a6f`](https://github.com/ithaka/pharos/commit/5913a6ff2e83766797548a78e9de682650b0b73b) Thanks [@daneah](https://github.com/daneah)! - Use `:focus-visible` for non-form interactive elements
+
+### Patch Changes
+
+- [#561](https://github.com/ithaka/pharos/pull/561) [`c18e46a`](https://github.com/ithaka/pharos/commit/c18e46a7eead95af68ad284cb9a568e53abd2277) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - add closed captions icons
+
+- [#553](https://github.com/ithaka/pharos/pull/553) [`578d38e`](https://github.com/ithaka/pharos/commit/578d38e36a26e1bc5d801d4539479cf2de0ece72) Thanks [@daneah](https://github.com/daneah)! - Use smaller icon for close button
+
+- [#552](https://github.com/ithaka/pharos/pull/552) [`2a1f282`](https://github.com/ithaka/pharos/commit/2a1f282eafe3af4e5ae1dd397125e258ee6ae55a) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update SCSS to meet linting standards
+
 ## 12.19.3
 
 ### Patch Changes
