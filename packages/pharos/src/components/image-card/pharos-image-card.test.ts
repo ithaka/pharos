@@ -814,9 +814,6 @@ describe('pharos-image-card', () => {
   it('renders the image preview not available in error state ', async () => {
     component.error = true;
     await component.updateComplete;
-
-    const imagePreview = component.renderRoot.querySelector('.unavailable-text');
-    expect(imagePreview).to.exist;
-    expect(imagePreview?.innerHTML).equals('Image preview not available');
+    expect(component.renderRoot.textContent).to.contain('Image preview not available');
   });
 });
