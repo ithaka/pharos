@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.20.1
+
+### Patch Changes
+
+- [#564](https://github.com/ithaka/pharos/pull/564) [`5b470b6`](https://github.com/ithaka/pharos/commit/5b470b6522e7c25e60fffc7a1a21cd5d07a211df) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - update image card error variant preview text
+
 ## 12.20.0
 
 ### Minor Changes
