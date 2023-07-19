@@ -232,7 +232,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
             })}
           >
             <pharos-icon name="exclamation-inverse"></pharos-icon>
-            <span class="unavailable-text">Preview not available</span>
+            <span class="unavailable-text">Image preview not available</span>
           </div>
         `
       : html`
@@ -276,7 +276,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           })}
         >
           <pharos-icon name="exclamation-inverse"></pharos-icon>
-          <span class="unavailable-text">Preview not available</span>
+          <span class="unavailable-text">Image preview not available</span>
         </div>`
       : html`<slot name="image"></slot>`;
   }

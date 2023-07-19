@@ -810,4 +810,10 @@ describe('pharos-image-card', () => {
     );
     expect(checkboxElement).not.to.be.null;
   });
+
+  it('renders the image preview not available in error state ', async () => {
+    component.error = true;
+    await component.updateComplete;
+    expect(component.renderRoot.textContent).to.contain('Image preview not available');
+  });
 });
