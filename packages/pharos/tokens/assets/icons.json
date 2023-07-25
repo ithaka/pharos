@@ -28,6 +28,10 @@
       "close": { "value": "assets/icons/close.svg" },
       "closed-captions-off": { "value": "assets/icons/closed-captions-off.svg" },
       "closed-captions-on": { "value": "assets/icons/closed-captions-on.svg" },
+      "thumbs-up": { "value": "assets/icons/thumbs-up.svg" },
+      "thumbs-up-filled": { "value": "assets/icons/thumbs-up-filled.svg" },
+      "thumbs-down": { "value": "assets/icons/thumbs-down.svg" },
+      "thumbs-down-filled": { "value": "assets/icons/thumbs-down-filled.svg" },
       "collapse": {
         "value": "assets/icons/shift-right.svg",
         "deprecated": true,
