@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.20.2
+
+### Patch Changes
+
+- [#566](https://github.com/ithaka/pharos/pull/566) [`ea25a41`](https://github.com/ithaka/pharos/commit/ea25a41718384ab8fbec899aa943f7bd0ec8abf1) Thanks [@rehanabbasi](https://github.com/rehanabbasi)! - add thumbs up/down icons
+
 ## 12.20.1
 
 ### Patch Changes
