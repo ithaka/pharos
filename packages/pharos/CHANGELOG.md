@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.21.0
+
+### Minor Changes
+
+- [#568](https://github.com/ithaka/pharos/pull/568) [`1f17efe`](https://github.com/ithaka/pharos/commit/1f17efe5fdcb1d4c08061571559f5b2bb7abf2d1) Thanks [@shoupeva-ithaka](https://github.com/shoupeva-ithaka)! - Add microsoft icon
+
 ## 12.20.2
 
 ### Patch Changes
