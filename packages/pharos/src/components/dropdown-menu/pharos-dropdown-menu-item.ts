@@ -71,6 +71,13 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
   @property({ type: Boolean, reflect: true })
   public disabled = false;
 
+  /**
+   * Indicates the menu item is displayed on a dark background.
+   * @attr on-background
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
+  public onBackground = false;
+
   @state()
   private _last = false;
 
