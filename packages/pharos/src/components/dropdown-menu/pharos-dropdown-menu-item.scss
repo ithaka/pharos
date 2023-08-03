@@ -89,6 +89,10 @@
   color: var(--pharos-dropdown-menu-item-color-text-description);
 }
 
+:host([on-background]) .dropdown-menu-item__button {
+  background-color: var(--pharos-color-marble-gray-20);
+}
+
 :host(:not([disabled])) .dropdown-menu-item {
   &:hover:not(.dropdown-menu-item--active) {
     .dropdown-menu-item__link,
