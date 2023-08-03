@@ -197,13 +197,11 @@ export const OnBackground = {
         >
           A menu on brackground
         </storybook-pharos-button>
-        <storybook-pharos-dropdown-menu id="my-menu-on-background" on-background>
-          <storybook-pharos-dropdown-menu-item on-background>
+        <storybook-pharos-dropdown-menu id="my-menu-on-background" show-selected on-background>
+          <storybook-pharos-dropdown-menu-item selected>
             Item One
           </storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item on-background>
-            Item Two
-          </storybook-pharos-dropdown-menu-item>
+          <storybook-pharos-dropdown-menu-item> Item Two </storybook-pharos-dropdown-menu-item>
         </storybook-pharos-dropdown-menu>
       </div>
     `;

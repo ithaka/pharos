@@ -52,6 +52,13 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   @property({ type: Boolean, reflect: true, attribute: 'full-width' })
   public fullWidth = false;
 
+  /**
+   * Indicates the menu item is displayed on a dark background.
+   * @attr on-background
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
+  public onBackground = false;
+
   @state()
   private _navMenu = false;
 
@@ -261,6 +268,11 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
               top: `${y}px`,
             });
           });
+          if (this.onBackground) {
+            this._allMenuItems.forEach((menuItem) => {
+              menuItem.onBackground = true;
+            });
+          }
         }
       });
     }
