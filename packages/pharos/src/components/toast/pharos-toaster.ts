@@ -8,6 +8,8 @@ import { DEFAULT_STATUS, DEFAULT_INDEFINITE } from './pharos-toast';
 
 import { v4 as uuidv4 } from 'uuid';
 
+const DEFAULT_RETURN_ELEMENTS: Array<HTMLElement> = [];
+
 /**
  * pharos-toast-open event.
  *
@@ -27,7 +29,7 @@ import { v4 as uuidv4 } from 'uuid';
  * @listens pharos-toast-open
  */
 export class PharosToaster extends PharosElement {
-  private returnElements: Array<HTMLElement> = [];
+  private returnElements = DEFAULT_RETURN_ELEMENTS;
 
   constructor() {
     super();
@@ -63,7 +65,7 @@ export class PharosToaster extends PharosElement {
     const toast = document.createElement(toastTag) as PharosToast;
     const { content, status, id, indefinite, returnElements } = (<CustomEvent>event).detail;
 
-    this.returnElements = returnElements;
+    this.returnElements = returnElements ?? DEFAULT_RETURN_ELEMENTS;
     toast.innerHTML = content;
     toast.status = status || DEFAULT_STATUS;
     toast.id = this._getToastID(id);
