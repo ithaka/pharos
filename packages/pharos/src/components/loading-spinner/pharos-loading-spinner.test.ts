@@ -7,7 +7,7 @@ describe('pharos-loading-spinner', () => {
   let component: PharosLoadingSpinner;
 
   beforeEach(async () => {
-    component = await fixture(html` <pharos-loading-spinner></pharos-loading-spinner> `);
+    component = await fixture(html` <test-pharos-loading-spinner></test-pharos-loading-spinner> `);
   });
 
   it('is accessible', async () => {
@@ -46,7 +46,7 @@ describe('pharos-loading-spinner', () => {
     component = await fixture(
       html`
         <button @click="${onClick}">Can't press me!</button>
-        <pharos-loading-spinner></pharos-loading-spinner>
+        <test-pharos-loading-spinner></test-pharos-loading-spinner>
       `
     );
     const button = component.querySelector('button');

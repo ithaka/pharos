@@ -11,23 +11,25 @@ describe('pharos-dropdown-menu-item', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-dropdown-menu-item>I am an item</pharos-dropdown-menu-item>
+      <test-pharos-dropdown-menu-item>I am an item</test-pharos-dropdown-menu-item>
     `);
   });
 
   it('is accessible', async () => {
-    const parentNode = document.createElement('pharos-dropdown-menu');
+    const parentNode = document.createElement('test-pharos-dropdown-menu');
     component = await fixture(
-      html` <pharos-dropdown-menu-item>I am an item</pharos-dropdown-menu-item> `,
+      html` <test-pharos-dropdown-menu-item>I am an item</test-pharos-dropdown-menu-item> `,
       { parentNode }
     );
     await expect(component).to.be.accessible();
   });
 
   it('is accessible when disabled', async () => {
-    const parentNode = document.createElement('pharos-dropdown-menu');
+    const parentNode = document.createElement('test-pharos-dropdown-menu');
     component = await fixture(
-      html` <pharos-dropdown-menu-item disabled>I am an item</pharos-dropdown-menu-item> `,
+      html`
+        <test-pharos-dropdown-menu-item disabled>I am an item</test-pharos-dropdown-menu-item>
+      `,
       { parentNode }
     );
     await expect(component).to.be.accessible();
@@ -74,10 +76,10 @@ describe('pharos-dropdown-menu-item', () => {
 
   it('has a slot to contain a description of the item', async () => {
     component = await fixture(html`
-      <pharos-dropdown-menu-item>
+      <test-pharos-dropdown-menu-item>
         I am an item
         <span slot="description">I am a description</span>
-      </pharos-dropdown-menu-item>
+      </test-pharos-dropdown-menu-item>
     `);
 
     const itemDescription = component.renderRoot.querySelector('.dropdown-menu-item__description');
@@ -85,10 +87,12 @@ describe('pharos-dropdown-menu-item', () => {
   });
 
   it('renders a checkmark when selected and its parent menu has showSelected', async () => {
-    const parentNode = document.createElement('pharos-dropdown-menu');
+    const parentNode = document.createElement('test-pharos-dropdown-menu');
     parentNode.showSelected = true;
     component = await fixture(
-      html` <pharos-dropdown-menu-item selected>I am an item</pharos-dropdown-menu-item> `,
+      html`
+        <test-pharos-dropdown-menu-item selected>I am an item</test-pharos-dropdown-menu-item>
+      `,
       { parentNode }
     );
 
@@ -126,8 +130,8 @@ describe('pharos-dropdown-menu-item', () => {
   it('does not propagate a click event when disabled with click handler present', async () => {
     const event = new MouseEvent('click');
     component = await fixture(html`
-      <pharos-dropdown-menu-item disabled @click="${() => alert('clicked')}"
-        >I am an item</pharos-dropdown-menu-item
+      <test-pharos-dropdown-menu-item disabled @click="${() => alert('clicked')}"
+        >I am an item</test-pharos-dropdown-menu-item
       >
     `);
     await component.updateComplete;

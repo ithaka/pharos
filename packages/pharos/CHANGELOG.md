@@ -1,5 +1,99 @@
 # @ithaka/pharos
 
+## 12.21.0
+
+### Minor Changes
+
+- [#568](https://github.com/ithaka/pharos/pull/568) [`1f17efe`](https://github.com/ithaka/pharos/commit/1f17efe5fdcb1d4c08061571559f5b2bb7abf2d1) Thanks [@shoupeva-ithaka](https://github.com/shoupeva-ithaka)! - Add microsoft icon
+
+## 12.20.2
+
+### Patch Changes
+
+- [#566](https://github.com/ithaka/pharos/pull/566) [`ea25a41`](https://github.com/ithaka/pharos/commit/ea25a41718384ab8fbec899aa943f7bd0ec8abf1) Thanks [@rehanabbasi](https://github.com/rehanabbasi)! - add thumbs up/down icons
+
+## 12.20.1
+
+### Patch Changes
+
+- [#564](https://github.com/ithaka/pharos/pull/564) [`5b470b6`](https://github.com/ithaka/pharos/commit/5b470b6522e7c25e60fffc7a1a21cd5d07a211df) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - update image card error variant preview text
+
+## 12.20.0
+
+### Minor Changes
+
+- [#555](https://github.com/ithaka/pharos/pull/555) [`8ea7190`](https://github.com/ithaka/pharos/commit/8ea7190ced34cc9a0b50a13ba0edc2c072244a56) Thanks [@daneah](https://github.com/daneah)! - Specify sass as a peer dependency of @ithaka/pharos
+
+- [#558](https://github.com/ithaka/pharos/pull/558) [`5913a6f`](https://github.com/ithaka/pharos/commit/5913a6ff2e83766797548a78e9de682650b0b73b) Thanks [@daneah](https://github.com/daneah)! - Use `:focus-visible` for non-form interactive elements
+
+### Patch Changes
+
+- [#561](https://github.com/ithaka/pharos/pull/561) [`c18e46a`](https://github.com/ithaka/pharos/commit/c18e46a7eead95af68ad284cb9a568e53abd2277) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - add closed captions icons
+
+- [#553](https://github.com/ithaka/pharos/pull/553) [`578d38e`](https://github.com/ithaka/pharos/commit/578d38e36a26e1bc5d801d4539479cf2de0ece72) Thanks [@daneah](https://github.com/daneah)! - Use smaller icon for close button
+
+- [#552](https://github.com/ithaka/pharos/pull/552) [`2a1f282`](https://github.com/ithaka/pharos/commit/2a1f282eafe3af4e5ae1dd397125e258ee6ae55a) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update SCSS to meet linting standards
+
+## 12.19.3
+
+### Patch Changes
+
+- [#539](https://github.com/ithaka/pharos/pull/539) [`6a9bf6d`](https://github.com/ithaka/pharos/commit/6a9bf6d763d1d443e4711636ac66df04f26c9340) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - add reorder icon
+
+## 12.19.2
+
+### Patch Changes
+
+- [#533](https://github.com/ithaka/pharos/pull/533) [`3cc1fe3`](https://github.com/ithaka/pharos/commit/3cc1fe34e98c6ee3d96999507cc89928e848bc74) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - Add scrolling and pagination icons
+
+- [#524](https://github.com/ithaka/pharos/pull/524) [`9320ee6`](https://github.com/ithaka/pharos/commit/9320ee6845fabc16e18e6fba3eb633e6ef57c712) Thanks [@daneah](https://github.com/daneah)! - Only render aria-pressed when explicitly defined
+
+- [#536](https://github.com/ithaka/pharos/pull/536) [`954a259`](https://github.com/ithaka/pharos/commit/954a2595187b46b34151721fe9ad229abfac8a56) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - update paging icon
+
+- [#530](https://github.com/ithaka/pharos/pull/530) [`a960ba4`](https://github.com/ithaka/pharos/commit/a960ba44526f4bf06406ac6ee69f7237fc2f22d3) Thanks [@HassanTanveer](https://github.com/HassanTanveer)! - Fixed modal storybook
+
+- [#525](https://github.com/ithaka/pharos/pull/525) [`5369a9a`](https://github.com/ithaka/pharos/commit/5369a9afe6e0df5a94645bfacdba70a48d1a2edb) Thanks [@daneah](https://github.com/daneah)! - Make selected tab outline fully visible
+
+## 12.19.1
+
+### Patch Changes
+
+- [#517](https://github.com/ithaka/pharos/pull/517) [`2238b64`](https://github.com/ithaka/pharos/commit/2238b64186453fffec6b17273e2d55d632316b57) Thanks [@daneah](https://github.com/daneah)! - Use minified HTML template literals in component code
+
+- [#516](https://github.com/ithaka/pharos/pull/516) [`14d0484`](https://github.com/ithaka/pharos/commit/14d0484d139ad6a97a58d97f9fb9957dcf9d0ac3) Thanks [@NazimHAli](https://github.com/NazimHAli)! - Fix image card collection variant image error
+
+## 12.19.0
+
+### Minor Changes
+
+- [#503](https://github.com/ithaka/pharos/pull/503) [`6667338`](https://github.com/ithaka/pharos/commit/66673386f4c9694e32c5a7d000db445eea3f427e) Thanks [@jialin-he](https://github.com/jialin-he)! - Allow toast to return focus to consumer defined elements after close
+
+## 12.18.0
+
+### Minor Changes
+
+- [#497](https://github.com/ithaka/pharos/pull/497) [`48f7cb8`](https://github.com/ithaka/pharos/commit/48f7cb89c04c7389bba84e136917cd43d356747a) Thanks [@jialin-he](https://github.com/jialin-he)! - Add audio icons
+
+### Patch Changes
+
+- [#496](https://github.com/ithaka/pharos/pull/496) [`01e4f69`](https://github.com/ithaka/pharos/commit/01e4f69e384d0b1fd049ef658d83b2209c201702) Thanks [@daneah](https://github.com/daneah)! - Fix styling of Google Translate widget
+
+- [#493](https://github.com/ithaka/pharos/pull/493) [`5c45ee8`](https://github.com/ithaka/pharos/commit/5c45ee881e39aad966f67f3b5e540477c3e079c2) Thanks [@NazimHAli](https://github.com/NazimHAli)! - Update link docs
+
+## 12.17.2
+
+### Patch Changes
+
+- [#488](https://github.com/ithaka/pharos/pull/488) [`497fdbb`](https://github.com/ithaka/pharos/commit/497fdbb50521dc49fdfde483cf98509328ebc305) Thanks [@jialin-he](https://github.com/jialin-he)! - Fix subtle select image card accessibility with overlay
+
+## 12.17.1
+
+### Patch Changes
+
+- [#483](https://github.com/ithaka/pharos/pull/483) [`23bd549`](https://github.com/ithaka/pharos/commit/23bd5496864408aebe5fa0edb96eedbbbe215bbb) Thanks [@daneah](https://github.com/daneah)! - Render the indicate-visited attribute on the title link only when indicateVisitedLink is true
+
+- [#486](https://github.com/ithaka/pharos/pull/486) [`9d38423`](https://github.com/ithaka/pharos/commit/9d384231f1fab9d6edf49579d24a7c03cc42fb9b) Thanks [@jialin-he](https://github.com/jialin-he)! - Fix subtle select image card accessibility
+
 ## 12.17.0
 
 ### Minor Changes

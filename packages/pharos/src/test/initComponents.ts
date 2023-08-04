@@ -45,7 +45,7 @@ import {
 } from '../index';
 import registerComponents from '../utils/registerComponents';
 
-registerComponents('', [
+registerComponents('test', [
   PharosAlert,
   PharosBreadcrumb,
   PharosBreadcrumbItem,

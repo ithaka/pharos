@@ -9,6 +9,7 @@ import { PharosDropdownMenu } from '../../../react-components/dropdown-menu/phar
 import { PharosDropdownMenuItem } from '../../../react-components/dropdown-menu/pharos-dropdown-menu-item';
 import { PharosButton } from '../../../react-components/button/pharos-button';
 import { PharosInputGroup } from '../../../react-components/input-group/pharos-input-group';
+import logo from '@config/assets/images/jstor-logo.svg';
 
 export interface Header {
   showSearch?: boolean;
@@ -23,21 +24,21 @@ export const HeaderRevised: FC<Header> = ({ showSearch = false }) => (
     <div className="header-revised__container--content">
       <PharosLink href="/" id="jstor-logo" className="header-revised__logo" flex>
         <img
-          src="./images/jstor-logo.svg"
+          src={logo}
           alt="JSTOR Home"
           width="82"
           height="115"
           className="header-revised__image--logo"
         />
         <img
-          src="./images/jstor-logo.svg"
+          src={logo}
           alt="JSTOR Home"
           width="64"
           height="89"
           className="header-revised__image--logo-medium"
         />
         <img
-          src="./images/jstor-logo.svg"
+          src={logo}
           alt="JSTOR Home"
           width="43"
           height="60"

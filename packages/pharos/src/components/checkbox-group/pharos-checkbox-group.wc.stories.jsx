@@ -19,7 +19,7 @@ export default {
 
 export const Base = {
   render: (args) =>
-    html` <pharos-checkbox-group
+    html` <storybook-pharos-checkbox-group
       ?disabled=${args.disabled}
       ?hide-label="${args.hideLabel}"
       ?horizontal=${args.horizontal}
@@ -29,23 +29,33 @@ export const Base = {
       ?validated=${args.validated}
     >
       <span slot="legend">Checkbox Group Header</span>
-      <pharos-checkbox value="1"><span slot="label">Checkbox 1</span></pharos-checkbox>
-      <pharos-checkbox value="2"><span slot="label">Checkbox 2</span></pharos-checkbox>
-    </pharos-checkbox-group>`,
+      <storybook-pharos-checkbox value="1"
+        ><span slot="label">Checkbox 1</span></storybook-pharos-checkbox
+      >
+      <storybook-pharos-checkbox value="2"
+        ><span slot="label">Checkbox 2</span></storybook-pharos-checkbox
+      >
+    </storybook-pharos-checkbox-group>`,
   args: defaultArgs,
 };
 
 export const Events = {
   render: () =>
-    html` <pharos-checkbox-group
+    html` <storybook-pharos-checkbox-group
       @change="${(e) => action('Change')(JSON.stringify(e.target.value))}"
       name="checkbox-group2"
     >
       <span slot="legend">Checkbox Group Header</span>
-      <pharos-checkbox value="1"><span slot="label">Checkbox 1</span></pharos-checkbox>
-      <pharos-checkbox value="2"><span slot="label">Checkbox 2</span></pharos-checkbox>
-      <pharos-checkbox value="3"><span slot="label">Checkbox 3</span></pharos-checkbox>
-    </pharos-checkbox-group>`,
+      <storybook-pharos-checkbox value="1"
+        ><span slot="label">Checkbox 1</span></storybook-pharos-checkbox
+      >
+      <storybook-pharos-checkbox value="2"
+        ><span slot="label">Checkbox 2</span></storybook-pharos-checkbox
+      >
+      <storybook-pharos-checkbox value="3"
+        ><span slot="label">Checkbox 3</span></storybook-pharos-checkbox
+      >
+    </storybook-pharos-checkbox-group>`,
   args: {},
   parameters: { options: { selectedPanel: 'addon-actions' } },
 };
@@ -63,18 +73,24 @@ export const Validity = {
 export const FormData = {
   render: () =>
     html` <form name="my-form" action="https://httpbin.org/post" method="POST">
-      <pharos-checkbox-group
+      <storybook-pharos-checkbox-group
         @change="${(e) => action('Change')(e.target.value)}"
         name="checkbox-group4"
         style="margin-bottom: 0.5rem;"
         required
       >
         <span slot="legend">Checkbox Group Header</span>
-        <pharos-checkbox value="1"><span slot="label">Checkbox 1</span></pharos-checkbox>
-        <pharos-checkbox value="2"><span slot="label">Checkbox 2</span></pharos-checkbox>
-        <pharos-checkbox value="3"><span slot="label">Checkbox 3</span></pharos-checkbox>
-      </pharos-checkbox-group>
-      <pharos-button
+        <storybook-pharos-checkbox value="1"
+          ><span slot="label">Checkbox 1</span></storybook-pharos-checkbox
+        >
+        <storybook-pharos-checkbox value="2"
+          ><span slot="label">Checkbox 2</span></storybook-pharos-checkbox
+        >
+        <storybook-pharos-checkbox value="3"
+          ><span slot="label">Checkbox 3</span></storybook-pharos-checkbox
+        >
+      </storybook-pharos-checkbox-group>
+      <storybook-pharos-button
         type="submit"
         value="Submit"
         @click="${(e) => {
@@ -89,7 +105,7 @@ export const FormData = {
           };
           xhr.send(formData);
         }}"
-        >Submit</pharos-button
+        >Submit</storybook-pharos-button
       >
     </form>`,
   parameters: { options: { selectedPanel: 'addon-actions' } },

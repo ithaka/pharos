@@ -15,7 +15,7 @@ export default {
 export const Base = {
   render: (args) =>
     html` <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
-      <pharos-link
+      <storybook-pharos-link
         ?bold=${args.bold}
         download=${ifDefined(args.download)}
         ?flex=${args.flex}
@@ -33,7 +33,7 @@ export const Base = {
         type=${ifDefined(args.type)}
       >
         ${args.text}
-      </pharos-link>
+      </storybook-pharos-link>
     </div>`,
   args: defaultArgs,
 };
@@ -42,8 +42,8 @@ export const VisitedLink = {
   render: () =>
     html`
       <div style="margin-bottom: 1rem">
-        <pharos-link href="https://www.google.com" target="_blank" indicate-visited
-          >Visited link</pharos-link
+        <storybook-pharos-link href="https://www.google.com" target="_blank" indicate-visited
+          >Visited link</storybook-pharos-link
         >
       </div>
     `,
@@ -53,9 +53,9 @@ export const VisitedLinkHeading = {
   render: () =>
     html`
       <div style="margin-bottom: 1rem">
-        <pharos-link href="https://www.google.com" target="_blank" indicate-visited>
-          <pharos-heading level="1"> Visited link heading </pharos-heading>
-        </pharos-link>
+        <storybook-pharos-link href="https://www.google.com" target="_blank" indicate-visited>
+          <storybook-pharos-heading level="1"> Visited link heading </storybook-pharos-heading>
+        </storybook-pharos-link>
       </div>
     `,
 };
@@ -64,10 +64,12 @@ export const Button = {
   render: () =>
     html`
       <div style="margin-bottom: 1rem">
-        <pharos-link name="primary">I am a button</pharos-link>
+        <storybook-pharos-link name="primary">I am a button</storybook-pharos-link>
       </div>
       <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
-        <pharos-link name="on-background" on-background>On compliant background</pharos-link>
+        <storybook-pharos-link name="on-background" on-background
+          >On compliant background</storybook-pharos-link
+        >
       </div>
     `,
 };
@@ -76,22 +78,24 @@ export const Variants = {
   render: () =>
     html`
       <div style="margin-bottom: 1rem">
-        <pharos-link name="primary" href="#">Primary link</pharos-link>
+        <storybook-pharos-link name="primary" href="#">Primary link</storybook-pharos-link>
       </div>
       <div style="margin-bottom: 1rem">
-        <pharos-link name="subtle" href="#" subtle>Subtle link</pharos-link>
+        <storybook-pharos-link name="subtle" href="#" subtle>Subtle link</storybook-pharos-link>
       </div>
       <div style="width:100px; margin-bottom: 1rem">
-        <pharos-link name="multi" href="#">I have text that spans multiple lines</pharos-link>
-      </div>
-      <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
-        <pharos-link name="on-background" href="#" on-background
-          >On compliant background</pharos-link
+        <storybook-pharos-link name="multi" href="#"
+          >I have text that spans multiple lines</storybook-pharos-link
         >
       </div>
       <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
-        <pharos-link name="on-background-subtle" href="#" on-background subtle
-          >On compliant background with subtle</pharos-link
+        <storybook-pharos-link name="on-background" href="#" on-background
+          >On compliant background</storybook-pharos-link
+        >
+      </div>
+      <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
+        <storybook-pharos-link name="on-background-subtle" href="#" on-background subtle
+          >On compliant background with subtle</storybook-pharos-link
         >
       </div>
     `,

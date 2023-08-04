@@ -10,25 +10,25 @@ describe('pharos-tabs', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-tabs>
-        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
-        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
-        <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
-        <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
-        <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
-        <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
-      </pharos-tabs>
+      <test-pharos-tabs>
+        <test-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</test-pharos-tab>
+        <test-pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</test-pharos-tab>
+        <test-pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</test-pharos-tab>
+        <test-pharos-tab-panel id="panel-1" slot="panel">Panel 1</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-2" slot="panel">Panel 2</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-3" slot="panel">Panel 3</test-pharos-tab-panel>
+      </test-pharos-tabs>
     `);
 
     componentLastTabSelected = await fixture(html`
-      <pharos-tabs selected-tab="2">
-        <pharos-tab id="tab-4" data-panel-id="panel-4">Tab 1</pharos-tab>
-        <pharos-tab id="tab-5" data-panel-id="panel-5">Tab 2</pharos-tab>
-        <pharos-tab id="tab-6" data-panel-id="panel-6">Tab 3</pharos-tab>
-        <pharos-tab-panel id="panel-4" slot="panel">Panel 1</pharos-tab-panel>
-        <pharos-tab-panel id="panel-5" slot="panel">Panel 2</pharos-tab-panel>
-        <pharos-tab-panel id="panel-6" slot="panel">Panel 3</pharos-tab-panel>
-      </pharos-tabs>
+      <test-pharos-tabs selected-tab="2">
+        <test-pharos-tab id="tab-4" data-panel-id="panel-4">Tab 1</test-pharos-tab>
+        <test-pharos-tab id="tab-5" data-panel-id="panel-5">Tab 2</test-pharos-tab>
+        <test-pharos-tab id="tab-6" data-panel-id="panel-6">Tab 3</test-pharos-tab>
+        <test-pharos-tab-panel id="panel-4" slot="panel">Panel 1</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-5" slot="panel">Panel 2</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-6" slot="panel">Panel 3</test-pharos-tab-panel>
+      </test-pharos-tabs>
     `);
   });
 
@@ -48,7 +48,7 @@ describe('pharos-tabs', () => {
 
   it('has 3 tabs within the slot', async () => {
     const tabs = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab`)
+      component.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     expect(tabs.length).to.be.eq(3);
@@ -56,11 +56,11 @@ describe('pharos-tabs', () => {
 
   it('selects the first tab if no selection is defined', async () => {
     const tabs = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab`)
+      component.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     const panels = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab-panel`)
+      component.querySelectorAll(`test-pharos-tab-panel`)
     ) as PharosTabPanel[];
 
     expect(tabs[0].selected).to.be.true;
@@ -74,11 +74,11 @@ describe('pharos-tabs', () => {
 
   it('selects the defined tab', async () => {
     const tabs = Array.prototype.slice.call(
-      componentLastTabSelected.querySelectorAll(`pharos-tab`)
+      componentLastTabSelected.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     const panels = Array.prototype.slice.call(
-      componentLastTabSelected.querySelectorAll(`pharos-tab-panel`)
+      componentLastTabSelected.querySelectorAll(`test-pharos-tab-panel`)
     ) as PharosTabPanel[];
 
     await Promise.all(Array.from(tabs).map((tab) => tab.updateComplete));
@@ -95,7 +95,7 @@ describe('pharos-tabs', () => {
 
   it('changes the focus right with the right arrow key', async () => {
     const tabs = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab`)
+      component.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     tabs[0].focus();
@@ -108,7 +108,7 @@ describe('pharos-tabs', () => {
 
   it('changes the focus left with the left arrow key', async () => {
     const tabs = Array.prototype.slice.call(
-      componentLastTabSelected.querySelectorAll(`pharos-tab`)
+      componentLastTabSelected.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     tabs[2].focus();
@@ -121,7 +121,7 @@ describe('pharos-tabs', () => {
 
   it('changes the selection with keyboard', async () => {
     const tabs = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab`)
+      component.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     tabs[0].focus();
@@ -139,7 +139,7 @@ describe('pharos-tabs', () => {
 
   it('wraps focus to the last tab when left arrow is hit on the first tab', async () => {
     const tabs = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab`)
+      component.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     tabs[0].focus();
@@ -152,7 +152,7 @@ describe('pharos-tabs', () => {
 
   it('wraps focus to the first tab when left arrow is hit on the last tab', async () => {
     const tabs = Array.prototype.slice.call(
-      componentLastTabSelected.querySelectorAll(`pharos-tab`)
+      componentLastTabSelected.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     tabs[2].focus();
@@ -165,7 +165,7 @@ describe('pharos-tabs', () => {
 
   it('changes the selected tab on click', async () => {
     const tabs = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab`)
+      component.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     tabs[1].click();
@@ -179,7 +179,7 @@ describe('pharos-tabs', () => {
 
   it('shows the first panel by default', async () => {
     const panels = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab-panel`)
+      component.querySelectorAll(`test-pharos-tab-panel`)
     ) as PharosTabPanel[];
 
     expect(panels[0].selected).to.be.true;
@@ -189,11 +189,11 @@ describe('pharos-tabs', () => {
 
   it('changes the panel with keyboard selection', async () => {
     const tabs = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab`)
+      component.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     const panels = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab-panel`)
+      component.querySelectorAll(`test-pharos-tab-panel`)
     ) as PharosTabPanel[];
 
     tabs[0].focus();
@@ -211,11 +211,11 @@ describe('pharos-tabs', () => {
 
   it('changes the visible panel on click', async () => {
     const tabs = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab`)
+      component.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
     const panels = Array.prototype.slice.call(
-      component.querySelectorAll(`pharos-tab-panel`)
+      component.querySelectorAll(`test-pharos-tab-panel`)
     ) as PharosTabPanel[];
 
     tabs[1].click();
@@ -233,14 +233,16 @@ describe('pharos-tabs', () => {
       count++;
     };
     component = await fixture(html`
-      <pharos-tabs @keydown=${onKeydown}>
-        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
-        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
-        <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
-        <pharos-tab-panel id="panel-1" slot="panel"><input type="text" /></pharos-tab-panel>
-        <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
-        <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
-      </pharos-tabs>
+      <test-pharos-tabs @keydown=${onKeydown}>
+        <test-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</test-pharos-tab>
+        <test-pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</test-pharos-tab>
+        <test-pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</test-pharos-tab>
+        <test-pharos-tab-panel id="panel-1" slot="panel"
+          ><input type="text"
+        /></test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-2" slot="panel">Panel 2</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-3" slot="panel">Panel 3</test-pharos-tab-panel>
+      </test-pharos-tabs>
     `);
     const input = component.querySelector('input') as HTMLInputElement;
     input?.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true, composed: true }));
@@ -256,14 +258,14 @@ describe('pharos-tabs', () => {
 
   it('renders panel separator', async () => {
     component = await fixture(html`
-      <pharos-tabs panel-separator>
-        <pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</pharos-tab>
-        <pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</pharos-tab>
-        <pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</pharos-tab>
-        <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
-        <pharos-tab-panel id="panel-2" slot="panel">Panel 2</pharos-tab-panel>
-        <pharos-tab-panel id="panel-3" slot="panel">Panel 3</pharos-tab-panel>
-      </pharos-tabs>
+      <test-pharos-tabs panel-separator>
+        <test-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</test-pharos-tab>
+        <test-pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</test-pharos-tab>
+        <test-pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</test-pharos-tab>
+        <test-pharos-tab-panel id="panel-1" slot="panel">Panel 1</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-2" slot="panel">Panel 2</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-3" slot="panel">Panel 3</test-pharos-tab-panel>
+      </test-pharos-tabs>
     `);
 
     const spanElement = component.renderRoot.querySelector('.panel-separator') as HTMLDivElement;

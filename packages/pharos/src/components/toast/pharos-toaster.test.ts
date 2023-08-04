@@ -48,7 +48,7 @@ describe('pharos-toaster', () => {
   };
 
   beforeEach(async () => {
-    component = await fixture(html` <pharos-toaster></pharos-toaster> `);
+    component = await fixture(html` <test-pharos-toaster></test-pharos-toaster> `);
   });
 
   it('is accessible', async () => {
@@ -158,5 +158,73 @@ describe('pharos-toaster', () => {
         </pharos-toast>
       </div>
     `);
+  });
+
+  it('can return focus to a specific element', async () => {
+    let activeElement = null;
+    const onFocusIn = (event: Event): void => {
+      activeElement = event.composedPath()[0];
+    };
+    document.addEventListener('focusin', onFocusIn);
+
+    const trigger = document.createElement('button');
+    trigger.addEventListener('click', () => {
+      const event = new CustomEvent('pharos-toast-open', {
+        detail: {
+          content: 'I am a toast',
+          returnElements: [trigger],
+        },
+      });
+      document.dispatchEvent(event);
+    });
+    document.body.appendChild(trigger);
+    trigger.click();
+    await component.updateComplete;
+
+    const openToast = component.querySelector('pharos-toast');
+    const details = {
+      bubbles: true,
+      composed: true,
+      detail: openToast,
+    };
+    component.dispatchEvent(new CustomEvent('pharos-toast-close', details));
+    await component.updateComplete;
+
+    expect(activeElement === trigger).to.be.true;
+    document.removeEventListener('focusin', onFocusIn);
+  });
+
+  it('can return focus to a fallback element', async () => {
+    let activeElement = null;
+    const onFocusIn = (event: Event): void => {
+      activeElement = event.composedPath()[0];
+    };
+    document.addEventListener('focusin', onFocusIn);
+
+    const trigger = document.createElement('button');
+    trigger.addEventListener('click', () => {
+      const event = new CustomEvent('pharos-toast-open', {
+        detail: {
+          content: 'I am a toast',
+          returnElements: [document.querySelector('#something-does-not-exist'), trigger],
+        },
+      });
+      document.dispatchEvent(event);
+    });
+    document.body.appendChild(trigger);
+    trigger.click();
+    await component.updateComplete;
+
+    const openToast = component.querySelector('pharos-toast');
+    const details = {
+      bubbles: true,
+      composed: true,
+      detail: openToast,
+    };
+    component.dispatchEvent(new CustomEvent('pharos-toast-close', details));
+    await component.updateComplete;
+
+    expect(activeElement === trigger).to.be.true;
+    document.removeEventListener('focusin', onFocusIn);
   });
 });

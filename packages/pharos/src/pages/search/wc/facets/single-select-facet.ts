@@ -7,13 +7,13 @@ export const SingleSelectFacet = (
   legend: string,
   items: RadioGroupItem[]
 ): TemplateResult => html`
-  <pharos-radio-group name="${name}">
+  <storybook-pharos-radio-group name="${name}">
     <span slot="legend">${legend}</span>
     ${items.map(
       (item) =>
-        html`<pharos-radio-button value="${item.value}"
-          ><span slot="label">${item.label}</span></pharos-radio-button
+        html`<storybook-pharos-radio-button value="${item.value}"
+          ><span slot="label">${item.label}</span></storybook-pharos-radio-button
         >`
     )}
-  </pharos-radio-group>
+  </storybook-pharos-radio-group>
 `;

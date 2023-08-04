@@ -10,9 +10,18 @@ import { publicCollectionCards, communityCollectionCards } from '../mocks';
 import { PharosSpacing7X } from '../../../styles/variables';
 
 import { PharosHeading, PharosLink, PharosLayout } from '../../../react-components';
+import { PharosContext } from '../../../utils/PharosContext';
+import hero from '@config/assets/images/home/hero.jpg';
 
 export default {
   title: 'Pages/Home',
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     layout: 'fullscreen',
     viewport: {
@@ -36,7 +45,7 @@ export const Home = {
           <div
             className="home-page__hero"
             slot="top"
-            style={{ backgroundImage: `url('./images/home/hero.jpg')` }}
+            style={{ backgroundImage: `url(${hero})` }}
           ></div>
           <PharosLink href="#" className="home-page__hero-link">
             Tō kaidō gojo santsugi. Okazaki. Plate No 39. From the series: Fifty-three stations of
