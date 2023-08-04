@@ -3,11 +3,13 @@ import type { TemplateResult } from 'lit';
 import type { Item } from '../../types';
 
 export const ItemCarouselItem = (item: Item): TemplateResult => html`
-  <pharos-link href="#" subtle flex>
+  <storybook-pharos-link href="#" subtle flex>
     <div class="item-detail-page__grid--carousel-item">
-      <img src="./images/item-detail/${item.image}" alt="${item.title}" />
-      <pharos-heading preset="1--bold" level="3" no-margin>${item.title}</pharos-heading>
+      <img src="${item.image}" alt="${item.title}" />
+      <storybook-pharos-heading preset="1--bold" level="3" no-margin
+        >${item.title}</storybook-pharos-heading
+      >
     </div>
-  </pharos-link>
+  </storybook-pharos-link>
   <span class="item-detail-page__text--item-metadata">${item.metadata}</span>
 `;

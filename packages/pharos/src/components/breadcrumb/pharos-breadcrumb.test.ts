@@ -8,18 +8,20 @@ describe('pharos-breadcrumb', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-breadcrumb>
-        <pharos-breadcrumb-item href="#first">
+      <test-pharos-breadcrumb>
+        <test-pharos-breadcrumb-item href="#first">
           The First Link That is Too Long of Text to Fit inside any reasonable amount of space
-        </pharos-breadcrumb-item>
-        <pharos-breadcrumb-item href="#second"> A link that's better </pharos-breadcrumb-item>
-        <pharos-breadcrumb-item href="#third">
+        </test-pharos-breadcrumb-item>
+        <test-pharos-breadcrumb-item href="#second">
+          A link that's better
+        </test-pharos-breadcrumb-item>
+        <test-pharos-breadcrumb-item href="#third">
           The Second Link That is Too Long of Text to Fit inside any reasonable amount of space
-        </pharos-breadcrumb-item>
-        <pharos-breadcrumb-item>
+        </test-pharos-breadcrumb-item>
+        <test-pharos-breadcrumb-item>
           Where we are right now is a long way from where we used to be
-        </pharos-breadcrumb-item>
-      </pharos-breadcrumb>
+        </test-pharos-breadcrumb-item>
+      </test-pharos-breadcrumb>
     `);
   });
 

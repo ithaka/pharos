@@ -113,6 +113,7 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
           type="button"
           variant="subtle"
           icon="close"
+          icon-condensed
           label="Close alert"
           class="alert__button"
           @click=${this.close}

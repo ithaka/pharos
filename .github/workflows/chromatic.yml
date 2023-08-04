@@ -7,6 +7,7 @@ on:
       - '.storybook/**'
       - 'yarn.lock'
       - 'package.json'
+      - '.github/workflows/chromatic.yml'
     branches-ignore:
       - main
 
@@ -20,10 +21,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js 16.x
+      - name: Setup Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           registry-url: 'https://registry.npmjs.org'
 
       - name: Get yarn cache directory path

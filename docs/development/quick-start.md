@@ -18,7 +18,7 @@ Start by cloning the Pharos repository:
 $ git clone git@github.com:ithaka/pharos.git
 ```
 
-Pharos supports the current long-term support (LTS) version of Node.js—currently version 16. Node can be installed from [its website](https://nodejs.org/en/), with [nvm](https://github.com/nvm-sh/nvm#install--update-script), or with [asdf](https://asdf-vm.com/) and its [Node.js plugin](https://github.com/asdf-vm/asdf-nodejs).
+Pharos supports the current long-term support (LTS) version of Node.js—currently version 18. Node can be installed from [its website](https://nodejs.org/en/), with [nvm](https://github.com/nvm-sh/nvm#install--update-script), or with [asdf](https://asdf-vm.com/) and its [Node.js plugin](https://github.com/asdf-vm/asdf-nodejs).
 
 If you're using `nvm`, run the following command to switch to a Node version compatible with the project:
 

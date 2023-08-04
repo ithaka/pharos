@@ -39,7 +39,7 @@ div#google_translate_element div.goog-te-gadget-simple {
   }
 }
 
-div#google_translate_element div.goog-te-gadget-simple a.goog-te-menu-value {
+div#google_translate_element div.goog-te-gadget-simple a {
   @include mixins.interactive-focus;
 
   span[style],
@@ -61,7 +61,7 @@ div#google_translate_element div.goog-te-gadget-simple:hover {
   background-color: var(--pharos-color-interactive-tertiary);
   border-color: var(--pharos-color-interactive-tertiary);
 
-  a.goog-te-menu-value span {
+  a span {
     color: var(--pharos-color-interactive-secondary);
   }
 

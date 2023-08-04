@@ -17,7 +17,8 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'subtle' | 'overlay';
 
-export type PressedState = 'false' | 'true' | 'mixed' | 'undefined';
+// undefined means no state has been expressed at all and won't render; 'undefined' is an explicit state
+export type PressedState = 'false' | 'true' | 'mixed' | 'undefined' | undefined;
 
 const TYPES = ['button', 'submit', 'reset'] as ButtonType[];
 
@@ -143,7 +144,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
    * @attr value
    */
   @property({ type: String, reflect: true })
-  public pressed: PressedState = 'undefined';
+  public pressed: PressedState = undefined;
 
   @query('#button-element')
   private _button!: HTMLButtonElement | HTMLAnchorElement;

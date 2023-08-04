@@ -58,6 +58,12 @@ export class PharosLink extends FocusMixin(AnchorElement) {
 
   /**
    * Indicates if the link should display as a flex container.
+   *
+   * Known bug if using link with a nested header: while in a focus state, a blue outline is not rendered on Chrome and Safari,
+   * but it works as expected on Firefox. See here for more details https://github.com/ithaka/pharos/issues/485
+   *
+   * Temporary workaround: Enable `flex` so that the element layout is rendered and displays the outline.
+   *
    * @attr flex
    */
   @property({ type: Boolean, reflect: true })

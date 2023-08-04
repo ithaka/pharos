@@ -16,8 +16,8 @@ export default {
 export const Base = {
   render: () =>
     html`
-      <pharos-toggle-button-group>
-        <pharos-toggle-button
+      <storybook-pharos-toggle-button-group>
+        <storybook-pharos-toggle-button
           @click="${() => {
             document.querySelector('#list-view').style.display = 'block';
             document.querySelector('#gallery-view').style.display = 'none';
@@ -26,8 +26,8 @@ export const Base = {
           icon-left="view-list"
           id="view-list-button"
         >
-          List </pharos-toggle-button
-        ><pharos-toggle-button
+          List </storybook-pharos-toggle-button
+        ><storybook-pharos-toggle-button
           @click="${() => {
             document.querySelector('#list-view').style.display = 'none';
             document.querySelector('#gallery-view').style.display = 'block';
@@ -36,8 +36,8 @@ export const Base = {
           icon-left="view-gallery"
           id="view-gallery-button"
         >
-          Gallery </pharos-toggle-button
-        ><pharos-toggle-button
+          Gallery </storybook-pharos-toggle-button
+        ><storybook-pharos-toggle-button
           @click="${() => {
             document.querySelector('#list-view').style.display = 'none';
             document.querySelector('#gallery-view').style.display = 'none';
@@ -47,8 +47,8 @@ export const Base = {
           id="view-presentation-button"
         >
           Presentation
-        </pharos-toggle-button>
-      </pharos-toggle-button-group>
+        </storybook-pharos-toggle-button>
+      </storybook-pharos-toggle-button-group>
       <div id="list-view">List view</div>
       <div id="gallery-view" style="display: none">Gallery view</div>
       <div id="presentation-view" style="display: none">Presentation view</div>
@@ -58,15 +58,15 @@ export const Base = {
 export const Events = {
   render: () =>
     html`
-      <pharos-toggle-button-group
+      <storybook-pharos-toggle-button-group
         @pharos-toggle-button-selected="${(e) => action('Selected')(e.target.id)}"
       >
-        <pharos-toggle-button id="list-mode-button" icon-left="view-list">
-          List </pharos-toggle-button
-        ><pharos-toggle-button id="gallery-mode-button" icon-left="view-gallery">
+        <storybook-pharos-toggle-button id="list-mode-button" icon-left="view-list">
+          List </storybook-pharos-toggle-button
+        ><storybook-pharos-toggle-button id="gallery-mode-button" icon-left="view-gallery">
           Gallery
-        </pharos-toggle-button>
-      </pharos-toggle-button-group>
+        </storybook-pharos-toggle-button>
+      </storybook-pharos-toggle-button-group>
     `,
   parameters: { options: { selectedPanel: 'addon-actions' } },
 };
@@ -74,10 +74,19 @@ export const Events = {
 export const IconsOnly = {
   render: () =>
     html`
-      <pharos-toggle-button-group>
-        <pharos-toggle-button icon="view-list" id="view-list-button"></pharos-toggle-button
-        ><pharos-toggle-button icon="view-gallery" id="view-gallery-button"></pharos-toggle-button
-        ><pharos-toggle-button icon="image" id="view-presentation-button"></pharos-toggle-button>
-      </pharos-toggle-button-group>
+      <storybook-pharos-toggle-button-group>
+        <storybook-pharos-toggle-button
+          icon="view-list"
+          id="view-list-button"
+        ></storybook-pharos-toggle-button
+        ><storybook-pharos-toggle-button
+          icon="view-gallery"
+          id="view-gallery-button"
+        ></storybook-pharos-toggle-button
+        ><storybook-pharos-toggle-button
+          icon="image"
+          id="view-presentation-button"
+        ></storybook-pharos-toggle-button>
+      </storybook-pharos-toggle-button-group>
     `,
 };

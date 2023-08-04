@@ -21,7 +21,7 @@ export default {
 export const Base = {
   render: (args) =>
     html`
-      <pharos-combobox
+      <storybook-pharos-combobox
         .value=${ifDefined(args.value)}
         .name=${ifDefined(args.name)}
         ?open=${args.open}
@@ -49,7 +49,7 @@ export const Base = {
         <option value="11">North Carolina</option>
         <option value="12">South Carolina</option>
         <option value="13">Georgia</option>
-      </pharos-combobox>
+      </storybook-pharos-combobox>
     `,
   args: defaultArgs,
 };
@@ -58,36 +58,36 @@ export const States = {
   render: () =>
     html`
       <div style="display: grid; grid-gap: 7rem; grid-template-columns: repeat(2, 300px);">
-        <pharos-combobox name="default">
+        <storybook-pharos-combobox name="default">
           <span slot="label">I am empty</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
-        </pharos-combobox>
-        <pharos-combobox name="disabled" disabled>
+        </storybook-pharos-combobox>
+        <storybook-pharos-combobox name="disabled" disabled>
           <span slot="label">I am disabled</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
-        </pharos-combobox>
-        <pharos-combobox name="placeholder" placeholder="Enter some text">
+        </storybook-pharos-combobox>
+        <storybook-pharos-combobox name="placeholder" placeholder="Enter some text">
           <span slot="label">I have a placeholder</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
-        </pharos-combobox>
-        <pharos-combobox name="provided" value="2">
+        </storybook-pharos-combobox>
+        <storybook-pharos-combobox name="provided" value="2">
           <span slot="label">I have a value provided</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
-        </pharos-combobox>
-        <pharos-combobox name="hidden" hide-label>
+        </storybook-pharos-combobox>
+        <storybook-pharos-combobox name="hidden" hide-label>
           <span slot="label">My label is hidden</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
-        </pharos-combobox>
+        </storybook-pharos-combobox>
       </div>
     `,
 };
@@ -96,7 +96,7 @@ export const Events = {
   render: () =>
     html`
       <div style="display: grid; grid-template-columns: 300px;">
-        <pharos-combobox
+        <storybook-pharos-combobox
           placeholder="Select a state"
           @change="${(e) => action('Change')(e.target.value)}"
           @input="${(e) => action('Input')(e.target['_input'].value)}"
@@ -115,7 +115,7 @@ export const Events = {
           <option value="NC">North Carolina</option>
           <option value="SC">South Carolina</option>
           <option value="GA">Georgia</option>
-        </pharos-combobox>
+        </storybook-pharos-combobox>
       </div>
     `,
   parameters: {
@@ -126,7 +126,7 @@ export const Events = {
 export const SearchMode = {
   render: () =>
     html`
-      <pharos-combobox
+      <storybook-pharos-combobox
         placeholder="Search..."
         search-mode
         style="display: grid; grid-template-columns: 300px;"
@@ -135,7 +135,7 @@ export const SearchMode = {
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
-      </pharos-combobox>
+      </storybook-pharos-combobox>
     `,
 };
 
@@ -143,7 +143,7 @@ export const Validity = {
   render: (args) =>
     html`
       <div style="display: grid; grid-template-columns: 300px;">
-        <pharos-combobox
+        <storybook-pharos-combobox
           name="my-combobox"
           placeholder="Enter some text"
           @change="${(e) => action('Change')(e.target.value)}"
@@ -157,7 +157,7 @@ export const Validity = {
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
-        </pharos-combobox>
+        </storybook-pharos-combobox>
       </div>
     `,
   args: {
@@ -173,7 +173,7 @@ export const FormData = {
     html`
       <div style="display: grid; grid-template-columns: 300px;">
         <form name="my-form" action="https://httpbin.org/post" method="POST">
-          <pharos-combobox
+          <storybook-pharos-combobox
             name="my-combobox"
             style="margin-bottom: 0.5rem;"
             placeholder="Enter some text"
@@ -185,8 +185,8 @@ export const FormData = {
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
             <option value="3">Option 3</option>
-          </pharos-combobox>
-          <pharos-button
+          </storybook-pharos-combobox>
+          <storybook-pharos-button
             type="submit"
             value="Submit"
             @click="${(e) => {
@@ -203,7 +203,7 @@ export const FormData = {
             }}"
           >
             Submit
-          </pharos-button>
+          </storybook-pharos-button>
         </form>
       </div>
     `,

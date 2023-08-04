@@ -15,7 +15,7 @@ export default {
 export const Base = {
   render: (args) =>
     html`
-      <pharos-radio-button
+      <storybook-pharos-radio-button
         ?checked=${args.checked}
         ?disabled=${args.disabled}
         ?hide-label=${args.hideLabel}
@@ -24,7 +24,7 @@ export const Base = {
         .message=${args.message}
       >
         <span slot="label">${args.label}</span>
-      </pharos-radio-button>
+      </storybook-pharos-radio-button>
     `,
   args: defaultArgs,
 };
@@ -33,36 +33,36 @@ export const States = {
   render: () =>
     html`
       <div>
-        <pharos-radio-button name="base"><span slot="label">Default Radio Button</span></pharos-radio-button>
+        <storybook-pharos-radio-button name="base"><span slot="label">Default Radio Button</span></storybook-pharos-radio-button>
       </div>
       <div>
-        <pharos-radio-button name="disabled" disabled><span slot="label">Disabled input</span></pharos-radio-button>
+        <storybook-pharos-radio-button name="disabled" disabled><span slot="label">Disabled input</span></storybook-pharos-radio-button>
       </div>
       <div>
-        <pharos-radio-button name="checked" checked><span slot="label">Checked button</span></pharos-radio-button>
+        <storybook-pharos-radio-button name="checked" checked><span slot="label">Checked button</span></storybook-pharos-radio-button>
       </div>
       <div>
-        <pharos-radio-button name="checked-disabled" checked disabled>
+        <storybook-pharos-radio-button name="checked-disabled" checked disabled>
           <span slot="label">Checked & Disabled</span>
-        </pharos-radio-button>
+        </storybook-pharos-radio-button>
       </div>
       <div>
-        <pharos-radio-button name="multi" checked>
+        <storybook-pharos-radio-button name="multi" checked>
           <div slot="label">
             <div>Checked button</div>
             <div>Multiple lines</div>
           </div>
-        </pharos-radio-button>
+        </storybook-pharos-radio-button>
       </div>
       <div>
-        <pharos-radio-button name="invalidated" invalidated><span slot="label">Error button</span></pharos-checkbox>
+        <storybook-pharos-radio-button name="invalidated" invalidated><span slot="label">Error button</span></storybook-pharos-checkbox>
       </div>
       <div>
-        <pharos-radio-button name="with-link">
+        <storybook-pharos-radio-button name="with-link">
           <span slot="label">
-            Label with a <pharos-link href="#">link</pharos-link>
+            Label with a <storybook-pharos-link href="#">link</storybook-pharos-link>
           </span>
-        </pharos-radio-button>
+        </storybook-pharos-radio-button>
       </div>
     `,
 };
@@ -70,14 +70,14 @@ export const States = {
 export const Events = {
   render: () =>
     html`
-      <pharos-radio-button
+      <storybook-pharos-radio-button
         value="My value"
         @change="${(e) => action('Change')(e.target.checked)}"
         @input="${(e) => action('Input')(e.target.value)}"
         @click="${(e) => action('Click')(e.target.checked)}"
       >
         <span slot="label">I fire events</span>
-      </pharos-radio-button>
+      </storybook-pharos-radio-button>
     `,
   parameters: { options: { selectedPanel: 'addon-actions' } },
 };

@@ -1,32 +1,87 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
+import { state } from 'lit/decorators.js';
+import { repeat } from 'lit/directives/repeat.js';
 import { toasterStyles } from './pharos-toaster.css';
 
-import type { PharosToast } from './pharos-toast';
+import type { ToastStatus } from './pharos-toast';
+import { PharosToast } from './pharos-toast';
 import { DEFAULT_STATUS, DEFAULT_INDEFINITE } from './pharos-toast';
 
 import { v4 as uuidv4 } from 'uuid';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+
+const DEFAULT_RETURN_ELEMENTS: Array<HTMLElement> = [];
 
 /**
  * pharos-toast-open event.
  *
- * @tag pharos-toaster
- *
  * @event pharos-toast-open
- * @type {object}
- * @property {ToastStatus} status - The status for the toast.
- * @property {string} content - The content to slot into the toast.
+ * @type {ToastCreateDetail}
  */
+
+/**
+ * pharos-toast-update event.
+ *
+ * @event pharos-toast-update
+ * @type {ToastUpdateDetail}
+ */
+
+/**
+ * pharos-toast-close event.
+ *
+ * @event pharos-toast-close
+ * @type {ToastCloseDetail}
+ */
+
+type ToastID = string;
+type ToastContent = string;
+type ToastIndefinite = boolean;
+
+interface ToastDetail {
+  id: ToastID;
+  content: ToastContent;
+  status: ToastStatus;
+  indefinite: ToastIndefinite;
+}
+
+interface ToastCreateDetail {
+  id?: ToastID;
+  content: ToastContent;
+  status?: ToastStatus;
+  indefinite?: ToastIndefinite;
+  returnElements?: Array<HTMLElement>;
+}
+
+interface ToastUpdateDetail {
+  id: ToastID;
+  content?: ToastContent;
+  status?: ToastStatus;
+}
+
+interface ToastCloseDetail {
+  id: ToastID;
+}
 
 /**
  * Pharos toaster component.
  *
- * @slot - Contains the toasts (the default slot).
+ * @tag pharos-toaster
  *
- * @listens pharos-toast-open
+ * @listens pharos-toast-open - Use this to create new toasts
+ * @listens pharos-toast-update - Use this to update an existing toast
+ * @listens pharos-toast-close - Use this to close an existing toast
  */
-export class PharosToaster extends PharosElement {
+export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
+  static elementDefinitions = {
+    'pharos-toast': PharosToast,
+  };
+
+  @state()
+  private _toasts: ToastDetail[] = [];
+  private returnElements = DEFAULT_RETURN_ELEMENTS;
+
   constructor() {
     super();
     this._openToast = this._openToast.bind(this);
@@ -52,45 +107,89 @@ export class PharosToaster extends PharosElement {
     super.disconnectedCallback && super.disconnectedCallback();
   }
 
-  private _getToastID(id: string | null) {
+  private _getToastID(id: ToastID | null | undefined) {
     return id || `toast_${uuidv4()}`;
   }
 
   private async _openToast(event: Event): Promise<void> {
-    const toastTag = this.localName.split('pharos-toaster')[0] + 'pharos-toast';
-    const toast = document.createElement(toastTag) as PharosToast;
-    const { content, status, id, indefinite } = (<CustomEvent>event).detail;
+    const { content, status, id, indefinite, returnElements } = <ToastCreateDetail>(
+      (<CustomEvent>event).detail
+    );
+    const toastId = this._getToastID(id);
 
-    toast.innerHTML = content;
-    toast.status = status || DEFAULT_STATUS;
-    toast.id = this._getToastID(id);
-    toast.indefinite = indefinite || DEFAULT_INDEFINITE;
-    this.insertBefore(toast, this.childNodes[0] || null);
+    this._toasts = [
+      {
+        content,
+        status: status || DEFAULT_STATUS,
+        id: toastId,
+        indefinite: indefinite || DEFAULT_INDEFINITE,
+      },
+      ...this._toasts,
+    ];
+    this.returnElements = returnElements ?? DEFAULT_RETURN_ELEMENTS;
+
     await this.updateComplete;
-    toast.focus();
+    (this.renderRoot.querySelector(`#${toastId}`) as HTMLElement)?.focus();
   }
 
   private _updateToast(event: CustomEvent): void {
-    const { content, status, id } = (<CustomEvent>event).detail;
-    const toast = document.getElementById(this._getToastID(id));
-    if (toast) {
-      toast.innerHTML = content;
-      toast.status = status;
+    const { content, status, id } = <ToastUpdateDetail>(<CustomEvent>event).detail;
+
+    this._toasts = this._toasts.map((toast: ToastDetail): ToastDetail => {
+      if (toast.id === id) {
+        return {
+          ...toast,
+          content: content || toast.content,
+          status: status || toast.status,
+        };
+      } else {
+        return toast;
+      }
+    });
+  }
+
+  private _focusOnReturnElements(returnElements: Array<HTMLElement>): void {
+    for (const element of returnElements) {
+      if (element?.isConnected) {
+        element.focus();
+        return;
+      }
     }
   }
 
   private _closeToast(event: CustomEvent): void {
-    const { id } = (<CustomEvent>event).detail || {};
+    const { id } = <ToastCloseDetail>(<CustomEvent>event).detail || {};
     const toast = document.getElementById(this._getToastID(id));
     if (toast) {
       this.removeChild(toast);
     }
+    this._focusOnReturnElements(this.returnElements);
+  }
+
+  private _renderToast(toast: ToastDetail): TemplateResult {
+    // This is used to properly render any scoped Pharos components present in the supplied content.
+    // unsafeHTML will render content in the scope of the current component,
+    // so any components not explicitly registered in elementDefinitions above will not render.
+    const toastContentElement = document.createElement('div');
+    toastContentElement.innerHTML = toast.content;
+
+    return html`<pharos-toast
+      id="${toast.id}"
+      status="${toast.status}"
+      ?indefinite="${toast.indefinite}"
+    >
+      ${toastContentElement}
+    </pharos-toast>`;
   }
 
   protected override render(): TemplateResult {
     return html`
       <div class="toaster__container">
-        <slot></slot>
+        ${repeat(
+          this._toasts,
+          (toast) => toast.id,
+          (toast) => this._renderToast(toast)
+        )}
       </div>
     `;
   }
