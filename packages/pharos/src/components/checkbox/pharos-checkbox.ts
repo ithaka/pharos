@@ -47,10 +47,10 @@ export class PharosCheckbox extends FormMixin(FormElement) {
 
   /**
    * Indicates the checkbox is displayed on a dark background.
-   * @attr on-background
+   * @attr is-on-background
    */
   @property({ type: Boolean, reflect: true })
-  public onBackground = false;
+  public isOnBackground = false;
 
   @query('#checkbox-element')
   private _checkbox!: HTMLInputElement;

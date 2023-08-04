@@ -19,7 +19,7 @@ describe('pharos-sidenav', () => {
             name="my-input-group"
             placeholder="Search"
             hide-label
-            on-background
+            is-on-background
           >
             <span slot="label">Search</span>
             <test-pharos-button
@@ -27,7 +27,7 @@ describe('pharos-sidenav', () => {
               icon="search"
               variant="subtle"
               label="search"
-              on-background
+              is-on-background
             ></test-pharos-button>
           </test-pharos-input-group>
           <test-pharos-sidenav-section show-divider>
