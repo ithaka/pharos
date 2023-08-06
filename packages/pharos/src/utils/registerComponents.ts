@@ -5,7 +5,7 @@ import PharosComponentMixin from './mixins/pharos-component';
  * @param prefix The prefix to use in the tag name.
  * @param classes The Pharos classes to register as custom elements.
  */
-const registerComponents = (prefix: string, classes: typeof LitElement[]): void => {
+const registerComponents = (prefix: string, classes: (typeof LitElement)[]): void => {
   classes.forEach((clazz) => {
     const kebab = clazz.name
       .replace(/([a-z])([A-Z])/g, '$1-$2')
