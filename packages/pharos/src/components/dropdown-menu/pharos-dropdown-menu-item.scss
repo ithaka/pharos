@@ -103,8 +103,12 @@
   );
 }
 
-:host(:not([on-background])) .dropdown-menu-item:not(.dropdown-menu-item--last) {
-  border-bottom: 1px solid var(--pharos-dropdown-menu-item-color-border-base);
+:host([on-background]) .dropdown-menu-item__button--first {
+  border-radius: 2px 2px 0 0;
+}
+
+:host([on-background]) .dropdown-menu-item__button--last {
+  border-radius: 0 0 2px 2px;
 }
 
 :host(:not([disabled], [on-background]))

@@ -79,6 +79,9 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
   public onBackground = false;
 
   @state()
+  private _first = false;
+
+  @state()
   private _last = false;
 
   @state()
@@ -185,7 +188,14 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
             >
               ${this.itemContent}
             </a> `
-          : html`<button ?disabled=${this.disabled} class="dropdown-menu-item__button">
+          : html`<button
+              ?disabled=${this.disabled}
+              class="${classMap({
+                [`dropdown-menu-item__button`]: true,
+                [`dropdown-menu-item__button--first`]: this._first,
+                [`dropdown-menu-item__button--last`]: this._last,
+              })}"
+            >
               ${this.itemContent}
             </button>`}
       </li>
