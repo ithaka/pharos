@@ -195,7 +195,7 @@ export const OnBackground = {
           data-dropdown-menu-id="my-menu-on-background"
           icon-right="chevron-down"
         >
-          A menu on brackground
+          A menu on background
         </storybook-pharos-button>
         <storybook-pharos-dropdown-menu id="my-menu-on-background" show-selected on-background>
           <storybook-pharos-dropdown-menu-item selected>
