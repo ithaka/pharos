@@ -94,6 +94,15 @@
   );
 }
 
+:host([on-background][disabled]) .dropdown-menu-item__link,
+:host([on-background][disabled]) .dropdown-menu-item__button {
+  @include mixins.button-color(
+    $color: var(--pharos-color-ui-30),
+    $background-color: var(--pharos-color-text-disabled),
+    $border-color: var(--pharos-color-text-disabled)
+  );
+}
+
 :host([on-background]) .dropdown-menu-item__link:hover,
 :host([on-background]) .dropdown-menu-item__button:hover {
   @include mixins.button-color(
