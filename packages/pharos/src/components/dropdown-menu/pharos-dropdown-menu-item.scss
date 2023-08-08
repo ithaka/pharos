@@ -104,11 +104,11 @@
 }
 
 :host([on-background]) .dropdown-menu-item__button--first {
-  border-radius: 2px 2px 0 0;
+  border-radius: var(--pharos-radius-base-standard) var(--pharos-radius-base-standard) 0 0;
 }
 
 :host([on-background]) .dropdown-menu-item__button--last {
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 var(--pharos-radius-base-standard) var(--pharos-radius-base-standard);
 }
 
 :host(:not([disabled], [on-background]))
