@@ -193,7 +193,7 @@ export const OnBackground = {
         data-dropdown-menu-id="my-menu-on-background"
         iconRight="chevron-down"
       >
-        A menu on brackground
+        A menu on background
       </PharosButton>
       <PharosDropdownMenu id="my-menu-on-background" show-selected on-background>
         <PharosDropdownMenuItem selected>Item One</PharosDropdownMenuItem>
