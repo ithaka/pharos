@@ -196,8 +196,9 @@ export const OnBackground = {
         A menu on brackground
       </PharosButton>
       <PharosDropdownMenu id="my-menu-on-background" show-selected on-background>
-        <PharosDropdownMenuItem>Item One</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem selected>Item One</PharosDropdownMenuItem>
         <PharosDropdownMenuItem>Item Two</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem disabled>Item Three</PharosDropdownMenuItem>
       </PharosDropdownMenu>
     </div>
   ),

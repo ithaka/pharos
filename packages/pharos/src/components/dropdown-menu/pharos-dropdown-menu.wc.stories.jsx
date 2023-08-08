@@ -201,8 +201,9 @@ export const OnBackground = {
           <storybook-pharos-dropdown-menu-item selected>
             Item One
           </storybook-pharos-dropdown-menu-item>
+          <storybook-pharos-dropdown-menu-item> Item Two </storybook-pharos-dropdown-menu-item>
           <storybook-pharos-dropdown-menu-item disabled>
-            Item Two
+            Item Three
           </storybook-pharos-dropdown-menu-item>
         </storybook-pharos-dropdown-menu>
       </div>
