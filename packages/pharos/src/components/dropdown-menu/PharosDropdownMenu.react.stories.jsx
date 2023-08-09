@@ -178,6 +178,32 @@ export const FullWidth = {
   ),
 };
 
+export const OnBackground = {
+  render: () => (
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '8rem',
+        marginTop: '5rem',
+        justifyContent: 'space-evenly',
+      }}
+    >
+      <PharosButton
+        id="my-button-on-background"
+        data-dropdown-menu-id="my-menu-on-background"
+        iconRight="chevron-down"
+      >
+        A menu on background
+      </PharosButton>
+      <PharosDropdownMenu id="my-menu-on-background" show-selected on-background>
+        <PharosDropdownMenuItem selected>Item One</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem>Item Two</PharosDropdownMenuItem>
+        <PharosDropdownMenuItem disabled>Item Three</PharosDropdownMenuItem>
+      </PharosDropdownMenu>
+    </div>
+  ),
+};
+
 export const Links = {
   render: () => (
     <div
