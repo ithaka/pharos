@@ -1,5 +1,17 @@
 # @ithaka/pharos
 
+## 12.22.0
+
+### Minor Changes
+
+- [#576](https://github.com/ithaka/pharos/pull/576) [`c32ba86`](https://github.com/ithaka/pharos/commit/c32ba86bc98a883e1f025be029cd7592649300ad) Thanks [@jialin-he](https://github.com/jialin-he)! - add on-background variant to menu
+
+### Patch Changes
+
+- [#577](https://github.com/ithaka/pharos/pull/577) [`c1873e3`](https://github.com/ithaka/pharos/commit/c1873e30b373178a8b0504f85018f51d34ef0ed5) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix PharosIcon stories to handle description arguments properly
+
+- [#572](https://github.com/ithaka/pharos/pull/572) [`9f10f87`](https://github.com/ithaka/pharos/commit/9f10f877b953e3cc241cb331ed5562986f3c3bb6) Thanks [@brentswisher](https://github.com/brentswisher)! - Update toaster to not error on toast close if returnElements wasn't provided
+
 ## 12.21.0
 
 ### Minor Changes
