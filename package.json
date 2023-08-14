@@ -27,14 +27,14 @@
     "storybook:wc": "yarn storybook:wc:start",
     "storybook:wc:start": "storybook dev -c .storybook/wc -p 9000",
     "prestorybook:wc:dev": "yarn storybook:setup",
-    "storybook:wc:dev": "concurrently \"yarn:storybook:wc:start\" \"yarn:watch:tsc\" \"yarn:watch:styles\" --raw --kill-others",
+    "storybook:wc:dev": "concurrently \"yarn:storybook:wc:start\" \"yarn:watch:styles\" --raw --kill-others",
     "storybook:wc:build": "storybook build -c .storybook/wc -o .storybook-static/wc",
 
     "prestorybook:react": "yarn storybook:setup",
     "storybook:react": "yarn storybook:react:start",
     "storybook:react:start": "storybook dev -c .storybook/react -p 9001",
     "prestorybook:react:dev": "yarn storybook:setup",
-    "storybook:react:dev": "concurrently \"yarn:storybook:react:start\" \"yarn:watch:tsc\" \"yarn:watch:styles\" --raw --kill-others",
+    "storybook:react:dev": "concurrently \"yarn:storybook:react:start\" \"yarn:watch:styles\" --raw --kill-others",
     "storybook:react:build": "storybook build -c .storybook/react -o .storybook-static/react",
 
     "storybook:main:dev": "storybook dev -c .storybook/main -p 9002",
