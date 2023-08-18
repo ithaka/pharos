@@ -1,7 +1,6 @@
 import { html } from 'lit';
 
 import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
 
 export default {
   title: 'Components/Popover',
@@ -17,7 +16,7 @@ export default {
 export const Base = {
   render: () =>
     html`
-      <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
+      <div>
         <storybook-pharos-button
           id="my-button"
           data-popover-id="my-popover"
@@ -26,9 +25,109 @@ export const Base = {
           Click Me
         </storybook-pharos-button>
         <storybook-pharos-popover id="my-popover">
-          Some very simple contents2
+          <div style="padding: 1rem">Some very simple contents</div>
         </storybook-pharos-popover>
       </div>
     `,
-  args: defaultArgs,
+};
+
+export const Events = {
+  render: () =>
+    html`
+      <div>
+        <storybook-pharos-button
+          id="my-button"
+          data-popover-id="my-popover"
+          icon-right="chevron-down"
+        >
+          Click Me
+        </storybook-pharos-button>
+        <storybook-pharos-popover id="my-popover">
+          <div style="padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+            <span>Some really cool stuff</span>
+            <storybook-pharos-button
+              @click="${() => {
+                const menu = document.querySelector('storybook-pharos-popover');
+                menu.open = false;
+              }}"
+            >
+              Close
+            </storybook-pharos-button>
+          </div>
+        </storybook-pharos-popover>
+      </div>
+    `,
+};
+
+export const DarkBackground = {
+  render: () =>
+    html`
+      <div>
+        <storybook-pharos-button
+          id="my-button"
+          data-popover-id="my-popover"
+          icon-right="chevron-down"
+        >
+          Click Me
+        </storybook-pharos-button>
+        <storybook-pharos-popover id="my-popover">
+          <div
+            style="background: #444444; color: white; padding: 1rem;display: flex; flex-direction: column; gap: 1rem;"
+          >
+            <span>Some really cool stuff</span>
+            <storybook-pharos-button
+              @click="${() => {
+                const menu = document.querySelector('storybook-pharos-popover');
+                menu.open = false;
+              }}"
+            >
+              Close
+            </storybook-pharos-button>
+          </div>
+        </storybook-pharos-popover>
+      </div>
+    `,
+};
+
+export const LargeContents = {
+  render: () =>
+    html`
+      <div>
+        <storybook-pharos-button
+          id="my-button"
+          data-popover-id="my-popover"
+          icon-right="chevron-down"
+        >
+          Click Me
+        </storybook-pharos-button>
+        <storybook-pharos-popover id="my-popover">
+          <div style="padding: 1rem;display: flex; flex-direction: column; gap: 1rem;">
+            <div style="height: 200px; overflow: auto; border: 1px solid black; padding: 1rem">
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+              <div>Some really cool stuff</div>
+            </div>
+            <storybook-pharos-button
+              @click="${() => {
+                const menu = document.querySelector('storybook-pharos-popover');
+                menu.open = false;
+              }}"
+            >
+              Close
+            </storybook-pharos-button>
+          </div>
+        </storybook-pharos-popover>
+      </div>
+    `,
 };

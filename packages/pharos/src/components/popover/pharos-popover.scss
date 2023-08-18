@@ -18,7 +18,7 @@
   list-style-type: none;
   padding-left: 0;
   padding-inline-start: 0;
-  border: 1px solid var(--pharos-dropdown-menu-color-border-base);
+  box-shadow: 0 1px 2px rgb(18 18 18 / 0.3), 0 2px 6px 2px rgb(18 18 18 / 0.15);
   border-radius: 2px;
   visibility: hidden;
   pointer-events: none;
