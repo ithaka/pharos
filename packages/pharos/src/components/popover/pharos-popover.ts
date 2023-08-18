@@ -5,10 +5,8 @@ import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import FocusMixin from '../../utils/mixins/focus';
 import { OverlayElement } from '../base/overlay-element';
 import { FocusTrap } from '@ithaka/focus-trap';
-import { property, query, state } from 'lit/decorators.js';
-import { styleMap } from 'lit/directives/style-map.js';
+import { query } from 'lit/decorators.js';
 import debounce from '../../utils/debounce';
-import observeResize from '../../utils/observeResize';
 import { autoUpdate, computePosition, flip, offset } from '../base/overlay-element';
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
 export type { Placement, PositioningStrategy };
@@ -28,48 +26,14 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
     'focus-trap': FocusTrap,
   };
 
-  /**
-   * TODO: Probably delete. Make popover the width of the content
-   *
-   * Indicates if the popover width should equal its trigger's width.
-   * @attr full-width
-   */
-  @property({ type: Boolean, reflect: true, attribute: 'full-width' })
-  public fullWidth = false;
-
-  /**
-   * Indicates the popover is displayed on a dark background.
-   * @attr on-background
-   */
-  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
-  public onBackground = false;
-
   @query('.popover')
   private _popover!: HTMLUListElement;
-
-  @state()
-  private _targetWidth = 0;
 
   private _triggers!: HTMLElement[];
   private _currentTrigger: Element | null = null;
   private _hasHover = false;
   private _enterByKey = false;
   private _cleanup?: { (): void } = undefined;
-
-  private _observeResizeTrigger: Handle | null = null;
-
-  private _resizeObserver: ResizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-    const { offsetWidth } = entries[0].target as HTMLElement;
-    const borderLeft = parseInt(
-      window.getComputedStyle(this._popover, null).getPropertyValue('border-left-width'),
-      10
-    );
-    const borderRight = parseInt(
-      window.getComputedStyle(this._popover, null).getPropertyValue('border-right-width'),
-      10
-    );
-    this._targetWidth = offsetWidth - (borderLeft + borderRight);
-  });
 
   constructor() {
     super();
@@ -146,7 +110,6 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
       }
 
       this._setHoverListeners();
-      this._setupResizeObserver();
       this._setTriggerAttributes();
       this._emitVisibilityChange();
     }
@@ -348,24 +311,6 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
     event.stopPropagation();
   }
 
-  private _setupResizeObserver(): void {
-    if (this.open && this.fullWidth && this._currentTrigger) {
-      this._releaseObserver();
-      this._observeResizeTrigger = observeResize(
-        this._resizeObserver,
-        this._currentTrigger as Element
-      );
-    } else {
-      this._releaseObserver();
-    }
-  }
-
-  private _releaseObserver(): void {
-    if (this._observeResizeTrigger) {
-      this._observeResizeTrigger = this._observeResizeTrigger.release();
-    }
-  }
-
   private _setHoverListeners(): void {
     if (this._currentTrigger?.hasAttribute('data-popover-hover') && this.open) {
       this.addEventListener('mouseenter', this._handleHover);
@@ -398,15 +343,7 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   private _renderList(): TemplateResult {
-    return html`
-      <div
-        class="popover"
-        style=${styleMap(this.fullWidth ? { width: `${this._targetWidth}px` } : {})}
-        role="dialog"
-      >
-        ${this._renderSlot()}
-      </div>
-    `;
+    return html` <div class="popover" role="dialog">${this._renderSlot()}</div> `;
   }
 
   protected override render(): TemplateResult {

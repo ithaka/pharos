@@ -28,10 +28,6 @@
     opacity var(--pharos-transition-duration-short) linear;
 }
 
-:host([on-background]) .popover {
-  border: none;
-}
-
 :host([open]) .popover {
   visibility: visible;
   opacity: 1;
