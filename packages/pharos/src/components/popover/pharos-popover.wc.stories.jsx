@@ -1,6 +1,7 @@
 import { html } from 'lit';
 
 import { configureDocsPage } from '@config/docsPageConfig';
+import { defaultArgs } from './storyArgs';
 
 export default {
   title: 'Components/Popover',
@@ -14,6 +15,20 @@ export default {
 };
 
 export const Base = {
-  render: (args) => html`<storybook-pharos-popover></storybook-pharos-popover>`,
-  args: {},
+  render: () =>
+    html`
+      <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
+        <storybook-pharos-button
+          id="my-button"
+          data-dropdown-menu-id="my-popover"
+          icon-right="chevron-down"
+        >
+          Click Me
+        </storybook-pharos-button>
+        <storybook-pharos-popover id="my-popover">
+          Some very simple contents2
+        </storybook-pharos-popover>
+      </div>
+    `,
+  args: defaultArgs,
 };

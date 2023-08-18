@@ -300,6 +300,7 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   private _handleClick(event: MouseEvent): void {
+    console.log('Clicking');
     const targetClicked = this._triggers.find(
       (trigger) => trigger === (event.target as Element)?.closest(trigger.tagName)
     );
