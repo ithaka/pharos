@@ -1,0 +1,29 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  position: fixed;
+  z-index: 140;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
+
+.popover {
+  @include mixins.interactive-focus;
+
+  background-color: var(--pharos-color-ui-10);
+  position: relative;
+  margin: 0;
+  list-style-type: none;
+  padding-left: 0;
+  padding-inline-start: 0;
+  border: 1px solid var(--pharos-dropdown-menu-color-border-base);
+  border-radius: 2px;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  transition: visibility 0s var(--pharos-transition-duration-short),
+    opacity var(--pharos-transition-duration-short) linear;
+}
