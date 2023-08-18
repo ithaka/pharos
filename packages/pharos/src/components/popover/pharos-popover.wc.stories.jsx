@@ -20,7 +20,7 @@ export const Base = {
       <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
         <storybook-pharos-button
           id="my-button"
-          data-dropdown-menu-id="my-popover"
+          data-popover-id="my-popover"
           icon-right="chevron-down"
         >
           Click Me

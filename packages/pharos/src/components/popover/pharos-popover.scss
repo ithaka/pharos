@@ -27,3 +27,18 @@
   transition: visibility 0s var(--pharos-transition-duration-short),
     opacity var(--pharos-transition-duration-short) linear;
 }
+
+:host([on-background]) .popover {
+  border: none;
+}
+
+:host([open]) .popover {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0ms;
+  pointer-events: auto;
+}
+
+:host(:not([full-width])) .popover {
+  min-width: var(--pharos-dropdown-menu-size-width-min);
+}
