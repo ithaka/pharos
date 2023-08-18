@@ -220,7 +220,7 @@ describe('pharos-popover', () => {
     expect(component.open).to.be.true;
   });
 
-  it('remains open when an another non-menu-item element inside is clicked after the dropdown opens', async () => {
+  it('remains open when an element inside is clicked after the popover opens', async () => {
     const trigger = document.createElement('button');
     trigger.setAttribute('id', 'trigger');
     trigger.setAttribute('data-popover-id', 'my-popover');
@@ -283,7 +283,7 @@ describe('pharos-popover', () => {
     expect(component.open).to.be.false;
   });
 
-  it('closes when the escape key is pressed in the menu', async () => {
+  it('closes when the escape key is pressed in the popover', async () => {
     component.open = true;
     await component.updateComplete;
 
@@ -293,7 +293,7 @@ describe('pharos-popover', () => {
     expect(component.open).to.be.false;
   });
 
-  it('closes when the escape key for IE is pressed in the menu', async () => {
+  it('closes when the escape key for IE is pressed in the popover', async () => {
     component.open = true;
     await component.updateComplete;
 
@@ -303,7 +303,7 @@ describe('pharos-popover', () => {
     expect(component.open).to.be.false;
   });
 
-  it('closes when the element with matching attribute data-popover-id is clicked after the dropdown opens', async () => {
+  it('closes when the element with matching attribute data-popover-id is clicked after the popover opens', async () => {
     const trigger = document.createElement('button');
     trigger.setAttribute('id', 'trigger');
     trigger.setAttribute('data-popover-id', 'my-popover');
@@ -318,7 +318,7 @@ describe('pharos-popover', () => {
     expect(component.open).to.be.false;
   });
 
-  it('closes when an another outside element is clicked after the dropdown opens', async () => {
+  it('closes when an another outside element is clicked after the popover opens', async () => {
     const trigger = document.createElement('button');
     trigger.setAttribute('id', 'trigger');
     trigger.setAttribute('data-popover-id', 'my-popover');
@@ -333,7 +333,7 @@ describe('pharos-popover', () => {
     expect(component.open).to.be.false;
   });
 
-  it('closes when hover is moved away from the menu', async () => {
+  it('closes when hover is moved away from the popover', async () => {
     const trigger = document.createElement('button');
     trigger.setAttribute('id', 'trigger');
     trigger.setAttribute('data-popover-id', 'my-popover');
