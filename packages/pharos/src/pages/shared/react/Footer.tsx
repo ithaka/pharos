@@ -1,13 +1,11 @@
 import type { FC } from 'react';
 
-import initTranslateWidget from '../../search/initTranslateWidget';
 import { PharosFooter } from '../../../react-components/footer/pharos-footer';
 import { PharosLink } from '../../../react-components/link/pharos-link';
 import { PharosIcon } from '../../../react-components/icon/pharos-icon';
 import { PharosButton } from '../../../react-components/button/pharos-button';
 
 export const Footer: FC = () => {
-  initTranslateWidget();
   return (
     <PharosFooter>
       <ul slot="links-group">
@@ -359,7 +357,6 @@ export const Footer: FC = () => {
           </PharosLink>
         </li>
       </ul>
-      <div slot="google-widget" id="google_translate_element" aria-hidden="true"></div>
     </PharosFooter>
   );
 };

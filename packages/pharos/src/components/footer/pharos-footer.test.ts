@@ -1,4 +1,4 @@
-import { fixture, expect, nextFrame } from '@open-wc/testing';
+import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 
 import type { PharosFooter } from './pharos-footer';
@@ -279,32 +279,11 @@ describe('pharos-footer', () => {
             >
           </li>
         </ul>
-        <div slot="google-widget" id="google_translate_element" aria-hidden="true"></div>
       </test-pharos-footer>
     `);
   });
 
   it('is accessible', async () => {
     await expect(component).to.be.accessible();
-  });
-
-  it('adds Pharos icons to the Google translate widget when rendered', async () => {
-    const widget = component['_widgetNodes'][0] as HTMLDivElement;
-    const translateElement = document.createElement('div');
-    const translateButton = document.createElement('div');
-    const googleIcon = document.createElement('img');
-
-    translateButton.classList.add('goog-te-gadget-simple');
-    googleIcon.classList.add('goog-te-gadget-icon');
-
-    translateButton.appendChild(googleIcon);
-    translateElement.appendChild(translateButton);
-    widget.appendChild(translateElement);
-
-    await component.updateComplete;
-    await nextFrame();
-
-    expect(translateButton.querySelector('test-pharos-icon[name="google"]')).not.to.be.null;
-    expect(translateButton.querySelector('test-pharos-icon[name="chevron-down"]')).not.to.be.null;
   });
 });
