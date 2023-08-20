@@ -1,10 +1,7 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
-import initTranslateWidget from '../../search/initTranslateWidget';
-
 export const Footer = (): TemplateResult => {
-  initTranslateWidget();
   return html`
     <storybook-pharos-footer>
       <ul slot="links-group">
@@ -349,7 +346,6 @@ export const Footer = (): TemplateResult => {
           >
         </li>
       </ul>
-      <div slot="google-widget" id="google_translate_element" aria-hidden="true"></div>
     </storybook-pharos-footer>
   `;
 };
