@@ -4762,7 +4762,7 @@
 
 "@radix-ui/react-roving-focus@1.0.4":
   version "1.0.4"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@radix-ui/react-roving-focus/-/react-roving-focus-1.0.4.tgz#e90c4a6a5f6ac09d3b8c1f5b5e81aab2f0db1974"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-roving-focus/-/react-roving-focus-1.0.4.tgz#e90c4a6a5f6ac09d3b8c1f5b5e81aab2f0db1974"
   integrity sha512-2mUg5Mgcu001VkGy+FfzZyzbmuUWzgWkj3rvv4yu+mLw03+mTzbxZHvfcGyFp2b8EkQeMkpRQ5FiA2Vr2O6TeQ==
   dependencies:
     "@babel/runtime" "^7.13.10"
@@ -4806,7 +4806,7 @@
 
 "@radix-ui/react-separator@1.0.3":
   version "1.0.3"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@radix-ui/react-separator/-/react-separator-1.0.3.tgz#be5a931a543d5726336b112f465f58585c04c8aa"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-separator/-/react-separator-1.0.3.tgz#be5a931a543d5726336b112f465f58585c04c8aa"
   integrity sha512-itYmTy/kokS21aiV5+Z56MZB54KrhPgn6eHDKkFeOLR34HMN2s8PaN47qZZAGnvupcjxHaFZnW4pQEh0BvvVuw==
   dependencies:
     "@babel/runtime" "^7.13.10"
@@ -4822,7 +4822,7 @@
 
 "@radix-ui/react-toggle-group@1.0.4":
   version "1.0.4"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@radix-ui/react-toggle-group/-/react-toggle-group-1.0.4.tgz#f5b5c8c477831b013bec3580c55e20a68179d6ec"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-toggle-group/-/react-toggle-group-1.0.4.tgz#f5b5c8c477831b013bec3580c55e20a68179d6ec"
   integrity sha512-Uaj/M/cMyiyT9Bx6fOZO0SAG4Cls0GptBWiBmBxofmDbNVnYYoyRWj/2M/6VCi/7qcXFWnHhRUfdfZFvvkuu8A==
   dependencies:
     "@babel/runtime" "^7.13.10"
@@ -4836,7 +4836,7 @@
 
 "@radix-ui/react-toggle@1.0.3":
   version "1.0.3"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@radix-ui/react-toggle/-/react-toggle-1.0.3.tgz#aecb2945630d1dc5c512997556c57aba894e539e"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-toggle/-/react-toggle-1.0.3.tgz#aecb2945630d1dc5c512997556c57aba894e539e"
   integrity sha512-Pkqg3+Bc98ftZGsl60CLANXQBBQ4W3mTFS9EJvNxKMZ7magklKV69/id1mlAlOFDDfHvlCms0fx8fA4CMKDJHg==
   dependencies:
     "@babel/runtime" "^7.13.10"
@@ -4846,7 +4846,7 @@
 
 "@radix-ui/react-toolbar@^1.0.4":
   version "1.0.4"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@radix-ui/react-toolbar/-/react-toolbar-1.0.4.tgz#3211a105567fa016e89921b5b514877f833de559"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-toolbar/-/react-toolbar-1.0.4.tgz#3211a105567fa016e89921b5b514877f833de559"
   integrity sha512-tBgmM/O7a07xbaEkYJWYTXkIdU/1pW4/KZORR43toC/4XWyBCURK0ei9kMUdp+gTPPKBgYLxXmRSH1EVcIDp8Q==
   dependencies:
     "@babel/runtime" "^7.13.10"
@@ -5065,7 +5065,7 @@
 
 "@storybook/addon-a11y@^7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-a11y/-/addon-a11y-7.3.2.tgz#ca79b724a371b83186c61294bf7988ec5bcbd079"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.3.2.tgz#ca79b724a371b83186c61294bf7988ec5bcbd079"
   integrity sha512-tEWOHoeGNDAlw1yztEmjJ/MrNelHT5OneMuqoXSyJsozPbYg/jXm6j3k/lZ/Pg3IMAZq1XxP23LQifql9O/YZA==
   dependencies:
     "@storybook/addon-highlight" "7.3.2"
@@ -5084,7 +5084,7 @@
 
 "@storybook/addon-actions@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-actions/-/addon-actions-7.3.2.tgz#36b8e15a851a12a6fff543d9785307ae02934a8f"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-7.3.2.tgz#36b8e15a851a12a6fff543d9785307ae02934a8f"
   integrity sha512-TsTOHGmwBHRsWS9kaG/bu6haP2dMeiETeGwOgfB5qmukodenXlmi1RujtUdJCNwW3APa0utEFYFKtZVEu9f7WQ==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5106,7 +5106,7 @@
 
 "@storybook/addon-backgrounds@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-backgrounds/-/addon-backgrounds-7.3.2.tgz#e2361b162c5aac1e71ee45b8c8607d3e8fe613be"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-7.3.2.tgz#e2361b162c5aac1e71ee45b8c8607d3e8fe613be"
   integrity sha512-tcQSt6mjAR1h1XiMFlg9OvpAwvBCjFrtpr9qnVaOZD15EIu/TRoumkJOVA7J5sWuQ6kGJXx1t8FfhQfAqvJ9iw==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5122,7 +5122,7 @@
 
 "@storybook/addon-controls@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-controls/-/addon-controls-7.3.2.tgz#4a8cf72cbbda9cc1fa0327652bfad1874e407e9c"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-controls/-/addon-controls-7.3.2.tgz#4a8cf72cbbda9cc1fa0327652bfad1874e407e9c"
   integrity sha512-n9ZoxlV8c9VLNfpFY1HpcRxjUFmHPmcFnW0UzFfGknIArPKFxzw9S/zCJ7CSH9Mf7+NJtYAUzCXlSU/YzT1eZQ==
   dependencies:
     "@storybook/blocks" "7.3.2"
@@ -5140,7 +5140,7 @@
 
 "@storybook/addon-docs@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-docs/-/addon-docs-7.3.2.tgz#170ffa8843cd0eb59e2df0f25f3abadc0ded780a"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-7.3.2.tgz#170ffa8843cd0eb59e2df0f25f3abadc0ded780a"
   integrity sha512-g4B+gM7xzRvUeiUcijPyxwDG/LlgHrfQx1chzY7oiFIImGXyewZ+CtGCjhrSdJGhXSj/69oqoz26RQ1VhSlrXg==
   dependencies:
     "@jest/transform" "^29.3.1"
@@ -5165,7 +5165,7 @@
 
 "@storybook/addon-essentials@^7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-essentials/-/addon-essentials-7.3.2.tgz#887071bbe2822ee0961f152bbd3138ea244e3ee8"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-essentials/-/addon-essentials-7.3.2.tgz#887071bbe2822ee0961f152bbd3138ea244e3ee8"
   integrity sha512-MI5wi5k/nDgAqnsS4/uibcQhMk3/mVkAAWNO+Epmg5UMCCmDch8SoX9BprEHARwwsVwXChiHAx99fXF/XacWFQ==
   dependencies:
     "@storybook/addon-actions" "7.3.2"
@@ -5185,7 +5185,7 @@
 
 "@storybook/addon-highlight@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-highlight/-/addon-highlight-7.3.2.tgz#96ac7748fe6e9f816ce03cd5ce5d10014a1e4223"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-highlight/-/addon-highlight-7.3.2.tgz#96ac7748fe6e9f816ce03cd5ce5d10014a1e4223"
   integrity sha512-Zdq//ZqOYpm+xXHt00l0j/baVuZDSkpP6Xbd3jqXV1ToojAjANlk0CAzHCJxZBiyeSCj7Qxtj9LvTqD+IU/bMA==
   dependencies:
     "@storybook/core-events" "7.3.2"
@@ -5194,7 +5194,7 @@
 
 "@storybook/addon-links@^7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-links/-/addon-links-7.3.2.tgz#c6e1c2b35d9b9c3b8986355dc4b6ba01c2f6d29c"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-7.3.2.tgz#c6e1c2b35d9b9c3b8986355dc4b6ba01c2f6d29c"
   integrity sha512-xpOpb33KscvmM2Sl9nFqU3DCk3tGaoqtFKkDOzf/QlZsMq9CCn4zPNGMfOFqifBEnDGDADHbp+Uxst5i535vdQ==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5210,7 +5210,7 @@
 
 "@storybook/addon-measure@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-measure/-/addon-measure-7.3.2.tgz#9056338eff0087731365ac82277f84c44a48e204"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-measure/-/addon-measure-7.3.2.tgz#9056338eff0087731365ac82277f84c44a48e204"
   integrity sha512-bEoH3zuKA9b5RA0LBQzdSnoaxEKHa5rZDoAuMbKiEYotTqO7PfP2j/hil31F95UgmH7wPnSkRSqsBsUtWJz3Jg==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5224,7 +5224,7 @@
 
 "@storybook/addon-outline@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-outline/-/addon-outline-7.3.2.tgz#28dc1e2c7768c51908316bde9ed74e55d0dadf59"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-outline/-/addon-outline-7.3.2.tgz#28dc1e2c7768c51908316bde9ed74e55d0dadf59"
   integrity sha512-DA/O5b4bznV2JsC/o0/JkP2tZLLPftRaz2HHCG+z0mwzNv2pl8lvIl4RpIVJWt1iO0K17kT43ToYYjknMUdJnA==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5262,7 +5262,7 @@
 
 "@storybook/addon-toolbars@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-toolbars/-/addon-toolbars-7.3.2.tgz#68637495ce2a850db3affb61b210a086a21d20e1"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-7.3.2.tgz#68637495ce2a850db3affb61b210a086a21d20e1"
   integrity sha512-hd+5Ax7p3vmsNNuO3t4pcmB2pxp58i9k12ygD66NLChSNafHxediLqdYJDTRuono2No1InV1HMZghlXXucCCHQ==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5273,7 +5273,7 @@
 
 "@storybook/addon-viewport@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/addon-viewport/-/addon-viewport-7.3.2.tgz#1db65d39493cec72ecd973908d9a09528f324ff7"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-7.3.2.tgz#1db65d39493cec72ecd973908d9a09528f324ff7"
   integrity sha512-G7i67xL35WE6qSmEoctavZUoPd2VDTaAqkRwrGa4oDQs5wed76PgIL2S5IybzbypSzPIXauiNQiBBd2RRMrLFg==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5296,7 +5296,7 @@
 
 "@storybook/blocks@7.3.2", "@storybook/blocks@^7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/blocks/-/blocks-7.3.2.tgz#3fcc55848cdd972311d4d5b15282156ec8005204"
+  resolved "https://registry.yarnpkg.com/@storybook/blocks/-/blocks-7.3.2.tgz#3fcc55848cdd972311d4d5b15282156ec8005204"
   integrity sha512-j/PRnvGLn0Y3VAu/t6RrU7pjenb7II7Cl/SnFW8LzjMBKXBrkFaq8BRbglzDAUtGdAa9HmJBosogenoZ9iWoBw==
   dependencies:
     "@storybook/channels" "7.3.2"
@@ -5325,7 +5325,7 @@
 
 "@storybook/builder-manager@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/builder-manager/-/builder-manager-7.3.2.tgz#6a6c98143007f14e553fc9a106033fe721cfa8a4"
+  resolved "https://registry.yarnpkg.com/@storybook/builder-manager/-/builder-manager-7.3.2.tgz#6a6c98143007f14e553fc9a106033fe721cfa8a4"
   integrity sha512-M0zdzpnZSg6Gd/QiIbOJkVoifAADpMT85NOC5zuAg3h3o29hedVBAigv/CE2nSbuwZtqPifjxs1AUh7wgtmj8A==
   dependencies:
     "@fal-works/esbuild-plugin-global-externals" "^2.1.2"
@@ -5347,7 +5347,7 @@
 
 "@storybook/builder-vite@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/builder-vite/-/builder-vite-7.3.2.tgz#c46cd3fe0bead18e8be1bd40fe886d63913e520c"
+  resolved "https://registry.yarnpkg.com/@storybook/builder-vite/-/builder-vite-7.3.2.tgz#c46cd3fe0bead18e8be1bd40fe886d63913e520c"
   integrity sha512-9xB3Z6QfDBX6Daj+LFldhavA8O7JU2E1dL6IHfaTLIamFH884Sl5Svq3GS3oh4/EbB/GifpVKEiwlvJaINCj+A==
   dependencies:
     "@storybook/channels" "7.3.2"
@@ -5389,7 +5389,7 @@
 
 "@storybook/channels@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/channels/-/channels-7.3.2.tgz#2126321e7ad70e3fbc33d1544bb09e1fe6ffc5b9"
+  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-7.3.2.tgz#2126321e7ad70e3fbc33d1544bb09e1fe6ffc5b9"
   integrity sha512-GG5+qzv2OZAzXonqUpJR81f2pjKExj7v5MoFJhKYgb3Y+jVYlUzBHBjhQZhuQczP4si418/jvjimvU1PZ4hqcg==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5401,7 +5401,7 @@
 
 "@storybook/cli@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/cli/-/cli-7.3.2.tgz#5f8bc0ea8afbf15763098520dfd529803690c7bc"
+  resolved "https://registry.yarnpkg.com/@storybook/cli/-/cli-7.3.2.tgz#5f8bc0ea8afbf15763098520dfd529803690c7bc"
   integrity sha512-RnqE/6KSelL9TQ44uCIU5xvUhY9zXM2Upanr0hao72x44rvlGQbV262pHdkVIYsn0wi8QzYtnoxQPLSqUfUDfA==
   dependencies:
     "@babel/core" "^7.22.9"
@@ -5454,14 +5454,14 @@
 
 "@storybook/client-logger@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/client-logger/-/client-logger-7.3.2.tgz#8c04d07cc3fdce124fa95aafc5413fea0c202345"
+  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-7.3.2.tgz#8c04d07cc3fdce124fa95aafc5413fea0c202345"
   integrity sha512-T7q/YS5lPUE6xjz9EUwJ/v+KCd5KU9dl1MQ9RcH7IpM73EtQZeNSuM9/P96uKXZTf0wZOUBTXVlTzKr66ZB/RQ==
   dependencies:
     "@storybook/global" "^5.0.0"
 
 "@storybook/codemod@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/codemod/-/codemod-7.3.2.tgz#006b0495b9b9565bf3b883524d80974eaa661bae"
+  resolved "https://registry.yarnpkg.com/@storybook/codemod/-/codemod-7.3.2.tgz#006b0495b9b9565bf3b883524d80974eaa661bae"
   integrity sha512-B2P91aYhlxdk7zeQOq0VBnDox2HEcboP2unSh6Vcf4V8j2FCdPvBIM7ZkT9p15FHfyOHvvrtf56XdBIyD8/XJA==
   dependencies:
     "@babel/core" "^7.22.9"
@@ -5481,7 +5481,7 @@
 
 "@storybook/components@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/components/-/components-7.3.2.tgz#84855518670a87b74275bdc4194148961b9cc776"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-7.3.2.tgz#84855518670a87b74275bdc4194148961b9cc776"
   integrity sha512-hsa1OJx4yEtLHTzrCxq8G9U5MTbcTuItj9yp1gsW9RTNc/V1n/rReQv4zE/k+//2hDsLrS62o3yhZ9VksRhLNw==
   dependencies:
     "@radix-ui/react-select" "^1.2.2"
@@ -5512,7 +5512,7 @@
 
 "@storybook/core-client@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/core-client/-/core-client-7.3.2.tgz#905ba380a1116205dc1bc23a866e648bf44a89c0"
+  resolved "https://registry.yarnpkg.com/@storybook/core-client/-/core-client-7.3.2.tgz#905ba380a1116205dc1bc23a866e648bf44a89c0"
   integrity sha512-K2jCnjZiUUskFjKUj7m1FTCphIwBv0KPOE5JCd0UR7un1P1G1kdXMctADE6fHosrW73xRrad9CBSyyetUVQQOA==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5520,7 +5520,7 @@
 
 "@storybook/core-common@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/core-common/-/core-common-7.3.2.tgz#82816a6d7a9b7d07a229d287d6a8b16aa41ec10a"
+  resolved "https://registry.yarnpkg.com/@storybook/core-common/-/core-common-7.3.2.tgz#82816a6d7a9b7d07a229d287d6a8b16aa41ec10a"
   integrity sha512-W+X7JXV0UmHuUl9xSF/xzz1+P7VM8xHt7ORfp8yrtJRwLHURqHvFFQC+NUHBKno1Ydtt/Uch7QNOWUlQKmiWEw==
   dependencies:
     "@storybook/node-logger" "7.3.2"
@@ -5578,12 +5578,12 @@
 
 "@storybook/core-events@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/core-events/-/core-events-7.3.2.tgz#9d18df7ceb6901225218e538a3d1d720a2f49b46"
+  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-7.3.2.tgz#9d18df7ceb6901225218e538a3d1d720a2f49b46"
   integrity sha512-DCrM3s+sxLKS8vl0zB+1tZEtcl5XQTOGl46XgRRV/SIBabFbsC0l5pQPswWkTUsIqdREtiT0YUHcXB1+YDyFvA==
 
 "@storybook/core-server@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/core-server/-/core-server-7.3.2.tgz#b5abc90c7ed3900531b79a63c8f4059e4702f7d4"
+  resolved "https://registry.yarnpkg.com/@storybook/core-server/-/core-server-7.3.2.tgz#b5abc90c7ed3900531b79a63c8f4059e4702f7d4"
   integrity sha512-TLMEptmfqYLu4bayRV5m8T3R50uR07Fwja1n/8CCmZOGWjnr5kXMFRkD7+hj7wm82yoidfd23bmVcRU9mlG+tg==
   dependencies:
     "@aw-web-design/x-default-browser" "1.4.126"
@@ -5631,7 +5631,7 @@
 
 "@storybook/csf-plugin@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/csf-plugin/-/csf-plugin-7.3.2.tgz#c82db8531444bc9e229109f2bf54b42f6669107e"
+  resolved "https://registry.yarnpkg.com/@storybook/csf-plugin/-/csf-plugin-7.3.2.tgz#c82db8531444bc9e229109f2bf54b42f6669107e"
   integrity sha512-uXJLJkRQeXnI2jHRdHfjJCbtEDohqzCrADh1xDfjqy/MQ/Sh2iFnRBCbEXsrxROBMh7Ow88/hJdy+vX0ZQh9fA==
   dependencies:
     "@storybook/csf-tools" "7.3.2"
@@ -5639,7 +5639,7 @@
 
 "@storybook/csf-tools@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/csf-tools/-/csf-tools-7.3.2.tgz#d93a47443ee24e59bc444f97234e11b2fb157136"
+  resolved "https://registry.yarnpkg.com/@storybook/csf-tools/-/csf-tools-7.3.2.tgz#d93a47443ee24e59bc444f97234e11b2fb157136"
   integrity sha512-54UaOsx9QZxiuMSpX01kSAEYuZYaB72Zz8ihlVrKZbIPTSJ6SYcM/jzNCGf1Rz7AjgU2UjXCSs5zBq5t37Nuqw==
   dependencies:
     "@babel/generator" "^7.22.9"
@@ -5673,7 +5673,7 @@
 
 "@storybook/docs-tools@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/docs-tools/-/docs-tools-7.3.2.tgz#4e76ca791c45595aa3bbfd53e6f74dcb5b60f100"
+  resolved "https://registry.yarnpkg.com/@storybook/docs-tools/-/docs-tools-7.3.2.tgz#4e76ca791c45595aa3bbfd53e6f74dcb5b60f100"
   integrity sha512-MSmAiL/lg+B14CIKD6DvkBPdTDfGBSSt3bE+vW2uW9ohNJB5eWePZLQZUe34uZuunn3uqyTAgbEF7KjrtGZ/MQ==
   dependencies:
     "@storybook/core-common" "7.3.2"
@@ -5690,7 +5690,7 @@
 
 "@storybook/icons@^1.1.6":
   version "1.1.6"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/icons/-/icons-1.1.6.tgz#22536cde6dd85fa259608fa8bd7b9eeca2a8e688"
+  resolved "https://registry.yarnpkg.com/@storybook/icons/-/icons-1.1.6.tgz#22536cde6dd85fa259608fa8bd7b9eeca2a8e688"
   integrity sha512-co5gDCYPojRAc5lRMnWxbjrR1V37/rTmAo9Vok4a1hDpHZIwkGTWesdzvYivSQXYFxZTpxdM1b5K3W87brnahw==
 
 "@storybook/manager-api@7.0.20", "@storybook/manager-api@^7.0.12":
@@ -5716,7 +5716,7 @@
 
 "@storybook/manager-api@7.3.2", "@storybook/manager-api@^7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/manager-api/-/manager-api-7.3.2.tgz#8228ce35cfc0f304e3a1c51bec3d3e0d01427a1a"
+  resolved "https://registry.yarnpkg.com/@storybook/manager-api/-/manager-api-7.3.2.tgz#8228ce35cfc0f304e3a1c51bec3d3e0d01427a1a"
   integrity sha512-EEosLcc+CPLjorLf2+rGLBW0sH0SHVcB1yClLIzKM5Wt8Cl/0l19wNtGMooE/28SDLA4DPIl4WDnP83wRE1hsg==
   dependencies:
     "@storybook/channels" "7.3.2"
@@ -5737,7 +5737,7 @@
 
 "@storybook/manager@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/manager/-/manager-7.3.2.tgz#9554d24b220c8547a75e9cbd714eddfc2c4a5824"
+  resolved "https://registry.yarnpkg.com/@storybook/manager/-/manager-7.3.2.tgz#9554d24b220c8547a75e9cbd714eddfc2c4a5824"
   integrity sha512-nA3XcnD36WUjgMCtID2M4DWYZh6MnabItXvKXGbNUkI8SVaIekc5nEgeplFyqutL11eKz3Es/FwwEP+mePbWfw==
 
 "@storybook/mdx2-csf@^1.0.0":
@@ -5757,17 +5757,17 @@
 
 "@storybook/node-logger@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/node-logger/-/node-logger-7.3.2.tgz#c8fea7b87d63c7b50757646af990d7cf13f7c71e"
+  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-7.3.2.tgz#c8fea7b87d63c7b50757646af990d7cf13f7c71e"
   integrity sha512-XCCYiLa5mQ7KeDQcZ4awlyWDmtxJHLIJeedvXx29JUNztUjgwyon9rlNvxtxtGj6171zgn9MERFh920WyJOOOQ==
 
 "@storybook/postinstall@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/postinstall/-/postinstall-7.3.2.tgz#1826abc87d69fc8e125cb7587f19074cb474650d"
+  resolved "https://registry.yarnpkg.com/@storybook/postinstall/-/postinstall-7.3.2.tgz#1826abc87d69fc8e125cb7587f19074cb474650d"
   integrity sha512-23/QUseeVaYjqexq4O1f1g/Fxq+pNGD+/wbXLPkdwNydutGwMZ3XAD8jcm+zeOmkbUPN8jQzKUXqO2OE/GgvHg==
 
 "@storybook/preview-api@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/preview-api/-/preview-api-7.3.2.tgz#75701e7d27cb804c2e30403ce9d001ea8cb2022a"
+  resolved "https://registry.yarnpkg.com/@storybook/preview-api/-/preview-api-7.3.2.tgz#75701e7d27cb804c2e30403ce9d001ea8cb2022a"
   integrity sha512-exQrWQQLwf/nXB6OEuQScygN5iO914iNQAvicaJ7mrX9L1ypIq1PpXgJR3mSezBd9dhOMBP/BMy1Zck/wBEL9A==
   dependencies:
     "@storybook/channels" "7.3.2"
@@ -5808,17 +5808,17 @@
 
 "@storybook/preview@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/preview/-/preview-7.3.2.tgz#ba86f2bdf47df1f523023155735cc57969004438"
+  resolved "https://registry.yarnpkg.com/@storybook/preview/-/preview-7.3.2.tgz#ba86f2bdf47df1f523023155735cc57969004438"
   integrity sha512-UXgImhD7xa+nYgXRcNFQdTqQT1725mOzWbQUtYPMJXkHO+t251hQrEc81tMzSSPEgPrFY8wndpEqTt8glFm91g==
 
 "@storybook/react-dom-shim@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/react-dom-shim/-/react-dom-shim-7.3.2.tgz#67d266ee56286479cd1c3b113451a7907516fdbe"
+  resolved "https://registry.yarnpkg.com/@storybook/react-dom-shim/-/react-dom-shim-7.3.2.tgz#67d266ee56286479cd1c3b113451a7907516fdbe"
   integrity sha512-63ysybmpl9UULmLu/aUwWwhjf5QEWTvnMW9r8Z3LF3sW8Z698ZsssdThzNWqw0zlwTlgnQA4ta2Df4/oVXR0+Q==
 
 "@storybook/react-vite@^7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/react-vite/-/react-vite-7.3.2.tgz#11d905b5031812c341e5bb0eb5c9c03d1d3f5638"
+  resolved "https://registry.yarnpkg.com/@storybook/react-vite/-/react-vite-7.3.2.tgz#11d905b5031812c341e5bb0eb5c9c03d1d3f5638"
   integrity sha512-lfDrcESQkrqVh1PkFgiJMrfhGYNckQ3rB2ZCvvzruHYWe/9B40EbMxGZauLg7B7M5j2Rzj+sa7Jfr3dasm+GJA==
   dependencies:
     "@joshwooding/vite-plugin-react-docgen-typescript" "0.2.1"
@@ -5832,7 +5832,7 @@
 
 "@storybook/react@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/react/-/react-7.3.2.tgz#434e20910189d4f8517df1c98b1acf2496b31e97"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-7.3.2.tgz#434e20910189d4f8517df1c98b1acf2496b31e97"
   integrity sha512-VMXy+soLnEW+lN1sfkkMGkmk3gnS3KLfEk0JssSlj+jGA4cPpvO+P1uGNkN8MjdiU9VaWt0aZ7uRdwx0rrfFUw==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5868,7 +5868,7 @@
 
 "@storybook/router@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/router/-/router-7.3.2.tgz#6f59996c67bd22c57947cf58337979e0730e1e5e"
+  resolved "https://registry.yarnpkg.com/@storybook/router/-/router-7.3.2.tgz#6f59996c67bd22c57947cf58337979e0730e1e5e"
   integrity sha512-J3QPudwCJhdnfqPx9GaNDlnsjJ6JbFta/ypp3EkHntyuuaNBeNP3Aq73DJJY2XMTS2Xdw8tD9Y9Y9gCFHJXMDQ==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5877,7 +5877,7 @@
 
 "@storybook/telemetry@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/telemetry/-/telemetry-7.3.2.tgz#61c07300dedd40f3c17c81ea9d2a097187cb37c9"
+  resolved "https://registry.yarnpkg.com/@storybook/telemetry/-/telemetry-7.3.2.tgz#61c07300dedd40f3c17c81ea9d2a097187cb37c9"
   integrity sha512-BmgwaZGoR2ZzGZpcO5ipc4uMd9y28qmu9Ynx054Q3mb86daJrw4CU18TVi5UoFa9qmygQhoHx2gaK2QStNtqCg==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -5901,7 +5901,7 @@
 
 "@storybook/theming@7.3.2", "@storybook/theming@^7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/theming/-/theming-7.3.2.tgz#6742697322de78831e5e67567368f82b5969a83d"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-7.3.2.tgz#6742697322de78831e5e67567368f82b5969a83d"
   integrity sha512-npVsnmNAtqGwl1K7vLC/hcVhL8tBC8G0vdZXEcufF0jHdQmRCUs9ZVrnR6W0LCrtmIHDaDoO7PqJVSzu2wgVxw==
   dependencies:
     "@emotion/use-insertion-effect-with-fallbacks" "^1.0.0"
@@ -5921,7 +5921,7 @@
 
 "@storybook/types@7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/types/-/types-7.3.2.tgz#81ca5cf87dcaeb06d99e17e91d7852677a0676b9"
+  resolved "https://registry.yarnpkg.com/@storybook/types/-/types-7.3.2.tgz#81ca5cf87dcaeb06d99e17e91d7852677a0676b9"
   integrity sha512-1UHC1r2J6H9dEpj4pp9a16P1rTL87V9Yc6TtYBpp7m+cxzyIZBRvu1wZFKmRB51RXE/uDaxGRKzfNRfgTALcIQ==
   dependencies:
     "@storybook/channels" "7.3.2"
@@ -5931,7 +5931,7 @@
 
 "@storybook/web-components-vite@^7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/web-components-vite/-/web-components-vite-7.3.2.tgz#11e9c0bad544b098560acc5590f504d5396d3371"
+  resolved "https://registry.yarnpkg.com/@storybook/web-components-vite/-/web-components-vite-7.3.2.tgz#11e9c0bad544b098560acc5590f504d5396d3371"
   integrity sha512-EJ431jDSVC/ahKpPzLrlhqWRATpZnSAWSb6mVi+xWYHYUyrGG4ywydth2TcryeNxyJzFvJJvfM5o9lRkKt9dvA==
   dependencies:
     "@storybook/builder-vite" "7.3.2"
@@ -5942,7 +5942,7 @@
 
 "@storybook/web-components@7.3.2", "@storybook/web-components@^7.3.2":
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@storybook/web-components/-/web-components-7.3.2.tgz#1115c44817390fc200bf750535012e7f06b34410"
+  resolved "https://registry.yarnpkg.com/@storybook/web-components/-/web-components-7.3.2.tgz#1115c44817390fc200bf750535012e7f06b34410"
   integrity sha512-ek2WbNrPElatVHe6NK0Ql0X5MaNowJfKqNjvYzAt+2Q+AMWfXh+UurTueSN3VnUjjhupJ5UTbIbhrI3/VL7buw==
   dependencies:
     "@storybook/client-logger" "7.3.2"
@@ -21196,7 +21196,7 @@ store2@^2.14.2:
 
 storybook@^7.3.2:
   version "7.3.2"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/storybook/-/storybook-7.3.2.tgz#602960a7a084af1e6d7b0612f98afbb5e958abff"
+  resolved "https://registry.yarnpkg.com/storybook/-/storybook-7.3.2.tgz#602960a7a084af1e6d7b0612f98afbb5e958abff"
   integrity sha512-Vf1C5pfF5NHQsb+33NeBd3gLGhcwbT+v6WqqIdARV7LSByqKiWNgJl2ATgzm1b4ERJo8sHU+EiJZIovFWEElkg==
   dependencies:
     "@storybook/cli" "7.3.2"
