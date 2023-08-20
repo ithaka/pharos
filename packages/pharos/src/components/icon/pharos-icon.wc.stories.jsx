@@ -17,7 +17,11 @@ export default {
 export const Base = {
   render: (args) =>
     html`
-      <storybook-pharos-icon name=${args.name} class="icon-example__icon"></storybook-pharos-icon>
+      <storybook-pharos-icon
+        name=${args.name}
+        description=${args.description}
+        class="icon-example__icon"
+      ></storybook-pharos-icon>
     `,
   args: defaultArgs,
 };

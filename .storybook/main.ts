@@ -9,6 +9,9 @@ const config = {
     '@storybook/addon-essentials',
     '@storybook/addon-links',
   ],
+  features: {
+    storyStoreV7: true,
+  },
   docs: {
     autodocs: true,
   },
