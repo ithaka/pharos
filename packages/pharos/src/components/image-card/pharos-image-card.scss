@@ -17,7 +17,6 @@
 }
 
 .card__link--image {
-  contain: unset;
   position: relative;
   display: block;
   height: 14rem;
@@ -25,7 +24,6 @@
 }
 
 .card__link--title {
-  contain: unset;
   display: inline-flex;
   min-width: 0;
 }

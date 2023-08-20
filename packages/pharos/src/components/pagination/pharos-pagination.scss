@@ -1,7 +1,6 @@
 @use '../../utils/scss/mixins';
 
 :host {
-  contain: layout;
   display: inline-flex;
 }
 

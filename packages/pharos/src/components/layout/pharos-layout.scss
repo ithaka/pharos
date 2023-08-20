@@ -2,8 +2,6 @@
 
 :host {
   @include mixins.layout-base;
-
-  contain: layout;
 }
 
 .layout {

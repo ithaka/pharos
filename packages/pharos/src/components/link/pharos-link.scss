@@ -1,9 +1,5 @@
 @use '../../utils/scss/mixins';
 
-:host {
-  contain: layout;
-}
-
 #link-element {
   @include mixins.link-base;
   @include mixins.link-hover;
