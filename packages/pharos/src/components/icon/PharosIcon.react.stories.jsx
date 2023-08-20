@@ -22,7 +22,13 @@ export default {
 };
 
 export const Base = {
-  render: (args) => <PharosIcon name={args.name} className="icon-example__icon"></PharosIcon>,
+  render: (args) => (
+    <PharosIcon
+      name={args.name}
+      description={args.description}
+      className="icon-example__icon"
+    ></PharosIcon>
+  ),
   args: defaultArgs,
 };
 
