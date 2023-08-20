@@ -28,6 +28,10 @@
     opacity var(--pharos-transition-duration-short) linear;
 }
 
+:host([on-background]) .dropdown-menu__list {
+  border: none;
+}
+
 :host([open]) .dropdown-menu__list {
   visibility: visible;
   opacity: 1;
