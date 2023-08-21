@@ -28,6 +28,13 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   };
 
   /**
+   * Indicates the menu item is displayed on a dark background.
+   * @attr on-background
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
+  public isOnBackground = false;
+
+  /**
    * Indicates the aria label to apply to the dialog.
    * @attr label
    */

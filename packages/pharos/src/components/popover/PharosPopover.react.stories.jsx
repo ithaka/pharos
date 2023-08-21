@@ -56,13 +56,13 @@ export const Events = {
   ),
 };
 
-export const Background = {
+export const OnBackground = {
   render: () => (
-    <div>
+    <div style="background: #333333; height: 500px;">
       <PharosButton id="my-button" data-popover-id="my-popover" icon-right="chevron-down">
         Click Me
       </PharosButton>
-      <PharosPopover id="my-popover">
+      <PharosPopover id="my-popover" is-on-background>
         <div style="background: #444444; color: white; padding: 1rem;display: flex; flex-direction: column; gap: 1rem;">
           <div style="padding: 1rem">Some very simple contents</div>
           <PharosButton

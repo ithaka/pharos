@@ -38,3 +38,7 @@
 :host(:not([full-width])) .popover {
   min-width: var(--pharos-dropdown-menu-size-width-min);
 }
+
+:host([is-on-background]) .popover {
+  box-shadow: none;
+}

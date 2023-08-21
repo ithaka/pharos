@@ -59,23 +59,25 @@ export const Events = {
     `,
 };
 
-export const DarkBackground = {
+export const OnBackgournd = {
   render: () =>
     html`
-      <div>
+      <div style="background: #333333; height: 500px;">
         <storybook-pharos-button
           id="my-button"
           data-popover-id="my-popover"
           icon-right="chevron-down"
+          on-background
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover">
+        <storybook-pharos-popover id="my-popover" is-on-background>
           <div
             style="background: #444444; color: white; padding: 1rem;display: flex; flex-direction: column; gap: 1rem;"
           >
             <span>Some really cool stuff</span>
             <storybook-pharos-button
+              on-background
               @click="${() => {
                 const menu = document.querySelector('storybook-pharos-popover');
                 menu.open = false;
