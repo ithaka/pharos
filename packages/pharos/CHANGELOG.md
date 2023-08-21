@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 12.22.1
+
+### Patch Changes
+
+- [#587](https://github.com/ithaka/pharos/pull/587) [`cb9d306`](https://github.com/ithaka/pharos/commit/cb9d3062a3b678ddab29345a7bb30f8337111eff) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - update floating ui dependency
+
+- [#583](https://github.com/ithaka/pharos/pull/583) [`75a2d70`](https://github.com/ithaka/pharos/commit/75a2d70cb395396726a29df432afff3f401f5b3d) Thanks [@michael-iden](https://github.com/michael-iden)! - add fallback color for on background variant
+
 ## 12.22.0
 
 ### Minor Changes
