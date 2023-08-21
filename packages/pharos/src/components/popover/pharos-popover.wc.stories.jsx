@@ -73,7 +73,7 @@ export const OnBackgournd = {
         </storybook-pharos-button>
         <storybook-pharos-popover id="my-popover" is-on-background>
           <div
-            style="background: #444444; color: white; padding: 1rem;display: flex; flex-direction: column; gap: 1rem;"
+            style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;"
           >
             <span>Some really cool stuff</span>
             <storybook-pharos-button
@@ -103,8 +103,8 @@ export const LargeContents = {
           Click Me
         </storybook-pharos-button>
         <storybook-pharos-popover id="my-popover">
-          <div style="padding: 1rem;display: flex; flex-direction: column; gap: 1rem;">
-            <div style="height: 200px; overflow: auto; border: 1px solid black; padding: 1rem">
+          <div style="padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="height: 200px; overflow: auto; border: 1px solid black; padding: 1rem;">
               <div>Some really cool stuff</div>
               <div>Some really cool stuff</div>
               <div>Some really cool stuff</div>
