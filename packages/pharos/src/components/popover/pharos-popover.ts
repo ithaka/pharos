@@ -346,19 +346,11 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
     this._handleTriggerClick(event as MouseEvent);
   }
 
-  private _renderSlot(): TemplateResult {
-    return html`<slot @slotchange=${this._handleSlotChange}></slot>`;
-  }
-
-  private _renderList(): TemplateResult {
-    return html`
-      <div class="popover" role="dialog" aria-label=${ifDefined(this.label)}>
-        ${this._renderSlot()}
-      </div>
-    `;
-  }
-
   protected override render(): TemplateResult {
-    return html`<focus-trap>${this._renderList()}</focus-trap>`;
+    return html` <focus-trap>
+      <div class="popover" role="dialog" aria-label=${ifDefined(this.label)}>
+        <slot></slot>
+      </div>
+    </focus-trap>`;
   }
 }
