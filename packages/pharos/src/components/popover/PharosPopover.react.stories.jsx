@@ -40,8 +40,8 @@ export const Events = {
         Click Me
       </PharosButton>
       <PharosPopover id="my-popover">
-        <div style="padding: 1rem;display: flex; flex-direction: column; gap: 1rem;">
-          <div style="padding: 1rem">Some very simple contents</div>
+        <div style="padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+          <div style="padding: 1rem;">Some very simple contents</div>
           <PharosButton
             onClick={() => {
               const menu = document.querySelector('storybook-pharos-popover');
@@ -63,7 +63,7 @@ export const OnBackground = {
         Click Me
       </PharosButton>
       <PharosPopover id="my-popover" is-on-background>
-        <div style="background: #444444; color: white; padding: 1rem;display: flex; flex-direction: column; gap: 1rem;">
+        <div style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
           <div style="padding: 1rem">Some very simple contents</div>
           <PharosButton
             onClick={() => {
@@ -86,8 +86,8 @@ export const LargeContents = {
         Click Me
       </PharosButton>
       <PharosPopover id="my-popover">
-        <div style="padding: 1rem;display: flex; flex-direction: column; gap: 1rem;">
-          <div style="height: 200px; overflow: auto; border: 1px solid black; padding: 1rem">
+        <div style="padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+          <div style="height: 200px; overflow: auto; border: 1px solid black; padding: 1rem;">
             <div>Some really cool stuff</div>
             <div>Some really cool stuff</div>
             <div>Some really cool stuff</div>
