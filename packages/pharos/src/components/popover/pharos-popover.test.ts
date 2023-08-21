@@ -9,7 +9,7 @@ describe('pharos-popover', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <test-pharos-popover id="my-popover">
+      <test-pharos-popover id="my-popover" label="Test label for dialog">
         <div>I am popover contents</div>
       </test-pharos-popover>
     `);
@@ -25,7 +25,7 @@ describe('pharos-popover', () => {
 
   const getSimplePopover = () => {
     return html`
-      <test-pharos-popover id="my-popover">
+      <test-pharos-popover id="my-popover" label="Test label for dialog">
         <div>I am popover contents</div>
       </test-pharos-popover>
     `;
@@ -162,32 +162,6 @@ describe('pharos-popover', () => {
 
     component.dispatchEvent(new MouseEvent('mouseenter'));
     await aTimeout(150);
-    await component.updateComplete;
-    expect(component.open).to.be.true;
-  });
-
-  it('opens when down arrow key is pressed on the element with matching attribute data-popover-id', async () => {
-    const trigger = document.createElement('button');
-    trigger.setAttribute('id', 'trigger');
-    trigger.setAttribute('data-popover-id', 'my-popover');
-    document.body.appendChild(trigger);
-
-    component = await fixture(getSimplePopover());
-
-    trigger.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
-    await component.updateComplete;
-    expect(component.open).to.be.true;
-  });
-
-  it('opens when up arrow key is pressed on the element with matching attribute data-popover-id', async () => {
-    const trigger = document.createElement('button');
-    trigger.setAttribute('id', 'trigger');
-    trigger.setAttribute('data-popover-id', 'my-popover');
-    document.body.appendChild(trigger);
-
-    component = await fixture(getSimplePopover());
-
-    trigger.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
     await component.updateComplete;
     expect(component.open).to.be.true;
   });

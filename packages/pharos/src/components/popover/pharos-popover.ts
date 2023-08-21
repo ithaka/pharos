@@ -5,7 +5,8 @@ import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import FocusMixin from '../../utils/mixins/focus';
 import { OverlayElement } from '../base/overlay-element';
 import { FocusTrap } from '@ithaka/focus-trap';
-import { query } from 'lit/decorators.js';
+import { query, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import debounce from '../../utils/debounce';
 import { autoUpdate, computePosition, flip, offset } from '../base/overlay-element';
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
@@ -25,6 +26,13 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   static elementDefinitions = {
     'focus-trap': FocusTrap,
   };
+
+  /**
+   * Indicates the aria label to apply to the dialog.
+   * @attr label
+   */
+  @property({ type: String, reflect: true })
+  public label?: string;
 
   @query('.popover')
   private _popover!: HTMLUListElement;
@@ -343,7 +351,11 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   private _renderList(): TemplateResult {
-    return html` <div class="popover" role="dialog">${this._renderSlot()}</div> `;
+    return html`
+      <div class="popover" role="dialog" aria-label=${ifDefined(this.label)}>
+        ${this._renderSlot()}
+      </div>
+    `;
   }
 
   protected override render(): TemplateResult {
