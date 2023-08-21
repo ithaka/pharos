@@ -25,7 +25,7 @@ export const Base = {
           Click Me
         </storybook-pharos-button>
         <storybook-pharos-popover id="my-popover">
-          <div style="padding: 1rem">Some very simple contents</div>
+          <div style="padding: 1rem;">Some very simple contents</div>
         </storybook-pharos-popover>
       </div>
     `,
