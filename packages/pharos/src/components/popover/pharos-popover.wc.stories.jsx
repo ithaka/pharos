@@ -59,10 +59,10 @@ export const Events = {
     `,
 };
 
-export const OnBackgournd = {
+export const OnBackground = {
   render: () =>
     html`
-      <div style="background: #333333; height: 500px;">
+      <div>
         <storybook-pharos-button
           id="my-button"
           data-popover-id="my-popover"
@@ -89,6 +89,9 @@ export const OnBackgournd = {
         </storybook-pharos-popover>
       </div>
     `,
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };
 
 export const LargeContents = {

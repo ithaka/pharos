@@ -58,7 +58,7 @@ export const Events = {
 
 export const OnBackground = {
   render: () => (
-    <div style="background: #333333; height: 500px;">
+    <div>
       <PharosButton id="my-button" data-popover-id="my-popover" icon-right="chevron-down">
         Click Me
       </PharosButton>
@@ -77,6 +77,9 @@ export const OnBackground = {
       </PharosPopover>
     </div>
   ),
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 };
 
 export const LargeContents = {
