@@ -59,7 +59,38 @@ export const Events = {
     `,
 };
 
-export const OnBackground = {
+export const DarkPopover = {
+  render: () =>
+    html`
+      <div>
+        <storybook-pharos-button
+          id="my-button"
+          data-popover-id="my-popover"
+          icon-right="chevron-down"
+        >
+          Click Me
+        </storybook-pharos-button>
+        <storybook-pharos-popover id="my-popover" is-on-background>
+          <div
+            style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;"
+          >
+            <span>Some really cool stuff</span>
+            <storybook-pharos-button
+              on-background
+              @click="${() => {
+                const menu = document.querySelector('storybook-pharos-popover');
+                menu.open = false;
+              }}"
+            >
+              Close
+            </storybook-pharos-button>
+          </div>
+        </storybook-pharos-popover>
+      </div>
+    `,
+};
+
+export const DarkPopoverOnBackground = {
   render: () =>
     html`
       <div>
@@ -71,7 +102,7 @@ export const OnBackground = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover" is-on-background>
+        <storybook-pharos-popover id="my-popover">
           <div
             style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;"
           >
