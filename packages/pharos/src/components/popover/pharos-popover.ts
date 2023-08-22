@@ -10,7 +10,10 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import debounce from '../../utils/debounce';
 import { autoUpdate, computePosition, flip, offset } from '../base/overlay-element';
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
+import focusable from '../../utils/focusable';
 export type { Placement, PositioningStrategy };
+
+const FOCUS_ELEMENT = `[data-popover-focus]`;
 
 /**
  * Pharos popover component.
@@ -305,7 +308,17 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   private async _focusContents(): Promise<void> {
-    // TODO: Probably focus something
+    const focusElement = this.querySelector(FOCUS_ELEMENT);
+    if (focusElement) {
+      await 0;
+      (focusElement as HTMLElement).focus();
+    } else {
+      const tabbable = this.querySelector(focusable);
+      if (tabbable) {
+        await 0;
+        (tabbable as HTMLElement).focus();
+      }
+    }
   }
 
   private _returnTriggerFocus(): void {

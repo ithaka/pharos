@@ -12,12 +12,8 @@
 .popover {
   @include mixins.interactive-focus;
 
-  background-color: var(--pharos-color-ui-10);
   position: relative;
   margin: 0;
-  list-style-type: none;
-  padding-left: 0;
-  padding-inline-start: 0;
   box-shadow: 0 1px 2px rgb(18 18 18 / 0.3), 0 4px 8px 3px rgb(18 18 18 / 0.15);
   border-radius: var(--pharos-radius-base-standard);
   visibility: hidden;
@@ -33,10 +29,6 @@
   opacity: 1;
   transition-delay: 0ms;
   pointer-events: auto;
-}
-
-:host(:not([full-width])) .popover {
-  min-width: var(--pharos-dropdown-menu-size-width-min);
 }
 
 :host([is-on-background]) .popover {
