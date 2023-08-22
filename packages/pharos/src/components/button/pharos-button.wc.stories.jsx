@@ -30,7 +30,8 @@ export const Base = {
         ?full-width=${ifDefined(args.fullWidth)}
         href=${ifDefined(args.href)}
         hreflang=${ifDefined(args.hreflang)}
-        label=${ifDefined(args.label)}
+        a11y-label=${ifDefined(args.a11yLabel)}
+        a11y-expanded=${ifDefined(args.a11yExpanded)}
         ?large=${ifDefined(args.large)}
         ?is-on-background=${ifDefined(args.isOnBackground)}
         ping=${ifDefined(args.ping)}
@@ -226,7 +227,7 @@ export const IconOnly = {
     ...Base.args,
     text: undefined,
     icon: 'download',
-    label: 'download',
+    a11yLabel: 'download',
   },
 };
 
