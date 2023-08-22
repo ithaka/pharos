@@ -20,6 +20,18 @@ export type ButtonVariant = 'primary' | 'secondary' | 'subtle' | 'overlay';
 // undefined means no state has been expressed at all and won't render; 'undefined' is an explicit state
 export type PressedState = 'false' | 'true' | 'mixed' | 'undefined' | undefined;
 
+export type ExpandedState = 'false' | 'true' | 'undefined' | undefined;
+
+export type HasPopupState =
+  | 'false'
+  | 'true'
+  | 'menu'
+  | 'listbox'
+  | 'tree'
+  | 'grid'
+  | 'dialog'
+  | undefined;
+
 const TYPES = ['button', 'submit', 'reset'] as ButtonType[];
 
 const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'] as ButtonVariant[];
@@ -113,10 +125,17 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
 
   /**
    * Indicates the aria label to apply to the button.
-   * @attr label
+   * @attr a11y-label
    */
-  @property({ type: String, reflect: true })
-  public label?: string;
+  @property({ type: String, reflect: true, attribute: 'a11y-label' })
+  public a11yLabel?: string;
+
+  /**
+   * Indicates the aria expanded state to apply to the button.
+   * @attr a11y-expanded
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-expanded' })
+  public a11yExpanded: ExpandedState = undefined;
 
   /**
    * Indicates the button's width should match its container.
@@ -254,8 +273,9 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             ping=${ifDefined(this.ping)}
             rel=${ifDefined(this.rel)}
             target=${ifDefined(this.target)}
-            aria-label=${ifDefined(this.label)}
+            aria-label=${ifDefined(this.a11yLabel)}
             aria-pressed=${ifDefined(this.pressed)}
+            aria-expanded=${ifDefined(this.a11yExpanded)}
             @keyup=${this._handleKeyup}
           >
             ${this.buttonContent}
@@ -269,8 +289,9 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             ?autofocus=${this.autofocus}
             ?disabled=${this.disabled}
             type="${ifDefined(this.type)}"
-            aria-label=${ifDefined(this.label)}
+            aria-label=${ifDefined(this.a11yLabel)}
             aria-pressed=${ifDefined(this.pressed)}
+            aria-expanded=${ifDefined(this.a11yExpanded)}
           >
             ${this.buttonContent}
           </button>
