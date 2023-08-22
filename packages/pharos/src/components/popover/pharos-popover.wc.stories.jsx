@@ -25,7 +25,7 @@ export const Base = {
           Click Me
         </storybook-pharos-button>
         <storybook-pharos-popover id="my-popover">
-          <div style="padding: 1rem;">Some very simple contents</div>
+          <div style="padding: 1rem;">Lorem ipsum dolor sit amet</div>
         </storybook-pharos-popover>
       </div>
     `,
@@ -44,7 +44,7 @@ export const Events = {
         </storybook-pharos-button>
         <storybook-pharos-popover id="my-popover">
           <div style="padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
-            <span>Some really cool stuff</span>
+            <span>Lorem ipsum dolor sit amet</span>
             <storybook-pharos-button
               @click="${() => {
                 const menu = document.querySelector('storybook-pharos-popover');
@@ -74,7 +74,7 @@ export const DarkPopover = {
           <div
             style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;"
           >
-            <span>Some really cool stuff</span>
+            <span>Lorem ipsum dolor sit amet</span>
             <storybook-pharos-button
               on-background
               @click="${() => {
@@ -106,7 +106,7 @@ export const DarkPopoverOnBackground = {
           <div
             style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;"
           >
-            <span>Some really cool stuff</span>
+            <span>Lorem ipsum dolor sit amet</span>
             <storybook-pharos-button
               on-background
               @click="${() => {
@@ -137,22 +137,16 @@ export const LargeContents = {
           Click Me
         </storybook-pharos-button>
         <storybook-pharos-popover id="my-popover">
-          <div style="padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+          <div
+            style="padding: 1rem; width: 300px; display: flex; flex-direction: column; gap: 1rem;"
+          >
             <div style="height: 200px; overflow: auto; border: 1px solid black; padding: 1rem;">
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
-              <div>Some really cool stuff</div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum.
             </div>
             <storybook-pharos-button
               @click="${() => {
