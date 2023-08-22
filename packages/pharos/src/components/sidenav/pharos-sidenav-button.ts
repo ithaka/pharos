@@ -4,8 +4,14 @@ import { PharosButton } from '../button/pharos-button';
 import type { PharosSidenav } from './pharos-sidenav';
 
 import type { LinkTarget } from '../base/anchor-element';
-import type { ButtonType, IconName, ButtonVariant, PressedState } from '../button/pharos-button';
-export type { LinkTarget, ButtonType, IconName, ButtonVariant, PressedState };
+import type {
+  ButtonType,
+  IconName,
+  ButtonVariant,
+  PressedState,
+  ExpandedState,
+} from '../button/pharos-button';
+export type { LinkTarget, ButtonType, IconName, ButtonVariant, PressedState, ExpandedState };
 
 /**
  * Pharos sidenav button component.
@@ -18,7 +24,7 @@ export class PharosSidenavButton extends PharosButton {
     super();
     this.icon = 'menu';
     this.variant = 'subtle';
-    this.label = 'Open menu';
+    this.a11yLabel = 'Open menu';
   }
 
   public static override get styles(): CSSResultArray {
