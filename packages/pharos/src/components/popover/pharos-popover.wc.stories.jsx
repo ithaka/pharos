@@ -136,11 +136,11 @@ export const LargeContents = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover" labelled-by="popover-heading">
+        <storybook-pharos-popover id="my-popover" label="Large Pharos Popover">
           <div
             style="padding: 1rem; width: 300px; display: flex; flex-direction: column; gap: 1rem;"
           >
-            <h1 id="popover-heading">Large Pharos Popover</h1>
+            <storybook-pharos-heading level="2">Large Pharos Popover</storybook-pharos-heading>
             <div
               style="height: 200px; overflow: auto; border: 1px solid black; padding: 1rem;"
               tabindex="0"
