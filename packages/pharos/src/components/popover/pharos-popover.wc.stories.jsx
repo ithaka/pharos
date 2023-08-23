@@ -24,7 +24,7 @@ export const Base = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover">
+        <storybook-pharos-popover id="my-popover" label="Pharos popover">
           <div style="padding: 1rem;">Lorem ipsum dolor sit amet</div>
         </storybook-pharos-popover>
       </div>
@@ -42,7 +42,7 @@ export const Events = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover">
+        <storybook-pharos-popover id="my-popover" label="Pharos popover">
           <div style="padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
             <span>Lorem ipsum dolor sit amet</span>
             <storybook-pharos-button
@@ -70,11 +70,11 @@ export const DarkPopover = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover" is-on-background>
+        <storybook-pharos-popover id="my-popover" is-on-background label="Pharos popover">
           <div
             style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;"
           >
-            <span>Lorem ipsum dolor sit amet</span>
+            <span id="popover-content">Lorem ipsum dolor sit amet</span>
             <storybook-pharos-button
               on-background
               @click="${() => {
@@ -102,7 +102,7 @@ export const DarkPopoverOnBackground = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover">
+        <storybook-pharos-popover id="my-popover" label="Pharos popover">
           <div
             style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;"
           >
@@ -136,11 +136,15 @@ export const LargeContents = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover">
+        <storybook-pharos-popover id="my-popover" labelled-by="popover-heading">
           <div
             style="padding: 1rem; width: 300px; display: flex; flex-direction: column; gap: 1rem;"
           >
-            <div style="height: 200px; overflow: auto; border: 1px solid black; padding: 1rem;">
+            <h1 id="popover-heading">Large Pharos Popover</h1>
+            <div
+              style="height: 200px; overflow: auto; border: 1px solid black; padding: 1rem;"
+              tabindex="0"
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure

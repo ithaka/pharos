@@ -44,6 +44,13 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   @property({ type: String, reflect: true })
   public label?: string;
 
+  /**
+   * Indicates the aria label to apply to the dialog.
+   * @attr label
+   */
+  @property({ type: String, reflect: true, attribute: 'labelled-by' })
+  public labelledBy?: string;
+
   @query('.popover')
   private _popover!: HTMLUListElement;
 
@@ -368,7 +375,12 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
 
   protected override render(): TemplateResult {
     return html` <focus-trap>
-      <div class="popover" role="dialog" aria-label=${ifDefined(this.label)}>
+      <div
+        class="popover"
+        role="dialog"
+        aria-label=${ifDefined(this.label)}
+        aria-labelledby="${ifDefined(this.labelledBy)}"
+      >
         <slot></slot>
       </div>
     </focus-trap>`;
