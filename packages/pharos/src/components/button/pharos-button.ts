@@ -22,16 +22,6 @@ export type PressedState = 'false' | 'true' | 'mixed' | 'undefined' | undefined;
 
 export type ExpandedState = 'false' | 'true' | 'undefined' | undefined;
 
-export type HasPopupState =
-  | 'false'
-  | 'true'
-  | 'menu'
-  | 'listbox'
-  | 'tree'
-  | 'grid'
-  | 'dialog'
-  | undefined;
-
 const TYPES = ['button', 'submit', 'reset'] as ButtonType[];
 
 const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'] as ButtonVariant[];
