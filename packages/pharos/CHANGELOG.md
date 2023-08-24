@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.23.0
+
+### Minor Changes
+
+- [#592](https://github.com/ithaka/pharos/pull/592) [`67c9002`](https://github.com/ithaka/pharos/commit/67c9002d3aff6cb8a37454798cdc2e6aa513a4aa) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - Add send icon
+
 ## 12.22.1
 
 ### Patch Changes
