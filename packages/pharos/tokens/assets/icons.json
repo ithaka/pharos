@@ -93,6 +93,7 @@
       "search": { "value": "assets/icons/search.svg" },
       "seek-backward": { "value": "assets/icons/seek-backward.svg" },
       "seek-forward": { "value": "assets/icons/seek-forward.svg" },
+      "send": { "value": "assets/icons/send.svg" },
       "share": { "value": "assets/icons/share.svg" },
       "shift-left": { "value": "assets/icons/shift-left.svg" },
       "shift-right": { "value": "assets/icons/shift-right.svg" },
