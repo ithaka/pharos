@@ -10,8 +10,17 @@ import type {
   ButtonVariant,
   PressedState,
   ExpandedState,
+  PopupState,
 } from '../button/pharos-button';
-export type { LinkTarget, ButtonType, IconName, ButtonVariant, PressedState, ExpandedState };
+export type {
+  LinkTarget,
+  ButtonType,
+  IconName,
+  ButtonVariant,
+  PressedState,
+  ExpandedState,
+  PopupState,
+};
 
 /**
  * Pharos sidenav button component.

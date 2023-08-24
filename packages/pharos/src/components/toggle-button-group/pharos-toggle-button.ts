@@ -10,8 +10,17 @@ import type {
   ButtonVariant,
   PressedState,
   ExpandedState,
+  PopupState,
 } from '../button/pharos-button';
-export type { ButtonType, LinkTarget, IconName, ButtonVariant, PressedState, ExpandedState };
+export type {
+  ButtonType,
+  LinkTarget,
+  IconName,
+  ButtonVariant,
+  PressedState,
+  ExpandedState,
+  PopupState,
+};
 
 /**
  * Pharos toggle button component.
