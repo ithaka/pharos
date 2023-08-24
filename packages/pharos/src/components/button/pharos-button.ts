@@ -22,6 +22,16 @@ export type PressedState = 'false' | 'true' | 'mixed' | 'undefined' | undefined;
 
 export type ExpandedState = 'false' | 'true' | 'undefined' | undefined;
 
+export type PopupState =
+  | 'false'
+  | 'true'
+  | 'menu'
+  | 'tree'
+  | 'grid'
+  | 'listbox'
+  | 'dialog'
+  | undefined;
+
 const TYPES = ['button', 'submit', 'reset'] as ButtonType[];
 
 const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'] as ButtonVariant[];
@@ -65,7 +75,6 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
    * Indicates the variant of button.
    * @attr variant
    */
-  @property({ type: String, reflect: true })
   public variant: ButtonVariant = 'primary';
 
   /**
@@ -126,6 +135,13 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
    */
   @property({ type: String, reflect: true, attribute: 'a11y-expanded' })
   public a11yExpanded: ExpandedState = undefined;
+
+  /**
+   * Indicates the aria expanded state to apply to the button.
+   * @attr a11y-haspopup
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-haspopup' })
+  public a11yHaspopup: PopupState = undefined;
 
   /**
    * Indicates the button's width should match its container.
@@ -254,6 +270,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   protected override render(): TemplateResult {
     return this.href
       ? html`
+          <!-- @ts-ignore -->
           <a
             id="button-element"
             role="button"
@@ -266,12 +283,14 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             aria-label=${ifDefined(this.a11yLabel)}
             aria-pressed=${ifDefined(this.pressed)}
             aria-expanded=${ifDefined(this.a11yExpanded)}
+            aria-haspopup=${ifDefined(this.a11yHaspopup)}
             @keyup=${this._handleKeyup}
           >
             ${this.buttonContent}
           </a>
         `
       : html`
+          <!-- @ts-ignore -->
           <button
             id="button-element"
             name="${ifDefined(this.name)}"
@@ -282,6 +301,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             aria-label=${ifDefined(this.a11yLabel)}
             aria-pressed=${ifDefined(this.pressed)}
             aria-expanded=${ifDefined(this.a11yExpanded)}
+            aria-haspopup=${ifDefined(this.a11yHaspopup)}
           >
             ${this.buttonContent}
           </button>
