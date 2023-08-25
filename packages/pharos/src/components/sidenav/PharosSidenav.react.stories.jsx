@@ -55,7 +55,7 @@ export const Base = {
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
             onBackground
           ></PharosButton>
         </PharosInputGroup>

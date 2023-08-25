@@ -26,7 +26,7 @@ describe('pharos-button', () => {
 
     it('is accessible as an icon button', async () => {
       component.icon = 'download';
-      component.label = 'download';
+      component.a11yLabel = 'download';
       await component.updateComplete;
       await expect(component).to.be.accessible();
     });

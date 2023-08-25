@@ -34,7 +34,7 @@ export const CreateReportModal = (): TemplateResult => html`
               name="start-button"
               icon="calendar"
               variant="subtle"
-              label="calendar"
+              a11y-label="calendar"
             ></storybook-pharos-button>
           </storybook-pharos-input-group>
           <storybook-pharos-input-group name="end-date">
@@ -43,7 +43,7 @@ export const CreateReportModal = (): TemplateResult => html`
               name="end-button"
               icon="calendar"
               variant="subtle"
-              label="calendar"
+              a11y-label="calendar"
             ></storybook-pharos-button>
           </storybook-pharos-input-group>
         </div>

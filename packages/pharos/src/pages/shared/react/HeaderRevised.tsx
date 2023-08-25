@@ -58,7 +58,7 @@ export const HeaderRevised: FC<Header> = ({ showSearch = false }) => (
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></PharosButton>
         </PharosInputGroup>
         <PharosDropdownMenuNav label="main navigation">
