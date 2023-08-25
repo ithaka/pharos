@@ -1,4 +1,14 @@
-// Style the coach-mark component here
 .coach-mark {
-  // Add SCSS properties here
+  position: relative;
+  background-color: var(--pharos-color-white);
+  border: 1px solid var(--pharos-color-marble-gray-base);
+  padding: var(--pharos-spacing-one-half-x) calc(24px + var(--pharos-spacing-one-and-a-half-x))
+    var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
+  width: fit-content;
+
+  .coach-mark__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
