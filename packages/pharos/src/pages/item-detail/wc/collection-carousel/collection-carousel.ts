@@ -11,13 +11,13 @@ export const CollectionCarousel = (): TemplateResult => html`
     >
     <div class="item-detail-page__container--carousel-buttons">
       <storybook-pharos-button
-        label="backward"
+        a11y-label="backward"
         variant="subtle"
         icon="chevron-left-large"
         icon-condensed
       ></storybook-pharos-button>
       <storybook-pharos-button
-        label="forward"
+        a11y-label="forward"
         variant="subtle"
         icon="chevron-right-large"
         icon-condensed

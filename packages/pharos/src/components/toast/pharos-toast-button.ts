@@ -33,8 +33,8 @@ export class PharosToastButton extends PharosButton {
     super();
     this.icon = 'close';
     this.variant = 'subtle';
-    this.label = 'Dismiss';
-    this.isOnBackground = true;
+    this.a11yLabel = 'Dismiss';
+    this.onBackground = true;
     this.iconCondensed = true;
   }
 

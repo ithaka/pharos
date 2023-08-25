@@ -15,13 +15,13 @@ export const CollectionCarousel: FC = () => (
       </PharosHeading>
       <div className="item-detail-page__container--carousel-buttons">
         <PharosButton
-          label="backward"
+          a11y-label="backward"
           variant="subtle"
           icon="chevron-left-large"
           iconCondensed
         ></PharosButton>
         <PharosButton
-          label="forward"
+          a11y-label="forward"
           variant="subtle"
           icon="chevron-right-large"
           iconCondensed
