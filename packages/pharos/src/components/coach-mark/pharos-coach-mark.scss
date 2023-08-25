@@ -6,6 +6,10 @@
     var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
   width: fit-content;
 
+  &[aria-hidden='true'] {
+    display: none;
+  }
+
   .coach-mark__close {
     position: absolute;
     top: 0;

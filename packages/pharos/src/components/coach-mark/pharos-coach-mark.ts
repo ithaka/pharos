@@ -3,6 +3,7 @@ import { PharosButton } from '../button/pharos-button';
 import { PharosHeading } from '../heading/pharos-heading';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { html } from 'lit';
+import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { coachMarkStyles } from './pharos-coach-mark.css';
 
@@ -22,9 +23,16 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
     return [coachMarkStyles];
   }
 
+  /**
+   * Indicates that the coach mark should not be displayed on the page
+   * @attr hide
+   */
+  @property({ type: Boolean, reflect: true })
+  hide = true;
+
   protected override render(): TemplateResult {
     return html`
-      <div class="coach-mark">
+      <div class="coach-mark" aria-hidden=${this.hide}>
         <pharos-button
           id="close-button"
           class="coach-mark__close"
