@@ -1,10 +1,37 @@
 .coach-mark {
+  --coach-mark-background-color: var(--pharos-color-white);
+  --coach-mark-border-color: var(--pharos-color-marble-gray-base);
+  --coach-mark-border-width: 1px;
+  --coach-mark-pip-size: 10px;
+
   position: relative;
-  background-color: var(--pharos-color-white);
-  border: 1px solid var(--pharos-color-marble-gray-base);
+  background-color: var(--coach-mark-background-color);
+  border: var(--coach-mark-border-width) solid var(--coach-mark-border-color);
   padding: var(--pharos-spacing-one-half-x) calc(24px + var(--pharos-spacing-one-and-a-half-x))
     var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
   width: fit-content;
+
+  &::before,
+  &::after {
+    content: '';
+    background-color: var(--coach-mark-background-color);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: var(--coach-mark-pip-size);
+    width: var(--coach-mark-pip-size);
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 1;
+  }
+
+  &::after {
+    --coach-mark-border-width-x2: calc(var(--coach-mark-border-width) * 2);
+
+    background-color: var(--coach-mark-border-color);
+    height: calc(var(--coach-mark-pip-size) + var(--coach-mark-border-width-x2));
+    width: calc(var(--coach-mark-pip-size) + var(--coach-mark-border-width-x2));
+    z-index: -1;
+  }
 
   &[aria-hidden='true'] {
     display: none;
