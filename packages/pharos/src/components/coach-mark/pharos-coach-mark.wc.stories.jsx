@@ -15,7 +15,13 @@ export default {
 
 export const Base = {
   render: (args) =>
-    html`<storybook-pharos-coach-mark ?hide=${false}></storybook-pharos-coach-mark>`,
+    html` <div
+        style="border:1px solid #eae8e1;padding:20px;width:fit-content"
+        data-coach-mark="example-coachmark"
+      >
+        Lorem Ipsum
+      </div>
+      <storybook-pharos-coach-mark ?hide=${false}></storybook-pharos-coach-mark>`,
   args: {},
 };
 

@@ -43,3 +43,10 @@
     right: 0;
   }
 }
+
+.coachmark-example-div {
+  background-color: var(--pharos-color-white);
+  border: 1px solid var(--pharos-color-marble-gray-base);
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
+  width: fit-content;
+}
