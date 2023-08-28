@@ -25,7 +25,7 @@ export const Base = {
         id="example-coachmark"
         ?hide=${false}
         side="bottom"
-        alignment="center"
+        alignment="start"
       ></storybook-pharos-coach-mark>`,
   args: {},
 };

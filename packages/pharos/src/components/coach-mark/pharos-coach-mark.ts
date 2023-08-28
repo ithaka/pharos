@@ -92,21 +92,20 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
         aria-hidden=${this.hide}
         style="transform:translate(${this.offsetX}px,${this.offsetY}px)"
       >
-        <div
-          class="coach-mark__content coach-mark-side__${this.side} coach-mark-alignment__${this
-            .alignment}"
-        >
-          <pharos-button
-            id="close-button"
-            class="coach-mark__close"
-            type="button"
-            variant="subtle"
-            icon="close"
-            label="Close coach mark"
-            @click="${() => (this.hide = true)}"
-          ></pharos-button>
-          <pharos-heading level="2" preset="1">Lorem Ipsum</pharos-heading>
-          <p>This is an example Coach Mark</p>
+        <div class="coach-mark__wrapper coach-mark-side__${this.side}">
+          <div class="coach-mark__content coach-mark-alignment__${this.alignment}">
+            <pharos-button
+              id="close-button"
+              class="coach-mark__close"
+              type="button"
+              variant="subtle"
+              icon="close"
+              label="Close coach mark"
+              @click="${() => (this.hide = true)}"
+            ></pharos-button>
+            <pharos-heading level="2" preset="1">Lorem Ipsum</pharos-heading>
+            <p>This is an example Coach Mark</p>
+          </div>
         </div>
       </div>
     `;
