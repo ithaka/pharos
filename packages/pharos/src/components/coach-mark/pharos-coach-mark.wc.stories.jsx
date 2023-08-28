@@ -21,11 +21,20 @@ export const Base = {
       >
         Lorem Ipsum
       </div>
-      <storybook-pharos-coach-mark ?hide=${false}></storybook-pharos-coach-mark>`,
+      <storybook-pharos-coach-mark
+        ?hide=${false}
+        side="bottom"
+        alignment="center"
+      ></storybook-pharos-coach-mark>`,
   args: {},
 };
 
 export const Hidden = {
-  render: (args) => html`<storybook-pharos-coach-mark ?hide=${true}></storybook-pharos-coach-mark>`,
+  render: (args) =>
+    html`<storybook-pharos-coach-mark
+      ?hide=${true}
+      side="bottom"
+      alignment="center"
+    ></storybook-pharos-coach-mark>`,
   args: {},
 };
