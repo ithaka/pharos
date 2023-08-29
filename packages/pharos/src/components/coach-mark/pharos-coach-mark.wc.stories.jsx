@@ -1,5 +1,7 @@
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { argTypes, defaultArgs } from './storyArgs';
 import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
@@ -11,6 +13,7 @@ export default {
     },
     options: { selectedPanel: 'addon-controls' },
   },
+  argTypes,
 };
 
 export const Base = {
@@ -23,63 +26,12 @@ export const Base = {
       </div>
       <storybook-pharos-coach-mark
         id="example-coachmark"
-        ?hide=${false}
-        side="bottom"
-        alignment="start"
-        header="Example Coach Mark"
+        ?hide=${ifDefined(args.hide)}
+        side=${ifDefined(args.side)}
+        alignment=${ifDefined(args.alignment)}
+        header=${ifDefined(args.header)}
       >
         This is an example Coach Mark
       </storybook-pharos-coach-mark>`,
-  args: {},
-};
-
-export const Positioned = {
-  render: (args) =>
-    html` <div
-        style="border:1px solid #eae8e1;padding:20px;margin:200px auto;width:fit-content"
-        data-coach-mark="example-coachmark-1"
-      >
-        Lorem Ipsum
-      </div>
-      <storybook-pharos-coach-mark
-        id="example-coachmark-1"
-        ?hide=${false}
-        side="right"
-        alignment="center"
-      ></storybook-pharos-coach-mark>`,
-  args: {},
-};
-
-export const Aligned = {
-  render: (args) =>
-    html` <div
-        style="border:1px solid #eae8e1;padding:20px;margin:200px auto;width:fit-content"
-        data-coach-mark="example-coachmark-2"
-      >
-        Lorem Ipsum
-      </div>
-      <storybook-pharos-coach-mark
-        id="example-coachmark-2"
-        ?hide=${false}
-        side="bottom"
-        alignment="start"
-      ></storybook-pharos-coach-mark>`,
-  args: {},
-};
-
-export const Hidden = {
-  render: (args) =>
-    html` <div
-        style="border:1px solid #eae8e1;padding:20px;margin:200px auto;width:fit-content"
-        data-coach-mark="example-coachmark-3"
-      >
-        Lorem Ipsum
-      </div>
-      <storybook-pharos-coach-mark
-        id="example-coachmark-3"
-        ?hide=${true}
-        side="bottom"
-        alignment="center"
-      ></storybook-pharos-coach-mark>`,
-  args: {},
+  args: defaultArgs,
 };
