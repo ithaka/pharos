@@ -1,3 +1,13 @@
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 :host {
   --coach-mark-background-color: var(--pharos-color-white);
   --coach-mark-border-color: var(--pharos-color-marble-gray-base);
@@ -10,6 +20,10 @@
 }
 
 .coach-mark {
+  animation-duration: 1s;
+  animation-name: fadein;
+  animation-timing-function: ease-in-out;
+
   &[aria-hidden='true'] {
     display: none;
   }
