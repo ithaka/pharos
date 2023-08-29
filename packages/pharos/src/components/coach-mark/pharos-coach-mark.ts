@@ -53,6 +53,13 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   @property({ reflect: true })
   alignment: Alignment = 'center';
 
+  /**
+   * Text content for the modal header
+   * @attr header
+   */
+  @property({ type: String, reflect: true })
+  public header = '';
+
   constructor() {
     super();
     this.setOffset();
@@ -103,8 +110,8 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
               label="Close coach mark"
               @click="${() => (this.hide = true)}"
             ></pharos-button>
-            <pharos-heading level="2" preset="1">Lorem Ipsum</pharos-heading>
-            <p>This is an example Coach Mark</p>
+            <pharos-heading level="2" preset="1--bold">${this.header}</pharos-heading>
+            <slot></slot>
           </div>
         </div>
       </div>

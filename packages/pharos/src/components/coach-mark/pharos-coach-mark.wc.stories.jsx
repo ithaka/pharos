@@ -26,7 +26,10 @@ export const Base = {
         ?hide=${false}
         side="bottom"
         alignment="start"
-      ></storybook-pharos-coach-mark>`,
+        header="Example Coach Mark"
+      >
+        This is an example Coach Mark
+      </storybook-pharos-coach-mark>`,
   args: {},
 };
 
