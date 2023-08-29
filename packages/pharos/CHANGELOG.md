@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.24.0
+
+### Minor Changes
+
+- [#588](https://github.com/ithaka/pharos/pull/588) [`130ce55`](https://github.com/ithaka/pharos/commit/130ce553ddc7a16343ef934629e0ecd51f617267) Thanks [@michael-iden](https://github.com/michael-iden)! - added popover component
+
 ## 12.23.0
 
 ### Minor Changes
