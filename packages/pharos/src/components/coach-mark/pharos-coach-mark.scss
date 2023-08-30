@@ -1,9 +1,37 @@
 @keyframes fadein {
-  from {
+  0% {
     opacity: 0;
   }
 
-  to {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein-short {
+  0% {
+    opacity: 0;
+  }
+
+  37.5% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein-long {
+  0% {
+    opacity: 0;
+  }
+
+  66.66% {
+    opacity: 0;
+  }
+
+  100% {
     opacity: 1;
   }
 }
@@ -20,12 +48,23 @@
 }
 
 .coach-mark {
-  animation-duration: 1s;
+  animation-duration: 1000ms; /* Delay duration of 0ms, fade duration of --pharos-transition-duration-default */
   animation-name: fadein;
   animation-timing-function: ease-in-out;
 
   &[aria-hidden='true'] {
     display: none;
+    opacity: 0;
+  }
+
+  &.delay-short {
+    animation-duration: 1600ms; /* Delay duration of 600ms, fade duration of --pharos-transition-duration-default */
+    animation-name: fadein-short;
+  }
+
+  &.delay-long {
+    animation-duration: 3000ms; /* Delay duration of 2000ms, fade duration of --pharos-transition-duration-default */
+    animation-name: fadein-long;
   }
 }
 

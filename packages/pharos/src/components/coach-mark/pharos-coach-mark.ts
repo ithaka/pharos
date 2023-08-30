@@ -9,6 +9,7 @@ import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 export type Alignment = 'start' | 'center' | 'end';
+export type Delay = 'none' | 'short' | 'long';
 
 /**
  * Pharos coach-mark component.
@@ -54,6 +55,14 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   alignment: Alignment = 'center';
 
   /**
+   * Dictates how long to wait between coach mark trigger and start of coach mark fade in animation
+   * @attr delay
+   * @type {Delay}
+   */
+  @property()
+  delay: Delay = 'short';
+
+  /**
    * Text content for the modal header
    * @attr header
    */
@@ -95,7 +104,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
     this.setOffset();
     return html`
       <div
-        class="coach-mark"
+        class="coach-mark ${this.delay && this.delay !== 'none' ? `delay-${this.delay}` : ''}"
         aria-hidden=${this.hide}
         style="transform:translate(${this.offsetX}px,${this.offsetY}px)"
       >

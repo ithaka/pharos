@@ -30,6 +30,7 @@ export const Base = {
         side=${ifDefined(args.side)}
         alignment=${ifDefined(args.alignment)}
         header=${ifDefined(args.header)}
+        delay=${ifDefined(args.delay)}
       >
         This is an example Coach Mark
       </storybook-pharos-coach-mark>`,
