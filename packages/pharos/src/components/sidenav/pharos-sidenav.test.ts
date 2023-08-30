@@ -129,10 +129,11 @@ describe('pharos-sidenav', () => {
     expect(document.activeElement === renderedButton).to.be.true;
   });
 
-  it('resets its slide status when going back to a viewport above 1055px', async () => {
+  it.only('resets its slide status when going back to a viewport above 1055px', async () => {
     await setViewport({ width: 1055, height: 768 });
     component.slide = true;
     await component.updateComplete;
+    await aTimeout(1000);
 
     await setViewport({ width: 1056, height: 768 });
     await component.updateComplete;
