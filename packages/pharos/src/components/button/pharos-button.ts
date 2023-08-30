@@ -75,6 +75,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
    * Indicates the variant of button.
    * @attr variant
    */
+  @property({ type: String, reflect: true })
   public variant: ButtonVariant = 'primary';
 
   /**
