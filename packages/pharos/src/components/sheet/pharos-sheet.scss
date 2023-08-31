@@ -71,6 +71,16 @@
   border: 1px solid var(--pharos-modal-color-border-content);
   border-radius: var(--pharos-radius-base-standard);
   outline: 0;
+  transition: height var(--pharos-transition-base);
+
+  .sheet__handle {
+    background: #4d4d4c;
+    width: 65px;
+    height: 4px;
+    border-radius: 2px;
+    margin: var(--pharos-spacing-one-half-x) auto;
+    box-sizing: border-box;
+  }
 }
 
 .sheet__body {
@@ -100,6 +110,12 @@
 
 slot[name='footer']::slotted(*) {
   margin-left: var(--pharos-spacing-1-x);
+}
+
+:host([expanded]) {
+  .sheet__content {
+    height: 100%;
+  }
 }
 
 :host([footer-divider]) {

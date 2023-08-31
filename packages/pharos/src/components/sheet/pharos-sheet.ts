@@ -44,6 +44,13 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   public open = false;
 
   /**
+   * Indicates if the sheet is expanded.
+   * @attr expanded
+   */
+  @property({ type: Boolean, reflect: true })
+  public expanded = false;
+
+  /**
    * Text content for the sheet header
    * @attr header
    */
@@ -174,6 +181,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
   }
 
+  private _handleHandleClick(): void {
+    console.log('Clicking');
+    this.expanded = !this.expanded;
+  }
+
   private _handleTriggerClick(event: MouseEvent): void {
     event.preventDefault();
     this._openSheet(event.target);
@@ -247,6 +259,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         >
           <focus-trap>
             <div class="sheet__content">
+              <div class="sheet__handle" @click=${this._handleHandleClick}></div>
               <div class="sheet__header">
                 <pharos-heading id="sheet-header" level="2" preset="5" no-margin>
                   ${this.header}
