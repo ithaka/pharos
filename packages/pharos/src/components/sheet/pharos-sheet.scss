@@ -1,0 +1,109 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  position: fixed;
+  z-index: 9000;
+  pointer-events: none;
+  inset: 0;
+  contain: strict;
+}
+
+.sheet__overlay {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  background-color: rgb(0 0 0 / 0);
+  visibility: hidden;
+  transition: visibility var(--pharos-transition-duration-default) ease-in-out,
+    background-color var(--pharos-transition-duration-default) ease-in-out;
+  overflow-y: visible;
+  transition-duration: var(--pharos-transition-duration-long);
+  height: 100%;
+}
+
+.sheet__dialog {
+  position: relative;
+  min-width: 100vw;
+  max-height: 100vh;
+  height: 100%;
+  top: 100%;
+  pointer-events: none;
+  z-index: 9001;
+  visibility: hidden;
+  transition: visibility var(--pharos-transition-duration-long) linear
+      var(--pharos-transition-duration-long),
+    top var(--pharos-transition-duration-long) ease-in-out;
+}
+
+:host([open]) {
+  pointer-events: auto;
+
+  .sheet__overlay {
+    background-color: rgb(0 0 0 / 0.5);
+    visibility: visible;
+  }
+
+  .sheet__dialog {
+    visibility: visible;
+    top: 0;
+    transition: visibility 0s linear 0s, top var(--pharos-transition-duration-long) ease-in-out;
+  }
+}
+
+.sheet__content {
+  @include mixins.font-base;
+
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 100%;
+  pointer-events: auto;
+  overflow-y: scroll;
+  background-color: var(--pharos-modal-color-background-content);
+  background-clip: padding-box;
+  border: 1px solid var(--pharos-modal-color-border-content);
+  border-radius: var(--pharos-radius-base-standard);
+  outline: 0;
+}
+
+.sheet__body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 0 var(--pharos-modal-spacing-base);
+}
+
+.sheet__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--pharos-modal-spacing-base);
+}
+
+.sheet__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--pharos-modal-spacing-base);
+
+  @at-root #{&}--empty {
+    padding: 0 0 var(--pharos-modal-spacing-base);
+  }
+}
+
+slot[name='footer']::slotted(*) {
+  margin-left: var(--pharos-spacing-1-x);
+}
+
+:host([footer-divider]) {
+  .sheet__footer {
+    border-top: 1px solid var(--pharos-modal-color-border-content);
+  }
+}
