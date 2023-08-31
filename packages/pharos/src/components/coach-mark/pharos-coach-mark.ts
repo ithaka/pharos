@@ -78,6 +78,14 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   @property({ reflect: true })
   public variant: Variant = 'light';
 
+  /**
+   * Set minimum width of coach mark
+   * @attr width
+   * @type {number}
+   */
+  @property({ reflect: true })
+  public width = 250;
+
   constructor() {
     super();
     this.setOffset();
@@ -118,7 +126,10 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
         style="transform:translate(${this.offsetX}px,${this.offsetY}px)"
       >
         <div class="coach-mark__wrapper coach-mark-side__${this.side}">
-          <div class="coach-mark__content coach-mark-alignment__${this.alignment}">
+          <div
+            class="coach-mark__content coach-mark-alignment__${this.alignment}"
+            style="min-width:${this.width}px"
+          >
             <pharos-button
               id="close-button"
               class="coach-mark__close"
