@@ -10,6 +10,7 @@ import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 export type Alignment = 'start' | 'center' | 'end';
 export type Delay = 'none' | 'short' | 'long';
+export type Variant = 'light' | 'dark';
 
 /**
  * Pharos coach-mark component.
@@ -68,6 +69,14 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
    */
   @property({ type: String, reflect: true })
   public header = '';
+
+  /**
+   * Style variant
+   * @attr variant
+   * @type {Variant}
+   */
+  @property({ reflect: true })
+  public variant: Variant = 'light';
 
   constructor() {
     super();

@@ -40,11 +40,22 @@
   --coach-mark-background-color: var(--pharos-color-white);
   --coach-mark-border-color: var(--pharos-color-marble-gray-base);
   --coach-mark-border-width: 1px;
+  --coach-mark-text-size: var(--pharos-font-size-small);
+  --coach-mark-heading-color: var(--pharos-color-marble-gray-20);
+  --coach-mark-text-color: var(--pharos-color-marble-gray-20);
+  --coach-mark-text-spacing: var(--pharos-spacing-1-x);
   --coach-mark-pip-size: 10px;
 
   display: block;
   height: 0;
   width: 0;
+}
+
+:host([variant='dark']) {
+  --coach-mark-background-color: var(--pharos-color-marble-gray-20);
+  --coach-mark-border-color: var(--pharos-color-marble-gray-20);
+  --coach-mark-heading-color: var(--pharos-color-white);
+  --coach-mark-text-color: var(--pharos-color-marble-gray-80);
 }
 
 .coach-mark {
@@ -76,6 +87,9 @@
     var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
   min-width: 100px;
   width: fit-content;
+  font-size: var(--coach-mark-text-size);
+  color: var(--coach-mark-text-color);
+  line-height: var(--coach-mark-text-spacing);
 
   &::before,
   &::after {
@@ -97,6 +111,10 @@
     height: calc(var(--coach-mark-pip-size) + var(--coach-mark-border-width-x2));
     width: calc(var(--coach-mark-pip-size) + var(--coach-mark-border-width-x2));
     z-index: -1;
+  }
+
+  pharos-heading {
+    color: var(--coach-mark-heading-color);
   }
 
   .coach-mark__close {

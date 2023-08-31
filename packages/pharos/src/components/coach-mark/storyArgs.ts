@@ -4,6 +4,7 @@ export const defaultArgs = {
   alignment: 'start',
   header: 'Coach Mark',
   delay: 'short',
+  variant: 'light',
 };
 
 export const argTypes = {
@@ -26,6 +27,12 @@ export const argTypes = {
   },
   delay: {
     options: ['none', 'short', 'long'],
+    control: {
+      type: 'inline-radio',
+    },
+  },
+  variant: {
+    options: ['light', 'dark'],
     control: {
       type: 'inline-radio',
     },
