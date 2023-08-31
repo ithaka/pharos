@@ -37,7 +37,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
    * @attr hide
    */
   @property({ type: Boolean, reflect: true })
-  hide = true;
+  public hide = true;
 
   /**
    * Indicates which side of the base element the coachmark should appear on
@@ -45,7 +45,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
    * @type {Side}
    */
   @property({ reflect: true })
-  side: Side = 'bottom';
+  public side: Side = 'bottom';
 
   /**
    * Indicates which side of the base element the coachmark should appear on
@@ -53,21 +53,22 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
    * @type {Alignment}
    */
   @property({ reflect: true })
-  alignment: Alignment = 'center';
+  public alignment: Alignment = 'center';
 
   /**
    * Dictates how long to wait between coach mark trigger and start of coach mark fade in animation
    * @attr delay
    * @type {Delay}
    */
-  @property()
-  delay: Delay = 'short';
+  @property({ reflect: true })
+  public delay: Delay = 'short';
 
   /**
    * Text content for the modal header
    * @attr header
+   * @type {String}
    */
-  @property({ type: String, reflect: true })
+  @property({ reflect: true })
   public header = '';
 
   /**
