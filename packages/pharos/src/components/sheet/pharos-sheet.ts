@@ -51,6 +51,13 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   public expanded = false;
 
   /**
+   * Indicates if the sheet contains close button.
+   * @attr hasClose
+   */
+  @property({ type: Boolean, reflect: true })
+  public hasClose = true;
+
+  /**
    * Text content for the sheet header
    * @attr header
    */
@@ -246,6 +253,18 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).length === 0;
   }
 
+  private _renderCloseButton(): TemplateResult | typeof nothing {
+    return this.hasClose
+      ? html` <pharos-button
+          id="close-button"
+          type="button"
+          variant="subtle"
+          icon="close"
+          label="Close sheet"
+        ></pharos-button>`
+      : nothing;
+  }
+
   protected override render(): TemplateResult {
     return html`
       <div class="sheet__overlay">
@@ -264,13 +283,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
                 <pharos-heading id="sheet-header" level="2" preset="5" no-margin>
                   ${this.header}
                 </pharos-heading>
-                <pharos-button
-                  id="close-button"
-                  type="button"
-                  variant="subtle"
-                  icon="close"
-                  label="Close sheet"
-                ></pharos-button>
+                ${this._renderCloseButton()}
               </div>
               <div class="sheet__body">
                 ${this.descriptionContent}
