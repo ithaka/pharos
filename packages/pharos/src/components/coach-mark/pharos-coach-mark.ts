@@ -6,6 +6,7 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { coachMarkStyles } from './pharos-coach-mark.css';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import debounce from '../../utils/debounce';
 
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 export type Alignment = 'start' | 'center' | 'end';
@@ -90,7 +91,18 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   constructor() {
     super();
     this.setOffset();
+    this.resizeObserver.observe(document.body);
   }
+
+  private resizeObserver = new ResizeObserver(
+    debounce((entries) => {
+      entries.map((entry: ResizeObserverEntry) => {
+        if (entry.target.tagName.toLowerCase() !== 'body') return;
+        this.setOffset();
+        this.requestUpdate();
+      });
+    }, 100)
+  );
 
   private setOffset() {
     const id: string = this.getAttribute('id') || '';
