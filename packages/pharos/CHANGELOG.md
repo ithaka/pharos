@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.25.0
+
+### Minor Changes
+
+- [#596](https://github.com/ithaka/pharos/pull/596) [`8c223fa`](https://github.com/ithaka/pharos/commit/8c223faf6c189e46bc4a8fc9291310947a5d04ba) Thanks [@michael-iden](https://github.com/michael-iden)! - Add compare and side-panel icons
+
 ## 12.24.0
 
 ### Minor Changes
