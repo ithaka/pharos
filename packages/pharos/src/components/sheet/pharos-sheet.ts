@@ -78,10 +78,18 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   @state()
   private _isFooterEmpty = true;
 
+  private _startHeight = 0;
+  private _startY = 0;
+  private _isDragging = false;
+
   constructor() {
     super();
     this._handleKeydown = this._handleKeydown.bind(this);
     this._handleTriggerClick = this._handleTriggerClick.bind(this);
+    this.addEventListener('touchend', this._handleDragEnd);
+    this.addEventListener('mouseup', this._handleDragEnd);
+    this.addEventListener('touchmove', this._handleDragging);
+    this.addEventListener('mousemove', this._handleDragging);
   }
 
   public static override get styles(): CSSResultArray {
@@ -188,9 +196,31 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
   }
 
-  private _handleHandleClick(): void {
-    console.log('Clicking');
-    this.expanded = !this.expanded;
+  private _handleDragStart(event: MouseEvent | TouchEvent): void {
+    this._isDragging = true;
+    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+    this._startHeight = sheetContent.clientHeight;
+    this._startY = event.pageY || event.touches?.[0].pageY;
+  }
+
+  private _handleDragging(event: MouseEvent | TouchEvent): void {
+    if (this._isDragging) {
+      const delta = this._startY - (event.pageY || event.touches?.[0].pageY);
+      const newHeight = this._startHeight + delta;
+      const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+      sheetContent.style.height = `${newHeight}px`;
+    }
+  }
+
+  private _handleDragEnd(): void {
+    this._isDragging = false;
+    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+    const sheetHeight = sheetContent.clientHeight;
+    if (sheetHeight > this._startHeight) {
+      sheetContent.style.height = '100%';
+    } else {
+      sheetContent.style.height = '50%';
+    }
   }
 
   private _handleTriggerClick(event: MouseEvent): void {
@@ -275,10 +305,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
           aria-labelledby="sheet-header"
           aria-describedby="${ifDefined(this.descriptionId)}"
           @click=${this._handleDialogClick}
+          @touchstart=${this._handleDragStart}
         >
           <focus-trap>
             <div class="sheet__content">
-              <div class="sheet__handle" @click=${this._handleHandleClick}></div>
+              <div class="sheet__handle" @mousedown=${this._handleDragStart}></div>
               <div class="sheet__header">
                 <pharos-heading id="sheet-header" level="2" preset="5" no-margin>
                   ${this.header}
