@@ -84,7 +84,7 @@
     "react-dom": "^17.0.1",
     "replace-in-file": "^6.3.2",
     "rimraf": "^3.0.2",
-    "sassdoc": "^2.7.3",
+    "sassdoc": "^2.7.4",
     "sinon": "^12.0.1",
     "style-dictionary": "^3.0.1",
     "ts-lit-plugin": "^1.2.1",
