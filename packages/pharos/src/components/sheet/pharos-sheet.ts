@@ -69,7 +69,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
    * @attr header
    */
   @property({ type: String, reflect: true })
-  public header = '';
+  public header = 'Sheet header';
 
   /**
    * Indicates if the sheet footer should contain a divider.
