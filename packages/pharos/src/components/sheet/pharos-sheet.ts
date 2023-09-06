@@ -51,6 +51,13 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   public expanded = false;
 
   /**
+   * Indicates if the sheet is allowed to expand.
+   * @attr enbaleExpansion
+   */
+  @property({ type: Boolean, reflect: true })
+  public enbaleExpansion = true;
+
+  /**
    * Indicates if the sheet contains close button.
    * @attr hasClose
    */
@@ -86,10 +93,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     super();
     this._handleKeydown = this._handleKeydown.bind(this);
     this._handleTriggerClick = this._handleTriggerClick.bind(this);
-    this.addEventListener('touchend', this._handleDragEnd);
-    this.addEventListener('mouseup', this._handleDragEnd);
-    this.addEventListener('touchmove', this._handleDragging);
-    this.addEventListener('mousemove', this._handleDragging);
+    if (this.enbaleExpansion) {
+      this.addEventListener('touchend', this._handleDragEnd);
+      this.addEventListener('mouseup', this._handleDragEnd);
+      this.addEventListener('touchmove', this._handleTouchDragging);
+      this.addEventListener('mousemove', this._handleMouseDragging);
+    }
   }
 
   public static override get styles(): CSSResultArray {
@@ -196,16 +205,34 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
   }
 
-  private _handleDragStart(event: MouseEvent | TouchEvent): void {
+  private _handleMouseDragStart(event: MouseEvent): void {
+    if (!this.enbaleExpansion) return;
     this._isDragging = true;
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
     this._startHeight = sheetContent.clientHeight;
-    this._startY = event.pageY || event.touches?.[0].pageY;
+    this._startY = event.pageY;
   }
 
-  private _handleDragging(event: MouseEvent | TouchEvent): void {
+  private _handleTouchDragStart(event: TouchEvent): void {
+    if (!this.enbaleExpansion) return;
+    this._isDragging = true;
+    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+    this._startHeight = sheetContent.clientHeight;
+    this._startY = event.touches?.[0].pageY;
+  }
+
+  private _handleMouseDragging(event: MouseEvent): void {
     if (this._isDragging) {
-      const delta = this._startY - (event.pageY || event.touches?.[0].pageY);
+      const delta = this._startY - event.pageY;
+      const newHeight = this._startHeight + delta;
+      const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+      sheetContent.style.height = `${newHeight}px`;
+    }
+  }
+
+  private _handleTouchDragging(event: TouchEvent): void {
+    if (this._isDragging) {
+      const delta = this._startY - event.touches?.[0].pageY;
       const newHeight = this._startHeight + delta;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
       sheetContent.style.height = `${newHeight}px`;
@@ -295,6 +322,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       : nothing;
   }
 
+  private _renderSheetHandle(): TemplateResult | typeof nothing {
+    return this.enbaleExpansion
+      ? html`<div class="sheet__handle" @mousedown=${this._handleMouseDragStart}></div>`
+      : nothing;
+  }
+
   protected override render(): TemplateResult {
     return html`
       <div class="sheet__overlay">
@@ -305,11 +338,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
           aria-labelledby="sheet-header"
           aria-describedby="${ifDefined(this.descriptionId)}"
           @click=${this._handleDialogClick}
-          @touchstart=${this._handleDragStart}
+          @touchstart=${this._handleTouchDragStart}
         >
           <focus-trap>
             <div class="sheet__content">
-              <div class="sheet__handle" @mousedown=${this._handleDragStart}></div>
+              ${this._renderSheetHandle()}
               <div class="sheet__header">
                 <pharos-heading id="sheet-header" level="2" preset="5" no-margin>
                   ${this.header}
