@@ -52,8 +52,8 @@
 }
 
 :host([variant='dark']) {
-  --coach-mark-background-color: var(--pharos-color-marble-gray-20);
-  --coach-mark-border-color: var(--pharos-color-marble-gray-20);
+  --coach-mark-background-color: var(--pharos-button-color-base-overlay-background-base);
+  --coach-mark-border-color: var(--coach-mark-background-color);
   --coach-mark-heading-color: var(--pharos-color-white);
   --coach-mark-text-color: var(--pharos-color-marble-gray-80);
 }

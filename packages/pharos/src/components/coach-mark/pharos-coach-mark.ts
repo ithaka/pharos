@@ -147,9 +147,9 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
               id="close-button"
               class="coach-mark__close"
               type="button"
-              variant="subtle"
+              variant="${this.variant === 'light' ? 'subtle' : 'overlay'}"
               icon="close"
-              label="Close coach mark"
+              label="Close"
               @click="${() => (this.hide = true)}"
             ></pharos-button>
             <pharos-heading level="2" preset="1--bold">${this.header}</pharos-heading>
