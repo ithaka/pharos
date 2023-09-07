@@ -100,6 +100,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/HassanTanveer"><img src="https://avatars.githubusercontent.com/u/57575219?v=4?s=100" width="100px;" alt="Hassan Tanveer"/><br /><sub><b>Hassan Tanveer</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=HassanTanveer" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mariadevadoss"><img src="https://avatars.githubusercontent.com/u/132926833?v=4?s=100" width="100px;" alt="mariadevadoss"/><br /><sub><b>mariadevadoss</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=mariadevadoss" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://brentswisher.com/"><img src="https://avatars.githubusercontent.com/u/6653970?v=4?s=100" width="100px;" alt="Brent Swisher"/><br /><sub><b>Brent Swisher</b></sub></a><br /><a href="https://github.com/ithaka/pharos/issues?q=author%3Abrentswisher" title="Bug reports">🐛</a> <a href="https://github.com/ithaka/pharos/commits?author=brentswisher" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://matharris.dev/"><img src="https://avatars.githubusercontent.com/u/6874453?v=4?s=100" width="100px;" alt="Mat Harris"/><br /><sub><b>Mat Harris</b></sub></a><br /><a href="#a11y-sirrah-tam" title="Accessibility">️️️️♿️</a></td>
     </tr>
   </tbody>
 </table>
