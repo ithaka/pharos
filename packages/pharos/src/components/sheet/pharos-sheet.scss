@@ -74,12 +74,16 @@
   transition: height var(--pharos-transition-base);
   box-shadow: 0 1px 2px 0 rgb(18 18 18 / 0.3), 0 -4px 8px 3px rgb(18 18 18 / 0.15);
 
+  .sheet__wrapper {
+    padding: 0 var(--pharos-modal-spacing-base);
+  }
+
   .sheet__handle {
-    background: #4d4d4c;
+    background: var(--pharos-color-marble-gray-80);
     width: 65px;
     height: 4px;
     border-radius: 2px;
-    margin: var(--pharos-spacing-one-half-x) auto;
+    margin: var(--pharos-spacing-1-x) auto var(--pharos-spacing-one-and-a-half-x) auto;
     box-sizing: border-box;
     cursor: grab;
   }
@@ -88,14 +92,12 @@
 .sheet__body {
   position: relative;
   flex: 1 1 auto;
-  padding: 0 var(--pharos-modal-spacing-base);
 }
 
 .sheet__header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: var(--pharos-modal-spacing-base);
 }
 
 .sheet__footer {

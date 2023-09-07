@@ -342,19 +342,21 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         >
           <focus-trap>
             <div class="sheet__content">
-              ${this._renderSheetHandle()}
-              <div class="sheet__header">
-                <pharos-heading id="sheet-header" level="2" preset="5" no-margin>
-                  ${this.header}
-                </pharos-heading>
-                ${this._renderCloseButton()}
-              </div>
-              <div class="sheet__body">
-                ${this.descriptionContent}
-                <slot></slot>
-              </div>
-              <div class="sheet__footer${this._isFooterEmpty ? '--empty' : ''}">
-                <slot @slotchange=${this._handleFooterSlotchange} name="footer"></slot>
+              <div class="sheet__wrapper">
+                ${this._renderSheetHandle()}
+                <div class="sheet__header">
+                  <pharos-heading id="sheet-header" level="2" preset="2" no-margin>
+                    ${this.header}
+                  </pharos-heading>
+                  ${this._renderCloseButton()}
+                </div>
+                <div class="sheet__body">
+                  ${this.descriptionContent}
+                  <slot></slot>
+                </div>
+                <div class="sheet__footer${this._isFooterEmpty ? '--empty' : ''}">
+                  <slot @slotchange=${this._handleFooterSlotchange} name="footer"></slot>
+                </div>
               </div>
             </div>
           </focus-trap>

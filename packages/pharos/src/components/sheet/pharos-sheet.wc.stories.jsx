@@ -21,7 +21,7 @@ export const Base = {
           Click Me
         </storybook-pharos-button>
         <storybook-pharos-sheet id="my-sheet" label="Pharos sheet">
-          <div style="padding: 1rem;">Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
         </storybook-pharos-sheet>
       </div>
     `,
