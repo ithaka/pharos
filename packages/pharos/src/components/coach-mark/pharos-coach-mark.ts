@@ -136,6 +136,8 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
       <div
         class="coach-mark ${this.delay && this.delay !== 'none' ? `delay-${this.delay}` : ''}"
         aria-hidden=${this.hide}
+        role="dialog"
+        aria-labelledby="coach-mark-heading"
         style="transform:translate(${this.offsetX}px,${this.offsetY}px)"
       >
         <div class="coach-mark__wrapper coach-mark-side__${this.side}">
@@ -152,7 +154,9 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
               label="Close"
               @click="${() => (this.hide = true)}"
             ></pharos-button>
-            <pharos-heading level="2" preset="1--bold">${this.header}</pharos-heading>
+            <pharos-heading id="coach-mark-heading" level="2" preset="1--bold"
+              >${this.header}</pharos-heading
+            >
             <slot></slot>
           </div>
         </div>
