@@ -14,7 +14,7 @@ export type Delay = 'none' | 'short' | 'long';
 export type Variant = 'light' | 'dark';
 
 /**
- * Pharos coach-mark component.
+ * Pharos coach mark component.
  *
  * @tag pharos-coach-mark
  *

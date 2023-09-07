@@ -5,7 +5,7 @@ import { argTypes, defaultArgs } from './storyArgs';
 import { configureDocsPage } from '@config/docsPageConfig';
 
 export default {
-  title: 'Components/CoachMark',
+  title: 'Components/Coach Mark',
   component: 'pharos-coach-mark',
   parameters: {
     docs: {
