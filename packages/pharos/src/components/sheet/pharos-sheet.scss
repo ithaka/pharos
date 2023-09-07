@@ -78,12 +78,24 @@
     padding: 0 var(--pharos-modal-spacing-base);
   }
 
+  @include mixins.until(medium) {
+    .sheet__wrapper {
+      padding: 0 var(--pharos-spacing-one-and-a-half-x);
+    }
+  }
+
+  @include mixins.until(small) {
+    .sheet__wrapper {
+      padding: 0 20px;
+    }
+  }
+
   .sheet__handle {
     background: var(--pharos-color-marble-gray-80);
-    width: 65px;
+    width: var(--pharos-spacing-three-and-a-half-x);
     height: 4px;
     border-radius: 2px;
-    margin: var(--pharos-spacing-1-x) auto 0 auto;
+    margin: var(--pharos-spacing-one-half-x) auto 0 auto;
     box-sizing: border-box;
     cursor: grab;
   }
@@ -99,6 +111,7 @@
   align-items: flex-start;
   justify-content: space-between;
   margin-top: var(--pharos-spacing-one-and-a-half-x);
+  height: 40px;
 }
 
 .sheet__footer {
