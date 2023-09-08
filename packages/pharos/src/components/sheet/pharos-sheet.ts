@@ -354,9 +354,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
                   ${this.descriptionContent}
                   <slot></slot>
                 </div>
-                <div class="sheet__footer${this._isFooterEmpty ? '--empty' : ''}">
-                  <slot @slotchange=${this._handleFooterSlotchange} name="footer"></slot>
-                </div>
+              </div>
+              <div class="sheet__footer${this._isFooterEmpty ? '--empty' : ''}">
+                <slot @slotchange=${this._handleFooterSlotchange} name="footer"></slot>
               </div>
             </div>
           </focus-trap>
