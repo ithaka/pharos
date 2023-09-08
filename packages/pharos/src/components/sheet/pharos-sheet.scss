@@ -75,13 +75,7 @@
   box-shadow: 0 1px 2px 0 rgb(18 18 18 / 0.3), 0 -4px 8px 3px rgb(18 18 18 / 0.15);
 
   .sheet__wrapper {
-    padding: 0 var(--pharos-modal-spacing-base);
-  }
-
-  @include mixins.until(medium) {
-    .sheet__wrapper {
-      padding: 0 var(--pharos-spacing-one-and-a-half-x);
-    }
+    padding: 0 var(--pharos-spacing-one-and-a-half-x);
   }
 
   @include mixins.until(small) {
@@ -104,6 +98,7 @@
 .sheet__body {
   position: relative;
   flex: 1 1 auto;
+  margin-top: 0.375rem;
 }
 
 .sheet__header {
@@ -111,7 +106,6 @@
   align-items: flex-start;
   justify-content: space-between;
   margin-top: var(--pharos-spacing-one-and-a-half-x);
-  height: 40px;
 }
 
 .sheet__footer {
