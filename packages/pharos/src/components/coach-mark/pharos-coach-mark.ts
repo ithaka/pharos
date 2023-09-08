@@ -49,7 +49,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   public side: Side = 'bottom';
 
   /**
-   * Indicates which side of the base element the coachmark should appear on
+   * Indicates how the coach mark carat should be aligned in relation to the coach mark content
    * @attr alignment
    * @type {Alignment}
    */
@@ -65,7 +65,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   public delay: Delay = 'short';
 
   /**
-   * Text content for the modal header
+   * Text content for the coach mark header
    * @attr header
    * @type {String}
    */
@@ -96,8 +96,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
 
   private resizeObserver = new ResizeObserver(
     debounce((entries) => {
-      entries.map((entry: ResizeObserverEntry) => {
-        if (entry.target.tagName.toLowerCase() !== 'body') return;
+      entries.map(() => {
         this.setOffset();
         this.requestUpdate();
       });
