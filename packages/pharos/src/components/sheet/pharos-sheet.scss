@@ -67,9 +67,9 @@
   width: 100%;
   pointer-events: auto;
   overflow-y: scroll;
-  background-color: var(--pharos-modal-color-background-content);
+  background-color: var(--pharos-color-white);
   background-clip: padding-box;
-  border: 1px solid var(--pharos-modal-color-border-content);
+  border: 1px solid var(--pharos-color-marble-gray-base);
   border-radius: var(--pharos-radius-base-standard);
   outline: 0;
   transition: height var(--pharos-transition-base);
@@ -117,7 +117,7 @@
   padding: var(--pharos-spacing-1-x) var(--pharos-spacing-one-and-a-half-x);
 
   @at-root #{&}--empty {
-    padding: 0 0 var(--pharos-modal-spacing-base);
+    padding: 0 0 var(--pharos-spacing-2-x);
   }
 }
 
@@ -139,6 +139,6 @@ slot[name='footer']::slotted(*) {
 
 :host([footer-divider]) {
   .sheet__footer {
-    border-top: 1px solid var(--pharos-modal-color-border-content);
+    border-top: 1px solid var(--pharos-color-marble-gray-base);
   }
 }

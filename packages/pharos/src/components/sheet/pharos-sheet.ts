@@ -52,10 +52,10 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   /**
    * Indicates if the sheet is allowed to expand.
-   * @attr enbaleExpansion
+   * @attr enableExpansion
    */
   @property({ type: Boolean, reflect: true })
-  public enbaleExpansion = true;
+  public enableExpansion = true;
 
   /**
    * Indicates if the sheet contains close button.
@@ -93,7 +93,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     super();
     this._handleKeydown = this._handleKeydown.bind(this);
     this._handleTriggerClick = this._handleTriggerClick.bind(this);
-    if (this.enbaleExpansion) {
+    if (this.enableExpansion) {
       this.addEventListener('touchend', this._handleDragEnd);
       this.addEventListener('mouseup', this._handleDragEnd);
       this.addEventListener('touchmove', this._handleTouchDragging);
@@ -206,7 +206,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleMouseDragStart(event: MouseEvent): void {
-    if (!this.enbaleExpansion) return;
+    if (!this.enableExpansion) return;
     this._isDragging = true;
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
     this._startHeight = sheetContent.clientHeight;
@@ -214,7 +214,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleTouchDragStart(event: TouchEvent): void {
-    if (!this.enbaleExpansion) return;
+    if (!this.enableExpansion) return;
     this._isDragging = true;
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
     this._startHeight = sheetContent.clientHeight;
@@ -323,7 +323,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _renderSheetHandle(): TemplateResult | typeof nothing {
-    return this.enbaleExpansion
+    return this.enableExpansion
       ? html`<div class="sheet__handle" @mousedown=${this._handleMouseDragStart}></div>`
       : nothing;
   }
