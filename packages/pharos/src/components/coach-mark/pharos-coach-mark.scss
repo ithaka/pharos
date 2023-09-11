@@ -83,8 +83,7 @@
   position: relative;
   background-color: var(--coach-mark-background-color);
   border: var(--coach-mark-border-width) solid var(--coach-mark-border-color);
-  padding: var(--pharos-spacing-one-half-x) calc(24px + var(--pharos-spacing-one-and-a-half-x))
-    var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
   min-width: 100px;
   width: fit-content;
   font-size: var(--coach-mark-text-size);
@@ -115,12 +114,14 @@
 
   pharos-heading {
     color: var(--coach-mark-heading-color);
+    padding-right: 24px;
   }
 
   .coach-mark__close {
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 1;
   }
 }
 
