@@ -20,6 +20,40 @@ export default {
 };
 
 export const Base = {
-  render: (args) => <PharosCoachMark />,
-  args: {},
+  render: (args) => (
+    <>
+      <div
+        style={{
+          border: '1px solid #eae8e1',
+          padding: '20px',
+          margin: '200px auto',
+          width: 'fit-content',
+        }}
+        data-coach-mark="example-coachmark"
+      >
+        Lorem Ipsum
+      </div>
+      <PharosCoachMark
+        id="example-coachmark"
+        hide={args.hide}
+        side={args.side}
+        alignment={args.alignment}
+        header={args.header}
+        delay={args.delay}
+        variant={args.variant}
+        width={args.width}
+      >
+        This is an example Coach Mark
+      </PharosCoachMark>
+    </>
+  ),
+  args: {
+    hide: false,
+    side: 'bottom',
+    alignment: 'start',
+    header: 'Coach Mark',
+    delay: 'short',
+    variant: 'light',
+    width: 250,
+  },
 };
