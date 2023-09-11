@@ -115,13 +115,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
-      const body = document.querySelector('body');
-
       if (this.open) {
-        body?.classList.add('pharos-sheet__body');
         this._focusContents();
       } else {
-        body?.classList.remove('pharos-sheet__body');
         this._returnTriggerFocus();
       }
 
