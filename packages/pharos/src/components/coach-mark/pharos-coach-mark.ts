@@ -142,7 +142,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
         <div class="coach-mark__wrapper coach-mark-side__${this.side}">
           <div
             class="coach-mark__content coach-mark-alignment__${this.alignment}"
-            style="min-width:${this.width}px"
+            style="min-width:${this.width + 'px'}"
           >
             <pharos-button
               id="close-button"
