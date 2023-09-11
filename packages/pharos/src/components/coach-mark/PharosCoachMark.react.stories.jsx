@@ -53,7 +53,7 @@ export const Base = {
     alignment: 'start',
     header: 'Coach Mark',
     delay: 'short',
-    variant: 'light',
+    variant: 'dark',
     width: 250,
   },
 };

@@ -78,7 +78,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
    * @type {Variant}
    */
   @property({ reflect: true })
-  public variant: Variant = 'light';
+  public variant: Variant = 'dark';
 
   /**
    * Set minimum width of coach mark
