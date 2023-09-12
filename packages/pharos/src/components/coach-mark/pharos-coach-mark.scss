@@ -48,8 +48,6 @@
 
   display: block;
   position: absolute;
-  height: 0;
-  width: 0;
 }
 
 :host([variant='dark']) {
@@ -117,79 +115,63 @@
     color: var(--coach-mark-heading-color);
     padding-right: 24px;
   }
+}
 
-  .coach-mark__close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
-  }
+.coach-mark__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
 }
 
 .coach-mark__wrapper {
   height: fit-content;
   width: fit-content;
+}
 
-  &.coach-mark-side__right {
-    transform: translateY(-50%);
+.coach-mark-side__right .coach-mark__content {
+  --pip-left: 0;
+}
 
-    .coach-mark__content {
-      --pip-left: 0;
-    }
+.coach-mark-side__left .coach-mark__content {
+  --pip-left: 100%;
+}
+
+.coach-mark-side__top .coach-mark__content {
+  --pip-top: 100%;
+}
+
+.coach-mark-side__bottom .coach-mark__content {
+  --pip-top: 0;
+}
+
+.coach-mark-side__right,
+.coach-mark-side__left {
+  .coach-mark-alignment__start {
+    --pip-top: 15%;
   }
 
-  &.coach-mark-side__left {
-    transform: translate(-100%, -50%);
-
-    .coach-mark__content {
-      --pip-left: 100%;
-    }
+  .coach-mark-alignment__center {
+    --pip-top: 50%;
   }
 
-  &.coach-mark-side__top {
-    transform: translate(-50%, -100%);
+  .coach-mark-alignment__end {
+    --pip-top: 85%;
+  }
+}
 
-    .coach-mark__content {
-      --pip-top: 100%;
-    }
+.coach-mark-side__top,
+.coach-mark-side__bottom {
+  .coach-mark-alignment__start {
+    --pip-left: 15%;
   }
 
-  &.coach-mark-side__bottom {
-    transform: translateX(-50%);
-
-    .coach-mark__content {
-      --pip-top: 0;
-    }
+  .coach-mark-alignment__center {
+    --pip-left: 50%;
   }
 
-  &.coach-mark-side__right,
-  &.coach-mark-side__left {
-    .coach-mark-alignment__start {
-      --pip-top: 15%;
-    }
-
-    .coach-mark-alignment__center {
-      --pip-top: 50%;
-    }
-
-    .coach-mark-alignment__end {
-      --pip-top: 85%;
-    }
-  }
-
-  &.coach-mark-side__top,
-  &.coach-mark-side__bottom {
-    .coach-mark-alignment__start {
-      --pip-left: 15%;
-    }
-
-    .coach-mark-alignment__center {
-      --pip-left: 50%;
-    }
-
-    .coach-mark-alignment__end {
-      --pip-left: 85%;
-    }
+  .coach-mark-alignment__end {
+    --pip-left: 85%;
   }
 }
 
