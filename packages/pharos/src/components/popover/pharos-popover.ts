@@ -11,6 +11,7 @@ import debounce from '../../utils/debounce';
 import { autoUpdate, computePosition, flip, offset } from '../base/overlay-element';
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
 import focusable from '../../utils/focusable';
+import { PharosSheet } from '../sheet/pharos-sheet';
 export type { Placement, PositioningStrategy };
 
 const FOCUS_ELEMENT = `[data-popover-focus]`;
@@ -28,6 +29,7 @@ const FOCUS_ELEMENT = `[data-popover-focus]`;
 export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement)) {
   static elementDefinitions = {
     'focus-trap': FocusTrap,
+    'pharos-sheet': PharosSheet,
   };
 
   /**
@@ -229,6 +231,28 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
     }
   }
 
+  private _openSheetForMobile(): void {
+    if (window.innerWidth > 768) return;
+    const sheet = this.shadowRoot?.querySelector(`pharos-sheet`) as PharosSheet;
+    sheet.setAttribute('open', 'true');
+    return;
+  }
+
+  private _closeSheetForMobile(): void {
+    if (window.innerWidth > 768) return;
+    const sheet = this.shadowRoot?.querySelector(`pharos-sheet`) as PharosSheet;
+    sheet.setAttribute('open', 'false');
+    return;
+  }
+
+  private _toggleSheetForMobile(): void {
+    if (this.open) {
+      this._closeSheetForMobile();
+    } else {
+      this._openSheetForMobile();
+    }
+  }
+
   private async _handleTriggerClick(event: MouseEvent): Promise<void> {
     const trigger = event.currentTarget as Element;
     const otherTriggerClicked = this._currentTrigger && this._currentTrigger !== trigger;
@@ -238,12 +262,15 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
       return;
     } else if (!otherTriggerClicked) {
       this.open = !this.open;
+      this._toggleSheetForMobile();
     } else {
       this.open = false;
+      this._closeSheetForMobile();
       await this.updateComplete;
       debounce(() => {
         this._currentTrigger = trigger;
         this.open = true;
+        this._openSheetForMobile();
       }, 150)();
     }
   }
@@ -373,16 +400,29 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
     this._handleTriggerClick(event as MouseEvent);
   }
 
+  private _renderSheet(): TemplateResult {
+    return html`<pharos-sheet
+      aria-label=${ifDefined(this.label)}
+      aria-labelledby="${ifDefined(this.labelledBy)}"
+    >
+      <slot></slot>
+    </pharos-sheet>`;
+  }
+
   protected override render(): TemplateResult {
-    return html` <focus-trap>
-      <div
-        class="popover"
-        role="dialog"
-        aria-label=${ifDefined(this.label)}
-        aria-labelledby="${ifDefined(this.labelledBy)}"
-      >
-        <slot></slot>
-      </div>
-    </focus-trap>`;
+    if (window.innerWidth < 768) {
+      return this._renderSheet();
+    } else {
+      return html` <focus-trap>
+        <div
+          class="popover"
+          role="dialog"
+          aria-label=${ifDefined(this.label)}
+          aria-labelledby="${ifDefined(this.labelledBy)}"
+        >
+          <slot></slot>
+        </div>
+      </focus-trap>`;
+    }
   }
 }
