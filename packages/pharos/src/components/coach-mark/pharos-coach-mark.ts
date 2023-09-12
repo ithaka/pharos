@@ -7,6 +7,7 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { coachMarkStyles } from './pharos-coach-mark.css';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import debounce from '../../utils/debounce';
+import { computePosition, flip, shift, offset } from '@floating-ui/dom';
 
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 export type Alignment = 'start' | 'center' | 'end';
@@ -24,10 +25,6 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
     'pharos-button': PharosButton,
     'pharos-heading': PharosHeading,
   };
-
-  private offsetX = 0;
-  private offsetY = 0;
-  private margin = 20;
 
   public static override get styles(): CSSResultArray {
     return [coachMarkStyles];
@@ -107,26 +104,16 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
     const id: string = this.getAttribute('id') || '';
     const targetElement: Element | null = document.querySelector(`[data-coach-mark="${id}"]`);
     if (!targetElement) return;
-    const thisRect = this.getBoundingClientRect();
-    const targetRect = targetElement.getBoundingClientRect();
 
-    switch (this.side) {
-      case 'top':
-        this.offsetX = (targetRect.left + targetRect.right) / 2 - thisRect.x;
-        this.offsetY = targetRect.top - thisRect.bottom - this.margin;
-        break;
-      case 'right':
-        this.offsetX = targetRect.right - thisRect.left + this.margin;
-        this.offsetY = (targetRect.top + targetRect.bottom) / 2 - thisRect.y;
-        break;
-      case 'left':
-        this.offsetY = (targetRect.top + targetRect.bottom) / 2 - thisRect.y;
-        this.offsetX = targetRect.left - thisRect.right - this.margin;
-        break;
-      default: // bottom
-        this.offsetX = (targetRect.left + targetRect.right) / 2 - thisRect.x;
-        this.offsetY = targetRect.bottom - thisRect.top + this.margin;
-    }
+    computePosition(targetElement, this, {
+      placement: this.side,
+      middleware: [flip(), shift({ padding: 10 }), offset(20)],
+    }).then(({ x, y }) => {
+      Object.assign(this.style, {
+        left: `${x}px`,
+        top: `${y}px`,
+      });
+    });
   }
 
   protected override render(): TemplateResult {
@@ -137,7 +124,6 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
         aria-hidden=${this.hide}
         role="dialog"
         aria-labelledby="coach-mark-heading"
-        style="transform:translate(${this.offsetX}px,${this.offsetY}px)"
       >
         <div class="coach-mark__wrapper coach-mark-side__${this.side}">
           <div
