@@ -1,5 +1,19 @@
 # @ithaka/pharos
 
+## 12.26.0
+
+### Minor Changes
+
+- [#603](https://github.com/ithaka/pharos/pull/603) [`5d15316`](https://github.com/ithaka/pharos/commit/5d15316632da788f692ec731a2aae765e6785c21) Thanks [@michael-iden](https://github.com/michael-iden)! - Add sheet component
+
+### Patch Changes
+
+- [#610](https://github.com/ithaka/pharos/pull/610) [`d762a02`](https://github.com/ithaka/pharos/commit/d762a0294cd940970c8bbaff8c97aae7e9bdae82) Thanks [@michael-iden](https://github.com/michael-iden)! - Force popover border radius styling
+
+- [#599](https://github.com/ithaka/pharos/pull/599) [`834f7ab`](https://github.com/ithaka/pharos/commit/834f7ab8976f194bc641db244671338e7f7ab023) Thanks [@jialin-he](https://github.com/jialin-he)! - Add line rules to light variant of dropdown
+
+- [#606](https://github.com/ithaka/pharos/pull/606) [`e020300`](https://github.com/ithaka/pharos/commit/e02030087baffbc9685f39f1f77725d1ba5e10bc) Thanks [@daneah](https://github.com/daneah)! - Increase color contrast for glacier blue 40
+
 ## 12.25.0
 
 ### Minor Changes
