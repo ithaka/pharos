@@ -33,3 +33,28 @@ export const WithFooter = {
     </PharosSheet>
   ),
 };
+
+export const LongContent = {
+  render: () => (
+    <PharosSheet id="my-sheet" label="Pharos sheet" footer-divider="true">
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <div>Lorem ipsum dolor sit amet</div>
+      <PharosButton slot="footer">Do something</PharosButton>
+    </PharosSheet>
+  ),
+};
