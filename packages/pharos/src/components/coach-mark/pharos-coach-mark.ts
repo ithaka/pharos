@@ -6,8 +6,8 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { coachMarkStyles } from './pharos-coach-mark.css';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
-import debounce from '../../utils/debounce';
-import { computePosition, shift, offset } from '@floating-ui/dom';
+import type { Placement } from '@floating-ui/dom';
+import { autoUpdate, computePosition, flip, offset } from '@floating-ui/dom';
 
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 export type Alignment = 'start' | 'center' | 'end';
@@ -43,7 +43,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
    * @type {Side}
    */
   @property({ reflect: true })
-  public side: Side = 'bottom';
+  public side: Placement = 'bottom';
 
   /**
    * Indicates how the coach mark carat should be aligned in relation to the coach mark content
@@ -85,46 +85,34 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   @property({ reflect: true })
   public width = 250;
 
-  constructor() {
-    super();
-    this.setOffset();
-    this.resizeObserver.observe(document.body);
-    document.addEventListener(
-      'scroll',
-      debounce(() => {
-        this.setOffset();
-        this.requestUpdate();
-      }, 100)
-    );
-  }
+  private computedPosition: Placement = 'bottom';
 
-  private resizeObserver = new ResizeObserver(
-    debounce((entries) => {
-      entries.map(() => {
-        this.setOffset();
-        this.requestUpdate();
-      });
-    }, 100)
-  );
+  override connectedCallback() {
+    super.connectedCallback();
+    this.setOffset();
+  }
 
   private setOffset() {
     const id: string = this.getAttribute('id') || '';
     const targetElement: Element | null = document.querySelector(`[data-coach-mark="${id}"]`);
     if (!targetElement) return;
 
-    computePosition(targetElement, this, {
-      placement: this.side,
-      middleware: [shift({ padding: 10 }), offset(20)],
-    }).then(({ x, y }) => {
-      Object.assign(this.style, {
-        left: `${x}px`,
-        top: `${y}px`,
-      });
-    });
+    this._cleanup = autoUpdate(targetElement, this, () =>
+      computePosition(targetElement, this, {
+        placement: this.side,
+        middleware: [flip(), offset(20)],
+      }).then(({ x, y, placement }) => {
+        Object.assign(this.style, {
+          left: `${x}px`,
+          top: `${y}px`,
+        });
+        this.computedPosition = placement;
+        this.requestUpdate();
+      })
+    );
   }
 
   protected override render(): TemplateResult {
-    this.setOffset();
     return html`
       <div
         class="coach-mark ${this.delay && this.delay !== 'none' ? `delay-${this.delay}` : ''}"
@@ -132,7 +120,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
         role="dialog"
         aria-labelledby="coach-mark-heading"
       >
-        <div class="coach-mark__wrapper coach-mark-side__${this.side}">
+        <div class="coach-mark__wrapper coach-mark-side__${this.computedPosition}">
           <div
             class="coach-mark__content coach-mark-alignment__${this.alignment}"
             style="min-width:${this.width + 'px'}"
