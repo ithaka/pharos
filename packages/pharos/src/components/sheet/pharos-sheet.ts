@@ -236,13 +236,15 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleDragEnd(): void {
-    this._isDragging = false;
-    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-    const sheetHeight = sheetContent.clientHeight;
-    if (sheetHeight > this._startHeight) {
-      sheetContent.style.height = '100%';
-    } else {
-      sheetContent.style.height = '50%';
+    if (this._isDragging) {
+      this._isDragging = false;
+      const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+      const sheetHeight = sheetContent.clientHeight;
+      if (sheetHeight > this._startHeight) {
+        sheetContent.style.height = '100%';
+      } else {
+        sheetContent.style.height = '50%';
+      }
     }
   }
 
