@@ -7,7 +7,7 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { coachMarkStyles } from './pharos-coach-mark.css';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import debounce from '../../utils/debounce';
-import { computePosition, flip, shift, offset } from '@floating-ui/dom';
+import { computePosition, shift, offset } from '@floating-ui/dom';
 
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 export type Alignment = 'start' | 'center' | 'end';
@@ -89,6 +89,13 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
     super();
     this.setOffset();
     this.resizeObserver.observe(document.body);
+    document.addEventListener(
+      'scroll',
+      debounce(() => {
+        this.setOffset();
+        this.requestUpdate();
+      }, 100)
+    );
   }
 
   private resizeObserver = new ResizeObserver(
@@ -107,7 +114,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
 
     computePosition(targetElement, this, {
       placement: this.side,
-      middleware: [flip(), shift({ padding: 10 }), offset(20)],
+      middleware: [shift({ padding: 10 }), offset(20)],
     }).then(({ x, y }) => {
       Object.assign(this.style, {
         left: `${x}px`,
