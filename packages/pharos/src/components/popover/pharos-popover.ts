@@ -53,6 +53,13 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   @property({ type: String, reflect: true, attribute: 'labelled-by' })
   public labelledBy?: string;
 
+  /**
+   * Indicates the breakpoint to switch to pharos sheet, 0 means never switch to sheet.
+   * @attr mobile-breakpoint
+   */
+  @property({ type: String, reflect: true, attribute: 'mobile-breakpoint' })
+  public mobileBreakpoint = 768;
+
   @query('.popover')
   private _popover!: HTMLUListElement;
 
@@ -232,17 +239,15 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   private _openSheetForMobile(): void {
-    if (window.innerWidth > 768) return;
+    if (window.innerWidth > this.mobileBreakpoint || this.mobileBreakpoint === 0) return;
     const sheet = this.shadowRoot?.querySelector(`pharos-sheet`) as PharosSheet;
     sheet.setAttribute('open', 'true');
-    return;
   }
 
   private _closeSheetForMobile(): void {
-    if (window.innerWidth > 768) return;
+    if (window.innerWidth > this.mobileBreakpoint || this.mobileBreakpoint === 0) return;
     const sheet = this.shadowRoot?.querySelector(`pharos-sheet`) as PharosSheet;
     sheet.setAttribute('open', 'false');
-    return;
   }
 
   private _toggleSheetForMobile(): void {
@@ -410,7 +415,7 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   protected override render(): TemplateResult {
-    if (window.innerWidth < 768) {
+    if (this.mobileBreakpoint && window.innerWidth < this.mobileBreakpoint) {
       return this._renderSheet();
     } else {
       return html` <focus-trap>
