@@ -54,6 +54,6 @@ export const Base = {
     header: 'Coach Mark',
     delay: 'short',
     variant: 'dark',
-    width: 250,
+    width: '30ch',
   },
 };

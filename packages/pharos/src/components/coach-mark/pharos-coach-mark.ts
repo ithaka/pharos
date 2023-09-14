@@ -80,10 +80,10 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   /**
    * Set minimum width of coach mark
    * @attr width
-   * @type {number}
+   * @type {string}
    */
   @property({ reflect: true })
-  public width = 250;
+  public width = '30ch';
 
   private computedPosition: Placement = 'bottom';
 
@@ -123,7 +123,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
         <div class="coach-mark__wrapper coach-mark-side__${this.computedPosition}">
           <div
             class="coach-mark__content coach-mark-alignment__${this.alignment}"
-            style="min-width:${this.width + 'px'}"
+            style="min-width:${this.width}"
           >
             <pharos-button
               id="close-button"

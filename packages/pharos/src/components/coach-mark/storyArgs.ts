@@ -5,7 +5,7 @@ export const defaultArgs = {
   header: 'Coach Mark',
   delay: 'short',
   variant: 'dark',
-  width: 250,
+  width: '30ch',
 };
 
 export const argTypes = {
@@ -40,7 +40,7 @@ export const argTypes = {
   },
   width: {
     control: {
-      type: 'number',
+      type: 'text',
     },
   },
 };
