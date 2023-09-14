@@ -61,7 +61,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
    * Indicates if the sheet contains close button.
    * @attr hasClose
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean, reflect: true, attribute: 'has-close' })
   public hasClose = false;
 
   /**
