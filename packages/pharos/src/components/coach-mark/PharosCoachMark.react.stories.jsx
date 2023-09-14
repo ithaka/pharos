@@ -3,7 +3,7 @@ import { configureDocsPage } from '@config/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
 
 export default {
-  title: 'Components/CoachMark',
+  title: 'Components/Coach Mark',
   component: PharosCoachMark,
   decorators: [
     (Story) => (
