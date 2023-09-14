@@ -1,7 +1,6 @@
 import { PharosSheet } from '../../react-components/sheet/pharos-sheet';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
-import { PharosButton } from '../../react-components';
 
 export default {
   title: 'Components/Sheet',
