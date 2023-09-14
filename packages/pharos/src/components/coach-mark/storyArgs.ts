@@ -14,6 +14,11 @@ export const argTypes = {
       type: 'boolean',
     },
   },
+  header: {
+    control: {
+      type: 'text',
+    },
+  },
   side: {
     options: ['top', 'right', 'bottom', 'left'],
     control: {
