@@ -6,7 +6,6 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { coachMarkStyles } from './pharos-coach-mark.css';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
-import type { Placement } from '@floating-ui/dom';
 import { autoUpdate, computePosition, flip, offset } from '@floating-ui/dom';
 
 export type Side = 'top' | 'right' | 'bottom' | 'left';
@@ -43,7 +42,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
    * @type {Side}
    */
   @property({ reflect: true })
-  public side: Placement = 'bottom';
+  public side: Side = 'bottom';
 
   /**
    * Indicates how the coach mark carat should be aligned in relation to the coach mark content
@@ -85,7 +84,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   @property({ reflect: true })
   public width = '30ch';
 
-  private computedPosition: Placement = 'bottom';
+  private computedSide = 'bottom';
 
   override connectedCallback() {
     super.connectedCallback();
@@ -99,14 +98,14 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
 
     this._cleanup = autoUpdate(targetElement, this, () =>
       computePosition(targetElement, this, {
-        placement: this.side,
+        placement: this.alignment === 'center' ? this.side : `${this.side}-${this.alignment}`,
         middleware: [flip(), offset(20)],
       }).then(({ x, y, placement }) => {
         Object.assign(this.style, {
           left: `${x}px`,
           top: `${y}px`,
         });
-        this.computedPosition = placement;
+        this.computedSide = placement.toString().split('-')[0]; // Removes -start or -end from final placement
         this.requestUpdate();
       })
     );
@@ -120,7 +119,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
         role="dialog"
         aria-labelledby="coach-mark-heading"
       >
-        <div class="coach-mark__wrapper coach-mark-side__${this.computedPosition}">
+        <div class="coach-mark__wrapper coach-mark-side__${this.computedSide}">
           <div
             class="coach-mark__content coach-mark-alignment__${this.alignment}"
             style="min-width:${this.width}"
