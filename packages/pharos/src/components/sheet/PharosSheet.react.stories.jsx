@@ -25,18 +25,17 @@ export const Base = {
   args: {},
 };
 
-export const WithFooter = {
+export const WithClose = {
   render: () => (
-    <PharosSheet id="my-sheet" label="Pharos sheet" footer-divider="true">
+    <PharosSheet id="my-sheet" label="Pharos sheet" with-close>
       <div>Lorem ipsum dolor sit amet</div>
-      <PharosButton slot="footer">Do something</PharosButton>
     </PharosSheet>
   ),
 };
 
 export const LongContent = {
   render: () => (
-    <PharosSheet id="my-sheet" label="Pharos sheet" footer-divider="true">
+    <PharosSheet id="my-sheet" label="Pharos sheet">
       <div>Lorem ipsum dolor sit amet</div>
       <div>Lorem ipsum dolor sit amet</div>
       <div>Lorem ipsum dolor sit amet</div>
@@ -54,7 +53,6 @@ export const LongContent = {
       <div>Lorem ipsum dolor sit amet</div>
       <div>Lorem ipsum dolor sit amet</div>
       <div>Lorem ipsum dolor sit amet</div>
-      <PharosButton slot="footer">Do something</PharosButton>
     </PharosSheet>
   ),
 };

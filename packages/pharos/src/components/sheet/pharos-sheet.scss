@@ -74,19 +74,7 @@
   outline: 0;
   transition: height var(--pharos-transition-base);
   box-shadow: 0 1px 2px 0 rgb(18 18 18 / 0.3), 0 -4px 8px 3px rgb(18 18 18 / 0.15);
-
-  .sheet__wrapper {
-    padding: 0 var(--pharos-spacing-one-and-a-half-x);
-    display: flex;
-    flex-direction: column;
-    height: calc(100% - 67px);
-  }
-
-  @include mixins.until(small) {
-    .sheet__wrapper {
-      padding: 0 20px;
-    }
-  }
+  contain: layout;
 
   .sheet__handle {
     background: var(--pharos-color-marble-gray-80);
@@ -110,40 +98,19 @@
 .sheet__header {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  margin-top: var(--pharos-spacing-one-and-a-half-x);
-}
-
-.sheet__footer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: flex-end;
-  padding: var(--pharos-spacing-1-x) var(--pharos-spacing-one-and-a-half-x);
-
-  @at-root #{&}--empty {
-    padding: 0 0 var(--pharos-spacing-2-x);
-  }
+  margin-top: var(--pharos-spacing-one-and-a-half-x);
+  margin-right: var(--pharos-spacing-one-and-a-half-x);
 }
 
 @include mixins.until(small) {
-  .sheet__footer {
-    padding: var(--pharos-spacing-1-x) 1.25rem;
+  .sheet__header {
+    margin-right: 1.25rem;
   }
-}
-
-slot[name='footer']::slotted(*) {
-  margin-left: var(--pharos-spacing-1-x);
 }
 
 :host([expanded]) {
   .sheet__content {
     height: 100%;
-  }
-}
-
-:host([footer-divider]) {
-  .sheet__footer {
-    border-top: 1px solid var(--pharos-color-marble-gray-base);
   }
 }

@@ -21,7 +21,6 @@ const FOCUS_ELEMENT = `[data-sheet-focus]`;
  *
  * @slot description - Content that describes the primary message or purpose of the sheet.
  * @slot - Contains the content of the sheet body.
- * @slot footer - Contains the content of the sheet footer.
  *
  * @fires pharos-sheet-open - Fires when the sheet is about to open - cancelable
  * @fires pharos-sheet-opened - Fires when the sheet has opened
@@ -71,20 +70,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   @property({ type: String, reflect: true })
   public header = 'Sheet header';
 
-  /**
-   * Indicates if the sheet footer should contain a divider.
-   * @attr footer-divider
-   */
-  @property({ type: Boolean, reflect: true, attribute: 'footer-divider' })
-  public footerDivider = false;
-
   private _currentTrigger: Element | null = null;
 
   private _triggers!: NodeListOf<HTMLElement>;
 
   @state()
-  private _isFooterEmpty = true;
-
   private _startHeight = 0;
   private _startY = 0;
   private _isDragging = false;
@@ -303,20 +293,17 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     return descriptionSlot.length ? 'description' : undefined;
   }
 
-  private _handleFooterSlotchange(e: Event) {
-    this._isFooterEmpty =
-      (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).length === 0;
-  }
-
   private _renderCloseButton(): TemplateResult | typeof nothing {
     return this.hasClose
-      ? html` <pharos-button
-          id="close-button"
-          type="button"
-          variant="subtle"
-          icon="close"
-          label="Close sheet"
-        ></pharos-button>`
+      ? html` <div class="sheet__header">
+          <pharos-button
+            id="close-button"
+            type="button"
+            variant="subtle"
+            icon="close"
+            label="Close sheet"
+          ></pharos-button>
+        </div>`
       : nothing;
   }
 
@@ -340,21 +327,10 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         >
           <focus-trap>
             <div class="sheet__content">
-              <div class="sheet__wrapper">
-                ${this._renderSheetHandle()}
-                <div class="sheet__header">
-                  <pharos-heading id="sheet-header" level="2" preset="2" no-margin>
-                    ${this.header}
-                  </pharos-heading>
-                  ${this._renderCloseButton()}
-                </div>
-                <div class="sheet__body">
-                  ${this.descriptionContent}
-                  <slot></slot>
-                </div>
-              </div>
-              <div class="sheet__footer${this._isFooterEmpty ? '--empty' : ''}">
-                <slot @slotchange=${this._handleFooterSlotchange} name="footer"></slot>
+              ${this._renderSheetHandle()} ${this._renderCloseButton()}
+              <div class="sheet__body">
+                ${this.descriptionContent}
+                <slot></slot>
               </div>
             </div>
           </focus-trap>
