@@ -62,7 +62,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
    * @attr hasClose
    */
   @property({ type: Boolean, reflect: true })
-  public hasClose = true;
+  public hasClose = false;
 
   /**
    * Text content for the sheet header
