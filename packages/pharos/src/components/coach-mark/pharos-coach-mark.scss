@@ -110,11 +110,11 @@
     width: calc(var(--coach-mark-pip-size) + var(--coach-mark-border-width-x2));
     z-index: -1;
   }
+}
 
-  pharos-heading {
-    color: var(--coach-mark-heading-color);
-    padding-right: 24px;
-  }
+.coach-mark__heading {
+  color: var(--coach-mark-heading-color);
+  padding-right: var(--pharos-spacing-one-and-a-half-x);
 }
 
 .coach-mark__close {

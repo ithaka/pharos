@@ -134,7 +134,11 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
               label="Close"
               @click="${() => (this.hide = true)}"
             ></pharos-button>
-            <pharos-heading id="coach-mark-heading" level="2" preset="1--bold"
+            <pharos-heading
+              id="coach-mark-heading"
+              class="coach-mark__heading"
+              level="2"
+              preset="1--bold"
               >${this.header}</pharos-heading
             >
             <slot></slot>
