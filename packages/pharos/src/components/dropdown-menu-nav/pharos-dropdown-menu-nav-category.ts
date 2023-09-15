@@ -11,11 +11,11 @@ import { PharosIcon } from '../icon/pharos-icon';
 import FocusMixin from '../../utils/mixins/focus';
 
 /**
- * Pharos dropdown menu nav heading component.
+ * Pharos dropdown menu nav category component.
  *
- * @tag pharos-dropdown-menu-nav-heading
+ * @tag pharos-dropdown-menu-nav-category
  *
- * @slot - Contains the content of the heading (the default slot).
+ * @slot - Contains the content of the category (the default slot).
  *
  */
 
@@ -37,14 +37,14 @@ export class PharosDropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixi
   protected override render(): TemplateResult {
     return html`<div
       tabindex="0"
-      id="heading-element"
+      id="category-element"
       class="${classMap({
         [`link--alert`]: this._alert,
         [`link--hover`]: this._hover,
       })}"
     >
       <slot name="category"></slot>
-      <pharos-icon name="chevron-down" class="link__icon"></pharos-icon>
+      <pharos-icon name="chevron-down"></pharos-icon>
     </div>`;
   }
 }
