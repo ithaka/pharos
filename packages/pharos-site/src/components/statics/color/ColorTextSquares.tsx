@@ -1,6 +1,7 @@
 import type { FC, CSSProperties } from 'react';
 import { container, container_text } from './ColorTextSquares.module.css';
-import tokens from '@ithaka/pharos/lib/styles/tokens.js';
+// import tokens from '@ithaka/pharos/lib/styles/tokens.js';
+import tokens from '../../../../../pharos/lib/styles/tokens';
 import { toTitleCase } from '../../../utils/textConvert';
 
 interface ColorTextSquaresProps {
