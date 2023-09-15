@@ -20,7 +20,7 @@ export default {
 export const Base = {
   render: (args) =>
     html`
-      <pharos-button
+      <storybook-pharos-button
         ?disabled=${ifDefined(args.disabled)}
         download=${ifDefined(args.download)}
         icon=${ifDefined(args.icon)}
@@ -41,7 +41,7 @@ export const Base = {
         @click="${(e) => action('Click')(e.target)}"
       >
         ${args.text}
-      </pharos-button>
+      </storybook-pharos-button>
     `,
   args: defaultArgs,
 };
@@ -51,29 +51,41 @@ export const Variants = {
     html`
       <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
         <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <pharos-button name="primary">Primary</pharos-button>
-          <pharos-button name="secondary" variant="secondary">Secondary</pharos-button>
-          <pharos-button name="subtle" variant="subtle">Subtle</pharos-button>
-          <pharos-button name="overlay" variant="overlay">Overlay</pharos-button>
+          <storybook-pharos-button name="primary">Primary</storybook-pharos-button>
+          <storybook-pharos-button name="secondary" variant="secondary"
+            >Secondary</storybook-pharos-button
+          >
+          <storybook-pharos-button name="subtle" variant="subtle">Subtle</storybook-pharos-button>
+          <storybook-pharos-button name="overlay" variant="overlay"
+            >Overlay</storybook-pharos-button
+          >
         </div>
         <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <pharos-button name="primary-disabled" disabled>Primary</pharos-button>
-          <pharos-button name="secondary-disabled" variant="secondary" disabled
-            >Secondary</pharos-button
+          <storybook-pharos-button name="primary-disabled" disabled
+            >Primary</storybook-pharos-button
           >
-          <pharos-button name="subtle-disabled" variant="subtle" disabled>Subtle</pharos-button>
-          <pharos-button name="overlay-disabled" variant="overlay" disabled>Overlay</pharos-button>
+          <storybook-pharos-button name="secondary-disabled" variant="secondary" disabled
+            >Secondary</storybook-pharos-button
+          >
+          <storybook-pharos-button name="subtle-disabled" variant="subtle" disabled
+            >Subtle</storybook-pharos-button
+          >
+          <storybook-pharos-button name="overlay-disabled" variant="overlay" disabled
+            >Overlay</storybook-pharos-button
+          >
         </div>
         <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <pharos-button name="primary-on-background" on-background>Primary</pharos-button>
-          <pharos-button name="secondary-on-background" variant="secondary" on-background
-            >Secondary</pharos-button
+          <storybook-pharos-button name="primary-on-background" on-background
+            >Primary</storybook-pharos-button
           >
-          <pharos-button name="subtle-on-background" variant="subtle" on-background
-            >Subtle</pharos-button
+          <storybook-pharos-button name="secondary-on-background" variant="secondary" on-background
+            >Secondary</storybook-pharos-button
           >
-          <pharos-button name="overlay-on-background" variant="overlay" on-background
-            >Overlay</pharos-button
+          <storybook-pharos-button name="subtle-on-background" variant="subtle" on-background
+            >Subtle</storybook-pharos-button
+          >
+          <storybook-pharos-button name="overlay-on-background" variant="overlay" on-background
+            >Overlay</storybook-pharos-button
           >
         </div>
       </div>
@@ -85,40 +97,56 @@ export const Large = {
     html`
       <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
         <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <pharos-button name="large-primary" large>Primary</pharos-button>
-          <pharos-button name="large-secondary" variant="secondary" large>Secondary</pharos-button>
-          <pharos-button name="large-subtle" variant="subtle" large>Subtle</pharos-button>
-          <pharos-button name="large-overlay" variant="overlay" large>Overlay</pharos-button>
+          <storybook-pharos-button name="large-primary" large>Primary</storybook-pharos-button>
+          <storybook-pharos-button name="large-secondary" variant="secondary" large
+            >Secondary</storybook-pharos-button
+          >
+          <storybook-pharos-button name="large-subtle" variant="subtle" large
+            >Subtle</storybook-pharos-button
+          >
+          <storybook-pharos-button name="large-overlay" variant="overlay" large
+            >Overlay</storybook-pharos-button
+          >
         </div>
         <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <pharos-button name="large-primary-disabled" large disabled>Primary</pharos-button>
-          <pharos-button name="large-secondary-disabled" variant="secondary" large disabled
+          <storybook-pharos-button name="large-primary-disabled" large disabled
+            >Primary</storybook-pharos-button
+          >
+          <storybook-pharos-button
+            name="large-secondary-disabled"
+            variant="secondary"
+            large
+            disabled
             >Secondary
-          </pharos-button>
-          <pharos-button name="large-subtle-disabled" variant="subtle" large disabled
+          </storybook-pharos-button>
+          <storybook-pharos-button name="large-subtle-disabled" variant="subtle" large disabled
             >Subtle
-          </pharos-button>
-          <pharos-button name="large-overlay" variant="overlay" large disabled
+          </storybook-pharos-button>
+          <storybook-pharos-button name="large-overlay" variant="overlay" large disabled
             >Overlay
-          </pharos-button>
+          </storybook-pharos-button>
         </div>
         <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <pharos-button name="large-primary-on-background" large on-background
+          <storybook-pharos-button name="large-primary-on-background" large on-background
             >Primary
-          </pharos-button>
-          <pharos-button
+          </storybook-pharos-button>
+          <storybook-pharos-button
             name="large-secondary-on-background"
             variant="secondary"
             large
             on-background
             >Secondary
-          </pharos-button>
-          <pharos-button name="large-subtle-on-background" variant="subtle" large on-background
+          </storybook-pharos-button>
+          <storybook-pharos-button
+            name="large-subtle-on-background"
+            variant="subtle"
+            large
+            on-background
             >Subtle
-          </pharos-button>
-          <pharos-button name="large-overlay" variant="overlay" large on-background
+          </storybook-pharos-button>
+          <storybook-pharos-button name="large-overlay" variant="overlay" large on-background
             >Overlay
-          </pharos-button>
+          </storybook-pharos-button>
         </div>
       </div>
     `,
@@ -129,46 +157,57 @@ export const WithIcons = {
     html`
       <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
         <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <pharos-button name="primary-icon-left" icon-left="download">Icon left</pharos-button>
-          <pharos-button name="primary-icon-right" icon-right="chevron-down"
+          <storybook-pharos-button name="primary-icon-left" icon-left="download"
+            >Icon left</storybook-pharos-button
+          >
+          <storybook-pharos-button name="primary-icon-right" icon-right="chevron-down"
             >Icon right
-          </pharos-button>
-          <pharos-button name="primary-icon-both" icon-right="chevron-down" icon-left="view-gallery"
+          </storybook-pharos-button>
+          <storybook-pharos-button
+            name="primary-icon-both"
+            icon-right="chevron-down"
+            icon-left="view-gallery"
             >Icon both
-          </pharos-button>
+          </storybook-pharos-button>
         </div>
         <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <pharos-button name="primary-icon-left-disabled" icon-left="download" disabled
+          <storybook-pharos-button name="primary-icon-left-disabled" icon-left="download" disabled
             >Icon left
-          </pharos-button>
-          <pharos-button name="primary-icon-right-disabled" icon-right="chevron-down" disabled
+          </storybook-pharos-button>
+          <storybook-pharos-button
+            name="primary-icon-right-disabled"
+            icon-right="chevron-down"
+            disabled
             >Icon right
-          </pharos-button>
-          <pharos-button
+          </storybook-pharos-button>
+          <storybook-pharos-button
             name="primary-icon-both-disabled"
             icon-right="chevron-down"
             icon-left="view-gallery"
             disabled
             >Icon both
-          </pharos-button>
+          </storybook-pharos-button>
         </div>
         <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <pharos-button name="primary-icon-left-on-background" icon-left="download" on-background
+          <storybook-pharos-button
+            name="primary-icon-left-on-background"
+            icon-left="download"
+            on-background
             >Icon left
-          </pharos-button>
-          <pharos-button
+          </storybook-pharos-button>
+          <storybook-pharos-button
             name="primary-icon-right-on-background"
             icon-right="chevron-down"
             on-background
             >Icon right
-          </pharos-button>
-          <pharos-button
+          </storybook-pharos-button>
+          <storybook-pharos-button
             name="primary-icon-both-on-background"
             icon-right="chevron-down"
             icon-left="view-gallery"
             on-background
             >Icon both
-          </pharos-button>
+          </storybook-pharos-button>
         </div>
       </div>
     `,
@@ -208,44 +247,53 @@ export const Forms = {
     html`
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
         <form name="my-form" action="https://httpbin.org/post" method="POST">
-          <pharos-text-input name="my-text-input" required>
+          <storybook-pharos-text-input name="my-text-input" required>
             <span slot="label">Name</span>
-          </pharos-text-input>
-          <pharos-select name="my-select" required style="margin-top: 1.5rem">
+          </storybook-pharos-text-input>
+          <storybook-pharos-select name="my-select" required style="margin-top: 1.5rem">
             <span slot="label">Role</span>
             <option value="1">Student</option>
             <option value="2">Teacher</option>
             <option value="3" selected>Librarian</option>
-          </pharos-select>
-          <pharos-combobox name="my-combobox" value="2" required style="margin-top: 1.5rem">
+          </storybook-pharos-select>
+          <storybook-pharos-combobox
+            name="my-combobox"
+            value="2"
+            required
+            style="margin-top: 1.5rem"
+          >
             <span slot="label">State</span>
             <option value="1">New York</option>
             <option value="2">Michigan</option>
             <option value="3">New Jersey</option>
-          </pharos-combobox>
-          <pharos-radio-group name="my-radio-group" style="margin-top: 1.5rem">
+          </storybook-pharos-combobox>
+          <storybook-pharos-radio-group name="my-radio-group" style="margin-top: 1.5rem">
             <span slot="legend">Degree</span>
-            <pharos-radio-button value="1"
-              ><span slot="label">Undergraduate</span></pharos-radio-button
+            <storybook-pharos-radio-button value="1"
+              ><span slot="label">Undergraduate</span></storybook-pharos-radio-button
             >
-            <pharos-radio-button value="2"><span slot="label">Graduate</span></pharos-radio-button>
-          </pharos-radio-group>
-          <pharos-checkbox-group name="my-checkbox-group" style="margin-top: 1.5rem">
+            <storybook-pharos-radio-button value="2"
+              ><span slot="label">Graduate</span></storybook-pharos-radio-button
+            >
+          </storybook-pharos-radio-group>
+          <storybook-pharos-checkbox-group name="my-checkbox-group" style="margin-top: 1.5rem">
             <span slot="legend">Preferences</span>
-            <pharos-checkbox value="1"
-              ><span slot="label">Send me promotions and discounts</span></pharos-checkbox
+            <storybook-pharos-checkbox value="1"
+              ><span slot="label">Send me promotions and discounts</span></storybook-pharos-checkbox
             >
-            <pharos-checkbox value="2" checked
-              ><span slot="label">Send me weekly updates</span></pharos-checkbox
+            <storybook-pharos-checkbox value="2" checked
+              ><span slot="label">Send me weekly updates</span></storybook-pharos-checkbox
             >
-          </pharos-checkbox-group>
-          <pharos-textarea name="comments" style="margin-top: 1.5rem">
+          </storybook-pharos-checkbox-group>
+          <storybook-pharos-textarea name="comments" style="margin-top: 1.5rem">
             <span slot="label">Comments</span>
-          </pharos-textarea>
-          <pharos-button type="reset" variant="secondary" style="margin-top: 1.5rem"
+          </storybook-pharos-textarea>
+          <storybook-pharos-button type="reset" variant="secondary" style="margin-top: 1.5rem"
             >Reset
-          </pharos-button>
-          <pharos-button type="submit" style="margin-top: 1.5rem">Submit</pharos-button>
+          </storybook-pharos-button>
+          <storybook-pharos-button type="submit" style="margin-top: 1.5rem"
+            >Submit</storybook-pharos-button
+          >
         </form>
       </div>
     `,

@@ -13,10 +13,23 @@ import {
 import { items, collections } from '../../pages/item-detail/mocks';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
+import { PharosContext } from '../../utils/PharosContext';
+
+import collection5 from '@config/assets/images/item-detail/collection_5.png';
+import collection1 from '@config/assets/images/item-detail/open_collection_1.png';
+import collection2 from '@config/assets/images/item-detail/open_collection_2.png';
+import collection3 from '@config/assets/images/item-detail/open_collection_3.png';
 
 export default {
   title: 'Components/Image Card',
   component: PharosImageCard,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('image-card') },
     viewport: viewports,
@@ -31,9 +44,10 @@ const Template = {
         link="https://www.jstor.org/stable/10.2307/community.26220188"
         error={args.error}
         subtle={args.subtle}
+        indicateLinkVisited={args.indicateLinkVisited}
         style={{ gridColumn: 'span 2' }}
       >
-        <img id="image" src="./images/item-detail/collection_5.png" alt="south hall" slot="image" />
+        <img id="image" src={collection5} alt="south hall" slot="image" />
         <div id="creator" slot="metadata">
           Tubby, William Bunker (American architect,...
         </div>
@@ -64,7 +78,7 @@ export const Base = {
             <PharosImageCard id={`card-${index}`} title="Card Title" link="#">
               <img
                 id={`image-${index}`}
-                src={`./images/item-detail/${item.image}`}
+                src={item.image}
                 alt={`Card Title ${index}`}
                 slot="image"
               />
@@ -97,7 +111,7 @@ export const WithSourceTypes = {
             <PharosImageCard id={`card-${index}`} title="Card Title" link="#" source-type="Image">
               <img
                 id={`image-${index}`}
-                src={`./images/item-detail/${item.image}`}
+                src={item.image}
                 alt={`Card Title ${index}`}
                 slot="image"
               />
@@ -135,7 +149,40 @@ export const Collection = {
             >
               <img
                 id={`image-${index}`}
-                src={`./images/item-detail/${collection.image}`}
+                src={collection.image}
+                alt={collection.title}
+                slot="image"
+              />
+              <strong id={`items-${index}`} slot="metadata">
+                {collection.items} items
+              </strong>
+              <div id={`description-${index}`} slot="metadata">
+                Selections from the global permanent collection.
+              </div>
+            </PharosImageCard>
+          </li>
+        );
+      })}
+    </PharosLayout>
+  ),
+};
+
+export const ErrorStateCollection = {
+  render: () => (
+    <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
+      {collections.map((collection, index) => {
+        return (
+          <li className="image-card-example__card--collection" key={index}>
+            <PharosImageCard
+              id={`card-${index}`}
+              title={collection.title}
+              link="#"
+              variant="collection"
+              error={index === 2}
+            >
+              <img
+                id={`image-${index}`}
+                src={collection.image}
                 alt={collection.title}
                 slot="image"
               />
@@ -158,7 +205,7 @@ export const Promotional = {
     <PharosLayout style={{ margin: '1rem 0' }}>
       <div className="image-card-example__card--promotional">
         <PharosImageCard title="Bring your work to life with images" link="#" variant="promotional">
-          <img src="./images/item-detail/open_collection_3.png" alt="" slot="image" />
+          <img src={collection5} alt="" slot="image" />
           <p slot="metadata">
             Harness the power of visual materials—explore more than 3 million images now on JSTOR.
           </p>
@@ -174,7 +221,7 @@ export const Selectable = {
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard title="Selectable" link="#" source-type="Image" variant="selectable">
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
       <li style={{ gridColumn: 'span 3' }}>
@@ -185,7 +232,7 @@ export const Selectable = {
           variant="selectable"
           subtle-select="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
       <li style={{ gridColumn: 'span 3' }}>
@@ -197,7 +244,7 @@ export const Selectable = {
           disabled="true"
           selected="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
       <li style={{ gridColumn: 'span 3' }}>
@@ -208,7 +255,7 @@ export const Selectable = {
           variant="selectable"
           error="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
       <li style={{ gridColumn: 'span 3' }}>
@@ -220,7 +267,7 @@ export const Selectable = {
           error="true"
           subtle-select="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
     </PharosLayout>
@@ -238,7 +285,7 @@ export const SubtleSelectable = {
           variant="selectable"
           subtle="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
       <li style={{ gridColumn: 'span 3' }}>
@@ -250,7 +297,7 @@ export const SubtleSelectable = {
           subtle="true"
           subtle-select="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
       <li style={{ gridColumn: 'span 3' }}>
@@ -263,7 +310,7 @@ export const SubtleSelectable = {
           disabled="true"
           selected="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
       <li style={{ gridColumn: 'span 3' }}>
@@ -275,7 +322,7 @@ export const SubtleSelectable = {
           subtle="true"
           error="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
       <li style={{ gridColumn: 'span 3' }}>
@@ -288,7 +335,7 @@ export const SubtleSelectable = {
           error="true"
           subtle-select="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
     </PharosLayout>
@@ -329,12 +376,7 @@ export const WithActionMenu = {
           actionMenu="my-dropdown-menu"
           style={{ gridColumn: 'span 2' }}
         >
-          <img
-            id="image"
-            src="./images/item-detail/collection_5.png"
-            alt="south hall"
-            slot="image"
-          />
+          <img id="image" src={collection5} alt="south hall" slot="image" />
           <div id="creator" slot="metadata">
             Tubby, William Bunker (American architect,...
           </div>
@@ -367,12 +409,7 @@ export const WithActionButtonSlot = {
           link="https://www.jstor.org/stable/10.2307/community.26220188"
           style={{ gridColumn: 'span 2' }}
         >
-          <img
-            id="image"
-            src="./images/item-detail/collection_5.png"
-            alt="south hall"
-            slot="image"
-          />
+          <img id="image" src={collection5} alt="south hall" slot="image" />
           <div id="creator" slot="metadata">
             Tubby, William Bunker (American architect,...
           </div>
@@ -408,7 +445,7 @@ export const SelectableCollection = {
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       <li className="image-card-example__card--collection">
         <PharosImageCard title="Selectable" link="#" variant="selectable-collection">
-          <img src="./images/item-detail/open_collection_1.png" slot="image" />
+          <img src={collection1} slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </PharosImageCard>
@@ -420,7 +457,7 @@ export const SelectableCollection = {
           variant="selectable-collection"
           subtle-select="true"
         >
-          <img src="./images/item-detail/open_collection_2.png" slot="image" />
+          <img src={collection2} slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </PharosImageCard>
@@ -433,7 +470,7 @@ export const SelectableCollection = {
           disabled="true"
           selected="true"
         >
-          <img src="./images/item-detail/open_collection_3.png" slot="image" />
+          <img src={collection3} slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </PharosImageCard>
@@ -447,7 +484,7 @@ export const Disabled = {
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       <li style={{ gridColumn: 'span 3' }}>
         <PharosImageCard title="Disabled" link="#" source-type="Image" disabled="true">
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
       <li style={{ gridColumn: 'span 3' }}>
@@ -458,7 +495,7 @@ export const Disabled = {
           disabled="true"
           variant="selectable"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
       <li style={{ gridColumn: 'span 3' }}>
@@ -470,7 +507,7 @@ export const Disabled = {
           disabled="true"
           selected="true"
         >
-          <img src="./images/item-detail/collection_5.png" alt="Card Title" slot="image" />
+          <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
     </PharosLayout>

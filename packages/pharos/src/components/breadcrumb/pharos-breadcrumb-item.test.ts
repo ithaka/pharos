@@ -11,15 +11,15 @@ describe('pharos-breadcrumb-item', () => {
 
   beforeEach(async () => {
     component = await fixture(
-      html`<pharos-breadcrumb-item href="#first">${longText}</pharos-breadcrumb-item>`
+      html`<test-pharos-breadcrumb-item href="#first">${longText}</test-pharos-breadcrumb-item>`
     );
   });
 
   it('is accessible', async () => {
-    const parentNode = document.createElement('pharos-breadcrumb');
+    const parentNode = document.createElement('test-pharos-breadcrumb');
 
     component = await fixture(
-      html`<pharos-breadcrumb-item href="#first">${longText}</pharos-breadcrumb-item>`,
+      html`<test-pharos-breadcrumb-item href="#first">${longText}</test-pharos-breadcrumb-item>`,
       {
         parentNode,
       }
@@ -28,24 +28,28 @@ describe('pharos-breadcrumb-item', () => {
   });
 
   it('truncates long text', async () => {
-    const anchor = component.renderRoot.querySelector('pharos-link') as PharosLink;
+    const anchor = component.renderRoot.querySelector(
+      '[data-pharos-component="PharosLink"]'
+    ) as PharosLink;
     await expect(anchor?.innerText).to.equal(`${longText.substr(0, 40)}...`);
   });
 
   it('contains tooltip with truncated text', async () => {
-    const tooltip = component.renderRoot.querySelector('pharos-tooltip');
+    const tooltip = component.renderRoot.querySelector('[data-pharos-component="PharosTooltip"]');
     await expect(tooltip).to.exist;
   });
 
   it('is a link if "href" attribute is passed', async () => {
-    const anchor = component.renderRoot.querySelector('pharos-link');
+    const anchor = component.renderRoot.querySelector('[data-pharos-component="PharosLink"]');
     await expect(anchor).to.exist;
   });
 
   it('is a plan text span if no "href" attribute is passed', async () => {
-    component = await fixture(html`<pharos-breadcrumb-item>${longText}</pharos-breadcrumb-item>`);
+    component = await fixture(
+      html`<test-pharos-breadcrumb-item>${longText}</test-pharos-breadcrumb-item>`
+    );
 
-    const anchor = component.renderRoot.querySelector('pharos-link');
+    const anchor = component.renderRoot.querySelector('[data-pharos-component="PharosLink"]');
     await expect(anchor).to.not.exist;
     const span = component.renderRoot.querySelector('span');
     await expect(span).to.exist;
@@ -53,9 +57,11 @@ describe('pharos-breadcrumb-item', () => {
 
   it('does not truncate short text', async () => {
     const component: PharosBreadcrumbItem = await fixture(
-      html`<pharos-breadcrumb-item href="#first">${shortText}</pharos-breadcrumb-item>`
+      html`<test-pharos-breadcrumb-item href="#first">${shortText}</test-pharos-breadcrumb-item>`
     );
-    const anchor = component.renderRoot.querySelector('pharos-link') as PharosLink;
+    const anchor = component.renderRoot.querySelector(
+      '[data-pharos-component="PharosLink"]'
+    ) as PharosLink;
     await expect(anchor?.innerText).to.equal(shortText);
   });
 });

@@ -9,37 +9,37 @@ describe('pharos-dropdown-menu', () => {
 
   const getSimpleDropdown = () => {
     return html`
-      <pharos-dropdown-menu id="my-dropdown">
-        <pharos-dropdown-menu-item>I am an item</pharos-dropdown-menu-item>
-      </pharos-dropdown-menu>
+      <test-pharos-dropdown-menu id="my-dropdown">
+        <test-pharos-dropdown-menu-item>I am an item</test-pharos-dropdown-menu-item>
+      </test-pharos-dropdown-menu>
     `;
   };
 
   const getMultipleItemDropdown = () => {
     return html`
-      <pharos-dropdown-menu id="my-dropdown">
-        <pharos-dropdown-menu-item>I am item 1</pharos-dropdown-menu-item>
-        <pharos-dropdown-menu-item>I am item 2</pharos-dropdown-menu-item>
-        <pharos-dropdown-menu-item>I am item 3</pharos-dropdown-menu-item>
-      </pharos-dropdown-menu>
+      <test-pharos-dropdown-menu id="my-dropdown">
+        <test-pharos-dropdown-menu-item>I am item 1</test-pharos-dropdown-menu-item>
+        <test-pharos-dropdown-menu-item>I am item 2</test-pharos-dropdown-menu-item>
+        <test-pharos-dropdown-menu-item>I am item 3</test-pharos-dropdown-menu-item>
+      </test-pharos-dropdown-menu>
     `;
   };
 
   const getNoItemDropdown = () => {
     return html`
-      <pharos-dropdown-menu id="my-dropdown">
+      <test-pharos-dropdown-menu id="my-dropdown">
         <div>Hi there!</div>
-      </pharos-dropdown-menu>
+      </test-pharos-dropdown-menu>
     `;
   };
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-dropdown-menu id="my-dropdown">
-        <pharos-dropdown-menu-item>I am item 1</pharos-dropdown-menu-item>
-        <pharos-dropdown-menu-item>I am item 2</pharos-dropdown-menu-item>
-        <pharos-dropdown-menu-item>I am item 3</pharos-dropdown-menu-item>
-      </pharos-dropdown-menu>
+      <test-pharos-dropdown-menu id="my-dropdown">
+        <test-pharos-dropdown-menu-item>I am item 1</test-pharos-dropdown-menu-item>
+        <test-pharos-dropdown-menu-item>I am item 2</test-pharos-dropdown-menu-item>
+        <test-pharos-dropdown-menu-item>I am item 3</test-pharos-dropdown-menu-item>
+      </test-pharos-dropdown-menu>
     `);
   });
 
@@ -264,7 +264,7 @@ describe('pharos-dropdown-menu', () => {
     await aTimeout(1);
 
     const items = Array.prototype.slice.call(
-      component.querySelectorAll('pharos-dropdown-menu-item')
+      component.querySelectorAll('test-pharos-dropdown-menu-item')
     ) as PharosDropdownMenuItem[];
     const firstItem = items[0].renderRoot.querySelector('.dropdown-menu-item__button');
 
@@ -291,7 +291,7 @@ describe('pharos-dropdown-menu', () => {
     await aTimeout(1);
 
     const items = Array.prototype.slice.call(
-      component.querySelectorAll('pharos-dropdown-menu-item')
+      component.querySelectorAll('test-pharos-dropdown-menu-item')
     ) as PharosDropdownMenuItem[];
     const lastItem = items[items.length - 1].renderRoot.querySelector(
       '.dropdown-menu-item__button'
@@ -421,9 +421,9 @@ describe('pharos-dropdown-menu', () => {
     document.body.appendChild(trigger);
 
     component = await fixture(html`
-      <pharos-dropdown-menu id="my-dropdown" full-width>
-        <pharos-dropdown-menu-item>I am an item</pharos-dropdown-menu-item>
-      </pharos-dropdown-menu>
+      <test-pharos-dropdown-menu id="my-dropdown" full-width>
+        <test-pharos-dropdown-menu-item>I am an item</test-pharos-dropdown-menu-item>
+      </test-pharos-dropdown-menu>
     `);
 
     trigger.click();
@@ -466,7 +466,7 @@ describe('pharos-dropdown-menu', () => {
     await component.updateComplete;
 
     const items = Array.prototype.slice.call(
-      component.querySelectorAll('pharos-dropdown-menu-item')
+      component.querySelectorAll('test-pharos-dropdown-menu-item')
     ) as PharosDropdownMenuItem[];
     const secondItem = items[1].renderRoot.querySelector('.dropdown-menu-item__button');
 
@@ -497,7 +497,7 @@ describe('pharos-dropdown-menu', () => {
     await component.updateComplete;
 
     const items = Array.prototype.slice.call(
-      component.querySelectorAll('pharos-dropdown-menu-item')
+      component.querySelectorAll('test-pharos-dropdown-menu-item')
     ) as PharosDropdownMenuItem[];
     const firstItem = items[0].renderRoot.querySelector('.dropdown-menu-item__button');
 
@@ -528,7 +528,7 @@ describe('pharos-dropdown-menu', () => {
     await component.updateComplete;
 
     const items = Array.prototype.slice.call(
-      component.querySelectorAll('pharos-dropdown-menu-item')
+      component.querySelectorAll('test-pharos-dropdown-menu-item')
     ) as PharosDropdownMenuItem[];
     const firstItem = items[0].renderRoot.querySelector('.dropdown-menu-item__button');
 
@@ -557,7 +557,7 @@ describe('pharos-dropdown-menu', () => {
     await component.updateComplete;
 
     const items = Array.prototype.slice.call(
-      component.querySelectorAll('pharos-dropdown-menu-item')
+      component.querySelectorAll('test-pharos-dropdown-menu-item')
     ) as PharosDropdownMenuItem[];
     const lastItem = items[items.length - 1].renderRoot.querySelector(
       '.dropdown-menu-item__button'
@@ -578,7 +578,9 @@ describe('pharos-dropdown-menu', () => {
     trigger.click();
     await component.updateComplete;
 
-    const item = component.querySelector('pharos-dropdown-menu-item') as PharosDropdownMenuItem;
+    const item = component.querySelector(
+      'test-pharos-dropdown-menu-item'
+    ) as PharosDropdownMenuItem;
     item.click();
     await aTimeout(150);
 
@@ -593,7 +595,9 @@ describe('pharos-dropdown-menu', () => {
     component.open = true;
     await component.updateComplete;
 
-    const item = component.querySelector('pharos-dropdown-menu-item') as PharosDropdownMenuItem;
+    const item = component.querySelector(
+      'test-pharos-dropdown-menu-item'
+    ) as PharosDropdownMenuItem;
     item.click();
     await aTimeout(150);
 
@@ -610,7 +614,9 @@ describe('pharos-dropdown-menu', () => {
     component.open = true;
     await component.updateComplete;
 
-    const item = component.querySelector('pharos-dropdown-menu-item') as PharosDropdownMenuItem;
+    const item = component.querySelector(
+      'test-pharos-dropdown-menu-item'
+    ) as PharosDropdownMenuItem;
     item.click();
     await aTimeout(150);
 
@@ -678,7 +684,7 @@ describe('pharos-dropdown-menu', () => {
   });
 
   it('does not contain a focus trap when in a menu nav', async () => {
-    const parentNode = document.createElement('pharos-dropdown-menu-nav');
+    const parentNode = document.createElement('test-pharos-dropdown-menu-nav');
 
     component = await fixture(getNoItemDropdown(), {
       parentNode,
@@ -729,13 +735,13 @@ describe('pharos-dropdown-menu', () => {
   });
 
   it('updates the last item when a new item is added dynamically', async () => {
-    const item = document.createElement('pharos-dropdown-menu-item');
+    const item = document.createElement('test-pharos-dropdown-menu-item');
     item.textContent = 'I am a new item';
     component.appendChild(item);
     await component.updateComplete;
 
     const items = Array.prototype.slice.call(
-      component.querySelectorAll('pharos-dropdown-menu-item')
+      component.querySelectorAll('test-pharos-dropdown-menu-item')
     ) as PharosDropdownMenuItem[];
     const lastItem = items[items.length - 1];
 

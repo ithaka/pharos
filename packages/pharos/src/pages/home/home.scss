@@ -15,7 +15,7 @@
     grid-area: main;
   }
 
-  pharos-footer {
+  [data-pharos-component='PharosFooter'] {
     grid-area: footer;
   }
 }

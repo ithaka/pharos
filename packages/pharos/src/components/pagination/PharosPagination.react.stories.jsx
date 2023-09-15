@@ -3,10 +3,18 @@ import { action } from '@storybook/addon-actions';
 import { PharosPagination } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Pagination',
   component: PharosPagination,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('pagination') },
     options: { selectedPanel: 'addon-controls' },

@@ -7,7 +7,7 @@ describe('pharos-pagination', () => {
   let component: PharosPagination;
 
   beforeEach(async () => {
-    component = await fixture(html` <pharos-pagination></pharos-pagination> `);
+    component = await fixture(html` <test-pharos-pagination></test-pharos-pagination> `);
   });
 
   it('is accessible', async () => {
@@ -15,21 +15,29 @@ describe('pharos-pagination', () => {
   });
 
   it('sets its default attributes', async () => {
-    component = await fixture(html` <pharos-pagination></pharos-pagination> `);
+    component = await fixture(html` <test-pharos-pagination></test-pharos-pagination> `);
     expect(component).dom.to.equal(
-      `<pharos-pagination current-page="1" data-pharos-component="PharosPagination" total-results="0" page-size="25"></pharos-pagination>`
+      `<test-pharos-pagination current-page="1" data-pharos-component="PharosPagination" total-results="0" page-size="25"></test-pharos-pagination>`
     );
   });
 
   it('shows/hides previous page link correctly', async () => {
     component = await fixture(html`
-      <pharos-pagination current-page="1" total-results="0" page-size="25"></pharos-pagination>
+      <test-pharos-pagination
+        current-page="1"
+        total-results="0"
+        page-size="25"
+      ></test-pharos-pagination>
     `);
     let prevLink = component.renderRoot.querySelector('.prev') as HTMLElement;
     expect(prevLink).not.to.exist;
 
     component = await fixture(html`
-      <pharos-pagination current-page="2" total-results="0" page-size="25"></pharos-pagination>
+      <test-pharos-pagination
+        current-page="2"
+        total-results="0"
+        page-size="25"
+      ></test-pharos-pagination>
     `);
     prevLink = component.renderRoot.querySelector('.prev') as HTMLElement;
     expect(prevLink).to.exist;
@@ -37,13 +45,21 @@ describe('pharos-pagination', () => {
 
   it('shows/hides next page link correctly', async () => {
     component = await fixture(html`
-      <pharos-pagination current-page="1" total-results="112" page-size="25"></pharos-pagination>
+      <test-pharos-pagination
+        current-page="1"
+        total-results="112"
+        page-size="25"
+      ></test-pharos-pagination>
     `);
     let nextLink = component.renderRoot.querySelector('.next') as HTMLElement;
     expect(nextLink).to.exist;
 
     component = await fixture(html`
-      <pharos-pagination current-page="5" total-results="112" page-size="25"></pharos-pagination>
+      <test-pharos-pagination
+        current-page="5"
+        total-results="112"
+        page-size="25"
+      ></test-pharos-pagination>
     `);
     nextLink = component.renderRoot.querySelector('.next') as HTMLElement;
     expect(nextLink).not.to.exist;
@@ -59,13 +75,13 @@ describe('pharos-pagination', () => {
       nextPageCount++;
     };
     component = await fixture(html`
-      <pharos-pagination
+      <test-pharos-pagination
         current-page="3"
         total-results="112"
         page-size="25"
         @prev-page="${onPrevClick}"
         @next-page="${onNextClick}"
-      ></pharos-pagination>
+      ></test-pharos-pagination>
     `);
 
     const prevLink = component.renderRoot.querySelector('.prev') as HTMLElement;
@@ -90,13 +106,13 @@ describe('pharos-pagination', () => {
       nextPageCount++;
     };
     component = await fixture(html`
-      <pharos-pagination
+      <test-pharos-pagination
         current-page="3"
         total-results="112"
         page-size="25"
         @prev-page="${onPrevClick}"
         @next-page="${onNextClick}"
-      ></pharos-pagination>
+      ></test-pharos-pagination>
     `);
 
     const prevLinkChildElement = component.renderRoot.querySelector('.prev')
@@ -115,7 +131,7 @@ describe('pharos-pagination', () => {
 
   it('throws an error for an invalid total results value', async () => {
     component = await fixture(
-      html` <pharos-pagination total-results="-1"></pharos-pagination> `
+      html` <test-pharos-pagination total-results="-1"></test-pharos-pagination> `
     ).catch((e) => e);
     expect("totalResults value '-1' is invalid. Can only be a number greater than or equal to 0").to
       .be.thrown;
@@ -123,7 +139,7 @@ describe('pharos-pagination', () => {
 
   it('throws an error for an invalid page size value', async () => {
     component = await fixture(
-      html` <pharos-pagination page-size="1.5"></pharos-pagination> `
+      html` <test-pharos-pagination page-size="1.5"></test-pharos-pagination> `
     ).catch((e) => e);
     expect("pageSize value '1.5' is invalid. Can only be a number greater than or equal to 1").to.be
       .thrown;
@@ -131,7 +147,7 @@ describe('pharos-pagination', () => {
 
   it('throws an error for an invalid current page value', async () => {
     component = await fixture(
-      html` <pharos-pagination current-page="0"></pharos-pagination> `
+      html` <test-pharos-pagination current-page="0"></test-pharos-pagination> `
     ).catch((e) => e);
     expect("currentPage value '0' is invalid. Can only be a number greater than or equal to 1").to
       .be.thrown;

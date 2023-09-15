@@ -239,9 +239,16 @@
 /// @access public
 /// @group interaction
 @mixin interactive-focus {
-  &:focus {
+  &:focus-visible {
     outline: 2px solid var(--pharos-color-focus);
     outline-offset: 2px;
+  }
+
+  @supports not selector(:focus-visible) {
+    &:focus {
+      outline: 2px solid var(--pharos-color-focus);
+      outline-offset: 2px;
+    }
   }
 }
 

@@ -24,7 +24,7 @@ a {
   min-height: 100vh;
 }
 
-@media screen and (max-width: 1055px) {
+@media screen and (width <= 1055px) {
   .container {
     grid-template-areas:
       'main'
@@ -74,7 +74,7 @@ ul {
   grid-column: span 8;
 }
 
-@media screen and (max-width: 22.5rem) {
+@media screen and (width <= 22.5rem) {
   .page {
     grid-column: span 4;
   }

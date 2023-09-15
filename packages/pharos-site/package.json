@@ -4,13 +4,13 @@
     "access": "public"
   },
   "description": "Pharos acts as a guiding light to helps us create consistent, dependable and focused experiences for all of JSTOR users.",
-  "version": "5.13.0",
+  "version": "5.13.3",
   "dependencies": {
-    "@ithaka/pharos": "^12.16.0",
+    "@ithaka/pharos": "^12.20.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@webcomponents/scoped-custom-element-registry": "^0.0.3",
-    "gatsby": "^4.2.0",
+    "gatsby": "^4.25.7",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-google-tagmanager": "^4.2.0",
     "gatsby-plugin-image": "^2.2.0",
@@ -20,7 +20,7 @@
     "gatsby-plugin-react-helmet": "^5.2.0",
     "gatsby-plugin-remove-trailing-slashes": "^4.2.0",
     "gatsby-plugin-sass": "^5.2.0",
-    "gatsby-plugin-sharp": "^4.2.0",
+    "gatsby-plugin-sharp": "^4.25.1",
     "gatsby-source-filesystem": "^4.2.0",
     "gatsby-transformer-sharp": "^4.2.0",
     "prettier": "^2.5.0",
@@ -29,7 +29,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-live": "^2.3.0",
-    "sass": "^1.42.1"
+    "sass": "^1.63.6"
   },
   "devDependencies": {
     "@types/mdx-js__react": "^1.5.3",
@@ -53,8 +53,5 @@
     "type": "git",
     "url": "git+https://github.com/ithaka/pharos.git",
     "directory": "site"
-  },
-  "exports": {
-    "./lib/utils/scss/mixins.scss": "./lib/utils/scss/mixins.scss"
   }
 }

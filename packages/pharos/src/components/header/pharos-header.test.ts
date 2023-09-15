@@ -8,14 +8,16 @@ describe('pharos-header', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-header>
-        <pharos-link slot="start" href="/" id="jstor-logo">
+      <test-pharos-header>
+        <test-pharos-link slot="start" href="/" id="jstor-logo">
           <img alt="JSTOR Home" width="65" height="90" />
-        </pharos-link>
+        </test-pharos-link>
         <div slot="center">
-          <pharos-dropdown-menu-nav label="main navigation">
-            <pharos-dropdown-menu-nav-link href="/action/showAdvancedSearch" id="adv-search-link"
-              >Advanced Search</pharos-dropdown-menu-nav-link
+          <test-pharos-dropdown-menu-nav label="main navigation">
+            <test-pharos-dropdown-menu-nav-link
+              href="/action/showAdvancedSearch"
+              id="adv-search-link"
+              >Advanced Search</test-pharos-dropdown-menu-nav-link
             >
             <pharos-dropdown-menu-nav-category
               id="browse-link"
@@ -23,13 +25,12 @@ describe('pharos-header', () => {
               data-dropdown-menu-hover
               >Browse</pharos-dropdown-menu-nav-category
             >
-            <pharos-dropdown-menu id="browse-menu">
-              <pharos-dropdown-menu-item link="/subjects">by Subject</pharos-dropdown-menu-item>
-              <pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
-                >by Title</pharos-dropdown-menu-item
+            <test-pharos-dropdown-menu id="browse-menu">
+              <test-pharos-dropdown-menu-item link="/subjects"
+                >by Subject</test-pharos-dropdown-menu-item
               >
-              <pharos-dropdown-menu-item link="/site/collection-list"
-                >by Collections</pharos-dropdown-menu-item
+              <test-pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
+                >by Title</test-pharos-dropdown-menu-item
               >
               <pharos-dropdown-menu-item link="/publishers">by Publisher</pharos-dropdown-menu-item>
             </pharos-dropdown-menu>
@@ -39,29 +40,33 @@ describe('pharos-header', () => {
               data-dropdown-menu-hover
               >Tools</pharos-dropdown-menu-nav-category
             >
-            <pharos-dropdown-menu id="tools-menu">
-              <pharos-dropdown-menu-item link="/account/workspace"
-                >Workspace</pharos-dropdown-menu-item
+            <test-pharos-dropdown-menu id="tools-menu">
+              <test-pharos-dropdown-menu-item link="/account/workspace"
+                >Workspace</test-pharos-dropdown-menu-item
               >
-              <pharos-dropdown-menu-item link="/analyze">Text Analyzer</pharos-dropdown-menu-item>
-              <pharos-dropdown-menu-item link="/understand"
-                >The JSTOR Understanding Series</pharos-dropdown-menu-item
+              <test-pharos-dropdown-menu-item link="/analyze"
+                >Text Analyzer</test-pharos-dropdown-menu-item
               >
-              <pharos-dropdown-menu-item link="/dfr">Data for Research</pharos-dropdown-menu-item>
-            </pharos-dropdown-menu>
-          </pharos-dropdown-menu-nav>
+              <test-pharos-dropdown-menu-item link="/understand"
+                >The JSTOR Understanding Series</test-pharos-dropdown-menu-item
+              >
+              <test-pharos-dropdown-menu-item link="/dfr"
+                >Data for Research</test-pharos-dropdown-menu-item
+              >
+            </test-pharos-dropdown-menu>
+          </test-pharos-dropdown-menu-nav>
         </div>
         <div slot="end" style="display: grid; grid-template-rows: 1fr 1fr; row-gap: 1.5rem">
           <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 0.5rem">
-            <pharos-link href="#" target="_blank">Log In</pharos-link>
-            <pharos-link href="#" target="_blank">Register</pharos-link>
+            <test-pharos-link href="#" target="_blank">Log In</test-pharos-link>
+            <test-pharos-link href="#" target="_blank">Register</test-pharos-link>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 0.5rem">
-            <pharos-link href="//about.jstor.org" target="_blank">About</pharos-link>
-            <pharos-link href="//support.jstor.org" target="_blank">Support</pharos-link>
+            <test-pharos-link href="//about.jstor.org" target="_blank">About</test-pharos-link>
+            <test-pharos-link href="//support.jstor.org" target="_blank">Support</test-pharos-link>
           </div>
         </div>
-      </pharos-header>
+      </test-pharos-header>
     `);
   });
 
