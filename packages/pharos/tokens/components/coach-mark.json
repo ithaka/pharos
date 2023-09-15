@@ -20,7 +20,7 @@
         },
         "size": {
             "text": { "value": "{font.size.small.value}"},
-            "border": { "value": "{font.size.small.value}"},
+            "border": { "value": "1px"},
             "pip": { "value": "10px"}
         }
     }

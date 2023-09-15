@@ -77,7 +77,7 @@
 .coach-mark__content {
   position: relative;
   background-color: var(--coach-mark-background-color);
-  border: var(--coach-mark-size-border) solid var(--coach-mark-border-color);
+  border: var(--pharos-coach-mark-size-border) solid var(--coach-mark-border-color);
   padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
   min-width: 100px;
   width: fit-content;
@@ -99,11 +99,7 @@
   }
 
   &::after {
-    --pharos-coach-mark-size-border: calc(var(--pharos-coach-mark-size-border) * 2);
-
-    background-color: var(--coach-mark-border-color);
-    height: calc(var(--pharos-coach-mark-size-pip) + var(--pharos-coach-mark-size-border-x2));
-    width: calc(var(--pharos-coach-mark-size-pip) + var(--pharos-coach-mark-size-border-x2));
+    border: var(--pharos-coach-mark-size-border, 1px) solid var(--coach-mark-border-color);
     z-index: -1;
   }
 }
