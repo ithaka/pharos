@@ -37,24 +37,20 @@
 }
 
 :host {
-  --coach-mark-background-color: var(--pharos-color-white);
-  --coach-mark-border-color: var(--pharos-color-marble-gray-base);
-  --coach-mark-border-width: 1px;
-  --coach-mark-text-size: var(--pharos-font-size-small);
-  --coach-mark-heading-color: var(--pharos-color-marble-gray-20);
-  --coach-mark-text-color: var(--pharos-color-marble-gray-20);
-  --coach-mark-text-spacing: var(--pharos-spacing-1-x);
-  --coach-mark-pip-size: 10px;
+  --coach-mark-background-color: var(--pharos-coach-mark-color-background-light);
+  --coach-mark-border-color: var(--pharos-coach-mark-color-border-light);
+  --coach-mark-heading-color: var(--pharos-coach-mark-color-heading-light);
+  --coach-mark-text-color: var(--pharos-coach-mark-color-text-light);
 
   display: block;
   position: absolute;
 }
 
 :host([variant='dark']) {
-  --coach-mark-background-color: var(--pharos-button-color-base-overlay-background-base);
-  --coach-mark-border-color: var(--coach-mark-background-color);
-  --coach-mark-heading-color: var(--pharos-color-white);
-  --coach-mark-text-color: var(--pharos-color-marble-gray-80);
+  --coach-mark-background-color: var(--pharos-coach-mark-color-background-dark);
+  --coach-mark-border-color: var(--pharos-coach-mark-color-border-dark);
+  --coach-mark-heading-color: var(--pharos-coach-mark-color-heading-dark);
+  --coach-mark-text-color: var(--pharos-coach-mark-color-text-dark);
 }
 
 .coach-mark {
@@ -81,13 +77,13 @@
 .coach-mark__content {
   position: relative;
   background-color: var(--coach-mark-background-color);
-  border: var(--coach-mark-border-width) solid var(--coach-mark-border-color);
+  border: var(--coach-mark-size-border) solid var(--coach-mark-border-color);
   padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
   min-width: 100px;
   width: fit-content;
-  font-size: var(--coach-mark-text-size);
+  font-size: var(--pharos-font-size-small);
   color: var(--coach-mark-text-color);
-  line-height: var(--coach-mark-text-spacing);
+  line-height: var(--pharos-spacing-1-x);
 
   &::before,
   &::after {
@@ -96,18 +92,18 @@
     position: absolute;
     top: var(--pip-top);
     left: var(--pip-left);
-    height: var(--coach-mark-pip-size);
-    width: var(--coach-mark-pip-size);
+    height: var(--pharos-coach-mark-size-pip);
+    width: var(--pharos-coach-mark-size-pip);
     transform: translate(-50%, -50%) rotate(45deg);
     z-index: 1;
   }
 
   &::after {
-    --coach-mark-border-width-x2: calc(var(--coach-mark-border-width) * 2);
+    --pharos-coach-mark-size-border: calc(var(--pharos-coach-mark-size-border) * 2);
 
     background-color: var(--coach-mark-border-color);
-    height: calc(var(--coach-mark-pip-size) + var(--coach-mark-border-width-x2));
-    width: calc(var(--coach-mark-pip-size) + var(--coach-mark-border-width-x2));
+    height: calc(var(--pharos-coach-mark-size-pip) + var(--pharos-coach-mark-size-border-x2));
+    width: calc(var(--pharos-coach-mark-size-pip) + var(--pharos-coach-mark-size-border-x2));
     z-index: -1;
   }
 }

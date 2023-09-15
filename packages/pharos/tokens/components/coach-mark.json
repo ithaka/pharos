@@ -1,0 +1,27 @@
+{
+    "coach-mark": {
+        "color": {
+            "background": {
+                "dark"   : { "value": "{color.Marble gray.10.value}" },
+                "light"   : { "value": "{color.White.value}" }
+            },
+            "border": {
+                "dark"   : { "value": "{color.Marble gray.10.value}" },
+                "light"   : { "value": "{color.Marble gray.base.value}" }
+            },
+            "heading": {
+                "dark"   : { "value": "{color.White.value}" },
+                "light"   : { "value": "{color.Marble gray.20.value}" }
+            },
+            "text": {
+                "dark"   : { "value": "{color.Marble gray.80.value}" },
+                "light"   : { "value": "{color.Marble gray.20.value}" }
+            }
+        },
+        "size": {
+            "text": { "value": "{font.size.small.value}"},
+            "border": { "value": "{font.size.small.value}"},
+            "pip": { "value": "10px"}
+        }
+    }
+}
