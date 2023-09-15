@@ -5,11 +5,19 @@ import {
   PharosIcon,
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Forms/Input Group',
   component: PharosInputGroup,
   subcomponents: { PharosInputGroupSelect },
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('input-group') },
   },

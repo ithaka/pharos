@@ -89,19 +89,19 @@
   }
 }
 
-:host([on-background]:not([checked]):not([indeterminate])) .input__icon {
+:host([on-background]:not([checked], [indeterminate])) .input__icon {
   .box {
     fill: var(--pharos-form-element-color-background-selected);
   }
 }
 
-:host([on-background]:not([invalidated]):not([disabled])) .input__icon {
+:host([on-background]:not([invalidated], [disabled])) .input__icon {
   .box {
     stroke: var(--pharos-color-interactive-tertiary);
   }
 }
 
-:host([checked]:not([on-background]):not([invalidated]):not([disabled])) .input__icon {
+:host([checked]:not([on-background], [invalidated], [disabled])) .input__icon {
   .box {
     stroke: var(--pharos-form-element-color-background-selected);
   }
@@ -111,13 +111,13 @@
   }
 }
 
-:host([indeterminate]:not([invalidated]):not([disabled]):not([on-background])) .input__icon {
+:host([indeterminate]:not([invalidated], [disabled], [on-background])) .input__icon {
   .box {
     fill: var(--pharos-form-element-color-background-selected);
   }
 }
 
-:host([checked]:not([invalidated]):not([disabled]):not([on-background])) .input__icon {
+:host([checked]:not([invalidated], [disabled], [on-background])) .input__icon {
   .box {
     fill: var(--pharos-form-element-color-background-selected);
   }
@@ -145,22 +145,22 @@
   }
 }
 
-:host([on-background]:not([disabled]):not([checked]):not([indeterminate]))
-  #checkbox-element:not(:focus)
-  + .input-wrapper:hover
-  .input__icon {
-  .box,
-  .hover {
-    stroke: var(--pharos-color-interactive-tertiary);
-  }
-}
-
-:host(:not([checked]):not([disabled]):not([indeterminate]):not([on-background]))
+:host(:not([checked], [disabled], [indeterminate], [on-background]))
   #checkbox-element:not(:focus)
   + .input-wrapper:hover
   .input__icon {
   .box,
   .hover {
     stroke: var(--pharos-color-hover-primary);
+  }
+}
+
+:host([on-background]:not([disabled], [checked], [indeterminate]))
+  #checkbox-element:not(:focus)
+  + .input-wrapper:hover
+  .input__icon {
+  .box,
+  .hover {
+    stroke: var(--pharos-color-interactive-tertiary);
   }
 }

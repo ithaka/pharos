@@ -12,10 +12,18 @@ import {
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
 import { action } from '@storybook/addon-actions';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Button',
   component: PharosButton,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: {
       page: configureDocsPage('button'),

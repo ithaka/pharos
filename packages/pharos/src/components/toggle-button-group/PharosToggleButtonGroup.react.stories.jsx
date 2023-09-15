@@ -2,11 +2,19 @@ import { action } from '@storybook/addon-actions';
 
 import { PharosToggleButtonGroup, PharosToggleButton } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Toggle Button Group',
   component: PharosToggleButtonGroup,
   subcomponents: { PharosToggleButton },
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('toggle-button-group') },
     options: { selectedPanel: 'addon-controls' },

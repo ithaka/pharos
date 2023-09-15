@@ -71,7 +71,7 @@ p.alert-example__content + p.alert-example__content {
     white-space: nowrap;
   }
 
-  pharos-icon {
+  [data-pharos-component='PharosIcon'] {
     fill: var(--pharos-color-black);
     stroke: var(--pharos-color-black);
   }
@@ -177,7 +177,7 @@ p.alert-example__content + p.alert-example__content {
   @include pharos.interactive-focus;
 }
 
-@media only screen and (max-width: 570px) {
+@media only screen and (width <= 570px) {
   .hide-for-small {
     display: none !important; /* stylelint-disable-line declaration-no-important */
   }
@@ -187,7 +187,7 @@ p.alert-example__content + p.alert-example__content {
   }
 }
 
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
   .hide-for-large {
     display: none !important; /* stylelint-disable-line declaration-no-important */
   }
@@ -203,7 +203,7 @@ p.alert-example__content + p.alert-example__content {
   }
 }
 
-@media (max-width: 570px) {
+@media (width <= 570px) {
   .header-example__split-column {
     grid-template-columns: 1fr 1fr;
   }

@@ -4,7 +4,7 @@ import { defaultArgs, argTypes } from './storyArgs';
 
 export default {
   title: 'Components/Alert',
-  component: 'pharos-alert',
+  component: 'storybook-pharos-alert',
   parameters: {
     docs: {
       page: configureDocsPage('alert'),
@@ -15,7 +15,9 @@ export default {
 
 const Base = {
   render: ({ status, text, closable }) =>
-    html`<pharos-alert status=${status} ?closable=${closable}>${text}</pharos-alert>`,
+    html`<storybook-pharos-alert status=${status} ?closable=${closable}
+      >${text}</storybook-pharos-alert
+    >`,
   args: defaultArgs,
 };
 
@@ -37,10 +39,12 @@ export const Success = {
 
 export const Warning = {
   render: ({ status, text, closable }) =>
-    html` <pharos-alert status=${status} ?closable=${closable}>
+    html` <storybook-pharos-alert status=${status} ?closable=${closable}>
       <p class="alert-example__content">${text}</p>
-      <p class="alert-example__content">See <pharos-link href="#">how to fix this</pharos-link>.</p>
-    </pharos-alert>`,
+      <p class="alert-example__content">
+        See <storybook-pharos-link href="#">how to fix this</storybook-pharos-link>.
+      </p>
+    </storybook-pharos-alert>`,
   args: {
     status: 'warning',
     text: 'Your profile is incomplete.',
@@ -49,13 +53,13 @@ export const Warning = {
 
 export const Error = {
   render: ({ status, text, closable }) =>
-    html` <pharos-alert status=${status} ?closable=${closable}>
+    html` <storybook-pharos-alert status=${status} ?closable=${closable}>
       <p class="alert-example__content">${text}</p>
       <p class="alert-example__content">
         For more information,
-        <pharos-link href="#">read the documentation</pharos-link>.
+        <storybook-pharos-link href="#">read the documentation</storybook-pharos-link>.
       </p>
-    </pharos-alert>`,
+    </storybook-pharos-alert>`,
   args: {
     status: 'error',
     text: "Your password didn't meet the minimum requirements.",

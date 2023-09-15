@@ -11,10 +11,19 @@ import {
   PharosIcon,
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
+import { PharosContext } from '../../utils/PharosContext';
+import logo from '@config/assets/images/jstor-logo.svg';
 
 export default {
   title: 'Organisms/Header',
   component: PharosHeader,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: { page: configureDocsPage('haeder') },
     layout: 'fullscreen',
@@ -65,7 +74,7 @@ export const Base = {
         </PharosDropdownMenu>
       </div>
       <PharosLink slot="start" href="/" id="jstor-logo">
-        <img src="./images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
+        <img src={logo} alt="JSTOR Home" width="65" height="90" />
       </PharosLink>
       <div slot="center">
         <PharosInputGroup

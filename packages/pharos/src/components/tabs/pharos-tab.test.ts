@@ -7,15 +7,15 @@ describe('pharos-tab', () => {
   let component: PharosTab;
 
   beforeEach(async () => {
-    component = await fixture(html` <pharos-tab>I am a tab</pharos-tab> `);
+    component = await fixture(html` <test-pharos-tab>I am a tab</test-pharos-tab> `);
   });
 
   it('is accessible', async () => {
-    const parentNode = document.createElement('pharos-tabs');
+    const parentNode = document.createElement('test-pharos-tabs');
     component = await fixture(
       html`
-        <pharos-tab id="tab-1" data-panel-id="panel-1">I am an tab</pharos-tab>
-        <pharos-tab-panel id="panel-1" slot="panel">Panel 1</pharos-tab-panel>
+        <test-pharos-tab id="tab-1" data-panel-id="panel-1">I am an tab</test-pharos-tab>
+        <test-pharos-tab-panel id="panel-1" slot="panel">Panel 1</test-pharos-tab-panel>
       `,
       { parentNode }
     );

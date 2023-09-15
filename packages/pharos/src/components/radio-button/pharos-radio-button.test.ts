@@ -10,7 +10,9 @@ describe('pharos-radio-button', () => {
 
   beforeEach(async () => {
     component = await fixture(
-      html`<pharos-radio-button><span slot="label">test radio</span></pharos-radio-button>`
+      html`<test-pharos-radio-button
+        ><span slot="label">test radio</span></test-pharos-radio-button
+      >`
     );
   });
 
@@ -26,15 +28,17 @@ describe('pharos-radio-button', () => {
 
   it('is accessible when disabled', async () => {
     component = await fixture(html`
-      <pharos-radio-button disabled><span slot="label">test radio</span></pharos-radio-button>
+      <test-pharos-radio-button disabled
+        ><span slot="label">test radio</span></test-pharos-radio-button
+      >
     `);
     await expect(component).to.be.accessible();
   });
 
   it('has an attribute to set check value', async () => {
     component = await fixture(html`
-      <pharos-radio-button ?checked=${true}
-        ><span slot="label">test radio</span></pharos-radio-button
+      <test-pharos-radio-button ?checked=${true}
+        ><span slot="label">test radio</span></test-pharos-radio-button
       >
     `);
     await expect(component.checked).to.equal(true);
@@ -46,8 +50,8 @@ describe('pharos-radio-button', () => {
       eventSource = event.composedPath()[0] as Element;
     };
     component = await fixture(html`
-      <pharos-radio-button value="1" @change=${onChange}
-        ><span slot="label">test radio</span></pharos-radio-button
+      <test-pharos-radio-button value="1" @change=${onChange}
+        ><span slot="label">test radio</span></test-pharos-radio-button
       >
     `);
     component['_radio'].click();
@@ -77,7 +81,9 @@ describe('pharos-radio-button', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(html`
-      <pharos-radio-button disabled><span slot="label">test radio</span></pharos-radio-button>
+      <test-pharos-radio-button disabled
+        ><span slot="label">test radio</span></test-pharos-radio-button
+      >
     `);
 
     component['_radio'].focus();
@@ -92,9 +98,9 @@ describe('pharos-radio-button', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <pharos-radio-button name="my-radio" value="test" checked>
+        <test-pharos-radio-button name="my-radio" value="test" checked>
           <span slot="label">test radio</span>
-        </pharos-radio-button>
+        </test-pharos-radio-button>
       `,
       { parentNode }
     );
@@ -110,9 +116,9 @@ describe('pharos-radio-button', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <pharos-radio-button name="my-radio" value="test" disabled>
+        <test-pharos-radio-button name="my-radio" value="test" disabled>
           <span slot="label">test radio</span>
-        </pharos-radio-button>
+        </test-pharos-radio-button>
       `,
       { parentNode }
     );
@@ -131,9 +137,9 @@ describe('pharos-radio-button', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(html`
-      <pharos-radio-button hide-label>
+      <test-pharos-radio-button hide-label>
         <span slot="label">test radio</span>
-      </pharos-radio-button>
+      </test-pharos-radio-button>
     `);
 
     const icon = component.renderRoot.querySelector('svg') as SVGElement;
@@ -152,7 +158,7 @@ describe('pharos-radio-button', () => {
     };
     document.addEventListener('focusin', onFocusIn);
 
-    component = await fixture(html` <pharos-radio-button></pharos-radio-button> `);
+    component = await fixture(html` <test-pharos-radio-button></test-pharos-radio-button> `);
 
     const icon = component.renderRoot.querySelector('svg') as SVGElement;
     icon.dispatchEvent(new Event('click'));
@@ -178,8 +184,8 @@ describe('pharos-radio-button', () => {
 
   it('allows links in the label to be clicked', async () => {
     component = await fixture(html`
-      <pharos-radio-button
-        ><span slot="label">test radio with <a href="#">link</a></span></pharos-radio-button
+      <test-pharos-radio-button
+        ><span slot="label">test radio with <a href="#">link</a></span></test-pharos-radio-button
       >
     `);
     const link = component.renderRoot.querySelector('a');
@@ -191,13 +197,13 @@ describe('pharos-radio-button', () => {
 
   it('allows Pharos links in the label to be clicked', async () => {
     component = await fixture(html`
-      <pharos-radio-button
+      <test-pharos-radio-button
         ><span slot="label"
-          >test radio with <pharos-link href="#">link</pharos-link></span
-        ></pharos-radio-button
+          >test radio with <test-pharos-link href="#">link</test-pharos-link></span
+        ></test-pharos-radio-button
       >
     `);
-    const link = component.querySelector('pharos-link') as PharosLink;
+    const link = component.querySelector('test-pharos-link') as PharosLink;
     const anchor = link?.renderRoot.querySelector('#link-element') as HTMLAnchorElement;
     anchor.click();
     await component.updateComplete;
@@ -211,9 +217,9 @@ describe('pharos-radio-button', () => {
       count++;
     };
     component = await fixture(html`
-      <pharos-radio-button value="1" @click=${onClick}>
+      <test-pharos-radio-button value="1" @click=${onClick}>
         <span slot="label">test radio</span>
-      </pharos-radio-button>
+      </test-pharos-radio-button>
     `);
 
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
@@ -227,9 +233,9 @@ describe('pharos-radio-button', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <pharos-radio-button name="my-radio" value="test" checked>
+        <test-pharos-radio-button name="my-radio" value="test" checked>
           <span slot="label">test radio</span>
-        </pharos-radio-button>
+        </test-pharos-radio-button>
       `,
       { parentNode }
     );

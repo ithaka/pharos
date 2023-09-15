@@ -1,10 +1,18 @@
 import { PharosAlert, PharosLink } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
+import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Alert',
   component: PharosAlert,
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     docs: {
       page: configureDocsPage('alert'),
@@ -58,7 +66,7 @@ export const Error = {
     <PharosAlert status={status} closable={closable}>
       <p className="alert-example__content">{text}</p>
       <p className="alert-example__content">
-        For more information, <pharos-link href="#">read the documentation</pharos-link>.
+        For more information, <PharosLink href="#">read the documentation</PharosLink>.
       </p>
     </PharosAlert>
   ),

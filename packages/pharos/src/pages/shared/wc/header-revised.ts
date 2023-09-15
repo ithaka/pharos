@@ -3,6 +3,7 @@ import type { TemplateResult } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
 import '../styles/header-revised.scss';
+import logo from '@config/assets/images/jstor-logo.svg';
 
 export const HeaderRevised = (showSearch = false): TemplateResult => html`
   <div
@@ -14,21 +15,21 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
     <div class="header-revised__container--content">
       <pharos-link href="/" id="jstor-logo" class="header-revised__logo" flex>
         <img
-          src="./images/jstor-logo.svg"
+          src="${logo}"
           alt="JSTOR Home"
           width="82"
           height="115"
           class="header-revised__image--logo"
         />
         <img
-          src="./images/jstor-logo.svg"
+          src="${logo}"
           alt="JSTOR Home"
           width="64"
           height="89"
           class="header-revised__image--logo-medium"
         />
         <img
-          src="./images/jstor-logo.svg"
+          src="${logo}"
           alt="JSTOR Home"
           width="43"
           height="60"
@@ -77,9 +78,6 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
             <pharos-dropdown-menu-item link="/subjects">by Subject</pharos-dropdown-menu-item>
             <pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
               >by Title</pharos-dropdown-menu-item
-            >
-            <pharos-dropdown-menu-item link="/site/collection-list"
-              >by Collections</pharos-dropdown-menu-item
             >
             <pharos-dropdown-menu-item link="/publishers">by Publisher</pharos-dropdown-menu-item>
           </pharos-dropdown-menu>
