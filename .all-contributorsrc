@@ -317,6 +317,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "sirrah-tam",
+      "name": "Mat Harris",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6874453?v=4",
+      "profile": "https://matharris.dev/",
+      "contributions": [
+        "a11y"
+      ]
     }
   ],
   "contributorsPerLine": 7
