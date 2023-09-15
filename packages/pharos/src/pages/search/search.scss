@@ -9,7 +9,7 @@
     'footer footer footer';
   column-gap: 6rem;
 
-  [data-pharos-component='PharosHeader'] {
+  pharos-header {
     grid-area: header;
   }
 
@@ -21,7 +21,7 @@
     grid-row: sidebar;
   }
 
-  [data-pharos-component='PharosFooter'] {
+  pharos-footer {
     grid-column: footer;
   }
 }
@@ -35,8 +35,8 @@
   .search-page__facet {
     border-top: 1px solid var(--pharos-color-ui-30);
 
-    [data-pharos-component='PharosCheckboxGroup'],
-    [data-pharos-component='PharosRadioGroup'],
+    pharos-checkbox-group,
+    pharos-radio-group,
     fieldset {
       margin-top: var(--pharos-spacing-one-and-a-half-x);
     }
@@ -44,7 +44,7 @@
     &:last-child {
       border-bottom: 1px solid var(--pharos-color-ui-30);
 
-      [data-pharos-component='PharosRadioGroup'] {
+      pharos-radio-group {
         margin-bottom: var(--pharos-spacing-one-and-a-half-x);
       }
     }

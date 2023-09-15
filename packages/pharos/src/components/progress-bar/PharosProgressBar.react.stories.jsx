@@ -1,18 +1,10 @@
 import { PharosProgressBar } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
-import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Progress Bar',
   component: PharosProgressBar,
-  decorators: [
-    (Story) => (
-      <PharosContext.Provider value={{ prefix: 'storybook' }}>
-        <Story />
-      </PharosContext.Provider>
-    ),
-  ],
   parameters: {
     docs: { page: configureDocsPage('progress-bar') },
     options: { selectedPanel: 'addon-controls' },

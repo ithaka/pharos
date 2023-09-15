@@ -10,25 +10,25 @@ describe('pharos-select', () => {
 
   beforeEach(async () => {
     component = await fixture(
-      html`<test-pharos-select>
+      html`<pharos-select>
         <span slot="label">test</span>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3" selected>Option 3</option>
         <option value="4">Option 4</option>
         <option value="5">Option 5</option>
-      </test-pharos-select>`
+      </pharos-select>`
     );
 
     disabled = await fixture(
-      html`<test-pharos-select disabled>
+      html`<pharos-select disabled>
         <span slot="label">test</span>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3" selected>Option 3</option>
         <option value="4">Option 4</option>
         <option value="5">Option 5</option>
-      </test-pharos-select>`
+      </pharos-select>`
     );
   });
 
@@ -49,10 +49,10 @@ describe('pharos-select', () => {
   it('uses the first option by default', async () => {
     component = await fixture(
       html`
-        <test-pharos-select>
+        <pharos-select>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
-        </test-pharos-select>
+        </pharos-select>
       `
     );
 
@@ -66,10 +66,10 @@ describe('pharos-select', () => {
     };
     component = await fixture(
       html`
-        <test-pharos-select @change=${onChange}>
+        <pharos-select @change=${onChange}>
           <span slot="label">test</span>
           <option value="1">Option 1</option>
-        </test-pharos-select>
+        </pharos-select>
       `
     );
 
@@ -83,11 +83,11 @@ describe('pharos-select', () => {
   it('updates the value on change', async () => {
     component = await fixture(
       html`
-        <test-pharos-select>
+        <pharos-select>
           <span slot="label">test</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
-        </test-pharos-select>
+        </pharos-select>
       `
     );
 
@@ -130,14 +130,14 @@ describe('pharos-select', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-select name="my-select">
+        <pharos-select name="my-select">
           <span slot="label">test</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3" selected>Option 3</option>
           <option value="4">Option 4</option>
           <option value="5">Option 5</option>
-        </test-pharos-select>
+        </pharos-select>
       `,
       { parentNode }
     );
@@ -153,14 +153,14 @@ describe('pharos-select', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-select name="my-select" disabled>
+        <pharos-select name="my-select" disabled>
           <span slot="label">test</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3" selected>Option 3</option>
           <option value="4">Option 4</option>
           <option value="5">Option 5</option>
-        </test-pharos-select>
+        </pharos-select>
       `,
       { parentNode }
     );
@@ -189,14 +189,14 @@ describe('pharos-select', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-select name="my-select">
+        <pharos-select name="my-select">
           <span slot="label">test</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3" selected>Option 3</option>
           <option value="4">Option 4</option>
           <option value="5">Option 5</option>
-        </test-pharos-select>
+        </pharos-select>
       `,
       { parentNode }
     );
@@ -235,14 +235,14 @@ describe('pharos-select', () => {
 
   it('sets the selection when a value is initially passed', async () => {
     component = await fixture(
-      html`<test-pharos-select value="2">
+      html`<pharos-select value="2">
         <span slot="label">test</span>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
         <option value="4">Option 4</option>
         <option value="5">Option 5</option>
-      </test-pharos-select>`
+      </pharos-select>`
     );
     await component.updateComplete;
     expect(component['_select'].value).to.equal('2');

@@ -59,6 +59,10 @@
   padding: var(--pharos-spacing-1-x);
 }
 
+:host([invalidated][variant='prominent']) #input-element {
+  @include mixins.input-padding-thick-border-prominent;
+}
+
 :host([on-background]) #input-element {
   @include mixins.input-on-background;
 
@@ -66,10 +70,6 @@
     @include mixins.input-padding-thick-border;
     @include mixins.input-focus;
   }
-}
-
-:host([invalidated][variant='prominent']) #input-element {
-  @include mixins.input-padding-thick-border-prominent;
 }
 
 :host([variant='prominent']) #input-element:focus {

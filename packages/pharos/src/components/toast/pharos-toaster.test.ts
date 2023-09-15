@@ -48,7 +48,7 @@ describe('pharos-toaster', () => {
   };
 
   beforeEach(async () => {
-    component = await fixture(html` <test-pharos-toaster></test-pharos-toaster> `);
+    component = await fixture(html` <pharos-toaster></pharos-toaster> `);
   });
 
   it('is accessible', async () => {
@@ -63,7 +63,7 @@ describe('pharos-toaster', () => {
     trigger.click();
     await component.updateComplete;
 
-    const toast = component.renderRoot.querySelector('pharos-toast');
+    const toast = component.querySelector('pharos-toast');
     expect(toast).to.not.be.null;
   });
 
@@ -78,7 +78,7 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
     await nextFrame();
 
-    const toast = component.renderRoot.querySelectorAll('pharos-toast');
+    const toast = component.querySelectorAll('pharos-toast');
     expect(toast.length).to.equal(2);
   });
 
@@ -97,7 +97,7 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
 
     const toast = (
-      component.renderRoot.querySelector('pharos-toast') as PharosToast
+      component.querySelector('pharos-toast') as PharosToast
     )?.renderRoot.querySelector('.toast');
     expect(activeElement === toast).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
@@ -111,7 +111,7 @@ describe('pharos-toaster', () => {
     trigger.click();
     await component.updateComplete;
 
-    const toast = component.renderRoot.querySelector('pharos-toast');
+    const toast = component.querySelector('pharos-toast');
     expect(toast).to.not.be.null;
   });
 
@@ -123,7 +123,7 @@ describe('pharos-toaster', () => {
     trigger.click();
     await component.updateComplete;
 
-    const openToast = component.renderRoot.querySelector('pharos-toast');
+    const openToast = component.querySelector('pharos-toast');
     const details = {
       bubbles: true,
       composed: true,
@@ -149,82 +149,10 @@ describe('pharos-toaster', () => {
     triggerUpdate.click();
     await component.updateComplete;
 
-    expect(component).shadowDom.to.equal(`
-      <div class="toaster__container">
-        <pharos-toast data-pharos-component="PharosToast" id="my-updateable-toast" indefinite="" open="" status="success">
-          <div>
-            Toast has been updated
-          </div>
-        </pharos-toast>
-      </div>
+    expect(component).dom.to.equal(`
+      <pharos-toaster data-pharos-component="PharosToaster">
+        <pharos-toast data-pharos-component="PharosToast" id="my-updateable-toast" indefinite="" open="" status="success">Toast has been updated</pharos-toast>
+      </pharos-toaster>
     `);
-  });
-
-  it('can return focus to a specific element', async () => {
-    let activeElement = null;
-    const onFocusIn = (event: Event): void => {
-      activeElement = event.composedPath()[0];
-    };
-    document.addEventListener('focusin', onFocusIn);
-
-    const trigger = document.createElement('button');
-    trigger.addEventListener('click', () => {
-      const event = new CustomEvent('pharos-toast-open', {
-        detail: {
-          content: 'I am a toast',
-          returnElements: [trigger],
-        },
-      });
-      document.dispatchEvent(event);
-    });
-    document.body.appendChild(trigger);
-    trigger.click();
-    await component.updateComplete;
-
-    const openToast = component.querySelector('pharos-toast');
-    const details = {
-      bubbles: true,
-      composed: true,
-      detail: openToast,
-    };
-    component.dispatchEvent(new CustomEvent('pharos-toast-close', details));
-    await component.updateComplete;
-
-    expect(activeElement === trigger).to.be.true;
-    document.removeEventListener('focusin', onFocusIn);
-  });
-
-  it('can return focus to a fallback element', async () => {
-    let activeElement = null;
-    const onFocusIn = (event: Event): void => {
-      activeElement = event.composedPath()[0];
-    };
-    document.addEventListener('focusin', onFocusIn);
-
-    const trigger = document.createElement('button');
-    trigger.addEventListener('click', () => {
-      const event = new CustomEvent('pharos-toast-open', {
-        detail: {
-          content: 'I am a toast',
-          returnElements: [document.querySelector('#something-does-not-exist'), trigger],
-        },
-      });
-      document.dispatchEvent(event);
-    });
-    document.body.appendChild(trigger);
-    trigger.click();
-    await component.updateComplete;
-
-    const openToast = component.querySelector('pharos-toast');
-    const details = {
-      bubbles: true,
-      composed: true,
-      detail: openToast,
-    };
-    component.dispatchEvent(new CustomEvent('pharos-toast-close', details));
-    await component.updateComplete;
-
-    expect(activeElement === trigger).to.be.true;
-    document.removeEventListener('focusin', onFocusIn);
   });
 });

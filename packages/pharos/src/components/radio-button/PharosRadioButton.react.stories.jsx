@@ -4,18 +4,9 @@ import { action } from '@storybook/addon-actions';
 import { PharosRadioButton, PharosLink } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
-import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Forms/Radio Button',
-  component: PharosRadioButton,
-  decorators: [
-    (Story) => (
-      <PharosContext.Provider value={{ prefix: 'storybook' }}>
-        <Story />
-      </PharosContext.Provider>
-    ),
-  ],
   parameters: {
     docs: { page: configureDocsPage('radio-button') },
     options: { selectedPanel: 'addon-controls' },

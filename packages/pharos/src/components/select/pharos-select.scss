@@ -53,7 +53,7 @@
   fill: var(--pharos-form-element-color-border-invalid);
 }
 
-:host(:not([disabled], [invalidated])) .select-wrapper:hover .select__icon {
+:host(:not([disabled]):not([invalidated])) .select-wrapper:hover .select__icon {
   fill: var(--pharos-color-hover-primary);
 }
 
@@ -64,7 +64,7 @@
   padding-right: calc(2.5rem - 1px);
 }
 
-:host(:not([disabled], [invalidated])) .select-wrapper:hover #select-element {
+:host(:not([disabled]):not([invalidated])) .select-wrapper:hover #select-element {
   @include mixins.input-padding-thick-border;
 
   padding-right: calc(2.5rem - 1px);

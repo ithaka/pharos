@@ -15,7 +15,7 @@ describe('pharos-text-input', () => {
 
   beforeEach(async () => {
     component = await fixture(
-      html`<test-pharos-text-input><span slot="label">I am a label</span></test-pharos-text-input>`
+      html`<pharos-text-input><span slot="label">I am a label</span></pharos-text-input>`
     );
   });
 
@@ -31,37 +31,33 @@ describe('pharos-text-input', () => {
 
   it('is accessible when disabled', async () => {
     component = await fixture(
-      html`<test-pharos-text-input disabled
-        ><span slot="label">I am a label</span></test-pharos-text-input
-      >`
+      html`<pharos-text-input disabled><span slot="label">I am a label</span></pharos-text-input>`
     );
     await expect(component).to.be.accessible();
   });
 
   it('is accessible when readonly', async () => {
     component = await fixture(
-      html`<test-pharos-text-input readonly
-        ><span slot="label">I am a label</span></test-pharos-text-input
-      >`
+      html`<pharos-text-input readonly><span slot="label">I am a label</span></pharos-text-input>`
     );
     await expect(component).to.be.accessible();
   });
 
   it('sets its default attributes', async () => {
     component = await fixture(html`
-      <test-pharos-text-input>
+      <pharos-text-input>
         <span slot="label">I am a label</span>
-      </test-pharos-text-input>
+      </pharos-text-input>
     `);
     expect(component).dom.to.equal(
-      `<test-pharos-text-input data-pharos-component="PharosTextInput" message="" name="" placeholder="" type="text" value="" variant="primary"><span slot="label">I am a label</span></test-pharos-text-input>`
+      `<pharos-text-input data-pharos-component="PharosTextInput" message="" name="" placeholder="" type="text" value="" variant="primary"><span slot="label">I am a label</span></pharos-text-input>`
     );
   });
 
   it('has an attribute to set the placeholder text of the input', async () => {
     component = await fixture(html`
-      <test-pharos-text-input placeholder="test"
-        ><span slot="label">I am a label</span></test-pharos-text-input
+      <pharos-text-input placeholder="test"
+        ><span slot="label">I am a label</span></pharos-text-input
       >
     `);
     expect(component.getAttribute('placeholder')).to.equal('test');
@@ -75,8 +71,8 @@ describe('pharos-text-input', () => {
 
   it('has an attribute to set autocomplete', async () => {
     component = await fixture(html`
-      <test-pharos-text-input autocomplete="on"
-        ><span slot="label">I am a label</span></test-pharos-text-input
+      <pharos-text-input autocomplete="on"
+        ><span slot="label">I am a label</span></pharos-text-input
       >
     `);
     expect(component['_input'].getAttribute('autocomplete')).to.equal('on');
@@ -84,9 +80,7 @@ describe('pharos-text-input', () => {
 
   it('has an attribute to set input value', async () => {
     component = await fixture(html`
-      <test-pharos-text-input value="test"
-        ><span slot="label">I am a label</span></test-pharos-text-input
-      >
+      <pharos-text-input value="test"><span slot="label">I am a label</span></pharos-text-input>
     `);
     expect(component.getAttribute('value')).to.equal('test');
     expect(component['_input'].value).to.equal('test');
@@ -94,9 +88,7 @@ describe('pharos-text-input', () => {
 
   it('has an attribute to set input type', async () => {
     component = await fixture(html`
-      <test-pharos-text-input type="number"
-        ><span slot="label">I am a label</span></test-pharos-text-input
-      >
+      <pharos-text-input type="number"><span slot="label">I am a label</span></pharos-text-input>
     `);
     expect(component.getAttribute('type')).to.equal('number');
     expect(component['_input'].type).to.equal('number');
@@ -115,8 +107,8 @@ describe('pharos-text-input', () => {
       eventSource = event.composedPath()[0] as Element;
     };
     component = await fixture(html`
-      <test-pharos-text-input @change=${onChange}
-        ><span slot="label">I am a label</span></test-pharos-text-input
+      <pharos-text-input @change=${onChange}
+        ><span slot="label">I am a label</span></pharos-text-input
       >
     `);
 
@@ -149,9 +141,7 @@ describe('pharos-text-input', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(
-      html`<test-pharos-text-input disabled
-        ><span slot="label">I am a label</span></test-pharos-text-input
-      >`
+      html`<pharos-text-input disabled><span slot="label">I am a label</span></pharos-text-input>`
     );
 
     component['_input'].focus();
@@ -163,9 +153,7 @@ describe('pharos-text-input', () => {
 
   it('throws an error for invalid type values', async () => {
     component = await fixture(html`
-      <test-pharos-text-input type="fake"
-        ><span slot="label">I am a label</span></test-pharos-text-input
-      >
+      <pharos-text-input type="fake"><span slot="label">I am a label</span></pharos-text-input>
     `).catch((e) => e);
     expect(
       'fake is not a valid text input type. Valid types are: email, hidden, number, password, search, tel, text, url'
@@ -175,9 +163,7 @@ describe('pharos-text-input', () => {
   it('renders an exclamation icon when the input is invalidated', async () => {
     component = await fixture(
       html`
-        <test-pharos-text-input invalidated
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
+        <pharos-text-input invalidated><span slot="label">I am a label</span></pharos-text-input>
       `
     );
     expect(component).shadowDom.to.equal(`
@@ -209,9 +195,7 @@ describe('pharos-text-input', () => {
   it('renders a checkmark icon when the input is validated', async () => {
     component = await fixture(
       html`
-        <test-pharos-text-input validated
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
+        <pharos-text-input validated><span slot="label">I am a label</span></pharos-text-input>
       `
     );
     expect(component).shadowDom.to.equal(`
@@ -242,11 +226,7 @@ describe('pharos-text-input', () => {
 
   it('renders a required asterisk and hidden text when input is required', async () => {
     component = await fixture(
-      html`
-        <test-pharos-text-input required
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
-      `
+      html` <pharos-text-input required><span slot="label">I am a label</span></pharos-text-input> `
     );
     expect(component).shadowDom.to.equal(`
       <label for="input-element">
@@ -277,8 +257,8 @@ describe('pharos-text-input', () => {
   it('renders a provided message', async () => {
     component = await fixture(
       html`
-        <test-pharos-text-input message="I am invalid"
-          ><span slot="label">I am a label</span></test-pharos-text-input
+        <pharos-text-input message="I am invalid"
+          ><span slot="label">I am a label</span></pharos-text-input
         >
       `
     );
@@ -310,9 +290,7 @@ describe('pharos-text-input', () => {
   it('removes invalidated state when validated', async () => {
     component = await fixture(
       html`
-        <test-pharos-text-input invalidated
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
+        <pharos-text-input invalidated><span slot="label">I am a label</span></pharos-text-input>
       `
     );
     component.validated = true;
@@ -325,9 +303,7 @@ describe('pharos-text-input', () => {
   it('removes validated state when invalidated', async () => {
     component = await fixture(
       html`
-        <test-pharos-text-input validated
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
+        <pharos-text-input validated><span slot="label">I am a label</span></pharos-text-input>
       `
     );
     component.invalidated = true;
@@ -342,9 +318,9 @@ describe('pharos-text-input', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-text-input name="my-input" value="test">
+        <pharos-text-input name="my-input" value="test">
           <span slot="label">I am a label</span>
-        </test-pharos-text-input>
+        </pharos-text-input>
       `,
       { parentNode }
     );
@@ -360,9 +336,9 @@ describe('pharos-text-input', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-text-input name="my-input" value="test" disabled>
+        <pharos-text-input name="my-input" value="test" disabled>
           <span slot="label">I am a label</span>
-        </test-pharos-text-input>
+        </pharos-text-input>
       `,
       { parentNode }
     );
@@ -393,9 +369,9 @@ describe('pharos-text-input', () => {
 
     component = await fixture(
       html`
-        <test-pharos-text-input name="my-input" value="test">
+        <pharos-text-input name="my-input" value="test">
           <span slot="label">I am a label</span>
-        </test-pharos-text-input>
+        </pharos-text-input>
       `,
       { parentNode }
     );
@@ -421,9 +397,9 @@ describe('pharos-text-input', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-text-input name="my-input" value="test">
+        <pharos-text-input name="my-input" value="test">
           <span slot="label">I am a label</span>
-        </test-pharos-text-input>
+        </pharos-text-input>
       `,
       { parentNode }
     );
@@ -441,9 +417,9 @@ describe('pharos-text-input', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-text-input name="my-input" value="test">
+        <pharos-text-input name="my-input" value="test">
           <span slot="label">I am a label</span>
-        </test-pharos-text-input>
+        </pharos-text-input>
       `,
       { parentNode }
     );

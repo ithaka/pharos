@@ -13,12 +13,12 @@ describe('pharos-combobox', () => {
   beforeEach(async () => {
     component = await fixture(
       html`
-        <test-pharos-combobox>
+        <pharos-combobox>
           <span slot="label">I am a label</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
-        </test-pharos-combobox>
+        </pharos-combobox>
       `
     );
   });
@@ -35,9 +35,7 @@ describe('pharos-combobox', () => {
 
   it('is accessible when disabled', async () => {
     component = await fixture(
-      html`<test-pharos-combobox disabled
-        ><span slot="label">test combobox</span></test-pharos-combobox
-      >`
+      html`<pharos-combobox disabled><span slot="label">test combobox</span></pharos-combobox>`
     );
     await expect(component).to.be.accessible();
   });
@@ -48,10 +46,10 @@ describe('pharos-combobox', () => {
       eventSource = event.composedPath()[0] as Element;
     };
     component = await fixture(html`
-      <test-pharos-combobox @change=${onChange}>
+      <pharos-combobox @change=${onChange}>
         <span slot="label">I am a label</span>
         <option value="1">Option 1</option>
-      </test-pharos-combobox>
+      </pharos-combobox>
     `);
 
     component['_input'].value = 'test';
@@ -98,9 +96,7 @@ describe('pharos-combobox', () => {
     const clearButton = component.renderRoot.querySelector(
       '.combobox__clear-button'
     ) as PharosButton;
-    const clearTooltip = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosTooltip"]'
-    ) as PharosTooltip;
+    const clearTooltip = component.renderRoot.querySelector('pharos-tooltip') as PharosTooltip;
 
     expect(clearButton).to.not.be.null;
     expect(clearTooltip).to.not.be.null;
@@ -171,12 +167,12 @@ describe('pharos-combobox', () => {
 
   it('query matches text when loose-match is enabled and query contains accent', async () => {
     component = await fixture(html`
-      <test-pharos-combobox loose-match>
+      <pharos-combobox loose-match>
         <span slot="label">I am a label</span>
         <option value="1">Option 1</option>
         <option value="2">Oṕtion 2</option>
         <option value="3">Option 3</option>
-      </test-pharos-combobox>
+      </pharos-combobox>
     `);
     component['_input'].value = 'Oṕtion';
     component['_input'].dispatchEvent(new Event('input'));
@@ -410,11 +406,11 @@ describe('pharos-combobox', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-combobox name="my-combobox" value="1">
+        <pharos-combobox name="my-combobox" value="1">
           <span slot="label">I am a label</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
-        </test-pharos-combobox>
+        </pharos-combobox>
       `,
       { parentNode }
     );
@@ -430,11 +426,11 @@ describe('pharos-combobox', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-combobox name="my-combo" value="1" disabled>
+        <pharos-combobox name="my-combo" value="1" disabled>
           <span slot="label">I am a label</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
-        </test-pharos-combobox>
+        </pharos-combobox>
       `,
       { parentNode }
     );
@@ -448,11 +444,11 @@ describe('pharos-combobox', () => {
   it('updates the displayed selection for asynchronously added options', async () => {
     component = await fixture(
       html`
-        <test-pharos-combobox name="my-combobox" value="3">
+        <pharos-combobox name="my-combobox" value="3">
           <span slot="label">I am a label</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
-        </test-pharos-combobox>
+        </pharos-combobox>
       `
     );
 
@@ -468,11 +464,11 @@ describe('pharos-combobox', () => {
   it('does not update the displayed value when no matching options exist', async () => {
     component = await fixture(
       html`
-        <test-pharos-combobox name="my-combobox" value="3">
+        <pharos-combobox name="my-combobox" value="3">
           <span slot="label">I am a label</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
-        </test-pharos-combobox>
+        </pharos-combobox>
       `
     );
     expect(component['_input'].value).to.equal('');
@@ -481,11 +477,11 @@ describe('pharos-combobox', () => {
   it('updates the displayed value when the value attribute changes', async () => {
     component = await fixture(
       html`
-        <test-pharos-combobox name="my-combobox" value="2">
+        <pharos-combobox name="my-combobox" value="2">
           <span slot="label">I am a label</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
-        </test-pharos-combobox>
+        </pharos-combobox>
       `
     );
     component.value = '1';
@@ -512,11 +508,11 @@ describe('pharos-combobox', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-combobox name="my-combobox" value="1">
+        <pharos-combobox name="my-combobox" value="1">
           <span slot="label">I am a label</span>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
-        </test-pharos-combobox>
+        </pharos-combobox>
       `,
       { parentNode }
     );
@@ -534,12 +530,12 @@ describe('pharos-combobox', () => {
 
   it('sets the value on input in search mode', async () => {
     component = await fixture(html`
-      <test-pharos-combobox search-mode>
+      <pharos-combobox search-mode>
         <span slot="label">I am a label</span>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
-      </test-pharos-combobox>
+      </pharos-combobox>
     `);
 
     component['_input'].value = 'this is not an option in the list, but it is valid';
@@ -550,12 +546,12 @@ describe('pharos-combobox', () => {
 
   it('it does not highlight matching text in search mode', async () => {
     component = await fixture(html`
-      <test-pharos-combobox search-mode>
+      <pharos-combobox search-mode>
         <span slot="label">I am a label</span>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
-      </test-pharos-combobox>
+      </pharos-combobox>
     `);
 
     component['_input'].value = 'o';
@@ -574,12 +570,12 @@ describe('pharos-combobox', () => {
 
   it('does not render a checkmark on selected options in search mode', async () => {
     component = await fixture(html`
-      <test-pharos-combobox search-mode>
+      <pharos-combobox search-mode>
         <span slot="label">I am a label</span>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
-      </test-pharos-combobox>
+      </pharos-combobox>
     `);
     component['_input'].value = 'Option 2';
     component['_input'].dispatchEvent(new Event('input'));
@@ -604,12 +600,12 @@ describe('pharos-combobox', () => {
 
   it('does not filter search results in search mode', async () => {
     component = await fixture(html`
-      <test-pharos-combobox search-mode>
+      <pharos-combobox search-mode>
         <span slot="label">I am a label</span>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
-      </test-pharos-combobox>
+      </pharos-combobox>
     `);
     component['_input'].value = 'yay';
     component['_input'].dispatchEvent(new Event('input'));
@@ -631,10 +627,10 @@ describe('pharos-combobox', () => {
     };
 
     component = await fixture(html`
-      <test-pharos-combobox search-mode @change=${onChange}>
+      <pharos-combobox search-mode @change=${onChange}>
         <span slot="label">I am a label</span>
         <option value="1">Option 1</option>
-      </test-pharos-combobox>
+      </pharos-combobox>
     `);
 
     component['_input'].dispatchEvent(new KeyboardEvent('keydown', { key: 'Down' }));
@@ -647,9 +643,9 @@ describe('pharos-combobox', () => {
 
   it('does not show a no results message when there are no matching options in search mode', async () => {
     component = await fixture(html`
-      <test-pharos-combobox search-mode>
+      <pharos-combobox search-mode>
         <span slot="label">I am a label</span>
-      </test-pharos-combobox>
+      </pharos-combobox>
     `);
     component['_input'].value = 'yay';
     component['_input'].dispatchEvent(new Event('input'));
@@ -664,10 +660,10 @@ describe('pharos-combobox', () => {
 
   it('will close the dropdown on enter when there is no option selected', async () => {
     component = await fixture(html`
-      <test-pharos-combobox>
+      <pharos-combobox>
         <span slot="label">I am a label</span>
         <option value="1">Option 1</option>
-      </test-pharos-combobox>
+      </pharos-combobox>
     `);
 
     component['_input'].dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));

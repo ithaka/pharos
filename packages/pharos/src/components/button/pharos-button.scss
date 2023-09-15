@@ -82,22 +82,6 @@
   padding: var(--pharos-button-padding-large);
 }
 
-:host([variant='subtle'][disabled]) #button-element {
-  @include mixins.button-color(
-    $color: var(--pharos-button-color-base-subtle-text-disabled),
-    $background-color: var(--pharos-button-color-base-subtle-background-disabled),
-    $border-color: var(--pharos-button-color-base-subtle-border-disabled)
-  );
-}
-
-:host([on-background][disabled]) #button-element {
-  @include mixins.button-color(
-    $color: var(--pharos-button-color-on-background-primary-text-disabled),
-    $background-color: var(--pharos-button-color-on-background-primary-background-disabled),
-    $border-color: var(--pharos-button-color-on-background-primary-border-disabled)
-  );
-}
-
 :host([on-background][variant='secondary']:not([disabled])) #button-element {
   @include mixins.button-color(
     $color: var(--pharos-button-color-on-background-secondary-text-base),
@@ -111,6 +95,22 @@
     $color: var(--pharos-button-color-on-background-subtle-text-base),
     $background-color: var(--pharos-button-color-on-background-subtle-background-base),
     $border-color: var(--pharos-button-color-on-background-subtle-border-base)
+  );
+}
+
+:host([on-background][disabled]) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-button-color-on-background-primary-text-disabled),
+    $background-color: var(--pharos-button-color-on-background-primary-background-disabled),
+    $border-color: var(--pharos-button-color-on-background-primary-border-disabled)
+  );
+}
+
+:host([variant='subtle'][disabled]) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-button-color-base-subtle-text-disabled),
+    $background-color: var(--pharos-button-color-base-subtle-background-disabled),
+    $border-color: var(--pharos-button-color-base-subtle-border-disabled)
   );
 }
 

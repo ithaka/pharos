@@ -5,7 +5,10 @@
   position: fixed;
   z-index: 9000;
   pointer-events: none;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   contain: strict;
 }
 
@@ -58,7 +61,7 @@
   }
 }
 
-@media only screen and (width <= 570px) {
+@media only screen and (max-width: 570px) {
   .modal__overlay {
     display: block;
     overflow-y: visible;

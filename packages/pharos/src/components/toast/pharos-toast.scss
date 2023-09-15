@@ -63,7 +63,7 @@
   transform: translateY(0);
 }
 
-@media only screen and (width <= 570px) {
+@media only screen and (max-width: 570px) {
   .toast {
     max-width: 90vw;
   }

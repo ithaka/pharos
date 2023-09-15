@@ -1,6 +1,5 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
-import logo from '@config/assets/images/jstor-logo.svg';
 
 const accountNav = (section: string) => html`
   <pharos-dropdown-menu-nav label="profile">
@@ -54,7 +53,7 @@ export const Header = (): TemplateResult => html`
     </div>
     <span slot="top" class="show-for-small" style="display: none; font-weight: bold">JSTOR</span>
     <pharos-link slot="start" href="/" id="jstor-logo">
-      <img src="${logo}" alt="JSTOR Home" width="65" height="90" />
+      <img src="./images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
     </pharos-link>
     <div slot="center">
       <pharos-input-group

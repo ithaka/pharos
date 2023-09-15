@@ -5,12 +5,11 @@ import { PharosLink } from '../../../react-components/link/pharos-link';
 import { PharosSidenavSection } from '../../../react-components/sidenav/pharos-sidenav-section';
 import { PharosSidenavLink } from '../../../react-components/sidenav/pharos-sidenav-link';
 import { PharosSidenavMenu } from '../../../react-components/sidenav/pharos-sidenav-menu';
-import logo from '@config/assets/images/jstor-logo-inverse.svg';
 
 export const Sidenav: FC = () => (
   <PharosSidenav className="reports-page__sidenav" mainContentId="main-content">
     <PharosLink slot="top" href="/" id="jstor-logo">
-      <img src={logo} alt="Pharos Home" width="72" height="100" />
+      <img src="./images/jstor-logo-inverse.svg" alt="Pharos Home" width="72" height="100" />
     </PharosLink>
     <PharosSidenavSection>
       <PharosSidenavLink href="#">Home</PharosSidenavLink>

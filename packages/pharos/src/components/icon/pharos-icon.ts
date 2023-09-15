@@ -47,8 +47,7 @@ export class PharosIcon extends PharosElement {
         const icon = await import(`../../styles/icons/${this.name}`);
         this._svg = atob(icon.default);
       } catch (e) {
-        console.log(e);
-        throw new Error(`Could not get icon named "${this.name}"`);
+        throw new Error(`No icon named "${this.name}"`);
       }
     }
   }

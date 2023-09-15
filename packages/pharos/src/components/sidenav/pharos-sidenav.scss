@@ -42,7 +42,7 @@
   left: var(--pharos-spacing-one-quarter-x);
 }
 
-@media screen and (width <= 1055px) {
+@media screen and (max-width: 1055px) {
   :host {
     width: initial;
   }

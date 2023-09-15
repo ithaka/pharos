@@ -21,13 +21,11 @@ describe('pharos-tooltip', () => {
 
   beforeEach(async () => {
     trigger = addTrigger();
-    component = await fixture(
-      html` <test-pharos-tooltip id="my-tooltip">Hi there!</test-pharos-tooltip> `
-    );
+    component = await fixture(html` <pharos-tooltip id="my-tooltip">Hi there!</pharos-tooltip> `);
 
     secondTrigger = addTrigger('my-second-trigger', 'my-second-tooltip');
     secondComponent = await fixture(html`
-      <test-pharos-tooltip id="my-second-tooltip">Hi there again!</test-pharos-tooltip>
+      <pharos-tooltip id="my-second-tooltip">Hi there again!</pharos-tooltip>
     `);
   });
 
@@ -48,7 +46,7 @@ describe('pharos-tooltip', () => {
 
   it('sets its default attributes', async () => {
     expect(component).dom.to.equal(
-      `<test-pharos-tooltip id="my-tooltip" placement="top" strategy="absolute" boundary="clippingAncestors" data-pharos-component="PharosTooltip">Hi there!</test-pharos-tooltip>`
+      `<pharos-tooltip id="my-tooltip" placement="top" strategy="absolute" boundary="clippingAncestors" data-pharos-component="PharosTooltip">Hi there!</pharos-tooltip>`
     );
   });
 
@@ -117,7 +115,7 @@ describe('pharos-tooltip', () => {
 
   it('throws an error for an invalid placement value', async () => {
     component = await fixture(html`
-      <test-pharos-tooltip placement="side">Hi there!</test-pharos-tooltip>
+      <pharos-tooltip placement="side">Hi there!</pharos-tooltip>
     `).catch((e) => e);
     expect(
       'side is not a valid placement. Valid placements are: top, top-start, top-end, bottom, bottom-start, bottom-end, right, right-start, right-end, left, left-start, left-end, auto, auto-start, auto-end'
@@ -172,8 +170,8 @@ describe('pharos-tooltip', () => {
 
   it('throws an error for invalid fallback values', async () => {
     component = await fixture(html`
-      <test-pharos-tooltip .fallbackPlacements="${['corner', 'right', 'fake'] as Placement[]}"
-        >Hi there!</test-pharos-tooltip
+      <pharos-tooltip .fallbackPlacements="${['corner', 'right', 'fake'] as Placement[]}"
+        >Hi there!</pharos-tooltip
       >
     `).catch((e) => e);
     expect(
@@ -183,7 +181,7 @@ describe('pharos-tooltip', () => {
 
   it('throws an error for invalid strategy values', async () => {
     component = await fixture(html`
-      <test-pharos-tooltip strategy="relative">Hi there!</test-pharos-tooltip>
+      <pharos-tooltip strategy="relative">Hi there!</pharos-tooltip>
     `).catch((e) => e);
     expect('relative is not a valid positioning strategy. Valid strategies are: absolute, fixed').to
       .be.thrown;
@@ -191,9 +189,7 @@ describe('pharos-tooltip', () => {
 
   it('applies text wrap class when tooltip content is longer than 30 characters', async () => {
     component = await fixture(html`
-      <test-pharos-tooltip
-        >Hi there! I am a tooltip with more than 30 characters.</test-pharos-tooltip
-      >
+      <pharos-tooltip>Hi there! I am a tooltip with more than 30 characters.</pharos-tooltip>
     `);
 
     expect(component['_bubble'].classList.contains('tooltip__bubble--text-wrap')).to.be.true;
@@ -213,9 +209,7 @@ describe('pharos-tooltip', () => {
 
   it('supports multiple triggers when open and another trigger is focused', async () => {
     const thirdTrigger = addTrigger('my-third-trigger', 'my-tooltip');
-    component = await fixture(
-      html` <test-pharos-tooltip id="my-tooltip">Hi there!</test-pharos-tooltip> `
-    );
+    component = await fixture(html` <pharos-tooltip id="my-tooltip">Hi there!</pharos-tooltip> `);
 
     trigger.dispatchEvent(new Event('mouseenter'));
     await component.updateComplete;
@@ -231,9 +225,7 @@ describe('pharos-tooltip', () => {
 
   it('supports multiple triggers when open and another trigger is hovered', async () => {
     const thirdTrigger = addTrigger('my-third-trigger', 'my-tooltip');
-    component = await fixture(
-      html` <test-pharos-tooltip id="my-tooltip">Hi there!</test-pharos-tooltip> `
-    );
+    component = await fixture(html` <pharos-tooltip id="my-tooltip">Hi there!</pharos-tooltip> `);
 
     trigger.dispatchEvent(new Event('focusin'));
     await aTimeout(100);
@@ -261,8 +253,8 @@ describe('pharos-tooltip', () => {
     const boundary = await fixture(html` <div id="custom-boundary" style="width: 100px"></div> `);
     document.body.appendChild(boundary);
     component = await fixture(html`
-      <test-pharos-tooltip id="my-second-tooltip"
-        >This one has content that is longer than 30 characters!</test-pharos-tooltip
+      <pharos-tooltip id="my-second-tooltip"
+        >This one has content that is longer than 30 characters!</pharos-tooltip
       >
     `);
     component.boundary = 'custom-boundary';

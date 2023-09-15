@@ -6,7 +6,6 @@ import { Sidenav } from './Sidenav';
 import { CreateReportModal } from './CreateReportModal';
 import { ReportsTable } from './ReportsTable';
 import { historyTable, scheduledTable } from '../mocks';
-import logo from '@config/assets/images/reports/jstor-horizontal.svg';
 
 import {
   PharosHeading,
@@ -19,17 +18,9 @@ import {
   PharosSidenavButton,
   PharosLayout,
 } from '../../../react-components';
-import { PharosContext } from '../../../utils/PharosContext';
 
 export default {
   title: 'Pages/Reports',
-  decorators: [
-    (Story) => (
-      <PharosContext.Provider value={{ prefix: 'storybook' }}>
-        <Story />
-      </PharosContext.Provider>
-    ),
-  ],
   parameters: {
     layout: 'fullscreen',
     viewport: {
@@ -48,7 +39,12 @@ export const Reports = {
             <div className="reports-page__container--top" slot="top">
               <div className="reports-page__container--nav-header">
                 <PharosSidenavButton />
-                <img src={logo} alt="logo" width="96" height="24" />
+                <img
+                  src="./images/reports/jstor-horizontal.svg"
+                  alt="logo"
+                  width="96"
+                  height="24"
+                />
                 <span className="reports-page__separator">/</span>
                 <PharosHeading level={1} preset="4" noMargin>
                   Admin

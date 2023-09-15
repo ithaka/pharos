@@ -280,34 +280,6 @@
         "doc",
         "code"
       ]
-    },
-    {
-      "login": "HassanTanveer",
-      "name": "Hassan Tanveer",
-      "avatar_url": "https://avatars.githubusercontent.com/u/57575219?v=4",
-      "profile": "https://github.com/HassanTanveer",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "mariadevadoss",
-      "name": "mariadevadoss",
-      "avatar_url": "https://avatars.githubusercontent.com/u/132926833?v=4",
-      "profile": "https://github.com/mariadevadoss",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "brentswisher",
-      "name": "Brent Swisher",
-      "avatar_url": "https://avatars.githubusercontent.com/u/6653970?v=4",
-      "profile": "http://brentswisher.com/",
-      "contributions": [
-        "bug",
-        "code"
-      ]
     }
   ],
   "contributorsPerLine": 7

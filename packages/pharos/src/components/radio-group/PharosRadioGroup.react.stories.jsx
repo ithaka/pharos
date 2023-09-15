@@ -4,19 +4,11 @@ import { PharosRadioGroup, PharosRadioButton, PharosButton } from '../../react-c
 import createFormData from '../../utils/createFormData';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
-import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Forms/Radio Group',
   component: PharosRadioGroup,
   subcomponents: { PharosRadioButton },
-  decorators: [
-    (Story) => (
-      <PharosContext.Provider value={{ prefix: 'storybook' }}>
-        <Story />
-      </PharosContext.Provider>
-    ),
-  ],
   parameters: {
     docs: { page: configureDocsPage('radio-group') },
     options: { selectedPanel: 'addon-controls' },

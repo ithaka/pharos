@@ -4,19 +4,11 @@ import { PharosButton, PharosCheckbox, PharosCheckboxGroup } from '../../react-c
 import createFormData from '../../utils/createFormData';
 import { defaultArgs } from './storyArgs';
 import { configureDocsPage } from '@config/docsPageConfig';
-import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Forms/Checkbox Group',
   component: PharosCheckboxGroup,
   subcomponents: { PharosCheckbox },
-  decorators: [
-    (Story) => (
-      <PharosContext.Provider value={{ prefix: 'storybook' }}>
-        <Story />
-      </PharosContext.Provider>
-    ),
-  ],
   parameters: {
     docs: { page: configureDocsPage('checkbox') },
     options: { selectedPanel: 'addon-controls' },

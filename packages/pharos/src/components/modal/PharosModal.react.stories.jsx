@@ -10,18 +10,10 @@ import {
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
-import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Components/Modal',
   component: PharosModal,
-  decorators: [
-    (Story) => (
-      <PharosContext.Provider value={{ prefix: 'storybook' }}>
-        <Story />
-      </PharosContext.Provider>
-    ),
-  ],
   parameters: {
     docs: { page: configureDocsPage('modal') },
     options: { selectedPanel: 'addon-controls' },
@@ -33,16 +25,15 @@ export const Base = {
   render: (args) => (
     <Fragment>
       <PharosButton
-        type="button"
-        data-modal-id="my-base-modal"
         onClick={(e) => {
           e.target.focus();
+          const modal = document.querySelector('pharos-modal');
+          modal.open = true;
         }}
       >
         Open modal
       </PharosButton>
       <PharosModal
-        id="my-base-modal"
         footerDivider={args.footerDivider}
         header={args.header}
         open={args.open}

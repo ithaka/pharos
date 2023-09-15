@@ -7,7 +7,7 @@ import { PharosHeading } from '../../../../react-components/heading/pharos-headi
 export const ImageResultsItem: FC<ImageResult> = ({ title, image }) => (
   <PharosLink href="#" subtle flex>
     <div className="search-page__grid--image">
-      <img src={image} alt={title} width="99%" />
+      <img src={`./images/search/${image}`} alt={title} width="99%" />
       <PharosHeading preset="1--bold" level={3} noMargin>
         {title}
       </PharosHeading>

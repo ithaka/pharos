@@ -551,7 +551,7 @@ const TypeTokens = () => html`
                       style="font-size:${tokens.type.scale[key].comment};"
                       >GT America</span
                     >`
-                  : html`<storybook-pharos-icon name="dash-small"></storybook-pharos-icon>`}
+                  : html`<pharos-icon name="dash-small"></pharos-icon>`}
               </td>
               <td>
                 ${tokens.type.scale[key].value > 5
@@ -560,7 +560,7 @@ const TypeTokens = () => html`
                       style="font-size:${tokens.type.scale[key].comment};"
                       >Ivar Headline</span
                     >`
-                  : html`<storybook-pharos-icon name="dash-small"></storybook-pharos-icon>`}
+                  : html`<pharos-icon name="dash-small"></pharos-icon>`}
               </td>
             </tr>
           `

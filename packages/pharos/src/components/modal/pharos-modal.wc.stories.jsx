@@ -18,27 +18,26 @@ export default {
 export const Base = {
   render: (args) =>
     html`
-      <storybook-pharos-button
-        type="button"
-        data-modal-id="my-base-modal"
+      <pharos-button
         @click="${(e) => {
           e.target.focus();
+          const modal = document.querySelector('pharos-modal');
+          modal.open = true;
         }}"
       >
         Open modal
-      </storybook-pharos-button>
-      <storybook-pharos-modal
-        id="my-base-modal"
+      </pharos-button>
+      <pharos-modal
         ?footer-divider=${ifDefined(args.footerDivider)}
         header=${ifDefined(args.header)}
         ?open=${ifDefined(args.open)}
         size=${ifDefined(args.size)}
       >
         <p>I am a modal</p>
-        <storybook-pharos-button slot="footer" type="button" variant="secondary" data-modal-close>
+        <pharos-button slot="footer" type="button" variant="secondary" data-modal-close>
           Cancel
-        </storybook-pharos-button>
-        <storybook-pharos-button
+        </pharos-button>
+        <pharos-button
           slot="footer"
           type="button"
           @click="${() => {
@@ -47,8 +46,8 @@ export const Base = {
           }}"
         >
           Ok
-        </storybook-pharos-button>
-      </storybook-pharos-modal>
+        </pharos-button>
+      </pharos-modal>
     `,
   args: defaultArgs,
 };
@@ -56,9 +55,7 @@ export const Base = {
 export const NoFooter = {
   render: () =>
     html`
-      <storybook-pharos-button
-        type="button"
-        data-modal-id="no-footer-modal"
+      <pharos-button
         @click="${(e) => {
           e.target.focus();
           const modal = document.querySelector('pharos-modal');
@@ -66,17 +63,17 @@ export const NoFooter = {
         }}"
       >
         Open modal
-      </storybook-pharos-button>
-      <storybook-pharos-modal id="no-footer-modal" header="Pharos modal" size="medium">
+      </pharos-button>
+      <pharos-modal header="Pharos modal" size="medium">
         <p>I am a modal</p>
-      </storybook-pharos-modal>
+      </pharos-modal>
     `,
 };
 
 export const Events = {
   render: () =>
     html`
-      <storybook-pharos-button
+      <pharos-button
         type="button"
         data-modal-id="my-event-modal"
         @click="${(e) => {
@@ -84,8 +81,8 @@ export const Events = {
         }}"
       >
         Open modal
-      </storybook-pharos-button>
-      <storybook-pharos-modal
+      </pharos-button>
+      <pharos-modal
         id="my-event-modal"
         header="Event modal"
         open
@@ -95,20 +92,20 @@ export const Events = {
         @pharos-modal-closed="${(e) => action('Closed')(e.detail)}"
       >
         <p slot="description">Description for the modal</p>
-        <storybook-pharos-text-input style="margin-bottom: 1rem" data-modal-focus>
+        <pharos-text-input style="margin-bottom: 1rem" data-modal-focus>
           <span slot="label">Name</span>
-        </storybook-pharos-text-input>
-        <storybook-pharos-text-input style="margin-bottom: 1rem">
+        </pharos-text-input>
+        <pharos-text-input style="margin-bottom: 1rem">
           <span slot="label">User ID</span>
-        </storybook-pharos-text-input>
-        <storybook-pharos-text-input style="margin-bottom: 1rem">
+        </pharos-text-input>
+        <pharos-text-input style="margin-bottom: 1rem">
           <span slot="label">Favorite Color</span>
-        </storybook-pharos-text-input>
-        <storybook-pharos-button slot="footer" type="button" variant="secondary" data-modal-close>
+        </pharos-text-input>
+        <pharos-button slot="footer" type="button" variant="secondary" data-modal-close>
           Cancel
-        </storybook-pharos-button>
-        <storybook-pharos-button slot="footer" type="button">Submit</storybook-pharos-button>
-      </storybook-pharos-modal>
+        </pharos-button>
+        <pharos-button slot="footer" type="button">Submit</pharos-button>
+      </pharos-modal>
     `,
   parameters: { selectedPanel: 'addon-actions' },
 };
@@ -116,7 +113,7 @@ export const Events = {
 export const Composition = {
   render: () =>
     html`
-      <storybook-pharos-button
+      <pharos-button
         type="button"
         data-modal-id="my-alert-modal"
         @click="${(e) => {
@@ -124,24 +121,22 @@ export const Composition = {
         }}"
       >
         Open modal
-      </storybook-pharos-button>
-      <storybook-pharos-modal id="my-alert-modal" header="Add external link" open>
+      </pharos-button>
+      <pharos-modal id="my-alert-modal" header="Add external link" open>
         <div>
-          <storybook-pharos-alert style="margin-bottom: 1rem" status="error"
+          <pharos-alert style="margin-bottom: 1rem" status="error"
             >We're sorry, we experienced an issue submitting your report. Please try again. If the
             issue persists, contact
-            <storybook-pharos-link id="support-link" href="#"
-              >support@jstor.org</storybook-pharos-link
-            >.
-          </storybook-pharos-alert>
-          <storybook-pharos-text-input name="link" required style="margin-bottom: 1rem">
+            <pharos-link id="support-link" href="#">support@jstor.org</pharos-link>.
+          </pharos-alert>
+          <pharos-text-input name="link" required style="margin-bottom: 1rem">
             <span slot="label">Link</span>
-          </storybook-pharos-text-input>
-          <storybook-pharos-text-input name="text" required style="margin-bottom: 1rem">
+          </pharos-text-input>
+          <pharos-text-input name="text" required style="margin-bottom: 1rem">
             <span slot="label">Text</span>
-          </storybook-pharos-text-input>
+          </pharos-text-input>
         </div>
-        <storybook-pharos-button
+        <pharos-button
           id="cancel-button"
           slot="footer"
           type="button"
@@ -149,11 +144,9 @@ export const Composition = {
           data-modal-close
         >
           Cancel
-        </storybook-pharos-button>
-        <storybook-pharos-button id="add-button" slot="footer" type="button"
-          >Add</storybook-pharos-button
-        >
-      </storybook-pharos-modal>
+        </pharos-button>
+        <pharos-button id="add-button" slot="footer" type="button">Add</pharos-button>
+      </pharos-modal>
     `,
   parameters: { chromatic: { viewports: [320, 1200] } },
 };

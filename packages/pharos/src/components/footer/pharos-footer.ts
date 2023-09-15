@@ -1,5 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
+import { queryAssignedNodes } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { footerStyles } from './pharos-footer.css';
 
@@ -17,6 +18,7 @@ import { PharosHeading } from '../heading/pharos-heading';
  * @slot mission-statement - Contains the content of the mission statement.
  * @slot copyright-statement - Contains the content of the copyright statement.
  * @slot legal-links - List of legal related links to show on the bottom of the footer.
+ * @slot google-widget - Contains the Google translate widget.
  *
  */
 export class PharosFooter extends ScopedRegistryMixin(PharosElement) {
@@ -24,8 +26,45 @@ export class PharosFooter extends ScopedRegistryMixin(PharosElement) {
     'pharos-heading': PharosHeading,
   };
 
+  @queryAssignedNodes('google-widget', false, '#google_translate_element')
+  private _widgetNodes!: NodeListOf<HTMLElement>;
+
   public static override get styles(): CSSResultArray {
     return [footerStyles];
+  }
+
+  private _widgetObserver: MutationObserver = new MutationObserver(
+    (mutationsList: MutationRecord[]) => {
+      const widgetContainer = mutationsList[0].addedNodes[0] as HTMLDivElement;
+      const widgetButton = widgetContainer?.querySelector(
+        '.goog-te-gadget-simple'
+      ) as HTMLDivElement;
+      const googleImg = widgetButton?.querySelector('.goog-te-gadget-icon') as HTMLImageElement;
+
+      const iconTag = this.localName.split('pharos-footer')[0] + 'pharos-icon';
+      const googleIcon = document.createElement(iconTag);
+      const chevronIcon = document.createElement(iconTag);
+
+      googleIcon.name = 'google';
+      chevronIcon.name = 'chevron-down';
+      chevronIcon.style.marginLeft = '0';
+
+      widgetButton?.appendChild(chevronIcon);
+      widgetButton?.replaceChild(googleIcon, googleImg);
+    }
+  );
+
+  protected override firstUpdated(): void {
+    if (this._widgetNodes.length) {
+      this._widgetObserver.observe(this._widgetNodes[0], {
+        childList: true,
+      });
+    }
+  }
+
+  override disconnectedCallback(): void {
+    this._widgetObserver.disconnect();
+    super.disconnectedCallback && super.disconnectedCallback();
   }
 
   protected override render(): TemplateResult {
@@ -52,6 +91,7 @@ export class PharosFooter extends ScopedRegistryMixin(PharosElement) {
           </div>
           <div class="footer__row footer__row--bottom">
             <slot name="legal-links"></slot>
+            <slot name="google-widget"></slot>
           </div>
         </div>
       </footer>

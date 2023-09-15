@@ -10,7 +10,6 @@ import { PharosDropdownMenuItem } from '../../../react-components/dropdown-menu/
 import { PharosInputGroup } from '../../../react-components/input-group/pharos-input-group';
 import { PharosButton } from '../../../react-components/button/pharos-button';
 import { PharosIcon } from '../../../react-components/icon/pharos-icon';
-import logo from '@config/assets/images/jstor-logo.svg';
 
 const accountNav = (section: string) => (
   <PharosDropdownMenuNav label="profile">
@@ -81,7 +80,7 @@ export const Header: FC = () => (
       </PharosDropdownMenu>
     </div>
     <PharosLink slot="start" href="/" id="jstor-logo">
-      <img src={logo} alt="JSTOR Home" width="65" height="90" />
+      <img src="./images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
     </PharosLink>
     <div slot="center">
       <PharosInputGroup

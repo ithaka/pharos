@@ -39,16 +39,16 @@ export const Base = {
           target="_blank"
           ><span slot="category">Category 2<span></pharos-dropdown-menu-nav-category
         >
-        <storybook-pharos-dropdown-menu id="category2-menu">
-          <storybook-pharos-dropdown-menu-item>Item 2.1</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 2.2</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 2.3</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 2.4</storybook-pharos-dropdown-menu-item>
-        </storybook-pharos-dropdown-menu>
-        <storybook-pharos-dropdown-menu-nav-link href="#" id="other-link" target="_blank"
-          >Link</storybook-pharos-dropdown-menu-nav-link
+        <pharos-dropdown-menu id="category2-menu">
+          <pharos-dropdown-menu-item>Item 2.1</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Item 2.2</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Item 2.3</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Item 2.4</pharos-dropdown-menu-item>
+        </pharos-dropdown-menu>
+        <pharos-dropdown-menu-nav-link href="#" id="other-link" target="_blank"
+          >Link</pharos-dropdown-menu-nav-link
         >
-      </storybook-pharos-dropdown-menu-nav>
+      </pharos-dropdown-menu-nav>
     `,
   parameters: { chromatic: { viewports: [320, 1200] } },
 };

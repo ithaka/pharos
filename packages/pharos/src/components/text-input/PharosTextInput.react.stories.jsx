@@ -4,18 +4,10 @@ import { PharosTextInput, PharosButton } from '../../react-components';
 import createFormData from '../../utils/createFormData';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
-import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Forms/Text Input',
   components: PharosTextInput,
-  decorators: [
-    (Story) => (
-      <PharosContext.Provider value={{ prefix: 'storybook' }}>
-        <Story />
-      </PharosContext.Provider>
-    ),
-  ],
   parameters: {
     docs: { page: configureDocsPage('text-input') },
     options: { selectedPanel: 'addon-controls' },

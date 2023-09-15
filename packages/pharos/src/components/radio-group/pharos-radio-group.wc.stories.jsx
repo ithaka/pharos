@@ -18,7 +18,7 @@ export default {
 export const Base = {
   render: (args) =>
     html`
-      <storybook-pharos-radio-group
+      <pharos-radio-group
         name=${args.name}
         ?horizontal=${args.horizontal}
         ?disabled=${args.disabled}
@@ -29,40 +29,36 @@ export const Base = {
         .message=${args.message}
       >
         <span slot="legend">Radio Group Header</span>
-        <storybook-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></storybook-pharos-radio-button
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <storybook-pharos-radio-button value="2"
-          ><span slot="label">Radio Button 2</span></storybook-pharos-radio-button
+        <pharos-radio-button value="2"
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-        <storybook-pharos-radio-button value="3"
-          ><span slot="label">Radio Button 3</span></storybook-pharos-radio-button
+        <pharos-radio-button value="3"
+          ><span slot="label">Radio Button 3</span></pharos-radio-button
         >
-        <storybook-pharos-radio-button value="4"
-          ><span slot="label">Radio Button 4</span></storybook-pharos-radio-button
+        <pharos-radio-button value="4"
+          ><span slot="label">Radio Button 4</span></pharos-radio-button
         >
-      </storybook-pharos-radio-group>
+      </pharos-radio-group>
     `,
   args: defaultArgs,
 };
 
 export const Events = {
   render: () =>
-    html` <storybook-pharos-radio-group
+    html` <pharos-radio-group
       @change="${(e) => action('Change')(e.target.value)}"
       name="radio-group2"
     >
       <span slot="legend">Radio Group Header</span>
-      <storybook-pharos-radio-button value="1"
-        ><span slot="label">Radio Button 1</span></storybook-pharos-radio-button
+      <pharos-radio-button value="1"><span slot="label">Radio Button 1</span></pharos-radio-button>
+      <pharos-radio-button value="2" checked
+        ><span slot="label">Radio Button 2</span></pharos-radio-button
       >
-      <storybook-pharos-radio-button value="2" checked
-        ><span slot="label">Radio Button 2</span></storybook-pharos-radio-button
-      >
-      <storybook-pharos-radio-button value="3"
-        ><span slot="label">Radio Button 3</span></storybook-pharos-radio-button
-      >
-    </storybook-pharos-radio-group>`,
+      <pharos-radio-button value="3"><span slot="label">Radio Button 3</span></pharos-radio-button>
+    </pharos-radio-group>`,
   parameters: { options: { selectedPanel: 'addon-actions' } },
 };
 
@@ -80,24 +76,24 @@ export const FormData = {
   render: () =>
     html`
       <form name="my-form" action="https://httpbin.org/post" method="POST">
-        <storybook-pharos-radio-group
+        <pharos-radio-group
           style="margin-bottom: 0.5rem;"
           @change="${(e) => action('Change')(e.target.value)}"
           name="radio-group4"
           required
         >
           <span slot="legend">Radio Group Header</span>
-          <storybook-pharos-radio-button value="1"
-            ><span slot="label">Radio Button 1</span></storybook-pharos-radio-button
+          <pharos-radio-button value="1"
+            ><span slot="label">Radio Button 1</span></pharos-radio-button
           >
-          <storybook-pharos-radio-button value="2"
-            ><span slot="label">Radio Button 2</span></storybook-pharos-radio-button
+          <pharos-radio-button value="2"
+            ><span slot="label">Radio Button 2</span></pharos-radio-button
           >
-          <storybook-pharos-radio-button value="3"
-            ><span slot="label">Radio Button 3</span></storybook-pharos-radio-button
+          <pharos-radio-button value="3"
+            ><span slot="label">Radio Button 3</span></pharos-radio-button
           >
-        </storybook-pharos-radio-group>
-        <storybook-pharos-button
+        </pharos-radio-group>
+        <pharos-button
           type="submit"
           value="Submit"
           @click="${(e) => {
@@ -112,7 +108,7 @@ export const FormData = {
             };
             xhr.send(formData);
           }}"
-          >Submit</storybook-pharos-button
+          >Submit</pharos-button
         >
       </form>
     `,

@@ -12,21 +12,12 @@
   border-width: 1px;
 }
 
-:host([variant='secondary']) #button-element:hover,
-:host([variant='secondary']) #button-element:active {
-  border-width: 1px;
-}
-
 :host([variant='secondary'][first='true']) #button-element {
   border-radius: var(--pharos-radius-base-standard) 0 0 var(--pharos-radius-base-standard);
 }
 
 :host([variant='secondary'][last='true']) #button-element {
   border-radius: 0 var(--pharos-radius-base-standard) var(--pharos-radius-base-standard) 0;
-}
-
-:host([variant='secondary']) #button-element:focus {
-  z-index: 100;
 }
 
 :host([variant='secondary']:not([selected])) #button-element {
@@ -39,19 +30,6 @@
   [data-pharos-component='PharosIcon'] {
     fill: var(--pharos-color-ui-40);
     stroke: var(--pharos-color-ui-40);
-  }
-}
-
-:host([variant='secondary']:not([disabled])) #button-element:hover,
-:host([variant='secondary']:not([selected])) #button-element:hover,
-:host([variant='secondary']:not([selected])) #button-element:active {
-  color: var(--pharos-color-hover-primary);
-  background-color: var(--pharos-color-marble-gray-97);
-  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-three-quarters-x);
-
-  [data-pharos-component='PharosIcon'] {
-    fill: var(--pharos-color-hover-primary);
-    stroke: var(--pharos-color-hover-primary);
   }
 }
 
@@ -76,12 +54,34 @@
   border-right-width: 0;
 }
 
+:host([variant='secondary']) #button-element:hover,
+:host([variant='secondary']) #button-element:active {
+  border-width: 1px;
+}
+
 :host([variant='secondary'][hide-left-border='true']:not([selected])) #button-element:active {
   border-left-width: 0;
 }
 
+:host([variant='secondary']) #button-element:focus {
+  z-index: 100;
+}
+
 :host([variant='secondary'][hide-right-border='true']:not([selected])) #button-element:active {
   border-right-width: 0;
+}
+
+:host([variant='secondary']:not([disabled])) #button-element:hover,
+:host([variant='secondary']:not([selected])) #button-element:hover,
+:host([variant='secondary']:not([selected])) #button-element:active {
+  color: var(--pharos-color-hover-primary);
+  background-color: var(--pharos-color-marble-gray-97);
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-three-quarters-x);
+
+  [data-pharos-component='PharosIcon'] {
+    fill: var(--pharos-color-hover-primary);
+    stroke: var(--pharos-color-hover-primary);
+  }
 }
 
 :host([variant='secondary'][selected]) {

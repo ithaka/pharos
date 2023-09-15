@@ -7,7 +7,6 @@ on:
       - '.storybook/**'
       - 'yarn.lock'
       - 'package.json'
-      - '.github/workflows/chromatic.yml'
     branches-ignore:
       - main
 
@@ -21,10 +20,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js 18.x
+      - name: Setup Node.js 16.x
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 16.x
           registry-url: 'https://registry.npmjs.org'
 
       - name: Get yarn cache directory path
@@ -48,7 +47,7 @@ jobs:
         run: yarn storybook:setup
 
       - name: Build Storybook
-        run: yarn storybook:wc:build
+        run: yarn build-storybook:wc
 
       - name: Publish to Chromatic
         uses: chromaui/action@v1

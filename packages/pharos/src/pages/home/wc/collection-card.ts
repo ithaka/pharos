@@ -5,12 +5,12 @@ import type { Card } from '../types';
 export const CollectionCard = (card: Card): TemplateResult => html`
   <div>
     <img
-      src="${card.image}"
+      src="./images/home/${card.image}"
       alt="${card.title}"
       width="99.9%"
       class="home-page__image--collection"
     />
-    <storybook-pharos-heading level="2" preset="3">${card.title}</storybook-pharos-heading>
-    <storybook-pharos-link href="#">${card.link}</storybook-pharos-link>
+    <pharos-heading level="2" preset="3">${card.title}</pharos-heading>
+    <pharos-link href="#">${card.link}</pharos-link>
   </div>
 `;

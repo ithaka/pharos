@@ -16,7 +16,7 @@ export default {
 
 export const Base = {
   render: (args) =>
-    html`<storybook-pharos-checkbox
+    html`<pharos-checkbox
       ?checked=${args.checked}
       ?disabled=${args.disabled}
       ?hide-label=${args.hideLabel}
@@ -25,7 +25,7 @@ export const Base = {
       .message=${args.message}
     >
       <span slot="label">${args.label}</span>
-    </storybook-pharos-checkbox>`,
+    </pharos-checkbox>`,
   args: defaultArgs,
 };
 
@@ -33,48 +33,44 @@ export const States = {
   render: () =>
     html`
       <div>
-        <storybook-pharos-checkbox name="one"
-          ><span slot="label">Normal Checkbox</span></storybook-pharos-checkbox
+        <pharos-checkbox name="one"><span slot="label">Normal Checkbox</span></pharos-checkbox>
+      </div>
+      <div>
+        <pharos-checkbox name="two" disabled
+          ><span slot="label">Disabled Checkbox</span></pharos-checkbox
         >
       </div>
       <div>
-        <storybook-pharos-checkbox name="two" disabled
-          ><span slot="label">Disabled Checkbox</span></storybook-pharos-checkbox
+        <pharos-checkbox name="three" checked><span slot="label">Checked</span></pharos-checkbox>
+      </div>
+      <div>
+        <pharos-checkbox name="four" checked disabled
+          ><span slot="label">Checked & Disabled</span></pharos-checkbox
         >
       </div>
       <div>
-        <storybook-pharos-checkbox name="three" checked
-          ><span slot="label">Checked</span></storybook-pharos-checkbox
-        >
-      </div>
-      <div>
-        <storybook-pharos-checkbox name="four" checked disabled
-          ><span slot="label">Checked & Disabled</span></storybook-pharos-checkbox
-        >
-      </div>
-      <div>
-        <storybook-pharos-checkbox name="five" checked>
+        <pharos-checkbox name="five" checked>
           <div slot="label">
             <div>Multiple lined</div>
             <div>Checkbox</div>
           </div>
-        </storybook-pharos-checkbox>
+        </pharos-checkbox>
       </div>
       <div>
-        <storybook-pharos-checkbox name="six" invalidated
-          ><span slot="label">Error checkbox</span></storybook-pharos-checkbox
+        <pharos-checkbox name="six" invalidated
+          ><span slot="label">Error checkbox</span></pharos-checkbox
         >
       </div>
       <div>
-        <storybook-pharos-checkbox name="seven"
+        <pharos-checkbox name="seven"
           ><span slot="label"
-            >Label with a <storybook-pharos-link href="#">link</storybook-pharos-link></span
-          ></storybook-pharos-checkbox
+            >Label with a <pharos-link href="#">link</pharos-link></span
+          ></pharos-checkbox
         >
       </div>
       <div>
-        <storybook-pharos-checkbox name="eight" indeterminate
-          ><span slot="label">Indeterminate checkbox</span></storybook-pharos-checkbox
+        <pharos-checkbox name="eight" indeterminate
+          ><span slot="label">Indeterminate checkbox</span></pharos-checkbox
         >
       </div>
     `,
@@ -82,14 +78,14 @@ export const States = {
 
 export const Events = {
   render: () =>
-    html` <storybook-pharos-checkbox
+    html` <pharos-checkbox
       value="My value"
       @change="${(e) => action('Change')(e.target.checked)}"
       @input="${(e) => action('Input')(e.target.value)}"
       @click="${(e) => action('Click')(e.target.checked)}"
     >
       <span slot="label">I fire events</span>
-    </storybook-pharos-checkbox>`,
+    </pharos-checkbox>`,
   parameters: {
     options: { selectedPanel: 'addon-actions' },
   },
@@ -110,19 +106,19 @@ export const OnBackground = {
   render: () =>
     html`
       <div style="background-color: #000000; padding: 1rem;">
-        <storybook-pharos-checkbox name="on-background" on-background>
+        <pharos-checkbox name="on-background" on-background>
           <span slot="label">Unchecked</span>
-        </storybook-pharos-checkbox>
+        </pharos-checkbox>
       </div>
       <div style="background-color: #000000; padding: 1rem;">
-        <storybook-pharos-checkbox name="on-background" on-background checked>
+        <pharos-checkbox name="on-background" on-background checked>
           <span slot="label">Checked</span>
-        </storybook-pharos-checkbox>
+        </pharos-checkbox>
       </div>
       <div style="background-color: #000000; padding: 1rem;">
-        <storybook-pharos-checkbox name="indeterminate" on-background indeterminate>
+        <pharos-checkbox name="indeterminate" on-background indeterminate>
           <span slot="label">Indeterminate</span>
-        </storybook-pharos-checkbox>
+        </pharos-checkbox>
       </div>
     `,
 };

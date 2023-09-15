@@ -181,7 +181,7 @@ There it is—SparklyText in the flesh. It's ready for use, and you can test it 
 Create `pharos-sparkly-text.wc.stories.mdx` now, and add the following:
 
 ```jsx
-import { Story, Canvas, Meta } from '@storybook/blocks';
+import { Story, Canvas, Meta } from '@storybook/addon-docs';
 import { html } from 'lit';
 
 <Meta

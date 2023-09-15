@@ -30,16 +30,9 @@
   }
 }
 
-:host(:focus-visible) {
+:host(:focus) {
   outline: 2px solid var(--pharos-color-focus);
   outline-offset: 2px;
-}
-
-@supports not selector(:focus-visible) {
-  :host(:focus) {
-    outline: 2px solid var(--pharos-color-focus);
-    outline-offset: 2px;
-  }
 }
 
 :host(:hover) {

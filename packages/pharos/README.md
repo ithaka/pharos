@@ -1,4 +1,4 @@
-<div className="hide-in-storybook">
+<div class="hide-in-storybook">
 
 # Pharos Web Components
 

@@ -3,18 +3,10 @@ import { action } from '@storybook/addon-actions';
 import { PharosCheckbox, PharosLink } from '../../react-components';
 import { defaultArgs } from './storyArgs';
 import { configureDocsPage } from '@config/docsPageConfig';
-import { PharosContext } from '../../utils/PharosContext';
 
 export default {
   title: 'Forms/Checkbox',
   component: PharosCheckbox,
-  decorators: [
-    (Story) => (
-      <PharosContext.Provider value={{ prefix: 'storybook' }}>
-        <Story />
-      </PharosContext.Provider>
-    ),
-  ],
   parameters: {
     docs: { page: configureDocsPage('checkbox') },
     options: {

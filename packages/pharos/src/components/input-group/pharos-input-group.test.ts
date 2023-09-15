@@ -8,10 +8,10 @@ describe('pharos-input-group', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <test-pharos-input-group>
+      <pharos-input-group>
         <span slot="label">Search</span>
-        <test-pharos-button icon="search" variant="subtle" label="search"></test-pharos-button>
-      </test-pharos-input-group>
+        <pharos-button icon="search" variant="subtle" label="search"></pharos-button>
+      </pharos-input-group>
     `);
   });
 
@@ -32,15 +32,15 @@ describe('pharos-input-group', () => {
   it('adjusts its padding when elements are prepended to the group', async () => {
     component = await fixture(
       html`
-        <test-pharos-input-group>
+        <pharos-input-group>
           <span slot="label">I am a label</span>
-          <test-pharos-button
+          <pharos-button
             slot="prepend"
             icon="search"
             variant="subtle"
             label="search"
-          ></test-pharos-button>
-        </test-pharos-input-group>
+          ></pharos-button>
+        </pharos-input-group>
       `
     );
     await nextFrame();
@@ -99,7 +99,7 @@ describe('pharos-input-group', () => {
   });
 
   it('adjusts the validated icon position when elements are dynamically appended to the group', async () => {
-    const button = document.createElement('test-pharos-button');
+    const button = document.createElement('pharos-button');
     button.icon = 'close';
     component.appendChild(button);
     component.validated = true;

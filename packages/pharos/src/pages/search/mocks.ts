@@ -1,28 +1,22 @@
-import result1 from '@config/assets/images/search/result_1.png';
-import result2 from '@config/assets/images/search/result_2.png';
-import result3 from '@config/assets/images/search/result_3.png';
-import result4 from '@config/assets/images/search/result_4.png';
-import result5 from '@config/assets/images/search/result_5.png';
-
 export const imageResults = [
   {
-    image: result1,
+    image: 'result_1.png',
     title: 'Eyrie; students sitting at tables',
   },
   {
-    image: result2,
+    image: 'result_2.png',
     title: 'Entrance to Central from Howard Payne side covered in ivy',
   },
   {
-    image: result3,
+    image: 'result_3.png',
     title: 'Cupples Hall and Brannock Hall; two students sitting...',
   },
   {
-    image: result4,
+    image: 'result_4.png',
     title: 'Group Photograph of Navy V-12 Central Cadets in Front of...',
   },
   {
-    image: result5,
+    image: 'result_5.png',
     title: 'South Hall',
   },
 ];

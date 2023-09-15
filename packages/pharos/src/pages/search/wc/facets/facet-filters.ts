@@ -41,7 +41,7 @@ const accessTypeItems = [
 export const FacetFilters = (): TemplateResult => html`
   <aside>
     <div class="search-page__grid--facets">
-      <storybook-pharos-heading level="2" preset="1--bold">Filters</storybook-pharos-heading>
+      <pharos-heading level="2" preset="1--bold">Filters</pharos-heading>
       <form class="search-page__form">
         <div class="search-page__facet">
           ${MultiSelectFacet('academic-content', 'academic content', academicContentItems)}

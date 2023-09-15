@@ -15,7 +15,7 @@
     grid-area: main;
   }
 
-  [data-pharos-component='PharosFooter'] {
+  pharos-footer {
     grid-area: footer;
   }
 }
@@ -170,7 +170,7 @@
   display: flex;
   align-items: center;
 
-  &:hover [data-pharos-component='PharosIcon'] {
+  &:hover pharos-icon {
     fill: var(--pharos-color-hover-primary);
   }
 }

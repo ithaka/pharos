@@ -1,18 +1,11 @@
-import highlightCollection1 from '@config/assets/images/home/highlight_collection_1.png';
-import highlightCollection2 from '@config/assets/images/home/highlight_collection_2.png';
-import communityCollection1 from '@config/assets/images/home/community_collection_1.png';
-import communityCollection2 from '@config/assets/images/home/community_collection_2.png';
-import communityCollection3 from '@config/assets/images/home/community_collection_3.png';
-import communityCollection4 from '@config/assets/images/home/community_collection_4.png';
-
 export const publicCollectionCards = [
   {
-    image: highlightCollection1,
+    image: 'highlight_collection_1.png',
     title: 'Open Collections',
     link: 'Learn more about our Open Collections',
   },
   {
-    image: highlightCollection2,
+    image: 'highlight_collection_2.png',
     title: 'Special collections from the archive',
     link: 'Learn more',
   },
@@ -20,22 +13,22 @@ export const publicCollectionCards = [
 
 export const communityCollectionCards = [
   {
-    image: communityCollection1,
+    image: 'community_collection_1.png',
     title: 'Open Artstor: Science Museum Group',
     link: 'Artstor Digital Library',
   },
   {
-    image: communityCollection2,
+    image: 'community_collection_2.png',
     title: 'Albright College Nicaragua Revolution',
     link: 'David Schwartz Collection',
   },
   {
-    image: communityCollection3,
+    image: 'community_collection_3.png',
     title: 'Muhlenberg College Helen Richards Horn Bookplate Collection',
     link: 'Muhlenberg College Special Collections & Archives',
   },
   {
-    image: communityCollection4,
+    image: 'community_collection_4.png',
     title: 'Lebanese Research Center for Migration and Diaspora Studies (LERC): The...',
     link: 'Notre Dame University-Louaize',
   },

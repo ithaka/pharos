@@ -28,17 +28,17 @@ export const Base = {
     effect();
     return html`
       <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
-        <storybook-pharos-button id="my-button" data-tooltip-id="${args.id}"
-          >${args.targetText}</storybook-pharos-button
+        <pharos-button id="my-button" data-tooltip-id="${args.id}"
+          >${args.targetText}</pharos-button
         >
-        <storybook-pharos-tooltip
+        <pharos-tooltip
           id="${args.id}"
           ?full-width="${args.fullWidth}"
           ?open="${args.open}"
           .placement="${ifDefined(args.placement)}"
           .fallbackPlacements="${args.fallbackPlacements}"
           >${args.tooltipText}
-        </storybook-pharos-tooltip>
+        </pharos-tooltip>
       </div>
     `;
   },
@@ -60,18 +60,12 @@ export const DismissBehavior = {
       <div
         style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
       >
-        <storybook-pharos-button data-tooltip-id="my-hi-tooltip"
-          >Focus here</storybook-pharos-button
-        >
-        <storybook-pharos-tooltip id="my-hi-tooltip">Hi there!</storybook-pharos-tooltip>
-        <storybook-pharos-button data-tooltip-id="my-again-tooltip"
-          >Then hover here</storybook-pharos-button
-        >
-        <storybook-pharos-tooltip id="my-again-tooltip">Hi there again!</storybook-pharos-tooltip>
-        <storybook-pharos-button data-tooltip-id="my-yo-tooltip"
-          >Then focus me</storybook-pharos-button
-        >
-        <storybook-pharos-tooltip id="my-yo-tooltip">Yo!</storybook-pharos-tooltip>
+        <pharos-button data-tooltip-id="my-hi-tooltip">Focus here</pharos-button>
+        <pharos-tooltip id="my-hi-tooltip">Hi there!</pharos-tooltip>
+        <pharos-button data-tooltip-id="my-again-tooltip">Then hover here</pharos-button>
+        <pharos-tooltip id="my-again-tooltip">Hi there again!</pharos-tooltip>
+        <pharos-button data-tooltip-id="my-yo-tooltip">Then focus me</pharos-button>
+        <pharos-tooltip id="my-yo-tooltip">Yo!</pharos-tooltip>
       </div>
     `,
 };
@@ -105,18 +99,10 @@ export const MultipleTriggers = {
       <div
         style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
       >
-        <storybook-pharos-button data-tooltip-id="my-multi-tooltip"
-          >Focus here</storybook-pharos-button
-        >
-        <storybook-pharos-button data-tooltip-id="my-multi-tooltip"
-          >Then hover here</storybook-pharos-button
-        >
-        <storybook-pharos-button data-tooltip-id="my-multi-tooltip"
-          >Then focus me</storybook-pharos-button
-        >
-        <storybook-pharos-tooltip id="my-multi-tooltip" full-width
-          >Hi there!</storybook-pharos-tooltip
-        >
+        <pharos-button data-tooltip-id="my-multi-tooltip">Focus here</pharos-button>
+        <pharos-button data-tooltip-id="my-multi-tooltip">Then hover here</pharos-button>
+        <pharos-button data-tooltip-id="my-multi-tooltip">Then focus me</pharos-button>
+        <pharos-tooltip id="my-multi-tooltip" full-width>Hi there!</pharos-tooltip>
       </div>
     `,
 };
@@ -125,23 +111,20 @@ export const CustomBoundary = {
   render: () =>
     html`
       <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
-        <storybook-pharos-button
-          id="my-button"
-          data-dropdown-menu-id="my-menu"
-          icon-right="chevron-down"
-          >Click Me</storybook-pharos-button
+        <pharos-button id="my-button" data-dropdown-menu-id="my-menu" icon-right="chevron-down"
+          >Click Me</pharos-button
         >
-        <storybook-pharos-dropdown-menu id="my-menu">
-          <storybook-pharos-dropdown-menu-item>Menu item 1</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Menu item 2</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item data-tooltip-id="my-tooltip"
-            >Hover on Me</storybook-pharos-dropdown-menu-item
+        <pharos-dropdown-menu id="my-menu">
+          <pharos-dropdown-menu-item>Menu item 1</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item>Menu item 2</pharos-dropdown-menu-item>
+          <pharos-dropdown-menu-item data-tooltip-id="my-tooltip"
+            >Hover on Me</pharos-dropdown-menu-item
           >
-          <storybook-pharos-tooltip id="my-tooltip" boundary="my-menu"
+          <pharos-tooltip id="my-tooltip" boundary="my-menu"
             >Even very long tooltips, such as this one, will stay within the boundaries of the
-            Tooltip.</storybook-pharos-tooltip
+            Tooltip.</pharos-tooltip
           >
-        </storybook-pharos-dropdown-menu>
+        </pharos-dropdown-menu>
       </div>
     `,
 };

@@ -13,17 +13,11 @@ export default {
 
 export const Base = {
   render: ({ firstCrumb, secondCrumb, thirdCrumb }) =>
-    html` <storybook-pharos-breadcrumb>
-      <storybook-pharos-breadcrumb-item href="#" id="firstBreadcrumb"
-        >${firstCrumb}</storybook-pharos-breadcrumb-item
-      >
-      <storybook-pharos-breadcrumb-item href="#" id="secondBreadcrumb"
-        >${secondCrumb}</storybook-pharos-breadcrumb-item
-      >
-      <storybook-pharos-breadcrumb-item id="thirdBreadcrumb"
-        >${thirdCrumb}</storybook-pharos-breadcrumb-item
-      >
-    </storybook-pharos-breadcrumb>`,
+    html` <pharos-breadcrumb>
+      <pharos-breadcrumb-item href="#" id="firstBreadcrumb">${firstCrumb}</pharos-breadcrumb-item>
+      <pharos-breadcrumb-item href="#" id="secondBreadcrumb">${secondCrumb}</pharos-breadcrumb-item>
+      <pharos-breadcrumb-item id="thirdBreadcrumb">${thirdCrumb}</pharos-breadcrumb-item>
+    </pharos-breadcrumb>`,
   args: {
     firstCrumb: 'Hover to see the full text of long content, which are truncated',
     secondCrumb: 'Short texts will not',

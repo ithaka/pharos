@@ -6,22 +6,20 @@ import { items } from '../../mocks';
 
 export const ItemCarousel = (): TemplateResult => html`
   <div class="item-detail-page__container--top-bar">
-    <storybook-pharos-heading level="2" preset="3" no-margin
-      >In this collection</storybook-pharos-heading
-    >
+    <pharos-heading level="2" preset="3" no-margin>In this collection</pharos-heading>
     <div class="item-detail-page__container--carousel-buttons">
-      <storybook-pharos-button
+      <pharos-button
         label="backward"
         variant="subtle"
         icon="chevron-left-large"
         icon-condensed
-      ></storybook-pharos-button>
-      <storybook-pharos-button
+      ></pharos-button>
+      <pharos-button
         label="forward"
         variant="subtle"
         icon="chevron-right-large"
         icon-condensed
-      ></storybook-pharos-button>
+      ></pharos-button>
     </div>
   </div>
   <ul class="item-detail-page__list item-detail-page__grid--items">

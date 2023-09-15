@@ -73,7 +73,6 @@ export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
   public indefinite = false;
 
   private _timer: number | void = 0;
-
   private _debouncer: Procedure = debounce(() => {
     this.close();
   }, TOAST_LIFE);
@@ -117,9 +116,7 @@ export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
     const details = {
       bubbles: true,
       composed: true,
-      detail: {
-        id: this.id,
-      },
+      detail: this,
     };
 
     this.open = false;

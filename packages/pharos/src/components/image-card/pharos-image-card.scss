@@ -164,23 +164,8 @@ slot[name='image']::slotted(img) {
 
 .card__link--collection {
   display: grid;
-  align-self: end;
-}
-
-.card__link--collection--error {
-  background-color: var(--pharos-color-marble-gray-94);
-  display: flex;
-  width: 100vw;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  row-gap: var(--pharos-spacing-one-half-x);
-  aspect-ratio: 4/3;
-
-  .unavailable-text {
-    max-width: 9rem;
-  }
+  position: relative;
+  height: auto;
 }
 
 .card__link--collection.card__link--selected {
@@ -243,8 +228,7 @@ slot[name='image']::slotted(img) {
 }
 
 :host([subtle]) .card__link--image {
-  &:hover,
-  &:focus-within {
+  &:hover {
     .card__metadata--hover {
       background-color: rgb(0 0 0 / 0.75);
       visibility: visible;

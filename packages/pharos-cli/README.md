@@ -25,7 +25,7 @@ $ cd packages/pharos-cli
 Next, you will need to compile the TypeScript files into JavaScript:
 
 ```shell
-$ yarn tsc
+$ tsc
 ```
 
 Lastly, you will need to link this package so it is runnable:

@@ -2,7 +2,7 @@
   display: none;
 }
 
-@media screen and (width <= 1055px) {
+@media screen and (max-width: 1055px) {
   :host {
     display: inline-flex;
   }

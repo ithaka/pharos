@@ -10,10 +10,10 @@ describe('pharos-sidenav-menu', () => {
   beforeEach(async () => {
     component = await fixture(
       html`
-        <test-pharos-sidenav-menu label="Menu">
-          <test-pharos-sidenav-link href="#">Link</test-pharos-sidenav-link>
-          <test-pharos-sidenav-link href="#">Link 2</test-pharos-sidenav-link>
-        </test-pharos-sidenav-menu>
+        <pharos-sidenav-menu label="Menu">
+          <pharos-sidenav-link href="#">Link</pharos-sidenav-link>
+          <pharos-sidenav-link href="#">Link 2</pharos-sidenav-link>
+        </pharos-sidenav-menu>
       `
     );
   });
@@ -23,9 +23,7 @@ describe('pharos-sidenav-menu', () => {
   });
 
   it('renders a chevron down icon when not expanded', async () => {
-    const icon = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosIcon"][name="chevron-down"]'
-    );
+    const icon = component.renderRoot.querySelector('pharos-icon[name="chevron-down"]');
     expect(icon).not.to.be.null;
   });
 
@@ -33,9 +31,7 @@ describe('pharos-sidenav-menu', () => {
     component.expanded = true;
     await component.updateComplete;
 
-    const icon = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosIcon"][name="chevron-up"]'
-    );
+    const icon = component.renderRoot.querySelector('pharos-icon[name="chevron-up"]');
     expect(icon).not.to.be.null;
   });
 
@@ -50,7 +46,7 @@ describe('pharos-sidenav-menu', () => {
 
   it('sets each slotted sidenav link as a menu item', async () => {
     const allLinks = component.querySelectorAll(
-      'test-pharos-sidenav-link'
+      'pharos-sidenav-link'
     ) as NodeListOf<PharosSidenavLink>;
 
     allLinks.forEach((link) => {

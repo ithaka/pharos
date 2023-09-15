@@ -23,13 +23,12 @@
     "Marble gray": {
       "10": { "value": "hsl(60, 2%, 10%)", "group": "neutrals", "palette": "grayscale", "order": "1" },
       "20": { "value": "hsl(30, 2%, 20%)", "group": "neutrals", "palette": "grayscale", "order": "2" },
-      "30": { "value": "hsl(60, 1%, 30%)", "group": "neutrals", "palette": "grayscale", "order": "3" },
-      "40": { "value": "hsl(60, 1%, 40%)", "group": "neutrals", "palette": "grayscale", "order": "4" },
-      "50": { "value": "hsl(40, 1.2%, 50%)", "group": "neutrals", "palette": "grayscale", "order": "5" },
-      "80": { "value": "hsl(48, 9.8%, 80%)", "group": "neutrals", "palette": "grayscale", "order": "65" },
-      "base": { "value": "hsl(46.7, 17.6%, 90%)", "group": "secondary, neutrals", "palette": "grayscale", "order": "7" },
-      "94": { "value": "hsl(48, 16%, 94%)", "group": "neutrals", "palette": "grayscale", "order": "8" },
-      "97": { "value": "hsl(40, 20%, 97.1%)", "group": "neutrals", "palette": "grayscale", "order": "9" }
+      "40": { "value": "hsl(60, 1%, 40%)", "group": "neutrals", "palette": "grayscale", "order": "3" },
+      "50": { "value": "hsl(40, 1.2%, 50%)", "group": "neutrals", "palette": "grayscale", "order": "4" },
+      "80": { "value": "hsl(48, 9.8%, 80%)", "group": "neutrals", "palette": "grayscale", "order": "5" },
+      "base": { "value": "hsl(46.7, 17.6%, 90%)", "group": "secondary, neutrals", "palette": "grayscale", "order": "5" },
+      "94": { "value": "hsl(48, 16%, 94%)", "group": "neutrals", "palette": "grayscale", "order": "6" },
+      "97": { "value": "hsl(40, 20%, 97.1%)", "group": "neutrals", "palette": "grayscale", "order": "7" }
     },
     "Black": { "value": "hsl(0, 0%, 0%)", "group": "secondary", "palette": "primary" },
     "White": { "value": "hsl(0, 0%, 100%)", "palette": "primary" },

@@ -1,13 +1,3 @@
-import collection1 from '@config/assets/images/item-detail/collection_1.png';
-import collection2 from '@config/assets/images/item-detail/collection_2.png';
-import collection3 from '@config/assets/images/item-detail/collection_3.png';
-import collection4 from '@config/assets/images/item-detail/collection_4.png';
-import collection5 from '@config/assets/images/item-detail/collection_5.png';
-import collection6 from '@config/assets/images/item-detail/collection_6.png';
-import openCollection1 from '@config/assets/images/item-detail/open_collection_1.png';
-import openCollection2 from '@config/assets/images/item-detail/open_collection_2.png';
-import openCollection3 from '@config/assets/images/item-detail/open_collection_3.png';
-
 export const metadata = [
   { label: 'Work Type', value: 'bultos' },
   { label: 'Date', value: 'ca. 1830-50' },
@@ -53,17 +43,17 @@ export const collections = [
   {
     title: 'Pratt Institute Buildings',
     items: 546,
-    image: openCollection1,
+    image: 'open_collection_1.png',
   },
   {
     title: 'Roanoke College Freshwater Fish Collection',
     items: 839,
-    image: openCollection2,
+    image: 'open_collection_2.png',
   },
   {
     title: 'Folger Shakespeare Library',
     items: 84,
-    image: openCollection3,
+    image: 'open_collection_3.png',
   },
 ];
 
@@ -71,31 +61,31 @@ export const items = [
   {
     title: 'Eyrie; students sitting at tables',
     metadata: 'Central Methodist University Archives',
-    image: collection1,
+    image: 'collection_1.png',
   },
   {
     title: 'Entrance to Central from Howard Payne side covered in ivy',
     metadata: 'Central Methodist University Archives',
-    image: collection2,
+    image: 'collection_2.png',
   },
   {
     title: 'Cupples Hall and Brannock Hall; two students sitting...',
     metadata: 'Central Methodist University Archives',
-    image: collection3,
+    image: 'collection_3.png',
   },
   {
     title: 'Group Photograph of Navy V-12 Central Cadets in Front of...',
     metadata: 'Central Methodist University Archives',
-    image: collection4,
+    image: 'collection_4.png',
   },
   {
     title: 'South Hall',
     metadata: 'Pratt Institute Buildings Image Collection',
-    image: collection5,
+    image: 'collection_5.png',
   },
   {
     title: 'The Shen-Wu Gate [plate 109, Photographs of gs...',
     metadata: 'Palace Buildings of Peking 1906',
-    image: collection6,
+    image: 'collection_6.png',
   },
 ];

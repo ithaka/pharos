@@ -9,7 +9,7 @@ describe('pharos-sidenav', () => {
 
   beforeEach(async () => {
     await setViewport({ width: 1055, height: 768 });
-    component = await fixture(html`<test-pharos-sidenav-button></test-pharos-sidenav-button>`);
+    component = await fixture(html`<pharos-sidenav-button></pharos-sidenav-button>`);
   });
 
   it('is accessible', async () => {
@@ -23,12 +23,12 @@ describe('pharos-sidenav', () => {
   });
 
   it('is visible when viewport is below than 1056px', async () => {
-    const button = document.querySelector('test-pharos-sidenav-button');
+    const button = document.querySelector('pharos-sidenav-button');
     expect(button).to.not.be.null;
   });
 
   it('slides in the sidenav when clicked', async () => {
-    const sidenav = document.createElement('test-pharos-sidenav');
+    const sidenav = document.createElement('pharos-sidenav');
     document.body.appendChild(sidenav);
 
     component.click();
@@ -36,13 +36,13 @@ describe('pharos-sidenav', () => {
   });
 
   it('focuses the sidenav after being clicked', async () => {
-    const sidenav = document.createElement('test-pharos-sidenav');
+    const sidenav = document.createElement('pharos-sidenav');
     document.body.appendChild(sidenav);
 
     component.click();
     await sidenav.updateComplete;
 
-    const renderedSidenav = document.body.querySelector('test-pharos-sidenav');
+    const renderedSidenav = document.body.querySelector('pharos-sidenav');
     expect(document.activeElement === renderedSidenav).to.be.true;
   });
 });

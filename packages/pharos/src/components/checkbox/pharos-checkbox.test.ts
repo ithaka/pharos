@@ -12,7 +12,7 @@ describe('pharos-checkbox', () => {
 
   beforeEach(async () => {
     component = await fixture(
-      html`<test-pharos-checkbox><span slot="label">test checkbox</span></test-pharos-checkbox>`
+      html`<pharos-checkbox><span slot="label">test checkbox</span></pharos-checkbox>`
     );
   });
 
@@ -28,18 +28,14 @@ describe('pharos-checkbox', () => {
 
   it('is accessible when disabled', async () => {
     component = await fixture(
-      html`<test-pharos-checkbox disabled
-        ><span slot="label">test checkbox</span></test-pharos-checkbox
-      >`
+      html`<pharos-checkbox disabled><span slot="label">test checkbox</span></pharos-checkbox>`
     );
     await expect(component).to.be.accessible();
   });
 
   it('has an attribute to set check value', async () => {
     component = await fixture(html`
-      <test-pharos-checkbox ?checked=${true}
-        ><span slot="label">test checkbox</span></test-pharos-checkbox
-      >
+      <pharos-checkbox ?checked=${true}><span slot="label">test checkbox</span></pharos-checkbox>
     `);
     await expect(component.checked).to.equal(true);
   });
@@ -50,9 +46,7 @@ describe('pharos-checkbox', () => {
       eventSource = event.composedPath()[0] as Element;
     };
     component = await fixture(html`
-      <test-pharos-checkbox @change=${onChange}
-        ><span slot="label">test checkbox</span></test-pharos-checkbox
-      >
+      <pharos-checkbox @change=${onChange}><span slot="label">test checkbox</span></pharos-checkbox>
     `);
 
     component['_checkbox'].click();
@@ -82,9 +76,7 @@ describe('pharos-checkbox', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(
-      html`<test-pharos-checkbox disabled
-        ><span slot="label">test checkbox</span></test-pharos-checkbox
-      >`
+      html`<pharos-checkbox disabled><span slot="label">test checkbox</span></pharos-checkbox>`
     );
 
     component['_checkbox'].focus();
@@ -99,9 +91,9 @@ describe('pharos-checkbox', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-checkbox name="my-checkbox" value="test" checked>
+        <pharos-checkbox name="my-checkbox" value="test" checked>
           <span slot="label">test checkbox</span>
-        </test-pharos-checkbox>
+        </pharos-checkbox>
       `,
       { parentNode }
     );
@@ -117,9 +109,9 @@ describe('pharos-checkbox', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-checkbox name="my-checkbox" checked>
+        <pharos-checkbox name="my-checkbox" checked>
           <span slot="label">test checkbox</span>
-        </test-pharos-checkbox>
+        </pharos-checkbox>
       `,
       { parentNode }
     );
@@ -135,9 +127,9 @@ describe('pharos-checkbox', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-checkbox name="my-checkbox" value="test" disabled>
+        <pharos-checkbox name="my-checkbox" value="test" disabled>
           <span slot="label">test checkbox</span>
-        </test-pharos-checkbox>
+        </pharos-checkbox>
       `,
       { parentNode }
     );
@@ -156,9 +148,9 @@ describe('pharos-checkbox', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(html`
-      <test-pharos-checkbox hide-label>
+      <pharos-checkbox hide-label>
         <span slot="label">test checkbox</span>
-      </test-pharos-checkbox>
+      </pharos-checkbox>
     `);
 
     const icon = component.renderRoot.querySelector('svg') as SVGElement;
@@ -177,7 +169,7 @@ describe('pharos-checkbox', () => {
     };
     document.addEventListener('focusin', onFocusIn);
 
-    component = await fixture(html` <test-pharos-checkbox></test-pharos-checkbox> `);
+    component = await fixture(html` <pharos-checkbox></pharos-checkbox> `);
 
     const icon = component.renderRoot.querySelector('svg') as SVGElement;
     icon.dispatchEvent(new Event('click'));
@@ -203,8 +195,8 @@ describe('pharos-checkbox', () => {
 
   it('allows links in the label to be clicked', async () => {
     component = await fixture(html`
-      <test-pharos-checkbox
-        ><span slot="label">test checkbox with <a href="#">link</a></span></test-pharos-checkbox
+      <pharos-checkbox
+        ><span slot="label">test checkbox with <a href="#">link</a></span></pharos-checkbox
       >
     `);
     const link = component.renderRoot.querySelector('a');
@@ -216,13 +208,13 @@ describe('pharos-checkbox', () => {
 
   it('allows Pharos links in the label to be clicked', async () => {
     component = await fixture(html`
-      <test-pharos-checkbox
+      <pharos-checkbox
         ><span slot="label"
-          >test checkbox with <test-pharos-link href="#">link</test-pharos-link></span
-        ></test-pharos-checkbox
+          >test checkbox with <pharos-link href="#">link</pharos-link></span
+        ></pharos-checkbox
       >
     `);
-    const link = component.querySelector('test-pharos-link') as PharosLink;
+    const link = component.querySelector('pharos-link') as PharosLink;
     const anchor = link?.renderRoot.querySelector('#link-element') as HTMLAnchorElement;
     anchor.click();
     await component.updateComplete;
@@ -236,9 +228,7 @@ describe('pharos-checkbox', () => {
       count++;
     };
     component = await fixture(html`
-      <test-pharos-checkbox @click=${onClick}
-        ><span slot="label">test checkbox</span></test-pharos-checkbox
-      >
+      <pharos-checkbox @click=${onClick}><span slot="label">test checkbox</span></pharos-checkbox>
     `);
 
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
@@ -252,9 +242,7 @@ describe('pharos-checkbox', () => {
       event.preventDefault();
     };
     component = await fixture(html`
-      <test-pharos-checkbox @click=${onClick}
-        ><span slot="label">test checkbox</span></test-pharos-checkbox
-      >
+      <pharos-checkbox @click=${onClick}><span slot="label">test checkbox</span></pharos-checkbox>
     `);
 
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
@@ -265,9 +253,7 @@ describe('pharos-checkbox', () => {
 
   it('is checked when clicked from indeterminate state', async () => {
     component = await fixture(html`
-      <test-pharos-checkbox indeterminate
-        ><span slot="label">test checkbox</span></test-pharos-checkbox
-      >
+      <pharos-checkbox indeterminate><span slot="label">test checkbox</span></pharos-checkbox>
     `);
 
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
@@ -291,9 +277,9 @@ describe('pharos-checkbox', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <test-pharos-checkbox name="my-checkbox" value="test" checked>
+        <pharos-checkbox name="my-checkbox" value="test" checked>
           <span slot="label">test checkbox</span>
-        </test-pharos-checkbox>
+        </pharos-checkbox>
       `,
       { parentNode }
     );

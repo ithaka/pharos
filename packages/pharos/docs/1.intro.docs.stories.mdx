@@ -1,6 +1,6 @@
-import { Markdown, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs';
 
-import Intro from '../README.md?raw';
+import Intro from '../README.md';
 import PHAROS_TITLE from '@config/pharosTitle';
 
 <Meta title="Pharos/Intro" />
@@ -9,7 +9,7 @@ export const Title = () => PHAROS_TITLE;
 
 # <Title /> Web Components
 
-<Markdown>{Intro}</Markdown>
+<Intro />
 
 ## Work with us at ITHAKA
 

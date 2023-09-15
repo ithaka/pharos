@@ -9,9 +9,9 @@ describe('pharos-sidenav-section', () => {
   beforeEach(async () => {
     component = await fixture(
       html`
-        <test-pharos-sidenav-section>
-          <test-pharos-sidenav-link href="#">Link</test-pharos-sidenav-link>
-        </test-pharos-sidenav-section>
+        <pharos-sidenav-section>
+          <pharos-sidenav-link href="#">Link</pharos-sidenav-link>
+        </pharos-sidenav-section>
       `
     );
   });
@@ -24,9 +24,7 @@ describe('pharos-sidenav-section', () => {
     component.label = 'test';
     await component.updateComplete;
 
-    const heading = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosHeading"][preset="legend"]'
-    );
+    const heading = component.renderRoot.querySelector('pharos-heading[preset="legend"]');
     expect(heading).not.to.be.null;
   });
 

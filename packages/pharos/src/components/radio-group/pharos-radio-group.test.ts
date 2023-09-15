@@ -11,15 +11,15 @@ describe('pharos-radio-group', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <test-pharos-radio-group name="radio-group">
+      <pharos-radio-group name="radio-group">
         <span slot="legend">Radio Group Header</span>
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2"
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2"
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
   });
 
@@ -35,28 +35,28 @@ describe('pharos-radio-group', () => {
 
   it('updates value when a child radio is checked', async () => {
     component = await fixture(html`
-      <test-pharos-radio-group>
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+      <pharos-radio-group>
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2" checked
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2" checked
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
     expect(component.value).to.equal('2');
   });
 
   it('has an attribute to set orientation', async () => {
     component = await fixture(html`
-      <test-pharos-radio-group horizontal>
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+      <pharos-radio-group horizontal>
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2" checked
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2" checked
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
     const fieldset = component.renderRoot.querySelector('fieldset') as HTMLElement;
     expect(fieldset.classList.contains('radio-group--horizontal')).to.be.true;
@@ -68,18 +68,16 @@ describe('pharos-radio-group', () => {
       eventSource = event.composedPath()[0] as Element;
     };
     component = await fixture(html`
-      <test-pharos-radio-group @change=${onChange}>
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+      <pharos-radio-group @change=${onChange}>
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2"
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2"
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
-    const radio = component.querySelector(
-      'test-pharos-radio-button[value="2"]'
-    ) as PharosRadioButton;
+    const radio = component.querySelector('pharos-radio-button[value="2"]') as PharosRadioButton;
     radio['_radio'].click();
     await component.updateComplete;
 
@@ -88,17 +86,17 @@ describe('pharos-radio-group', () => {
 
   it('sets the name for each radio in the group', async () => {
     component = await fixture(html`
-      <test-pharos-radio-group name="group1">
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+      <pharos-radio-group name="group1">
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2"
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2"
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
     const buttons = component.querySelectorAll(
-      'test-pharos-radio-button'
+      'pharos-radio-button'
     ) as NodeListOf<PharosRadioButton>;
     buttons.forEach((button) => {
       expect(button.name).to.equal('group1');
@@ -113,21 +111,19 @@ describe('pharos-radio-group', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(html`
-      <test-pharos-radio-group name="group1">
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+      <pharos-radio-group name="group1">
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2"
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2"
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="3"
-          ><span slot="label">Radio Button 3</span></test-pharos-radio-button
+        <pharos-radio-button value="3"
+          ><span slot="label">Radio Button 3</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
-    const radio = component.querySelector(
-      'test-pharos-radio-button[value="2"]'
-    ) as PharosRadioButton;
+    const radio = component.querySelector('pharos-radio-button[value="2"]') as PharosRadioButton;
     radio['_radio'].click();
     await component.updateComplete;
 
@@ -135,7 +131,7 @@ describe('pharos-radio-group', () => {
     await component.updateComplete;
 
     const checkedRadio = component.querySelector(
-      'test-pharos-radio-button[checked]'
+      'pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
     expect(checkedRadio.checked).to.equal(true);
@@ -152,21 +148,19 @@ describe('pharos-radio-group', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(html`
-      <test-pharos-radio-group name="group1">
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+      <pharos-radio-group name="group1">
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2"
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2"
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="3"
-          ><span slot="label">Radio Button 3</span></test-pharos-radio-button
+        <pharos-radio-button value="3"
+          ><span slot="label">Radio Button 3</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
-    const radio = component.querySelector(
-      'test-pharos-radio-button[value="2"]'
-    ) as PharosRadioButton;
+    const radio = component.querySelector('pharos-radio-button[value="2"]') as PharosRadioButton;
     radio['_radio'].click();
     await component.updateComplete;
 
@@ -174,7 +168,7 @@ describe('pharos-radio-group', () => {
     await component.updateComplete;
 
     const checkedRadio = component.querySelector(
-      'test-pharos-radio-button[checked]'
+      'pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
     expect(checkedRadio.checked).to.equal(true);
@@ -191,21 +185,19 @@ describe('pharos-radio-group', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(html`
-      <test-pharos-radio-group name="group1">
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+      <pharos-radio-group name="group1">
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2"
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2"
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="3"
-          ><span slot="label">Radio Button 3</span></test-pharos-radio-button
+        <pharos-radio-button value="3"
+          ><span slot="label">Radio Button 3</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
-    const radio = component.querySelector(
-      'test-pharos-radio-button[value="3"]'
-    ) as PharosRadioButton;
+    const radio = component.querySelector('pharos-radio-button[value="3"]') as PharosRadioButton;
     radio['_radio'].click();
     await component.updateComplete;
 
@@ -213,7 +205,7 @@ describe('pharos-radio-group', () => {
     await component.updateComplete;
 
     const checkedRadio = component.querySelector(
-      'test-pharos-radio-button[checked]'
+      'pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
     expect(checkedRadio.checked).to.equal(true);
@@ -230,21 +222,19 @@ describe('pharos-radio-group', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(html`
-      <test-pharos-radio-group name="group1">
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+      <pharos-radio-group name="group1">
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2"
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2"
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="3"
-          ><span slot="label">Radio Button 3</span></test-pharos-radio-button
+        <pharos-radio-button value="3"
+          ><span slot="label">Radio Button 3</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
-    const radio = component.querySelector(
-      'test-pharos-radio-button[value="1"]'
-    ) as PharosRadioButton;
+    const radio = component.querySelector('pharos-radio-button[value="1"]') as PharosRadioButton;
     radio['_radio'].click();
     await component.updateComplete;
 
@@ -252,7 +242,7 @@ describe('pharos-radio-group', () => {
     await component.updateComplete;
 
     const checkedRadio = component.querySelector(
-      'test-pharos-radio-button[checked]'
+      'pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
     expect(checkedRadio.checked).to.equal(true);
@@ -269,26 +259,24 @@ describe('pharos-radio-group', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(html`
-      <test-pharos-radio-group name="group1">
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+      <pharos-radio-group name="group1">
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2"
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2"
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="3"
-          ><span slot="label">Radio Button 3</span></test-pharos-radio-button
+        <pharos-radio-button value="3"
+          ><span slot="label">Radio Button 3</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
-    const radio = component.querySelector(
-      'test-pharos-radio-button[value="2"]'
-    ) as PharosRadioButton;
+    const radio = component.querySelector('pharos-radio-button[value="2"]') as PharosRadioButton;
     radio['_radio'].click();
     await component.updateComplete;
 
     const checkedRadio = component.querySelector(
-      'test-pharos-radio-button[checked]'
+      'pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
     expect(activeElement === checkedRadio['_radio']).to.be.true;
@@ -301,7 +289,7 @@ describe('pharos-radio-group', () => {
       activeElement = event.composedPath()[0];
     };
     document.addEventListener('focusin', onFocusIn);
-    const radio = component.querySelector('test-pharos-radio-button') as PharosRadioButton;
+    const radio = component.querySelector('pharos-radio-button') as PharosRadioButton;
 
     component.focus();
 
@@ -313,15 +301,11 @@ describe('pharos-radio-group', () => {
     const text = 'Please make a selection';
     component = await fixture(
       html`
-        <test-pharos-radio-group message="${text}">
+        <pharos-radio-group message="${text}">
           <span slot="legend">Radio Group Header</span>
-          <test-pharos-radio-button value="1"
-            ><span slot="label">Radio 1</span></test-pharos-radio-button
-          >
-          <test-pharos-radio-button value="2"
-            ><span slot="label">Radio 2</span></test-pharos-radio-button
-          >
-        </test-pharos-radio-group>
+          <pharos-radio-button value="1"><span slot="label">Radio 1</span></pharos-radio-button>
+          <pharos-radio-button value="2"><span slot="label">Radio 2</span></pharos-radio-button>
+        </pharos-radio-group>
       `
     );
     const message = component.renderRoot.querySelector('.input-message__text');
@@ -332,9 +316,7 @@ describe('pharos-radio-group', () => {
     const event = new Event('change');
     const changeSpy: SinonSpy = sinon.spy(event, 'stopPropagation');
 
-    const radio = component.querySelector(
-      'test-pharos-radio-button[value="2"]'
-    ) as PharosRadioButton;
+    const radio = component.querySelector('pharos-radio-button[value="2"]') as PharosRadioButton;
     radio.dispatchEvent(event);
     await component.updateComplete;
 
@@ -343,7 +325,7 @@ describe('pharos-radio-group', () => {
 
   it('updates the state of its children', async () => {
     const radios = component.querySelectorAll(
-      'test-pharos-radio-button'
+      'pharos-radio-button'
     ) as NodeListOf<PharosRadioButton>;
     component.disabled = true;
     await component.updateComplete;
@@ -370,24 +352,24 @@ describe('pharos-radio-group', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(html`
-      <test-pharos-radio-group>
-        <test-pharos-radio-button value="1"
-          ><span slot="label">Radio Button 1</span></test-pharos-radio-button
+      <pharos-radio-group>
+        <pharos-radio-button value="1"
+          ><span slot="label">Radio Button 1</span></pharos-radio-button
         >
-        <test-pharos-radio-button value="2" checked
-          ><span slot="label">Radio Button 2</span></test-pharos-radio-button
+        <pharos-radio-button value="2" checked
+          ><span slot="label">Radio Button 2</span></pharos-radio-button
         >
-      </test-pharos-radio-group>
+      </pharos-radio-group>
     `);
 
     const firstRadio = component.querySelector(
-      'test-pharos-radio-button[value="1"]'
+      'pharos-radio-button[value="1"]'
     ) as PharosRadioButton;
     firstRadio.dispatchEvent(new Event('focusin'));
     await nextFrame();
 
     const checkedRadio = component.querySelector(
-      'test-pharos-radio-button[checked]'
+      'pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
     expect(activeElement === checkedRadio['_radio']).to.be.true;

@@ -1,4 +1,4 @@
-const ignoreFillColors = ['google-color', 'microsoft-color'];
+const ignoreFillColors = ['google-color'];
 
 const checkForRootSVG = (reporter, $, ast, info) => {
   Array.from($.find('svg')).forEach((item) => {

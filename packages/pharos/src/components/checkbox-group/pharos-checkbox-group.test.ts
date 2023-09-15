@@ -11,11 +11,11 @@ describe('pharos-checkbox-group', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <test-pharos-checkbox-group name="checkbox-group">
+      <pharos-checkbox-group name="checkbox-group">
         <span slot="legend">Checkbox Group Header</span>
-        <test-pharos-checkbox value="1"><span slot="label">Checkbox 1</span></test-pharos-checkbox>
-        <test-pharos-checkbox value="2"><span slot="label">Checkbox 2</span></test-pharos-checkbox>
-      </test-pharos-checkbox-group>
+        <pharos-checkbox value="1"><span slot="label">Checkbox 1</span></pharos-checkbox>
+        <pharos-checkbox value="2"><span slot="label">Checkbox 2</span></pharos-checkbox>
+      </pharos-checkbox-group>
     `);
   });
 
@@ -31,12 +31,10 @@ describe('pharos-checkbox-group', () => {
 
   it('has an attribute to set orientation', async () => {
     component = await fixture(html`
-      <test-pharos-checkbox-group horizontal>
-        <test-pharos-checkbox value="1"><span slot="label">Checkbox 1</span></test-pharos-checkbox>
-        <test-pharos-checkbox value="2" checked
-          ><span slot="label">Checkbox 2</span></test-pharos-checkbox
-        >
-      </test-pharos-checkbox-group>
+      <pharos-checkbox-group horizontal>
+        <pharos-checkbox value="1"><span slot="label">Checkbox 1</span></pharos-checkbox>
+        <pharos-checkbox value="2" checked><span slot="label">Checkbox 2</span></pharos-checkbox>
+      </pharos-checkbox-group>
     `);
     const fieldset = component.renderRoot.querySelector('fieldset') as HTMLElement;
     expect(fieldset.classList.contains('checkbox-group--horizontal')).to.be.true;
@@ -48,13 +46,13 @@ describe('pharos-checkbox-group', () => {
       eventSource = event.composedPath()[0] as Element;
     };
     component = await fixture(html`
-      <test-pharos-checkbox-group @change=${onChange}>
-        <test-pharos-checkbox value="1"><span slot="label">Checkbox 1</span></test-pharos-checkbox>
-        <test-pharos-checkbox value="2"><span slot="label">Checkbox 2</span></test-pharos-checkbox>
-      </test-pharos-checkbox-group>
+      <pharos-checkbox-group @change=${onChange}>
+        <pharos-checkbox value="1"><span slot="label">Checkbox 1</span></pharos-checkbox>
+        <pharos-checkbox value="2"><span slot="label">Checkbox 2</span></pharos-checkbox>
+      </pharos-checkbox-group>
     `);
 
-    const box = component.querySelector('test-pharos-checkbox[value="2"]') as PharosCheckbox;
+    const box = component.querySelector('pharos-checkbox[value="2"]') as PharosCheckbox;
     box['_checkbox'].click();
     await component.updateComplete;
 
@@ -63,12 +61,12 @@ describe('pharos-checkbox-group', () => {
 
   it('sets the name for each checkbox in the group', async () => {
     component = await fixture(html`
-      <test-pharos-checkbox-group name="group1">
-        <test-pharos-checkbox value="1"><span slot="label">Checkbox 1</span></test-pharos-checkbox>
-        <test-pharos-checkbox value="2"><span slot="label">Checkbox 2</span></test-pharos-checkbox>
-      </test-pharos-checkbox-group>
+      <pharos-checkbox-group name="group1">
+        <pharos-checkbox value="1"><span slot="label">Checkbox 1</span></pharos-checkbox>
+        <pharos-checkbox value="2"><span slot="label">Checkbox 2</span></pharos-checkbox>
+      </pharos-checkbox-group>
     `);
-    const boxes = component.querySelectorAll('test-pharos-checkbox') as NodeListOf<PharosCheckbox>;
+    const boxes = component.querySelectorAll('pharos-checkbox') as NodeListOf<PharosCheckbox>;
     boxes.forEach((box) => {
       expect(box.name).to.equal('group1');
     });
@@ -76,28 +74,22 @@ describe('pharos-checkbox-group', () => {
 
   it('sets value if a single checkbox is checked', async () => {
     component = await fixture(html`
-      <test-pharos-checkbox-group name="group1">
-        <test-pharos-checkbox value="1"><span slot="label">Checkbox 1</span></test-pharos-checkbox>
-        <test-pharos-checkbox value="2" checked
-          ><span slot="label">Checkbox 2</span></test-pharos-checkbox
-        >
-        <test-pharos-checkbox value="3"><span slot="label">Checkbox 3</span></test-pharos-checkbox>
-      </test-pharos-checkbox-group>
+      <pharos-checkbox-group name="group1">
+        <pharos-checkbox value="1"><span slot="label">Checkbox 1</span></pharos-checkbox>
+        <pharos-checkbox value="2" checked><span slot="label">Checkbox 2</span></pharos-checkbox>
+        <pharos-checkbox value="3"><span slot="label">Checkbox 3</span></pharos-checkbox>
+      </pharos-checkbox-group>
     `);
     expect(component.value).to.eql(['2']);
   });
 
   it('sets value if multiple checkboxes are checked', async () => {
     component = await fixture(html`
-      <test-pharos-checkbox-group name="group1">
-        <test-pharos-checkbox value="1" checked
-          ><span slot="label">Checkbox 1</span></test-pharos-checkbox
-        >
-        <test-pharos-checkbox value="2"><span slot="label">Checkbox 2</span></test-pharos-checkbox>
-        <test-pharos-checkbox value="3" checked
-          ><span slot="label">Checkbox 3</span></test-pharos-checkbox
-        >
-      </test-pharos-checkbox-group>
+      <pharos-checkbox-group name="group1">
+        <pharos-checkbox value="1" checked><span slot="label">Checkbox 1</span></pharos-checkbox>
+        <pharos-checkbox value="2"><span slot="label">Checkbox 2</span></pharos-checkbox>
+        <pharos-checkbox value="3" checked><span slot="label">Checkbox 3</span></pharos-checkbox>
+      </pharos-checkbox-group>
     `);
     expect(component.value).to.eql(['1', '3']);
   });
@@ -108,7 +100,7 @@ describe('pharos-checkbox-group', () => {
       activeElement = event.composedPath()[0];
     };
     document.addEventListener('focusin', onFocusIn);
-    const checkbox = component.querySelector('test-pharos-checkbox') as PharosCheckbox;
+    const checkbox = component.querySelector('pharos-checkbox') as PharosCheckbox;
 
     component.focus();
 
@@ -120,15 +112,11 @@ describe('pharos-checkbox-group', () => {
     const text = 'Please make a selection';
     component = await fixture(
       html`
-        <test-pharos-checkbox-group message="${text}">
+        <pharos-checkbox-group message="${text}">
           <span slot="legend">Checkbox Group Header</span>
-          <test-pharos-checkbox value="1"
-            ><span slot="label">Checkbox 1</span></test-pharos-checkbox
-          >
-          <test-pharos-checkbox value="2"
-            ><span slot="label">Checkbox 2</span></test-pharos-checkbox
-          >
-        </test-pharos-checkbox-group>
+          <pharos-checkbox value="1"><span slot="label">Checkbox 1</span></pharos-checkbox>
+          <pharos-checkbox value="2"><span slot="label">Checkbox 2</span></pharos-checkbox>
+        </pharos-checkbox-group>
       `
     );
     const message = component.renderRoot.querySelector('.input-message__text');
@@ -136,7 +124,7 @@ describe('pharos-checkbox-group', () => {
   });
 
   it('updates the state of its children', async () => {
-    const boxes = component.querySelectorAll('test-pharos-checkbox') as NodeListOf<PharosCheckbox>;
+    const boxes = component.querySelectorAll('pharos-checkbox') as NodeListOf<PharosCheckbox>;
     component.disabled = true;
     await component.updateComplete;
     boxes.forEach((box) => {
@@ -158,7 +146,7 @@ describe('pharos-checkbox-group', () => {
     const event = new Event('change');
     const changeSpy: SinonSpy = sinon.spy(event, 'stopPropagation');
 
-    const box = component.querySelector('test-pharos-checkbox[value="2"]') as PharosCheckbox;
+    const box = component.querySelector('pharos-checkbox[value="2"]') as PharosCheckbox;
     box.dispatchEvent(event);
     await component.updateComplete;
 

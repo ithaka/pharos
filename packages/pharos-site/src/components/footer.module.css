@@ -69,7 +69,7 @@
   display: flex;
 }
 
-@media screen and (width <= 48rem) {
+@media screen and (max-width: 48rem) {
   .container__start,
   .container__center,
   .container__end,
@@ -82,7 +82,7 @@
   }
 }
 
-@media screen and (width <= 22.5rem) {
+@media screen and (max-width: 22.5rem) {
   .container__start,
   .container__center,
   .container__end,

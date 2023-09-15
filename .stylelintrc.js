@@ -7,6 +7,7 @@ module.exports = {
     'at-rule-no-unknown': null,
     'scss/at-rule-no-unknown': true,
     'declaration-no-important': true,
+    'string-quotes': 'single',
     'selector-class-pattern': null,
     'selector-id-pattern': null,
     'keyframes-name-pattern': null,

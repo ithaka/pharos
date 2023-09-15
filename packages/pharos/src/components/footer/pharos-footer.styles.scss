@@ -1,5 +1,21 @@
 @use '../../utils/scss/mixins';
 
+.goog-te-gadget {
+  display: inline-flex;
+}
+
+div#google_translate_element div.goog-te-gadget-simple {
+  @include mixins.button-base(
+    $color: var(--pharos-color-text-base),
+    $background-color: transparent,
+    $border-color: var(--pharos-color-ui-40)
+  );
+
+  color: var(--pharos-color-interactive-tertiary);
+  background-color: transparent;
+  border-color: var(--pharos-color-interactive-tertiary);
+}
+
 [data-pharos-component='PharosFooter'] {
   ul[slot] li:not(:last-child) {
     margin-bottom: var(--pharos-spacing-three-quarters-x);
@@ -20,5 +36,36 @@
 
   ul[slot='legal-links'] {
     @include mixins.list-inline;
+  }
+}
+
+div#google_translate_element div.goog-te-gadget-simple a.goog-te-menu-value {
+  @include mixins.interactive-focus;
+
+  span[style],
+  img {
+    display: none;
+  }
+
+  span {
+    color: var(--pharos-color-interactive-tertiary);
+  }
+}
+
+div#google_translate_element div.goog-te-gadget-simple [data-pharos-component='PharosIcon'] {
+  fill: var(--pharos-color-interactive-tertiary);
+}
+
+div#google_translate_element div.goog-te-gadget-simple:hover {
+  color: var(--pharos-color-interactive-secondary);
+  background-color: var(--pharos-color-interactive-tertiary);
+  border-color: var(--pharos-color-interactive-tertiary);
+
+  a.goog-te-menu-value span {
+    color: var(--pharos-color-interactive-secondary);
+  }
+
+  [data-pharos-component='PharosIcon'] {
+    fill: var(--pharos-color-interactive-secondary);
   }
 }
