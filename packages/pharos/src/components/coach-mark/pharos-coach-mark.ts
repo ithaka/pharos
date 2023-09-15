@@ -119,7 +119,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
         role="dialog"
         aria-labelledby="coach-mark-heading"
       >
-        <div class="coach-mark__wrapper coach-mark-side__${this._computedSide}">
+        <div class="coach-mark__wrapper coach-mark-side--${this._computedSide}">
           <div
             class="coach-mark__content coach-mark-alignment__${this.alignment}"
             style="min-width:${this.width}"
