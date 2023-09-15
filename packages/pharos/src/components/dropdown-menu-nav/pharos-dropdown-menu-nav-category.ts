@@ -1,7 +1,7 @@
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 
 import { PharosElement } from '../base/pharos-element';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
@@ -20,11 +20,12 @@ import FocusMixin from '../../utils/mixins/focus';
  */
 
 export class PharosDropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixin(PharosElement)) {
-  @state()
-  private _alert = false;
-
-  @state()
-  private _hover = false;
+  /**
+   * Indicates the link is active
+   * @attr is-active
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'is-active' })
+  public isActive = false;
 
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
@@ -33,6 +34,12 @@ export class PharosDropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixi
   public static override get styles(): CSSResultArray {
     return [dropdownMenuNavCategoryStyles];
   }
+
+  @state()
+  private _alert = false;
+
+  @state()
+  private _hover = false;
 
   protected override render(): TemplateResult {
     return html`<div
