@@ -37,20 +37,35 @@
 }
 
 :host {
-  --coach-mark-background-color: var(--pharos-coach-mark-color-background-light);
-  --coach-mark-border-color: var(--pharos-coach-mark-color-border-light);
-  --coach-mark-heading-color: var(--pharos-coach-mark-color-heading-light);
-  --coach-mark-text-color: var(--pharos-coach-mark-color-text-light);
+  --coach-mark-background-color: var(
+    --pharos-coach-mark-color-background-light,
+    --pharos-color-white
+  );
+  --coach-mark-border-color: var(
+    --pharos-coach-mark-color-border-light,
+    --pharos-color-marble-gray-base
+  );
+  --coach-mark-heading-color: var(
+    --pharos-coach-mark-color-heading-light,
+    --pharos-color-marble-gray-20
+  );
+  --coach-mark-text-color: var(--pharos-coach-mark-color-text-light, --pharos-color-marble-gray-20);
 
   display: block;
   position: absolute;
 }
 
 :host([variant='dark']) {
-  --coach-mark-background-color: var(--pharos-coach-mark-color-background-dark);
-  --coach-mark-border-color: var(--pharos-coach-mark-color-border-dark);
-  --coach-mark-heading-color: var(--pharos-coach-mark-color-heading-dark);
-  --coach-mark-text-color: var(--pharos-coach-mark-color-text-dark);
+  --coach-mark-background-color: var(
+    --pharos-coach-mark-color-background-dark,
+    --pharos-button-color-base-overlay-background-base
+  );
+  --coach-mark-border-color: var(
+    --pharos-coach-mark-color-border-dark,
+    --coach-mark-background-color
+  );
+  --coach-mark-heading-color: var(--pharos-coach-mark-color-heading-dark, --pharos-color-white);
+  --coach-mark-text-color: var(--pharos-coach-mark-color-text-dark, --pharos-color-marble-gray-80);
 }
 
 .coach-mark {
@@ -77,7 +92,7 @@
 .coach-mark__content {
   position: relative;
   background-color: var(--coach-mark-background-color);
-  border: var(--pharos-coach-mark-size-border) solid var(--coach-mark-border-color);
+  border: var(--pharos-coach-mark-size-border, 1px) solid var(--coach-mark-border-color);
   padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
   min-width: 100px;
   width: fit-content;
@@ -92,8 +107,8 @@
     position: absolute;
     top: var(--pip-top);
     left: var(--pip-left);
-    height: var(--pharos-coach-mark-size-pip);
-    width: var(--pharos-coach-mark-size-pip);
+    height: var(--pharos-coach-mark-size-pip, 10px);
+    width: var(--pharos-coach-mark-size-pip, 10px);
     transform: translate(-50%, -50%) rotate(45deg);
     z-index: 1;
   }
