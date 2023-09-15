@@ -9,9 +9,17 @@ import { CollectionCarousel } from './collection-carousel/CollectionCarousel';
 import { Metadata } from './Metadata';
 
 import { PharosButton, PharosLink, PharosIcon, PharosLayout } from '../../../react-components';
+import { PharosContext } from '../../../utils/PharosContext';
 
 export default {
   title: 'Pages/Item Detail',
+  decorators: [
+    (Story) => (
+      <PharosContext.Provider value={{ prefix: 'storybook' }}>
+        <Story />
+      </PharosContext.Provider>
+    ),
+  ],
   parameters: {
     layout: 'fullscreen',
     viewport: {

@@ -8,7 +8,7 @@ describe('pharos-progress-bar', () => {
 
   beforeEach(async () => {
     component = await fixture(
-      html` <pharos-progress-bar><div slot="title">Title.xls</div></pharos-progress-bar> `
+      html` <test-pharos-progress-bar><div slot="title">Title.xls</div></test-pharos-progress-bar> `
     );
   });
 
@@ -18,27 +18,31 @@ describe('pharos-progress-bar', () => {
 
   it('sets its default attributes', async () => {
     component = await fixture(html`
-      <pharos-progress-bar>
+      <test-pharos-progress-bar>
         <div slot="title">Click.xls</div>
         <div slot="description">Processing headers</div>
-      </pharos-progress-bar>
+      </test-pharos-progress-bar>
     `);
     expect(component).dom.to.equal(
-      `<pharos-progress-bar data-pharos-component="PharosProgressBar" value="0">
+      `<test-pharos-progress-bar data-pharos-component="PharosProgressBar" value="0">
         <div slot="title">Click.xls</div>
         <div slot="description">Processing headers</div>
-      </pharos-progress-bar>`
+      </test-pharos-progress-bar>`
     );
   });
 
   it('renders the progress bar with the inserted value and the correct width', async () => {
-    component = await fixture(html` <pharos-progress-bar value="20"></pharos-progress-bar> `);
+    component = await fixture(
+      html` <test-pharos-progress-bar value="20"></test-pharos-progress-bar> `
+    );
     const internalBar = component.renderRoot.querySelector('.progress-bar') as HTMLDivElement;
     expect(internalBar?.style.width).to.equal('20%');
   });
 
   it('renders the progress bar with the correct gradient percentage', async () => {
-    component = await fixture(html` <pharos-progress-bar value="40"></pharos-progress-bar> `);
+    component = await fixture(
+      html` <test-pharos-progress-bar value="40"></test-pharos-progress-bar> `
+    );
     const internalBar = component.renderRoot.querySelector('.progress-bar') as HTMLDivElement;
     const slicedBackgroundColor = internalBar?.style.background;
 

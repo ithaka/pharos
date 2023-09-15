@@ -1,4 +1,5 @@
 module.exports = {
+  sourceType: 'unambiguous',
   plugins: [
     '@babel/plugin-transform-shorthand-properties',
     '@babel/plugin-transform-block-scoping',

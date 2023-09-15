@@ -41,7 +41,7 @@
   margin-top: var(--pharos-spacing-one-half-x);
 }
 
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
   .footer__row--main {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto;
@@ -54,7 +54,7 @@
   }
 }
 
-@media only screen and (max-width: 570px) {
+@media only screen and (width <= 570px) {
   .footer__row--main {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto auto auto;

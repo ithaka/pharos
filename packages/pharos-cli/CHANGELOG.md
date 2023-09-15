@@ -1,5 +1,11 @@
 # @ithaka/pharos-cli
 
+## 5.4.0
+
+### Minor Changes
+
+- [#575](https://github.com/ithaka/pharos/pull/575) [`730d381`](https://github.com/ithaka/pharos/commit/730d381dd86fffe2543e37e2ef9a367611a997f1) Thanks [@daneah](https://github.com/daneah)! - Support latest Storybook CSF format
+
 ## 5.3.0
 
 ### Minor Changes

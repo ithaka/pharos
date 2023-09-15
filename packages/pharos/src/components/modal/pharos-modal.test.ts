@@ -10,31 +10,31 @@ describe('pharos-modal', () => {
 
   const getSimpleModal = () => {
     return html`
-      <pharos-modal id="my-modal" header="Pharos modal">
+      <test-pharos-modal id="my-modal" header="Pharos modal">
         I am a modal
         <div slot="footer">
           <button type="button" data-modal-close>Cancel</button>
           <button type="button">Ok</button>
         </div>
-      </pharos-modal>
+      </test-pharos-modal>
     `;
   };
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-modal header="Pharos modal">
+      <test-pharos-modal header="Pharos modal">
         <p>I am a modal</p>
         <div slot="footer">
           <button type="button" data-modal-close>Cancel</button>
           <button type="button">Ok</button>
         </div>
-      </pharos-modal>
+      </test-pharos-modal>
     `);
 
     componentNoFooter = await fixture(html`
-      <pharos-modal header="Pharos modal">
+      <test-pharos-modal header="Pharos modal">
         <p>I am a modal</p>
-      </pharos-modal>
+      </test-pharos-modal>
     `);
   });
 
@@ -90,20 +90,20 @@ describe('pharos-modal', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(html`
-      <pharos-modal header="Pharos modal">
-        <pharos-text-input style="margin-bottom: 1.5rem" data-modal-focus>
+      <test-pharos-modal header="Pharos modal">
+        <test-pharos-text-input style="margin-bottom: 1.5rem" data-modal-focus>
           <span slot="label">Name</span>
-        </pharos-text-input>
+        </test-pharos-text-input>
         <div slot="footer">
           <button type="button" data-modal-close>Cancel</button>
           <button type="button">Ok</button>
         </div>
-      </pharos-modal>
+      </test-pharos-modal>
     `);
     component.open = true;
     await component.updateComplete;
 
-    const input = component.querySelector('pharos-text-input') as PharosTextInput;
+    const input = component.querySelector('test-pharos-text-input') as PharosTextInput;
 
     expect(activeElement === input['_input']).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
@@ -118,7 +118,7 @@ describe('pharos-modal', () => {
 
     const trigger = document.createElement('button');
     const handleClick = (): void => {
-      const modal = document.querySelector('pharos-modal') as PharosModal;
+      const modal = document.querySelector('test-pharos-modal') as PharosModal;
       modal.open = true;
     };
     trigger.setAttribute('id', 'trigger');
@@ -366,9 +366,9 @@ describe('pharos-modal', () => {
   });
 
   it('throws an error for an invalid size value', async () => {
-    component = await fixture(html` <pharos-modal size="fake">Hi there!</pharos-modal> `).catch(
-      (e) => e
-    );
+    component = await fixture(
+      html` <test-pharos-modal size="fake">Hi there!</test-pharos-modal> `
+    ).catch((e) => e);
     expect('fake is not a valid size. Valid sizes are: small, medium, large').to.be.thrown;
   });
 

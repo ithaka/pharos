@@ -8,12 +8,12 @@ describe('pharos-dropdown-menu-nav-link', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <pharos-dropdown-menu-nav-link
+      <test-pharos-dropdown-menu-nav-link
         href="#"
         id="smurfs-link"
         data-dropdown-menu-id="smurfs-menu"
         data-dropdown-menu-hover
-        >Smurfs</pharos-dropdown-menu-nav-link
+        >Smurfs</test-pharos-dropdown-menu-nav-link
       >
     `);
   });

@@ -61,7 +61,7 @@
   }
 }
 
-:host([checked]:not([invalidated]):not([disabled])) .input__icon {
+:host([checked]:not([invalidated], [disabled])) .input__icon {
   .inner {
     fill: var(--pharos-color-interactive-secondary);
   }
@@ -80,10 +80,7 @@
   }
 }
 
-:host(:not([checked]):not([disabled]))
-  #radio-element:not(:focus)
-  + .input-wrapper:hover
-  .input__icon {
+:host(:not([checked], [disabled])) #radio-element:not(:focus) + .input-wrapper:hover .input__icon {
   .outer,
   .hover {
     stroke: var(--pharos-color-hover-primary);

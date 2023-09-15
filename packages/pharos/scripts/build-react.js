@@ -75,7 +75,8 @@ const createDefaultProps = (reactName) => {
         (attribute) => attribute.default === property.default && attribute.resolveInitializer
       );
       const defaultValue = hasInitializer
-        ? modules.find((item) => item.kind === 'variable' && item.name === property.default).default
+        ? modules.find((item) => item.kind === 'variable' && item.name === property.default)
+            ?.default
         : property.default;
       return `${property.name}: ${defaultValue},\n`;
     });

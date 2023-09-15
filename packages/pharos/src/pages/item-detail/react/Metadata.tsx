@@ -3,14 +3,11 @@ import type { FC } from 'react';
 import { item, metadata } from '../mocks';
 
 import { PharosHeading } from '../../../react-components/heading/pharos-heading';
+import logo from '@config/assets/images/item-detail/portal-logo.png';
 
 export const Metadata: FC = () => (
   <div className="item-detail-page__container--metadata">
-    <img
-      src="./images/item-detail/portal-logo.png"
-      alt="portal logo"
-      className="item-detail-page__image--collection"
-    />
+    <img src={logo} alt="portal logo" className="item-detail-page__image--collection" />
     <div className="item-detail-page__label--type">{item.type}</div>
     <PharosHeading level={1} preset="3" className="item-detail-page__heading--metadata">
       {item.title}

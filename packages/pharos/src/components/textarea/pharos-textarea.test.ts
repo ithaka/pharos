@@ -9,7 +9,7 @@ describe('pharos-textarea', () => {
 
   beforeEach(async () => {
     component = await fixture(
-      html`<pharos-textarea><span slot="label">I am a label</span></pharos-textarea>`
+      html`<test-pharos-textarea><span slot="label">I am a label</span></test-pharos-textarea>`
     );
   });
 
@@ -25,32 +25,38 @@ describe('pharos-textarea', () => {
 
   it('is accessible when disabled', async () => {
     component = await fixture(
-      html`<pharos-textarea disabled><span slot="label">I am a label</span></pharos-textarea>`
+      html`<test-pharos-textarea disabled
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >`
     );
     await expect(component).to.be.accessible();
   });
 
   it('is accessible when readonly', async () => {
     component = await fixture(
-      html`<pharos-textarea readonly><span slot="label">I am a label</span></pharos-textarea>`
+      html`<test-pharos-textarea readonly
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >`
     );
     await expect(component).to.be.accessible();
   });
 
   it('sets its default attributes', async () => {
     component = await fixture(html`
-      <pharos-textarea>
+      <test-pharos-textarea>
         <span slot="label">I am a label</span>
-      </pharos-textarea>
+      </test-pharos-textarea>
     `);
     expect(component).dom.to.equal(
-      `<pharos-textarea cols="20" data-pharos-component="PharosTextarea" dirname="" message="" name="" placeholder="" resize="both" rows="2" value="" wrap="soft"><span slot="label">I am a label</span></pharos-textarea>`
+      `<test-pharos-textarea cols="20" data-pharos-component="PharosTextarea" dirname="" message="" name="" placeholder="" resize="both" rows="2" value="" wrap="soft"><span slot="label">I am a label</span></test-pharos-textarea>`
     );
   });
 
   it('has an attribute to set the placeholder text of the input', async () => {
     component = await fixture(html`
-      <pharos-textarea placeholder="test"><span slot="label">I am a label</span></pharos-textarea>
+      <test-pharos-textarea placeholder="test"
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >
     `);
     expect(component.getAttribute('placeholder')).to.equal('test');
     expect(component['_textarea'].getAttribute('placeholder')).to.equal('test');
@@ -63,7 +69,9 @@ describe('pharos-textarea', () => {
 
   it('has an attribute to set input value', async () => {
     component = await fixture(html`
-      <pharos-textarea value="test"><span slot="label">I am a label</span></pharos-textarea>
+      <test-pharos-textarea value="test"
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >
     `);
     expect(component.getAttribute('value')).to.equal('test');
     expect(component['_textarea'].value).to.equal('test');
@@ -71,14 +79,18 @@ describe('pharos-textarea', () => {
 
   it('has an attribute to set resize options', async () => {
     component = await fixture(html`
-      <pharos-textarea resize="none"><span slot="label">I am a label</span></pharos-textarea>
+      <test-pharos-textarea resize="none"
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >
     `);
     expect(component.getAttribute('resize')).to.equal('none');
   });
 
   it('throws an error for an invalid resize value', async () => {
     component = await fixture(html`
-      <pharos-textarea resize="blah"><span slot="label">I am a label</span></pharos-textarea>
+      <test-pharos-textarea resize="blah"
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >
     `).catch((e) => e);
     expect('blah is not a valid resize value. Valid values are: none, vertical, horizontal, both')
       .to.be.thrown;
@@ -86,14 +98,18 @@ describe('pharos-textarea', () => {
 
   it('has an attribute to set wrap options', async () => {
     component = await fixture(html`
-      <pharos-textarea wrap="hard"><span slot="label">I am a label</span></pharos-textarea>
+      <test-pharos-textarea wrap="hard"
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >
     `);
     expect(component.getAttribute('wrap')).to.equal('hard');
   });
 
   it('throws an error for an invalid wrap value', async () => {
     component = await fixture(html`
-      <pharos-textarea wrap="blah"><span slot="label">I am a label</span></pharos-textarea>
+      <test-pharos-textarea wrap="blah"
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >
     `).catch((e) => e);
     expect('blah is not a valid wrap value. Valid values are: soft, hard').to.be.thrown;
   });
@@ -111,7 +127,9 @@ describe('pharos-textarea', () => {
       eventSource = event.composedPath()[0] as Element;
     };
     component = await fixture(html`
-      <pharos-textarea @change=${onChange}><span slot="label">I am a label</span></pharos-textarea>
+      <test-pharos-textarea @change=${onChange}
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >
     `);
 
     component['_textarea'].value = 'test';
@@ -143,7 +161,9 @@ describe('pharos-textarea', () => {
     document.addEventListener('focusin', onFocusIn);
 
     component = await fixture(
-      html`<pharos-textarea disabled><span slot="label">I am a label</span></pharos-textarea>`
+      html`<test-pharos-textarea disabled
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >`
     );
 
     component['_textarea'].focus();
@@ -155,7 +175,9 @@ describe('pharos-textarea', () => {
 
   it('renders a required asterisk and hidden text when input is required', async () => {
     component = await fixture(
-      html` <pharos-textarea required><span slot="label">I am a label</span></pharos-textarea> `
+      html`
+        <test-pharos-textarea required><span slot="label">I am a label</span></test-pharos-textarea>
+      `
     );
     expect(component).shadowDom.to.equal(`
       <label for="textarea-element">
@@ -190,8 +212,8 @@ describe('pharos-textarea', () => {
   it('renders a provided message', async () => {
     component = await fixture(
       html`
-        <pharos-textarea message="I am invalid"
-          ><span slot="label">I am a label</span></pharos-textarea
+        <test-pharos-textarea message="I am invalid"
+          ><span slot="label">I am a label</span></test-pharos-textarea
         >
       `
     );
@@ -231,7 +253,11 @@ describe('pharos-textarea', () => {
 
   it('removes invalidated state when validated', async () => {
     component = await fixture(
-      html` <pharos-textarea invalidated><span slot="label">I am a label</span></pharos-textarea> `
+      html`
+        <test-pharos-textarea invalidated
+          ><span slot="label">I am a label</span></test-pharos-textarea
+        >
+      `
     );
     component.validated = true;
     await component.updateComplete;
@@ -242,7 +268,11 @@ describe('pharos-textarea', () => {
 
   it('removes validated state when invalidated', async () => {
     component = await fixture(
-      html` <pharos-textarea validated><span slot="label">I am a label</span></pharos-textarea> `
+      html`
+        <test-pharos-textarea validated
+          ><span slot="label">I am a label</span></test-pharos-textarea
+        >
+      `
     );
     component.invalidated = true;
     await component.updateComplete;
@@ -256,9 +286,9 @@ describe('pharos-textarea', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <pharos-textarea name="my-textarea" value="test">
+        <test-pharos-textarea name="my-textarea" value="test">
           <span slot="label">I am a label</span>
-        </pharos-textarea>
+        </test-pharos-textarea>
       `,
       { parentNode }
     );
@@ -274,9 +304,9 @@ describe('pharos-textarea', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <pharos-textarea name="my-textarea" value="test" disabled>
+        <test-pharos-textarea name="my-textarea" value="test" disabled>
           <span slot="label">I am a label</span>
-        </pharos-textarea>
+        </test-pharos-textarea>
       `,
       { parentNode }
     );
@@ -305,9 +335,9 @@ describe('pharos-textarea', () => {
     parentNode.setAttribute('name', 'my-form');
     component = await fixture(
       html`
-        <pharos-textarea name="my-textarea" value="test">
+        <test-pharos-textarea name="my-textarea" value="test">
           <span slot="label">I am a label</span>
-        </pharos-textarea>
+        </test-pharos-textarea>
       `,
       { parentNode }
     );

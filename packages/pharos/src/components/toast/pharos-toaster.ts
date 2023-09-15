@@ -12,6 +12,8 @@ import { DEFAULT_STATUS, DEFAULT_INDEFINITE } from './pharos-toast';
 import { v4 as uuidv4 } from 'uuid';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 
+const DEFAULT_RETURN_ELEMENTS: Array<HTMLElement> = [];
+
 /**
  * pharos-toast-open event.
  *
@@ -49,6 +51,7 @@ interface ToastCreateDetail {
   content: ToastContent;
   status?: ToastStatus;
   indefinite?: ToastIndefinite;
+  returnElements?: Array<HTMLElement>;
 }
 
 interface ToastUpdateDetail {
@@ -77,6 +80,7 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
 
   @state()
   private _toasts: ToastDetail[] = [];
+  private returnElements = DEFAULT_RETURN_ELEMENTS;
 
   constructor() {
     super();
@@ -108,7 +112,9 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
   }
 
   private async _openToast(event: Event): Promise<void> {
-    const { content, status, id, indefinite } = <ToastCreateDetail>(<CustomEvent>event).detail;
+    const { content, status, id, indefinite, returnElements } = <ToastCreateDetail>(
+      (<CustomEvent>event).detail
+    );
     const toastId = this._getToastID(id);
 
     this._toasts = [
@@ -120,6 +126,7 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
       },
       ...this._toasts,
     ];
+    this.returnElements = returnElements ?? DEFAULT_RETURN_ELEMENTS;
 
     await this.updateComplete;
     (this.renderRoot.querySelector(`#${toastId}`) as HTMLElement)?.focus();
@@ -141,9 +148,22 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
     });
   }
 
+  private _focusOnReturnElements(returnElements: Array<HTMLElement>): void {
+    for (const element of returnElements) {
+      if (element?.isConnected) {
+        element.focus();
+        return;
+      }
+    }
+  }
+
   private _closeToast(event: CustomEvent): void {
     const { id } = <ToastCloseDetail>(<CustomEvent>event).detail || {};
-    this._toasts = this._toasts.filter((toast) => toast.id !== id);
+    const toast = document.getElementById(this._getToastID(id));
+    if (toast) {
+      this.removeChild(toast);
+    }
+    this._focusOnReturnElements(this.returnElements);
   }
 
   private _renderToast(toast: ToastDetail): TemplateResult {
