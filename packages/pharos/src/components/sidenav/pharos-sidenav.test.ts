@@ -1,4 +1,4 @@
-import { aTimeout, fixture, expect } from '@open-wc/testing';
+import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import { setViewport } from '@web/test-runner-commands';
 
@@ -12,7 +12,7 @@ describe('pharos-sidenav', () => {
     await setViewport({ width: 1440, height: 900 });
     component = await fixture(
       html`
-        <test-pharos-sidenav>
+        <test-pharos-sidenav has-close-button open>
           <test-pharos-link slot="top" href="/" id="jstor-logo">JSTOR</test-pharos-link>
           <test-pharos-input-group
             slot="top"
@@ -87,15 +87,15 @@ describe('pharos-sidenav', () => {
     await expect(component).to.be.accessible();
   });
 
-  it('slides out when the close button is clicked', async () => {
+  it('closes when the close button is clicked', async () => {
     await setViewport({ width: 1055, height: 768 });
-    component.slide = true;
+    component.open = true;
     await component.updateComplete;
 
     const button = component.renderRoot.querySelector('.side-element__button') as PharosButton;
     button?.click();
     await component.updateComplete;
-    expect(component.slide).to.be.false;
+    expect(component.open).to.be.false;
   });
 
   it('fires a custom event pharos-sidenav-close after closing', async () => {
@@ -112,17 +112,6 @@ describe('pharos-sidenav', () => {
     await component.updateComplete;
 
     expect(eventTriggered && detail === component).to.be.true;
-  });
-
-  it('resets its slide status when going back to a viewport above 1055px', async () => {
-    await setViewport({ width: 1055, height: 768 });
-    component.slide = true;
-    await component.updateComplete;
-
-    await setViewport({ width: 1056, height: 768 });
-    await component.updateComplete;
-    await aTimeout(1000);
-    expect(component.slide).to.be.false;
   });
 
   it('renders a skip link when attribute main-content-id is passed', async () => {
