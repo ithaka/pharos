@@ -42,8 +42,9 @@ export class PharosDropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixi
   private _hover = false;
 
   protected override render(): TemplateResult {
-    return html`<div
-      tabindex="0"
+    return html`<button
+      aria-expanded="${this.isActive}"
+      aria-haspopup="true"
       id="category-element"
       class="${classMap({
         [`link--alert`]: this._alert,
@@ -52,6 +53,6 @@ export class PharosDropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixi
     >
       <slot name="category"></slot>
       <pharos-icon name="chevron-down"></pharos-icon>
-    </div>`;
+    </button>`;
   }
 }
