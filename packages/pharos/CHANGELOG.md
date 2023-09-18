@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.26.1
+
+### Patch Changes
+
+- [#613](https://github.com/ithaka/pharos/pull/613) [`ef13fa1`](https://github.com/ithaka/pharos/commit/ef13fa18638f630f55716c60d81c9ba8d23c255d) Thanks [@jialin-he](https://github.com/jialin-he)! - Add overflow to sheet
+
 ## 12.26.0
 
 ### Minor Changes
