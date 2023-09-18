@@ -23,7 +23,9 @@ describe('pharos-header', () => {
               id="browse-link"
               data-dropdown-menu-id="browse-menu"
               data-dropdown-menu-hover
-              >Browse</test-pharos-dropdown-menu-nav-category
+              >
+                <span slot="category">Browse</span>
+              </test-pharos-dropdown-menu-nav-category
             >
             <test-pharos-dropdown-menu id="browse-menu">
               <test-pharos-dropdown-menu-item link="/subjects"
@@ -38,7 +40,9 @@ describe('pharos-header', () => {
               id="tools-link"
               data-dropdown-menu-id="tools-menu"
               data-dropdown-menu-hover
-              >Tools</test-pharos-dropdown-menu-nav-category
+              >
+                <span slot="category">Browse</span>
+              </test-pharos-dropdown-menu-nav-category
             >
             <test-pharos-dropdown-menu id="tools-menu">
               <test-pharos-dropdown-menu-item link="/account/workspace"
