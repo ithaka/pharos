@@ -19,9 +19,11 @@ const accountNav = (section: string) => (
       data-dropdown-menu-id={`profile-menu-${section}`}
       data-dropdown-menu-hover
     >
-      <span className="hide-for-small">human@ithaka.org</span>
-      <span className="show-for-small" style={{ display: 'none' }}>
-        Account
+      <span slot="category">
+        <span className="hide-for-small">human@ithaka.org</span>
+        <span className="show-for-small" style={{ display: 'none' }}>
+          Account
+        </span>
       </span>
     </PharosDropdownMenuNavCategory>
     <PharosDropdownMenu id={`profile-menu-${section}`}>
@@ -112,14 +114,14 @@ export const Header: FC = () => (
           id="adv-search-menu-link"
           className="hide-for-small"
         >
-          Advanced Search
+          <span slot="category">Advanced Search</span>
         </PharosDropdownMenuNavLink>
         <PharosDropdownMenuNavCategory
           id="browse-link"
           data-dropdown-menu-id="browse-menu"
           data-dropdown-menu-hover
         >
-          Browse
+          <span slot="category">Browse</span>
         </PharosDropdownMenuNavCategory>
         <PharosDropdownMenu id="browse-menu">
           <PharosDropdownMenuItem link="/subjects">by Subject</PharosDropdownMenuItem>
@@ -137,7 +139,7 @@ export const Header: FC = () => (
           data-dropdown-menu-hover
           className="hide-for-small"
         >
-          Tools
+          <span slot="category">Tools</span>
         </PharosDropdownMenuNavCategory>
         <PharosDropdownMenu id="tools-menu">
           <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>
