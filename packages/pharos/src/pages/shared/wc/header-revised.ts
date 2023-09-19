@@ -58,8 +58,9 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
             id="adv-search-menu-link"
             data-dropdown-menu-id="search-menu"
             data-dropdown-menu-hover
-            >Search</storybook-pharos-dropdown-menu-nav-category
           >
+            <span slot="category">Search</span>
+          </storybook-pharos-dropdown-menu-nav-category>
           <storybook-pharos-dropdown-menu id="search-menu">
             <storybook-pharos-dropdown-menu-item link="/action/showAdvancedSearch"
               >Advanced Search</storybook-pharos-dropdown-menu-item
@@ -72,8 +73,9 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
             id="browse-link"
             data-dropdown-menu-id="browse-menu"
             data-dropdown-menu-hover
-            >Browse</storybook-pharos-dropdown-menu-nav-category
           >
+            <span slot="category">Browse</span>
+          </storybook-pharos-dropdown-menu-nav-category>
           <storybook-pharos-dropdown-menu id="browse-menu">
             <storybook-pharos-dropdown-menu-item link="/subjects"
               >by Subject</storybook-pharos-dropdown-menu-item
@@ -90,8 +92,9 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
             data-dropdown-menu-id="tools-menu"
             data-dropdown-menu-hover
             class="hide-for-small"
-            >Tools</storybook-pharos-dropdown-menu-nav-category
           >
+            <span slot="category">Tools</span>
+          </storybook-pharos-dropdown-menu-nav-category>
           <storybook-pharos-dropdown-menu id="tools-menu">
             <storybook-pharos-dropdown-menu-item link="/account/workspace"
               >Workspace</storybook-pharos-dropdown-menu-item

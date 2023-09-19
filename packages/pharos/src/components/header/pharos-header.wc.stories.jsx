@@ -115,7 +115,9 @@ export const Base = {
               id="browse-link"
               data-dropdown-menu-id="browse-menu"
               data-dropdown-menu-hover
-              >Browse</storybook-pharos-dropdown-menu-nav-category
+              >
+                <span slot="category">Browse</span>
+              </storybook-pharos-dropdown-menu-nav-category
             >
             <storybook-pharos-dropdown-menu id="browse-menu">
               <storybook-pharos-dropdown-menu-item link="/subjects">by Subject</storybook-pharos-dropdown-menu-item>
@@ -133,7 +135,9 @@ export const Base = {
               id="tools-link"
               data-dropdown-menu-id="tools-menu"
               data-dropdown-menu-hover
-              >Tools</storybook-pharos-dropdown-menu-nav-category
+              >
+                <span slot="category">Tools</span>
+              </storybook-pharos-dropdown-menu-nav-category
             >
             <storybook-pharos-dropdown-menu id="tools-menu">
               <storybook-pharos-dropdown-menu-item link="/account/workspace"

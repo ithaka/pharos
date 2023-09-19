@@ -67,7 +67,7 @@ export const HeaderRevised: FC<Header> = ({ showSearch = false }) => (
             data-dropdown-menu-id="search-menu"
             data-dropdown-menu-hover
           >
-            Search
+            <span slot="category">Search</span>
           </PharosDropdownMenuNavCategory>
           <PharosDropdownMenu id="search-menu">
             <PharosDropdownMenuItem link="/action/showAdvancedSearch">
@@ -82,7 +82,7 @@ export const HeaderRevised: FC<Header> = ({ showSearch = false }) => (
             data-dropdown-menu-id="browse-menu"
             data-dropdown-menu-hover
           >
-            Browse
+            <span slot="category">Browse</span>
           </PharosDropdownMenuNavCategory>
           <PharosDropdownMenu id="browse-menu">
             <PharosDropdownMenuItem link="/subjects">by Subject</PharosDropdownMenuItem>
@@ -100,7 +100,7 @@ export const HeaderRevised: FC<Header> = ({ showSearch = false }) => (
             data-dropdown-menu-hover
             className="hide-for-small"
           >
-            Tools
+            <span slot="category">Tools</span>
           </PharosDropdownMenuNavCategory>
           <PharosDropdownMenu id="tools-menu">
             <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>

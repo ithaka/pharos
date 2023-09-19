@@ -8,11 +8,12 @@ const accountNav = (section: string) => html`
       id="profile-link-${section}"
       data-dropdown-menu-id="profile-menu-${section}"
       data-dropdown-menu-hover
-      ><span class="hide-for-small">human@ithaka.org</span
-      ><span class="show-for-small" style="display: none"
-        >Account</span
-      ></storybook-pharos-dropdown-menu-nav-category
     >
+      <span slot="category">
+        <span class="hide-for-small">human@ithaka.org</span>
+        <span class="show-for-small" style="display: none">Account</span>
+      </span>
+    </storybook-pharos-dropdown-menu-nav-category>
     <storybook-pharos-dropdown-menu id="profile-menu-${section}">
       <storybook-pharos-dropdown-menu-item link="/account/profile"
         >Profile</storybook-pharos-dropdown-menu-item
@@ -96,7 +97,7 @@ export const Header = (): TemplateResult => html`
           data-dropdown-menu-id="browse-menu"
           data-dropdown-menu-hover
         >
-          Browse
+          <span slot="category">Browse</span>
         </storybook-pharos-dropdown-menu-nav-category>
         <storybook-pharos-dropdown-menu id="browse-menu">
           <storybook-pharos-dropdown-menu-item link="/subjects"
@@ -117,7 +118,7 @@ export const Header = (): TemplateResult => html`
           data-dropdown-menu-id="tools-menu"
           data-dropdown-menu-hover
         >
-          Tools
+          <span slot="category">Tools</span>
         </storybook-pharos-dropdown-menu-nav-category>
         <storybook-pharos-dropdown-menu id="tools-menu">
           <storybook-pharos-dropdown-menu-item link="/account/workspace">
