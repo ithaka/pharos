@@ -230,10 +230,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       this._isDragging = false;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
       const sheetHeight = sheetContent.clientHeight;
+      if (sheetHeight === this._startHeight) return;
       if (sheetHeight > this._startHeight) {
         sheetContent.style.height = '100%';
       } else {
-        sheetContent.style.height = '50%';
+        sheetContent.style.height = '60%';
       }
     }
   }
