@@ -55,6 +55,10 @@
   }
 }
 
+:host([open]:not([expanded])) {
+  transition-timing-function: cubic-bezier(0.2, 0, 0.38, 0.9);
+}
+
 .sheet__content {
   @include mixins.font-base;
 
@@ -72,7 +76,7 @@
   border: 1px solid var(--pharos-color-marble-gray-base);
   border-radius: var(--pharos-radius-base-standard);
   outline: 0;
-  transition: height var(--pharos-transition-base);
+  transition: height var(--pharos-transition-duration-short);
   box-shadow: 0 1px 2px 0 rgb(18 18 18 / 0.3), 0 -4px 8px 3px rgb(18 18 18 / 0.15);
   contain: layout;
 
@@ -85,6 +89,12 @@
     margin: var(--pharos-spacing-one-half-x) auto 0 auto;
     box-sizing: border-box;
     cursor: grab;
+  }
+}
+
+:host(:not([open])) {
+  .sheet__content {
+    transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
   }
 }
 
