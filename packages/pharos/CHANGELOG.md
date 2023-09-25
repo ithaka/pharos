@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 12.26.2
+
+### Patch Changes
+
+- [#617](https://github.com/ithaka/pharos/pull/617) [`6ec2d69`](https://github.com/ithaka/pharos/commit/6ec2d695f4fcaefc46616f7e582d9e71f641a4f6) Thanks [@jialin-he](https://github.com/jialin-he)! - Update default height to sheet and emit events
+
 ## 12.26.1
 
 ### Patch Changes
