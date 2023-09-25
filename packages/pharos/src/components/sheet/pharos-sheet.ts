@@ -53,7 +53,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
    * Indicates if the sheet is allowed to expand.
    * @attr enableExpansion
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean, reflect: true, attribute: 'enable-expansion' })
   public enableExpansion = true;
 
   /**
@@ -230,10 +230,17 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       this._isDragging = false;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
       const sheetHeight = sheetContent.clientHeight;
+      const details = {
+        bubbles: true,
+        composed: true,
+      };
+      if (sheetHeight === this._startHeight) return;
       if (sheetHeight > this._startHeight) {
         sheetContent.style.height = '100%';
+        this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
       } else {
-        sheetContent.style.height = '50%';
+        sheetContent.style.height = '60%';
+        this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
       }
     }
   }
