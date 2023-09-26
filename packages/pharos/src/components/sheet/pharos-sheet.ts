@@ -175,6 +175,8 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         this.dispatchEvent(new CustomEvent('pharos-sheet-open', { ...details, cancelable: true }))
       ) {
         this.open = true;
+        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+        sheetContent.style.height = '60%';
       }
     }
   }
@@ -188,7 +190,8 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   private _handleOverlayClick(event: MouseEvent): void {
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-    if (sheetContent.clientHeight - event.screenY > 5) {
+    const overlayContent = this.shadowRoot?.querySelector(`.sheet__overlay`) as HTMLDivElement;
+    if (overlayContent.clientHeight - event.clientY > sheetContent.clientHeight) {
       this._closeSheet(event.target);
     }
   }
