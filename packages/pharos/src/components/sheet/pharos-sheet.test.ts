@@ -10,7 +10,9 @@ describe('pharos-sheet', () => {
 
   beforeEach(async () => {
     component = await fixture(
-      html` <test-pharos-sheet id="my-sheet" label="Test sheet"> My Sheet </test-pharos-sheet> `
+      html`
+        <test-pharos-sheet id="my-sheet" label="Test sheet" has-close> My Sheet </test-pharos-sheet>
+      `
     );
   });
 

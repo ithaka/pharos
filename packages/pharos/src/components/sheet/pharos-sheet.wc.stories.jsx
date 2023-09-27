@@ -27,16 +27,45 @@ export const Base = {
     `,
 };
 
-export const WithFooter = {
+export const WithClose = {
   render: () =>
     html`
       <div>
         <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-sheet id="my-sheet" label="Pharos sheet" footer-divider="true">
-          <div style="padding-bottom: 2rem">Lorem ipsum dolor sit amet</div>
-          <storybook-pharos-button slot="footer">Do something</storybook-pharos-button>
+        <storybook-pharos-sheet id="my-sheet" label="Pharos sheet" has-close>
+          <div>Lorem ipsum dolor sit amet</div>
+        </storybook-pharos-sheet>
+      </div>
+    `,
+};
+
+export const LongContent = {
+  render: () =>
+    html`
+      <div>
+        <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
+          Click Me
+        </storybook-pharos-button>
+        <storybook-pharos-sheet id="my-sheet" label="Pharos sheet">
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
+          <div>Lorem ipsum dolor sit amet</div>
         </storybook-pharos-sheet>
       </div>
     `,
