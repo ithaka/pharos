@@ -204,7 +204,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   private _handleMouseDragStart(event: MouseEvent): void {
     if (!this.enableExpansion) return;
-    if (this._isDragging) return;
+    if (this._isDragging) {
+      this._handleDragEnd();
+    }
     this._isDragging = true;
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
     this._startHeight = sheetContent.clientHeight;
@@ -213,7 +215,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   private _handleTouchDragStart(event: TouchEvent): void {
     if (!this.enableExpansion) return;
-    if (this._isDragging) return;
+    if (this._isDragging) {
+      this._handleDragEnd();
+    }
     this._isDragging = true;
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
     this._startHeight = sheetContent.clientHeight;
