@@ -80,15 +80,19 @@
   box-shadow: 0 1px 2px 0 rgb(18 18 18 / 0.3), 0 -4px 8px 3px rgb(18 18 18 / 0.15);
   contain: layout;
 
-  .sheet__handle {
-    background: var(--pharos-color-marble-gray-80);
-    width: var(--pharos-spacing-three-and-a-half-x);
-    height: 4px;
-    min-height: 4px;
-    border-radius: 2px;
-    margin: var(--pharos-spacing-one-half-x) auto 0 auto;
-    box-sizing: border-box;
+  .sheet__handle_wrapper {
     cursor: grab;
+    margin: 0 30%;
+
+    .sheet__handle {
+      margin: var(--pharos-spacing-one-half-x) auto 0 auto;
+      background: var(--pharos-color-marble-gray-80);
+      width: var(--pharos-spacing-three-and-a-half-x);
+      height: 4px;
+      min-height: 4px;
+      border-radius: 2px;
+      box-sizing: border-box;
+    }
   }
 }
 

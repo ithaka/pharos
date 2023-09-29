@@ -159,6 +159,10 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       ) {
         this.open = false;
         this.expanded = false;
+        this.removeEventListener('touchend', this._handleDragEnd);
+        this.removeEventListener('mouseup', this._handleDragEnd);
+        this.removeEventListener('touchmove', this._handleTouchDragging);
+        this.addEventListener('mousemove', this._handleMouseDragging);
       }
     }
   }
@@ -206,6 +210,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     if (!this.enableExpansion) return;
     if (this._isDragging) {
       this._handleDragEnd();
+      return;
     }
     this._isDragging = true;
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
@@ -217,6 +222,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     if (!this.enableExpansion) return;
     if (this._isDragging) {
       this._handleDragEnd();
+      return;
     }
     this._isDragging = true;
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
@@ -359,10 +365,17 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
           aria-describedby="${ifDefined(this.descriptionId)}"
           @click=${this._handleDialogClick}
           @touchstart=${this._handleTouchDragStart}
+          @touchend=${this._handleDragEnd}
         >
           <focus-trap>
             <div class="sheet__content">
-              <div class="sheet__handle" @mousedown=${this._handleMouseDragStart}></div>
+              <div
+                class="sheet__handle_wrapper"
+                @mousedown=${this._handleMouseDragStart}
+                @mouseup=${this._handleDragEnd}
+              >
+                <div class="sheet__handle"></div>
+              </div>
               ${this._renderCloseButton()}
               <div class="sheet__body">
                 ${this.descriptionContent}
