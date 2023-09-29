@@ -229,6 +229,10 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       const delta = this._startY - event.pageY;
       const newHeight = this._startHeight + delta;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+      if (sheetContent.style.height === '100%' && event.pageY < this._startY) {
+        this._isDragging = false;
+        return;
+      }
       sheetContent.style.height = `${newHeight}px`;
     }
   }
@@ -238,6 +242,10 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       const delta = this._startY - event.touches?.[0].pageY;
       const newHeight = this._startHeight + delta;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+      if (sheetContent.style.height === '100%' && event.touches?.[0].pageY < this._startY) {
+        this._isDragging = false;
+        return;
+      }
       sheetContent.style.height = `${newHeight}px`;
     }
   }
