@@ -159,10 +159,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       ) {
         this.open = false;
         this.expanded = false;
-        this.removeEventListener('touchend', this._handleDragEnd);
-        this.removeEventListener('mouseup', this._handleDragEnd);
-        this.removeEventListener('touchmove', this._handleTouchDragging);
-        this.addEventListener('mousemove', this._handleMouseDragging);
       }
     }
   }
