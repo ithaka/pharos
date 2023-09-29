@@ -1,5 +1,23 @@
 # @ithaka/pharos
 
+## 13.0.0
+
+### Major Changes
+
+- [#608](https://github.com/ithaka/pharos/pull/608) [`d67125a`](https://github.com/ithaka/pharos/commit/d67125a4a9598475aff9000b18567f734074915f) Thanks [@henryclong](https://github.com/henryclong)! - Adds the coach mark component, which is used to highlight new or unique features
+
+## 12.26.2
+
+### Patch Changes
+
+- [#617](https://github.com/ithaka/pharos/pull/617) [`6ec2d69`](https://github.com/ithaka/pharos/commit/6ec2d695f4fcaefc46616f7e582d9e71f641a4f6) Thanks [@jialin-he](https://github.com/jialin-he)! - Update default height to sheet and emit events
+
+## 12.26.1
+
+### Patch Changes
+
+- [#613](https://github.com/ithaka/pharos/pull/613) [`ef13fa1`](https://github.com/ithaka/pharos/commit/ef13fa18638f630f55716c60d81c9ba8d23c255d) Thanks [@jialin-he](https://github.com/jialin-he)! - Add overflow to sheet
+
 ## 12.26.0
 
 ### Minor Changes
