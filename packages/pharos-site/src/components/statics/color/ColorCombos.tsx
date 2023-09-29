@@ -1,7 +1,6 @@
 import type { FC, CSSProperties } from 'react';
 import { colorBox } from './ColorCombos.module.css';
-// import tokens from '@ithaka/pharos/lib/styles/tokens.js';
-import tokens from '../../../../../pharos/lib/styles/tokens';
+import tokens from '@ithaka/pharos/lib/styles/tokens.js';
 import CrossOut from '../CrossOut';
 import { toTitleCase } from '../../../utils/textConvert';
 

@@ -42,8 +42,8 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
     const body = (
       <main className={main}>
         <div className={topBar}>
-          <PharosSidenavButton isOnBackground />
-          <PharosLink id="skip-link" skip href="#sidenav-skip-link" isOnBackground>
+          <PharosSidenavButton onBackground />
+          <PharosLink id="skip-link" skip href="#sidenav-skip-link" onBackground>
             Skip to main navigation
           </PharosLink>
         </div>

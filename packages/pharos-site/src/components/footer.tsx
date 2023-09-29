@@ -38,7 +38,7 @@ const Footer: FC = () => {
               <li>
                 <PharosLink
                   href="/components/component-status"
-                  isOnBackground
+                  onBackground
                   data-sc="link:component status footer"
                   onClick={handleLinkClick}
                 >
@@ -48,7 +48,7 @@ const Footer: FC = () => {
               <li>
                 <PharosLink
                   href="https://github.com/ithaka/pharos/blob/main/packages/pharos/CHANGELOG.md"
-                  isOnBackground
+                  onBackground
                   target="_blank"
                   data-sc="link:changelog footer"
                 >
@@ -58,7 +58,7 @@ const Footer: FC = () => {
               <li>
                 <PharosLink
                   href="https://pharos.jstor.org/storybooks/wc/"
-                  isOnBackground
+                  onBackground
                   target="_blank"
                   data-sc="link:wc storybook footer"
                 >
@@ -68,7 +68,7 @@ const Footer: FC = () => {
               <li>
                 <PharosLink
                   href="https://pharos.jstor.org/storybooks/react/"
-                  isOnBackground
+                  onBackground
                   target="_blank"
                   data-sc="link:react storybook footer"
                 >
@@ -80,12 +80,12 @@ const Footer: FC = () => {
           <div className={container__center}>
             <ul className={list}>
               <li>
-                <PharosLink href="https://about.jstor.org/" isOnBackground target="_blank">
+                <PharosLink href="https://about.jstor.org/" onBackground target="_blank">
                   About JSTOR
                 </PharosLink>
               </li>
               <li className={container__link}>
-                <PharosLink href="https://www.ithaka.org/careers/" isOnBackground target="_blank">
+                <PharosLink href="https://www.ithaka.org/careers/" onBackground target="_blank">
                   Careers
                 </PharosLink>
                 <strong className={badge}>We&apos;re hiring!</strong>
@@ -94,7 +94,7 @@ const Footer: FC = () => {
                 <PharosLink
                   href="javascript:void(0)"
                   onclick="OneTrust.ToggleInfoDisplay()"
-                  isOnBackground
+                  onBackground
                 >
                   Cookie settings
                 </PharosLink>
@@ -108,7 +108,7 @@ const Footer: FC = () => {
             <div>
               <PharosLink
                 href="mailto:opensource@ithaka.org"
-                isOnBackground
+                onBackground
                 data-sc="link:email footer"
               >
                 Email us
@@ -116,7 +116,7 @@ const Footer: FC = () => {
               or{' '}
               <PharosLink
                 href="https://github.com/ithaka/pharos"
-                isOnBackground
+                onBackground
                 target="_blank"
                 data-sc="link:repo footer"
               >
@@ -132,7 +132,7 @@ const Footer: FC = () => {
           </div>
           <em className={`${note} ${netlifyLink}`}>
             This site is powered by{' '}
-            <PharosLink href="https://www.netlify.com" isOnBackground target="_blank">
+            <PharosLink href="https://www.netlify.com" onBackground target="_blank">
               Netlify
             </PharosLink>
           </em>
