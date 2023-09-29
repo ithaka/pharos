@@ -157,7 +157,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
         this._setupMenu();
       }
 
-      if (!this._currentTrigger?.hasAttribute('data-dropdown-menu-hover') || this._enterByKey) {
+      if (!this._hasHover || this._enterByKey) {
         if (this.open) {
           debounce(() => {
             this._focusContents();
