@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 13.0.0
+
+### Major Changes
+
+- [#608](https://github.com/ithaka/pharos/pull/608) [`d67125a`](https://github.com/ithaka/pharos/commit/d67125a4a9598475aff9000b18567f734074915f) Thanks [@henryclong](https://github.com/henryclong)! - Adds the coach mark component, which is used to highlight new or unique features
+
 ## 12.26.2
 
 ### Patch Changes
