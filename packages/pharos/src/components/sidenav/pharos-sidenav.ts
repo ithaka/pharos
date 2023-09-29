@@ -30,13 +30,13 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
   /**
    * Indicates whether or not the sidenav is open
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean, reflect: true, attribute: 'open' })
   public open = false;
 
   /**
    * Indicates whether or not the close button displays in the sidenav.
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean, reflect: true, attribute: 'has-close-button' })
   public hasCloseButton = false;
 
   /**
@@ -121,20 +121,25 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
       : nothing;
   }
 
+  private _renderCloseButton(): TemplateResult | typeof nothing {
+    return this.hasCloseButton
+      ? html`<pharos-button
+          class="side-element__button"
+          icon="close"
+          variant="subtle"
+          label="Close menu"
+          on-background
+          icon-condensed
+          @click=${this._closeSidenav}
+        ></pharos-button> `
+      : nothing;
+  }
+
   protected override render(): TemplateResult {
     return html`
       <nav id="nav-element" class="side-element__container">
         <div class="side-element__content">
-          <pharos-button
-            class="side-element__button"
-            icon="close"
-            variant="subtle"
-            label="Close menu"
-            on-background
-            icon-condensed
-            @click=${this._closeSidenav}
-          ></pharos-button>
-          ${this._renderSkipToMain()}
+          ${this._renderCloseButton()} ${this._renderSkipToMain()}
           <slot name="top"></slot>
         </div>
         <div class="sidenav__sections">
