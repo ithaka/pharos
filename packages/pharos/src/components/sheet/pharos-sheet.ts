@@ -77,6 +77,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   @state()
   private _startHeight = 0;
   private _startY = 0;
+  private _newHeight = 0;
   private _isDragging = false;
 
   constructor() {
@@ -230,6 +231,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     if (this._isDragging) {
       const delta = this._startY - event.pageY;
       const newHeight = this._startHeight + delta;
+      this._newHeight = newHeight;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
       if (sheetContent.style.height === '100%' && event.pageY < this._startY) {
         this._isDragging = false;
@@ -243,6 +245,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     if (this._isDragging) {
       const delta = this._startY - event.touches?.[0].pageY;
       const newHeight = this._startHeight + delta;
+      this._newHeight = newHeight;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
       if (sheetContent.style.height === '100%' && event.touches?.[0].pageY < this._startY) {
         this._isDragging = false;
@@ -255,16 +258,15 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   private _handleDragEnd(): void {
     if (this._isDragging) {
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-      const sheetHeight = sheetContent.clientHeight;
       const details = {
         bubbles: true,
         composed: true,
       };
-      if (sheetHeight === this._startHeight) {
+      if (this._newHeight === this._startHeight) {
         this._isDragging = false;
         return;
       }
-      if (sheetHeight > this._startHeight) {
+      if (this._newHeight > this._startHeight) {
         sheetContent.style.height = '100%';
         this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
         this.expanded = true;
