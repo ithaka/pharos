@@ -35,6 +35,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     'focus-trap': FocusTrap,
   };
 
+  MAX_EXPAND_PERCENTAGE = '95%';
+  MIN_EXPAND_PERCENTAGE = '60%';
+
   /**
    * Indicates if the sheet is open.
    * @attr open
@@ -107,6 +110,8 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
       if (this.open) {
+        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+        sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
         this._focusContents();
       } else {
         this._returnTriggerFocus();
@@ -177,7 +182,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       ) {
         this.open = true;
         const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-        sheetContent.style.height = '60%';
+        sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
       }
     }
   }
@@ -235,7 +240,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       const newHeight = this._startHeight + delta;
       this._newHeight = newHeight;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-      if (sheetContent.style.height === '100%' && event.pageY < this._startY) {
+      if (sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE && event.pageY < this._startY) {
         this._isDragging = false;
         return;
       }
@@ -249,7 +254,10 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       const newHeight = this._startHeight + delta;
       this._newHeight = newHeight;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-      if (sheetContent.style.height === '100%' && event.touches?.[0].pageY < this._startY) {
+      if (
+        sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE &&
+        event.touches?.[0].pageY < this._startY
+      ) {
         this._isDragging = false;
         return;
       }
@@ -269,12 +277,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         return;
       }
       if (this._newHeight > this._startHeight) {
-        sheetContent.style.height = '100%';
+        sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
         this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
         this.expanded = true;
       } else {
         if (this.expanded) {
-          sheetContent.style.height = '60%';
+          sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
           this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
           this.expanded = false;
         } else {
