@@ -95,6 +95,12 @@
   }
 }
 
+@include mixins.at-least(medium) {
+  .sheet__handle_wrapper {
+    height: var(--pharos-spacing-one-and-a-half-x);
+  }
+}
+
 :host(:not([open])) {
   .sheet__content {
     transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
