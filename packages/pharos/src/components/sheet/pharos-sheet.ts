@@ -188,10 +188,10 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
   }
 
-  private _handleOverlayClick(event: MouseEvent): void {
+  private _handleOverlayClickOnTouch(event: TouchEvent): void {
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
     const overlayContent = this.shadowRoot?.querySelector(`.sheet__overlay`) as HTMLDivElement;
-    if (overlayContent.clientHeight - event.clientY > sheetContent.clientHeight) {
+    if (overlayContent.clientHeight - event.touches?.[0].clientY > sheetContent.clientHeight) {
       this._closeSheet(event.target);
     }
   }
@@ -352,7 +352,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   protected override render(): TemplateResult {
     return html`
-      <div class="sheet__overlay" @click=${this._handleOverlayClick}>
+      <div class="sheet__overlay" @touchstart=${this._handleOverlayClickOnTouch}>
         <div
           role="dialog"
           class="sheet__dialog"
