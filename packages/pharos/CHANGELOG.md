@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 13.0.1
+
+### Patch Changes
+
+- [#620](https://github.com/ithaka/pharos/pull/620) [`7bf150c`](https://github.com/ithaka/pharos/commit/7bf150cee513ce014cafca5330a83f790f68122b) Thanks [@jialin-he](https://github.com/jialin-he)! - update easing function and add close option
+
+- [#620](https://github.com/ithaka/pharos/pull/620) [`7bf150c`](https://github.com/ithaka/pharos/commit/7bf150cee513ce014cafca5330a83f790f68122b) Thanks [@jialin-he](https://github.com/jialin-he)! - Update default height to sheet and emit events
+
 ## 13.0.0
 
 ### Major Changes
