@@ -1,5 +1,19 @@
 # @ithaka/pharos
 
+## 13.0.1
+
+### Patch Changes
+
+- [#620](https://github.com/ithaka/pharos/pull/620) [`7bf150c`](https://github.com/ithaka/pharos/commit/7bf150cee513ce014cafca5330a83f790f68122b) Thanks [@jialin-he](https://github.com/jialin-he)! - update easing function and add close option
+
+- [#620](https://github.com/ithaka/pharos/pull/620) [`7bf150c`](https://github.com/ithaka/pharos/commit/7bf150cee513ce014cafca5330a83f790f68122b) Thanks [@jialin-he](https://github.com/jialin-he)! - Update default height to sheet and emit events
+
+## 13.0.0
+
+### Major Changes
+
+- [#608](https://github.com/ithaka/pharos/pull/608) [`d67125a`](https://github.com/ithaka/pharos/commit/d67125a4a9598475aff9000b18567f734074915f) Thanks [@henryclong](https://github.com/henryclong)! - Adds the coach mark component, which is used to highlight new or unique features
+
 ## 12.26.2
 
 ### Patch Changes

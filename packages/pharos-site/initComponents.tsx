@@ -10,6 +10,7 @@ if (typeof window !== `undefined`) {
     pharos.PharosButton,
     pharos.PharosCheckbox,
     pharos.PharosCheckboxGroup,
+    pharos.PharosCoachMark,
     pharos.PharosCombobox,
     pharos.PharosDropdownMenu,
     pharos.PharosDropdownMenuItem,
