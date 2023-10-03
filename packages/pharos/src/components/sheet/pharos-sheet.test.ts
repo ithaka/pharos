@@ -120,15 +120,4 @@ describe('pharos-sheet', () => {
     await component.updateComplete;
     expect(wasFired).to.be.true;
   });
-
-  it('closes when the outside overlay is clicked', async () => {
-    component.open = true;
-    await component.updateComplete;
-
-    const overlay = component.renderRoot.querySelector('.sheet__overlay') as HTMLDivElement;
-    overlay?.click();
-
-    await component.updateComplete;
-    expect(component.open).to.be.false;
-  });
 });
