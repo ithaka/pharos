@@ -1,5 +1,5 @@
 ---
-'@ithaka/pharos': patch
+'@ithaka/pharos': minor
 ---
 
 allow expansion with attribute in sheet
