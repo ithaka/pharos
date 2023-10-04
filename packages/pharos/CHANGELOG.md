@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 13.1.0
+
+### Minor Changes
+
+- [#618](https://github.com/ithaka/pharos/pull/618) [`b14c37e`](https://github.com/ithaka/pharos/commit/b14c37eb0be3b88b9615bcda3ab562fbb17cabca) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Remove fill on subtle button with disabled state on-background
+
+- [#625](https://github.com/ithaka/pharos/pull/625) [`2fba4e6`](https://github.com/ithaka/pharos/commit/2fba4e6ef53f8487bbb7c8b715499698acf98af8) Thanks [@jialin-he](https://github.com/jialin-he)! - allow expansion with attribute in sheet
+
 ## 13.0.1
 
 ### Patch Changes
