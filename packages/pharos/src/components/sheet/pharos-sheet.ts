@@ -49,7 +49,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
    * Indicates if the sheet is expanded.
    * @attr expanded
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean, reflect: true, attribute: 'expanded' })
   public expanded = false;
 
   /**
@@ -111,7 +111,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     if (changedProperties.has('open')) {
       if (this.open) {
         const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-        sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
+        sheetContent.style.height = this.expanded
+          ? this.MAX_EXPAND_PERCENTAGE
+          : this.MIN_EXPAND_PERCENTAGE;
         this._focusContents();
       } else {
         this._returnTriggerFocus();
@@ -119,6 +121,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
       if (changedProperties.get('open') !== undefined) {
         this._emitVisibilityChange();
+      }
+    }
+    if (changedProperties.has('expanded')) {
+      if (this.expanded) {
+        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+        sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
       }
     }
   }
@@ -182,7 +190,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       ) {
         this.open = true;
         const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-        sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
+        sheetContent.style.height = this.expanded
+          ? this.MAX_EXPAND_PERCENTAGE
+          : this.MIN_EXPAND_PERCENTAGE;
       }
     }
   }
