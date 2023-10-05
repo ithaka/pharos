@@ -1,12 +1,50 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
-import { query } from 'lit/decorators.js';
+import { query, property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { loadingSpinnerStyles } from './pharos-loading-spinner.css';
 import {
   PharosLoadingSpinnerColorStrokePrimary,
   PharosLoadingSpinnerColorStrokeSecondary,
+  PharosLoadingSpinnerColorStrokeOnBackground,
 } from '../../styles/variables';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+
+const SVG_BASE = `<svg
+class="loading-spinner__icon"
+viewBox="25 25 50 50"
+height="56"
+width="56"
+focusable="false"
+>
+<circle
+  class="loading-spinner__animation"
+  cx="50"
+  cy="50"
+  r="20"
+  fill="none"
+  stroke-width="3"
+  stroke-miterlimit="10"
+/>
+</svg>`;
+
+const SVG_SMALL = `<svg
+class="loading-spinner__icon"
+viewBox="25 25 50 50"
+height="18"
+width="18"
+focusable="false"
+>
+<circle
+  class="loading-spinner__animation"
+  cx="50"
+  cy="50"
+  r="20"
+  fill="none"
+  stroke-width="3"
+  stroke-miterlimit="10"
+/>
+</svg>`;
 
 /**
  * Pharos loading spinner component.
@@ -17,6 +55,20 @@ import {
  * @cssprop {Color} --pharos-loading-spinner-color-stroke-secondary - The secondary color of the spinner icon.
  */
 export class PharosLoadingSpinner extends PharosElement {
+  /**
+   * Indicates if the spinner is on background
+   * @attr on-background
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
+  public onBackground = false;
+
+  /**
+   * Indicates if the spinner is small
+   * @attr small
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'small' })
+  public small = false;
+
   @query('.loading-spinner__icon')
   private _icon!: SVGElement;
 
@@ -43,7 +95,7 @@ export class PharosLoadingSpinner extends PharosElement {
       iterations: Infinity,
     };
 
-    const colorKeys: Keyframe[] = [
+    const colorKeysBase: Keyframe[] = [
       { stroke: PharosLoadingSpinnerColorStrokePrimary, offset: 0 },
       { stroke: PharosLoadingSpinnerColorStrokeSecondary, offset: 0.4 },
       { stroke: PharosLoadingSpinnerColorStrokePrimary, offset: 0.66 },
@@ -51,6 +103,15 @@ export class PharosLoadingSpinner extends PharosElement {
       { stroke: PharosLoadingSpinnerColorStrokeSecondary, offset: 0.9 },
       { stroke: PharosLoadingSpinnerColorStrokePrimary, offset: 1 },
     ];
+    const colorKeysOnBackground: Keyframe[] = [
+      { stroke: PharosLoadingSpinnerColorStrokeOnBackground, offset: 0 },
+      { stroke: PharosLoadingSpinnerColorStrokeOnBackground, offset: 0.4 },
+      { stroke: PharosLoadingSpinnerColorStrokeOnBackground, offset: 0.66 },
+      { stroke: PharosLoadingSpinnerColorStrokeOnBackground, offset: 0.8 },
+      { stroke: PharosLoadingSpinnerColorStrokeOnBackground, offset: 0.9 },
+      { stroke: PharosLoadingSpinnerColorStrokeOnBackground, offset: 1 },
+    ];
+    const colorKeys = this.onBackground ? colorKeysOnBackground : colorKeysBase;
     const colorTiming: KeyframeAnimationOptions = {
       easing: 'ease-in-out',
       duration: 6000,
@@ -69,6 +130,10 @@ export class PharosLoadingSpinner extends PharosElement {
     this._icon.animate(rotateKeys, rotateTiming);
   }
 
+  private _renderSVG(): TemplateResult {
+    return this.small ? html`${unsafeHTML(SVG_SMALL)}` : html`${unsafeHTML(SVG_BASE)}`;
+  }
+
   protected override render(): TemplateResult {
     return html`
       <div
@@ -78,23 +143,7 @@ export class PharosLoadingSpinner extends PharosElement {
         aria-label="Content is loading..."
         tabindex="0"
       >
-        <svg
-          class="loading-spinner__icon"
-          viewBox="25 25 50 50"
-          height="56"
-          width="56"
-          focusable="false"
-        >
-          <circle
-            class="loading-spinner__animation"
-            cx="50"
-            cy="50"
-            r="20"
-            fill="none"
-            stroke-width="3"
-            stroke-miterlimit="10"
-          />
-        </svg>
+        ${this._renderSVG()}
       </div>
     `;
   }
