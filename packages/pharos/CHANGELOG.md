@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 13.2.0
+
+### Minor Changes
+
+- [#627](https://github.com/ithaka/pharos/pull/627) [`35258d8`](https://github.com/ithaka/pharos/commit/35258d837e8a1627dd01af66171d5d462ab883c9) Thanks [@jialin-he](https://github.com/jialin-he)! - add small and on background variant to loading spinner
+
 ## 13.1.0
 
 ### Minor Changes
