@@ -4,6 +4,7 @@ import {
   generateFile,
   camelCaseText,
   addComponentToIndexFile,
+  addComponentsToInitFile,
 } from '../utils/generation-utils';
 import type {
   ComponentNameOptions,
@@ -71,6 +72,7 @@ const createPharosComponent = async (componentName: ComponentName): Promise<void
   if (!wasError) {
     console.log(colors.yellow(`\nAdding Pharos${titleCaseName} component export`));
     addComponentToIndexFile(currentDirectory, nameOptions);
+    addComponentsToInitFile(currentDirectory, nameOptions);
     console.log('\nComponent creation complete! \nHappy developing!'.cyan);
   } else {
     console.log(

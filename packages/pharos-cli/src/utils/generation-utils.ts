@@ -68,3 +68,29 @@ export const addComponentToIndexFile = (
 
   console.log(colors.green(`\nPharos${nameOptions.titleCaseName} export added to ${filePath}`));
 };
+
+export const addComponentsToInitFile = (
+  currentDirectory: FilePath,
+  nameOptions: ComponentNameOptions
+): void => {
+  const componentName = `Pharos${nameOptions.titleCaseName}`;
+  const unitTestsFilePath: FilePath = `${currentDirectory}/packages/pharos/src/test/initComponents.ts`;
+  const storybookFilePath: FilePath = `${currentDirectory}/.storybook/initComponents.js`;
+
+  // import new component in list of imports
+  // and then register new component
+  [unitTestsFilePath, storybookFilePath].map((filePath: FilePath) => {
+    fs.readFile(filePath, 'utf8', function (_, data) {
+      const existingFileContent: string[] = data.split('} from');
+      const newImportStatement =
+        existingFileContent[0] + `  ${componentName}` + ',' + '\n' + '} from';
+      const updatedFileContent = newImportStatement + existingFileContent[1];
+      fs.writeFileSync(filePath, updatedFileContent);
+
+      const existingRegisterComponents: string[] = updatedFileContent.split(']);');
+      const newlyRegisteredComponent =
+        existingRegisterComponents[0] + `  ${componentName},` + '\n' + ']);';
+      fs.writeFileSync(filePath, newlyRegisteredComponent);
+    });
+  });
+};
