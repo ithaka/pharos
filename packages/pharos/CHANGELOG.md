@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 13.2.1
+
+### Patch Changes
+
+- [#631](https://github.com/ithaka/pharos/pull/631) [`19248b4`](https://github.com/ithaka/pharos/commit/19248b436fe5cb68e3b7c312f85b97b68304e9d6) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - add panorama icon
+
 ## 13.2.0
 
 ### Minor Changes
