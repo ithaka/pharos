@@ -80,6 +80,7 @@
       "mode-scrolling": { "value": "assets/icons/mode-scrolling.svg" },
       "move": { "value": "assets/icons/move.svg" },
       "new": { "value": "assets/icons/new.svg" },
+      "panorama": { "value": "assets/icons/panorama.svg" },
       "partial-circle": { "value": "assets/icons/partial-circle.svg" },
       "pause": { "value": "assets/icons/pause.svg" },
       "pause-large": { "value": "assets/icons/pause-large.svg" },
