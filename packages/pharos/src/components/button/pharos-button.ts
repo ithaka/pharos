@@ -230,7 +230,6 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
       console.warn("The 'label' attribute is deprecated. Use 'a11y-label' instead.");
     }
 
-    // Warn consumers that the pressed attribute is being deprecated
     if (this.pressed) {
       console.warn("The 'pressed' attribute is deprecated. Use 'a11y-pressed' instead.");
     }
