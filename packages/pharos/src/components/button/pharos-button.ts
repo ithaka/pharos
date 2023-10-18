@@ -124,7 +124,8 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   public large = false;
 
   /**
-   * Indicates the aria label to apply to the button. DEPRECRATED
+   * @deprecated
+   * Indicates the aria label to apply to the button.
    * @attr label
    */
   @property({ type: String, reflect: true })
@@ -180,7 +181,8 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   public value?: string;
 
   /**
-   * Indicates this button is a toggle button and whether it is pressed or not. DEPRECATED
+   * @deprecated
+   * Indicates this button is a toggle button and whether it is pressed or not.
    * @attr value
    */
   @property({ type: String, reflect: true })
