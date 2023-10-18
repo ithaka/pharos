@@ -155,6 +155,32 @@
       "description": ""
     }
   },
+  "coach-mark": {
+    "design": {
+      "status": "released",
+      "description": ""
+    },
+    "development": {
+      "status": "released",
+      "description": ""
+    },
+    "tests": {
+      "status": "released",
+      "description": ""
+    },
+    "documentation": {
+      "status": "released",
+      "description": ""
+    },
+    "released": {
+      "status": "13.0.0",
+      "description": ""
+    },
+    "updated": {
+      "status": "13.0.0",
+      "description": ""
+    }
+  },
   "combobox": {
     "design": {
       "status": "released",
