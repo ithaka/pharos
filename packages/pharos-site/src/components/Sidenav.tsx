@@ -117,6 +117,7 @@ const Sidenav: FC = () => {
               'Button',
               'Breadcrumb',
               'Checkbox',
+              'Coach Mark',
               'Combobox',
               'Dropdown menu',
               'Dropdown menu nav',
