@@ -32,6 +32,14 @@ export const WithClose = {
   ),
 };
 
+export const Expanded = {
+  render: () => (
+    <PharosSheet id="my-sheet" label="Pharos sheet" expanded>
+      <div>Lorem ipsum dolor sit amet</div>
+    </PharosSheet>
+  ),
+};
+
 export const LongContent = {
   render: () => (
     <PharosSheet id="my-sheet" label="Pharos sheet">

@@ -3,7 +3,8 @@
     "color": {
       "stroke": {
         "primary": { "value": "{color.JSTOR red.value}" },
-        "secondary": { "value": "{color.Living coral.base.value}" }
+        "secondary": { "value": "{color.Living coral.base.value}" },
+        "on-background": { "value": "{color.White.value}" }
       }
     }
   }
