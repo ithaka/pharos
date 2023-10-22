@@ -72,8 +72,12 @@ const createPharosComponent = async (componentName: ComponentName): Promise<void
   if (!wasError) {
     console.log(colors.yellow(`\nAdding Pharos${titleCaseName} component export`));
     addComponentToIndexFile(currentDirectory, nameOptions);
-    addComponentsToInitFile(currentDirectory, nameOptions);
     console.log('\nComponent creation complete! \nHappy developing!'.cyan);
+    addComponentsToInitFile(currentDirectory, nameOptions);
+    console.log(
+      `\nAdded new components to initComponents files as well. You should be able to use your component without making any changes`
+        .green
+    );
   } else {
     console.log(
       '\n@ithaka/pharos-cli encountered an error attempting to create your component\n'.red

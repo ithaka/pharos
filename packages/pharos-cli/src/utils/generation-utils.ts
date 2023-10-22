@@ -79,7 +79,7 @@ export const addComponentsToInitFile = (
 
   // import new component in list of imports
   // and then register new component
-  [unitTestsFilePath, storybookFilePath].map((filePath: FilePath) => {
+  [unitTestsFilePath, storybookFilePath].forEach((filePath: FilePath) => {
     fs.readFile(filePath, 'utf8', function (_, data) {
       const existingFileContent: string[] = data.split('} from');
       const newImportStatement =
