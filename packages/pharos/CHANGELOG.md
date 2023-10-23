@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 13.2.2
+
+### Patch Changes
+
+- [#638](https://github.com/ithaka/pharos/pull/638) [`29fdb15`](https://github.com/ithaka/pharos/commit/29fdb15d7c95f8f2a533e5d7b8ee80ad9ee663bd) Thanks [@henryclong](https://github.com/henryclong)! - Fix positioning of coach mark react component
+
 ## 13.2.1
 
 ### Patch Changes
