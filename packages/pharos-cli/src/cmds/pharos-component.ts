@@ -76,7 +76,7 @@ const createPharosComponent = async (componentName: ComponentName): Promise<void
     addComponentsToInitFile(currentDirectory, nameOptions);
     console.log(
       `\nAdded new components to initComponents files as well. You should be able to use your component without making any changes`
-        .green
+        .yellow
     );
   } else {
     console.log(
