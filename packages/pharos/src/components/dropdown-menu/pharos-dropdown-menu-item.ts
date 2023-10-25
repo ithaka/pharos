@@ -76,7 +76,7 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
    * @attr is-on-background
    */
   @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
-  public onBackground = false;
+  public isOnBackground = false;
 
   @state()
   private _first = false;

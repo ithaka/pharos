@@ -57,7 +57,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
    * @attr is-on-background
    */
   @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
-  public onBackground = false;
+  public isOnBackground = false;
 
   @state()
   private _navMenu = false;
@@ -268,9 +268,9 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
               top: `${y}px`,
             });
           });
-          if (this.onBackground) {
+          if (this.isOnBackground) {
             this._allMenuItems.forEach((menuItem) => {
-              menuItem.onBackground = true;
+              menuItem.isOnBackground = true;
             });
           }
         }
