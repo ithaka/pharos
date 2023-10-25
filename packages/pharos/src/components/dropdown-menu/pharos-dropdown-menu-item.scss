@@ -120,6 +120,10 @@
   border-radius: 0 0 var(--pharos-radius-base-standard) var(--pharos-radius-base-standard);
 }
 
+:host(:not([is-on-background])) .dropdown-menu-item:not(.dropdown-menu-item--last) {
+  border-bottom: 1px solid var(--pharos-dropdown-menu-item-color-border-base);
+}
+
 :host(:not([disabled], [is-on-background]))
   .dropdown-menu-item:hover:not(.dropdown-menu-item--active) {
   .dropdown-menu-item__link,

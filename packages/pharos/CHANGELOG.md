@@ -1,5 +1,49 @@
 # @ithaka/pharos
 
+## 13.0.0
+
+### Major Changes
+
+- [#608](https://github.com/ithaka/pharos/pull/608) [`d67125a`](https://github.com/ithaka/pharos/commit/d67125a4a9598475aff9000b18567f734074915f) Thanks [@henryclong](https://github.com/henryclong)! - Adds the coach mark component, which is used to highlight new or unique features
+
+## 12.26.2
+
+### Patch Changes
+
+- [#617](https://github.com/ithaka/pharos/pull/617) [`6ec2d69`](https://github.com/ithaka/pharos/commit/6ec2d695f4fcaefc46616f7e582d9e71f641a4f6) Thanks [@jialin-he](https://github.com/jialin-he)! - Update default height to sheet and emit events
+
+## 12.26.1
+
+### Patch Changes
+
+- [#613](https://github.com/ithaka/pharos/pull/613) [`ef13fa1`](https://github.com/ithaka/pharos/commit/ef13fa18638f630f55716c60d81c9ba8d23c255d) Thanks [@jialin-he](https://github.com/jialin-he)! - Add overflow to sheet
+
+## 12.26.0
+
+### Minor Changes
+
+- [#603](https://github.com/ithaka/pharos/pull/603) [`5d15316`](https://github.com/ithaka/pharos/commit/5d15316632da788f692ec731a2aae765e6785c21) Thanks [@michael-iden](https://github.com/michael-iden)! - Add sheet component
+
+### Patch Changes
+
+- [#610](https://github.com/ithaka/pharos/pull/610) [`d762a02`](https://github.com/ithaka/pharos/commit/d762a0294cd940970c8bbaff8c97aae7e9bdae82) Thanks [@michael-iden](https://github.com/michael-iden)! - Force popover border radius styling
+
+- [#599](https://github.com/ithaka/pharos/pull/599) [`834f7ab`](https://github.com/ithaka/pharos/commit/834f7ab8976f194bc641db244671338e7f7ab023) Thanks [@jialin-he](https://github.com/jialin-he)! - Add line rules to light variant of dropdown
+
+- [#606](https://github.com/ithaka/pharos/pull/606) [`e020300`](https://github.com/ithaka/pharos/commit/e02030087baffbc9685f39f1f77725d1ba5e10bc) Thanks [@daneah](https://github.com/daneah)! - Increase color contrast for glacier blue 40
+
+## 12.25.0
+
+### Minor Changes
+
+- [#596](https://github.com/ithaka/pharos/pull/596) [`8c223fa`](https://github.com/ithaka/pharos/commit/8c223faf6c189e46bc4a8fc9291310947a5d04ba) Thanks [@michael-iden](https://github.com/michael-iden)! - Add compare and side-panel icons
+
+## 12.24.0
+
+### Minor Changes
+
+- [#588](https://github.com/ithaka/pharos/pull/588) [`130ce55`](https://github.com/ithaka/pharos/commit/130ce553ddc7a16343ef934629e0ecd51f617267) Thanks [@michael-iden](https://github.com/michael-iden)! - added popover component
+
 ## 12.23.0
 
 ### Minor Changes

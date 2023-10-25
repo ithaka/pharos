@@ -1,5 +1,12 @@
 # @ithaka/pharos-site
 
+## 5.13.4
+
+### Patch Changes
+
+- Updated dependencies [[`d67125a`](https://github.com/ithaka/pharos/commit/d67125a4a9598475aff9000b18567f734074915f)]:
+  - @ithaka/pharos@13.0.0
+
 ## 5.13.3
 
 ### Patch Changes
