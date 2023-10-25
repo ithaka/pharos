@@ -28,7 +28,7 @@
     opacity var(--pharos-transition-duration-short) linear;
 }
 
-:host([on-background]) .dropdown-menu__list {
+:host([is-on-background]) .dropdown-menu__list {
   border: none;
 }
 
