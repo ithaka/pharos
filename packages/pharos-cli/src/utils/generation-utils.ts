@@ -7,6 +7,7 @@ import type {
   TemplatePath,
   FilePath,
 } from '../types';
+import { addNewComponentToInitComponents } from './initComponentsUtil';
 
 declare function require(name: string);
 
@@ -79,18 +80,7 @@ export const addComponentsToInitFile = (
 
   // import new component in list of imports
   // and then register new component
-  [unitTestsFilePath, storybookFilePath].forEach((filePath: FilePath) => {
-    fs.readFile(filePath, 'utf8', function (_, data) {
-      const existingFileContent: string[] = data.split('} from');
-      const newImportStatement =
-        existingFileContent[0] + `  ${componentName}` + ',' + '\n' + '} from';
-      const updatedFileContent = newImportStatement + existingFileContent[1];
-      fs.writeFileSync(filePath, updatedFileContent);
-
-      const existingRegisterComponents: string[] = updatedFileContent.split(']);');
-      const newlyRegisteredComponent =
-        existingRegisterComponents[0] + `  ${componentName},` + '\n' + ']);';
-      fs.writeFileSync(filePath, newlyRegisteredComponent);
-    });
+  [unitTestsFilePath, storybookFilePath].forEach(async (filePath: FilePath) => {
+    await addNewComponentToInitComponents(filePath, componentName);
   });
 };
