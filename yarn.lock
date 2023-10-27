@@ -9122,7 +9122,7 @@ co@^4.6.0:
 
 code-block-writer@^12.0.0:
   version "12.0.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/code-block-writer/-/code-block-writer-12.0.0.tgz#4dd58946eb4234105aff7f0035977b2afdc2a770"
+  resolved "https://registry.yarnpkg.com/code-block-writer/-/code-block-writer-12.0.0.tgz#4dd58946eb4234105aff7f0035977b2afdc2a770"
   integrity sha512-q4dMFMlXtKR3XNBHyMHt/3pwYNA69EDk00lloMOaaUMKPUXBw6lpXtbu3MMVG6/uOihGnRDOlkyqsONEUj60+w==
 
 coffee-script@^1.12.4:
@@ -11813,7 +11813,7 @@ fast-glob@^3.1.1, fast-glob@^3.2.2, fast-glob@^3.2.7, fast-glob@^3.2.9, fast-glo
 
 fast-glob@^3.2.12:
   version "3.3.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/fast-glob/-/fast-glob-3.3.1.tgz#784b4e897340f3dbbef17413b3f11acf03c874c4"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.3.1.tgz#784b4e897340f3dbbef17413b3f11acf03c874c4"
   integrity sha512-kNFPyjhh5cKjrUltxs+wFx+ZkbRaxxmZ+X0ZU31SOsxCEtP9VPgtq2teZw1DebupL5GmDaNQ6yKMMVcM41iqDg==
   dependencies:
     "@nodelib/fs.stat" "^2.0.2"
@@ -16709,7 +16709,7 @@ minimatch@^5.0.1:
 
 minimatch@^7.4.3:
   version "7.4.6"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/minimatch/-/minimatch-7.4.6.tgz#845d6f254d8f4a5e4fd6baf44d5f10c8448365fb"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-7.4.6.tgz#845d6f254d8f4a5e4fd6baf44d5f10c8448365fb"
   integrity sha512-sBz8G/YjVniEz6lKPNpKxXwazJe4c19fEfV2GDMX6AjFz+MX9uDWIZW8XreVhkFW3fkIdTv/gxWr/Kks5FFAVw==
   dependencies:
     brace-expansion "^2.0.1"
@@ -16802,7 +16802,7 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
 
 mkdirp@^2.1.6:
   version "2.1.6"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/mkdirp/-/mkdirp-2.1.6.tgz#964fbcb12b2d8c5d6fbc62a963ac95a273e2cc19"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-2.1.6.tgz#964fbcb12b2d8c5d6fbc62a963ac95a273e2cc19"
   integrity sha512-+hEnITedc8LAtIP9u3HJDFIdcLV2vXP33sqLLIzkv1Db1zO/1OxbvYf0Y1OC/S/Qo5dxHXepofhmxL02PsKe+A==
 
 moment@^2.29.1:
@@ -17756,7 +17756,7 @@ password-prompt@^1.0.4:
 
 path-browserify@^1.0.1:
   version "1.0.1"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/path-browserify/-/path-browserify-1.0.1.tgz#d98454a9c3753d5790860f16f68867b9e46be1fd"
+  resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-1.0.1.tgz#d98454a9c3753d5790860f16f68867b9e46be1fd"
   integrity sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==
 
 path-case@^2.1.0:
@@ -21840,7 +21840,7 @@ ts-lit-plugin@^1.2.1:
 
 ts-morph@^20.0.0:
   version "20.0.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/ts-morph/-/ts-morph-20.0.0.tgz#c46b4c231dfc93347091901f1f9a3e13413230fd"
+  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-20.0.0.tgz#c46b4c231dfc93347091901f1f9a3e13413230fd"
   integrity sha512-JVmEJy2Wow5n/84I3igthL9sudQ8qzjh/6i4tmYCm6IqYyKFlNbJZi7oBdjyqcWSWYRu3CtL0xbT6fS03ESZIg==
   dependencies:
     "@ts-morph/common" "~0.21.0"
