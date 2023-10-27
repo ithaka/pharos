@@ -16,13 +16,22 @@ export async function addNewComponentToInitComponents(
     SyntaxKind.ImportDeclaration
   );
 
-  importStatementsDeclarations[0].addNamedImport(componentName);
+  importStatementsDeclarations.forEach((dec) => {
+    const importClause = dec.getImportClause();
+    if (importClause && importClause.getNamedImports().length > 0) {
+      dec.addNamedImport(componentName);
+    }
+  });
 
-  const registerComponentsExpressions = sourceFile.getDescendantsOfKind(
-    SyntaxKind.ArrayLiteralExpression
-  );
+  const registerComponentsExpressions = sourceFile.getDescendantsOfKind(SyntaxKind.CallExpression);
 
-  registerComponentsExpressions[0].addElement(componentName);
+  registerComponentsExpressions.forEach((callExp) => {
+    callExp.forEachChild((expChild) => {
+      if (expChild.isKind(SyntaxKind.ArrayLiteralExpression)) {
+        expChild.addElement(componentName);
+      }
+    });
+  });
 
   await sourceFile.save();
 }
