@@ -7,6 +7,7 @@ import type {
   TemplatePath,
   FilePath,
 } from '../types';
+import { addNewComponentToInitComponents } from './initComponentsUtil';
 
 declare function require(name: string);
 
@@ -67,4 +68,19 @@ export const addComponentToIndexFile = (
   fs.appendFileSync(filePath, exportString);
 
   console.log(colors.green(`\nPharos${nameOptions.titleCaseName} export added to ${filePath}`));
+};
+
+export const addComponentsToInitFile = (
+  currentDirectory: FilePath,
+  nameOptions: ComponentNameOptions
+): void => {
+  const componentName = `Pharos${nameOptions.titleCaseName}`;
+  const unitTestsFilePath: FilePath = `${currentDirectory}/packages/pharos/src/test/initComponents.ts`;
+  const storybookFilePath: FilePath = `${currentDirectory}/.storybook/initComponents.js`;
+
+  // import new component in list of imports
+  // and then register new component
+  [unitTestsFilePath, storybookFilePath].forEach(async (filePath: FilePath) => {
+    await addNewComponentToInitComponents(filePath, componentName);
+  });
 };
