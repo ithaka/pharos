@@ -5743,7 +5743,7 @@
 
 "@ts-morph/common@~0.21.0":
   version "0.21.0"
-  resolved "https://artifactory.acorn.cirrostratus.org/artifactory/api/npm/npms/@ts-morph/common/-/common-0.21.0.tgz#30272bde654127326d8b73643b9a8de280135fb4"
+  resolved "https://registry.yarnpkg.com/@ts-morph/common/-/common-0.21.0.tgz#30272bde654127326d8b73643b9a8de280135fb4"
   integrity sha512-ES110Mmne5Vi4ypUKrtVQfXFDtCsDXiUiGxF6ILVlE90dDD4fdpC1LSjydl/ml7xJWKSDZwUYD2zkOePMSrPBA==
   dependencies:
     fast-glob "^3.2.12"
