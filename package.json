@@ -103,7 +103,7 @@
     "husky": "^7.0.0",
     "lint-staged": "^12.0.2",
     "lit": "^2.7.5",
-    "lit-analyzer": "^1.2.1",
+    "lit-analyzer": "^2.0.1",
     "markdown-toc": "^1.2.0",
     "postcss": "^8.4.31",
     "postcss-import": "^14.0.0",
