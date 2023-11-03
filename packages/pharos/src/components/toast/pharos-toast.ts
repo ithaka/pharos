@@ -17,7 +17,7 @@ export type ToastStatus = 'success' | 'error' | 'info';
 export enum TOAST_ICON {
   ERROR = 'exclamation-inverse',
   SUCCESS = 'checkmark-inverse',
-  INFO = 'exclamation-inverse',
+  INFO = 'exclamation-inverse', // eslint-disable-line @typescript-eslint/no-duplicate-enum-values
 }
 
 const STATUSES = ['success', 'error', 'info'];
