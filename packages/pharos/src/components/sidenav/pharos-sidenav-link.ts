@@ -56,6 +56,10 @@ export class PharosSidenavLink extends ScopedRegistryMixin(PharosLink) {
   }
 
   protected override render(): TemplateResult {
+    if (!this.target && this.external) {
+      this.target = '_blank';
+      this.rel = 'noopener';
+    }
     return html`${super.render()}`;
   }
 }
