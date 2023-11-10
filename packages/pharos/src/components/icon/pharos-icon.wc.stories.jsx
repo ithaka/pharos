@@ -20,6 +20,8 @@ export const Base = {
       <storybook-pharos-icon
         name=${args.name}
         description=${args.description}
+        a11y-label=${args.a11yLabel}
+        a11y-hidden=${args.a11yHidden}
         class="icon-example__icon"
       ></storybook-pharos-icon>
     `,
@@ -36,6 +38,7 @@ export const Names = {
           return html` <div class="icon-example__container">
             <storybook-pharos-icon
               name="${name}"
+              a11y-label="${name}"
               class="icon-example__icon"
             ></storybook-pharos-icon>
             <div class="icon-example__name">${name}</div>

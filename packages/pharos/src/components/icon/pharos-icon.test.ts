@@ -38,4 +38,19 @@ describe('pharos-icon', () => {
     expect(svg?.getAttribute('height')).to.equal('16');
     expect(svg?.getAttribute('width')).to.equal('16');
   });
+
+  it('sets the svg aria-hidden properly when a11y-hidden is set', async () => {
+    component.a11yHidden = true;
+    await component.updateComplete;
+    const svg = component.renderRoot.querySelector('svg');
+    expect(svg?.getAttribute('aria-hidden')).to.equal('true');
+  });
+
+  it('sets the svg aria-label properly when a11y-label is set', async () => {
+    const labelText = 'This is a test aria-label';
+    component.a11yLabel = labelText;
+    await component.updateComplete;
+    const svg = component.renderRoot.querySelector('svg');
+    expect(svg?.getAttribute('aria-label')).to.equal(labelText);
+  });
 });

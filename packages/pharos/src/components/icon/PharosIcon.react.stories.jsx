@@ -26,6 +26,8 @@ export const Base = {
     <PharosIcon
       name={args.name}
       description={args.description}
+      a11yHidden={args.a11yHidden}
+      a11yLabel={args.a11yLabel}
       className="icon-example__icon"
     ></PharosIcon>
   ),
@@ -46,7 +48,7 @@ export const Names = {
       {iconNames.map((name, index) => {
         return (
           <div className="icon-example__container" key={index}>
-            <PharosIcon name={name} className="icon-example__icon"></PharosIcon>
+            <PharosIcon name={name} a11yLabel={name} className="icon-example__icon"></PharosIcon>
             <div className="icon-example__name">{name}</div>
           </div>
         );
