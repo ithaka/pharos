@@ -66,10 +66,10 @@ export const Base = {
             <PharosSidenavLink href="#">Menu item 2</PharosSidenavLink>
           </PharosSidenavMenu>
           <PharosSidenavLink href="#">Menu item</PharosSidenavLink>
-          <PharosSidenavLink href="#" target="_blank" external>
+          <PharosSidenavLink href="#" external>
             External link
           </PharosSidenavLink>
-          <PharosSidenavLink href="#" target="_blank" external>
+          <PharosSidenavLink href="#" external>
             External link
           </PharosSidenavLink>
         </PharosSidenavSection>
