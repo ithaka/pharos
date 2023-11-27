@@ -81,16 +81,11 @@ export class PharosCheckboxGroup extends FormElement {
   }
 
   protected override render(): TemplateResult {
-    const labels = ['legend'];
-    if (this.messageId) {
-      labels.push(this.messageId);
-    }
-
     return html`
       <fieldset
         class="checkbox-group checkbox-group--${this.horizontal ? 'horizontal' : 'vertical'}"
         aria-invalid="${this.invalidated}"
-        aria-labelledby="${labels.join(' ')}"
+        aria-describedby="message"
       >
         <legend id="legend" class="checkbox-group__legend">
           <slot name="legend"></slot>

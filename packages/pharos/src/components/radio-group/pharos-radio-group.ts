@@ -167,17 +167,12 @@ export class PharosRadioGroup extends FormElement {
   }
 
   protected override render(): TemplateResult {
-    const labels = ['legend'];
-    if (this.messageId) {
-      labels.push(this.messageId);
-    }
-
     return html`
       <fieldset
         class="radio-group radio-group--${this.horizontal ? 'horizontal' : 'vertical'}"
         aria-required="${this.required}"
         aria-invalid="${this.invalidated}"
-        aria-labelledby="${labels.join(' ')}"
+        aria-describedby="message"
         role="radiogroup"
       >
         <legend id="legend" class="radio-group__legend">
