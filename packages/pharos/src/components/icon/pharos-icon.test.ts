@@ -46,11 +46,11 @@ describe('pharos-icon', () => {
     expect(svg?.getAttribute('aria-hidden')).to.equal('true');
   });
 
-  it('sets the svg aria-label properly when a11y-label is set', async () => {
-    const labelText = 'This is a test aria-label';
-    component.a11yLabel = labelText;
+  it('sets the svg title properly when a11y-title is set', async () => {
+    const labelText = 'This is a test title';
+    component.a11yTitle = labelText;
     await component.updateComplete;
-    const svg = component.renderRoot.querySelector('svg');
-    expect(svg?.getAttribute('aria-label')).to.equal(labelText);
+    const title = component.renderRoot.querySelector('svg>title');
+    expect(title).to.contain.text(labelText);
   });
 });
