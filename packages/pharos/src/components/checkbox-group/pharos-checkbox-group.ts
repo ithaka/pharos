@@ -85,7 +85,7 @@ export class PharosCheckboxGroup extends FormElement {
       <fieldset
         class="checkbox-group checkbox-group--${this.horizontal ? 'horizontal' : 'vertical'}"
         aria-invalid="${this.invalidated}"
-        aria-describedby="message"
+        aria-describedby="${this.messageId}"
       >
         <legend id="legend" class="checkbox-group__legend">
           <slot name="legend"></slot>
