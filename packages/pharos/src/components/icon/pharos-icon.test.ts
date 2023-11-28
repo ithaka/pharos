@@ -73,4 +73,12 @@ describe('pharos-icon', () => {
     const title = component.renderRoot.querySelector('svg>title');
     expect(title).to.contain.text(labelText);
   });
+
+  it('sets the svg title properly when description is set', async () => {
+    const labelText = 'This is a test title';
+    component.description = labelText;
+    await component.updateComplete;
+    const title = component.renderRoot.querySelector('svg>title');
+    expect(title).to.contain.text(labelText);
+  });
 });

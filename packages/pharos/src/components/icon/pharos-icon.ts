@@ -84,7 +84,7 @@ export class PharosIcon extends PharosElement {
 
   protected override render(): TemplateResult {
     const size = this._getIconSize();
-    const accessibilityLabel = this.a11yTitle ?? this.description;
+    const accessibilityLabel = this.a11yTitle || this.description;
     // Check accessibilityLabel length for backwards compatibility until description is removed
     const hideIcon = this.a11yHidden || accessibilityLabel === '';
     return html`
