@@ -1,5 +1,5 @@
 import { PharosElement } from '../base/pharos-element';
-import { html } from 'lit';
+import { html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
@@ -85,6 +85,8 @@ export class PharosIcon extends PharosElement {
   protected override render(): TemplateResult {
     const size = this._getIconSize();
     const accessibilityLabel = this.a11yTitle ?? this.description;
+    // Check accessibilityLabel length for backwards compatibility until description is removed
+    const hideIcon = this.a11yHidden || accessibilityLabel === '';
     return html`
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +94,7 @@ export class PharosIcon extends PharosElement {
         viewBox="0 0 ${size} ${size}"
         class="icon"
         role="img"
-        aria-hidden=${this.a11yHidden || this.description === ''}
+        aria-hidden=${hideIcon || nothing}
         height="${size}"
         width="${size}"
         focusable="false"

@@ -39,11 +39,31 @@ describe('pharos-icon', () => {
     expect(svg?.getAttribute('width')).to.equal('16');
   });
 
-  it('sets the svg aria-hidden properly when a11y-hidden is set', async () => {
+  it('sets the svg aria-hidden property when a11y-hidden is set to true', async () => {
     component.a11yHidden = true;
     await component.updateComplete;
     const svg = component.renderRoot.querySelector('svg');
     expect(svg?.getAttribute('aria-hidden')).to.equal('true');
+  });
+
+  it('adds aria-hidden when a11y-hidden is not provided and there is no title or description', async () => {
+    await component.updateComplete;
+    const svg = component.renderRoot.querySelector('svg');
+    expect(svg?.getAttribute('aria-hidden')).to.exist;
+  });
+
+  it('does not add aria-hidden if there is a title', async () => {
+    component.a11yTitle = 'some-label';
+    await component.updateComplete;
+    const svg = component.renderRoot.querySelector('svg');
+    expect(svg?.getAttribute('aria-hidden')).not.to.exist;
+  });
+
+  it('does not add aria-hidden if there is a description', async () => {
+    component.description = 'some-label';
+    await component.updateComplete;
+    const svg = component.renderRoot.querySelector('svg');
+    expect(svg?.getAttribute('aria-hidden')).not.to.exist;
   });
 
   it('sets the svg title properly when a11y-title is set', async () => {
