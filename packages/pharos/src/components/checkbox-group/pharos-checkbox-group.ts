@@ -1,6 +1,7 @@
 import { html } from 'lit';
 import { property, queryAssignedElements } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { checkboxGroupStyles } from './pharos-checkbox-group.css';
 import type { PharosCheckbox } from '../checkbox/pharos-checkbox';
 import { FormElement } from '../base/form-element';
@@ -85,7 +86,7 @@ export class PharosCheckboxGroup extends FormElement {
       <fieldset
         class="checkbox-group checkbox-group--${this.horizontal ? 'horizontal' : 'vertical'}"
         aria-invalid="${this.invalidated}"
-        aria-describedby="${this.messageId}"
+        aria-describedby=${ifDefined(this.messageId)}
       >
         <legend id="legend" class="checkbox-group__legend">
           <slot name="legend"></slot>
