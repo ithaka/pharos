@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { sidenavStyles } from './pharos-sidenav.css';
 import { SideElement } from '../base/side-element';
-import type { PharosSidenavButton } from './pharos-sidenav-button';
 
 import FocusMixin from '../../utils/mixins/focus';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
@@ -19,6 +18,7 @@ import { PharosLink } from '../link/pharos-link';
  * @slot - Contains the sections of the sidenav (the default slot).
  *
  * @fires pharos-sidenav-close - Fires when the sidenav has closed
+ * @fires pharos-sidenav-open - Fires when the sidenav has opened
  *
  */
 export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) {
@@ -28,11 +28,16 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
   };
 
   /**
-   * Indicates that the sidenav should slide in.
-   * @attr slide
+   * Indicates whether or not the sidenav is open
    */
-  @property({ type: Boolean, reflect: true })
-  public slide = false;
+  @property({ type: Boolean, reflect: true, attribute: 'open' })
+  public open = false;
+
+  /**
+   * Indicates whether or not the close button displays in the sidenav.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'has-close-button' })
+  public hasCloseButton = false;
 
   /**
    * Indicates the skip to target
@@ -41,20 +46,25 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
   @property({ type: String, reflect: true, attribute: 'main-content-id' })
   public mainContentId?: string;
 
-  private _mediaQuery: MediaQueryList = window.matchMedia(`(max-width: 1055px)`);
+  private _triggers!: NodeListOf<HTMLElement>;
 
   constructor() {
     super();
-    this._handleMediaChange = this._handleMediaChange.bind(this);
+  }
+
+  protected override firstUpdated(): void {
+    this._addTriggerListeners();
   }
 
   override connectedCallback(): void {
     super.connectedCallback && super.connectedCallback();
-    this._mediaQuery.addEventListener('change', this._handleMediaChange);
+    this._addTriggerListeners();
   }
 
   override disconnectedCallback(): void {
-    this._mediaQuery.removeEventListener('change', this._handleMediaChange);
+    this._triggers.forEach((trigger) => {
+      trigger.removeEventListener('click', this._openSidenav);
+    });
     super.disconnectedCallback && super.disconnectedCallback();
   }
 
@@ -62,29 +72,49 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
     return [super.styles, sidenavStyles];
   }
 
-  private _handleClickClose(event: Event): void {
-    event.preventDefault();
-    event.stopPropagation();
-
-    this.slide = false;
-    const button: PharosSidenavButton | null = document.querySelector(
-      '[data-pharos-component="PharosSidenavButton"]'
-    );
-    button?.focus();
-
-    const details = {
-      bubbles: true,
-      composed: true,
-      detail: this,
-    };
-    this.dispatchEvent(new CustomEvent('pharos-sidenav-close', details));
+  private _addTriggerListeners(): void {
+    const id = this.getAttribute('id');
+    this._triggers = document.querySelectorAll(`[data-sidenav-id="${id}"]`);
+    this._triggers.forEach((trigger) => {
+      trigger.addEventListener('click', this._openSidenav);
+    });
   }
 
-  private _handleMediaChange(e: MediaQueryListEvent): void {
-    if (!e.matches) {
-      this.slide = false;
+  private _closeSidenav(event: Event): void {
+    event.preventDefault();
+
+    if (this.open) {
+      const details = {
+        bubbles: true,
+        composed: true,
+        detail: this,
+      };
+      if (
+        this.dispatchEvent(
+          new CustomEvent('pharos-sidenav-close', { ...details, cancelable: true })
+        )
+      ) {
+        this.open = false;
+      }
     }
   }
+
+  private _openSidenav = (event: Event): void => {
+    event.preventDefault();
+    if (!this.open) {
+      const details = {
+        bubbles: true,
+        composed: true,
+        detail: event.target,
+      };
+
+      if (
+        this.dispatchEvent(new CustomEvent('pharos-sidenav-open', { ...details, cancelable: true }))
+      ) {
+        this.open = true;
+      }
+    }
+  };
 
   private _renderSkipToMain(): TemplateResult | typeof nothing {
     return this.mainContentId
@@ -99,20 +129,25 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
       : nothing;
   }
 
+  private _renderCloseButton(): TemplateResult | typeof nothing {
+    return this.hasCloseButton
+      ? html`<pharos-button
+          class="side-element__button"
+          icon="close"
+          variant="subtle"
+          label="Close menu"
+          is-on-background
+          icon-condensed
+          @click=${this._closeSidenav}
+        ></pharos-button> `
+      : nothing;
+  }
+
   protected override render(): TemplateResult {
     return html`
       <nav id="nav-element" class="side-element__container">
         <div class="side-element__content">
-          <pharos-button
-            class="side-element__button"
-            icon="close"
-            variant="subtle"
-            label="Close menu"
-            is-on-background
-            icon-condensed
-            @click=${this._handleClickClose}
-          ></pharos-button>
-          ${this._renderSkipToMain()}
+          ${this._renderCloseButton()} ${this._renderSkipToMain()}
           <slot name="top"></slot>
         </div>
         <div class="sidenav__sections">
