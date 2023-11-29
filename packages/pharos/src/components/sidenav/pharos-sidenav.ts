@@ -71,7 +71,6 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
   private _addTriggerListeners(): void {
     const id = this.getAttribute('id');
     this._triggers = document.querySelectorAll(`[data-sidenav-id="${id}"]`);
-    console.log(this._triggers);
     this._triggers.forEach((trigger) => {
       trigger.addEventListener('click', this._openSidenav);
     });
