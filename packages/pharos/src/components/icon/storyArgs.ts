@@ -3,7 +3,7 @@ import { iconNames } from '../../utils/iconNames';
 export const defaultArgs = {
   name: 'checkmark',
   description: '',
-  a11yTitle: 'This is the icon title',
+  a11yTitle: 'checkmark',
   a11yHidden: false,
 };
 
