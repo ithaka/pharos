@@ -152,6 +152,7 @@ const Sidenav: FC = () => {
               'Font size',
               'Font weight',
               'Line height',
+              'Elevation',
               'Radius',
               'Spacing',
               'Transitions',
