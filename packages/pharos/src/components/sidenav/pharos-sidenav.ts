@@ -52,6 +52,10 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
     super();
   }
 
+  protected override firstUpdated(): void {
+    this._addTriggerListeners();
+  }
+
   override connectedCallback(): void {
     super.connectedCallback && super.connectedCallback();
     this._addTriggerListeners();

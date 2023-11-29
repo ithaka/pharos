@@ -102,6 +102,5 @@ export const Base = {
   args: { open: false, hasCloseButton: false },
   parameters: {
     chromatic: { viewports: [320, 1200] },
-    docs: { disable: true },
   },
 };
