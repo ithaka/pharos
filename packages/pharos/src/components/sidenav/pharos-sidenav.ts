@@ -88,7 +88,12 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
 
   private _renderSkipToMain(): TemplateResult | typeof nothing {
     return this.mainContentId
-      ? html`<pharos-link id="sidenav-skip-link" on-background skip href="#${this.mainContentId}">
+      ? html`<pharos-link
+          id="sidenav-skip-link"
+          is-on-background
+          skip
+          href="#${this.mainContentId}"
+        >
           Skip to main content</pharos-link
         > `
       : nothing;
@@ -103,7 +108,7 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
             icon="close"
             variant="subtle"
             label="Close menu"
-            on-background
+            is-on-background
             icon-condensed
             @click=${this._handleClickClose}
           ></pharos-button>

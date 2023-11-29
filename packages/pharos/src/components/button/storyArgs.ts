@@ -36,7 +36,7 @@ export const defaultArgs = {
   fullWidth: false,
   iconCondensed: false,
   large: false,
-  onBackground: false,
+  isOnBackground: false,
   pressed: undefined,
   type: 'button',
   variant: 'primary',

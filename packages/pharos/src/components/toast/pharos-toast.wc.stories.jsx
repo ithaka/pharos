@@ -29,7 +29,7 @@ export const Base = {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
               content:
-                'The item has moved to your <storybook-pharos-link href="#" on-background bold>Workspace</storybook-pharos-link>.',
+                'The item has moved to your <storybook-pharos-link href="#" is-on-background bold>Workspace</storybook-pharos-link>.',
               returnElements: [document.querySelector('#success-toast-button')],
             },
           });
@@ -60,7 +60,7 @@ export const Error = {
             detail: {
               status: 'error',
               content:
-                'Sorry, we were unable to move the item. Please try again later. If the issue persists, <storybook-pharos-link href="#" on-background bold>contact JSTOR Support</storybook-pharos-link>.',
+                'Sorry, we were unable to move the item. Please try again later. If the issue persists, <storybook-pharos-link href="#" is-on-background bold>contact JSTOR Support</storybook-pharos-link>.',
               returnElements: [document.querySelector('#error-toast-button')],
             },
           });
@@ -91,7 +91,7 @@ export const LongContent = {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
               content:
-                'This is a notification for longer content, which may even include a <storybook-pharos-link href="#" on-background bold>link</storybook-pharos-link>.',
+                'This is a notification for longer content, which may even include a <storybook-pharos-link href="#" is-on-background bold>link</storybook-pharos-link>.',
               returnElements: [document.querySelector('#long-toast-button')],
             },
           });

@@ -48,7 +48,7 @@ export const Base = {
           name="my-input-group"
           placeholder="Search"
           hideLabel
-          onBackground
+          isOnBackground
         >
           <span slot="label">Search</span>
           <PharosButton
@@ -56,7 +56,7 @@ export const Base = {
             icon="search"
             variant="subtle"
             label="search"
-            onBackground
+            isOnBackground
           ></PharosButton>
         </PharosInputGroup>
         <PharosSidenavSection showDivider>
