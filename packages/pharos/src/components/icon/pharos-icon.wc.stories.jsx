@@ -21,7 +21,7 @@ export const Base = {
         name=${args.name}
         description=${args.description}
         a11y-title=${args.a11yTitle}
-        ?a11y-hidden=${args.a11yHidden}
+        a11y-hidden=${args.a11yHidden}
         class="icon-example__icon"
       ></storybook-pharos-icon>
     `,

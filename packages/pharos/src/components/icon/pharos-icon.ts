@@ -45,10 +45,10 @@ export class PharosIcon extends PharosElement {
   /**
    * Indicates whether the icon should be hidden from assistive technology.
    * @attr a11y-hidden
-   * @type {boolean}
+   * @type {AriaHiddenValues}
    */
-  @property({ type: Boolean, reflect: true, attribute: 'a11y-hidden' })
-  public a11yHidden: boolean = false;
+  @property({ type: String, reflect: true, attribute: 'a11y-hidden' })
+  public a11yHidden?: AriaHiddenValues;
 
   @state()
   private _svg = '';
@@ -86,7 +86,7 @@ export class PharosIcon extends PharosElement {
     const size = this._getIconSize();
     const accessibilityLabel = this.a11yTitle || this.description;
     // Check accessibilityLabel length for backwards compatibility until description is removed
-    const hideIcon = this.a11yHidden || accessibilityLabel === '';
+    const hideIcon = this.a11yHidden === 'true' || accessibilityLabel === '';
     return html`
       <svg
         xmlns="http://www.w3.org/2000/svg"
