@@ -36,7 +36,7 @@ export class PharosIcon extends PharosElement {
   public description = '';
 
   /**
-   * Indicates the svg title to apply to the icon.
+   * Indicates the title to apply as the accessible name of the icon.
    * @attr a11y-title
    */
   @property({ type: String, reflect: true, attribute: 'a11y-title' })
