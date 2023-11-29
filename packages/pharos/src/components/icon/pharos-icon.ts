@@ -30,7 +30,7 @@ export class PharosIcon extends PharosElement {
   /**
    * A description of what the icon represents
    * @attr description
-   * @deprecated Please use a11yLabel instead.
+   * @deprecated Please use a11yTitle instead.
    */
   @property({ type: String, reflect: true })
   public description = '';
