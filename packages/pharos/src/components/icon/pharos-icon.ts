@@ -57,7 +57,7 @@ export class PharosIcon extends PharosElement {
     super.update && super.update(changedProperties);
     if (this.description.length) {
       console.warn(
-        "The 'description' attribute of pharos-icon is deprecated and will be removed in the next major release. Please use a11y-title or mark the icon as descriptive by using a11y-hidden instead."
+        "The 'description' attribute of pharos-icon is deprecated and will be removed in the next major release. Please use a11y-title or mark the icon as decorative by using a11y-hidden instead."
       );
     }
   }
