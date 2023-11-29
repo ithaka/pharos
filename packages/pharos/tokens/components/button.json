@@ -76,7 +76,7 @@
           }
         }
       },
-      "is-on-background": {
+      "on-background": {
         "primary": {
           "background": {
             "base": { "value": "{color.interactive.primary.value}" },
