@@ -8,7 +8,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="subject-link"
-            on-background
+            is-on-background
             subtle
             href="/subjects"
             target="_blank"
@@ -18,7 +18,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="title-link"
-            on-background
+            is-on-background
             subtle
             href="/action/showJournals?browseType=title"
             target="_blank"
@@ -28,7 +28,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="collections-link"
-            on-background
+            is-on-background
             subtle
             href="/site/collection-list"
             target="_blank"
@@ -38,7 +38,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="publisher-link"
-            on-background
+            is-on-background
             subtle
             href="/publishers"
             target="_blank"
@@ -48,7 +48,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="adv-search-link"
-            on-background
+            is-on-background
             subtle
             href="/action/showAdvancedSearch"
             target="_blank"
@@ -56,7 +56,7 @@ export const Footer = (): TemplateResult => {
           >
         </li>
         <li>
-          <storybook-pharos-link id="dfr-link" on-background subtle href="/dfr" target="_blank"
+          <storybook-pharos-link id="dfr-link" is-on-background subtle href="/dfr" target="_blank"
             >Data for Research</storybook-pharos-link
           >
         </li>
@@ -65,7 +65,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="access-link"
-            on-background
+            is-on-background
             subtle
             href="https://support.jstor.org/hc/en-us/articles/360000313328-Need-Help-Logging-in-To-JSTOR"
             target="_blank"
@@ -75,7 +75,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="support-link"
-            on-background
+            is-on-background
             subtle
             href="https://support.jstor.org"
             target="_blank"
@@ -85,7 +85,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="libguides-link"
-            on-background
+            is-on-background
             subtle
             href="https://guides.jstor.org"
             target="_blank"
@@ -95,7 +95,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="research-link"
-            on-background
+            is-on-background
             subtle
             href="https://guides.jstor.org/researchbasics"
             target="_blank"
@@ -107,7 +107,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="about-link"
-            on-background
+            is-on-background
             subtle
             href="https://about.jstor.org"
             target="_blank"
@@ -117,7 +117,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="mission-link"
-            on-background
+            is-on-background
             subtle
             href="https://about.jstor.org/mission-history/"
             target="_blank"
@@ -127,7 +127,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="in-jstor-link"
-            on-background
+            is-on-background
             subtle
             href="https://about.jstor.org/whats-in-jstor/"
             target="_blank"
@@ -137,7 +137,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="get-jstor-link"
-            on-background
+            is-on-background
             subtle
             href="https://about.jstor.org/get-jstor/"
             target="_blank"
@@ -147,7 +147,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="news-link"
-            on-background
+            is-on-background
             subtle
             href="https://about.jstor.org/news/"
             target="_blank"
@@ -157,7 +157,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="webinars-link"
-            on-background
+            is-on-background
             subtle
             href="https://about.jstor.org/webinars/"
             target="_blank"
@@ -169,7 +169,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="labs-link"
-            on-background
+            is-on-background
             subtle
             href="https://labs.jstor.org/"
             target="_blank"
@@ -179,7 +179,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="daily-link"
-            on-background
+            is-on-background
             subtle
             href="https://daily.jstor.org/"
             target="_blank"
@@ -189,7 +189,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="careers-link"
-            on-background
+            is-on-background
             subtle
             href="https://www.ithaka.org/careers/"
             target="_blank"
@@ -199,7 +199,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="contact-link"
-            on-background
+            is-on-background
             subtle
             href="/contact-us/"
             target="_blank"
@@ -212,7 +212,7 @@ export const Footer = (): TemplateResult => {
           <storybook-pharos-button
             id="for-librarians-link"
             variant="secondary"
-            on-background
+            is-on-background
             href="https://about.jstor.org/librarians/"
             target="_blank"
             >For Librarians</storybook-pharos-button
@@ -222,7 +222,7 @@ export const Footer = (): TemplateResult => {
           <storybook-pharos-button
             id="for-publishers-link"
             variant="secondary"
-            on-background
+            is-on-background
             href="https://about.jstor.org/publishers/"
             target="_blank"
             >For Publishers</storybook-pharos-button
@@ -293,7 +293,7 @@ export const Footer = (): TemplateResult => {
       </ul>
       <span id="misson-text" slot="mission-statement"
         >JSTOR is part of
-        <storybook-pharos-link on-background href="https://www.ithaka.org"
+        <storybook-pharos-link is-on-background href="https://www.ithaka.org"
           >ITHAKA</storybook-pharos-link
         >, a not-for-profit organization helping the academic community use digital technologies to
         preserve the scholarly record and to advance research and teaching in sustainable
@@ -308,7 +308,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="terms-link"
-            on-background
+            is-on-background
             subtle
             href="https://about.jstor.org/terms"
             target="_blank"
@@ -318,7 +318,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="privacy-link"
-            on-background
+            is-on-background
             subtle
             href="https://www.ithaka.org/privacypolicy"
             target="_blank"
@@ -328,7 +328,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="cookie-link"
-            on-background
+            is-on-background
             subtle
             href="https://www.ithaka.org/cookies"
             target="_blank"
@@ -338,7 +338,7 @@ export const Footer = (): TemplateResult => {
         <li>
           <storybook-pharos-link
             id="accessibility-link"
-            on-background
+            is-on-background
             subtle
             href="https://about.jstor.org/accessibility"
             target="_blank"

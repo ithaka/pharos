@@ -90,7 +90,7 @@
   );
 }
 
-:host([on-background][disabled]) #button-element {
+:host([is-on-background][disabled]) #button-element {
   @include mixins.button-color(
     $color: var(--pharos-button-color-on-background-primary-text-disabled),
     $background-color: var(--pharos-button-color-on-background-primary-background-disabled),
@@ -98,7 +98,7 @@
   );
 }
 
-:host([on-background][variant='secondary']:not([disabled])) #button-element {
+:host([is-on-background][variant='secondary']:not([disabled])) #button-element {
   @include mixins.button-color(
     $color: var(--pharos-button-color-on-background-secondary-text-base),
     $background-color: var(--pharos-button-color-on-background-secondary-background-base),
@@ -106,7 +106,7 @@
   );
 }
 
-:host([on-background][variant='subtle']:not([disabled])) #button-element {
+:host([is-on-background][variant='subtle']:not([disabled])) #button-element {
   @include mixins.button-color(
     $color: var(--pharos-button-color-on-background-subtle-text-base),
     $background-color: var(--pharos-button-color-on-background-subtle-background-base),
@@ -142,10 +142,10 @@
   padding: var(--pharos-button-padding-condensed);
 }
 
-:host([on-background][variant='primary']:not([disabled])) #button-element:hover,
-:host([on-background][variant='primary']:not([disabled])) #button-element:active,
-:host([on-background][variant='secondary']:not([disabled])) #button-element:hover,
-:host([on-background][variant='secondary']:not([disabled])) #button-element:active {
+:host([is-on-background][variant='primary']:not([disabled])) #button-element:hover,
+:host([is-on-background][variant='primary']:not([disabled])) #button-element:active,
+:host([is-on-background][variant='secondary']:not([disabled])) #button-element:hover,
+:host([is-on-background][variant='secondary']:not([disabled])) #button-element:active {
   @include mixins.button-color(
     $color: var(--pharos-button-color-on-background-primary-text-hover),
     $background-color: var(--pharos-button-color-on-background-primary-background-hover),
@@ -153,8 +153,8 @@
   );
 }
 
-:host([on-background][variant='subtle']:not([disabled])) #button-element:hover,
-:host([on-background][variant='subtle']:not([disabled])) #button-element:active {
+:host([is-on-background][variant='subtle']:not([disabled])) #button-element:hover,
+:host([is-on-background][variant='subtle']:not([disabled])) #button-element:active {
   @include mixins.button-color(
     $color: var(--pharos-button-color-on-background-subtle-text-hover),
     $background-color: var(--pharos-button-color-on-background-subtle-background-hover),

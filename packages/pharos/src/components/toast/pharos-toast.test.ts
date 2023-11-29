@@ -10,7 +10,7 @@ describe('pharos-toast', () => {
     component = await fixture(html`
       <test-pharos-toast open>
         The item has moved to your
-        <test-pharos-link href="#" on-background bold>Workspace</test-pharos-link>.
+        <test-pharos-link href="#" is-on-background bold>Workspace</test-pharos-link>.
       </test-pharos-toast>
     `);
   });

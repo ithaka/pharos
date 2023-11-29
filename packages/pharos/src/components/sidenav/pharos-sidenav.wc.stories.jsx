@@ -38,7 +38,7 @@ export const Base = {
           name="my-input-group"
           placeholder="Search"
           hide-label
-          on-background
+          is-on-background
         >
           <span slot="label">Search</span>
           <storybook-pharos-button
@@ -46,7 +46,7 @@ export const Base = {
             icon="search"
             variant="subtle"
             label="search"
-            on-background
+            is-on-background
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
         <storybook-pharos-sidenav-section show-divider>

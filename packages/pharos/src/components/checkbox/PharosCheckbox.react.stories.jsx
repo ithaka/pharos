@@ -118,22 +118,22 @@ export const Validity = {
   },
 };
 
-export const OnBackground = {
+export const isOnBackground = {
   name: 'On background',
   render: () => (
     <div>
-      <div className="checkbox-example__container--on-background">
-        <PharosCheckbox name="on-background" onBackground>
+      <div className="checkbox-example__container--is-on-background">
+        <PharosCheckbox name="is-on-background" isOnBackground>
           <span slot="label">Unchecked</span>
         </PharosCheckbox>
       </div>
-      <div className="checkbox-example__container--on-background">
-        <PharosCheckbox name="on-background" onBackground checked>
+      <div className="checkbox-example__container--is-on-background">
+        <PharosCheckbox name="is-on-background" isOnBackground checked>
           <span slot="label">Checked</span>
         </PharosCheckbox>
       </div>
-      <div className="checkbox-example__container--on-background">
-        <PharosCheckbox name="indeterminate" onBackground indeterminate>
+      <div className="checkbox-example__container--is-on-background">
+        <PharosCheckbox name="indeterminate" isOnBackground indeterminate>
           <span slot="label">Indeterminate</span>
         </PharosCheckbox>
       </div>

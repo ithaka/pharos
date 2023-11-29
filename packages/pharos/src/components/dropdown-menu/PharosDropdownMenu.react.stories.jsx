@@ -178,7 +178,7 @@ export const FullWidth = {
   ),
 };
 
-export const OnBackground = {
+export const isOnBackground = {
   render: () => (
     <div
       style={{
@@ -195,7 +195,7 @@ export const OnBackground = {
       >
         A menu on background
       </PharosButton>
-      <PharosDropdownMenu id="my-menu-on-background" show-selected on-background>
+      <PharosDropdownMenu id="my-menu-on-background" show-selected is-on-background>
         <PharosDropdownMenuItem selected>Item One</PharosDropdownMenuItem>
         <PharosDropdownMenuItem>Item Two</PharosDropdownMenuItem>
         <PharosDropdownMenuItem disabled>Item Three</PharosDropdownMenuItem>

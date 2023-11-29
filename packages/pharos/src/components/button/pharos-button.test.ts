@@ -60,7 +60,7 @@ describe('pharos-button', () => {
       parentNode.style.backgroundColor = PharosColorBlack;
 
       component = await fixture(
-        html`<test-pharos-button on-background>I am a button</test-pharos-button>`,
+        html`<test-pharos-button is-on-background>I am a button</test-pharos-button>`,
         {
           parentNode,
         }
@@ -73,7 +73,7 @@ describe('pharos-button', () => {
       parentNode.style.backgroundColor = PharosColorBlack;
 
       component = await fixture(
-        html`<test-pharos-button variant="secondary" on-background
+        html`<test-pharos-button variant="secondary" is-on-background
           >I am a button</test-pharos-button
         >`,
         {
@@ -88,7 +88,9 @@ describe('pharos-button', () => {
       parentNode.style.backgroundColor = PharosColorBlack;
 
       component = await fixture(
-        html`<test-pharos-button variant="subtle" on-background>I am a button</test-pharos-button>`,
+        html`<test-pharos-button variant="subtle" is-on-background
+          >I am a button</test-pharos-button
+        >`,
         {
           parentNode,
         }
@@ -101,7 +103,7 @@ describe('pharos-button', () => {
       parentNode.style.backgroundColor = PharosColorBlack;
 
       component = await fixture(
-        html`<test-pharos-button variant="overlay" on-background
+        html`<test-pharos-button variant="overlay" is-on-background
           >I am a button</test-pharos-button
         >`,
         {
