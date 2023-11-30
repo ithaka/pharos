@@ -347,7 +347,7 @@ describe('pharos-radio-group', () => {
       .querySelector('fieldset')
       ?.getAttribute('aria-describedby');
 
-    expect(component.renderRoot.querySelector('#' + groupDescID)?.textContent)?.to.equal(text);
+    expect(component.renderRoot.querySelector(`#${groupDescID}`)?.textContent)?.to.equal(text);
   });
 
   it("stops propagation of its child's change event", async () => {
