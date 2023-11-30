@@ -154,7 +154,7 @@ describe('pharos-checkbox-group', () => {
       .querySelector('fieldset')
       ?.getAttribute('aria-describedby');
 
-    expect(component.renderRoot.querySelector('#' + groupDescID)?.textContent)?.to.equal(text);
+    expect(component.renderRoot.querySelector(`#${groupDescID}`)?.textContent)?.to.equal(text);
   });
 
   it('updates the state of its children', async () => {
