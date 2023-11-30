@@ -328,6 +328,28 @@ describe('pharos-radio-group', () => {
     expect(message?.textContent).to.equal(text);
   });
 
+  it('renders the provided message as the groups accessible description', async () => {
+    const text = 'Please make a selection';
+    component = await fixture(
+      html`
+        <test-pharos-radio-group message="${text}">
+          <span slot="legend">Radio Group Header</span>
+          <test-pharos-radio-button value="1"
+            ><span slot="label">Radio 1</span></test-pharos-radio-button
+          >
+          <test-pharos-radio-button value="2"
+            ><span slot="label">Radio 2</span></test-pharos-radio-button
+          >
+        </test-pharos-radio-group>
+      `
+    );
+    const groupDescID = component.renderRoot
+      .querySelector('fieldset')
+      ?.getAttribute('aria-describedby');
+
+    expect(component.renderRoot.querySelector('#' + groupDescID)?.textContent)?.to.equal(text);
+  });
+
   it("stops propagation of its child's change event", async () => {
     const event = new Event('change');
     const changeSpy: SinonSpy = sinon.spy(event, 'stopPropagation');

@@ -135,6 +135,28 @@ describe('pharos-checkbox-group', () => {
     expect(message?.textContent).to.equal(text);
   });
 
+  it('renders the provided message as the groups accessible description', async () => {
+    const text = 'Please make a selection';
+    component = await fixture(
+      html`
+        <test-pharos-checkbox-group message="${text}">
+          <span slot="legend">Checkbox Group Header</span>
+          <test-pharos-checkbox value="1"
+            ><span slot="label">Checkbox 1</span></test-pharos-checkbox
+          >
+          <test-pharos-checkbox value="2"
+            ><span slot="label">Checkbox 2</span></test-pharos-checkbox
+          >
+        </test-pharos-checkbox-group>
+      `
+    );
+    const groupDescID = component.renderRoot
+      .querySelector('fieldset')
+      ?.getAttribute('aria-describedby');
+
+    expect(component.renderRoot.querySelector('#' + groupDescID)?.textContent)?.to.equal(text);
+  });
+
   it('updates the state of its children', async () => {
     const boxes = component.querySelectorAll('test-pharos-checkbox') as NodeListOf<PharosCheckbox>;
     component.disabled = true;
