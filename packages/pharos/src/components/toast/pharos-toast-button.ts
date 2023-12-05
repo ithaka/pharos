@@ -3,24 +3,9 @@ import { toastButtonStyles } from './pharos-toast-button.css';
 import { PharosButton } from '../button/pharos-button';
 
 import type { LinkTarget } from '../base/anchor-element';
-import type {
-  ButtonType,
-  IconName,
-  ButtonVariant,
-  PressedState,
-  ExpandedState,
-  PopupState,
-} from '../button/pharos-button';
+import type { ButtonType, IconName, ButtonVariant } from '../button/pharos-button';
 
-export type {
-  LinkTarget,
-  ButtonType,
-  IconName,
-  ButtonVariant,
-  PressedState,
-  ExpandedState,
-  PopupState,
-};
+export type { LinkTarget, ButtonType, IconName, ButtonVariant };
 
 /**
  * Pharos toast button component.

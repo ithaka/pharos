@@ -4,23 +4,8 @@ import { PharosButton } from '../button/pharos-button';
 import type { PharosSidenav } from './pharos-sidenav';
 
 import type { LinkTarget } from '../base/anchor-element';
-import type {
-  ButtonType,
-  IconName,
-  ButtonVariant,
-  PressedState,
-  ExpandedState,
-  PopupState,
-} from '../button/pharos-button';
-export type {
-  LinkTarget,
-  ButtonType,
-  IconName,
-  ButtonVariant,
-  PressedState,
-  ExpandedState,
-  PopupState,
-};
+import type { ButtonType, IconName, ButtonVariant } from '../button/pharos-button';
+export type { LinkTarget, ButtonType, IconName, ButtonVariant };
 
 /**
  * Pharos sidenav button component.
