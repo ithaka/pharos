@@ -24,16 +24,47 @@ describe('pharos-button', () => {
       await expect(component).to.be.accessible();
     });
 
-    it('is accessible as an icon button', async () => {
-      component.icon = 'download';
-      component.a11yLabel = 'download';
+    it('is renders aria-label on button and is accessible', async () => {
+      const label = 'download';
+      component.icon = label;
+      component.a11yLabel = label;
       await component.updateComplete;
+      await expect(
+        component.renderRoot.querySelector('button')?.getAttribute('aria-label')
+      ).to.equal(label);
       await expect(component).to.be.accessible();
     });
 
     it('is accessible when disabled', async () => {
       component.disabled = true;
       await component.updateComplete;
+      await expect(component).to.be.accessible();
+    });
+
+    it('is accessible when using aria-disabled', async () => {
+      component.a11yDisabled = 'true';
+      await component.updateComplete;
+      await expect(
+        component.renderRoot.querySelector('button')?.getAttribute('aria-disabled')
+      ).to.equal('true');
+      await expect(component).to.be.accessible();
+    });
+
+    it('is accessible when using aria-expanded', async () => {
+      component.a11yExpanded = 'true';
+      await component.updateComplete;
+      await expect(
+        component.renderRoot.querySelector('button')?.getAttribute('aria-expanded')
+      ).to.equal('true');
+      await expect(component).to.be.accessible();
+    });
+
+    it('is accessible when using aria-haspopup', async () => {
+      component.a11yHaspopup = 'menu';
+      await component.updateComplete;
+      await expect(
+        component.renderRoot.querySelector('button')?.getAttribute('aria-haspopup')
+      ).to.equal('menu');
       await expect(component).to.be.accessible();
     });
 
