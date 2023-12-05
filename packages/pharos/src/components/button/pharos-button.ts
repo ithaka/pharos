@@ -285,7 +285,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   }
 
   protected override render(): TemplateResult {
-    // Remove in future release once sufficient time elapsed to update naming convention
+    // TODO: Remove in future release once sufficient time elapsed to update naming convention
     const a11yLabel = this.a11yLabel ?? this.label;
     const a11yPressed = this.a11yPressed ?? this.pressed;
 
