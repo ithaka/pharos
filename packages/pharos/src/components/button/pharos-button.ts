@@ -263,7 +263,6 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   protected override render(): TemplateResult {
     return this.href
       ? html`
-          <!-- @ts-ignore -->
           <a
             id="button-element"
             role="button"
@@ -284,7 +283,6 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
           </a>
         `
       : html`
-          <!-- @ts-ignore -->
           <button
             id="button-element"
             name="${ifDefined(this.name)}"
