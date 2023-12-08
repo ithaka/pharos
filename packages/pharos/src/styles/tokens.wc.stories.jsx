@@ -573,3 +573,39 @@ const TypeTokens = () => html`
 export const TypeScale = {
   render: () => TypeTokens(),
 };
+
+const ElevationTokens = () => html`
+  ${TokenTable(
+    'Elevation tokens',
+    html`
+      <thead>
+        <tr>
+          <th style="width:33%">Token</th>
+          <th style="width:33%">Value</th>
+          <th style="width:33%">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${Object.keys(tokens.elevation.level).map(
+          (key) => html`
+            <tr>
+              <td>${toTokenFormat(tokens.elevation.level[key].name)}</td>
+              <td>${tokens.elevation.level[key].value}</td>
+              <td>
+                <div
+                  class="elevation-example"
+                  style="box-shadow:${tokens.elevation.level[key].value};
+                    width: 100%;height: 142px;flex-shrink: 0;border-radius: 5px;background: #FFF;"
+                />
+              </td>
+            </tr>
+          `
+        )}
+      </tbody>
+    `
+  )}
+`;
+
+export const Elevation = {
+  render: () => ElevationTokens(),
+};
