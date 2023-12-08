@@ -3,14 +3,8 @@ import type { CSSResultArray, PropertyValues } from 'lit';
 import { toggleButtonStyles } from './pharos-toggle-button.css';
 import { PharosButton } from '../button/pharos-button';
 
-import type {
-  ButtonType,
-  LinkTarget,
-  IconName,
-  ButtonVariant,
-  PressedState,
-} from '../button/pharos-button';
-export type { ButtonType, LinkTarget, IconName, ButtonVariant, PressedState };
+import type { ButtonType, LinkTarget, IconName, ButtonVariant } from '../button/pharos-button';
+export type { ButtonType, LinkTarget, IconName, ButtonVariant };
 
 /**
  * Pharos toggle button component.
