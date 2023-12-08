@@ -45,10 +45,10 @@ export class PharosIcon extends PharosElement {
   /**
    * Indicates whether the icon should be hidden from assistive technology.
    * @attr a11y-hidden
-   * @type {AriaHiddenValues}
+   * @type {AriaHiddenState}
    */
   @property({ type: String, reflect: true, attribute: 'a11y-hidden' })
-  public a11yHidden?: AriaHiddenValues;
+  public a11yHidden?: AriaHiddenState;
 
   @state()
   private _svg = '';
