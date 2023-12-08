@@ -85,8 +85,11 @@ export class PharosIcon extends PharosElement {
   protected override render(): TemplateResult {
     const size = this._getIconSize();
     const accessibilityLabel = this.a11yTitle || this.description;
+    let hideIcon = this.a11yHidden;
     // Check accessibilityLabel length for backwards compatibility until description is removed
-    const hideIcon = this.a11yHidden === 'true' || accessibilityLabel === '';
+    if (hideIcon !== 'true' && accessibilityLabel.length === 0) {
+      hideIcon = 'true';
+    }
     return html`
       <svg
         xmlns="http://www.w3.org/2000/svg"
