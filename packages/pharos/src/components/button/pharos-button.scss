@@ -98,6 +98,14 @@
   );
 }
 
+:host([is-on-background][variant='subtle'][disabled]) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-button-color-on-background-primary-text-disabled),
+    $background-color: var(--pharos-button-color-base-subtle-background-disabled),
+    $border-color: var(--pharos-button-color-base-subtle-border-base)
+  );
+}
+
 :host([is-on-background][variant='secondary']:not([disabled])) #button-element {
   @include mixins.button-color(
     $color: var(--pharos-button-color-on-background-secondary-text-base),

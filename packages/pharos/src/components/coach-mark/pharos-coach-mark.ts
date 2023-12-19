@@ -88,7 +88,8 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
 
   override connectedCallback() {
     super.connectedCallback();
-    this.setOffset();
+
+    autoUpdate(document.documentElement, this, () => this.requestUpdate());
   }
 
   private setOffset() {
@@ -96,22 +97,21 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
     const targetElement: Element | null = document.querySelector(`[data-coach-mark="${id}"]`);
     if (!targetElement) return;
 
-    this._cleanup = autoUpdate(targetElement, this, () =>
-      computePosition(targetElement, this, {
-        placement: this.alignment === 'center' ? this.side : `${this.side}-${this.alignment}`,
-        middleware: [flip(), offset(20)],
-      }).then(({ x, y, placement }) => {
-        Object.assign(this.style, {
-          left: `${x}px`,
-          top: `${y}px`,
-        });
-        this._computedSide = placement.toString().split('-')[0]; // Removes -start or -end from final placement
-        this.requestUpdate();
-      })
-    );
+    computePosition(targetElement, this, {
+      placement: this.alignment === 'center' ? this.side : `${this.side}-${this.alignment}`,
+      middleware: [flip(), offset(20)],
+    }).then(({ x, y, placement }) => {
+      Object.assign(this.style, {
+        left: `${x}px`,
+        top: `${y}px`,
+      });
+      this._computedSide = placement.toString().split('-')[0]; // Removes -start or -end from final placement
+    });
   }
 
   protected override render(): TemplateResult {
+    this.setOffset();
+
     return html`
       <div
         class="coach-mark ${this.delay && this.delay !== 'none' ? `delay-${this.delay}` : ''}"

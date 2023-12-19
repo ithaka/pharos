@@ -56,10 +56,10 @@ export const Base = {
             <storybook-pharos-sidenav-link href="#">Menu item 2</storybook-pharos-sidenav-link>
           </storybook-pharos-sidenav-menu>
           <storybook-pharos-sidenav-link href="#">Menu item</storybook-pharos-sidenav-link>
-          <storybook-pharos-sidenav-link href="#" target="_blank" external
+          <storybook-pharos-sidenav-link href="#" external target="_top"
             >External link</storybook-pharos-sidenav-link
           >
-          <storybook-pharos-sidenav-link href="#" target="_blank" external
+          <storybook-pharos-sidenav-link href="#" external
             >External link</storybook-pharos-sidenav-link
           >
         </storybook-pharos-sidenav-section>

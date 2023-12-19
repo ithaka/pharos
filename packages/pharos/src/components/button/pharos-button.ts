@@ -17,9 +17,6 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'subtle' | 'overlay';
 
-// undefined means no state has been expressed at all and won't render; 'undefined' is an explicit state
-export type PressedState = 'false' | 'true' | 'mixed' | 'undefined' | undefined;
-
 const TYPES = ['button', 'submit', 'reset'] as ButtonType[];
 
 const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'] as ButtonVariant[];
@@ -112,11 +109,40 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   public large = false;
 
   /**
+   * @deprecated
    * Indicates the aria label to apply to the button.
    * @attr label
    */
   @property({ type: String, reflect: true })
   public label?: string;
+
+  /**
+   * Indicates the aria label to apply to the button.
+   * @attr a11y-label
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-label' })
+  public a11yLabel?: string;
+
+  /**
+   * Indicates the aria description to apply to the button.
+   * @attr a11y-description
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-description' })
+  public a11yDescription?: string;
+
+  /**
+   * Indicates the aria expanded state to apply to the button.
+   * @attr a11y-expanded
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-expanded' })
+  public a11yExpanded: AriaExpandedState = undefined;
+
+  /**
+   * Indicates the aria expanded state to apply to the button.
+   * @attr a11y-haspopup
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-haspopup' })
+  public a11yHaspopup: AriaPopupState = undefined;
 
   /**
    * Indicates the button's width should match its container.
@@ -140,11 +166,19 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   public value?: string;
 
   /**
+   * @deprecated
    * Indicates this button is a toggle button and whether it is pressed or not.
    * @attr value
    */
   @property({ type: String, reflect: true })
-  public pressed: PressedState = undefined;
+  public pressed: AriaPressedState = undefined;
+
+  /**
+   * Indicates this button is a toggle button and whether it is pressed or not.
+   * @attr value
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-pressed' })
+  public a11yPressed: AriaPressedState = undefined;
 
   @query('#button-element')
   private _button!: HTMLButtonElement | HTMLAnchorElement;
@@ -177,6 +211,14 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
       throw new Error(
         `${this.variant} is not a valid variant. Valid variants are: ${VARIANTS.join(', ')}`
       );
+    }
+
+    if (this.label) {
+      console.warn("The 'label' attribute is deprecated. Use 'a11y-label' instead.");
+    }
+
+    if (this.pressed) {
+      console.warn("The 'pressed' attribute is deprecated. Use 'a11y-pressed' instead.");
     }
   }
 
@@ -243,6 +285,10 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   }
 
   protected override render(): TemplateResult {
+    // TODO: Remove in future release once sufficient time elapsed to update naming convention
+    const a11yLabel = this.a11yLabel ?? this.label;
+    const a11yPressed = this.a11yPressed ?? this.pressed;
+
     return this.href
       ? html`
           <a
@@ -254,8 +300,11 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             ping=${ifDefined(this.ping)}
             rel=${ifDefined(this.rel)}
             target=${ifDefined(this.target)}
-            aria-label=${ifDefined(this.label)}
-            aria-pressed=${ifDefined(this.pressed)}
+            aria-label=${ifDefined(a11yLabel)}
+            aria-description=${ifDefined(this.a11yDescription)}
+            aria-pressed=${ifDefined(a11yPressed)}
+            aria-expanded=${ifDefined(this.a11yExpanded)}
+            aria-haspopup=${ifDefined(this.a11yHaspopup)}
             @keyup=${this._handleKeyup}
           >
             ${this.buttonContent}
@@ -269,8 +318,11 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             ?autofocus=${this.autofocus}
             ?disabled=${this.disabled}
             type="${ifDefined(this.type)}"
-            aria-label=${ifDefined(this.label)}
-            aria-pressed=${ifDefined(this.pressed)}
+            aria-label=${ifDefined(a11yLabel)}
+            aria-description=${ifDefined(this.a11yDescription)}
+            aria-pressed=${ifDefined(a11yPressed)}
+            aria-expanded=${ifDefined(this.a11yExpanded)}
+            aria-haspopup=${ifDefined(this.a11yHaspopup)}
           >
             ${this.buttonContent}
           </button>
