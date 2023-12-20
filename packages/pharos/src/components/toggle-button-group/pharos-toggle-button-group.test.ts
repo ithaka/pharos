@@ -81,11 +81,11 @@ describe('pharos-toggle-button-group', () => {
     ) as PharosToggleButton[];
 
     expect(toggleButtons[0].selected).to.be.true;
-    expect(toggleButtons[0].pressed).to.equal('true');
+    expect(toggleButtons[0].a11yPressed).to.equal('true');
     expect(toggleButtons[1].selected).to.be.false;
-    expect(toggleButtons[1].pressed).to.equal('false');
+    expect(toggleButtons[1].a11yPressed).to.equal('false');
     expect(toggleButtons[2].selected).to.be.false;
-    expect(toggleButtons[2].pressed).to.equal('false');
+    expect(toggleButtons[2].a11yPressed).to.equal('false');
   });
 
   it('selects the defined toggle button', async () => {
@@ -94,11 +94,11 @@ describe('pharos-toggle-button-group', () => {
     ) as PharosToggleButton[];
 
     expect(toggleButtons[0].selected).to.be.false;
-    expect(toggleButtons[0].pressed).to.equal('false');
+    expect(toggleButtons[0].a11yPressed).to.equal('false');
     expect(toggleButtons[1].selected).to.be.false;
-    expect(toggleButtons[1].pressed).to.equal('false');
+    expect(toggleButtons[1].a11yPressed).to.equal('false');
     expect(toggleButtons[2].selected).to.be.true;
-    expect(toggleButtons[2].pressed).to.equal('true');
+    expect(toggleButtons[2].a11yPressed).to.equal('true');
   });
 
   it('changes the focus right with the right arrow key', async () => {
@@ -141,11 +141,11 @@ describe('pharos-toggle-button-group', () => {
     await aTimeout(1);
 
     expect(toggleButtons[0].selected).to.be.false;
-    expect(toggleButtons[0].pressed).to.equal('false');
+    expect(toggleButtons[0].a11yPressed).to.equal('false');
     expect(toggleButtons[1].selected).to.be.false;
-    expect(toggleButtons[1].pressed).to.equal('false');
+    expect(toggleButtons[1].a11yPressed).to.equal('false');
     expect(toggleButtons[2].selected).to.be.true;
-    expect(toggleButtons[2].pressed).to.equal('true');
+    expect(toggleButtons[2].a11yPressed).to.equal('true');
   });
 
   it('wraps focus to the last toggle button when left arrow is hit on the first button', async () => {
@@ -192,10 +192,10 @@ describe('pharos-toggle-button-group', () => {
     await aTimeout(1);
 
     expect(toggleButtons[0].selected).to.be.false;
-    expect(toggleButtons[0].pressed).to.equal('false');
+    expect(toggleButtons[0].a11yPressed).to.equal('false');
     expect(toggleButtons[1].selected).to.be.true;
-    expect(toggleButtons[1].pressed).to.equal('true');
+    expect(toggleButtons[1].a11yPressed).to.equal('true');
     expect(toggleButtons[2].selected).to.be.false;
-    expect(toggleButtons[2].pressed).to.equal('false');
+    expect(toggleButtons[2].a11yPressed).to.equal('false');
   });
 });
