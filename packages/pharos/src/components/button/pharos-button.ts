@@ -285,6 +285,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             aria-pressed=${ifDefined(this.a11yPressed)}
             aria-expanded=${ifDefined(this.a11yExpanded)}
             aria-haspopup=${ifDefined(this.a11yHaspopup)}
+            aria-disabled=${ifDefined(this.a11yDisabled)}
             @keyup=${this._handleKeyup}
           >
             ${this.buttonContent}
@@ -303,6 +304,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             aria-pressed=${ifDefined(this.a11yPressed)}
             aria-expanded=${ifDefined(this.a11yExpanded)}
             aria-haspopup=${ifDefined(this.a11yHaspopup)}
+            aria-disabled=${ifDefined(this.a11yDisabled)}
           >
             ${this.buttonContent}
           </button>
