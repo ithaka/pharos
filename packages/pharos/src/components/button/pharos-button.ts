@@ -109,6 +109,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   public large = false;
 
   /**
+   * @deprecated
    * Indicates the aria label to apply to the button.
    * @attr a11y-label
    */
@@ -196,6 +197,14 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
         `${this.variant} is not a valid variant. Valid variants are: ${VARIANTS.join(', ')}`
       );
     }
+
+    if (this.label) {
+      console.warn("The 'label' attribute is deprecated. Use 'a11y-label' instead.");
+    }
+
+    if (this.pressed) {
+      console.warn("The 'pressed' attribute is deprecated. Use 'a11y-pressed' instead.");
+    }
   }
 
   override connectedCallback(): void {
@@ -261,6 +270,10 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   }
 
   protected override render(): TemplateResult {
+    // TODO: Remove in future release once sufficient time elapsed to update naming convention
+    const a11yLabel = this.a11yLabel ?? this.label;
+    const a11yPressed = this.a11yPressed ?? this.pressed;
+
     return this.href
       ? html`
           <a
@@ -272,10 +285,10 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             ping=${ifDefined(this.ping)}
             rel=${ifDefined(this.rel)}
             target=${ifDefined(this.target)}
-            aria-label=${ifDefined(this.a11yLabel)}
-            aria-pressed=${ifDefined(this.a11yPressed)}
+            aria-label=${ifDefined(a11yLabel)}
+            aria-description=${ifDefined(this.a11yDescription)}
+            aria-pressed=${ifDefined(a11yPressed)}
             aria-expanded=${ifDefined(this.a11yExpanded)}
-            aria-disabled=${ifDefined(this.a11yDisabled)}
             aria-haspopup=${ifDefined(this.a11yHaspopup)}
             @keyup=${this._handleKeyup}
           >
@@ -290,10 +303,10 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             ?autofocus=${this.autofocus}
             ?disabled=${this.disabled}
             type="${ifDefined(this.type)}"
-            aria-label=${ifDefined(this.a11yLabel)}
-            aria-pressed=${ifDefined(this.a11yPressed)}
+            aria-label=${ifDefined(a11yLabel)}
+            aria-description=${ifDefined(this.a11yDescription)}
+            aria-pressed=${ifDefined(a11yPressed)}
             aria-expanded=${ifDefined(this.a11yExpanded)}
-            aria-disabled=${ifDefined(this.a11yDisabled)}
             aria-haspopup=${ifDefined(this.a11yHaspopup)}
           >
             ${this.buttonContent}

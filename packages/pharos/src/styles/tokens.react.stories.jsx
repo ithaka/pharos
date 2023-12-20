@@ -629,3 +629,45 @@ const TypeTokens = () => (
 export const TypeScale = {
   render: () => TypeTokens(),
 };
+
+const ElevationTokens = () => (
+  <>
+    {TokenTable(
+      'Elevation tokens',
+      <>
+        <thead>
+          <tr>
+            <th style={{ width: '33%' }}>Token</th>
+            <th style={{ width: '33%' }}>Value</th>
+            <th style={{ width: '33%' }}>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(tokens.elevation.level).map((key, index) => (
+            <tr key={index}>
+              <td>{toTokenFormat(tokens.elevation.level[key].name)}</td>
+              <td>{tokens.elevation.level[key].value}</td>
+              <td>
+                <div
+                  className="elevation-example"
+                  style={{
+                    boxShadow: tokens.elevation.level[key].value,
+                    width: '100%',
+                    height: '142px',
+                    flexShrink: '0',
+                    borderRadius: '5px',
+                    background: '#FFF',
+                  }}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </>
+    )}
+  </>
+);
+
+export const Elevation = {
+  render: () => ElevationTokens(),
+};
