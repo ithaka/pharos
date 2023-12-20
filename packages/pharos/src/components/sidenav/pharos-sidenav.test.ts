@@ -24,7 +24,7 @@ describe('pharos-sidenav', () => {
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
             on-background
           ></test-pharos-button>
         </test-pharos-input-group>
@@ -84,7 +84,7 @@ describe('pharos-sidenav', () => {
               name="search-button"
               icon="search"
               variant="subtle"
-              label="search"
+              a11y-label="search"
               is-on-background
             ></test-pharos-button>
           </test-pharos-input-group>
