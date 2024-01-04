@@ -50,7 +50,7 @@ export const ItemDetail = {
               variant="subtle"
               icon="arrow-left"
               href="#"
-              label="Back to results"
+              a11y-label="Back to results"
               className="item-detail-page__button--mobile-back"
             ></PharosButton>
             <div className="item-detail-page__container--action-buttons">
@@ -68,10 +68,10 @@ export const ItemDetail = {
               </PharosButton>
             </div>
             <div className="item-detail-page__container--mobile-buttons">
-              <PharosButton variant="subtle" icon="cite" label="Cite"></PharosButton>
-              <PharosButton variant="subtle" icon="share" label="Share"></PharosButton>
-              <PharosButton variant="subtle" icon="save" label="Save"></PharosButton>
-              <PharosButton variant="subtle" icon="download" label="Download"></PharosButton>
+              <PharosButton variant="subtle" icon="cite" a11y-label="Cite"></PharosButton>
+              <PharosButton variant="subtle" icon="share" a11y-label="Share"></PharosButton>
+              <PharosButton variant="subtle" icon="save" a11y-label="Save"></PharosButton>
+              <PharosButton variant="subtle" icon="download" a11y-label="Download"></PharosButton>
             </div>
           </div>
           <div className="item-detail-page__container--viewer"></div>

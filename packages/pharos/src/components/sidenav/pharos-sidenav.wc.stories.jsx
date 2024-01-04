@@ -45,8 +45,8 @@ export const Base = {
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
-            is-on-background
+            a11y-label="search"
+            on-background
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
         <storybook-pharos-sidenav-section show-divider>
