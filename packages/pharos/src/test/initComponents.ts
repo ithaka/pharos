@@ -1,5 +1,6 @@
 import {
   PharosAlert,
+  PharosCarousel,
   PharosBreadcrumb,
   PharosBreadcrumbItem,
   PharosButton,
@@ -50,6 +51,7 @@ import registerComponents from '../utils/registerComponents';
 
 registerComponents('test', [
   PharosAlert,
+  PharosCarousel,
   PharosBreadcrumb,
   PharosBreadcrumbItem,
   PharosButton,

@@ -1,4 +1,5 @@
 export { PharosAlert } from './components/alert/pharos-alert';
+export { PharosCarousel } from './components/carousel/pharos-carousel';
 export { PharosHeading } from './components/heading/pharos-heading';
 export { PharosIcon } from './components/icon/pharos-icon';
 export { PharosTooltip } from './components/tooltip/pharos-tooltip';
