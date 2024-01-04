@@ -105,7 +105,7 @@ export const Validity = {
   },
 };
 
-export const isOnBackground = {
+export const IsOnBackground = {
   name: 'On background',
   render: () =>
     html`
