@@ -57,10 +57,10 @@ focusable="false"
 export class PharosLoadingSpinner extends PharosElement {
   /**
    * Indicates if the spinner is on background
-   * @attr on-background
+   * @attr is-on-background
    */
-  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
-  public onBackground = false;
+  @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
+  public isOnBackground = false;
 
   /**
    * Indicates if the spinner is small
@@ -111,7 +111,7 @@ export class PharosLoadingSpinner extends PharosElement {
       { stroke: PharosLoadingSpinnerColorStrokeOnBackground, offset: 0.9 },
       { stroke: PharosLoadingSpinnerColorStrokeOnBackground, offset: 1 },
     ];
-    const colorKeys = this.onBackground ? colorKeysOnBackground : colorKeysBase;
+    const colorKeys = this.isOnBackground ? colorKeysOnBackground : colorKeysBase;
     const colorTiming: KeyframeAnimationOptions = {
       easing: 'ease-in-out',
       duration: 6000,
