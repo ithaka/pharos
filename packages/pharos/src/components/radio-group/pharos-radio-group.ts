@@ -1,6 +1,7 @@
 import { html } from 'lit';
 import { property, queryAssignedElements } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { radioGroupStyles } from './pharos-radio-group.css';
 import type { PharosRadioButton } from '../radio-button/pharos-radio-button';
 
@@ -167,17 +168,12 @@ export class PharosRadioGroup extends FormElement {
   }
 
   protected override render(): TemplateResult {
-    const labels = ['legend'];
-    if (this.messageId) {
-      labels.push(this.messageId);
-    }
-
     return html`
       <fieldset
         class="radio-group radio-group--${this.horizontal ? 'horizontal' : 'vertical'}"
         aria-required="${this.required}"
         aria-invalid="${this.invalidated}"
-        aria-labelledby="${labels.join(' ')}"
+        aria-describedby=${ifDefined(this.messageId)}
         role="radiogroup"
       >
         <legend id="legend" class="radio-group__legend">

@@ -5,9 +5,13 @@ import type { PharosLoadingSpinner } from './pharos-loading-spinner';
 
 describe('pharos-loading-spinner', () => {
   let component: PharosLoadingSpinner;
+  let smallComponent: PharosLoadingSpinner;
 
   beforeEach(async () => {
     component = await fixture(html` <test-pharos-loading-spinner></test-pharos-loading-spinner> `);
+    smallComponent = await fixture(
+      html` <test-pharos-loading-spinner small></test-pharos-loading-spinner> `
+    );
   });
 
   it('is accessible', async () => {
@@ -22,6 +26,30 @@ describe('pharos-loading-spinner', () => {
           viewBox="25 25 50 50"
           height="56"
           width="56"
+          focusable="false"
+        >
+          <circle
+            class="loading-spinner__animation"
+            cx="50"
+            cy="50"
+            r="20"
+            fill="none"
+            stroke-width="3"
+            stroke-miterlimit="10"
+          />
+        </svg>
+      </div>
+    `);
+  });
+
+  it('renders the small spinner', async () => {
+    expect(smallComponent).shadowDom.to.equal(`
+      <div class="loading-spinner__wrapper" role="alert" aria-live="assertive" aria-label="Content is loading..." tabindex="0">
+        <svg
+          class="loading-spinner__icon"
+          viewBox="25 25 50 50"
+          height="18"
+          width="18"
           focusable="false"
         >
           <circle

@@ -35,6 +35,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     'focus-trap': FocusTrap,
   };
 
+  MAX_EXPAND_PERCENTAGE = '95%';
+  MIN_EXPAND_PERCENTAGE = '60%';
+
   /**
    * Indicates if the sheet is open.
    * @attr open
@@ -46,14 +49,14 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
    * Indicates if the sheet is expanded.
    * @attr expanded
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean, reflect: true, attribute: 'expanded' })
   public expanded = false;
 
   /**
    * Indicates if the sheet is allowed to expand.
    * @attr enableExpansion
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean, reflect: true, attribute: 'enable-expansion' })
   public enableExpansion = true;
 
   /**
@@ -77,6 +80,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   @state()
   private _startHeight = 0;
   private _startY = 0;
+  private _newHeight = 0;
   private _isDragging = false;
 
   constructor() {
@@ -106,6 +110,10 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
       if (this.open) {
+        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+        sheetContent.style.height = this.expanded
+          ? this.MAX_EXPAND_PERCENTAGE
+          : this.MIN_EXPAND_PERCENTAGE;
         this._focusContents();
       } else {
         this._returnTriggerFocus();
@@ -113,6 +121,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
       if (changedProperties.get('open') !== undefined) {
         this._emitVisibilityChange();
+      }
+    }
+    if (changedProperties.has('expanded')) {
+      if (this.expanded) {
+        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+        sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
       }
     }
   }
@@ -158,6 +172,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         )
       ) {
         this.open = false;
+        this.expanded = false;
       }
     }
   }
@@ -174,6 +189,10 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         this.dispatchEvent(new CustomEvent('pharos-sheet-open', { ...details, cancelable: true }))
       ) {
         this.open = true;
+        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+        sheetContent.style.height = this.expanded
+          ? this.MAX_EXPAND_PERCENTAGE
+          : this.MIN_EXPAND_PERCENTAGE;
       }
     }
   }
@@ -181,6 +200,14 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   private _handleKeydown(event: KeyboardEvent): void {
     if ((event.key === 'Escape' || event.key === 'Esc') && this.open) {
       event.stopPropagation();
+      this._closeSheet(event.target);
+    }
+  }
+
+  private _handleOverlayClickOnTouch(event: TouchEvent): void {
+    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+    const overlayContent = this.shadowRoot?.querySelector(`.sheet__overlay`) as HTMLDivElement;
+    if (overlayContent.clientHeight - event.touches?.[0].clientY > sheetContent.clientHeight) {
       this._closeSheet(event.target);
     }
   }
@@ -193,25 +220,40 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   private _handleMouseDragStart(event: MouseEvent): void {
     if (!this.enableExpansion) return;
+    if (this._isDragging) {
+      this._handleDragEnd();
+      return;
+    }
     this._isDragging = true;
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
     this._startHeight = sheetContent.clientHeight;
     this._startY = event.pageY;
+    this._newHeight = this._startHeight;
   }
 
   private _handleTouchDragStart(event: TouchEvent): void {
     if (!this.enableExpansion) return;
+    if (this._isDragging) {
+      this._handleDragEnd();
+      return;
+    }
     this._isDragging = true;
     const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
     this._startHeight = sheetContent.clientHeight;
     this._startY = event.touches?.[0].pageY;
+    this._newHeight = this._startHeight;
   }
 
   private _handleMouseDragging(event: MouseEvent): void {
     if (this._isDragging) {
       const delta = this._startY - event.pageY;
       const newHeight = this._startHeight + delta;
+      this._newHeight = newHeight;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+      if (sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE && event.pageY < this._startY) {
+        this._isDragging = false;
+        return;
+      }
       sheetContent.style.height = `${newHeight}px`;
     }
   }
@@ -220,22 +262,45 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     if (this._isDragging) {
       const delta = this._startY - event.touches?.[0].pageY;
       const newHeight = this._startHeight + delta;
+      this._newHeight = newHeight;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
+      if (
+        sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE &&
+        event.touches?.[0].pageY < this._startY
+      ) {
+        this._isDragging = false;
+        return;
+      }
       sheetContent.style.height = `${newHeight}px`;
     }
   }
 
   private _handleDragEnd(): void {
     if (this._isDragging) {
-      this._isDragging = false;
       const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-      const sheetHeight = sheetContent.clientHeight;
-      if (sheetHeight > this._startHeight) {
-        sheetContent.style.height = '100%';
+      const details = {
+        bubbles: true,
+        composed: true,
+      };
+      if (this._newHeight === this._startHeight) {
+        this._isDragging = false;
+        return;
+      }
+      if (this._newHeight > this._startHeight) {
+        sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
+        this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
+        this.expanded = true;
       } else {
-        sheetContent.style.height = '50%';
+        if (this.expanded) {
+          sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
+          this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
+          this.expanded = false;
+        } else {
+          this._closeSheet(null);
+        }
       }
     }
+    this._isDragging = false;
   }
 
   private _handleTriggerClick(event: MouseEvent): void {
@@ -307,15 +372,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       : nothing;
   }
 
-  private _renderSheetHandle(): TemplateResult | typeof nothing {
-    return this.enableExpansion
-      ? html`<div class="sheet__handle" @mousedown=${this._handleMouseDragStart}></div>`
-      : nothing;
-  }
-
   protected override render(): TemplateResult {
     return html`
-      <div class="sheet__overlay">
+      <div class="sheet__overlay" @touchstart=${this._handleOverlayClickOnTouch}>
         <div
           role="dialog"
           class="sheet__dialog"
@@ -324,10 +383,18 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
           aria-describedby="${ifDefined(this.descriptionId)}"
           @click=${this._handleDialogClick}
           @touchstart=${this._handleTouchDragStart}
+          @touchend=${this._handleDragEnd}
         >
           <focus-trap>
             <div class="sheet__content">
-              ${this._renderSheetHandle()} ${this._renderCloseButton()}
+              <div
+                class="sheet__handle_wrapper"
+                @mousedown=${this._handleMouseDragStart}
+                @mouseup=${this._handleDragEnd}
+              >
+                <div class="sheet__handle"></div>
+              </div>
+              ${this._renderCloseButton()}
               <div class="sheet__body">
                 ${this.descriptionContent}
                 <slot></slot>

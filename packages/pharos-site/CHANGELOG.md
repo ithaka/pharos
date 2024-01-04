@@ -1,5 +1,21 @@
 # @ithaka/pharos-site
 
+## 5.13.5
+
+### Patch Changes
+
+- [#639](https://github.com/ithaka/pharos/pull/639) [`ee7a68c`](https://github.com/ithaka/pharos/commit/ee7a68c28d1ec62b02dd6adc98435037a00162ad) Thanks [@henryclong](https://github.com/henryclong)! - Fix coach mark documentation issues
+
+- Updated dependencies [[`29fdb15`](https://github.com/ithaka/pharos/commit/29fdb15d7c95f8f2a533e5d7b8ee80ad9ee663bd)]:
+  - @ithaka/pharos@13.2.2
+
+## 5.13.4
+
+### Patch Changes
+
+- Updated dependencies [[`d67125a`](https://github.com/ithaka/pharos/commit/d67125a4a9598475aff9000b18567f734074915f)]:
+  - @ithaka/pharos@13.0.0
+
 ## 5.13.3
 
 ### Patch Changes
