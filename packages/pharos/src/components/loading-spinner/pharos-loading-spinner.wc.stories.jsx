@@ -39,7 +39,7 @@ export const OnBackground = {
   render: () =>
     html`
       <div style="height: 5rem; width: 5rem; background: black; position: relative;">
-        <storybook-pharos-loading-spinner on-background></storybook-pharos-loading-spinner>
+        <storybook-pharos-loading-spinner is-on-background></storybook-pharos-loading-spinner>
       </div>
     `,
 };
@@ -57,7 +57,7 @@ export const SmallOnBackground = {
   render: () =>
     html`
       <div style="height: 5rem; width: 5rem; background: black; position: relative;">
-        <storybook-pharos-loading-spinner small on-background></storybook-pharos-loading-spinner>
+        <storybook-pharos-loading-spinner small is-on-background></storybook-pharos-loading-spinner>
       </div>
     `,
 };

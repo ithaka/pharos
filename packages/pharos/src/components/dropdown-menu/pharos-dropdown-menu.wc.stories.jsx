@@ -178,7 +178,7 @@ export const FullWidth = {
   },
 };
 
-export const isOnBackground = {
+export const IsOnBackground = {
   render: () => {
     const effect = () => {
       useEffect(() => {
