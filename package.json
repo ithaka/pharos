@@ -20,7 +20,7 @@
     "watch:styles": "yarn workspace @ithaka/pharos build:styles:watch",
     "build:core": "yarn workspace @ithaka/pharos build",
 
-    "storybook:build": "yarn storybook:setup && yarn storybook:react:build && yarn storybook:wc:build && yarn storybook:main:build",
+    "storybook:build": "yarn storybook:setup && concurrently \"yarn storybook:wc:build\" \"yarn storybook:react:build\" \"yarn storybook:main:build\" --prefix=\"{command}\" --prefix-length=30",
     "storybook:setup": "yarn build:core",
 
     "prestorybook:wc": "yarn storybook:setup",
@@ -39,6 +39,8 @@
 
     "storybook:main:dev": "storybook dev -c .storybook/main -p 9002",
     "storybook:main:build": "storybook build -c .storybook/main -o .storybook-static/main",
+
+    "build-storybook": "yarn storybook:build",
 
     "presite:build": "yarn build:core",
     "site:build": "yarn workspace @ithaka/pharos-site build",
