@@ -1,5 +1,5 @@
 import { PharosElement } from '../base/pharos-element';
-import { html } from 'lit';
+import { html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
@@ -30,12 +30,37 @@ export class PharosIcon extends PharosElement {
   /**
    * A description of what the icon represents
    * @attr description
+   * @deprecated Please use a11yTitle instead.
    */
   @property({ type: String, reflect: true })
   public description = '';
 
+  /**
+   * Indicates the title to apply as the accessible name of the icon.
+   * @attr a11y-title
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-title' })
+  public a11yTitle?: string;
+
+  /**
+   * Indicates whether the icon should be hidden from assistive technology.
+   * @attr a11y-hidden
+   * @type {AriaHiddenState}
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-hidden' })
+  public a11yHidden?: AriaHiddenState;
+
   @state()
   private _svg = '';
+
+  protected override update(changedProperties: PropertyValues): void {
+    super.update && super.update(changedProperties);
+    if (this.description.length) {
+      console.warn(
+        "The 'description' attribute of pharos-icon is deprecated and will be removed in the next major release. Please use a11y-title or mark the icon as decorative by using a11y-hidden instead."
+      );
+    }
+  }
 
   public static override get styles(): CSSResultArray {
     return [iconStyles];
@@ -59,7 +84,12 @@ export class PharosIcon extends PharosElement {
 
   protected override render(): TemplateResult {
     const size = this._getIconSize();
-
+    const accessibilityLabel = this.a11yTitle || this.description;
+    let hideIcon = this.a11yHidden;
+    // Check accessibilityLabel length for backwards compatibility until description is removed
+    if (hideIcon !== 'true' && accessibilityLabel.length === 0) {
+      hideIcon = 'true';
+    }
     return html`
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -67,12 +97,12 @@ export class PharosIcon extends PharosElement {
         viewBox="0 0 ${size} ${size}"
         class="icon"
         role="img"
-        aria-hidden=${this.description === ''}
-        aria-label=${this.description || ''}
+        aria-hidden=${hideIcon || nothing}
         height="${size}"
         width="${size}"
         focusable="false"
       >
+        <title>${accessibilityLabel}</title>
         ${unsafeSVG(this._svg)}
       </svg>
     `;
