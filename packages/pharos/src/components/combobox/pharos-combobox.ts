@@ -227,6 +227,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
                           <pharos-icon
                             class="combobox__option__icon"
                             name="checkmark"
+                            a11y-hidden="true"
                           ></pharos-icon>
                         `
                       : nothing}
@@ -295,7 +296,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
           <pharos-icon
             class="combobox__icon"
             name="chevron-down"
-            description="Dropdown"
+            a11y-title="Dropdown"
           ></pharos-icon>
         </button>
       `;

@@ -271,7 +271,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
       icon = this.icon;
     }
 
-    return icon ? html` <pharos-icon name="${icon}"></pharos-icon> ` : nothing;
+    return icon ? html` <pharos-icon name="${icon}" ally-hidden="true"></pharos-icon> ` : nothing;
   }
 
   protected get buttonContent(): TemplateResult {

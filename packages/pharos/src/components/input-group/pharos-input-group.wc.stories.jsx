@@ -118,7 +118,11 @@ export const Composition = {
       <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
         <storybook-pharos-input-group name="my-input-group-icon">
           <span slot="label">With icons</span>
-          <storybook-pharos-icon id="calendar" name="calendar"></storybook-pharos-icon>
+          <storybook-pharos-icon
+            id="calendar"
+            name="calendar"
+            a11y-hidden="true"
+          ></storybook-pharos-icon>
         </storybook-pharos-input-group>
         <storybook-pharos-input-group name="my-input-group-buttons">
           <span slot="label">Multiple buttons</span>
