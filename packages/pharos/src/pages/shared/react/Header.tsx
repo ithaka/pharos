@@ -95,7 +95,7 @@ export const Header: FC = () => (
           name="search-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11yLabel="search"
         ></PharosButton>
       </PharosInputGroup>
     </div>

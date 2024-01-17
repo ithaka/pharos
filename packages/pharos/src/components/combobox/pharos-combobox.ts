@@ -258,7 +258,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
           variant="subtle"
           icon="close"
           ?disabled=${this.disabled}
-          label="Clear option"
+          a11y-label="Clear option"
           @click=${this._handleClearClick}
           @mousedown=${this._handleClearClick}
         >
@@ -277,7 +277,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
           type="button"
           variant="subtle"
           class="search__button"
-          label="Search"
+          a11y-label="Search"
           ?disabled=${this.disabled}
           @click=${this.onChange}
         ></pharos-button>

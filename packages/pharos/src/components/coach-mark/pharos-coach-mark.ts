@@ -130,7 +130,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
               type="button"
               variant="${this.variant === 'light' ? 'subtle' : 'overlay'}"
               icon="close"
-              label="Close"
+              a11y-label="Close"
               @click="${() => (this.hide = true)}"
             ></pharos-button>
             <pharos-heading
