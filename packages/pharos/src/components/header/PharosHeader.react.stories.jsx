@@ -54,6 +54,7 @@ export const Base = {
             style={{
               marginLeft: '1rem',
             }}
+            a11yHidden="true"
           ></PharosIcon>
         </div>
         <span slot="top" className="show-for-small" style={{ display: 'none', fontWeight: 'bold' }}>

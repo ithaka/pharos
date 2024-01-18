@@ -603,7 +603,7 @@ const TypeTokens = () => (
                     GT America
                   </span>
                 ) : (
-                  <PharosIcon name="dash-small"></PharosIcon>
+                  <PharosIcon name="dash-small" a11yHidden="true"></PharosIcon>
                 )}
               </td>
               <td>
@@ -615,7 +615,7 @@ const TypeTokens = () => (
                     Ivar Headline
                   </span>
                 ) : (
-                  <PharosIcon name="dash-small"></PharosIcon>
+                  <PharosIcon name="dash-small" a11yHidden="true"></PharosIcon>
                 )}
               </td>
             </tr>

@@ -67,7 +67,7 @@ export const Base = {
           >
             <span>Access provided by&nbsp;</span>
             <span style="font-weight: bold">JSTOR</span>
-            <storybook-pharos-icon name="chevron-down" style="margin-left: 1rem"></storybook-pharos-icon>
+            <storybook-pharos-icon name="chevron-down" style="margin-left: 1rem"  a11y-hidden="true"></storybook-pharos-icon>
           </div>
           <storybook-pharos-dropdown-menu id="pds-menu" placement="bottom">
             <div style="padding: 1rem">

@@ -43,6 +43,7 @@ export const ItemDetail = {
               <PharosIcon
                 name="arrow-left"
                 style={{ marginRight: 'var(--pharos-spacing-one-quarter-x)' }}
+                a11yHidden="true"
               ></PharosIcon>
               Back to results
             </PharosLink>

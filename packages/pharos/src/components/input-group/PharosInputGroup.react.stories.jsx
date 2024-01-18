@@ -109,7 +109,7 @@ export const Composition = {
     >
       <PharosInputGroup name="my-input-group-icon">
         <span slot="label">With icons</span>
-        <PharosIcon id="calendar" name="calendar"></PharosIcon>
+        <PharosIcon id="calendar" name="calendar" a11yHidden="true"></PharosIcon>
       </PharosInputGroup>
       <PharosInputGroup name="my-input-group-buttons">
         <span slot="label">Multiple buttons</span>

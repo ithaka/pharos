@@ -35,6 +35,7 @@ export const ItemDetail = {
               <storybook-pharos-icon
                 name="arrow-left"
                 style="margin-right: var(--pharos-spacing-one-quarter-x)"
+                a11y-hidden="true"
               ></storybook-pharos-icon>
               Back to results
             </storybook-pharos-link>
