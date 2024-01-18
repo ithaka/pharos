@@ -102,7 +102,7 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
             class="side-element__button"
             icon="close"
             variant="subtle"
-            label="Close menu"
+            a11y-label="Close menu"
             on-background
             icon-condensed
             @click=${this._handleClickClose}

@@ -18,7 +18,7 @@ export class PharosSidenavButton extends PharosButton {
     super();
     this.icon = 'menu';
     this.variant = 'subtle';
-    this.label = 'Open menu';
+    this.a11yLabel = 'Open menu';
   }
 
   public static override get styles(): CSSResultArray {

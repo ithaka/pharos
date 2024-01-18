@@ -275,7 +275,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
                   type="button"
                   variant="subtle"
                   icon="close"
-                  label="Close modal"
+                  a11y-label="Close modal"
                 ></pharos-button>
               </div>
               <div class="modal__body">

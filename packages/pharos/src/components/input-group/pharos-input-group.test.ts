@@ -10,7 +10,7 @@ describe('pharos-input-group', () => {
     component = await fixture(html`
       <test-pharos-input-group>
         <span slot="label">Search</span>
-        <test-pharos-button icon="search" variant="subtle" label="search"></test-pharos-button>
+        <test-pharos-button icon="search" variant="subtle" a11y-label="search"></test-pharos-button>
       </test-pharos-input-group>
     `);
   });
@@ -38,7 +38,7 @@ describe('pharos-input-group', () => {
             slot="prepend"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></test-pharos-button>
         </test-pharos-input-group>
       `

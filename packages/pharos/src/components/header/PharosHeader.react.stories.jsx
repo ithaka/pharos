@@ -54,6 +54,7 @@ export const Base = {
             style={{
               marginLeft: '1rem',
             }}
+            a11yHidden="true"
           ></PharosIcon>
         </div>
         <span slot="top" className="show-for-small" style={{ display: 'none', fontWeight: 'bold' }}>
@@ -87,7 +88,7 @@ export const Base = {
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11yLabel="search"
           ></PharosButton>
         </PharosInputGroup>
       </div>

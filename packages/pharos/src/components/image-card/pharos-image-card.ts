@@ -231,7 +231,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
               [`card__link--collection--error`]: true,
             })}
           >
-            <pharos-icon name="exclamation-inverse"></pharos-icon>
+            <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
             <span class="unavailable-text">Image preview not available</span>
           </div>
         `
@@ -275,7 +275,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
             [`card__container--selectable-hover`]: this._isSelectableCardHover(),
           })}
         >
-          <pharos-icon name="exclamation-inverse"></pharos-icon>
+          <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
           <span class="unavailable-text">Image preview not available</span>
         </div>`
       : html`<slot name="image"></slot>`;
@@ -367,7 +367,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           icon="ellipses-vertical"
           variant="subtle"
           icon-condensed
-          label="More actions"
+          a11y-label="More actions"
           @click=${this._handleClick}
         ></pharos-button>`
       : html`<slot name="action-button"></slot>`;

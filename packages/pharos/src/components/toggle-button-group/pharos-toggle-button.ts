@@ -36,7 +36,7 @@ export class PharosToggleButton extends PharosButton {
 
   constructor() {
     super();
-    this.pressed = 'false';
+    this.a11yPressed = 'false';
     this.variant = 'secondary';
     this.type = 'button';
   }
@@ -87,7 +87,7 @@ export class PharosToggleButton extends PharosButton {
       composed: true,
     };
     this.selected = true;
-    this.pressed = 'true';
+    this.a11yPressed = 'true';
     this.dispatchEvent(new CustomEvent('pharos-toggle-button-selected', details));
   }
 }

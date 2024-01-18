@@ -62,6 +62,7 @@ export const Header: FC = () => (
           style={{
             marginLeft: '1rem',
           }}
+          a11yHidden="true"
         ></PharosIcon>
       </div>
       <span slot="top" className="show-for-small" style={{ display: 'none', fontWeight: 'bold' }}>
@@ -95,7 +96,7 @@ export const Header: FC = () => (
           name="search-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11yLabel="search"
         ></PharosButton>
       </PharosInputGroup>
     </div>
