@@ -67,9 +67,13 @@ export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(PharosElem
 
   private _renderIcon(): TemplateResult {
     if (this.expanded) {
-      return html` <pharos-icon class="button__icon" name="chevron-up"></pharos-icon> `;
+      return html`
+        <pharos-icon class="button__icon" name="chevron-up" a11y-hidden="true"></pharos-icon>
+      `;
     }
-    return html` <pharos-icon class="button__icon" name="chevron-down"></pharos-icon> `;
+    return html`
+      <pharos-icon class="button__icon" name="chevron-down" a11y-hidden="true"></pharos-icon>
+    `;
   }
 
   private _renderMenu(): TemplateResult {
