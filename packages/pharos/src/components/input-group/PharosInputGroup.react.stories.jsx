@@ -38,7 +38,7 @@ export const Base = {
           name="search-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11yLabel="search"
         ></PharosButton>
       </PharosInputGroup>
     </div>
@@ -60,7 +60,7 @@ export const Prominent = {
           name="search-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11yLabel="search"
         ></PharosButton>
       </PharosInputGroup>
     </div>
@@ -82,7 +82,7 @@ export const Validity = {
           name="search-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11yLabel="search"
         ></PharosButton>
       </PharosInputGroup>
       <PharosInputGroup validated value="here@there.com" name="my-input-group">
@@ -91,7 +91,7 @@ export const Validity = {
           name="search-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11yLabel="search"
         ></PharosButton>
       </PharosInputGroup>
     </div>
@@ -117,13 +117,13 @@ export const Composition = {
           name="close-button"
           icon="close"
           variant="subtle"
-          label="close"
+          a11yLabel="close"
         ></PharosButton>
         <PharosButton
           name="search-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11yLabel="search"
         ></PharosButton>
       </PharosInputGroup>
       <PharosInputGroup name="my-input-group-select">
@@ -137,7 +137,7 @@ export const Composition = {
           name="search-with-select-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11yLabel="search"
         ></PharosButton>
       </PharosInputGroup>
       <PharosInputGroup name="my-input-group-prepend">
@@ -146,7 +146,7 @@ export const Composition = {
           slot="prepend"
           icon="book"
           variant="subtle"
-          label="book"
+          a11yLabel="book"
         ></PharosButton>
         <span slot="label">Prepend</span>
       </PharosInputGroup>

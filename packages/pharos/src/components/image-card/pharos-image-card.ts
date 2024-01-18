@@ -367,7 +367,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           icon="ellipses-vertical"
           variant="subtle"
           icon-condensed
-          label="More actions"
+          a11y-label="More actions"
           @click=${this._handleClick}
         ></pharos-button>`
       : html`<slot name="action-button"></slot>`;

@@ -21,7 +21,7 @@ export const Base = {
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
       </div>
@@ -38,7 +38,7 @@ export const Prominent = {
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
         <storybook-pharos-input-group name="my-input-group" variant="prominent" invalidated>
@@ -47,7 +47,7 @@ export const Prominent = {
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
         <storybook-pharos-input-group name="prominent-prepend" variant="prominent">
@@ -56,7 +56,7 @@ export const Prominent = {
             slot="prepend"
             icon="book"
             variant="subtle"
-            label="book"
+            a11y-label="book"
           ></storybook-pharos-button>
           <span slot="label">prominent Prepend</span>
         </storybook-pharos-input-group>
@@ -66,20 +66,20 @@ export const Prominent = {
             slot="prepend"
             icon="book"
             variant="subtle"
-            label="book"
+            a11y-label="book"
           ></storybook-pharos-button>
           <span slot="label">Multiple buttons</span>
           <storybook-pharos-button
             name="close-button"
             icon="close"
             variant="subtle"
-            label="close"
+            a11y-label="close"
           ></storybook-pharos-button>
           <storybook-pharos-button
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
       </div>
@@ -96,7 +96,7 @@ export const Validity = {
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
         <storybook-pharos-input-group validated value="here@there.com" name="my-input-group">
@@ -105,7 +105,7 @@ export const Validity = {
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
       </div>
@@ -130,13 +130,13 @@ export const Composition = {
             name="close-button"
             icon="close"
             variant="subtle"
-            label="close"
+            a11y-label="close"
           ></storybook-pharos-button>
           <storybook-pharos-button
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
         <storybook-pharos-input-group name="my-input-group-select">
@@ -150,7 +150,7 @@ export const Composition = {
             name="search-with-select-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
         <storybook-pharos-input-group name="my-input-group-prepend">
@@ -159,7 +159,7 @@ export const Composition = {
             slot="prepend"
             icon="book"
             variant="subtle"
-            label="book"
+            a11y-label="book"
           ></storybook-pharos-button>
           <span slot="label">Prepend</span>
         </storybook-pharos-input-group>

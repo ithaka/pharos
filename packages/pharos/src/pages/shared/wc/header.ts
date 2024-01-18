@@ -80,7 +80,7 @@ export const Header = (): TemplateResult => html`
           name="search-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11y-label="search"
         ></storybook-pharos-button>
       </storybook-pharos-input-group>
     </div>

@@ -366,7 +366,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
             type="button"
             variant="subtle"
             icon="close"
-            label="Close sheet"
+            a11y-label="Close sheet"
           ></pharos-button>
         </div>`
       : nothing;
