@@ -1,7 +1,7 @@
 @use '../../utils/scss/mixins';
 
-:host([on-background][variant='subtle']:not([disabled])) #button-element:hover,
-:host([on-background][variant='subtle']:not([disabled])) #button-element:active {
+:host([is-on-background][variant='subtle']:not([disabled])) #button-element:hover,
+:host([is-on-background][variant='subtle']:not([disabled])) #button-element:active {
   @include mixins.button-color(
     $color: var(--pharos-color-marble-gray-50),
     $background-color: transparent,

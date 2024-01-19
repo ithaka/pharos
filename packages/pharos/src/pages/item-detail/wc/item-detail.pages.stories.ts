@@ -35,6 +35,7 @@ export const ItemDetail = {
               <storybook-pharos-icon
                 name="arrow-left"
                 style="margin-right: var(--pharos-spacing-one-quarter-x)"
+                a11y-hidden="true"
               ></storybook-pharos-icon>
               Back to results
             </storybook-pharos-link>
@@ -42,7 +43,7 @@ export const ItemDetail = {
               variant="subtle"
               icon="arrow-left"
               href="#"
-              label="Back to results"
+              a11y-label="Back to results"
               class="item-detail-page__button--mobile-back"
             ></storybook-pharos-button>
             <div class="item-detail-page__container--action-buttons">
@@ -63,22 +64,22 @@ export const ItemDetail = {
               <storybook-pharos-button
                 variant="subtle"
                 icon="cite"
-                label="Cite"
+                a11y-label="Cite"
               ></storybook-pharos-button>
               <storybook-pharos-button
                 variant="subtle"
                 icon="share"
-                label="Share"
+                a11y-label="Share"
               ></storybook-pharos-button>
               <storybook-pharos-button
                 variant="subtle"
                 icon="save"
-                label="Save"
+                a11y-label="Save"
               ></storybook-pharos-button>
               <storybook-pharos-button
                 variant="subtle"
                 icon="download"
-                label="Download"
+                a11y-label="Download"
               ></storybook-pharos-button>
             </div>
           </div>

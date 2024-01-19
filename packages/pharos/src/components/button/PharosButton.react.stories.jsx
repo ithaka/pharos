@@ -45,9 +45,9 @@ export const Base = {
       fullWidth={args.fullWidth}
       href={args.href}
       hreflang={args.hreflang}
-      label={args.label}
+      a11yLabel={args.a11yLabel}
       large={args.large}
-      onBackground={args.onBackground}
+      isOnBackground={args.isOnBackground}
       ping={args.ping}
       pressed={args.pressed}
       target={args.target}
@@ -104,16 +104,16 @@ export const Variants = {
           gridGap: '1.5rem',
         }}
       >
-        <PharosButton name="primary-on-background" onBackground>
+        <PharosButton name="primary-is-on-background" isOnBackground>
           Primary
         </PharosButton>
-        <PharosButton name="secondary-on-background" variant="secondary" onBackground>
+        <PharosButton name="secondary-is-on-background" variant="secondary" isOnBackground>
           Secondary
         </PharosButton>
-        <PharosButton name="subtle-on-background" variant="subtle" onBackground>
+        <PharosButton name="subtle-is-on-background" variant="subtle" isOnBackground>
           Subtle
         </PharosButton>
-        <PharosButton name="overlay-on-background" variant="overlay" onBackground>
+        <PharosButton name="overlay-is-on-background" variant="overlay" isOnBackground>
           Overlay
         </PharosButton>
       </div>
@@ -166,16 +166,21 @@ export const Large = {
           gridGap: '1.5rem',
         }}
       >
-        <PharosButton name="large-primary-on-background" large onBackground>
+        <PharosButton name="large-primary-is-on-background" large isOnBackground>
           Primary
         </PharosButton>
-        <PharosButton name="large-secondary-on-background" variant="secondary" large onBackground>
+        <PharosButton
+          name="large-secondary-is-on-background"
+          variant="secondary"
+          large
+          isOnBackground
+        >
           Secondary
         </PharosButton>
-        <PharosButton name="large-subtle-on-background" variant="subtle" large onBackground>
+        <PharosButton name="large-subtle-is-on-background" variant="subtle" large isOnBackground>
           Subtle
         </PharosButton>
-        <PharosButton name="large-overlay-on-background" variant="overlay" large onBackground>
+        <PharosButton name="large-overlay-is-on-background" variant="overlay" large isOnBackground>
           Overlay
         </PharosButton>
       </div>
@@ -227,17 +232,21 @@ export const WithIcons = {
           gridGap: '1.5rem',
         }}
       >
-        <PharosButton name="primary-icon-left-on-background" iconLeft="download" onBackground>
+        <PharosButton name="primary-icon-left-is-on-background" iconLeft="download" isOnBackground>
           Icon left
         </PharosButton>
-        <PharosButton name="primary-icon-right-on-background" iconRight="chevron-down" onBackground>
+        <PharosButton
+          name="primary-icon-right-is-on-background"
+          iconRight="chevron-down"
+          isOnBackground
+        >
           Icon right
         </PharosButton>
         <PharosButton
-          name="primary-icon-both-on-background"
+          name="primary-icon-both-is-on-background"
           iconRight="chevron-down"
           iconLeft="view-gallery"
-          onBackground
+          isOnBackground
         >
           Icon both
         </PharosButton>

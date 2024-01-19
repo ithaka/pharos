@@ -45,7 +45,7 @@ export const CreateReportModal: FC = () => (
               name="start-button"
               icon="calendar"
               variant="subtle"
-              label="calendar"
+              a11yLabel="calendar"
             ></PharosButton>
           </PharosInputGroup>
           <PharosInputGroup name="end-date">
@@ -54,7 +54,7 @@ export const CreateReportModal: FC = () => (
               name="end-button"
               icon="calendar"
               variant="subtle"
-              label="calendar"
+              a11yLabel="calendar"
             ></PharosButton>
           </PharosInputGroup>
         </div>

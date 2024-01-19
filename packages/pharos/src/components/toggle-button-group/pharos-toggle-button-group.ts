@@ -55,7 +55,7 @@ export class PharosToggleButtonGroup extends PharosElement {
     const selectedButton: PharosToggleButton = selected || toggleButtons[0];
 
     selectedButton.selected = true;
-    selectedButton.pressed = 'true';
+    selectedButton.a11yPressed = 'true';
   }
 
   private _handleButtonSelected(event: Event): void {
@@ -67,7 +67,7 @@ export class PharosToggleButtonGroup extends PharosElement {
 
     if (previous) {
       previous.selected = false;
-      previous.pressed = 'false';
+      previous.a11yPressed = 'false';
     }
 
     const toggleButtons: PharosToggleButton[] = Array.prototype.slice.call(this._allToggleButtons);

@@ -17,7 +17,7 @@ export type ToastStatus = 'success' | 'error' | 'info';
 export enum TOAST_ICON {
   ERROR = 'exclamation-inverse',
   SUCCESS = 'checkmark-inverse',
-  INFO = 'exclamation-inverse',
+  INFO = 'exclamation-inverse', // eslint-disable-line @typescript-eslint/no-duplicate-enum-values
 }
 
 const STATUSES = ['success', 'error', 'info'];
@@ -139,7 +139,7 @@ export class PharosToast extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
         })}"
         tabindex="0"
       >
-        <pharos-icon class="toast__icon" name="${this._getIcon()}"></pharos-icon>
+        <pharos-icon class="toast__icon" name="${this._getIcon()}" a11y-hidden="true"></pharos-icon>
         <div class="toast__body">
           <slot></slot>
         </div>

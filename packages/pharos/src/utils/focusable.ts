@@ -26,8 +26,7 @@ const focusable = `
   [data-pharos-component="PharosDropdownMenuNavCategory"],
   [data-pharos-component="PharosSidenavLink"][href],
   [data-pharos-component="PharosToast"],
-  [data-pharos-component="PharosBreadcrumbItem"][href],
-  [data-pharos-component="PharosSidenavButton"]:not([disabled])
+  [data-pharos-component="PharosBreadcrumbItem"][href]
 `;
 
 export default focusable;

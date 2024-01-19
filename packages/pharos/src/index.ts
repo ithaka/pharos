@@ -37,8 +37,10 @@ export { PharosBreadcrumbItem } from './components/breadcrumb/pharos-breadcrumb-
 export { PharosToast } from './components/toast/pharos-toast';
 export { PharosToaster } from './components/toast/pharos-toaster';
 export { PharosToastButton } from './components/toast/pharos-toast-button';
-export { PharosSidenavButton } from './components/sidenav/pharos-sidenav-button';
 export { PharosLayout } from './components/layout/pharos-layout';
 export { PharosImageCard } from './components/image-card/pharos-image-card';
 export { PharosToggleButton } from './components/toggle-button-group/pharos-toggle-button';
 export { PharosToggleButtonGroup } from './components/toggle-button-group/pharos-toggle-button-group';
+export { PharosCoachMark } from './components/coach-mark/pharos-coach-mark';
+export { PharosPopover } from './components/popover/pharos-popover';
+export { PharosSheet } from './components/sheet/pharos-sheet';

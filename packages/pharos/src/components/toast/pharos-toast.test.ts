@@ -10,7 +10,7 @@ describe('pharos-toast', () => {
     component = await fixture(html`
       <test-pharos-toast open>
         The item has moved to your
-        <test-pharos-link href="#" on-background bold>Workspace</test-pharos-link>.
+        <test-pharos-link href="#" is-on-background bold>Workspace</test-pharos-link>.
       </test-pharos-toast>
     `);
   });
@@ -67,9 +67,9 @@ describe('pharos-toast', () => {
   });
 
   it('fires a custom event pharos-toast-close after closing', async () => {
-    let detail = null;
+    let actualId = '';
     const handleClose = (e: Event): void => {
-      detail = (e as CustomEvent).detail;
+      actualId = (e as CustomEvent).detail.id;
     };
     component.addEventListener('pharos-toast-close', handleClose);
 
@@ -81,6 +81,6 @@ describe('pharos-toast', () => {
     await component.updateComplete;
     await aTimeout(500);
 
-    expect((detail as any).id === component.id).to.be.true;
+    expect(actualId === component.id).to.be.true;
   });
 });

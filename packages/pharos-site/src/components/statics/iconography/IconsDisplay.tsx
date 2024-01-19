@@ -33,7 +33,7 @@ const Icons: FC<IconDisplayProps> = ({ title, iconsToShow, rows }) => {
         return (
           <div className={iconContainer} key={i}>
             <div className={icon}>
-              <PharosIcon name={name} />
+              <PharosIcon name={name} a11yTitle={name} />
             </div>
             <div className={display__text}>{displayName}</div>
           </div>

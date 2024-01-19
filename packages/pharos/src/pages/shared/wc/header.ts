@@ -51,6 +51,7 @@ export const Header = (): TemplateResult => html`
         <storybook-pharos-icon
           name="chevron-down"
           style="margin-left: 1rem"
+          a11y-hidden="true"
         ></storybook-pharos-icon>
       </div>
       <storybook-pharos-dropdown-menu id="pds-menu" placement="bottom">
@@ -79,7 +80,7 @@ export const Header = (): TemplateResult => html`
           name="search-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11y-label="search"
         ></storybook-pharos-button>
       </storybook-pharos-input-group>
     </div>

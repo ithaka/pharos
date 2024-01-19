@@ -50,12 +50,20 @@ export class PharosSidenavLink extends ScopedRegistryMixin(PharosLink) {
 
   protected override get appendContent(): TemplateResult | typeof nothing {
     if (this.external) {
-      return html`<pharos-icon name="link-external" class="link__icon"></pharos-icon>`;
+      return html`<pharos-icon
+        name="link-external"
+        class="link__icon"
+        a11y-hidden="true"
+      ></pharos-icon>`;
     }
     return nothing;
   }
 
   protected override render(): TemplateResult {
+    if (!this.target && this.external) {
+      this.target = '_blank';
+      this.rel = 'noopener';
+    }
     return html`${super.render()}`;
   }
 }

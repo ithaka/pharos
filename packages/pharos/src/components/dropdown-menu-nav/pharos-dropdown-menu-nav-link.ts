@@ -34,6 +34,17 @@ export class PharosDropdownMenuNavLink extends ScopedRegistryMixin(PharosLink) {
     return [super.styles, dropdownMenuNavLinkStyles];
   }
 
+  protected override get appendContent(): TemplateResult | typeof nothing {
+    if (this.hasAttribute('data-dropdown-menu-id')) {
+      return html`<pharos-icon
+        name="chevron-down"
+        class="link__icon"
+        a11y-hidden="true"
+      ></pharos-icon>`;
+    }
+    return nothing;
+  }
+
   protected override render(): TemplateResult {
     return html`${super.render()}`;
   }

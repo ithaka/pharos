@@ -34,3 +34,30 @@ export const Scoped = {
       </div>
     `,
 };
+
+export const OnBackground = {
+  render: () =>
+    html`
+      <div style="height: 5rem; width: 5rem; background: black; position: relative;">
+        <storybook-pharos-loading-spinner is-on-background></storybook-pharos-loading-spinner>
+      </div>
+    `,
+};
+
+export const Small = {
+  render: () =>
+    html`
+      <div style="height: 5rem; width: 5rem; position: relative;">
+        <storybook-pharos-loading-spinner small></storybook-pharos-loading-spinner>
+      </div>
+    `,
+};
+
+export const SmallOnBackground = {
+  render: () =>
+    html`
+      <div style="height: 5rem; width: 5rem; background: black; position: relative;">
+        <storybook-pharos-loading-spinner small is-on-background></storybook-pharos-loading-spinner>
+      </div>
+    `,
+};

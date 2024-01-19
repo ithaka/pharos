@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "5.4.0",
+  "version": "5.5.0",
   "description": "Pharos Web Component Generator",
   "preferGlobal": true,
   "dependencies": {
@@ -17,10 +17,11 @@
   "devDependencies": {
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.6",
-    "jest": "^27.0.1",
-    "ts-jest": "^27.0.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
     "ts-node": "^10.0.0",
-    "typescript": "^4.5.2"
+    "typescript": "^5.2.2",
+    "ts-morph": "^20.0.0"
   },
   "scripts": {
     "test": "jest",

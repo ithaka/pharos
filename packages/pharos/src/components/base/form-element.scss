@@ -51,7 +51,7 @@ $groupable-elements: radio-element checkbox-element;
     @include mixins.hidden;
   }
 
-  :host([on-background]) label[for='#{$element}'] {
+  :host([is-on-background]) label[for='#{$element}'] {
     color: var(--pharos-color-text-white);
   }
 

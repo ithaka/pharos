@@ -7,7 +7,7 @@ export const defaultArgs = {
   label: 'I am a label',
   message: '',
   name: '',
-  onBackground: false,
+  isOnBackground: false,
   required: false,
   validated: false,
   value: '',

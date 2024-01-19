@@ -3,14 +3,8 @@ import type { CSSResultArray, PropertyValues } from 'lit';
 import { toggleButtonStyles } from './pharos-toggle-button.css';
 import { PharosButton } from '../button/pharos-button';
 
-import type {
-  ButtonType,
-  LinkTarget,
-  IconName,
-  ButtonVariant,
-  PressedState,
-} from '../button/pharos-button';
-export type { ButtonType, LinkTarget, IconName, ButtonVariant, PressedState };
+import type { ButtonType, LinkTarget, IconName, ButtonVariant } from '../button/pharos-button';
+export type { ButtonType, LinkTarget, IconName, ButtonVariant };
 
 /**
  * Pharos toggle button component.
@@ -42,7 +36,7 @@ export class PharosToggleButton extends PharosButton {
 
   constructor() {
     super();
-    this.pressed = 'false';
+    this.a11yPressed = 'false';
     this.variant = 'secondary';
     this.type = 'button';
   }
@@ -93,7 +87,7 @@ export class PharosToggleButton extends PharosButton {
       composed: true,
     };
     this.selected = true;
-    this.pressed = 'true';
+    this.a11yPressed = 'true';
     this.dispatchEvent(new CustomEvent('pharos-toggle-button-selected', details));
   }
 }

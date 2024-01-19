@@ -37,10 +37,10 @@ export class PharosLink extends FocusMixin(AnchorElement) {
 
   /**
    * Indicates the link is on a AA compliant background.
-   * @attr on-background
+   * @attr is-on-background
    */
-  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
-  public onBackground = false;
+  @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
+  public isOnBackground = false;
 
   /**
    * Indicates the aria label to apply to the link.

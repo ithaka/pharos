@@ -30,11 +30,12 @@ export const Base = {
         ?full-width=${ifDefined(args.fullWidth)}
         href=${ifDefined(args.href)}
         hreflang=${ifDefined(args.hreflang)}
-        label=${ifDefined(args.label)}
+        a11y-label=${ifDefined(args.a11yLabel)}
+        a11y-expanded=${ifDefined(args.a11yExpanded)}
+        a11y-pressed=${ifDefined(args.a11yPressed)}
         ?large=${ifDefined(args.large)}
-        ?on-background=${ifDefined(args.onBackground)}
+        ?is-on-background=${ifDefined(args.isOnBackground)}
         ping=${ifDefined(args.ping)}
-        pressed=${ifDefined(args.pressed)}
         target=${ifDefined(args.target)}
         type=${ifDefined(args.type)}
         variant=${ifDefined(args.variant)}
@@ -75,16 +76,22 @@ export const Variants = {
           >
         </div>
         <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <storybook-pharos-button name="primary-on-background" on-background
+          <storybook-pharos-button name="primary-is-on-background" is-on-background
             >Primary</storybook-pharos-button
           >
-          <storybook-pharos-button name="secondary-on-background" variant="secondary" on-background
+          <storybook-pharos-button
+            name="secondary-is-on-background"
+            variant="secondary"
+            is-on-background
             >Secondary</storybook-pharos-button
           >
-          <storybook-pharos-button name="subtle-on-background" variant="subtle" on-background
+          <storybook-pharos-button name="subtle-is-on-background" variant="subtle" is-on-background
             >Subtle</storybook-pharos-button
           >
-          <storybook-pharos-button name="overlay-on-background" variant="overlay" on-background
+          <storybook-pharos-button
+            name="overlay-is-on-background"
+            variant="overlay"
+            is-on-background
             >Overlay</storybook-pharos-button
           >
         </div>
@@ -127,24 +134,24 @@ export const Large = {
           </storybook-pharos-button>
         </div>
         <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
-          <storybook-pharos-button name="large-primary-on-background" large on-background
+          <storybook-pharos-button name="large-primary-is-on-background" large is-on-background
             >Primary
           </storybook-pharos-button>
           <storybook-pharos-button
-            name="large-secondary-on-background"
+            name="large-secondary-is-on-background"
             variant="secondary"
             large
-            on-background
+            is-on-background
             >Secondary
           </storybook-pharos-button>
           <storybook-pharos-button
-            name="large-subtle-on-background"
+            name="large-subtle-is-on-background"
             variant="subtle"
             large
-            on-background
+            is-on-background
             >Subtle
           </storybook-pharos-button>
-          <storybook-pharos-button name="large-overlay" variant="overlay" large on-background
+          <storybook-pharos-button name="large-overlay" variant="overlay" large is-on-background
             >Overlay
           </storybook-pharos-button>
         </div>
@@ -190,22 +197,22 @@ export const WithIcons = {
         </div>
         <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
           <storybook-pharos-button
-            name="primary-icon-left-on-background"
+            name="primary-icon-left-is-on-background"
             icon-left="download"
-            on-background
+            is-on-background
             >Icon left
           </storybook-pharos-button>
           <storybook-pharos-button
-            name="primary-icon-right-on-background"
+            name="primary-icon-right-is-on-background"
             icon-right="chevron-down"
-            on-background
+            is-on-background
             >Icon right
           </storybook-pharos-button>
           <storybook-pharos-button
-            name="primary-icon-both-on-background"
+            name="primary-icon-both-is-on-background"
             icon-right="chevron-down"
             icon-left="view-gallery"
-            on-background
+            is-on-background
             >Icon both
           </storybook-pharos-button>
         </div>
@@ -220,7 +227,7 @@ export const IconOnly = {
     ...Base.args,
     text: undefined,
     icon: 'download',
-    label: 'download',
+    a11yLabel: 'download',
   },
 };
 

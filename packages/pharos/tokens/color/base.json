@@ -8,7 +8,7 @@
     },
     "Glacier blue": {
       "base": {"value": "hsl(187.4, 75.6%, 51.8%)", "group": "primary", "palette": "secondary"},
-      "40": { "value": "hsl(190, 89%, 40%)", "group": "tint", "palette": "secondary", "order": "1" },
+      "40": { "value": "hsl(190, 89%, 39%)", "group": "tint", "palette": "secondary", "order": "1" },
       "70": { "value": "hsl(187, 75%, 70%)", "group": "tint", "palette": "secondary", "order": "1" },
       "80": { "value": "hsl(188, 47%, 80%)", "group": "tint", "palette": "secondary", "order": "2" },
       "90": { "value": "hsl(186.3,37.3%,90%)", "group": "tint", "palette": "secondary", "order": "2" }
@@ -35,11 +35,11 @@
     "White": { "value": "hsl(0, 0%, 100%)", "palette": "primary" },
     "Yellow": {
       "base": { "value": "hsl(37.1, 95.5%, 56.5%)", "group": "", "palette": "feedback", "order": "1"},
-      "97": { "value": "hsl(38.2,73.3%,97.1%)", "group": "", "palette": "feedback", "order": "1" }
+      "97": { "value": "hsl(38.2, 73.3%, 97.1%)", "group": "", "palette": "feedback", "order": "1" }
     },
-    "Green": { 
+    "Green": {
       "base": { "value": "hsl(137.6, 54.8%, 32.9%)", "group": "", "palette": "feedback", "order": "1"},
-      "93": { "value": "hsl(135,22.2%,92.9%)", "group": "", "palette": "feedback", "order": "1" }
+      "93": { "value": "hsl(135, 22.2%, 92.9%)", "group": "", "palette": "feedback", "order": "1" }
     },
     "interactive": {
       "primary": {
