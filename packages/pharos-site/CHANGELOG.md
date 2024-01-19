@@ -1,5 +1,22 @@
 # @ithaka/pharos-site
 
+## 5.14.0
+
+### Minor Changes
+
+- [#643](https://github.com/ithaka/pharos/pull/643) [`9cf3860`](https://github.com/ithaka/pharos/commit/9cf3860ccc88222bc0a1e7022e0ce0676d092f2b) Thanks [@nkamau](https://github.com/nkamau)! - Add elevation tokens and docs
+
+### Patch Changes
+
+- [#644](https://github.com/ithaka/pharos/pull/644) [`55c263f`](https://github.com/ithaka/pharos/commit/55c263f71c9a9d2fd759c4d2ed6fc98e7d57b5a4) Thanks [@daneah](https://github.com/daneah)! - Upgrade to TypeScript 5
+
+- [#660](https://github.com/ithaka/pharos/pull/660) [`0bea422`](https://github.com/ithaka/pharos/commit/0bea422f878e79a61ffaed7efbf5be3c540a6838) Thanks [@brentswisher](https://github.com/brentswisher)! - Update all icons to use a11y-hidden and a11y-title syntax over description
+
+- [#666](https://github.com/ithaka/pharos/pull/666) [`79229b2`](https://github.com/ithaka/pharos/commit/79229b2e1cd3248ad84e93832980242be622ff83) Thanks [@brentswisher](https://github.com/brentswisher)! - Update internal button usage to use a11y-pressed and a11y-label attributes
+
+- Updated dependencies [[`55c263f`](https://github.com/ithaka/pharos/commit/55c263f71c9a9d2fd759c4d2ed6fc98e7d57b5a4), [`05eca95`](https://github.com/ithaka/pharos/commit/05eca95ed9b36b35548e93e5687ad79845ef6796), [`9ef1e18`](https://github.com/ithaka/pharos/commit/9ef1e186ab5659917ccdfb8930f34c8de14ff93c), [`1875aaa`](https://github.com/ithaka/pharos/commit/1875aaa410dfacc4576da8d4969820f47523c50a), [`9cf3860`](https://github.com/ithaka/pharos/commit/9cf3860ccc88222bc0a1e7022e0ce0676d092f2b), [`0bea422`](https://github.com/ithaka/pharos/commit/0bea422f878e79a61ffaed7efbf5be3c540a6838), [`79229b2`](https://github.com/ithaka/pharos/commit/79229b2e1cd3248ad84e93832980242be622ff83), [`3ad3fd6`](https://github.com/ithaka/pharos/commit/3ad3fd635823c577b16eac1af9259bb52da311b5)]:
+  - @ithaka/pharos@13.3.0
+
 ## 5.13.5
 
 ### Patch Changes
