@@ -196,7 +196,7 @@ describe('pharos-footer', () => {
               target="_blank"
               label="twitter - This link opens in a new window"
             >
-              <test-pharos-icon name="twitter"></test-pharos-icon>
+              <test-pharos-icon name="twitter" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
           <li>
@@ -205,7 +205,7 @@ describe('pharos-footer', () => {
               target="_blank"
               label="facebook - This link opens in a new window"
             >
-              <test-pharos-icon name="facebook"></test-pharos-icon>
+              <test-pharos-icon name="facebook" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
           <li>
@@ -214,7 +214,7 @@ describe('pharos-footer', () => {
               target="_blank"
               label="instagram - This link opens in a new window"
             >
-              <test-pharos-icon name="instagram"></test-pharos-icon>
+              <test-pharos-icon name="instagram" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
           <li>
@@ -223,7 +223,7 @@ describe('pharos-footer', () => {
               target="_blank"
               label="youtube - This link opens in a new window"
             >
-              <test-pharos-icon name="youtube"></test-pharos-icon>
+              <test-pharos-icon name="youtube" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
           <li>
@@ -232,7 +232,7 @@ describe('pharos-footer', () => {
               target="_blank"
               label="linkedin - This link opens in a new window"
             >
-              <test-pharos-icon name="linkedin"></test-pharos-icon>
+              <test-pharos-icon name="linkedin" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
           <li>
@@ -241,7 +241,7 @@ describe('pharos-footer', () => {
               target="_blank"
               label="tumblr - This link opens in a new window"
             >
-              <test-pharos-icon name="tumblr"></test-pharos-icon>
+              <test-pharos-icon name="tumblr" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
         </ul>

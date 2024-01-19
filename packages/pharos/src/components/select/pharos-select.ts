@@ -111,7 +111,7 @@ export class PharosSelect extends ScopedRegistryMixin(
               return html`${unsafeHTML(child.outerHTML)}`;
             })}
         </select>
-        <pharos-icon class="select__icon" name="chevron-down"></pharos-icon>
+        <pharos-icon class="select__icon" name="chevron-down" a11y-hidden="true"></pharos-icon>
       </div>
       ${this.messageContent}
     `;

@@ -244,7 +244,7 @@ export const Footer: FC = () => {
             target="_blank"
             label="twitter - This link opens in a new window"
           >
-            <PharosIcon name="twitter"></PharosIcon>
+            <PharosIcon name="twitter" a11yHidden="true"></PharosIcon>
           </PharosLink>
         </li>
         <li>
@@ -254,7 +254,7 @@ export const Footer: FC = () => {
             target="_blank"
             label="facebook - This link opens in a new window"
           >
-            <PharosIcon name="facebook"></PharosIcon>
+            <PharosIcon name="facebook" a11yHidden="true"></PharosIcon>
           </PharosLink>
         </li>
         <li>
@@ -264,7 +264,7 @@ export const Footer: FC = () => {
             target="_blank"
             label="instagram - This link opens in a new window"
           >
-            <PharosIcon name="instagram"></PharosIcon>
+            <PharosIcon name="instagram" a11yHidden="true"></PharosIcon>
           </PharosLink>
         </li>
         <li>
@@ -274,7 +274,7 @@ export const Footer: FC = () => {
             target="_blank"
             label="youtube - This link opens in a new window"
           >
-            <PharosIcon name="youtube"></PharosIcon>
+            <PharosIcon name="youtube" a11yHidden="true"></PharosIcon>
           </PharosLink>
         </li>
         <li>
@@ -284,7 +284,7 @@ export const Footer: FC = () => {
             target="_blank"
             label="linkedin - This link opens in a new window"
           >
-            <PharosIcon name="linkedin"></PharosIcon>
+            <PharosIcon name="linkedin" a11yHidden="true"></PharosIcon>
           </PharosLink>
         </li>
         <li>
@@ -294,7 +294,7 @@ export const Footer: FC = () => {
             target="_blank"
             label="tumblr - This link opens in a new window"
           >
-            <PharosIcon name="tumblr"></PharosIcon>
+            <PharosIcon name="tumblr" a11yHidden="true"></PharosIcon>
           </PharosLink>
         </li>
       </ul>

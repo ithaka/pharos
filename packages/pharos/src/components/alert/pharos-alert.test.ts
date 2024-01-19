@@ -38,6 +38,7 @@ describe('pharos-alert', () => {
         <pharos-icon
           class="alert__icon"
           data-pharos-component="PharosIcon"
+          a11y-hidden="true"
           description=""
           name="info-inverse"
         >

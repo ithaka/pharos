@@ -237,7 +237,7 @@ export const Footer = (): TemplateResult => {
             target="_blank"
             label="twitter - This link opens in a new window"
           >
-            <storybook-pharos-icon name="twitter"></storybook-pharos-icon>
+            <storybook-pharos-icon name="twitter" a11y-hidden="true"></storybook-pharos-icon>
           </storybook-pharos-link>
         </li>
         <li>
@@ -247,7 +247,7 @@ export const Footer = (): TemplateResult => {
             target="_blank"
             label="facebook - This link opens in a new window"
           >
-            <storybook-pharos-icon name="facebook"></storybook-pharos-icon>
+            <storybook-pharos-icon name="facebook" a11y-hidden="true"></storybook-pharos-icon>
           </storybook-pharos-link>
         </li>
         <li>
@@ -257,7 +257,7 @@ export const Footer = (): TemplateResult => {
             target="_blank"
             label="instagram - This link opens in a new window"
           >
-            <storybook-pharos-icon name="instagram"></storybook-pharos-icon>
+            <storybook-pharos-icon name="instagram" a11y-hidden="true"></storybook-pharos-icon>
           </storybook-pharos-link>
         </li>
         <li>
@@ -267,7 +267,7 @@ export const Footer = (): TemplateResult => {
             target="_blank"
             label="youtube - This link opens in a new window"
           >
-            <storybook-pharos-icon name="youtube"></storybook-pharos-icon>
+            <storybook-pharos-icon name="youtube" a11y-hidden="true"></storybook-pharos-icon>
           </storybook-pharos-link>
         </li>
         <li>
@@ -277,7 +277,7 @@ export const Footer = (): TemplateResult => {
             target="_blank"
             label="linkedin - This link opens in a new window"
           >
-            <storybook-pharos-icon name="linkedin"></storybook-pharos-icon>
+            <storybook-pharos-icon name="linkedin" a11y-hidden="true"></storybook-pharos-icon>
           </storybook-pharos-link>
         </li>
         <li>
@@ -287,7 +287,7 @@ export const Footer = (): TemplateResult => {
             target="_blank"
             label="tumblr - This link opens in a new window"
           >
-            <storybook-pharos-icon name="tumblr"></storybook-pharos-icon>
+            <storybook-pharos-icon name="tumblr" a11y-hidden="true"></storybook-pharos-icon>
           </storybook-pharos-link>
         </li>
       </ul>

@@ -126,7 +126,11 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
   private _renderIcon(): TemplateResult | typeof nothing {
     if (this.icon) {
       return html`
-        <pharos-icon class="dropdown-menu-item__icon" name="${this.icon}"></pharos-icon>
+        <pharos-icon
+          class="dropdown-menu-item__icon"
+          name="${this.icon}"
+          a11y-hidden="{true}"
+        ></pharos-icon>
       `;
     }
     return nothing;
@@ -140,6 +144,7 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
             [`dropdown-menu-item__icon--selected`]: true,
           })}"
           name="checkmark"
+          a11y-hidden="true"
         ></pharos-icon>
       `;
     }

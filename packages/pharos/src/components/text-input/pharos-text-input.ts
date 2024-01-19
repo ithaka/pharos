@@ -195,9 +195,13 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
 
   private _renderIcons(): TemplateResult | typeof nothing {
     if (this.invalidated) {
-      return html` <pharos-icon class="input__icon" name="exclamation"></pharos-icon> `;
+      return html`
+        <pharos-icon class="input__icon" name="exclamation" a11y-hidden="true"></pharos-icon>
+      `;
     } else if (this.validated) {
-      return html` <pharos-icon class="input__icon" name="checkmark"></pharos-icon> `;
+      return html`
+        <pharos-icon class="input__icon" name="checkmark" a11y-hidden="true"></pharos-icon>
+      `;
     }
     return nothing;
   }

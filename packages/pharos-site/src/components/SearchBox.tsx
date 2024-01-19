@@ -14,7 +14,7 @@ const SearchBox: FC = () => {
       <div className={searchBox__container}>
         <input className={searchBox__input} placeholder="Search" />
         <div className={searchBox__icon}>
-          <PharosIcon name="search" />
+          <PharosIcon name="search" a11yHidden="true" />
         </div>
       </div>
     );
