@@ -2,7 +2,6 @@
   padding: var(--pharos-spacing-three-quarters-x);
   text-decoration: none;
   font-weight: var(--pharos-font-weight-bold);
-  box-shadow: var(--pharos-elevation-level-3);
 }
 
 #link-element:hover,
@@ -13,7 +12,6 @@
   padding-bottom: calc(var(--pharos-spacing-three-quarters-x) - 2px);
   fill: var(--pharos-color-interactive-primary);
   text-decoration: none;
-  box-shadow: var(--pharos-elevation-level-3);
 }
 
 .link__icon {
