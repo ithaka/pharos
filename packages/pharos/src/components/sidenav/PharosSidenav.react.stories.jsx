@@ -62,7 +62,6 @@ export const Base = {
             variant="subtle"
             isOnBackground
             a11yLabel="search"
-            onBackground
           ></PharosButton>
         </PharosInputGroup>
         <PharosSidenavSection showDivider>
