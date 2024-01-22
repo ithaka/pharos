@@ -38,7 +38,7 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   public isOnBackground = false;
 
   /**
-   * Indicates the aria label to apply to the button.
+   * Indicates the aria-label to apply to the dialog.
    * @attr a11y-label
    */
   @property({ type: String, reflect: true, attribute: 'a11y-label' })
