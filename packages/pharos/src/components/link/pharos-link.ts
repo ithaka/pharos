@@ -137,7 +137,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
             [`link--alert`]: this._alert,
             [`link--hover`]: this._hover,
           })}"
-          aria-label=${ifDefined(this.label)}
+          aria-label=${ifDefined(this.a11yLabel)}
         >
           <slot></slot>
           ${this.appendContent}

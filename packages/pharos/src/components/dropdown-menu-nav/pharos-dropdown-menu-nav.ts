@@ -70,7 +70,7 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
 
   protected override render(): TemplateResult {
     return html`
-      <nav class="dropdown-menu-nav__container" aria-label=${ifDefined(this.a11yLabellabel)}>
+      <nav class="dropdown-menu-nav__container" aria-label=${ifDefined(this.a11yLabel)}>
         <slot @slotchange=${this._handleSlotChange}></slot>
       </nav>
     `;
