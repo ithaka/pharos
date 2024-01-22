@@ -12,7 +12,7 @@ import { PharosIcon } from '../../../react-components/icon/pharos-icon';
 import logo from '@config/assets/images/jstor-logo.svg';
 
 const accountNav = (section: string) => (
-  <PharosDropdownMenuNav label="profile">
+  <PharosDropdownMenuNav a11yLabel="profile">
     <PharosDropdownMenuNavLink
       href="/account/profile"
       id={`profile-link-${section}`}
@@ -107,7 +107,7 @@ export const Header: FC = () => (
         display: 'flex',
       }}
     >
-      <PharosDropdownMenuNav label="main navigation">
+      <PharosDropdownMenuNav a11yLabel="main navigation">
         <PharosDropdownMenuNavLink
           href="/action/showAdvancedSearch"
           id="adv-search-menu-link"

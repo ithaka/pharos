@@ -242,7 +242,7 @@ export const Footer: FC = () => {
             id="twitter-link"
             href="https://twitter.com/JSTOR"
             target="_blank"
-            label="twitter - This link opens in a new window"
+            a11yLabel="twitter - This link opens in a new window"
           >
             <PharosIcon name="twitter" a11yHidden="true"></PharosIcon>
           </PharosLink>
@@ -252,7 +252,7 @@ export const Footer: FC = () => {
             id="facebook-link"
             href="https://www.facebook.com/JSTOR.org"
             target="_blank"
-            label="facebook - This link opens in a new window"
+            a11yLabel="facebook - This link opens in a new window"
           >
             <PharosIcon name="facebook" a11yHidden="true"></PharosIcon>
           </PharosLink>
@@ -262,7 +262,7 @@ export const Footer: FC = () => {
             id="instagram-link"
             href="https://www.instagram.com/jstor_org"
             target="_blank"
-            label="instagram - This link opens in a new window"
+            a11yLabel="instagram - This link opens in a new window"
           >
             <PharosIcon name="instagram" a11yHidden="true"></PharosIcon>
           </PharosLink>
@@ -272,7 +272,7 @@ export const Footer: FC = () => {
             id="youtube-link"
             href="https://www.youtube.com/channel/UCQM-7sUBV6Z-PVas0S4k0lw"
             target="_blank"
-            label="youtube - This link opens in a new window"
+            a11yLabel="youtube - This link opens in a new window"
           >
             <PharosIcon name="youtube" a11yHidden="true"></PharosIcon>
           </PharosLink>
@@ -282,7 +282,7 @@ export const Footer: FC = () => {
             id="linkedin-link"
             href="https://www.linkedin.com/company/ithaka"
             target="_blank"
-            label="linkedin - This link opens in a new window"
+            a11yLabel="linkedin - This link opens in a new window"
           >
             <PharosIcon name="linkedin" a11yHidden="true"></PharosIcon>
           </PharosLink>
@@ -292,7 +292,7 @@ export const Footer: FC = () => {
             id="tumblr-link"
             href="https://jstor.tumblr.com"
             target="_blank"
-            label="tumblr - This link opens in a new window"
+            a11yLabel="tumblr - This link opens in a new window"
           >
             <PharosIcon name="tumblr" a11yHidden="true"></PharosIcon>
           </PharosLink>
