@@ -16,6 +16,7 @@ if (typeof window !== `undefined`) {
     pharos.PharosDropdownMenuItem,
     pharos.PharosDropdownMenuNav,
     pharos.PharosDropdownMenuNavLink,
+    pharos.PharosDropdownMenuNavCategory,
     pharos.PharosFooter,
     pharos.PharosHeader,
     pharos.PharosHeading,

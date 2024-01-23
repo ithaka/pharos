@@ -23,6 +23,7 @@ export { PharosLink } from './components/link/pharos-link';
 export { PharosButton } from './components/button/pharos-button';
 export { PharosInputGroup } from './components/input-group/pharos-input-group';
 export { PharosInputGroupSelect } from './components/input-group/pharos-input-group-select';
+export { PharosDropdownMenuNavCategory } from './components/dropdown-menu-nav/pharos-dropdown-menu-nav-category';
 export { PharosDropdownMenuNavLink } from './components/dropdown-menu-nav/pharos-dropdown-menu-nav-link';
 export { PharosDropdownMenuNav } from './components/dropdown-menu-nav/pharos-dropdown-menu-nav';
 export { PharosFooter } from './components/footer/pharos-footer';
