@@ -43,11 +43,11 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   public isOnBackground = false;
 
   /**
-   * Indicates the aria label to apply to the link.
-   * @attr label
+   * Indicates the aria-label to apply to the link.
+   * @attr a11y-label
    */
-  @property({ type: String, reflect: true })
-  public label?: string;
+  @property({ type: String, reflect: true, attribute: 'a11y-label' })
+  public a11yLabel?: string;
 
   /**
    * Indicates if the link should be bold.
@@ -127,7 +127,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
           rel=${ifDefined(this.rel)}
           target=${ifDefined(this.target)}
           type=${ifDefined(this.type)}
-          aria-label=${ifDefined(this.label)}
+          aria-label=${ifDefined(this.a11yLabel)}
           @click=${this._handleClick}
           ><slot></slot>${this.appendContent}</a
         >`
@@ -137,7 +137,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
             [`link--alert`]: this._alert,
             [`link--hover`]: this._hover,
           })}"
-          aria-label=${ifDefined(this.label)}
+          aria-label=${ifDefined(this.a11yLabel)}
         >
           <slot></slot>
           ${this.appendContent}

@@ -38,15 +38,15 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   public isOnBackground = false;
 
   /**
-   * Indicates the aria label to apply to the dialog.
-   * @attr label
+   * Indicates the aria-label to apply to the dialog.
+   * @attr a11y-label
    */
-  @property({ type: String, reflect: true })
-  public label?: string;
+  @property({ type: String, reflect: true, attribute: 'a11y-label' })
+  public a11yLabel?: string;
 
   /**
-   * Indicates the aria label to apply to the dialog.
-   * @attr label
+   * Indicates the aria-labelledby to apply to the dialog.
+   * @attr labelledBy
    */
   @property({ type: String, reflect: true, attribute: 'labelled-by' })
   public labelledBy?: string;
@@ -378,7 +378,7 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
       <div
         class="popover"
         role="dialog"
-        aria-label=${ifDefined(this.label)}
+        aria-label=${ifDefined(this.a11yLabel)}
         aria-labelledby="${ifDefined(this.labelledBy)}"
       >
         <slot></slot>
