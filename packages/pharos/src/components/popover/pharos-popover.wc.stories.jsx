@@ -24,7 +24,7 @@ export const Base = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover" label="Pharos popover">
+        <storybook-pharos-popover id="my-popover" a11y-label="Pharos popover">
           <div style="padding: 1rem;">Lorem ipsum dolor sit amet</div>
         </storybook-pharos-popover>
       </div>
@@ -42,7 +42,7 @@ export const Events = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover" label="Pharos popover">
+        <storybook-pharos-popover id="my-popover" a11y-label="Pharos popover">
           <div style="padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
             <span>Lorem ipsum dolor sit amet</span>
             <storybook-pharos-button
@@ -70,7 +70,7 @@ export const DarkPopover = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover" is-on-background label="Pharos popover">
+        <storybook-pharos-popover id="my-popover" is-on-background a11y-label="Pharos popover">
           <div
             style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;"
           >
@@ -102,7 +102,7 @@ export const DarkPopoverOnBackground = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover" label="Pharos popover">
+        <storybook-pharos-popover id="my-popover" a11y-label="Pharos popover">
           <div
             style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;"
           >
@@ -136,7 +136,7 @@ export const LargeContents = {
         >
           Click Me
         </storybook-pharos-button>
-        <storybook-pharos-popover id="my-popover" label="Large Pharos Popover">
+        <storybook-pharos-popover id="my-popover" a11y-label="Large Pharos Popover">
           <div
             style="padding: 1rem; width: 300px; display: flex; flex-direction: column; gap: 1rem;"
           >

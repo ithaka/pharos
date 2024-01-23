@@ -19,11 +19,11 @@ import FocusMixin from '../../utils/mixins/focus';
  */
 export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
   /**
-   * Indicates the aria label to apply to the nav.
-   * @attr label
+   * Indicates the aria-label to apply to the nav element.
+   * @attr a11y-label
    */
-  @property({ type: String, reflect: true })
-  public label?: string;
+  @property({ type: String, reflect: true, attribute: 'a11y-label' })
+  public a11yLabel?: string;
 
   @queryAssignedElements({ selector: '[data-pharos-component="PharosDropdownMenuNavLink"]' })
   private _allLinks!: NodeListOf<PharosDropdownMenuNavLink>;
@@ -70,7 +70,7 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
 
   protected override render(): TemplateResult {
     return html`
-      <nav class="dropdown-menu-nav__container" aria-label=${ifDefined(this.label)}>
+      <nav class="dropdown-menu-nav__container" aria-label=${ifDefined(this.a11yLabel)}>
         <slot @slotchange=${this._handleSlotChange}></slot>
       </nav>
     `;
