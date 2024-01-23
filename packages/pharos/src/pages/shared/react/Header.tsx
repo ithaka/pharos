@@ -14,8 +14,7 @@ import logo from '@config/assets/images/jstor-logo.svg';
 
 const accountNav = (section: string) => (
   <PharosDropdownMenuNav a11yLabel="profile">
-    <PharosDropdownMenuNavLink
-      href="/account/profile"
+    <PharosDropdownMenuNavCategory
       id={`profile-link-${section}`}
       data-dropdown-menu-id={`profile-menu-${section}`}
       data-dropdown-menu-hover

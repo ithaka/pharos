@@ -62,8 +62,7 @@ export const HeaderRevised: FC<Header> = ({ showSearch = false }) => (
           ></PharosButton>
         </PharosInputGroup>
         <PharosDropdownMenuNav a11yLabel="main navigation">
-          <PharosDropdownMenuNavLink
-            href="/action/showAdvancedSearch"
+          <PharosDropdownMenuNavCategory
             id="adv-search-menu-link"
             data-dropdown-menu-id="search-menu"
             data-dropdown-menu-hover
