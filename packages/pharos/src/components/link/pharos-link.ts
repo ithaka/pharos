@@ -1,6 +1,6 @@
 import { html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import type { TemplateResult, CSSResultArray } from 'lit';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { linkStyles } from './pharos-link.css';
