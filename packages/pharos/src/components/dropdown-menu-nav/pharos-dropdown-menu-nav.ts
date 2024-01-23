@@ -1,7 +1,7 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
 import { property, queryAssignedElements } from 'lit/decorators.js';
-import type { TemplateResult, CSSResultArray } from 'lit';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { dropdownMenuNavStyles } from './pharos-dropdown-menu-nav.css';
 import type { PharosDropdownMenuNavLink } from './pharos-dropdown-menu-nav-link';
@@ -19,11 +19,19 @@ import FocusMixin from '../../utils/mixins/focus';
  */
 export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
   /**
-   * Indicates the aria label to apply to the nav.
+   * Indicates the aria-label to apply to the nav element.
    * @attr label
+   * @deprecated
    */
   @property({ type: String, reflect: true })
   public label?: string;
+
+  /**
+   * Indicates the aria label to apply to the button.
+   * @attr a11y-label
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-label' })
+  public a11yLabel?: string;
 
   @queryAssignedElements({ selector: '[data-pharos-component="PharosDropdownMenuNavLink"]' })
   private _allLinks!: NodeListOf<PharosDropdownMenuNavLink>;
@@ -37,6 +45,14 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
 
   protected override firstUpdated(): void {
     this.addEventListener('focus', () => this._closeAllMenus());
+  }
+
+  protected override update(changedProperties: PropertyValues): void {
+    super.update && super.update(changedProperties);
+
+    if (this.label) {
+      console.warn("The 'label' attribute is deprecated. Use 'a11y-label' instead.");
+    }
   }
 
   private _closeAllMenus(link: PharosDropdownMenuNavLink | undefined = undefined) {
@@ -69,8 +85,10 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
   }
 
   protected override render(): TemplateResult {
+    // TODO: Remove in future release once sufficient time elapsed to update naming convention
+    const a11yLabel = this.a11yLabel ?? this.label;
     return html`
-      <nav class="dropdown-menu-nav__container" aria-label=${ifDefined(this.label)}>
+      <nav class="dropdown-menu-nav__container" aria-label=${ifDefined(a11yLabel)}>
         <slot @slotchange=${this._handleSlotChange}></slot>
       </nav>
     `;
