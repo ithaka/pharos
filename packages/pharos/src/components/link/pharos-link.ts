@@ -43,7 +43,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   public onBackground = false;
 
   /**
-   * Indicates the aria label to apply to the link.
+   * Indicates the aria-label to apply to the link.
    * @attr label
    * @deprecated
    */

@@ -19,7 +19,7 @@ import FocusMixin from '../../utils/mixins/focus';
  */
 export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
   /**
-   * Indicates the aria label to apply to the nav.
+   * Indicates the aria-label to apply to the nav element.
    * @attr label
    * @deprecated
    */
