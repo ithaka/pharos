@@ -9,7 +9,7 @@ describe('pharos-popover', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <test-pharos-popover id="my-popover" label="Test label for dialog">
+      <test-pharos-popover id="my-popover" a11y-label="Test label for dialog">
         <div>I am popover contents</div>
       </test-pharos-popover>
     `);
@@ -25,7 +25,7 @@ describe('pharos-popover', () => {
 
   const getSimplePopover = () => {
     return html`
-      <test-pharos-popover id="my-popover" label="Test label for dialog">
+      <test-pharos-popover id="my-popover" a11y-label="Test label for dialog">
         <div>I am popover contents</div>
       </test-pharos-popover>
     `;

@@ -178,7 +178,7 @@ describe('pharos-footer', () => {
             <test-pharos-link
               href="https://twitter.com/JSTOR"
               target="_blank"
-              label="twitter - This link opens in a new window"
+              a11y-label="twitter - This link opens in a new window"
             >
               <test-pharos-icon name="twitter" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
@@ -187,7 +187,7 @@ describe('pharos-footer', () => {
             <test-pharos-link
               href="https://www.facebook.com/JSTOR.org"
               target="_blank"
-              label="facebook - This link opens in a new window"
+              a11y-label="facebook - This link opens in a new window"
             >
               <test-pharos-icon name="facebook" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
@@ -196,7 +196,7 @@ describe('pharos-footer', () => {
             <test-pharos-link
               href="https://www.instagram.com/jstor_org"
               target="_blank"
-              label="instagram - This link opens in a new window"
+              a11y-label="instagram - This link opens in a new window"
             >
               <test-pharos-icon name="instagram" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
@@ -205,7 +205,7 @@ describe('pharos-footer', () => {
             <test-pharos-link
               href="https://www.youtube.com/channel/UCQM-7sUBV6Z-PVas0S4k0lw"
               target="_blank"
-              label="youtube - This link opens in a new window"
+              a11y-label="youtube - This link opens in a new window"
             >
               <test-pharos-icon name="youtube" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
@@ -214,7 +214,7 @@ describe('pharos-footer', () => {
             <test-pharos-link
               href="https://www.linkedin.com/company/ithaka"
               target="_blank"
-              label="linkedin - This link opens in a new window"
+              a11y-label="linkedin - This link opens in a new window"
             >
               <test-pharos-icon name="linkedin" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
@@ -223,7 +223,7 @@ describe('pharos-footer', () => {
             <test-pharos-link
               href="https://jstor.tumblr.com"
               target="_blank"
-              label="tumblr - This link opens in a new window"
+              a11y-label="tumblr - This link opens in a new window"
             >
               <test-pharos-icon name="tumblr" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>

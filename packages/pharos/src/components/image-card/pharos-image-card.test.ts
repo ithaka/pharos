@@ -400,7 +400,7 @@ describe('pharos-image-card', () => {
     const link = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--image'
     );
-    expect(link?.getAttribute('label')).to.equal('Label for card image link');
+    expect(link?.getAttribute('a11y-label')).to.equal('Label for card image link');
   });
 
   it('renders a label for the link around the image for the collection variant', async () => {
@@ -410,7 +410,7 @@ describe('pharos-image-card', () => {
     const link = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--collection'
     );
-    expect(link?.getAttribute('label')).to.equal('Label for card image link');
+    expect(link?.getAttribute('a11y-label')).to.equal('Label for card image link');
   });
 
   it('renders a checkbox for the selectable variant', async () => {
