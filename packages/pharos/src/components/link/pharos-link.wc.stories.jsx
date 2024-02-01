@@ -22,7 +22,7 @@ export const Base = {
         href=${ifDefined(args.href)}
         hreflang=${ifDefined(args.hreflang)}
         ?indicate-visited=${args.indicateVisited}
-        label=${ifDefined(args.label)}
+        a11y-${ifDefined(args.label)}
         ?no-hover=${args.noHover}
         ?on-background=${args.onBackground}
         ping=${ifDefined(args.ping)}

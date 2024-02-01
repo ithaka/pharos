@@ -40,9 +40,17 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   /**
    * Indicates the aria label to apply to the dialog.
    * @attr label
+   * @deprecated
    */
   @property({ type: String, reflect: true })
   public label?: string;
+
+  /**
+   * Indicates the aria-label to apply to the dialog.
+   * @attr a11y-label
+   */
+  @property({ type: String, reflect: true, attribute: 'a11y-label' })
+  public a11yLabel?: string;
 
   /**
    * Indicates the aria label to apply to the dialog.
@@ -140,6 +148,10 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
     }
 
     super.updated(changedProperties);
+
+    if (this.label) {
+      console.warn("The 'label' attribute is deprecated. Use 'a11y-label' instead.");
+    }
   }
 
   override connectedCallback(): void {
@@ -374,11 +386,14 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   protected override render(): TemplateResult {
+    // TODO: Remove in future release once sufficient time elapsed to update naming convention
+    const a11yLabel = this.a11yLabel ?? this.label;
+
     return html` <focus-trap>
       <div
         class="popover"
         role="dialog"
-        aria-label=${ifDefined(this.label)}
+        aria-label=${ifDefined(a11yLabel)}
         aria-labelledby="${ifDefined(this.labelledBy)}"
       >
         <slot></slot>

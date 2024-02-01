@@ -26,7 +26,7 @@ export const Base = {
       <PharosButton id="my-button" data-popover-id="my-popover" icon-right="chevron-down">
         Click Me
       </PharosButton>
-      <PharosPopover id="my-popover" label="Pharos Popover">
+      <PharosPopover id="my-popover" a11yLabel="Pharos Popover">
         <div style="padding: 1rem">Lorem ipsum dolor sit amet</div>
       </PharosPopover>
     </div>
@@ -39,7 +39,7 @@ export const Events = {
       <PharosButton id="my-button" data-popover-id="my-popover" icon-right="chevron-down">
         Click Me
       </PharosButton>
-      <PharosPopover id="my-popover" label="Pharos Popover">
+      <PharosPopover id="my-popover" a11yLabel="Pharos Popover">
         <div style="padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
           <div style="padding: 1rem;">Lorem ipsum dolor sit amet</div>
           <PharosButton
@@ -62,7 +62,7 @@ export const DarkPopover = {
       <PharosButton id="my-button" data-popover-id="my-popover" icon-right="chevron-down">
         Click Me
       </PharosButton>
-      <PharosPopover id="my-popover" is-on-background label="Pharos Popover">
+      <PharosPopover id="my-popover" is-on-background a11yLabel="Pharos Popover">
         <div style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
           <div style="padding: 1rem">Lorem ipsum dolor sit amet</div>
           <PharosButton
@@ -85,7 +85,7 @@ export const DarkPopoverOnBackground = {
       <PharosButton id="my-button" data-popover-id="my-popover" icon-right="chevron-down">
         Click Me
       </PharosButton>
-      <PharosPopover id="my-popover" label="Pharos Popover">
+      <PharosPopover id="my-popover" a11yLabel="Pharos Popover">
         <div style="background: #444444; color: white; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
           <div style="padding: 1rem">Lorem ipsum dolor sit amet</div>
           <PharosButton
@@ -111,7 +111,7 @@ export const LargeContents = {
       <PharosButton id="my-button" data-popover-id="my-popover" icon-right="chevron-down">
         Click Me
       </PharosButton>
-      <PharosPopover id="my-popover" label="Large Pharos Popover">
+      <PharosPopover id="my-popover" a11yLabel="Large Pharos Popover">
         <div style="padding: 1rem; width: 300px; display: flex; flex-direction: column; gap: 1rem;">
           <h2>Large Pharos Popover</h2>
           <div style="height: 200px; overflow: auto; border: 1px solid black; padding: 1rem;">
