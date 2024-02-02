@@ -56,7 +56,7 @@ describe('pharos-icon', () => {
     expect(title).to.contain.text(labelText);
   });
 
-  it('throws an erorr when neither a11y-title or a11y-hidden are set', async () => {
+  it('throws an error when neither a11y-title or a11y-hidden are set', async () => {
     component = await fixture(html` <test-pharos-icon name="base"></test-pharos-icon> `).catch(
       (e) => e
     );
