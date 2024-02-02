@@ -7,7 +7,9 @@ describe('pharos-icon', () => {
   let component: PharosIcon;
 
   beforeEach(async () => {
-    component = await fixture(html`<test-pharos-icon name="base"></test-pharos-icon>`);
+    component = await fixture(
+      html`<test-pharos-icon name="base" a11y-title="base-icon"></test-pharos-icon>`
+    );
   });
 
   it('is accessible', async () => {
@@ -15,9 +17,9 @@ describe('pharos-icon', () => {
   });
 
   it('throws an error for an invalid icon name', async () => {
-    component = await fixture(html` <test-pharos-icon name="fake"></test-pharos-icon> `).catch(
-      (e) => e
-    );
+    component = await fixture(
+      html` <test-pharos-icon name="fake" a11y-title="fake-icon"></test-pharos-icon> `
+    ).catch((e) => e);
     expect('Could not get icon named "fake"').to.be.thrown;
   });
 
@@ -46,26 +48,6 @@ describe('pharos-icon', () => {
     expect(svg?.getAttribute('aria-hidden')).to.equal('true');
   });
 
-  it('adds aria-hidden when a11y-hidden is not provided and there is no title or description', async () => {
-    await component.updateComplete;
-    const svg = component.renderRoot.querySelector('svg');
-    expect(svg?.getAttribute('aria-hidden')).to.equal('true');
-  });
-
-  it('does not add aria-hidden if there is a title', async () => {
-    component.a11yTitle = 'some-label';
-    await component.updateComplete;
-    const svg = component.renderRoot.querySelector('svg');
-    expect(svg?.getAttribute('aria-hidden')).not.to.exist;
-  });
-
-  it('does not add aria-hidden if there is a description', async () => {
-    component.description = 'some-label';
-    await component.updateComplete;
-    const svg = component.renderRoot.querySelector('svg');
-    expect(svg?.getAttribute('aria-hidden')).not.to.exist;
-  });
-
   it('sets the svg title properly when a11y-title is set', async () => {
     const labelText = 'This is a test title';
     component.a11yTitle = labelText;
@@ -74,11 +56,12 @@ describe('pharos-icon', () => {
     expect(title).to.contain.text(labelText);
   });
 
-  it('sets the svg title properly when description is set', async () => {
-    const labelText = 'This is a test title';
-    component.description = labelText;
-    await component.updateComplete;
-    const title = component.renderRoot.querySelector('svg>title');
-    expect(title).to.contain.text(labelText);
+  it('throws an erorr when neither a11y-title or a11y-hidden are set', async () => {
+    component = await fixture(html` <test-pharos-icon name="base"></test-pharos-icon> `).catch(
+      (e) => e
+    );
+    expect(
+      'All icons must have an accessible title (a11y-title) or be marked as hidden to assistive technology (a11y-hidden).'
+    ).to.be.thrown;
   });
 });
