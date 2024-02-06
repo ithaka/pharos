@@ -17,7 +17,7 @@
 <p align="center">
   <a href=".github/CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" alt="Contributor Covenant" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Pharos is released under the MIT license" /></a>
-  <a href="#contributors-"><img src="https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square" alt="All Contributors" /></a>
+  <a href="#contributors-"><img src="https://img.shields.io/github/all-contributors/ithaka/pharos" alt="All Contributors" /></a>
   <a href="https://bundlephobia.com/package/@ithaka/pharos"><img src="https://img.shields.io/bundlephobia/min/@ithaka/pharos" alt="Bundlephobia stats" /></a>
 </p>
 
