@@ -52,7 +52,7 @@ export class PharosDropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixi
       })}"
     >
       <slot name="category"></slot>
-      <pharos-icon name="chevron-down"></pharos-icon>
+      <pharos-icon name="chevron-down" a11y-hidden="true"></pharos-icon>
     </button>`;
   }
 }

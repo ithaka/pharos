@@ -199,7 +199,6 @@ describe('pharos-text-input', () => {
           class="input__icon"
           data-pharos-component="PharosIcon"
           a11y-hidden="true"
-          description=""
           name="exclamation"
         >
         </pharos-icon>
@@ -234,7 +233,6 @@ describe('pharos-text-input', () => {
           class="input__icon"
           data-pharos-component="PharosIcon"
           a11y-hidden="true"
-          description=""
           name="checkmark"
         >
         </pharos-icon>
