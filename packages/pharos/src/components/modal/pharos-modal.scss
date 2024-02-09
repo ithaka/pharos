@@ -31,6 +31,7 @@
   pointer-events: none;
   z-index: 9001;
   visibility: hidden;
+  box-shadow: var(--pharos-elevation-level-5);
 
   @at-root #{&}--small {
     width: 28rem;
