@@ -2,4 +2,4 @@
 '@ithaka/pharos': minor
 ---
 
-Add default elevation to combobox component
+Add default elevation and remove border from combobox component
