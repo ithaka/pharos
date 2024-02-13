@@ -3,6 +3,7 @@
     "icon": {
       "academic-content": { "value": "assets/icons/academic-content.svg" },
       "add": { "value": "assets/icons/add.svg" },
+      "add-to-folder": { "value": "assets/icons/add-to-folder.svg" },
       "arrow-down": { "value": "assets/icons/arrow-down.svg" },
       "arrow-left": { "value": "assets/icons/arrow-left.svg" },
       "arrow-right": { "value": "assets/icons/arrow-right.svg" },
