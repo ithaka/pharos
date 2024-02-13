@@ -19,7 +19,6 @@
   list-style-type: none;
   padding-left: 0;
   padding-inline-start: 0;
-  border: 1px solid var(--pharos-dropdown-menu-color-border-base);
   border-radius: 2px;
   box-shadow: var(--pharos-elevation-level-3);
   visibility: hidden;
@@ -28,10 +27,6 @@
   transform: translate3d(0, 0, 0);
   transition: visibility 0s var(--pharos-transition-duration-short),
     opacity var(--pharos-transition-duration-short) linear;
-}
-
-:host([is-on-background]) .dropdown-menu__list {
-  border: none;
 }
 
 :host([open]) .dropdown-menu__list {
