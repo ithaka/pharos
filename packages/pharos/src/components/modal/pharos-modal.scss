@@ -31,7 +31,6 @@
   pointer-events: none;
   z-index: 9001;
   visibility: hidden;
-  box-shadow: var(--pharos-elevation-level-5);
 
   @at-root #{&}--small {
     width: 28rem;
@@ -95,9 +94,9 @@
   overflow-y: scroll;
   background-color: var(--pharos-modal-color-background-content);
   background-clip: padding-box;
-  border: 1px solid var(--pharos-modal-color-border-content);
   border-radius: var(--pharos-radius-base-standard);
   outline: 0;
+  box-shadow: var(--pharos-elevation-level-5);
 }
 
 .modal__body {
