@@ -76,7 +76,7 @@ export const DarkPopover = {
           >
             <span id="popover-content">Lorem ipsum dolor sit amet</span>
             <storybook-pharos-button
-              on-background
+              is-on-background
               @click="${() => {
                 const menu = document.querySelector('storybook-pharos-popover');
                 menu.open = false;
@@ -98,7 +98,7 @@ export const DarkPopoverOnBackground = {
           id="my-button"
           data-popover-id="my-popover"
           icon-right="chevron-down"
-          on-background
+          is-on-background
         >
           Click Me
         </storybook-pharos-button>
@@ -108,7 +108,7 @@ export const DarkPopoverOnBackground = {
           >
             <span>Lorem ipsum dolor sit amet</span>
             <storybook-pharos-button
-              on-background
+              is-on-background
               @click="${() => {
                 const menu = document.querySelector('storybook-pharos-popover');
                 menu.open = false;

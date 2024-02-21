@@ -14,7 +14,7 @@
 
   background-color: var(--pharos-color-ui-10);
   position: relative;
-  contain: paint;
+  contain: layout;
   margin: 0;
   list-style-type: none;
   padding-left: 0;
@@ -30,7 +30,7 @@
     opacity var(--pharos-transition-duration-short) linear;
 }
 
-:host([on-background]) .dropdown-menu__list {
+:host([is-on-background]) .dropdown-menu__list {
   border: none;
 }
 

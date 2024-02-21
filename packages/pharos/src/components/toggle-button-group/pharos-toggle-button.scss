@@ -99,8 +99,8 @@
   padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-three-quarters-x);
 }
 
-:host([variant='secondary'][on-background]:not([selected])) #button-element:hover,
-:host([variant='secondary'][on-background]:not([selected])) #button-element:active {
+:host([variant='secondary'][is-on-background]:not([selected])) #button-element:hover,
+:host([variant='secondary'][is-on-background]:not([selected])) #button-element:active {
   @include mixins.button-color(
     $color: var(--pharos-color-interactive-secondary),
     $background-color: var(--pharos-color-interactive-tertiary),

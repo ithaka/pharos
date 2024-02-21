@@ -1,25 +1,23 @@
 import type { FC } from 'react';
 
-import initTranslateWidget from '../../search/initTranslateWidget';
 import { PharosFooter } from '../../../react-components/footer/pharos-footer';
 import { PharosLink } from '../../../react-components/link/pharos-link';
 import { PharosIcon } from '../../../react-components/icon/pharos-icon';
 import { PharosButton } from '../../../react-components/button/pharos-button';
 
 export const Footer: FC = () => {
-  initTranslateWidget();
   return (
     <PharosFooter>
       <ul slot="links-group">
         <li>
-          <PharosLink id="subject-link" onBackground subtle href="/subjects" target="_blank">
+          <PharosLink id="subject-link" isOnBackground subtle href="/subjects" target="_blank">
             By Subject
           </PharosLink>
         </li>
         <li>
           <PharosLink
             id="title-link"
-            onBackground
+            isOnBackground
             subtle
             href="/action/showJournals?browseType=title"
             target="_blank"
@@ -30,7 +28,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="collections-link"
-            onBackground
+            isOnBackground
             subtle
             href="/site/collection-list"
             target="_blank"
@@ -39,14 +37,14 @@ export const Footer: FC = () => {
           </PharosLink>
         </li>
         <li>
-          <PharosLink id="publisher-link" onBackground subtle href="/publishers" target="_blank">
+          <PharosLink id="publisher-link" isOnBackground subtle href="/publishers" target="_blank">
             By Publisher
           </PharosLink>
         </li>
         <li>
           <PharosLink
             id="adv-search-link"
-            onBackground
+            isOnBackground
             subtle
             href="/action/showAdvancedSearch"
             target="_blank"
@@ -55,7 +53,7 @@ export const Footer: FC = () => {
           </PharosLink>
         </li>
         <li>
-          <PharosLink id="dfr-link" onBackground subtle href="/dfr" target="_blank">
+          <PharosLink id="dfr-link" isOnBackground subtle href="/dfr" target="_blank">
             Data for Research
           </PharosLink>
         </li>
@@ -64,7 +62,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="access-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://support.jstor.org/hc/en-us/articles/360000313328-Need-Help-Logging-in-To-JSTOR"
             target="_blank"
@@ -75,7 +73,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="support-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://support.jstor.org"
             target="_blank"
@@ -86,7 +84,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="libguides-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://guides.jstor.org"
             target="_blank"
@@ -97,7 +95,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="research-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://guides.jstor.org/researchbasics"
             target="_blank"
@@ -110,7 +108,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="about-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://about.jstor.org"
             target="_blank"
@@ -121,7 +119,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="mission-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://about.jstor.org/mission-history/"
             target="_blank"
@@ -132,7 +130,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="in-jstor-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://about.jstor.org/whats-in-jstor/"
             target="_blank"
@@ -143,7 +141,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="get-jstor-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://about.jstor.org/get-jstor/"
             target="_blank"
@@ -154,7 +152,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="news-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://about.jstor.org/news/"
             target="_blank"
@@ -165,7 +163,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="webinars-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://about.jstor.org/webinars/"
             target="_blank"
@@ -178,7 +176,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="labs-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://labs.jstor.org/"
             target="_blank"
@@ -189,7 +187,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="daily-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://daily.jstor.org/"
             target="_blank"
@@ -200,7 +198,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="careers-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://www.ithaka.org/careers/"
             target="_blank"
@@ -209,7 +207,7 @@ export const Footer: FC = () => {
           </PharosLink>
         </li>
         <li>
-          <PharosLink id="contact-link" onBackground subtle href="/contact-us/" target="_blank">
+          <PharosLink id="contact-link" isOnBackground subtle href="/contact-us/" target="_blank">
             Contact Us
           </PharosLink>
         </li>
@@ -219,7 +217,7 @@ export const Footer: FC = () => {
           <PharosButton
             id="for-librarians-link"
             variant="secondary"
-            onBackground
+            isOnBackground
             href="https://about.jstor.org/librarians/"
             target="_blank"
           >
@@ -230,7 +228,7 @@ export const Footer: FC = () => {
           <PharosButton
             id="for-publishers-link"
             variant="secondary"
-            onBackground
+            isOnBackground
             href="https://about.jstor.org/publishers/"
             target="_blank"
           >
@@ -302,7 +300,7 @@ export const Footer: FC = () => {
       </ul>
       <span id="misson-text" slot="mission-statement">
         JSTOR is part of{' '}
-        <PharosLink onBackground href="https://www.ithaka.org">
+        <PharosLink isOnBackground href="https://www.ithaka.org">
           ITHAKA
         </PharosLink>
         , a not-for-profit organization helping the academic community use digital technologies to
@@ -317,7 +315,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="terms-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://about.jstor.org/terms"
             target="_blank"
@@ -328,7 +326,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="privacy-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://www.ithaka.org/privacypolicy"
             target="_blank"
@@ -339,7 +337,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="cookie-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://www.ithaka.org/cookies"
             target="_blank"
@@ -350,7 +348,7 @@ export const Footer: FC = () => {
         <li>
           <PharosLink
             id="accessibility-link"
-            onBackground
+            isOnBackground
             subtle
             href="https://about.jstor.org/accessibility"
             target="_blank"
@@ -359,7 +357,6 @@ export const Footer: FC = () => {
           </PharosLink>
         </li>
       </ul>
-      <div slot="google-widget" id="google_translate_element" aria-hidden="true"></div>
     </PharosFooter>
   );
 };
