@@ -6,3 +6,10 @@
 .icon {
   display: block;
 }
+
+@media screen and (forced-colors: active) {
+  .icon {
+    fill: currentcolor;
+    stroke: currentcolor;
+  }
+}
