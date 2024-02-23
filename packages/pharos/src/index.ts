@@ -15,6 +15,7 @@ export { PharosModal } from './components/modal/pharos-modal';
 export { PharosDropdownMenuItem } from './components/dropdown-menu/pharos-dropdown-menu-item';
 export { PharosDropdownMenu } from './components/dropdown-menu/pharos-dropdown-menu';
 export { PharosTab } from './components/tabs/pharos-tab';
+export { PharosTable } from './components/table/pharos-table';
 export { PharosTabs } from './components/tabs/pharos-tabs';
 export { PharosTabPanel } from './components/tabs/pharos-tab-panel';
 export { PharosPagination } from './components/pagination/pharos-pagination';

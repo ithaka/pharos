@@ -1,0 +1,35 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.table {
+  border-collapse: collapse;
+
+  th {
+    border: 1px solid #eae8e1;
+    padding: var(--pharos-spacing-1-x);
+  }
+
+  td {
+    border: 1px solid #eae8e1;
+    padding: var(--pharos-spacing-1-x);
+  }
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--pharos-spacing-one-half-x);
+
+  .item-per-page-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: var(--pharos-spacing-one-half-x);
+
+    .item-per-page-selector {
+      width: 75px;
+    }
+  }
+}
