@@ -1,6 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
-import { html } from 'lit';
+import { html, nothing } from 'lit';
 import { state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { property } from 'lit/decorators.js';
@@ -12,7 +12,9 @@ import { PharosPagination } from '../pagination/pharos-pagination';
  * Pharos table component.
  *
  * @tag pharos-table
-
+ *
+ * @fires pharos-table-prev-page - Fires when the table goes to previous page
+ * @fires pharos-table-next-page - Fires when the table goes to next page
  *
  */
 export class PharosTable extends ScopedRegistryMixin(PharosElement) {
@@ -37,7 +39,8 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
    * ]
    */
   @property({ type: Array, reflect: true, attribute: 'columns' })
-  public columns = [];
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  public columns: any[] = [];
 
   /**
    * Row data.
@@ -55,7 +58,16 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
    * ]
    */
   @property({ type: Array, reflect: true, attribute: 'row-data' })
-  public rowData = [];
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  public rowData: any[] = [];
+
+  @property({ type: Boolean, reflect: true, attribute: 'hide-pagination' })
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  public hidePagination: boolean = true;
+
+  @property({ type: Number, reflect: true, attribute: 'total-number' })
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  public totalResults: number = 0;
 
   @state()
   private _pageSize = 2;
@@ -63,13 +75,22 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   @state()
   private _currentPage = 1;
 
+  protected override firstUpdated(): void {
+    this._pageSize = this.hidePagination ? this.rowData.length : 2;
+    this.totalResults = this.hidePagination ? this.rowData.length : this.totalResults;
+  }
+
+  protected override updated(): void {
+    this._pageSize = this.hidePagination ? this.rowData.length : 2;
+    this.totalResults = this.hidePagination ? this.rowData.length : this.totalResults;
+  }
+
   public static override get styles(): CSSResultArray {
     return [tableStyles];
   }
 
-  private _onItemPerPageChange(event: Event): void {
-    console.log(event);
-    // this._itemPerPage = event?.target?.value;
+  private _onPageSizeChange(event: Event): void {
+    this._pageSize = Number((event.composedPath()[0] as Element).value);
   }
 
   private _renderTableHeader(): TemplateResult[] {
@@ -93,6 +114,35 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     });
   }
 
+  private _renderPagination(): TemplateResult | typeof nothing {
+    return !this.hidePagination
+      ? html`<div class="table-controls">
+          <div class="item-per-page-wrapper">
+            <span>Items per page</span>
+            <pharos-select
+              class="item-per-page-selector"
+              value="${this._pageSize}"
+              @change=${this._onPageSizeChange}
+            >
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </pharos-select>
+            <span
+              >(Displaying ${this._pageStartNumber()}-${this._pageEndNumber()} of
+              ${this.rowData.length})</span
+            >
+          </div>
+          <pharos-pagination
+            current-page="${this._currentPage}"
+            total-results="${this.totalResults}"
+            page-size="${this._pageSize}"
+            @prev-page="${this._onPrevPage}"
+            @next-page="${this._onNextPage}"
+          ></pharos-pagination>
+        </div>`
+      : nothing;
+  }
+
   private _pageStartNumber(): number {
     return (this._currentPage - 1) * this._pageSize + 1;
   }
@@ -103,10 +153,12 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
 
   private _onPrevPage(): void {
     this._currentPage = Math.max(this._currentPage - 1, 0);
+    this.dispatchEvent(new CustomEvent('pharos-table-prev-page'));
   }
 
   private _onNextPage(): void {
     this._currentPage = Math.min(this._currentPage + 1, this.rowData.length);
+    this.dispatchEvent(new CustomEvent('pharos-table-next-page'));
   }
 
   protected override render(): TemplateResult {
@@ -121,26 +173,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
           ${this._renderTableRows()}
         </tbody>
       </table>
-      <div class="table-controls">
-        <div class="item-per-page-wrapper">
-          <span>Items per page</span>
-          <pharos-select class="item-per-page-selector" @change=${this._onItemPerPageChange}>
-            <option value="50" selected>50</option>
-            <option value="100" selected>100</option>
-          </pharos-select>
-          <span
-            >(Displaying ${this._pageStartNumber()}-${this._pageEndNumber()} of
-            ${this.rowData.length})</span
-          >
-        </div>
-        <pharos-pagination
-          current-page="${this._currentPage}"
-          total-results="${this.rowData.length}"
-          page-size="${this._pageSize}"
-          @prev-page="${this._onPrevPage}"
-          @next-page="${this._onNextPage}"
-        ></pharos-pagination>
-      </div>
+      ${this._renderPagination()}
     `;
   }
 }

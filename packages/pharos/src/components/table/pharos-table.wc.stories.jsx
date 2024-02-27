@@ -13,8 +13,15 @@ export default {
 };
 
 export const Base = {
-  render: ({ columns, rowData }) =>
-    html` <storybook-pharos-table .columns="${columns}" .rowData="${rowData}" /> `,
+  render: ({ columns, rowData, hidePagination }) =>
+    html`
+      <storybook-pharos-table
+        .columns="${columns}"
+        .rowData="${rowData}"
+        .hidePagination="${hidePagination}"
+        .totalResults="${5}"
+      />
+    `,
   args: {
     columns: [
       {
@@ -75,5 +82,6 @@ export const Base = {
         university: 'University of Michigan',
       },
     ],
+    hidePagination: true,
   },
 };
