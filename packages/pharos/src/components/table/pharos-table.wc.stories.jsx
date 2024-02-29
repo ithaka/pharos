@@ -20,6 +20,7 @@ export const Base = {
         .rowData="${rowData}"
         .hidePagination="${hidePagination}"
         .totalResults="${5}"
+        .pageSizeOptions="${[2, 4]}"
       />
     `,
   args: {
