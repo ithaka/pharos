@@ -7,48 +7,39 @@
     "build:tokens": "yarn workspace @ithaka/pharos build:tokens",
     "analyze": "yarn workspace @ithaka/pharos analyze",
     "format": "prettier packages/* --write",
-
     "lint": "yarn lint:lit-analyzer && yarn lint:eslint && yarn lint:styles && yarn lint:icons",
     "lint:eslint": "eslint 'packages/**/*.{ts,tsx,mdx,js,jsx,mjs}'",
     "lint:lit-analyzer": "lit-analyzer 'packages/*/src/**/!(*.css|*.test).ts' --strict --rules.no-missing-import off --rules.no-unknown-tag-name off",
     "lint:styles": "stylelint 'packages/**/*.{scss,css}'",
     "lint:icons": "svglint --ci packages/pharos/assets/icons/*.svg",
-
     "test": "yarn workspace @ithaka/pharos test",
     "test:cli": "yarn workspace @ithaka/pharos-cli test",
     "watch:tsc": "yarn workspace @ithaka/pharos build:tsc:watch",
     "watch:styles": "yarn workspace @ithaka/pharos build:styles:watch",
     "build:core": "yarn workspace @ithaka/pharos build",
-
     "storybook:build": "yarn storybook:setup && concurrently \"yarn storybook:wc:build\" \"yarn storybook:react:build\" \"yarn storybook:main:build\" --prefix=\"{command}\" --prefix-length=30",
     "storybook:setup": "yarn build:core",
-
     "prestorybook:wc": "yarn storybook:setup",
-    "storybook:wc": "yarn storybook:wc:start",
+    "storybook:wc": "yarn prestorybook:wc && yarn storybook:wc:start",
     "storybook:wc:start": "storybook dev -c .storybook/wc -p 9000",
     "prestorybook:wc:dev": "yarn storybook:setup",
-    "storybook:wc:dev": "concurrently \"yarn:storybook:wc:start\" \"yarn:watch:styles\" --raw --kill-others",
+    "storybook:wc:dev": "yarn prestorybook:wc:dev && concurrently \"yarn:storybook:wc:start\" \"yarn:watch:styles\" --raw --kill-others",
     "storybook:wc:build": "storybook build -c .storybook/wc -o .storybook-static/wc",
-
     "prestorybook:react": "yarn storybook:setup",
-    "storybook:react": "yarn storybook:react:start",
+    "storybook:react": "yarn prestorybook:react && yarn storybook:react:start",
     "storybook:react:start": "storybook dev -c .storybook/react -p 9001",
     "prestorybook:react:dev": "yarn storybook:setup",
-    "storybook:react:dev": "concurrently \"yarn:storybook:react:start\" \"yarn:watch:styles\" --raw --kill-others",
+    "storybook:react:dev": "yarn prestorybook:react:dev && concurrently \"yarn:storybook:react:start\" \"yarn:watch:styles\" --raw --kill-others",
     "storybook:react:build": "storybook build -c .storybook/react -o .storybook-static/react",
-
     "storybook:main:dev": "storybook dev -c .storybook/main -p 9002",
     "storybook:main:build": "storybook build -c .storybook/main -o .storybook-static/main",
-
     "build-storybook": "yarn storybook:build",
-
     "presite:build": "yarn build:core",
-    "site:build": "yarn workspace @ithaka/pharos-site build",
+    "site:build": "yarn presite:build && yarn workspace @ithaka/pharos-site build",
     "presite:develop": "yarn build:core",
-    "site:develop": "yarn workspace @ithaka/pharos-site develop",
+    "site:develop": "yarn presite:develop && yarn workspace @ithaka/pharos-site develop",
     "site:serve": "yarn workspace @ithaka/pharos-site serve",
     "site:clean": "yarn workspace @ithaka/pharos-site clean",
-
     "release": "changeset publish",
     "prepare": "husky install"
   },
@@ -149,5 +140,5 @@
       "path": "packages/pharos/lib/index.js"
     }
   ],
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@4.1.0"
 }
