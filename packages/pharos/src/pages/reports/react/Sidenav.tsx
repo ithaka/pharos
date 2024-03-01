@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { type FC } from 'react';
 
 import { PharosSidenav } from '../../../react-components/sidenav/pharos-sidenav';
 import { PharosLink } from '../../../react-components/link/pharos-link';
@@ -6,9 +6,19 @@ import { PharosSidenavSection } from '../../../react-components/sidenav/pharos-s
 import { PharosSidenavLink } from '../../../react-components/sidenav/pharos-sidenav-link';
 import { PharosSidenavMenu } from '../../../react-components/sidenav/pharos-sidenav-menu';
 import logo from '@config/assets/images/jstor-logo-inverse.svg';
+export interface SideNavProps {
+  open: boolean;
+  showCloseButton: boolean;
+}
 
-export const Sidenav: FC = () => (
-  <PharosSidenav className="reports-page__sidenav" mainContentId="main-content">
+export const Sidenav: FC<SideNavProps> = ({ open, showCloseButton }) => (
+  <PharosSidenav
+    className="reports-page__sidenav"
+    mainContentId="main-content"
+    id="report-sidenav"
+    open={open}
+    hasCloseButton={showCloseButton}
+  >
     <PharosLink slot="top" href="/" id="jstor-logo">
       <img src={logo} alt="Pharos Home" width="72" height="100" />
     </PharosLink>
