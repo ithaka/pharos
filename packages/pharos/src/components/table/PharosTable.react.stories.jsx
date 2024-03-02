@@ -21,9 +21,16 @@ export default {
 
 export const Base = {
   render: (args) => (
-    <PharosTable columns={args.columns} rowData={args.rowData} hidePagination={true}></PharosTable>
+    <PharosTable
+      columns={args.columns}
+      rowData={args.rowData}
+      hidePagination={args.hidePagination}
+    ></PharosTable>
   ),
-  args: defaultArgs,
+  args: {
+    ...defaultArgs,
+    hidePagination: true,
+  },
 };
 
 export const WithPagination = {
@@ -31,10 +38,13 @@ export const WithPagination = {
     <PharosTable
       columns={args.columns}
       rowData={args.rowData}
-      hidePagination={false}
+      hidePagination={args.hidePagination}
       totalResults={5}
       pageSizeOptions={[2, 4]}
     ></PharosTable>
   ),
-  args: defaultArgs,
+  args: {
+    ...defaultArgs,
+    hidePagination: false,
+  },
 };
