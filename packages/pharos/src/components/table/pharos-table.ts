@@ -148,8 +148,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
           <div class="item-per-page-wrapper">
             <span>Items per page</span>
             <pharos-select
-              required
-              hideLabel
+              hide-label
               name="pharos-table-page-size-select"
               class="item-per-page-selector"
               @change=${this._onPageSizeChange}
