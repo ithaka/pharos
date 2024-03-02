@@ -64,26 +64,28 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   @property({ type: Boolean, reflect: true, attribute: 'hide-pagination' })
   public hidePagination: boolean = true;
 
-  @property({ type: Number, reflect: true, attribute: 'total-number' })
+  @property({ type: Number, reflect: true, attribute: 'total-results' })
   public totalResults: number = 0;
 
   @property({ type: Array, reflect: true, attribute: 'page-size-options' })
   public pageSizeOptions: number[] = [50, 100];
 
   @state()
-  private _pageSize = 0;
+  private _pageSize = 50;
 
   @state()
   private _currentPage = 1;
 
   protected override firstUpdated(): void {
     this._pageSize = this.hidePagination ? this.rowData.length : this.pageSizeOptions[0];
-    this.totalResults = this.hidePagination ? this.rowData.length : this.totalResults;
+    this.totalResults =
+      this.hidePagination || !this.totalResults ? this.rowData.length : this.totalResults;
   }
 
   protected override updated(): void {
     this._pageSize = this.hidePagination ? this.rowData.length : this._pageSize;
-    this.totalResults = this.hidePagination ? this.rowData.length : this.totalResults;
+    this.totalResults =
+      this.hidePagination || !this.totalResults ? this.rowData.length : this.totalResults;
   }
 
   public static override get styles(): CSSResultArray {
@@ -91,7 +93,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _onPageSizeChange(event: Event): void {
-    this._pageSize = Number((event.composedPath()[0] as Element).value);
+    this._pageSize = Number((event.composedPath()[0] as HTMLInputElement).value);
   }
 
   private _pageStartNumber(): number {
@@ -145,7 +147,14 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
       ? html`<div class="table-controls">
           <div class="item-per-page-wrapper">
             <span>Items per page</span>
-            <pharos-select class="item-per-page-selector" @change=${this._onPageSizeChange}>
+            <pharos-select
+              required
+              hideLabel
+              name="pharos-table-page-size-select"
+              class="item-per-page-selector"
+              @change=${this._onPageSizeChange}
+            >
+              <span slot="label">page size</span>
               ${this._renderPageSizeOptions()}
             </pharos-select>
             <span
