@@ -64,7 +64,7 @@ export const OneColumnWithSidenav = {
       <div
         style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
       >
-        <storybook-pharos-sidenav style="grid-area: sidenav">
+        <storybook-pharos-sidenav open="true" style="grid-area: sidenav">
           <storybook-pharos-link slot="top" href="/" id="jstor-logo">
             <img src="${logo}" alt="Pharos Home" width="72" height="100" />
           </storybook-pharos-link>
@@ -85,7 +85,7 @@ export const OneColumnWithSidenavAndComfySpacing = {
       <div
         style="display: grid; grid-template-areas: 'sidenav main'; grid-template-columns: max-content 1fr"
       >
-        <storybook-pharos-sidenav style="grid-area: sidenav">
+        <storybook-pharos-sidenav open="true" style="grid-area: sidenav">
           <storybook-pharos-link slot="top" href="/" id="jstor-logo">
             <img src="${logo}" alt="Pharos Home" width="72" height="100" />
           </storybook-pharos-link>
