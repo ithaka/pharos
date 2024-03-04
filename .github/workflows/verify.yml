@@ -20,7 +20,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> $GITHUB_OUTPUT
+        run: echo "YARN_CACHE_DIR=.yarn/cache" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Dependencies
-        run: yarn --prefer-offline --frozen-lockfile
+        run: yarn --check-cache --immutable
 
       - name: Lint
         run: yarn lint
@@ -51,7 +51,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> $GITHUB_OUTPUT
+        run: echo "YARN_CACHE_DIR=.yarn/cache" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
@@ -70,7 +70,7 @@ jobs:
         run: npx playwright install-deps
 
       - name: Install Dependencies
-        run: yarn --prefer-offline --frozen-lockfile
+        run: yarn --check-cache --immutable
 
       - name: Test
         run: yarn test
