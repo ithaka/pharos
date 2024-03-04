@@ -296,7 +296,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             name="${ifDefined(this.name)}"
             value="${ifDefined(this.value)}"
             ?autofocus=${this.autofocus}
-            ?disabled=${this.disabled}
+            ?disabled=${this.a11yDisabled ? false : this.disabled}
             type="${ifDefined(this.type)}"
             aria-label=${ifDefined(this.a11yLabel)}
             aria-pressed=${ifDefined(this.a11yPressed)}
