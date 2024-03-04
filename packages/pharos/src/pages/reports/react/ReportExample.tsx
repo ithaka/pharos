@@ -17,14 +17,15 @@ import {
 } from '../../../react-components';
 
 export const ReportExample: FC = () => {
-  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 1000);
+  const mobileBreakpoint = 1055;
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < mobileBreakpoint);
   const [isSidenavDisplayed, setIsSidenavDisplayed] = useState<boolean>(!isMobile);
 
   useEffect(() => {
     const handleResize = () => {
       const windowWidth = window.innerWidth;
-      setIsSidenavDisplayed(windowWidth >= 1000);
-      setIsMobile(windowWidth < 1000);
+      setIsSidenavDisplayed(windowWidth >= mobileBreakpoint);
+      setIsMobile(windowWidth < mobileBreakpoint);
     };
 
     window.addEventListener('resize', handleResize);
