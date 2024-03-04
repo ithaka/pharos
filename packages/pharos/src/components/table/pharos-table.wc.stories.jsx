@@ -19,6 +19,7 @@ export const Base = {
         .columns="${columns}"
         .rowData="${rowData}"
         .hidePagination="${hidePagination}"
+        caption="An example table"
       />
     `,
   args: {
@@ -36,6 +37,7 @@ export const WithPagination = {
         .hidePagination="${hidePagination}"
         .totalResults="${5}"
         .pageSizeOptions="${[2, 4]}"
+        caption="An example table"
       />
     `,
   args: {

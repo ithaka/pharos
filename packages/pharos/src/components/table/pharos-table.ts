@@ -70,6 +70,9 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   @property({ type: Array, reflect: true, attribute: 'page-size-options' })
   public pageSizeOptions: number[] = [50, 100];
 
+  @property({ type: String, reflect: true, attribute: 'caption' })
+  public caption: string = '';
+
   @state()
   private _pageSize = 50;
 
@@ -114,9 +117,13 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     this.dispatchEvent(new CustomEvent('pharos-table-next-page'));
   }
 
-  private _renderTableHeader(): TemplateResult[] {
+  private _renderTableHeader(): TemplateResult[] | void[] {
     /* eslint-disable @typescript-eslint/no-explicit-any */
-    return this.columns.map((column: any) => html`<th>${column.name}</th>`);
+    return this.columns.map((column: any) => {
+      if (column.name) {
+        html`<th scope="col">${column.name}</th>`;
+      }
+    });
   }
 
   private _renderTableRows(): TemplateResult[] {
@@ -175,6 +182,9 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   protected override render(): TemplateResult {
     return html`
       <table class="table">
+        <caption>
+          ${this.caption}
+        </caption>
         <thead>
           <tr>
             ${this._renderTableHeader()}

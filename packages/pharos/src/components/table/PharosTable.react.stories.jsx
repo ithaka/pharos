@@ -25,6 +25,7 @@ export const Base = {
       columns={args.columns}
       rowData={args.rowData}
       hidePagination={args.hidePagination}
+      caption={'An example table'}
     ></PharosTable>
   ),
   args: {
@@ -41,6 +42,7 @@ export const WithPagination = {
       hidePagination={args.hidePagination}
       totalResults={5}
       pageSizeOptions={[2, 4]}
+      caption={'An example table'}
     ></PharosTable>
   ),
   args: {
