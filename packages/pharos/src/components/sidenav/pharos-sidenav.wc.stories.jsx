@@ -99,7 +99,7 @@ export const Base = {
         </storybook-pharos-sidenav-section>
       </storybook-pharos-sidenav>
     `,
-  args: { open: false, hasCloseButton: false },
+  args: { open: false, hasCloseButton: true },
   parameters: {
     chromatic: { viewports: [320, 1200] },
   },
