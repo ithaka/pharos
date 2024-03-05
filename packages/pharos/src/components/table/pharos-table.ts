@@ -117,11 +117,11 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     this.dispatchEvent(new CustomEvent('pharos-table-next-page'));
   }
 
-  private _renderTableHeader(): TemplateResult[] | void[] {
+  private _renderTableHeader(): (TemplateResult | undefined)[] {
     /* eslint-disable @typescript-eslint/no-explicit-any */
     return this.columns.map((column: any) => {
       if (column.name) {
-        html`<th scope="col">${column.name}</th>`;
+        return html`<th scope="col">${column.name}</th>`;
       }
     });
   }
