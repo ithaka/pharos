@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 
 import { PharosSidenav } from '../../../react-components/sidenav/pharos-sidenav';
 import { PharosLink } from '../../../react-components/link/pharos-link';
