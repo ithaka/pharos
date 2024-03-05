@@ -24,7 +24,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   };
 
   /**
-   * Coloumn definition.
+   * Column specification.
    * @attr columns
    * sample column:
    * [
