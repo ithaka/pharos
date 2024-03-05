@@ -122,6 +122,8 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     return this.columns.map((column: any) => {
       if (column.name) {
         return html`<th scope="col">${column.name}</th>`;
+      } else {
+        return html`<tb></tb>`;
       }
     });
   }
