@@ -45,15 +45,15 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   /**
    * Row data.
    * @attr row-data
-   * sample row:
+   * Example:
    * [
    *  {
    *    id: 1,
-   *    message: first one
+   *    message: "first one"
    *  },
    *  {
    *    id: 2,
-   *    message: second one
+   *    message: "second one"
    *  }
    * ]
    */
