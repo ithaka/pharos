@@ -8,6 +8,15 @@ import { tableStyles } from './pharos-table.css';
 import { PharosSelect } from '../select/pharos-select';
 import { PharosPagination } from '../pagination/pharos-pagination';
 
+type ColumnSpecification = {
+  name: string;
+  field: string;
+};
+
+type RowData = {
+  [key: string]: string;
+};
+
 /**
  * Pharos table component.
  *
@@ -29,18 +38,17 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
    * sample column:
    * [
    *  {
-   *    name: ID
-   *    field: id
+   *    name: "ID"
+   *    field: "id"
    *  },
    *  {
-   *    name: Message
-   *    field: message
+   *    name: "Message"
+   *    field: "message"
    *  }
    * ]
    */
   @property({ type: Array, reflect: true, attribute: 'columns' })
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  public columns: any[] = [];
+  public columns: ColumnSpecification[] = [];
 
   /**
    * Row data.
@@ -58,8 +66,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
    * ]
    */
   @property({ type: Array, reflect: true, attribute: 'row-data' })
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  public rowData: any[] = [];
+  public rowData: RowData[] = [];
 
   @property({ type: Boolean, reflect: true, attribute: 'hide-pagination' })
   public hidePagination: boolean = true;
@@ -118,8 +125,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _renderTableHeader(): (TemplateResult | undefined)[] {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    return this.columns.map((column: any) => {
+    return this.columns.map((column: ColumnSpecification) => {
       if (column.name) {
         return html`<th scope="col">${column.name}</th>`;
       } else {
@@ -133,9 +139,9 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
       this._pageStartNumber() - 1,
       this._pageEndNumber()
     );
-    return currentDisplayingData.map((row: any) => {
+    return currentDisplayingData.map((row: RowData) => {
       const arr: TemplateResult[] = [];
-      this.columns.forEach((column: any) => {
+      this.columns.forEach((column: ColumnSpecification) => {
         arr.push(html`<td>${row[column.field]}</td>`);
       });
       return html`<tr>
@@ -146,8 +152,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
 
   private _renderPageSizeOptions(): TemplateResult[] {
     return this.pageSizeOptions.map(
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      (option: any) => html`<option value="${option}">${option}</option>`
+      (option: number) => html`<option value="${option}">${option}</option>`
     );
   }
 
@@ -171,6 +176,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
             >
           </div>
           <pharos-pagination
+            class="pagination"
             current-page="${this._currentPage}"
             total-results="${this.totalResults}"
             page-size="${this._pageSize}"
