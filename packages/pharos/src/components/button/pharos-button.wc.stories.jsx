@@ -33,6 +33,7 @@ export const Base = {
         a11y-label=${ifDefined(args.a11yLabel)}
         a11y-expanded=${ifDefined(args.a11yExpanded)}
         a11y-pressed=${ifDefined(args.a11yPressed)}
+        a11y-disabled=${ifDefined(args.a11yDisabled)}
         ?large=${ifDefined(args.large)}
         ?is-on-background=${ifDefined(args.isOnBackground)}
         ping=${ifDefined(args.ping)}
