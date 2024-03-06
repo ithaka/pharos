@@ -8,12 +8,12 @@ import { tableStyles } from './pharos-table.css';
 import { PharosSelect } from '../select/pharos-select';
 import { PharosPagination } from '../pagination/pharos-pagination';
 
-type ColumnSpecification = {
+export type ColumnSpecification = {
   name: string;
   field: string;
 };
 
-type RowData = {
+export type RowData = {
   [key: string]: string;
 };
 
@@ -170,7 +170,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
               <span slot="label">page size</span>
               ${this._renderPageSizeOptions()}
             </pharos-select>
-            <span
+            <span class="page-number-display"
               >(Displaying ${this._pageStartNumber()}-${this._pageEndNumber()} of
               ${this.rowData.length})</span
             >

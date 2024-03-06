@@ -77,6 +77,24 @@ describe('pharos-table', () => {
     expect(rows.length).to.be.eq(2);
   });
 
+  it('shows correct page start number according to page size', async () => {
+    let pageNumber = componentWithPagination.renderRoot.querySelector(`.page-number-display`);
+    expect(pageNumber?.innerHTML).contains('1-');
+    expect(pageNumber?.innerHTML).contains('1 of');
+
+    const selectDropdown = componentWithPagination.renderRoot.querySelector(
+      `pharos-select`
+    ) as PharosSelect;
+    selectDropdown['_select'].value = '2';
+    selectDropdown['_select'].dispatchEvent(new Event('change'));
+
+    await componentWithPagination.updateComplete;
+
+    pageNumber = componentWithPagination.renderRoot.querySelector(`.page-number-display`);
+    expect(pageNumber?.innerHTML).contains('1-');
+    expect(pageNumber?.innerHTML).contains('2 of');
+  });
+
   it('update table after page size selection', async () => {
     let rows = Array.prototype.slice.call(
       componentWithPagination.renderRoot.querySelectorAll(`tr`)
