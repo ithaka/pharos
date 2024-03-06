@@ -1,4 +1,4 @@
-import { useEffect, type FC, useState } from 'react';
+import { useEffect, type FC, useState, useRef } from 'react';
 import { Sidenav } from './Sidenav';
 import { CreateReportModal } from './CreateReportModal';
 import { ReportsTable } from './ReportsTable';
@@ -20,23 +20,29 @@ export const ReportExample: FC = () => {
   const mobileBreakpoint = 1055;
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < mobileBreakpoint);
   const [isSidenavDisplayed, setIsSidenavDisplayed] = useState<boolean>(!isMobile);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleResize = () => {
+    const currentRef = containerRef.current;
+    const resizeObserver = new ResizeObserver(() => {
       const windowWidth = window.innerWidth;
       setIsSidenavDisplayed(windowWidth >= mobileBreakpoint);
       setIsMobile(windowWidth < mobileBreakpoint);
-    };
+    });
 
-    window.addEventListener('resize', handleResize);
+    if (currentRef) {
+      resizeObserver.observe(currentRef);
+    }
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      if (currentRef) {
+        resizeObserver.unobserve(currentRef);
+      }
     };
   }, []);
   return (
     <>
-      <div className="reports-page__container">
+      <div className="reports-page__container" ref={containerRef}>
         <Sidenav open={isSidenavDisplayed} showCloseButton={isMobile} />
         <main id="main-content">
           <PharosLayout preset="1-col--sidenav" className="reports-page__container--main-content">

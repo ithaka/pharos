@@ -11,6 +11,7 @@ class ReportsExample extends LitElement {
     return this;
   }
   readonly #mobileBreakpoint = 1055;
+  resizeObserver: ResizeObserver;
   isMobile: boolean;
   isSidenavDisplayed: boolean;
 
@@ -25,15 +26,23 @@ class ReportsExample extends LitElement {
     super();
     this.isMobile = window.innerWidth < this.#mobileBreakpoint;
     this.isSidenavDisplayed = window.innerWidth >= this.#mobileBreakpoint;
+    this.resizeObserver = new ResizeObserver(() => {
+      const windowWidth = window.innerWidth;
+      this.isSidenavDisplayed = windowWidth >= this.#mobileBreakpoint;
+      this.isMobile = windowWidth < this.#mobileBreakpoint;
+    });
   }
 
-  override connectedCallback() {
+  override firstUpdated() {
     super.connectedCallback();
-    window.addEventListener('resize', this.resizeHandler.bind(this));
+    const container = this.renderRoot.querySelector('.reports-page__container');
+    if (container) {
+      this.resizeObserver.observe(container);
+    }
   }
 
   override disconnectedCallback() {
-    window.removeEventListener('resize', this.resizeHandler.bind(this));
+    this.resizeObserver.disconnect();
     super.disconnectedCallback();
   }
 
