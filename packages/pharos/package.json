@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "13.3.0",
+  "version": "13.4.0",
   "description": "Pharos web components for products and experiences",
   "files": [
     "lib",
@@ -21,7 +21,7 @@
     "analyze": "cem analyze --litelement --globs \"./src/(components|styles|utils|test)/**/!(*.css|*.test)*.ts\"",
     "build:tokens": "node --experimental-json-modules ./scripts/build-tokens.mjs",
     "prebuild": "yarn clean && yarn build:tokens && yarn analyze && yarn build:react && yarn build:assets && yarn build:sassdoc && yarn build:patches",
-    "build": "yarn build:styles && yarn build:tsc && yarn build:replace:imports && yarn build:minify:html",
+    "build": "yarn prebuild && yarn build:styles && yarn build:tsc && yarn build:replace:imports && yarn build:minify:html",
     "build:tsc": "tsc --project tsconfig.build.json",
     "build:tsc:watch": "tsc -w --project tsconfig.build.json",
     "build:react": "node --experimental-json-modules ./scripts/build-react.js",
@@ -38,7 +38,7 @@
     "prepublishOnly": "yarn build",
     "clean": "rimraf lib src/react-components",
     "pretest": "yarn prebuild && yarn build:styles && yarn build:tests && yarn build:replace:imports && yarn build:minify:html",
-    "test": "wtr",
+    "test": "yarn pretest && wtr",
     "test:watch": "wtr --watch"
   },
   "browserslist": [

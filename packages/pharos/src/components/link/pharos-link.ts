@@ -1,6 +1,6 @@
 import { html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import type { TemplateResult, CSSResultArray } from 'lit';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { linkStyles } from './pharos-link.css';
@@ -95,6 +95,14 @@ export class PharosLink extends FocusMixin(AnchorElement) {
 
   @state()
   private _hover = false;
+
+  protected override update(changedProperties: PropertyValues): void {
+    super.update && super.update(changedProperties);
+
+    if (this.label) {
+      console.warn("The 'label' attribute is deprecated. Use 'a11y-label' instead.");
+    }
+  }
 
   public static override get styles(): CSSResultArray {
     return [linkStyles];

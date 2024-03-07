@@ -1,5 +1,17 @@
 # @ithaka/pharos
 
+## 13.4.0
+
+### Minor Changes
+
+- [#678](https://github.com/ithaka/pharos/pull/678) [`2e83906`](https://github.com/ithaka/pharos/commit/2e83906c0c6de4cc050062c7f1d3fed27471af63) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - add icon add to folder
+
+- [#675](https://github.com/ithaka/pharos/pull/675) [`88c580a`](https://github.com/ithaka/pharos/commit/88c580a86d9c7b7eb1b8322532ca9d31c69f4c7b) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Updating the use of a11y-label to replace label when needing to use aria-label
+
+### Patch Changes
+
+- [#670](https://github.com/ithaka/pharos/pull/670) [`5b8510e`](https://github.com/ithaka/pharos/commit/5b8510eaa6398d3bb6e417b26d7d5e5715f3c7b0) Thanks [@mtorres3](https://github.com/mtorres3)! - Hotfix/dropdown-menu-nav: Add pharos-elevation-level-3 token to dropdown-menu-nav
+
 ## 13.3.0
 
 ### Minor Changes

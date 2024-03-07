@@ -1,11 +1,10 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
 import { property, queryAssignedElements } from 'lit/decorators.js';
-import type { TemplateResult, CSSResultArray } from 'lit';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { dropdownMenuNavStyles } from './pharos-dropdown-menu-nav.css';
 import type { PharosDropdownMenuNavLink } from './pharos-dropdown-menu-nav-link';
-import type { PharosDropdownMenuNavCategory } from './pharos-dropdown-menu-nav-category';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
 
 import FocusMixin from '../../utils/mixins/focus';
@@ -27,7 +26,7 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
   public a11yLabel?: string;
 
   @queryAssignedElements({ selector: '[data-pharos-component="PharosDropdownMenuNavLink"]' })
-  private _allLinks!: NodeListOf<PharosDropdownMenuNavLink | PharosDropdownMenuNavCategory>;
+  private _allLinks!: NodeListOf<PharosDropdownMenuNavLink>;
 
   @queryAssignedElements({ selector: '[data-pharos-component="PharosDropdownMenu"]' })
   private _allMenus!: NodeListOf<PharosDropdownMenu>;
@@ -40,9 +39,11 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
     this.addEventListener('focus', () => this._closeAllMenus());
   }
 
-  private _closeAllMenus(
-    link: PharosDropdownMenuNavLink | PharosDropdownMenuNavCategory | undefined = undefined
-  ) {
+  protected override update(changedProperties: PropertyValues): void {
+    super.update && super.update(changedProperties);
+  }
+
+  private _closeAllMenus(link: PharosDropdownMenuNavLink | undefined = undefined) {
     const menu: PharosDropdownMenu | null = this.querySelector(
       '[data-pharos-component="PharosDropdownMenu"][open]'
     );
