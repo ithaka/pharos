@@ -1,5 +1,11 @@
 # @ithaka/pharos-cli
 
+## 5.5.1
+
+### Patch Changes
+
+- [#578](https://github.com/ithaka/pharos/pull/578) [`52006f3`](https://github.com/ithaka/pharos/commit/52006f340892e6375a3f78755bff304c75d0b3e7) Thanks [@mtorres3](https://github.com/mtorres3)! - Update onBackground prop to isOnBackground
+
 ## 5.5.0
 
 ### Minor Changes
