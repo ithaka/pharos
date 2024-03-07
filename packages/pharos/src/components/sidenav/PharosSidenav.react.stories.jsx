@@ -39,7 +39,7 @@ export const Base = {
       <PharosButton
         data-sidenav-id="storybook-sidenav"
         icon="menu"
-        label="menu"
+        a11yLabel="menu"
         onClick={(e) => {
           e.target.focus();
         }}
