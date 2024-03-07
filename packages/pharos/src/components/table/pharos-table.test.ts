@@ -95,7 +95,7 @@ describe('pharos-table', () => {
     expect(pageNumber?.innerHTML).contains('2 of');
   });
 
-  it('update table after page size selection', async () => {
+  it('updates correctly after page size selection', async () => {
     let rows = Array.prototype.slice.call(
       componentWithPagination.renderRoot.querySelectorAll(`tr`)
     ) as TemplateResult[];
