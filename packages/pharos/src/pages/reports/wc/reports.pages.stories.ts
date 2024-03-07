@@ -3,7 +3,7 @@ import type { TemplateResult } from 'lit';
 
 import '../reports.scss';
 import { viewports, breakpoints } from '../../shared/viewports';
-import './reports-example.ts';
+import { ReportsExample } from './reports-example';
 
 export default {
   title: 'Pages/Reports',
@@ -16,5 +16,6 @@ export default {
   },
 };
 export const Reports = (): TemplateResult => {
+  customElements.define('reports-example', ReportsExample);
   return html`<reports-example></reports-example>`;
 };
