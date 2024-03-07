@@ -77,14 +77,17 @@ export const IconsOnly = {
       <storybook-pharos-toggle-button-group>
         <storybook-pharos-toggle-button
           icon="view-list"
+          a11y-label="view list"
           id="view-list-button"
         ></storybook-pharos-toggle-button
         ><storybook-pharos-toggle-button
           icon="view-gallery"
+          a11y-label="view gallery"
           id="view-gallery-button"
         ></storybook-pharos-toggle-button
         ><storybook-pharos-toggle-button
           icon="image"
+          a11y-label="view presentation"
           id="view-presentation-button"
         ></storybook-pharos-toggle-button>
       </storybook-pharos-toggle-button-group>

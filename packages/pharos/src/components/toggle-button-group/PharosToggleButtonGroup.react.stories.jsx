@@ -87,13 +87,13 @@ export const Events = {
 export const IconsOnly = {
   render: () => (
     <PharosToggleButtonGroup>
-      <PharosToggleButton icon="view-list" id="view-list-button">
+      <PharosToggleButton icon="view-list" a11yLabel="view list" id="view-list-button">
         List
       </PharosToggleButton>
-      <PharosToggleButton icon="view-gallery" id="view-gallery-button">
+      <PharosToggleButton icon="view-gallery" a11yLabel="view gallery" id="view-gallery-button">
         Gallery
       </PharosToggleButton>
-      <PharosToggleButton icon="image" id="view-presentation-button">
+      <PharosToggleButton icon="image" a11yLabel="view presentation" id="view-presentation-button">
         Presentation
       </PharosToggleButton>
     </PharosToggleButtonGroup>
