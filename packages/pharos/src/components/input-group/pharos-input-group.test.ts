@@ -101,6 +101,7 @@ describe('pharos-input-group', () => {
   it('adjusts the validated icon position when elements are dynamically appended to the group', async () => {
     const button = document.createElement('test-pharos-button');
     button.icon = 'close';
+    button.a11yLabel = 'close';
     component.appendChild(button);
     component.validated = true;
 
