@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- [#697](https://github.com/ithaka/pharos/pull/697) [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b) Thanks [@brentswisher](https://github.com/brentswisher)! - Update onBackground prop to isOnBackground
+- [#578](https://github.com/ithaka/pharos/pull/578) [`52006f3`](https://github.com/ithaka/pharos/commit/52006f340892e6375a3f78755bff304c75d0b3e7) Thanks [@mtorres3](https://github.com/mtorres3)! - Update onBackground prop to isOnBackground
 
 ## 5.5.0
 
