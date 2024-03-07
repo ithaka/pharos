@@ -115,6 +115,6 @@ export const Base = {
       </PharosSidenav>
     </Fragment>
   ),
-  args: { open: false, hasCloseButton: false },
+  args: { open: false, hasCloseButton: true },
   parameters: {},
 };
