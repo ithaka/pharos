@@ -70,7 +70,7 @@ describe('pharos-table', () => {
     expect(rows.length).to.be.eq(3);
   });
 
-  it('render rows according to page size', async () => {
+  it('renders rows according to page size', async () => {
     const rows = Array.prototype.slice.call(
       componentWithPagination.renderRoot.querySelectorAll(`tr`)
     ) as TemplateResult[];
