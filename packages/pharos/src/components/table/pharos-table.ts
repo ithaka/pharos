@@ -14,7 +14,7 @@ export type ColumnSpecification = {
 };
 
 export type RowData = {
-  [key: string]: string;
+  [key: string]: unknown;
 };
 
 /**
