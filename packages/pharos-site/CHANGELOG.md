@@ -1,5 +1,22 @@
 # @ithaka/pharos-site
 
+## 6.0.0
+
+### Major Changes
+
+- [#697](https://github.com/ithaka/pharos/pull/697) [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b) Thanks [@brentswisher](https://github.com/brentswisher)! - Use is-on-background in place of on-background
+
+- [#697](https://github.com/ithaka/pharos/pull/697) [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b) Thanks [@brentswisher](https://github.com/brentswisher)! - individual file exports are no longer supported, import files based on the exports defined in the package.json
+
+- [#697](https://github.com/ithaka/pharos/pull/697) [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b) Thanks [@brentswisher](https://github.com/brentswisher)! - Remove deprecated Google Translate widget
+
+### Patch Changes
+
+- [#697](https://github.com/ithaka/pharos/pull/697) [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b) Thanks [@brentswisher](https://github.com/brentswisher)! - Update onBackground prop to isOnBackground
+
+- Updated dependencies [[`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`99879a1`](https://github.com/ithaka/pharos/commit/99879a10557130d1a13486dfee110905cb4ca09b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b)]:
+  - @ithaka/pharos@14.0.0
+
 ## 5.14.0
 
 ### Minor Changes
