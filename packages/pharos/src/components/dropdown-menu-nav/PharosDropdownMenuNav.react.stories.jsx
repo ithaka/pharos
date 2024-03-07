@@ -3,7 +3,7 @@ import {
   PharosDropdownMenuItem,
   PharosDropdownMenuNav,
   PharosDropdownMenuNavLink,
-  PharosDropdownMenuCategory,
+  PharosDropdownMenuNavCategory,
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
@@ -15,7 +15,7 @@ export default {
     PharosDropdownMenuNavLink,
     PharosDropdownMenu,
     PharosDropdownMenuItem,
-    PharosDropdownMenuCategory,
+    PharosDropdownMenuNavCategory,
   },
   decorators: [
     (Story) => (
@@ -32,27 +32,27 @@ export default {
 export const Base = {
   render: () => (
     <PharosDropdownMenuNav>
-      <PharosDropdownMenuCategory
+      <PharosDropdownMenuNavCategory
         id="category1-link"
         data-dropdown-menu-id="category1-menu"
         data-dropdown-menu-hover
         target="_blank"
       >
         <span slot="category">Category 1</span>
-      </PharosDropdownMenuCategory>
+      </PharosDropdownMenuNavCategory>
       <PharosDropdownMenu id="category1-menu" data-dropdown-menu-hover>
         <PharosDropdownMenuItem>Item 1.1</PharosDropdownMenuItem>
         <PharosDropdownMenuItem>Item 1.2</PharosDropdownMenuItem>
         <PharosDropdownMenuItem>Item 1.3</PharosDropdownMenuItem>
       </PharosDropdownMenu>
-      <PharosDropdownMenuCategory
+      <PharosDropdownMenuNavCategory
         id="category2-link"
         data-dropdown-menu-id="category2-menu"
         data-dropdown-menu-hover
         target="_blank"
       >
         <span slot="category">Category 2</span>
-      </PharosDropdownMenuCategory>
+      </PharosDropdownMenuNavCategory>
       <PharosDropdownMenu id="category2-menu">
         <PharosDropdownMenuItem>Item 2.1</PharosDropdownMenuItem>
         <PharosDropdownMenuItem>Item 2.2</PharosDropdownMenuItem>

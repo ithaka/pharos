@@ -96,6 +96,14 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   @state()
   private _hover = false;
 
+  protected override update(changedProperties: PropertyValues): void {
+    super.update && super.update(changedProperties);
+
+    if (this.label) {
+      console.warn("The 'label' attribute is deprecated. Use 'a11y-label' instead.");
+    }
+  }
+
   public static override get styles(): CSSResultArray {
     return [linkStyles];
   }
