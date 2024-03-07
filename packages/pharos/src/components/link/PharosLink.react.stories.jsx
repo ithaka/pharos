@@ -29,9 +29,9 @@ export const Base = {
       href={args.href}
       hreflang={args.hreflang}
       indicateVisited={args.indicateVisited}
-      a11yLabel={args.label}
+      a11yLabel={args.a11yLabel}
       noHover={args.noHover}
-      onBackground={args.onBackground}
+      isOnBackground={args.isOnBackground}
       ping={args.ping}
       rel={args.rel}
       skip={args.skip}
@@ -80,7 +80,7 @@ export const Button = {
           marginBottom: '1rem',
         }}
       >
-        <PharosLink name="on-background" onBackground>
+        <PharosLink name="is-on-background" isOnBackground>
           On compliant background
         </PharosLink>
       </div>
@@ -113,7 +113,7 @@ export const Variants = {
           marginBottom: '1rem',
         }}
       >
-        <PharosLink name="on-background" href="#" onBackground>
+        <PharosLink name="is-on-background" href="#" isOnBackground>
           On compliant background
         </PharosLink>
       </div>
@@ -124,7 +124,7 @@ export const Variants = {
           marginBottom: '1rem',
         }}
       >
-        <PharosLink name="on-background-subtle" href="#" onBackground subtle>
+        <PharosLink name="is-on-background-subtle" href="#" isOnBackground subtle>
           On compliant background with subtle
         </PharosLink>
       </div>

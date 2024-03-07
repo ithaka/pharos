@@ -32,7 +32,7 @@ describe('pharos-link', () => {
     parentNode.style.backgroundColor = PharosColorBlack;
 
     component = await fixture(
-      html`<test-pharos-link href="#" on-background>I am a link</test-pharos-link>`,
+      html`<test-pharos-link href="#" is-on-background>I am a link</test-pharos-link>`,
       {
         parentNode,
       }

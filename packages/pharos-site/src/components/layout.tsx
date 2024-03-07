@@ -37,12 +37,11 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
   const [MainContent, setMainContent] = useState<ReactElement | null>(null);
 
   useEffect(() => {
-    const { PharosSidenavButton, PharosLink, PharosLayout } = Pharos;
+    const { PharosLink, PharosLayout } = Pharos;
 
     const body = (
       <main className={main}>
         <div className={topBar}>
-          <PharosSidenavButton onBackground />
           <PharosLink id="skip-link" skip href="#sidenav-skip-link" onBackground>
             Skip to main navigation
           </PharosLink>

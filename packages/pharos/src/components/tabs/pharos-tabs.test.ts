@@ -21,10 +21,10 @@ describe('pharos-tabs', () => {
     `);
 
     componentLastTabSelected = await fixture(html`
-      <test-pharos-tabs>
+      <test-pharos-tabs selected-tab="2">
         <test-pharos-tab id="tab-4" data-panel-id="panel-4">Tab 1</test-pharos-tab>
         <test-pharos-tab id="tab-5" data-panel-id="panel-5">Tab 2</test-pharos-tab>
-        <test-pharos-tab id="tab-6" data-panel-id="panel-6" selected>Tab 3</test-pharos-tab>
+        <test-pharos-tab id="tab-6" data-panel-id="panel-6">Tab 3</test-pharos-tab>
         <test-pharos-tab-panel id="panel-4" slot="panel">Panel 1</test-pharos-tab-panel>
         <test-pharos-tab-panel id="panel-5" slot="panel">Panel 2</test-pharos-tab-panel>
         <test-pharos-tab-panel id="panel-6" slot="panel">Panel 3</test-pharos-tab-panel>
