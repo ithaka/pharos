@@ -182,8 +182,24 @@ describe('pharos-button', () => {
         .thrown;
     });
 
+    it('throws an error for an icon only button with no accessible label', async () => {
+      let errorThrown = false;
+      try {
+        await fixture(html` <test-pharos-button icon="download"></test-pharos-button> `);
+      } catch (error) {
+        if (error instanceof Error) {
+          errorThrown = true;
+          expect(error?.message).to.be.equal(
+            "Icon only buttons must have an accessible name. Please provide an 'a11y-label' attribute for the button using the 'download' icon."
+          );
+        }
+      }
+      expect(errorThrown).to.be.true;
+    });
+
     it('allows for an icon to be shown as the content of the button', async () => {
       component.icon = 'download';
+      component.a11yLabel = 'Download';
       await component.updateComplete;
 
       const icon = component.renderRoot.querySelector(

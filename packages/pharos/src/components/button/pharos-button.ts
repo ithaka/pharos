@@ -196,7 +196,11 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
         `${this.variant} is not a valid variant. Valid variants are: ${VARIANTS.join(', ')}`
       );
     }
-
+    if (this.icon && !this.a11yLabel) {
+      throw new Error(
+        `Icon only buttons must have an accessible name. Please provide an 'a11y-label' attribute for the button using the '${this.icon}' icon.`
+      );
+    }
     if (this.label) {
       console.warn("The 'label' attribute is deprecated. Use 'a11y-label' instead.");
     }
