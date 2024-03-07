@@ -63,7 +63,7 @@ describe('pharos-table', () => {
     await expect(componentWithPagination).to.be.accessible();
   });
 
-  it('has 3 rows', async () => {
+  it('has the correct number of rows', async () => {
     const rows = Array.prototype.slice.call(
       component.renderRoot.querySelectorAll(`tr`)
     ) as TemplateResult[];
