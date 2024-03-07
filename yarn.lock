@@ -5038,7 +5038,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos-site@workspace:packages/pharos-site"
   dependencies:
-    "@ithaka/pharos": "npm:^13.3.0"
+    "@ithaka/pharos": "npm:^14.0.0"
     "@mdx-js/mdx": "npm:^1.6.22"
     "@mdx-js/react": "npm:^1.6.22"
     "@types/mdx-js__react": "npm:^1.5.3"
@@ -5071,7 +5071,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ithaka/pharos@npm:^13.3.0, @ithaka/pharos@workspace:packages/pharos":
+"@ithaka/pharos@npm:^14.0.0, @ithaka/pharos@workspace:packages/pharos":
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos@workspace:packages/pharos"
   dependencies:

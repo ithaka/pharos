@@ -39,7 +39,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Dependencies
-        run: yarn --check-cache
+        run: yarn --check-cache --immutable
 
       - name: Create Release Pull Request or Publish to npm # Pushes to main will create/update the release PR. Merging the PR will publish the packages.
         id: changesets
