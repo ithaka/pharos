@@ -50,7 +50,7 @@ const IndexPage: FC = () => {
           <PharosLink
             className={link__status}
             href="/components/component-status"
-            onBackground
+            isOnBackground
             flex
             data-sc="link:component status hero"
             onClick={handleLinkClick}

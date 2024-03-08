@@ -5038,6 +5038,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos-site@workspace:packages/pharos-site"
   dependencies:
+    "@babel/plugin-transform-private-methods": "npm:^7.23.3"
     "@ithaka/pharos": "npm:^14.0.0"
     "@mdx-js/mdx": "npm:^1.6.22"
     "@mdx-js/react": "npm:^1.6.22"
