@@ -2,4 +2,4 @@
 '@ithaka/pharos': patch
 ---
 
-Updating thumbs up down filled icons
+Add thumbs up/down filled icons
