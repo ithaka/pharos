@@ -63,7 +63,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   /**
    * Text content for the coach mark header
    * @attr header
-   * @type {String}
+   * @type {string}
    */
   @property({ reflect: true })
   public header = '';
