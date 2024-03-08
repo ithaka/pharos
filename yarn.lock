@@ -5038,6 +5038,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos-site@workspace:packages/pharos-site"
   dependencies:
+    "@babel/plugin-transform-private-methods": "npm:^7.23.3"
     "@ithaka/pharos": "npm:^14.0.0"
     "@mdx-js/mdx": "npm:^1.6.22"
     "@mdx-js/react": "npm:^1.6.22"
@@ -7173,7 +7174,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-a11y@npm:^7.3.2":
+"@storybook/addon-a11y@npm:^7.6.17":
   version: 7.6.17
   resolution: "@storybook/addon-a11y@npm:7.6.17"
   dependencies:
@@ -7249,7 +7250,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-essentials@npm:^7.3.2":
+"@storybook/addon-essentials@npm:^7.6.17":
   version: 7.6.17
   resolution: "@storybook/addon-essentials@npm:7.6.17"
   dependencies:
@@ -7283,7 +7284,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-links@npm:^7.3.2":
+"@storybook/addon-links@npm:^7.6.17":
   version: 7.6.17
   resolution: "@storybook/addon-links@npm:7.6.17"
   dependencies:
@@ -7398,7 +7399,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/blocks@npm:7.6.17, @storybook/blocks@npm:^7.3.2":
+"@storybook/blocks@npm:7.6.17, @storybook/blocks@npm:^7.6.17":
   version: 7.6.17
   resolution: "@storybook/blocks@npm:7.6.17"
   dependencies:
@@ -7900,7 +7901,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/manager-api@npm:7.6.17, @storybook/manager-api@npm:^7.3.2":
+"@storybook/manager-api@npm:7.6.17, @storybook/manager-api@npm:^7.6.17":
   version: 7.6.17
   resolution: "@storybook/manager-api@npm:7.6.17"
   dependencies:
@@ -8024,7 +8025,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react-vite@npm:^7.3.2":
+"@storybook/react-vite@npm:^7.6.17":
   version: 7.6.17
   resolution: "@storybook/react-vite@npm:7.6.17"
   dependencies:
@@ -8135,7 +8136,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/theming@npm:7.6.17, @storybook/theming@npm:^7.3.2":
+"@storybook/theming@npm:7.6.17, @storybook/theming@npm:^7.6.17":
   version: 7.6.17
   resolution: "@storybook/theming@npm:7.6.17"
   dependencies:
@@ -8174,7 +8175,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/web-components-vite@npm:^7.3.2":
+"@storybook/web-components-vite@npm:^7.6.17":
   version: 7.6.17
   resolution: "@storybook/web-components-vite@npm:7.6.17"
   dependencies:
@@ -8187,7 +8188,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/web-components@npm:7.6.17, @storybook/web-components@npm:^7.3.2":
+"@storybook/web-components@npm:7.6.17, @storybook/web-components@npm:^7.6.17":
   version: 7.6.17
   resolution: "@storybook/web-components@npm:7.6.17"
   dependencies:
@@ -24579,16 +24580,16 @@ __metadata:
     "@commitlint/config-conventional": "npm:^15.0.0"
     "@emotion/babel-plugin": "npm:^11.9.2"
     "@size-limit/preset-small-lib": "npm:^7.0.4"
-    "@storybook/addon-a11y": "npm:^7.3.2"
-    "@storybook/addon-essentials": "npm:^7.3.2"
-    "@storybook/addon-links": "npm:^7.3.2"
+    "@storybook/addon-a11y": "npm:^7.6.17"
+    "@storybook/addon-essentials": "npm:^7.6.17"
+    "@storybook/addon-links": "npm:^7.6.17"
     "@storybook/addon-styling": "npm:^1.3.5"
-    "@storybook/blocks": "npm:^7.3.2"
-    "@storybook/manager-api": "npm:^7.3.2"
-    "@storybook/react-vite": "npm:^7.3.2"
-    "@storybook/theming": "npm:^7.3.2"
-    "@storybook/web-components": "npm:^7.3.2"
-    "@storybook/web-components-vite": "npm:^7.3.2"
+    "@storybook/blocks": "npm:^7.6.17"
+    "@storybook/manager-api": "npm:^7.6.17"
+    "@storybook/react-vite": "npm:^7.6.17"
+    "@storybook/theming": "npm:^7.6.17"
+    "@storybook/web-components": "npm:^7.6.17"
+    "@storybook/web-components-vite": "npm:^7.6.17"
     "@types/uuid": "npm:^9.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^6.9.0"
     "@typescript-eslint/parser": "npm:^6.9.0"
@@ -24621,7 +24622,7 @@ __metadata:
     react-dom: "npm:^17.0.0"
     sass: "npm:^1.63.6"
     size-limit: "npm:^7.0.4"
-    storybook: "npm:^7.3.2"
+    storybook: "npm:^7.6.17"
     stylelint: "npm:^15.10.1"
     stylelint-config-prettier: "npm:^9.0.5"
     stylelint-config-standard-scss: "npm:^10.0.0"
@@ -28652,7 +28653,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook@npm:^7.3.2":
+"storybook@npm:^7.6.17":
   version: 7.6.17
   resolution: "storybook@npm:7.6.17"
   dependencies:
