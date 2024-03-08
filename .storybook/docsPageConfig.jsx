@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  ArgsTable,
-  Description,
-  Primary,
-  PRIMARY_STORY,
-  Stories,
-  Subtitle,
-  Title,
-} from '@storybook/addon-docs';
+import { Controls, Description, Primary, Stories, Subtitle, Title } from '@storybook/addon-docs';
 
 import { GuidelineLink } from '@config/GuidelineLink';
 
@@ -19,7 +11,7 @@ export const configureDocsPage = (componentName) => {
       <Description />
       {componentName && <GuidelineLink path={componentName} />}
       <Primary />
-      <ArgsTable story={PRIMARY_STORY} />
+      <Controls />
       <Stories />
     </>
   );

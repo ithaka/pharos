@@ -13,6 +13,10 @@ const fullConfig: StorybookConfig = {
       directory: '../../packages/pharos',
       files: '**/*.@(wc|docs|pages).stories.@(js|jsx|mdx|ts)',
     },
+    {
+      directory: '../../packages/pharos',
+      files: '**/*.docs.mdx',
+    },
   ],
 };
 

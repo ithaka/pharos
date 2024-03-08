@@ -119,7 +119,7 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
 
     this._toasts = [
       {
-        content,
+        content: content,
         status: status || DEFAULT_STATUS,
         id: toastId,
         indefinite: indefinite || DEFAULT_INDEFINITE,

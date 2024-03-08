@@ -3,15 +3,7 @@ import path from 'path';
 
 const config = {
   stories: [],
-  addons: [
-    '@storybook/addon-a11y',
-    '@storybook/addon-styling',
-    '@storybook/addon-essentials',
-    '@storybook/addon-links',
-  ],
-  features: {
-    storyStoreV7: true,
-  },
+  addons: ['@storybook/addon-a11y', '@storybook/addon-essentials', '@storybook/addon-links'],
   docs: {
     autodocs: true,
   },

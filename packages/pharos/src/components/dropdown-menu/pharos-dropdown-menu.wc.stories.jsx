@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { useEffect } from '@storybook/client-api';
+import { useEffect } from '@storybook/preview-api';
 import { html } from 'lit';
 
 import { configureDocsPage } from '@config/docsPageConfig';

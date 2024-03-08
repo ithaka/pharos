@@ -23,10 +23,14 @@
 
 ## Build statuses
 
-| System     | Status                                                                                                                                                                    |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Site       | [![Site status](https://api.netlify.com/api/v1/badges/6e5ee441-5739-46e4-9a85-ea5c5a333ebb/deploy-status)](https://app.netlify.com/sites/pharos/deploys)                  |
-| Storybooks | [![Storybooks status](https://api.netlify.com/api/v1/badges/0afa82e2-f12d-4a75-933c-efedee05fe99/deploy-status)](https://app.netlify.com/sites/pharos-storybooks/deploys) |
+| System         | Status                                                                                                                                                                    |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Site           | [![Site status](https://api.netlify.com/api/v1/badges/6e5ee441-5739-46e4-9a85-ea5c5a333ebb/deploy-status)](https://app.netlify.com/sites/pharos/deploys)                  |
+| Storybooks     | [![Storybooks status](https://api.netlify.com/api/v1/badges/0afa82e2-f12d-4a75-933c-efedee05fe99/deploy-status)](https://app.netlify.com/sites/pharos-storybooks/deploys) |
+| GitHub Actions | [![Release status]](https://github.com/ithaka/pharos/actions/workflows/release.yml/badge.svg?branch=main)                                                                 |
+| GitHub Actions | [![Release status]](https://github.com/ithaka/pharos/actions/workflows/verify.yml/badge.svg)                                                                              |
+| GitHub Actions | [![Release status]](https://github.com/ithaka/pharos/actions/workflows/chromatic.yml/badge.svg)                                                                           |
+| GitHub Actions | [![Release status]](https://github.com/ithaka/pharos/actions/workflows/size-limit.yml/badge.svg)                                                                          |
 
 ## Getting Started
 
