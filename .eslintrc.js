@@ -10,10 +10,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
+    requireConfigFile: false,
     ecmaFeatures: {
       jsx: true,
     },
     babelOptions: {
+      plugins: ['@babel/plugin-syntax-import-assertions'],
       presets: ['@babel/preset-react'],
     },
   },
