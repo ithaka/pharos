@@ -145,10 +145,10 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
 
   /**
    * Indicates the input is on a AA compliant background.
-   * @attr on-background
+   * @attr is-on-background
    */
-  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
-  public onBackground = false;
+  @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
+  public isOnBackground = false;
 
   @query('#input-element')
   protected _input!: HTMLInputElement;

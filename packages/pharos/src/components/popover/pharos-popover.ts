@@ -32,18 +32,10 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
 
   /**
    * Indicates the menu item is displayed on a dark background.
-   * @attr on-background
+   * @attr is-on-background
    */
   @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
   public isOnBackground = false;
-
-  /**
-   * Indicates the aria label to apply to the dialog.
-   * @attr label
-   * @deprecated
-   */
-  @property({ type: String, reflect: true })
-  public label?: string;
 
   /**
    * Indicates the aria-label to apply to the dialog.
@@ -53,8 +45,8 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   public a11yLabel?: string;
 
   /**
-   * Indicates the aria label to apply to the dialog.
-   * @attr label
+   * Indicates the aria-labelledby to apply to the dialog.
+   * @attr labelledBy
    */
   @property({ type: String, reflect: true, attribute: 'labelled-by' })
   public labelledBy?: string;
@@ -148,10 +140,6 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
     }
 
     super.updated(changedProperties);
-
-    if (this.label) {
-      console.warn("The 'label' attribute is deprecated. Use 'a11y-label' instead.");
-    }
   }
 
   override connectedCallback(): void {
@@ -386,14 +374,11 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   protected override render(): TemplateResult {
-    // TODO: Remove in future release once sufficient time elapsed to update naming convention
-    const a11yLabel = this.a11yLabel ?? this.label;
-
     return html` <focus-trap>
       <div
         class="popover"
         role="dialog"
-        aria-label=${ifDefined(a11yLabel)}
+        aria-label=${ifDefined(this.a11yLabel)}
         aria-labelledby="${ifDefined(this.labelledBy)}"
       >
         <slot></slot>

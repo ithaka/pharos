@@ -4,7 +4,7 @@ export const defaultArgs = {
   flex: false,
   href: '#',
   indicateVisited: false,
-  onBackground: false,
+  isOnBackground: false,
   noHover: false,
   skip: false,
   subtle: false,

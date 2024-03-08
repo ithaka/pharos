@@ -30,12 +30,13 @@ export const Base = {
 export const Events = {
   render: () =>
     html`
-      <storybook-pharos-tabs @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}">
+      <storybook-pharos-tabs
+        selected-tab="2"
+        @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}"
+      >
         <storybook-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</storybook-pharos-tab>
         <storybook-pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</storybook-pharos-tab>
-        <storybook-pharos-tab id="tab-3" data-panel-id="panel-3" selected
-          >Tab 3</storybook-pharos-tab
-        >
+        <storybook-pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</storybook-pharos-tab>
         <storybook-pharos-tab-panel id="panel-1" slot="panel">Panel 1</storybook-pharos-tab-panel>
         <storybook-pharos-tab-panel id="panel-2" slot="panel">Panel 2</storybook-pharos-tab-panel>
         <storybook-pharos-tab-panel id="panel-3" slot="panel">Panel 3</storybook-pharos-tab-panel>
@@ -87,16 +88,14 @@ export const PanelSeparator = {
 export const HorizontalScrolling = {
   render: () =>
     html`
-      <storybook-pharos-tabs panel-separator style="width: 100%">
+      <storybook-pharos-tabs selected-tab="6" panel-separator style="width: 100%">
         <storybook-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</storybook-pharos-tab>
         <storybook-pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</storybook-pharos-tab>
         <storybook-pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</storybook-pharos-tab>
         <storybook-pharos-tab id="tab-4" data-panel-id="panel-4">Tab 4</storybook-pharos-tab>
         <storybook-pharos-tab id="tab-5" data-panel-id="panel-5">Tab 5</storybook-pharos-tab>
         <storybook-pharos-tab id="tab-6" data-panel-id="panel-6">Tab 6</storybook-pharos-tab>
-        <storybook-pharos-tab id="tab-7" data-panel-id="panel-7" selected
-          >Tab 7</storybook-pharos-tab
-        >
+        <storybook-pharos-tab id="tab-7" data-panel-id="panel-7">Tab 7</storybook-pharos-tab>
         <storybook-pharos-tab id="tab-8" data-panel-id="panel-8">Tab 8</storybook-pharos-tab>
         <storybook-pharos-tab id="tab-9" data-panel-id="panel-9">Tab 9</storybook-pharos-tab>
         <storybook-pharos-tab-panel id="panel-1" slot="panel"

@@ -105,22 +105,22 @@ export const Validity = {
   },
 };
 
-export const OnBackground = {
+export const IsOnBackground = {
   name: 'On background',
   render: () =>
     html`
       <div style="background-color: #000000; padding: 1rem;">
-        <storybook-pharos-checkbox name="on-background" on-background>
+        <storybook-pharos-checkbox name="is-on-background" is-on-background>
           <span slot="label">Unchecked</span>
         </storybook-pharos-checkbox>
       </div>
       <div style="background-color: #000000; padding: 1rem;">
-        <storybook-pharos-checkbox name="on-background" on-background checked>
+        <storybook-pharos-checkbox name="is-on-background" is-on-background checked>
           <span slot="label">Checked</span>
         </storybook-pharos-checkbox>
       </div>
       <div style="background-color: #000000; padding: 1rem;">
-        <storybook-pharos-checkbox name="indeterminate" on-background indeterminate>
+        <storybook-pharos-checkbox name="indeterminate" is-on-background indeterminate>
           <span slot="label">Indeterminate</span>
         </storybook-pharos-checkbox>
       </div>
