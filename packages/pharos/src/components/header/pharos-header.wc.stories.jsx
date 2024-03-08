@@ -67,7 +67,7 @@ export const Base = {
           >
             <span>Access provided by&nbsp;</span>
             <span style="font-weight: bold">JSTOR</span>
-            <storybook-pharos-icon name="chevron-down" style="margin-left: 1rem"></storybook-pharos-icon>
+            <storybook-pharos-icon name="chevron-down" style="margin-left: 1rem"  a11y-hidden="true"></storybook-pharos-icon>
           </div>
           <storybook-pharos-dropdown-menu id="pds-menu" placement="bottom">
             <div style="padding: 1rem">
@@ -97,7 +97,7 @@ export const Base = {
               name="search-button"
               icon="search"
               variant="subtle"
-              label="search"
+              a11y-label="search"
             ></storybook-pharos-button>
           </storybook-pharos-input-group>
         </div>
@@ -111,12 +111,13 @@ export const Base = {
               id="adv-search-link"
               >Advanced Search</storybook-pharos-dropdown-menu-nav-link
             >
-            <storybook-pharos-dropdown-menu-nav-link
-              href="/subjects"
+            <storybook-pharos-dropdown-menu-nav-category
               id="browse-link"
               data-dropdown-menu-id="browse-menu"
               data-dropdown-menu-hover
-              >Browse</storybook-pharos-dropdown-menu-nav-link
+              >
+                <span slot="category">Browse</span>
+              </storybook-pharos-dropdown-menu-nav-category
             >
             <storybook-pharos-dropdown-menu id="browse-menu">
               <storybook-pharos-dropdown-menu-item link="/subjects">by Subject</storybook-pharos-dropdown-menu-item>
@@ -130,12 +131,13 @@ export const Base = {
                 >by Publisher</storybook-pharos-dropdown-menu-item
               >
             </storybook-pharos-dropdown-menu>
-            <storybook-pharos-dropdown-menu-nav-link
-              href="/account/workspace"
+            <storybook-pharos-dropdown-menu-nav-category
               id="tools-link"
               data-dropdown-menu-id="tools-menu"
               data-dropdown-menu-hover
-              >Tools</storybook-pharos-dropdown-menu-nav-link
+              >
+                <span slot="category">Tools</span>
+              </storybook-pharos-dropdown-menu-nav-category
             >
             <storybook-pharos-dropdown-menu id="tools-menu">
               <storybook-pharos-dropdown-menu-item link="/account/workspace"

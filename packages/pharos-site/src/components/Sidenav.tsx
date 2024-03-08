@@ -55,7 +55,7 @@ const Sidenav: FC = () => {
     };
 
     const content = (
-      <PharosSidenav mainContentId="skip-link" className={sidenav}>
+      <PharosSidenav mainContentId="skip-link" open={true} className={sidenav}>
         <PharosLink href="/" slot="top" flex onClick={handleLinkClick}>
           <div>
             <div className={siteBrand__title}>{data.site.siteMetadata.title}</div>
@@ -96,7 +96,7 @@ const Sidenav: FC = () => {
         </PharosSidenavSection>
         <PharosSidenavSection label="Brand Guidelines" showDivider>
           <PharosSidenavMenu label="Brand expressions" expanded={isExpanded('brand-expressions')}>
-            {['Logos', 'Typography', 'Color', 'Imagery', 'Iconography'].map(
+            {['Logos', 'Typography', 'Color', 'Imagery', 'Iconography', 'Elevation'].map(
               createSidenavLink.bind(this, 'brand-expressions')
             )}
           </PharosSidenavMenu>
@@ -117,6 +117,7 @@ const Sidenav: FC = () => {
               'Button',
               'Breadcrumb',
               'Checkbox',
+              'Coach Mark',
               'Combobox',
               'Dropdown menu',
               'Dropdown menu nav',
@@ -151,6 +152,7 @@ const Sidenav: FC = () => {
               'Font size',
               'Font weight',
               'Line height',
+              'Elevation',
               'Radius',
               'Spacing',
               'Transitions',

@@ -116,7 +116,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           href=""
           @click="${this._handleClick}"
         >
-          <pharos-icon name="chevron-left"></pharos-icon>
+          <pharos-icon name="chevron-left" a11y-hidden="true"></pharos-icon>
           Previous
         </pharos-link>
       `;
@@ -136,7 +136,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           @click="${this._handleClick}"
         >
           Next
-          <pharos-icon name="chevron-right"></pharos-icon>
+          <pharos-icon name="chevron-right" a11y-hidden="true"></pharos-icon>
         </pharos-link>
       `;
     }

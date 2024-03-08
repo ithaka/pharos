@@ -1,5 +1,197 @@
 # @ithaka/pharos
 
+## 14.0.0
+
+### Major Changes
+
+- [#475](https://github.com/ithaka/pharos/pull/475) [`b9eedf6`](https://github.com/ithaka/pharos/commit/b9eedf689a121818a29758596976ab3f75533c29) Thanks [@daneah](https://github.com/daneah)! - Update Toaster to use internally consistent component scoping
+
+- [#657](https://github.com/ithaka/pharos/pull/657) [`e89bcaf`](https://github.com/ithaka/pharos/commit/e89bcaf3ac3dbc8be99f7e74b82710f9e3f8bea7) Thanks [@daneah](https://github.com/daneah)! - Use is-on-background in place of on-background
+
+- [#614](https://github.com/ithaka/pharos/pull/614) [`d026826`](https://github.com/ithaka/pharos/commit/d0268264b08e88246e6d3ffc17a9a20a57fabca3) Thanks [@daneah](https://github.com/daneah)! - Remove `paint` value of contain property globally
+
+- [#478](https://github.com/ithaka/pharos/pull/478) [`ace35cf`](https://github.com/ithaka/pharos/commit/ace35cf0302ca9e0feaec99984548686d8374d88) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - remove sidenav button, add consumer controls
+
+- [#676](https://github.com/ithaka/pharos/pull/676) [`536a598`](https://github.com/ithaka/pharos/commit/536a598de6e8d103d4d9aeee242acdcfb24fd035) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Update all use of label attribute to a11y-label
+
+- [#594](https://github.com/ithaka/pharos/pull/594) [`f8342cc`](https://github.com/ithaka/pharos/commit/f8342cc6e1df4a890639443bd9e015d4af041c94) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Add additional ARIA attributes for Pharos button
+  and use a new naming convention for these specific
+  pharos attributes.
+
+- [#468](https://github.com/ithaka/pharos/pull/468) [`1913341`](https://github.com/ithaka/pharos/commit/19133412f96ecfe68b38820cb4704dfff0defabe) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - pharos-tab `selected` has been deprecated, see new property for pharos-tabs `selected-tab`
+
+- [#472](https://github.com/ithaka/pharos/pull/472) [`eaa514f`](https://github.com/ithaka/pharos/commit/eaa514f9e87f856a4b6a380f20adab52b28924c4) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - individual file exports are no longer supported, import files based on the exports defined in the package.json
+
+- [#586](https://github.com/ithaka/pharos/pull/586) [`eb228d5`](https://github.com/ithaka/pharos/commit/eb228d510514c273b0dd10d9b6f02c83dfb601fe) Thanks [@daneah](https://github.com/daneah)! - Remove deprecated Google Translate widget
+
+- [#699](https://github.com/ithaka/pharos/pull/699) [`38322bc`](https://github.com/ithaka/pharos/commit/38322bc0d6eff716fe4a3408265dc4831efc95d9) Thanks [@brentswisher](https://github.com/brentswisher)! - Require an a11y-label for icon buttons
+
+- [#690](https://github.com/ithaka/pharos/pull/690) [`fda9018`](https://github.com/ithaka/pharos/commit/fda9018b411c12dc884e04ab977c2dea195b07f1) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Remove overflow-y from pharos-tabs tab panels
+
+### Minor Changes
+
+- [#681](https://github.com/ithaka/pharos/pull/681) [`67684b7`](https://github.com/ithaka/pharos/commit/67684b7b10e2a49e549b3eaf74f7c6a471bf8eeb) Thanks [@brentswisher](https://github.com/brentswisher)! - Add elevation style to modal component
+
+- [#683](https://github.com/ithaka/pharos/pull/683) [`551c5e9`](https://github.com/ithaka/pharos/commit/551c5e9ce0ad217b1e58973af37a7fe26cde8518) Thanks [@brentswisher](https://github.com/brentswisher)! - Add default elevation and remove border from combobox component
+
+- [#689](https://github.com/ithaka/pharos/pull/689) [`99879a1`](https://github.com/ithaka/pharos/commit/99879a10557130d1a13486dfee110905cb4ca09b) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Added media query for icons to appear on Windows High Contrast Mode
+
+- [#682](https://github.com/ithaka/pharos/pull/682) [`3992876`](https://github.com/ithaka/pharos/commit/3992876300552a286a2e07a68aaf7bdea238fc97) Thanks [@brentswisher](https://github.com/brentswisher)! - Update popover component elevation to use design token
+
+- [#684](https://github.com/ithaka/pharos/pull/684) [`c2a2248`](https://github.com/ithaka/pharos/commit/c2a22483478aaf9f8035ae4503583af2adca1b20) Thanks [@brentswisher](https://github.com/brentswisher)! - Add default elevation and remove border from dropdown-menu
+
+### Patch Changes
+
+- [#691](https://github.com/ithaka/pharos/pull/691) [`8ca6aeb`](https://github.com/ithaka/pharos/commit/8ca6aeb2983069c97999c2b38006b0b660f70b4b) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Add ability to use a11y-disabled and maintain default disabled styling
+
+- [#671](https://github.com/ithaka/pharos/pull/671) [`145da90`](https://github.com/ithaka/pharos/commit/145da90eda7b6ec1a80853cd2fc146fe0fc35473) Thanks [@brentswisher](https://github.com/brentswisher)! - Remove deprecated onBackground attribute from sidenav storybook story
+
+- [#696](https://github.com/ithaka/pharos/pull/696) [`df71253`](https://github.com/ithaka/pharos/commit/df712531c66735fb43d94c522cba6a222e520243) Thanks [@brentswisher](https://github.com/brentswisher)! - Update storybook stories to work with new sidenav display logic
+
+- [#578](https://github.com/ithaka/pharos/pull/578) [`52006f3`](https://github.com/ithaka/pharos/commit/52006f340892e6375a3f78755bff304c75d0b3e7) Thanks [@mtorres3](https://github.com/mtorres3)! - Update onBackground prop to isOnBackground
+
+- [#677](https://github.com/ithaka/pharos/pull/677) [`8f8c2bb`](https://github.com/ithaka/pharos/commit/8f8c2bb3870e9b13dc7a809706e98560156ff015) Thanks [@brentswisher](https://github.com/brentswisher)! - Updates the Link to use a11yLabel values within Storybook
+
+- [#679](https://github.com/ithaka/pharos/pull/679) [`a1ade7a`](https://github.com/ithaka/pharos/commit/a1ade7a9a73677a1e78ffcfb4eb8b4a752368226) Thanks [@brentswisher](https://github.com/brentswisher)! - Require all icons to have a label or be explicitly hidden
+
+## 13.4.0
+
+### Minor Changes
+
+- [#678](https://github.com/ithaka/pharos/pull/678) [`2e83906`](https://github.com/ithaka/pharos/commit/2e83906c0c6de4cc050062c7f1d3fed27471af63) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - add icon add to folder
+
+- [#675](https://github.com/ithaka/pharos/pull/675) [`88c580a`](https://github.com/ithaka/pharos/commit/88c580a86d9c7b7eb1b8322532ca9d31c69f4c7b) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Updating the use of a11y-label to replace label when needing to use aria-label
+
+### Patch Changes
+
+- [#670](https://github.com/ithaka/pharos/pull/670) [`5b8510e`](https://github.com/ithaka/pharos/commit/5b8510eaa6398d3bb6e417b26d7d5e5715f3c7b0) Thanks [@mtorres3](https://github.com/mtorres3)! - Hotfix/dropdown-menu-nav: Add pharos-elevation-level-3 token to dropdown-menu-nav
+
+## 13.3.0
+
+### Minor Changes
+
+- [#646](https://github.com/ithaka/pharos/pull/646) [`05eca95`](https://github.com/ithaka/pharos/commit/05eca95ed9b36b35548e93e5687ad79845ef6796) Thanks [@brentswisher](https://github.com/brentswisher)! - Add a11y-title and a11y-hidden properties to pharos-icon and deprecate description
+
+- [#628](https://github.com/ithaka/pharos/pull/628) [`9ef1e18`](https://github.com/ithaka/pharos/commit/9ef1e186ab5659917ccdfb8930f34c8de14ff93c) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Update PharosButton to use a11y naming convention and include wider ARIA support
+
+- [#643](https://github.com/ithaka/pharos/pull/643) [`9cf3860`](https://github.com/ithaka/pharos/commit/9cf3860ccc88222bc0a1e7022e0ce0676d092f2b) Thanks [@nkamau](https://github.com/nkamau)! - Add elevation tokens and docs
+
+### Patch Changes
+
+- [#644](https://github.com/ithaka/pharos/pull/644) [`55c263f`](https://github.com/ithaka/pharos/commit/55c263f71c9a9d2fd759c4d2ed6fc98e7d57b5a4) Thanks [@daneah](https://github.com/daneah)! - Upgrade to TypeScript 5
+
+- [#645](https://github.com/ithaka/pharos/pull/645) [`1875aaa`](https://github.com/ithaka/pharos/commit/1875aaa410dfacc4576da8d4969820f47523c50a) Thanks [@brentswisher](https://github.com/brentswisher)! - Update external sidenav links to open in a new tab
+
+- [#660](https://github.com/ithaka/pharos/pull/660) [`0bea422`](https://github.com/ithaka/pharos/commit/0bea422f878e79a61ffaed7efbf5be3c540a6838) Thanks [@brentswisher](https://github.com/brentswisher)! - Update all icons to use a11y-hidden and a11y-title syntax over description
+
+- [#666](https://github.com/ithaka/pharos/pull/666) [`79229b2`](https://github.com/ithaka/pharos/commit/79229b2e1cd3248ad84e93832980242be622ff83) Thanks [@brentswisher](https://github.com/brentswisher)! - Update internal button usage to use a11y-pressed and a11y-label attributes
+
+- [#652](https://github.com/ithaka/pharos/pull/652) [`3ad3fd6`](https://github.com/ithaka/pharos/commit/3ad3fd635823c577b16eac1af9259bb52da311b5) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Update radio/checkbox group labelling to include aria-describedby and remove aria-labelledby
+
+## 13.2.2
+
+### Patch Changes
+
+- [#638](https://github.com/ithaka/pharos/pull/638) [`29fdb15`](https://github.com/ithaka/pharos/commit/29fdb15d7c95f8f2a533e5d7b8ee80ad9ee663bd) Thanks [@henryclong](https://github.com/henryclong)! - Fix positioning of coach mark react component
+
+## 13.2.1
+
+### Patch Changes
+
+- [#631](https://github.com/ithaka/pharos/pull/631) [`19248b4`](https://github.com/ithaka/pharos/commit/19248b436fe5cb68e3b7c312f85b97b68304e9d6) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - add panorama icon
+
+## 13.2.0
+
+### Minor Changes
+
+- [#627](https://github.com/ithaka/pharos/pull/627) [`35258d8`](https://github.com/ithaka/pharos/commit/35258d837e8a1627dd01af66171d5d462ab883c9) Thanks [@jialin-he](https://github.com/jialin-he)! - add small and on background variant to loading spinner
+
+## 13.1.0
+
+### Minor Changes
+
+- [#618](https://github.com/ithaka/pharos/pull/618) [`b14c37e`](https://github.com/ithaka/pharos/commit/b14c37eb0be3b88b9615bcda3ab562fbb17cabca) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Remove fill on subtle button with disabled state on-background
+
+- [#625](https://github.com/ithaka/pharos/pull/625) [`2fba4e6`](https://github.com/ithaka/pharos/commit/2fba4e6ef53f8487bbb7c8b715499698acf98af8) Thanks [@jialin-he](https://github.com/jialin-he)! - allow expansion with attribute in sheet
+
+## 13.0.1
+
+### Patch Changes
+
+- [#620](https://github.com/ithaka/pharos/pull/620) [`7bf150c`](https://github.com/ithaka/pharos/commit/7bf150cee513ce014cafca5330a83f790f68122b) Thanks [@jialin-he](https://github.com/jialin-he)! - update easing function and add close option
+
+- [#620](https://github.com/ithaka/pharos/pull/620) [`7bf150c`](https://github.com/ithaka/pharos/commit/7bf150cee513ce014cafca5330a83f790f68122b) Thanks [@jialin-he](https://github.com/jialin-he)! - Update default height to sheet and emit events
+
+## 13.0.0
+
+### Major Changes
+
+- [#608](https://github.com/ithaka/pharos/pull/608) [`d67125a`](https://github.com/ithaka/pharos/commit/d67125a4a9598475aff9000b18567f734074915f) Thanks [@henryclong](https://github.com/henryclong)! - Adds the coach mark component, which is used to highlight new or unique features
+
+## 12.26.2
+
+### Patch Changes
+
+- [#617](https://github.com/ithaka/pharos/pull/617) [`6ec2d69`](https://github.com/ithaka/pharos/commit/6ec2d695f4fcaefc46616f7e582d9e71f641a4f6) Thanks [@jialin-he](https://github.com/jialin-he)! - Update default height to sheet and emit events
+
+## 12.26.1
+
+### Patch Changes
+
+- [#613](https://github.com/ithaka/pharos/pull/613) [`ef13fa1`](https://github.com/ithaka/pharos/commit/ef13fa18638f630f55716c60d81c9ba8d23c255d) Thanks [@jialin-he](https://github.com/jialin-he)! - Add overflow to sheet
+
+## 12.26.0
+
+### Minor Changes
+
+- [#603](https://github.com/ithaka/pharos/pull/603) [`5d15316`](https://github.com/ithaka/pharos/commit/5d15316632da788f692ec731a2aae765e6785c21) Thanks [@michael-iden](https://github.com/michael-iden)! - Add sheet component
+
+### Patch Changes
+
+- [#610](https://github.com/ithaka/pharos/pull/610) [`d762a02`](https://github.com/ithaka/pharos/commit/d762a0294cd940970c8bbaff8c97aae7e9bdae82) Thanks [@michael-iden](https://github.com/michael-iden)! - Force popover border radius styling
+
+- [#599](https://github.com/ithaka/pharos/pull/599) [`834f7ab`](https://github.com/ithaka/pharos/commit/834f7ab8976f194bc641db244671338e7f7ab023) Thanks [@jialin-he](https://github.com/jialin-he)! - Add line rules to light variant of dropdown
+
+- [#606](https://github.com/ithaka/pharos/pull/606) [`e020300`](https://github.com/ithaka/pharos/commit/e02030087baffbc9685f39f1f77725d1ba5e10bc) Thanks [@daneah](https://github.com/daneah)! - Increase color contrast for glacier blue 40
+
+## 12.25.0
+
+### Minor Changes
+
+- [#596](https://github.com/ithaka/pharos/pull/596) [`8c223fa`](https://github.com/ithaka/pharos/commit/8c223faf6c189e46bc4a8fc9291310947a5d04ba) Thanks [@michael-iden](https://github.com/michael-iden)! - Add compare and side-panel icons
+
+## 12.24.0
+
+### Minor Changes
+
+- [#588](https://github.com/ithaka/pharos/pull/588) [`130ce55`](https://github.com/ithaka/pharos/commit/130ce553ddc7a16343ef934629e0ecd51f617267) Thanks [@michael-iden](https://github.com/michael-iden)! - added popover component
+
+## 12.23.0
+
+### Minor Changes
+
+- [#592](https://github.com/ithaka/pharos/pull/592) [`67c9002`](https://github.com/ithaka/pharos/commit/67c9002d3aff6cb8a37454798cdc2e6aa513a4aa) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - Add send icon
+
+## 12.22.1
+
+### Patch Changes
+
+- [#587](https://github.com/ithaka/pharos/pull/587) [`cb9d306`](https://github.com/ithaka/pharos/commit/cb9d3062a3b678ddab29345a7bb30f8337111eff) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - update floating ui dependency
+
+- [#583](https://github.com/ithaka/pharos/pull/583) [`75a2d70`](https://github.com/ithaka/pharos/commit/75a2d70cb395396726a29df432afff3f401f5b3d) Thanks [@michael-iden](https://github.com/michael-iden)! - add fallback color for on background variant
+
+## 12.22.0
+
+### Minor Changes
+
+- [#576](https://github.com/ithaka/pharos/pull/576) [`c32ba86`](https://github.com/ithaka/pharos/commit/c32ba86bc98a883e1f025be029cd7592649300ad) Thanks [@jialin-he](https://github.com/jialin-he)! - add on-background variant to menu
+
+### Patch Changes
+
+- [#577](https://github.com/ithaka/pharos/pull/577) [`c1873e3`](https://github.com/ithaka/pharos/commit/c1873e30b373178a8b0504f85018f51d34ef0ed5) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix PharosIcon stories to handle description arguments properly
+
+- [#572](https://github.com/ithaka/pharos/pull/572) [`9f10f87`](https://github.com/ithaka/pharos/commit/9f10f877b953e3cc241cb331ed5562986f3c3bb6) Thanks [@brentswisher](https://github.com/brentswisher)! - Update toaster to not error on toast close if returnElements wasn't provided
+
 ## 12.21.0
 
 ### Minor Changes

@@ -145,10 +145,10 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
 
   /**
    * Indicates the input is on a AA compliant background.
-   * @attr on-background
+   * @attr is-on-background
    */
-  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
-  public onBackground = false;
+  @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
+  public isOnBackground = false;
 
   @query('#input-element')
   protected _input!: HTMLInputElement;
@@ -195,9 +195,13 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
 
   private _renderIcons(): TemplateResult | typeof nothing {
     if (this.invalidated) {
-      return html` <pharos-icon class="input__icon" name="exclamation"></pharos-icon> `;
+      return html`
+        <pharos-icon class="input__icon" name="exclamation" a11y-hidden="true"></pharos-icon>
+      `;
     } else if (this.validated) {
-      return html` <pharos-icon class="input__icon" name="checkmark"></pharos-icon> `;
+      return html`
+        <pharos-icon class="input__icon" name="checkmark" a11y-hidden="true"></pharos-icon>
+      `;
     }
     return nothing;
   }

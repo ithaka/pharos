@@ -551,7 +551,10 @@ const TypeTokens = () => html`
                       style="font-size:${tokens.type.scale[key].comment};"
                       >GT America</span
                     >`
-                  : html`<storybook-pharos-icon name="dash-small"></storybook-pharos-icon>`}
+                  : html`<storybook-pharos-icon
+                      name="dash-small"
+                      a11y-hidden="true"
+                    ></storybook-pharos-icon>`}
               </td>
               <td>
                 ${tokens.type.scale[key].value > 5
@@ -560,7 +563,10 @@ const TypeTokens = () => html`
                       style="font-size:${tokens.type.scale[key].comment};"
                       >Ivar Headline</span
                     >`
-                  : html`<storybook-pharos-icon name="dash-small"></storybook-pharos-icon>`}
+                  : html`<storybook-pharos-icon
+                      name="dash-small"
+                      a11y-hidden="true"
+                    ></storybook-pharos-icon>`}
               </td>
             </tr>
           `
@@ -572,4 +578,40 @@ const TypeTokens = () => html`
 
 export const TypeScale = {
   render: () => TypeTokens(),
+};
+
+const ElevationTokens = () => html`
+  ${TokenTable(
+    'Elevation tokens',
+    html`
+      <thead>
+        <tr>
+          <th style="width:33%">Token</th>
+          <th style="width:33%">Value</th>
+          <th style="width:33%">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${Object.keys(tokens.elevation.level).map(
+          (key) => html`
+            <tr>
+              <td>${toTokenFormat(tokens.elevation.level[key].name)}</td>
+              <td>${tokens.elevation.level[key].value}</td>
+              <td>
+                <div
+                  class="elevation-example"
+                  style="box-shadow:${tokens.elevation.level[key].value};
+                    width: 100%;height: 142px;flex-shrink: 0;border-radius: 5px;background: #FFF;"
+                />
+              </td>
+            </tr>
+          `
+        )}
+      </tbody>
+    `
+  )}
+`;
+
+export const Elevation = {
+  render: () => ElevationTokens(),
 };

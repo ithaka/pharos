@@ -298,6 +298,44 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "brentswisher",
+      "name": "Brent Swisher",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6653970?v=4",
+      "profile": "http://brentswisher.com/",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "henryclong",
+      "name": "Henry Long",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52258386?v=4",
+      "profile": "https://github.com/henryclong",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "sirrah-tam",
+      "name": "Mat Harris",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6874453?v=4",
+      "profile": "https://matharris.dev/",
+      "contributions": [
+        "a11y"
+      ]
+    },
+    {
+      "login": "david-corneail",
+      "name": "david-corneail",
+      "avatar_url": "https://avatars.githubusercontent.com/u/104939119?v=4",
+      "profile": "https://github.com/david-corneail",
+      "contributions": [
+        "design",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7

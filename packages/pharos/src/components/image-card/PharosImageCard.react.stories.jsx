@@ -58,7 +58,7 @@ const Template = {
           Part of
           <PharosLink
             href="https://www.jstor.org/site/pratt/buildings-image"
-            onBackground={args.subtle}
+            isOnBackground={args.subtle}
           >
             Pratt Institute Buildings Image Collection
           </PharosLink>

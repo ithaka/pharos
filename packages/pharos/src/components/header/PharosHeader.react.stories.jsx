@@ -3,6 +3,7 @@ import {
   PharosLink,
   PharosDropdownMenuNav,
   PharosDropdownMenuNavLink,
+  PharosDropdownMenuNavCategory,
   PharosDropdownMenu,
   PharosDropdownMenuItem,
   PharosInputGroup,
@@ -54,6 +55,7 @@ export const Base = {
             style={{
               marginLeft: '1rem',
             }}
+            a11yHidden="true"
           ></PharosIcon>
         </div>
         <span slot="top" className="show-for-small" style={{ display: 'none', fontWeight: 'bold' }}>
@@ -87,7 +89,7 @@ export const Base = {
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11yLabel="search"
           ></PharosButton>
         </PharosInputGroup>
       </div>
@@ -104,14 +106,13 @@ export const Base = {
           <PharosDropdownMenuNavLink href="action/showAdvancedSearch" id="adv-search-link">
             Advanced Search
           </PharosDropdownMenuNavLink>
-          <PharosDropdownMenuNavLink
-            href="/subjects"
+          <PharosDropdownMenuNavCategory
             id="browse-link"
             data-dropdown-menu-id="browse-menu"
             data-dropdown-menu-hover
           >
-            Browse
-          </PharosDropdownMenuNavLink>
+            <span slot="category">Browse</span>
+          </PharosDropdownMenuNavCategory>
           <PharosDropdownMenu id="browse-menu">
             <PharosDropdownMenuItem link="/subjects">by Subject</PharosDropdownMenuItem>
             <PharosDropdownMenuItem link="/action/showJournals?browseType=title">
@@ -122,14 +123,13 @@ export const Base = {
             </PharosDropdownMenuItem>
             <PharosDropdownMenuItem link="/publishers">by Publisher</PharosDropdownMenuItem>
           </PharosDropdownMenu>
-          <PharosDropdownMenuNavLink
-            href="/account/workspace"
+          <PharosDropdownMenuNavCategory
             id="tools-link"
             data-dropdown-menu-id="tools-menu"
             data-dropdown-menu-hover
           >
-            Tools
-          </PharosDropdownMenuNavLink>
+            <span slot="category">Tools</span>
+          </PharosDropdownMenuNavCategory>
           <PharosDropdownMenu id="tools-menu">
             <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>
             <PharosDropdownMenuItem link="/analyze">Text Analyzer</PharosDropdownMenuItem>
@@ -146,17 +146,18 @@ export const Base = {
 
 const _accountNav = (section) => (
   <PharosDropdownMenuNav label="profile">
-    <PharosDropdownMenuNavLink
-      href="/account/profile"
+    <PharosDropdownMenuNavCategory
       id={`profile-link-${section}`}
       data-dropdown-menu-id={`profile-menu-${section}`}
       data-dropdown-menu-hover
     >
-      <span className="hide-for-small">human@ithaka.org</span>
-      <span className="show-for-small" style={{ display: 'none' }}>
-        Account
+      <span slot="category">
+        <span className="hide-for-small">human@ithaka.org</span>
+        <span className="show-for-small" style={{ display: 'none' }}>
+          Account
+        </span>
       </span>
-    </PharosDropdownMenuNavLink>
+    </PharosDropdownMenuNavCategory>
     <PharosDropdownMenu id={`profile-menu-${section}`}>
       <PharosDropdownMenuItem link="/account/profile" id={`profile-link-${section}`}>
         Profile

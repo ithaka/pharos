@@ -71,6 +71,16 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
   @property({ type: Boolean, reflect: true })
   public disabled = false;
 
+  /**
+   * Indicates the menu item is displayed on a dark background.
+   * @attr is-on-background
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
+  public isOnBackground = false;
+
+  @state()
+  private _first = false;
+
   @state()
   private _last = false;
 
@@ -116,7 +126,11 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
   private _renderIcon(): TemplateResult | typeof nothing {
     if (this.icon) {
       return html`
-        <pharos-icon class="dropdown-menu-item__icon" name="${this.icon}"></pharos-icon>
+        <pharos-icon
+          class="dropdown-menu-item__icon"
+          name="${this.icon}"
+          a11y-hidden="{true}"
+        ></pharos-icon>
       `;
     }
     return nothing;
@@ -130,6 +144,7 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
             [`dropdown-menu-item__icon--selected`]: true,
           })}"
           name="checkmark"
+          a11y-hidden="true"
         ></pharos-icon>
       `;
     }
@@ -178,7 +193,14 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
             >
               ${this.itemContent}
             </a> `
-          : html`<button ?disabled=${this.disabled} class="dropdown-menu-item__button">
+          : html`<button
+              ?disabled=${this.disabled}
+              class="${classMap({
+                [`dropdown-menu-item__button`]: true,
+                [`dropdown-menu-item__button--first`]: this._first,
+                [`dropdown-menu-item__button--last`]: this._last,
+              })}"
+            >
               ${this.itemContent}
             </button>`}
       </li>

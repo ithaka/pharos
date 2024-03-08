@@ -1,5 +1,27 @@
 # @ithaka/pharos-cli
 
+## 5.5.1
+
+### Patch Changes
+
+- [#578](https://github.com/ithaka/pharos/pull/578) [`52006f3`](https://github.com/ithaka/pharos/commit/52006f340892e6375a3f78755bff304c75d0b3e7) Thanks [@mtorres3](https://github.com/mtorres3)! - Update onBackground prop to isOnBackground
+
+## 5.5.0
+
+### Minor Changes
+
+- [#630](https://github.com/ithaka/pharos/pull/630) [`ff057f1`](https://github.com/ithaka/pharos/commit/ff057f17289fce0fc45c8626e901aab51dfebda6) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Add newly created components to init components files so that developer can start using the components without any manual changes
+
+### Patch Changes
+
+- [#644](https://github.com/ithaka/pharos/pull/644) [`55c263f`](https://github.com/ithaka/pharos/commit/55c263f71c9a9d2fd759c4d2ed6fc98e7d57b5a4) Thanks [@daneah](https://github.com/daneah)! - Upgrade to TypeScript 5
+
+## 5.4.0
+
+### Minor Changes
+
+- [#575](https://github.com/ithaka/pharos/pull/575) [`730d381`](https://github.com/ithaka/pharos/commit/730d381dd86fffe2543e37e2ef9a367611a997f1) Thanks [@daneah](https://github.com/daneah)! - Support latest Storybook CSF format
+
 ## 5.3.0
 
 ### Minor Changes

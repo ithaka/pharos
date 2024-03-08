@@ -50,17 +50,17 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
+            a11y-label="search"
           ></storybook-pharos-button>
         </storybook-pharos-input-group>
         <storybook-pharos-dropdown-menu-nav label="main navigation">
-          <storybook-pharos-dropdown-menu-nav-link
-            href="/action/showAdvancedSearch"
+          <storybook-pharos-dropdown-menu-nav-category
             id="adv-search-menu-link"
             data-dropdown-menu-id="search-menu"
             data-dropdown-menu-hover
-            >Search</storybook-pharos-dropdown-menu-nav-link
           >
+            <span slot="category">Search</span>
+          </storybook-pharos-dropdown-menu-nav-category>
           <storybook-pharos-dropdown-menu id="search-menu">
             <storybook-pharos-dropdown-menu-item link="/action/showAdvancedSearch"
               >Advanced Search</storybook-pharos-dropdown-menu-item
@@ -69,13 +69,13 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
               >Image Search</storybook-pharos-dropdown-menu-item
             >
           </storybook-pharos-dropdown-menu>
-          <storybook-pharos-dropdown-menu-nav-link
-            href="/subjects"
+          <storybook-pharos-dropdown-menu-nav-category
             id="browse-link"
             data-dropdown-menu-id="browse-menu"
             data-dropdown-menu-hover
-            >Browse</storybook-pharos-dropdown-menu-nav-link
           >
+            <span slot="category">Browse</span>
+          </storybook-pharos-dropdown-menu-nav-category>
           <storybook-pharos-dropdown-menu id="browse-menu">
             <storybook-pharos-dropdown-menu-item link="/subjects"
               >by Subject</storybook-pharos-dropdown-menu-item
@@ -83,21 +83,18 @@ export const HeaderRevised = (showSearch = false): TemplateResult => html`
             <storybook-pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
               >by Title</storybook-pharos-dropdown-menu-item
             >
-            <storybook-pharos-dropdown-menu-item link="/site/collection-list"
-              >by Collections</storybook-pharos-dropdown-menu-item
-            >
             <storybook-pharos-dropdown-menu-item link="/publishers"
               >by Publisher</storybook-pharos-dropdown-menu-item
             >
           </storybook-pharos-dropdown-menu>
-          <storybook-pharos-dropdown-menu-nav-link
-            href="/account/workspace"
+          <storybook-pharos-dropdown-menu-nav-category
             id="tools-link"
             data-dropdown-menu-id="tools-menu"
             data-dropdown-menu-hover
             class="hide-for-small"
-            >Tools</storybook-pharos-dropdown-menu-nav-link
           >
+            <span slot="category">Tools</span>
+          </storybook-pharos-dropdown-menu-nav-category>
           <storybook-pharos-dropdown-menu id="tools-menu">
             <storybook-pharos-dropdown-menu-item link="/account/workspace"
               >Workspace</storybook-pharos-dropdown-menu-item

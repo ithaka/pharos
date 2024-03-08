@@ -17,9 +17,16 @@
 <p align="center">
   <a href=".github/CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" alt="Contributor Covenant" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Pharos is released under the MIT license" /></a>
-  <a href="#contributors-"><img src="https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square" alt="All Contributors" /></a>
+  <a href="#contributors-"><img src="https://img.shields.io/github/all-contributors/ithaka/pharos?color=orange" alt="All Contributors" /></a>
   <a href="https://bundlephobia.com/package/@ithaka/pharos"><img src="https://img.shields.io/bundlephobia/min/@ithaka/pharos" alt="Bundlephobia stats" /></a>
 </p>
+
+## Build statuses
+
+| System     | Status                                                                                                                                                                    |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Site       | [![Site status](https://api.netlify.com/api/v1/badges/6e5ee441-5739-46e4-9a85-ea5c5a333ebb/deploy-status)](https://app.netlify.com/sites/pharos/deploys)                  |
+| Storybooks | [![Storybooks status](https://api.netlify.com/api/v1/badges/0afa82e2-f12d-4a75-933c-efedee05fe99/deploy-status)](https://app.netlify.com/sites/pharos-storybooks/deploys) |
 
 ## Getting Started
 
@@ -27,9 +34,6 @@
 - Visit the [Pharos site](https://pharos.jstor.org) to learn about the JSTOR brand, design guidelines, and component usage guidelines
 - Explore the [web component Storybook](https://pharos.jstor.org/storybooks/wc/) or the [React Storybook](https://pharos.jstor.org/storybooks/react/) to try the live components
 - Test for visual regressions in the Pharos [Chromatic project](https://www.chromatic.com/builds?appId=60919c26122bd50039b34644)
-
-<br />
-<br />
 
 ## Packages and configuration
 
@@ -42,9 +46,6 @@ This repository contains a number of packages related to Pharos:
 | [@ithaka/pharos-site](./packages/pharos-site) | Site & Documentation for Pharos         |
 
 In addition to these packages, this repository contains [the configuration for Pharos Storybooks](./.storybook).
-
-<br />
-<br />
 
 ## Contributing
 
@@ -99,6 +100,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/drewgingerich"><img src="https://avatars.githubusercontent.com/u/15133892?v=4?s=100" width="100px;" alt="Drew Gingerich"/><br /><sub><b>Drew Gingerich</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=drewgingerich" title="Documentation">📖</a> <a href="https://github.com/ithaka/pharos/commits?author=drewgingerich" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/HassanTanveer"><img src="https://avatars.githubusercontent.com/u/57575219?v=4?s=100" width="100px;" alt="Hassan Tanveer"/><br /><sub><b>Hassan Tanveer</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=HassanTanveer" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mariadevadoss"><img src="https://avatars.githubusercontent.com/u/132926833?v=4?s=100" width="100px;" alt="mariadevadoss"/><br /><sub><b>mariadevadoss</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=mariadevadoss" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://brentswisher.com/"><img src="https://avatars.githubusercontent.com/u/6653970?v=4?s=100" width="100px;" alt="Brent Swisher"/><br /><sub><b>Brent Swisher</b></sub></a><br /><a href="https://github.com/ithaka/pharos/issues?q=author%3Abrentswisher" title="Bug reports">🐛</a> <a href="https://github.com/ithaka/pharos/commits?author=brentswisher" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/henryclong"><img src="https://avatars.githubusercontent.com/u/52258386?v=4?s=100" width="100px;" alt="Henry Long"/><br /><sub><b>Henry Long</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=henryclong" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://matharris.dev/"><img src="https://avatars.githubusercontent.com/u/6874453?v=4?s=100" width="100px;" alt="Mat Harris"/><br /><sub><b>Mat Harris</b></sub></a><br /><a href="#a11y-sirrah-tam" title="Accessibility">️️️️♿️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/david-corneail"><img src="https://avatars.githubusercontent.com/u/104939119?v=4?s=100" width="100px;" alt="david-corneail"/><br /><sub><b>david-corneail</b></sub></a><br /><a href="#design-david-corneail" title="Design">🎨</a> <a href="https://github.com/ithaka/pharos/commits?author=david-corneail" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
@@ -109,9 +114,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
-
-<br />
-<br />
 
 ## Work with us at ITHAKA
 

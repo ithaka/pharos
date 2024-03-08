@@ -3,9 +3,9 @@ import { toastButtonStyles } from './pharos-toast-button.css';
 import { PharosButton } from '../button/pharos-button';
 
 import type { LinkTarget } from '../base/anchor-element';
-import type { ButtonType, IconName, ButtonVariant, PressedState } from '../button/pharos-button';
+import type { ButtonType, IconName, ButtonVariant } from '../button/pharos-button';
 
-export type { LinkTarget, ButtonType, IconName, ButtonVariant, PressedState };
+export type { LinkTarget, ButtonType, IconName, ButtonVariant };
 
 /**
  * Pharos toast button component.
@@ -18,8 +18,8 @@ export class PharosToastButton extends PharosButton {
     super();
     this.icon = 'close';
     this.variant = 'subtle';
-    this.label = 'Dismiss';
-    this.onBackground = true;
+    this.a11yLabel = 'Dismiss';
+    this.isOnBackground = true;
     this.iconCondensed = true;
   }
 

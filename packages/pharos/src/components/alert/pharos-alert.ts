@@ -17,7 +17,7 @@ export enum ALERT_ICON {
   INFO = 'info-inverse',
   ERROR = 'exclamation-inverse',
   SUCCESS = 'checkmark-inverse',
-  WARNING = 'exclamation-inverse',
+  WARNING = 'exclamation-inverse', // eslint-disable-line @typescript-eslint/no-duplicate-enum-values
 }
 
 const STATUSES = ['info', 'success', 'warning', 'error'] as AlertStatus[];
@@ -114,7 +114,7 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
           variant="subtle"
           icon="close"
           icon-condensed
-          label="Close alert"
+          a11y-label="Close alert"
           class="alert__button"
           @click=${this.close}
         ></pharos-button>`
@@ -132,7 +132,7 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
         })}"
         tabindex="0"
       >
-        <pharos-icon class="alert__icon" name="${this._getIcon()}"></pharos-icon>
+        <pharos-icon class="alert__icon" name="${this._getIcon()}" a11y-hidden="true"></pharos-icon>
         <div class="alert__body">
           <slot @slotchange=${this._handleSlotChange}></slot>
         </div>

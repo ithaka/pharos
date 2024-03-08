@@ -7,7 +7,6 @@ import {
   PharosSidenavMenu,
   PharosInputGroup,
   PharosButton,
-  PharosSidenavButton,
   PharosLink,
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
@@ -28,7 +27,6 @@ export default {
     PharosSidenavMenu,
     PharosSidenavSection,
     PharosSidenavLink,
-    PharosSidenavButton,
   },
   parameters: {
     docs: { page: configureDocsPage('sidenav') },
@@ -36,10 +34,17 @@ export default {
 };
 
 export const Base = {
-  render: () => (
+  render: (args) => (
     <Fragment>
-      <PharosSidenavButton />
-      <PharosSidenav>
+      <PharosButton
+        data-sidenav-id="storybook-sidenav"
+        icon="menu"
+        a11yLabel="menu"
+        onClick={(e) => {
+          e.target.focus();
+        }}
+      ></PharosButton>
+      <PharosSidenav id="storybook-sidenav" open={args.open} has-close-button={args.hasCloseButton}>
         <PharosLink slot="top" href="/" id="jstor-logo">
           <img src={logo} alt="Pharos Home" width="72" height="100" />
         </PharosLink>
@@ -48,15 +53,15 @@ export const Base = {
           name="my-input-group"
           placeholder="Search"
           hideLabel
-          onBackground
+          isOnBackground
         >
           <span slot="label">Search</span>
           <PharosButton
             name="search-button"
             icon="search"
             variant="subtle"
-            label="search"
-            onBackground
+            isOnBackground
+            a11yLabel="search"
           ></PharosButton>
         </PharosInputGroup>
         <PharosSidenavSection showDivider>
@@ -66,10 +71,10 @@ export const Base = {
             <PharosSidenavLink href="#">Menu item 2</PharosSidenavLink>
           </PharosSidenavMenu>
           <PharosSidenavLink href="#">Menu item</PharosSidenavLink>
-          <PharosSidenavLink href="#" target="_blank" external>
+          <PharosSidenavLink href="#" external>
             External link
           </PharosSidenavLink>
-          <PharosSidenavLink href="#" target="_blank" external>
+          <PharosSidenavLink href="#" external>
             External link
           </PharosSidenavLink>
         </PharosSidenavSection>
@@ -110,5 +115,6 @@ export const Base = {
       </PharosSidenav>
     </Fragment>
   ),
-  parameters: { docs: { disable: true } },
+  args: { open: false, hasCloseButton: true },
+  parameters: {},
 };

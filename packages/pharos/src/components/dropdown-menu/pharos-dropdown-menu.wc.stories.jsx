@@ -178,6 +178,39 @@ export const FullWidth = {
   },
 };
 
+export const IsOnBackground = {
+  render: () => {
+    const effect = () => {
+      useEffect(() => {
+        setTimeout(() => {
+          document.querySelector('#my-button-on-background').click();
+        }, 700);
+      });
+    };
+    effect();
+    return html`
+      <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
+        <storybook-pharos-button
+          id="my-button-on-background"
+          data-dropdown-menu-id="my-menu-on-background"
+          icon-right="chevron-down"
+        >
+          A menu on background
+        </storybook-pharos-button>
+        <storybook-pharos-dropdown-menu id="my-menu-on-background" show-selected is-on-background>
+          <storybook-pharos-dropdown-menu-item selected>
+            Item One
+          </storybook-pharos-dropdown-menu-item>
+          <storybook-pharos-dropdown-menu-item> Item Two </storybook-pharos-dropdown-menu-item>
+          <storybook-pharos-dropdown-menu-item disabled>
+            Item Three
+          </storybook-pharos-dropdown-menu-item>
+        </storybook-pharos-dropdown-menu>
+      </div>
+    `;
+  },
+};
+
 export const Links = {
   render: () => {
     const effect = () => {

@@ -52,6 +52,13 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   @property({ type: Boolean, reflect: true, attribute: 'full-width' })
   public fullWidth = false;
 
+  /**
+   * Indicates the menu item is displayed on a dark background.
+   * @attr is-on-background
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
+  public isOnBackground = false;
+
   @state()
   private _navMenu = false;
 
@@ -150,7 +157,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
         this._setupMenu();
       }
 
-      if (!this._currentTrigger?.hasAttribute('data-dropdown-menu-hover') || this._enterByKey) {
+      if (!this._hasHover || this._enterByKey) {
         if (this.open) {
           debounce(() => {
             this._focusContents();
@@ -171,7 +178,6 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
       this._setHoverListeners();
       this._setupResizeObserver();
-      this._setTriggerAttributes();
       this._emitVisibilityChange();
     }
 
@@ -190,8 +196,6 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
     this._triggers.forEach((trigger) => {
       trigger.removeEventListener('click', this._handleTriggerClick);
       trigger.removeEventListener('keydown', this._handleTriggerKeydown);
-      trigger.removeAttribute('aria-haspopup');
-      trigger.removeAttribute('aria-controls');
 
       if (trigger.hasAttribute('data-dropdown-menu-hover')) {
         trigger.removeEventListener('mouseenter', this._handleTriggerHover);
@@ -231,8 +235,6 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   private _setupTriggerElement(trigger: HTMLElement) {
     trigger.addEventListener('click', this._handleTriggerClick);
     trigger.addEventListener('keydown', this._handleTriggerKeydown);
-    trigger.setAttribute('aria-haspopup', 'true');
-    trigger.setAttribute('aria-controls', this._dropdownId());
 
     if (trigger.hasAttribute('data-dropdown-menu-hover')) {
       trigger.addEventListener('mouseenter', this._handleTriggerHover);
@@ -261,6 +263,11 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
               top: `${y}px`,
             });
           });
+          if (this.isOnBackground) {
+            this._allMenuItems.forEach((menuItem) => {
+              menuItem.isOnBackground = true;
+            });
+          }
         }
       });
     }
@@ -490,18 +497,6 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
     }
   }
 
-  private _setTriggerAttributes(): void {
-    if (this.open) {
-      this._currentTrigger?.setAttribute('aria-expanded', 'true');
-    } else {
-      this._triggers?.forEach((trigger) => {
-        if (trigger !== this._currentTrigger) {
-          trigger.removeAttribute('aria-expanded');
-        }
-      });
-    }
-  }
-
   private _openMenu(event: Event): void {
     this._enterByKey = true;
     this._handleTriggerClick(event as MouseEvent);
@@ -523,6 +518,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
     const items: PharosDropdownMenuItem[] = Array.prototype.slice.call(this._allMenuItems);
 
     items.forEach((item, index) => {
+      item['_first'] = index === 0;
       item['_last'] = index === items.length - 1;
     });
   }

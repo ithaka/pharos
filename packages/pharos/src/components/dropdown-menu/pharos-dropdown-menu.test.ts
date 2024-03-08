@@ -623,21 +623,6 @@ describe('pharos-dropdown-menu', () => {
     expect(selected === item).to.be.true;
   });
 
-  it('sets aria attributes on the trigger element', async () => {
-    const trigger = document.createElement('button');
-    trigger.setAttribute('id', 'trigger');
-    trigger.setAttribute('data-dropdown-menu-id', 'my-dropdown');
-    document.body.appendChild(trigger);
-
-    component = await fixture(getSimpleDropdown());
-
-    trigger.click();
-    await component.updateComplete;
-    expect(trigger.getAttribute('aria-expanded')).to.equal('true');
-    expect(trigger.getAttribute('aria-haspopup')).to.equal('true');
-    expect(trigger.getAttribute('aria-controls')).to.equal(component.getAttribute('id'));
-  });
-
   it('makes menu focusable when no items are present', async () => {
     component = await fixture(getNoItemDropdown());
     expect(component['_menu'].getAttribute('tabindex')).to.equal('0');

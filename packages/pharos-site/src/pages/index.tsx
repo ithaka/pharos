@@ -50,13 +50,13 @@ const IndexPage: FC = () => {
           <PharosLink
             className={link__status}
             href="/components/component-status"
-            onBackground
+            isOnBackground
             flex
             data-sc="link:component status hero"
             onClick={handleLinkClick}
           >
             Check out the component status page
-            <PharosIcon name="arrow-right" className={icon__arrow}></PharosIcon>
+            <PharosIcon name="arrow-right" className={icon__arrow} a11yHidden="true"></PharosIcon>
           </PharosLink>
         </PharosLayout>
 
@@ -128,7 +128,7 @@ const IndexPage: FC = () => {
 
         <div className={card}>
           <div className={icon}>
-            <PharosIcon name="new"></PharosIcon>
+            <PharosIcon name="new" a11yHidden="true"></PharosIcon>
           </div>
           <PharosHeading level="2" preset="4">
             What&apos;s new: Pharos {pkg.version}
@@ -169,7 +169,7 @@ const IndexPage: FC = () => {
         </div>
         <div className={card}>
           <div className={icon}>
-            <PharosIcon name="question-inverse"></PharosIcon>
+            <PharosIcon name="question-inverse" a11yHidden="true"></PharosIcon>
           </div>
           <PharosHeading level="2" preset="4">
             Support
@@ -197,7 +197,7 @@ const IndexPage: FC = () => {
 
         <div className={card}>
           <div className={icon}>
-            <PharosIcon name="add"></PharosIcon>
+            <PharosIcon name="add" a11yHidden="true"></PharosIcon>
           </div>
           <PharosHeading level="2" preset="4">
             Contribute to Pharos
@@ -230,7 +230,7 @@ const IndexPage: FC = () => {
         </div>
         <div className={card}>
           <div className={icon}>
-            <PharosIcon name="workspace"></PharosIcon>
+            <PharosIcon name="workspace" a11yHidden="true"></PharosIcon>
           </div>
           <div className={container__heading}>
             <PharosHeading level="2" preset="4" noMargin>

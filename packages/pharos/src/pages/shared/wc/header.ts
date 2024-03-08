@@ -4,16 +4,16 @@ import logo from '@config/assets/images/jstor-logo.svg';
 
 const accountNav = (section: string) => html`
   <storybook-pharos-dropdown-menu-nav label="profile">
-    <storybook-pharos-dropdown-menu-nav-link
-      href="/account/profile"
+    <storybook-pharos-dropdown-menu-nav-category
       id="profile-link-${section}"
       data-dropdown-menu-id="profile-menu-${section}"
       data-dropdown-menu-hover
-      ><span class="hide-for-small">human@ithaka.org</span
-      ><span class="show-for-small" style="display: none"
-        >Account</span
-      ></storybook-pharos-dropdown-menu-nav-link
     >
+      <span slot="category">
+        <span class="hide-for-small">human@ithaka.org</span>
+        <span class="show-for-small" style="display: none">Account</span>
+      </span>
+    </storybook-pharos-dropdown-menu-nav-category>
     <storybook-pharos-dropdown-menu id="profile-menu-${section}">
       <storybook-pharos-dropdown-menu-item link="/account/profile"
         >Profile</storybook-pharos-dropdown-menu-item
@@ -51,6 +51,7 @@ export const Header = (): TemplateResult => html`
         <storybook-pharos-icon
           name="chevron-down"
           style="margin-left: 1rem"
+          a11y-hidden="true"
         ></storybook-pharos-icon>
       </div>
       <storybook-pharos-dropdown-menu id="pds-menu" placement="bottom">
@@ -79,7 +80,7 @@ export const Header = (): TemplateResult => html`
           name="search-button"
           icon="search"
           variant="subtle"
-          label="search"
+          a11y-label="search"
         ></storybook-pharos-button>
       </storybook-pharos-input-group>
     </div>
@@ -92,14 +93,13 @@ export const Header = (): TemplateResult => html`
         >
           Advanced Search
         </storybook-pharos-dropdown-menu-nav-link>
-        <storybook-pharos-dropdown-menu-nav-link
-          href="/subjects"
+        <storybook-pharos-dropdown-menu-nav-category
           id="browse-link"
           data-dropdown-menu-id="browse-menu"
           data-dropdown-menu-hover
         >
-          Browse
-        </storybook-pharos-dropdown-menu-nav-link>
+          <span slot="category">Browse</span>
+        </storybook-pharos-dropdown-menu-nav-category>
         <storybook-pharos-dropdown-menu id="browse-menu">
           <storybook-pharos-dropdown-menu-item link="/subjects"
             >by Subject</storybook-pharos-dropdown-menu-item
@@ -114,14 +114,13 @@ export const Header = (): TemplateResult => html`
             >by Publisher</storybook-pharos-dropdown-menu-item
           >
         </storybook-pharos-dropdown-menu>
-        <storybook-pharos-dropdown-menu-nav-link
-          href="/account/workspace"
+        <storybook-pharos-dropdown-menu-nav-category
           id="tools-link"
           data-dropdown-menu-id="tools-menu"
           data-dropdown-menu-hover
         >
-          Tools
-        </storybook-pharos-dropdown-menu-nav-link>
+          <span slot="category">Tools</span>
+        </storybook-pharos-dropdown-menu-nav-category>
         <storybook-pharos-dropdown-menu id="tools-menu">
           <storybook-pharos-dropdown-menu-item link="/account/workspace">
             Workspace

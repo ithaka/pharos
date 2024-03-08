@@ -6,7 +6,7 @@
   z-index: 9000;
   pointer-events: none;
   inset: 0;
-  contain: strict;
+  contain: layout size style;
 }
 
 .modal__overlay {
@@ -94,9 +94,9 @@
   overflow-y: scroll;
   background-color: var(--pharos-modal-color-background-content);
   background-clip: padding-box;
-  border: 1px solid var(--pharos-modal-color-border-content);
   border-radius: var(--pharos-radius-base-standard);
   outline: 0;
+  box-shadow: var(--pharos-elevation-level-5);
 }
 
 .modal__body {

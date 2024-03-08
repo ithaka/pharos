@@ -22,9 +22,9 @@ export const Base = {
         href=${ifDefined(args.href)}
         hreflang=${ifDefined(args.hreflang)}
         ?indicate-visited=${args.indicateVisited}
-        label=${ifDefined(args.label)}
+        a11y-label=${ifDefined(args.a11yLabel)}
         ?no-hover=${args.noHover}
-        ?on-background=${args.onBackground}
+        ?is-on-background=${args.isOnBackground}
         ping=${ifDefined(args.ping)}
         rel=${ifDefined(args.rel)}
         ?skip=${args.skip}
@@ -67,7 +67,7 @@ export const Button = {
         <storybook-pharos-link name="primary">I am a button</storybook-pharos-link>
       </div>
       <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
-        <storybook-pharos-link name="on-background" on-background
+        <storybook-pharos-link name="is-on-background" is-on-background
           >On compliant background</storybook-pharos-link
         >
       </div>
@@ -89,12 +89,12 @@ export const Variants = {
         >
       </div>
       <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
-        <storybook-pharos-link name="on-background" href="#" on-background
+        <storybook-pharos-link name="is-on-background" href="#" is-on-background
           >On compliant background</storybook-pharos-link
         >
       </div>
       <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
-        <storybook-pharos-link name="on-background-subtle" href="#" on-background subtle
+        <storybook-pharos-link name="is-on-background-subtle" href="#" is-on-background subtle
           >On compliant background with subtle</storybook-pharos-link
         >
       </div>

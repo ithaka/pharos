@@ -1,0 +1,190 @@
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein-short {
+  0% {
+    opacity: 0;
+  }
+
+  37.5% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein-long {
+  0% {
+    opacity: 0;
+  }
+
+  66.66% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+:host {
+  --coach-mark-background-color: var(
+    --pharos-coach-mark-color-background-light,
+    --pharos-color-white
+  );
+  --coach-mark-border-color: var(
+    --pharos-coach-mark-color-border-light,
+    --pharos-color-marble-gray-base
+  );
+  --coach-mark-heading-color: var(
+    --pharos-coach-mark-color-heading-light,
+    --pharos-color-marble-gray-20
+  );
+  --coach-mark-text-color: var(--pharos-coach-mark-color-text-light, --pharos-color-marble-gray-20);
+
+  display: block;
+  position: absolute;
+}
+
+:host([variant='dark']) {
+  --coach-mark-background-color: var(
+    --pharos-coach-mark-color-background-dark,
+    --pharos-button-color-base-overlay-background-base
+  );
+  --coach-mark-border-color: var(
+    --pharos-coach-mark-color-border-dark,
+    --coach-mark-background-color
+  );
+  --coach-mark-heading-color: var(--pharos-coach-mark-color-heading-dark, --pharos-color-white);
+  --coach-mark-text-color: var(--pharos-coach-mark-color-text-dark, --pharos-color-marble-gray-80);
+}
+
+.coach-mark {
+  animation-duration: 1000ms; /* Delay duration of 0ms, fade duration of --pharos-transition-duration-default */
+  animation-name: fadein;
+  animation-timing-function: ease-in-out;
+
+  &[aria-hidden='true'] {
+    display: none;
+    opacity: 0;
+  }
+
+  &.delay-short {
+    animation-duration: 1600ms; /* Delay duration of 600ms, fade duration of --pharos-transition-duration-default */
+    animation-name: fadein-short;
+  }
+
+  &.delay-long {
+    animation-duration: 3000ms; /* Delay duration of 2000ms, fade duration of --pharos-transition-duration-default */
+    animation-name: fadein-long;
+  }
+}
+
+.coach-mark__content {
+  position: relative;
+  background-color: var(--coach-mark-background-color);
+  border: var(--pharos-coach-mark-size-border, 1px) solid var(--coach-mark-border-color);
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
+  min-width: 30ch;
+  width: fit-content;
+  font-size: var(--pharos-font-size-small);
+  color: var(--coach-mark-text-color);
+  line-height: var(--pharos-spacing-1-x);
+
+  &::before,
+  &::after {
+    content: '';
+    background-color: var(--coach-mark-background-color);
+    position: absolute;
+    top: var(--pip-top);
+    left: var(--pip-left);
+    height: var(--pharos-coach-mark-size-pip, 10px);
+    width: var(--pharos-coach-mark-size-pip, 10px);
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 1;
+  }
+
+  &::after {
+    border: var(--pharos-coach-mark-size-border, 1px) solid var(--coach-mark-border-color);
+    z-index: -1;
+  }
+}
+
+.coach-mark__heading {
+  color: var(--coach-mark-heading-color);
+  padding-right: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.coach-mark__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.coach-mark__wrapper {
+  height: fit-content;
+  width: fit-content;
+}
+
+.coach-mark-side--right .coach-mark__content {
+  --pip-left: 0;
+}
+
+.coach-mark-side--left .coach-mark__content {
+  --pip-left: 100%;
+}
+
+.coach-mark-side--top .coach-mark__content {
+  --pip-top: 100%;
+}
+
+.coach-mark-side--bottom .coach-mark__content {
+  --pip-top: 0;
+}
+
+.coach-mark-side--right,
+.coach-mark-side--left {
+  .coach-mark-alignment__start {
+    --pip-top: 15%;
+  }
+
+  .coach-mark-alignment__center {
+    --pip-top: 50%;
+  }
+
+  .coach-mark-alignment__end {
+    --pip-top: 85%;
+  }
+}
+
+.coach-mark-side--top,
+.coach-mark-side--bottom {
+  .coach-mark-alignment__start {
+    --pip-left: 15%;
+  }
+
+  .coach-mark-alignment__center {
+    --pip-left: 50%;
+  }
+
+  .coach-mark-alignment__end {
+    --pip-left: 85%;
+  }
+}
+
+.coachmark-example-div {
+  background-color: var(--pharos-color-white);
+  border: 1px solid var(--pharos-color-marble-gray-base);
+  padding: var(--pharos-spacing-one-half-x) var(--pharos-spacing-three-quarters-x);
+  width: fit-content;
+}

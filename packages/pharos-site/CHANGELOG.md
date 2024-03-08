@@ -1,5 +1,55 @@
 # @ithaka/pharos-site
 
+## 6.0.0
+
+### Major Changes
+
+- [#657](https://github.com/ithaka/pharos/pull/657) [`e89bcaf`](https://github.com/ithaka/pharos/commit/e89bcaf3ac3dbc8be99f7e74b82710f9e3f8bea7) Thanks [@daneah](https://github.com/daneah)! - Use is-on-background in place of on-background
+
+- [#472](https://github.com/ithaka/pharos/pull/472) [`eaa514f`](https://github.com/ithaka/pharos/commit/eaa514f9e87f856a4b6a380f20adab52b28924c4) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - individual file exports are no longer supported, import files based on the exports defined in the package.json
+
+- [#586](https://github.com/ithaka/pharos/pull/586) [`eb228d5`](https://github.com/ithaka/pharos/commit/eb228d510514c273b0dd10d9b6f02c83dfb601fe) Thanks [@daneah](https://github.com/daneah)! - Remove deprecated Google Translate widget
+
+### Patch Changes
+
+- [#578](https://github.com/ithaka/pharos/pull/578) [`52006f3`](https://github.com/ithaka/pharos/commit/52006f340892e6375a3f78755bff304c75d0b3e7) Thanks [@mtorres3](https://github.com/mtorres3)! - Update onBackground prop to isOnBackground
+
+- Updated dependencies [[`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`99879a1`](https://github.com/ithaka/pharos/commit/99879a10557130d1a13486dfee110905cb4ca09b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b)]:
+  - @ithaka/pharos@14.0.0
+
+## 5.14.0
+
+### Minor Changes
+
+- [#643](https://github.com/ithaka/pharos/pull/643) [`9cf3860`](https://github.com/ithaka/pharos/commit/9cf3860ccc88222bc0a1e7022e0ce0676d092f2b) Thanks [@nkamau](https://github.com/nkamau)! - Add elevation tokens and docs
+
+### Patch Changes
+
+- [#644](https://github.com/ithaka/pharos/pull/644) [`55c263f`](https://github.com/ithaka/pharos/commit/55c263f71c9a9d2fd759c4d2ed6fc98e7d57b5a4) Thanks [@daneah](https://github.com/daneah)! - Upgrade to TypeScript 5
+
+- [#660](https://github.com/ithaka/pharos/pull/660) [`0bea422`](https://github.com/ithaka/pharos/commit/0bea422f878e79a61ffaed7efbf5be3c540a6838) Thanks [@brentswisher](https://github.com/brentswisher)! - Update all icons to use a11y-hidden and a11y-title syntax over description
+
+- [#666](https://github.com/ithaka/pharos/pull/666) [`79229b2`](https://github.com/ithaka/pharos/commit/79229b2e1cd3248ad84e93832980242be622ff83) Thanks [@brentswisher](https://github.com/brentswisher)! - Update internal button usage to use a11y-pressed and a11y-label attributes
+
+- Updated dependencies [[`55c263f`](https://github.com/ithaka/pharos/commit/55c263f71c9a9d2fd759c4d2ed6fc98e7d57b5a4), [`05eca95`](https://github.com/ithaka/pharos/commit/05eca95ed9b36b35548e93e5687ad79845ef6796), [`9ef1e18`](https://github.com/ithaka/pharos/commit/9ef1e186ab5659917ccdfb8930f34c8de14ff93c), [`1875aaa`](https://github.com/ithaka/pharos/commit/1875aaa410dfacc4576da8d4969820f47523c50a), [`9cf3860`](https://github.com/ithaka/pharos/commit/9cf3860ccc88222bc0a1e7022e0ce0676d092f2b), [`0bea422`](https://github.com/ithaka/pharos/commit/0bea422f878e79a61ffaed7efbf5be3c540a6838), [`79229b2`](https://github.com/ithaka/pharos/commit/79229b2e1cd3248ad84e93832980242be622ff83), [`3ad3fd6`](https://github.com/ithaka/pharos/commit/3ad3fd635823c577b16eac1af9259bb52da311b5)]:
+  - @ithaka/pharos@13.3.0
+
+## 5.13.5
+
+### Patch Changes
+
+- [#639](https://github.com/ithaka/pharos/pull/639) [`ee7a68c`](https://github.com/ithaka/pharos/commit/ee7a68c28d1ec62b02dd6adc98435037a00162ad) Thanks [@henryclong](https://github.com/henryclong)! - Fix coach mark documentation issues
+
+- Updated dependencies [[`29fdb15`](https://github.com/ithaka/pharos/commit/29fdb15d7c95f8f2a533e5d7b8ee80ad9ee663bd)]:
+  - @ithaka/pharos@13.2.2
+
+## 5.13.4
+
+### Patch Changes
+
+- Updated dependencies [[`d67125a`](https://github.com/ithaka/pharos/commit/d67125a4a9598475aff9000b18567f734074915f)]:
+  - @ithaka/pharos@13.0.0
+
 ## 5.13.3
 
 ### Patch Changes

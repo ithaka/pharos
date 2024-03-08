@@ -1,6 +1,6 @@
 import { html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import type { TemplateResult, CSSResultArray } from 'lit';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { linkStyles } from './pharos-link.css';
@@ -37,17 +37,17 @@ export class PharosLink extends FocusMixin(AnchorElement) {
 
   /**
    * Indicates the link is on a AA compliant background.
-   * @attr on-background
+   * @attr is-on-background
    */
-  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
-  public onBackground = false;
+  @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
+  public isOnBackground = false;
 
   /**
-   * Indicates the aria label to apply to the link.
-   * @attr label
+   * Indicates the aria-label to apply to the link.
+   * @attr a11y-label
    */
-  @property({ type: String, reflect: true })
-  public label?: string;
+  @property({ type: String, reflect: true, attribute: 'a11y-label' })
+  public a11yLabel?: string;
 
   /**
    * Indicates if the link should be bold.
@@ -96,6 +96,14 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   @state()
   private _hover = false;
 
+  protected override update(changedProperties: PropertyValues): void {
+    super.update && super.update(changedProperties);
+
+    if (this.label) {
+      console.warn("The 'label' attribute is deprecated. Use 'a11y-label' instead.");
+    }
+  }
+
   public static override get styles(): CSSResultArray {
     return [linkStyles];
   }
@@ -127,7 +135,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
           rel=${ifDefined(this.rel)}
           target=${ifDefined(this.target)}
           type=${ifDefined(this.type)}
-          aria-label=${ifDefined(this.label)}
+          aria-label=${ifDefined(this.a11yLabel)}
           @click=${this._handleClick}
           ><slot></slot>${this.appendContent}</a
         >`
@@ -137,7 +145,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
             [`link--alert`]: this._alert,
             [`link--hover`]: this._hover,
           })}"
-          aria-label=${ifDefined(this.label)}
+          aria-label=${ifDefined(this.a11yLabel)}
         >
           <slot></slot>
           ${this.appendContent}

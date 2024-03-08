@@ -1,4 +1,4 @@
-import { fixture, expect, nextFrame } from '@open-wc/testing';
+import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 
 import type { PharosFooter } from './pharos-footer';
@@ -11,13 +11,13 @@ describe('pharos-footer', () => {
       <test-pharos-footer>
         <ul slot="links-group">
           <li>
-            <test-pharos-link on-background subtle href="/subjects" target="_blank"
+            <test-pharos-link is-on-background subtle href="/subjects" target="_blank"
               >By Subject</test-pharos-link
             >
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="/action/showJournals?browseType=title"
               target="_blank"
@@ -25,22 +25,26 @@ describe('pharos-footer', () => {
             >
           </li>
           <li>
-            <test-pharos-link on-background subtle href="/site/collection-list" target="_blank"
+            <test-pharos-link is-on-background subtle href="/site/collection-list" target="_blank"
               >By Collections</test-pharos-link
             >
           </li>
           <li>
-            <test-pharos-link on-background subtle href="/publishers" target="_blank"
+            <test-pharos-link is-on-background subtle href="/publishers" target="_blank"
               >By Publisher</test-pharos-link
             >
           </li>
           <li>
-            <test-pharos-link on-background subtle href="/action/showAdvancedSearch" target="_blank"
+            <test-pharos-link
+              is-on-background
+              subtle
+              href="/action/showAdvancedSearch"
+              target="_blank"
               >Advanced Search</test-pharos-link
             >
           </li>
           <li>
-            <test-pharos-link on-background subtle href="/dfr" target="_blank"
+            <test-pharos-link is-on-background subtle href="/dfr" target="_blank"
               >Data for Research</test-pharos-link
             >
           </li>
@@ -48,7 +52,7 @@ describe('pharos-footer', () => {
         <ul slot="links-group">
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://support.jstor.org/hc/en-us/articles/360000313328-Need-Help-Logging-in-To-JSTOR"
               target="_blank"
@@ -56,18 +60,26 @@ describe('pharos-footer', () => {
             >
           </li>
           <li>
-            <test-pharos-link on-background subtle href="https://support.jstor.org" target="_blank"
+            <test-pharos-link
+              is-on-background
+              subtle
+              href="https://support.jstor.org"
+              target="_blank"
               >Support</test-pharos-link
             >
           </li>
           <li>
-            <test-pharos-link on-background subtle href="https://guides.jstor.org" target="_blank"
+            <test-pharos-link
+              is-on-background
+              subtle
+              href="https://guides.jstor.org"
+              target="_blank"
               >LibGuides</test-pharos-link
             >
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://guides.jstor.org/researchbasics"
               target="_blank"
@@ -77,13 +89,13 @@ describe('pharos-footer', () => {
         </ul>
         <ul slot="links-group">
           <li>
-            <test-pharos-link on-background subtle href="https://about.jstor.org" target="_blank"
+            <test-pharos-link is-on-background subtle href="https://about.jstor.org" target="_blank"
               >About JSTOR</test-pharos-link
             >
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://about.jstor.org/mission-history/"
               target="_blank"
@@ -92,7 +104,7 @@ describe('pharos-footer', () => {
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://about.jstor.org/whats-in-jstor/"
               target="_blank"
@@ -101,7 +113,7 @@ describe('pharos-footer', () => {
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://about.jstor.org/get-jstor/"
               target="_blank"
@@ -110,7 +122,7 @@ describe('pharos-footer', () => {
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://about.jstor.org/news/"
               target="_blank"
@@ -119,7 +131,7 @@ describe('pharos-footer', () => {
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://about.jstor.org/webinars/"
               target="_blank"
@@ -129,18 +141,22 @@ describe('pharos-footer', () => {
         </ul>
         <ul slot="links-group">
           <li>
-            <test-pharos-link on-background subtle href="https://labs.jstor.org/" target="_blank"
+            <test-pharos-link is-on-background subtle href="https://labs.jstor.org/" target="_blank"
               >JSTOR Labs</test-pharos-link
             >
           </li>
           <li>
-            <test-pharos-link on-background subtle href="https://daily.jstor.org/" target="_blank"
+            <test-pharos-link
+              is-on-background
+              subtle
+              href="https://daily.jstor.org/"
+              target="_blank"
               >JSTOR Daily</test-pharos-link
             >
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://www.ithaka.org/careers/"
               target="_blank"
@@ -148,7 +164,7 @@ describe('pharos-footer', () => {
             >
           </li>
           <li>
-            <test-pharos-link on-background subtle href="/contact-us/" target="_blank"
+            <test-pharos-link is-on-background subtle href="/contact-us/" target="_blank"
               >Contact Us</test-pharos-link
             >
           </li>
@@ -157,7 +173,7 @@ describe('pharos-footer', () => {
           <li>
             <test-pharos-button
               variant="secondary"
-              on-background
+              is-on-background
               href="https://about.jstor.org/librarians/"
               target="_blank"
               >For Librarians</test-pharos-button
@@ -166,7 +182,7 @@ describe('pharos-footer', () => {
           <li>
             <test-pharos-button
               variant="secondary"
-              on-background
+              is-on-background
               href="https://about.jstor.org/publishers/"
               target="_blank"
               >For Publishers</test-pharos-button
@@ -178,62 +194,62 @@ describe('pharos-footer', () => {
             <test-pharos-link
               href="https://twitter.com/JSTOR"
               target="_blank"
-              label="twitter - This link opens in a new window"
+              a11y-label="twitter - This link opens in a new window"
             >
-              <test-pharos-icon name="twitter"></test-pharos-icon>
+              <test-pharos-icon name="twitter" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
           <li>
             <test-pharos-link
               href="https://www.facebook.com/JSTOR.org"
               target="_blank"
-              label="facebook - This link opens in a new window"
+              a11y-label="facebook - This link opens in a new window"
             >
-              <test-pharos-icon name="facebook"></test-pharos-icon>
+              <test-pharos-icon name="facebook" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
           <li>
             <test-pharos-link
               href="https://www.instagram.com/jstor_org"
               target="_blank"
-              label="instagram - This link opens in a new window"
+              a11y-label="instagram - This link opens in a new window"
             >
-              <test-pharos-icon name="instagram"></test-pharos-icon>
+              <test-pharos-icon name="instagram" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
           <li>
             <test-pharos-link
               href="https://www.youtube.com/channel/UCQM-7sUBV6Z-PVas0S4k0lw"
               target="_blank"
-              label="youtube - This link opens in a new window"
+              a11y-label="youtube - This link opens in a new window"
             >
-              <test-pharos-icon name="youtube"></test-pharos-icon>
+              <test-pharos-icon name="youtube" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
           <li>
             <test-pharos-link
               href="https://www.linkedin.com/company/ithaka"
               target="_blank"
-              label="linkedin - This link opens in a new window"
+              a11y-label="linkedin - This link opens in a new window"
             >
-              <test-pharos-icon name="linkedin"></test-pharos-icon>
+              <test-pharos-icon name="linkedin" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
           <li>
             <test-pharos-link
               href="https://jstor.tumblr.com"
               target="_blank"
-              label="tumblr - This link opens in a new window"
+              a11y-label="tumblr - This link opens in a new window"
             >
-              <test-pharos-icon name="tumblr"></test-pharos-icon>
+              <test-pharos-icon name="tumblr" a11y-hidden="true"></test-pharos-icon>
             </test-pharos-link>
           </li>
         </ul>
         <span slot="mission-statement"
           >JSTOR is part of
-          <test-pharos-link on-background href="https://www.ithaka.org">ITHAKA</test-pharos-link>, a
-          not-for-profit organization helping the academic community use digital technologies to
-          preserve the scholarly record and to advance research and teaching in sustainable
+          <test-pharos-link is-on-background href="https://www.ithaka.org">ITHAKA</test-pharos-link
+          >, a not-for-profit organization helping the academic community use digital technologies
+          to preserve the scholarly record and to advance research and teaching in sustainable
           ways.</span
         >
         <span slot="copyright-statement"
@@ -244,7 +260,7 @@ describe('pharos-footer', () => {
         <ul slot="legal-links">
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://about.jstor.org/terms"
               target="_blank"
@@ -253,7 +269,7 @@ describe('pharos-footer', () => {
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://www.ithaka.org/privacypolicy"
               target="_blank"
@@ -262,7 +278,7 @@ describe('pharos-footer', () => {
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://www.ithaka.org/cookies"
               target="_blank"
@@ -271,7 +287,7 @@ describe('pharos-footer', () => {
           </li>
           <li>
             <test-pharos-link
-              on-background
+              is-on-background
               subtle
               href="https://about.jstor.org/accessibility"
               target="_blank"
@@ -279,32 +295,11 @@ describe('pharos-footer', () => {
             >
           </li>
         </ul>
-        <div slot="google-widget" id="google_translate_element" aria-hidden="true"></div>
       </test-pharos-footer>
     `);
   });
 
   it('is accessible', async () => {
     await expect(component).to.be.accessible();
-  });
-
-  it('adds Pharos icons to the Google translate widget when rendered', async () => {
-    const widget = component['_widgetNodes'][0] as HTMLDivElement;
-    const translateElement = document.createElement('div');
-    const translateButton = document.createElement('div');
-    const googleIcon = document.createElement('img');
-
-    translateButton.classList.add('goog-te-gadget-simple');
-    googleIcon.classList.add('goog-te-gadget-icon');
-
-    translateButton.appendChild(googleIcon);
-    translateElement.appendChild(translateButton);
-    widget.appendChild(translateElement);
-
-    await component.updateComplete;
-    await nextFrame();
-
-    expect(translateButton.querySelector('test-pharos-icon[name="google"]')).not.to.be.null;
-    expect(translateButton.querySelector('test-pharos-icon[name="chevron-down"]')).not.to.be.null;
   });
 });

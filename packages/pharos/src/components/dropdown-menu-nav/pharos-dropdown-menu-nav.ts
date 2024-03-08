@@ -1,7 +1,7 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
 import { property, queryAssignedElements } from 'lit/decorators.js';
-import type { TemplateResult, CSSResultArray } from 'lit';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { dropdownMenuNavStyles } from './pharos-dropdown-menu-nav.css';
 import type { PharosDropdownMenuNavLink } from './pharos-dropdown-menu-nav-link';
@@ -19,11 +19,11 @@ import FocusMixin from '../../utils/mixins/focus';
  */
 export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
   /**
-   * Indicates the aria label to apply to the nav.
-   * @attr label
+   * Indicates the aria-label to apply to the nav element.
+   * @attr a11y-label
    */
-  @property({ type: String, reflect: true })
-  public label?: string;
+  @property({ type: String, reflect: true, attribute: 'a11y-label' })
+  public a11yLabel?: string;
 
   @queryAssignedElements({ selector: '[data-pharos-component="PharosDropdownMenuNavLink"]' })
   private _allLinks!: NodeListOf<PharosDropdownMenuNavLink>;
@@ -37,6 +37,10 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
 
   protected override firstUpdated(): void {
     this.addEventListener('focus', () => this._closeAllMenus());
+  }
+
+  protected override update(changedProperties: PropertyValues): void {
+    super.update && super.update(changedProperties);
   }
 
   private _closeAllMenus(link: PharosDropdownMenuNavLink | undefined = undefined) {
@@ -70,7 +74,7 @@ export class PharosDropdownMenuNav extends FocusMixin(PharosElement) {
 
   protected override render(): TemplateResult {
     return html`
-      <nav class="dropdown-menu-nav__container" aria-label=${ifDefined(this.label)}>
+      <nav class="dropdown-menu-nav__container" aria-label=${ifDefined(this.a11yLabel)}>
         <slot @slotchange=${this._handleSlotChange}></slot>
       </nav>
     `;

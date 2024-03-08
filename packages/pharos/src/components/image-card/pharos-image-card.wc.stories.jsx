@@ -37,7 +37,7 @@ const Template = {
           Part of
           <storybook-pharos-link
             href="https://www.jstor.org/site/pratt/buildings-image"
-            ?on-background=${args.subtle}
+            ?is-on-background=${args.subtle}
             >Pratt Institute Buildings Image Collection</storybook-pharos-link
           >
         </div>

@@ -12,9 +12,9 @@ import BestPractices from '@components/statics/BestPractices.tsx';
 
 ```jsx live
 <>
-  <PharosIcon name="workspace" />
-  <PharosIcon name="download" />
-  <PharosIcon name="email" />
+  <PharosIcon name="workspace" a11yTitle="workspace" />
+  <PharosIcon name="download" a11yTitle="download" />
+  <PharosIcon name="email" a11yTitle="email" />
 </>
 ```
 
@@ -171,7 +171,7 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   <PageSection title="Code expectations" subSectionLevel={1} lessMargin>
     <ul>
       <li>
-        If the icon is purely decorative and is accompanied by text, the icon should have an
+        If the icon is purely decorative and is accompanied by text, the icon should have an{' '}
         <code>aria-hidden="true"</code> on the SVG to avoid being redundant.
       </li>
       <li>

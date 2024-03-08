@@ -5,7 +5,6 @@ import { dropdownMenuNavLinkStyles } from './pharos-dropdown-menu-nav-link.css';
 import { PharosLink } from '../link/pharos-link';
 
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
-import { PharosIcon } from '../icon/pharos-icon';
 
 import type { LinkTarget } from '../base/anchor-element';
 export type { LinkTarget };
@@ -19,10 +18,6 @@ export type { LinkTarget };
  *
  */
 export class PharosDropdownMenuNavLink extends ScopedRegistryMixin(PharosLink) {
-  static elementDefinitions = {
-    'pharos-icon': PharosIcon,
-  };
-
   /**
    * Indicates the link is active
    * @attr is-active
@@ -41,7 +36,11 @@ export class PharosDropdownMenuNavLink extends ScopedRegistryMixin(PharosLink) {
 
   protected override get appendContent(): TemplateResult | typeof nothing {
     if (this.hasAttribute('data-dropdown-menu-id')) {
-      return html`<pharos-icon name="chevron-down" class="link__icon"></pharos-icon>`;
+      return html`<pharos-icon
+        name="chevron-down"
+        class="link__icon"
+        a11y-hidden="true"
+      ></pharos-icon>`;
     }
     return nothing;
   }

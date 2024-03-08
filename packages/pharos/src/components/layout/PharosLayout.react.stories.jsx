@@ -75,7 +75,7 @@ export const OneColumnWithSidenav = {
         gridTemplateColumns: 'max-content 1fr',
       }}
     >
-      <PharosSidenav style={{ gridArea: 'sidenav' }}>
+      <PharosSidenav open={true} style={{ gridArea: 'sidenav' }}>
         <PharosLink slot="top" href="/" id="jstor-logo">
           <img src={logo} alt="Pharos Home" width="72" height="100" />
         </PharosLink>
@@ -98,7 +98,7 @@ export const OneColumnWithSidenavAndComfySpacing = {
         gridTemplateColumns: 'max-content 1fr',
       }}
     >
-      <PharosSidenav style={{ gridArea: 'sidenav' }}>
+      <PharosSidenav open={true} style={{ gridArea: 'sidenav' }}>
         <PharosLink slot="top" href="/" id="jstor-logo">
           <img src={logo} alt="Pharos Home" width="72" height="100" />
         </PharosLink>

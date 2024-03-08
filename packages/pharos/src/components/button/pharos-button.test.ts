@@ -24,16 +24,47 @@ describe('pharos-button', () => {
       await expect(component).to.be.accessible();
     });
 
-    it('is accessible as an icon button', async () => {
-      component.icon = 'download';
-      component.label = 'download';
+    it('is renders aria-label on button and is accessible', async () => {
+      const label = 'download';
+      component.icon = label;
+      component.a11yLabel = label;
       await component.updateComplete;
+      await expect(
+        component.renderRoot.querySelector('button')?.getAttribute('aria-label')
+      ).to.equal(label);
       await expect(component).to.be.accessible();
     });
 
     it('is accessible when disabled', async () => {
       component.disabled = true;
       await component.updateComplete;
+      await expect(component).to.be.accessible();
+    });
+
+    it('is accessible when using aria-disabled', async () => {
+      component.a11yDisabled = 'true';
+      await component.updateComplete;
+      await expect(
+        component.renderRoot.querySelector('button')?.getAttribute('aria-disabled')
+      ).to.equal('true');
+      await expect(component).to.be.accessible();
+    });
+
+    it('is accessible when using aria-expanded', async () => {
+      component.a11yExpanded = 'true';
+      await component.updateComplete;
+      await expect(
+        component.renderRoot.querySelector('button')?.getAttribute('aria-expanded')
+      ).to.equal('true');
+      await expect(component).to.be.accessible();
+    });
+
+    it('is accessible when using aria-haspopup', async () => {
+      component.a11yHaspopup = 'menu';
+      await component.updateComplete;
+      await expect(
+        component.renderRoot.querySelector('button')?.getAttribute('aria-haspopup')
+      ).to.equal('menu');
       await expect(component).to.be.accessible();
     });
 
@@ -60,7 +91,7 @@ describe('pharos-button', () => {
       parentNode.style.backgroundColor = PharosColorBlack;
 
       component = await fixture(
-        html`<test-pharos-button on-background>I am a button</test-pharos-button>`,
+        html`<test-pharos-button is-on-background>I am a button</test-pharos-button>`,
         {
           parentNode,
         }
@@ -73,7 +104,7 @@ describe('pharos-button', () => {
       parentNode.style.backgroundColor = PharosColorBlack;
 
       component = await fixture(
-        html`<test-pharos-button variant="secondary" on-background
+        html`<test-pharos-button variant="secondary" is-on-background
           >I am a button</test-pharos-button
         >`,
         {
@@ -88,7 +119,9 @@ describe('pharos-button', () => {
       parentNode.style.backgroundColor = PharosColorBlack;
 
       component = await fixture(
-        html`<test-pharos-button variant="subtle" on-background>I am a button</test-pharos-button>`,
+        html`<test-pharos-button variant="subtle" is-on-background
+          >I am a button</test-pharos-button
+        >`,
         {
           parentNode,
         }
@@ -101,7 +134,7 @@ describe('pharos-button', () => {
       parentNode.style.backgroundColor = PharosColorBlack;
 
       component = await fixture(
-        html`<test-pharos-button variant="overlay" on-background
+        html`<test-pharos-button variant="overlay" is-on-background
           >I am a button</test-pharos-button
         >`,
         {
@@ -113,7 +146,7 @@ describe('pharos-button', () => {
 
     it('is accessible when pressed', async () => {
       component = await fixture(
-        html`<test-pharos-button pressed="true">I am a pressed button</test-pharos-button>`
+        html`<test-pharos-button a11y-pressed="true">I am a pressed button</test-pharos-button>`
       );
       await expect(component).to.be.accessible();
     });
@@ -149,8 +182,24 @@ describe('pharos-button', () => {
         .thrown;
     });
 
+    it('throws an error for an icon only button with no accessible label', async () => {
+      let errorThrown = false;
+      try {
+        await fixture(html` <test-pharos-button icon="download"></test-pharos-button> `);
+      } catch (error) {
+        if (error instanceof Error) {
+          errorThrown = true;
+          expect(error?.message).to.be.equal(
+            "Icon only buttons must have an accessible name. Please provide an 'a11y-label' attribute for the button using the 'download' icon."
+          );
+        }
+      }
+      expect(errorThrown).to.be.true;
+    });
+
     it('allows for an icon to be shown as the content of the button', async () => {
       component.icon = 'download';
+      component.a11yLabel = 'Download';
       await component.updateComplete;
 
       const icon = component.renderRoot.querySelector(

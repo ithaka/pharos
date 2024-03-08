@@ -1,9 +1,0 @@
-:host {
-  display: none;
-}
-
-@media screen and (width <= 1055px) {
-  :host {
-    display: inline-flex;
-  }
-}
