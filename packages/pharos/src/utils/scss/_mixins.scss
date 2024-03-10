@@ -456,6 +456,7 @@
 @mixin at-least($breakpoint) {
   @if map-has-key(variables.$breakpoints, $breakpoint) {
     $width: map.get(variables.$breakpoints, $breakpoint, width);
+
     @media screen and (min-width: $width) {
       @content;
     }
@@ -471,6 +472,7 @@
 @mixin until($breakpoint) {
   @if map-has-key(variables.$breakpoints, $breakpoint) {
     $width: map.get(variables.$breakpoints, $breakpoint, width);
+
     @media screen and (max-width: $width) {
       @content;
     }
@@ -488,6 +490,7 @@
   @if map-has-key(variables.$breakpoints, $lower) and map-has-key(variables.$breakpoints, $upper) {
     $lower-width: functions.calculate-px(map.get(variables.$breakpoints, $lower, width));
     $upper-width: functions.calculate-px(map.get(variables.$breakpoints, $upper, width));
+
     @media screen and (min-width: $lower-width) and (max-width: $upper-width - 1) {
       @content;
     }
