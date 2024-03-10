@@ -72,22 +72,25 @@ export const Tables = {
 };
 
 export const OrderedList = {
-  render: () => html` <ol>
-    ${list}
-  </ol>`,
+  render: () =>
+    html` <ol>
+      ${list}
+    </ol>`,
 };
 
 export const UnorderedList = {
-  render: () => html` <ul>
-    ${list}
-  </ul>`,
+  render: () =>
+    html` <ul>
+      ${list}
+    </ul>`,
 };
 
 export const ListWithoutBullets = {
   name: 'List without Bullets',
-  render: () => html` <ul class="list-example__no-bullets">
-    ${list}
-  </ul>`,
+  render: () =>
+    html` <ul class="list-example__no-bullets">
+      ${list}
+    </ul>`,
 };
 
 export const NestedLists = {
@@ -110,7 +113,8 @@ export const NestedLists = {
 };
 
 export const InlineList = {
-  render: () => html` <ul class="list-example__inline">
-    ${list}
-  </ul>`,
+  render: () =>
+    html` <ul class="list-example__inline">
+      ${list}
+    </ul>`,
 };

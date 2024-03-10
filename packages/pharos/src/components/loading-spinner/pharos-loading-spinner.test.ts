@@ -9,9 +9,9 @@ describe('pharos-loading-spinner', () => {
 
   beforeEach(async () => {
     component = await fixture(html` <test-pharos-loading-spinner></test-pharos-loading-spinner> `);
-    smallComponent = await fixture(
-      html` <test-pharos-loading-spinner small></test-pharos-loading-spinner> `
-    );
+    smallComponent = await fixture(html`
+      <test-pharos-loading-spinner small></test-pharos-loading-spinner>
+    `);
   });
 
   it('is accessible', async () => {
@@ -71,12 +71,10 @@ describe('pharos-loading-spinner', () => {
     const onClick = () => {
       count += 1;
     };
-    component = await fixture(
-      html`
-        <button @click="${onClick}">Can't press me!</button>
-        <test-pharos-loading-spinner></test-pharos-loading-spinner>
-      `
-    );
+    component = await fixture(html`
+      <button @click="${onClick}">Can't press me!</button>
+      <test-pharos-loading-spinner></test-pharos-loading-spinner>
+    `);
     const button = component.querySelector('button');
     button?.click();
     expect(count).to.equal(0);

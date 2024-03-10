@@ -30,19 +30,17 @@ describe('pharos-input-group', () => {
   });
 
   it('adjusts its padding when elements are prepended to the group', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-input-group>
-          <span slot="label">I am a label</span>
-          <test-pharos-button
-            slot="prepend"
-            icon="search"
-            variant="subtle"
-            a11y-label="search"
-          ></test-pharos-button>
-        </test-pharos-input-group>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-input-group>
+        <span slot="label">I am a label</span>
+        <test-pharos-button
+          slot="prepend"
+          icon="search"
+          variant="subtle"
+          a11y-label="search"
+        ></test-pharos-button>
+      </test-pharos-input-group>
+    `);
     await nextFrame();
 
     const expectedWidth = 12 + component['_prependGroupWidth'];

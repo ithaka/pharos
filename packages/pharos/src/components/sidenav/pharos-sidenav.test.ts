@@ -68,77 +68,75 @@ describe('pharos-sidenav', () => {
 
   beforeEach(async () => {
     await setViewport({ width: 1440, height: 900 });
-    component = await fixture(
-      html`
-        <test-pharos-sidenav has-close-button open>
-          <test-pharos-link slot="top" href="/" id="jstor-logo">JSTOR</test-pharos-link>
-          <test-pharos-input-group
-            slot="top"
-            name="my-input-group"
-            placeholder="Search"
-            hide-label
+    component = await fixture(html`
+      <test-pharos-sidenav has-close-button open>
+        <test-pharos-link slot="top" href="/" id="jstor-logo">JSTOR</test-pharos-link>
+        <test-pharos-input-group
+          slot="top"
+          name="my-input-group"
+          placeholder="Search"
+          hide-label
+          is-on-background
+        >
+          <span slot="label">Search</span>
+          <test-pharos-button
+            name="search-button"
+            icon="search"
+            variant="subtle"
+            a11y-label="search"
             is-on-background
+          ></test-pharos-button>
+        </test-pharos-input-group>
+        <test-pharos-sidenav-section show-divider>
+          <test-pharos-sidenav-link href="#">Menu item</test-pharos-sidenav-link>
+          <test-pharos-sidenav-menu label="Menu item w/accordion">
+            <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
+          </test-pharos-sidenav-menu>
+          <test-pharos-sidenav-link href="#">Menu item</test-pharos-sidenav-link>
+          <test-pharos-sidenav-link href="#" target="_blank" external
+            >External link</test-pharos-sidenav-link
           >
-            <span slot="label">Search</span>
-            <test-pharos-button
-              name="search-button"
-              icon="search"
-              variant="subtle"
-              a11y-label="search"
-              is-on-background
-            ></test-pharos-button>
-          </test-pharos-input-group>
-          <test-pharos-sidenav-section show-divider>
-            <test-pharos-sidenav-link href="#">Menu item</test-pharos-sidenav-link>
-            <test-pharos-sidenav-menu label="Menu item w/accordion">
-              <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
-            </test-pharos-sidenav-menu>
-            <test-pharos-sidenav-link href="#">Menu item</test-pharos-sidenav-link>
-            <test-pharos-sidenav-link href="#" target="_blank" external
-              >External link</test-pharos-sidenav-link
-            >
-            <test-pharos-sidenav-link href="#" target="_blank" external
-              >External link</test-pharos-sidenav-link
-            >
-          </test-pharos-sidenav-section>
-          <test-pharos-sidenav-section label="Section Heading" show-divider>
-            <test-pharos-sidenav-menu label="Menu item w/accordion">
-              <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 3</test-pharos-sidenav-link>
-            </test-pharos-sidenav-menu>
-            <test-pharos-sidenav-menu label="Menu item w/accordion">
-              <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
-            </test-pharos-sidenav-menu>
-            <test-pharos-sidenav-menu label="Menu item w/accordion">
-              <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 3</test-pharos-sidenav-link>
-            </test-pharos-sidenav-menu>
-          </test-pharos-sidenav-section>
-          <test-pharos-sidenav-section label="Section Heading">
-            <test-pharos-sidenav-menu label="Menu item w/accordion">
-              <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 3</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 4</test-pharos-sidenav-link>
-            </test-pharos-sidenav-menu>
-            <test-pharos-sidenav-menu label="Menu item w/accordion">
-              <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
-            </test-pharos-sidenav-menu>
-            <test-pharos-sidenav-menu label="Menu item w/accordion">
-              <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
-              <test-pharos-sidenav-link href="#">Menu item 3</test-pharos-sidenav-link>
-            </test-pharos-sidenav-menu>
-            <test-pharos-sidenav-link href="#">Menu item</test-pharos-sidenav-link>
-          </test-pharos-sidenav-section>
-        </test-pharos-sidenav>
-      `
-    );
+          <test-pharos-sidenav-link href="#" target="_blank" external
+            >External link</test-pharos-sidenav-link
+          >
+        </test-pharos-sidenav-section>
+        <test-pharos-sidenav-section label="Section Heading" show-divider>
+          <test-pharos-sidenav-menu label="Menu item w/accordion">
+            <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 3</test-pharos-sidenav-link>
+          </test-pharos-sidenav-menu>
+          <test-pharos-sidenav-menu label="Menu item w/accordion">
+            <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
+          </test-pharos-sidenav-menu>
+          <test-pharos-sidenav-menu label="Menu item w/accordion">
+            <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 3</test-pharos-sidenav-link>
+          </test-pharos-sidenav-menu>
+        </test-pharos-sidenav-section>
+        <test-pharos-sidenav-section label="Section Heading">
+          <test-pharos-sidenav-menu label="Menu item w/accordion">
+            <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 3</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 4</test-pharos-sidenav-link>
+          </test-pharos-sidenav-menu>
+          <test-pharos-sidenav-menu label="Menu item w/accordion">
+            <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
+          </test-pharos-sidenav-menu>
+          <test-pharos-sidenav-menu label="Menu item w/accordion">
+            <test-pharos-sidenav-link href="#">Menu item 1</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 2</test-pharos-sidenav-link>
+            <test-pharos-sidenav-link href="#">Menu item 3</test-pharos-sidenav-link>
+          </test-pharos-sidenav-menu>
+          <test-pharos-sidenav-link href="#">Menu item</test-pharos-sidenav-link>
+        </test-pharos-sidenav-section>
+      </test-pharos-sidenav>
+    `);
   });
 
   it('is accessible', async () => {

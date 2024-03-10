@@ -130,25 +130,25 @@ describe('pharos-pagination', () => {
   });
 
   it('throws an error for an invalid total results value', async () => {
-    component = await fixture(
-      html` <test-pharos-pagination total-results="-1"></test-pharos-pagination> `
-    ).catch((e) => e);
+    component = await fixture(html`
+      <test-pharos-pagination total-results="-1"></test-pharos-pagination>
+    `).catch((e) => e);
     expect("totalResults value '-1' is invalid. Can only be a number greater than or equal to 0").to
       .be.thrown;
   });
 
   it('throws an error for an invalid page size value', async () => {
-    component = await fixture(
-      html` <test-pharos-pagination page-size="1.5"></test-pharos-pagination> `
-    ).catch((e) => e);
+    component = await fixture(html`
+      <test-pharos-pagination page-size="1.5"></test-pharos-pagination>
+    `).catch((e) => e);
     expect("pageSize value '1.5' is invalid. Can only be a number greater than or equal to 1").to.be
       .thrown;
   });
 
   it('throws an error for an invalid current page value', async () => {
-    component = await fixture(
-      html` <test-pharos-pagination current-page="0"></test-pharos-pagination> `
-    ).catch((e) => e);
+    component = await fixture(html`
+      <test-pharos-pagination current-page="0"></test-pharos-pagination>
+    `).catch((e) => e);
     expect("currentPage value '0' is invalid. Can only be a number greater than or equal to 1").to
       .be.thrown;
   });

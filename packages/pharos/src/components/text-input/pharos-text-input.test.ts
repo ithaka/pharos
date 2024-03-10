@@ -173,13 +173,11 @@ describe('pharos-text-input', () => {
   });
 
   it('renders an exclamation icon when the input is invalidated', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-text-input invalidated
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-text-input invalidated
+        ><span slot="label">I am a label</span></test-pharos-text-input
+      >
+    `);
     expect(component).shadowDom.to.equal(`
       <label for="input-element">
         <slot name="label">
@@ -207,13 +205,11 @@ describe('pharos-text-input', () => {
   });
 
   it('renders a checkmark icon when the input is validated', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-text-input validated
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-text-input validated
+        ><span slot="label">I am a label</span></test-pharos-text-input
+      >
+    `);
     expect(component).shadowDom.to.equal(`
       <label for="input-element">
         <slot name="label">
@@ -241,13 +237,11 @@ describe('pharos-text-input', () => {
   });
 
   it('renders a required asterisk and hidden text when input is required', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-text-input required
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-text-input required
+        ><span slot="label">I am a label</span></test-pharos-text-input
+      >
+    `);
     expect(component).shadowDom.to.equal(`
       <label for="input-element">
         <slot name="label">
@@ -275,13 +269,11 @@ describe('pharos-text-input', () => {
   });
 
   it('renders a provided message', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-text-input message="I am invalid"
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-text-input message="I am invalid"
+        ><span slot="label">I am a label</span></test-pharos-text-input
+      >
+    `);
     expect(component).shadowDom.to.equal(`
       <label for="input-element">
         <slot name="label">
@@ -308,13 +300,11 @@ describe('pharos-text-input', () => {
   });
 
   it('removes invalidated state when validated', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-text-input invalidated
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-text-input invalidated
+        ><span slot="label">I am a label</span></test-pharos-text-input
+      >
+    `);
     component.validated = true;
     await component.updateComplete;
 
@@ -323,13 +313,11 @@ describe('pharos-text-input', () => {
   });
 
   it('removes validated state when invalidated', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-text-input validated
-          ><span slot="label">I am a label</span></test-pharos-text-input
-        >
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-text-input validated
+        ><span slot="label">I am a label</span></test-pharos-text-input
+      >
+    `);
     component.invalidated = true;
     await component.updateComplete;
 

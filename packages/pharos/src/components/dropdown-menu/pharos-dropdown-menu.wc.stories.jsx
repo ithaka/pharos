@@ -17,48 +17,46 @@ export default {
 };
 
 export const Base = {
-  render: () =>
-    html`
-      <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
-        <storybook-pharos-button
-          id="my-button"
-          data-dropdown-menu-id="my-menu"
-          icon-right="chevron-down"
-          >Click Me</storybook-pharos-button
-        >
-        <storybook-pharos-dropdown-menu id="my-menu">
-          <storybook-pharos-dropdown-menu-item>Menu item 1</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Menu item 2</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Menu item 3</storybook-pharos-dropdown-menu-item>
-        </storybook-pharos-dropdown-menu>
-      </div>
-    `,
+  render: () => html`
+    <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
+      <storybook-pharos-button
+        id="my-button"
+        data-dropdown-menu-id="my-menu"
+        icon-right="chevron-down"
+        >Click Me</storybook-pharos-button
+      >
+      <storybook-pharos-dropdown-menu id="my-menu">
+        <storybook-pharos-dropdown-menu-item>Menu item 1</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Menu item 2</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Menu item 3</storybook-pharos-dropdown-menu-item>
+      </storybook-pharos-dropdown-menu>
+    </div>
+  `,
   args: defaultArgs,
 };
 
 export const Events = {
-  render: () =>
-    html`
-      <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
-        <storybook-pharos-button
-          id="my-button-events"
-          data-dropdown-menu-id="my-menu-events"
-          icon-right="chevron-down"
-        >
-          Click Me
-        </storybook-pharos-button>
-        <storybook-pharos-dropdown-menu
-          id="my-menu-events"
-          show-selected
-          @pharos-dropdown-menu-select="${(e) => action('Select')(e.detail)}"
-          @pharos-dropdown-menu-selected="${(e) => action('Selected')(e.detail)}"
-        >
-          <storybook-pharos-dropdown-menu-item>Menu item 1</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Menu item 2</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Menu item 3</storybook-pharos-dropdown-menu-item>
-        </storybook-pharos-dropdown-menu>
-      </div>
-    `,
+  render: () => html`
+    <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
+      <storybook-pharos-button
+        id="my-button-events"
+        data-dropdown-menu-id="my-menu-events"
+        icon-right="chevron-down"
+      >
+        Click Me
+      </storybook-pharos-button>
+      <storybook-pharos-dropdown-menu
+        id="my-menu-events"
+        show-selected
+        @pharos-dropdown-menu-select="${(e) => action('Select')(e.detail)}"
+        @pharos-dropdown-menu-selected="${(e) => action('Selected')(e.detail)}"
+      >
+        <storybook-pharos-dropdown-menu-item>Menu item 1</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Menu item 2</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Menu item 3</storybook-pharos-dropdown-menu-item>
+      </storybook-pharos-dropdown-menu>
+    </div>
+  `,
   parameters: { options: { selectedPanel: 'addon-actions' } },
 };
 
@@ -255,75 +253,73 @@ export const Links = {
 };
 
 export const MultipleTriggers = {
-  render: () =>
-    html`
-      <div
-        style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
+  render: () => html`
+    <div
+      style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
+    >
+      <storybook-pharos-button data-dropdown-menu-id="my-menu-multiple" icon-right="chevron-down">
+        Click Me
+      </storybook-pharos-button>
+      <storybook-pharos-dropdown-menu id="my-menu-multiple">
+        <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Item 4</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Item 5</storybook-pharos-dropdown-menu-item>
+      </storybook-pharos-dropdown-menu>
+      <storybook-pharos-button
+        data-dropdown-menu-id="my-menu-multiple"
+        data-dropdown-menu-hover
+        icon-right="chevron-down"
       >
-        <storybook-pharos-button data-dropdown-menu-id="my-menu-multiple" icon-right="chevron-down">
-          Click Me
-        </storybook-pharos-button>
-        <storybook-pharos-dropdown-menu id="my-menu-multiple">
-          <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 4</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 5</storybook-pharos-dropdown-menu-item>
-        </storybook-pharos-dropdown-menu>
-        <storybook-pharos-button
-          data-dropdown-menu-id="my-menu-multiple"
-          data-dropdown-menu-hover
-          icon-right="chevron-down"
-        >
-          Hover here
-        </storybook-pharos-button>
-        <storybook-pharos-button data-dropdown-menu-id="my-menu-multiple" icon-right="chevron-down">
-          Click Me Too
-        </storybook-pharos-button>
-      </div>
-    `,
+        Hover here
+      </storybook-pharos-button>
+      <storybook-pharos-button data-dropdown-menu-id="my-menu-multiple" icon-right="chevron-down">
+        Click Me Too
+      </storybook-pharos-button>
+    </div>
+  `,
 };
 
 export const MultipleDynamicTriggers = {
-  render: () =>
-    html`
-      <div
-        style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
+  render: () => html`
+    <div
+      style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
+    >
+      <storybook-pharos-dropdown-menu id="my-menu-multiple-dynamic-triggers">
+        <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
+      </storybook-pharos-dropdown-menu>
+      <storybook-pharos-button
+        @click="${(e) => {
+          const trigger = e.target;
+          const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
+          menu.openWithTrigger(trigger);
+        }}"
       >
-        <storybook-pharos-dropdown-menu id="my-menu-multiple-dynamic-triggers">
-          <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
-        </storybook-pharos-dropdown-menu>
-        <storybook-pharos-button
-          @click="${(e) => {
-            const trigger = e.target;
-            const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-            menu.openWithTrigger(trigger);
-          }}"
-        >
-          One
-        </storybook-pharos-button>
-        <storybook-pharos-button
-          @click="${(e) => {
-            const trigger = e.target;
-            const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-            menu.openWithTrigger(trigger);
-          }}"
-        >
-          Two
-        </storybook-pharos-button>
-        <storybook-pharos-button
-          @click="${(e) => {
-            const trigger = e.target;
-            const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-            menu.openWithTrigger(trigger);
-          }}"
-        >
-          Three
-        </storybook-pharos-button>
-      </div>
-    `,
+        One
+      </storybook-pharos-button>
+      <storybook-pharos-button
+        @click="${(e) => {
+          const trigger = e.target;
+          const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
+          menu.openWithTrigger(trigger);
+        }}"
+      >
+        Two
+      </storybook-pharos-button>
+      <storybook-pharos-button
+        @click="${(e) => {
+          const trigger = e.target;
+          const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
+          menu.openWithTrigger(trigger);
+        }}"
+      >
+        Three
+      </storybook-pharos-button>
+    </div>
+  `,
 };
 
 export const Composition = {
@@ -390,38 +386,37 @@ export const Composition = {
 };
 
 export const CoordinatingDropdowns = {
-  render: () =>
-    html`
-      <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
-        <storybook-pharos-button
-          id="coordinating-dropdown-trigger-button"
-          data-dropdown-menu-id="first-dropdown"
-        >
-          Click Me
-        </storybook-pharos-button>
-        <storybook-pharos-dropdown-menu
-          id="first-dropdown"
-          @pharos-dropdown-menu-selected="${() => {
-            const triggerElement = document.querySelector('#coordinating-dropdown-trigger-button');
-            const secondDropdown = document.querySelector('#second-dropdown');
-            secondDropdown.openWithTrigger(triggerElement);
-          }}"
-        >
-          <storybook-pharos-dropdown-menu-item>Click</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>any of these</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>options</storybook-pharos-dropdown-menu-item>
-        </storybook-pharos-dropdown-menu>
-        <storybook-pharos-dropdown-menu
-          id="second-dropdown"
-          @pharos-dropdown-menu-closed="${() => {
-            const secondDropdown = document.querySelector('#second-dropdown');
-            secondDropdown.removeAllTriggers();
-          }}"
-        >
-          <storybook-pharos-dropdown-menu-item>I am</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>a new</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>dropdown!</storybook-pharos-dropdown-menu-item>
-        </storybook-pharos-dropdown-menu>
-      </div>
-    `,
+  render: () => html`
+    <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
+      <storybook-pharos-button
+        id="coordinating-dropdown-trigger-button"
+        data-dropdown-menu-id="first-dropdown"
+      >
+        Click Me
+      </storybook-pharos-button>
+      <storybook-pharos-dropdown-menu
+        id="first-dropdown"
+        @pharos-dropdown-menu-selected="${() => {
+          const triggerElement = document.querySelector('#coordinating-dropdown-trigger-button');
+          const secondDropdown = document.querySelector('#second-dropdown');
+          secondDropdown.openWithTrigger(triggerElement);
+        }}"
+      >
+        <storybook-pharos-dropdown-menu-item>Click</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>any of these</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>options</storybook-pharos-dropdown-menu-item>
+      </storybook-pharos-dropdown-menu>
+      <storybook-pharos-dropdown-menu
+        id="second-dropdown"
+        @pharos-dropdown-menu-closed="${() => {
+          const secondDropdown = document.querySelector('#second-dropdown');
+          secondDropdown.removeAllTriggers();
+        }}"
+      >
+        <storybook-pharos-dropdown-menu-item>I am</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>a new</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>dropdown!</storybook-pharos-dropdown-menu-item>
+      </storybook-pharos-dropdown-menu>
+    </div>
+  `,
 };

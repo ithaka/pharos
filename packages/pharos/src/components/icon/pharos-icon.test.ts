@@ -17,9 +17,9 @@ describe('pharos-icon', () => {
   });
 
   it('throws an error for an invalid icon name', async () => {
-    component = await fixture(
-      html` <test-pharos-icon name="fake" a11y-title="fake-icon"></test-pharos-icon> `
-    ).catch((e) => e);
+    component = await fixture(html`
+      <test-pharos-icon name="fake" a11y-title="fake-icon"></test-pharos-icon>
+    `).catch((e) => e);
     expect('Could not get icon named "fake"').to.be.thrown;
   });
 

@@ -7,13 +7,11 @@ describe('pharos-sidenav-section', () => {
   let component: PharosSidenavSection;
 
   beforeEach(async () => {
-    component = await fixture(
-      html`
-        <test-pharos-sidenav-section>
-          <test-pharos-sidenav-link href="#">Link</test-pharos-sidenav-link>
-        </test-pharos-sidenav-section>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-sidenav-section>
+        <test-pharos-sidenav-link href="#">Link</test-pharos-sidenav-link>
+      </test-pharos-sidenav-section>
+    `);
   });
 
   it('is accessible', async () => {

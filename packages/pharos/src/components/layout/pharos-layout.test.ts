@@ -7,14 +7,12 @@ describe('pharos-layout', () => {
   let component: PharosLayout;
 
   beforeEach(async () => {
-    component = await fixture(
-      html`
-        <test-pharos-layout>
-          <div slot="top">Top Content</div>
-          <div>Body Content</div>
-        </test-pharos-layout>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-layout>
+        <div slot="top">Top Content</div>
+        <div>Body Content</div>
+      </test-pharos-layout>
+    `);
   });
 
   it('is accessible', async () => {
@@ -50,9 +48,9 @@ describe('pharos-layout', () => {
   });
 
   it('throws an error for an invalid preset value', async () => {
-    component = await fixture(
-      html` <test-pharos-layout preset="fake-col"></test-pharos-layout> `
-    ).catch((e) => e);
+    component = await fixture(html`
+      <test-pharos-layout preset="fake-col"></test-pharos-layout>
+    `).catch((e) => e);
     expect(
       'fake-col is not a valid preset. Valid presets are: 1-col, 1-col--sidenav, 1-col--sidenav-comfy, 2-col'
     ).to.be.thrown;
