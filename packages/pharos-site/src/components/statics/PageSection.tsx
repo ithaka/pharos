@@ -121,14 +121,14 @@ const PageSection: FC<PageSectionProps> = ({
           topMargin
             ? container__topMargin
             : lessMargin
-            ? container__lessMargin
-            : subSectionLevel === 1
-            ? container__subsectionLevelOne
-            : subSectionLevel === 2
-            ? container__subsectionLevelTwo
-            : subSectionLevel === 3
-            ? container__subsectionLevelThree
-            : container
+              ? container__lessMargin
+              : subSectionLevel === 1
+                ? container__subsectionLevelOne
+                : subSectionLevel === 2
+                  ? container__subsectionLevelTwo
+                  : subSectionLevel === 3
+                    ? container__subsectionLevelThree
+                    : container
         }
       >
         {displayedTitle()}

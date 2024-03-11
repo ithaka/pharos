@@ -9,13 +9,11 @@ describe('pharos-sheet', () => {
   let component: PharosSheet, logSpy: SinonSpy;
 
   beforeEach(async () => {
-    component = await fixture(
-      html`
-        <test-pharos-sheet id="my-sheet" a11y-label="Test sheet" has-close>
-          My Sheet
-        </test-pharos-sheet>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-sheet id="my-sheet" a11y-label="Test sheet" has-close>
+        My Sheet
+      </test-pharos-sheet>
+    `);
   });
 
   before(() => {

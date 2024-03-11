@@ -14,73 +14,69 @@ export default {
 };
 
 export const Base = {
-  render: () =>
-    html`
-      <div>
-        <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
-          Click Me
-        </storybook-pharos-button>
-        <storybook-pharos-sheet id="my-sheet" label="Pharos sheet">
-          <div>Lorem ipsum dolor sit amet</div>
-        </storybook-pharos-sheet>
-      </div>
-    `,
+  render: () => html`
+    <div>
+      <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
+        Click Me
+      </storybook-pharos-button>
+      <storybook-pharos-sheet id="my-sheet" label="Pharos sheet">
+        <div>Lorem ipsum dolor sit amet</div>
+      </storybook-pharos-sheet>
+    </div>
+  `,
 };
 
 export const WithClose = {
-  render: () =>
-    html`
-      <div>
-        <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
-          Click Me
-        </storybook-pharos-button>
-        <storybook-pharos-sheet id="my-sheet" label="Pharos sheet" has-close>
-          <div>Lorem ipsum dolor sit amet</div>
-        </storybook-pharos-sheet>
-      </div>
-    `,
+  render: () => html`
+    <div>
+      <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
+        Click Me
+      </storybook-pharos-button>
+      <storybook-pharos-sheet id="my-sheet" label="Pharos sheet" has-close>
+        <div>Lorem ipsum dolor sit amet</div>
+      </storybook-pharos-sheet>
+    </div>
+  `,
 };
 
 export const Expanded = {
-  render: () =>
-    html`
-      <div>
-        <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
-          Click Me
-        </storybook-pharos-button>
-        <storybook-pharos-sheet id="my-sheet" label="Pharos sheet" expanded>
-          <div>Lorem ipsum dolor sit amet</div>
-        </storybook-pharos-sheet>
-      </div>
-    `,
+  render: () => html`
+    <div>
+      <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
+        Click Me
+      </storybook-pharos-button>
+      <storybook-pharos-sheet id="my-sheet" label="Pharos sheet" expanded>
+        <div>Lorem ipsum dolor sit amet</div>
+      </storybook-pharos-sheet>
+    </div>
+  `,
 };
 
 export const LongContent = {
-  render: () =>
-    html`
-      <div>
-        <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
-          Click Me
-        </storybook-pharos-button>
-        <storybook-pharos-sheet id="my-sheet" label="Pharos sheet">
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-          <div>Lorem ipsum dolor sit amet</div>
-        </storybook-pharos-sheet>
-      </div>
-    `,
+  render: () => html`
+    <div>
+      <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
+        Click Me
+      </storybook-pharos-button>
+      <storybook-pharos-sheet id="my-sheet" label="Pharos sheet">
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+        <div>Lorem ipsum dolor sit amet</div>
+      </storybook-pharos-sheet>
+    </div>
+  `,
 };

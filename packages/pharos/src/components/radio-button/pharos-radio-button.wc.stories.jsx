@@ -13,19 +13,18 @@ export default {
 };
 
 export const Base = {
-  render: (args) =>
-    html`
-      <storybook-pharos-radio-button
-        ?checked=${args.checked}
-        ?disabled=${args.disabled}
-        ?hide-label=${args.hideLabel}
-        ?invalidated=${args.invalidated}
-        ?required=${args.required}
-        .message=${args.message}
-      >
-        <span slot="label">${args.label}</span>
-      </storybook-pharos-radio-button>
-    `,
+  render: (args) => html`
+    <storybook-pharos-radio-button
+      ?checked=${args.checked}
+      ?disabled=${args.disabled}
+      ?hide-label=${args.hideLabel}
+      ?invalidated=${args.invalidated}
+      ?required=${args.required}
+      .message=${args.message}
+    >
+      <span slot="label">${args.label}</span>
+    </storybook-pharos-radio-button>
+  `,
   args: defaultArgs,
 };
 
@@ -68,17 +67,16 @@ export const States = {
 };
 
 export const Events = {
-  render: () =>
-    html`
-      <storybook-pharos-radio-button
-        value="My value"
-        @change="${(e) => action('Change')(e.target.checked)}"
-        @input="${(e) => action('Input')(e.target.value)}"
-        @click="${(e) => action('Click')(e.target.checked)}"
-      >
-        <span slot="label">I fire events</span>
-      </storybook-pharos-radio-button>
-    `,
+  render: () => html`
+    <storybook-pharos-radio-button
+      value="My value"
+      @change="${(e) => action('Change')(e.target.checked)}"
+      @input="${(e) => action('Input')(e.target.value)}"
+      @click="${(e) => action('Click')(e.target.checked)}"
+    >
+      <span slot="label">I fire events</span>
+    </storybook-pharos-radio-button>
+  `,
   parameters: { options: { selectedPanel: 'addon-actions' } },
 };
 

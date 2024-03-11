@@ -21,9 +21,9 @@ describe('pharos-tooltip', () => {
 
   beforeEach(async () => {
     trigger = addTrigger();
-    component = await fixture(
-      html` <test-pharos-tooltip id="my-tooltip">Hi there!</test-pharos-tooltip> `
-    );
+    component = await fixture(html`
+      <test-pharos-tooltip id="my-tooltip">Hi there!</test-pharos-tooltip>
+    `);
 
     secondTrigger = addTrigger('my-second-trigger', 'my-second-tooltip');
     secondComponent = await fixture(html`
@@ -213,9 +213,9 @@ describe('pharos-tooltip', () => {
 
   it('supports multiple triggers when open and another trigger is focused', async () => {
     const thirdTrigger = addTrigger('my-third-trigger', 'my-tooltip');
-    component = await fixture(
-      html` <test-pharos-tooltip id="my-tooltip">Hi there!</test-pharos-tooltip> `
-    );
+    component = await fixture(html`
+      <test-pharos-tooltip id="my-tooltip">Hi there!</test-pharos-tooltip>
+    `);
 
     trigger.dispatchEvent(new Event('mouseenter'));
     await component.updateComplete;
@@ -231,9 +231,9 @@ describe('pharos-tooltip', () => {
 
   it('supports multiple triggers when open and another trigger is hovered', async () => {
     const thirdTrigger = addTrigger('my-third-trigger', 'my-tooltip');
-    component = await fixture(
-      html` <test-pharos-tooltip id="my-tooltip">Hi there!</test-pharos-tooltip> `
-    );
+    component = await fixture(html`
+      <test-pharos-tooltip id="my-tooltip">Hi there!</test-pharos-tooltip>
+    `);
 
     trigger.dispatchEvent(new Event('focusin'));
     await aTimeout(100);

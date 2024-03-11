@@ -47,14 +47,12 @@ describe('pharos-select', () => {
   });
 
   it('uses the first option by default', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-select>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-        </test-pharos-select>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-select>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </test-pharos-select>
+    `);
 
     expect(component.value).to.equal('1');
   });
@@ -64,14 +62,12 @@ describe('pharos-select', () => {
     const onChange = (event: Event): void => {
       eventSource = event.composedPath()[0] as Element;
     };
-    component = await fixture(
-      html`
-        <test-pharos-select @change=${onChange}>
-          <span slot="label">test</span>
-          <option value="1">Option 1</option>
-        </test-pharos-select>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-select @change=${onChange}>
+        <span slot="label">test</span>
+        <option value="1">Option 1</option>
+      </test-pharos-select>
+    `);
 
     component.value = '1';
     component['_select'].dispatchEvent(new Event('change'));
@@ -81,15 +77,13 @@ describe('pharos-select', () => {
   });
 
   it('updates the value on change', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-select>
-          <span slot="label">test</span>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-        </test-pharos-select>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-select>
+        <span slot="label">test</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </test-pharos-select>
+    `);
 
     component['_select'].value = '2';
     component['_select'].dispatchEvent(new Event('change'));

@@ -15,35 +15,33 @@ export default {
 };
 
 export const Base = {
-  render: (args) =>
-    html`
-      <storybook-pharos-icon
-        name=${args.name}
-        description=${args.description}
-        a11y-title=${args.a11yTitle}
-        a11y-hidden=${args.a11yHidden}
-        class="icon-example__icon"
-      ></storybook-pharos-icon>
-    `,
+  render: (args) => html`
+    <storybook-pharos-icon
+      name=${args.name}
+      description=${args.description}
+      a11y-title=${args.a11yTitle}
+      a11y-hidden=${args.a11yHidden}
+      class="icon-example__icon"
+    ></storybook-pharos-icon>
+  `,
   args: defaultArgs,
 };
 
 export const Names = {
-  render: () =>
-    html`
-      <div
-        style="display: grid; grid-template-columns: repeat(4, auto); grid-gap: 2rem; margin-top: 2rem; justify-content: space-evenly;"
-      >
-        ${iconNames.map((name) => {
-          return html` <div class="icon-example__container">
-            <storybook-pharos-icon
-              name="${name}"
-              a11y-title="${name}"
-              class="icon-example__icon"
-            ></storybook-pharos-icon>
-            <div class="icon-example__name">${name}</div>
-          </div>`;
-        })}
-      </div>
-    `,
+  render: () => html`
+    <div
+      style="display: grid; grid-template-columns: repeat(4, auto); grid-gap: 2rem; margin-top: 2rem; justify-content: space-evenly;"
+    >
+      ${iconNames.map((name) => {
+        return html` <div class="icon-example__container">
+          <storybook-pharos-icon
+            name="${name}"
+            a11y-title="${name}"
+            class="icon-example__icon"
+          ></storybook-pharos-icon>
+          <div class="icon-example__name">${name}</div>
+        </div>`;
+      })}
+    </div>
+  `,
 };

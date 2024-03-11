@@ -39,64 +39,60 @@ export const Base = {
 };
 
 export const VisitedLink = {
-  render: () =>
-    html`
-      <div style="margin-bottom: 1rem">
-        <storybook-pharos-link href="https://www.google.com" target="_blank" indicate-visited
-          >Visited link</storybook-pharos-link
-        >
-      </div>
-    `,
+  render: () => html`
+    <div style="margin-bottom: 1rem">
+      <storybook-pharos-link href="https://www.google.com" target="_blank" indicate-visited
+        >Visited link</storybook-pharos-link
+      >
+    </div>
+  `,
 };
 
 export const VisitedLinkHeading = {
-  render: () =>
-    html`
-      <div style="margin-bottom: 1rem">
-        <storybook-pharos-link href="https://www.google.com" target="_blank" indicate-visited>
-          <storybook-pharos-heading level="1"> Visited link heading </storybook-pharos-heading>
-        </storybook-pharos-link>
-      </div>
-    `,
+  render: () => html`
+    <div style="margin-bottom: 1rem">
+      <storybook-pharos-link href="https://www.google.com" target="_blank" indicate-visited>
+        <storybook-pharos-heading level="1"> Visited link heading </storybook-pharos-heading>
+      </storybook-pharos-link>
+    </div>
+  `,
 };
 
 export const Button = {
-  render: () =>
-    html`
-      <div style="margin-bottom: 1rem">
-        <storybook-pharos-link name="primary">I am a button</storybook-pharos-link>
-      </div>
-      <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
-        <storybook-pharos-link name="is-on-background" is-on-background
-          >On compliant background</storybook-pharos-link
-        >
-      </div>
-    `,
+  render: () => html`
+    <div style="margin-bottom: 1rem">
+      <storybook-pharos-link name="primary">I am a button</storybook-pharos-link>
+    </div>
+    <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
+      <storybook-pharos-link name="is-on-background" is-on-background
+        >On compliant background</storybook-pharos-link
+      >
+    </div>
+  `,
 };
 
 export const Variants = {
-  render: () =>
-    html`
-      <div style="margin-bottom: 1rem">
-        <storybook-pharos-link name="primary" href="#">Primary link</storybook-pharos-link>
-      </div>
-      <div style="margin-bottom: 1rem">
-        <storybook-pharos-link name="subtle" href="#" subtle>Subtle link</storybook-pharos-link>
-      </div>
-      <div style="width:100px; margin-bottom: 1rem">
-        <storybook-pharos-link name="multi" href="#"
-          >I have text that spans multiple lines</storybook-pharos-link
-        >
-      </div>
-      <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
-        <storybook-pharos-link name="is-on-background" href="#" is-on-background
-          >On compliant background</storybook-pharos-link
-        >
-      </div>
-      <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
-        <storybook-pharos-link name="is-on-background-subtle" href="#" is-on-background subtle
-          >On compliant background with subtle</storybook-pharos-link
-        >
-      </div>
-    `,
+  render: () => html`
+    <div style="margin-bottom: 1rem">
+      <storybook-pharos-link name="primary" href="#">Primary link</storybook-pharos-link>
+    </div>
+    <div style="margin-bottom: 1rem">
+      <storybook-pharos-link name="subtle" href="#" subtle>Subtle link</storybook-pharos-link>
+    </div>
+    <div style="width:100px; margin-bottom: 1rem">
+      <storybook-pharos-link name="multi" href="#"
+        >I have text that spans multiple lines</storybook-pharos-link
+      >
+    </div>
+    <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
+      <storybook-pharos-link name="is-on-background" href="#" is-on-background
+        >On compliant background</storybook-pharos-link
+      >
+    </div>
+    <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
+      <storybook-pharos-link name="is-on-background-subtle" href="#" is-on-background subtle
+        >On compliant background with subtle</storybook-pharos-link
+      >
+    </div>
+  `,
 };

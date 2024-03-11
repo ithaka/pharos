@@ -280,21 +280,20 @@ const FontWeightTokens = () => html`
       </thead>
       <tbody>
         ${Object.keys(tokens.font.weight).map(
-          (key) =>
-            html`
-              <tr>
-                <td>${toTokenFormat(tokens.font.weight[key].name)}</td>
-                <td>${tokens.font.weight[key].value}</td>
-                <td>
-                  <div style="font-weight:${tokens.font.weight[key].value};line-height: normal;">
-                    ABCDEFGHIJKLMNOPQRSTUVWXYZ
-                  </div>
-                  <div style="font-weight:${tokens.font.weight[key].value};line-height: normal;">
-                    abcdefghijlkmnopqrstuvwxyz
-                  </div>
-                </td>
-              </tr>
-            `
+          (key) => html`
+            <tr>
+              <td>${toTokenFormat(tokens.font.weight[key].name)}</td>
+              <td>${tokens.font.weight[key].value}</td>
+              <td>
+                <div style="font-weight:${tokens.font.weight[key].value};line-height: normal;">
+                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                </div>
+                <div style="font-weight:${tokens.font.weight[key].value};line-height: normal;">
+                  abcdefghijlkmnopqrstuvwxyz
+                </div>
+              </td>
+            </tr>
+          `
         )}
       </tbody>
     `

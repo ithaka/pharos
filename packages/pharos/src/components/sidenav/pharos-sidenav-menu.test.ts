@@ -8,14 +8,12 @@ describe('pharos-sidenav-menu', () => {
   let component: PharosSidenavMenu;
 
   beforeEach(async () => {
-    component = await fixture(
-      html`
-        <test-pharos-sidenav-menu label="Menu">
-          <test-pharos-sidenav-link href="#">Link</test-pharos-sidenav-link>
-          <test-pharos-sidenav-link href="#">Link 2</test-pharos-sidenav-link>
-        </test-pharos-sidenav-menu>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-sidenav-menu label="Menu">
+        <test-pharos-sidenav-link href="#">Link</test-pharos-sidenav-link>
+        <test-pharos-sidenav-link href="#">Link 2</test-pharos-sidenav-link>
+      </test-pharos-sidenav-menu>
+    `);
   });
 
   it('is accessible', async () => {
