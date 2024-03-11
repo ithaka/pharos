@@ -7,9 +7,9 @@ describe('pharos-heading', () => {
   let component: PharosHeading;
 
   beforeEach(async () => {
-    component = await fixture(
-      html` <test-pharos-heading level="1"> This is a heading </test-pharos-heading> `
-    );
+    component = await fixture(html`
+      <test-pharos-heading level="1"> This is a heading </test-pharos-heading>
+    `);
   });
 
   it('is accessible', async () => {
@@ -17,9 +17,9 @@ describe('pharos-heading', () => {
   });
 
   it('sets its default attributes', async () => {
-    component = await fixture(
-      html` <test-pharos-heading level="1" preset="1"> This is a heading </test-pharos-heading> `
-    );
+    component = await fixture(html`
+      <test-pharos-heading level="1" preset="1"> This is a heading </test-pharos-heading>
+    `);
     expect(component).dom.to.equal(
       `<test-pharos-heading data-pharos-component="PharosHeading" level="1" preset="1">This is a heading</test-pharos-heading>`
     );
@@ -37,9 +37,9 @@ describe('pharos-heading', () => {
   });
 
   it('throws an error for a missing level value', async () => {
-    component = await fixture(
-      html` <test-pharos-heading> This is a heading </test-pharos-heading> `
-    ).catch((e) => e);
+    component = await fixture(html`
+      <test-pharos-heading> This is a heading </test-pharos-heading>
+    `).catch((e) => e);
     expect('level is a required attribute.').to.be.thrown;
   });
 

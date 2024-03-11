@@ -366,9 +366,9 @@ describe('pharos-modal', () => {
   });
 
   it('throws an error for an invalid size value', async () => {
-    component = await fixture(
-      html` <test-pharos-modal size="fake">Hi there!</test-pharos-modal> `
-    ).catch((e) => e);
+    component = await fixture(html`
+      <test-pharos-modal size="fake">Hi there!</test-pharos-modal>
+    `).catch((e) => e);
     expect('fake is not a valid size. Valid sizes are: small, medium, large').to.be.thrown;
   });
 

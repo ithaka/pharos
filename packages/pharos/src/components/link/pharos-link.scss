@@ -41,6 +41,7 @@
 
   @at-root &:hover {
     color: var(--pharos-color-interactive-tertiary);
+
     @include mixins.no-underline;
   }
 

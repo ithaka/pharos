@@ -11,16 +11,14 @@ describe('pharos-combobox', () => {
   let component: PharosCombobox;
 
   beforeEach(async () => {
-    component = await fixture(
-      html`
-        <test-pharos-combobox>
-          <span slot="label">I am a label</span>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </test-pharos-combobox>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-combobox>
+        <span slot="label">I am a label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </test-pharos-combobox>
+    `);
   });
 
   it('is accessible', async () => {
@@ -446,15 +444,13 @@ describe('pharos-combobox', () => {
   });
 
   it('updates the displayed selection for asynchronously added options', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-combobox name="my-combobox" value="3">
-          <span slot="label">I am a label</span>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-        </test-pharos-combobox>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-combobox name="my-combobox" value="3">
+        <span slot="label">I am a label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </test-pharos-combobox>
+    `);
 
     const option = document.createElement('option');
     option.value = '3';
@@ -466,28 +462,24 @@ describe('pharos-combobox', () => {
   });
 
   it('does not update the displayed value when no matching options exist', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-combobox name="my-combobox" value="3">
-          <span slot="label">I am a label</span>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-        </test-pharos-combobox>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-combobox name="my-combobox" value="3">
+        <span slot="label">I am a label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </test-pharos-combobox>
+    `);
     expect(component['_input'].value).to.equal('');
   });
 
   it('updates the displayed value when the value attribute changes', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-combobox name="my-combobox" value="2">
-          <span slot="label">I am a label</span>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-        </test-pharos-combobox>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-combobox name="my-combobox" value="2">
+        <span slot="label">I am a label</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </test-pharos-combobox>
+    `);
     component.value = '1';
     await elementUpdated(component);
 

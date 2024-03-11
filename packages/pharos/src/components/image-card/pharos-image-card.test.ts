@@ -10,22 +10,24 @@ describe('pharos-image-card', () => {
   let component: PharosImageCard;
 
   beforeEach(async () => {
-    component = await fixture(html`<test-pharos-image-card
-      title="Card Title"
-      link="#"
-      image-link-label="Label for card image link"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="metadata">Creator of the item</div>
-      <div slot="metadata">1990-2000</div>
-      <div slot="metadata">
-        Part of <test-pharos-link href="#">An Example Collection</test-pharos-link>
-      </div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card
+        title="Card Title"
+        link="#"
+        image-link-label="Label for card image link"
+      >
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="metadata">Creator of the item</div>
+        <div slot="metadata">1990-2000</div>
+        <div slot="metadata">
+          Part of <test-pharos-link href="#">An Example Collection</test-pharos-link>
+        </div>
+      </test-pharos-image-card>`
+    );
   });
 
   it('is accessible', async () => {
@@ -45,88 +47,82 @@ describe('pharos-image-card', () => {
   });
 
   it('is accessible as the collection variant', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      title="Card Title"
-      link="#"
-      variant="collection"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <strong slot="metadata">100 items</strong>
-      <div slot="metadata">Description of collection.</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card title="Card Title" link="#" variant="collection">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <strong slot="metadata">100 items</strong>
+        <div slot="metadata">Description of collection.</div>
+      </test-pharos-image-card>`
+    );
     await expect(component).to.be.accessible();
   });
 
   it('is accessible as the promotional variant', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      title="Card Title"
-      link="#"
-      variant="promotional"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <strong slot="metadata">100 items</strong>
-      <div slot="metadata">Description of collection.</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card title="Card Title" link="#" variant="promotional">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <strong slot="metadata">100 items</strong>
+        <div slot="metadata">Description of collection.</div>
+      </test-pharos-image-card>`
+    );
     await expect(component).to.be.accessible();
   });
 
   it('is accessible as the selectable variant', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      title="Card Title"
-      link="#"
-      variant="selectable"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <strong slot="metadata">100 items</strong>
-      <div slot="metadata">Description of collection.</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card title="Card Title" link="#" variant="selectable">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <strong slot="metadata">100 items</strong>
+        <div slot="metadata">Description of collection.</div>
+      </test-pharos-image-card>`
+    );
     await expect(component).to.be.accessible();
   });
 
   it('is accessible as the selectable-collection variant', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      title="Card Title"
-      link="#"
-      variant="selectable-collection"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <strong slot="metadata">100 items</strong>
-      <div slot="metadata">Description of collection.</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card title="Card Title" link="#" variant="selectable-collection">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <strong slot="metadata">100 items</strong>
+        <div slot="metadata">Description of collection.</div>
+      </test-pharos-image-card>`
+    );
     await expect(component).to.be.accessible();
   });
 
   it('is accessible as the selectable subtle-select variant', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      title="Card Title"
-      link="#"
-      variant="selectable"
-      subtle-select="true"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <strong slot="metadata">100 items</strong>
-      <div slot="metadata">Description of collection.</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card
+        title="Card Title"
+        link="#"
+        variant="selectable"
+        subtle-select="true"
+      >
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <strong slot="metadata">100 items</strong>
+        <div slot="metadata">Description of collection.</div>
+      </test-pharos-image-card>`
+    );
     await expect(component).to.be.accessible();
   });
 
@@ -216,19 +212,21 @@ describe('pharos-image-card', () => {
   });
 
   it('does not set the title link hover state when the card is disabled and the link title is hovered', async () => {
-    component = await fixture(html`<test-pharos-image-card disabled="true" link="#">
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <span slot="title">Card Title</span>
-      <div slot="metadata">Creator of the item</div>
-      <div slot="metadata">1990-2000</div>
-      <div slot="metadata">
-        Part of <test-pharos-link href="#">An Example Collection</test-pharos-link>
-      </div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card disabled="true" link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <span slot="title">Card Title</span>
+        <div slot="metadata">Creator of the item</div>
+        <div slot="metadata">1990-2000</div>
+        <div slot="metadata">
+          Part of <test-pharos-link href="#">An Example Collection</test-pharos-link>
+        </div>
+      </test-pharos-image-card>`
+    );
     const imageLink = component.renderRoot.querySelector('.card__link--image');
     imageLink?.parentElement?.dispatchEvent(new Event('mouseenter'));
 
@@ -247,20 +245,22 @@ describe('pharos-image-card', () => {
   });
 
   it('renders the action-button via a slot when the action menu id property is not provided', async () => {
-    component = await fixture(html`<test-pharos-image-card link="#">
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <span slot="title">Card Title</span>
-      <div slot="metadata">Creator of the item</div>
-      <div slot="metadata">1990-2000</div>
-      <div slot="metadata">
-        Part of <test-pharos-link href="#">An Example Collection</test-pharos-link>
-      </div>
-      <div slot="action-button">ActionButtonComponent</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <span slot="title">Card Title</span>
+        <div slot="metadata">Creator of the item</div>
+        <div slot="metadata">1990-2000</div>
+        <div slot="metadata">
+          Part of <test-pharos-link href="#">An Example Collection</test-pharos-link>
+        </div>
+        <div slot="action-button">ActionButtonComponent</div>
+      </test-pharos-image-card>`
+    );
 
     const actionMenuSlot = component.renderRoot.querySelector('slot[name="action-button"]');
     expect(actionMenuSlot).not.to.be.null;
@@ -301,19 +301,21 @@ describe('pharos-image-card', () => {
   });
 
   it('renders the title via a slot when the title property is not set', async () => {
-    component = await fixture(html`<test-pharos-image-card link="#">
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <span slot="title">Card Title</span>
-      <div slot="metadata">Creator of the item</div>
-      <div slot="metadata">1990-2000</div>
-      <div slot="metadata">
-        Part of <test-pharos-link href="#">An Example Collection</test-pharos-link>
-      </div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <span slot="title">Card Title</span>
+        <div slot="metadata">Creator of the item</div>
+        <div slot="metadata">1990-2000</div>
+        <div slot="metadata">
+          Part of <test-pharos-link href="#">An Example Collection</test-pharos-link>
+        </div>
+      </test-pharos-image-card>`
+    );
 
     const titleSlot = component.renderRoot.querySelector('slot[name="title"]');
     expect(titleSlot).not.to.be.null;
@@ -436,14 +438,16 @@ describe('pharos-image-card', () => {
   });
 
   it('dispatches the mouseenter event on pharos link mouseenter', async () => {
-    component = await fixture(html`<test-pharos-image-card link="#">
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     let hovered = false;
     const onMouseEnter = (): void => {
@@ -458,18 +462,16 @@ describe('pharos-image-card', () => {
   });
 
   it('will show not show a checkbox when subtle-select is true', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      variant="selectable"
-      subtle-select="true"
-      link="#"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" subtle-select="true" link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     let checkboxElement = null;
     checkboxElement = component.renderRoot.querySelector(
@@ -479,18 +481,16 @@ describe('pharos-image-card', () => {
   });
 
   it('will show a checkbox when hovered and subtle-select is true', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      variant="selectable"
-      subtle-select="true"
-      link="#"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" subtle-select="true" link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     let checkboxElement = null;
     const imageLink = component.renderRoot.querySelector('.card__link--image');
@@ -506,19 +506,16 @@ describe('pharos-image-card', () => {
   });
 
   it('will show a checkbox when hovered while subtle and subtle-select are true', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      variant="selectable"
-      subtle-select="true"
-      subtle="true"
-      link="#"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" subtle-select="true" subtle="true" link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     let checkboxElement = null;
     const imageLink = component.renderRoot.querySelector('.card__link--image');
@@ -534,18 +531,16 @@ describe('pharos-image-card', () => {
   });
 
   it('will show a checkbox when hovered while subtle is true', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      variant="selectable"
-      subtle="true"
-      link="#"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" subtle="true" link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     let checkboxElement = null;
     const imageLink = component.renderRoot.querySelector('.card__link--image');
@@ -561,14 +556,16 @@ describe('pharos-image-card', () => {
   });
 
   it('dispatches the mouseleave event on pharos link mouseleave', async () => {
-    component = await fixture(html`<test-pharos-image-card link="#">
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     let hovered = true;
     const onMouseLeave = (): void => {
@@ -583,14 +580,16 @@ describe('pharos-image-card', () => {
   });
 
   it('dispatches pharos-image-card-selected when the title of the select variant is clicked', async () => {
-    component = await fixture(html`<test-pharos-image-card variant="selectable" link="#">
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     const title: PharosLink | null = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--title'
@@ -608,14 +607,16 @@ describe('pharos-image-card', () => {
   });
 
   it('dispatches pharos-image-card-selected when the thumbnail of the select variant is clicked', async () => {
-    component = await fixture(html`<test-pharos-image-card variant="selectable" link="#">
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     const title: PharosLink | null = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--image'
@@ -633,14 +634,16 @@ describe('pharos-image-card', () => {
   });
 
   it('dispatches pharos-image-card-selected when the thumbnail of the thumbnail of a select variant card is clicked', async () => {
-    component = await fixture(html`<test-pharos-image-card variant="selectable" subtle link="#">
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" subtle link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     const title: PharosLink | null = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--image'
@@ -658,18 +661,16 @@ describe('pharos-image-card', () => {
   });
 
   it('does not dispatch pharos-image-card-selected when the disabled thumbnail of the select variant is clicked', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      variant="selectable"
-      disabled="true"
-      link="#"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" disabled="true" link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     const title: PharosLink | null = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--image'
@@ -687,18 +688,16 @@ describe('pharos-image-card', () => {
   });
 
   it('does not dispatch pharos-image-card-selected when the disabled thumbnail of subtle-select is clicked', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      variant="selectable"
-      subtle-select="true"
-      link="#"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" subtle-select="true" link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     const title: PharosLink | null = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--image'
@@ -716,18 +715,16 @@ describe('pharos-image-card', () => {
   });
 
   it('does not dispatch pharos-image-card-selected when the title of the select variant is clicked in subtle-select mode', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      variant="selectable"
-      subtle-select
-      link="#"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" subtle-select link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     const title: PharosLink | null = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--image'
@@ -745,19 +742,16 @@ describe('pharos-image-card', () => {
   });
 
   it('does not dispatch pharos-image-card-selected when the title of the select variant is clicked in subtle/subtle-select mode', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      variant="selectable"
-      subtle-select
-      subtle
-      link="#"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card variant="selectable" subtle-select subtle link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     const title: PharosLink | null = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--image'
@@ -775,33 +769,37 @@ describe('pharos-image-card', () => {
   });
 
   it('renders the overlay slot content', async () => {
-    component = await fixture(html`<test-pharos-image-card link="#">
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <div slot="overlay">Card overlay</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card link="#">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
 
     expect(component.innerHTML).contains('Card overlay');
   });
 
   it('can be navigated with a keyboard when subtle and selectable', async () => {
-    component = await fixture(html`<test-pharos-image-card
-      title="Card Title"
-      link="#"
-      variant="selectable"
-      subtle-select="true"
-    >
-      <img
-        slot="image"
-        alt="Card Title"
-        src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-      />
-      <strong slot="metadata">100 items</strong>
-      <div slot="metadata">Description of collection.</div>
-    </test-pharos-image-card>`);
+    component = await fixture(
+      html`<test-pharos-image-card
+        title="Card Title"
+        link="#"
+        variant="selectable"
+        subtle-select="true"
+      >
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <strong slot="metadata">100 items</strong>
+        <div slot="metadata">Description of collection.</div>
+      </test-pharos-image-card>`
+    );
 
     component.focus();
     await sendKeys({ down: 'Tab' });

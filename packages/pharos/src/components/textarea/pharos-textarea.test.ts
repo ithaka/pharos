@@ -174,11 +174,9 @@ describe('pharos-textarea', () => {
   });
 
   it('renders a required asterisk and hidden text when input is required', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-textarea required><span slot="label">I am a label</span></test-pharos-textarea>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-textarea required><span slot="label">I am a label</span></test-pharos-textarea>
+    `);
     expect(component).shadowDom.to.equal(`
       <label for="textarea-element">
         <slot name="label">
@@ -210,13 +208,11 @@ describe('pharos-textarea', () => {
   });
 
   it('renders a provided message', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-textarea message="I am invalid"
-          ><span slot="label">I am a label</span></test-pharos-textarea
-        >
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-textarea message="I am invalid"
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >
+    `);
     expect(component).shadowDom.to.equal(`
       <label for="textarea-element">
         <slot name="label">
@@ -252,13 +248,11 @@ describe('pharos-textarea', () => {
   });
 
   it('removes invalidated state when validated', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-textarea invalidated
-          ><span slot="label">I am a label</span></test-pharos-textarea
-        >
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-textarea invalidated
+        ><span slot="label">I am a label</span></test-pharos-textarea
+      >
+    `);
     component.validated = true;
     await component.updateComplete;
 
@@ -267,13 +261,9 @@ describe('pharos-textarea', () => {
   });
 
   it('removes validated state when invalidated', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-textarea validated
-          ><span slot="label">I am a label</span></test-pharos-textarea
-        >
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-textarea validated><span slot="label">I am a label</span></test-pharos-textarea>
+    `);
     component.invalidated = true;
     await component.updateComplete;
 

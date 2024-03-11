@@ -25,9 +25,9 @@ describe('pharos-toggle-button', () => {
   });
 
   it('throws an error when an invalid property is set', async () => {
-    component = await fixture(
-      html` <test-pharos-toggle-button href="www.truedelta.com"></test-pharos-toggle-button> `
-    ).catch((e) => e);
+    component = await fixture(html`
+      <test-pharos-toggle-button href="www.truedelta.com"></test-pharos-toggle-button>
+    `).catch((e) => e);
     expect(
       'The toggle button component does not support these properties: href, hreflang, ping, rel, and target.'
     ).to.be.thrown;

@@ -118,38 +118,26 @@ describe('pharos-checkbox-group', () => {
 
   it('renders a provided message', async () => {
     const text = 'Please make a selection';
-    component = await fixture(
-      html`
-        <test-pharos-checkbox-group message="${text}">
-          <span slot="legend">Checkbox Group Header</span>
-          <test-pharos-checkbox value="1"
-            ><span slot="label">Checkbox 1</span></test-pharos-checkbox
-          >
-          <test-pharos-checkbox value="2"
-            ><span slot="label">Checkbox 2</span></test-pharos-checkbox
-          >
-        </test-pharos-checkbox-group>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-checkbox-group message="${text}">
+        <span slot="legend">Checkbox Group Header</span>
+        <test-pharos-checkbox value="1"><span slot="label">Checkbox 1</span></test-pharos-checkbox>
+        <test-pharos-checkbox value="2"><span slot="label">Checkbox 2</span></test-pharos-checkbox>
+      </test-pharos-checkbox-group>
+    `);
     const message = component.renderRoot.querySelector('.input-message__text');
     expect(message?.textContent).to.equal(text);
   });
 
   it('renders the provided message as the groups accessible description', async () => {
     const text = 'Please make a selection';
-    component = await fixture(
-      html`
-        <test-pharos-checkbox-group message="${text}">
-          <span slot="legend">Checkbox Group Header</span>
-          <test-pharos-checkbox value="1"
-            ><span slot="label">Checkbox 1</span></test-pharos-checkbox
-          >
-          <test-pharos-checkbox value="2"
-            ><span slot="label">Checkbox 2</span></test-pharos-checkbox
-          >
-        </test-pharos-checkbox-group>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-checkbox-group message="${text}">
+        <span slot="legend">Checkbox Group Header</span>
+        <test-pharos-checkbox value="1"><span slot="label">Checkbox 1</span></test-pharos-checkbox>
+        <test-pharos-checkbox value="2"><span slot="label">Checkbox 2</span></test-pharos-checkbox>
+      </test-pharos-checkbox-group>
+    `);
     const groupDescID = component.renderRoot
       .querySelector('fieldset')
       ?.getAttribute('aria-describedby');
