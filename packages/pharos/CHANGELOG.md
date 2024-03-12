@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.0.1
+
+### Patch Changes
+
+- [#714](https://github.com/ithaka/pharos/pull/714) [`ca0396a`](https://github.com/ithaka/pharos/commit/ca0396af26016d13013a446f10dbb4daa93b1515) Thanks [@daneah](https://github.com/daneah)! - Ensure jsdom patch is exported for consumers to use during testing
+
 ## 14.0.0
 
 ### Major Changes
@@ -552,20 +558,22 @@
   - Add register utility to simplify component registration and ensure trivial classes are used for custom elements:
 
     ```javascript
-    import { PharosAlert, PharosButton, PharosIcon } from '@ithaka/pharos';
-    import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
+    import { PharosAlert, PharosButton, PharosIcon } from "@ithaka/pharos";
+    import registerComponents from "@ithaka/pharos/lib/utils/registerComponents";
 
-    registerComponents('{prefix}', [PharosAlert, PharosButton, PharosIcon]);
+    registerComponents("{prefix}", [PharosAlert, PharosButton, PharosIcon]);
     ```
 
   - Add a React Pharos context provider for consumers to indicate prefix used for registration:
 
     ```jsx
-    import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
+    import { PharosContext } from "@ithaka/pharos/lib/utils/PharosContext";
 
-    const context = { prefix: 'homepage' };
+    const context = { prefix: "homepage" };
 
-    <PharosContext.Provider value={context}>...app code</PharosContext.Provider>;
+    <PharosContext.Provider value={context}>
+      ...app code
+    </PharosContext.Provider>;
     ```
 
 ### Patch Changes
@@ -602,9 +610,9 @@
   2. Register them with a custom tag in your app's entrypoint in the form of `{app/bundle}-pharos-{component}`:
 
      ```javascript
-     import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
+     import { PharosAlert } from "@ithaka/pharos/lib/components/alert/pharos-alert";
 
-     customElements.define('homepage-pharos-alert', PharosAlert);
+     customElements.define("homepage-pharos-alert", PharosAlert);
      ```
 
   3. Update templates, queries, unit tests, and integration tests with the newly defined tag names.
@@ -641,8 +649,8 @@
   6. Import the JSDOM patch in your Jest setup file if you use Jest for unit testing:
 
      ```javascript
-     import '@ithaka/pharos/lib/patches/jsdom';
-     import 'your-pharos-component-registration-file';
+     import "@ithaka/pharos/lib/patches/jsdom";
+     import "your-pharos-component-registration-file";
      ```
 
 ### Patch Changes
