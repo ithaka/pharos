@@ -76,7 +76,7 @@
     "@storybook/theming": "^7.6.17",
     "@storybook/web-components": "^7.6.17",
     "@storybook/web-components-vite": "^7.6.17",
-    "@types/uuid": "^9.0.0",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "all-contributors-cli": "^6.26.1",
