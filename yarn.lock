@@ -3428,7 +3428,7 @@ __metadata:
   resolution: "@ithaka/pharos-site@workspace:packages/pharos-site"
   dependencies:
     "@babel/plugin-transform-private-methods": "npm:^7.23.3"
-    "@ithaka/pharos": "npm:^14.0.0"
+    "@ithaka/pharos": "npm:^14.0.1"
     "@mdx-js/mdx": "npm:^1.6.22"
     "@mdx-js/react": "npm:^1.6.22"
     "@types/mdx-js__react": "npm:^1.5.3"
@@ -3461,7 +3461,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ithaka/pharos@npm:^14.0.0, @ithaka/pharos@workspace:packages/pharos":
+"@ithaka/pharos@npm:^14.0.1, @ithaka/pharos@workspace:packages/pharos":
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos@workspace:packages/pharos"
   dependencies:
