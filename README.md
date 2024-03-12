@@ -21,15 +21,19 @@
   <a href="https://bundlephobia.com/package/@ithaka/pharos"><img src="https://img.shields.io/bundlephobia/min/@ithaka/pharos" alt="Bundlephobia stats" /></a>
 </p>
 
+## Build statuses
+
+| System     | Status                                                                                                                                                                    |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Site       | [![Site status](https://api.netlify.com/api/v1/badges/6e5ee441-5739-46e4-9a85-ea5c5a333ebb/deploy-status)](https://app.netlify.com/sites/pharos/deploys)                  |
+| Storybooks | [![Storybooks status](https://api.netlify.com/api/v1/badges/0afa82e2-f12d-4a75-933c-efedee05fe99/deploy-status)](https://app.netlify.com/sites/pharos-storybooks/deploys) |
+
 ## Getting Started
 
 - Check out the [core package](./packages/pharos) for more info about Pharos components and how to get started
 - Visit the [Pharos site](https://pharos.jstor.org) to learn about the JSTOR brand, design guidelines, and component usage guidelines
 - Explore the [web component Storybook](https://pharos.jstor.org/storybooks/wc/) or the [React Storybook](https://pharos.jstor.org/storybooks/react/) to try the live components
 - Test for visual regressions in the Pharos [Chromatic project](https://www.chromatic.com/builds?appId=60919c26122bd50039b34644)
-
-<br />
-<br />
 
 ## Packages and configuration
 
@@ -42,9 +46,6 @@ This repository contains a number of packages related to Pharos:
 | [@ithaka/pharos-site](./packages/pharos-site) | Site & Documentation for Pharos         |
 
 In addition to these packages, this repository contains [the configuration for Pharos Storybooks](./.storybook).
-
-<br />
-<br />
 
 ## Contributing
 
@@ -113,9 +114,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
-
-<br />
-<br />
 
 ## Work with us at ITHAKA
 

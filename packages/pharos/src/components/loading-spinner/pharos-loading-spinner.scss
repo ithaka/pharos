@@ -13,7 +13,7 @@
   align-items: center;
 }
 
-:host(:not([on-background])) .loading-spinner__wrapper {
+:host(:not([is-on-background])) .loading-spinner__wrapper {
   background-color: rgb(255 255 255 / 0.8);
 }
 

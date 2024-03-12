@@ -9,9 +9,9 @@ describe('pharos-alert', () => {
   let component: PharosAlert;
 
   beforeEach(async () => {
-    component = await fixture(
-      html` <test-pharos-alert status="success"> It worked! </test-pharos-alert> `
-    );
+    component = await fixture(html`
+      <test-pharos-alert status="success"> It worked! </test-pharos-alert>
+    `);
   });
 
   it('is accessible', async () => {
@@ -26,9 +26,9 @@ describe('pharos-alert', () => {
   });
 
   it('renders the alert when a status is provided', async () => {
-    component = await fixture(
-      html` <test-pharos-alert status="info"> It worked! </test-pharos-alert> `
-    );
+    component = await fixture(html`
+      <test-pharos-alert status="info"> It worked! </test-pharos-alert>
+    `);
     expect(component).shadowDom.to.equal(`
       <div
         class="alert alert--info"
@@ -39,7 +39,6 @@ describe('pharos-alert', () => {
           class="alert__icon"
           data-pharos-component="PharosIcon"
           a11y-hidden="true"
-          description=""
           name="info-inverse"
         >
         </pharos-icon>
@@ -84,13 +83,11 @@ describe('pharos-alert', () => {
   });
 
   it('is closable', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-alert status="success" closable id="closable-alert">
-          It worked!
-        </test-pharos-alert>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-alert status="success" closable id="closable-alert">
+        It worked!
+      </test-pharos-alert>
+    `);
 
     await component.updateComplete;
 
@@ -101,13 +98,11 @@ describe('pharos-alert', () => {
   });
 
   it('fires a custom event pharos-alert-closed when closed by user interaction', async () => {
-    component = await fixture(
-      html`
-        <test-pharos-alert status="success" closable id="closable-alert">
-          It worked!
-        </test-pharos-alert>
-      `
-    );
+    component = await fixture(html`
+      <test-pharos-alert status="success" closable id="closable-alert">
+        It worked!
+      </test-pharos-alert>
+    `);
     let wasFired = false;
     const handleClose = (): void => {
       wasFired = true;

@@ -19,12 +19,13 @@ describe('pharos-header', () => {
               id="adv-search-link"
               >Advanced Search</test-pharos-dropdown-menu-nav-link
             >
-            <test-pharos-dropdown-menu-nav-link
-              href="/subjects"
+            <test-pharos-dropdown-menu-nav-category
               id="browse-link"
               data-dropdown-menu-id="browse-menu"
               data-dropdown-menu-hover
-              >Browse</test-pharos-dropdown-menu-nav-link
+              >
+                <span slot="category">Browse</span>
+              </test-pharos-dropdown-menu-nav-category
             >
             <test-pharos-dropdown-menu id="browse-menu">
               <test-pharos-dropdown-menu-item link="/subjects"
@@ -33,19 +34,15 @@ describe('pharos-header', () => {
               <test-pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
                 >by Title</test-pharos-dropdown-menu-item
               >
-              <test-pharos-dropdown-menu-item link="/site/collection-list"
-                >by Collections</test-pharos-dropdown-menu-item
-              >
-              <test-pharos-dropdown-menu-item link="/publishers"
-                >by Publisher</test-pharos-dropdown-menu-item
-              >
+              <test-pharos-dropdown-menu-item link="/publishers">by Publisher</pharos-dropdown-menu-item>
             </test-pharos-dropdown-menu>
-            <test-pharos-dropdown-menu-nav-link
-              href="/account/workspace"
+            <test-pharos-dropdown-menu-nav-category
               id="tools-link"
               data-dropdown-menu-id="tools-menu"
               data-dropdown-menu-hover
-              >Tools</test-pharos-dropdown-menu-nav-link
+              >
+                <span slot="category">Browse</span>
+              </test-pharos-dropdown-menu-nav-category
             >
             <test-pharos-dropdown-menu id="tools-menu">
               <test-pharos-dropdown-menu-item link="/account/workspace"

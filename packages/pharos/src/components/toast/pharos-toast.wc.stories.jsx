@@ -29,7 +29,7 @@ export const Base = {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
               content:
-                'The item has moved to your <storybook-pharos-link href="#" on-background bold>Workspace</storybook-pharos-link>.',
+                'The item has moved to your <storybook-pharos-link href="#" is-on-background bold>Workspace</storybook-pharos-link>.',
               returnElements: [document.querySelector('#success-toast-button')],
             },
           });
@@ -60,7 +60,7 @@ export const Error = {
             detail: {
               status: 'error',
               content:
-                'Sorry, we were unable to move the item. Please try again later. If the issue persists, <storybook-pharos-link href="#" on-background bold>contact JSTOR Support</storybook-pharos-link>.',
+                'Sorry, we were unable to move the item. Please try again later. If the issue persists, <storybook-pharos-link href="#" is-on-background bold>contact JSTOR Support</storybook-pharos-link>.',
               returnElements: [document.querySelector('#error-toast-button')],
             },
           });
@@ -91,7 +91,7 @@ export const LongContent = {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
               content:
-                'This is a notification for longer content, which may even include a <storybook-pharos-link href="#" on-background bold>link</storybook-pharos-link>.',
+                'This is a notification for longer content, which may even include a <storybook-pharos-link href="#" is-on-background bold>link</storybook-pharos-link>.',
               returnElements: [document.querySelector('#long-toast-button')],
             },
           });
@@ -149,6 +149,7 @@ export const UpdateableToast = {
         @click="${() => {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
+              id: 'the-toast',
               status: 'info',
               content: 'Saving 15 items to your Workspace',
               indefinite: true,
@@ -159,15 +160,20 @@ export const UpdateableToast = {
           setTimeout(() => {
             const updateEvent = new CustomEvent('pharos-toast-update', {
               detail: {
+                id: 'the-toast',
                 status: 'success',
-                content: '15 items succsessfully saved',
+                content: '15 items successfully saved',
                 returnElements: [document.querySelector('#info-toast-button')],
               },
             });
             document.dispatchEvent(updateEvent);
           }, '3000');
           setTimeout(() => {
-            const updateEvent = new CustomEvent('pharos-toast-close', {});
+            const updateEvent = new CustomEvent('pharos-toast-close', {
+              detail: {
+                id: 'the-toast',
+              },
+            });
             document.dispatchEvent(updateEvent);
           }, '6000');
         }}"

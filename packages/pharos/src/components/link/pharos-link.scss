@@ -34,13 +34,14 @@
   cursor: pointer;
 }
 
-:host([on-background]) #link-element {
+:host([is-on-background]) #link-element {
   @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
 
   color: var(--pharos-color-interactive-tertiary);
 
   @at-root &:hover {
     color: var(--pharos-color-interactive-tertiary);
+
     @include mixins.no-underline;
   }
 
@@ -99,7 +100,7 @@
   @include mixins.hidden;
 }
 
-:host([on-background][subtle]) #link-element {
+:host([is-on-background][subtle]) #link-element {
   @at-root &:hover {
     @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
   }

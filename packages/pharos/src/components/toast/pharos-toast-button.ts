@@ -19,7 +19,7 @@ export class PharosToastButton extends PharosButton {
     this.icon = 'close';
     this.variant = 'subtle';
     this.a11yLabel = 'Dismiss';
-    this.onBackground = true;
+    this.isOnBackground = true;
     this.iconCondensed = true;
   }
 

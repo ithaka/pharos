@@ -3,8 +3,14 @@ import type { TemplateResult } from 'lit';
 
 import logo from '@config/assets/images/jstor-logo-inverse.svg';
 
-export const Sidenav = (): TemplateResult => html`
-  <storybook-pharos-sidenav class="reports-page__sidenav" main-content-id="main-content">
+export const Sidenav = (open: boolean, showCloseButton: boolean): TemplateResult => html`
+  <storybook-pharos-sidenav
+    class="reports-page__sidenav"
+    id="report-sidenav"
+    main-content-id="main-content"
+    ?open="${open}"
+    ?has-close-button="${showCloseButton}"
+  >
     <storybook-pharos-link slot="top" href="/" id="jstor-logo">
       <img src="${logo}" alt="Pharos Home" width="72" height="100" />
     </storybook-pharos-link>

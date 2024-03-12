@@ -131,8 +131,8 @@ export const buildReact = async () => {
 
           const tag = registeredName ? registeredName : '${webComponentName}';
           export const ${reactComponentName}: FC${
-      reactInterface ? `<${reactComponentName}Props>` : `<${REACT_PROP_TYPE}>`
-    } = createReactComponent(tag);
+            reactInterface ? `<${reactComponentName}Props>` : `<${REACT_PROP_TYPE}>`
+          } = createReactComponent(tag);
           ${reactComponentName}.displayName = '${reactComponentName}';
 
           ${createDefaultProps(reactComponentName)}
@@ -147,9 +147,9 @@ export const buildReact = async () => {
       }
     );
 
-    const options = prettier.resolveConfig.sync(componentPath);
+    const options = await prettier.resolveConfig(componentPath);
     options.parser = 'typescript';
-    const formatted = prettier.format(reactComponent, options);
+    const formatted = await prettier.format(reactComponent, options);
     await fs.mkdir(path.dirname(dest), { recursive: true });
     await fs.writeFile(dest, formatted, { flag: 'w' });
   }

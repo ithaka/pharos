@@ -24,6 +24,7 @@ export { PharosLink } from './components/link/pharos-link';
 export { PharosButton } from './components/button/pharos-button';
 export { PharosInputGroup } from './components/input-group/pharos-input-group';
 export { PharosInputGroupSelect } from './components/input-group/pharos-input-group-select';
+export { PharosDropdownMenuNavCategory } from './components/dropdown-menu-nav/pharos-dropdown-menu-nav-category';
 export { PharosDropdownMenuNavLink } from './components/dropdown-menu-nav/pharos-dropdown-menu-nav-link';
 export { PharosDropdownMenuNav } from './components/dropdown-menu-nav/pharos-dropdown-menu-nav';
 export { PharosFooter } from './components/footer/pharos-footer';
@@ -37,7 +38,6 @@ export { PharosBreadcrumbItem } from './components/breadcrumb/pharos-breadcrumb-
 export { PharosToast } from './components/toast/pharos-toast';
 export { PharosToaster } from './components/toast/pharos-toaster';
 export { PharosToastButton } from './components/toast/pharos-toast-button';
-export { PharosSidenavButton } from './components/sidenav/pharos-sidenav-button';
 export { PharosLayout } from './components/layout/pharos-layout';
 export { PharosImageCard } from './components/image-card/pharos-image-card';
 export { PharosToggleButton } from './components/toggle-button-group/pharos-toggle-button';

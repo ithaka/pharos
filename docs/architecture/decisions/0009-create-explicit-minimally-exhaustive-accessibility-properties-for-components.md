@@ -21,21 +21,15 @@ Create an (enforced) convention of property names that, when supplied at the cus
 When a custom element has a a11y-\* attribute, that attribute gets passed down to the appropriate (as decided on a per-component basis) underlying native element.
 
 ```html
-<pharos-button a11y-aria-describedby="the-tooltip">
-    Click me
-</pharos-button>
+<pharos-button a11y-aria-describedby="the-tooltip"> Click me </pharos-button>
 
-<pharos-tooltip id="the-tooltip">
-    I am a tooltip
-</pharos-tooltip>
+<pharos-tooltip id="the-tooltip"> I am a tooltip </pharos-tooltip>
 ```
 
 The button’s shadow DOM would then look like:
 
 ```html
-<button aria-describedby="the-tooltip">
-    Click me
-</button>
+<button aria-describedby="the-tooltip">Click me</button>
 ```
 
 Shorter attribute names could have been used for brevity, but we should in general avoid possible conflicts with valid HTML5 attribute names.

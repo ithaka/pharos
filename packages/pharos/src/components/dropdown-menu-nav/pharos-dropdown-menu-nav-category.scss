@@ -1,0 +1,39 @@
+@use '../../utils/scss/mixins';
+
+#category-element {
+  @include mixins.font-base;
+
+  padding: var(--pharos-spacing-three-quarters-x);
+  text-decoration: none;
+  font-weight: var(--pharos-font-weight-bold);
+  display: inline-flex;
+  min-width: 0;
+  background-color: var(--pharos-dropdown-menu-item-color-background-base);
+  border: none;
+  color: var(--pharos-dropdown-menu-item-color-text-base);
+  cursor: pointer;
+  text-align: left;
+  margin: 0;
+
+  &:focus-visible {
+    outline: 2px solid var(--pharos-color-focus);
+    outline-offset: -1px;
+  }
+
+  @supports not selector(:focus-visible) {
+    &:focus {
+      outline: 2px solid var(--pharos-color-focus);
+      outline-offset: 2px;
+    }
+  }
+}
+
+#category-element:hover,
+:host([is-active]) #category-element {
+  color: var(--pharos-color-interactive-primary);
+  background-color: var(--pharos-color-marble-gray-94);
+  border-bottom: 2px solid var(--pharos-color-hover-primary);
+  padding-bottom: calc(var(--pharos-spacing-three-quarters-x) - 2px);
+  fill: var(--pharos-color-interactive-primary);
+  text-decoration: none;
+}

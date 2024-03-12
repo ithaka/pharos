@@ -37,21 +37,13 @@ export class PharosLink extends FocusMixin(AnchorElement) {
 
   /**
    * Indicates the link is on a AA compliant background.
-   * @attr on-background
+   * @attr is-on-background
    */
-  @property({ type: Boolean, reflect: true, attribute: 'on-background' })
-  public onBackground = false;
+  @property({ type: Boolean, reflect: true, attribute: 'is-on-background' })
+  public isOnBackground = false;
 
   /**
    * Indicates the aria-label to apply to the link.
-   * @attr label
-   * @deprecated
-   */
-  @property({ type: String, reflect: true })
-  public label?: string;
-
-  /**
-   * Indicates the aria label to apply to the button.
    * @attr a11y-label
    */
   @property({ type: String, reflect: true, attribute: 'a11y-label' })
@@ -129,9 +121,6 @@ export class PharosLink extends FocusMixin(AnchorElement) {
   }
 
   protected override render(): TemplateResult {
-    // TODO: Remove in future release once sufficient time elapsed to update naming convention
-    const a11yLabel = this.a11yLabel ?? this.label;
-
     return this.href !== undefined
       ? html`<a
           id="link-element"
@@ -146,7 +135,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
           rel=${ifDefined(this.rel)}
           target=${ifDefined(this.target)}
           type=${ifDefined(this.type)}
-          aria-label=${ifDefined(a11yLabel)}
+          aria-label=${ifDefined(this.a11yLabel)}
           @click=${this._handleClick}
           ><slot></slot>${this.appendContent}</a
         >`
@@ -156,7 +145,7 @@ export class PharosLink extends FocusMixin(AnchorElement) {
             [`link--alert`]: this._alert,
             [`link--hover`]: this._hover,
           })}"
-          aria-label=${ifDefined(a11yLabel)}
+          aria-label=${ifDefined(this.a11yLabel)}
         >
           <slot></slot>
           ${this.appendContent}

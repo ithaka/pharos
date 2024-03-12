@@ -14,13 +14,12 @@ export default {
 };
 
 export const Base = {
-  render: (args) =>
-    html`
-      <storybook-pharos-progress-bar value=${args.value}>
-        <div slot="title">${args.title}</div>
-        <div slot="description">${args.description}</div>
-      </storybook-pharos-progress-bar>
-    `,
+  render: (args) => html`
+    <storybook-pharos-progress-bar value=${args.value}>
+      <div slot="title">${args.title}</div>
+      <div slot="description">${args.description}</div>
+    </storybook-pharos-progress-bar>
+  `,
   args: defaultArgs,
 };
 

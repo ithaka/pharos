@@ -37,7 +37,7 @@ const Template = {
           Part of
           <storybook-pharos-link
             href="https://www.jstor.org/site/pratt/buildings-image"
-            ?on-background=${args.subtle}
+            ?is-on-background=${args.subtle}
             >Pratt Institute Buildings Image Collection</storybook-pharos-link
           >
         </div>
@@ -327,67 +327,65 @@ export const VisitedTitleLink = {
 };
 
 export const WithActionMenu = {
-  render: () =>
-    html`
-      <storybook-pharos-layout style="margin: 1rem 0">
-        <storybook-pharos-image-card
-          title="South Hall"
-          link="https://www.jstor.org/stable/10.2307/community.26220188"
-          action-menu="my-dropdown-menu"
-          style="grid-column: span 2"
-        >
-          <img id="image" src="${collection5}" alt="south hall" slot="image" />
-          <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-          <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-          <div id="collection" slot="metadata">
-            Part of
-            <storybook-pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-              >Pratt Institute Buildings Image Collection</storybook-pharos-link
-            >
-          </div>
-        </storybook-pharos-image-card>
-      </storybook-pharos-layout>
-      <storybook-pharos-dropdown-menu id="my-dropdown-menu">
+  render: () => html`
+    <storybook-pharos-layout style="margin: 1rem 0">
+      <storybook-pharos-image-card
+        title="South Hall"
+        link="https://www.jstor.org/stable/10.2307/community.26220188"
+        action-menu="my-dropdown-menu"
+        style="grid-column: span 2"
+      >
+        <img id="image" src="${collection5}" alt="south hall" slot="image" />
+        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
+        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
+        <div id="collection" slot="metadata">
+          Part of
+          <storybook-pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+            >Pratt Institute Buildings Image Collection</storybook-pharos-link
+          >
+        </div>
+      </storybook-pharos-image-card>
+    </storybook-pharos-layout>
+    <storybook-pharos-dropdown-menu id="my-dropdown-menu">
+      <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
+      <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
+      <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
+    </storybook-pharos-dropdown-menu>
+  `,
+};
+
+export const WithActionButtonSlot = {
+  render: () => html`
+    <storybook-pharos-layout style="margin: 1rem 0">
+      <storybook-pharos-image-card
+        title="South Hall"
+        link="https://www.jstor.org/stable/10.2307/community.26220188"
+        style="grid-column: span 2"
+      >
+        <img id="image" src="${collection5}" alt="south hall" slot="image" />
+        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
+        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
+        <div id="collection" slot="metadata">
+          Part of
+          <storybook-pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+            >Pratt Institute Buildings Image Collection</storybook-pharos-link
+          >
+        </div>
+        <storybook-pharos-button
+          slot="action-button"
+          data-dropdown-menu-id="dropdownId"
+          icon="ellipses-vertical"
+          icon-condensed
+          variant="subtle"
+        ></storybook-pharos-button>
+      </storybook-pharos-image-card>
+      <storybook-pharos-dropdown-menu id="dropdownId">
         <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
         <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
         <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
       </storybook-pharos-dropdown-menu>
-    `,
-};
-
-export const WithActionButtonSlot = {
-  render: () =>
-    html`
-      <storybook-pharos-layout style="margin: 1rem 0">
-        <storybook-pharos-image-card
-          title="South Hall"
-          link="https://www.jstor.org/stable/10.2307/community.26220188"
-          style="grid-column: span 2"
-        >
-          <img id="image" src="${collection5}" alt="south hall" slot="image" />
-          <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-          <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-          <div id="collection" slot="metadata">
-            Part of
-            <storybook-pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-              >Pratt Institute Buildings Image Collection</storybook-pharos-link
-            >
-          </div>
-          <storybook-pharos-button
-            slot="action-button"
-            data-dropdown-menu-id="dropdownId"
-            icon="ellipses-vertical"
-            icon-condensed
-            variant="subtle"
-          ></storybook-pharos-button>
-        </storybook-pharos-image-card>
-        <storybook-pharos-dropdown-menu id="dropdownId">
-          <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
-        </storybook-pharos-dropdown-menu>
-      </storybook-pharos-layout>
-    `,
+    </storybook-pharos-layout>
+  `,
 };
 
 export const SelectableCollection = {

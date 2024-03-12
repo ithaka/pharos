@@ -1,5 +1,31 @@
 # @ithaka/pharos-site
 
+## 6.0.1
+
+### Patch Changes
+
+- [#703](https://github.com/ithaka/pharos/pull/703) [`7905475`](https://github.com/ithaka/pharos/commit/7905475862cf647c9bead0e6da5ec492009efd10) Thanks [@daneah](https://github.com/daneah)! - Fix component properties for Pharos v14
+
+- Updated dependencies [[`ca0396a`](https://github.com/ithaka/pharos/commit/ca0396af26016d13013a446f10dbb4daa93b1515)]:
+  - @ithaka/pharos@14.0.1
+
+## 6.0.0
+
+### Major Changes
+
+- [#657](https://github.com/ithaka/pharos/pull/657) [`e89bcaf`](https://github.com/ithaka/pharos/commit/e89bcaf3ac3dbc8be99f7e74b82710f9e3f8bea7) Thanks [@daneah](https://github.com/daneah)! - Use is-on-background in place of on-background
+
+- [#472](https://github.com/ithaka/pharos/pull/472) [`eaa514f`](https://github.com/ithaka/pharos/commit/eaa514f9e87f856a4b6a380f20adab52b28924c4) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - individual file exports are no longer supported, import files based on the exports defined in the package.json
+
+- [#586](https://github.com/ithaka/pharos/pull/586) [`eb228d5`](https://github.com/ithaka/pharos/commit/eb228d510514c273b0dd10d9b6f02c83dfb601fe) Thanks [@daneah](https://github.com/daneah)! - Remove deprecated Google Translate widget
+
+### Patch Changes
+
+- [#578](https://github.com/ithaka/pharos/pull/578) [`52006f3`](https://github.com/ithaka/pharos/commit/52006f340892e6375a3f78755bff304c75d0b3e7) Thanks [@mtorres3](https://github.com/mtorres3)! - Update onBackground prop to isOnBackground
+
+- Updated dependencies [[`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`99879a1`](https://github.com/ithaka/pharos/commit/99879a10557130d1a13486dfee110905cb4ca09b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b), [`a2eca68`](https://github.com/ithaka/pharos/commit/a2eca6818ed032beef5ad00c3b2089444e063e6b)]:
+  - @ithaka/pharos@14.0.0
+
 ## 5.14.0
 
 ### Minor Changes
@@ -153,20 +179,22 @@
   - Add register utility to simplify component registration and ensure trivial classes are used for custom elements:
 
     ```javascript
-    import { PharosAlert, PharosButton, PharosIcon } from '@ithaka/pharos';
-    import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
+    import { PharosAlert, PharosButton, PharosIcon } from "@ithaka/pharos";
+    import registerComponents from "@ithaka/pharos/lib/utils/registerComponents";
 
-    registerComponents('{prefix}', [PharosAlert, PharosButton, PharosIcon]);
+    registerComponents("{prefix}", [PharosAlert, PharosButton, PharosIcon]);
     ```
 
   - Add a React Pharos context provider for consumers to indicate prefix used for registration:
 
     ```jsx
-    import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
+    import { PharosContext } from "@ithaka/pharos/lib/utils/PharosContext";
 
-    const context = { prefix: 'homepage' };
+    const context = { prefix: "homepage" };
 
-    <PharosContext.Provider value={context}>...app code</PharosContext.Provider>;
+    <PharosContext.Provider value={context}>
+      ...app code
+    </PharosContext.Provider>;
     ```
 
 ### Patch Changes
@@ -207,9 +235,9 @@
   2. Register them with a custom tag in your app's entrypoint in the form of `{app/bundle}-pharos-{component}`:
 
      ```javascript
-     import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
+     import { PharosAlert } from "@ithaka/pharos/lib/components/alert/pharos-alert";
 
-     customElements.define('homepage-pharos-alert', PharosAlert);
+     customElements.define("homepage-pharos-alert", PharosAlert);
      ```
 
   3. Update templates, queries, unit tests, and integration tests with the newly defined tag names.
@@ -246,8 +274,8 @@
   6. Import the JSDOM patch in your Jest setup file if you use Jest for unit testing:
 
      ```javascript
-     import '@ithaka/pharos/lib/patches/jsdom';
-     import 'your-pharos-component-registration-file';
+     import "@ithaka/pharos/lib/patches/jsdom";
+     import "your-pharos-component-registration-file";
      ```
 
 ### Patch Changes

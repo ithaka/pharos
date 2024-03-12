@@ -18,26 +18,24 @@ interface SourceProps {
 }
 
 const SEO: FC<SourceProps> = ({ description, lang, title, pathname }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            siteUrl
-            title
-            subtitle
-            description
-            author
-            image {
-              path
-              height
-              width
-            }
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          siteUrl
+          title
+          subtitle
+          description
+          author
+          image {
+            path
+            height
+            width
           }
         }
       }
-    `
-  );
+    }
+  `);
 
   const siteUrl = site.siteMetadata.siteUrl;
   const metaDescription = description || site.siteMetadata.description;

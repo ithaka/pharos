@@ -1,5 +1,65 @@
 # @ithaka/pharos
 
+## 14.0.1
+
+### Patch Changes
+
+- [#714](https://github.com/ithaka/pharos/pull/714) [`ca0396a`](https://github.com/ithaka/pharos/commit/ca0396af26016d13013a446f10dbb4daa93b1515) Thanks [@daneah](https://github.com/daneah)! - Ensure jsdom patch is exported for consumers to use during testing
+
+## 14.0.0
+
+### Major Changes
+
+- [#475](https://github.com/ithaka/pharos/pull/475) [`b9eedf6`](https://github.com/ithaka/pharos/commit/b9eedf689a121818a29758596976ab3f75533c29) Thanks [@daneah](https://github.com/daneah)! - Update Toaster to use internally consistent component scoping
+
+- [#657](https://github.com/ithaka/pharos/pull/657) [`e89bcaf`](https://github.com/ithaka/pharos/commit/e89bcaf3ac3dbc8be99f7e74b82710f9e3f8bea7) Thanks [@daneah](https://github.com/daneah)! - Use is-on-background in place of on-background
+
+- [#614](https://github.com/ithaka/pharos/pull/614) [`d026826`](https://github.com/ithaka/pharos/commit/d0268264b08e88246e6d3ffc17a9a20a57fabca3) Thanks [@daneah](https://github.com/daneah)! - Remove `paint` value of contain property globally
+
+- [#478](https://github.com/ithaka/pharos/pull/478) [`ace35cf`](https://github.com/ithaka/pharos/commit/ace35cf0302ca9e0feaec99984548686d8374d88) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - remove sidenav button, add consumer controls
+
+- [#676](https://github.com/ithaka/pharos/pull/676) [`536a598`](https://github.com/ithaka/pharos/commit/536a598de6e8d103d4d9aeee242acdcfb24fd035) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Update all use of label attribute to a11y-label
+
+- [#594](https://github.com/ithaka/pharos/pull/594) [`f8342cc`](https://github.com/ithaka/pharos/commit/f8342cc6e1df4a890639443bd9e015d4af041c94) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Add additional ARIA attributes for Pharos button
+  and use a new naming convention for these specific
+  pharos attributes.
+
+- [#468](https://github.com/ithaka/pharos/pull/468) [`1913341`](https://github.com/ithaka/pharos/commit/19133412f96ecfe68b38820cb4704dfff0defabe) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - pharos-tab `selected` has been deprecated, see new property for pharos-tabs `selected-tab`
+
+- [#472](https://github.com/ithaka/pharos/pull/472) [`eaa514f`](https://github.com/ithaka/pharos/commit/eaa514f9e87f856a4b6a380f20adab52b28924c4) Thanks [@chrisjbrown](https://github.com/chrisjbrown)! - individual file exports are no longer supported, import files based on the exports defined in the package.json
+
+- [#586](https://github.com/ithaka/pharos/pull/586) [`eb228d5`](https://github.com/ithaka/pharos/commit/eb228d510514c273b0dd10d9b6f02c83dfb601fe) Thanks [@daneah](https://github.com/daneah)! - Remove deprecated Google Translate widget
+
+- [#699](https://github.com/ithaka/pharos/pull/699) [`38322bc`](https://github.com/ithaka/pharos/commit/38322bc0d6eff716fe4a3408265dc4831efc95d9) Thanks [@brentswisher](https://github.com/brentswisher)! - Require an a11y-label for icon buttons
+
+- [#690](https://github.com/ithaka/pharos/pull/690) [`fda9018`](https://github.com/ithaka/pharos/commit/fda9018b411c12dc884e04ab977c2dea195b07f1) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Remove overflow-y from pharos-tabs tab panels
+
+### Minor Changes
+
+- [#681](https://github.com/ithaka/pharos/pull/681) [`67684b7`](https://github.com/ithaka/pharos/commit/67684b7b10e2a49e549b3eaf74f7c6a471bf8eeb) Thanks [@brentswisher](https://github.com/brentswisher)! - Add elevation style to modal component
+
+- [#683](https://github.com/ithaka/pharos/pull/683) [`551c5e9`](https://github.com/ithaka/pharos/commit/551c5e9ce0ad217b1e58973af37a7fe26cde8518) Thanks [@brentswisher](https://github.com/brentswisher)! - Add default elevation and remove border from combobox component
+
+- [#689](https://github.com/ithaka/pharos/pull/689) [`99879a1`](https://github.com/ithaka/pharos/commit/99879a10557130d1a13486dfee110905cb4ca09b) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Added media query for icons to appear on Windows High Contrast Mode
+
+- [#682](https://github.com/ithaka/pharos/pull/682) [`3992876`](https://github.com/ithaka/pharos/commit/3992876300552a286a2e07a68aaf7bdea238fc97) Thanks [@brentswisher](https://github.com/brentswisher)! - Update popover component elevation to use design token
+
+- [#684](https://github.com/ithaka/pharos/pull/684) [`c2a2248`](https://github.com/ithaka/pharos/commit/c2a22483478aaf9f8035ae4503583af2adca1b20) Thanks [@brentswisher](https://github.com/brentswisher)! - Add default elevation and remove border from dropdown-menu
+
+### Patch Changes
+
+- [#691](https://github.com/ithaka/pharos/pull/691) [`8ca6aeb`](https://github.com/ithaka/pharos/commit/8ca6aeb2983069c97999c2b38006b0b660f70b4b) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Add ability to use a11y-disabled and maintain default disabled styling
+
+- [#671](https://github.com/ithaka/pharos/pull/671) [`145da90`](https://github.com/ithaka/pharos/commit/145da90eda7b6ec1a80853cd2fc146fe0fc35473) Thanks [@brentswisher](https://github.com/brentswisher)! - Remove deprecated onBackground attribute from sidenav storybook story
+
+- [#696](https://github.com/ithaka/pharos/pull/696) [`df71253`](https://github.com/ithaka/pharos/commit/df712531c66735fb43d94c522cba6a222e520243) Thanks [@brentswisher](https://github.com/brentswisher)! - Update storybook stories to work with new sidenav display logic
+
+- [#578](https://github.com/ithaka/pharos/pull/578) [`52006f3`](https://github.com/ithaka/pharos/commit/52006f340892e6375a3f78755bff304c75d0b3e7) Thanks [@mtorres3](https://github.com/mtorres3)! - Update onBackground prop to isOnBackground
+
+- [#677](https://github.com/ithaka/pharos/pull/677) [`8f8c2bb`](https://github.com/ithaka/pharos/commit/8f8c2bb3870e9b13dc7a809706e98560156ff015) Thanks [@brentswisher](https://github.com/brentswisher)! - Updates the Link to use a11yLabel values within Storybook
+
+- [#679](https://github.com/ithaka/pharos/pull/679) [`a1ade7a`](https://github.com/ithaka/pharos/commit/a1ade7a9a73677a1e78ffcfb4eb8b4a752368226) Thanks [@brentswisher](https://github.com/brentswisher)! - Require all icons to have a label or be explicitly hidden
+
 ## 13.4.0
 
 ### Minor Changes
@@ -498,20 +558,22 @@
   - Add register utility to simplify component registration and ensure trivial classes are used for custom elements:
 
     ```javascript
-    import { PharosAlert, PharosButton, PharosIcon } from '@ithaka/pharos';
-    import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
+    import { PharosAlert, PharosButton, PharosIcon } from "@ithaka/pharos";
+    import registerComponents from "@ithaka/pharos/lib/utils/registerComponents";
 
-    registerComponents('{prefix}', [PharosAlert, PharosButton, PharosIcon]);
+    registerComponents("{prefix}", [PharosAlert, PharosButton, PharosIcon]);
     ```
 
   - Add a React Pharos context provider for consumers to indicate prefix used for registration:
 
     ```jsx
-    import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
+    import { PharosContext } from "@ithaka/pharos/lib/utils/PharosContext";
 
-    const context = { prefix: 'homepage' };
+    const context = { prefix: "homepage" };
 
-    <PharosContext.Provider value={context}>...app code</PharosContext.Provider>;
+    <PharosContext.Provider value={context}>
+      ...app code
+    </PharosContext.Provider>;
     ```
 
 ### Patch Changes
@@ -548,9 +610,9 @@
   2. Register them with a custom tag in your app's entrypoint in the form of `{app/bundle}-pharos-{component}`:
 
      ```javascript
-     import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
+     import { PharosAlert } from "@ithaka/pharos/lib/components/alert/pharos-alert";
 
-     customElements.define('homepage-pharos-alert', PharosAlert);
+     customElements.define("homepage-pharos-alert", PharosAlert);
      ```
 
   3. Update templates, queries, unit tests, and integration tests with the newly defined tag names.
@@ -587,8 +649,8 @@
   6. Import the JSDOM patch in your Jest setup file if you use Jest for unit testing:
 
      ```javascript
-     import '@ithaka/pharos/lib/patches/jsdom';
-     import 'your-pharos-component-registration-file';
+     import "@ithaka/pharos/lib/patches/jsdom";
+     import "your-pharos-component-registration-file";
      ```
 
 ### Patch Changes
