@@ -1,6 +1,7 @@
 import { PharosElement } from '../base/pharos-element';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { html, nothing } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { property } from 'lit/decorators.js';
@@ -80,6 +81,9 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   @property({ type: String, reflect: true, attribute: 'caption' })
   public caption: string = '';
 
+  @property({ type: String, reflect: true, attribute: 'hide-caption-visually' })
+  public hideCaptionVisually: boolean = true;
+
   @state()
   private _pageSize = 50;
 
@@ -93,6 +97,11 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected override updated(): void {
+    if (!this.caption) {
+      throw new Error(
+        `Table must have an accessible name. Please provide a caption for the table using the caption attribute. You can hide it visually by setting hide-caption-visually to be true.`
+      );
+    }
     this._pageSize = this.hidePagination ? this.rowData.length : this._pageSize;
     this.totalResults =
       this.hidePagination || !this.totalResults ? this.rowData.length : this.totalResults;
@@ -190,7 +199,11 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   protected override render(): TemplateResult {
     return html`
       <table class="table">
-        <caption>
+        <caption
+          class="${classMap({
+            [`hide-table-caption`]: this.hideCaptionVisually,
+          })}"
+        >
           ${this.caption}
         </caption>
         <thead>

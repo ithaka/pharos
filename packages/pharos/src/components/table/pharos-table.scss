@@ -37,3 +37,9 @@
     height: var(--pharos-spacing-one-and-a-half-x);
   }
 }
+
+.hide-table-caption {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+}
