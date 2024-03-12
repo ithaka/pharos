@@ -39,7 +39,12 @@ describe('pharos-table', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <test-pharos-table .columns="${columns}" .rowData="${rowData}" .totalResults="${2}">
+      <test-pharos-table
+        .columns="${columns}"
+        .rowData="${rowData}"
+        .totalResults="${2}"
+        caption="test table"
+      >
       </test-pharos-table>
     `);
 
@@ -50,6 +55,7 @@ describe('pharos-table', () => {
         .hidePagination="${false}"
         .totalResults="${2}"
         .pageSizeOptions="${[1, 2]}"
+        caption="test table with pagination"
       >
       </test-pharos-table>
     `);
