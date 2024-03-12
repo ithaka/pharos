@@ -13,15 +13,14 @@ export default {
 };
 
 export const Base = {
-  render: ({ columns, rowData, hidePagination }) =>
-    html`
-      <storybook-pharos-table
-        .columns="${columns}"
-        .rowData="${rowData}"
-        .hidePagination="${hidePagination}"
-        caption="An example table"
-      />
-    `,
+  render: ({ columns, rowData, hidePagination }) => html`
+    <storybook-pharos-table
+      .columns="${columns}"
+      .rowData="${rowData}"
+      .hidePagination="${hidePagination}"
+      caption="An example table"
+    />
+  `,
   args: {
     ...defaultArgs,
     hidePagination: true,
@@ -29,17 +28,16 @@ export const Base = {
 };
 
 export const WithPagination = {
-  render: ({ columns, rowData, hidePagination }) =>
-    html`
-      <storybook-pharos-table
-        .columns="${columns}"
-        .rowData="${rowData}"
-        .hidePagination="${hidePagination}"
-        .totalResults="${5}"
-        .pageSizeOptions="${[2, 4]}"
-        caption="An example table"
-      />
-    `,
+  render: ({ columns, rowData, hidePagination }) => html`
+    <storybook-pharos-table
+      .columns="${columns}"
+      .rowData="${rowData}"
+      .hidePagination="${hidePagination}"
+      .totalResults="${5}"
+      .pageSizeOptions="${[2, 4]}"
+      caption="An example table"
+    />
+  `,
   args: {
     ...defaultArgs,
     hidePagination: false,

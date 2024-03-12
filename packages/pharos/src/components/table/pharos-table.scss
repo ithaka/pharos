@@ -1,3 +1,5 @@
+@use '../../utils/scss/mixins';
+
 :host {
   display: inline-flex;
   flex-direction: column;
