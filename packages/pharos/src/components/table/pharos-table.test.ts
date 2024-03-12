@@ -78,9 +78,9 @@ describe('pharos-table', () => {
   });
 
   it('shows correct page start number according to page size', async () => {
-    let pageNumber = componentWithPagination.renderRoot.querySelector(`.page-number-display`);
-    expect(pageNumber?.innerHTML).contains('1-');
-    expect(pageNumber?.innerHTML).contains('1 of');
+    let pageNumber: HTMLElement | null =
+      componentWithPagination.renderRoot.querySelector(`.page-number-display`);
+    expect(pageNumber?.innerText).contains('Displaying 1-1 of 2');
 
     const selectDropdown = componentWithPagination.renderRoot.querySelector(
       `pharos-select`
@@ -91,8 +91,7 @@ describe('pharos-table', () => {
     await componentWithPagination.updateComplete;
 
     pageNumber = componentWithPagination.renderRoot.querySelector(`.page-number-display`);
-    expect(pageNumber?.innerHTML).contains('1-');
-    expect(pageNumber?.innerHTML).contains('2 of');
+    expect(pageNumber?.innerText).contains('Displaying 1-2 of 2');
   });
 
   it('updates correctly after page size selection', async () => {
