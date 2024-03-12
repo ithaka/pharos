@@ -95,6 +95,7 @@
     ".": "./lib/index.js",
     "./lib": "./lib/index.js",
     "./lib/index": "./lib/index.js",
+    "./lib/patches/*": "./lib/patches/*.js",
     "./lib/react-components": "./lib/react-components/index.js",
     "./lib/styles/*": "./lib/styles/*.js",
     "./lib/styles/*.css": "./lib/styles/*.css",
