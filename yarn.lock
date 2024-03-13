@@ -3680,7 +3680,7 @@ __metadata:
     babel-preset-gatsby: "npm:^2.25.0"
     gatsby: "npm:^4.25.8"
     gatsby-plugin-alias-imports: "npm:^1.0.5"
-    gatsby-plugin-google-tagmanager: "npm:^4.2.0"
+    gatsby-plugin-google-tagmanager: "npm:^4.25.0"
     gatsby-plugin-image: "npm:^2.25.0"
     gatsby-plugin-manifest: "npm:^4.25.0"
     gatsby-plugin-mdx: "npm:^3.15.2"
@@ -15339,9 +15339,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-google-tagmanager@npm:^4.2.0":
-  version: 4.24.0
-  resolution: "gatsby-plugin-google-tagmanager@npm:4.24.0"
+"gatsby-plugin-google-tagmanager@npm:^4.25.0":
+  version: 4.25.0
+  resolution: "gatsby-plugin-google-tagmanager@npm:4.25.0"
   dependencies:
     "@babel/runtime": "npm:^7.15.4"
     web-vitals: "npm:^1.1.2"
@@ -15349,7 +15349,7 @@ __metadata:
     gatsby: ^4.0.0-next
     react: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
     react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
-  checksum: 10c0/fc861112e43ef30674138350ba373a19769beb3681d4c3810b87bfb136f4474d85b3c5b59e33812dc883cc2bed216e8d1dc5486eefcb5bfe9119a9925a0c7bd3
+  checksum: 10c0/301aecb35852f2b88f97f9fa3e25c8f95e958bb0113826c2a79efed3a8606781fb0f81410bb0654085a26ac9f6486f82419408d059d74641b87e12d524fd9b9b
   languageName: node
   linkType: hard
 
