@@ -82,7 +82,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   public caption: string = '';
 
   @property({ type: String, reflect: true, attribute: 'hide-caption' })
-  public hideCaptionVisually: boolean = false;
+  public hideCaption: boolean = false;
 
   @state()
   private _pageSize = 50;
