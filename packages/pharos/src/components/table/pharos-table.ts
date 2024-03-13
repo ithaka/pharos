@@ -69,8 +69,8 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   @property({ type: Array, reflect: true, attribute: 'row-data' })
   public rowData: RowData[] = [];
 
-  @property({ type: Boolean, reflect: true, attribute: 'hide-pagination' })
-  public hidePagination: boolean = true;
+  @property({ type: Boolean, reflect: true, attribute: 'show-pagination' })
+  public showPagination: boolean = false;
 
   @property({ type: Number, reflect: true, attribute: 'total-results' })
   public totalResults: number = 0;
@@ -91,9 +91,8 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   private _currentPage = 1;
 
   protected override firstUpdated(): void {
-    this._pageSize = this.hidePagination ? this.rowData.length : this.pageSizeOptions[0];
-    this.totalResults =
-      this.hidePagination || !this.totalResults ? this.rowData.length : this.totalResults;
+    this._pageSize = !this.showPagination ? this.rowData.length : this.pageSizeOptions[0];
+    this.totalResults = !this.totalResults ? this.rowData.length : this.totalResults;
   }
 
   protected override updated(): void {
@@ -102,9 +101,8 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
         'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption-visually` property.'
       );
     }
-    this._pageSize = this.hidePagination ? this.rowData.length : this._pageSize;
-    this.totalResults =
-      this.hidePagination || !this.totalResults ? this.rowData.length : this.totalResults;
+    this._pageSize = !this.showPagination ? this.rowData.length : this._pageSize;
+    this.totalResults = !this.totalResults ? this.rowData.length : this.totalResults;
   }
 
   public static override get styles(): CSSResultArray {
@@ -166,7 +164,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _renderPagination(): TemplateResult | typeof nothing {
-    return !this.hidePagination
+    return this.showPagination
       ? html`<div class="table-controls">
           <div class="item-per-page-wrapper">
             <span>Items per page</span>

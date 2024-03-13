@@ -52,7 +52,7 @@ describe('pharos-table', () => {
       <test-pharos-table
         .columns="${columns}"
         .rowData="${rowData}"
-        .hidePagination="${false}"
+        .showPagination="${true}"
         .totalResults="${2}"
         .pageSizeOptions="${[1, 2]}"
         caption="test table with pagination"
@@ -147,4 +147,28 @@ describe('pharos-table', () => {
 
     expect(prevWasFired).to.be.true;
   });
+});
+
+it('throws an error if caption is not provided', async () => {
+  let errorThrown = false;
+  try {
+    await fixture(
+      html`<test-pharos-table
+        .columns="${[]}"
+        .rowData="${[]}"
+        .showPagination="${true}"
+        .totalResults="${2}"
+        .pageSizeOptions="${[1, 2]}"
+      >
+      </test-pharos-table> `
+    );
+  } catch (error) {
+    if (error instanceof Error) {
+      errorThrown = true;
+      expect(error?.message).to.be.equal(
+        'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption-visually` property.'
+      );
+    }
+  }
+  expect(errorThrown).to.be.true;
 });
