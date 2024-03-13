@@ -4,7 +4,7 @@ import {
   PharosTooltip,
   PharosButton,
 } from '../../react-components';
-import { useEffect } from '@storybook/client-api';
+import { useEffect } from '@storybook/preview-api';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
