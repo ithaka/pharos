@@ -3650,7 +3650,7 @@ __metadata:
   resolution: "@ithaka/pharos-cli@workspace:packages/pharos-cli"
   dependencies:
     "@types/jest": "npm:^29.5.12"
-    "@types/node": "npm:^20.11.25"
+    "@types/node": "npm:^20.11.26"
     colors: "npm:^1.4.0"
     commander: "npm:^12.0.0"
     fs-extra: "npm:^11.2.0"
@@ -3672,7 +3672,7 @@ __metadata:
     "@ithaka/pharos": "npm:^14.0.1"
     "@mdx-js/mdx": "npm:^1.6.22"
     "@mdx-js/react": "npm:^1.6.22"
-    "@types/mdx-js__react": "npm:^1.5.3"
+    "@types/mdx-js__react": "npm:^1.5.8"
     "@types/react": "npm:^17.0.1"
     "@types/react-dom": "npm:^17.0.25"
     "@types/react-helmet": "npm:^6.1.11"
@@ -7358,12 +7358,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdx-js__react@npm:^1.5.3":
-  version: 1.5.5
-  resolution: "@types/mdx-js__react@npm:1.5.5"
+"@types/mdx-js__react@npm:^1.5.8":
+  version: 1.5.8
+  resolution: "@types/mdx-js__react@npm:1.5.8"
   dependencies:
     "@types/react": "npm:*"
-  checksum: 10c0/6e85eac87070a8f44581c302b6410cae3b720ffb75eeac6b16df841bcbd7c206c47cabd107d9c5d4255d3c9ee0d794dee7835475706005eba1c2e5eafe8f5aee
+  checksum: 10c0/45ad3098ef773e01a5bf681b05cab8499bdba484581a999f5d16098a73732266f998a77dc47f6ca1e6e0677ff8f836f416377a8871cf5adbb101930f66a0b2ea
   languageName: node
   linkType: hard
 
@@ -7435,12 +7435,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=10.0.0, @types/node@npm:^20.11.25":
-  version: 20.11.25
-  resolution: "@types/node@npm:20.11.25"
+"@types/node@npm:*, @types/node@npm:>=10.0.0, @types/node@npm:^20.11.26":
+  version: 20.11.26
+  resolution: "@types/node@npm:20.11.26"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/3a65a0469309d503e572a3198d81c9248876236b1bcc0c9943e995cfa536df7ce9a9302638258984877420d1613167a8a82dbfb3a92197319fb79ebebf9abc83
+  checksum: 10c0/2df81e4f109588c4c490f2c7d616a06d2b3b9298f217468134b80711af810c9a6017a59beb3e6b1c596eb9b6c5a39d33403b99179acb89006badfbc55f2468bb
   languageName: node
   linkType: hard
 
