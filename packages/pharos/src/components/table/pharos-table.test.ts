@@ -120,7 +120,7 @@ describe('pharos-table', () => {
     expect(rows.length).to.be.eq(3);
   });
 
-  it('fires a custom event pwhen go to prev and next page', async () => {
+  it('fires a custom event when going to previous and next page', async () => {
     let prevWasFired = false;
     let nextWasFired = false;
     const handlePrevPage = (): void => {
