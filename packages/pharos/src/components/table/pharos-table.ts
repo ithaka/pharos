@@ -201,7 +201,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
       <table class="table">
         <caption
           class="${classMap({
-            [`visually-hidden`]: this.hideCaptionVisually,
+            [`visually-hidden`]: this.hideCaption,
           })}"
         >
           ${this.caption}
