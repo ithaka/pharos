@@ -99,7 +99,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   protected override updated(): void {
     if (!this.caption) {
       throw new Error(
-        `Table must have an accessible name. Please provide a caption for the table using the caption attribute. You can hide it visually by setting hide-caption-visually to be true.`
+        'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption-visually` property.'
       );
     }
     this._pageSize = this.hidePagination ? this.rowData.length : this._pageSize;
