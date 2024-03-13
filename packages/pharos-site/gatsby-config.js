@@ -11,6 +11,7 @@ module.exports = {
     },
     siteUrl: 'https://pharos.jstor.org',
   },
+  trailingSlash: 'never',
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -81,6 +82,5 @@ module.exports = {
         allExtensions: true,
       },
     },
-    `gatsby-plugin-remove-trailing-slashes`,
   ],
 };
