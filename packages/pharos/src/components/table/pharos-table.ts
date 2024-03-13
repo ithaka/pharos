@@ -81,7 +81,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   @property({ type: String, reflect: true, attribute: 'caption' })
   public caption: string = '';
 
-  @property({ type: String, reflect: true, attribute: 'hide-caption-visually' })
+  @property({ type: String, reflect: true, attribute: 'hide-caption' })
   public hideCaptionVisually: boolean = false;
 
   @state()
