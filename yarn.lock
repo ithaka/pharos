@@ -3686,7 +3686,6 @@ __metadata:
     gatsby-plugin-mdx: "npm:^3.15.2"
     gatsby-plugin-offline: "npm:^5.25.0"
     gatsby-plugin-react-helmet: "npm:^5.25.0"
-    gatsby-plugin-remove-trailing-slashes: "npm:^4.2.0"
     gatsby-plugin-sass: "npm:^5.25.0"
     gatsby-plugin-sharp: "npm:^4.25.1"
     gatsby-source-filesystem: "npm:^4.25.0"
@@ -15500,17 +15499,6 @@ __metadata:
     gatsby: ^4.0.0-next
     react-helmet: ^5.1.3 || ^6.0.0
   checksum: 10c0/fb5a6aa6d96dfd734cee55e6f2f2b5be507847c7681ca6fa16684989c7144a6d84d988addc3bde44a5215aef0f9d702d7e31b457f443642e68ddbcfb7c2e30fb
-  languageName: node
-  linkType: hard
-
-"gatsby-plugin-remove-trailing-slashes@npm:^4.2.0":
-  version: 4.19.0
-  resolution: "gatsby-plugin-remove-trailing-slashes@npm:4.19.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.15.4"
-  peerDependencies:
-    gatsby: ^4.0.0-next
-  checksum: 10c0/e940916bf6e606f8e96029bc522350b68bf9ed53801577ceefa3cd056b8505a394e72c2db62036f71b897a46e4c5b6571c47b3a24b3105d810e30e7b0e46d2f0
   languageName: node
   linkType: hard
 
