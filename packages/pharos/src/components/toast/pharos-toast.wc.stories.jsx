@@ -1,4 +1,4 @@
-import { useEffect } from '@storybook/client-api';
+import { useEffect } from '@storybook/preview-api';
 import { html } from 'lit';
 
 import { configureDocsPage } from '@config/docsPageConfig';

@@ -27,7 +27,8 @@
     outline: none;
     padding: calc(var(--pharos-spacing-one-half-x) - 1px);
     border: 2px solid var(--pharos-color-hover-primary);
-    transition: background-color var(--pharos-transition-duration-default) ease-in-out,
+    transition:
+      background-color var(--pharos-transition-duration-default) ease-in-out,
       outline var(--pharos-transition-duration-default) ease-in-out;
 
     .combobox__icon {
@@ -117,8 +118,7 @@
   box-shadow: var(--pharos-elevation-level-3);
   border-radius: var(--pharos-radius-base-standard);
   background-color: var(--pharos-color-ui-10);
-  margin-block-start: var(--pharos-spacing-one-half-x);
-  margin-block-end: var(--pharos-spacing-one-half-x);
+  margin-block: var(--pharos-spacing-one-half-x);
   list-style-type: none;
   padding-inline-start: 0;
   padding-left: 0;
