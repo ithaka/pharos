@@ -159,11 +159,7 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
 
   private _closeToast(event: CustomEvent): void {
     const { id } = <ToastCloseDetail>(<CustomEvent>event).detail || {};
-    const toast = document.getElementById(this._getToastID(id));
-    if (toast) {
-      this.removeChild(toast);
-    }
-    this._focusOnReturnElements(this.returnElements);
+    this._toasts = this._toasts.filter((toast) => toast.id !== id);
   }
 
   private _renderToast(toast: ToastDetail): TemplateResult {
