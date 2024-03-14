@@ -71,13 +71,10 @@ const createDefaultProps = (reactName) => {
   const props =
     defaultFields.length &&
     defaultFields.map((property) => {
-      const hasInitializer = item.attributes?.find(
-        (attribute) => attribute.default === property.default && attribute.resolveInitializer
+      const valueFromVariable = modules.find(
+        (item) => item.kind === 'variable' && item.name === property.default
       );
-      const defaultValue = hasInitializer
-        ? modules.find((item) => item.kind === 'variable' && item.name === property.default)
-            ?.default
-        : property.default;
+      const defaultValue = valueFromVariable ? valueFromVariable.default : property.default;
       return `${property.name}: ${defaultValue},\n`;
     });
   return props ? `${reactName}.defaultProps = {\n` + `${props.join('')}` + `};` : ``;
