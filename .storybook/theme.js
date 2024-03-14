@@ -8,7 +8,7 @@ import {
   PharosColorInteractivePrimary,
   PharosColorTextBase,
   PharosColorTextWhite,
-} from '../packages/pharos/lib/styles/variables';
+} from '../packages/pharos/lib/styles/variables.js';
 import logo from './assets/images/jstor-logo.svg';
 
 export default create({
