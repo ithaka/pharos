@@ -1,4 +1,4 @@
-const pharos = typeof window !== `undefined` ? require('@ithaka/pharos/lib/index') : null;
+const pharos = typeof window !== `undefined` ? require('@ithaka/pharos') : null;
 const registerComponents =
   typeof window !== `undefined` ? require('@ithaka/pharos/lib/utils/registerComponents') : null;
 
