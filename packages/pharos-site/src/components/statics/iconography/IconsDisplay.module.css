@@ -2,8 +2,7 @@
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: repeat(3, 1fr);
-  row-gap: var(--pharos-spacing-2-x);
-  column-gap: var(--pharos-spacing-2-x);
+  gap: var(--pharos-spacing-2-x);
   margin-bottom: var(--pharos-spacing-5-x);
 }
 

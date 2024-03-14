@@ -39,6 +39,7 @@ if (typeof window !== `undefined`) {
     pharos.PharosSidenavSection,
     pharos.PharosTabs,
     pharos.PharosTab,
+    pharos.PharosTable,
     pharos.PharosTabPanel,
     pharos.PharosTextInput,
     pharos.PharosTextarea,

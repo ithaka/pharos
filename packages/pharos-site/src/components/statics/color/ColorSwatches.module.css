@@ -7,8 +7,7 @@
 
 .colorsContainer {
   display: grid;
-  column-gap: var(--pharos-spacing-2-x);
-  row-gap: var(--pharos-spacing-2-x);
+  gap: var(--pharos-spacing-2-x);
 }
 
 .colorName {

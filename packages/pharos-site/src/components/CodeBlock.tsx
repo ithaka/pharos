@@ -1,6 +1,6 @@
 import type { FC, ReactElement } from 'react';
 import ReactDOMServer from 'react-dom/server';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import { Highlight } from 'prism-react-renderer';
 import type { Language } from 'prism-react-renderer';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { mdx } from '@mdx-js/react';
@@ -50,7 +50,7 @@ const CodeBlock: FC<CodeBlockProps> = ({ children, className, live, render }) =>
   }
 
   return (
-    <Highlight {...defaultProps} code={code.trim()} language={language}>
+    <Highlight code={code.trim()} language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={{ ...style, padding: '20px', whiteSpace: 'normal' }}>
           {tokens.map((line, i) => (

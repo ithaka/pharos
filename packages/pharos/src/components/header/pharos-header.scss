@@ -50,13 +50,11 @@
 
 .header__content--end-top {
   grid-area: end-top;
-  justify-self: end;
-  align-self: start;
+  place-self: start end;
 }
 
 .header__content--end-bottom {
   grid-area: end-bottom;
-  justify-self: end;
-  align-self: end;
+  place-self: end;
   display: flex;
 }

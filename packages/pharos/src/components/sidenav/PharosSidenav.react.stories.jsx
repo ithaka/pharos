@@ -44,7 +44,7 @@ export const Base = {
           e.target.focus();
         }}
       ></PharosButton>
-      <PharosSidenav id="storybook-sidenav" open={args.open} has-close-button={args.hasCloseButton}>
+      <PharosSidenav id="storybook-sidenav" open={args.open} hasCloseButton={args.hasCloseButton}>
         <PharosLink slot="top" href="/" id="jstor-logo">
           <img src={logo} alt="Pharos Home" width="72" height="100" />
         </PharosLink>

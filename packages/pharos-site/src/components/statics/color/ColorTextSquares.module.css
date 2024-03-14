@@ -7,8 +7,7 @@
 }
 
 .container_text {
-  align-self: center;
-  justify-self: center;
+  place-self: center;
   text-align: center;
   font-family: var(--pharos-font-family-body);
   font-size: var(--pharos-spacing-one-and-a-half-x);
