@@ -6,8 +6,15 @@ import type {
   Placement,
   AlignedPlacement,
   Strategy as PositioningStrategy,
-} from '@floating-ui/dom/src/types';
-export { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
+} from '@floating-ui/dom/dist/floating-ui.dom';
+export {
+  arrow,
+  autoUpdate,
+  computePosition,
+  flip,
+  offset,
+  shift,
+} from '@floating-ui/dom/dist/floating-ui.dom';
 
 export type { Placement, PositioningStrategy, Side };
 
