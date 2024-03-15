@@ -3729,7 +3729,7 @@ __metadata:
     "@ithaka/focus-trap": "npm:2.0.1"
     "@lit-labs/scoped-registry-mixin": "npm:^1.0.0"
     "@open-wc/dedupe-mixin": "npm:^1.4.0"
-    "@open-wc/testing": "npm:^3.2.2"
+    "@open-wc/testing": "npm:^4.0.0"
     "@types/mocha": "npm:^10.0.6"
     "@types/react": "npm:^18.2.66"
     "@types/react-dom": "npm:^18.2.22"
@@ -4108,21 +4108,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lit/reactive-element@npm:^1.0.0 || ^2.0.0, @lit/reactive-element@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "@lit/reactive-element@npm:2.0.4"
-  dependencies:
-    "@lit-labs/ssr-dom-shim": "npm:^1.2.0"
-  checksum: 10c0/359cc19ea9ee8b65e1417eb9c12f40dddba8f0a5ab32f0e5facaecee6060629e44eb4ca27d9af945fe6eda8c033aa636abaa5f0c4e6a529b224d78674acf47ba
-  languageName: node
-  linkType: hard
-
 "@lit/reactive-element@npm:^1.0.0, @lit/reactive-element@npm:^1.3.0, @lit/reactive-element@npm:^1.6.0":
   version: 1.6.2
   resolution: "@lit/reactive-element@npm:1.6.2"
   dependencies:
     "@lit-labs/ssr-dom-shim": "npm:^1.0.0"
   checksum: 10c0/2845fa086553c131f41cf58ad3bc0ed4c9b24b3d92d8151936086d385cc5295a79da4113ae06a9a39b5f3184f43b2b85d801520c4114c13ca8e730289276a6a6
+  languageName: node
+  linkType: hard
+
+"@lit/reactive-element@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@lit/reactive-element@npm:2.0.4"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": "npm:^1.2.0"
+  checksum: 10c0/359cc19ea9ee8b65e1417eb9c12f40dddba8f0a5ab32f0e5facaecee6060629e44eb4ca27d9af945fe6eda8c033aa636abaa5f0c4e6a529b224d78674acf47ba
   languageName: node
   linkType: hard
 
@@ -4420,13 +4420,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@open-wc/scoped-elements@npm:^2.2.4":
-  version: 2.2.4
-  resolution: "@open-wc/scoped-elements@npm:2.2.4"
+"@open-wc/scoped-elements@npm:^3.0.2":
+  version: 3.0.5
+  resolution: "@open-wc/scoped-elements@npm:3.0.5"
   dependencies:
-    "@lit/reactive-element": "npm:^1.0.0 || ^2.0.0"
     "@open-wc/dedupe-mixin": "npm:^1.4.0"
-  checksum: 10c0/67c596f15cc59a04140bde77bfd852f49637113757be96c08e8a6bdf6c8df92737584e319cf25cda5d9ec8a51b1d959747391f44a10c6648df309bf0a57f82bb
+    lit: "npm:^3.0.0"
+  checksum: 10c0/19fc7ba576ac6296018354a847c166ab6e6be0350ec8d3fe390a2758cf7922bd0523a6ec729a6b6fae9106b70e5f2eb79ddf1b6a91731fc0c6fae5ef081c59c3
   languageName: node
   linkType: hard
 
@@ -4440,28 +4440,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@open-wc/testing-helpers@npm:^2.3.1":
-  version: 2.3.2
-  resolution: "@open-wc/testing-helpers@npm:2.3.2"
+"@open-wc/testing-helpers@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@open-wc/testing-helpers@npm:3.0.0"
   dependencies:
-    "@open-wc/scoped-elements": "npm:^2.2.4"
+    "@open-wc/scoped-elements": "npm:^3.0.2"
     lit: "npm:^2.0.0 || ^3.0.0"
     lit-html: "npm:^2.0.0 || ^3.0.0"
-  checksum: 10c0/4af324eb7dc2851470d791af155765ebfce3d0d076264445403824553066237076f1eac6d9daffd3972bddbee52d88dbcd5ae37e5072dcaa383c005122c3aa87
+  checksum: 10c0/351866397d7917228f1cc78337d55eade19a3b169194f94dd06c47adb0b0712a4c14ca67c2df55bb7303a8e02058bd8d8234fbde57b3980154597412f95cf1c3
   languageName: node
   linkType: hard
 
-"@open-wc/testing@npm:^3.2.2":
-  version: 3.2.2
-  resolution: "@open-wc/testing@npm:3.2.2"
+"@open-wc/testing@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@open-wc/testing@npm:4.0.0"
   dependencies:
     "@esm-bundle/chai": "npm:^4.3.4-fix.0"
     "@open-wc/semantic-dom-diff": "npm:^0.20.0"
-    "@open-wc/testing-helpers": "npm:^2.3.1"
+    "@open-wc/testing-helpers": "npm:^3.0.0"
     "@types/chai-dom": "npm:^1.11.0"
     "@types/sinon-chai": "npm:^3.2.3"
     chai-a11y-axe: "npm:^1.5.0"
-  checksum: 10c0/f1741d83c79aecfad9df7b628cb8f432e8a6f7ae6ae112698eb8bc18d9b6254af33ff35cce6ca48ca577180afdec3f642fdb34f22fcb9b36a3127969515ce93c
+  checksum: 10c0/b0933f268fb411a3d7b2df2bc2bed8707b50a22e065827a5ad68dffabfc505cccbb617a26f9063f6759fe4de67ff5a28984e12dccea408d26725fcd72a6ca12a
   languageName: node
   linkType: hard
 
@@ -19023,7 +19023,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lit@npm:^2.0.0 || ^3.0.0":
+"lit@npm:^2.0.0 || ^3.0.0, lit@npm:^3.0.0":
   version: 3.1.2
   resolution: "lit@npm:3.1.2"
   dependencies:
