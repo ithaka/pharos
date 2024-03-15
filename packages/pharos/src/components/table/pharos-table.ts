@@ -136,7 +136,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
       if (column.name) {
         return html`<th scope="col">${column.name}</th>`;
       } else {
-        return html`<th></th>`;
+        return html`<td></td>`;
       }
     });
   }
