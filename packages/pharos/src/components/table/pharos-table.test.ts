@@ -9,8 +9,24 @@ import type { PharosPagination } from '../pagination/pharos-pagination';
 import type { PharosSelect } from '../select/pharos-select';
 
 describe('pharos-table', () => {
-  let component: PharosTable, componentWithPagination: PharosTable;
+  let component: PharosTable,
+    componentWithPagination: PharosTable,
+    componentWithEmptyHeaderCell: PharosTable;
   const columns = [
+    {
+      name: 'Item',
+      field: 'item',
+    },
+    {
+      name: 'Filename',
+      field: 'filename',
+    },
+  ];
+  const columnsEmptyCell = [
+    {
+      name: '',
+      field: 'item',
+    },
     {
       name: 'Item',
       field: 'item',
@@ -56,6 +72,16 @@ describe('pharos-table', () => {
         .totalResults="${2}"
         .pageSizeOptions="${[1, 2]}"
         caption="test table with pagination"
+      >
+      </test-pharos-table>
+    `);
+
+    componentWithEmptyHeaderCell = await fixture(html`
+      <test-pharos-table
+        .columns="${columnsEmptyCell}"
+        .rowData="${rowData}"
+        .totalResults="${2}"
+        caption="test table"
       >
       </test-pharos-table>
     `);
@@ -146,6 +172,14 @@ describe('pharos-table', () => {
     await componentWithPagination.updateComplete;
 
     expect(prevWasFired).to.be.true;
+  });
+
+  it('renders an empty table cell instead of table header if column header is empty', async () => {
+    const rows = componentWithEmptyHeaderCell.renderRoot.querySelectorAll(`tr`);
+    const headerRow = rows[0];
+    const tableCell = headerRow.querySelectorAll('td');
+    await expect(tableCell[0].innerHTML).is.empty;
+    await expect(componentWithEmptyHeaderCell).to.be.accessible();
   });
 });
 
