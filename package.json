@@ -119,9 +119,6 @@
       "packages/*"
     ]
   },
-  "resolutions": {
-    "@custom-elements-manifest/analyzer": "0.9.0"
-  },
   "size-limit": [
     {
       "path": "packages/pharos/lib/index.js"

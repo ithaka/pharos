@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 14.1.0
+
+### Minor Changes
+
+- [#695](https://github.com/ithaka/pharos/pull/695) [`b864531`](https://github.com/ithaka/pharos/commit/b864531e28d392fcc165bfdb4321115d28d6d756) Thanks [@jialin-he](https://github.com/jialin-he)! - Create table component
+
+### Patch Changes
+
+- [#720](https://github.com/ithaka/pharos/pull/720) [`06d29c4`](https://github.com/ithaka/pharos/commit/06d29c4fe03a9553fbb688d2c9c3d65af84349f2) Thanks [@michael-iden](https://github.com/michael-iden)! - Re-add change to toast dismissal from PR #475 that was dropped in a tricky merge resolution
+
 ## 14.0.1
 
 ### Patch Changes

@@ -2733,9 +2733,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@custom-elements-manifest/analyzer@npm:0.9.0":
-  version: 0.9.0
-  resolution: "@custom-elements-manifest/analyzer@npm:0.9.0"
+"@custom-elements-manifest/analyzer@npm:^0.9.0":
+  version: 0.9.3
+  resolution: "@custom-elements-manifest/analyzer@npm:0.9.3"
   dependencies:
     "@custom-elements-manifest/find-dependencies": "npm:^0.0.5"
     "@github/catalyst": "npm:^1.6.0"
@@ -2750,7 +2750,7 @@ __metadata:
   bin:
     cem: cem.js
     custom-elements-manifest: cem.js
-  checksum: 10c0/70fe7f39ff710a6abccda9008fa8d1220b92c515fe53e3f61ac2747960bc244e273758f297c4644d1a0397e0208c7e01796a55f6e1912c0473c8836b1c4584fd
+  checksum: 10c0/d958389ab4b844d23baf239fd4304c609a668ed9a38c940adc70f8f6360e8b900ed5e8e59f61d02944d37692ca3174be7974189ca0bdecbdfae5d78f1b5a0af5
   languageName: node
   linkType: hard
 
@@ -14731,12 +14731,12 @@ __metadata:
   linkType: hard
 
 "follow-redirects@npm:^1.14.0":
-  version: 1.15.4
-  resolution: "follow-redirects@npm:1.15.4"
+  version: 1.15.6
+  resolution: "follow-redirects@npm:1.15.6"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: 10c0/5f37ed9170c9eb19448c5418fdb0f2b73f644b5364834e70791a76ecc7db215246f9773bbef4852cfae4067764ffc852e047f744b661b0211532155b73556a6a
+  checksum: 10c0/9ff767f0d7be6aa6870c82ac79cf0368cd73e01bbc00e9eb1c2a16fbb198ec105e3c9b6628bb98e9f3ac66fe29a957b9645bcb9a490bb7aa0d35f908b6b85071
   languageName: node
   linkType: hard
 
