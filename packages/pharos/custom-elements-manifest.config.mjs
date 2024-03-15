@@ -3,7 +3,6 @@ import {
   isStaticMember,
   isProperty,
 } from '@custom-elements-manifest/analyzer/src/utils/ast-helpers.js';
-import { readonlyPlugin } from 'cem-plugin-readonly';
 
 const isOptionalClassProperty = (node) => {
   return isProperty(node) && node.questionToken;
@@ -28,6 +27,5 @@ export default {
         }
       },
     },
-    readonlyPlugin(),
   ],
 };
