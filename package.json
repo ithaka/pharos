@@ -62,10 +62,10 @@
     "@babel/preset-env": "^7.24.0",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.1",
-    "@commitlint/cli": "^19.1.0",
+    "@commitlint/cli": "^19.2.0",
     "@commitlint/config-conventional": "^19.1.0",
     "@emotion/babel-plugin": "^11.11.0",
-    "@size-limit/preset-small-lib": "^11.0.3",
+    "@size-limit/preset-small-lib": "^11.1.0",
     "@storybook/addon-a11y": "^7.6.17",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-links": "^7.6.17",
@@ -85,10 +85,10 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-lit": "^1.11.0",
-    "eslint-plugin-mdx": "^1.16.0",
+    "eslint-plugin-mdx": "^1.17.1",
     "eslint-plugin-no-smart-quotes": "^1.3.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-wc": "^2.0.4",
@@ -100,24 +100,27 @@
     "postcss": "^8.4.35",
     "postcss-import": "^16.0.1",
     "postcss-media-minmax": "^5.0.0",
-    "postcss-preset-env": "^9.5.0",
+    "postcss-preset-env": "^9.5.1",
     "prettier": "^3.2.5",
     "pretty-quick": "^4.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sass": "^1.71.1",
-    "size-limit": "^11.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.72.0",
+    "size-limit": "^11.1.0",
     "storybook": "^7.6.17",
     "stylelint": "^16.2.1",
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-scss": "^6.2.1",
-    "svglint": "^2.6.0",
+    "svglint": "^2.7.0",
     "vite": "^4.5.2"
   },
   "workspaces": {
     "packages": [
       "packages/*"
     ]
+  },
+  "resolutions": {
+    "@types/trusted-types": "^2.0.3"
   },
   "size-limit": [
     {

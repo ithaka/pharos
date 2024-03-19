@@ -37,9 +37,7 @@ describe('pharos-checkbox', () => {
 
   it('has an attribute to set check value', async () => {
     component = await fixture(html`
-      <test-pharos-checkbox ?checked=${true}
-        ><span slot="label">test checkbox</span></test-pharos-checkbox
-      >
+      <test-pharos-checkbox checked><span slot="label">test checkbox</span></test-pharos-checkbox>
     `);
     await expect(component.checked).to.equal(true);
   });
