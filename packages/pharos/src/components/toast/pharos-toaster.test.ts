@@ -26,6 +26,17 @@ describe('pharos-toaster', () => {
     document.dispatchEvent(event);
   };
 
+  const fireCloseToastEvent = () => {
+    const event = new CustomEvent('pharos-toast-close', {
+      detail: {
+        bubbles: true,
+        composed: true,
+        id: 'my-updateable-toast',
+      },
+    });
+    document.dispatchEvent(event);
+  };
+
   const fireUpdateToastEvent = () => {
     const event = new CustomEvent('pharos-toast-update', {
       detail: {
@@ -143,6 +154,7 @@ describe('pharos-toaster', () => {
     trigger.click();
     await component.updateComplete;
     await nextFrame();
+
     const triggerUpdate = document.createElement('button');
     triggerUpdate.addEventListener('click', fireUpdateToastEvent);
     document.body.appendChild(triggerUpdate);
@@ -156,6 +168,33 @@ describe('pharos-toaster', () => {
             Toast has been updated
           </div>
         </pharos-toast>
+      </div>
+    `);
+  });
+
+  it('can close an updateable toast', async () => {
+    const trigger = document.createElement('button');
+    trigger.addEventListener('click', fireOpenUpdateableToastEvent);
+    document.body.appendChild(trigger);
+    trigger.click();
+    await component.updateComplete;
+    await nextFrame();
+
+    const triggerUpdate = document.createElement('button');
+    triggerUpdate.addEventListener('click', fireUpdateToastEvent);
+    document.body.appendChild(triggerUpdate);
+    triggerUpdate.click();
+    await component.updateComplete;
+
+    const triggerClose = document.createElement('button');
+    triggerClose.addEventListener('click', fireCloseToastEvent);
+    document.body.appendChild(triggerClose);
+    triggerClose.click();
+    await component.updateComplete;
+    await nextFrame();
+
+    expect(component).shadowDom.to.equal(`
+      <div class="toaster__container">
       </div>
     `);
   });
