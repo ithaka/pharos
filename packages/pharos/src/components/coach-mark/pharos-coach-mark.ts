@@ -18,6 +18,8 @@ export type Variant = 'light' | 'dark';
  *
  * @tag pharos-coach-mark
  *
+ * @fires pharos-coach-mark-closed - Fires when the coach mark is closed
+ *
  */
 export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
@@ -92,6 +94,16 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
     autoUpdate(document.documentElement, this, () => this.requestUpdate());
   }
 
+  private _hideCoachMark(): void {
+    this.hide = true;
+
+    const details = {
+      bubbles: true,
+      composed: true,
+    };
+    this.dispatchEvent(new CustomEvent('pharos-coach-mark-closed', details));
+  }
+
   private setOffset() {
     const id: string = this.getAttribute('id') || '';
     const targetElement: Element | null = document.querySelector(`[data-coach-mark="${id}"]`);
@@ -131,7 +143,7 @@ export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
               variant="${this.variant === 'light' ? 'subtle' : 'overlay'}"
               icon="close"
               a11y-label="Close"
-              @click="${() => (this.hide = true)}"
+              @click="${this._hideCoachMark}"
             ></pharos-button>
             <pharos-heading
               id="coach-mark-heading"

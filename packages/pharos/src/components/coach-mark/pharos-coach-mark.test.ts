@@ -47,7 +47,13 @@ describe('pharos-coach-mark', () => {
     expect(component.hide).to.be.true;
   });
 
-  it('closes when the close button is clicked', async () => {
+  it('closes when the close button is clicked and emits closed event', async () => {
+    let wasFired = false;
+    const handleClose = (): void => {
+      wasFired = true;
+    };
+    component.addEventListener('pharos-coach-mark-closed', handleClose);
+
     component.hide = false;
     await component.updateComplete;
 
@@ -56,6 +62,7 @@ describe('pharos-coach-mark', () => {
     await component.updateComplete;
 
     expect(component.hide).to.be.true;
+    expect(wasFired).to.be.true;
   });
 
   it('displays the header set in the element attribute', async () => {
