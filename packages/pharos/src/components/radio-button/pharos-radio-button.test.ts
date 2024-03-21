@@ -37,7 +37,7 @@ describe('pharos-radio-button', () => {
 
   it('has an attribute to set check value', async () => {
     component = await fixture(html`
-      <test-pharos-radio-button ?checked=${true}
+      <test-pharos-radio-button checked
         ><span slot="label">test radio</span></test-pharos-radio-button
       >
     `);
