@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 14.2.0
+
+### Minor Changes
+
+- [#733](https://github.com/ithaka/pharos/pull/733) [`20a8596`](https://github.com/ithaka/pharos/commit/20a85960770cbe29caeecafe984168c9fcb069f3) Thanks [@michael-iden](https://github.com/michael-iden)! - Emit `pharos-coach-mark-closed` event when coach mark is dismissed
+
+### Patch Changes
+
+- [#726](https://github.com/ithaka/pharos/pull/726) [`72e9476`](https://github.com/ithaka/pharos/commit/72e9476692a6bbe0cc0a7ffbdbdd60754666abca) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Fix empty table column header cell and add test
+
 ## 14.1.0
 
 ### Minor Changes
