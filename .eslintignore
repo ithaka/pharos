@@ -1,8 +1,12 @@
-node_modules/
-dist/
-coverage/
-lib/
+**/node_modules/
+**/dist/
+**/coverage/
+**/lib/
+**/*.css.ts
+**/*.d.ts
+
 .storybook-static/
 packages/pharos/src/styles/**/*.ts
-packages/pharos-site/public/
 packages/pharos-site/.cache/
+packages/pharos-site/public/
+packages/pharos-site/static/

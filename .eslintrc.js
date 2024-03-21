@@ -1,5 +1,4 @@
 module.exports = {
-  ignorePatterns: ['**/*.css.ts'],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',

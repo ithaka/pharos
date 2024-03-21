@@ -8,7 +8,7 @@ module.exports = {
     ['@babel/plugin-transform-private-methods', { loose: true }],
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-syntax-dynamic-import',
-    ['@babel/plugin-proposal-object-rest-spread', { loose: true, useBuiltIns: true }],
+    ['@babel/plugin-transform-object-rest-spread', { loose: true, useBuiltIns: true }],
     '@babel/plugin-transform-classes',
     '@babel/plugin-transform-arrow-functions',
     '@babel/plugin-transform-parameters',
