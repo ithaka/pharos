@@ -18,6 +18,8 @@ export type Variant = 'light' | 'dark';
  *
  * @tag pharos-coach-mark
  *
+ * @fires pharos-coach-mark-closed - Fires when the coach mark is closed
+ *
  */
 export class PharosCoachMark extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
