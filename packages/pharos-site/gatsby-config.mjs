@@ -1,4 +1,11 @@
-module.exports = {
+import { createRequire } from 'module';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
+
+const config = {
   siteMetadata: {
     title: `Pharos`,
     subtitle: `JSTOR's Design System`,
@@ -40,11 +47,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-mdx`,
-      options: {
-        defaultLayouts: {
-          pages: require.resolve(`./src/components/layout.tsx`),
-        },
-      },
+      extensions: [`.mdx`, `.md`],
     },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
@@ -84,3 +87,5 @@ module.exports = {
     },
   ],
 };
+
+export default config;

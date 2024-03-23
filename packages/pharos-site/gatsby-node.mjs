@@ -1,4 +1,8 @@
-exports.onCreateWebpackConfig = ({ getConfig, stage, actions, plugins }) => {
+export const onPostBuild = () => {
+  console.log('Build is done!');
+};
+
+export const onCreateWebpackConfig = ({ getConfig, stage, actions, plugins }) => {
   if (stage === 'build-javascript') {
     const currentConfig = getConfig();
 
@@ -19,4 +23,6 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, actions, plugins }) => {
       actions.replaceWebpackConfig(currentConfig);
     }
   }
+
+  console.log('Webpack config is ready!');
 };
