@@ -5,6 +5,7 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import Canvas from './src/components/Canvas';
 import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
 import './initComponents';
+import { PharosLink as ActualPharosLink } from '@ithaka/pharos/lib/react-components';
 
 interface WrapperProps {
   element: ReactNode;
@@ -67,6 +68,11 @@ const components =
           <pharos.PharosHeading level={6} preset={'1--bold'}>
             {props.children}
           </pharos.PharosHeading>
+        ),
+        PharosLink: (props) => (
+          <pharos.PharosLink href={props.href} target="_blank">
+            {props.children}
+          </pharos.PharosLink>
         ),
       }
     : {};

@@ -20,6 +20,13 @@ import imageBrand5 from '../../../static/images/brand-expressions/imagery/imager
 import PageSection from '../../components/statics/PageSection';
 import Grid from '../../components/Grid';
 
+const StyledParagraph = ({ children }) => (
+
+{' '}
+
+<p style={{ color: 'var(--pharos-color-text-20)' }}>{children}</p>
+);
+
 <PageSection
   title="Imagery"
   description="We have a great opportunity to use imagery for expression. Our imagery style falls into two categories: Archival and Brand images."
@@ -124,65 +131,59 @@ import Grid from '../../components/Grid';
     <PharosHeading level="3" preset="4">
       Diverse
     </PharosHeading>
-    <p style={{ color: 'var(--pharos-color-text-20)' }}>
+    <StyledParagraph>
       Archive images pull from collections on JSTOR (Artstor, Open Community Collections, Primary
       Sources) as well as the diverse content types in them (art, objects, historical documentation,
       science). When choosing non-western items, take care to look at their intended purpose and not
       just how they look.
-    </p>
-    <p style={{ color: 'var(--pharos-color-text-20)' }}>
+    </StyledParagraph>
+    <StyledParagraph>
       Images of art or artifacts should represent different cultures and time periods, including
       diversity in the creators (e.g., race, gender, location, etc.). Similarly, images of people
       should be diverse (e.g., representing different demographics and abilities).
-    </p>
-    <p style={{ color: 'var(--pharos-color-text-20)' }}>
+    </StyledParagraph>
+    <StyledParagraph>
       For global or international campaigns, make sure the people pictured adhere to dress codes of
       most countries (e.g. non-revealing outfits).
-    </p>
+    </StyledParagraph>
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-2-x)' }}>
     <PharosHeading level="3" preset="4">
       Genuine
     </PharosHeading>
-    <p style={{ color: 'var(--pharos-color-text-20)' }}>
+    <StyledParagraph>
       Images should have an authentic feel to them, avoid staged or obvious stock photography.
-    </p>
+    </StyledParagraph>
   </div>
   <div style={{ marginBottom: 'var(--pharos-spacing-2-x)' }}>
     <PharosHeading level="3" preset="4">
       Representative
     </PharosHeading>
-    <p style={{ color: 'var(--pharos-color-text-20)' }}>
+    <StyledParagraph>
       Carefully select images that best represent the content of the message or associated content.
       For example, if we're highlighting eBooks, don't display images of posters; if we're
       contacting secondary schools, don't show images of a large research library.
-    </p>
+    </StyledParagraph>
   </div>
   <div>
     <PharosHeading level="3" preset="4">
       Excellence
     </PharosHeading>
-    <p style={{ color: 'var(--pharos-color-text-20)' }}>
+    <StyledParagraph>
       The images should be aesthetically pleasing and reflect our brand framework:
-    </p>
+    </StyledParagraph>
     <div style={{ color: 'var(--pharos-color-text-20)' }}>
       <strong>It feels</strong> - Dependable, Intriguing, Focused
     </div>
     <div style={{ color: 'var(--pharos-color-text-20)' }}>
       <strong>It looks</strong> - Uncomplicated, Composed, Modern
     </div>
-    <p
-      style={{
-        color: 'var(--pharos-color-text-20)',
-        marginTop: 'var(--pharos-spacing-one-and-a-half-x)',
-      }}
-    >
-      Also, consider the{' '}
+    <StyledParagraph>
+      {'Also, consider the '}
       <PharosLink href="/brand-expressions/color" onClick={handleLinkClick}>
         brand color palette
-      </PharosLink>{' '}
-      when making selections.
-    </p>
+      </PharosLink> when making selections.
+    </StyledParagraph>
   </div>
 </PageSection>
 
