@@ -31,6 +31,7 @@
   display: flex;
   overflow-x: scroll;
   scroll-behavior: smooth;
+  scrollbar-width: none; // removes the scrollbar browser style
   margin-bottom: var(--pharos-spacing-one-half-x);
   padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-quarter-x)
     var(--pharos-spacing-1-x);
