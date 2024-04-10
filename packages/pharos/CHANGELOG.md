@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.2.1
+
+### Patch Changes
+
+- [#739](https://github.com/ithaka/pharos/pull/739) [`f026ecb`](https://github.com/ithaka/pharos/commit/f026ecb7889f58b16cdc843abde1edf995c7ed9b) Thanks [@brentswisher](https://github.com/brentswisher)! - Add individual components to export list
+
 ## 14.2.0
 
 ### Minor Changes
