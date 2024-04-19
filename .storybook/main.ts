@@ -1,4 +1,5 @@
 import { mergeConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 import path, { dirname, join } from 'path';
 
@@ -56,12 +57,15 @@ const config = {
           '@config': path.resolve(__dirname, './'),
         },
       },
+      plugins: [react()],
       optimizeDeps: {
+        exclude: ['fsevents'],
         include: [
           '@storybook/addon-viewport',
           '@storybook/blocks',
           '@storybook/theming/create',
           '@storybook/web-components',
+          '@vitejs/plugin-react',
           'lit/directives/style-map.js',
           'uuid',
         ],
