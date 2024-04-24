@@ -57,7 +57,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.6.3",
     "@ithaka/focus-trap": "2.0.1",
-    "@lit-labs/scoped-registry-mixin": "^1.0.0",
+    "@lit-labs/scoped-registry-mixin": "^1.0.1",
     "@open-wc/dedupe-mixin": "^1.4.0",
     "lit": "^2.8.0",
     "uuid": "^9.0.1"

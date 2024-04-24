@@ -3581,7 +3581,7 @@ __metadata:
     "@custom-elements-manifest/analyzer": "npm:^0.9.4"
     "@floating-ui/dom": "npm:^1.6.3"
     "@ithaka/focus-trap": "npm:2.0.1"
-    "@lit-labs/scoped-registry-mixin": "npm:^1.0.0"
+    "@lit-labs/scoped-registry-mixin": "npm:^1.0.1"
     "@open-wc/dedupe-mixin": "npm:^1.4.0"
     "@open-wc/testing": "npm:^4.0.0"
     "@types/mocha": "npm:^10.0.6"
@@ -3938,7 +3938,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lit-labs/scoped-registry-mixin@npm:^1.0.0":
+"@lit-labs/scoped-registry-mixin@npm:^1.0.1":
   version: 1.0.1
   resolution: "@lit-labs/scoped-registry-mixin@npm:1.0.1"
   dependencies:
