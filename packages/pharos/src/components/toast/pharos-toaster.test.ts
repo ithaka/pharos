@@ -163,7 +163,7 @@ describe('pharos-toaster', () => {
 
     expect(component).shadowDom.to.equal(`
       <div class="toaster__container">
-        <pharos-toast data-pharos-component="PharosToast" id="my-updateable-toast" indefinite="" open="" status="success">
+        <pharos-toast data-pharos-component="PharosToast" id="my-updateable-toast" open="" status="success">
           <div>
             Toast has been updated
           </div>

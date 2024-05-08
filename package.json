@@ -121,8 +121,7 @@
     ]
   },
   "resolutions": {
-    "@types/trusted-types": "^2.0.3",
-    "lit": "^2.8.0"
+    "@types/trusted-types": "^2.0.3"
   },
   "size-limit": [
     {
