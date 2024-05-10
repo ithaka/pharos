@@ -6,18 +6,19 @@ import storybookPlugin from 'eslint-plugin-storybook';
 import typeScriptEsLint from '@typescript-eslint/eslint-plugin';
 import globals from 'globals';
 
+const globalIgnores = [
+  '.storybook-static/',
+  'packages/pharos/coverage/',
+  'packages/pharos/lib/',
+  'packages/pharos/src/styles/**/*.ts',
+  'packages/pharos-site/public/',
+  'packages/pharos-site/.cache/',
+  '**/dist/',
+  '**/node_modules/',
+  '**/*.css.ts',
+];
+
 const pharosConfig = {
-  ignores: [
-    'node_modules/',
-    'dist/',
-    'lib/',
-    '.storybook-static/',
-    'packages/pharos/coverage/**/*.js',
-    'packages/pharos/src/styles/**/*.ts',
-    'packages/pharos-site/public/',
-    'packages/pharos-site/.cache/',
-    '**/*.css.ts',
-  ],
   languageOptions: {
     parser: babelParser,
     globals: {
@@ -107,4 +108,11 @@ const mdxConfig = {
   },
 };
 
-export default [js.configs.recommended, pharosConfig, tsConfig, tsxConfig, mdxConfig];
+export default [
+  { ignores: globalIgnores },
+  js.configs.recommended,
+  pharosConfig,
+  tsConfig,
+  tsxConfig,
+  mdxConfig,
+];
