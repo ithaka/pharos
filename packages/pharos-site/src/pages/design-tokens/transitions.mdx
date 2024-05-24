@@ -4,6 +4,8 @@ import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
 import PageSection from '../../components/statics/PageSection';
 
+export const TransitionsPage = () => {
+
 export const TransitionRow = (transition, widthRem, color, key) => {
   const [bgc, setBgc] = useState(color);
   const HandleMouseEnter = () => {
@@ -59,3 +61,7 @@ const exampleColors = [
     </tbody>
   </TokenTable>
 </PageSection>
+
+}
+
+<TransitionsPage />
