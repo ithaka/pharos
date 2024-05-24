@@ -5,6 +5,8 @@ import { ColorHead } from '../../components/statics/design-token/ColorHead';
 import PageSection from '../../components/statics/PageSection';
 
 export let colorTokens = [];
+
+`````js
 Object.keys(tokens.color)
   .filter((key) => key !== 'brand' && key !== 'base')
   .map((key) => {
@@ -19,6 +21,7 @@ Object.keys(tokens.color)
       });
     }
   });
+````;
 
 <PageSection title="Global colors" isHeader>
   <TokenTable title="Primary colors">
@@ -60,4 +63,5 @@ Object.keys(tokens.color)
         .map((color, i) => ColorRow(color, i))}
     </tbody>
   </TokenTable>
-</PageSection>
+</PageSection>;
+`````

@@ -45,7 +45,9 @@ interface ToastDetail {
   status: ToastStatus;
   indefinite: ToastIndefinite;
 }
-
+interface ToastCreateEvent extends CustomEvent {
+  detail: ToastCreateDetail;
+}
 interface ToastCreateDetail {
   id?: ToastID;
   content: ToastContent;
@@ -53,13 +55,17 @@ interface ToastCreateDetail {
   indefinite?: ToastIndefinite;
   returnElements?: Array<HTMLElement>;
 }
-
+interface ToastUpdateEvent extends CustomEvent {
+  detail: ToastUpdateDetail;
+}
 interface ToastUpdateDetail {
   id: ToastID;
   content?: ToastContent;
   status?: ToastStatus;
 }
-
+interface ToastCloseEvent extends CustomEvent {
+  detail: ToastCloseDetail;
+}
 interface ToastCloseDetail {
   id: ToastID;
 }
@@ -111,10 +117,9 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
     return id || `toast_${uuidv4()}`;
   }
 
-  private async _openToast(event: Event): Promise<void> {
-    const { content, status, id, indefinite, returnElements } = <ToastCreateDetail>(
-      (<CustomEvent>event).detail
-    );
+  private _openToast(event: ToastCreateEvent): void {
+    const { content, status, id, indefinite, returnElements } = event.detail;
+
     const toastId = this._getToastID(id);
 
     this._toasts = [
@@ -128,12 +133,13 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
     ];
     this.returnElements = returnElements ?? DEFAULT_RETURN_ELEMENTS;
 
-    await this.updateComplete;
-    (this.renderRoot.querySelector(`#${toastId}`) as HTMLElement)?.focus();
+    this.updateComplete.then(() => {
+      (this.renderRoot.querySelector(`#${toastId}`) as HTMLElement)?.focus();
+    });
   }
 
-  private _updateToast(event: CustomEvent): void {
-    const { content, status, id } = <ToastUpdateDetail>(<CustomEvent>event).detail;
+  private _updateToast(event: ToastUpdateEvent): void {
+    const { content, status, id } = event.detail;
 
     this._toasts = this._toasts.map((toast: ToastDetail): ToastDetail => {
       if (toast.id === id) {
@@ -157,8 +163,8 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
     }
   }
 
-  private _closeToast(event: CustomEvent): void {
-    const { id } = <ToastCloseDetail>(<CustomEvent>event).detail || {};
+  private _closeToast(event: ToastCloseEvent): void {
+    const { id } = event.detail || {};
     this._toasts = this._toasts.filter((toast) => toast.id !== id);
     this._focusOnReturnElements(this.returnElements);
   }

@@ -5,6 +5,7 @@ import tooltipOverflow from '@images/components/tooltip/tooltip_overflow.gif';
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 
+<>
 <PageSection
   isHeader
   storyBookType="components"
@@ -280,6 +281,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   <PageSection subSectionLevel={1} title="Code expectations">
     <ul>
       <li>
+      {
+        <>
         For labels (similar to the metadata and thumbnail hover on{' '}
         <PharosLink href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">
           item page
@@ -302,8 +305,12 @@ import BestPractices from '@components/statics/BestPractices.tsx';
             </ul>
           </li>
         </ul>
+        </>
+        }
       </li>
       <li>
+      {
+        <>
         For tooltips that provide additional or clarifying information (similar to the ? next to
         "Stable URL" on the
         <PharosLink href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">
@@ -330,6 +337,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
             </ul>
           </li>
         </ul>
+        </>
+        }
       </li>
     </ul>
   </PageSection>
@@ -353,3 +362,4 @@ import BestPractices from '@components/statics/BestPractices.tsx';
     </PageSection>
   </PageSection>
 </PageSection>
+</>
