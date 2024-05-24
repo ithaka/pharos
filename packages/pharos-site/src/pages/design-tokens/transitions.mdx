@@ -4,8 +4,6 @@ import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
 import PageSection from '../../components/statics/PageSection';
 
-export const TransitionsPage = () => {
-
 export const TransitionRow = (transition, widthRem, color, key) => {
   const [bgc, setBgc] = useState(color);
   const HandleMouseEnter = () => {
@@ -34,13 +32,14 @@ export const TransitionRow = (transition, widthRem, color, key) => {
     </tr>
   );
 };
+
 const exampleRems = [1, 2, 5, 10, 20];
 const exampleColors = [
-  '--pharos-color-living-coral-90',
-  '--pharos-color-living-coral-80',
-  '--pharos-color-glacier-blue-80',
-  '--pharos-color-glacier-blue-40',
-  '--pharos-color-night-blue-base',
+'--pharos-color-living-coral-90',
+'--pharos-color-living-coral-80',
+'--pharos-color-glacier-blue-80',
+'--pharos-color-glacier-blue-40',
+'--pharos-color-night-blue-base',
 ];
 
 <PageSection title="Transitions" isHeader>
@@ -61,7 +60,3 @@ const exampleColors = [
     </tbody>
   </TokenTable>
 </PageSection>
-
-}
-
-<TransitionsPage />
