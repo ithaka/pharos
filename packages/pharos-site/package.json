@@ -10,7 +10,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@webcomponents/scoped-custom-element-registry": "^0.0.3",
-    "gatsby": "^4.25.8",
+    "gatsby": "^4.25.9",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-google-tagmanager": "^4.25.0",
     "gatsby-plugin-image": "^2.25.0",
@@ -28,12 +28,12 @@
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-live": "^4.1.6",
-    "sass": "^1.77.0"
+    "sass": "^1.77.2"
   },
   "devDependencies": {
-    "@babel/plugin-transform-private-methods": "^7.24.1",
+    "@babel/plugin-transform-private-methods": "^7.24.6",
     "@types/mdx-js__react": "^1.5.8",
-    "@types/react": "^18.3.1",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-helmet": "^6.1.11",
     "babel-preset-gatsby": "^2.25.0",
