@@ -48,6 +48,45 @@
   }
 }
 
+.input-element {
+  @include mixins.input-base;
+  @include mixins.input-required;
+  @include mixins.input-placeholder;
+
+  border-right: none;
+  border-radius: var(--pharos-radius-base-standard) 0 0 var(--pharos-radius-base-standard);
+
+  &:focus {
+    @include mixins.input-focus;
+    @include mixins.input-padding-thick-border;
+  }
+
+  &--populated,
+  &--populated:focus {
+    padding-right: var(--pharos-spacing-3-x);
+  }
+}
+
+.combobox__mark {
+  background-color: var(--pharos-color-glacier-blue-80);
+}
+
+.combobox__option {
+  position: relative;
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-1-x);
+  cursor: pointer;
+
+  &:hover,
+  &[highlighted] {
+    background-color: var(--pharos-color-ui-20);
+    color: var(--pharos-combobox-color-text-hover);
+
+    .combobox__mark {
+      color: var(--pharos-combobox-color-text-hover);
+    }
+  }
+}
+
 :host([invalidated]) .combobox__button {
   border: 1px solid var(--pharos-form-element-color-border-invalid);
   border-left-width: 2px;
@@ -66,25 +105,6 @@
 
 .input-wrapper {
   @include mixins.input-wrapper;
-}
-
-.input-element {
-  @include mixins.input-base;
-  @include mixins.input-required;
-  @include mixins.input-placeholder;
-
-  border-right: none;
-  border-radius: var(--pharos-radius-base-standard) 0 0 var(--pharos-radius-base-standard);
-
-  &:focus {
-    @include mixins.input-focus;
-    @include mixins.input-padding-thick-border;
-  }
-
-  &--populated,
-  &--populated:focus {
-    padding-right: var(--pharos-spacing-3-x);
-  }
 }
 
 :host([disabled]) .input-element {
@@ -138,28 +158,8 @@
   }
 }
 
-.combobox__mark {
-  background-color: var(--pharos-color-glacier-blue-80);
-}
-
 .combobox__mark--selected {
   @include selected-text;
-}
-
-.combobox__option {
-  position: relative;
-  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-1-x);
-  cursor: pointer;
-
-  &:hover,
-  &[highlighted] {
-    background-color: var(--pharos-color-ui-20);
-    color: var(--pharos-combobox-color-text-hover);
-
-    .combobox__mark {
-      color: var(--pharos-combobox-color-text-hover);
-    }
-  }
 }
 
 .combobox__clear-button {
