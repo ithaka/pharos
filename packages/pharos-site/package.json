@@ -10,7 +10,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@webcomponents/scoped-custom-element-registry": "^0.0.3",
-    "gatsby": "^4.25.8",
+    "gatsby": "^4.25.9",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-google-tagmanager": "^4.25.0",
     "gatsby-plugin-image": "^2.25.0",

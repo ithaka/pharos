@@ -3718,7 +3718,7 @@ __metadata:
     "@types/react-helmet": "npm:^6.1.11"
     "@webcomponents/scoped-custom-element-registry": "npm:^0.0.3"
     babel-preset-gatsby: "npm:^2.25.0"
-    gatsby: "npm:^4.25.8"
+    gatsby: "npm:^4.25.9"
     gatsby-plugin-alias-imports: "npm:^1.0.5"
     gatsby-plugin-google-tagmanager: "npm:^4.25.0"
     gatsby-plugin-image: "npm:^2.25.0"
@@ -7405,7 +7405,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/webpack-asset-relocator-loader@npm:^1.7.0":
+"@vercel/webpack-asset-relocator-loader@npm:1.7.3":
   version: 1.7.3
   resolution: "@vercel/webpack-asset-relocator-loader@npm:1.7.3"
   dependencies:
@@ -14777,9 +14777,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:^4.25.8":
-  version: 4.25.8
-  resolution: "gatsby@npm:4.25.8"
+"gatsby@npm:^4.25.9":
+  version: 4.25.9
+  resolution: "gatsby@npm:4.25.9"
   dependencies:
     "@babel/code-frame": "npm:^7.14.0"
     "@babel/core": "npm:^7.15.5"
@@ -14807,7 +14807,7 @@ __metadata:
     "@types/http-proxy": "npm:^1.17.7"
     "@typescript-eslint/eslint-plugin": "npm:^4.33.0"
     "@typescript-eslint/parser": "npm:^4.33.0"
-    "@vercel/webpack-asset-relocator-loader": "npm:^1.7.0"
+    "@vercel/webpack-asset-relocator-loader": "npm:1.7.3"
     acorn-loose: "npm:^8.3.0"
     acorn-walk: "npm:^8.2.0"
     address: "npm:1.1.2"
@@ -14955,7 +14955,7 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
-  checksum: 10c0/5af4b0237390bc8a79ac8638329a47bf0c4d2bc5266aa86bb293ce5711d4b5b016969dad6301a7d728c14ea28c7838ef2eae557aa4789570aeda70eaf6e63ea3
+  checksum: 10c0/ad83b4fe41c080e052df9f2d1be28f8dc87e0828dc4df0b35665cdac3e467dc5b944c222b81a0b8d03f1c83ec66dd206bcbe84443b30882fdda132a001147d07
   languageName: node
   linkType: hard
 
