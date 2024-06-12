@@ -316,9 +316,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         no-hover
       >
         ${this._renderLinkContent()}${this._renderHoverMetadata()}
-        <slot name="overlay"></slot>
       </pharos-link>
       ${this._showSubtleOverlay() ? nothing : this._renderCheckbox()}
+      <slot name="overlay"></slot>
     </div>`;
   }
 
