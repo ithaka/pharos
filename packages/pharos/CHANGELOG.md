@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.2.3
+
+### Patch Changes
+
+- [#766](https://github.com/ithaka/pharos/pull/766) [`21ed861`](https://github.com/ithaka/pharos/commit/21ed861368714f9c72bcf52a739e15984bd353b1) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Fix card accessibility when using an overlay slot
+
 ## 14.2.2
 
 ### Patch Changes
