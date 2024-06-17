@@ -440,6 +440,58 @@ export const WithActionButtonSlot = {
   ),
 };
 
+export const WithOverlayButtonSlot = {
+  render: () => (
+    <Fragment>
+      <PharosLayout style={{ margin: '1rem 0' }}>
+      <PharosImageCard
+          title="South Hall"
+          link="https://www.jstor.org/stable/10.2307/community.26220188"
+          style={{ gridColumn: 'span 3' }}
+          variant='selectable'
+        >
+          <img id="image" src={collection5} alt="south hall" slot="image" />
+          <div id="creator" slot="metadata">
+            Tubby, William Bunker (American architect,...
+          </div>
+          <div id="item-date" slot="metadata">
+            1889-1892 (creation)
+          </div>
+          <div id="collection" slot="metadata">
+            Part of
+            <PharosLink href="https://www.jstor.org/site/pratt/buildings-image">
+              Pratt Institute Buildings Image Collection
+            </PharosLink>
+          </div>
+          <PharosButton
+            slot="overlay"
+            data-dropdown-menu-id="saveDropdownId"
+            icon="save"
+            iconCondensed
+            variant="overlay"
+            style={{ position: "absolute", bottom: "5px", right: "5px" }}
+          ></PharosButton>
+          <PharosButton
+            slot="action-button"
+            data-dropdown-menu-id="dropdownId"
+            icon="ellipses-vertical"
+            iconCondensed
+            variant="subtle"
+          ></PharosButton>
+        </PharosImageCard>
+        <PharosDropdownMenu id="saveDropdownId">
+          <PharosDropdownMenuItem>Save</PharosDropdownMenuItem>
+        </PharosDropdownMenu>
+        <PharosDropdownMenu id="dropdownId">
+          <PharosDropdownMenuItem>Item 1</PharosDropdownMenuItem>
+          <PharosDropdownMenuItem>Item 2</PharosDropdownMenuItem>
+          <PharosDropdownMenuItem>Item 3</PharosDropdownMenuItem>
+        </PharosDropdownMenu>
+      </PharosLayout>
+    </Fragment>
+    ),
+};
+
 export const SelectableCollection = {
   render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
