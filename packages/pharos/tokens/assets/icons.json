@@ -55,6 +55,7 @@
         "deprecated_comment": "Use shift-<direction> instead"
       },
       "facebook": { "value": "assets/icons/facebook.svg" },
+      "feedback": { "value": "assets/icons/feedback.svg" },
       "filetype-pdf": { "value": "assets/icons/filetype-pdf.svg" },
       "filetype-ppt": { "value": "assets/icons/filetype-ppt.svg" },
       "filetype-zip": { "value": "assets/icons/filetype-zip.svg" },
