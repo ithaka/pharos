@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 14.3.0
+
+### Minor Changes
+
+- [#768](https://github.com/ithaka/pharos/pull/768) [`73b839d`](https://github.com/ithaka/pharos/commit/73b839dcc7cfe7b28f05236974764a18e99df4d5) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Add Feedback Icon
+
+### Patch Changes
+
+- [#770](https://github.com/ithaka/pharos/pull/770) [`38b9506`](https://github.com/ithaka/pharos/commit/38b950608512705b102beb281cd54731afd3101f) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add export for createFormData
+
 ## 14.2.3
 
 ### Patch Changes
