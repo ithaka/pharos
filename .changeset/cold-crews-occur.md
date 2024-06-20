@@ -2,4 +2,4 @@
 '@ithaka/pharos': patch
 ---
 
-Add export for createForumData
+Add export for createFormData
