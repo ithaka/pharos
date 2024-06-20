@@ -336,6 +336,15 @@
         "design",
         "doc"
       ]
+    },
+    {
+      "login": "ymouzakis",
+      "name": "Yanni Mouzakis",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64924035?s=400&v=4",
+      "profile": "https://github.com/ymouzakis",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7

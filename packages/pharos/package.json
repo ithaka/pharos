@@ -105,6 +105,7 @@
     "./lib/styles/pharos": "./lib/styles/pharos.scss",
     "./lib/utils/scss/mixins": "./lib/utils/scss/_mixins.scss",
     "./lib/utils/registerComponents": "./lib/utils/registerComponents.js",
+    "./lib/utils/createFormData": "./lib/utils/createFormData.js",
     "./lib/utils/PharosContext": "./lib/utils/PharosContext.js",
     "./package.json": "./package.json",
     "./custom-elements.json": "./custom-elements.json"
