@@ -55,12 +55,12 @@
   "author": "ITHAKA",
   "license": "MIT",
   "dependencies": {
-    "@floating-ui/dom": "^1.6.5",
+    "@floating-ui/dom": "^1.6.6",
     "@ithaka/focus-trap": "2.0.1",
     "@lit-labs/scoped-registry-mixin": "^1.0.1",
     "@open-wc/dedupe-mixin": "^1.4.0",
     "lit": "^2.8.0",
-    "uuid": "^9.0.1"
+    "uuid": "^10.0.0"
   },
   "peerDependencies": {
     "sass": "^1.42.1"
@@ -68,7 +68,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.2",
     "@open-wc/testing": "^4.0.0",
-    "@types/mocha": "^10.0.6",
+    "@types/mocha": "^10.0.7",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@web/test-runner": "^0.18.2",
@@ -79,16 +79,16 @@
     "globby": "^14.0.1",
     "minify-html-literals": "^1.3.5",
     "postcss": "^8.4.38",
-    "prettier": "^3.3.0",
+    "prettier": "^3.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "replace-in-file": "^7.2.0",
+    "replace-in-file": "^8.0.1",
     "rimraf": "^5.0.7",
     "sassdoc": "^2.7.4",
     "sinon": "^18.0.0",
     "style-dictionary": "^3.9.2",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   },
   "customElements": "custom-elements.json",
   "exports": {
