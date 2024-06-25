@@ -961,7 +961,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-object-rest-spread@npm:^7.0.0, @babel/plugin-proposal-object-rest-spread@npm:^7.14.7":
+"@babel/plugin-proposal-object-rest-spread@npm:^7.0.0, @babel/plugin-proposal-object-rest-spread@npm:^7.14.7, @babel/plugin-proposal-object-rest-spread@npm:^7.20.7":
   version: 7.20.7
   resolution: "@babel/plugin-proposal-object-rest-spread@npm:7.20.7"
   dependencies:
@@ -4836,6 +4836,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos-site@workspace:packages/pharos-site"
   dependencies:
+    "@babel/plugin-proposal-object-rest-spread": "npm:^7.20.7"
     "@babel/plugin-transform-private-methods": "npm:^7.24.7"
     "@ithaka/pharos": "npm:^14.0.1"
     "@mdx-js/mdx": "npm:^1.6.22"

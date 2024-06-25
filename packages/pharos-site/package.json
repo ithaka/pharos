@@ -6,6 +6,7 @@
   "description": "Pharos acts as a guiding light to helps us create consistent, dependable and focused experiences for all of JSTOR users.",
   "version": "6.0.1",
   "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
     "@ithaka/pharos": "^14.0.1",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
