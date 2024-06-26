@@ -48,7 +48,7 @@ const createReactComponent = (name: string): FC => {
         const { current } = elementRef;
 
         Object.entries(props).forEach(([prop, value]) => {
-          if (prop === 'children' || prop === 'style' || current === null) {
+          if (prop === 'children' || prop === 'style' || current === null || prop == 'prefix') {
             return;
           } else if (prop === 'className' || prop === 'tabIndex') {
             current[prop as string] = value;
@@ -81,7 +81,9 @@ const createReactComponent = (name: string): FC => {
 
       const { children, style } = props;
       const context = useContext(PharosContext);
-      const tagName = context?.prefix ? `${context.prefix}-${name}` : name;
+
+      const prefix = props.prefix || context?.prefix;
+      const tagName = prefix ? `${prefix}-${name}` : name;
       return createElement(tagName, { ref: elementRef, style }, children);
     }
   );

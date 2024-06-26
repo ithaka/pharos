@@ -35,6 +35,14 @@ const createComponentInterface = (reactName) => {
       );
     });
 
+  const prefixPropDefinition = `/**\n` +
+    `* The prefix for the web component\n` +
+    `*/\n` +
+    `prefix?: string | undefined;\n`;
+  if(props) {
+    props.push(prefixPropDefinition);
+  }
+
   const events =
     item.events &&
     item.events
@@ -77,6 +85,11 @@ const createDefaultProps = (reactName) => {
       const defaultValue = valueFromVariable ? valueFromVariable.default : property.default;
       return `${property.name}: ${defaultValue},\n`;
     });
+
+  if (props) {
+    props.push("prefix: undefined,\n");
+  }
+
   return props ? `${reactName}.defaultProps = {\n` + `${props.join('')}` + `};` : ``;
 };
 
