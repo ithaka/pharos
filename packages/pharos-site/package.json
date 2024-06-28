@@ -7,7 +7,6 @@
   "version": "6.0.1",
   "dependencies": {
     "@ithaka/pharos": "^14.0.1",
-    "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@webcomponents/scoped-custom-element-registry": "^0.0.3",
     "gatsby": "^5.13.6",
