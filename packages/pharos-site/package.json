@@ -7,7 +7,7 @@
   "version": "6.0.1",
   "dependencies": {
     "@ithaka/pharos": "^14.0.1",
-    "@mdx-js/react": "^3.0.1",
+    "@mdx-js/react": "^2.3.0",
     "@webcomponents/scoped-custom-element-registry": "^0.0.3",
     "gatsby": "^5.13.6",
     "gatsby-plugin-alias-imports": "^1.0.5",
@@ -30,6 +30,7 @@
     "sass": "^1.77.4"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
     "@babel/plugin-transform-private-methods": "^7.24.7",
     "@types/mdx-js__react": "^1.5.8",
     "@types/react": "^18.3.3",

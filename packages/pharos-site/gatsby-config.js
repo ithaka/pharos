@@ -38,7 +38,10 @@ module.exports = {
         path: `${__dirname}/src/pages`,
       },
     },
-    `gatsby-plugin-mdx`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      extensions: [`.mdx`, `.md`],
+    },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
