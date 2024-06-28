@@ -38,14 +38,7 @@ module.exports = {
         path: `${__dirname}/src/pages`,
       },
     },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        defaultLayouts: {
-          pages: require.resolve(`./src/components/layout.tsx`),
-        },
-      },
-    },
+    `gatsby-plugin-mdx`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

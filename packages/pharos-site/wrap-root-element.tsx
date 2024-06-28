@@ -5,6 +5,7 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import Canvas from './src/components/Canvas';
 import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
 import './initComponents';
+import Layout from './src/components/layout';
 
 interface WrapperProps {
   element: ReactNode;
@@ -75,7 +76,9 @@ export const wrapRootElement: FC<WrapperProps> = ({ element }) => {
   const context = { prefix: 'site' };
   return (
     <MDXProvider components={{ ...components, Canvas, ...pharos }}>
-      <PharosContext.Provider value={context}>{element}</PharosContext.Provider>
+      <PharosContext.Provider value={context}>
+        <Layout>{element}</Layout>
+      </PharosContext.Provider>
     </MDXProvider>
   );
 };
