@@ -112,8 +112,8 @@ const Footer: FC = () => {
                 data-sc="link:email footer"
               >
                 Email us
-              </PharosLink>{' '}
-              or{' '}
+              </PharosLink>
+              or
               <PharosLink
                 href="https://github.com/ithaka/pharos"
                 isOnBackground
@@ -131,7 +131,7 @@ const Footer: FC = () => {
             trademarks of ITHAKA.
           </div>
           <em className={`${note} ${netlifyLink}`}>
-            This site is powered by{' '}
+            This site is powered by
             <PharosLink href="https://www.netlify.com" isOnBackground target="_blank">
               Netlify
             </PharosLink>
