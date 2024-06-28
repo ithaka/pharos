@@ -72,13 +72,17 @@ const components =
       }
     : {};
 
+export const wrapPageElement = ({ element }: { element: any }) => {
+  // props provide same data to Layout as Page element will get
+  // including location, data, etc - you don't need to pass it
+  return <Layout>{element}</Layout>;
+};
+
 export const wrapRootElement: FC<WrapperProps> = ({ element }) => {
   const context = { prefix: 'site' };
   return (
     <MDXProvider components={{ ...components, Canvas, ...pharos }}>
-      <PharosContext.Provider value={context}>
-        <Layout>{element}</Layout>
-      </PharosContext.Provider>
+      <PharosContext.Provider value={context}>{element}</PharosContext.Provider>
     </MDXProvider>
   );
 };
