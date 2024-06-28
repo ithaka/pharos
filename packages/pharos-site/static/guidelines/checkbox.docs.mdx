@@ -1,12 +1,13 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 
-<PageSection
-  title="Checkbox"
-  description="Checkboxes present items in a list of one or more options where the user can have several different combinations of selections."
-  isHeader
-  storyBookType="forms"
-></PageSection>
+<>
+  <PageSection
+    title="Checkbox"
+    description="Checkboxes present items in a list of one or more options where the user can have several different combinations of selections."
+    isHeader
+    storyBookType="forms"
+  ></PageSection>
 
 ## Examples
 
@@ -15,6 +16,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   <span slot="label">I am a checkbox</span>
 </PharosCheckbox>
 ```
+
+{' '}
 
 <PageSection
   topMargin
@@ -35,6 +38,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
     </p>
   </PageSection>
 </PageSection>
+
+{' '}
 
 <PageSection title="Best practices">
   <BestPractices
@@ -62,6 +67,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
     }
   />
 </PageSection>
+
+{' '}
 
 <PageSection title="Content guidelines">
   <PageSection title="Group labels (optional)" subSectionLevel={1}>
@@ -91,6 +98,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
     </ul>
   </PageSection>
 </PageSection>
+
+{' '}
 
 <PageSection title="Variants">
   <PageSection
@@ -177,63 +186,64 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </PageSection>
 </PageSection>
 
-<PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
-    <ul>
-      <li>
-        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value">
-          4.1.2 Name, Role, Value A
-        </PharosLink>
-      </li>
-    </ul>
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Importance">
-    Checkboxes help users to understand the relationship between selections in a form element or
-    filter. A checkbox grouping also will typically allow users to select more than one item in the
-    grouping.
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Code expectations">
-    <ul>
-      <li> The checkbox has the role "checkbox". </li>
-      <li>
-        When the checkbox is selected, the ARIA state is set to <code>aria-checked="true"</code> and
-        when it is deselected <code>aria-checked="false"</code>.
-      </li>
-      <li>
-        Provide a <code>fieldset</code> that surrounds the entire grouping of checkboxes. Also,
-        provide a <code>legend</code>, which is a description for the grouping.
-        <PharosLink
-          href="https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes"
-          target="_blank"
-        >
-          Here's an example.
-        </PharosLink>
-      </li>
-      <li>
-        Some assistive technology reads the legend text for each fieldset, so it should be brief and
-        descriptive. This helps someone using assistive technology to understand the question they
-        are answering with the group of checkboxes
-      </li>
-    </ul>
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Expected actions">
-    <PageSection subSectionLevel={2} title="Screen reader">
-      <ul>
-        <li>Reads: "item name, state (checked or unchecked), checkbox, fieldset name, group" </li>
-      </ul>
-    </PageSection>
-    <PageSection subSectionLevel={2} title="Keyboard">
+  <PageSection title="Accessibility">
+    <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
       <ul>
         <li>
-          The <kbd>Space</kbd> key can be used to select and deselect each checkbox when it has
-          focus.
+          <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value">
+            4.1.2 Name, Role, Value A
+          </PharosLink>
         </li>
-        <li>
-          Users can navigate between checkbox inputs by pressing <kbd>Tab</kbd> or <kbd>Shift</kbd>-
-          <kbd>Tab</kbd>.
-        </li>
-        <li>Checkboxes identified as `disabled` attribute are ignored in the tab order.</li>
       </ul>
     </PageSection>
+    <PageSection subSectionLevel={1} title="Importance">
+      Checkboxes help users to understand the relationship between selections in a form element or
+      filter. A checkbox grouping also will typically allow users to select more than one item in the
+      grouping.
+    </PageSection>
+    <PageSection subSectionLevel={1} title="Code expectations">
+      <ul>
+        <li> The checkbox has the role "checkbox". </li>
+        <li>
+          When the checkbox is selected, the ARIA state is set to <code>aria-checked="true"</code> and
+          when it is deselected <code>aria-checked="false"</code>.
+        </li>
+        <li>
+          Provide a <code>fieldset</code> that surrounds the entire grouping of checkboxes. Also,
+          provide a <code>legend</code>, which is a description for the grouping.
+          <PharosLink
+            href="https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes"
+            target="_blank"
+          >
+            Here's an example.
+          </PharosLink>
+        </li>
+        <li>
+          Some assistive technology reads the legend text for each fieldset, so it should be brief and
+          descriptive. This helps someone using assistive technology to understand the question they
+          are answering with the group of checkboxes
+        </li>
+      </ul>
+    </PageSection>
+    <PageSection subSectionLevel={1} title="Expected actions">
+      <PageSection subSectionLevel={2} title="Screen reader">
+        <ul>
+          <li>Reads: "item name, state (checked or unchecked), checkbox, fieldset name, group" </li>
+        </ul>
+      </PageSection>
+      <PageSection subSectionLevel={2} title="Keyboard">
+        <ul>
+          <li>
+            The <kbd>Space</kbd> key can be used to select and deselect each checkbox when it has
+            focus.
+          </li>
+          <li>
+            Users can navigate between checkbox inputs by pressing <kbd>Tab</kbd> or <kbd>Shift</kbd>-
+            <kbd>Tab</kbd>.
+          </li>
+          <li>Checkboxes identified as `disabled` attribute are ignored in the tab order.</li>
+        </ul>
+      </PageSection>
+    </PageSection>
   </PageSection>
-</PageSection>
+</>

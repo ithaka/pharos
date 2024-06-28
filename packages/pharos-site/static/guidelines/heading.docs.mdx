@@ -1,12 +1,13 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 
-<PageSection
-  isHeader
-  title="Heading"
-  description="Headings are used as the titles or labels of each major section of a page that make up the UI."
-  storyBookType="components"
-></PageSection>
+<>
+  <PageSection
+    isHeader
+    title="Heading"
+    description="Headings are used as the titles or labels of each major section of a page that make up the UI."
+    storyBookType="components"
+  ></PageSection>
 
 ## Examples
 
@@ -15,6 +16,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   I am a heading
 </PharosHeading>
 ```
+
+{' '}
 
 <PageSection topMargin title="Usage">
   <p>
@@ -40,9 +43,12 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   <PharosHeading level={'2'} preset={'1--bold'}>
     Related
   </PharosHeading>
-  JSTOR uses design tokens to set the typography styling in JSTOR's products. To learn more about other
-  typography styles for the product, see our <PharosLink href="/brand-expressions/typography">typography brand expression page.</PharosLink>
+  JSTOR uses design tokens to set the typography styling in JSTOR's products. To learn more about
+  other typography styles for the product, see our{' '}
+  <PharosLink href="/brand-expressions/typography">typography brand expression page.</PharosLink>
 </PageSection>
+
+{' '}
 
 <PageSection topMargin title="Typeface">
   <p>
@@ -50,6 +56,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
     express our heading styles.
   </p>
 </PageSection>
+
+{' '}
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <PharosHeading level={'2'} preset={'3'}>
@@ -66,6 +74,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </PharosHeading>
 </div>
 
+{' '}
+
 <PharosHeading
   level={'2'}
   preset={'6'}
@@ -74,8 +84,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   Presets
 </PharosHeading>
 
-| {/\*\*                                                                                           |                                                                                                                                                                                        |     |
-| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+|                                                                                                  |                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <PharosHeading level={'1'} preset={'2'}>JSTOR is for the intellectually curious</PharosHeading>  | <strong>Preset="2"</strong>                                                                                                                                                            |
 |                                                                                                  | <ul><li>typeface: GT America Standard</li><li>font-size: 20px</li><li>font-weight: Regular (400)</li><li>letter-spacing: -2%</li></ul>                                                 |
 | <PharosHeading level={'1'} preset={'3'}>JSTOR is for the intellectually curious</PharosHeading>  | <strong>Preset="3"</strong>                                                                                                                                                            |
@@ -88,7 +98,7 @@ import BestPractices from '@components/statics/BestPractices.tsx';
 |                                                                                                  | <ul><li>Typeface: Ivar Headline</li> <li>Font-size: 32px</li> <li>Line-height: 36px</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li></ul>                         |
 | <PharosHeading level={'1'} preset={'7'}>JSTOR is for the intellectually curious</PharosHeading>  | <strong>Preset="7"</strong><ul><li>Typeface: Ivar Headline</li> <li>font-size: 54px</li> <li>line-height: 1</li> <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li></ul> |
 
-!\*/}
+{' '}
 
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
@@ -165,6 +175,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </div>
 </div>
 
+{' '}
+
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <PharosHeading level={'2'} preset={'6'} style={{ color: 'var(--pharos-color-text-base)' }}>
     Styling
@@ -200,6 +212,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </ul>
 </div>
 
+{' '}
+
 <PageSection title="Best Practices">
   <BestPractices
     Do={
@@ -227,6 +241,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   />
 </PageSection>
 
+{' '}
+
 <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
   <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
     Content guidelines
@@ -249,92 +265,93 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </p>
 </div>
 
-<div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
-  <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
-    Accessibility
-  </PharosHeading>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'2'}>
-      Relevant WCAG Guidelines
+  <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
+    <PharosHeading level={'2'} preset={'6'} style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+      Accessibility
     </PharosHeading>
-    <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
-      <li>
-        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
-          1.3.1 Info and Relationships A
-        </PharosLink>
-      </li>
-      <li>
-        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks">
-          2.4.1 Bypass Blocks A
-        </PharosLink>
-      </li>
-      <li>
-        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels">
-          2.4.6 Headings and Labels AA
-        </PharosLink>
-      </li>
-    </ul>
-  </div>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'2'}>
-      Importance
-    </PharosHeading>
-    For screen reader users, headings describe relationships between sections and subsections. They provide
-    both an outline and a means of navigation. Without headings, users have to step through every single
-    element in turn, to get from one place to another.
-  </div>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'2'}>
-      Visual expectations
-    </PharosHeading>
-    Color contrast of text to background should use WCAG 2.1 AA standards is 4.5:1, except, large text
-    only needs 3:1.
-  </div>
-  <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
-    <PharosHeading level={'3'} preset={'2'}>
-      Code expectations
-    </PharosHeading>
-    <p>Each page starts with a level="1" (h1), and Heading levels should go in a logical order</p>
-    <p> For example:</p>
-    <ul>
-      <li>
-        level="1" <strong>Foods</strong>
-      </li>
+    <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
+      <PharosHeading level={'3'} preset={'2'}>
+        Relevant WCAG Guidelines
+      </PharosHeading>
+      <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+        <li>
+          <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
+            1.3.1 Info and Relationships A
+          </PharosLink>
+        </li>
+        <li>
+          <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks">
+            2.4.1 Bypass Blocks A
+          </PharosLink>
+        </li>
+        <li>
+          <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels">
+            2.4.6 Headings and Labels AA
+          </PharosLink>
+        </li>
+      </ul>
+    </div>
+    <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
+      <PharosHeading level={'3'} preset={'2'}>
+        Importance
+      </PharosHeading>
+      For screen reader users, headings describe relationships between sections and subsections. They provide
+      both an outline and a means of navigation. Without headings, users have to step through every single
+      element in turn, to get from one place to another.
+    </div>
+    <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
+      <PharosHeading level={'3'} preset={'2'}>
+        Visual expectations
+      </PharosHeading>
+      Color contrast of text to background should use WCAG 2.1 AA standards is 4.5:1, except, large text
+      only needs 3:1.
+    </div>
+    <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
+      <PharosHeading level={'3'} preset={'2'}>
+        Code expectations
+      </PharosHeading>
+      <p>Each page starts with a level="1" (h1), and Heading levels should go in a logical order</p>
+      <p> For example:</p>
       <ul>
         <li>
-          level="2" <strong>Fruit</strong>
+          level="1" <strong>Foods</strong>
         </li>
         <ul>
           <li>
-            level="3" <strong>Apples</strong>
+            level="2" <strong>Fruit</strong>
           </li>
           <ul>
             <li>
-              level="4" <strong>Honeycrisp</strong>
+              level="3" <strong>Apples</strong>
             </li>
+            <ul>
+              <li>
+                level="4" <strong>Honeycrisp</strong>
+              </li>
+            </ul>
           </ul>
         </ul>
       </ul>
-    </ul>
+    </div>
+    <div>
+      <PharosHeading level={'3'} preset={'2'}>
+        Expected actions
+      </PharosHeading>
+      <PharosHeading level={'4'} preset={'1--bold'}>
+        For screen reader users, headings...
+      </PharosHeading>
+      <ul>
+        <li>describe relationships between sections and subsections.</li>
+        <li>
+          must be semantically "tagged" so that a screen reader can both identify headings when
+          reading a page and pull up a list of all the page headings.
+        </li>
+        <li>
+          allow users to quickly scan a page. According to a WebAIM survey, two-thirds of
+          screen-reader users scan headings as the first step of trying to find information on a long
+          web page.
+        </li>
+      </ul>
+    </div>
   </div>
-  <div>
-    <PharosHeading level={'3'} preset={'2'}>
-      Expected actions
-    </PharosHeading>
-    <PharosHeading level={'4'} preset={'1--bold'}>
-      For screen reader users, headings...
-    </PharosHeading>
-    <ul>
-      <li>describe relationships between sections and subsections.</li>
-      <li>
-        must be semantically "tagged" so that a screen reader can both identify headings when
-        reading a page and pull up a list of all the page headings.
-      </li>
-      <li>
-        allow users to quickly scan a page. According to a WebAIM survey, two-thirds of
-        screen-reader users scan headings as the first step of trying to find information on a long
-        web page.
-      </li>
-    </ul>
-  </div>
-</div>
+</>

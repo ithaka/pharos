@@ -1,12 +1,13 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 
-<PageSection
-  isHeader
-  storyBookType="components"
-  title="Icon"
-  description="Pharos Icons are SVG visual representations of objects, items or content, or actions a user can take."
-></PageSection>
+<>
+  <PageSection
+    isHeader
+    storyBookType="components"
+    title="Icon"
+    description="Pharos Icons are SVG visual representations of objects, items or content, or actions a user can take."
+  ></PageSection>
 
 ## Examples
 
@@ -17,6 +18,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   <PharosIcon name="email" a11yTitle="email" />
 </>
 ```
+
+{' '}
 
 <PageSection topMargin title="Usage">
   <PageSection title="When to use" subSectionLevel={1}>
@@ -116,6 +119,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </PageSection>
 </PageSection>
 
+{' '}
+
 <PageSection title="Best practices">
   <BestPractices
     Do={
@@ -143,6 +148,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   />
 </PageSection>
 
+{' '}
+
 <PageSection title="Content guidelines">
   <p>
     For the text labels, they should relate to the content or action being represented. The labels
@@ -150,52 +157,53 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </p>
 </PageSection>
 
-<PageSection title="Accessibility">
-  <PageSection title="Relevant WCAG guidelines" subSectionLevel={1} lessMargin>
-    <ul>
-      <li>
-        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">
-          1.4.1 Use of Color A
-        </PharosLink>
-      </li>
-      <li>
-        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification">
-          3.2.4 Consistent Identification AA
-        </PharosLink>
-      </li>
-    </ul>
-  </PageSection>
-  <PageSection title="Importance" subSectionLevel={1} lessMargin>
-    <p>Icons provide users a visual representation of text or potential actions.</p>
-  </PageSection>
-  <PageSection title="Code expectations" subSectionLevel={1} lessMargin>
-    <ul>
-      <li>
-        If the icon is purely decorative and is accompanied by text, the icon should have an
-        <code>aria-hidden="true"</code> on the SVG to avoid being redundant.
-      </li>
-      <li>
-        If the icon is standalone without text, it should have a `&lt;title&gt;` element that gives
-        it a name.
-      </li>
-    </ul>
-  </PageSection>
-  <PageSection title="Expected actions" subSectionLevel={1} lessMargin>
-    <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+  <PageSection title="Accessibility">
+    <PageSection title="Relevant WCAG guidelines" subSectionLevel={1} lessMargin>
+      <ul>
+        <li>
+          <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">
+            1.4.1 Use of Color A
+          </PharosLink>
+        </li>
+        <li>
+          <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification">
+            3.2.4 Consistent Identification AA
+          </PharosLink>
+        </li>
+      </ul>
+    </PageSection>
+    <PageSection title="Importance" subSectionLevel={1} lessMargin>
+      <p>Icons provide users a visual representation of text or potential actions.</p>
+    </PageSection>
+    <PageSection title="Code expectations" subSectionLevel={1} lessMargin>
+      <ul>
+        <li>
+          If the icon is purely decorative and is accompanied by text, the icon should have an
+          <code>aria-hidden="true"</code> on the SVG to avoid being redundant.
+        </li>
+        <li>
+          If the icon is standalone without text, it should have a `&lt;title&gt;` element that gives
+          it a name.
+        </li>
+      </ul>
+    </PageSection>
+    <PageSection title="Expected actions" subSectionLevel={1} lessMargin>
+      <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+        <PharosHeading level="4" preset="1--bold">
+          Screen reader
+        </PharosHeading>
+        <ul>
+          <li>Reads the accompanying text if applicable</li>
+          <li>Reads the `&lt;title&gt;` element text if the icon is standalone</li>
+        </ul>
+      </div>
       <PharosHeading level="4" preset="1--bold">
-        Screen reader
+        Keyboard
       </PharosHeading>
       <ul>
-        <li>Reads the accompanying text if applicable</li>
-        <li>Reads the `&lt;title&gt;` element text if the icon is standalone</li>
+        <li>Icon with accompanying text should be in tab index</li>
+        <li>Standalone icon should also be in tab index</li>
       </ul>
-    </div>
-    <PharosHeading level="4" preset="1--bold">
-      Keyboard
-    </PharosHeading>
-    <ul>
-      <li>Icon with accompanying text should be in tab index</li>
-      <li>Standalone icon should also be in tab index</li>
-    </ul>
+    </PageSection>
   </PageSection>
-</PageSection>
+</>

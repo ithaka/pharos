@@ -1,12 +1,13 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 
-<PageSection
-  isHeader
-  title="Header"
-  description="Headers are generally used as a container for introductory content or navigational elements."
-  storyBookType="organisms"
-></PageSection>
+<>
+  <PageSection
+    isHeader
+    title="Header"
+    description="Headers are generally used as a container for introductory content or navigational elements."
+    storyBookType="organisms"
+  ></PageSection>
 
 ## Examples
 
@@ -87,6 +88,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
 </PharosHeader>
 ```
 
+{' '}
+
 <PageSection topMargin title="Usage">
   <p>
     The header is placed at the top of the layout for site-wide content and contains any combination
@@ -106,6 +109,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
     <div slot="end">end</div>
   </PharosHeader>
 </PageSection>
+
+{' '}
 
 <PageSection title="Best practices">
   <BestPractices
@@ -131,6 +136,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   />
 </PageSection>
 
+{' '}
+
 <PageSection title="Content guidelines">
   <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
     <PharosHeading
@@ -153,19 +160,20 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </div>
 </PageSection>
 
-<PageSection title="Relevant WCAG guidelines">
-  <ul>
-    <li>
-      <PharosLink href="https://www.w3.org/WAI/tutorials/page-structure/regions/">
-        W3 Page Regions
-      </PharosLink>
-    </li>
-    <li>
-      <PharosLink href="w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html">
-        ARIA Landmarks
-      </PharosLink>
-    </li>
-    <li>Use semantic &lt;header&gt; element</li>
-    <li>&lt;header&gt; should have a role="banner"</li>
-  </ul>
-</PageSection>
+  <PageSection title="Relevant WCAG guidelines">
+    <ul>
+      <li>
+        <PharosLink href="https://www.w3.org/WAI/tutorials/page-structure/regions/">
+          W3 Page Regions
+        </PharosLink>
+      </li>
+      <li>
+        <PharosLink href="w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html">
+          ARIA Landmarks
+        </PharosLink>
+      </li>
+      <li>Use semantic &lt;header&gt; element</li>
+      <li>&lt;header&gt; should have a role="banner"</li>
+    </ul>
+  </PageSection>
+</>

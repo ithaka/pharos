@@ -1,12 +1,13 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 
-<PageSection
-  isHeader
-  title="Textarea"
-  storyBookType="forms"
-  description="A text area allows users to enter long, freeform text that can be on multiple lines."
-></PageSection>
+<>
+  <PageSection
+    isHeader
+    title="Textarea"
+    storyBookType="forms"
+    description="A text area allows users to enter long, freeform text that can be on multiple lines."
+  ></PageSection>
 
 ## Examples
 
@@ -16,6 +17,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
 </PharosTextarea>
 ```
 
+{' '}
+
 <PageSection topMargin title="Usage">
   <p>
     Textarea allows users to enter a sizeable amount of free-form text, like leaving feedback,
@@ -23,6 +26,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
     forms of text, use a textarea instead of a single text-input field.
   </p>
 </PageSection>
+
+{' '}
 
 <PageSection title="Best practices">
   <BestPractices
@@ -44,6 +49,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   />
 </PageSection>
 
+{' '}
+
 <PageSection title="Content guidelines">
   <PageSection subSectionLevel={1} title="Labels">
     <ul>
@@ -63,6 +70,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
     </ul>
   </PageSection>
 </PageSection>
+
+{' '}
 
 <PageSection title="State">
   <PageSection subSectionLevel={1} title="Default">
@@ -109,23 +118,24 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </PageSection>
 </PageSection>
 
-<PageSection title="Accessibility">
-  <ul>
-    <li>
-      Every textarea must have a label. A textarea without a label is ambiguous and not accessible
-    </li>
-    <li>
-      In cases where context is sufficient and a label could be hidden, make sure to have the design
-      reviewed
-    </li>
-  </ul>
-  <PageSection subSectionLevel={1} title="Accessibility best practices for labels">
-    <li>Labels must be visible when an input gets focus</li>
-    <li>Labels must be announced to the screen reader on focus</li>
-    <li>Use sentence case</li>
-    <li>
-      If the text input is a required field include the aria-required property and indicate that it
-      is a required field and use the validation message for input errors.
-    </li>
+  <PageSection title="Accessibility">
+    <ul>
+      <li>
+        Every textarea must have a label. A textarea without a label is ambiguous and not accessible
+      </li>
+      <li>
+        In cases where context is sufficient and a label could be hidden, make sure to have the design
+        reviewed
+      </li>
+    </ul>
+    <PageSection subSectionLevel={1} title="Accessibility best practices for labels">
+      <li>Labels must be visible when an input gets focus</li>
+      <li>Labels must be announced to the screen reader on focus</li>
+      <li>Use sentence case</li>
+      <li>
+        If the text input is a required field include the aria-required property and indicate that it
+        is a required field and use the validation message for input errors.
+      </li>
+    </PageSection>
   </PageSection>
-</PageSection>
+</>

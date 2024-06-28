@@ -5,13 +5,14 @@ import tooltipOverflow from '@images/components/tooltip/tooltip_overflow.gif';
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 
-<PageSection
-  isHeader
-  storyBookType="components"
-  title="Tooltip"
-  description="Tooltips provide concise additional information upon hover or focus. The content should be
-  contextual, helpful, and non-critical."
-></PageSection>
+<>
+  <PageSection
+    isHeader
+    storyBookType="components"
+    title="Tooltip"
+    description="Tooltips provide concise additional information upon hover or focus. The content should be
+    contextual, helpful, and non-critical."
+  ></PageSection>
 
 ## Examples
 
@@ -23,6 +24,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </PharosTooltip>
 </Fragment>
 ```
+
+{' '}
 
 <PageSection topMargin title="Usage">
   <PageSection subSectionLevel={1} title="Placement">
@@ -221,6 +224,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </PageSection>
 </PageSection>
 
+{' '}
+
 <PageSection title="Best practices">
   <BestPractices
     Do={
@@ -249,6 +254,8 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   />
 </PageSection>
 
+{' '}
+
 <PageSection title="Content guidelines">
   <em>Tooltips should:</em>
   <ul>
@@ -258,101 +265,102 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   </ul>
 </PageSection>
 
-<PageSection title="Accessibility">
-  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
-    <ul>
-      <li>
-        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html">
-          1.4.13 Content on Hover or Focus AA
-        </PharosLink>
-      </li>
-    </ul>
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Importance">
-    Tooltips give additional information to the user by providing information that isn't presented
-    visually. Tooltips can take multiple forms, such as a label for an icon (similar to our metadata
-    icon on the item page) or providing additional information or clarification about an element
-    (usually in the form of a "i" or a "?" icon). Tooltips do not need to receive focus, but rather
-    just live on the button, link or form field that it relates to. There may be additional Aria
-    tags that need to be added to make the tooltip available to assistive technologies, such as
-    aria-describedby.
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Code expectations">
-    <ul>
-      <li>
-        For labels (similar to the metadata and thumbnail hover on
-        <PharosLink href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">
-          item page
-        </PharosLink>
-        ){' '}
-        <ul>
-          <li> Use aria-labelledby and have the id share the same label</li>
-          <li> Make it the &lt;button&gt; attribute with a &lt;class&gt; attribute as well</li>
-          <li>
-            Within the &lt;div&gt; add "role=tooltip" and the id attribute that corresponds to the
-            aria-labelledby. Also add whatever you want the tooltip to give the user
-            <ul>
-              <li>
-                <PharosLink href="https://inclusive-components.design/tooltips-toggletips/">
-                  Example
-                </PharosLink>
-                (via Inclusive Components by Heydon Pickering)
-              </li>
-              <li>The role of "tooltip" assures that the aria-labelledby will work correctly</li>
-              <li>The button role will also ensure that this works correctly </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>
-        For tooltips that provide additional or clarifying information (similar to the ? next to
-        "Stable URL" on the
-        <PharosLink href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">
-          item page
-        </PharosLink>
-        )
-        <ul>
-          <li>
-            Similar to the structure of the example above
-            <ul>
-              <li>
-                However, we need to add the label aspect with something other than the
-                aria-labelledby because we need to use this for the new information
-              </li>
-              <li>
-                We can put the title into a hidden class to make this work effectively
-                <ul>
-                  <li>
-                    <PharosLink href="https://inclusive-components.design/tooltips-toggletips/">
-                      Example
-                    </PharosLink>
-                    (via Inclusive Components by Heydon Pickering)
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </PageSection>
-  <PageSection subSectionLevel={1} title="Expected actions">
-    <PageSection subSectionLevel={2} title="Screen reader">
-      <ul>
-        <li> Reads similarly to a text label</li>
-        <li> Announces the tooltip on hover/focus </li>
-      </ul>
-    </PageSection>
-    <PageSection subSectionLevel={2} title="Keyboard">
+  <PageSection title="Accessibility">
+    <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
       <ul>
         <li>
-          Pressing <kbd>Escape</kbd> dismisses the tooltip.
+          <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html">
+            1.4.13 Content on Hover or Focus AA
+          </PharosLink>
         </li>
-        <li> Should be included in tab order logically</li>
-        <li> Tooltip should open when focus is given to the element</li>
-        <li> Tooltip should not automatically disappear </li>
-        <li> After tooltip is closed, focus should remain on the trigger</li>
       </ul>
     </PageSection>
+    <PageSection subSectionLevel={1} title="Importance">
+      Tooltips give additional information to the user by providing information that isn't presented
+      visually. Tooltips can take multiple forms, such as a label for an icon (similar to our metadata
+      icon on the item page) or providing additional information or clarification about an element
+      (usually in the form of a "i" or a "?" icon). Tooltips do not need to receive focus, but rather
+      just live on the button, link or form field that it relates to. There may be additional Aria
+      tags that need to be added to make the tooltip available to assistive technologies, such as
+      aria-describedby.
+    </PageSection>
+    <PageSection subSectionLevel={1} title="Code expectations">
+      <ul>
+        <li>
+          For labels (similar to the metadata and thumbnail hover on
+          <PharosLink href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">
+            item page
+          </PharosLink>
+          ){' '}
+          <ul>
+            <li> Use aria-labelledby and have the id share the same label</li>
+            <li> Make it the &lt;button&gt; attribute with a &lt;class&gt; attribute as well</li>
+            <li>
+              Within the &lt;div&gt; add "role=tooltip" and the id attribute that corresponds to the
+              aria-labelledby. Also add whatever you want the tooltip to give the user
+              <ul>
+                <li>
+                  <PharosLink href="https://inclusive-components.design/tooltips-toggletips/">
+                    Example
+                  </PharosLink>
+                  (via Inclusive Components by Heydon Pickering)
+                </li>
+                <li>The role of "tooltip" assures that the aria-labelledby will work correctly</li>
+                <li>The button role will also ensure that this works correctly </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          For tooltips that provide additional or clarifying information (similar to the ? next to
+          "Stable URL" on the
+          <PharosLink href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">
+            item page
+          </PharosLink>
+          )
+          <ul>
+            <li>
+              Similar to the structure of the example above
+              <ul>
+                <li>
+                  However, we need to add the label aspect with something other than the
+                  aria-labelledby because we need to use this for the new information
+                </li>
+                <li>
+                  We can put the title into a hidden class to make this work effectively
+                  <ul>
+                    <li>
+                      <PharosLink href="https://inclusive-components.design/tooltips-toggletips/">
+                        Example
+                      </PharosLink>
+                      (via Inclusive Components by Heydon Pickering)
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </PageSection>
+    <PageSection subSectionLevel={1} title="Expected actions">
+      <PageSection subSectionLevel={2} title="Screen reader">
+        <ul>
+          <li> Reads similarly to a text label</li>
+          <li> Announces the tooltip on hover/focus </li>
+        </ul>
+      </PageSection>
+      <PageSection subSectionLevel={2} title="Keyboard">
+        <ul>
+          <li>
+            Pressing <kbd>Escape</kbd> dismisses the tooltip.
+          </li>
+          <li> Should be included in tab order logically</li>
+          <li> Tooltip should open when focus is given to the element</li>
+          <li> Tooltip should not automatically disappear </li>
+          <li> After tooltip is closed, focus should remain on the trigger</li>
+        </ul>
+      </PageSection>
+    </PageSection>
   </PageSection>
-</PageSection>
+</>

@@ -1,12 +1,13 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 
-<PageSection
-  isHeader
-  title="Footer"
-  description="Footers are used as a container for site navigational elements and disclaimers."
-  storyBookType="organisms"
-></PageSection>
+<>
+  <PageSection
+    isHeader
+    title="Footer"
+    description="Footers are used as a container for site navigational elements and disclaimers."
+    storyBookType="organisms"
+  ></PageSection>
 
 ## Examples
 
@@ -306,8 +307,9 @@ import BestPractices from '@components/statics/BestPractices.tsx';
     JSTOR is part of
     <PharosLink isOnBackground href="https://www.ithaka.org">
       ITHAKA
-    </PharosLink>, a not-for-profit organization helping the academic community use digital technologies
-    to preserve the scholarly record and to advance research and teaching in sustainable ways.
+    </PharosLink>
+    , a not-for-profit organization helping the academic community use digital technologies to
+    preserve the scholarly record and to advance research and teaching in sustainable ways.
   </span>
   <span id="copyright-text" slot="copyright-statement">
     &copy;2000-${new Date().getFullYear()} ITHAKA. All Rights Reserved. JSTOR&reg;, the JSTOR logo,
@@ -363,12 +365,16 @@ import BestPractices from '@components/statics/BestPractices.tsx';
 </PharosFooter>
 ```
 
+{' '}
+
 <PageSection
   topMargin
   title="Usage"
   description="The footer contains links to various pages on the platform and information about copyright data.
-    It is not sectioning content and does not introduce a new section in the outline of a page."
+      It is not sectioning content and does not introduce a new section in the outline of a page."
 />
+
+{' '}
 
 <PageSection title="Best practices">
   <BestPractices
@@ -391,24 +397,25 @@ import BestPractices from '@components/statics/BestPractices.tsx';
   />
 </PageSection>
 
-<PageSection
-  title="Content guidelines"
-  description="Footers contain site-wide information, such as copyright information, mission statements, links
-    to pages and legal disclaimers."
->
-  <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
-    <ul>
-      <li>
-        <PharosLink href="https://www.w3.org/WAI/tutorials/page-structure/regions/#page-footer">
-          W3 Page Regions
-        </PharosLink>
-      </li>
-      <li>
-        Use the semantic <code>&lt;footer&gt;</code> element to create this region
-      </li>
-      <li>
-        <code>&lt;footer&gt;</code> element should have a <code>role="contentinfo"</code>
-      </li>
-    </ul>
+  <PageSection
+    title="Content guidelines"
+    description="Footers contain site-wide information, such as copyright information, mission statements, links
+      to pages and legal disclaimers."
+  >
+    <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
+      <ul>
+        <li>
+          <PharosLink href="https://www.w3.org/WAI/tutorials/page-structure/regions/#page-footer">
+            W3 Page Regions
+          </PharosLink>
+        </li>
+        <li>
+          Use the semantic <code>&lt;footer&gt;</code> element to create this region
+        </li>
+        <li>
+          <code>&lt;footer&gt;</code> element should have a <code>role="contentinfo"</code>
+        </li>
+      </ul>
+    </PageSection>
   </PageSection>
-</PageSection>
+</>

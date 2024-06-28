@@ -2,18 +2,21 @@ import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import ellipsesExample from '@images/components/button/buttons_ellipses-example.png';
 
-<PageSection
-  title="Button"
-  description="Buttons communicate actions that users can take."
-  isHeader
-  storyBookType="components"
-></PageSection>
+<>
+  <PageSection
+    title="Button"
+    description="Buttons communicate actions that users can take."
+    isHeader
+    storyBookType="components"
+  ></PageSection>
 
 ## Code example
 
 ```jsx live
 <PharosButton name="primary">Primary button</PharosButton>
 ```
+
+{' '}
 
 <PageSection topMargin title="Usage" description="Buttons communicate actions that users can take.">
   <PageSection title="When to use buttons" subSectionLevel={1}>
@@ -38,16 +41,16 @@ import ellipsesExample from '@images/components/button/buttons_ellipses-example.
       title="Secondary buttons"
       subSectionLevel={2}
       description="Use secondary buttons for quieter, but still important actions. They can live on their own, be
-      paired with primary buttons, and also paired with other secondary buttons. Secondary buttons
-      provide less visual noise, and support the visual hierarchy of the primary button."
+        paired with primary buttons, and also paired with other secondary buttons. Secondary buttons
+        provide less visual noise, and support the visual hierarchy of the primary button."
     />
     <PageSection
       title="Multiple buttons"
       subSectionLevel={2}
       description="When you need to display multiple actions together in an array, use all secondary buttons
-      (examples, item detail, workspace) OR one primary and the rest secondary buttons. Secondary
-      buttons leave a minimal footprint and aren't as heavy of a distraction within the UI, and
-      primary buttons are reserved for the most important action."
+        (examples, item detail, workspace) OR one primary and the rest secondary buttons. Secondary
+        buttons leave a minimal footprint and aren't as heavy of a distraction within the UI, and
+        primary buttons are reserved for the most important action."
     />
     <PageSection title="Grouping multiple actions" subSectionLevel={2}>
       <img
@@ -66,13 +69,15 @@ import ellipsesExample from '@images/components/button/buttons_ellipses-example.
       title="Buttons versus links"
       subSectionLevel={2}
       description="Links navigate users to a new page or location. Buttons specifically allow users to perform an
-      action that stays within the context of the page or experience (e.g., the citation button
-      opens a modal or the download button directly downloads an item). There are times where
-      buttons need to act like links and look like buttons to create consistency with the
-      experience. Please read about this variant below and use sparingly in your UI."
+        action that stays within the context of the page or experience (e.g., the citation button
+        opens a modal or the download button directly downloads an item). There are times where
+        buttons need to act like links and look like buttons to create consistency with the
+        experience. Please read about this variant below and use sparingly in your UI."
     />
   </PageSection>
 </PageSection>
+
+{' '}
 
 <PageSection title="Best practices">
   <BestPractices
@@ -104,6 +109,8 @@ import ellipsesExample from '@images/components/button/buttons_ellipses-example.
     }
   />
 </PageSection>
+
+{' '}
 
 <PageSection title="Content guidelines">
   <PageSection title="Action-oriented" subSectionLevel={1}>
@@ -231,6 +238,8 @@ import ellipsesExample from '@images/components/button/buttons_ellipses-example.
   </PageSection>
 </PageSection>
 
+{' '}
+
 <PageSection title="Variants">
   <PageSection title="Primary button" subSectionLevel={1}>
     <p>Use for primary actions in the page or experience.</p>
@@ -344,72 +353,73 @@ import ellipsesExample from '@images/components/button/buttons_ellipses-example.
   </PageSection>
 </PageSection>
 
-<PageSection title="Accessibility">
-  <PageSection title="Relevant WCAG guidelines" subSectionLevel={1}>
-    <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
-      <li>
-        <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
-          1.3.1 Info and Relationships A
-        </PharosLink>
-      </li>
-    </ul>
-  </PageSection>
-  <PageSection title="Importance" subSectionLevel={1}>
-    <p>
-      By using the semantic <code>button</code> element, assistive technologies can better
-      understand the element and its relationship to the content. It also will allow users to know
-      what keys will activate the element.
-    </p>
-  </PageSection>
-  <PageSection title="Code expectations" subSectionLevel={1}>
-    <PageSection title='<button> or <input type="button"> (best practice)' subSectionLevel={2}>
-      <ul>
-        <li>Does not need anything special to work</li>
-        <li>Will use visual label unless aria-label is providing more information</li>
-      </ul>
-    </PageSection>
-    <PageSection title="Other elements (<div>, <a href>, etc)" subSectionLevel={2}>
-      <ul>
+  <PageSection title="Accessibility">
+    <PageSection title="Relevant WCAG guidelines" subSectionLevel={1}>
+      <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
         <li>
-          <code>Role "button"</code> is not enough. Users expect a button to interact like one so we
-          need to add event listeners to also have the button operable by the space key.
-        </li>
-        <li>
-          <code>Onclick</code>: handles the event raised when the button is activated using a mouse
-          click or touch event.
-        </li>
-        <li>
-          <code>OnKeyDown</code>: handles the event raised when the button is activated using the
-          Enter or Space key on the keyboard.
+          <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
+            1.3.1 Info and Relationships A
+          </PharosLink>
         </li>
       </ul>
     </PageSection>
-  </PageSection>
-  <PageSection title="Expected actions" subSectionLevel={1}>
-    <PageSection title="Screen reader" subSectionLevel={2}>
-      <PharosHeading level={'4'} preset={'1--bold'}>
-        What is read
-      </PharosHeading>
-      <p>Reads as: "visual label (or aria-label), button"</p>
-      <PharosHeading level={'4'} preset={'1--bold'}>
-        Aria-labels
-      </PharosHeading>
-      <ul>
-        <li>Aria-labels can be placed on a button to override any other label element</li>
-        <li>
-          They do not change content visually, they are only communicated audibly to assistive
-          technology
-        </li>
-        <li>
-          Should be used when a button's purpose can only be determined visually, such as an "X" to
-          close a modal
-        </li>
-        <li>
-          In example above, put an aria-label element on the button element:
-          <code>&lt;button type="button" aria-label="close modal"&gt;.</code> A screen reader would
-          then read <i>"Close modal, button"</i>
-        </li>
-      </ul>
+    <PageSection title="Importance" subSectionLevel={1}>
+      <p>
+        By using the semantic <code>button</code> element, assistive technologies can better
+        understand the element and its relationship to the content. It also will allow users to know
+        what keys will activate the element.
+      </p>
+    </PageSection>
+    <PageSection title="Code expectations" subSectionLevel={1}>
+      <PageSection title='<button> or <input type="button"> (best practice)' subSectionLevel={2}>
+        <ul>
+          <li>Does not need anything special to work</li>
+          <li>Will use visual label unless aria-label is providing more information</li>
+        </ul>
+      </PageSection>
+      <PageSection title="Other elements (<div>, <a href>, etc)" subSectionLevel={2}>
+        <ul>
+          <li>
+            <code>Role "button"</code> is not enough. Users expect a button to interact like one so we
+            need to add event listeners to also have the button operable by the space key.
+          </li>
+          <li>
+            <code>Onclick</code>: handles the event raised when the button is activated using a mouse
+            click or touch event.
+          </li>
+          <li>
+            <code>OnKeyDown</code>: handles the event raised when the button is activated using the
+            Enter or Space key on the keyboard.
+          </li>
+        </ul>
+      </PageSection>
+    </PageSection>
+    <PageSection title="Expected actions" subSectionLevel={1}>
+      <PageSection title="Screen reader" subSectionLevel={2}>
+        <PharosHeading level={'4'} preset={'1--bold'}>
+          What is read
+        </PharosHeading>
+        <p>Reads as: "visual label (or aria-label), button"</p>
+        <PharosHeading level={'4'} preset={'1--bold'}>
+          Aria-labels
+        </PharosHeading>
+        <ul>
+          <li>Aria-labels can be placed on a button to override any other label element</li>
+          <li>
+            They do not change content visually, they are only communicated audibly to assistive
+            technology
+          </li>
+          <li>
+            Should be used when a button's purpose can only be determined visually, such as an "X" to
+            close a modal
+          </li>
+          <li>
+            In example above, put an aria-label element on the button element:
+            <code>&lt;button type="button" aria-label="close modal"&gt;.</code> A screen reader would
+            then read <i>"Close modal, button"</i>
+          </li>
+        </ul>
+      </PageSection>
     </PageSection>
   </PageSection>
-</PageSection>
+</>
