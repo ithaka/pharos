@@ -1,4 +1,5 @@
 import type { FC, ReactElement } from 'react';
+import { useEffect, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Highlight } from 'prism-react-renderer';
 import type { Language } from 'prism-react-renderer';
@@ -14,14 +15,24 @@ interface CodeBlockProps {
 }
 
 const CodeBlock: FC<CodeBlockProps> = ({ children, className, live, render }) => {
-  const language = className?.replace(/language-/, '') as Language;
-  const snippet = ReactDOMServer.renderToStaticMarkup(children as ReactElement);
-  const code =
-    snippet &&
-    prettier.format(snippet, {
-      parser: 'html',
-      plugins: [parserHtml],
-    });
+  const [code, setCode] = useState<string>('');
+
+  useEffect(() => {
+    async function formatCode() {
+      const snippet = ReactDOMServer.renderToStaticMarkup(children as ReactElement);
+      if (snippet) {
+        /*
+        const formattedCode = await prettier.format(snippet, {
+          parser: 'html',
+          plugins: [parserHtml],
+        });
+        setCode(formattedCode);
+        */
+        setCode(snippet);
+      }
+    }
+    formatCode();
+  }, []);
 
   if (live) {
     return (
@@ -48,6 +59,8 @@ const CodeBlock: FC<CodeBlockProps> = ({ children, className, live, render }) =>
       </div>
     );
   }
+
+  const language = className?.replace(/language-/, '') as Language;
 
   return (
     <Highlight code={code.trim()} language={language}>

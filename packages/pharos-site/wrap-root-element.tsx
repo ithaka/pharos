@@ -27,15 +27,13 @@ const components =
   typeof window !== `undefined`
     ? {
         pre: ({ children }) => {
-          const live = children.props.metastring === 'live';
-
           return (
             <LiveProvider code={children.props.children} scope={scope}>
               <div style={blockStyle}>
-                <LiveEditor disabled={!live} />
+                <LiveEditor />
               </div>
-              {live ? <LiveError /> : null}
-              {live ? <LivePreview /> : null}
+              <LiveError />
+              <LivePreview />
             </LiveProvider>
           );
         },

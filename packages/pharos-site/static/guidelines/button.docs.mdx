@@ -291,8 +291,18 @@ import ellipsesExample from '@images/components/button/buttons_ellipses-example.
       tooltip to help visually provide meaning to the action. They should be used only in compact UI
       situations. Use an icon that conveys a single action.
     </p>
-    <PharosButton name="icon-only" icon="chevron-left-large" variant="subtle"></PharosButton>
-    <PharosButton name="icon-only" icon="chevron-right-large" variant="subtle"></PharosButton>
+    <PharosButton
+      name="icon-only"
+      a11y-label="Back"
+      icon="chevron-left-large"
+      variant="subtle"
+    ></PharosButton>
+    <PharosButton
+      name="icon-only"
+      a11y-label="Forward"
+      icon="chevron-right-large"
+      variant="subtle"
+    ></PharosButton>
   </PageSection>
   <PageSection title="Large button" subSectionLevel={1}>
     <p>
@@ -343,10 +353,10 @@ import ellipsesExample from '@images/components/button/buttons_ellipses-example.
         width: '45%',
       }}
     >
-      <PharosButton name="primary-on-background" on-background>
+      <PharosButton name="primary-on-background" isOnBackground>
         Primary button
       </PharosButton>
-      <PharosButton name="secondary-on-background" variant="secondary" on-background>
+      <PharosButton name="secondary-on-background" variant="secondary" isOnBackground>
         Secondary button
       </PharosButton>
     </div>
