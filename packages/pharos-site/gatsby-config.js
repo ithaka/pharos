@@ -39,6 +39,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `guidelines`,
+        path: `${__dirname}/static/guidelines`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       extensions: [`.mdx`, `.md`],
     },
