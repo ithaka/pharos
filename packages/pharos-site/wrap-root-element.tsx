@@ -6,6 +6,7 @@ import Canvas from './src/components/Canvas';
 import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
 import './initComponents';
 import Layout from './src/components/layout';
+import { WrapPageElementBrowserArgs } from 'gatsby';
 
 interface WrapperProps {
   element: ReactNode;
@@ -70,10 +71,8 @@ const components =
       }
     : {};
 
-export const wrapPageElement = ({ element }: { element: any }) => {
-  // props provide same data to Layout as Page element will get
-  // including location, data, etc - you don't need to pass it
-  return <Layout>{element}</Layout>;
+export const wrapPageElement = ({ element, props }: WrapPageElementBrowserArgs) => {
+  return <Layout fill={props.location.pathname === '/'}>{element}</Layout>;
 };
 
 export const wrapRootElement: FC<WrapperProps> = ({ element }) => {

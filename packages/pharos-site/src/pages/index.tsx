@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { FC, ReactElement } from 'react';
 
-import Layout from '../components/layout';
 import handleLinkClick from '../utils/handleLinkClick';
 import {
   hero,
@@ -260,7 +259,7 @@ const IndexPage: FC = () => {
     setDisplay(content);
   }, [Pharos]);
 
-  return <Layout fill>{Display}</Layout>;
+  return Display;
 };
 
 export default IndexPage;
