@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import type { FC, ReactNode } from 'react';
-import { MDXProvider } from '@mdx-js/react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import Canvas from './src/components/Canvas';
 import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
@@ -77,9 +76,5 @@ export const wrapPageElement = ({ element, props }: WrapPageElementBrowserArgs) 
 
 export const wrapRootElement: FC<WrapperProps> = ({ element }) => {
   const context = { prefix: 'site' };
-  return (
-    <MDXProvider components={{ ...components, Canvas, ...pharos }}>
-      <PharosContext.Provider value={context}>{element}</PharosContext.Provider>
-    </MDXProvider>
-  );
+  return <PharosContext.Provider value={context}>{element}</PharosContext.Provider>;
 };

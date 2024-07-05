@@ -1,0 +1,3 @@
+import Intro from '@guidelines/progress-bar.docs';
+
+<Intro />;

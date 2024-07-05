@@ -1,0 +1,3 @@
+import Intro from '@guidelines/sidenav.docs';
+
+<Intro />;

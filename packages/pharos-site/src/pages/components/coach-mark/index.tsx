@@ -1,0 +1,3 @@
+import Intro from '@guidelines/coach-mark.docs';
+
+<Intro />;

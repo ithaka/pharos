@@ -45,10 +45,6 @@ module.exports = {
         path: `${__dirname}/static/guidelines`,
       },
     },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      extensions: [`.mdx`, `.md`],
-    },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
