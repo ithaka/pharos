@@ -40,7 +40,7 @@ const IndexPage: FC = () => {
         <PharosLayout slot="top" preset="1-col--sidenav-comfy" rowGap="0" className={hero}>
           <h1 className={hero__heading}>
             Pharos, JSTOR&apos;s design system, guides us to create <i>cohesive, </i>
-            <i>supportive, </i> and <i>beautiful</i> experiences for the
+            <i>supportive, </i> and <i>beautiful</i> experiences for the{' '}
             <i>intellectually curious</i>.
           </h1>
           <PharosHeading level="2" preset="1--bold" className={heading__status}>
