@@ -1,6 +1,7 @@
 import { useLayoutEffect, useState } from 'react';
 import type { FC, ReactElement } from 'react';
 import { withPrefix, useStaticQuery, graphql } from 'gatsby';
+import { useLocation } from '@reach/router';
 
 import handleLinkClick from '../utils/handleLinkClick';
 import { siteBrand__title, siteBrand__subTitle, sidenav } from './Sidenav.module.css';
@@ -9,6 +10,7 @@ const Sidenav: FC = () => {
   const [Display, setDisplay] = useState<ReactElement | null>(null);
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
+  const location = useLocation();
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -40,7 +42,7 @@ const Sidenav: FC = () => {
         <PharosSidenavLink
           key={index}
           href={url}
-          isActive={window.location.pathname === withPrefix(url)}
+          isActive={location.pathname === withPrefix(url)}
           onClick={handleLinkClick}
         >
           {page}
@@ -49,9 +51,7 @@ const Sidenav: FC = () => {
     };
 
     const isExpanded = (root: string) => {
-      return (
-        typeof window !== `undefined` && window.location.pathname.startsWith(withPrefix(`/${root}`))
-      );
+      return location.pathname.startsWith(withPrefix(`/${root}`));
     };
 
     const content = (
@@ -65,21 +65,21 @@ const Sidenav: FC = () => {
         <PharosSidenavSection showDivider>
           <PharosSidenavLink
             href="/getting-started"
-            isActive={window.location.pathname === withPrefix('/getting-started')}
+            isActive={location.pathname === withPrefix('/getting-started')}
             onClick={handleLinkClick}
           >
             Getting started
           </PharosSidenavLink>
           <PharosSidenavLink
             href="/help"
-            isActive={window.location.pathname === withPrefix('/help')}
+            isActive={location.pathname === withPrefix('/help')}
             onClick={handleLinkClick}
           >
             Help
           </PharosSidenavLink>
           <PharosSidenavLink
             href="/faqs"
-            isActive={window.location.pathname === withPrefix('/faqs')}
+            isActive={location.pathname === withPrefix('/faqs')}
             onClick={handleLinkClick}
           >
             FAQs
@@ -167,7 +167,7 @@ const Sidenav: FC = () => {
     );
 
     setDisplay(content);
-  }, [Pharos, data]);
+  }, [Pharos, data, location]);
 
   return Display;
 };
