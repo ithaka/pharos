@@ -28,7 +28,8 @@
   justify-content: center;
   opacity: 0;
   transform: translateY(calc(var(--pharos-spacing-1-x) * -1));
-  transition: opacity var(--pharos-transition-duration-long) ease-in-out,
+  transition:
+    opacity var(--pharos-transition-duration-long) ease-in-out,
     transform var(--pharos-transition-duration-long) ease-in-out;
 }
 
