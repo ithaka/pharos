@@ -1,3 +1,1 @@
-import Intro from '@guidelines/toggle-button-group.docs.tsx';
-
-<Intro />;
+export { default as default } from '@guidelines/toggle-button-group.docs.tsx';

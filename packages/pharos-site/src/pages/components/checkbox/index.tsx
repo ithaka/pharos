@@ -1,3 +1,1 @@
-import Intro from '@guidelines/checkbox.docs';
-
-<Intro />;
+export { default as default } from '@guidelines/checkbox.docs';

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { FC, ReactElement } from 'react';
+import type { FC, ReactElement, ReactNode } from 'react';
 import {
   container,
   container__subsectionLevelOne,
@@ -14,10 +14,11 @@ import {
 } from './PageSection.module.css';
 
 interface PageSectionProps {
+  children?: ReactNode;
   title: string;
   description?: string | JSX.Element;
   isHeader?: boolean;
-  subSectionLevel: 1 | 2 | 3;
+  subSectionLevel?: 1 | 2 | 3;
   moreTitleSpace?: boolean;
   lessMargin?: boolean;
   storyBookType?: string;
@@ -25,11 +26,11 @@ interface PageSectionProps {
 }
 
 const PageSection: FC<PageSectionProps> = ({
+  children,
   title,
   description,
   isHeader,
-  subSectionLevel,
-  children,
+  subSectionLevel = 1,
   moreTitleSpace,
   lessMargin,
   topMargin,

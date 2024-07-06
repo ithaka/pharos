@@ -1,3 +1,1 @@
-import Intro from '@guidelines/pagination.docs.tsx';
-
-<Intro />;
+export { default as default } from '@guidelines/pagination.docs.tsx';

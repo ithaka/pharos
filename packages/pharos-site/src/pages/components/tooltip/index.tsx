@@ -1,3 +1,1 @@
-import Intro from '@guidelines/tooltip.docs.tsx';
-
-<Intro />;
+export { default as default } from '@guidelines/tooltip.docs.tsx';

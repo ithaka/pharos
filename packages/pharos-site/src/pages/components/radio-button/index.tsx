@@ -1,3 +1,1 @@
-import Intro from '@guidelines/radio.docs.tsx';
-
-<Intro />;
+export { default as default } from '@guidelines/radio.docs.tsx';

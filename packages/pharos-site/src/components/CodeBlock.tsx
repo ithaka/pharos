@@ -4,7 +4,6 @@ import ReactDOMServer from 'react-dom/server';
 import { Highlight } from 'prism-react-renderer';
 import type { Language } from 'prism-react-renderer';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import { mdx } from '@mdx-js/react';
 import prettier from 'prettier';
 import parserHtml from 'prettier/parser-html';
 
@@ -37,11 +36,7 @@ const CodeBlock: FC<CodeBlockProps> = ({ children, className, live, render }) =>
   if (live) {
     return (
       <div style={{ marginTop: '40px', backgroundColor: 'black' }}>
-        <LiveProvider
-          code={code.trim()}
-          transformCode={(code) => '/** @jsx mdx */' + code}
-          scope={{ mdx }}
-        >
+        <LiveProvider code={code.trim()} transformCode={(code) => '/** @jsx */' + code}>
           <LivePreview />
           <LiveEditor />
           <LiveError />

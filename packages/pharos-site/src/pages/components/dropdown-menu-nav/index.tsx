@@ -1,3 +1,1 @@
-import Intro from '@guidelines/dropdown-menu-nav.docs';
-
-<Intro />;
+export { default as default } from '@guidelines/dropdown-menu-nav.docs';

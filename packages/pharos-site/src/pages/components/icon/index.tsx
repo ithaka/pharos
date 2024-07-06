@@ -1,3 +1,1 @@
-import Intro from '@guidelines/icon.docs';
-
-<Intro />;
+export { default as default } from '@guidelines/icon.docs';

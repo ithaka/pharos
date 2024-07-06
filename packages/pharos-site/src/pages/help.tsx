@@ -20,6 +20,8 @@ const HelpPage: FC = () => {
           Pharos repository
         </PharosLink>
         .
+      </p>
+      <p>
         <PharosButton
           variant="secondary"
           iconRight="link-external"

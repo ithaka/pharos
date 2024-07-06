@@ -1,3 +1,1 @@
-import Intro from '@guidelines/loading-spinner.docs.tsx';
-
-<Intro />;
+export { default as default } from '@guidelines/loading-spinner.docs.tsx';

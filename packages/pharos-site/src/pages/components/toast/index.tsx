@@ -1,3 +1,1 @@
-import Intro from '@guidelines/toast.docs.tsx';
-
-<Intro />;
+export { default as default } from '@guidelines/toast.docs.tsx';

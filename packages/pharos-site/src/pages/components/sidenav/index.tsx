@@ -1,3 +1,1 @@
-import Intro from '@guidelines/sidenav.docs';
-
-<Intro />;
+export { default as default } from '@guidelines/sidenav.docs';

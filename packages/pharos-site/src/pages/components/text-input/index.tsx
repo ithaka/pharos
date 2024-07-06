@@ -1,3 +1,1 @@
-import Intro from '@guidelines/text-input.docs.tsx';
-
-<Intro />;
+export { default as default } from '@guidelines/text-input.docs.tsx';

@@ -96,23 +96,10 @@ const tsxConfig = {
   },
 };
 
-const mdxConfig = {
-  files: ['*.mdx'],
-  extends: ['plugin:mdx/recommended', 'plugin:react/recommended'],
-  settings: {
-    'mdx/code-blocks': true,
-  },
-  rules: {
-    'react/no-unescaped-entities': 'off',
-    'react/jsx-no-undef': 'off',
-  },
-};
-
 export default [
   { ignores: globalIgnores },
   js.configs.recommended,
   pharosConfig,
   tsConfig,
   tsxConfig,
-  mdxConfig,
 ];

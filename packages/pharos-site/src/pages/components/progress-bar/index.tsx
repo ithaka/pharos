@@ -1,3 +1,1 @@
-import Intro from '@guidelines/progress-bar.docs';
-
-<Intro />;
+export { default as default } from '@guidelines/progress-bar.docs';

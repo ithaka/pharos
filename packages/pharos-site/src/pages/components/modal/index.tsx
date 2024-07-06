@@ -1,9 +1,7 @@
-import Intro from '@guidelines/modal.docs.tsx';
+export { default as default } from '@guidelines/modal.docs.tsx';
 import { PharosHeading } from '@ithaka/pharos/lib/react-components';
 <>
-  <Intro />
-
-  <PharosHeading level={2} preset="6">
+  <PharosHeading level={2} preset="5">
     Examples
   </PharosHeading>
 

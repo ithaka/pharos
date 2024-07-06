@@ -1,3 +1,1 @@
-import Intro from '@guidelines/textarea.docs.tsx';
-
-<Intro />;
+export { default as default } from '@guidelines/textarea.docs.tsx';

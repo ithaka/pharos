@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { FC, ReactElement } from 'react';
+import type { FC, ReactElement, ReactNode } from 'react';
 import {
   container,
   line_dont,
@@ -11,6 +11,7 @@ import {
 } from './DosAndDonts.module.css';
 
 interface DosAndDontsProps {
+  children?: ReactNode;
   Dont?: boolean;
 }
 

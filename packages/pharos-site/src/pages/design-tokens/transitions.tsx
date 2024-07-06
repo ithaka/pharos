@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { TokenTable } from '../../components/statics/design-token/TokenTable';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTokenFormat } from '../../components/statics/design-token/toTokenFormat';
@@ -41,21 +41,26 @@ export const exampleColors = [
   '--pharos-color-night-blue-base',
 ];
 
-<PageSection title="Transitions" isHeader>
-  <p>Hover over the colorful boxes to view the transitions.</p>
-  <TokenTable>
-    <thead>
-      <tr>
-        <th style={{ width: '40%' }}>Token</th>
-        <th style={{ width: '40%' }}>Value</th>
-        <th>Example</th>
-      </tr>
-    </thead>
-    <tbody>
-      {TransitionRow(tokens.transition.base, 5, '--pharos-color-living-coral-80')}
-      {Object.keys(tokens.transition.duration).map((key, i) =>
-        TransitionRow(tokens.transition.duration[key], exampleRems[i], exampleColors[i], i)
-      )}
-    </tbody>
-  </TokenTable>
-</PageSection>;
+const TransitionsPage: FC = () => {
+  return (
+    <PageSection title="Transitions" isHeader>
+      <p>Hover over the colorful boxes to view the transitions.</p>
+      <TokenTable>
+        <thead>
+          <tr>
+            <th style={{ width: '40%' }}>Token</th>
+            <th style={{ width: '40%' }}>Value</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          {TransitionRow(tokens.transition.base, 5, '--pharos-color-living-coral-80')}
+          {Object.keys(tokens.transition.duration).map((key, i) =>
+            TransitionRow(tokens.transition.duration[key], exampleRems[i], exampleColors[i], i)
+          )}
+        </tbody>
+      </TokenTable>
+    </PageSection>
+  );
+};
+export default TransitionsPage;

@@ -1,3 +1,1 @@
-import Intro from '@guidelines/select.docs.tsx';
-
-<Intro />;
+export { default as default } from '@guidelines/select.docs.tsx';
