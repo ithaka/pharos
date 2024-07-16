@@ -2,7 +2,7 @@ import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import CodeBlock from '@components/CodeBlock';
 import { FC } from 'react';
-import { PharosHeading, PharosLink } from '@ithaka/pharos/lib/react-components';
+import { PharosHeading, PharosLink, PharosPagination } from '@ithaka/pharos/lib/react-components';
 
 const PaginationPage: FC = () => {
   return (
@@ -12,13 +12,9 @@ const PaginationPage: FC = () => {
         storyBookType="components"
         title="Pagination"
         description="Pagination allows users to move through a list or set of items that have been split into different pages."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosPagination totalResults="1146" pageSize="25" currentPage="2"></PharosPagination>
-  ```{' '} */}
+      >
+        <PharosPagination totalResults={1146} pageSize={25} currentPage={2}></PharosPagination>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Pagination splits content into smaller chunks across several pages, making it easier to

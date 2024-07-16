@@ -1,7 +1,13 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import { FC } from 'react';
-import { PharosHeading, PharosLink } from '@ithaka/pharos/lib/react-components';
+import {
+  PharosButton,
+  PharosHeading,
+  PharosLink,
+  PharosModal,
+} from '@ithaka/pharos/lib/react-components';
+import type { PharosModal as PharosModalType } from '@ithaka/pharos/';
 
 const ModalPage: FC = () => {
   return (
@@ -13,39 +19,38 @@ const ModalPage: FC = () => {
         description="Modals are overlays that present a user with focused information and actions that sit on top of
       a page's content. They are used for getting a user's attention and for taking action without
       changing page context."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <>
-    <PharosButton
-      onClick={(e) => {
-        e.target.focus();
-        const modal = document.querySelector('[data-pharos-component="PharosModal"]');
-        modal.open = true;
-      }}
-    >
-      Open modal
-    </PharosButton>
-    <PharosModal header="Pharos modal" footer-divider>
-      <p>I am a modal</p>
-      <PharosButton slot="footer" type="button" variant="secondary" data-modal-close>
-        Cancel
-      </PharosButton>
-      <PharosButton
-        slot="footer"
-        type="button"
-        onClick={(e) => {
-          const modal = document.querySelector('[data-pharos-component="PharosModal"]');
-          modal.open = false;
-        }}
       >
-        Ok
-      </PharosButton>
-    </PharosModal>
-  </>
-  ```{' '} */}
+        <>
+          <PharosButton
+            onClick={(e) => {
+              const modal = document.querySelector(
+                '[data-pharos-component="PharosModal"]'
+              ) as PharosModalType;
+              modal.open = true;
+            }}
+          >
+            Open modal
+          </PharosButton>
+          <PharosModal header="Pharos modal" footer-divider>
+            <p>I am a modal</p>
+            <PharosButton slot="footer" type="button" variant="secondary" data-modal-close>
+              Cancel
+            </PharosButton>
+            <PharosButton
+              slot="footer"
+              type="button"
+              onClick={(e) => {
+                const modal = document.querySelector(
+                  '[data-pharos-component="PharosModal"]'
+                ) as PharosModalType;
+                modal.open = false;
+              }}
+            >
+              Ok
+            </PharosButton>
+          </PharosModal>
+        </>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <PageSection title="Overview" subSectionLevel={1} lessMargin>
           <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>

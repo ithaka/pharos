@@ -2,7 +2,7 @@ import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import { FC } from 'react';
 import Canvas from '../../src/components/Canvas';
-import { PharosHeading, PharosTextarea } from '@ithaka/pharos/lib/react-components';
+import { PharosTextarea } from '@ithaka/pharos/lib/react-components';
 
 const TextareaPage: FC = () => {
   return (
@@ -12,15 +12,11 @@ const TextareaPage: FC = () => {
         title="Textarea"
         storyBookType="forms"
         description="A text area allows users to enter long, freeform text that can be on multiple lines."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosTextarea>
-    <span slot="label">I am a textarea</span>
-  </PharosTextarea>
-  ```{' '} */}
+      >
+        <PharosTextarea>
+          <span slot="label">I am a textarea</span>
+        </PharosTextarea>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Textarea allows users to enter a sizeable amount of free-form text, like leaving feedback,

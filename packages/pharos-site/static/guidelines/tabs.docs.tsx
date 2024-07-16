@@ -1,7 +1,13 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import { FC } from 'react';
-import { PharosHeading, PharosLink } from '@ithaka/pharos/lib/react-components';
+import {
+  PharosHeading,
+  PharosLink,
+  PharosTab,
+  PharosTabPanel,
+  PharosTabs,
+} from '@ithaka/pharos/lib/react-components';
 
 const TabsPage: FC = () => {
   return (
@@ -11,32 +17,28 @@ const TabsPage: FC = () => {
         storyBookType="components"
         title="Tabs"
         description="Tabs are used to quickly navigate between views within the same context or page. Each tab's content is independently categorized and mutually exclusive of the content of other tabs."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosTabs>
-    <PharosTab id="tab-1" data-panel-id="letters-panel">
-      Letters
-    </PharosTab>
-    <PharosTab id="tab-2" data-panel-id="numbers-panel">
-      Numbers
-    </PharosTab>
-    <PharosTab id="tab-3" data-panel-id="punctuation-panel">
-      Punctuations
-    </PharosTab>
-    <PharosTabPanel id="letters-panel" slot="panel">
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ
-    </PharosTabPanel>
-    <PharosTabPanel id="numbers-panel" slot="panel">
-      1234567890
-    </PharosTabPanel>
-    <PharosTabPanel id="punctuation-panel" slot="panel">
-      !@#$%^&*()
-    </PharosTabPanel>
-  </PharosTabs>
-  ```{' '} */}
+      >
+        <PharosTabs>
+          <PharosTab id="tab-1" data-panel-id="letters-panel">
+            Letters
+          </PharosTab>
+          <PharosTab id="tab-2" data-panel-id="numbers-panel">
+            Numbers
+          </PharosTab>
+          <PharosTab id="tab-3" data-panel-id="punctuation-panel">
+            Punctuations
+          </PharosTab>
+          <PharosTabPanel id="letters-panel" slot="panel">
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ
+          </PharosTabPanel>
+          <PharosTabPanel id="numbers-panel" slot="panel">
+            1234567890
+          </PharosTabPanel>
+          <PharosTabPanel id="punctuation-panel" slot="panel">
+            !@#$%^&*()
+          </PharosTabPanel>
+        </PharosTabs>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Use tabs to provide a way to switch between various related content that are grouped by

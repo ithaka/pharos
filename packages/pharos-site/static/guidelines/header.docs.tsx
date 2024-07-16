@@ -1,7 +1,15 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import { FC } from 'react';
-import { PharosHeader, PharosHeading, PharosLink } from '@ithaka/pharos/lib/react-components';
+import {
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosDropdownMenuNav,
+  PharosDropdownMenuNavLink,
+  PharosHeader,
+  PharosHeading,
+  PharosLink,
+} from '@ithaka/pharos/lib/react-components';
 
 const HeaderPage: FC = () => {
   return (
@@ -11,88 +19,87 @@ const HeaderPage: FC = () => {
         title="Header"
         description="Headers are generally used as a container for introductory content or navigational elements."
         storyBookType="organisms"
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosHeader>
-    <PharosLink slot="start" href="/" id="jstor-logo">
-      <img src="../images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
-    </PharosLink>
-    <div slot="center">
-      <PharosDropdownMenuNav label="main navigation">
-        <PharosDropdownMenuNavLink href="action/showAdvancedSearch" id="adv-search-link">
-          Advanced Search
-        </PharosDropdownMenuNavLink>
-        <PharosDropdownMenuNavLink
-          href="/subjects"
-          id="browse-link"
-          data-dropdown-menu-id="browse-menu"
-          data-dropdown-menu-hover
-        >
-          Browse
-        </PharosDropdownMenuNavLink>
-        <PharosDropdownMenu id="browse-menu">
-          <PharosDropdownMenuItem link="/subjects">by Subject</PharosDropdownMenuItem>
-          <PharosDropdownMenuItem link="/action/showJournals?browseType=title">
-            by Title
-          </PharosDropdownMenuItem>
-          <PharosDropdownMenuItem link="/site/collection-list">
-            by Collections
-          </PharosDropdownMenuItem>
-          <PharosDropdownMenuItem link="/publishers">by Publisher</PharosDropdownMenuItem>
-        </PharosDropdownMenu>
-        <PharosDropdownMenuNavLink
-          href="/account/workspace"
-          id="tools-link"
-          data-dropdown-menu-id="tools-menu"
-          data-dropdown-menu-hover
-        >
-          Tools
-        </PharosDropdownMenuNavLink>
-        <PharosDropdownMenu id="tools-menu">
-          <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>
-          <PharosDropdownMenuItem link="/analyze">Text Analyzer</PharosDropdownMenuItem>
-          <PharosDropdownMenuItem link="/understand">
-            The JSTOR Understanding Series
-          </PharosDropdownMenuItem>
-          <PharosDropdownMenuItem link="/dfr">Data for Research</PharosDropdownMenuItem>
-        </PharosDropdownMenu>
-      </PharosDropdownMenuNav>
-    </div>
-    <div slot="end" style={{ display: 'grid', gridTemplateRows: '1fr 1fr', rowGap: '1.5rem' }}>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          columnGap: '0.5rem',
-        }}
       >
-        <PharosLink href="#" target="_blank">
-          Log In
-        </PharosLink>
-        <PharosLink href="#" target="_blank">
-          Register
-        </PharosLink>
-      </div>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          columnGap: '0.5rem',
-        }}
-      >
-        <PharosLink href="//about.jstor.org" target="_blank" bold>
-          About
-        </PharosLink>
-        <PharosLink href="//support.jstor.org" target="_blank" bold>
-          Support
-        </PharosLink>
-      </div>
-    </div>
-  </PharosHeader>
-  ```{' '} */}
+        <PharosHeader>
+          <PharosLink slot="start" href="/" id="jstor-logo">
+            <img src="../images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
+          </PharosLink>
+          <div slot="center">
+            <PharosDropdownMenuNav a11yLabel="main navigation">
+              <PharosDropdownMenuNavLink href="action/showAdvancedSearch" id="adv-search-link">
+                Advanced Search
+              </PharosDropdownMenuNavLink>
+              <PharosDropdownMenuNavLink
+                href="/subjects"
+                id="browse-link"
+                data-dropdown-menu-id="browse-menu"
+                data-dropdown-menu-hover
+              >
+                Browse
+              </PharosDropdownMenuNavLink>
+              <PharosDropdownMenu id="browse-menu">
+                <PharosDropdownMenuItem link="/subjects">by Subject</PharosDropdownMenuItem>
+                <PharosDropdownMenuItem link="/action/showJournals?browseType=title">
+                  by Title
+                </PharosDropdownMenuItem>
+                <PharosDropdownMenuItem link="/site/collection-list">
+                  by Collections
+                </PharosDropdownMenuItem>
+                <PharosDropdownMenuItem link="/publishers">by Publisher</PharosDropdownMenuItem>
+              </PharosDropdownMenu>
+              <PharosDropdownMenuNavLink
+                href="/account/workspace"
+                id="tools-link"
+                data-dropdown-menu-id="tools-menu"
+                data-dropdown-menu-hover
+              >
+                Tools
+              </PharosDropdownMenuNavLink>
+              <PharosDropdownMenu id="tools-menu">
+                <PharosDropdownMenuItem link="/account/workspace">Workspace</PharosDropdownMenuItem>
+                <PharosDropdownMenuItem link="/analyze">Text Analyzer</PharosDropdownMenuItem>
+                <PharosDropdownMenuItem link="/understand">
+                  The JSTOR Understanding Series
+                </PharosDropdownMenuItem>
+                <PharosDropdownMenuItem link="/dfr">Data for Research</PharosDropdownMenuItem>
+              </PharosDropdownMenu>
+            </PharosDropdownMenuNav>
+          </div>
+          <div
+            slot="end"
+            style={{ display: 'grid', gridTemplateRows: '1fr 1fr', rowGap: '1.5rem' }}
+          >
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                columnGap: '0.5rem',
+              }}
+            >
+              <PharosLink href="#" target="_blank">
+                Log In
+              </PharosLink>
+              <PharosLink href="#" target="_blank">
+                Register
+              </PharosLink>
+            </div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                columnGap: '0.5rem',
+              }}
+            >
+              <PharosLink href="//about.jstor.org" target="_blank" bold>
+                About
+              </PharosLink>
+              <PharosLink href="//support.jstor.org" target="_blank" bold>
+                Support
+              </PharosLink>
+            </div>
+          </div>
+        </PharosHeader>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           The header is placed at the top of the layout for site-wide content and contains any

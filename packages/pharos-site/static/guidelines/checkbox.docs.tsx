@@ -12,15 +12,11 @@ const CheckboxPage: FC = () => {
         description="Checkboxes present items in a list of one or more options where the user can have several different combinations of selections."
         isHeader
         storyBookType="forms"
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-    <PharosCheckbox>
-      <span slot="label">I am a checkbox</span>
-    </PharosCheckbox>
-    ```{' '} */}
+      >
+        <PharosCheckbox>
+          <span slot="label">I am a checkbox</span>
+        </PharosCheckbox>
+      </PageSection>
       <PageSection
         topMargin
         title="Usage"

@@ -2,7 +2,10 @@ import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import { FC } from 'react';
 import {
+  PharosDropdownMenu,
   PharosDropdownMenuItem,
+  PharosDropdownMenuNav,
+  PharosDropdownMenuNavLink,
   PharosHeading,
   PharosLink,
 } from '@ithaka/pharos/lib/react-components';
@@ -16,46 +19,42 @@ const DropdownMenuPage: FC = () => {
         title="Dropdown Menu"
         description="Dropdown menus present a list of menu items from which a user can choose from."
         storyBookType="components"
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosDropdownMenuNav>
-    <PharosDropdownMenuNavLink
-      href="#"
-      id="smurfs-link"
-      data-dropdown-menu-id="smurfs-menu"
-      data-dropdown-menu-hover
-      target="_blank"
-    >
-      Smurfs
-    </PharosDropdownMenuNavLink>
-    <PharosDropdownMenu id="smurfs-menu" data-dropdown-menu-hover>
-      <PharosDropdownMenuItem link="/papa">Papa</PharosDropdownMenuItem>
-      <PharosDropdownMenuItem link="/slumsy">Clumsy</PharosDropdownMenuItem>
-      <PharosDropdownMenuItem link="/smurfette">Smurfette</PharosDropdownMenuItem>
-    </PharosDropdownMenu>
-    <PharosDropdownMenuNavLink
-      href="#"
-      id="tmnt-link"
-      data-dropdown-menu-id="tmnt-menu"
-      data-dropdown-menu-hover
-      target="_blank"
-    >
-      Ninja Turtles
-    </PharosDropdownMenuNavLink>
-    <PharosDropdownMenu id="tmnt-menu">
-      <PharosDropdownMenuItem link="/leonardo">Leonardo</PharosDropdownMenuItem>
-      <PharosDropdownMenuItem link="/donatello">Donatello</PharosDropdownMenuItem>
-      <PharosDropdownMenuItem link="/raphael">Raphael</PharosDropdownMenuItem>
-      <PharosDropdownMenuItem link="/michelangelo">Michelangelo</PharosDropdownMenuItem>
-    </PharosDropdownMenu>
-    <PharosDropdownMenuNavLink href="#" id="other-link" target="_blank">
-      Link to Other
-    </PharosDropdownMenuNavLink>
-  </PharosDropdownMenuNav>
-  ```{' '} */}
+      >
+        <PharosDropdownMenuNav>
+          <PharosDropdownMenuNavLink
+            href="#"
+            id="smurfs-link"
+            data-dropdown-menu-id="smurfs-menu"
+            data-dropdown-menu-hover
+            target="_blank"
+          >
+            Smurfs
+          </PharosDropdownMenuNavLink>
+          <PharosDropdownMenu id="smurfs-menu" data-dropdown-menu-hover>
+            <PharosDropdownMenuItem link="/papa">Papa</PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/slumsy">Clumsy</PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/smurfette">Smurfette</PharosDropdownMenuItem>
+          </PharosDropdownMenu>
+          <PharosDropdownMenuNavLink
+            href="#"
+            id="tmnt-link"
+            data-dropdown-menu-id="tmnt-menu"
+            data-dropdown-menu-hover
+            target="_blank"
+          >
+            Ninja Turtles
+          </PharosDropdownMenuNavLink>
+          <PharosDropdownMenu id="tmnt-menu">
+            <PharosDropdownMenuItem link="/leonardo">Leonardo</PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/donatello">Donatello</PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/raphael">Raphael</PharosDropdownMenuItem>
+            <PharosDropdownMenuItem link="/michelangelo">Michelangelo</PharosDropdownMenuItem>
+          </PharosDropdownMenu>
+          <PharosDropdownMenuNavLink href="#" id="other-link" target="_blank">
+            Link to Other
+          </PharosDropdownMenuNavLink>
+        </PharosDropdownMenuNav>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Dropdown menus are used with dropdown menu items to create options presented to the user.

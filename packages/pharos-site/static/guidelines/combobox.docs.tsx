@@ -13,17 +13,13 @@ const ComboboxPage: FC = () => {
     while the dropdown allows the selecting of options."
         isHeader
         istoryBookType="forms"
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-    <PharosCombobox>
-      <span slot="label">I am a combobox</span>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-    </PharosCombobox>
-    ```{' '} */}
+      >
+        <PharosCombobox>
+          <span slot="label">I am a combobox</span>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </PharosCombobox>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Clicking the dropdown arrow button will show all items. Typing in the text input will

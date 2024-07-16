@@ -12,15 +12,11 @@ const RadioButtonPage: FC = () => {
         storyBookType="forms"
         title="Radio button"
         description="Radio buttons present items in a list of two or more options where the user can select only one option at a time."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosRadioButton>
-    <span slot="label">I am a radio</span>
-  </PharosRadioButton>
-  ```{' '} */}
+      >
+        <PharosRadioButton>
+          <span slot="label">I am a radio</span>
+        </PharosRadioButton>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Radio buttons are normally presented in radio groups (a collection of radio buttons which

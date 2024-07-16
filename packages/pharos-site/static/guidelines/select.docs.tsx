@@ -12,15 +12,13 @@ const SelectPage: FC = () => {
         storyBookType="forms"
         title="Select"
         description="A select allows users to choose one option from a list in a form."
-      ></PageSection>
-      <PharosHeading level={2}>Examples</PharosHeading>
-      {/* ```jsx live
-  <PharosSelect>
-    <span slot="label">I am a select</span>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-  </PharosSelect>
-  ```{' '} */}
+      >
+        <PharosSelect>
+          <span slot="label">I am a select</span>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </PharosSelect>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Select inputs allow users to submit data from a list of options. Although the select

@@ -2,10 +2,11 @@ import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import { FC } from 'react';
 import {
-  PharosHeading,
+  PharosButton,
   PharosIcon,
   PharosLink,
   PharosToast,
+  PharosToaster,
 } from '@ithaka/pharos/lib/react-components';
 
 const ToastPage: FC = () => {
@@ -17,27 +18,23 @@ const ToastPage: FC = () => {
         title="Toast"
         description="Toasts are non-disruptive messages that appear at the top right corner of the UI to provide
       quick, at-a-glance feedback on the outcome of an action."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <Fragment>
-    <PharosButton
-      onClick={() => {
-        const event = new CustomEvent('pharos-toast-open', {
-          detail: {
-            content: 'Hi there!',
-          },
-        });
-        document.dispatchEvent(event);
-      }}
-    >
-      Have a toast!
-    </PharosButton>
-    <PharosToaster></PharosToaster>
-  </Fragment>
-  ```{' '} */}
+      >
+        <>
+          <PharosButton
+            onClick={() => {
+              const event = new CustomEvent('pharos-toast-open', {
+                detail: {
+                  content: 'Hi there!',
+                },
+              });
+              document.dispatchEvent(event);
+            }}
+          >
+            Have a toast!
+          </PharosButton>
+          <PharosToaster />
+        </>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Use toasts to show a confirmation of non-critical actions from the user. For example, you

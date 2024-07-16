@@ -1,7 +1,12 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import { FC } from 'react';
-import { PharosHeading, PharosLink } from '@ithaka/pharos/lib/react-components';
+import {
+  PharosButton,
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosLink,
+} from '@ithaka/pharos/lib/react-components';
 
 const DropdownMenuNavPage: FC = () => {
   return (
@@ -11,22 +16,18 @@ const DropdownMenuNavPage: FC = () => {
         description="The dropdown menu nav provides users an overview of your site's page hierarchy."
         isHeader
         storyBookType="components"
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <>
-    <PharosButton id="my-button" data-dropdown-menu-id="my-menu" icon-right="chevron-down">
-      Click Me
-    </PharosButton>
-    <PharosDropdownMenu id="my-menu">
-      <PharosDropdownMenuItem>Menu item 1</PharosDropdownMenuItem>
-      <PharosDropdownMenuItem>Menu item 2</PharosDropdownMenuItem>
-      <PharosDropdownMenuItem>Menu item 3</PharosDropdownMenuItem>
-    </PharosDropdownMenu>
-  </>
-  ```{' '} */}
+      >
+        <>
+          <PharosButton id="my-button" data-dropdown-menu-id="my-menu" icon-right="chevron-down">
+            Click Me
+          </PharosButton>
+          <PharosDropdownMenu id="my-menu">
+            <PharosDropdownMenuItem>Menu item 1</PharosDropdownMenuItem>
+            <PharosDropdownMenuItem>Menu item 2</PharosDropdownMenuItem>
+            <PharosDropdownMenuItem>Menu item 3</PharosDropdownMenuItem>
+          </PharosDropdownMenu>
+        </>
+      </PageSection>
       <PageSection
         topMargin
         title="Usage"

@@ -13,29 +13,25 @@ const ImageCardPage: FC = () => {
         title="Image Card"
         description="Image cards group related visual and textual context."
         storyBookType="components"
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosImageCard title="Card title" link="#">
-    <img
-      id="image"
-      src="../images/components/image-card/collection_5.png"
-      alt="south hall"
-      slot="image"
-    />
-    <div id="creator" slot="metadata">
-      Tubby, William Bunker (American architect,...
-    </div>
-    <div id="item-date" slot="metadata">
-      1889-1892 (creation)
-    </div>
-    <div id="collection" slot="metadata">
-      From the <PharosLink href="#">Collection title</PharosLink>
-    </div>
-  </PharosImageCard>
-  ```{' '} */}
+      >
+        <PharosImageCard title="Card title" link="#">
+          <img
+            id="image"
+            src="../images/components/image-card/collection_5.png"
+            alt="south hall"
+            slot="image"
+          />
+          <div id="creator" slot="metadata">
+            Tubby, William Bunker (American architect,...
+          </div>
+          <div id="item-date" slot="metadata">
+            1889-1892 (creation)
+          </div>
+          <div id="collection" slot="metadata">
+            From the <PharosLink href="#">Collection title</PharosLink>
+          </div>
+        </PharosImageCard>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <PageSection subSectionLevel={1} title="When to use">
           <p>

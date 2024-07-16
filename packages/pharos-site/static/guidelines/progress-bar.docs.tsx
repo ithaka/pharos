@@ -12,16 +12,12 @@ const ProgressBarPage: FC = () => {
         storyBookType="components"
         description="The progress bar visually represents progress of a particular process. It shows how much of the
       task has been completed and how much is remaining."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosProgressBar value="75">
-    <div slot="title">A Title</div>
-    <div slot="description">Doing something...</div>
-  </PharosProgressBar>
-  ```{' '} */}
+      >
+        <PharosProgressBar value={75}>
+          <div slot="title">A Title</div>
+          <div slot="description">Doing something...</div>
+        </PharosProgressBar>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           This component can be used to visually represent the completion of a task, such as

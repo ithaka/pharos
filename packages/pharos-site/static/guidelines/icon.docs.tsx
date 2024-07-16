@@ -1,7 +1,7 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import { FC } from 'react';
-import { PharosHeading, PharosLink } from '@ithaka/pharos/lib/react-components';
+import { PharosHeading, PharosIcon, PharosLink } from '@ithaka/pharos/lib/react-components';
 
 const IconPage: FC = () => {
   return (
@@ -11,17 +11,13 @@ const IconPage: FC = () => {
         storyBookType="components"
         title="Icon"
         description="Pharos Icons are SVG visual representations of objects, items or content, or actions a user can take."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <>
-    <PharosIcon name="workspace" a11yTitle="workspace" />
-    <PharosIcon name="download" a11yTitle="download" />
-    <PharosIcon name="email" a11yTitle="email" />
-  </>
-  ```{' '} */}
+      >
+        <>
+          <PharosIcon name="workspace" a11yTitle="workspace" />
+          <PharosIcon name="download" a11yTitle="download" />
+          <PharosIcon name="email" a11yTitle="email" />
+        </>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <PageSection title="When to use" subSectionLevel={1}>
           <p>

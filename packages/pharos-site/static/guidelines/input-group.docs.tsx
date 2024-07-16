@@ -1,7 +1,12 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import { FC } from 'react';
-import { PharosHeading, PharosLink } from '@ithaka/pharos/lib/react-components';
+import {
+  PharosButton,
+  PharosHeading,
+  PharosInputGroup,
+  PharosLink,
+} from '@ithaka/pharos/lib/react-components';
 
 const InputGroupPage: FC = () => {
   return (
@@ -12,21 +17,17 @@ const InputGroupPage: FC = () => {
         title="Input Group"
         description="Input groups allow users to provide information as part of a form in combination with a button,
       icon, or select element on either side of the text input for extra functionality."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosInputGroup name="my-input-group">
-    <span slot="label">Search</span>
-    <PharosButton
-      name="search-button"
-      icon="search"
-      variant="subtle"
-      a11yLabel="search"
-    ></PharosButton>
-  </PharosInputGroup>
-  ```{' '} */}
+      >
+        <PharosInputGroup name="my-input-group">
+          <span slot="label">Search</span>
+          <PharosButton
+            name="search-button"
+            icon="search"
+            variant="subtle"
+            a11yLabel="search"
+          ></PharosButton>
+        </PharosInputGroup>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Use an input group when additional functionality is required for a text input, such as a

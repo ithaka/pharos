@@ -2,7 +2,11 @@ import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import CodeBlock from '@components/CodeBlock';
 import { FC } from 'react';
-import { PharosHeading, PharosLink } from '@ithaka/pharos/lib/react-components';
+import {
+  PharosHeading,
+  PharosLink,
+  PharosLoadingSpinner,
+} from '@ithaka/pharos/lib/react-components';
 
 const LoadingSpinnerPage: FC = () => {
   return (
@@ -12,22 +16,18 @@ const LoadingSpinnerPage: FC = () => {
         storyBookType="components"
         title="Loading Spinner"
         description="Loading spinners indicate that a page, section, or content is loading."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <div
-    style={{
-      height: '5rem',
-      width: '5rem',
-      border: '1px solid black',
-      position: 'relative',
-    }}
-  >
-    <PharosLoadingSpinner></PharosLoadingSpinner>
-  </div>
-  ```{' '} */}
+      >
+        <div
+          style={{
+            height: '5rem',
+            width: '5rem',
+            border: '1px solid black',
+            position: 'relative',
+          }}
+        >
+          <PharosLoadingSpinner />
+        </div>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Loading spinners should be placed over pages or their sections that need to load before

@@ -12,13 +12,9 @@ const LinkPage: FC = () => {
         storyBookType="components"
         title="Link"
         description="Links enable users to navigate to a different place or to additional information."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosLink href="#">I am a link</PharosLink>
-  ```{' '} */}
+      >
+        <PharosLink href="#">I am a link</PharosLink>
+      </PageSection>
       <PageSection topMargin title="Usage">
         Use links to allow users to navigate to another page within the application, navigate to a
         different site or jump to an element on the current page. Links within paragraphs or other

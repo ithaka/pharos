@@ -1,6 +1,10 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
-import { PharosHeading, PharosLink } from '@ithaka/pharos/lib/react-components';
+import {
+  PharosBreadcrumb,
+  PharosBreadcrumbItem,
+  PharosLink,
+} from '@ithaka/pharos/lib/react-components';
 import { FC } from 'react';
 
 const BreadcrumbPage: FC = () => {
@@ -12,19 +16,17 @@ const BreadcrumbPage: FC = () => {
         title="Breadcrumb"
         description="The breadcrumb component is a secondary navigational pattern that allows users to move between
       and obtain context of various levels of hierarchy."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Code example
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosBreadcrumb>
-    <PharosBreadcrumbItem href="#">
-      Mouse Over to See the Full Text of Long Content Which Are Truncated
-    </PharosBreadcrumbItem>
-    <PharosBreadcrumbItem href="#">Short Texts Will Not</PharosBreadcrumbItem>
-    <PharosBreadcrumbItem>The Current Place</PharosBreadcrumbItem>
-  </PharosBreadcrumb>
-  ```{' '} */}
+      >
+        <>
+          <PharosBreadcrumb>
+            <PharosBreadcrumbItem href="#">
+              Mouse Over to See the Full Text of Long Content Which Are Truncated
+            </PharosBreadcrumbItem>
+            <PharosBreadcrumbItem href="#">Short Texts Will Not</PharosBreadcrumbItem>
+            <PharosBreadcrumbItem>The Current Place</PharosBreadcrumbItem>
+          </PharosBreadcrumb>
+        </>
+      </PageSection>
       <PageSection
         topMargin
         title="Usage"

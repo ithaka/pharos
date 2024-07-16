@@ -11,15 +11,11 @@ const HeadingPage: FC = () => {
         title="Heading"
         description="Headings are used as the titles or labels of each major section of a page that make up the UI."
         storyBookType="components"
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosHeading level={1} preset={'7'}>
-    I am a heading
-  </PharosHeading>
-  ```{' '} */}
+      >
+        <PharosHeading level={1} preset={'7'}>
+          I am a heading
+        </PharosHeading>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Headings allow users to easily distinguish content sections on the page. The Heading

@@ -13,13 +13,9 @@ const AlertPage: FC = () => {
         storyBookType="components"
         description="Alerts inform users about important information, which can be displayed as persistent site
     messaging or appear based on a task that a user is trying to complete."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosAlert status="info">Alert message</PharosAlert>
-  ``` */}{' '}
+      >
+        <PharosAlert status="info">Alert message</PharosAlert>
+      </PageSection>
       <PageSection
         topMargin
         title="Usage"

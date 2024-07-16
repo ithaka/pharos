@@ -17,13 +17,9 @@ const ButtonPage: FC = () => {
         description="Buttons communicate actions that users can take."
         isHeader
         storyBookType="components"
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Code example
-      </PharosHeading>
-      {/* ```jsx live
-    <PharosButton name="primary">Primary button</PharosButton>
-    ```{' '} */}
+      >
+        <PharosButton name="primary">Primary button</PharosButton>
+      </PageSection>
       <PageSection
         topMargin
         title="Usage"

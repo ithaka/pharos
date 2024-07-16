@@ -5,13 +5,13 @@ import tooltipOverflow from '@images/components/tooltip/tooltip_overflow.gif';
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import { FC } from 'react';
+import Canvas from '../../src/components/Canvas';
 import {
-  PharosHeading,
+  PharosButton,
   PharosIcon,
   PharosLink,
   PharosTooltip,
 } from '@ithaka/pharos/lib/react-components';
-import Canvas from '../../src/components/Canvas';
 
 const TooltipPage: FC = () => {
   return (
@@ -22,18 +22,14 @@ const TooltipPage: FC = () => {
         title="Tooltip"
         description="Tooltips provide concise additional information upon hover or focus. The content should be
     contextual, helpful, and non-critical."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <Fragment>
-    <PharosButton data-tooltip-id="tooltip-example">Hover here</PharosButton>
-    <PharosTooltip id="tooltip-example" placement={'bottom'}>
-      Hello there!
-    </PharosTooltip>
-  </Fragment>
-  ```{' '} */}
+      >
+        <>
+          <PharosButton data-tooltip-id="tooltip-example">Hover here</PharosButton>
+          <PharosTooltip id="tooltip-example" placement={'bottom'}>
+            Hello there!
+          </PharosTooltip>
+        </>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <PageSection subSectionLevel={1} title="Placement">
           <p>

@@ -11,36 +11,32 @@ const CoachMarkPage: FC = () => {
         description="Coach marks highlight new or unique features, direct users in the right direction, or guide users during onboarding."
         isHeader
         storyBookType="components"
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-    <>
-      <div
-        style={{
-          border: '1px solid #eae8e1',
-          padding: '20px',
-          margin: '200px auto',
-          width: 'fit-content',
-        }}
-        data-coach-mark="example-coachmark"
       >
-        Lorem Ipsum
-      </div>
-      <PharosCoachMark
-        id="example-coachmark"
-        hide={false}
-        side="bottom"
-        alignment="start"
-        header="Coach Mark"
-        delay="short"
-        variant="dark"
-      >
-        This is an example Coach Mark
-      </PharosCoachMark>
-    </>
-    ``` */}
+        <>
+          <div
+            style={{
+              border: '1px solid #eae8e1',
+              padding: '20px',
+              margin: '200px auto',
+              width: 'fit-content',
+            }}
+            data-coach-mark="example-coachmark"
+          >
+            Lorem Ipsum
+          </div>
+          <PharosCoachMark
+            id="example-coachmark"
+            hide={false}
+            side="bottom"
+            alignment="start"
+            header="Coach Mark"
+            delay="short"
+            variant="dark"
+          >
+            This is an example Coach Mark
+          </PharosCoachMark>
+        </>
+      </PageSection>
       <PageSection
         topMargin
         title="Usage"

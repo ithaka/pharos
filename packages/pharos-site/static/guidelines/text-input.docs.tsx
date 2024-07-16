@@ -12,15 +12,11 @@ const TextInputPage: FC = () => {
         storyBookType="forms"
         title="Text input"
         description="Text inputs enable users to supply data as part of a form or a query string for search."
-      ></PageSection>
-      <PharosHeading level={2} preset="5">
-        Examples
-      </PharosHeading>
-      {/* ```jsx live
-  <PharosTextInput>
-    <span slot="label">I am an input</span>
-  </PharosTextInput>
-  ```{' '} */}
+      >
+        <PharosTextInput>
+          <span slot="label">I am an input</span>
+        </PharosTextInput>
+      </PageSection>
       <PageSection topMargin title="Usage">
         <p>
           Inputs are used for forms or inputting data to get a result, so the design and
