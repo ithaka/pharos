@@ -136,8 +136,9 @@ const PageSection: FC<PageSectionProps> = ({
         {description ? (
           <div className={isHeader ? description__isHeader : description__base}> {description}</div>
         ) : null}
-        {storyBookType ? storyBookLink : null}
         {children}
+        <br />
+        {storyBookType ? storyBookLink : null}
       </div>
     );
     setDisplay(content);
