@@ -68,11 +68,11 @@ function RgbToCmyk(rgb: number[]) {
 
 const ColorSwatches: FC<ColorSwatchesProps> = ({
   filter,
-  large,
-  noLabel,
-  hexOnlyLabel,
-  colorsPerRow,
-  smallSpacing,
+  large = false,
+  noLabel = false,
+  hexOnlyLabel = false,
+  colorsPerRow = 3,
+  smallSpacing = false,
 }) => {
   const [StateSwatch, setStateSwatch] = useState<ReactElement[] | null>(null);
 
@@ -162,14 +162,6 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
       {StateSwatch}
     </div>
   );
-};
-
-ColorSwatches.defaultProps = {
-  noLabel: false,
-  hexOnlyLabel: false,
-  large: false,
-  colorsPerRow: 3,
-  smallSpacing: false,
 };
 
 export default ColorSwatches;

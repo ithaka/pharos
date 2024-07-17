@@ -15,7 +15,7 @@ interface DosAndDontsProps {
   Dont?: boolean;
 }
 
-const DosAndDonts: FC<DosAndDontsProps> = ({ children, Dont }) => {
+const DosAndDonts: FC<DosAndDontsProps> = ({ children, Dont = false }) => {
   const [Display, setDisplay] = useState<ReactElement | null>(null);
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
@@ -59,10 +59,6 @@ const DosAndDonts: FC<DosAndDontsProps> = ({ children, Dont }) => {
     setDisplay(content);
   }, [Pharos, Dont, children]);
   return Display;
-};
-
-DosAndDonts.defaultProps = {
-  Dont: false,
 };
 
 export default DosAndDonts;
