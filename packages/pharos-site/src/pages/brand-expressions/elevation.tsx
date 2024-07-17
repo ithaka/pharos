@@ -123,31 +123,33 @@ const ElevationPage: FC = () => {
           JSTOR uses a consistent equation to calculate elevation levels as they rise. To maintain
           elevation levels, follow this important two-step system calculation:
         </p>
-        <p style={{ color: 'var(--pharos-color-text-20)' }}>
-          1. The top shadow should consistently stay at these values no matter the elevation level:
-          <ul>
-            <li>X = 0</li>
-            <li>Blur = 2</li>
-            <li>Y = 1</li>
-            <li>Spread = 0</li>
-          </ul>
-        </p>
-        <img
-          src={topDropShadow}
-          alt="Top drop shadow"
-          width="220px"
-          style={{ marginBottom: '40px' }}
-        />
-        <p style={{ color: 'var(--pharos-color-text-20)' }}>
-          2. Calculations are used beginning at Level 2. The bottom shadow should comply with the
-          following system as each level rises:
-          <ul>
-            <li>X = 0</li>
-            <li>Blur + 2</li>
-            <li>Y + 2</li>
-            <li>Spread + 1</li>
-          </ul>
-        </p>
+        <ol style={{ color: 'var(--pharos-color-text-20)' }}>
+          <li>
+            The top shadow should consistently stay at these values no matter the elevation level:
+            <ul>
+              <li>X = 0</li>
+              <li>Blur = 2</li>
+              <li>Y = 1</li>
+              <li>Spread = 0</li>
+            </ul>
+            <img
+              src={topDropShadow}
+              alt="Top drop shadow"
+              width="220px"
+              style={{ marginBottom: '40px' }}
+            />
+          </li>
+          <li style={{ color: 'var(--pharos-color-text-20)' }}>
+            Calculations are used beginning at Level 2. The bottom shadow should comply with the
+            following system as each level rises:
+            <ul>
+              <li>X = 0</li>
+              <li>Blur + 2</li>
+              <li>Y + 2</li>
+              <li>Spread + 1</li>
+            </ul>
+          </li>
+        </ol>
         <Grid columns={3}>
           <strong>Level 2</strong>
           <strong>Level 3</strong>
