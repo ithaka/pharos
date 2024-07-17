@@ -1,37 +1,47 @@
 import { PharosHeading, PharosLink, PharosButton } from '@ithaka/pharos/lib/react-components';
 import { FC } from 'react';
+import CodeBlock from '../components/CodeBlock';
 
 const GettingStartedPage: FC = () => {
+  const installInstructions = `
+   # yarn
+   yarn add @ithaka/pharos
+   \n
+   # npm
+   npm install @ithaka/pharos
+  `;
+  const directoryLayout = `
+      @ithaka/pharos/lib
+      ├── assets/
+      │   ├── icons            // Pharos icons (used with the icon component)
+      ├── components/          // Folder containing web components
+      ├── react-components/    // Folder containing React components
+      ├── styles/
+      │   ├── _variables.css   // Commonly used tokens for styling
+      │   ├── fonts.css        // CSS to have fonts available to use
+      │   ├── typography.scss  // CSS styles to apply fonts and styles to root elements
+      └── ...`;
+
   return (
     <>
       <PharosHeading level={1} preset="7--bold">
         Getting Started
       </PharosHeading>
       <br />
-      <PharosHeading level={2} preset="5">
+      <PharosHeading level={2} preset="6">
         Installation
       </PharosHeading>
       <p>Install the Pharos design system using one of the following commands:</p>
-      <code>
-        <pre># yarn yarn add @ithaka/pharos # npm npm install @ithaka/pharos</pre>
-      </code>
+      <CodeBlock code={installInstructions} />
       <br />
       <p>
         Once installed, the <code>node_modules/</code> directory should contain directories similar
         to following structure:
       </p>
-      <code>
-        <pre>
-          @ithaka/pharos/lib ├── assets/ │ ├── icons // Pharos icons (used with the icon component)
-          ├── components/ // Folder containing web components ├── react-components/ // Folder
-          containing React components ├── styles/ │ ├── _variables.css // Commonly used tokens for
-          styling │ ├── fonts.css // CSS to have fonts available to use │ ├── typography.scss // CSS
-          styles to apply fonts and styles to root elements └── ...
-        </pre>
-      </code>
+      <CodeBlock code={directoryLayout} />
       <br />
       <br />
-      <PharosHeading level={2} preset="2">
+      <PharosHeading level={2} preset="6">
         Using Pharos components
       </PharosHeading>
       <p>
@@ -46,9 +56,9 @@ const GettingStartedPage: FC = () => {
         You will first need to provide the scoped custom element registry to your application. This
         is generally achieved by including this script tag in the head of your application.
       </p>
-      {/* // ```jsx
-  // <script src="https://cdn.jsdelivr.net/npm/@webcomponents/scoped-custom-element-registry@0.0.3/scoped-custom-element-registry.min.js"></script>
-  // ``` */}
+      <CodeBlock
+        code={`<script src="https://cdn.jsdelivr.net/npm/@webcomponents/scoped-custom-element-registry@0.0.3/scoped-custom-element-registry.min.js"></script>`}
+      />
       <p>
         You then need to register components on the [custom element
         registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) for them
@@ -56,67 +66,74 @@ const GettingStartedPage: FC = () => {
         utility to define all the Pharos components your application uses, with a consistent scoping
         prefix:
       </p>
-      {/* // ```javascript
-  // import {PharosAlert, PharosButton, PharosIcon} from '@ithaka/pharos';
-  // import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
+      <CodeBlock
+        code={`
+        import {PharosAlert, PharosButton, PharosIcon} from '@ithaka/pharos';
+        import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
 
-  // registerComponents('homepage', [PharosAlert, PharosButton, PharosIcon]);
-  // ``` */}
+        registerComponents('homepage', [PharosAlert, PharosButton, PharosIcon]);
+      `}
+      />
       <p>
         To manually register a component, import the classes you wish to use in your application's
         entrypoint and define the custom element with a tag name in the form of{' '}
         <code>{`{app / bundle}-pharos-{component}`}</code> and a trivial subclass that extends the
         Pharos class wrapped in the <code>PharosComponentMixin</code>:
       </p>
-      {/* // ```javascript
-  // import {PharosAlert} from '@ithaka/pharos';
-  // import PharosComponentMixin from '@ithaka/pharos/lib/utils/mixins/pharos-component';
+      <CodeBlock
+        code={`
+        import {PharosAlert} from '@ithaka/pharos';
+        import PharosComponentMixin from '@ithaka/pharos/lib/utils/mixins/pharos-component';
 
-  // customElements.define('homepage-pharos-alert', class extends PharosComponentMixin(PharosAlert) { });
-  // ``` */}
+        customElements.define('homepage-pharos-alert', class extends PharosComponentMixin(PharosAlert) { });
+      `}
+      />
       <p>
         To demonstrate the usage in both Vue and React, you'll next see how to use the Button
         component.
       </p>
       <br />
-      <PharosHeading level={3} preset="3">
+      <PharosHeading level={3} preset="4">
         Pharos + React
       </PharosHeading>
       <p>
         The following code shows how to use Pharos's button component with <strong>React</strong> to
         produce a basic button, as seen below the code
       </p>
-      {/* // ```jsx
-  // import {PharosButton} from '@ithaka/pharos/lib/react-components';
-  //   ...
+      <CodeBlock
+        code={`   
+        import {PharosButton} from '@ithaka/pharos/lib/react-components';
+          ...
 
-  // <PharosButton>
-  //   React button
-  // </PharosButton>
-  // ``` */}
-      <PharosButton>React button</PharosButton>
+        <PharosButton>
+          React button
+        </PharosButton>
+      `}
+      />
       <br />
       <br />
       <br />
-      <PharosHeading level={3} preset="3">
+      <PharosHeading level={3} preset="4">
         Pharos + Vue
       </PharosHeading>
       <p>
         Similarly, the following code shows how to use Pharos's button component with{' '}
         <strong>Vue</strong> to produce a basic button, as seen below the code
       </p>
-      {/* // ```
-  // <template>
-  //   ...
-  //   <pharos-button>
-  //     Vue button
-  //   </pharos-button>
-  // </template>
-  // ``` */}
+      <CodeBlock
+        code={`
+        <template>
+          ...
+          <pharos-button>
+            Vue button
+          </pharos-button>
+        </template>
+      `}
+      />
       {/* <pharos-button>Vue Button</pharos-button> */}
       <br />
       <br />
-      <PharosHeading level={3} preset="3">
+      <PharosHeading level={3} preset="4">
         Props + Storybook
       </PharosHeading>
       <p>
@@ -144,10 +161,10 @@ const GettingStartedPage: FC = () => {
       <br />
       <br />
       <br />
-      <PharosHeading level={2} preset="2">
+      <PharosHeading level={2} preset="6">
         Style with Pharos
       </PharosHeading>
-      <PharosHeading level={3} preset="3">
+      <PharosHeading level={3} preset="4">
         Using the Recommended Fonts
       </PharosHeading>
       <p>
@@ -173,54 +190,58 @@ const GettingStartedPage: FC = () => {
         The following examples use inline styling, but the same principles remain for other methods
         of styling.
       </p>
-      <PharosHeading level={4} preset="4">
+      <PharosHeading level={4} preset="2">
         Pharos fonts with Vue
       </PharosHeading>
-      {/* // ```
-  // <script>
-  //   ...
-  //   import "@ithaka/pharos/lib/styles/fonts.css";
-  //   import "@ithaka/pharos/lib/styles/typography.scss";
-  //   ...
-  // </script>
+      <CodeBlock
+        code={`
+        <script>
+          ...
+          import "@ithaka/pharos/lib/styles/fonts.css";
+          import "@ithaka/pharos/lib/styles/typography.scss";
+          ...
+        </script>
 
-  // <template>
-  //   ...
-  //   <div class="text">
-  //     This is an example of text with Pharos fonts.
-  //   </div>
-  //   ...
-  // </template>
+        <template>
+          ...
+          <div class="text">
+            This is an example of text with Pharos fonts.
+          </div>
+          ...
+        </template>
 
-  // <style lang="scss">
-  //   ...
-  //   .text {
-  //     font-family: GT America Standard;
-  //   }
-  //   ...
-  // </style>
-  // ``` */}
+        <style lang="scss">
+          ...
+          .text {
+            font-family: GT America Standard;
+          }
+          ...
+        </style>
+      `}
+      />
       <br />
-      <PharosHeading level={4} preset="4">
+      <PharosHeading level={4} preset="2">
         Pharos fonts with React
       </PharosHeading>
-      {/* // ```
-  // import "@ithaka/pharos/lib/styles/fonts.css";
-  // import "@ithaka/pharos/lib/styles/typography.scss";
+      <CodeBlock
+        code={`
+        import "@ithaka/pharos/lib/styles/fonts.css";
+        import "@ithaka/pharos/lib/styles/typography.scss";
 
-  // const styleObject = {
-  //   fontFamily: "GT America Standard"
-  // }
+        const styleObject = {
+          fontFamily: "GT America Standard"
+        }
 
-  // ...  //in render method
-  // <div style={styleObject}>
-  //   This is an example of text with Pharos fonts.
-  // </div>
-  // ...
-  // ``` */}
+        ...  //in render method
+        <div style={styleObject}>
+          This is an example of text with Pharos fonts.
+        </div>
+        ...
+      `}
+      />
       <br />
       <br />
-      <PharosHeading level={3} preset="3">
+      <PharosHeading level={3} preset="4">
         Pharos Design Tokens
       </PharosHeading>
       <p>
@@ -237,7 +258,7 @@ const GettingStartedPage: FC = () => {
       </p>
       <br />
       <br />
-      <PharosHeading level={2} preset="2">
+      <PharosHeading level={2} preset="6">
         Get to know Pharos
       </PharosHeading>
       <p>
@@ -263,7 +284,7 @@ const GettingStartedPage: FC = () => {
         </PharosLink>{' '}
         will help you stay up-to-date on important changes.
       </p>
-      <PharosHeading level={3} preset="3">
+      <PharosHeading level={3} preset="4">
         Brand guidelines
       </PharosHeading>
       <p>
@@ -273,7 +294,7 @@ const GettingStartedPage: FC = () => {
       <PharosLink href="/brand-expressions/logos">View our brand guidelines</PharosLink>
       <br />
       <br />
-      <PharosHeading level={3} preset="3">
+      <PharosHeading level={3} preset="4">
         Contribute
       </PharosHeading>
       <p>
