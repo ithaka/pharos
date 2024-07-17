@@ -186,72 +186,77 @@ const LayoutPage: FC = () => {
             className="typography-table-example"
             style={{ borderCollapse: 'collapse', width: '100%' }}
           >
-            <tr>
-              <th
-                className="typography-table-example"
-                style={{ backgroundColor: 'var(--pharos-color-marble-gray-94)' }}
-              >
-                WIDTH
-              </th>
-              <th
-                className="typography-table-example"
-                style={{ backgroundColor: 'var(--pharos-color-marble-gray-94)' }}
-              >
-                NAMES
-              </th>
-              <th
-                className="typography-table-example"
-                style={{ backgroundColor: 'var(--pharos-color-marble-gray-94)' }}
-              >
-                COLUMNS
-              </th>
-              <th
-                className="typography-table-example"
-                style={{ backgroundColor: 'var(--pharos-color-marble-gray-94)' }}
-              >
-                GUTTER
-              </th>
-            </tr>
-            <tr>
-              <td className="typography-table-example">360px</td>
-              <td className="typography-table-example">S</td>
-              <td className="typography-table-example">4</td>
-              <td className="typography-table-example">
-                48px / <strong>3-x</strong>
-              </td>
-            </tr>
-            <tr>
-              <td className="typography-table-example">768px</td>
-              <td className="typography-table-example">M</td>
-              <td className="typography-table-example">8</td>
-              <td className="typography-table-example">
-                48px / <strong>3-x</strong>
-              </td>
-            </tr>
-            <tr>
-              <td className="typography-table-example">1056px</td>
-              <td className="typography-table-example">L</td>
-              <td className="typography-table-example">12</td>
-              <td className="typography-table-example">
-                48px / <strong>3-x</strong>
-              </td>
-            </tr>
-            <tr>
-              <td className="typography-table-example">1360px</td>
-              <td className="typography-table-example">XL</td>
-              <td className="typography-table-example">12</td>
-              <td className="typography-table-example">
-                48px / <strong>3-x</strong>
-              </td>
-            </tr>
-            <tr>
-              <td className="typography-table-example">1584px</td>
-              <td className="typography-table-example">Max</td>
-              <td className="typography-table-example">12</td>
-              <td className="typography-table-example">
-                48px / <strong>3-x</strong>
-              </td>
-            </tr>
+            <caption className="visually-hidden">Chart of available Pharos Breakpoints</caption>
+            <thead>
+              <tr>
+                <th
+                  className="typography-table-example"
+                  style={{ backgroundColor: 'var(--pharos-color-marble-gray-94)' }}
+                >
+                  WIDTH
+                </th>
+                <th
+                  className="typography-table-example"
+                  style={{ backgroundColor: 'var(--pharos-color-marble-gray-94)' }}
+                >
+                  NAMES
+                </th>
+                <th
+                  className="typography-table-example"
+                  style={{ backgroundColor: 'var(--pharos-color-marble-gray-94)' }}
+                >
+                  COLUMNS
+                </th>
+                <th
+                  className="typography-table-example"
+                  style={{ backgroundColor: 'var(--pharos-color-marble-gray-94)' }}
+                >
+                  GUTTER
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="typography-table-example">360px</td>
+                <td className="typography-table-example">S</td>
+                <td className="typography-table-example">4</td>
+                <td className="typography-table-example">
+                  48px / <strong>3-x</strong>
+                </td>
+              </tr>
+              <tr>
+                <td className="typography-table-example">768px</td>
+                <td className="typography-table-example">M</td>
+                <td className="typography-table-example">8</td>
+                <td className="typography-table-example">
+                  48px / <strong>3-x</strong>
+                </td>
+              </tr>
+              <tr>
+                <td className="typography-table-example">1056px</td>
+                <td className="typography-table-example">L</td>
+                <td className="typography-table-example">12</td>
+                <td className="typography-table-example">
+                  48px / <strong>3-x</strong>
+                </td>
+              </tr>
+              <tr>
+                <td className="typography-table-example">1360px</td>
+                <td className="typography-table-example">XL</td>
+                <td className="typography-table-example">12</td>
+                <td className="typography-table-example">
+                  48px / <strong>3-x</strong>
+                </td>
+              </tr>
+              <tr>
+                <td className="typography-table-example">1584px</td>
+                <td className="typography-table-example">Max</td>
+                <td className="typography-table-example">12</td>
+                <td className="typography-table-example">
+                  48px / <strong>3-x</strong>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </PageSection>{' '}
