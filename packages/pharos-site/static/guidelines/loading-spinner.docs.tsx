@@ -2,11 +2,7 @@ import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
 import CodeBlock from '@components/CodeBlock';
 import { FC } from 'react';
-import {
-  PharosHeading,
-  PharosLink,
-  PharosLoadingSpinner,
-} from '@ithaka/pharos/lib/react-components';
+import { PharosLink, PharosLoadingSpinner } from '@ithaka/pharos/lib/react-components';
 
 const LoadingSpinnerPage: FC = () => {
   return (
@@ -95,7 +91,9 @@ const LoadingSpinnerPage: FC = () => {
               demonstrate the screen reader interaction)
             </li>
           </ul>
-          <CodeBlock className="language-html">
+          <CodeBlock
+            language="html"
+            code={`
             <div
               id="loading-spinner"
               className="loading-spinner js-loading-spinner"
@@ -104,7 +102,8 @@ const LoadingSpinnerPage: FC = () => {
             >
               <p className="vh js-loading-spinner-copy">Content is loading...</p>
             </div>
-          </CodeBlock>
+          `}
+          />
         </PageSection>
         <PageSection title="Screen reader" subSectionLevel={1} lessMargin>
           <ul>

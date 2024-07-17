@@ -85,7 +85,9 @@ const PaginationPage: FC = () => {
               include "previous/next" and the page number.
             </li>
           </ul>
-          <CodeBlock className="language-html">
+          <CodeBlock
+            language="html"
+            code={`
             <nav role="navigation" aria-label="pagination navigation">
               <ul>
                 <li>
@@ -95,7 +97,8 @@ const PaginationPage: FC = () => {
                 </li>
               </ul>
             </nav>
-          </CodeBlock>
+          `}
+          />
         </PageSection>
         <PageSection title="Expected actions" subSectionLevel={1} lessMargin>
           <div style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
