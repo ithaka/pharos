@@ -78,94 +78,96 @@ const HeadingPage: FC = () => {
         Presets
       </PharosHeading>
       <table>
-        <tr>
-          <td>
-            <PharosHeading level={1} preset={'2'}>
-              JSTOR is for the intellectually curious
-            </PharosHeading>
-          </td>
-          <td>
-            <strong>Preset="2"</strong>
-            <ul>
-              <li>typeface: GT America Standard</li>
-              <li>font-size: 20px</li>
-              <li>font-weight: Regular (400)</li>
-              <li>letter-spacing: -2%</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <PharosHeading level={1} preset={'3'}>
-              JSTOR is for the intellectually curious
-            </PharosHeading>
-          </td>
-          <td>
-            <strong>Preset="3"</strong>
-            <ul>
-              <li>Typeface: GT America Standard</li> <li>Font-size: 24px</li>{' '}
-              <li>Line-height: 28px</li> <li>font-weight: Regular (400)</li>{' '}
-              <li>letter-spacing: -2%</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <PharosHeading level={1} preset={'4'}>
-              JSTOR is for the intellectually curious
-            </PharosHeading>
-          </td>
-          <td>
-            <strong>Preset="4"</strong>
-            <ul>
-              <li>Typeface: Ivar Headline</li> <li>font-size: 24px</li> <li>Line-height: 28px</li>{' '}
-              <li>font-weight: Regular (400)</li> <li>letter-spacing: -1%</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <PharosHeading level={1} preset={'5'}>
-              JSTOR is for the intellectually curious{' '}
-            </PharosHeading>
-          </td>
-          <td>
-            <strong>Preset="5"</strong>
-            <ul>
-              <li>Typeface: GT America Standard</li> <li>Font-size: 32px</li>{' '}
-              <li>Line-height: 36px</li> <li>font-weight: Regular (400)</li>{' '}
-              <li>letter-spacing: -2%</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <PharosHeading level={1} preset={'6'}>
-              JSTOR is for the intellectually curious
-            </PharosHeading>
-          </td>
-          <td>
-            <strong>Preset="6"</strong>
-            <ul>
-              <li>Typeface: Ivar Headline</li> <li>Font-size: 32px</li> <li>Line-height: 36px</li>{' '}
-              <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <PharosHeading level={1} preset={'7'}>
-              JSTOR is for the intellectually curious
-            </PharosHeading>
-          </td>
-          <td>
-            <strong>Preset="7"</strong>
-            <ul>
-              <li>Typeface: Ivar Headline</li> <li>font-size: 54px</li> <li>line-height: 1</li>{' '}
-              <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li>
-            </ul>
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>
+              <PharosHeading level={1} preset={'2'}>
+                JSTOR is for the intellectually curious
+              </PharosHeading>
+            </td>
+            <td>
+              <strong>Preset="2"</strong>
+              <ul>
+                <li>typeface: GT America Standard</li>
+                <li>font-size: 20px</li>
+                <li>font-weight: Regular (400)</li>
+                <li>letter-spacing: -2%</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <PharosHeading level={1} preset={'3'}>
+                JSTOR is for the intellectually curious
+              </PharosHeading>
+            </td>
+            <td>
+              <strong>Preset="3"</strong>
+              <ul>
+                <li>Typeface: GT America Standard</li> <li>Font-size: 24px</li>{' '}
+                <li>Line-height: 28px</li> <li>font-weight: Regular (400)</li>{' '}
+                <li>letter-spacing: -2%</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <PharosHeading level={1} preset={'4'}>
+                JSTOR is for the intellectually curious
+              </PharosHeading>
+            </td>
+            <td>
+              <strong>Preset="4"</strong>
+              <ul>
+                <li>Typeface: Ivar Headline</li> <li>font-size: 24px</li> <li>Line-height: 28px</li>{' '}
+                <li>font-weight: Regular (400)</li> <li>letter-spacing: -1%</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <PharosHeading level={1} preset={'5'}>
+                JSTOR is for the intellectually curious{' '}
+              </PharosHeading>
+            </td>
+            <td>
+              <strong>Preset="5"</strong>
+              <ul>
+                <li>Typeface: GT America Standard</li> <li>Font-size: 32px</li>{' '}
+                <li>Line-height: 36px</li> <li>font-weight: Regular (400)</li>{' '}
+                <li>letter-spacing: -2%</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <PharosHeading level={1} preset={'6'}>
+                JSTOR is for the intellectually curious
+              </PharosHeading>
+            </td>
+            <td>
+              <strong>Preset="6"</strong>
+              <ul>
+                <li>Typeface: Ivar Headline</li> <li>Font-size: 32px</li> <li>Line-height: 36px</li>{' '}
+                <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <PharosHeading level={1} preset={'7'}>
+                JSTOR is for the intellectually curious
+              </PharosHeading>
+            </td>
+            <td>
+              <strong>Preset="7"</strong>
+              <ul>
+                <li>Typeface: Ivar Headline</li> <li>font-size: 54px</li> <li>line-height: 1</li>{' '}
+                <li>font-weight: Regular (400)</li> <li>letter-spacing: -2%</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
       </table>
       <div style={{ marginBottom: 'var(--pharos-spacing-5-x)' }}>
         <div style={{ marginBottom: 'var(--pharos-spacing-3-x)' }}>
