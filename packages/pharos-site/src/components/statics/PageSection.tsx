@@ -30,7 +30,7 @@ const PageSection: FC<PageSectionProps> = ({
   title,
   description,
   isHeader,
-  subSectionLevel = 1,
+  subSectionLevel,
   moreTitleSpace,
   lessMargin,
   topMargin,
@@ -40,7 +40,7 @@ const PageSection: FC<PageSectionProps> = ({
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
 
-  if (isHeader && subSectionLevel > 1) {
+  if (isHeader && subSectionLevel) {
     console.error("isHeader can't be used with SubSectionLevel.");
   }
 
