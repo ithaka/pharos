@@ -19,9 +19,9 @@ const CodeBlock: FC<CodeBlockProps> = ({ code, language = 'tsx' }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={{ ...style, ...codeStyles }}>
           {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })}>
+            <div key={i} {...getLineProps({ line })}>
               {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
+                <span key={key} {...getTokenProps({ token })} />
               ))}
             </div>
           ))}
