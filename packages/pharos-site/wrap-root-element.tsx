@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import type { FC, ReactNode } from 'react';
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import Canvas from './src/components/Canvas';
 import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
 import './initComponents';
