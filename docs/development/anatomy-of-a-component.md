@@ -31,11 +31,11 @@ Imagine a SparklyText component which adds sparkles around the content it wraps.
 
 ```
 packages/pharos/src/components/sparkly-text
-├── PharosSparklyText.react.stories.mdx
+├── PharosSparklyText.react.stories.tsx
 ├── pharos-sparkly-text.scss
 ├── pharos-sparkly-text.test.ts
 ├── pharos-sparkly-text.ts
-└── pharos-sparkly-text.wc.stories.mdx
+└── pharos-sparkly-text.wc.stories.tsx
 ```
 
 You can read about each of these files in more detail in the following sections.
@@ -109,7 +109,7 @@ Pharos components use [Lit](https://lit.dev/) to aid in authoring web components
 
 ## Storybook stories
 
-You can find stories for exploration in Storybook in `pharos-sparkly-text.wc.stories.mdx` for the core web component and `PharosSparklyText.react.stories.mdx` for the corresponding generated React component. These stories can act as a test-driven development tool, helping you stress test the behavior and design of components as you build them.
+You can find stories for exploration in Storybook in `pharos-sparkly-text.wc.stories.tsx` for the core web component and `PharosSparklyText.react.stories.tsx` for the corresponding generated React component. These stories can act as a test-driven development tool, helping you stress test the behavior and design of components as you build them.
 
 ## The SparklyText component
 
@@ -178,7 +178,7 @@ There it is—SparklyText in the flesh. It's ready for use, and you can test it 
 
 ### The SparklyText story
 
-Create `pharos-sparkly-text.wc.stories.mdx` now, and add the following:
+Create `pharos-sparkly-text.wc.stories.tsx` now, and add the following:
 
 ```jsx
 import { Story, Canvas, Meta } from '@storybook/blocks';
@@ -216,7 +216,7 @@ You should now be able to run Storybook and see the SparklyText component in all
 $ yarn storybook:wc:dev
 ```
 
-You can also create `PharosSparklyText.react.stories.mdx` to write stories that test the generated React version of SparklyText. Before you're truly ready for production, you'll also need to [test your component](./testing.md).
+You can also create `PharosSparklyText.react.stories.tsx` to write stories that test the generated React version of SparklyText. Before you're truly ready for production, you'll also need to [test your component](./testing.md).
 
 ## Special cases
 

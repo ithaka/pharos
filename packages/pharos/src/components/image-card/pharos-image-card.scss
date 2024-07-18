@@ -113,7 +113,8 @@ slot[name='image']::slotted(img) {
   pointer-events: none;
   opacity: 0;
   transform: translate3d(0, 0, 0);
-  transition: visibility var(--pharos-transition-duration-default) ease-in-out,
+  transition:
+    visibility var(--pharos-transition-duration-default) ease-in-out,
     opacity var(--pharos-transition-duration-default) ease-in-out,
     background-color var(--pharos-transition-duration-default) ease-in-out;
 }

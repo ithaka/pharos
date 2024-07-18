@@ -5,7 +5,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular.woff')
+  src:
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular.woff')
       format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular.woff2')
       format('woff2');
@@ -16,7 +17,8 @@
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular-Italic.woff')
+  src:
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular-Italic.woff')
       format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular-Italic.woff2')
       format('woff2');
@@ -27,7 +29,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Medium.woff')
+  src:
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Medium.woff')
       format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Medium.woff2')
       format('woff2');
@@ -38,7 +41,8 @@
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Medium-Italic.woff')
+  src:
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Medium-Italic.woff')
       format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Medium-Italic.woff2')
       format('woff2');
@@ -49,7 +53,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Regular.woff') format('woff'),
+  src:
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Regular.woff') format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Regular.woff2') format('woff2');
 }
 
@@ -58,7 +63,8 @@
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Italic.woff') format('woff'),
+  src:
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Italic.woff') format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Italic.woff2') format('woff2');
 }
 
@@ -67,7 +73,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Medium.woff') format('woff'),
+  src:
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Medium.woff') format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Medium.woff2') format('woff2');
 }
 
@@ -76,7 +83,8 @@
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-MediumItalic.woff')
+  src:
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-MediumItalic.woff')
       format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-MediumItalic.woff2')
       format('woff2');

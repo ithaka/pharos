@@ -39,11 +39,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        defaultLayouts: {
-          pages: require.resolve(`./src/components/layout.tsx`),
-        },
+        name: `guidelines`,
+        path: `${__dirname}/static/guidelines`,
       },
     },
     `gatsby-plugin-image`,

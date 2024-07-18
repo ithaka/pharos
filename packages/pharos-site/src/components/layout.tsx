@@ -25,6 +25,7 @@ const getPageName = (path: string) => {
 interface LayoutProps {
   location?: WindowLocation;
   fill?: boolean;
+  children?: React.ReactNode;
 }
 
 const Layout: FC<LayoutProps> = ({ children, location, fill }) => {

@@ -14,7 +14,9 @@ kbd {
   background-color: #fcfcfc;
   border: 0.1rem solid #e8e8e8;
   border-bottom-color: #9c9c9c;
-  box-shadow: 0 1px 0 #9c9c9c, 0 0 0 2px #fcfcfc inset;
+  box-shadow:
+    0 1px 0 #9c9c9c,
+    0 0 0 2px #fcfcfc inset;
 }
 
 .tooltip-example__target {
@@ -273,5 +275,10 @@ p.alert-example__content + p.alert-example__content {
 }
 
 .hide-in-storybook {
+  @include mixins.hidden;
+}
+
+//  hide something from sighted users but still be accessible to screen readers
+.visually-hidden {
   @include mixins.hidden;
 }

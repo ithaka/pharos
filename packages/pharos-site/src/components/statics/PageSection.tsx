@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { FC, ReactElement } from 'react';
+import type { FC, ReactElement, ReactNode } from 'react';
 import {
   container,
   container__subsectionLevelOne,
@@ -12,12 +12,14 @@ import {
   container__lessMargin,
   container__topMargin,
 } from './PageSection.module.css';
+import ComponentExample from '../ExampleWraper';
 
 interface PageSectionProps {
+  children?: ReactNode;
   title: string;
   description?: string | JSX.Element;
   isHeader?: boolean;
-  subSectionLevel: 1 | 2 | 3;
+  subSectionLevel?: 1 | 2 | 3;
   moreTitleSpace?: boolean;
   lessMargin?: boolean;
   storyBookType?: string;
@@ -25,11 +27,11 @@ interface PageSectionProps {
 }
 
 const PageSection: FC<PageSectionProps> = ({
+  children,
   title,
   description,
   isHeader,
   subSectionLevel,
-  children,
   moreTitleSpace,
   lessMargin,
   topMargin,
@@ -39,19 +41,12 @@ const PageSection: FC<PageSectionProps> = ({
   const Pharos =
     typeof window !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
 
-  if (isHeader && subSectionLevel > 1) {
+  if (isHeader && subSectionLevel) {
     console.error("isHeader can't be used with SubSectionLevel.");
   }
 
   useEffect(() => {
     const { PharosHeading } = Pharos;
-    const { PharosLink } = Pharos;
-    const url =
-      'https://pharos.jstor.org/storybook/?path=/story/web-components_' +
-      storyBookType +
-      '-' +
-      title.replace(/ /g, '-').toLowerCase() +
-      '--base';
 
     const headerTitle = (
       <div className={title__isHeader}>
@@ -92,15 +87,6 @@ const PageSection: FC<PageSectionProps> = ({
         </PharosHeading>
       </div>
     );
-
-    const storyBookLink = (
-      <div>
-        <PharosLink href={url} target="_blank">
-          See in Storybook
-        </PharosLink>
-      </div>
-    );
-
     const displayedTitle = () => {
       if (isHeader) {
         return headerTitle;
@@ -135,10 +121,16 @@ const PageSection: FC<PageSectionProps> = ({
         {description ? (
           <div className={isHeader ? description__isHeader : description__base}> {description}</div>
         ) : null}
-        {storyBookType ? storyBookLink : null}
-        {children}
+        {storyBookType ? (
+          <ComponentExample storyBookType={storyBookType} componentTitle={title}>
+            {children}
+          </ComponentExample>
+        ) : (
+          children
+        )}
       </div>
     );
+
     setDisplay(content);
   }, [
     topMargin,

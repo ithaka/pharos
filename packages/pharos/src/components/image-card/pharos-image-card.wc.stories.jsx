@@ -389,50 +389,49 @@ export const WithActionButtonSlot = {
 };
 
 export const WithOverlayButtonSlot = {
-  render: () =>
-    html`
-      <storybook-pharos-layout style="margin: 1rem 0">
-        <storybook-pharos-image-card
-          title="South Hall"
-          link="https://www.jstor.org/stable/10.2307/community.26220188"
-          style="grid-column: span 3"
-          variant="selectable"
-        >
-          <img id="image" src="${collection5}" alt="south hall" slot="image" />
-          <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
-          <div id="item-date" slot="metadata">1889-1892 (creation)</div>
-          <div id="collection" slot="metadata">
-            Part of
-            <storybook-pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
-              >Pratt Institute Buildings Image Collection</storybook-pharos-link
-            >
-          </div>
-          <storybook-pharos-button
-            slot="overlay"
-            data-dropdown-menu-id="saveDropdownId"
-            icon="save"
-            icon-condensed
-            variant="overlay"
-            style="position: absolute; bottom: 5px; right: 5px;"
-          ></storybook-pharos-button>
-          <storybook-pharos-button
-            slot="action-button"
-            data-dropdown-menu-id="dropdownId"
-            icon="ellipses-vertical"
-            icon-condensed
-            variant="subtle"
-          ></storybook-pharos-button>
-        </storybook-pharos-image-card>
-        <storybook-pharos-dropdown-menu id="saveDropdownId">
-          <storybook-pharos-dropdown-menu-item>Save</storybook-pharos-dropdown-menu-item>
-        </storybook-pharos-dropdown-menu>
-        <storybook-pharos-dropdown-menu id="dropdownId">
-          <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
-          <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
-        </storybook-pharos-dropdown-menu>
-      </storybook-pharos-layout>
-    `,
+  render: () => html`
+    <storybook-pharos-layout style="margin: 1rem 0">
+      <storybook-pharos-image-card
+        title="South Hall"
+        link="https://www.jstor.org/stable/10.2307/community.26220188"
+        style="grid-column: span 3"
+        variant="selectable"
+      >
+        <img id="image" src="${collection5}" alt="south hall" slot="image" />
+        <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
+        <div id="item-date" slot="metadata">1889-1892 (creation)</div>
+        <div id="collection" slot="metadata">
+          Part of
+          <storybook-pharos-link href="https://www.jstor.org/site/pratt/buildings-image"
+            >Pratt Institute Buildings Image Collection</storybook-pharos-link
+          >
+        </div>
+        <storybook-pharos-button
+          slot="overlay"
+          data-dropdown-menu-id="saveDropdownId"
+          icon="save"
+          icon-condensed
+          variant="overlay"
+          style="position: absolute; bottom: 5px; right: 5px;"
+        ></storybook-pharos-button>
+        <storybook-pharos-button
+          slot="action-button"
+          data-dropdown-menu-id="dropdownId"
+          icon="ellipses-vertical"
+          icon-condensed
+          variant="subtle"
+        ></storybook-pharos-button>
+      </storybook-pharos-image-card>
+      <storybook-pharos-dropdown-menu id="saveDropdownId">
+        <storybook-pharos-dropdown-menu-item>Save</storybook-pharos-dropdown-menu-item>
+      </storybook-pharos-dropdown-menu>
+      <storybook-pharos-dropdown-menu id="dropdownId">
+        <storybook-pharos-dropdown-menu-item>Item 1</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Item 2</storybook-pharos-dropdown-menu-item>
+        <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
+      </storybook-pharos-dropdown-menu>
+    </storybook-pharos-layout>
+  `,
 };
 
 export const SelectableCollection = {

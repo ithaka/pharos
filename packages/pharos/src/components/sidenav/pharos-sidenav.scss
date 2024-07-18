@@ -12,8 +12,8 @@
   color: var(--pharos-color-text-white);
   left: -17rem;
   visibility: hidden;
-  transition: visibility var(--pharos-transition-duration-long) linear
-      var(--pharos-transition-duration-long),
+  transition:
+    visibility var(--pharos-transition-duration-long) linear var(--pharos-transition-duration-long),
     left var(--pharos-transition-duration-long) ease-in-out;
 }
 
@@ -21,7 +21,9 @@
   #nav-element {
     left: 0;
     visibility: visible;
-    transition: visibility 0s linear 0s, left var(--pharos-transition-duration-long) ease-in-out;
+    transition:
+      visibility 0s linear 0s,
+      left var(--pharos-transition-duration-long) ease-in-out;
   }
 }
 
@@ -56,7 +58,8 @@
   .side-element__button {
     visibility: visible;
     opacity: 1;
-    transition: visibility 0s var(--pharos-transition-duration-short),
+    transition:
+      visibility 0s var(--pharos-transition-duration-short),
       opacity var(--pharos-transition-duration-long) linear var(--pharos-transition-duration-short);
   }
 }
