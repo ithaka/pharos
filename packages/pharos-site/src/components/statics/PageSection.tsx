@@ -12,6 +12,7 @@ import {
   container__lessMargin,
   container__topMargin,
 } from './PageSection.module.css';
+import ComponentExample from '../ExampleWraper';
 
 interface PageSectionProps {
   children?: ReactNode;
@@ -46,13 +47,6 @@ const PageSection: FC<PageSectionProps> = ({
 
   useEffect(() => {
     const { PharosHeading } = Pharos;
-    const { PharosLink } = Pharos;
-    const url =
-      'https://pharos.jstor.org/storybook/?path=/story/web-components_' +
-      storyBookType +
-      '-' +
-      title.replace(/ /g, '-').toLowerCase() +
-      '--base';
 
     const headerTitle = (
       <div className={title__isHeader}>
@@ -93,15 +87,6 @@ const PageSection: FC<PageSectionProps> = ({
         </PharosHeading>
       </div>
     );
-
-    const storyBookLink = (
-      <div>
-        <PharosLink href={url} target="_blank">
-          See in Storybook
-        </PharosLink>
-      </div>
-    );
-
     const displayedTitle = () => {
       if (isHeader) {
         return headerTitle;
@@ -136,11 +121,16 @@ const PageSection: FC<PageSectionProps> = ({
         {description ? (
           <div className={isHeader ? description__isHeader : description__base}> {description}</div>
         ) : null}
-        {children}
-        <br />
-        {storyBookType ? storyBookLink : null}
+        {storyBookType ? (
+          <ComponentExample storyBookType={storyBookType} componentTitle={title}>
+            {children}
+          </ComponentExample>
+        ) : (
+          children
+        )}
       </div>
     );
+
     setDisplay(content);
   }, [
     topMargin,
