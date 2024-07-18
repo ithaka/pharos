@@ -10,12 +10,12 @@ const fullConfig: StorybookConfig = {
   stories: [
     ...config.stories,
     {
-      directory: '../../packages/pharos',
-      files: '**/*.@(react|pages).stories.@(js|jsx|tsx)',
+      directory: '../../packages/pharos/docs',
+      files: '**/*.docs.mdx',
     },
     {
       directory: '../../packages/pharos',
-      files: '**/*.docs.tsx',
+      files: '**/*.@(react|pages).stories.@(js|jsx|tsx)',
     },
   ],
 };

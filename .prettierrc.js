@@ -5,10 +5,4 @@ module.exports = {
   singleQuote: true,
   arrowParens: 'always',
   bracketSpacing: true,
-  overrides: [
-    {
-      files: '*.mdx',
-      options: { parser: 'mdx' },
-    },
-  ],
 };

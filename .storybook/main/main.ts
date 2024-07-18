@@ -7,7 +7,7 @@ const fullConfig: StorybookConfig = {
     name: '@storybook/web-components-vite',
     options: {},
   },
-  stories: [...config.stories, '../../packages/pharos/**/*.docs.tsx'],
+  stories: [...config.stories, '../../packages/pharos/docs/**/*.docs.mdx'],
   refs: (config, { configType }) => {
     const isDevelopment = configType === 'DEVELOPMENT';
     return {
