@@ -1,23 +1,25 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
-import { FC } from 'react';
+import { FC, ReactElement, useEffect, useState } from 'react';
 
 import Canvas from '../../src/components/Canvas';
 
 const DropdownMenuPage: FC = () => {
-  if (typeof document === 'undefined') {
-    return null;
-  } else {
+  const Pharos =
+    typeof document !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
+  const [PageContent, setPageContent] = useState<ReactElement | null>(null);
+  // An internal dependency of Pharos references document, so we need to set the page content in a useEffect to build it with SSR
+  useEffect(() => {
     const {
+      PharosDropdownMenuNav,
+      PharosHeading,
+      PharosDropdownMenuNavLink,
+      PharosLink,
       PharosDropdownMenu,
       PharosDropdownMenuItem,
-      PharosDropdownMenuNav,
-      PharosDropdownMenuNavLink,
-      PharosHeading,
-      PharosLink,
-    } = require('@ithaka/pharos/lib/react-components');
+    } = Pharos;
 
-    return (
+    setPageContent(
       <>
         <PageSection
           isHeader
@@ -203,6 +205,8 @@ const DropdownMenuPage: FC = () => {
         </PageSection>
       </>
     );
-  }
+  }, [Pharos]);
+
+  return PageContent;
 };
 export default DropdownMenuPage;

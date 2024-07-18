@@ -1,19 +1,16 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
-import { FC } from 'react';
+import { FC, ReactElement, useEffect, useState } from 'react';
 
 const DropdownMenuNavPage: FC = () => {
-  if (typeof document === 'undefined') {
-    return null;
-  } else {
-    const {
-      PharosButton,
-      PharosDropdownMenu,
-      PharosDropdownMenuItem,
-      PharosLink,
-    } = require('@ithaka/pharos/lib/react-components');
+  const Pharos =
+    typeof document !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
+  const [PageContent, setPageContent] = useState<ReactElement | null>(null);
+  // An internal dependency of Pharos references document, so we need to set the page content in a useEffect to build it with SSR
+  useEffect(() => {
+    const { PharosButton, PharosLink, PharosDropdownMenu, PharosDropdownMenuItem } = Pharos;
 
-    return (
+    setPageContent(
       <>
         <PageSection
           title="Dropdown Menu Nav"
@@ -116,31 +113,31 @@ const DropdownMenuNavPage: FC = () => {
           <code>
             <pre>
               {`<nav role="navigation" aria-label="global">
+<ul>
+  <li>
+    <a href="...">Advanced Search</a>
+  </li>
+  <li className="...">
+    <a href="..." aria-haspopup="true" aria-expanded="false">
+      Browse
+    </a>
     <ul>
       <li>
-        <a href="...">Advanced Search</a>
+        <a href="...">By Subject</a>
       </li>
-      <li className="...">
-        <a href="..." aria-haspopup="true" aria-expanded="false">
-          Browse
-        </a>
-        <ul>
-          <li>
-            <a href="...">By Subject</a>
-          </li>
-          <li>
-            <a href="...">By Title</a>
-          </li>
-          <li>
-            <a href="...">By Collections</a>
-          </li>
-          <li>
-            <a href="...">By Publisher</a>
-          </li>
-        </ul>
+      <li>
+        <a href="...">By Title</a>
+      </li>
+      <li>
+        <a href="...">By Collections</a>
+      </li>
+      <li>
+        <a href="...">By Publisher</a>
       </li>
     </ul>
-  </nav>`}
+  </li>
+</ul>
+</nav>`}
             </pre>
           </code>
           <PageSection subSectionLevel={1} title="Expected actions">
@@ -179,6 +176,9 @@ const DropdownMenuNavPage: FC = () => {
         </PageSection>
       </>
     );
-  }
+  }, [Pharos]);
+
+  return PageContent;
 };
+
 export default DropdownMenuNavPage;

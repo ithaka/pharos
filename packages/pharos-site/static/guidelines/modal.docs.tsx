@@ -1,21 +1,18 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
-import { FC } from 'react';
+import { FC, ReactElement, useEffect, useState } from 'react';
 
 import type { PharosModal as PharosModalType } from '@ithaka/pharos/';
 
 const ModalPage: FC = () => {
-  if (typeof document === 'undefined') {
-    return null;
-  } else {
-    const {
-      PharosButton,
-      PharosHeading,
-      PharosLink,
-      PharosModal,
-    } = require('@ithaka/pharos/lib/react-components');
+  const Pharos =
+    typeof document !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
+  const [PageContent, setPageContent] = useState<ReactElement | null>(null);
+  // An internal dependency of Pharos references document, so we need to set the page content in a useEffect to build it with SSR
+  useEffect(() => {
+    const { PharosHeading, PharosButton, PharosModal, PharosLink } = Pharos;
 
-    return (
+    setPageContent(
       <>
         <PageSection
           title="Modal"
@@ -225,6 +222,8 @@ const ModalPage: FC = () => {
         </PageSection>
       </>
     );
-  }
+  }, [Pharos]);
+
+  return PageContent;
 };
 export default ModalPage;

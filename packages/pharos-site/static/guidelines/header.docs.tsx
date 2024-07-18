@@ -1,22 +1,24 @@
 import PageSection from '@components/statics/PageSection.tsx';
 import BestPractices from '@components/statics/BestPractices.tsx';
-import { FC } from 'react';
+import { FC, ReactElement, useEffect, useState } from 'react';
 
 const HeaderPage: FC = () => {
-  if (typeof document === 'undefined') {
-    return null;
-  } else {
+  const Pharos =
+    typeof document !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
+  const [PageContent, setPageContent] = useState<ReactElement | null>(null);
+  // An internal dependency of Pharos references document, so we need to set the page content in a useEffect to build it with SSR
+  useEffect(() => {
     const {
-      PharosDropdownMenu,
-      PharosDropdownMenuItem,
-      PharosDropdownMenuNav,
-      PharosDropdownMenuNavLink,
       PharosHeader,
       PharosHeading,
+      PharosDropdownMenuNav,
+      PharosDropdownMenuNavLink,
       PharosLink,
-    } = require('@ithaka/pharos/lib/react-components');
+      PharosDropdownMenu,
+      PharosDropdownMenuItem,
+    } = Pharos;
 
-    return (
+    setPageContent(
       <>
         <PageSection
           isHeader
@@ -192,6 +194,8 @@ const HeaderPage: FC = () => {
         </PageSection>
       </>
     );
-  }
+  }, [Pharos]);
+
+  return PageContent;
 };
 export default HeaderPage;
