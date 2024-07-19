@@ -20,7 +20,7 @@ const ComponentExample: FC<ComponentExampleProps> = ({
     storyBookType +
     '-' +
     componentTitle.replace(/ /g, '-').toLowerCase() +
-    '--base';
+    '--docs';
 
   return (
     <>

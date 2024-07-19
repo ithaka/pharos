@@ -12,7 +12,7 @@ import {
   container__lessMargin,
   container__topMargin,
 } from './PageSection.module.css';
-import ComponentExample from '../ExampleWraper';
+import ComponentExample from '../ComponentExample';
 
 interface PageSectionProps {
   children?: ReactNode;
