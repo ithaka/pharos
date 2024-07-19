@@ -37,7 +37,9 @@ const Layout: FC<LayoutProps> = ({ children, location, fill }) => {
 
   const [MainContent, setMainContent] = useState<ReactElement | null>(null);
   const mobileBreakpoint = 1055;
-  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < mobileBreakpoint);
+  const [isMobile, setIsMobile] = useState<boolean>(
+    typeof window !== `undefined` ? window.innerWidth < mobileBreakpoint : false
+  );
   const [isSidenavDisplayed, setIsSidenavDisplayed] = useState<boolean>(!isMobile);
   const containerRef = useRef<HTMLDivElement>(null);
 
