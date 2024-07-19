@@ -16,3 +16,9 @@
   --sidebar-spacing-padding: var(--pharos-spacing-one-and-a-half-x);
   --main-spacing-padding: var(--pharos-spacing-7-x);
 }
+
+@media screen and (width <= 1055px) {
+  :root {
+    --main-spacing-padding: var(--pharos-spacing-2-x);
+  }
+}
