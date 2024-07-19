@@ -12,6 +12,17 @@ module.exports = {
     siteUrl: 'https://pharos.jstor.org',
   },
   trailingSlash: 'never',
+  headers: [
+    {
+      source: 'pharos.jstor.org',
+      headers: [
+        {
+          key: 'Content-Security-Policy',
+          value: "default-src 'self' jstor.org *.jstor.org",
+        },
+      ],
+    },
+  ],
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
