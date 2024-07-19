@@ -38,6 +38,7 @@
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
+    X-Frame-Options = "SAMEORIGIN"
 
 [build]
   ignore = "bash ./build-ignore.sh"
