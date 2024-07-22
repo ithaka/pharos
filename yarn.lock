@@ -19759,12 +19759,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marked@npm:^0.6.2":
-  version: 0.6.3
-  resolution: "marked@npm:0.6.3"
+"marked@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "marked@npm:0.7.0"
   bin:
     marked: ./bin/marked
-  checksum: 10c0/253549e2ac7347840f50bced8f3220418d21bc9b0b81d0fb60eaa520dbd77968db18aa4f9d44fe36b2a4586884d132cd9c2c7dfca9eb5cc385cd414b36cf3285
+  checksum: 10c0/dc888ca89cfdab52ae46f198deef361c89639d064f47cc9627544142a39877cff953e796362259d6867deb05d18696f611522b2c948a1530117699ccff55a699
   languageName: node
   linkType: hard
 
