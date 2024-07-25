@@ -94,7 +94,7 @@
     "globals": "^15.8.0",
     "husky": "^9.1.1",
     "lint-staged": "^15.2.7",
-    "lit": "^2.8.0",
+    "lit": "^3.1.4",
     "lit-analyzer": "^2.0.3",
     "markdown-toc": "^1.2.0",
     "postcss": "^8.4.39",

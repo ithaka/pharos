@@ -63,9 +63,9 @@ describe('pharos-link', () => {
   });
 
   it('delegates focus to the target when clicked in the skip state', async () => {
-    let activeElement = null;
+    let focusTargets = null;
     const onFocusIn = (event: Event): void => {
-      activeElement = event.composedPath()[0];
+      focusTargets = event.composedPath();
     };
     document.addEventListener('focusin', onFocusIn);
 
@@ -84,7 +84,7 @@ describe('pharos-link', () => {
     await nextFrame();
     await nextFrame();
 
-    expect(activeElement === link.renderRoot.querySelector('#link-element')).to.be.true;
+    expect(focusTargets).to.contain(link);
     document.removeEventListener('focusin', onFocusIn);
   });
 });

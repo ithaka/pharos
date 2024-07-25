@@ -3489,7 +3489,7 @@ __metadata:
   resolution: "@ithaka/pharos-cli@workspace:packages/pharos-cli"
   dependencies:
     "@types/jest": "npm:^29.5.12"
-    "@types/node": "npm:^20.14.11"
+    "@types/node": "npm:^20.14.12"
     colors: "npm:^1.4.0"
     commander: "npm:^12.1.0"
     fs-extra: "npm:^11.2.0"
@@ -3497,7 +3497,7 @@ __metadata:
     ts-jest: "npm:^29.2.3"
     ts-morph: "npm:^23.0.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.5.3"
+    typescript: "npm:^5.5.4"
   bin:
     pharos: dist/index.js
   languageName: unknown
@@ -3515,7 +3515,7 @@ __metadata:
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
     "@types/react-helmet": "npm:^6.1.11"
-    "@webcomponents/scoped-custom-element-registry": "npm:^0.0.3"
+    "@webcomponents/scoped-custom-element-registry": "npm:^0.0.9"
     babel-preset-gatsby: "npm:^3.13.2"
     gatsby: "npm:^5.13.7"
     gatsby-plugin-alias-imports: "npm:^1.0.5"
@@ -3534,7 +3534,7 @@ __metadata:
     react-dom: "npm:^18.3.1"
     react-helmet: "npm:^6.1.0"
     sass: "npm:^1.77.8"
-    typescript: "npm:^5.5.3"
+    typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
 
@@ -3545,7 +3545,7 @@ __metadata:
     "@custom-elements-manifest/analyzer": "npm:^0.10.3"
     "@floating-ui/dom": "npm:^1.6.8"
     "@ithaka/focus-trap": "npm:2.0.1"
-    "@lit-labs/scoped-registry-mixin": "npm:^1.0.1"
+    "@lit-labs/scoped-registry-mixin": "npm:^1.0.3"
     "@open-wc/dedupe-mixin": "npm:^1.4.0"
     "@open-wc/testing": "npm:^4.0.0"
     "@types/mocha": "npm:^10.0.7"
@@ -3557,7 +3557,7 @@ __metadata:
     autoprefixer: "npm:^10.4.19"
     chokidar: "npm:^3.6.0"
     globby: "npm:^14.0.2"
-    lit: "npm:^2.8.0"
+    lit: "npm:^3.1.4"
     minify-html-literals: "npm:^1.3.5"
     postcss: "npm:^8.4.39"
     prettier: "npm:^3.3.3"
@@ -3569,7 +3569,7 @@ __metadata:
     sinon: "npm:^18.0.0"
     style-dictionary: "npm:^3.9.2"
     ts-lit-plugin: "npm:^2.0.2"
-    typescript: "npm:^5.5.3"
+    typescript: "npm:^5.5.4"
     uuid: "npm:^10.0.0"
   peerDependencies:
     sass: ^1.42.1
@@ -3902,33 +3902,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lit-labs/scoped-registry-mixin@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@lit-labs/scoped-registry-mixin@npm:1.0.1"
+"@lit-labs/scoped-registry-mixin@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@lit-labs/scoped-registry-mixin@npm:1.0.3"
   dependencies:
-    "@lit/reactive-element": "npm:^1.0.0"
-    lit: "npm:^2.0.0"
-  checksum: 10c0/0097de122b5a9bc538feec8bc3186c6e43452e4dee64103714d21c355997e9821c04cb8b7d1faefcc88a4036411f19d5ff3d4900b90475dcc17e332de87b5a53
+    "@lit/reactive-element": "npm:^1.0.0 || ^2.0.0"
+    lit: "npm:^2.0.0 || ^3.0.0"
+  checksum: 10c0/eb03fd10ba400eb80ef7acac84a128a10f595dc38ad8e9d559d5fd141e36b51441a79c262852e91560ea60437815e65e216098537a5baf2f1fe2cb5404377620
   languageName: node
   linkType: hard
 
-"@lit-labs/ssr-dom-shim@npm:^1.0.0, @lit-labs/ssr-dom-shim@npm:^1.1.0, @lit-labs/ssr-dom-shim@npm:^1.2.0":
+"@lit-labs/ssr-dom-shim@npm:^1.2.0":
   version: 1.2.0
   resolution: "@lit-labs/ssr-dom-shim@npm:1.2.0"
   checksum: 10c0/016168cf6901ab343462c13fb168dda6d549f8b42680aa394e6b7cd0af7cce51271e00dbfa5bbbe388912bf89cbb8f941a21cc3ec9bf95d6a84b6241aa9e5a72
   languageName: node
   linkType: hard
 
-"@lit/reactive-element@npm:^1.0.0, @lit/reactive-element@npm:^1.3.0, @lit/reactive-element@npm:^1.6.0":
-  version: 1.6.2
-  resolution: "@lit/reactive-element@npm:1.6.2"
-  dependencies:
-    "@lit-labs/ssr-dom-shim": "npm:^1.0.0"
-  checksum: 10c0/2845fa086553c131f41cf58ad3bc0ed4c9b24b3d92d8151936086d385cc5295a79da4113ae06a9a39b5f3184f43b2b85d801520c4114c13ca8e730289276a6a6
-  languageName: node
-  linkType: hard
-
-"@lit/reactive-element@npm:^2.0.4":
+"@lit/reactive-element@npm:^1.0.0 || ^2.0.0, @lit/reactive-element@npm:^2.0.4":
   version: 2.0.4
   resolution: "@lit/reactive-element@npm:2.0.4"
   dependencies:
@@ -6307,7 +6298,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=10.0.0, @types/node@npm:^20.14.11":
+"@types/node@npm:*, @types/node@npm:>=10.0.0":
   version: 20.14.11
   resolution: "@types/node@npm:20.14.11"
   dependencies:
@@ -6329,6 +6320,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/1dd22450c0a508ce1c11b289032f8ac41dc188a9c2da948bb97696a1b2c7382f56587a7c9d14233e68a3b8c57627710223631cde8f36d030585ccf48a9128119
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.14.12":
+  version: 20.14.12
+  resolution: "@types/node@npm:20.14.12"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10c0/59bc5fa11fdd23fd517f859063118f54a1ab53d3399ef63c926f8902429d7453abc0db22ef4b0a6110026b6ab81b6472fee894e1d235c24b01a0b3e10cfae0bb
   languageName: node
   linkType: hard
 
@@ -7255,10 +7255,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webcomponents/scoped-custom-element-registry@npm:^0.0.3":
-  version: 0.0.3
-  resolution: "@webcomponents/scoped-custom-element-registry@npm:0.0.3"
-  checksum: 10c0/9dd83524efa90976b3d76c3ec779b6036cc8e0c214cc7c2f8f7bf74ddb79ef4ef5e2e53950bea7c4ae69b2b2745b8f988db8ddc843aae7c6cca496c354ebf4bb
+"@webcomponents/scoped-custom-element-registry@npm:^0.0.9":
+  version: 0.0.9
+  resolution: "@webcomponents/scoped-custom-element-registry@npm:0.0.9"
+  checksum: 10c0/a70e564ecd5f65d8e3174c64888249e00f97ae1e8a06fd0ed03db0eea598136a44a4594bb6706a12ae778f4d7bdba59176b44c0e5bf54ec13abb43a6e7fe6b0b
   languageName: node
   linkType: hard
 
@@ -17083,17 +17083,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lit-element@npm:^3.3.0":
-  version: 3.3.2
-  resolution: "lit-element@npm:3.3.2"
-  dependencies:
-    "@lit-labs/ssr-dom-shim": "npm:^1.1.0"
-    "@lit/reactive-element": "npm:^1.3.0"
-    lit-html: "npm:^2.7.0"
-  checksum: 10c0/cf351d743bcefff8072f717da76dce5dece249f65446fc0f151f93d1bccd4d3fe941020a536215e911509493ded24c0a3896d4441d6294defc119265ec0788b3
-  languageName: node
-  linkType: hard
-
 "lit-element@npm:^4.0.4":
   version: 4.0.4
   resolution: "lit-element@npm:4.0.4"
@@ -17114,15 +17103,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lit-html@npm:^2.7.0, lit-html@npm:^2.8.0":
-  version: 2.8.0
-  resolution: "lit-html@npm:2.8.0"
-  dependencies:
-    "@types/trusted-types": "npm:^2.0.2"
-  checksum: 10c0/90057dee050803823ac884c1355b0213ab8c05fbe2ec63943c694b61aade5d36272068f3925f45a312835e504f9c9784738ef797009f0a756a750351eafb52d5
-  languageName: node
-  linkType: hard
-
 "lit@npm:^2.0.0 || ^3.0.0, lit@npm:^3.0.0":
   version: 3.1.2
   resolution: "lit@npm:3.1.2"
@@ -17134,14 +17114,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lit@npm:^2.0.0, lit@npm:^2.8.0":
-  version: 2.8.0
-  resolution: "lit@npm:2.8.0"
+"lit@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "lit@npm:3.1.4"
   dependencies:
-    "@lit/reactive-element": "npm:^1.6.0"
-    lit-element: "npm:^3.3.0"
-    lit-html: "npm:^2.8.0"
-  checksum: 10c0/bf33c26b1937ee204aed1adbfa4b3d43a284e85aad8ea9763c7865365917426eded4e5888158b4136095ea42054812561fe272862b61775f1198fad3588b071f
+    "@lit/reactive-element": "npm:^2.0.4"
+    lit-element: "npm:^4.0.4"
+    lit-html: "npm:^3.1.2"
+  checksum: 10c0/afa4954638e80f627c60bcbd2d800af710b9b3394a36cee9865b5ea5de95b4ec6d33de43ac0bf256b5b7c981d45c7c8ac0c7ddba6fcbd0c67d65986b0279b960
   languageName: node
   linkType: hard
 
@@ -19847,7 +19827,7 @@ __metadata:
     globals: "npm:^15.8.0"
     husky: "npm:^9.1.1"
     lint-staged: "npm:^15.2.7"
-    lit: "npm:^2.8.0"
+    lit: "npm:^3.1.4"
     lit-analyzer: "npm:^2.0.3"
     markdown-toc: "npm:^1.2.0"
     postcss: "npm:^8.4.39"
@@ -25180,13 +25160,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.5.3":
-  version: 5.5.3
-  resolution: "typescript@npm:5.5.3"
+"typescript@npm:^5.5.4":
+  version: 5.5.4
+  resolution: "typescript@npm:5.5.4"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/f52c71ccbc7080b034b9d3b72051d563601a4815bf3e39ded188e6ce60813f75dbedf11ad15dd4d32a12996a9ed8c7155b46c93a9b9c9bad1049766fe614bbdd
+  checksum: 10c0/422be60f89e661eab29ac488c974b6cc0a660fb2228003b297c3d10c32c90f3bcffc1009b43876a082515a3c376b1eefcce823d6e78982e6878408b9a923199c
   languageName: node
   linkType: hard
 
@@ -25220,13 +25200,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.5.3#optional!builtin<compat/typescript>":
-  version: 5.5.3
-  resolution: "typescript@patch:typescript@npm%3A5.5.3#optional!builtin<compat/typescript>::version=5.5.3&hash=b45daf"
+"typescript@patch:typescript@npm%3A^5.5.4#optional!builtin<compat/typescript>":
+  version: 5.5.4
+  resolution: "typescript@patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=b45daf"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/5a437c416251334deeaf29897157032311f3f126547cfdc4b133768b606cb0e62bcee733bb97cf74c42fe7268801aea1392d8e40988cdef112e9546eba4c03c5
+  checksum: 10c0/10dd9881baba22763de859e8050d6cb6e2db854197495c6f1929b08d1eb2b2b00d0b5d9b0bcee8472f1c3f4a7ef6a5d7ebe0cfd703f853aa5ae465b8404bc1ba
   languageName: node
   linkType: hard
 
