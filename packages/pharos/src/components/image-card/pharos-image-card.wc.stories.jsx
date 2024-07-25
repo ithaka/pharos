@@ -25,9 +25,9 @@ const Template = {
       ><storybook-pharos-image-card
         title="South Hall"
         link="https://www.jstor.org/stable/10.2307/community.26220188"
-        ?error=${args.error}
-        ?subtle=${args.subtle}
-        ?indicate-link-visited=${args.indicateLinkVisited}
+        error=${args.error}
+        subtle=${args.subtle}
+        indicate-link-visited=${args.indicateLinkVisited}
         style="grid-column: span 2"
       >
         <img id="image" src="${collection5}" alt="south hall" slot="image" />
@@ -37,7 +37,7 @@ const Template = {
           Part of
           <storybook-pharos-link
             href="https://www.jstor.org/site/pratt/buildings-image"
-            ?is-on-background=${args.subtle}
+            is-on-background=${args.subtle}
             >Pratt Institute Buildings Image Collection</storybook-pharos-link
           >
         </div>
@@ -130,7 +130,7 @@ export const ErrorStateCollection = {
             title="${collection.title}"
             link="#"
             variant="collection"
-            ?error=${index === 2}
+            error=${index === 2}
           >
             <img
               id="image-${index}"

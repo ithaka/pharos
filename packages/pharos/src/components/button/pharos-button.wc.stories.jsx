@@ -20,21 +20,21 @@ export default {
 export const Base = {
   render: (args) => html`
     <storybook-pharos-button
-      ?disabled=${ifDefined(args.disabled)}
+      disabled=${ifDefined(args.disabled)}
       download=${ifDefined(args.download)}
       icon=${ifDefined(args.icon)}
-      ?icon-condensed=${ifDefined(args.iconCondensed)}
+      icon-condensed=${ifDefined(args.iconCondensed)}
       icon-left=${ifDefined(args.iconLeft)}
       icon-right=${ifDefined(args.iconRight)}
-      ?full-width=${ifDefined(args.fullWidth)}
+      full-width=${ifDefined(args.fullWidth)}
       href=${ifDefined(args.href)}
       hreflang=${ifDefined(args.hreflang)}
       a11y-label=${ifDefined(args.a11yLabel)}
       a11y-expanded=${ifDefined(args.a11yExpanded)}
       a11y-pressed=${ifDefined(args.a11yPressed)}
       a11y-disabled=${ifDefined(args.a11yDisabled)}
-      ?large=${ifDefined(args.large)}
-      ?is-on-background=${ifDefined(args.isOnBackground)}
+      large=${ifDefined(args.large)}
+      is-on-background=${ifDefined(args.isOnBackground)}
       ping=${ifDefined(args.ping)}
       target=${ifDefined(args.target)}
       type=${ifDefined(args.type)}

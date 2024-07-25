@@ -19,12 +19,12 @@ export const Base = {
   render: (args) => html`
     <storybook-pharos-radio-group
       name=${args.name}
-      ?horizontal=${args.horizontal}
-      ?disabled=${args.disabled}
-      ?hide-label=${args.hideLabel}
-      ?required=${args.required}
-      ?invalidated=${args.invalidated}
-      ?validated=${args.validated}
+      horizontal=${args.horizontal}
+      disabled=${args.disabled}
+      hide-label=${args.hideLabel}
+      required=${args.required}
+      invalidated=${args.invalidated}
+      validated=${args.validated}
       .message=${args.message}
     >
       <span slot="legend">Radio Group Header</span>

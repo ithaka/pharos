@@ -16,19 +16,19 @@ export const Base = {
   render: (args) =>
     html` <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
       <storybook-pharos-link
-        ?bold=${args.bold}
+        bold=${args.bold}
         download=${ifDefined(args.download)}
-        ?flex=${args.flex}
+        flex=${args.flex}
         href=${ifDefined(args.href)}
         hreflang=${ifDefined(args.hreflang)}
-        ?indicate-visited=${args.indicateVisited}
+        indicate-visited=${args.indicateVisited}
         a11y-label=${ifDefined(args.a11yLabel)}
-        ?no-hover=${args.noHover}
-        ?is-on-background=${args.isOnBackground}
+        no-hover=${args.noHover}
+        is-on-background=${args.isOnBackground}
         ping=${ifDefined(args.ping)}
         rel=${ifDefined(args.rel)}
-        ?skip=${args.skip}
-        ?subtle=${args.subtle}
+        skip=${args.skip}
+        subtle=${args.subtle}
         target=${ifDefined(args.target)}
         type=${ifDefined(args.type)}
       >

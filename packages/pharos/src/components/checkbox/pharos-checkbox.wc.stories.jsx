@@ -17,11 +17,11 @@ export default {
 export const Base = {
   render: (args) =>
     html`<storybook-pharos-checkbox
-      ?checked=${args.checked}
-      ?disabled=${args.disabled}
-      ?hide-label=${args.hideLabel}
-      ?required=${args.required}
-      ?invalidated=${args.invalidated}
+      checked=${args.checked}
+      disabled=${args.disabled}
+      hide-label=${args.hideLabel}
+      required=${args.required}
+      invalidated=${args.invalidated}
       .message=${args.message}
     >
       <span slot="label">${args.label}</span>

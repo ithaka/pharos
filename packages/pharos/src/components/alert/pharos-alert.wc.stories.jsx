@@ -15,7 +15,7 @@ export default {
 
 const Base = {
   render: ({ status, text, closable }) =>
-    html`<storybook-pharos-alert status=${status} ?closable=${closable}
+    html`<storybook-pharos-alert status=${status} closable=${closable}
       >${text}</storybook-pharos-alert
     >`,
   args: defaultArgs,
@@ -39,7 +39,7 @@ export const Success = {
 
 export const Warning = {
   render: ({ status, text, closable }) =>
-    html` <storybook-pharos-alert status=${status} ?closable=${closable}>
+    html` <storybook-pharos-alert status=${status} closable=${closable}>
       <p class="alert-example__content">${text}</p>
       <p class="alert-example__content">
         See <storybook-pharos-link href="#">how to fix this</storybook-pharos-link>.
@@ -53,7 +53,7 @@ export const Warning = {
 
 export const Error = {
   render: ({ status, text, closable }) =>
-    html` <storybook-pharos-alert status=${status} ?closable=${closable}>
+    html` <storybook-pharos-alert status=${status} closable=${closable}>
       <p class="alert-example__content">${text}</p>
       <p class="alert-example__content">
         For more information,
