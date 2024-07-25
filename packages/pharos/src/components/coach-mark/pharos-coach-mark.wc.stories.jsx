@@ -26,7 +26,7 @@ export const Base = {
       </div>
       <storybook-pharos-coach-mark
         id="example-coachmark"
-        ?hide=${ifDefined(args.hide)}
+        hide=${ifDefined(args.hide)}
         side=${ifDefined(args.side)}
         alignment=${ifDefined(args.alignment)}
         header=${ifDefined(args.header)}

@@ -20,13 +20,13 @@ export default {
 export const Base = {
   render: (args) =>
     html` <storybook-pharos-checkbox-group
-      ?disabled=${args.disabled}
-      ?hide-label="${args.hideLabel}"
-      ?horizontal=${args.horizontal}
-      ?invalidated=${args.invalidated}
+      disabled=${args.disabled}
+      hide-label="${args.hideLabel}"
+      horizontal=${args.horizontal}
+      invalidated=${args.invalidated}
       .message="${args.message}"
-      ?required=${args.required}
-      ?validated=${args.validated}
+      required=${args.required}
+      validated=${args.validated}
     >
       <span slot="legend">Checkbox Group Header</span>
       <storybook-pharos-checkbox value="1"

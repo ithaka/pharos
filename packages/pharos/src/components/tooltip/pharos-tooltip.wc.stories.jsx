@@ -33,8 +33,8 @@ export const Base = {
         >
         <storybook-pharos-tooltip
           id="${args.id}"
-          ?full-width="${args.fullWidth}"
-          ?open="${args.open}"
+          full-width="${args.fullWidth}"
+          open="${args.open}"
           .placement="${ifDefined(args.placement)}"
           .fallbackPlacements="${args.fallbackPlacements}"
           >${args.tooltipText}

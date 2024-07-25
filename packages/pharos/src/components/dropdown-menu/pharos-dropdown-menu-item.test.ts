@@ -1,7 +1,5 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import sinon from 'sinon';
-import type { SinonSpy } from 'sinon';
 
 import { PharosIcon } from '../icon/pharos-icon';
 import type { PharosDropdownMenuItem } from './pharos-dropdown-menu-item';
@@ -119,26 +117,13 @@ describe('pharos-dropdown-menu-item', () => {
   });
 
   it('cannot be clicked when disabled', async () => {
-    const event = new MouseEvent('click');
-    const clickSpy: SinonSpy = sinon.spy(event, 'preventDefault');
-    component.disabled = true;
-    await component.updateComplete;
-    component.dispatchEvent(event);
-    expect(clickSpy.callCount).to.equal(1);
-  });
-
-  it('does not propagate a click event when disabled with click handler present', async () => {
-    const event = new MouseEvent('click');
+    let sentinel = -1;
     component = await fixture(html`
-      <test-pharos-dropdown-menu-item disabled @click="${() => alert('clicked')}"
+      <test-pharos-dropdown-menu-item disabled @click="${() => (sentinel += 1)}"
         >I am an item</test-pharos-dropdown-menu-item
       >
     `);
-    await component.updateComplete;
-    const clickSpy: SinonSpy = sinon.spy(event, 'preventDefault');
-    const propagationSpy: SinonSpy = sinon.spy(event, 'stopPropagation');
-    component.dispatchEvent(event);
-    expect(clickSpy.callCount).to.equal(1);
-    expect(propagationSpy.callCount).to.equal(1);
+    component.click();
+    expect(sentinel).to.equal(-1);
   });
 });

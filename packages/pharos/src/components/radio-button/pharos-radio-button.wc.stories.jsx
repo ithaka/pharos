@@ -15,11 +15,11 @@ export default {
 export const Base = {
   render: (args) => html`
     <storybook-pharos-radio-button
-      ?checked=${args.checked}
-      ?disabled=${args.disabled}
-      ?hide-label=${args.hideLabel}
-      ?invalidated=${args.invalidated}
-      ?required=${args.required}
+      checked=${args.checked}
+      disabled=${args.disabled}
+      hide-label=${args.hideLabel}
+      invalidated=${args.invalidated}
+      required=${args.required}
       .message=${args.message}
     >
       <span slot="label">${args.label}</span>

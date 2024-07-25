@@ -57,9 +57,9 @@
   "dependencies": {
     "@floating-ui/dom": "^1.6.8",
     "@ithaka/focus-trap": "2.0.1",
-    "@lit-labs/scoped-registry-mixin": "^1.0.1",
+    "@lit-labs/scoped-registry-mixin": "^1.0.3",
     "@open-wc/dedupe-mixin": "^1.4.0",
-    "lit": "^2.8.0",
+    "lit": "^3.1.4",
     "uuid": "^10.0.0"
   },
   "peerDependencies": {
@@ -88,7 +88,7 @@
     "sinon": "^18.0.0",
     "style-dictionary": "^3.9.2",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "customElements": "custom-elements.json",
   "exports": {

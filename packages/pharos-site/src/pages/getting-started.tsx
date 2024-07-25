@@ -57,7 +57,7 @@ const GettingStartedPage: FC = () => {
         is generally achieved by including this script tag in the head of your application.
       </p>
       <CodeBlock
-        code={`<script src="https://cdn.jsdelivr.net/npm/@webcomponents/scoped-custom-element-registry@0.0.3/scoped-custom-element-registry.min.js"></script>`}
+        code={`<script src="https://cdn.jsdelivr.net/npm/@webcomponents/scoped-custom-element-registry@0.0.9/scoped-custom-element-registry.min.js"></script>`}
       />
       <p>
         You then need to register components on the [custom element
@@ -101,7 +101,7 @@ const GettingStartedPage: FC = () => {
         produce a basic button, as seen below the code
       </p>
       <CodeBlock
-        code={`   
+        code={`
         import {PharosButton} from '@ithaka/pharos/lib/react-components';
           ...
 
