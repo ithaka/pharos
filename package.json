@@ -97,7 +97,7 @@
     "lit": "^2.8.0",
     "lit-analyzer": "^2.0.3",
     "markdown-toc": "^1.2.0",
-    "postcss": "^8.4.39",
+    "postcss": "^8.4.40",
     "postcss-import": "^16.1.0",
     "postcss-media-minmax": "^5.0.0",
     "postcss-preset-env": "^9.6.0",
