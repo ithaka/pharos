@@ -1,10 +1,6 @@
-<path d="M0 1H8.05H11.5" stroke="black" stroke-width="2"/>
-<path d="M0 15H7.7H11" stroke="black" stroke-width="2"/>
-<path d="M1 1L1 11.5L0.999999 16" stroke="black" stroke-width="2"/>
-<path d="M15 4L15 8.2L15 10" stroke="black" stroke-width="2"/>
-<path d="M11 1H12L13 2L14.5 3.5L15 4V4.5V5" stroke="black" stroke-width="2"/>
-<circle cx="13.5" cy="12.5" r="3.5" stroke="black" stroke-width="2"/>
-<rect x="12.7071" y="11.3536" width="2.5" height="0.5" transform="rotate(45 12.7071 11.3536)" stroke="black" stroke-width="0.5"/>
-<rect y="0.353553" width="2.5" height="0.5" transform="matrix(-0.707107 0.707107 0.707107 0.707107 13.8713 11.1036)" stroke="black" stroke-width="0.5"/>
-<rect x="3.75" y="1.75" width="3.5" height="3.5" stroke="black" stroke-width="1.5"/>
-<rect x="3.75" y="11.45" width="5.5" height="3.5" stroke="black" stroke-width="1.5"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4 3.99994H15.4644L20 8.63001V19.9999L17.7143 17.8203V9.36986L14.4131 5.99994H6.28571V17.8203H17.7143L20 19.9999H4V3.99994Z"/>
+<path d="M14 18V18.2361L14.1056 18.4472L14.382 19H8V15H13.7639L14 15.118V15.5V18Z" stroke="black" stroke-width="2"/>
+<rect x="8" y="5" width="4" height="4" stroke="black" stroke-width="2"/>
+<circle cx="17.5" cy="16.5" r="3.5" stroke="black" stroke-width="2"/>
+<rect x="16.7072" y="15" width="3" height="1" transform="rotate(45 16.7072 15)"/>
+<rect width="3" height="1" transform="matrix(-0.707107 0.707107 0.707107 0.707107 18.1213 15)"/>
