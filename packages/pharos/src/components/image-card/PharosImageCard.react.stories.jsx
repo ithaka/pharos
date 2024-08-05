@@ -444,11 +444,11 @@ export const WithOverlayButtonSlot = {
   render: () => (
     <Fragment>
       <PharosLayout style={{ margin: '1rem 0' }}>
-      <PharosImageCard
+        <PharosImageCard
           title="South Hall"
           link="https://www.jstor.org/stable/10.2307/community.26220188"
           style={{ gridColumn: 'span 3' }}
-          variant='selectable'
+          variant="selectable"
         >
           <img id="image" src={collection5} alt="south hall" slot="image" />
           <div id="creator" slot="metadata">
@@ -469,7 +469,7 @@ export const WithOverlayButtonSlot = {
             icon="save"
             iconCondensed
             variant="overlay"
-            style={{ position: "absolute", bottom: "5px", right: "5px" }}
+            style={{ position: 'absolute', bottom: '5px', right: '5px' }}
           ></PharosButton>
           <PharosButton
             slot="action-button"
@@ -489,7 +489,7 @@ export const WithOverlayButtonSlot = {
         </PharosDropdownMenu>
       </PharosLayout>
     </Fragment>
-    ),
+  ),
 };
 
 export const SelectableCollection = {

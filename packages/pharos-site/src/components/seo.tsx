@@ -12,12 +12,11 @@ import { useStaticQuery, graphql } from 'gatsby';
 interface SourceProps {
   description?: string;
   lang?: string;
-  meta?: [];
   title: string;
   pathname?: string;
 }
 
-const SEO: FC<SourceProps> = ({ description, lang, title, pathname }) => {
+const SEO: FC<SourceProps> = ({ description = '', lang = 'en', title, pathname }) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -70,12 +69,6 @@ const SEO: FC<SourceProps> = ({ description, lang, title, pathname }) => {
       <meta name="twitter:image" content={site.siteMetadata.image} />
     </Helmet>
   );
-};
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
 };
 
 export default SEO;

@@ -1,34 +1,39 @@
 @font-face {
   font-family: GT-America-Standard-Bold;
-  src: local('GT-America-Standard-Bold'),
+  src:
+    local('GT-America-Standard-Bold'),
     url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Bold.woff')
       format('woff');
 }
 
 @font-face {
   font-family: IvarDisplay-Regular;
-  src: local('IvarDisplay-Regular'),
+  src:
+    local('IvarDisplay-Regular'),
     url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Regular.woff') format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: IvarDisplay-Medium;
-  src: local('IvarDisplay-Medium'),
+  src:
+    local('IvarDisplay-Medium'),
     url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Medium.woff') format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Medium.woff2') format('woff2');
 }
 
 @font-face {
   font-family: IvarDisplay-Bold;
-  src: local('IvarDisplay-Bold'),
+  src:
+    local('IvarDisplay-Bold'),
     url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Bold.woff') format('woff'),
     url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Bold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: Roboto;
-  src: local('Roboto'),
+  src:
+    local('Roboto'),
     url('https://static.ithaka.org/pharos/assets/fonts/Roboto-Regular.ttf') format('truetype');
 }
 

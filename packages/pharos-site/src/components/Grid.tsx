@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 
 interface GridProps {
+  children: React.ReactNode;
   columns?: number;
   vSpace?: number;
   hSpace?: number;
@@ -13,14 +14,14 @@ interface GridProps {
 
 const Grid: FC<GridProps> = ({
   children,
-  columns,
-  vSpace,
-  hSpace,
-  bottom,
-  align,
+  columns = 2,
+  vSpace = 1.5,
+  hSpace = 1.5,
+  bottom = 5,
+  align = 'stretch',
   justify,
   minContent,
-  justifyContent,
+  justifyContent = 'normal',
 }) => {
   const style = {
     display: 'grid',
@@ -34,15 +35,6 @@ const Grid: FC<GridProps> = ({
   };
 
   return <div style={style}>{children}</div>;
-};
-
-Grid.defaultProps = {
-  columns: 2,
-  vSpace: 1.5,
-  hSpace: 1.5,
-  bottom: 5,
-  align: 'stretch',
-  justifyContent: 'normal',
 };
 
 export default Grid;

@@ -29,7 +29,7 @@ const getColorName = (path: string[]) => {
         .replace(/ base+$/g, '');
 };
 
-const ColorGradients: FC<ColorGradientsProps> = ({ gradients }) => {
+const ColorGradients: FC<ColorGradientsProps> = ({ gradients = [] }) => {
   const [StateGradient, setStateGradient] = useState<ReactElement[] | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: Record<string, any> = tokens.color;
@@ -78,10 +78,6 @@ const ColorGradients: FC<ColorGradientsProps> = ({ gradients }) => {
       {StateGradient}
     </div>
   );
-};
-
-ColorGradients.defaultProps = {
-  gradients: [],
 };
 
 export default ColorGradients;

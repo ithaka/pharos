@@ -20,7 +20,8 @@
   pointer-events: none;
   opacity: 0;
   transform: translate3d(0, 0, 0);
-  transition: visibility 0s var(--pharos-transition-duration-short),
+  transition:
+    visibility 0s var(--pharos-transition-duration-short),
     opacity var(--pharos-transition-duration-short) linear;
   overflow: hidden;
 }

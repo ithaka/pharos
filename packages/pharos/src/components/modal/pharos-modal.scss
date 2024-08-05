@@ -21,7 +21,8 @@
   background-color: rgb(0 0 0 / 0);
   visibility: hidden;
   overflow-y: scroll;
-  transition: visibility var(--pharos-transition-duration-default) ease-in-out,
+  transition:
+    visibility var(--pharos-transition-duration-default) ease-in-out,
     background-color var(--pharos-transition-duration-default) ease-in-out;
 }
 
@@ -72,14 +73,17 @@
     max-height: 100vh;
     height: 100%;
     top: 100%;
-    transition: visibility var(--pharos-transition-duration-long) linear
+    transition:
+      visibility var(--pharos-transition-duration-long) linear
         var(--pharos-transition-duration-long),
       top var(--pharos-transition-duration-long) ease-in-out;
   }
 
   :host([open]) .modal__dialog {
     top: 0;
-    transition: visibility 0s linear 0s, top var(--pharos-transition-duration-long) ease-in-out;
+    transition:
+      visibility 0s linear 0s,
+      top var(--pharos-transition-duration-long) ease-in-out;
   }
 }
 

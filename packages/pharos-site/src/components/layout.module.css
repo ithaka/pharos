@@ -27,6 +27,7 @@ a {
 @media screen and (width <= 1055px) {
   .container {
     grid-template-areas:
+      'sidenav'
       'main'
       'footer';
     grid-template-columns: auto;

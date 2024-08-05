@@ -1,8 +1,9 @@
 import { tokenTable } from './TokenTable.module.css';
 import { useEffect, useState } from 'react';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 
 interface TokenTableProps {
+  children?: ReactNode;
   title?: string;
   subtitle?: string;
 }

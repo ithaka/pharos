@@ -63,8 +63,8 @@ You should now see your new Button component under the `components` directory:
 │   │   │   │   │   ├── pharos-button.ts
 │   │   │   │   │   ├── pharos-button.scss
 │   │   │   │   │   ├── pharos-button.test.ts
-│   │   │   │   │   ├── pharos-button.wc.stories.mdx
-│   │   │   │   │   └── PharosButton.react.stories.mdx
+│   │   │   │   │   ├── pharos-button.wc.stories.tsx
+│   │   │   │   │   └── PharosButton.react.stories.tsx
 ```
 
 You are now ready to begin developing your new component!
