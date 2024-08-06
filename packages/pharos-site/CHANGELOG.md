@@ -1,5 +1,22 @@
 # @ithaka/pharos-site
 
+## 7.0.0
+
+### Major Changes
+
+- [#776](https://github.com/ithaka/pharos/pull/776) [`f19a406`](https://github.com/ithaka/pharos/commit/f19a4069c27df448f6178dd0974aafeba69bffd1) Thanks [@daneah](https://github.com/daneah)! - Update Gatsby to v5 and drop MDX support
+
+### Patch Changes
+
+- [#781](https://github.com/ithaka/pharos/pull/781) [`4f8c37d`](https://github.com/ithaka/pharos/commit/4f8c37d19188c765bf5703db57866c82f5740245) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix storybook links to point to documentation story of components
+
+- [#782](https://github.com/ithaka/pharos/pull/782) [`90dbc66`](https://github.com/ithaka/pharos/commit/90dbc66ad6d474ac8a34baadffa2a53e29e725fd) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix mobile sidenav
+
+- [#778](https://github.com/ithaka/pharos/pull/778) [`5fc4213`](https://github.com/ithaka/pharos/commit/5fc421336457f23ad34971a40f620384082ba598) Thanks [@brentswisher](https://github.com/brentswisher)! - Set Content-Security-Policy to allow iframes in storybook
+
+- Updated dependencies [[`24c01ac`](https://github.com/ithaka/pharos/commit/24c01ac044ecab771dfea008e034c8443eee6f7d)]:
+  - @ithaka/pharos@14.4.0
+
 ## 6.0.1
 
 ### Patch Changes
