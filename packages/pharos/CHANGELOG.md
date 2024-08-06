@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.4.0
+
+### Minor Changes
+
+- [#796](https://github.com/ithaka/pharos/pull/796) [`24c01ac`](https://github.com/ithaka/pharos/commit/24c01ac044ecab771dfea008e034c8443eee6f7d) Thanks [@ichittaro-Ithaka](https://github.com/ichittaro-Ithaka)! - Add upload, save, and pin icons
+
 ## 14.3.0
 
 ### Minor Changes
