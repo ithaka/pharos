@@ -10,8 +10,6 @@
 }
 
 .popover {
-  @include mixins.interactive-focus;
-
   position: relative;
   margin: 0;
   box-shadow: var(--pharos-elevation-level-4);
@@ -24,6 +22,8 @@
     visibility 0s var(--pharos-transition-duration-short),
     opacity var(--pharos-transition-duration-short) linear;
   overflow: hidden;
+
+  @include mixins.interactive-focus;
 }
 
 :host([open]) .popover {

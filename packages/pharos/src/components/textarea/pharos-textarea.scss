@@ -7,12 +7,12 @@
 }
 
 .textarea {
+  min-height: var(--pharos-textarea-size-height-base);
+  overflow: auto;
+
   @include mixins.input-base;
   @include mixins.input-required;
   @include mixins.input-placeholder;
-
-  min-height: var(--pharos-textarea-size-height-base);
-  overflow: auto;
 
   &:focus {
     @include mixins.input-padding-thick-border;

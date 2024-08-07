@@ -23,15 +23,15 @@
 }
 
 :host(:not([href])) #link-element {
-  @include mixins.link-base;
-  @include mixins.link-hover;
-  @include mixins.interactive-focus;
-
   background-color: transparent;
   border: none;
   padding: 0;
   text-align: left;
   cursor: pointer;
+
+  @include mixins.link-base;
+  @include mixins.link-hover;
+  @include mixins.interactive-focus;
 }
 
 :host([is-on-background]) #link-element {

@@ -10,8 +10,6 @@
 }
 
 .dropdown-menu__list {
-  @include mixins.interactive-focus;
-
   background-color: var(--pharos-color-ui-10);
   position: relative;
   contain: layout;
@@ -28,6 +26,8 @@
   transition:
     visibility 0s var(--pharos-transition-duration-short),
     opacity var(--pharos-transition-duration-short) linear;
+
+  @include mixins.interactive-focus;
 }
 
 :host([open]) .dropdown-menu__list {

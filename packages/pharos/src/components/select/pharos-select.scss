@@ -7,14 +7,14 @@
 }
 
 #select-element {
-  @include mixins.input-base;
-  @include mixins.input-required;
-  @include mixins.transition-base(border-color, color);
-
   appearance: none;
   cursor: pointer;
   background: none;
   padding-right: 2.5rem;
+
+  @include mixins.transition-base(border-color, color);
+  @include mixins.input-base;
+  @include mixins.input-required;
 
   &:focus {
     @include mixins.input-padding-thick-border;

@@ -31,13 +31,13 @@
 }
 
 :host([variant='overlay']) #button-element {
+  opacity: 0.9;
+
   @include mixins.button-base(
     $color: var(--pharos-button-color-base-overlay-text-base),
     $background-color: var(--pharos-button-color-base-overlay-background-base),
     $border-color: var(--pharos-button-color-base-overlay-border-base)
   );
-
-  opacity: 0.9;
 }
 
 :host([href]) #button-element {

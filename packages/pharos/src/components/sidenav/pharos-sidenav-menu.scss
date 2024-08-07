@@ -6,9 +6,6 @@
 }
 
 #button-element {
-  @include mixins.font-base;
-  @include mixins.interactive-focus;
-
   border: none;
   background: none;
   width: 100%;
@@ -22,6 +19,9 @@
   color: var(--pharos-color-interactive-tertiary);
   transition-property: background-color;
   transition-duration: var(--pharos-transition-duration-default);
+
+  @include mixins.font-base;
+  @include mixins.interactive-focus;
 
   &:focus {
     outline-offset: -2px;

@@ -49,12 +49,12 @@
 }
 
 .input-element {
+  border-right: none;
+  border-radius: var(--pharos-radius-base-standard) 0 0 var(--pharos-radius-base-standard);
+
   @include mixins.input-base;
   @include mixins.input-required;
   @include mixins.input-placeholder;
-
-  border-right: none;
-  border-radius: var(--pharos-radius-base-standard) 0 0 var(--pharos-radius-base-standard);
 
   &:focus {
     @include mixins.input-focus;
