@@ -27,6 +27,22 @@ export const Base = {
   },
 };
 
+export const WithHiddenCaption = {
+  render: ({ columns, rowData, showPagination }) => html`
+    <storybook-pharos-table
+      .columns="${columns}"
+      .rowData="${rowData}"
+      .showPagination="${showPagination}"
+      caption="An example table"
+      .hideCaption="${true}"
+    />
+  `,
+  args: {
+    ...defaultArgs,
+    showPagination: false,
+  },
+};
+
 export const WithPagination = {
   render: ({ columns, rowData, showPagination }) => html`
     <storybook-pharos-table
