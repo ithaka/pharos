@@ -204,7 +204,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
         >
           ${this.caption}
         </caption>
-        <thead>
+        <thead class="table-header">
           <tr>
             ${this._renderTableHeader()}
           </tr>
