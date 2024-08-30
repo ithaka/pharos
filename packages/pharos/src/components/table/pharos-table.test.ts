@@ -200,7 +200,7 @@ it('throws an error if caption is not provided', async () => {
     if (error instanceof Error) {
       errorThrown = true;
       expect(error?.message).to.be.equal(
-        'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption-visually` property.'
+        'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption` property.'
       );
     }
   }
