@@ -1,0 +1,22 @@
+{
+	"table": {
+	  "header": {	
+		"color": {
+			"background": {
+				"value": "{color.ui.20.value}"
+			},
+			"border": {
+				"value": "{color.ui.30.value}"
+			}
+		}
+	  },
+	  "body": {
+	  	"color": {
+			"border": {
+				"value": "{color.ui.30.value}"
+			}
+		}
+	  }
+	}
+  }
+  
