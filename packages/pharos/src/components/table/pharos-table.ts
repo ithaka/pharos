@@ -93,9 +93,19 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   @state()
   private _currentPage = 1;
 
+  @state()
+  private header: HTMLTableSectionElement | null = null;
+
+  @state()
+  private observer: IntersectionObserver | null = null;
+
   protected override firstUpdated(): void {
     this._pageSize = !this.showPagination ? this.rowData.length : this.pageSizeOptions[0];
     this.totalResults = !this.totalResults ? this.rowData.length : this.totalResults;
+    this.header = this.shadowRoot?.querySelector('thead') ?? null;
+    if (this.hasStickyHeader) {
+      this._initHeaderObserver();
+    }
   }
 
   protected override updated(): void {
@@ -106,6 +116,41 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     }
     this._pageSize = !this.showPagination ? this.rowData.length : this._pageSize;
     this.totalResults = !this.totalResults ? this.rowData.length : this.totalResults;
+  }
+
+  private _initHeaderObserver(): void {
+    const ACTIVE_HEADER_CLASS = 'table-header--has-active-sticky-header';
+    if (!this.hasStickyHeader) {
+      throw new Error('Sticky header is not enabled, cannot initialize observer');
+    }
+    if (!this.header) {
+      throw new Error('No table header found, cannot initialize observer');
+    }
+    this.observer = new IntersectionObserver(
+      (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.header?.classList.add(ACTIVE_HEADER_CLASS);
+          } else {
+            this.header?.classList.remove(ACTIVE_HEADER_CLASS);
+          }
+        });
+      },
+      {
+        root: this.shadowRoot?.querySelector('.table'),
+        // Negative top rootMargin to offset the viewbox used for intersection calculations by the hight of the current header
+        rootMargin: `-${this.header.getBoundingClientRect().height}px 0px 0px 0px`,
+        threshold: [0.5],
+      }
+    );
+
+    this.observer.observe(this.header);
+  }
+
+  override disconnectedCallback() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 
   public static override get styles(): CSSResultArray {
