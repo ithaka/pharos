@@ -50,3 +50,37 @@ export const WithPagination = {
     showPagination: true,
   },
 };
+
+export const WithHiddenCaption = {
+  render: (args) => (
+    <PharosTable
+      columns={args.columns}
+      rowData={args.rowData}
+      showPagination={args.showPagination}
+      totalResults={5}
+      pageSizeOptions={[2, 4]}
+      caption={'An example table'}
+      hideCaption={args.hideCaption}
+    ></PharosTable>
+  ),
+  args: {
+    ...defaultArgs,
+    hideCaption: true,
+  },
+};
+
+export const WithStickyHeader = {
+  render: (args) => (
+    <PharosTable
+      columns={args.columns}
+      rowData={[...args.rowData, ...args.rowData, ...args.rowData, ...args.rowData]}
+      showPagination={args.showPagination}
+      caption={'An example sticky header table'}
+      hasStickyHeader={args.hasStickyHeader}
+    ></PharosTable>
+  ),
+  args: {
+    ...defaultArgs,
+    hasStickyHeader: true,
+  },
+};
