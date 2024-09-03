@@ -181,6 +181,14 @@ describe('pharos-table', () => {
     await expect(tableCell[0].innerHTML).is.empty;
     await expect(componentWithEmptyHeaderCell).to.be.accessible();
   });
+
+  it('renders a sticky table header when has-sticky-header is set', async () => {
+    component.hasStickyHeader = true;
+    await component.updateComplete;
+
+    const headerRow = component.renderRoot.querySelector(`thead`);
+    await expect(headerRow).to.have.style('position', 'sticky');
+  });
 });
 
 it('throws an error if caption is not provided', async () => {

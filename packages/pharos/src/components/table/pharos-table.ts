@@ -81,8 +81,11 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   @property({ type: String, reflect: true, attribute: 'caption' })
   public caption: string = '';
 
-  @property({ type: String, reflect: true, attribute: 'hide-caption' })
+  @property({ type: Boolean, reflect: true, attribute: 'hide-caption' })
   public hideCaption: boolean = false;
+
+  @property({ type: Boolean, reflect: true, attribute: 'has-sticky-header' })
+  public hasStickyHeader: boolean = false;
 
   @state()
   private _pageSize = 50;
@@ -134,9 +137,9 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   private _renderTableHeader(): (TemplateResult | undefined)[] {
     return this.columns.map((column: ColumnSpecification) => {
       if (column.name) {
-        return html`<th scope="col">${column.name}</th>`;
+        return html`<th scope="col" class="table-header__cell">${column.name}</th>`;
       } else {
-        return html`<td></td>`;
+        return html`<td class="table-header__cell"></td>`;
       }
     });
   }
@@ -149,7 +152,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     return currentDisplayingData.map((row: RowData) => {
       const arr: TemplateResult[] = [];
       this.columns.forEach((column: ColumnSpecification) => {
-        arr.push(html`<td>${row[column.field]}</td>`);
+        arr.push(html`<td class="table-body__cell">${row[column.field]}</td>`);
       });
       return html`<tr>
         ${arr}
@@ -204,7 +207,12 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
         >
           ${this.caption}
         </caption>
-        <thead class="table-header">
+        <thead
+          class=${classMap({
+            'table-header': true,
+            [`table-header--has-sticky-header`]: this.hasStickyHeader,
+          })}
+        >
           <tr>
             ${this._renderTableHeader()}
           </tr>
