@@ -118,24 +118,38 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     this.totalResults = !this.totalResults ? this.rowData.length : this.totalResults;
   }
 
+  private _toggleActiveStickyHeader = (active: boolean) => {
+    const ACTIVE_HEADER_CLASS = 'table-sticky-header--is-active';
+    const ACTIVE_HEADER_CELL_CLASS = 'table-sticky-header__cell--is-active';
+    const headerCells = this.header?.querySelectorAll('.table-header__cell');
+
+    if (active) {
+      this.header?.classList.add(ACTIVE_HEADER_CLASS);
+      headerCells?.forEach((cell) => {
+        cell.classList.add(ACTIVE_HEADER_CELL_CLASS);
+      });
+    } else {
+      this.header?.classList.remove(ACTIVE_HEADER_CLASS);
+      headerCells?.forEach((cell) => {
+        cell.classList.remove(ACTIVE_HEADER_CELL_CLASS);
+      });
+    }
+  };
+
   private _initHeaderObserver(): void {
-    const ACTIVE_HEADER_CLASS = 'table-header--has-active-sticky-header';
     if (!this.header) {
       throw new Error('No table header found, cannot initialize observer');
     }
+
     this.observer = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.header?.classList.add(ACTIVE_HEADER_CLASS);
-          } else {
-            this.header?.classList.remove(ACTIVE_HEADER_CLASS);
-          }
+          this._toggleActiveStickyHeader(entry.isIntersecting);
         });
       },
       {
         root: this.shadowRoot?.querySelector('.table'),
-        // Negative top rootMargin to offset the viewbox used for intersection calculations by the hight of the current header
+        // Negative top rootMargin to offset the viewbox used for intersection calculations by the height of the current header
         rootMargin: `-${this.header.getBoundingClientRect().height}px 0px 0px 0px`,
         threshold: [0.5],
       }
@@ -244,7 +258,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
       <table class="table">
         <caption
           class=${classMap({
-            [`visually-hidden`]: this.hideCaption,
+            ['visually-hidden']: this.hideCaption,
           })}
         >
           ${this.caption}
@@ -252,7 +266,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
         <thead
           class=${classMap({
             'table-header': true,
-            [`table-header--has-sticky-header`]: this.hasStickyHeader,
+            ['table-sticky-header']: this.hasStickyHeader,
           })}
         >
           <tr>
