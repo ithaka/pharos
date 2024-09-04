@@ -120,9 +120,6 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
 
   private _initHeaderObserver(): void {
     const ACTIVE_HEADER_CLASS = 'table-header--has-active-sticky-header';
-    if (!this.hasStickyHeader) {
-      throw new Error('Sticky header is not enabled, cannot initialize observer');
-    }
     if (!this.header) {
       throw new Error('No table header found, cannot initialize observer');
     }
