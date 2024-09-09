@@ -7,20 +7,38 @@
 
 .table {
   border-collapse: collapse;
-
-  th {
-    border: 1px solid var(--pharos-table-header-color-border, var(--pharos-color-ui-30));
-    padding: var(--pharos-spacing-1-x);
-  }
-
-  td {
-    border: 1px solid var(--pharos-table-body-color-border, var(--pharos-color-ui-30));
-    padding: var(--pharos-spacing-1-x);
-  }
 }
 
 .table-header {
   background-color: var(--pharos-table-header-color-background, var(--pharos-color-ui-20));
+}
+
+.table-header__cell {
+  border: 1px solid var(--pharos-table-header-color-border, var(--pharos-color-ui-30));
+  padding: var(--pharos-spacing-1-x);
+}
+
+.table-body__cell {
+  border: 1px solid var(--pharos-table-body-color-border, var(--pharos-color-ui-30));
+  padding: var(--pharos-spacing-1-x);
+}
+
+.table-sticky-header {
+  position: sticky;
+  top: 0;
+}
+
+.table-sticky-header--is-active {
+  box-shadow: var(--pharos-elevation-level-2);
+}
+
+.table-sticky-header__cell--is-active {
+  border: none;
+  border-right: 1px solid var(--pharos-table-header-color-border, var(--pharos-color-ui-30));
+
+  &:last-child {
+    border-right: none;
+  }
 }
 
 .table-controls {

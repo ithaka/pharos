@@ -181,6 +181,41 @@ describe('pharos-table', () => {
     await expect(tableCell[0].innerHTML).is.empty;
     await expect(componentWithEmptyHeaderCell).to.be.accessible();
   });
+
+  it('renders a sticky table header when has-sticky-header is set', async () => {
+    component.hasStickyHeader = true;
+    await component.updateComplete;
+    const headerRow = component.renderRoot.querySelector(`thead`);
+    await expect(headerRow).to.have.style('position', 'sticky');
+  });
+
+  it('sets an active state on a sticky header when the header intersects with the table', async () => {
+    component.hasStickyHeader = true;
+    component['_toggleActiveStickyHeader'](true);
+    await component.updateComplete;
+
+    const headerRow = component.renderRoot.querySelector(`.table-sticky-header`);
+    expect(headerRow).to.have.class('table-sticky-header--is-active');
+
+    const headerCells = component.querySelectorAll('.table-sticky-header__cell');
+    headerCells.forEach((cell) => {
+      expect(cell).to.have.class('table-sticky-header__cell--is-active');
+    });
+  });
+  it('removes the active state on a sticky header when the header no longer intersects with the table', async () => {
+    component.hasStickyHeader = true;
+    component['_toggleActiveStickyHeader'](true);
+    component['_toggleActiveStickyHeader'](false);
+    await component.updateComplete;
+
+    const headerRow = component.renderRoot.querySelector(`.table-sticky-header`);
+    expect(headerRow).not.to.have.class('table-sticky-header--is-active');
+
+    const headerCells = component.querySelectorAll('.table-sticky-header__cell');
+    headerCells.forEach((cell) => {
+      expect(cell).to.have.class('table-sticky-header__cell--is-active');
+    });
+  });
 });
 
 it('throws an error if caption is not provided', async () => {

@@ -43,3 +43,34 @@ export const WithPagination = {
     showPagination: true,
   },
 };
+
+export const WithHiddenCaption = {
+  render: ({ columns, rowData, showPagination }) => html`
+    <storybook-pharos-table
+      .columns="${columns}"
+      .rowData="${rowData}"
+      .showPagination="${showPagination}"
+      caption="An example table"
+      .hideCaption="${true}"
+    />
+  `,
+  args: {
+    ...defaultArgs,
+    showPagination: false,
+  },
+};
+
+export const WithStickyHeader = {
+  render: ({ columns, rowData }) => html`
+    <storybook-pharos-table
+      .columns="${columns}"
+      .rowData="${[...rowData, ...rowData, ...rowData, ...rowData]}"
+      .hasStickyHeader="${true}"
+      caption="A sticky header example"
+    />
+  `,
+  args: {
+    ...defaultArgs,
+    showPagination: true,
+  },
+};
