@@ -29,7 +29,7 @@ export const Base = {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
               content:
-                'The item has moved to your <storybook-pharos-link href="#" is-on-background bold>Workspace</storybook-pharos-link>.',
+                'hehe <div> i am evil </div> ahahah.',
               returnElements: [document.querySelector('#success-toast-button')],
             },
           });

@@ -174,7 +174,12 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
     // unsafeHTML will render content in the scope of the current component,
     // so any components not explicitly registered in elementDefinitions above will not render.
     const toastContentElement = document.createElement('div');
-    toastContentElement.innerHTML = toast.content;
+    console.log("erm: ", toast.content);
+    console.log("what the sigma: ", encodeURIComponent(toast.content))
+
+
+
+    toastContentElement.innerHTML = this._escapeToastContent(toast.content);
 
     return html`<pharos-toast
       id="${toast.id}"
@@ -195,5 +200,28 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
         )}
       </div>
     `;
+  }
+
+  private _escapeToastContent(input: string): string {
+    // For XSS protection, we need to escape any HTML that is not wrapped in a "-pharos-" tag
+    const escapeChars = (str: string) => str.replace(/&/g, '&amp;')
+                                    .replace(/</g, '&lt;')
+                                    .replace(/>/g, '&gt;')
+                                    .replace(/"/g, '&quot;')
+                                    .replace(/'/g, '&#39;');
+    
+    // Check if the input string contains any tag with "-pharos-"
+    const isWrappedWithPharosTag = (str: string) => {
+        const tagPattern = /<\/?[^<]*-pharos-[^<]*?>/;
+        return tagPattern.test(str);
+    };
+
+    // If the input contains a "-pharos-" tag, return it unchanged
+    if (isWrappedWithPharosTag(input.trim())) {
+        return input;
+    }
+
+    // Escape the input string if it does not contain a "-pharos-" tag
+    return escapeChars(input);
   }
 }
