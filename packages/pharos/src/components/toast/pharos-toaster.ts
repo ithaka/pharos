@@ -174,11 +174,6 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
     // unsafeHTML will render content in the scope of the current component,
     // so any components not explicitly registered in elementDefinitions above will not render.
     const toastContentElement = document.createElement('div');
-    console.log("erm: ", toast.content);
-    console.log("what the sigma: ", encodeURIComponent(toast.content))
-
-
-
     toastContentElement.innerHTML = this._escapeToastContent(toast.content);
 
     return html`<pharos-toast

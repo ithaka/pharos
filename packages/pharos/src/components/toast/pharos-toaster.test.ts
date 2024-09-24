@@ -266,4 +266,39 @@ describe('pharos-toaster', () => {
     expect(activeElement === trigger).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
   });
+
+  it('should return content unchanged if it contains a -pharos- tag', () => {
+    const input = 'The item has moved to your <storybook-pharos-link href="#" is-on-background bold>Workspace</storybook-pharos-link>.';
+    const result = component['_escapeToastContent'](input);
+    expect(result).to.equal(input);
+  });
+
+  it('should escape HTML characters if there is no -pharos- tag', () => {
+    const input = 'This is a <div>test</div> & "example".';
+    const expectedOutput = 'This is a &lt;div&gt;test&lt;/div&gt; &amp; &quot;example&quot;.';
+    const result = component['_escapeToastContent'](input);
+    expect(result).to.equal(expectedOutput);
+  });
+
+  it('should escape multiple HTML characters correctly', () => {
+    const input = 'Check <b>bold</b> and <i>italic</i> text.';
+    const expectedOutput = 'Check &lt;b&gt;bold&lt;/b&gt; and &lt;i&gt;italic&lt;/i&gt; text.';
+    const result = component['_escapeToastContent'](input);
+    expect(result).to.equal(expectedOutput);
+  });
+
+  it('should escape single quotes correctly', () => {
+    const input = "It's a nice day!";
+    const expectedOutput = 'It&#39;s a nice day!';
+    const result = component['_escapeToastContent'](input);
+    expect(result).to.equal(expectedOutput);
+  });
+
+  it('should escape ampersands correctly', () => {
+    const input = 'Tom & Jerry';
+    const expectedOutput = 'Tom &amp; Jerry';
+    const result = component['_escapeToastContent'](input);
+    expect(result).to.equal(expectedOutput);
+  });
 });
+
