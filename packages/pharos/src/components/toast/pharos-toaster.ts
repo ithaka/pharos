@@ -199,13 +199,6 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _escapeToastContent(input: string): string {
-    // For XSS protection, we need to escape any HTML that is not wrapped in a "-pharos-" tag
-    // const escapeChars = (str: string) => str.replace(/&/g, '&amp;')
-    //                                 .replace(/</g, '&lt;')
-    //                                 .replace(/>/g, '&gt;')
-    //                                 .replace(/"/g, '&quot;')
-    //                                 .replace(/'/g, '&#39;');
-    
     // Check if the input string contains any tag with "-pharos-"
     const isWrappedWithPharosTag = (str: string) => {
         const tagPattern = /<\/?[^<]*-pharos-[^<]*?>/;
