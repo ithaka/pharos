@@ -3824,6 +3824,7 @@ __metadata:
     "@lit-labs/scoped-registry-mixin": "npm:^1.0.1"
     "@open-wc/dedupe-mixin": "npm:^1.4.0"
     "@open-wc/testing": "npm:^4.0.0"
+    "@types/escape-html": "npm:1.0.3"
     "@types/mocha": "npm:^10.0.7"
     "@types/react": "npm:^18.3.4"
     "@types/react-dom": "npm:^18.3.0"
@@ -6235,6 +6236,13 @@ __metadata:
   version: 1.39.7
   resolution: "@types/emscripten@npm:1.39.7"
   checksum: 10c0/552c9558065c1f717d00df3cd740ee88650b0671e37bb7ddaa1889acb1d6ae5aa9618b9fdb0c634dea612fe17689b35885457b6da0420f0cd2d790cad5a6a212
+  languageName: node
+  linkType: hard
+
+"@types/escape-html@npm:1.0.3":
+  version: 1.0.3
+  resolution: "@types/escape-html@npm:1.0.3"
+  checksum: 10c0/980ec83f07f91389ffc9d7043da40db49dc40879a57f743a422bf30aa1d730f33c880baab4b31aacce550f2b195a866ec95d66a14c517ea1416d03e9b462df9d
   languageName: node
   linkType: hard
 
@@ -22821,6 +22829,19 @@ __metadata:
   bin:
     resolve: bin/resolve
   checksum: 10c0/a6c33555e3482ea2ec4c6e3d3bf0d78128abf69dca99ae468e64f1e30acaa318fd267fb66c8836b04d558d3e2d6ed875fe388067e7d8e0de647d3c21af21c43a
+  languageName: node
+  linkType: hard
+
+"resolve@patch:resolve@npm%3A^1.1.7#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.10.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.14.2#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.19.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.20.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.1#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.4#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.8#optional!builtin<compat/resolve>":
+  version: 1.22.8
+  resolution: "resolve@patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
+  dependencies:
+    is-core-module: "npm:^2.13.0"
+    path-parse: "npm:^1.0.7"
+    supports-preserve-symlinks-flag: "npm:^1.0.0"
+  bin:
+    resolve: bin/resolve
+  checksum: 10c0/a5d4624e47af0b29f164b755b3d997a59e550891058c69ff6d460241a699e0e70bfcfa4ea5d8e61a5842f4dd8df7d1ce8024340d26ac26c4d4e9fa75636abbcb
   languageName: node
   linkType: hard
 

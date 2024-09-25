@@ -1,6 +1,7 @@
 import { PharosElement } from '../base/pharos-element';
 import { html } from 'lit';
 import type { TemplateResult, CSSResultArray } from 'lit';
+import escape from "escape-html";
 import { state } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { toasterStyles } from './pharos-toaster.css';
@@ -199,11 +200,11 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
 
   private _escapeToastContent(input: string): string {
     // For XSS protection, we need to escape any HTML that is not wrapped in a "-pharos-" tag
-    const escapeChars = (str: string) => str.replace(/&/g, '&amp;')
-                                    .replace(/</g, '&lt;')
-                                    .replace(/>/g, '&gt;')
-                                    .replace(/"/g, '&quot;')
-                                    .replace(/'/g, '&#39;');
+    // const escapeChars = (str: string) => str.replace(/&/g, '&amp;')
+    //                                 .replace(/</g, '&lt;')
+    //                                 .replace(/>/g, '&gt;')
+    //                                 .replace(/"/g, '&quot;')
+    //                                 .replace(/'/g, '&#39;');
     
     // Check if the input string contains any tag with "-pharos-"
     const isWrappedWithPharosTag = (str: string) => {
@@ -217,6 +218,6 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
     }
 
     // Escape the input string if it does not contain a "-pharos-" tag
-    return escapeChars(input);
+    return escape(input);
   }
 }
