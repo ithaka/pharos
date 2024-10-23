@@ -1,5 +1,6 @@
 import { html } from 'lit';
 import { property, query } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { radioButtonStyles } from './pharos-radio-button.css';
 import { FormElement } from '../base/form-element';
@@ -13,6 +14,7 @@ const LINKS = `a[href],pharos-link[href],[data-pharos-component='PharosLink'][hr
  * @tag pharos-radio-button
  *
  * @slot label - Contains the label content.
+ * @slot message - Contains message content to show below the input.
  *
  * @fires change - Fires when the value has changed
  */
@@ -84,6 +86,7 @@ export class PharosRadioButton extends FormMixin(FormElement) {
         ?required="${this.required}"
         ?disabled=${this.disabled}
         @change=${this.onChange}
+        aria-describedby="${ifDefined(this.messageId)}"
       />
       <div class="input-wrapper">
         <svg
