@@ -16,7 +16,7 @@ export default {
 export const Base = {
   render: (args) =>
     html`<storybook-pharos-switch
-      ><span slot="label">Toggle Switch Label</span></storybook-pharos-switch
+      ><span slot="label">Toggle Switch</span></storybook-pharos-switch
     >`,
   args: {},
 };

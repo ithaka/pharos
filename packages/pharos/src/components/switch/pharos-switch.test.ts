@@ -140,12 +140,6 @@ describe('pharos-switch', () => {
   });
 
   it('can be clicked when the label is hidden', async () => {
-    // let activeElement = null;
-    // const onFocusIn = (event: Event): void => {
-    //   activeElement = event.composedPath()[0];
-    // };
-    // document.addEventListener('focusin', onFocusIn);
-
     component = await fixture(html`
       <test-pharos-switch hide-label>
         <span slot="label">test switch</span>
@@ -157,17 +151,9 @@ describe('pharos-switch', () => {
     await component.updateComplete;
 
     expect(component.checked).to.be.true;
-    // expect(activeElement === component['_switch']).to.be.true;
-    // document.removeEventListener('focusin', onFocusIn);
   });
 
   it('can be clicked when no label is present', async () => {
-    // let activeElement = null;
-    // const onFocusIn = (event: Event): void => {
-    //   activeElement = event.composedPath()[0];
-    // };
-    // document.addEventListener('focusin', onFocusIn);
-
     component = await fixture(html` <test-pharos-switch></test-pharos-switch> `);
 
     const switchElement = component.renderRoot.querySelector('.switch__control') as HTMLSpanElement;
@@ -175,8 +161,6 @@ describe('pharos-switch', () => {
     await component.updateComplete;
 
     expect(component.checked).to.be.true;
-    // expect(activeElement === component['_switch']).to.be.true;
-    // document.removeEventListener('focusin', onFocusIn);
   });
 
   it('is able to delegate focus', async () => {

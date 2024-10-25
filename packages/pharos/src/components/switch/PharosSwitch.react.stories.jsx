@@ -20,6 +20,10 @@ export default {
 };
 
 export const Base = {
-  render: (args) => <PharosSwitch />,
+  render: (args) => (
+    <PharosSwitch>
+      <span slot="label">Toggle Switch</span>
+    </PharosSwitch>
+  ),
   args: {},
 };
