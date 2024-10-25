@@ -1,0 +1,97 @@
+@use '../../utils/scss/mixins';
+
+.input-wrapper {
+  @include mixins.option-wrapper;
+
+  align-items: center;
+  column-gap: var(--pharos-spacing-1-x);
+}
+
+.switch__control {
+  height: 30px;
+  width: 68px;
+  box-sizing: content-box;
+  cursor: pointer;
+  border: 1px solid;
+  border-color: var(--pharos-color-marble-gray-80);
+  border-radius: 2rem;
+  transition:
+    background-color 0.3s ease-out,
+    border-color 0.3s ease-out;
+  background-color: transparent;
+  position: relative;
+
+  &:hover {
+    border-color: var(--pharos-color-jstor-red);
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    height: 15px;
+    width: 15px;
+    background-color: var(--pharos-color-jstor-red);
+    right: calc(100% - var(--pharos-spacing-one-and-a-half-x));
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s ease-out;
+    border-radius: 50%;
+  }
+
+  &::after {
+    font-weight: bold;
+    line-height: 0;
+    text-indent: 0;
+    height: 1rem;
+    color: var(--pharos-color-text-base);
+    content: 'OFF';
+    text-align: center;
+    display: block;
+    position: absolute;
+    left: calc(100% - 36px);
+    top: 50%;
+    transition: color 0.3s ease-out;
+  }
+
+  &:hover::after {
+    color: var(--pharos-color-jstor-red);
+  }
+
+  .switch__input:checked + .input-wrapper & {
+    background-color: var(--pharos-color-jstor-red);
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &::before {
+      right: var(--pharos-spacing-one-half-x);
+      background-color: var(--pharos-color-white);
+    }
+
+    &::after {
+      color: var(--pharos-color-white);
+      left: var(--pharos-spacing-one-half-x);
+      content: 'ON';
+    }
+
+    &:hover::before {
+      background-color: var(--pharos-color-jstor-red);
+    }
+
+    &:hover::after {
+      color: var(--pharos-color-jstor-red);
+    }
+  }
+}
+
+#switch-element {
+  @include mixins.option-input;
+}
+
+#switch-element:focus-visible {
+  + .input-wrapper .switch__control {
+    outline: 2px solid var(--pharos-color-focus);
+    outline-offset: 2px;
+  }
+}
