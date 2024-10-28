@@ -1,4 +1,4 @@
-import icons from './tokens/assets/icons.json' assert { type: 'json' };
+import icons from './tokens/assets/icons.json' with { type: 'json' };
 
 export default {
   source: ['tokens/**/*.json'],
