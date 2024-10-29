@@ -14,9 +14,12 @@ export default {
 };
 
 export const Base = {
-  render: (args) =>
-    html`<storybook-pharos-switch
+  render: ({ disabled, checked }) =>
+    html` <storybook-pharos-switch ?disabled=${disabled} ?checked=${checked}
       ><span slot="label">Toggle Switch</span></storybook-pharos-switch
     >`,
-  args: {},
+  args: {
+    disabled: false,
+    checked: false,
+  },
 };

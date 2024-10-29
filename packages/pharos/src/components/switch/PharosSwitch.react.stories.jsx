@@ -16,14 +16,18 @@ export default {
     docs: {
       page: configureDocsPage('switch'),
     },
+    options: { selectedPanel: 'addon-controls' },
   },
 };
 
 export const Base = {
-  render: (args) => (
-    <PharosSwitch>
+  render: ({ disabled, checked }) => (
+    <PharosSwitch disabled={disabled} checked={checked}>
       <span slot="label">Toggle Switch</span>
     </PharosSwitch>
   ),
-  args: {},
+  args: {
+    disabled: false,
+    checked: false,
+  },
 };

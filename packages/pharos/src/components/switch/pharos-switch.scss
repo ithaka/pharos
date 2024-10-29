@@ -8,21 +8,23 @@
 }
 
 .switch__control {
-  height: 30px;
-  width: 68px;
-  box-sizing: content-box;
+  height: 32px;
+  width: 70px;
+  box-sizing: border-box;
   cursor: pointer;
   border: 1px solid;
   border-color: var(--pharos-color-marble-gray-80);
   border-radius: 2rem;
+  background-color: var(--pharos-color-marble-gray-94);
   transition:
     background-color 0.3s ease-out,
-    border-color 0.3s ease-out;
-  background-color: transparent;
+    border-color 0.3s ease-out,
+    box-shadow 0.3s ease-out;
   position: relative;
 
   &:hover {
-    border-color: var(--pharos-color-jstor-red);
+    border-color: var(--pharos-color-marble-gray-30);
+    box-shadow: 0 0 0 1px var(--pharos-color-marble-gray-30);
   }
 
   &::before {
@@ -30,7 +32,7 @@
     content: '';
     height: 15px;
     width: 15px;
-    background-color: var(--pharos-color-jstor-red);
+    background-color: var(--pharos-color-marble-gray-30);
     right: calc(100% - var(--pharos-spacing-one-and-a-half-x));
     top: 50%;
     transform: translateY(-50%);
@@ -43,7 +45,7 @@
     line-height: 0;
     text-indent: 0;
     height: 1rem;
-    color: var(--pharos-color-text-base);
+    color: var(--pharos-color-marble-gray-30);
     content: 'OFF';
     text-align: center;
     display: block;
@@ -53,34 +55,23 @@
     transition: color 0.3s ease-out;
   }
 
-  &:hover::after {
-    color: var(--pharos-color-jstor-red);
-  }
-
   .switch__input:checked + .input-wrapper & {
-    background-color: var(--pharos-color-jstor-red);
+    background-color: var(--pharos-color-green-93);
+    border-color: var(--pharos-color-green-base);
 
     &:hover {
-      background-color: transparent;
+      box-shadow: 0 0 0 1px var(--pharos-color-green-base);
     }
 
     &::before {
       right: var(--pharos-spacing-one-half-x);
-      background-color: var(--pharos-color-white);
+      background-color: var(--pharos-color-green-base);
     }
 
     &::after {
-      color: var(--pharos-color-white);
+      color: var(--pharos-color-green-base);
       left: var(--pharos-spacing-one-half-x);
       content: 'ON';
-    }
-
-    &:hover::before {
-      background-color: var(--pharos-color-jstor-red);
-    }
-
-    &:hover::after {
-      color: var(--pharos-color-jstor-red);
     }
   }
 }
@@ -92,6 +83,37 @@
 #switch-element:focus-visible {
   + .input-wrapper .switch__control {
     outline: 2px solid var(--pharos-color-focus);
-    outline-offset: 2px;
+    outline-offset: 3px;
+    border-color: var(--pharos-color-marble-gray-30);
+    box-shadow: 0 0 0 1px var(--pharos-color-marble-gray-30);
+  }
+}
+
+#switch-element:disabled {
+  + .input-wrapper .switch__control {
+    cursor: not-allowed;
+    background-color: var(--pharos-color-marble-gray-base);
+    border-color: var(--pharos-color-marble-gray-94);
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    &::before {
+      background-color: var(--pharos-color-marble-gray-50);
+    }
+
+    &::after {
+      color: var(--pharos-color-marble-gray-50);
+    }
+  }
+}
+
+#switch-element:focus-visible:checked {
+  + .input-wrapper .switch__control {
+    outline: 2px solid var(--pharos-color-focus);
+    outline-offset: 3px;
+    border-color: var(--pharos-color-green-base);
+    box-shadow: 0 0 0 1px var(--pharos-color-green-base);
   }
 }
