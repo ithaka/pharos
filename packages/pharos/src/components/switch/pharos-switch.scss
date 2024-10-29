@@ -50,7 +50,7 @@
     text-align: center;
     display: block;
     position: absolute;
-    left: calc(100% - 36px);
+    left: calc(100% - 38px);
     top: 50%;
     transition: color 0.3s ease-out;
   }
@@ -76,6 +76,10 @@
   }
 }
 
+.switch__label {
+  cursor: pointer;
+}
+
 #switch-element {
   @include mixins.option-input;
 }
@@ -90,8 +94,12 @@
 }
 
 #switch-element:disabled {
+  + .input-wrapper .switch__label {
+    cursor: default;
+  }
+
   + .input-wrapper .switch__control {
-    cursor: not-allowed;
+    cursor: default;
     background-color: var(--pharos-color-marble-gray-base);
     border-color: var(--pharos-color-marble-gray-94);
 

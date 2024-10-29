@@ -99,7 +99,7 @@ export class PharosSwitch extends FormMixin(FormElement) {
           @change=${this.onChange}
         />
         <div class="input-wrapper">
-          <label for="switch-element" @click="${this._handleClick}">
+          <label for="switch-element" class="switch__label" @click="${this._handleClick}">
             <slot name="label"></slot>
           </label>
           <span class="switch__control" @click="${this._handleClick}"></span>
