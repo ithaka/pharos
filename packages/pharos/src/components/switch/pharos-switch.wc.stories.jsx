@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { action } from '@storybook/addon-actions';
 
 import { configureDocsPage } from '@config/docsPageConfig';
 
@@ -15,11 +16,17 @@ export default {
 
 export const Base = {
   render: ({ disabled, checked }) =>
-    html` <storybook-pharos-switch ?disabled=${disabled} ?checked=${checked}
+    html` <storybook-pharos-switch
+      ?disabled=${disabled}
+      ?checked=${checked}
+      @change="${(e) => action('Change')(e.target.checked)}"
       ><span slot="label">Toggle Switch</span></storybook-pharos-switch
     >`,
   args: {
     disabled: false,
     checked: false,
+  },
+  parameters: {
+    options: { selectedPanel: 'addon-actions' },
   },
 };

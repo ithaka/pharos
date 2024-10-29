@@ -10,6 +10,7 @@ import { property, query } from 'lit/decorators.js';
  *
  * @tag pharos-switch
  *
+ * @fires change - Fires when the value has changed
  */
 export class PharosSwitch extends FormMixin(FormElement) {
   /**
@@ -38,11 +39,9 @@ export class PharosSwitch extends FormMixin(FormElement) {
   }
 
   private _handleClick(event: Event): void {
-    console.log('handle click??', this.checked);
     event.preventDefault();
     event.stopPropagation();
     this._switch.click();
-    // this._switch.focus();
   }
 
   public onChange(): void {
@@ -102,7 +101,7 @@ export class PharosSwitch extends FormMixin(FormElement) {
           <label for="switch-element" class="switch__label" @click="${this._handleClick}">
             <slot name="label"></slot>
           </label>
-          <span class="switch__control" @click="${this._handleClick}"></span>
+          <span class="switch__control" aria-hidden="true" @click="${this._handleClick}"></span>
         </div>
       </div>
     `;
