@@ -41,6 +41,7 @@
   }
 
   &::after {
+    font-weight: var(--pharos-font-weight-bold);
     color: var(--pharos-color-marble-gray-30);
     content: 'OFF';
     position: absolute;
