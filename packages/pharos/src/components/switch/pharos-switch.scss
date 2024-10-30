@@ -19,9 +19,9 @@
   border-radius: 2rem;
   background-color: var(--pharos-color-marble-gray-94);
   transition:
-    background-color 0.3s ease-out,
-    border-color 0.3s ease-out,
-    box-shadow 0.3s ease-out;
+    background-color var(--pharos-transition-duration-default) ease-out,
+    border-color var(--pharos-transition-duration-default) ease-out,
+    box-shadow var(--pharos-transition-duration-default) ease-out;
   position: relative;
 
   &:hover {
@@ -36,7 +36,7 @@
     width: 1rem;
     background-color: var(--pharos-color-marble-gray-30);
     left: 9px;
-    transition: 0.3s ease-out;
+    transition: var(--pharos-transition-duration-default) ease-out;
     border-radius: 50%;
   }
 
@@ -46,7 +46,7 @@
     content: 'OFF';
     position: absolute;
     right: 9px;
-    transition: color 0.3s ease-out;
+    transition: color var(--pharos-transition-duration-default) ease-out;
     font-size: var(--pharos-font-size-small);
   }
 
