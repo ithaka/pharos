@@ -97,7 +97,7 @@ export class PharosRadioButton extends FormMixin(FormElement) {
           height="24"
           class="input__icon"
           role="img"
-          aria-label="radio button"
+          aria-hidden="true"
           focusable="false"
           @click="${this._handleClick}"
         >
