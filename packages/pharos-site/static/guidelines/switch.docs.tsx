@@ -20,7 +20,7 @@ const SwitchPage: FC = () => {
       <PageSection
         topMargin
         title="Usage"
-        description="The switch component is used to toggle if an control is enabled or disabled. The value of the switch is persisted at the moment the control is updated, without a separate save mechanism."
+        description="The switch component is used to toggle if a control is enabled or disabled. The value of the switch is persisted at the moment the control is updated, without a separate save mechanism."
       >
         <PageSection title="Alignment" subSectionLevel={1}>
           <p>Labels for switches are placed to the left of the switch.</p>
