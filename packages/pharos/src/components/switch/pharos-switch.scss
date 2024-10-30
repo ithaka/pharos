@@ -10,6 +10,8 @@
 .switch__control {
   height: 32px;
   width: 70px;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
   cursor: pointer;
   border: 1px solid;
@@ -30,29 +32,21 @@
   &::before {
     position: absolute;
     content: '';
-    height: 15px;
-    width: 15px;
+    height: 1rem;
+    width: 1rem;
     background-color: var(--pharos-color-marble-gray-30);
-    right: calc(100% - var(--pharos-spacing-one-and-a-half-x));
-    top: 50%;
-    transform: translateY(-50%);
+    left: 9px;
     transition: 0.3s ease-out;
     border-radius: 50%;
   }
 
   &::after {
-    font-weight: bold;
-    line-height: 0;
-    text-indent: 0;
-    height: 1rem;
     color: var(--pharos-color-marble-gray-30);
     content: 'OFF';
-    text-align: center;
-    display: block;
     position: absolute;
-    left: calc(100% - 38px);
-    top: 50%;
+    right: 9px;
     transition: color 0.3s ease-out;
+    font-size: var(--pharos-font-size-small);
   }
 
   .switch__input:checked + .input-wrapper & {
@@ -64,14 +58,15 @@
     }
 
     &::before {
-      right: var(--pharos-spacing-one-half-x);
       background-color: var(--pharos-color-green-base);
+      left: calc(100% - 9px - 1rem);
     }
 
     &::after {
       color: var(--pharos-color-green-base);
-      left: var(--pharos-spacing-one-half-x);
       content: 'ON';
+      left: 9px;
+      right: unset;
     }
   }
 }
