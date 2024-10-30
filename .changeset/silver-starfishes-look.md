@@ -2,4 +2,4 @@
 '@ithaka/pharos': patch
 ---
 
-Update radio button icon aria-hidden
+Update the radio button SVG icon to use aria-hidden instead of aria-label
