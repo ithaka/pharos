@@ -37,6 +37,7 @@ if (typeof window !== `undefined`) {
     pharos.PharosSidenavLink,
     pharos.PharosSidenavMenu,
     pharos.PharosSidenavSection,
+    pharos.PharosSwitch,
     pharos.PharosTabs,
     pharos.PharosTab,
     pharos.PharosTable,
