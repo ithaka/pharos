@@ -45,3 +45,4 @@ export { PharosToggleButtonGroup } from './components/toggle-button-group/pharos
 export { PharosCoachMark } from './components/coach-mark/pharos-coach-mark';
 export { PharosPopover } from './components/popover/pharos-popover';
 export { PharosSheet } from './components/sheet/pharos-sheet';
+export { PharosSwitch } from './components/switch/pharos-switch';

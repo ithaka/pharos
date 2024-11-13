@@ -1,5 +1,23 @@
 # @ithaka/pharos
 
+## 14.5.0
+
+### Minor Changes
+
+- [#813](https://github.com/ithaka/pharos/pull/813) [`6bdaff3`](https://github.com/ithaka/pharos/commit/6bdaff31237685978d34d4c85133e0fb70565031) Thanks [@brentswisher](https://github.com/brentswisher)! - Add sticky header option to table component. Fix bug preventing hideCaption from correctly hiding a table caption.
+
+- [#810](https://github.com/ithaka/pharos/pull/810) [`52f56af`](https://github.com/ithaka/pharos/commit/52f56af6a76e0c34f7a8e79d83aced61fc6e66e4) Thanks [@brentswisher](https://github.com/brentswisher)! - Add component tokens to table and change default header background
+
+- [#825](https://github.com/ithaka/pharos/pull/825) [`fc902f2`](https://github.com/ithaka/pharos/commit/fc902f2511d584fc0126a58302f401be3faef9ad) Thanks [@michael-iden](https://github.com/michael-iden)! - Add switch component
+
+- [#824](https://github.com/ithaka/pharos/pull/824) [`0717dd8`](https://github.com/ithaka/pharos/commit/0717dd891380306b60e8009609d832dfce1aa0f0) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Radio buttons: Add aria-describedby association for validation message
+
+### Patch Changes
+
+- [#801](https://github.com/ithaka/pharos/pull/801) [`8eefe16`](https://github.com/ithaka/pharos/commit/8eefe16c4fcd411c59d7380d9baa130503f6883d) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix error message when no table caption is provided to recommend correct attribute to visually hide it
+
+- [#829](https://github.com/ithaka/pharos/pull/829) [`62a6b66`](https://github.com/ithaka/pharos/commit/62a6b66b46123247554324bd1cb7b5feeb4c2170) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Update the radio button SVG icon to use aria-hidden instead of aria-label
+
 ## 14.4.0
 
 ### Minor Changes

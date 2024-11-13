@@ -147,6 +147,7 @@ const Sidenav: FC<SidenavProps> = ({ isOpen, showCloseButton }) => {
               'Radio button',
               'Select',
               'Sidenav',
+              'Switch',
               'Tabs',
               'Toast',
               'Tooltip',
