@@ -3,7 +3,7 @@
     "size": {
       "height": {
         "base": {
-          "value": "3.5rem",
+          "value": "1.5rem",
           "comment": "TODO: Update with core token value"
         }
       }
