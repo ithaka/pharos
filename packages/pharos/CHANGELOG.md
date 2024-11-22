@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 14.5.1
+
+### Patch Changes
+
+- [#827](https://github.com/ithaka/pharos/pull/827) [`91870ce`](https://github.com/ithaka/pharos/commit/91870ce321913fcb288e4fb948416b1a2966c49f) Thanks [@michael-iden](https://github.com/michael-iden)! - Remove unnecessary scrollbars from modal and enable Node 22 support
+
+- [#833](https://github.com/ithaka/pharos/pull/833) [`fa946f2`](https://github.com/ithaka/pharos/commit/fa946f26e9918840eb1eda8fb8ef3b8c1536fffb) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - Update min height styling of textarea
+
 ## 14.5.0
 
 ### Minor Changes
