@@ -29,7 +29,7 @@
 
 .tab__list {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
   scroll-behavior: smooth;
   margin-bottom: var(--pharos-spacing-one-half-x);
   padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-quarter-x)
