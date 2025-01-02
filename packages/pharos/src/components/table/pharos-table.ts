@@ -1,7 +1,7 @@
 import { PharosElement } from '../base/pharos-element';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { html, nothing } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
+// import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { property } from 'lit/decorators.js';
@@ -192,11 +192,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
 
   private _renderTableHeader(): (TemplateResult | undefined)[] {
     return this.columns.map((column: ColumnSpecification) => {
-      if (column.name) {
-        return html`<th scope="col" class="table-header__cell">${column.name}</th>`;
-      } else {
-        return html`<td class="table-header__cell"></td>`;
-      }
+      return html`<div class="grid-header__cell" role="columnheader">${column.name}</div>`;
     });
   }
 
@@ -208,11 +204,9 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     return currentDisplayingData.map((row: RowData) => {
       const arr: TemplateResult[] = [];
       this.columns.forEach((column: ColumnSpecification) => {
-        arr.push(html`<td class="table-body__cell">${row[column.field]}</td>`);
+        arr.push(html`<div class="grid-body__cell" role="gridcell">${row[column.field]}</div>`);
       });
-      return html`<tr>
-        ${arr}
-      </tr>`;
+      return html`<div class="grid-row" role="row">${arr}</div>`;
     });
   }
 
@@ -254,29 +248,15 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected override render(): TemplateResult {
+    //TODO: Add caption and hideCaption
     return html`
-      <table class="table">
-        <caption
-          class=${classMap({
-            ['visually-hidden']: this.hideCaption,
-          })}
-        >
-          ${this.caption}
-        </caption>
-        <thead
-          class=${classMap({
-            'table-header': true,
-            ['table-sticky-header']: this.hasStickyHeader,
-          })}
-        >
-          <tr>
-            ${this._renderTableHeader()}
-          </tr>
-        </thead>
-        <tbody>
-          ${this._renderTableRows()}
-        </tbody>
-      </table>
+      <div class="grid" role="grid">
+        <div class="grid-caption">An example table</div>
+        <div class="grid-header" role="rowgroup">
+          <div class="grid-row" role="row">${this._renderTableHeader()}</div>
+        </div>
+        <div class="grid-body">${this._renderTableRows()}</div>
+      </div>
       ${this._renderPagination()}
     `;
   }
