@@ -16,6 +16,11 @@ export { PharosDropdownMenuItem } from './components/dropdown-menu/pharos-dropdo
 export { PharosDropdownMenu } from './components/dropdown-menu/pharos-dropdown-menu';
 export { PharosTab } from './components/tabs/pharos-tab';
 export { PharosTable } from './components/table/pharos-table';
+export { PharosTableHeader } from './components/table/pharos-table-header';
+export { PharosTableHeaderCell } from './components/table/pharos-table-header-cell';
+export { PharosTableRow } from './components/table/pharos-table-row';
+export { PharosTableCell } from './components/table/pharos-table-cell';
+export { PharosTableBody } from './components/table/pharos-table-body';
 export { PharosTabs } from './components/tabs/pharos-tabs';
 export { PharosTabPanel } from './components/tabs/pharos-tab-panel';
 export { PharosPagination } from './components/pagination/pharos-pagination';

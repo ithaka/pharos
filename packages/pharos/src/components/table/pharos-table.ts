@@ -1,9 +1,11 @@
 import { PharosElement } from '../base/pharos-element';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
-import { html, nothing } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
+// import { html, nothing } from 'lit';
+import { html } from 'lit';
+// import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators.js';
-import type { TemplateResult, CSSResultArray } from 'lit';
+// import type { TemplateResult, CSSResultArray } from 'lit';
+import type { CSSResultArray, TemplateResult } from 'lit';
 import { property } from 'lit/decorators.js';
 import { tableStyles } from './pharos-table.css';
 import { PharosSelect } from '../select/pharos-select';
@@ -90,8 +92,8 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   @state()
   private _pageSize = 50;
 
-  @state()
-  private _currentPage = 1;
+  // @state()
+  // private _currentPage = 1;
 
   @state()
   private header: HTMLTableSectionElement | null = null;
@@ -168,116 +170,108 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     return [tableStyles];
   }
 
-  private _onPageSizeChange(event: Event): void {
-    this._pageSize = Number((event.composedPath()[0] as HTMLInputElement).value);
-  }
+  // private _onPageSizeChange(event: Event): void {
+  //   this._pageSize = Number((event.composedPath()[0] as HTMLInputElement).value);
+  // }
 
-  private _pageStartNumber(): number {
-    return (this._currentPage - 1) * this._pageSize + 1;
-  }
+  // private _pageStartNumber(): number {
+  //   return (this._currentPage - 1) * this._pageSize + 1;
+  // }
 
-  private _pageEndNumber(): number {
-    return Math.min(this.rowData.length, this._currentPage * this._pageSize);
-  }
+  // private _pageEndNumber(): number {
+  //   return Math.min(this.rowData.length, this._currentPage * this._pageSize);
+  // }
 
-  private _onPrevPage(): void {
-    this._currentPage = Math.max(this._currentPage - 1, 0);
-    this.dispatchEvent(new CustomEvent('pharos-table-prev-page'));
-  }
+  // private _onPrevPage(): void {
+  //   this._currentPage = Math.max(this._currentPage - 1, 0);
+  //   this.dispatchEvent(new CustomEvent('pharos-table-prev-page'));
+  // }
 
-  private _onNextPage(): void {
-    this._currentPage = Math.min(this._currentPage + 1, this.rowData.length);
-    this.dispatchEvent(new CustomEvent('pharos-table-next-page'));
-  }
+  // private _onNextPage(): void {
+  //   this._currentPage = Math.min(this._currentPage + 1, this.rowData.length);
+  //   this.dispatchEvent(new CustomEvent('pharos-table-next-page'));
+  // }
 
-  private _renderTableHeader(): (TemplateResult | undefined)[] {
-    return this.columns.map((column: ColumnSpecification) => {
-      if (column.name) {
-        return html`<th scope="col" class="table-header__cell">${column.name}</th>`;
-      } else {
-        return html`<td class="table-header__cell"></td>`;
-      }
-    });
-  }
+  // private _renderTableHeader(): (TemplateResult | undefined)[] {
+  //   return this.columns.map((column: ColumnSpecification) => {
+  //     if (column.name) {
+  //       return html`<th scope="col" class="table-header__cell">${column.name}</th>`;
+  //     } else {
+  //       return html`<td class="table-header__cell"></td>`;
+  //     }
+  //   });
+  // }
 
-  private _renderTableRows(): TemplateResult[] {
-    const currentDisplayingData = this.rowData.slice(
-      this._pageStartNumber() - 1,
-      this._pageEndNumber()
-    );
-    return currentDisplayingData.map((row: RowData) => {
-      const arr: TemplateResult[] = [];
-      this.columns.forEach((column: ColumnSpecification) => {
-        arr.push(html`<td class="table-body__cell">${row[column.field]}</td>`);
-      });
-      return html`<tr>
-        ${arr}
-      </tr>`;
-    });
-  }
+  // private _renderTableRows(): TemplateResult[] {
+  //   const currentDisplayingData = this.rowData.slice(
+  //     this._pageStartNumber() - 1,
+  //     this._pageEndNumber()
+  //   );
+  //   return currentDisplayingData.map((row: RowData) => {
+  //     const arr: TemplateResult[] = [];
+  //     this.columns.forEach((column: ColumnSpecification) => {
+  //       arr.push(html`<td class="table-body__cell">${row[column.field]}</td>`);
+  //     });
+  //     return html`<tr>
+  //       ${arr}
+  //     </tr>`;
+  //   });
+  // }
 
-  private _renderPageSizeOptions(): TemplateResult[] {
-    return this.pageSizeOptions.map(
-      (option: number) => html`<option value="${option}">${option}</option>`
-    );
-  }
+  // private _renderPageSizeOptions(): TemplateResult[] {
+  //   return this.pageSizeOptions.map(
+  //     (option: number) => html`<option value="${option}">${option}</option>`
+  //   );
+  // }
 
-  private _renderPagination(): TemplateResult | typeof nothing {
-    return this.showPagination
-      ? html`<div class="table-controls">
-          <div class="item-per-page-wrapper">
-            <span>Items per page</span>
-            <pharos-select
-              hide-label
-              name="pharos-table-page-size-select"
-              class="item-per-page-selector"
-              @change=${this._onPageSizeChange}
-            >
-              <span slot="label">page size</span>
-              ${this._renderPageSizeOptions()}
-            </pharos-select>
-            <span class="page-number-display"
-              >(Displaying ${this._pageStartNumber()}-${this._pageEndNumber()} of
-              ${this.rowData.length})</span
-            >
-          </div>
-          <pharos-pagination
-            class="pagination"
-            current-page="${this._currentPage}"
-            total-results="${this.totalResults}"
-            page-size="${this._pageSize}"
-            @prev-page="${this._onPrevPage}"
-            @next-page="${this._onNextPage}"
-          ></pharos-pagination>
-        </div>`
-      : nothing;
-  }
-
+  // private _renderPagination(): TemplateResult | typeof nothing {
+  //   return this.showPagination
+  //     ? html`<div class="table-controls">
+  //         <div class="item-per-page-wrapper">
+  //           <span>Items per page</span>
+  //           <pharos-select
+  //             hide-label
+  //             name="pharos-table-page-size-select"
+  //             class="item-per-page-selector"
+  //             @change=${this._onPageSizeChange}
+  //           >
+  //             <span slot="label">page size</span>
+  //             ${this._renderPageSizeOptions()}
+  //           </pharos-select>
+  //           <span class="page-number-display"
+  //             >(Displaying ${this._pageStartNumber()}-${this._pageEndNumber()} of
+  //             ${this.rowData.length})</span
+  //           >
+  //         </div>
+  //         <pharos-pagination
+  //           class="pagination"
+  //           current-page="${this._currentPage}"
+  //           total-results="${this.totalResults}"
+  //           page-size="${this._pageSize}"
+  //           @prev-page="${this._onPrevPage}"
+  //           @next-page="${this._onNextPage}"
+  //         ></pharos-pagination>
+  //       </div>`
+  //     : nothing;
+  // }
   protected override render(): TemplateResult {
-    return html`
-      <table class="table">
-        <caption
-          class=${classMap({
-            ['visually-hidden']: this.hideCaption,
-          })}
-        >
-          ${this.caption}
-        </caption>
-        <thead
-          class=${classMap({
-            'table-header': true,
-            ['table-sticky-header']: this.hasStickyHeader,
-          })}
-        >
-          <tr>
-            ${this._renderTableHeader()}
-          </tr>
-        </thead>
-        <tbody>
-          ${this._renderTableRows()}
-        </tbody>
-      </table>
-      ${this._renderPagination()}
-    `;
+    // return html`
+    //   <pharos-table class="table">
+    //     <caption
+    //       class=${classMap({
+    //         ['visually-hidden']: this.hideCaption,
+    //       })}
+    //     >
+    //       ${this.caption}
+    //     </caption>
+    //     <slot></slot>
+    //     test
+    //   </pharos-table>
+    //   ${this._renderPagination()}
+    // `;
+
+    return html`<div class="table" role="table">
+      <slot></slot>
+    </div>`;
   }
 }

@@ -1,27 +1,34 @@
 @use '../../utils/scss/mixins';
 
-:host {
-  display: inline-flex;
-  flex-direction: column;
-}
+// :host {
+//   display: inline-flex;
+//   flex-direction: column;
+// }
+
+// :host {
+//   display: table;
+//   border: solid 2px magenta;
+// }
 
 .table {
   border-collapse: collapse;
+  display: table;
 }
 
-.table-header {
-  background-color: var(--pharos-table-header-color-background, var(--pharos-color-ui-20));
-}
+// .table-header {
+//   display: table-header-group;
+//   background-color: var(--pharos-table-header-color-background, var(--pharos-color-ui-20));
+// }
 
-.table-header__cell {
-  border: 1px solid var(--pharos-table-header-color-border, var(--pharos-color-ui-30));
-  padding: var(--pharos-spacing-1-x);
-}
+// .table-header__cell {
+//   border: 1px solid var(--pharos-table-header-color-border, var(--pharos-color-ui-30));
+//   padding: var(--pharos-spacing-1-x);
+// }
 
-.table-body__cell {
-  border: 1px solid var(--pharos-table-body-color-border, var(--pharos-color-ui-30));
-  padding: var(--pharos-spacing-1-x);
-}
+// .table-body__cell {
+//   border: 1px solid var(--pharos-table-body-color-border, var(--pharos-color-ui-30));
+//   padding: var(--pharos-spacing-1-x);
+// }
 
 .table-sticky-header {
   position: sticky;
