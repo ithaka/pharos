@@ -9,7 +9,6 @@
   display: grid;
 
   // grid-template-columns: auto auto auto auto auto; /* Define three equal columns */
-  grid-template-columns: repeat(5, max-content);
   border-collapse: collapse;
   gap: 1px;
 }
@@ -69,45 +68,45 @@
 //   padding: var(--pharos-spacing-1-x);
 // }
 
-// .table-sticky-header {
-//   position: sticky;
-//   top: 0;
-// }
+.table-sticky-header {
+  position: sticky;
+  top: 0;
+}
 
-// .table-sticky-header--is-active {
-//   box-shadow: var(--pharos-elevation-level-2);
-// }
+.table-sticky-header--is-active {
+  box-shadow: var(--pharos-elevation-level-2);
+}
 
-// .table-sticky-header__cell--is-active {
-//   border: none;
-//   border-right: 1px solid var(--pharos-table-header-color-border, var(--pharos-color-ui-30));
+.table-sticky-header__cell--is-active {
+  border: none;
+  border-right: 1px solid var(--pharos-table-header-color-border, var(--pharos-color-ui-30));
 
-//   &:last-child {
-//     border-right: none;
-//   }
-// }
+  &:last-child {
+    border-right: none;
+  }
+}
 
-// .table-controls {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   margin-top: var(--pharos-spacing-one-half-x);
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--pharos-spacing-one-half-x);
 
-//   .item-per-page-wrapper {
-//     display: flex;
-//     align-items: center;
-//     column-gap: var(--pharos-spacing-one-half-x);
+  .item-per-page-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: var(--pharos-spacing-one-half-x);
 
-//     .item-per-page-selector {
-//       width: 75px;
-//     }
-//   }
+    .item-per-page-selector {
+      width: 75px;
+    }
+  }
 
-//   .pagination {
-//     height: var(--pharos-spacing-one-and-a-half-x);
-//   }
-// }
+  .pagination {
+    height: var(--pharos-spacing-one-and-a-half-x);
+  }
+}
 
-// .visually-hidden:not(:focus, :active) {
-//   @include mixins.hidden;
-// }
+.visually-hidden:not(:focus, :active) {
+  @include mixins.hidden;
+}

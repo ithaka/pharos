@@ -250,6 +250,11 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   protected override render(): TemplateResult {
     //TODO: Add caption and hideCaption
     return html`
+      <style>
+        .grid {
+          grid-template-columns: repeat(${this.columns.length}, max-content);
+        }
+      </style>
       <div class="grid" role="grid">
         <div class="grid-caption">An example table</div>
         <div class="grid-header" role="rowgroup">
