@@ -9,13 +9,26 @@
   border-collapse: collapse;
 }
 
+.table-caption {
+  text-align: center;
+}
+
 .table-header {
   background-color: var(--pharos-table-header-color-background, var(--pharos-color-ui-20));
+  display: table-row-group;
+  font-weight: bold;
+}
+
+.table-row {
+  display: table-row;
 }
 
 .table-header__cell {
+  display: table-cell;
   border: 1px solid var(--pharos-table-header-color-border, var(--pharos-color-ui-30));
   padding: var(--pharos-spacing-1-x);
+  text-align: center;
+  background-color: var(--pharos-table-header-color-background, var(--pharos-color-ui-20));
 }
 
 .table-body__cell {
@@ -26,6 +39,7 @@
 .table-sticky-header {
   position: sticky;
   top: 0;
+  z-index: 105;
 }
 
 .table-sticky-header--is-active {

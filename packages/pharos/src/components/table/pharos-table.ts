@@ -8,6 +8,8 @@ import { property } from 'lit/decorators.js';
 import { tableStyles } from './pharos-table.css';
 import { PharosSelect } from '../select/pharos-select';
 import { PharosPagination } from '../pagination/pharos-pagination';
+import { PharosTableRow } from '../table-row/pharos-table-row';
+import { PharosTableCell } from '../table-cell/pharos-table-cell';
 
 export type ColumnSpecification = {
   name: string;
@@ -31,6 +33,8 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-select': PharosSelect,
     'pharos-pagination': PharosPagination,
+    'pharos-table-row': PharosTableRow,
+    'pharos-table-cell': PharosTableCell,
   };
 
   /**
@@ -102,7 +106,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   protected override firstUpdated(): void {
     this._pageSize = !this.showPagination ? this.rowData.length : this.pageSizeOptions[0];
     this.totalResults = !this.totalResults ? this.rowData.length : this.totalResults;
-    this.header = this.shadowRoot?.querySelector('thead') ?? null;
+    this.header = this.shadowRoot?.querySelector('.table-header') ?? null;
     if (this.hasStickyHeader) {
       this._initHeaderObserver();
     }
@@ -154,7 +158,6 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
         threshold: [0.5],
       }
     );
-
     this.observer.observe(this.header);
   }
 
@@ -190,30 +193,22 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     this.dispatchEvent(new CustomEvent('pharos-table-next-page'));
   }
 
-  private _renderTableHeader(): (TemplateResult | undefined)[] {
-    return this.columns.map((column: ColumnSpecification) => {
-      if (column.name) {
-        return html`<th scope="col" class="table-header__cell">${column.name}</th>`;
-      } else {
-        return html`<td class="table-header__cell"></td>`;
-      }
-    });
-  }
-
   private _renderTableRows(): TemplateResult[] {
-    const currentDisplayingData = this.rowData.slice(
-      this._pageStartNumber() - 1,
-      this._pageEndNumber()
-    );
-    return currentDisplayingData.map((row: RowData) => {
-      const arr: TemplateResult[] = [];
-      this.columns.forEach((column: ColumnSpecification) => {
-        arr.push(html`<td class="table-body__cell">${row[column.field]}</td>`);
+    if (this.rowData.length === 0) {
+      return [html`<slot></slot>`];
+    } else {
+      const currentDisplayingData = this.rowData.slice(
+        this._pageStartNumber() - 1,
+        this._pageEndNumber()
+      );
+      return currentDisplayingData.map((row: RowData) => {
+        const arr: TemplateResult[] = [];
+        this.columns.forEach((column: ColumnSpecification) => {
+          arr.push(html`<pharos-table-cell>${row[column.field]}</pharos-table-cell>`);
+        });
+        return html`<pharos-table-row> ${arr} </pharos-table-row>`;
       });
-      return html`<tr>
-        ${arr}
-      </tr>`;
-    });
+    }
   }
 
   private _renderPageSizeOptions(): TemplateResult[] {
@@ -255,28 +250,32 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
 
   protected override render(): TemplateResult {
     return html`
-      <table class="table">
-        <caption
+      <div class="table" role="table" aria-describedby="table-caption">
+        <div
+          id="table-caption"
           class=${classMap({
+            'table-caption': true,
             ['visually-hidden']: this.hideCaption,
           })}
         >
           ${this.caption}
-        </caption>
-        <thead
+        </div>
+        <div
           class=${classMap({
             'table-header': true,
             ['table-sticky-header']: this.hasStickyHeader,
           })}
+          role="rowgroup"
         >
-          <tr>
-            ${this._renderTableHeader()}
-          </tr>
-        </thead>
-        <tbody>
-          ${this._renderTableRows()}
-        </tbody>
-      </table>
+          <div class="table-row" role="row">
+            ${this.columns.map(
+              (column) =>
+                html`<div class="table-header__cell" role="columnheader">${column.name}</div>`
+            )}
+          </div>
+        </div>
+        ${this._renderTableRows()}
+      </div>
       ${this._renderPagination()}
     `;
   }
