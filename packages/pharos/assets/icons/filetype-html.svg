@@ -1,0 +1,8 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="10.0303" y1="9.53033" x2="7.2019" y2="12.3588" stroke="black" stroke-width="1.5"/>
+<line x1="7.03033" y1="11.4697" x2="9.85876" y2="14.2981" stroke="black" stroke-width="1.5"/>
+<line y1="-0.75" x2="4" y2="-0.75" transform="matrix(0.707107 0.707107 0.707107 -0.707107 14.5 9)" stroke="black" stroke-width="1.5"/>
+<line y1="-0.75" x2="4" y2="-0.75" transform="matrix(-0.707107 0.707107 0.707107 0.707107 17.5 12)" stroke="black" stroke-width="1.5"/>
+<line x1="12.4932" y1="9.0822" x2="11.4932" y2="15.0822" stroke="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M5 5H15L19 9V19H5V5Z" stroke="black" stroke-width="2"/>
+</svg>

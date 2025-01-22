@@ -56,6 +56,7 @@
       },
       "facebook": { "value": "assets/icons/facebook.svg" },
       "feedback": { "value": "assets/icons/feedback.svg" },
+      "filetype-html": { "value": "assets/icons/filetype-html.svg" },
       "filetype-pdf": { "value": "assets/icons/filetype-pdf.svg" },
       "filetype-ppt": { "value": "assets/icons/filetype-ppt.svg" },
       "filetype-zip": { "value": "assets/icons/filetype-zip.svg" },
