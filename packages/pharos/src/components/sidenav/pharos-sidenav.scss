@@ -51,7 +51,7 @@
   opacity: 0;
   position: absolute;
   top: var(--pharos-spacing-one-quarter-x);
-  left: var(--pharos-spacing-one-quarter-x);
+  right: var(--pharos-spacing-one-quarter-x);
 }
 
 :host([has-close-button]) {
