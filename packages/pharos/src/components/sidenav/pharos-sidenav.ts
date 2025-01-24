@@ -133,7 +133,7 @@ export class PharosSidenav extends ScopedRegistryMixin(FocusMixin(SideElement)) 
     return this.hasCloseButton
       ? html`<pharos-button
           class="side-element__button"
-          icon="chevron-left"
+          icon="chevron-left-large"
           variant="subtle"
           a11y-label="Close menu"
           is-on-background
