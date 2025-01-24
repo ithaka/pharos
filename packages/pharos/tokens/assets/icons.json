@@ -93,6 +93,7 @@
       "profile": { "value": "assets/icons/profile.svg" },
       "question-inverse": { "value": "assets/icons/question-inverse.svg" },
       "reorder": { "value": "assets/icons/reorder.svg" },
+      "rotate": { "value": "assets/icons/rotate.svg" },
       "save": { "value": "assets/icons/save.svg" },
       "save-and-close": { "value": "assets/icons/save-and-close.svg"},
       "save-changes": { "value": "assets/icons/save-changes.svg"},
