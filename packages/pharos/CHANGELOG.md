@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 14.5.2
+
+### Patch Changes
+
+- [#843](https://github.com/ithaka/pharos/pull/843) [`37c0669`](https://github.com/ithaka/pharos/commit/37c066994f9e230ea35a756f556f42e7391a91d6) Thanks [@jialin-he](https://github.com/jialin-he)! - Add rotation icon
+
+- [#837](https://github.com/ithaka/pharos/pull/837) [`9a5672b`](https://github.com/ithaka/pharos/commit/9a5672bc56a9ac9e1879ec6957e76c04c3a1cb11) Thanks [@brentswisher](https://github.com/brentswisher)! - Update the combobox component to set the accessible title on the button, not the icon itself
+
+- [#844](https://github.com/ithaka/pharos/pull/844) [`ecff778`](https://github.com/ithaka/pharos/commit/ecff778a39e51854061de577ddaae76a584c6f0c) Thanks [@jialin-he](https://github.com/jialin-he)! - Update the close button in sidenav
+
 ## 14.5.1
 
 ### Patch Changes
