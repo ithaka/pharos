@@ -289,15 +289,12 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
           tabindex="-1"
           type="button"
           class="combobox__button"
+          aria-label="Dropdown"
           ?disabled=${this.disabled}
           @click=${this._handleButtonClick}
           @blur=${this._handleButtonBlur}
         >
-          <pharos-icon
-            class="combobox__icon"
-            name="chevron-down"
-            a11y-title="Dropdown"
-          ></pharos-icon>
+          <pharos-icon class="combobox__icon" name="chevron-down" a11y-hidden="true"></pharos-icon>
         </button>
       `;
     }
