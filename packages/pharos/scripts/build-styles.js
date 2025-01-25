@@ -6,10 +6,7 @@ import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import mediaMinMax from 'postcss-media-minmax';
-import { promisify } from 'util';
 import { copyDir } from './copyDir.js';
-
-const sassPromise = promisify(sass.render);
 
 const toCamelCase = (str) => {
   return str.replace(/-([a-z])/g, (g) => {
@@ -24,11 +21,7 @@ const setup = async () => {
 export const buildStyles = async () => {
   for await (const sassPath of globbyStream('./src/components/**/!(*.styles).scss')) {
     const dest = sassPath.replace('.scss', '.css.ts');
-    const cssResult = await sassPromise({
-      file: sassPath,
-      outFile: dest,
-    });
-
+    const cssResult = await sass.compileAsync(sassPath);
     const processedCSS = await postcss([autoprefixer, mediaMinMax, cssnano])
       .process(cssResult.css, {
         from: undefined,
@@ -57,10 +50,7 @@ export const buildStyles = async () => {
 export const buildSlotStyles = async () => {
   for await (const slotPath of globbyStream('./src/components/**/*.styles.scss')) {
     const dest = path.basename(slotPath).replace('.styles.scss', '.css');
-    const cssResult = await sassPromise({
-      file: slotPath,
-      outFile: dest,
-    });
+    const cssResult = await sass.compileAsync(slotPath);
     const processedCSS = await postcss([autoprefixer])
       .process(cssResult.css, {
         from: undefined,
