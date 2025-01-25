@@ -2727,9 +2727,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@custom-elements-manifest/analyzer@npm:^0.10.3":
-  version: 0.10.3
-  resolution: "@custom-elements-manifest/analyzer@npm:0.10.3"
+"@custom-elements-manifest/analyzer@npm:^0.10.4":
+  version: 0.10.4
+  resolution: "@custom-elements-manifest/analyzer@npm:0.10.4"
   dependencies:
     "@custom-elements-manifest/find-dependencies": "npm:^0.0.5"
     "@github/catalyst": "npm:^1.6.0"
@@ -2744,7 +2744,7 @@ __metadata:
   bin:
     cem: cem.js
     custom-elements-manifest: cem.js
-  checksum: 10c0/7b566c297af57ac4999004033f1f105544da90c2d1c48c768d2258892f435958c9e8515e5675d65c988096f60300102db1160168bbb87cfef75dc5ebd5a03b00
+  checksum: 10c0/a0f60cb88363057a4e672139ebbfd8167ee7feea71fc743e2c8f066d5add3ba5f2bf45b3ac579f4fe64e50add7ba01bf609dec5a6683be9a3ef785fcaa1c1577
   languageName: node
   linkType: hard
 
@@ -3811,7 +3811,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos@workspace:packages/pharos"
   dependencies:
-    "@custom-elements-manifest/analyzer": "npm:^0.10.3"
+    "@custom-elements-manifest/analyzer": "npm:^0.10.4"
     "@floating-ui/dom": "npm:^1.6.13"
     "@ithaka/focus-trap": "npm:2.0.1"
     "@lit-labs/scoped-registry-mixin": "npm:^1.0.1"
