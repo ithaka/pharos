@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.5.3
+
+### Patch Changes
+
+- [#846](https://github.com/ithaka/pharos/pull/846) [`49ad5ad`](https://github.com/ithaka/pharos/commit/49ad5ad4200b0c603d1c5c284f4850998e3798f5) Thanks [@jialin-he](https://github.com/jialin-he)! - Use large icon for close button in sidenav
+
 ## 14.5.2
 
 ### Patch Changes
