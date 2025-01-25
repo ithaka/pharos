@@ -55,12 +55,12 @@
   "author": "ITHAKA",
   "license": "MIT",
   "dependencies": {
-    "@floating-ui/dom": "^1.6.12",
+    "@floating-ui/dom": "^1.6.13",
     "@ithaka/focus-trap": "2.0.1",
     "@lit-labs/scoped-registry-mixin": "^1.0.1",
     "@open-wc/dedupe-mixin": "^1.4.0",
     "lit": "^2.8.0",
-    "uuid": "^11.0.3"
+    "uuid": "^11.0.5"
   },
   "peerDependencies": {
     "sass": "^1.42.1"
@@ -69,26 +69,26 @@
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@open-wc/testing": "^4.0.0",
     "@types/mocha": "^10.0.10",
-    "@types/react": "^18.3.14",
-    "@types/react-dom": "^18.3.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
     "@web/test-runner": "^0.19.0",
     "@web/test-runner-commands": "^0.9.0",
     "@web/test-runner-playwright": "^0.11.0",
     "autoprefixer": "^10.4.20",
-    "chokidar": "^4.0.1",
+    "chokidar": "^4.0.3",
     "globby": "^14.0.2",
     "minify-html-literals": "^1.3.5",
-    "postcss": "^8.4.49",
+    "postcss": "^8.5.1",
     "prettier": "^3.4.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "replace-in-file": "^8.2.0",
+    "replace-in-file": "^8.3.0",
     "rimraf": "^6.0.1",
     "sassdoc": "^2.7.4",
     "sinon": "^19.0.2",
     "style-dictionary": "^3.9.2",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "customElements": "custom-elements.json",
   "exports": {
