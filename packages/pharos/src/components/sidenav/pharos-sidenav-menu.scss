@@ -9,19 +9,23 @@
   @include mixins.font-base;
   @include mixins.interactive-focus;
 
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: start;
-  cursor: pointer;
-  display: grid;
-  grid-template-columns: auto 1.5rem;
-  grid-template-rows: auto;
-  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-2-x);
-  text-decoration: none;
-  color: var(--pharos-color-interactive-tertiary);
-  transition-property: background-color;
-  transition-duration: var(--pharos-transition-duration-default);
+  /* stylelint-disable no-duplicate-selectors */
+  & {
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: start;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1.5rem;
+    grid-template-rows: auto;
+    padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-2-x);
+    text-decoration: none;
+    color: var(--pharos-color-interactive-tertiary);
+    transition-property: background-color;
+    transition-duration: var(--pharos-transition-duration-default);
+  }
+  /* stylelint-enable no-duplicate-selectors */
 
   &:focus {
     outline-offset: -2px;
@@ -54,7 +58,11 @@
 .menu__list {
   @include mixins.no-bullet;
 
-  margin-top: 0;
-  margin-bottom: var(--pharos-spacing-1-x);
-  padding-left: 0;
+  /* stylelint-disable no-duplicate-selectors */
+  & {
+    margin-top: 0;
+    margin-bottom: var(--pharos-spacing-1-x);
+    padding-left: 0;
+  }
+  /* stylelint-enable no-duplicate-selectors */
 }
