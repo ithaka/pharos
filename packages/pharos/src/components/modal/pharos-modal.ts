@@ -1,6 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html, nothing } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { property, state, query } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -10,7 +10,6 @@ import focusable from '../../utils/focusable';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosButton } from '../button/pharos-button';
 import { PharosHeading } from '../heading/pharos-heading';
-import { FocusTrap } from '@ithaka/focus-trap';
 
 const CLOSE_BUTTONS = `[data-modal-close],[data-pharos-component="PharosButton"]#close-button`;
 const FOCUS_ELEMENT = `[data-modal-focus]`;
@@ -38,7 +37,6 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-button': PharosButton,
     'pharos-heading': PharosHeading,
-    'focus-trap': FocusTrap,
   };
 
   /**
@@ -72,6 +70,9 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
   private _currentTrigger: Element | null = null;
 
   private _triggers!: NodeListOf<HTMLElement>;
+
+  @query('.modal__dialog')
+  private _dialog!: HTMLDialogElement;
 
   @state()
   private _isFooterEmpty = true;
@@ -157,6 +158,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
         )
       ) {
         this.open = false;
+        this._dialog.close();
       }
     }
   }
@@ -173,6 +175,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
         this.dispatchEvent(new CustomEvent('pharos-modal-open', { ...details, cancelable: true }))
       ) {
         this.open = true;
+        this._dialog.showModal();
       }
     }
   }
@@ -252,43 +255,38 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
 
   protected override render(): TemplateResult {
     return html`
-      <div class="modal__overlay">
-        <div
-          role="dialog"
-          class=${classMap({
-            [`modal__dialog`]: true,
-            [`modal__dialog--${this.size}`]: this.size,
-          })}
-          aria-modal="true"
-          aria-labelledby="modal-header"
-          aria-describedby="${ifDefined(this.descriptionId)}"
-          @click=${this._handleDialogClick}
-        >
-          <focus-trap>
-            <div class="modal__content">
-              <div class="modal__header">
-                <pharos-heading id="modal-header" level="2" preset="5" no-margin
-                  >${this.header}</pharos-heading
-                >
-                <pharos-button
-                  id="close-button"
-                  type="button"
-                  variant="subtle"
-                  icon="close"
-                  a11y-label="Close modal"
-                ></pharos-button>
-              </div>
-              <div class="modal__body">
-                ${this.descriptionContent}
-                <slot></slot>
-              </div>
-              <div class="modal__footer${this._isFooterEmpty ? '--empty' : ''}">
-                <slot @slotchange=${this._handleFooterSlotchange} name="footer"></slot>
-              </div>
-            </div>
-          </focus-trap>
+      <dialog
+        class=${classMap({
+          [`modal__dialog`]: true,
+          [`modal__dialog--${this.size}`]: this.size,
+        })}
+        aria-modal="true"
+        aria-labelledby="modal-header"
+        aria-describedby="${ifDefined(this.descriptionId)}"
+        @click=${this._handleDialogClick}
+      >
+        <div class="modal__content">
+          <div class="modal__header">
+            <pharos-heading id="modal-header" level="2" preset="5" no-margin
+              >${this.header}</pharos-heading
+            >
+            <pharos-button
+              id="close-button"
+              type="button"
+              variant="subtle"
+              icon="close"
+              a11y-label="Close modal"
+            ></pharos-button>
+          </div>
+          <div class="modal__body">
+            ${this.descriptionContent}
+            <slot></slot>
+          </div>
+          <div class="modal__footer${this._isFooterEmpty ? '--empty' : ''}">
+            <slot @slotchange=${this._handleFooterSlotchange} name="footer"></slot>
+          </div>
         </div>
-      </div>
+      </dialog>
     `;
   }
 }

@@ -9,18 +9,9 @@
   contain: layout size style;
 }
 
-.modal__overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
+.modal__dialog::backdrop {
   background-color: rgb(0 0 0 / 0);
   visibility: hidden;
-  overflow-y: scroll;
   transition:
     visibility var(--pharos-transition-duration-default) ease-in-out,
     background-color var(--pharos-transition-duration-default) ease-in-out;
@@ -49,7 +40,7 @@
 :host([open]) {
   pointer-events: auto;
 
-  .modal__overlay {
+  .modal__dialog::backdrop {
     background-color: rgb(0 0 0 / 0.5);
     visibility: visible;
   }
@@ -60,7 +51,7 @@
 }
 
 @media only screen and (width <= 570px) {
-  .modal__overlay {
+  .modal__dialog::backdrop {
     display: block;
     overflow-y: visible;
     transition-duration: var(--pharos-transition-duration-long);
