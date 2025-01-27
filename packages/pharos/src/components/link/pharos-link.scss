@@ -27,17 +27,25 @@
   @include mixins.link-hover;
   @include mixins.interactive-focus;
 
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  text-align: left;
-  cursor: pointer;
+  /* stylelint-disable no-duplicate-selectors */
+  & {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+  }
+  /* stylelint-enable no-duplicate-selectors */
 }
 
 :host([is-on-background]) #link-element {
   @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
 
-  color: var(--pharos-color-interactive-tertiary);
+  /* stylelint-disable no-duplicate-selectors */
+  & {
+    color: var(--pharos-color-interactive-tertiary);
+  }
+  /* stylelint-enable no-duplicate-selectors */
 
   @at-root &:hover {
     color: var(--pharos-color-interactive-tertiary);
@@ -113,7 +121,11 @@
 :host([no-hover]) #link-element:hover {
   @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-secondary));
 
-  color: var(--pharos-color-interactive-secondary);
+  /* stylelint-disable no-duplicate-selectors */
+  & {
+    color: var(--pharos-color-interactive-secondary);
+  }
+  /* stylelint-enable no-duplicate-selectors */
 }
 
 :host([no-hover][subtle]) #link-element:hover {

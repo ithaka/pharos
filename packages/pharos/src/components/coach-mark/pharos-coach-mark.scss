@@ -62,7 +62,7 @@
   );
   --coach-mark-border-color: var(
     --pharos-coach-mark-color-border-dark,
-    --coach-mark-background-color
+    var(--coach-mark-background-color)
   );
   --coach-mark-heading-color: var(--pharos-coach-mark-color-heading-dark, --pharos-color-white);
   --coach-mark-text-color: var(--pharos-coach-mark-color-text-dark, --pharos-color-marble-gray-80);
