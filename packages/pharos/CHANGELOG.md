@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.6.0
+
+### Minor Changes
+
+- [#842](https://github.com/ithaka/pharos/pull/842) [`43ea7db`](https://github.com/ithaka/pharos/commit/43ea7db28184f44d3b68a7b6b6ebe51223c34f32) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - add icon filetype html
+
 ## 14.5.3
 
 ### Patch Changes
