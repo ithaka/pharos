@@ -25,3 +25,8 @@ updates:
       - dependency-name: 'style-dictionary'
         update-types:
           - 'version-update:semver-major'
+
+      # Gatsby build currently failing, possibly fixed by doing ithaka/pharos#777
+      - dependency-name: '@babel/core'
+        update-types:
+          - 'version-update:semver-patch'
