@@ -207,4 +207,124 @@ describe('pharos-table', () => {
       expect(errorThrown).to.be.true;
     });
   });
+  describe('pharos-table using slotted content', () => {
+    let component: PharosTable;
+    const columns = [
+      {
+        name: 'Item',
+        field: 'item',
+      },
+      {
+        name: 'Filename',
+        field: 'filename',
+      },
+      {
+        name: 'Expired Date',
+        field: 'expired_date',
+      },
+      {
+        name: 'Created On',
+        field: 'created_on',
+      },
+      {
+        name: 'University',
+        field: 'university',
+      },
+    ];
+
+    beforeEach(async () => {
+      component = await fixture(html`
+        <test-pharos-table .columns="${columns}" caption="test table">
+          <test-pharos-table-body>
+            <test-pharos-table-row>
+              <test-pharos-table-cell>1</test-pharos-table-cell>
+              <test-pharos-table-cell>12345.jpg</test-pharos-table-cell>
+              <test-pharos-table-cell>2020-1-1</test-pharos-table-cell>
+              <test-pharos-table-cell>2010-1-1</test-pharos-table-cell>
+              <test-pharos-table-cell>University of Michigan</test-pharos-table-cell>
+            </test-pharos-table-row>
+            <test-pharos-table-row>
+              <test-pharos-table-cell>2</test-pharos-table-cell>
+              <test-pharos-table-cell>123456.jpg</test-pharos-table-cell>
+              <test-pharos-table-cell>2020-1-1</test-pharos-table-cell>
+              <test-pharos-table-cell>2010-1-1</test-pharos-table-cell>
+              <test-pharos-table-cell>University of Michigan</test-pharos-table-cell>
+            </test-pharos-table-row>
+          </test-pharos-table-body>
+        </test-pharos-table>
+      `);
+    });
+
+    it('is accessible', async () => {
+      await expect(component).to.be.accessible();
+    });
+
+    it('has the correct number of rows in the table body', async () => {
+      const slot = component.renderRoot.querySelector('slot');
+      expect(slot).to.exist;
+
+      // `!.` casts this as non-null, which is validated in the expect above
+      const slottedElements = slot!.assignedElements();
+      const rows = slottedElements[0].querySelectorAll(`[role="row"]`);
+      expect(rows.length).to.be.eq(2);
+    });
+
+    it('renders a sticky table header when has-sticky-header is set', async () => {
+      component.hasStickyHeader = true;
+      await component.updateComplete;
+      const headerRow = component.renderRoot.querySelector(`.table-header`);
+      await expect(headerRow).to.have.style('position', 'sticky');
+    });
+
+    it('sets an active state on a sticky header when the header intersects with the table', async () => {
+      component.hasStickyHeader = true;
+      component['_toggleActiveStickyHeader'](true);
+      await component.updateComplete;
+
+      const headerRow = component.renderRoot.querySelector(`.table-sticky-header`);
+      expect(headerRow).to.have.class('table-sticky-header--is-active');
+
+      const headerCells = component.querySelectorAll('.table-sticky-header__cell');
+      headerCells.forEach((cell) => {
+        expect(cell).to.have.class('table-sticky-header__cell--is-active');
+      });
+    });
+    it('removes the active state on a sticky header when the header no longer intersects with the table', async () => {
+      component.hasStickyHeader = true;
+      component['_toggleActiveStickyHeader'](true);
+      component['_toggleActiveStickyHeader'](false);
+      await component.updateComplete;
+
+      const headerRow = component.renderRoot.querySelector(`.table-sticky-header`);
+      expect(headerRow).not.to.have.class('table-sticky-header--is-active');
+
+      const headerCells = component.querySelectorAll('.table-sticky-header__cell');
+      headerCells.forEach((cell) => {
+        expect(cell).to.have.class('table-sticky-header__cell--is-active');
+      });
+    });
+    it('throws an error if caption is not provided', async () => {
+      let errorThrown = false;
+      try {
+        await fixture(
+          html`<test-pharos-table
+            .columns="${[]}"
+            .rowData="${[]}"
+            .showPagination="${true}"
+            .totalResults="${2}"
+            .pageSizeOptions="${[1, 2]}"
+          >
+          </test-pharos-table> `
+        );
+      } catch (error) {
+        if (error instanceof Error) {
+          errorThrown = true;
+          expect(error?.message).to.be.equal(
+            'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption` property.'
+          );
+        }
+      }
+      expect(errorThrown).to.be.true;
+    });
+  });
 });
