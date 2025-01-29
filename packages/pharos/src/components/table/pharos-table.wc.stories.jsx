@@ -30,8 +30,10 @@ const sampleNonTextRow = html` <storybook-pharos-table-row>
     />
   </storybook-pharos-table-cell>
   <storybook-pharos-table-cell style="max-width:20rem;">
-    <span>
-      <span>
+    <div
+      style="display: flex; flex-direction: column;  justify-content: space-between;max-width: 30rem;height: 100%;"
+    >
+      <div>
         JSTOR provides access to more than 12 million
         <storybook-pharos-link href="https://about.jstor.org/librarians/journals/"
           >journal articles</storybook-pharos-link
@@ -46,9 +48,9 @@ const sampleNonTextRow = html` <storybook-pharos-table-row>
           >primary sources</storybook-pharos-link
         >
         in 75 disciplines.
-      </span>
-      <span>Established: 1994</span>
-    </span>
+      </div>
+      <div>Established: 1994</div>
+    </div>
   </storybook-pharos-table-cell>
   <storybook-pharos-table-cell>
     <storybook-pharos-checkbox name="item_archived">
