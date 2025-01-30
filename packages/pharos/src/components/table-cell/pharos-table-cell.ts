@@ -25,7 +25,8 @@ export class PharosTableCell extends ScopedRegistryMixin(PharosElement) {
       const height =
         this.getBoundingClientRect().height -
         parseFloat(style.paddingTop) -
-        parseFloat(style.paddingBottom);
+        parseFloat(style.paddingBottom) -
+        parseFloat(style.borderBlockWidth);
 
       this.style.height = `${height}px`;
 
