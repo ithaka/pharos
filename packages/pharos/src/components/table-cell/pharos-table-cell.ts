@@ -18,6 +18,22 @@ export class PharosTableCell extends ScopedRegistryMixin(PharosElement) {
 
   protected override firstUpdated(): void {
     this.setAttribute('role', 'cell');
+
+    const resizeObserver = new ResizeObserver(() => {
+      // Using a slot inside `display: table-cell` breaks the height calculation, so we need to set it manually
+      const style = getComputedStyle(this);
+      const height =
+        this.getBoundingClientRect().height -
+        parseFloat(style.paddingTop) -
+        parseFloat(style.paddingBottom) -
+        parseFloat(style.borderBlockWidth);
+
+      this.style.height = `${height}px`;
+
+      resizeObserver.disconnect();
+    });
+
+    resizeObserver.observe(this);
   }
 
   protected override render(): TemplateResult {
