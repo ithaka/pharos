@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.7.0
+
+### Minor Changes
+
+- [#840](https://github.com/ithaka/pharos/pull/840) [`308b8af`](https://github.com/ithaka/pharos/commit/308b8af940d0c581ce952a74fccfe7c429c492c7) Thanks [@brentswisher](https://github.com/brentswisher)! - Allow complex content in tables through new table body, row, and cell custom elements
+
 ## 14.6.0
 
 ### Minor Changes
