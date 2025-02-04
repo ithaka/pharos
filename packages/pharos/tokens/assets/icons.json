@@ -108,6 +108,7 @@
       "send": { "value": "assets/icons/send.svg" },
       "share": { "value": "assets/icons/share.svg" },
       "side-panel": { "value": "assets/icons/side-panel.svg" },
+      "shared": { "value": "assets/icons/shared.svg"},
       "shift-left": { "value": "assets/icons/shift-left.svg" },
       "shift-right": { "value": "assets/icons/shift-right.svg" },
       "shift-up": { "value": "assets/icons/shift-up.svg" },
