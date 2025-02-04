@@ -39,6 +39,7 @@
         "deprecated": true,
         "deprecated_comment": "Use shift-<direction> instead"
       },
+      "community": { "value": "assets/icons/community.svg"},
       "copy": { "value": "assets/icons/copy.svg" },
       "dash-small": { "value": "assets/icons/dash-small.svg" },
       "delete": { "value": "assets/icons/delete.svg" },
@@ -109,7 +110,6 @@
       "send": { "value": "assets/icons/send.svg" },
       "share": { "value": "assets/icons/share.svg" },
       "side-panel": { "value": "assets/icons/side-panel.svg" },
-      "group": { "value": "assets/icons/group.svg"},
       "shift-left": { "value": "assets/icons/shift-left.svg" },
       "shift-right": { "value": "assets/icons/shift-right.svg" },
       "shift-up": { "value": "assets/icons/shift-up.svg" },
