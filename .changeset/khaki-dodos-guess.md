@@ -2,4 +2,4 @@
 '@ithaka/pharos': minor
 ---
 
-Add filter, private, restrictive, shared, and gen-ai icons
+Add filter, private, restrictive, group, and gen-ai icons
