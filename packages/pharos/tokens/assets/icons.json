@@ -68,6 +68,7 @@
       "folder-selected": { "value": "assets/icons/folder-selected.svg" },
       "fullscreen-minimize": { "value": "assets/icons/fullscreen-minimize.svg" },
       "fullscreen": { "value": "assets/icons/fullscreen.svg" },
+      "gen-ai": { "value": "assets/icons/gen-ai.svg" },
       "google-color": { "value": "assets/icons/google-color.svg" },
       "google": { "value": "assets/icons/google.svg" },
       "image": { "value": "assets/icons/image.svg" },
