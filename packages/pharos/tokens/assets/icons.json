@@ -60,6 +60,7 @@
       "filetype-pdf": { "value": "assets/icons/filetype-pdf.svg" },
       "filetype-ppt": { "value": "assets/icons/filetype-ppt.svg" },
       "filetype-zip": { "value": "assets/icons/filetype-zip.svg" },
+      "filter": { "value": "assets/icons/filter.svg" },
       "fit-to-view": { "value": "assets/icons/fit-to-view.svg" },
       "fit-to-width": { "value": "assets/icons/fit-to-width.svg" },
       "folder-new": { "value": "assets/icons/folder-new.svg" },
