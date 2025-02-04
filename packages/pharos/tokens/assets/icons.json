@@ -93,6 +93,7 @@
       "play": { "value": "assets/icons/play.svg" },
       "play-large": { "value": "assets/icons/play-large.svg" },
       "primary-source": { "value": "assets/icons/primary-source.svg" },
+      "private": { "value": "assets/icons/private.svg" },
       "profile": { "value": "assets/icons/profile.svg" },
       "question-inverse": { "value": "assets/icons/question-inverse.svg" },
       "reorder": { "value": "assets/icons/reorder.svg" },
