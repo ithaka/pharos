@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.8.0
+
+### Minor Changes
+
+- [#871](https://github.com/ithaka/pharos/pull/871) [`1ca7e9b`](https://github.com/ithaka/pharos/commit/1ca7e9ba796862faa5e89b88b91ebaf378fd6e67) Thanks [@brentswisher](https://github.com/brentswisher)! - Add filter, private, restrictive, community, and gen-ai icons
+
 ## 14.7.0
 
 ### Minor Changes
