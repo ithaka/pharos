@@ -23,6 +23,7 @@
   display: block;
   height: 14rem;
   width: 100%;
+  cursor: pointer;
 }
 
 .card__link--title {
@@ -167,6 +168,7 @@ slot[name='image']::slotted(img) {
 .card__link--collection {
   display: grid;
   align-self: end;
+  cursor: pointer;
 }
 
 .card__link--collection--error {

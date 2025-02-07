@@ -3,7 +3,7 @@ import { html, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators.js';
 import { property, query } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
+// import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
@@ -76,13 +76,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
    */
   @property({ type: String, reflect: true })
   public link = '';
-
-  /**
-   * Indicates the label to apply to the image link.
-   * @attr image-link-label
-   */
-  @property({ type: String, reflect: true, attribute: 'image-link-label' })
-  public imageLinkLabel?: string;
 
   /**
    * Indicates the variant of card.
@@ -195,6 +188,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     menu?.openWithTrigger(trigger);
   }
 
+  private _handleImageClick(): void {
+    document.location = this.link;
+  }
+
   private _handleImageMouseEnter(): void {
     if (!this.disabled) {
       this._title['_hover'] = true;
@@ -249,19 +246,15 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
     >
-      <pharos-link
+      <div
         class=${classMap({
           [`card__link--collection`]: true,
           [`card__link--selected`]: this._isSelected,
         })}
-        href="${this.link}"
-        a11y-label=${ifDefined(this.imageLinkLabel)}
-        subtle
-        flex
-        no-hover
+        @click=${this._handleImageClick}
       >
         ${this._renderCollectionImageLinkContent()}
-      </pharos-link>
+      </div>
       ${this._renderCheckbox()}
     </div>`;
   }
@@ -299,7 +292,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
     >
-      <pharos-link
+      <div
         class=${classMap({
           [`card__link--image`]: true,
           [`card__link--selectable`]:
@@ -310,13 +303,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           [`card__link--selected`]: this._isSelected,
           [`card__link--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
         })}
-        href="${this.link}"
-        a11y-label=${ifDefined(this.imageLinkLabel)}
-        subtle
-        no-hover
+        @click=${this._handleImageClick}
       >
         ${this._renderLinkContent()}${this._renderHoverMetadata()}
-      </pharos-link>
+      </div>
       ${this._showSubtleOverlay() ? nothing : this._renderCheckbox()}
       <slot name="overlay"></slot>
     </div>`;
