@@ -223,13 +223,15 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderCollectionImageLinkContent(): TemplateResult {
     return this.error
       ? html`
-          <div
-            class=${classMap({
-              [`card__link--collection--error`]: true,
-            })}
-          >
-            <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
-            <span class="unavailable-text">Image preview not available</span>
+          <div class="card__image--collection-container">
+            <div
+              class=${classMap({
+                [`card__image--collection--error`]: true,
+              })}
+            >
+              <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
+              <span class="unavailable-text">Image preview not available</span>
+            </div>
           </div>
         `
       : html`
@@ -240,7 +242,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderCollectionImage(): TemplateResult {
     return html`<div
-      class="card__link-container"
+      class="card__image-container"
       @keydown=${this._handleForwardNavigation}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
@@ -248,8 +250,8 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     >
       <div
         class=${classMap({
-          [`card__link--collection`]: true,
-          [`card__link--selected`]: this._isSelected,
+          [`card__image--collection`]: true,
+          [`card__image--selected`]: this._isSelected,
         })}
         @click=${this._handleImageClick}
       >
@@ -286,7 +288,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderBaseImage(): TemplateResult {
     return html`<div
-      class="card__link-container"
+      class="card__image-container"
       @keydown=${this._handleForwardNavigation}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
@@ -294,14 +296,14 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     >
       <div
         class=${classMap({
-          [`card__link--image`]: true,
-          [`card__link--selectable`]:
+          [`card__image`]: true,
+          [`card__image--selectable`]:
             (this._isSubtleSelectHover() ||
               this._isSelectableViaCard() ||
               this._isDisabledSelectable()) &&
             !this._isSelected,
-          [`card__link--selected`]: this._isSelected,
-          [`card__link--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
+          [`card__image--selected`]: this._isSelected,
+          [`card__image--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
         })}
         @click=${this._handleImageClick}
       >
