@@ -11,18 +11,19 @@
   width: 100%;
 }
 
-.card__link-container {
+.card__image-container {
   display: flex;
   margin-bottom: var(--pharos-spacing-1-x);
   position: relative;
 }
 
-.card__link--image {
+.card__image {
   contain: unset;
   position: relative;
   display: block;
   height: 14rem;
   width: 100%;
+  cursor: pointer;
 }
 
 .card__link--title {
@@ -44,15 +45,15 @@
   }
 }
 
-.card__link--image.card__link--selected {
+.card__image.card__image--selected {
   @include card-selected;
 }
 
-:host([disabled]) .card__link--image.card__link--selected {
+:host([disabled]) .card__image.card__image--selected {
   outline: solid 2px var(--pharos-color-marble-gray-50);
 }
 
-:host([disabled]) .card__link--image {
+:host([disabled]) .card__image {
   color: var(--pharos-color-marble-gray-50);
   cursor: not-allowed;
   text-decoration: none;
@@ -81,7 +82,7 @@ slot[name='image']::slotted(img) {
   color: var(--pharos-color-marble-gray-50);
 }
 
-:host([variant='promotional']) .card__link--image {
+:host([variant='promotional']) .card__image {
   height: unset;
 }
 
@@ -164,12 +165,18 @@ slot[name='image']::slotted(img) {
   margin-bottom: var(--pharos-spacing-one-half-x);
 }
 
-.card__link--collection {
+.card__image--collection {
   display: grid;
   align-self: end;
+  cursor: pointer;
 }
 
-.card__link--collection--error {
+.card__image--collection-container {
+  display: inline-flex;
+  min-width: 0;
+}
+
+.card__image--collection--error {
   background-color: var(--pharos-color-marble-gray-94);
   display: flex;
   width: 100vw;
@@ -185,15 +192,15 @@ slot[name='image']::slotted(img) {
   }
 }
 
-.card__link--collection.card__link--selected {
+.card__image--collection.card__image--selected {
   @include card-selected;
 }
 
-:host([disabled]) .card__link--collection.card__link--selected {
+:host([disabled]) .card__image--collection.card__image--selected {
   outline: solid 2px var(--pharos-color-marble-gray-50);
 }
 
-:host([disabled]) .card__link--collection {
+:host([disabled]) .card__image--collection {
   color: var(--pharos-color-marble-gray-50);
   cursor: not-allowed;
   text-decoration: none;
@@ -235,16 +242,16 @@ slot[name='image']::slotted(img) {
   margin-left: var(--pharos-spacing-one-quarter-x);
 }
 
-.card__link--image.card__link--selectable {
+.card__image.card__image--selectable {
   background-color: var(--pharos-color-marble-gray-94);
 }
 
-.card__link--image.card__link--select-hover {
+.card__image.card__image--select-hover {
   background-color: var(--pharos-color-marble-gray-base);
   transition: background-color var(--pharos-transition-duration-short) ease-in-out;
 }
 
-:host([subtle]) .card__link--image {
+:host([subtle]) .card__image {
   &:hover,
   &:focus-within {
     .card__metadata--hover {

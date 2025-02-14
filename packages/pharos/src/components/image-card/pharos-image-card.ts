@@ -3,7 +3,7 @@ import { html, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators.js';
 import { property, query } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
+// import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
@@ -76,13 +76,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
    */
   @property({ type: String, reflect: true })
   public link = '';
-
-  /**
-   * Indicates the label to apply to the image link.
-   * @attr image-link-label
-   */
-  @property({ type: String, reflect: true, attribute: 'image-link-label' })
-  public imageLinkLabel?: string;
 
   /**
    * Indicates the variant of card.
@@ -195,6 +188,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     menu?.openWithTrigger(trigger);
   }
 
+  private _handleImageClick(): void {
+    document.location = this.link;
+  }
+
   private _handleImageMouseEnter(): void {
     if (!this.disabled) {
       this._title['_hover'] = true;
@@ -226,13 +223,15 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderCollectionImageLinkContent(): TemplateResult {
     return this.error
       ? html`
-          <div
-            class=${classMap({
-              [`card__link--collection--error`]: true,
-            })}
-          >
-            <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
-            <span class="unavailable-text">Image preview not available</span>
+          <div class="card__image--collection-container">
+            <div
+              class=${classMap({
+                [`card__image--collection--error`]: true,
+              })}
+            >
+              <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
+              <span class="unavailable-text">Image preview not available</span>
+            </div>
           </div>
         `
       : html`
@@ -243,25 +242,21 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderCollectionImage(): TemplateResult {
     return html`<div
-      class="card__link-container"
+      class="card__image-container"
       @keydown=${this._handleForwardNavigation}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
     >
-      <pharos-link
+      <div
         class=${classMap({
-          [`card__link--collection`]: true,
-          [`card__link--selected`]: this._isSelected,
+          [`card__image--collection`]: true,
+          [`card__image--selected`]: this._isSelected,
         })}
-        href="${this.link}"
-        a11y-label=${ifDefined(this.imageLinkLabel)}
-        subtle
-        flex
-        no-hover
+        @click=${this._handleImageClick}
       >
         ${this._renderCollectionImageLinkContent()}
-      </pharos-link>
+      </div>
       ${this._renderCheckbox()}
     </div>`;
   }
@@ -293,30 +288,27 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderBaseImage(): TemplateResult {
     return html`<div
-      class="card__link-container"
+      class="card__image-container"
       @keydown=${this._handleForwardNavigation}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
     >
-      <pharos-link
+      <div
         class=${classMap({
-          [`card__link--image`]: true,
-          [`card__link--selectable`]:
+          [`card__image`]: true,
+          [`card__image--selectable`]:
             (this._isSubtleSelectHover() ||
               this._isSelectableViaCard() ||
               this._isDisabledSelectable()) &&
             !this._isSelected,
-          [`card__link--selected`]: this._isSelected,
-          [`card__link--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
+          [`card__image--selected`]: this._isSelected,
+          [`card__image--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
         })}
-        href="${this.link}"
-        a11y-label=${ifDefined(this.imageLinkLabel)}
-        subtle
-        no-hover
+        @click=${this._handleImageClick}
       >
         ${this._renderLinkContent()}${this._renderHoverMetadata()}
-      </pharos-link>
+      </div>
       ${this._showSubtleOverlay() ? nothing : this._renderCheckbox()}
       <slot name="overlay"></slot>
     </div>`;

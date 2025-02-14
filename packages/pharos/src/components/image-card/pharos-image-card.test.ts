@@ -204,7 +204,7 @@ describe('pharos-image-card', () => {
   });
 
   it('sets title link hover state when the card image link is hovered', async () => {
-    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new Event('mouseenter'));
 
     await component.updateComplete;
@@ -227,7 +227,7 @@ describe('pharos-image-card', () => {
         </div>
       </test-pharos-image-card>`
     );
-    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new Event('mouseenter'));
 
     await component.updateComplete;
@@ -353,38 +353,11 @@ describe('pharos-image-card', () => {
     expect(metadataHover).not.to.be.null;
   });
 
-  it('renders a link around the image for the base variant', async () => {
-    const link = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--image'
-    );
-    expect(link).not.to.be.null;
-  });
-
   it('renders the source type when provided', async () => {
     component.sourceType = 'image';
     await component.updateComplete;
     const sourceType = component.renderRoot.querySelector('.card__source-type');
     expect(sourceType).not.to.be.null;
-  });
-
-  it('renders a link around the container for the error state', async () => {
-    component.error = true;
-    await component.updateComplete;
-
-    const link = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--image'
-    );
-    expect(link).not.to.be.null;
-  });
-
-  it('renders a link around the image for the collection variant', async () => {
-    component.variant = 'collection';
-    await component.updateComplete;
-
-    const link = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--collection'
-    );
-    expect(link).not.to.be.null;
   });
 
   it('renders an exclamation icon in the error state for collection variant', async () => {
@@ -396,23 +369,6 @@ describe('pharos-image-card', () => {
       '[data-pharos-component="PharosIcon"][name="exclamation-inverse"]'
     );
     expect(icon).not.to.be.null;
-  });
-
-  it('renders a label for the link around the image for the base variant', async () => {
-    const link = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--image'
-    );
-    expect(link?.getAttribute('a11y-label')).to.equal('Label for card image link');
-  });
-
-  it('renders a label for the link around the image for the collection variant', async () => {
-    component.variant = 'collection';
-    await component.updateComplete;
-
-    const link = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--collection'
-    );
-    expect(link?.getAttribute('a11y-label')).to.equal('Label for card image link');
   });
 
   it('renders a checkbox for the selectable variant', async () => {
@@ -455,7 +411,7 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-image-mouseenter', onMouseEnter);
 
-    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
 
     expect(hovered).to.be.true;
@@ -493,7 +449,7 @@ describe('pharos-image-card', () => {
     );
 
     let checkboxElement = null;
-    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
 
     await aTimeout(100);
@@ -518,7 +474,7 @@ describe('pharos-image-card', () => {
     );
 
     let checkboxElement = null;
-    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
 
     await aTimeout(100);
@@ -543,7 +499,7 @@ describe('pharos-image-card', () => {
     );
 
     let checkboxElement = null;
-    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
 
     await aTimeout(100);
@@ -573,7 +529,7 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-image-mouseleave', onMouseLeave);
 
-    const imageLink = component.renderRoot.querySelector('.card__link--image');
+    const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new Event('mouseleave'));
 
     expect(hovered).to.be.false;
@@ -618,9 +574,9 @@ describe('pharos-image-card', () => {
       </test-pharos-image-card>`
     );
 
-    const title: PharosLink | null = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--image'
-    );
+    const title: PharosLink | null = component.renderRoot.querySelector('.card__image');
+
+    console.log(title);
 
     let selected = false;
     const onSelectCard = (): void => {
@@ -645,9 +601,7 @@ describe('pharos-image-card', () => {
       </test-pharos-image-card>`
     );
 
-    const title: PharosLink | null = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--image'
-    );
+    const title: PharosLink | null = component.renderRoot.querySelector('.card__image');
 
     let selected = false;
     const onSelectCard = (): void => {
@@ -672,9 +626,7 @@ describe('pharos-image-card', () => {
       </test-pharos-image-card>`
     );
 
-    const title: PharosLink | null = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--image'
-    );
+    const title: PharosLink | null = component.renderRoot.querySelector('.card__image');
 
     let selected = false;
     const onSelectCard = (): void => {
@@ -699,9 +651,7 @@ describe('pharos-image-card', () => {
       </test-pharos-image-card>`
     );
 
-    const title: PharosLink | null = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--image'
-    );
+    const title: PharosLink | null = component.renderRoot.querySelector('.card__image');
 
     let selected = false;
     const onSelectCard = (): void => {
@@ -726,9 +676,7 @@ describe('pharos-image-card', () => {
       </test-pharos-image-card>`
     );
 
-    const title: PharosLink | null = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--image'
-    );
+    const title: PharosLink | null = component.renderRoot.querySelector('.card__image');
 
     let selected = false;
     const onSelectCard = (): void => {
@@ -753,9 +701,7 @@ describe('pharos-image-card', () => {
       </test-pharos-image-card>`
     );
 
-    const title: PharosLink | null = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosLink"].card__link--image'
-    );
+    const title: PharosLink | null = component.renderRoot.querySelector('.card__image');
 
     let selected = false;
     const onSelectCard = (): void => {
