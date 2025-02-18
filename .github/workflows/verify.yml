@@ -64,10 +64,10 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Browsers
-        run: npx playwright install
+        run: yarn playwright install
 
       - name: Install Browsers Dependencies
-        run: npx playwright install-deps
+        run: yarn playwright install-deps
 
       - name: Install Dependencies
         run: yarn --check-cache --immutable
