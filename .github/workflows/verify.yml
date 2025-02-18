@@ -67,10 +67,10 @@ jobs:
         run: yarn --check-cache --immutable
 
       - name: Install Browsers
-        run: yarn playwright install
+        run: npx playwright install
 
       - name: Install Browsers Dependencies
-        run: yarn playwright install-deps
+        run: npx playwright install-deps
 
       - name: Test
         run: yarn test
