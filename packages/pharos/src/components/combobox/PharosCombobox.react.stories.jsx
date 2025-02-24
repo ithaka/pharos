@@ -57,7 +57,7 @@ export const Base = {
 };
 
 export const States = {
-  render: (args) => (
+  render: () => (
     <div style={{ display: 'grid', gap: '7rem', gridTemplateColumns: 'repeat(2, 310px)' }}>
       <PharosCombobox name="default">
         <span slot="label">I am empty</span>
@@ -105,7 +105,6 @@ export const States = {
       </PharosCombobox>
     </div>
   ),
-  args: { placeholder: 'Enter some text' },
 };
 
 export const Events = {
