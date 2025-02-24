@@ -180,6 +180,18 @@
   @include selected-text;
 }
 
+.combobox__option--disabled {
+  color: var(--pharos-dropdown-menu-item-color-text-disabled);
+  background-color: var(--pharos-dropdown-menu-item-color-background-disabled);
+  cursor: default;
+
+  &:hover {
+    color: var(--pharos-dropdown-menu-item-color-text-disabled);
+    background-color: var(--pharos-dropdown-menu-item-color-background-disabled);
+    cursor: default;
+  }
+}
+
 .combobox__option__icon {
   fill: var(--pharos-combobox-color-icon-checkmark);
   position: absolute;

@@ -57,40 +57,59 @@ export const Base = {
 };
 
 export const States = {
-  render: (args) => (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(1, 250px)',
-      }}
-    >
-      <PharosCombobox
-        disabled={args.disabled}
-        hideLabel={args.hideLabel}
-        open={args.open}
-        placeholder={args.placeholder}
-        value={args.value}
-      >
-        <span slot="label">You can edit my attributes</span>
+  render: () => (
+    <div style={{ display: 'grid', gap: '7rem', gridTemplateColumns: 'repeat(2, 310px)' }}>
+      <PharosCombobox name="default">
+        <span slot="label">I am empty</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </PharosCombobox>
+      <PharosCombobox name="disabled" disabled>
+        <span slot="label">I am disabled</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </PharosCombobox>
+      <PharosCombobox name="default">
+        <span slot="label">I have disabled options</span>
+        <option value="1">Option 1</option>
+        <option value="2" disabled>
+          Option 2
+        </option>
+        <option value="3" disabled>
+          Option 3
+        </option>
+        <option value="4">Option 4</option>
+        <option value="5" disabled>
+          Option 5
+        </option>
+      </PharosCombobox>
+      <PharosCombobox name="placeholder" placeholder="Enter some text">
+        <span slot="label">I have a placeholder</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </PharosCombobox>
+      <PharosCombobox name="provided" value="2">
+        <span slot="label">I have a value provided</span>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </PharosCombobox>
+      <PharosCombobox name="hidden" hideLabel>
+        <span slot="label">My label is hidden</span>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
       </PharosCombobox>
     </div>
   ),
-  args: {
-    placeholder: 'Enter some text',
-  },
 };
 
 export const Events = {
   render: () => (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(1, 250px)',
-      }}
-    >
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 250px)' }}>
       <PharosCombobox
         placeholder="Select a state"
         onChange={(e) => action('Change')(e.target.value)}
@@ -113,9 +132,7 @@ export const Events = {
       </PharosCombobox>
     </div>
   ),
-  parameters: {
-    options: { selectedPanel: 'addon-actions' },
-  },
+  parameters: { options: { selectedPanel: 'addon-actions' } },
 };
 
 export const SearchMode = {

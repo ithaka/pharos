@@ -128,10 +128,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
     this._input.defaultValue = this._displayValue;
     this._defaultValue = this.value;
 
-    this._childrenObserver.observe(this, {
-      subtree: true,
-      childList: true,
-    });
+    this._childrenObserver.observe(this, { subtree: true, childList: true });
   }
 
   protected override updated(changedProperties: PropertyValues): void {
@@ -152,13 +149,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
   }
 
   public onChange(event: Event): void {
-    this.dispatchEvent(
-      new CustomEvent('change', {
-        bubbles: true,
-        composed: true,
-        detail: event,
-      })
-    );
+    this.dispatchEvent(new CustomEvent('change', { bubbles: true, composed: true, detail: event }));
   }
 
   public onInput(): void {
@@ -212,9 +203,11 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
                     class=${classMap({
                       [`combobox__option`]: true,
                       [`combobox__option--selected`]: exactMatch,
+                      [`combobox__option--disabled`]: option.disabled,
                     })}
                     role="option"
                     aria-selected="false"
+                    aria-disabled="${option.disabled}"
                     aria-label="${option.text}"
                     @click=${(event: Event) => this._handleOptionClick(option, event)}
                     @mousedown=${(event: MouseEvent) => {
@@ -301,6 +294,10 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
   }
 
   private _handleOptionClick(option: HTMLOptionElement, event: Event): void {
+    if (option.disabled) {
+      event.preventDefault();
+      return;
+    }
     this.value = option.value;
     this._displayValue = option.text.trim();
     this.open = false;
@@ -374,9 +371,9 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
       return;
     }
 
-    const options = Array.prototype.slice.call(
-      this.renderRoot.querySelectorAll('.combobox__option')
-    ) as HTMLLIElement[];
+    const options: HTMLLIElement[] = Array.prototype.slice
+      .call(this.renderRoot.querySelectorAll('.combobox__option'))
+      .filter((option) => option.getAttribute('aria-disabled') !== 'true');
     const values = options.map((option) => option.innerText.trim());
 
     const highlightedOption = this.renderRoot.querySelector(
