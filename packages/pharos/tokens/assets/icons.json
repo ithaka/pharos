@@ -117,6 +117,8 @@
       "sound-high": { "value": "assets/icons/sound-high.svg" },
       "sound-low": { "value": "assets/icons/sound-low.svg" },
       "sound-none": { "value": "assets/icons/sound-none.svg" },
+      "star": { "value": "assets/icons/star.svg" },
+      "star-filled": { "value": "assets/icons/star-filled.svg" },
       "tumblr": { "value": "assets/icons/tumblr.svg" },
       "twitter": { "value": "assets/icons/twitter.svg" },
       "upload": { "value": "assets/icons/upload.svg"},
