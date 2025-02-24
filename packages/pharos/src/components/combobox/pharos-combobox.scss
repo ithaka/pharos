@@ -185,8 +185,7 @@
   background-color: var(--pharos-dropdown-menu-item-color-background-disabled);
   cursor: default;
 
-  &:hover,
-  &[highlighted] {
+  &:hover {
     color: var(--pharos-dropdown-menu-item-color-text-disabled);
     background-color: var(--pharos-dropdown-menu-item-color-background-disabled);
     cursor: default;
