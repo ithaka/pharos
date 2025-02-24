@@ -10,9 +10,7 @@ export default {
   title: 'Forms/Combobox',
   component: 'pharos-combobox',
   parameters: {
-    docs: {
-      page: configureDocsPage('combobox'),
-    },
+    docs: { page: configureDocsPage('combobox') },
     options: { selectedPanel: 'addon-controls' },
     controls: { expanded: true },
   },
@@ -68,6 +66,14 @@ export const States = {
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
       </storybook-pharos-combobox>
+      <storybook-pharos-combobox name="default">
+        <span slot="label">I have disabled options</span>
+        <option value="1">Option 1</option>
+        <option value="2" disabled>Option 2</option>
+        <option value="3" disabled>Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5" disabled>Option 5</option>
+      </storybook-pharos-combobox>
       <storybook-pharos-combobox name="placeholder" placeholder="Enter some text">
         <span slot="label">I have a placeholder</span>
         <option value="1">Option 1</option>
@@ -115,9 +121,7 @@ export const Events = {
       </storybook-pharos-combobox>
     </div>
   `,
-  parameters: {
-    options: { selectedPanel: 'addon-actions' },
-  },
+  parameters: { options: { selectedPanel: 'addon-actions' } },
 };
 
 export const SearchMode = {
