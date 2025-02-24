@@ -40,6 +40,18 @@ describe('pharos-combobox', () => {
     await expect(component).to.be.accessible();
   });
 
+  it('is accessible when it has disabled options', async () => {
+    component = await fixture(html`
+      <test-pharos-combobox>
+        <span slot="label">I am a label</span>
+        <option value="1">Option 1</option>
+        <option value="2" disabled>Option 2</option>
+        <option value="3">Option 3</option>
+      </test-pharos-combobox>
+    `);
+    await expect(component).to.be.accessible();
+  });
+
   it('fires a change event', async () => {
     let eventSource = null as Element | null;
     const onChange = (event: Event): void => {
@@ -85,6 +97,112 @@ describe('pharos-combobox', () => {
     expect(component.value).to.equal('2');
     expect(activeElement === component['_input']).to.be.false;
     document.removeEventListener('focusin', onFocusIn);
+  });
+
+  it('leaves the dropdown list open when a disabled option is clicked', async () => {
+    component = await fixture(html`
+      <test-pharos-combobox>
+        <span slot="label">I am a label</span>
+        <option value="1">Option 1</option>
+        <option value="2" disabled>Option 2</option>
+        <option value="3">Option 3</option>
+      </test-pharos-combobox>
+    `);
+
+    component['_input'].value = 'Opt';
+    component['_input'].dispatchEvent(new Event('input'));
+    await component.updateComplete;
+
+    const options = component.renderRoot.querySelectorAll(
+      '.combobox__option'
+    ) as NodeListOf<HTMLLIElement>;
+
+    options.forEach((option) => {
+      if (option.innerText === 'Option 2') {
+        option.dispatchEvent(new Event('click'));
+      }
+    });
+    await component.updateComplete;
+
+    expect(component.open).to.be.true;
+  });
+
+  it('does not update the value when a disabled option is clicked', async () => {
+    component = await fixture(html`
+      <test-pharos-combobox>
+        <span slot="label">I am a label</span>
+        <option value="1">Option 1</option>
+        <option value="2" disabled>Option 2</option>
+        <option value="3">Option 3</option>
+      </test-pharos-combobox>
+    `);
+
+    component['_input'].value = 'Opt';
+    component['_input'].dispatchEvent(new Event('input'));
+    await component.updateComplete;
+
+    const options = component.renderRoot.querySelectorAll(
+      '.combobox__option'
+    ) as NodeListOf<HTMLLIElement>;
+
+    options.forEach((option) => {
+      if (option.innerText === 'Option 2') {
+        option.dispatchEvent(new Event('click'));
+      }
+    });
+    await component.updateComplete;
+
+    expect(component.value).to.equal('');
+  });
+
+  it('renders disabled options with aria-disabled set to true', async () => {
+    component = await fixture(html`
+      <test-pharos-combobox>
+        <span slot="label">I am a label</span>
+        <option value="1">Option 1</option>
+        <option value="2" disabled>Option 2</option>
+        <option value="3">Option 3</option>
+      </test-pharos-combobox>
+    `);
+    component['_input'].value = 'Opt';
+    component['_input'].dispatchEvent(new Event('input'));
+    await component.updateComplete;
+
+    const disabledOption = component.renderRoot.querySelector(
+      '.combobox__option[aria-disabled="true"]'
+    ) as HTMLLIElement;
+    console.log('disabledOption', disabledOption);
+    expect(disabledOption).to.not.be.null;
+    expect(disabledOption.innerText).to.equal('Option 2');
+  });
+
+  it('skips disabled items when navigating with the arrow keys', async () => {
+    component = await fixture(html`
+      <test-pharos-combobox>
+        <span slot="label">I am a label</span>
+        <option value="1">Option 1</option>
+        <option value="2" disabled>Option 2</option>
+        <option value="3">Option 3</option>
+      </test-pharos-combobox>
+    `);
+    component['_input'].value = 'Opt';
+    component['_input'].dispatchEvent(new Event('input'));
+    await component.updateComplete;
+
+    component['_input'].dispatchEvent(new KeyboardEvent('keydown', { key: 'Down' }));
+    await component.updateComplete;
+
+    component['_input'].dispatchEvent(new KeyboardEvent('keydown', { key: 'Down' }));
+    await component.updateComplete;
+
+    const options = component.renderRoot.querySelectorAll(
+      '.combobox__option'
+    ) as NodeListOf<HTMLLIElement>;
+
+    const expectedOption = Array.from(options)[2];
+
+    expect(expectedOption.hasAttribute('highlighted')).to.be.true;
+    expect(expectedOption.getAttribute('aria-selected')).to.equal('true');
   });
 
   it('renders the clear button with tooltip when an option is selected', async () => {
