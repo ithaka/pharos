@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 14.9.0
+
+### Minor Changes
+
+- [#891](https://github.com/ithaka/pharos/pull/891) [`7fe4b18`](https://github.com/ithaka/pharos/commit/7fe4b18f3572764ebb7f114b3f034139854da71e) Thanks [@brentswisher](https://github.com/brentswisher)! - Add ability to disable options in combobox components
+
+- [#886](https://github.com/ithaka/pharos/pull/886) [`ee57108`](https://github.com/ithaka/pharos/commit/ee57108d66dcec613d5a85c775a73a9974688d1e) Thanks [@jialin-he](https://github.com/jialin-he)! - Add star and star filled icons
+
 ## 14.8.0
 
 ### Minor Changes
