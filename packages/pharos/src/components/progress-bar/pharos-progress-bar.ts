@@ -25,12 +25,12 @@ export class PharosProgressBar extends PharosElement {
   @property({ type: Number, reflect: true })
   public value = 0;
 
-    /**
+   /**
    * Indicates the variant of progress bar.
    * @attr variant
    */
-    @property({ type: String, reflect: true })
-    public variant: ProgressBarVariant = 'default';
+  @property({ type: String, reflect: true })
+  public variant: ProgressBarVariant = 'default';
 
   public static override get styles(): CSSResultArray {
     return [progressBarStyles];
@@ -59,6 +59,7 @@ export class PharosProgressBar extends PharosElement {
         aria-valuemax="100"
         aria-valuenow=${this.value}
         aria-labelledby="title"
+        aria-describedby="description"
         class="progress-bar__wrapper"
       >
         <div
