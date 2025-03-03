@@ -49,6 +49,8 @@ export class PharosProgressBar extends PharosElement {
         })
       : nothing;
 
+    const classList = ['progress-bar', this.variant === 'indeterminate' ? 'progress-bar--indeterminate' : ''].join(' ');
+
     return html`
       <div id="title" class="progress-bar__title"><slot name="title"></slot></div>
       <div
@@ -60,7 +62,7 @@ export class PharosProgressBar extends PharosElement {
         class="progress-bar__wrapper"
       >
         <div
-          class="${this.variant === 'indeterminate' ? 'progress-bar-indeterminate' : 'progress-bar'}"
+          class="${classList}"
           style=${progressStyle}
         ></div>
       </div>
