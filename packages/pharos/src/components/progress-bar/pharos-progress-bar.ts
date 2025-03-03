@@ -37,7 +37,6 @@ export class PharosProgressBar extends PharosElement {
   }
 
   protected override render(): TemplateResult {
-    console.log("variant is: ", this.variant);
     const progressStyle =
     this.variant === 'default'
       ? styleMap({
