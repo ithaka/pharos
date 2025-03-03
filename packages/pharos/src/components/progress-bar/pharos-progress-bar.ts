@@ -1,10 +1,12 @@
 import { PharosElement } from '../base/pharos-element';
-import { html } from 'lit';
+import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { progressBarStyles } from './pharos-progress-bar.css';
 import { styleMap } from 'lit/directives/style-map.js';
 import { PharosColorGlacierBlueBase, PharosColorNightBlueBase } from '../../styles/variables';
+
+export type ProgressBarVariant = 'default' | 'indeterminate';
 
 /**
  * Pharos progress bar component.
@@ -23,11 +25,31 @@ export class PharosProgressBar extends PharosElement {
   @property({ type: Number, reflect: true })
   public value = 0;
 
+    /**
+   * Indicates the variant of progress bar.
+   * @attr variant
+   */
+    @property({ type: String, reflect: true })
+    public variant: ProgressBarVariant = 'default';
+
   public static override get styles(): CSSResultArray {
     return [progressBarStyles];
   }
 
   protected override render(): TemplateResult {
+    console.log("variant is: ", this.variant);
+    const progressStyle =
+    this.variant === 'default'
+      ? styleMap({
+          background: `linear-gradient(
+            to right,
+            ${PharosColorGlacierBlueBase} ${this.value < 35 ? '100%' : 135 - this.value + '%'},
+            ${PharosColorNightBlueBase}
+          )`,
+          width: `${this.value}%`,
+        })
+      : nothing;
+
     return html`
       <div id="title" class="progress-bar__title"><slot name="title"></slot></div>
       <div
@@ -39,15 +61,8 @@ export class PharosProgressBar extends PharosElement {
         class="progress-bar__wrapper"
       >
         <div
-          class="progress-bar"
-          style=${styleMap({
-            background: `linear-gradient(
-              to right,
-              ${PharosColorGlacierBlueBase} ${this.value < 35 ? '100%' : 135 - this.value + '%'},
-              ${PharosColorNightBlueBase}
-            )`,
-            width: `${this.value}%`,
-          })}
+          class="${this.variant === 'indeterminate' ? 'progress-bar-indeterminate' : 'progress-bar'}"
+          style=${progressStyle}
         ></div>
       </div>
       <div class="progress-bar__description">
