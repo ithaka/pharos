@@ -24,7 +24,7 @@ describe('pharos-progress-bar', () => {
       </test-pharos-progress-bar>
     `);
     expect(component).dom.to.equal(
-      `<test-pharos-progress-bar data-pharos-component="PharosProgressBar" value="0">
+      `<test-pharos-progress-bar data-pharos-component="PharosProgressBar" value="0" variant="default">
         <div slot="title">Click.xls</div>
         <div slot="description">Processing headers</div>
       </test-pharos-progress-bar>`
