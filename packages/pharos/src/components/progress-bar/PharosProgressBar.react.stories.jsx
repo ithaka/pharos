@@ -32,7 +32,7 @@ export const Base = {
 
 export const Indeterminate = {
   render: (args) => (
-    <PharosProgressBar variant={args.variant}>
+    <PharosProgressBar>
       <div slot="title">{args.title}</div>
       <div slot="description">{args.description}</div>
     </PharosProgressBar>

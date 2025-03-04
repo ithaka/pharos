@@ -6,8 +6,6 @@ import { progressBarStyles } from './pharos-progress-bar.css';
 import { styleMap } from 'lit/directives/style-map.js';
 import { PharosColorGlacierBlueBase, PharosColorNightBlueBase } from '../../styles/variables';
 
-export type ProgressBarVariant = 'default' | 'indeterminate';
-
 /**
  * Pharos progress bar component.
  *
@@ -23,33 +21,27 @@ export class PharosProgressBar extends PharosElement {
    * @attr value
    */
   @property({ type: Number, reflect: true })
-  public value = 0;
-
-   /**
-   * Indicates the variant of progress bar.
-   * @attr variant
-   */
-  @property({ type: String, reflect: true })
-  public variant: ProgressBarVariant = 'default';
+  public value?: number;
 
   public static override get styles(): CSSResultArray {
     return [progressBarStyles];
   }
 
   protected override render(): TemplateResult {
-    const progressStyle =
-    this.variant === 'default'
+    const isIndeterminate = this.value === undefined;
+
+    const progressStyle = !isIndeterminate
       ? styleMap({
           background: `linear-gradient(
             to right,
-            ${PharosColorGlacierBlueBase} ${this.value < 35 ? '100%' : 135 - this.value + '%'},
+            ${PharosColorGlacierBlueBase} ${this.value! < 35 ? '100%' : 135 - this.value! + '%'},
             ${PharosColorNightBlueBase}
           )`,
           width: `${this.value}%`,
         })
       : nothing;
 
-    const classList = ['progress-bar', this.variant === 'indeterminate' ? 'progress-bar--indeterminate' : ''].join(' ');
+    const classList = ['progress-bar', isIndeterminate ? 'progress-bar--indeterminate' : ''].join(' ');
 
     return html`
       <div id="title" class="progress-bar__title"><slot name="title"></slot></div>
@@ -57,17 +49,14 @@ export class PharosProgressBar extends PharosElement {
         role="progressbar"
         aria-valuemin="0"
         aria-valuemax="100"
-        aria-valuenow=${this.value}
+        aria-valuenow=${this.value ?? nothing}
         aria-labelledby="title"
         aria-describedby="description"
         class="progress-bar__wrapper"
       >
-        <div
-          class="${classList}"
-          style=${progressStyle}
-        ></div>
+        <div class="${classList}" style=${progressStyle}></div>
       </div>
-      <div class="progress-bar__description">
+      <div id="description" class="progress-bar__description">
         <slot name="description"></slot>
       </div>
     `;

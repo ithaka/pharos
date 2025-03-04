@@ -6,7 +6,6 @@ export const defaultArgs = {
 
 export const indeterminateArgs = {
   title: 'Indeterminate',
-  variant: 'indeterminate',
   value: 10,
   description: 'Still working...',
 };

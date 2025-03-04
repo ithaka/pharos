@@ -25,7 +25,7 @@ export const Base = {
 
 export const Indeterminate = {
   render: (args) => html`
-    <storybook-pharos-progress-bar variant="${args.variant}">
+    <storybook-pharos-progress-bar>
       <div slot="title">${args.title}</div>
       <div slot="description">${args.description}</div>
     </storybook-pharos-progress-bar>
