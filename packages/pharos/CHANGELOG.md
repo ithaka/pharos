@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.10.0
+
+### Minor Changes
+
+- [#897](https://github.com/ithaka/pharos/pull/897) [`32cb21c`](https://github.com/ithaka/pharos/commit/32cb21c59c192e6520a3df2f6de0dde7a8699d81) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add indeterminate progress bar variant
+
 ## 14.9.0
 
 ### Minor Changes
