@@ -1,6 +1,6 @@
 import { PharosProgressBar } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { defaultArgs, indeterminateArgs, argTypes } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
 
 export default {
@@ -28,6 +28,16 @@ export const Base = {
     </PharosProgressBar>
   ),
   args: defaultArgs,
+};
+
+export const Indeterminate = {
+  render: (args) => (
+    <PharosProgressBar>
+      <div slot="title">{args.title}</div>
+      <div slot="description">{args.description}</div>
+    </PharosProgressBar>
+  ),
+  args: indeterminateArgs,
 };
 
 export const Plain = {
