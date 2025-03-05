@@ -1,7 +1,7 @@
 import { html } from 'lit';
 
 import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { defaultArgs, indeterminateArgs, argTypes } from './storyArgs';
 
 export default {
   title: 'Components/Progress Bar',
@@ -21,6 +21,16 @@ export const Base = {
     </storybook-pharos-progress-bar>
   `,
   args: defaultArgs,
+};
+
+export const Indeterminate = {
+  render: (args) => html`
+    <storybook-pharos-progress-bar>
+      <div slot="title">${args.title}</div>
+      <div slot="description">${args.description}</div>
+    </storybook-pharos-progress-bar>
+  `,
+  args: indeterminateArgs,
 };
 
 export const Plain = {
