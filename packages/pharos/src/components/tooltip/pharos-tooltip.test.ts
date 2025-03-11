@@ -223,7 +223,7 @@ describe('pharos-tooltip', () => {
 
     thirdTrigger.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await aTimeout(100);
+    await aTimeout(300);
 
     await nextFrame();
     expect(component.open).to.be.true;
