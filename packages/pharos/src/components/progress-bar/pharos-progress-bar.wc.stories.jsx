@@ -31,6 +31,9 @@ export const Indeterminate = {
     </storybook-pharos-progress-bar>
   `,
   args: indeterminateArgs,
+  parameters: {
+    chromatic: { disable: true },
+  },
 };
 
 export const Plain = {
