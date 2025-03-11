@@ -30,7 +30,10 @@ export const Indeterminate = {
       <div slot="description">${args.description}</div>
     </storybook-pharos-progress-bar>
   `,
-  args: indeterminateArgs,
+  args: {
+    ...indeterminateArgs,
+    chromatic: { disable: true },
+  },
 };
 
 export const Plain = {
