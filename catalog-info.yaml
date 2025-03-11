@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pharos
+  description: Auto-generated catalog-info.yaml.
+  tags:
+  - typescript
+  - javascript
+  - scss
+  - css
+  - html
+  - mdx
+  - shell
+spec:
+  type: unknown
+  owner: group:ui-engineering
+  lifecycle: unknown
