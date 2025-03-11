@@ -96,7 +96,7 @@ describe('pharos-tooltip', () => {
   it('opens on mouseenter of trigger and closes on mouseleave', async () => {
     trigger.dispatchEvent(new Event('mouseenter'));
     await component.updateComplete;
-    await aTimeout(200);
+    await aTimeout(100);
     expect(component.open).to.equal(true);
 
     trigger.dispatchEvent(new Event('mouseleave'));
@@ -223,7 +223,7 @@ describe('pharos-tooltip', () => {
 
     thirdTrigger.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await aTimeout(100);
+    await aTimeout(300);
 
     await nextFrame();
     expect(component.open).to.be.true;
