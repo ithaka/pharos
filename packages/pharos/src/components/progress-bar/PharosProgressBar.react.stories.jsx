@@ -38,9 +38,6 @@ export const Indeterminate = {
     </PharosProgressBar>
   ),
   args: indeterminateArgs,
-  parameters: {
-    chromatic: { disable: true },
-  },
 };
 
 export const Plain = {
