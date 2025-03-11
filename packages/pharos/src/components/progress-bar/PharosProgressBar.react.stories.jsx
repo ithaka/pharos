@@ -37,8 +37,8 @@ export const Indeterminate = {
       <div slot="description">{args.description}</div>
     </PharosProgressBar>
   ),
-  args: {
-    ...indeterminateArgs,
+  args: indeterminateArgs,
+  parameters: {
     chromatic: { disable: true },
   },
 };
