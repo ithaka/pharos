@@ -130,7 +130,6 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
           [`alert--${this.status}`]: this.status || '',
           [`alert--closable`]: this.closable,
         })}"
-        tabindex="0"
       >
         <pharos-icon class="alert__icon" name="${this._getIcon()}" a11y-hidden="true"></pharos-icon>
         <div class="alert__body">
