@@ -6,7 +6,9 @@ import type { PharosTab } from './pharos-tab';
 import type { PharosTabPanel } from './pharos-tab-panel';
 
 describe('pharos-tabs', () => {
-  let component: PharosTabs, componentLastTabSelected: PharosTabs;
+  let component: PharosTabs,
+    componentLastTabSelected: PharosTabs,
+    componentWithNestedTabs: PharosTabs;
 
   beforeEach(async () => {
     component = await fixture(html`
@@ -28,6 +30,28 @@ describe('pharos-tabs', () => {
         <test-pharos-tab-panel id="panel-4" slot="panel">Panel 1</test-pharos-tab-panel>
         <test-pharos-tab-panel id="panel-5" slot="panel">Panel 2</test-pharos-tab-panel>
         <test-pharos-tab-panel id="panel-6" slot="panel">Panel 3</test-pharos-tab-panel>
+      </test-pharos-tabs>
+    `);
+
+    componentWithNestedTabs = await fixture(html`
+      <test-pharos-tabs>
+        <test-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</test-pharos-tab>
+        <test-pharos-tab id="tab-2" data-panel-id="panel-2">
+          <test-pharos-tabs>
+            <test-pharos-tab id="tab-2-1" data-panel-id="panel-2-1">Nested tab 1</test-pharos-tab>
+            <test-pharos-tab id="tab-2-2" data-panel-id="panel-2-2">Nested tab 2</test-pharos-tab>
+            <test-pharos-tab-panel id="panel-2-1" slot="panel"
+              >Nested panel 1</test-pharos-tab-panel
+            >
+            <test-pharos-tab-panel id="panel-2-2" slot="panel"
+              >Nested panel 2</test-pharos-tab-panel
+            >
+          </test-pharos-tabs>
+        </test-pharos-tab>
+        <test-pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</test-pharos-tab>
+        <test-pharos-tab-panel id="panel-1" slot="panel">Panel 1</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-2" slot="panel">Panel 2</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-3" slot="panel">Panel 3</test-pharos-tab-panel>
       </test-pharos-tabs>
     `);
   });
@@ -175,6 +199,27 @@ describe('pharos-tabs', () => {
     expect(tabs[0].selected).to.be.false;
     expect(tabs[1].selected).to.be.true;
     expect(tabs[2].selected).to.be.false;
+  });
+
+  it('changes only the selected nested tab on click', async () => {
+    const topLevelTabs = Array.prototype.slice.call(
+      componentWithNestedTabs.querySelectorAll(`test-pharos-tab`)
+    ) as PharosTab[];
+
+    const nestedTabs = Array.prototype.slice.call(
+      topLevelTabs[1].querySelectorAll(`test-pharos-tab`)
+    ) as PharosTab[];
+
+    topLevelTabs[1].click();
+    nestedTabs[1].click();
+    await component.updateComplete;
+    await aTimeout(1);
+
+    expect(topLevelTabs[0].selected).to.be.false;
+    expect(topLevelTabs[1].selected).to.be.true;
+    expect(topLevelTabs[2].selected).to.be.false;
+    expect(nestedTabs[0].selected).to.be.false;
+    expect(nestedTabs[1].selected).to.be.true;
   });
 
   it('shows the first panel by default', async () => {

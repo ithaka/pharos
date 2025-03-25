@@ -55,9 +55,11 @@ export class PharosTabs extends PharosElement {
   }
 
   protected override async firstUpdated(): Promise<void> {
-    this.addEventListener('pharos-tab-selected', (e) =>
-      this._handleTabSelected(e.target as PharosTab)
-    );
+    this.addEventListener('pharos-tab-selected', (e) => {
+      if (Array.from(this._tabs).includes(e.target as PharosTab)) {
+        this._handleTabSelected(e.target as PharosTab);
+      }
+    });
     this.addEventListener('keydown', this._handleKeydown);
     this.addEventListener('focusout', this._handleFocusout);
 
