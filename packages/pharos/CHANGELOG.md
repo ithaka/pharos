@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.10.1
+
+### Patch Changes
+
+- [#912](https://github.com/ithaka/pharos/pull/912) [`40d562f`](https://github.com/ithaka/pharos/commit/40d562f917789e3922d1cb528ddf2064cd4bfcd5) Thanks [@daneah](https://github.com/daneah)! - Ensure that parent tabs don't handle nested child tab clicks accidentally
+
 ## 14.10.0
 
 ### Minor Changes
