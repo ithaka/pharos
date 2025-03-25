@@ -20,7 +20,22 @@ export const Base = {
       <storybook-pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</storybook-pharos-tab>
       <storybook-pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</storybook-pharos-tab>
       <storybook-pharos-tab-panel id="panel-1" slot="panel">Panel 1</storybook-pharos-tab-panel>
-      <storybook-pharos-tab-panel id="panel-2" slot="panel">Panel 2</storybook-pharos-tab-panel>
+      <storybook-pharos-tab-panel id="panel-2" slot="panel">
+        <storybook-pharos-tabs>
+          <storybook-pharos-tab id="tab-2-1" data-panel-id="panel-2-1"
+            >Nested tab 1</storybook-pharos-tab
+          >
+          <storybook-pharos-tab id="tab-2-2" data-panel-id="panel-2-2"
+            >Nested tab 2</storybook-pharos-tab
+          >
+          <storybook-pharos-tab-panel id="panel-2-1" slot="panel"
+            >Nested panel 1</storybook-pharos-tab-panel
+          >
+          <storybook-pharos-tab-panel id="panel-2-2" slot="panel"
+            >Nested panel 2</storybook-pharos-tab-panel
+          >
+        </storybook-pharos-tabs>
+      </storybook-pharos-tab-panel>
       <storybook-pharos-tab-panel id="panel-3" slot="panel">Panel 3</storybook-pharos-tab-panel>
     </storybook-pharos-tabs>
   `,
