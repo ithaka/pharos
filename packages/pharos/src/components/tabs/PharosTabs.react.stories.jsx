@@ -37,7 +37,20 @@ export const Base = {
         Panel 1
       </PharosTabPanel>
       <PharosTabPanel id="panel-2" slot="panel">
-        Panel 2
+        <PharosTabs>
+          <PharosTab id="tab-2-1" data-panel-id="panel-2-1">
+            Nested tab 1
+          </PharosTab>
+          <PharosTab id="tab-2-2" data-panel-id="panel-2-2">
+            Nested tab 2
+          </PharosTab>
+          <PharosTabPanel id="panel-2-1" slot="panel">
+            Nested panel 1
+          </PharosTabPanel>
+          <PharosTabPanel id="panel-2-2" slot="panel">
+            Nested panel 2
+          </PharosTabPanel>
+        </PharosTabs>
       </PharosTabPanel>
       <PharosTabPanel id="panel-3" slot="panel">
         Panel 3
