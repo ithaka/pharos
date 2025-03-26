@@ -10,6 +10,7 @@ import { PharosSelect } from '../select/pharos-select';
 import { PharosPagination } from '../pagination/pharos-pagination';
 import { PharosTableRow } from '../table-row/pharos-table-row';
 import { PharosTableCell } from '../table-cell/pharos-table-cell';
+import { PharosTableColumnHeader } from '../table-column-header/pharos-table-column-header';
 
 export type ColumnSpecification = {
   name: string;
@@ -35,6 +36,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     'pharos-pagination': PharosPagination,
     'pharos-table-row': PharosTableRow,
     'pharos-table-cell': PharosTableCell,
+    'pharos-table-header': PharosTableColumnHeader,
   };
 
   /**
@@ -217,6 +219,35 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     );
   }
 
+  private _renderTableHeader(): TemplateResult {
+    if (this.columns.length === 0) {
+      return html`<div
+        class=${classMap({
+          'table-header': true,
+          ['table-sticky-header']: this.hasStickyHeader,
+        })}
+        role="rowgroup"
+      >
+        <slot name="table-header"></slot>
+      </div>`;
+    } else {
+      return html`<div
+        class=${classMap({
+          'table-header': true,
+          ['table-sticky-header']: this.hasStickyHeader,
+        })}
+        role="rowgroup"
+      >
+        <div class="table-row" role="row">
+          ${this.columns.map(
+            (column) =>
+              html`<div class="table-header__cell" role="columnheader">${column.name}</div>`
+          )}
+        </div>
+      </div>`;
+    }
+  }
+
   private _renderPagination(): TemplateResult | typeof nothing {
     return this.showPagination
       ? html`<div class="table-controls">
@@ -260,21 +291,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
         >
           ${this.caption}
         </div>
-        <div
-          class=${classMap({
-            'table-header': true,
-            ['table-sticky-header']: this.hasStickyHeader,
-          })}
-          role="rowgroup"
-        >
-          <div class="table-row" role="row">
-            ${this.columns.map(
-              (column) =>
-                html`<div class="table-header__cell" role="columnheader">${column.name}</div>`
-            )}
-          </div>
-        </div>
-        ${this._renderTableRows()}
+        ${this._renderTableHeader()} ${this._renderTableRows()}
       </div>
       ${this._renderPagination()}
     `;

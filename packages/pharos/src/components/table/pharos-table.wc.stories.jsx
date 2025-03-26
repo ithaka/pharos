@@ -275,3 +275,26 @@ export const RowDataWithPagination = {
     showPagination: true,
   },
 };
+
+export const TableWithCustomHeader = {
+  render: ({ showPagination }) => html`
+    <storybook-pharos-table .showPagination="${showPagination}" caption="An example table">
+      <storybook-pharos-table-header slot="table-header"
+        >Custom header 1</storybook-pharos-table-header
+      >
+      <storybook-pharos-table-header slot="table-header"
+        >Custom header 2</storybook-pharos-table-header
+      >
+      <storybook-pharos-table-header slot="table-header"
+        >Custom header 3</storybook-pharos-table-header
+      >
+      <storybook-pharos-table-body>
+        ${Array.from({ length: 5 }, (_, index) => getSampleTextRow(index + 1))}
+      </storybook-pharos-table-body>
+    </storybook-pharos-table>
+  `,
+  args: {
+    ...defaultArgs,
+    showPagination: false,
+  },
+};
