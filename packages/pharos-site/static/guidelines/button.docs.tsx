@@ -6,6 +6,7 @@ import {
   PharosHeading,
   PharosIcon,
   PharosLink,
+  PharosTooltip,
 } from '@ithaka/pharos/lib/react-components';
 import { FC } from 'react';
 
@@ -295,13 +296,21 @@ const ButtonPage: FC = () => {
             a11y-label="Back"
             icon="chevron-left-large"
             variant="subtle"
+            data-tooltip-id="back-tooltip"
           ></PharosButton>
+          <PharosTooltip placement="top" id="back-tooltip">
+            Back
+          </PharosTooltip>
           <PharosButton
             name="icon-only"
             a11y-label="Forward"
             icon="chevron-right-large"
             variant="subtle"
+            data-tooltip-id="forward-tooltip"
           ></PharosButton>
+          <PharosTooltip placement="top" id="forward-tooltip">
+            Forward
+          </PharosTooltip>
         </PageSection>
         <PageSection title="Large button" subSectionLevel={1}>
           <p>
@@ -362,45 +371,64 @@ const ButtonPage: FC = () => {
         </PageSection>
       </PageSection>
       <PageSection title="Accessibility">
-        <PageSection title="Relevant WCAG guidelines" subSectionLevel={1}>
-          <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+        <PageSection title="What's built in" subSectionLevel={1}>
+          <ul>
             <li>
-              <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">
-                1.3.1 Info and Relationships A
-              </PharosLink>
+              Ensures component uses the correct semantic <code>button</code> element.
             </li>
+            <li>
+              Provides built-in focus styles that meet WCAG contrast and visibility requirements.
+            </li>
+            <li>Supports keyboard interactions (e.g., Enter/Space to activate).</li>
+            <li>
+              Includes ability to add ARIA attributes when necessary (e.g., <code>aria-label</code>{' '}
+              for icon-only buttons).
+            </li>
+            <li>Variants use predefined color schemes that meet contrast requirements.</li>
           </ul>
         </PageSection>
-        <PageSection title="Importance" subSectionLevel={1}>
-          <p>
-            By using the semantic <code>button</code> element, assistive technologies can better
-            understand the element and its relationship to the content. It also will allow users to
-            know what keys will activate the element.
-          </p>
-        </PageSection>
-        <PageSection title="Code expectations" subSectionLevel={1}>
-          <PageSection
-            title='<button> or <input type="button"> (best practice)'
-            subSectionLevel={2}
-          >
+        <PageSection title="Considerations" subSectionLevel={1}>
+          <PageSection title="Design" subSectionLevel={2}>
             <ul>
-              <li>Does not need anything special to work</li>
-              <li>Will use visual label unless aria-label is providing more information</li>
+              <li>
+                Ensure button labels are clear and descriptive (e.g., avoid vague labels like "Click
+                here").
+              </li>
+              <li>
+                Use the disabled state sparingly, as there are known accessibility and usability
+                issues (it removes buttons from the focus order and can add to a users cognitive
+                load). Consider alternative approaches, such as keeping buttons enabled but
+                providing inline messaging about availability.
+              </li>
+              <li>Ensure annotations are used to convey the button's label if using icon-only.</li>
             </ul>
           </PageSection>
-          <PageSection title="Other elements (<div>, <a href>, etc)" subSectionLevel={2}>
+          <PageSection title="Development" subSectionLevel={2}>
             <ul>
+              <li>Avoid nesting interactive elements (e.g., placing a button inside a link).</li>
               <li>
-                <code>Role "button"</code> is not enough. Users expect a button to interact like one
-                so we need to add event listeners to also have the button operable by the space key.
-              </li>
-              <li>
-                <code>Onclick</code>: handles the event raised when the button is activated using a
-                mouse click or touch event.
-              </li>
-              <li>
-                <code>OnKeyDown</code>: handles the event raised when the button is activated using
-                the Enter or Space key on the keyboard.
+                Use the following attributes as needed:
+                <ul>
+                  <li>
+                    <code>a11y-label</code>: Gives explicit an accessible name with an aria-label
+                    attribute
+                  </li>
+                  <li>
+                    <code>a11y-expanded</code>: Conveys associated content’s state with
+                    aria-expanded
+                  </li>
+                  <li>
+                    <code>a11y-pressed</code>: Conveys the current pressed state with aria-pressed
+                  </li>
+                  <li>
+                    <code>a11y-haspopup</code>: Indicate an association with another widget via
+                    aria-haspopup
+                  </li>
+                  <li>
+                    <code>a11y-disabled</code>: Conveys the disabled state via aria-disabled while
+                    keeping it in the focus order
+                  </li>
+                </ul>
               </li>
             </ul>
           </PageSection>
@@ -410,27 +438,27 @@ const ButtonPage: FC = () => {
             <PharosHeading level={4} preset={'1--bold'}>
               What is read
             </PharosHeading>
-            <p>Reads as: "visual label (or aria-label), button"</p>
-            <PharosHeading level={4} preset={'1--bold'}>
-              Aria-labels
-            </PharosHeading>
-            <ul>
-              <li>Aria-labels can be placed on a button to override any other label element</li>
-              <li>
-                They do not change content visually, they are only communicated audibly to assistive
-                technology
-              </li>
-              <li>
-                Should be used when a button's purpose can only be determined visually, such as an
-                "X" to close a modal
-              </li>
-              <li>
-                In example above, put an aria-label element on the button element:
-                <code>&lt;button type="button" aria-label="close modal"&gt;.</code> A screen reader
-                would then read <i>"Close modal, button"</i>
-              </li>
-            </ul>
+            <p>VoiceOver reads as: "visual label (or aria-label), button"</p>
           </PageSection>
+        </PageSection>
+        <PageSection title="Relevant WCAG guidelines" subSectionLevel={1}>
+          <ul style={{ marginBottom: 'var(--pharos-spacing-1-x)' }}>
+            <li>
+              <PharosLink href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">
+                1.3.1 Info and Relationships A
+              </PharosLink>
+            </li>
+            <li>
+              <PharosLink href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">
+                2.5.3 Label in Name AA
+              </PharosLink>
+            </li>
+            <li>
+              <PharosLink href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">
+                4.1.2 Name, Role, Value A
+              </PharosLink>
+            </li>
+          </ul>
         </PageSection>
       </PageSection>
     </>
