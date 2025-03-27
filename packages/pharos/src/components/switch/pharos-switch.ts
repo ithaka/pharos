@@ -53,8 +53,6 @@ export class PharosSwitch extends FormMixin(FormElement) {
     const originalCheckedState = !this._switch.checked;
 
     this.checked = this._switch.checked;
-    console.log('onChange', this.checked);
-
     const notCancelled = this.dispatchEvent(
       new CustomEvent('change', {
         bubbles: true,
