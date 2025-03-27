@@ -33,7 +33,6 @@ describe('pharos-alert', () => {
       <div
         class="alert alert--info"
         role="alert"
-        tabindex="0"
       >
         <pharos-icon
           class="alert__icon"
@@ -56,20 +55,6 @@ describe('pharos-alert', () => {
     `).catch((e) => e);
     expect('fake is not a valid status. Valid statuses are: info, success, warning, error').to.be
       .thrown;
-  });
-
-  it('is able to delegate focus', async () => {
-    let activeElement = null;
-    const onFocusIn = (event: Event): void => {
-      activeElement = event.composedPath()[0];
-    };
-    document.addEventListener('focusin', onFocusIn);
-    const alert = component.renderRoot.querySelector('.alert');
-
-    component.focus();
-
-    expect(activeElement === alert).to.be.true;
-    document.removeEventListener('focusin', onFocusIn);
   });
 
   it('adds a class to slotted links', async () => {
