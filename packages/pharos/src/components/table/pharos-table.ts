@@ -117,15 +117,19 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     this._pageSize = !this.showPagination ? this.rowData.length : this.pageSizeOptions[0];
     this.totalResults = !this.totalResults ? this.rowData.length : this.totalResults;
     this.header = this._tableHeadElement || this._slottedTableHeadElements[0];
-    if (this.hasStickyHeader) {
-      this._initHeaderObserver();
-    }
   }
 
   protected override updated(): void {
     if (this._tableHeadElement || this._slottedTableHeadElements.length > 0) {
       const head = this._tableHeadElement || this._slottedTableHeadElements[0];
       head.sticky = this.hasStickyHeader;
+      if (!this.observer && this.hasStickyHeader) {
+        // Wait for the header height to be calculated before adding the ob
+        const headerHeight = head.getBoundingClientRect().height;
+        if (headerHeight) {
+          this._initHeaderObserver(headerHeight);
+        }
+      }
     }
     if (!this.caption) {
       throw new Error(
@@ -137,27 +141,12 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _toggleActiveStickyHeader = (active: boolean) => {
-    // const ACTIVE_HEADER_CLASS = 'table-sticky-header--is-active';
-    // const ACTIVE_HEADER_CELL_CLASS = 'table-sticky-header__cell--is-active';
-    // const headerCells = this.header?.querySelectorAll('.table-header__cell');
     if (this.header) {
       this.header.active = active;
     }
-
-    // if (active) {
-    //   this.header?.active = true;
-    //   headerCells?.forEach((cell) => {
-    //     cell.classList.add(ACTIVE_HEADER_CELL_CLASS);
-    //   });
-    // } else {
-    //   this.header?.classList.remove(ACTIVE_HEADER_CLASS);
-    //   headerCells?.forEach((cell) => {
-    //     cell.classList.remove(ACTIVE_HEADER_CELL_CLASS);
-    //   });
-    // }
   };
 
-  private _initHeaderObserver(): void {
+  private _initHeaderObserver(height: number): void {
     if (!this.header) {
       throw new Error('No table header found, cannot initialize observer');
     }
@@ -171,7 +160,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
       {
         root: this.shadowRoot?.querySelector('.table'),
         // Negative top rootMargin to offset the viewbox used for intersection calculations by the height of the current header
-        rootMargin: `-${this.header.getBoundingClientRect().height}px 0px 0px 0px`,
+        rootMargin: `-${height}px 0px 0px 0px`,
         threshold: [0.5],
       }
     );
