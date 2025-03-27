@@ -91,9 +91,9 @@ export class PharosSwitch extends FormMixin(FormElement) {
           class="switch__input"
           name=${this.name}
           type="checkbox"
-          .value=${this.value}
-          .checked=${this.checked}
           role="switch"
+          .value=${this.value}
+          ?checked=${this.checked}
           ?disabled=${this.disabled}
           @change=${this.onChange}
         />
