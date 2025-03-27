@@ -152,7 +152,9 @@ describe('pharos-table', () => {
     it('renders a sticky table header when has-sticky-header is set', async () => {
       component.hasStickyHeader = true;
       await component.updateComplete;
-      const headerRow = component.renderRoot.querySelector(`.table-header`);
+      const headerRow = component.renderRoot.querySelector(
+        `[data-pharos-component="PharosTableHead"]`
+      );
       await expect(headerRow).to.have.style('position', 'sticky');
     });
 
@@ -161,28 +163,24 @@ describe('pharos-table', () => {
       component['_toggleActiveStickyHeader'](true);
       await component.updateComplete;
 
-      const headerRow = component.renderRoot.querySelector(`.table-sticky-header`);
-      expect(headerRow).to.have.class('table-sticky-header--is-active');
-
-      const headerCells = component.querySelectorAll('.table-sticky-header__cell');
-      headerCells.forEach((cell) => {
-        expect(cell).to.have.class('table-sticky-header__cell--is-active');
-      });
+      const headerRow = component.renderRoot.querySelector(
+        `[data-pharos-component="PharosTableHead"]`
+      );
+      expect(headerRow).to.have.attribute('active');
     });
+
     it('removes the active state on a sticky header when the header no longer intersects with the table', async () => {
       component.hasStickyHeader = true;
       component['_toggleActiveStickyHeader'](true);
       component['_toggleActiveStickyHeader'](false);
       await component.updateComplete;
 
-      const headerRow = component.renderRoot.querySelector(`.table-sticky-header`);
-      expect(headerRow).not.to.have.class('table-sticky-header--is-active');
-
-      const headerCells = component.querySelectorAll('.table-sticky-header__cell');
-      headerCells.forEach((cell) => {
-        expect(cell).to.have.class('table-sticky-header__cell--is-active');
-      });
+      const headerRow = component.renderRoot.querySelector(
+        `[data-pharos-component="PharosTableHead"]`
+      );
+      expect(headerRow).not.to.have.attribute('active');
     });
+
     it('throws an error if caption is not provided', async () => {
       let errorThrown = false;
       try {
@@ -207,34 +205,22 @@ describe('pharos-table', () => {
       expect(errorThrown).to.be.true;
     });
   });
+
   describe('pharos-table using slotted content', () => {
     let component: PharosTable;
-    const columns = [
-      {
-        name: 'Item',
-        field: 'item',
-      },
-      {
-        name: 'Filename',
-        field: 'filename',
-      },
-      {
-        name: 'Expired Date',
-        field: 'expired_date',
-      },
-      {
-        name: 'Created On',
-        field: 'created_on',
-      },
-      {
-        name: 'University',
-        field: 'university',
-      },
-    ];
 
     beforeEach(async () => {
       component = await fixture(html`
-        <test-pharos-table .columns="${columns}" caption="test table">
+        <test-pharos-table caption="test table">
+          <test-pharos-table-head>
+            <test-pharos-table-row>
+              <test-pharos-table-column-header>Item</test-pharos-table-column-header>
+              <test-pharos-table-column-header>Filename</test-pharos-table-column-header>
+              <test-pharos-table-column-header>Expired Date</test-pharos-table-column-header>
+              <test-pharos-table-column-header>Created On</test-pharos-table-column-header>
+              <test-pharos-table-column-header>University</test-pharos-table-column-header>
+            </test-pharos-table-row>
+          </test-pharos-table-head>
           <test-pharos-table-body>
             <test-pharos-table-row>
               <test-pharos-table-cell>1</test-pharos-table-cell>
@@ -265,14 +251,17 @@ describe('pharos-table', () => {
 
       // `!.` casts this as non-null, which is validated in the expect above
       const slottedElements = slot!.assignedElements();
-      const rows = slottedElements[0].querySelectorAll(`[role="row"]`);
+      const rows = slottedElements[1].querySelectorAll(`[role="row"]`);
       expect(rows.length).to.be.eq(2);
     });
 
     it('renders a sticky table header when has-sticky-header is set', async () => {
       component.hasStickyHeader = true;
       await component.updateComplete;
-      const headerRow = component.renderRoot.querySelector(`.table-header`);
+      console.log('logsfortesting', component.renderRoot);
+      const headerRow = component.renderRoot.querySelector(
+        `[data-pharos-component="PharosTableHead"]`
+      );
       await expect(headerRow).to.have.style('position', 'sticky');
     });
 
@@ -281,28 +270,24 @@ describe('pharos-table', () => {
       component['_toggleActiveStickyHeader'](true);
       await component.updateComplete;
 
-      const headerRow = component.renderRoot.querySelector(`.table-sticky-header`);
-      expect(headerRow).to.have.class('table-sticky-header--is-active');
-
-      const headerCells = component.querySelectorAll('.table-sticky-header__cell');
-      headerCells.forEach((cell) => {
-        expect(cell).to.have.class('table-sticky-header__cell--is-active');
-      });
+      const headerRow = component.renderRoot.querySelector(
+        `[data-pharos-component="PharosTableHead"]`
+      );
+      expect(headerRow).to.have.attribute('active');
     });
+
     it('removes the active state on a sticky header when the header no longer intersects with the table', async () => {
       component.hasStickyHeader = true;
       component['_toggleActiveStickyHeader'](true);
       component['_toggleActiveStickyHeader'](false);
       await component.updateComplete;
 
-      const headerRow = component.renderRoot.querySelector(`.table-sticky-header`);
-      expect(headerRow).not.to.have.class('table-sticky-header--is-active');
-
-      const headerCells = component.querySelectorAll('.table-sticky-header__cell');
-      headerCells.forEach((cell) => {
-        expect(cell).to.have.class('table-sticky-header__cell--is-active');
-      });
+      const headerRow = component.renderRoot.querySelector(
+        `[data-pharos-component="PharosTableHead"]`
+      );
+      expect(headerRow).not.to.have.attribute('active');
     });
+
     it('throws an error if caption is not provided', async () => {
       let errorThrown = false;
       try {

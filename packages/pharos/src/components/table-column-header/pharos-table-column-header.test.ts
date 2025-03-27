@@ -5,7 +5,9 @@ import { PharosTableColumnHeader } from './pharos-table-column-header';
 describe('PharosTableColumnHeader', () => {
   let component: PharosTableColumnHeader;
   beforeEach(async () => {
-    component = await fixture(html` <test-pharos-table-column-header></test-pharos-table-column-header> `);
+    component = await fixture(html`
+      <test-pharos-table-column-header></test-pharos-table-column-header>
+    `);
   });
 
   it('should have the correct role attribute on the custom element', async () => {
@@ -14,6 +16,6 @@ describe('PharosTableColumnHeader', () => {
 
   it('should have the correct display style on the custom element', async () => {
     const displayValue = window.getComputedStyle(component, null).getPropertyValue('display');
-    expect(displayValue).to.equal('table-row');
+    expect(displayValue).to.equal('table-cell');
   });
 });
