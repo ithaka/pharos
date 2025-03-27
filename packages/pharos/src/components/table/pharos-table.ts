@@ -2,7 +2,7 @@ import { PharosElement } from '../base/pharos-element';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { html, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { state } from 'lit/decorators.js';
+import { query, queryAssignedElements, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { property } from 'lit/decorators.js';
 import { tableStyles } from './pharos-table.css';
@@ -11,6 +11,7 @@ import { PharosPagination } from '../pagination/pharos-pagination';
 import { PharosTableRow } from '../table-row/pharos-table-row';
 import { PharosTableCell } from '../table-cell/pharos-table-cell';
 import { PharosTableColumnHeader } from '../table-column-header/pharos-table-column-header';
+import { PharosTableHead } from '../table-head/pharos-table-head';
 
 export type ColumnSpecification = {
   name: string;
@@ -36,7 +37,8 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     'pharos-pagination': PharosPagination,
     'pharos-table-row': PharosTableRow,
     'pharos-table-cell': PharosTableCell,
-    'pharos-table-header': PharosTableColumnHeader,
+    'pharos-table-column-header': PharosTableColumnHeader,
+    'pharos-table-head': PharosTableHead,
   };
 
   /**
@@ -93,6 +95,12 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   @property({ type: Boolean, reflect: true, attribute: 'has-sticky-header' })
   public hasStickyHeader: boolean = false;
 
+  @query('[data-pharos-component="PharosTableHead"]')
+  private _tableHeadElement!: PharosTableHead;
+
+  @queryAssignedElements({ selector: '[data-pharos-component="PharosTableHead"]' })
+  private _slottedTableHeadElements!: PharosTableHead[];
+
   @state()
   private _pageSize = 50;
 
@@ -100,7 +108,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   private _currentPage = 1;
 
   @state()
-  private header: HTMLTableSectionElement | null = null;
+  private header: PharosTableHead | null = null;
 
   @state()
   private observer: IntersectionObserver | null = null;
@@ -108,13 +116,17 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   protected override firstUpdated(): void {
     this._pageSize = !this.showPagination ? this.rowData.length : this.pageSizeOptions[0];
     this.totalResults = !this.totalResults ? this.rowData.length : this.totalResults;
-    this.header = this.shadowRoot?.querySelector('.table-header') ?? null;
+    this.header = this._tableHeadElement || this._slottedTableHeadElements[0];
     if (this.hasStickyHeader) {
       this._initHeaderObserver();
     }
   }
 
   protected override updated(): void {
+    if (this._tableHeadElement || this._slottedTableHeadElements.length > 0) {
+      const head = this._tableHeadElement || this._slottedTableHeadElements[0];
+      head.sticky = this.hasStickyHeader;
+    }
     if (!this.caption) {
       throw new Error(
         'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption` property.'
@@ -125,21 +137,24 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _toggleActiveStickyHeader = (active: boolean) => {
-    const ACTIVE_HEADER_CLASS = 'table-sticky-header--is-active';
-    const ACTIVE_HEADER_CELL_CLASS = 'table-sticky-header__cell--is-active';
-    const headerCells = this.header?.querySelectorAll('.table-header__cell');
-
-    if (active) {
-      this.header?.classList.add(ACTIVE_HEADER_CLASS);
-      headerCells?.forEach((cell) => {
-        cell.classList.add(ACTIVE_HEADER_CELL_CLASS);
-      });
-    } else {
-      this.header?.classList.remove(ACTIVE_HEADER_CLASS);
-      headerCells?.forEach((cell) => {
-        cell.classList.remove(ACTIVE_HEADER_CELL_CLASS);
-      });
+    // const ACTIVE_HEADER_CLASS = 'table-sticky-header--is-active';
+    // const ACTIVE_HEADER_CELL_CLASS = 'table-sticky-header__cell--is-active';
+    // const headerCells = this.header?.querySelectorAll('.table-header__cell');
+    if (this.header) {
+      this.header.active = active;
     }
+
+    // if (active) {
+    //   this.header?.active = true;
+    //   headerCells?.forEach((cell) => {
+    //     cell.classList.add(ACTIVE_HEADER_CELL_CLASS);
+    //   });
+    // } else {
+    //   this.header?.classList.remove(ACTIVE_HEADER_CLASS);
+    //   headerCells?.forEach((cell) => {
+    //     cell.classList.remove(ACTIVE_HEADER_CELL_CLASS);
+    //   });
+    // }
   };
 
   private _initHeaderObserver(): void {
@@ -220,32 +235,16 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _renderTableHeader(): TemplateResult {
-    if (this.columns.length === 0) {
-      return html`<div
-        class=${classMap({
-          'table-header': true,
-          ['table-sticky-header']: this.hasStickyHeader,
-        })}
-        role="rowgroup"
-      >
-        <slot name="table-header"></slot>
-      </div>`;
-    } else {
-      return html`<div
-        class=${classMap({
-          'table-header': true,
-          ['table-sticky-header']: this.hasStickyHeader,
-        })}
-        role="rowgroup"
-      >
-        <div class="table-row" role="row">
-          ${this.columns.map(
-            (column) =>
-              html`<div class="table-header__cell" role="columnheader">${column.name}</div>`
-          )}
-        </div>
-      </div>`;
-    }
+    return html` ${this.columns.length === 0
+      ? nothing
+      : html`<pharos-table-head>
+          <pharos-table-row>
+            ${this.columns.map(
+              (column: ColumnSpecification) =>
+                html`<pharos-table-column-header>${column.name}</pharos-table-column-header>`
+            )}
+          </pharos-table-row>
+        </pharos-table-head>`}`;
   }
 
   private _renderPagination(): TemplateResult | typeof nothing {

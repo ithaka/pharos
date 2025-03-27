@@ -278,18 +278,22 @@ export const RowDataWithPagination = {
 
 export const TableWithCustomHeader = {
   render: ({ showPagination }) => html`
-    <storybook-pharos-table .showPagination="${showPagination}" caption="An example table">
-      <storybook-pharos-table-header slot="table-header"
-        >Custom header 1</storybook-pharos-table-header
-      >
-      <storybook-pharos-table-header slot="table-header"
-        >Custom header 2</storybook-pharos-table-header
-      >
-      <storybook-pharos-table-header slot="table-header"
-        >Custom header 3</storybook-pharos-table-header
-      >
+    <storybook-pharos-table
+      .showPagination="${showPagination}"
+      has-sticky-header
+      caption="An example table"
+    >
+      <storybook-pharos-table-head>
+        <storybook-pharos-table-row>
+          <storybook-pharos-table-column-header>Item</storybook-pharos-table-column-header>
+          <storybook-pharos-table-column-header>Filename</storybook-pharos-table-column-header>
+          <storybook-pharos-table-column-header>Expired Date</storybook-pharos-table-column-header>
+          <storybook-pharos-table-column-header>Created On</storybook-pharos-table-column-header>
+          <storybook-pharos-table-column-header>University</storybook-pharos-table-column-header>
+        </storybook-pharos-table-row>
+      </storybook-pharos-table-head>
       <storybook-pharos-table-body>
-        ${Array.from({ length: 5 }, (_, index) => getSampleTextRow(index + 1))}
+        ${Array.from({ length: 20 }, (_, index) => getSampleTextRow(index + 1))}
       </storybook-pharos-table-body>
     </storybook-pharos-table>
   `,

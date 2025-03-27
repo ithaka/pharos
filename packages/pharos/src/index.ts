@@ -20,6 +20,7 @@ export { PharosTableBody } from './components/table-body/pharos-table-body';
 export { PharosTableRow } from './components/table-row/pharos-table-row';
 export { PharosTableCell } from './components/table-cell/pharos-table-cell';
 export { PharosTableColumnHeader } from './components/table-column-header/pharos-table-column-header';
+export { PharosTableHead } from './components/table-head/pharos-table-head';
 export { PharosTabs } from './components/tabs/pharos-tabs';
 export { PharosTabPanel } from './components/tabs/pharos-tab-panel';
 export { PharosPagination } from './components/pagination/pharos-pagination';

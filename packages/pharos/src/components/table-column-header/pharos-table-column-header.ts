@@ -6,7 +6,7 @@ import { tableColumnHeaderStyles } from './pharos-table-column-header.css';
 /**
  * Pharos table header component.
  *
- * @tag pharos-table
+ * @tag pharos-table-column-header
  *
  *
  */
@@ -20,8 +20,6 @@ export class PharosTableColumnHeader extends ScopedRegistryMixin(PharosElement) 
   }
 
   protected override render(): TemplateResult {
-    return html`<div class="table-header">
-      <slot></slot>
-    </div>`;
+    return html` <slot></slot> `;
   }
 }
