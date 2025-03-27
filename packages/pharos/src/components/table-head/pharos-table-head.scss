@@ -10,6 +10,6 @@
   z-index: 105;
 }
 
-:host([sticky][active]) {
+:host([sticky][elevated]) {
   box-shadow: var(--pharos-elevation-level-2);
 }

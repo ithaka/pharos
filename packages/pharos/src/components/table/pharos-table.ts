@@ -140,9 +140,9 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     this.totalResults = !this.totalResults ? this.rowData.length : this.totalResults;
   }
 
-  private _toggleActiveStickyHeader = (active: boolean) => {
+  private _toggleElevatedStickyHeader = (elevated: boolean) => {
     if (this.header) {
-      this.header.active = active;
+      this.header.elevated = elevated;
     }
   };
 
@@ -154,7 +154,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
     this.observer = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
-          this._toggleActiveStickyHeader(entry.isIntersecting);
+          this._toggleElevatedStickyHeader(entry.isIntersecting);
         });
       },
       {

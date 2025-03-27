@@ -158,27 +158,27 @@ describe('pharos-table', () => {
       await expect(headerRow).to.have.style('position', 'sticky');
     });
 
-    it('sets an active state on a sticky header when the header intersects with the table', async () => {
+    it('sets an elevated state on a sticky header when the header intersects with the table', async () => {
       component.hasStickyHeader = true;
-      component['_toggleActiveStickyHeader'](true);
+      component['_toggleElevatedStickyHeader'](true);
       await component.updateComplete;
 
       const headerRow = component.renderRoot.querySelector(
         `[data-pharos-component="PharosTableHead"]`
       );
-      expect(headerRow).to.have.attribute('active');
+      expect(headerRow).to.have.attribute('elevated');
     });
 
-    it('removes the active state on a sticky header when the header no longer intersects with the table', async () => {
+    it('removes the elevated state on a sticky header when the header no longer intersects with the table', async () => {
       component.hasStickyHeader = true;
-      component['_toggleActiveStickyHeader'](true);
-      component['_toggleActiveStickyHeader'](false);
+      component['_toggleElevatedStickyHeader'](true);
+      component['_toggleElevatedStickyHeader'](false);
       await component.updateComplete;
 
       const headerRow = component.renderRoot.querySelector(
         `[data-pharos-component="PharosTableHead"]`
       );
-      expect(headerRow).not.to.have.attribute('active');
+      expect(headerRow).not.to.have.attribute('elevated');
     });
 
     it('throws an error if caption is not provided', async () => {
@@ -266,29 +266,29 @@ describe('pharos-table', () => {
       await expect(headerRow).to.have.style('position', 'sticky');
     });
 
-    it('sets an active state on a sticky header when the header intersects with the table', async () => {
+    it('sets an elevated state on a sticky header when the header intersects with the table', async () => {
       component.hasStickyHeader = true;
-      component['_toggleActiveStickyHeader'](true);
+      component['_toggleElevatedStickyHeader'](true);
       await component.updateComplete;
 
       const slot = component.renderRoot.querySelector('slot');
       expect(slot).to.exist;
       const slottedElements = slot!.assignedElements();
       const headerRow = slottedElements[0];
-      expect(headerRow).to.have.attribute('active');
+      expect(headerRow).to.have.attribute('elevated');
     });
 
-    it('removes the active state on a sticky header when the header no longer intersects with the table', async () => {
+    it('removes the elevated state on a sticky header when the header no longer intersects with the table', async () => {
       component.hasStickyHeader = true;
-      component['_toggleActiveStickyHeader'](true);
-      component['_toggleActiveStickyHeader'](false);
+      component['_toggleElevatedStickyHeader'](true);
+      component['_toggleElevatedStickyHeader'](false);
       await component.updateComplete;
 
       const slot = component.renderRoot.querySelector('slot');
       expect(slot).to.exist;
       const slottedElements = slot!.assignedElements();
       const headerRow = slottedElements[0];
-      expect(headerRow).not.to.have.attribute('active');
+      expect(headerRow).not.to.have.attribute('elevated');
     });
 
     it('throws an error if caption is not provided', async () => {

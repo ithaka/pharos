@@ -15,8 +15,8 @@ export class PharosTableHead extends ScopedRegistryMixin(PharosElement) {
   @property({ type: Boolean, reflect: true, attribute: 'sticky' })
   public sticky: boolean = false;
 
-  @property({ type: Boolean, reflect: true, attribute: 'active' })
-  public active: boolean = false;
+  @property({ type: Boolean, reflect: true, attribute: 'elevated' })
+  public elevated: boolean = false;
 
   public static override get styles(): CSSResultArray {
     return [tableHeadStyles];
