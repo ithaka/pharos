@@ -30,12 +30,14 @@ export class PharosSwitch extends FormMixin(FormElement) {
   @query('#switch-element')
   private _switch!: HTMLInputElement;
 
+  private _defaultChecked = false;
+
   public static override get styles(): CSSResultArray {
     return [switchStyles];
   }
 
   protected override firstUpdated(): void {
-    this._switch.defaultChecked = this.checked;
+    this._defaultChecked = this.checked;
   }
 
   private _handleClick(event: Event): void {
@@ -51,6 +53,7 @@ export class PharosSwitch extends FormMixin(FormElement) {
     const originalCheckedState = !this._switch.checked;
 
     this.checked = this._switch.checked;
+    console.log('onChange', this.checked);
 
     const notCancelled = this.dispatchEvent(
       new CustomEvent('change', {
@@ -80,7 +83,7 @@ export class PharosSwitch extends FormMixin(FormElement) {
   }
 
   _handleFormReset(): void {
-    this.checked = this._switch.defaultChecked;
+    this.checked = this._defaultChecked;
   }
 
   protected override render(): TemplateResult {
