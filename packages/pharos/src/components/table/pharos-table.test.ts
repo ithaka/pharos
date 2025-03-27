@@ -258,10 +258,11 @@ describe('pharos-table', () => {
     it('renders a sticky table header when has-sticky-header is set', async () => {
       component.hasStickyHeader = true;
       await component.updateComplete;
-      console.log('logsfortesting', component.renderRoot);
-      const headerRow = component.renderRoot.querySelector(
-        `[data-pharos-component="PharosTableHead"]`
-      );
+
+      const slot = component.renderRoot.querySelector('slot');
+      expect(slot).to.exist;
+      const slottedElements = slot!.assignedElements();
+      const headerRow = slottedElements[0];
       await expect(headerRow).to.have.style('position', 'sticky');
     });
 
@@ -270,9 +271,10 @@ describe('pharos-table', () => {
       component['_toggleActiveStickyHeader'](true);
       await component.updateComplete;
 
-      const headerRow = component.renderRoot.querySelector(
-        `[data-pharos-component="PharosTableHead"]`
-      );
+      const slot = component.renderRoot.querySelector('slot');
+      expect(slot).to.exist;
+      const slottedElements = slot!.assignedElements();
+      const headerRow = slottedElements[0];
       expect(headerRow).to.have.attribute('active');
     });
 
@@ -282,9 +284,10 @@ describe('pharos-table', () => {
       component['_toggleActiveStickyHeader'](false);
       await component.updateComplete;
 
-      const headerRow = component.renderRoot.querySelector(
-        `[data-pharos-component="PharosTableHead"]`
-      );
+      const slot = component.renderRoot.querySelector('slot');
+      expect(slot).to.exist;
+      const slottedElements = slot!.assignedElements();
+      const headerRow = slottedElements[0];
       expect(headerRow).not.to.have.attribute('active');
     });
 
