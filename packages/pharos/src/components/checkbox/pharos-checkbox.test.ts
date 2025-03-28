@@ -296,14 +296,20 @@ describe('pharos-checkbox', () => {
       { parentNode }
     );
 
+    const form = document.querySelector('form');
+    const formdataInitial = createFormData(form as HTMLFormElement);
+    expect(formdataInitial.get('my-checkbox')).to.equal('test');
+
     component.checked = false;
     await component.updateComplete;
 
-    const form = document.querySelector('form');
+    const formdataUnchecked = createFormData(form as HTMLFormElement);
+    expect(formdataUnchecked.get('my-checkbox')).to.equal(null);
+
     form?.dispatchEvent(new Event('reset'));
     await component.updateComplete;
 
-    const formdata = createFormData(form as HTMLFormElement);
-    expect(formdata.get('my-checkbox')).to.equal('test');
+    const formdataReset = createFormData(form as HTMLFormElement);
+    expect(formdataReset.get('my-checkbox')).to.equal('test');
   });
 });
