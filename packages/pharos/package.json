@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "14.10.1",
+  "version": "14.11.0",
   "description": "Pharos web components for products and experiences",
   "files": [
     "lib",
