@@ -1,0 +1,15 @@
+:host {
+  display: table-row-group;
+  background-color: var(--pharos-table-header-color-background, var(--pharos-color-ui-20));
+  font-weight: bold;
+}
+
+:host([sticky]) {
+  position: sticky;
+  top: 0;
+  z-index: 105;
+}
+
+:host([sticky][elevated]) {
+  box-shadow: var(--pharos-elevation-level-2);
+}
