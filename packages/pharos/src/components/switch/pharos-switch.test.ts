@@ -234,14 +234,20 @@ describe('pharos-switch', () => {
       { parentNode }
     );
 
+    const form = document.querySelector('form');
+    const formdataInitial = createFormData(form as HTMLFormElement);
+    expect(formdataInitial.get('my-switch')).to.equal('test');
+
     component.checked = false;
     await component.updateComplete;
 
-    const form = document.querySelector('form');
+    const formdataUnchecked = createFormData(form as HTMLFormElement);
+    expect(formdataUnchecked.get('my-switch')).to.equal(null);
+
     form?.dispatchEvent(new Event('reset'));
     await component.updateComplete;
 
-    const formdata = createFormData(form as HTMLFormElement);
-    expect(formdata.get('my-switch')).to.equal('test');
+    const formdataReset = createFormData(form as HTMLFormElement);
+    expect(formdataReset.get('my-switch')).to.equal('test');
   });
 });
