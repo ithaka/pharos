@@ -124,7 +124,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
       const head = this._tableHeadElement || this._slottedTableHeadElements[0];
       head.sticky = this.hasStickyHeader;
       if (!this.observer && this.hasStickyHeader) {
-        // Wait for the header height to be calculated before adding the ob
+        // Wait for the header height to be calculated before adding the observer
         const headerHeight = head.getBoundingClientRect().height;
         if (headerHeight) {
           this._initHeaderObserver(headerHeight);
