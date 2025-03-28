@@ -1,26 +1,25 @@
 import { html, type CSSResultArray, type TemplateResult } from 'lit';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosElement } from '../base/pharos-element';
-import { tableCellStyles } from './pharos-table-cell.css';
+import { tableColumnHeaderStyles } from './pharos-table-column-header.css';
 
 /**
- * Pharos table cell component.
+ * Pharos table header component.
  *
- * @tag pharos-table
+ * @tag pharos-table-column-header
  *
  *
  */
-
-export class PharosTableCell extends ScopedRegistryMixin(PharosElement) {
+export class PharosTableColumnHeader extends ScopedRegistryMixin(PharosElement) {
   public static override get styles(): CSSResultArray {
-    return [tableCellStyles];
+    return [tableColumnHeaderStyles];
   }
 
   protected override firstUpdated(): void {
-    this.setAttribute('role', 'cell');
+    this.setAttribute('role', 'columnheader');
   }
 
   protected override render(): TemplateResult {
-    return html`<slot></slot>`;
+    return html` <slot></slot> `;
   }
 }
