@@ -1,5 +1,18 @@
 # @ithaka/pharos
 
+## 14.11.0
+
+### Minor Changes
+
+- [#915](https://github.com/ithaka/pharos/pull/915) [`c280dbb`](https://github.com/ithaka/pharos/commit/c280dbb1e5801cdc8aff579f14ec13bfcaa0968c) Thanks [@adandavati](https://github.com/adandavati)! - - Remove resizeObserver from every table cell, since it was causing performance issues with larger tables.
+  - Update the table to allow passing custom headers while maintaining backwards compatibility for a columns array being passed in.
+
+### Patch Changes
+
+- [#908](https://github.com/ithaka/pharos/pull/908) [`d56d07e`](https://github.com/ithaka/pharos/commit/d56d07ee0e993aa5bc35824dd9d6b086eabf7cf1) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Remove tabindex from alert component
+
+- [#916](https://github.com/ithaka/pharos/pull/916) [`1822ed4`](https://github.com/ithaka/pharos/commit/1822ed42607625850e5088524f1dbfe16576ba61) Thanks [@michael-iden](https://github.com/michael-iden)! - define `checked` to be a boolean attribute on checkboxes
+
 ## 14.10.1
 
 ### Patch Changes
