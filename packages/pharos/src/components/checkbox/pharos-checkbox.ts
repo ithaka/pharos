@@ -55,12 +55,14 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   @query('#checkbox-element')
   private _checkbox!: HTMLInputElement;
 
+  private _defaultChecked = false;
+
   public static override get styles(): CSSResultArray {
     return [super.styles, checkboxStyles];
   }
 
   protected override firstUpdated(): void {
-    this._checkbox.defaultChecked = this.checked;
+    this._defaultChecked = this.checked;
   }
 
   public onChange(): void {
@@ -103,7 +105,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   }
 
   _handleFormReset(): void {
-    this.checked = this._checkbox.defaultChecked;
+    this.checked = this._defaultChecked;
   }
 
   private _handleClick(event: Event): void {
@@ -136,8 +138,8 @@ export class PharosCheckbox extends FormMixin(FormElement) {
         name=${this.name}
         type="checkbox"
         .value=${this.value}
-        .checked=${this.checked}
         .indeterminate=${this.indeterminate}
+        ?checked=${this.checked}
         ?required="${this.required}"
         ?disabled=${this.disabled}
         aria-required="${this.required}"
