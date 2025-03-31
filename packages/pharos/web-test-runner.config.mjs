@@ -7,6 +7,7 @@ export default {
   nodeResolve: true,
   concurrentBrowsers: 3,
   coverage: true,
+  browserStartTimeout: 60000,
   testsStartTimeout: 45000,
   coverageConfig: {
     threshold: {
