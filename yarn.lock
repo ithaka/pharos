@@ -12371,15 +12371,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-wc@npm:^2.2.1":
-  version: 2.2.1
-  resolution: "eslint-plugin-wc@npm:2.2.1"
+"eslint-plugin-wc@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "eslint-plugin-wc@npm:3.0.0"
   dependencies:
     is-valid-element-name: "npm:^1.0.0"
-    js-levenshtein-esm: "npm:^1.2.0"
+    js-levenshtein-esm: "npm:^2.0.0"
   peerDependencies:
     eslint: ">=8.40.0"
-  checksum: 10c0/9728e0e8eb7afec9bf06bf0079c2a0cc9bf3a9d39036fd8999b807436bab08de63fcc926c7b10be751f4659da7b55ccfae81a6066086f42e7bf109040caf0758
+  checksum: 10c0/8ebf13e8be3bfb9949920cbdcc0ec60089812d01651cd5caf50123774fde0fa73ab3c25c7c3991f1326cb5b57dad71ed09294b2293a60f4b735e828558ecd088
   languageName: node
   linkType: hard
 
@@ -16776,10 +16776,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-levenshtein-esm@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "js-levenshtein-esm@npm:1.2.0"
-  checksum: 10c0/7a6f6f5f911eb90ff266b05914e21c1bb9a9448bf6040e4e40eb0cc886f9d9b6faea74e0da6bec22bbe263a5e81c8215de300365a5e0444fee35ae7d023a3908
+"js-levenshtein-esm@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "js-levenshtein-esm@npm:2.0.0"
+  checksum: 10c0/920b43be6d79ef68ecf5c3beda925feff33800e96d303c4d15e6dadbd7feed00f0a6cd3bacc4a70e5032b2102654ddf6d10ae1b4e9a770fcffe4d5af2e6f1e26
   languageName: node
   linkType: hard
 
@@ -20029,7 +20029,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.37.4"
     eslint-plugin-react-hooks: "npm:^5.2.0"
     eslint-plugin-storybook: "npm:^0.12.0"
-    eslint-plugin-wc: "npm:^2.2.1"
+    eslint-plugin-wc: "npm:^3.0.0"
     globals: "npm:^16.0.0"
     husky: "npm:^9.1.7"
     lint-staged: "npm:^15.5.0"
