@@ -3,6 +3,7 @@ module.exports = {
   plugins: [
     '@babel/plugin-transform-shorthand-properties',
     '@babel/plugin-transform-block-scoping',
+    '@babel/plugin-transform-class-static-block',
     ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     ['@babel/plugin-transform-private-methods', { loose: true }],
