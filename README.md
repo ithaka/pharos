@@ -105,6 +105,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://matharris.dev/"><img src="https://avatars.githubusercontent.com/u/6874453?v=4?s=100" width="100px;" alt="Mat Harris"/><br /><sub><b>Mat Harris</b></sub></a><br /><a href="#a11y-sirrah-tam" title="Accessibility">️️️️♿️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/david-corneail"><img src="https://avatars.githubusercontent.com/u/104939119?v=4?s=100" width="100px;" alt="david-corneail"/><br /><sub><b>david-corneail</b></sub></a><br /><a href="#design-david-corneail" title="Design">🎨</a> <a href="https://github.com/ithaka/pharos/commits?author=david-corneail" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ymouzakis"><img src="https://avatars.githubusercontent.com/u/64924035?s=400&v=4?s=100" width="100px;" alt="Yanni Mouzakis"/><br /><sub><b>Yanni Mouzakis</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=ymouzakis" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Zahraa222"><img src="https://avatars.githubusercontent.com/u/66334839?v=4?s=100" width="100px;" alt="Zahraa Alhmood"/><br /><sub><b>Zahraa Alhmood</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=Zahraa222" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
