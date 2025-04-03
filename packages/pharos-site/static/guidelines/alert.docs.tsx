@@ -202,100 +202,42 @@ const AlertPage: FC = () => {
         </PageSection>
       </PageSection>
       <PageSection title="Accessibility">
-        <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
+        <PageSection subSectionLevel={1} title="What's built in">
           <ul>
             <li>
-              <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification">
-                3.3.1 Error Identification A
-              </PharosLink>
+              Ensures alerts are perceivable by assistive technologies by using appropriate ARIA
+              roles (e.g., <code>role="alert"</code> for dynamic messages).
             </li>
             <li>
-              <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion">
-                3.3.3 Error Suggestion AA
-              </PharosLink>
+              Provides predefined color schemes for different alert types (e.g., success, error,
+              warning, info) that meet contrast requirements.
             </li>
             <li>
-              <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html">
-                4.1.3 Status Messages
-              </PharosLink>
-            </li>
-            <li>
-              <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html">
-                1.4.13 Content on Hover or Focus AA
-              </PharosLink>
+              Supports dismissible alerts with accessible close buttons that have proper labels and
+              keyboard support.
             </li>
           </ul>
         </PageSection>
-        <PageSection subSectionLevel={1} title="Importance">
-          <ul>
-            <li>
-              Alerts notify assistive technologies of a message that will be audibly read to the
-              users if
-              <code>role=alert</code> is put onto an element
-              <ul>
-                <li>
-                  Examples (via MDN): invalid form entry, expiring session or loss of connection
-                  resulting in unsaved changes
-                </li>
-              </ul>
-            </li>
-            <li>
-              Different ways to use aria-live:
-              <ul>
-                <li>
-                  <code>aria-live="assertive"</code>
-                  <ul>
-                    <li>Immediately interrupts the user to read the message</li>
-                    <li>A use case would be informing the user of an error message</li>
-                  </ul>
-                </li>
-                <li>
-                  <code>aria-live="polite" </code>
-                  <ul>
-                    <li>Waits until the user is idle to deliver the message</li>
-                    <li>
-                      A use case would be informing the user of information that is immediately
-                      important so it can wait until they are at a standstill, such as a loading
-                      spinner
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </PageSection>
-        <PageSection subSectionLevel={1} title="Code expectations">
-          <ul>
-            <li>
-              Putting <code>role="alert"</code> can notify users of a error in a form
-              <ul>
-                <li>
-                  This technique is the same as adding <code>aria-live="assertive"</code>
-                </li>
-              </ul>
-            </li>
-            <li>
-              This element does not need to be able to receive focus as it is read as an audible
-              message, unless the alert contains links or any interactable elements
-            </li>
-            <li>
-              If an alert is displayed statically on a page, it does NOT need an "alert" role or
-              live region
-              <ul>
-                <li>
-                  If the alert opens on a new page, the user needs to be notified of this change
-                  audibly as well.
-                </li>
-              </ul>
-            </li>
-            <li>
-              If an alert appears after a user has taken an action, it should be wrapped in
-              aria-live-region and have <code>role="alert"</code> and{' '}
-              <code>aria-live="assertive"</code>. In cases where a user has taken action (like
-              filling out and submitting a form), the user's attention is required to remedy the
-              error.
-            </li>
-          </ul>
+        <PageSection subSectionLevel={1} title="Considerations">
+          <PageSection subSectionLevel={2} title="Design">
+            <ul>
+              <li>Ensure alerts provide clear, concise, and actionable messaging.</li>
+              <li>
+                Position alerts in a predictable location to ensure users can find them easily.
+              </li>
+              <li>
+                Consider how persistent the alert should be—does it need to stay on the screen until
+                dismissed, or should it disappear automatically?
+              </li>
+            </ul>
+          </PageSection>
+          <PageSection subSectionLevel={2} title="Development">
+            <ul>
+              <li>If the aria-live is "assertive" the alert is read immediately </li>
+              <li>If the aria-live is "polite" the alert is read when the user is idle</li>
+              <li>Error messages should inform the user on how to fix them</li>
+            </ul>
+          </PageSection>
         </PageSection>
         <PageSection subSectionLevel={1} title="Expected actions">
           <PageSection subSectionLevel={2} title="Screen reader">
@@ -305,23 +247,47 @@ const AlertPage: FC = () => {
               <li>Error messages should inform the user on how to fix them</li>
             </ul>
           </PageSection>
-          <PageSection subSectionLevel={2} title="Keyboard">
-            <ul>
-              <li>Alerts should be visible when they are announced to a user.</li>
-              <li>
-                They should perform the same for users that are keyboard-only and users that are
-                utilizing a mouse.
-                <ul>
-                  <li>
-                    Example: an alert that notifies a user that the form they filled out is
-                    incomplete would be visible regardless of whether the "submit" action was done
-                    via mouse or navigated to using the keyboard
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </PageSection>
         </PageSection>
+        <PageSection subSectionLevel={2} title="Keyboard">
+          <ul>
+            <li>Alerts should be visible when they are announced to a user.</li>
+            <li>
+              They should perform the same for users that are keyboard-only and users that are
+              utilizing a mouse.
+              <ul>
+                <li>
+                  Example: an alert that notifies a user that the form they filled out is incomplete
+                  would be visible regardless of whether the "submit" action was done via mouse or
+                  navigated to using the keyboard
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </PageSection>
+      </PageSection>
+      <PageSection subSectionLevel={1} title="Relevant WCAG guidelines">
+        <ul>
+          <li>
+            <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification">
+              3.3.1 Error Identification A
+            </PharosLink>
+          </li>
+          <li>
+            <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion">
+              3.3.3 Error Suggestion AA
+            </PharosLink>
+          </li>
+          <li>
+            <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html">
+              4.1.3 Status Messages
+            </PharosLink>
+          </li>
+          <li>
+            <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html">
+              1.4.13 Content on Hover or Focus AA
+            </PharosLink>
+          </li>
+        </ul>
       </PageSection>
     </>
   );
