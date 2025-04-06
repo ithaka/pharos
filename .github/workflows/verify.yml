@@ -65,7 +65,7 @@ jobs:
 
       - name: Get Playwright version
         id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(yarn info --all --recursive playwright version | head -1 | sed 's/.*playwright@npm://')" >> $GITHUB_ENV
+        run: echo "PLAYWRIGHT_VERSION=$(yarn info --all --recursive playwright version --json | jq -r .children.Version)" >> $GITHUB_ENV
 
       - name: Cache Playwright dependencies
         uses: actions/cache@v4
