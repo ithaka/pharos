@@ -63,14 +63,27 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - name: Get Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(yarn info --all --recursive playwright version | head -1 | sed -E 's/.*playwright@npm:([0-9]+\.[0-9]+\.[0-9]+).*/\1/')" >> $GITHUB_ENV
+
+      - name: Cache Playwright dependencies
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
       - name: Install Dependencies
         run: yarn --check-cache --immutable
 
       - name: Install Browsers
         run: npx playwright install
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Install Browsers Dependencies
         run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Test
         run: yarn test
