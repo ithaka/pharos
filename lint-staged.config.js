@@ -1,4 +1,5 @@
 module.exports = {
+  'packages/pharos/assets/icons/*.svg': [`svglint --ci`],
   '*.{ts,tsx,js,mjs}': ['eslint --fix'],
   '*.{scss,css}': ['stylelint --fix'],
   '**/!(.changeset)/*.md': (filenames) =>
