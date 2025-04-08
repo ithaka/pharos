@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 14.12.0
+
+### Minor Changes
+
+- [#927](https://github.com/ithaka/pharos/pull/927) [`b859ce8`](https://github.com/ithaka/pharos/commit/b859ce850e4f0554b8d98e16faf0e26056848440) Thanks [@Zahraa222](https://github.com/Zahraa222)! - feat(icon): Replace cite icon with new SVG
+
+### Patch Changes
+
+- [#925](https://github.com/ithaka/pharos/pull/925) [`464b5ac`](https://github.com/ithaka/pharos/commit/464b5acdd84ccca530c2021c56140aa50bb91afb) Thanks [@daneah](https://github.com/daneah)! - Update build target to es2022
+
 ## 14.11.0
 
 ### Minor Changes
