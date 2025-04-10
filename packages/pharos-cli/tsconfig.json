@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es2022",
+    "target": "es2021",
     "module": "commonjs",
     "strict": true,
     "allowJs": true,
