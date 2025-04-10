@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.12.1
+
+### Patch Changes
+
+- [#934](https://github.com/ithaka/pharos/pull/934) [`093f493`](https://github.com/ithaka/pharos/commit/093f4937ea463e9b750e072f3e8cbbd1adcfa81c) Thanks [@brentswisher](https://github.com/brentswisher)! - Revert update to target es2022 when compiling
+
 ## 14.12.0
 
 ### Minor Changes
