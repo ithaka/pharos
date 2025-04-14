@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "14.11.0",
+  "version": "14.12.1",
   "description": "Pharos web components for products and experiences",
   "files": [
     "lib",
@@ -88,7 +88,7 @@
     "sinon": "^20.0.0",
     "style-dictionary": "^3.9.2",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "customElements": "custom-elements.json",
   "exports": {
