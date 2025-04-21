@@ -12272,16 +12272,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-lit@npm:^1.15.0":
-  version: 1.15.0
-  resolution: "eslint-plugin-lit@npm:1.15.0"
+"eslint-plugin-lit@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "eslint-plugin-lit@npm:2.1.1"
   dependencies:
     parse5: "npm:^6.0.1"
     parse5-htmlparser2-tree-adapter: "npm:^6.0.1"
-    requireindex: "npm:^1.2.0"
   peerDependencies:
-    eslint: ">= 5"
-  checksum: 10c0/243ce44e9923c343760b2ca21bfc67cc3857b93ef2dd2dac06ca3e894d6fa1fbf50ab1aaec0278ef5c53b3a47fc9145d1dcd4791650e2cabdba89874457e99b4
+    eslint: ">= 8"
+  checksum: 10c0/f1dbd6f5f548bd68ad5b9ef548e2721d266cde89dda00ae3d6a8d9f2151bf04ba823a745b7327cfc18edc7e4f0cbdfffc5febb86c35371197856ad5853d8d814
   languageName: node
   linkType: hard
 
@@ -20030,7 +20029,7 @@ __metadata:
     eslint: "npm:^9.24.0"
     eslint-config-prettier: "npm:^10.1.2"
     eslint-plugin-jsx-a11y: "npm:^6.10.2"
-    eslint-plugin-lit: "npm:^1.15.0"
+    eslint-plugin-lit: "npm:^2.1.1"
     eslint-plugin-prettier: "npm:^5.2.6"
     eslint-plugin-react: "npm:^7.37.5"
     eslint-plugin-react-hooks: "npm:^5.2.0"
@@ -22469,13 +22468,6 @@ __metadata:
   version: 2.0.1
   resolution: "require-package-name@npm:2.0.1"
   checksum: 10c0/2da87caecdd2157489deaf8add246696dc9cbcebd89ef49b062ad1183594b979f96f8194d4b0f5447a92ad72d39b9fae2df38ec5b9ecef9c7c0157af38eeecbc
-  languageName: node
-  linkType: hard
-
-"requireindex@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "requireindex@npm:1.2.0"
-  checksum: 10c0/7fb42aed73bf8de9acc4d6716cf07acc7fbe180e58729433bafcf702e76e7bb10e54f8266c06bfec62d752e0ac14d50e8758833de539e6f4e2cd642077866153
   languageName: node
   linkType: hard
 
