@@ -139,9 +139,9 @@ export class PharosCheckbox extends FormMixin(FormElement) {
         type="checkbox"
         .value=${this.value}
         .indeterminate=${this.indeterminate}
-        ?checked=${this.checked}
-        ?required="${this.required}"
-        ?disabled=${this.disabled}
+        .checked=${this.checked}
+        .required="${this.required}"
+        .disabled=${this.disabled}
         aria-required="${this.required}"
         aria-invalid="${this.invalidated}"
         aria-describedby="${ifDefined(this.messageId)}"

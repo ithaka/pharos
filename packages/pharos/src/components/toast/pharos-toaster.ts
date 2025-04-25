@@ -179,7 +179,7 @@ export class PharosToaster extends ScopedRegistryMixin(PharosElement) {
     return html`<pharos-toast
       id="${toast.id}"
       status="${toast.status}"
-      ?indefinite="${toast.indefinite}"
+      .indefinite="${toast.indefinite}"
     >
       ${toastContentElement}
     </pharos-toast>`;

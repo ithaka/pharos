@@ -251,7 +251,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
           class=${classes}
           variant="subtle"
           icon="close"
-          ?disabled=${this.disabled}
+          .disabled=${this.disabled}
           a11y-label="Clear option"
           @click=${this._handleClearClick}
           @mousedown=${this._handleClearClick}
@@ -272,7 +272,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
           variant="subtle"
           class="search__button"
           a11y-label="Search"
-          ?disabled=${this.disabled}
+          .disabled=${this.disabled}
           @click=${this.onChange}
         ></pharos-button>
       `;
@@ -283,7 +283,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
           type="button"
           class="combobox__button"
           aria-label="Dropdown"
-          ?disabled=${this.disabled}
+          .disabled=${this.disabled}
           @click=${this._handleButtonClick}
           @blur=${this._handleButtonBlur}
         >
@@ -472,8 +472,8 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
           name="${this.name}"
           type="text"
           .value="${this._displayValue}"
-          ?required="${this.required}"
-          ?disabled="${this.disabled}"
+          .required="${this.required}"
+          .disabled="${this.disabled}"
           placeholder="${this.placeholder}"
           role="combobox"
           aria-expanded="${this.open}"

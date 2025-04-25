@@ -175,9 +175,9 @@ export class PharosTextarea extends FormMixin(FormElement) {
           dirname=${ifDefined(this.dirname)}
           name="${this.name}"
           .value=${this.value}
-          ?required="${this.required}"
-          ?disabled=${this.disabled}
-          ?readonly=${this.readonly}
+          .required="${this.required}"
+          .disabled=${this.disabled}
+          .readonly=${this.readonly}
           placeholder="${this.placeholder}"
           maxlength=${ifDefined(this.maxlength)}
           minlength=${ifDefined(this.minlength)}

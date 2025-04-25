@@ -194,7 +194,7 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
               ${this.itemContent}
             </a> `
           : html`<button
-              ?disabled=${this.disabled}
+              .disabled=${this.disabled}
               class="${classMap({
                 [`dropdown-menu-item__button`]: true,
                 [`dropdown-menu-item__button--first`]: this._first,

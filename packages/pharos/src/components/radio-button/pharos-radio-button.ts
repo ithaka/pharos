@@ -83,8 +83,8 @@ export class PharosRadioButton extends FormMixin(FormElement) {
         type="radio"
         .value=${this.value}
         .checked=${this.checked}
-        ?required="${this.required}"
-        ?disabled=${this.disabled}
+        .required="${this.required}"
+        .disabled=${this.disabled}
         @change=${this.onChange}
         aria-describedby="${ifDefined(this.messageId)}"
       />

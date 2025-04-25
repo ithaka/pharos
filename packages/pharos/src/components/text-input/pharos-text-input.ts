@@ -259,9 +259,9 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
           name="${this.name}"
           .type="${this.type}"
           .value=${this.value}
-          ?required="${this.required}"
-          ?disabled=${this.disabled}
-          ?readonly=${this.readonly}
+          .required="${this.required}"
+          .disabled=${this.disabled}
+          .readonly=${this.readonly}
           placeholder="${this.placeholder}"
           autocomplete="${ifDefined(this.autocomplete)}"
           maxlength=${ifDefined(this.maxlength)}

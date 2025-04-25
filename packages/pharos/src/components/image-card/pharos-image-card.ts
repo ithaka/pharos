@@ -346,7 +346,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       href="${this.link}"
       subtle
       flex
-      ?indicate-visited="${this.indicateLinkVisited}"
+      .indicate-visited="${this.indicateLinkVisited}"
       @click=${this._cardToggleSelect}
       >${this.title
         ? html`<pharos-heading
@@ -487,8 +487,8 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       ? html`<pharos-checkbox
           class="${this._showSubtleOverlay() ? 'card__checkbox--subtle' : 'card__checkbox'}"
           hide-label="true"
-          ?checked=${this._isSelected}
-          ?disabled=${this.disabled}
+          .checked=${this._isSelected}
+          .disabled=${this.disabled}
           name="Select ${this.title}"
           @click="${this._cardToggleSelect}"
           ><span slot="label">Select ${this.title}</span></pharos-checkbox
