@@ -28,9 +28,9 @@ export const Base = {
     </storybook-pharos-button>
     <storybook-pharos-modal
       id="my-base-modal"
-      ?footer-divider=${ifDefined(args.footerDivider)}
+      .footer-divider=${ifDefined(args.footerDivider)}
       header=${ifDefined(args.header)}
-      ?open=${ifDefined(args.open)}
+      .open=${ifDefined(args.open)}
       size=${ifDefined(args.size)}
     >
       <p>I am a modal</p>

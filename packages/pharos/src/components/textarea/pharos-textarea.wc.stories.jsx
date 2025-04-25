@@ -21,16 +21,16 @@ export const Base = {
       <storybook-pharos-textarea
         name="story-input"
         .cols="${args.columns}"
-        ?disabled=${args.disabled}
-        ?hide-label="${args.hideLabel}"
-        ?invalidated=${args.invalidated}
+        .disabled=${args.disabled}
+        .hide-label="${args.hideLabel}"
+        .invalidated=${args.invalidated}
         .message=${args.message}
         .placeholder=${args.placeholder}
         .resize="${ifDefined(args.resize)}"
-        ?readonly=${args.readonly}
-        ?required=${args.required}
+        .readonly=${args.readonly}
+        .required=${args.required}
         .rows="${args.rows}"
-        ?validated=${args.validated}
+        .validated=${args.validated}
         .value=${args.value}
       >
         <span slot="label">${args.label}</span>
@@ -100,9 +100,9 @@ export const CustomErrorMessage = {
         placeholder="Enter some text"
         @change="${(e) => action('Change')(e.target.value)}"
         @input="${(e) => action('Input')(e.target.value)}"
-        ?required=${args.required}
-        ?invalidated=${args.invalidated}
-        ?validated=${args.validated}
+        .required=${args.required}
+        .invalidated=${args.invalidated}
+        .validated=${args.validated}
         .message=${args.message}
       >
         <span slot="label">I am invalid</span>
