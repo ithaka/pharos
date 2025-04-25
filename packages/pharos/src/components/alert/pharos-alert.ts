@@ -122,9 +122,10 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
   }
 
   protected override render(): TemplateResult {
+    const alertType = this.status === 'error' || this.status === 'warning' ? 'alert' : 'status';
     return html`
       <div
-        role="alert"
+        role="${alertType}"
         class="${classMap({
           [`alert`]: true,
           [`alert--${this.status}`]: this.status || '',
