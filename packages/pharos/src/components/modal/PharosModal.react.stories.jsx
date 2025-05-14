@@ -95,7 +95,6 @@ export const Events = {
       <PharosModal
         id="my-event-modal"
         header="Event modal"
-        open
         onPharos-Modal-Open={(e) => action('Open')(e.detail)}
         onPharos-Modal-Opened={(e) => action('Opened')(e.detail)}
         onPharos-Modal-Close={(e) => action('Close')(e.detail)}
@@ -135,7 +134,7 @@ export const Composition = {
       >
         Open modal
       </PharosButton>
-      <PharosModal id="my-alert-modal" header="Add external link" open>
+      <PharosModal id="my-alert-modal" header="Add external link">
         <div style={{ maxWidth: '36rem' }}>
           <PharosAlert status="error">
             We&apos;re sorry, we experienced an issue submitting your report. Please try again. If
