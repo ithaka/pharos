@@ -5,7 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { multiselectDropdownStyles } from './pharos-multiselect-dropdown.css';
-import debounce from '../../utils/debounce';
+// import debounce from '../../utils/debounce';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
@@ -58,13 +58,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   public placeholder = '';
 
   /**
-   * Indicates if the dropdown is open.
-   * @attr open
-   */
-  @property({ type: Boolean, reflect: true })
-  public open = false;
-
-  /**
    * Use loose matching when comparing input value to options.
    * @attr looseMatch
    */
@@ -92,8 +85,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   @query('#input-element')
   private _input!: HTMLInputElement;
 
-  @query('.multiselect-dropdown__button')
-  private _button!: HTMLButtonElement;
+  // @query('.multiselect-dropdown__button')
+  // private _button!: HTMLButtonElement;
 
   @state()
   private _displayValue = '';
@@ -131,10 +124,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   protected override updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
 
-    if (changedProperties.has('open') && !this.open) {
-      this._query = '';
-      this._input.setAttribute('aria-activedescendant', '');
-    }
     if (changedProperties.has('value')) {
       this._setDisplayValue();
     }
@@ -156,89 +145,85 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
 
     this._displayValue = this._input.value;
     this._query = this._input.value;
-    this.open = true;
   }
 
   private _renderList(): TemplateResult | typeof nothing {
-    if (this.open) {
-      const queryToCompare = this.looseMatch ? this._normalizeString(this._query) : this._query;
-      const regex = new RegExp(queryToCompare, 'gi');
-      const matchingOptions = this.options.filter((child) => {
-        // if (this.searchMode) {
-        //   return child;
-        // }
-
-        const childText = this.looseMatch ? this._normalizeString(child.text) : child.text;
-        return childText.match(regex);
-      });
-      this._noResults = matchingOptions.length === 0;
-
-      // if (this.searchMode && !matchingOptions.length) {
-      //   return html``;
+    const queryToCompare = this.looseMatch ? this._normalizeString(this._query) : this._query;
+    const regex = new RegExp(queryToCompare, 'gi');
+    const matchingOptions = this.options.filter((child) => {
+      // if (this.searchMode) {
+      //   return child;
       // }
 
-      return html`
-        <ul
-          aria-labelledby="input-label"
-          role="listbox"
-          id="multiselect-dropdown-list"
-          class="multiselect-dropdown__list"
-        >
-          ${matchingOptions.length
-            ? matchingOptions.map((child, index) => {
-                const option = child as HTMLOptionElement;
-                const exactMatch = this.value === option.value;
+      const childText = this.looseMatch ? this._normalizeString(child.text) : child.text;
+      return childText.match(regex);
+    });
+    this._noResults = matchingOptions.length === 0;
 
-                const optionText = this._query
-                  ? option.text.replace(regex, (str) => {
-                      const classes = exactMatch
-                        ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
-                        : 'multiselect-dropdown__mark';
+    // if (this.searchMode && !matchingOptions.length) {
+    //   return html``;
+    // }
 
-                      return `<mark class="${classes}">${str}</mark>`;
-                    })
-                  : option.text;
+    return html`
+      <ul
+        aria-labelledby="input-label"
+        role="listbox"
+        id="multiselect-dropdown-list"
+        class="multiselect-dropdown__list"
+      >
+        ${matchingOptions.length
+          ? matchingOptions.map((child, index) => {
+              const option = child as HTMLOptionElement;
+              const exactMatch = this.value === option.value;
 
-                return html`
-                  <li
-                    id="${`result-item-${index}`}"
-                    class=${classMap({
-                      [`multiselect-dropdown__option`]: true,
-                      [`multiselect-dropdown__option--selected`]: exactMatch,
-                      [`multiselect-dropdown__option--disabled`]: option.disabled,
-                    })}
-                    role="option"
-                    aria-selected="false"
-                    aria-disabled="${option.disabled}"
-                    aria-label="${option.text}"
-                    @click=${(event: Event) => this._handleOptionClick(option, event)}
-                    @mousedown=${(event: MouseEvent) => {
-                      event.preventDefault();
-                    }}
-                  >
-                    ${unsafeHTML(optionText)}
-                    ${exactMatch
-                      ? html`
-                          <pharos-icon
-                            class="multiselect-dropdown__option__icon"
-                            name="checkmark"
-                            a11y-hidden="true"
-                          ></pharos-icon>
-                        `
-                      : nothing}
-                  </li>
-                `;
-              })
-            : html`<li class="multiselect-dropdown__option">No results found</li>`}
-        </ul>
-        <div aria-live="polite" role="status" class="visually-hidden">
-          ${matchingOptions.length
-            ? `${matchingOptions.length} results available.`
-            : `No results found`}
-        </div>
-      `;
-    }
-    return nothing;
+              const optionText = this._query
+                ? option.text.replace(regex, (str) => {
+                    const classes = exactMatch
+                      ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
+                      : 'multiselect-dropdown__mark';
+
+                    return `<mark class="${classes}">${str}</mark>`;
+                  })
+                : option.text;
+
+              return html`
+                <li
+                  id="${`result-item-${index}`}"
+                  class=${classMap({
+                    [`multiselect-dropdown__option`]: true,
+                    [`multiselect-dropdown__option--selected`]: exactMatch,
+                    [`multiselect-dropdown__option--disabled`]: option.disabled,
+                  })}
+                  role="option"
+                  aria-selected="false"
+                  aria-disabled="${option.disabled}"
+                  aria-label="${option.text}"
+                  @click=${(event: Event) => this._handleOptionClick(option, event)}
+                  @mousedown=${(event: MouseEvent) => {
+                    event.preventDefault();
+                  }}
+                >
+                  ${unsafeHTML(optionText)}
+                  ${exactMatch
+                    ? html`
+                        <pharos-icon
+                          class="multiselect-dropdown__option__icon"
+                          name="checkmark"
+                          a11y-hidden="true"
+                        ></pharos-icon>
+                      `
+                    : nothing}
+                </li>
+              `;
+            })
+          : html`<li class="multiselect-dropdown__option">No results found</li>`}
+      </ul>
+      <div aria-live="polite" role="status" class="visually-hidden">
+        ${matchingOptions.length
+          ? `${matchingOptions.length} results available.`
+          : `No results found`}
+      </div>
+    `;
   }
 
   private _renderClearButton(): TemplateResult | typeof nothing {
@@ -268,8 +253,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       <pharos-button
         icon="search"
         type="button"
-        variant="subtle"
-        class="search__button"
+        // variant="subtle"
+        // class="search__button"
         a11y-label="Search"
         ?disabled=${this.disabled}
         @click=${this.onChange}
@@ -284,27 +269,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     }
     this.value = option.value;
     this._displayValue = option.text.trim();
-    this.open = false;
     this.onChange(event);
   }
-
-  private _closeDropdown(): void {
-    debounce(() => {
-      this.open = false;
-    }, 100)();
-  }
-
-  // private _handleButtonClick(event: MouseEvent): void {
-  //   event.preventDefault();
-  //   this._input.focus();
-  //   this.open = true;
-  // }
-
-  // private _handleButtonBlur(event: FocusEvent): void {
-  //   if (event.relatedTarget !== this._input) {
-  //     this._closeDropdown();
-  //   }
-  // }
 
   private _handleClearClick(event: MouseEvent): void {
     event.preventDefault();
@@ -312,11 +278,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     this._input.focus();
   }
 
-  private _handleInputBlur(event: FocusEvent): void {
+  private _handleInputBlur(): void {
     this._setDisplayValue(true);
-    if (event.relatedTarget !== this._button) {
-      this._closeDropdown();
-    }
   }
 
   private _handleInputKeydown(event: KeyboardEvent): void {
@@ -346,11 +309,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private async _handleNavigation(moveForward: boolean): Promise<void> {
-    if (!this.open) {
-      this.open = true;
-      await this.updateComplete;
-    }
-
     if (this._noResults) {
       return;
     }
@@ -387,8 +345,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
 
     if (highlightedOption) {
       highlightedOption.click();
-    } else {
-      this.open = false;
     }
 
     // if (this.searchMode) {
@@ -397,7 +353,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private _handleInputClear(event: Event): void {
-    this.open = false;
     this.value = '';
     this._displayValue = '';
     this.onChange(event);
@@ -421,10 +376,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     } else if (this.value === '' && !blurred) {
       this._displayValue = '';
     }
-  }
-
-  private _handleInputClick(): void {
-    this.open = !this.open;
   }
 
   /**
@@ -460,7 +411,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           ?disabled="${this.disabled}"
           placeholder="${this.placeholder}"
           role="combobox"
-          aria-expanded="${this.open}"
+          aria-expanded="${true}"
           aria-controls="multiselect-dropdown-list"
           aria-autocomplete="list"
           aria-activedescendant=""
