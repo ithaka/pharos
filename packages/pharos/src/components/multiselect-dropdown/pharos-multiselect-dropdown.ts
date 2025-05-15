@@ -64,9 +64,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   @property({ type: Boolean, reflect: true })
   public open = false;
 
-  @property({ type: Boolean, reflect: true, attribute: 'search-mode' })
-  public searchMode = false;
-
   /**
    * Use loose matching when comparing input value to options.
    * @attr looseMatch
@@ -153,9 +150,9 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   public onInput(): void {
-    if (this.searchMode) {
-      this.value = this._input.value;
-    }
+    // if (this.searchMode) {
+    //   this.value = this._input.value;
+    // }
 
     this._displayValue = this._input.value;
     this._query = this._input.value;
@@ -167,18 +164,18 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       const queryToCompare = this.looseMatch ? this._normalizeString(this._query) : this._query;
       const regex = new RegExp(queryToCompare, 'gi');
       const matchingOptions = this.options.filter((child) => {
-        if (this.searchMode) {
-          return child;
-        }
+        // if (this.searchMode) {
+        //   return child;
+        // }
 
         const childText = this.looseMatch ? this._normalizeString(child.text) : child.text;
         return childText.match(regex);
       });
       this._noResults = matchingOptions.length === 0;
 
-      if (this.searchMode && !matchingOptions.length) {
-        return html``;
-      }
+      // if (this.searchMode && !matchingOptions.length) {
+      //   return html``;
+      // }
 
       return html`
         <ul
@@ -198,7 +195,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                         ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
                         : 'multiselect-dropdown__mark';
 
-                      return this.searchMode ? `${str}` : `<mark class="${classes}">${str}</mark>`;
+                      return `<mark class="${classes}">${str}</mark>`;
                     })
                   : option.text;
 
@@ -220,7 +217,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                     }}
                   >
                     ${unsafeHTML(optionText)}
-                    ${exactMatch && !this.searchMode
+                    ${exactMatch
                       ? html`
                           <pharos-icon
                             class="multiselect-dropdown__option__icon"
@@ -245,9 +242,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private _renderClearButton(): TemplateResult | typeof nothing {
-    const classes = this.searchMode
-      ? 'multiselect-dropdown__clear-button multiselect-dropdown__clear-button--search'
-      : 'multiselect-dropdown__clear-button';
+    const classes = 'multiselect-dropdown__clear-button multiselect-dropdown__clear-button--search';
     if (this._displayValue) {
       return html`
         <pharos-button
@@ -269,37 +264,17 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private _renderIconButton(): TemplateResult {
-    if (this.searchMode) {
-      return html`
-        <pharos-button
-          icon="search"
-          type="button"
-          variant="subtle"
-          class="search__button"
-          a11y-label="Search"
-          ?disabled=${this.disabled}
-          @click=${this.onChange}
-        ></pharos-button>
-      `;
-    } else {
-      return html`
-        <button
-          tabindex="-1"
-          type="button"
-          class="multiselect-dropdown__button"
-          aria-label="Dropdown"
-          ?disabled=${this.disabled}
-          @click=${this._handleButtonClick}
-          @blur=${this._handleButtonBlur}
-        >
-          <pharos-icon
-            class="multiselect-dropdown__icon"
-            name="chevron-down"
-            a11y-hidden="true"
-          ></pharos-icon>
-        </button>
-      `;
-    }
+    return html`
+      <pharos-button
+        icon="search"
+        type="button"
+        variant="subtle"
+        class="search__button"
+        a11y-label="Search"
+        ?disabled=${this.disabled}
+        @click=${this.onChange}
+      ></pharos-button>
+    `;
   }
 
   private _handleOptionClick(option: HTMLOptionElement, event: Event): void {
@@ -319,17 +294,17 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     }, 100)();
   }
 
-  private _handleButtonClick(event: MouseEvent): void {
-    event.preventDefault();
-    this._input.focus();
-    this.open = true;
-  }
+  // private _handleButtonClick(event: MouseEvent): void {
+  //   event.preventDefault();
+  //   this._input.focus();
+  //   this.open = true;
+  // }
 
-  private _handleButtonBlur(event: FocusEvent): void {
-    if (event.relatedTarget !== this._input) {
-      this._closeDropdown();
-    }
-  }
+  // private _handleButtonBlur(event: FocusEvent): void {
+  //   if (event.relatedTarget !== this._input) {
+  //     this._closeDropdown();
+  //   }
+  // }
 
   private _handleClearClick(event: MouseEvent): void {
     event.preventDefault();
@@ -416,9 +391,9 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       this.open = false;
     }
 
-    if (this.searchMode) {
-      this.onChange(event);
-    }
+    // if (this.searchMode) {
+    this.onChange(event);
+    // }
   }
 
   private _handleInputClear(event: Event): void {
