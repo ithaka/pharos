@@ -73,7 +73,9 @@
 
 .multiselect-dropdown__option {
   position: relative;
-  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-1-x);
+
+  // padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-1-x);
+  padding: var(--pharos-spacing-one-quarter-x) 0;
   cursor: pointer;
 
   &:hover,
@@ -85,6 +87,13 @@
       color: var(--pharos-combobox-color-text-hover);
     }
   }
+}
+
+.multiselect-dropdown__selectall {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: inherit;
 }
 
 :host([invalidated]) .multiselect-dropdown__button {
@@ -135,15 +144,17 @@
   z-index: 1;
   width: 100%;
   box-sizing: border-box;
-  box-shadow: var(--pharos-elevation-level-3);
-  border-radius: var(--pharos-radius-base-standard);
+
+  // box-shadow: var(--pharos-elevation-level-3);
+  // border-radius: var(--pharos-radius-base-standard);
   background-color: var(--pharos-color-ui-10);
   margin-block: var(--pharos-spacing-one-half-x);
   list-style-type: none;
   padding-inline-start: 0;
   padding-left: 0;
-  animation: fadeIn 300ms ease-in-out both;
-  transform-origin: top left;
+
+  // animation: fadeIn 300ms ease-in-out both;
+  // transform-origin: top left;
 }
 
 @keyframes fadeIn {
