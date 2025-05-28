@@ -105,7 +105,10 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   private _open = false;
 
   @state()
-  public pendingOptions: String[] = [];
+  private pendingOptions: String[] = [];
+
+  @state()
+  private matchingOptions: HTMLOptionElement[] = [];
 
   // private _childrenObserver: MutationObserver = new MutationObserver(
   //   (mutationsList: MutationRecord[]) => {
@@ -149,19 +152,19 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   private _renderList(): TemplateResult | typeof nothing {
     const queryToCompare = this.looseMatch ? this._normalizeString(this._query) : this._query;
     const regex = new RegExp(queryToCompare, 'gi');
-    const matchingOptions = this.options.filter((child) => {
-      // if (this.searchMode) {
-      //   return child;
-      // }
-
+    this.matchingOptions = this.options.filter((child) => {
       const childText = this.looseMatch ? this._normalizeString(child.text) : child.text;
       return childText.match(regex);
     });
-    this._noResults = matchingOptions.length === 0;
+    this._noResults = this.matchingOptions.length === 0;
 
     // if (this.searchMode && !matchingOptions.length) {
     //   return html``;
     // }
+
+    const allMatchingSelected =
+      this.matchingOptions.length > 0 &&
+      this.matchingOptions.every((option) => this.pendingOptions.includes(option.text.trim()));
 
     return html`
       <ul
@@ -176,21 +179,24 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
             'multiselect-dropdown__selectall': true,
           })}
           role="option"
-          aria-selected="${this.pendingOptions.length === this.options.length}"
+          aria-selected="${allMatchingSelected}"
           aria-label="Select/Deselect All"
         >
           <pharos-checkbox
             class="multiselect-dropdown__option__checkbox"
             @click=${(event: Event) => this._handleSelectAllClick(event)}
-            ?checked=${this.pendingOptions.length === this.options.length}
+            ?checked=${allMatchingSelected}
             ?indeterminate="${this.pendingOptions.length > 0 &&
-            this.pendingOptions.length < this.options.length}"
+            !allMatchingSelected &&
+            this.matchingOptions.some((option) =>
+              this.pendingOptions.includes(option.text.trim())
+            )}"
           >
             <span slot="label">Select/Deselect All</span>
           </pharos-checkbox>
         </li>
-        ${matchingOptions.length
-          ? matchingOptions.map((child, index) => {
+        ${this.matchingOptions.length
+          ? this.matchingOptions.map((child, index) => {
               const option = child as HTMLOptionElement;
               const exactMatch = this.searchValue === option.value;
 
@@ -241,8 +247,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           : html`<li class="multiselect-dropdown__option">No results found</li>`}
       </ul>
       <div aria-live="polite" role="status" class="visually-hidden">
-        ${matchingOptions.length
-          ? `${matchingOptions.length} results available.`
+        ${this.matchingOptions.length
+          ? `${this.matchingOptions.length} results available.`
           : `No results found`}
       </div>
     `;
@@ -313,10 +319,16 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
   private _handleSelectAllClick(event: Event): void {
     const selectAllCheckbox = event.target as HTMLInputElement;
-    if (selectAllCheckbox.checked) {
-      this.pendingOptions = [];
+    if (!selectAllCheckbox.checked) {
+      this.pendingOptions = [
+        ...this.pendingOptions,
+        ...this.matchingOptions.map((option) => option.text.trim()),
+      ];
     } else {
-      this.pendingOptions = this.options.map((option) => option.text.trim());
+      this.pendingOptions = [...this.pendingOptions].filter(
+        (pendingOption) =>
+          !this.matchingOptions.some((option) => option.text.trim() === pendingOption)
+      );
     }
     this.onChange(event);
   }
