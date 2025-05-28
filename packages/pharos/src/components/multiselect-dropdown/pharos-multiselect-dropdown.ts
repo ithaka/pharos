@@ -14,6 +14,7 @@ import { PharosIcon } from '../icon/pharos-icon';
 import { PharosTooltip } from '../tooltip/pharos-tooltip';
 import { PharosButton } from '../button/pharos-button';
 import { loopWrapIndex } from '../../utils/math';
+import { PharosCheckbox } from '../checkbox/pharos-checkbox';
 
 /**
  * Pharos multiselect-dropdown component.
@@ -41,14 +42,28 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     'pharos-icon': PharosIcon,
     'pharos-tooltip': PharosTooltip,
     'pharos-button': PharosButton,
+    'pharos-checkbox': PharosCheckbox,
   };
 
+  /**
+   * Contains the currently selected options.
+   * @attr selectedOptions
+   */
+  @property({ type: Array, reflect: true })
+  public selectedOptions: String[] = [];
+
+  /**
+   * How long the dropdown list should be displayed.
+   * @attr displayCharacterCount
+   */
+  @property({ type: Number, reflect: true })
+  public displayCharacterCount: number = 40;
   /**
    * Indicates the value for the input.
    * @attr value
    */
   @property({ type: String, reflect: true })
-  public value = '';
+  public searchValue = '';
 
   /**
    * Display text when input is empty
@@ -73,15 +88,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     return [...this.children].filter((child) => !child.slot) as HTMLOptionElement[];
   }
 
-  /**
-   * The index of the selected option, if any
-   * @readonly
-   */
-  @property({ attribute: false, reflect: false })
-  public get selectedIndex(): number {
-    return this.options.findIndex((o) => o.value === this.value);
-  }
-
   @query('#input-element')
   private _input!: HTMLInputElement;
 
@@ -89,61 +95,47 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   // private _button!: HTMLButtonElement;
 
   @state()
-  private _displayValue = '';
-
+  // private _displayValue = '';
   private _noResults = false;
   private _query = '';
   private _defaultValue = '';
 
-  private _childrenObserver: MutationObserver = new MutationObserver(
-    (mutationsList: MutationRecord[]) => {
-      this.requestUpdate();
-
-      if (
-        mutationsList.some((record) =>
-          [...record.addedNodes].some((node) => node instanceof HTMLOptionElement)
-        )
-      ) {
-        this._setDisplayValue();
-      }
-    }
-  );
+  // private _childrenObserver: MutationObserver = new MutationObserver(
+  //   (mutationsList: MutationRecord[]) => {
+  //     this.requestUpdate();
+  //   }
+  // );
 
   public static override get styles(): CSSResultArray {
     return [super.styles, multiselectDropdownStyles];
   }
 
   protected override firstUpdated(): void {
-    this._setDisplayValue();
-    this._input.defaultValue = this._displayValue;
-    this._defaultValue = this.value;
+    // this._input.defaultValue = this._displayValue;
+    this._defaultValue = this.searchValue;
 
-    this._childrenObserver.observe(this, { subtree: true, childList: true });
+    // this._childrenObserver.observe(this, { subtree: true, childList: true });
   }
 
   protected override updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
 
-    if (changedProperties.has('value')) {
-      this._setDisplayValue();
-    }
+    // if (changedProperties.has('value')) {
+    //   // this._setDisplayValue();
+    // }
   }
 
-  override disconnectedCallback(): void {
-    this._childrenObserver.disconnect();
-    super.disconnectedCallback && super.disconnectedCallback();
-  }
+  // override disconnectedCallback(): void {
+  // this._childrenObserver.disconnect();
+  //   super.disconnectedCallback && super.disconnectedCallback();
+  // }
 
   public onChange(event: Event): void {
     this.dispatchEvent(new CustomEvent('change', { bubbles: true, composed: true, detail: event }));
   }
 
   public onInput(): void {
-    // if (this.searchMode) {
-    //   this.value = this._input.value;
-    // }
-
-    this._displayValue = this._input.value;
+    this.searchValue = this._input.value;
     this._query = this._input.value;
   }
 
@@ -171,10 +163,29 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
         id="multiselect-dropdown-list"
         class="multiselect-dropdown__list"
       >
+        <li
+          class=${classMap({
+            'multiselect-dropdown__option': true,
+            'multiselect-dropdown__selectall': true,
+          })}
+          role="option"
+          aria-selected="${this.selectedOptions.length === this.options.length}"
+          aria-label="Select/Deselect All"
+        >
+          <pharos-checkbox
+            class="multiselect-dropdown__option__checkbox"
+            @click=${(event: Event) => this._handleSelectAllClick(event)}
+            ?checked=${this.selectedOptions.length === this.options.length}
+            ?indeterminate="${this.selectedOptions.length > 0 &&
+            this.selectedOptions.length < this.options.length}"
+          >
+            <span slot="label">Select/Deselect All</span>
+          </pharos-checkbox>
+        </li>
         ${matchingOptions.length
           ? matchingOptions.map((child, index) => {
               const option = child as HTMLOptionElement;
-              const exactMatch = this.value === option.value;
+              const exactMatch = this.searchValue === option.value;
 
               const optionText = this._query
                 ? option.text.replace(regex, (str) => {
@@ -186,33 +197,37 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                   })
                 : option.text;
 
+              const isSelected = this.selectedOptions.includes(option.text.trim());
               return html`
                 <li
                   id="${`result-item-${index}`}"
                   class=${classMap({
                     [`multiselect-dropdown__option`]: true,
-                    [`multiselect-dropdown__option--selected`]: exactMatch,
+                    [`multiselect-dropdown__option--selected`]: isSelected,
                     [`multiselect-dropdown__option--disabled`]: option.disabled,
                   })}
                   role="option"
-                  aria-selected="false"
+                  aria-selected="${isSelected}"
                   aria-disabled="${option.disabled}"
                   aria-label="${option.text}"
                   @click=${(event: Event) => this._handleOptionClick(option, event)}
+                  @keydown=${(event: KeyboardEvent) => {
+                    if (event.key === 'space') {
+                      this._handleOptionClick(option, event);
+                    }
+                  }}
                   @mousedown=${(event: MouseEvent) => {
                     event.preventDefault();
                   }}
                 >
-                  ${unsafeHTML(optionText)}
-                  ${exactMatch
-                    ? html`
-                        <pharos-icon
-                          class="multiselect-dropdown__option__icon"
-                          name="checkmark"
-                          a11y-hidden="true"
-                        ></pharos-icon>
-                      `
-                    : nothing}
+                  ${html`
+                    <pharos-checkbox
+                      class="multiselect-dropdown__option__checkbox"
+                      ?checked=${isSelected}
+                    >
+                      <span slot="label">${unsafeHTML(optionText)} </span>
+                    </pharos-checkbox>
+                  `}
                 </li>
               `;
             })
@@ -253,8 +268,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       <pharos-button
         icon="search"
         type="button"
-        // variant="subtle"
-        // class="search__button"
+        variant="subtle"
+        class="search__button"
         a11y-label="Search"
         ?disabled=${this.disabled}
         @click=${this.onChange}
@@ -267,8 +282,25 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       event.preventDefault();
       return;
     }
-    this.value = option.value;
-    this._displayValue = option.text.trim();
+
+    if (this.selectedOptions.includes(option.text.trim())) {
+      this.selectedOptions = [
+        ...this.selectedOptions.filter((selectedOption) => {
+          return selectedOption !== option.text.trim();
+        }),
+      ];
+    } else {
+      this.selectedOptions = [...this.selectedOptions, option.text.trim()];
+    }
+    this.onChange(event);
+  }
+  private _handleSelectAllClick(event: Event): void {
+    const selectAllCheckbox = event.target as HTMLInputElement;
+    if (selectAllCheckbox.checked) {
+      this.selectedOptions = [];
+    } else {
+      this.selectedOptions = this.options.map((option) => option.text.trim());
+    }
     this.onChange(event);
   }
 
@@ -278,9 +310,9 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     this._input.focus();
   }
 
-  private _handleInputBlur(): void {
-    this._setDisplayValue(true);
-  }
+  // private _handleInputBlur(): void {
+  //   this._setDisplayValue(true);
+  // }
 
   private _handleInputKeydown(event: KeyboardEvent): void {
     event.stopPropagation();
@@ -353,29 +385,20 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private _handleInputClear(event: Event): void {
-    this.value = '';
-    this._displayValue = '';
+    this.searchValue = '';
     this.onChange(event);
   }
 
   _handleFormdata(event: CustomEvent): void {
     const { formData } = event;
     if (!this.disabled) {
-      formData.append(this.name, this.value);
+      formData.append(this.name, this.selectedOptions.join(','));
     }
   }
 
   _handleFormReset(): void {
     this.value = this._defaultValue;
     this._displayValue = this._input.defaultValue;
-  }
-
-  private _setDisplayValue(blurred = false) {
-    if (this.value && this.selectedIndex >= 0) {
-      this._displayValue = this.options[this.selectedIndex].text.trim();
-    } else if (this.value === '' && !blurred) {
-      this._displayValue = '';
-    }
   }
 
   /**
@@ -395,7 +418,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   protected override render(): TemplateResult {
+    const selectedOptionsText = this.selectedOptions.join(', ');
+    const showText =
+      selectedOptionsText.length <= this.displayCharacterCount
+        ? selectedOptionsText
+        : `${this.selectedOptions.length} Selected`;
+
     return html`
+      ${showText}
       <label for="input-element" id="input-label">
         <slot name="label"></slot>
         ${this.requiredIndicator}
@@ -406,7 +436,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           class="input-element ${this._displayValue ? 'input-element--populated' : null}"
           name="${this.name}"
           type="text"
-          .value="${this._displayValue}"
+          .value="${this.searchValue}"
           ?required="${this.required}"
           ?disabled="${this.disabled}"
           placeholder="${this.placeholder}"
