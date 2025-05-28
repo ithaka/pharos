@@ -15,6 +15,7 @@ import { PharosTooltip } from '../tooltip/pharos-tooltip';
 import { PharosButton } from '../button/pharos-button';
 import { loopWrapIndex } from '../../utils/math';
 import { PharosCheckbox } from '../checkbox/pharos-checkbox';
+import { PharosTextInput } from '../text-input/pharos-text-input';
 
 /**
  * Pharos multiselect-dropdown component.
@@ -43,6 +44,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     'pharos-tooltip': PharosTooltip,
     'pharos-button': PharosButton,
     'pharos-checkbox': PharosCheckbox,
+    'pharos-text-input': PharosTextInput,
   };
 
   /**
@@ -95,10 +97,15 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   // private _button!: HTMLButtonElement;
 
   @state()
-  // private _displayValue = '';
   private _noResults = false;
   private _query = '';
   private _defaultValue = '';
+
+  @state()
+  private _open = false;
+
+  @state()
+  public pendingOptions: String[] = [];
 
   // private _childrenObserver: MutationObserver = new MutationObserver(
   //   (mutationsList: MutationRecord[]) => {
@@ -169,15 +176,15 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
             'multiselect-dropdown__selectall': true,
           })}
           role="option"
-          aria-selected="${this.selectedOptions.length === this.options.length}"
+          aria-selected="${this.pendingOptions.length === this.options.length}"
           aria-label="Select/Deselect All"
         >
           <pharos-checkbox
             class="multiselect-dropdown__option__checkbox"
             @click=${(event: Event) => this._handleSelectAllClick(event)}
-            ?checked=${this.selectedOptions.length === this.options.length}
-            ?indeterminate="${this.selectedOptions.length > 0 &&
-            this.selectedOptions.length < this.options.length}"
+            ?checked=${this.pendingOptions.length === this.options.length}
+            ?indeterminate="${this.pendingOptions.length > 0 &&
+            this.pendingOptions.length < this.options.length}"
           >
             <span slot="label">Select/Deselect All</span>
           </pharos-checkbox>
@@ -197,7 +204,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                   })
                 : option.text;
 
-              const isSelected = this.selectedOptions.includes(option.text.trim());
+              const isSelected = this.pendingOptions.includes(option.text.trim());
               return html`
                 <li
                   id="${`result-item-${index}`}"
@@ -277,38 +284,48 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     `;
   }
 
+  private _handleDropdownButtonClick(): void {
+    if (this._open) {
+      this._open = false;
+      this.searchValue = '';
+    } else {
+      this._open = true;
+    }
+    this.pendingOptions = this.selectedOptions;
+  }
+
   private _handleOptionClick(option: HTMLOptionElement, event: Event): void {
     if (option.disabled) {
       event.preventDefault();
       return;
     }
 
-    if (this.selectedOptions.includes(option.text.trim())) {
-      this.selectedOptions = [
-        ...this.selectedOptions.filter((selectedOption) => {
-          return selectedOption !== option.text.trim();
+    if (this.pendingOptions.includes(option.text.trim())) {
+      this.pendingOptions = [
+        ...this.pendingOptions.filter((pendingOption) => {
+          return pendingOption !== option.text.trim();
         }),
       ];
     } else {
-      this.selectedOptions = [...this.selectedOptions, option.text.trim()];
+      this.pendingOptions = [...this.pendingOptions, option.text.trim()];
     }
     this.onChange(event);
   }
   private _handleSelectAllClick(event: Event): void {
     const selectAllCheckbox = event.target as HTMLInputElement;
     if (selectAllCheckbox.checked) {
-      this.selectedOptions = [];
+      this.pendingOptions = [];
     } else {
-      this.selectedOptions = this.options.map((option) => option.text.trim());
+      this.pendingOptions = this.options.map((option) => option.text.trim());
     }
     this.onChange(event);
   }
 
-  private _handleClearClick(event: MouseEvent): void {
-    event.preventDefault();
-    this._handleInputClear(event);
-    this._input.focus();
-  }
+  // private _handleClearClick(event: MouseEvent): void {
+  //   event.preventDefault();
+  //   this._handleInputClear(event);
+  //   this._input.focus();
+  // }
 
   // private _handleInputBlur(): void {
   //   this._setDisplayValue(true);
@@ -401,6 +418,35 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     this._displayValue = this._input.defaultValue;
   }
 
+  _getButtonDisplayText(): string {
+    if (this.selectedOptions.length === 0) {
+      return 'None Selected';
+    }
+    if (this.selectedOptions.length === this.options.length) {
+      return 'All Selected';
+    }
+    const selectedOptionsText = this.selectedOptions.join(', ');
+    if (selectedOptionsText.length <= this.displayCharacterCount) {
+      return selectedOptionsText;
+    } else {
+      return `${this.selectedOptions.length} Selected`;
+    }
+  }
+
+  _handleApplyClick(): void {
+    this.selectedOptions = [...this.pendingOptions];
+    this._open = false;
+    this.searchValue = '';
+    this._query = '';
+  }
+
+  _handleCancelClick(): void {
+    this.pendingOptions = [];
+    this._open = false;
+    this.searchValue = '';
+    this._query = '';
+  }
+
   /**
    * Normalizes a string in the following order:
    *
@@ -417,46 +463,77 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       .toLowerCase();
   }
 
-  protected override render(): TemplateResult {
-    const selectedOptionsText = this.selectedOptions.join(', ');
-    const showText =
-      selectedOptionsText.length <= this.displayCharacterCount
-        ? selectedOptionsText
-        : `${this.selectedOptions.length} Selected`;
-
+  protected renderInternal(): TemplateResult | typeof nothing {
+    if (!this._open) {
+      return nothing;
+    }
     return html`
-      ${showText}
-      <label for="input-element" id="input-label">
-        <slot name="label"></slot>
-        ${this.requiredIndicator}
-      </label>
-      <div class="input-wrapper">
-        <input
-          id="input-element"
-          class="input-element ${this._displayValue ? 'input-element--populated' : null}"
-          name="${this.name}"
-          type="text"
-          .value="${this.searchValue}"
-          ?required="${this.required}"
-          ?disabled="${this.disabled}"
-          placeholder="${this.placeholder}"
-          role="combobox"
-          aria-expanded="${true}"
-          aria-controls="multiselect-dropdown-list"
-          aria-autocomplete="list"
-          aria-activedescendant=""
-          aria-required="${this.required}"
-          aria-invalid="${this.invalidated}"
-          aria-describedby="${ifDefined(this.messageId)}"
-          @input=${this.onInput}
-          @change=${this.onChange}
-          @blur=${this._handleInputBlur}
-          @keydown=${this._handleInputKeydown}
-          @click=${this._handleInputClick}
-        />
-        ${this._renderClearButton()} ${this._renderIconButton()} ${this._renderList()}
+      <div class="multiselect-dropdown__input-container">
+        <label for="input-element" id="input-label">
+          <slot name="label"></slot>
+          ${this.requiredIndicator}
+        </label>
+        <div class="input-wrapper">
+          <input
+            id="input-element"
+            class="input-element ${this._displayValue ? 'input-element--populated' : null}"
+            name="${this.name}"
+            type="text"
+            .value="${this.searchValue}"
+            ?required="${this.required}"
+            ?disabled="${this.disabled}"
+            placeholder="${this.placeholder}"
+            role="combobox"
+            aria-expanded="${true}"
+            aria-controls="multiselect-dropdown-list"
+            aria-autocomplete="list"
+            aria-activedescendant=""
+            aria-required="${this.required}"
+            aria-invalid="${this.invalidated}"
+            aria-describedby="${ifDefined(this.messageId)}"
+            @input=${this.onInput}
+            @change=${this.onChange}
+            @blur=${this._handleInputBlur}
+            @keydown=${this._handleInputKeydown}
+            @click=${this._handleInputClick}
+          />
+          ${this._renderClearButton()} ${this._renderIconButton()} ${this._renderList()}
+        </div>
+        ${this.messageContent}
+        <div class="multiselect-dropdown__button-container" style="margin-top:16rem;">
+          <pharos-button
+            type="button"
+            variant="secondary"
+            @click=${this._handleCancelClick}
+            @mousedown=${this._handleCancelClick}
+          >
+            Cancel
+          </pharos-button>
+          <pharos-button
+            type="button"
+            variant="primary"
+            @click=${this._handleApplyClick}
+            @mousedown=${this._handleApplyClick}
+          >
+            Apply
+          </pharos-button>
+        </div>
       </div>
-      ${this.messageContent}
+    `;
+  }
+
+  protected override render(): TemplateResult {
+    return html`
+      <div class="multiselect-dropdown">
+        <pharos-button
+          variant="secondary"
+          icon-right="chevron-down"
+          @click=${this._handleDropdownButtonClick}
+        >
+          ${this._getButtonDisplayText()}
+        </pharos-button>
+        ${this.renderInternal()}
+      </div>
     `;
   }
 }
