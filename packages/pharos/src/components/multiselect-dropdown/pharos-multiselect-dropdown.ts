@@ -166,6 +166,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       this.matchingOptions.length > 0 &&
       this.matchingOptions.every((option) => this.pendingOptions.includes(option.text.trim()));
 
+    const allMatchingIndeterminate =
+      this.pendingOptions.length > 0 &&
+      !allMatchingSelected &&
+      this.matchingOptions.some((option) => this.pendingOptions.includes(option.text.trim()));
+
+    const selectAllText = allMatchingSelected
+      ? `Deselect ${this.matchingOptions.length}`
+      : `Select all ${this.matchingOptions.length}`;
     return html`
       <ul
         aria-labelledby="input-label"
@@ -173,28 +181,25 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
         id="multiselect-dropdown-list"
         class="multiselect-dropdown__list"
       >
-        <li
-          class=${classMap({
-            'multiselect-dropdown__option': true,
-            'multiselect-dropdown__selectall': true,
-          })}
-          role="option"
-          aria-selected="${allMatchingSelected}"
-          aria-label="Select/Deselect All"
-        >
-          <pharos-checkbox
-            class="multiselect-dropdown__option__checkbox"
-            @click=${(event: Event) => this._handleSelectAllClick(event)}
-            ?checked=${allMatchingSelected}
-            ?indeterminate="${this.pendingOptions.length > 0 &&
-            !allMatchingSelected &&
-            this.matchingOptions.some((option) =>
-              this.pendingOptions.includes(option.text.trim())
-            )}"
-          >
-            <span slot="label">Select/Deselect All</span>
-          </pharos-checkbox>
-        </li>
+        ${this.matchingOptions.length > 1
+          ? html`<li
+              class=${classMap({
+                'multiselect-dropdown__option': true,
+                'multiselect-dropdown__selectall': true,
+              })}
+              role="option"
+              aria-selected="${allMatchingSelected}"
+            >
+              <pharos-checkbox
+                class="multiselect-dropdown__option__checkbox"
+                @click=${(event: Event) => this._handleSelectAllClick(event)}
+                ?checked=${allMatchingSelected}
+                ?indeterminate="${allMatchingIndeterminate}"
+              >
+                <span slot="label"> ${selectAllText} </span>
+              </pharos-checkbox>
+            </li>`
+          : nothing}
         ${this.matchingOptions.length
           ? this.matchingOptions.map((child, index) => {
               const option = child as HTMLOptionElement;
@@ -318,7 +323,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     this.onChange(event);
   }
   private _handleSelectAllClick(event: Event): void {
-    const selectAllCheckbox = event.target as HTMLInputElement;
+    const selectAllCheckbox = event.target as PharosCheckbox;
     if (!selectAllCheckbox.checked) {
       this.pendingOptions = [
         ...this.pendingOptions,
