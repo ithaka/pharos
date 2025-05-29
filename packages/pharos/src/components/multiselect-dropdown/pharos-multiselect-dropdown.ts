@@ -325,10 +325,11 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   private _handleSelectAllClick(event: Event): void {
     const selectAllCheckbox = event.target as PharosCheckbox;
     if (!selectAllCheckbox.checked) {
-      this.pendingOptions = [
-        ...this.pendingOptions,
-        ...this.matchingOptions.map((option) => option.text.trim()),
-      ];
+      const matchingOptionTexts = this.matchingOptions.map((option) => option.text.trim());
+      const newOptions = matchingOptionTexts.filter(
+        (optionText) => !this.pendingOptions.includes(optionText)
+      );
+      this.pendingOptions = [...this.pendingOptions, ...newOptions];
     } else {
       this.pendingOptions = [...this.pendingOptions].filter(
         (pendingOption) =>
