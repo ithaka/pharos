@@ -298,7 +298,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     return html`
       <ul
         aria-labelledby="input-label"
-        role="listbox"
+        role="combobox"
         id="multiselect-dropdown-list"
         class="multiselect-dropdown__list"
       >
