@@ -6595,19 +6595,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-links@npm:^8.6.14":
-  version: 8.6.14
-  resolution: "@storybook/addon-links@npm:8.6.14"
+"@storybook/addon-links@npm:^9.0.4":
+  version: 9.0.4
+  resolution: "@storybook/addon-links@npm:9.0.4"
   dependencies:
     "@storybook/global": "npm:^5.0.0"
-    ts-dedent: "npm:^2.0.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    storybook: ^8.6.14
+    storybook: ^9.0.4
   peerDependenciesMeta:
     react:
       optional: true
-  checksum: 10c0/ed0472781ec71a857e7c1319f6d2e394be9f99880e3882053319c3c2fd06f8ef107910545945301ab57d58382336cc8c6200b7a5b8fa6f7debaf017986411125
+  checksum: 10c0/ec12e2e61973e24a69e70447959a0c244a23fcb3707a72aa5cee68f6d355f78effdf8cb50a771476111871848a8bcc798608d781e0a760642eeadfd150af6c55
   languageName: node
   linkType: hard
 
@@ -21271,7 +21270,7 @@ __metadata:
     "@size-limit/preset-small-lib": "npm:^11.2.0"
     "@storybook/addon-a11y": "npm:^8.6.14"
     "@storybook/addon-essentials": "npm:^8.6.14"
-    "@storybook/addon-links": "npm:^8.6.14"
+    "@storybook/addon-links": "npm:^9.0.4"
     "@storybook/blocks": "npm:^8.6.14"
     "@storybook/manager-api": "npm:^8.6.14"
     "@storybook/react-vite": "npm:^8.6.14"
