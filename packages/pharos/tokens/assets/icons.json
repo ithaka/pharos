@@ -44,6 +44,7 @@
       "dash-small": { "value": "assets/icons/dash-small.svg" },
       "delete": { "value": "assets/icons/delete.svg" },
       "download": { "value": "assets/icons/download.svg" },
+      "drag-drop": { "value": "assets/icons/drag-drop.svg" },
       "edit": { "value": "assets/icons/edit.svg" },
       "ellipses-horizontal": { "value": "assets/icons/ellipses-horizontal.svg" },
       "ellipses-vertical": { "value": "assets/icons/ellipses-vertical.svg" },
