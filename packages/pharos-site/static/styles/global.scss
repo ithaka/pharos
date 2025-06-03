@@ -178,16 +178,6 @@ p.alert-example__content + p.alert-example__content {
   }
 }
 
-@media (width <= 1024px) {
-  .hide-for-large {
-    display: none !important; /* stylelint-disable-line declaration-no-important */
-  }
-
-  .show-for-large {
-    display: inherit !important; /* stylelint-disable-line declaration-no-important */
-  }
-}
-
 .header-example__input-group {
   padding-bottom: var(--pharos-spacing-one-half-x);
 }

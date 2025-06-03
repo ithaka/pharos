@@ -211,3 +211,13 @@ p.alert-example__content + p.alert-example__content {
 .list-example__inline {
   @include pharos.list-inline;
 }
+
+@media only screen and (width <= 570px) {
+  .hide-for-small {
+    display: none !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  .show-for-small {
+    display: inherit !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
