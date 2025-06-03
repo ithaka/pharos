@@ -1,0 +1,5 @@
+@use '@ithaka/pharos/lib/utils/scss/mixins';
+
+.hide-in-storybook {
+  @include mixins.hidden;
+}

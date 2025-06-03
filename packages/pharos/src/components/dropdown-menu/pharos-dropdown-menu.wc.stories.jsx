@@ -1,5 +1,5 @@
-import { action } from '@storybook/addon-actions';
-import { useEffect } from '@storybook/preview-api';
+import { action } from 'storybook/actions';
+import { useEffect } from 'storybook/preview-api';
 import { html } from 'lit';
 
 import { configureDocsPage } from '@config/docsPageConfig';
@@ -57,7 +57,7 @@ export const Events = {
       </storybook-pharos-dropdown-menu>
     </div>
   `,
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
 export const Icons = {

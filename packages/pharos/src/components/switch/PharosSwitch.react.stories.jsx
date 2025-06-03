@@ -1,7 +1,7 @@
 import { PharosSwitch } from '../../react-components/switch/pharos-switch';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 export default {
   title: 'Forms/Switch',
@@ -36,6 +36,6 @@ export const Base = {
     checked: false,
   },
   parameters: {
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'storybook/actions/panel' },
   },
 };

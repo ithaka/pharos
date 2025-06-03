@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { argTypes, defaultArgs } from './storyArgs';
 import { configureDocsPage } from '@config/docsPageConfig';
@@ -106,7 +106,7 @@ export const Events = {
       <storybook-pharos-button slot="footer" type="button">Submit</storybook-pharos-button>
     </storybook-pharos-modal>
   `,
-  parameters: { selectedPanel: 'addon-actions' },
+  parameters: { selectedPanel: 'storybook/actions/panel' },
 };
 
 export const Composition = {

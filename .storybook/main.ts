@@ -7,12 +7,9 @@ const config = {
   stories: [],
   addons: [
     getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@storybook/addon-links'),
   ],
-  docs: {
-    autodocs: true,
-  },
   async babel(config, { configType }) {
     config = {
       ...config,
@@ -61,9 +58,7 @@ const config = {
       optimizeDeps: {
         exclude: ['fsevents'],
         include: [
-          '@storybook/addon-viewport',
-          '@storybook/blocks',
-          '@storybook/theming/create',
+          '@storybook/addon-docs',
           '@storybook/web-components',
           '@vitejs/plugin-react',
           'lit/directives/style-map.js',

@@ -274,10 +274,6 @@ p.alert-example__content + p.alert-example__content {
   grid-column: span 4;
 }
 
-.hide-in-storybook {
-  @include mixins.hidden;
-}
-
 //  hide something from sighted users but still be accessible to screen readers
 .visually-hidden {
   @include mixins.hidden;

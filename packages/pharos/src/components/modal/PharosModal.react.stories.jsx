@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { Fragment } from 'react';
 
 import {
@@ -119,7 +119,7 @@ export const Events = {
       </PharosModal>
     </Fragment>
   ),
-  parameters: { selectedPanel: 'addon-actions' },
+  parameters: { selectedPanel: 'storybook/actions/panel' },
 };
 
 export const Composition = {

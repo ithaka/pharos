@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { PharosTextarea, PharosButton } from '../../react-components';
 import createFormData from '../../utils/createFormData';
@@ -96,7 +96,7 @@ export const Events = {
       </PharosTextarea>
     </div>
   ),
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
 export const Validity = {
