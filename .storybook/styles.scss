@@ -185,6 +185,16 @@ p.alert-example__content + p.alert-example__content {
   padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
 }
 
+.icon-example__container {
+  display: flex;
+  align-items: center;
+  padding: var(--pharos-spacing-one-quarter-x);
+}
+
+.icon-example__name {
+  margin-left: var(--pharos-spacing-three-quarters-x);
+}
+
 .icon-example__icon {
   stroke: var(--pharos-color-black);
   stroke-width: 0;
