@@ -1,7 +1,7 @@
 @use '../../utils/scss/mixins';
 
 @mixin selected-text {
-  color: var(--pharos-combobox-color-text-selected);
+  color: var(--pharos-dropdown-multiselect-color-text-selected);
   font-weight: var(--pharos-font-weight-bold);
 }
 
@@ -11,30 +11,27 @@
 }
 
 .multiselect-dropdown__icon {
-  fill: var(--pharos-combobox-color-icon-dropdown);
+  fill: var(--pharos-dropdown-multiselect-color-icon-dropdown);
 }
 
 .multiselect-dropdown__button {
-  @include mixins.icon-button;
+  @include mixins.button-hover;
+  @include mixins.interactive-focus;
+  @include mixins.button-base(
+    $color: var(--pharos-button-color-base-secondary-text-base),
+    $background-color: var(--pharos-button-color-base-secondary-background-base),
+    $border-color: var(--pharos-button-color-base-secondary-border-base)
+  );
 
-  border-radius: 0 var(--pharos-radius-base-standard) var(--pharos-radius-base-standard) 0;
-  border: 1px solid var(--pharos-form-element-color-border-base);
-  padding: var(--pharos-spacing-one-half-x);
-  background-color: var(--pharos-color-interactive-tertiary);
+  width: 100%;
+  justify-content: space-between;
+  font-weight: var(--pharos-font-weight-regular);
 
-  &:focus,
-  &:hover {
-    outline: none;
-    padding: calc(var(--pharos-spacing-one-half-x) - 1px);
-    border: 2px solid var(--pharos-color-hover-primary);
-    transition:
-      background-color var(--pharos-transition-duration-default) ease-in-out,
-      outline var(--pharos-transition-duration-default) ease-in-out;
+  // min-width: 432px;
+}
 
-    .multiselect-dropdown__icon {
-      fill: var(--pharos-combobox-color-icon-focus);
-    }
-  }
+.multiselect-dropdown__button-label {
+  @include mixins.form-element-label;
 }
 
 :host([disabled]) .multiselect-dropdown__button {
@@ -73,16 +70,18 @@
 
 .multiselect-dropdown__option {
   position: relative;
-  padding: var(--pharos-spacing-one-quarter-x) 0;
+
+  // padding: var(--pharos-spacing-one-quarter-x) 0;
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-1-x);
   cursor: pointer;
 
   &:hover,
   &[highlighted] {
     background-color: var(--pharos-color-ui-20);
-    color: var(--pharos-combobox-color-text-hover);
+    color: var(--pharos-dropdown-multiselect-color-text-hover);
 
     .multiselect-dropdown__mark {
-      color: var(--pharos-combobox-color-text-hover);
+      color: var(--pharos-dropdown-multiselect-color-text-hover);
     }
   }
 }
@@ -92,28 +91,42 @@
   top: 0;
   z-index: 1;
   background: inherit;
+  box-shadow: var(--pharos-elevation-level-2);
+  border-radius: var(--pharos-radius-base-standard);
 }
 
-.input-wrapper {
+.multiselect-dropdown__search-input-label {
+  @include mixins.hidden;
+}
+
+.multiselect-dropdown__search-input-wrapper {
   @include mixins.input-wrapper;
+
+  width: auto;
+  padding: var(--pharos-spacing-1-x);
 }
 
 .multiselect-dropdown__list {
   @include mixins.font-base;
 
-  position: absolute;
-  top: 100%;
-  left: 0;
-  max-height: var(--pharos-combobox-size-height-list);
+  // position: absolute;
+  // top: 100%;
+  // left: 0;
+  max-height: var(--pharos-dropdown-multiselect-size-height-list);
   overflow-y: scroll;
   z-index: 1;
-  width: 100%;
-  box-sizing: border-box;
+
+  // width: 100%;
+  box-sizing: content-box;
   background-color: var(--pharos-color-ui-10);
-  margin-block: var(--pharos-spacing-one-half-x);
+
+  // margin-block: var(--pharos-spacing-one-half-x);
+  margin-block: 0;
   list-style-type: none;
   padding-inline-start: 0;
-  padding-left: 0;
+
+  // padding-left: 0;
+  // margin-left: -3px;
 }
 
 .multiselect-dropdown__mark--selected {
@@ -140,9 +153,29 @@
   @include mixins.hidden;
 }
 
-.multiselect-dropdown__search-button {
+.multiselect-dropdown__search-icon {
   border-radius: 0 var(--pharos-radius-base-standard) var(--pharos-radius-base-standard) 0;
   border: 1px solid var(--pharos-form-element-color-border-base);
-  padding: calc(var(--pharos-spacing-one-quarter-x) - 1px);
+  padding: var(--pharos-spacing-one-half-x);
   border-left: 0;
+}
+
+.multiselect-dropdown__input-wrapper {
+  border-radius: var(--pharos-radius-base-standard);
+  box-shadow: var(--pharos-elevation-level-3);
+  margin-top: 2px;
+}
+
+// .multiselect-dropdown__input-container {
+// padding: var(--pharos-spacing-1-x) var(--pharos-spacing-1-x) 0 var(--pharos-spacing-1-x);
+// }
+
+.multiselect-dropdown__button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: var(--pharos-spacing-one-half-x);
+  padding: var(--pharos-spacing-1-x) var(--pharos-spacing-one-and-a-half-x);
+  box-shadow: var(--pharos-elevation-level-2);
+  border-radius: var(--pharos-radius-base-standard);
 }
