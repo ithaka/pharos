@@ -1,0 +1,10 @@
+diff --git a/dist/observable-like.d-b7430e69.d.ts b/dist/observable-like.d-b7430e69.d.ts
+index 6b6e836e5cdf38867893f8eebc1e09da086f96ce..03cf3d65517a96871365bf3c3684fa7f98acae85 100644
+--- a/dist/observable-like.d-b7430e69.d.ts
++++ b/dist/observable-like.d-b7430e69.d.ts
+@@ -1,3 +1,5 @@
++export {};
++
+ declare global {
+ 	interface SymbolConstructor {
+ 		readonly observable: symbol;

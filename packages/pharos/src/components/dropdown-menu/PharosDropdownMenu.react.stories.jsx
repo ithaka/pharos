@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import {
   PharosDropdownMenu,
@@ -75,7 +75,7 @@ export const Events = {
     </div>
   ),
   parameters: {
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'storybook/actions/panel' },
   },
 };
 

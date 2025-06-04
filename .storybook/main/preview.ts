@@ -3,7 +3,13 @@ import { setCustomElements } from '@storybook/web-components';
 import customElements from '../../packages/pharos/custom-elements.json';
 import '../styleConfig';
 import '../initComponents';
+import sharedPreview from '../preview';
 
 setCustomElements(customElements);
 
-export { preview } from '../preview';
+const preview = {
+  ...sharedPreview,
+  tags: ['autodocs'],
+};
+
+export default preview;

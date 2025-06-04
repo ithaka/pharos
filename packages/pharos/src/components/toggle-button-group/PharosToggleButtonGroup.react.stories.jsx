@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { PharosToggleButtonGroup, PharosToggleButton } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
@@ -81,7 +81,7 @@ export const Events = {
       </PharosToggleButton>
     </PharosToggleButtonGroup>
   ),
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
 export const IconsOnly = {

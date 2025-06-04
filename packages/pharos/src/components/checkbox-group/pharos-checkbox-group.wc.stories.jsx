@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import createFormData from '../../utils/createFormData';
 import { configureDocsPage } from '@config/docsPageConfig';
@@ -57,7 +57,7 @@ export const Events = {
       >
     </storybook-pharos-checkbox-group>`,
   args: {},
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
 export const Validity = {
@@ -108,5 +108,5 @@ export const FormData = {
         >Submit</storybook-pharos-button
       >
     </form>`,
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
