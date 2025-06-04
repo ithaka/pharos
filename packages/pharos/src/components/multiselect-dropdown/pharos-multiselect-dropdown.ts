@@ -273,7 +273,118 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       .toLowerCase();
   }
 
-  private _renderList(): TemplateResult | typeof nothing {
+  // private _renderList(): TemplateResult | typeof nothing {
+  //   const queryToCompare = this.looseMatch
+  //     ? this._normalizeString(this._searchValue)
+  //     : this._searchValue;
+  //   const regex = new RegExp(queryToCompare, 'gi');
+  //   this.matchingOptions = this.options.filter((child) => {
+  //     const childText = this.looseMatch ? this._normalizeString(child.text) : child.text;
+  //     return childText.match(regex);
+  //   });
+
+  //   const allMatchingSelected =
+  //     this.matchingOptions.length > 0 &&
+  //     this.matchingOptions.every((option) => this.pendingOptions.includes(option.text.trim()));
+
+  //   const allMatchingIndeterminate =
+  //     this.pendingOptions.length > 0 &&
+  //     !allMatchingSelected &&
+  //     this.matchingOptions.some((option) => this.pendingOptions.includes(option.text.trim()));
+
+  //   const selectAllText = allMatchingSelected
+  //     ? `Deselect ${this.matchingOptions.length}`
+  //     : `Select all ${this.matchingOptions.length}`;
+  //   return html`
+  //     <ul
+  //       aria-labelledby="input-label"
+  //       role="combobox"
+  //       id="multiselect-dropdown-list"
+  //       class="multiselect-dropdown__list"
+  //     >
+  //       ${this.matchingOptions.length > 1
+  //         ? html`<li
+  //             class=${classMap({
+  //               'multiselect-dropdown__option': true,
+  //               'multiselect-dropdown__select-all': true,
+  //             })}
+  //             role="option"
+  //             aria-selected="${allMatchingSelected}"
+  //           >
+  //             <pharos-checkbox
+  //               class="multiselect-dropdown__option__checkbox"
+  //               @click=${(event: Event) => this._handleSelectAllClicked(event)}
+  //               ?checked=${allMatchingSelected}
+  //               ?indeterminate="${allMatchingIndeterminate}"
+  //             >
+  //               <span slot="label"> ${selectAllText} </span>
+  //             </pharos-checkbox>
+  //           </li>`
+  //         : nothing}
+  //       ${this.matchingOptions.length
+  //         ? this.matchingOptions.map((child, index) => {
+  //             const option = child as HTMLOptionElement;
+  //             const exactMatch = this._searchValue === option.value;
+
+  //             const optionText = this._searchValue
+  //               ? option.text.replace(regex, (str) => {
+  //                   const classes = exactMatch
+  //                     ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
+  //                     : 'multiselect-dropdown__mark';
+
+  //                   return `<mark class="${classes}">${str}</mark>`;
+  //                 })
+  //               : option.text;
+
+  //             const isSelected = this.pendingOptions.includes(option.text.trim());
+  //             return html`
+  //               <li
+  //                 id="${`result-item-${index}`}"
+  //                 class=${classMap({
+  //                   [`multiselect-dropdown__option`]: true,
+  //                   [`multiselect-dropdown__option--selected`]: isSelected,
+  //                   [`multiselect-dropdown__option--disabled`]: option.disabled,
+  //                 })}
+  //                 role="option"
+  //                 aria-selected="${isSelected}"
+  //                 aria-disabled="${option.disabled}"
+  //                 aria-label="${option.text}"
+  //                 @click=${(event: Event) => this._handleOptionClick(option, event)}
+  //                 @keydown=${(event: KeyboardEvent) => {
+  //                   if (event.key === 'space') {
+  //                     this._handleOptionClick(option, event);
+  //                   }
+  //                 }}
+  //                 @mousedown=${(event: MouseEvent) => {
+  //                   event.preventDefault();
+  //                 }}
+  //               >
+  //                 ${html`
+  //                   <pharos-checkbox
+  //                     class="multiselect-dropdown__option__checkbox"
+  //                     ?checked=${isSelected}
+  //                   >
+  //                     <span slot="label">${unsafeHTML(optionText)} </span>
+  //                   </pharos-checkbox>
+  //                 `}
+  //               </li>
+  //             `;
+  //           })
+  //         : html`<li class="multiselect-dropdown__option">No results found</li>`}
+  //     </ul>
+  //     <div aria-live="polite" role="status" class="visually-hidden">
+  //       ${this.matchingOptions.length
+  //         ? `${this.matchingOptions.length} results available.`
+  //         : `No results found`}
+  //     </div>
+  //   `;
+  // }
+
+  private renderDropdownPanel(): TemplateResult | typeof nothing {
+    if (!this._open) {
+      return nothing;
+    }
+
     const queryToCompare = this.looseMatch
       ? this._normalizeString(this._searchValue)
       : this._searchValue;
@@ -295,128 +406,129 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     const selectAllText = allMatchingSelected
       ? `Deselect ${this.matchingOptions.length}`
       : `Select all ${this.matchingOptions.length}`;
+
     return html`
-      <ul
-        aria-labelledby="input-label"
-        role="combobox"
-        id="multiselect-dropdown-list"
-        class="multiselect-dropdown__list"
-      >
-        ${this.matchingOptions.length > 1
-          ? html`<li
-              class=${classMap({
-                'multiselect-dropdown__option': true,
-                'multiselect-dropdown__select-all': true,
-              })}
-              role="option"
-              aria-selected="${allMatchingSelected}"
-            >
-              <pharos-checkbox
-                class="multiselect-dropdown__option__checkbox"
-                @click=${(event: Event) => this._handleSelectAllClicked(event)}
-                ?checked=${allMatchingSelected}
-                ?indeterminate="${allMatchingIndeterminate}"
-              >
-                <span slot="label"> ${selectAllText} </span>
-              </pharos-checkbox>
-            </li>`
-          : nothing}
-        ${this.matchingOptions.length
-          ? this.matchingOptions.map((child, index) => {
-              const option = child as HTMLOptionElement;
-              const exactMatch = this._searchValue === option.value;
-
-              const optionText = this._searchValue
-                ? option.text.replace(regex, (str) => {
-                    const classes = exactMatch
-                      ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
-                      : 'multiselect-dropdown__mark';
-
-                    return `<mark class="${classes}">${str}</mark>`;
-                  })
-                : option.text;
-
-              const isSelected = this.pendingOptions.includes(option.text.trim());
-              return html`
-                <li
-                  id="${`result-item-${index}`}"
+      <div class="multiselect-dropdown__input-wrapper">
+        <div class="multiselect-dropdown__input-container">
+          <label
+            for="multiselect-dropdown__search-input"
+            class="multiselect-dropdown__search-input-label"
+            id="input-label"
+          >
+            <slot name="label"></slot>
+          </label>
+          <div class="multiselect-dropdown__search-input-wrapper">
+            <input
+              id="multiselect-dropdown__search-input"
+              class="multiselect-dropdown__search-input ${this._displayValue
+                ? 'multiselect-dropdown__search-input--populated'
+                : null}"
+              name="${this.name}"
+              type="text"
+              .value="${this._searchValue}"
+              role="listbox"
+              aria-expanded="${true}"
+              aria-controls="multiselect-dropdown-list"
+              aria-autocomplete="list"
+              aria-activedescendant=""
+              aria-describedby="${ifDefined(this.messageId)}"
+              @input=${this._handleSearchInput}
+              @keydown=${this._handleSearchInputKeydown}
+            />
+            <pharos-icon
+              class="multiselect-dropdown__search-icon"
+              name="search"
+              a11y-title="Search"
+            ></pharos-icon>
+          </div>
+          <ul
+            aria-labelledby="input-label"
+            role="combobox"
+            id="multiselect-dropdown-list"
+            class="multiselect-dropdown__list"
+          >
+            ${this.matchingOptions.length > 1
+              ? html`<li
                   class=${classMap({
-                    [`multiselect-dropdown__option`]: true,
-                    [`multiselect-dropdown__option--selected`]: isSelected,
-                    [`multiselect-dropdown__option--disabled`]: option.disabled,
+                    'multiselect-dropdown__option': true,
+                    'multiselect-dropdown__select-all': true,
                   })}
                   role="option"
-                  aria-selected="${isSelected}"
-                  aria-disabled="${option.disabled}"
-                  aria-label="${option.text}"
-                  @click=${(event: Event) => this._handleOptionClick(option, event)}
-                  @keydown=${(event: KeyboardEvent) => {
-                    if (event.key === 'space') {
-                      this._handleOptionClick(option, event);
-                    }
-                  }}
-                  @mousedown=${(event: MouseEvent) => {
-                    event.preventDefault();
-                  }}
+                  aria-selected="${allMatchingSelected}"
                 >
-                  ${html`
-                    <pharos-checkbox
-                      class="multiselect-dropdown__option__checkbox"
-                      ?checked=${isSelected}
-                    >
-                      <span slot="label">${unsafeHTML(optionText)} </span>
-                    </pharos-checkbox>
-                  `}
-                </li>
-              `;
-            })
-          : html`<li class="multiselect-dropdown__option">No results found</li>`}
-      </ul>
-      <div aria-live="polite" role="status" class="visually-hidden">
-        ${this.matchingOptions.length
-          ? `${this.matchingOptions.length} results available.`
-          : `No results found`}
-      </div>
-    `;
-  }
+                  <pharos-checkbox
+                    class="multiselect-dropdown__option__checkbox"
+                    @click=${(event: Event) => this._handleSelectAllClicked(event)}
+                    @keydown=${(event: KeyboardEvent) => {
+                      if (event.key === 'space') {
+                        this._handleSelectAllClicked(event);
+                      }
+                    }}
+                    ?checked=${allMatchingSelected}
+                    ?indeterminate="${allMatchingIndeterminate}"
+                  >
+                    <span slot="label"> ${selectAllText} </span>
+                  </pharos-checkbox>
+                </li>`
+              : nothing}
+            ${this.matchingOptions.length
+              ? this.matchingOptions.map((child, index) => {
+                  const option = child as HTMLOptionElement;
+                  const exactMatch = this._searchValue === option.value;
 
-  private renderDropdownPanel(): TemplateResult | typeof nothing {
-    if (!this._open) {
-      return nothing;
-    }
-    return html`
-      <div class="multiselect-dropdown__input-container">
-        <label for="multiselect-dropdown__search-input" id="input-label">
-          <slot name="label"></slot>
-        </label>
-        <div class="input-wrapper">
-          <input
-            id="multiselect-dropdown__search-input"
-            class="multiselect-dropdown__search-input ${this._displayValue
-              ? 'multiselect-dropdown__search-input--populated'
-              : null}"
-            name="${this.name}"
-            type="text"
-            .value="${this._searchValue}"
-            role="listbox"
-            aria-expanded="${true}"
-            aria-controls="multiselect-dropdown-list"
-            aria-autocomplete="list"
-            aria-activedescendant=""
-            aria-describedby="${ifDefined(this.messageId)}"
-            @input=${this._handleSearchInput}
-            @keydown=${this._handleSearchInputKeydown}
-          />
-          <pharos-button
-            icon="search"
-            type="button"
-            variant="subtle"
-            class="multiselect-dropdown__search-button"
-            a11y-label="Search"
-          ></pharos-button>
-          ${this._renderList()}
+                  const optionText = this._searchValue
+                    ? option.text.replace(regex, (str) => {
+                        const classes = exactMatch
+                          ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
+                          : 'multiselect-dropdown__mark';
+
+                        return `<mark class="${classes}">${str}</mark>`;
+                      })
+                    : option.text;
+
+                  const isSelected = this.pendingOptions.includes(option.text.trim());
+                  return html`
+                    <li
+                      id="${`result-item-${index}`}"
+                      class=${classMap({
+                        [`multiselect-dropdown__option`]: true,
+                        [`multiselect-dropdown__option--selected`]: isSelected,
+                        [`multiselect-dropdown__option--disabled`]: option.disabled,
+                      })}
+                      role="option"
+                      aria-selected="${isSelected}"
+                      aria-disabled="${option.disabled}"
+                      aria-label="${option.text}"
+                      @click=${(event: Event) => this._handleOptionClick(option, event)}
+                      @keydown=${(event: KeyboardEvent) => {
+                        if (event.key === 'space') {
+                          this._handleOptionClick(option, event);
+                        }
+                      }}
+                      @mousedown=${(event: MouseEvent) => {
+                        event.preventDefault();
+                      }}
+                    >
+                      ${html`
+                        <pharos-checkbox
+                          class="multiselect-dropdown__option__checkbox"
+                          ?checked=${isSelected}
+                        >
+                          <span slot="label">${unsafeHTML(optionText)} </span>
+                        </pharos-checkbox>
+                      `}
+                    </li>
+                  `;
+                })
+              : html`<li class="multiselect-dropdown__option">No results found</li>`}
+          </ul>
+          <div aria-live="polite" role="status" class="visually-hidden">
+            ${this.matchingOptions.length
+              ? `${this.matchingOptions.length} results available.`
+              : `No results found`}
+          </div>
         </div>
-        <div class="multiselect-dropdown__button-container" style="margin-top:16rem;">
+        <div class="multiselect-dropdown__button-container">
           <pharos-button type="button" variant="secondary" @click=${this._handleCancelClick}>
             Cancel
           </pharos-button>
@@ -431,13 +543,25 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   protected override render(): TemplateResult {
     return html`
       <div class="multiselect-dropdown">
-        <pharos-button
-          variant="secondary"
-          icon-right="chevron-down"
+        <span id="button-label" class="multiselect-dropdown__button-label">
+          <slot name="label"></slot>
+        </span>
+        <button
+          id="button-element"
+          class="multiselect-dropdown__button"
+          aria-labelledby="button-label"
+          aria-expanded="${this._open}"
+          aria-haspopup="true"
+          type="button"
           @click=${this._handleDropdownButtonClick}
         >
           ${this._getButtonDisplayText()}
-        </pharos-button>
+          <pharos-icon
+            name="chevron-down"
+            a11y-hidden="true"
+            class="multiselect-dropdown__icon"
+          ></pharos-icon>
+        </button>
         ${this.renderDropdownPanel()}
       </div>
     `;
