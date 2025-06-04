@@ -81,6 +81,7 @@
       "link": { "value": "assets/icons/link.svg" },
       "link-add": { "value": "assets/icons/link-add.svg" },
       "link-external": { "value": "assets/icons/link-external.svg" },
+      "link-external-small": { "value": "assets/icons/link-external-small.svg" },
       "linkedin": { "value": "assets/icons/linkedin.svg" },
       "menu": { "value": "assets/icons/menu.svg" },
       "microsoft-color": { "value": "assets/icons/microsoft-color.svg" },
