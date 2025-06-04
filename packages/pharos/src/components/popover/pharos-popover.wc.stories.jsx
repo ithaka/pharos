@@ -116,8 +116,8 @@ export const DarkPopoverOnBackground = {
       </storybook-pharos-popover>
     </div>
   `,
-  parameters: {
-    backgrounds: { default: 'dark' },
+  globals: {
+    backgrounds: { value: 'dark' },
   },
 };
 

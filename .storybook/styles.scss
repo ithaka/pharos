@@ -1,34 +1,14 @@
-@use '@ithaka/pharos/lib/styles/pharos';
-@use '@ithaka/pharos/lib/utils/scss/mixins';
+@use '../packages/pharos/lib/styles/pharos';
+@use '../packages/pharos/lib/utils/scss/mixins';
 
-kbd {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
-  color: #333;
-  background-color: #fcfcfc;
-  border: 0.1rem solid #e8e8e8;
-  border-bottom-color: #9c9c9c;
-  box-shadow:
-    0 1px 0 #9c9c9c,
-    0 0 0 2px #fcfcfc inset;
+.hide-in-storybook {
+  @include mixins.hidden;
 }
 
-.tooltip-example__target {
-  border-radius: 50%;
-  border: none;
-  fill: var(--pharos-color-night-blue-base);
-  padding: 0;
-  cursor: pointer;
-  background: none;
-}
-
-.tooltip-example__container {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-gap: 5rem;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  justify-content: space-evenly;
+.pharos-storybook__image {
+  margin-top: var(--pharos-spacing-three-quarters-x);
+  margin-bottom: var(--pharos-spacing-three-quarters-x);
+  max-width: 100%;
 }
 
 .alert-example__content {
@@ -41,6 +21,74 @@ p.alert-example__content + p.alert-example__content {
 
 .alert-example__content > li {
   margin-top: 0;
+}
+
+.checkbox-example__container--on-background {
+  padding: 1rem;
+  background-color: var(--pharos-color-black);
+}
+
+.header-example__input-group {
+  padding-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.layout-example__item {
+  background: var(--pharos-color-living-coral-80);
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout-example__column {
+  display: flex;
+  justify-content: center;
+  grid-column: span 1;
+  height: 100vh;
+  background-color: rgb(244 215 215 / 0.6);
+  padding-top: var(--pharos-spacing-1-x);
+}
+
+.layout-example__container--first {
+  grid-column: span 8;
+  grid-row: 1;
+  background: var(--pharos-color-glacier-blue-70);
+  height: 20rem;
+}
+
+.layout-example__container--second {
+  grid-column: span 8;
+  grid-row: 2;
+  background: var(--pharos-color-glacier-blue-70);
+  height: 14.5rem;
+}
+
+.layout-example__container--third {
+  grid-column: span 4;
+  grid-row: span 2;
+  background: var(--pharos-color-glacier-blue-70);
+  height: 38rem;
+}
+
+@include pharos.until(small) {
+  .layout-example__container--first,
+  .layout-example__container--second {
+    grid-column: span 4;
+  }
+}
+
+.image-card-example__card--collection {
+  grid-column: span 3;
+}
+
+@include pharos.until(medium) {
+  .image-card-example__card--collection {
+    grid-column: span 4;
+  }
+}
+
+.image-card-example__card--promotional {
+  grid-column: span 4;
 }
 
 .token-table-container {
@@ -137,11 +185,6 @@ p.alert-example__content + p.alert-example__content {
   padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
 }
 
-.icon-example__icon {
-  stroke: var(--pharos-color-black);
-  stroke-width: 0;
-}
-
 .icon-example__container {
   display: flex;
   align-items: center;
@@ -150,6 +193,11 @@ p.alert-example__content + p.alert-example__content {
 
 .icon-example__name {
   margin-left: var(--pharos-spacing-three-quarters-x);
+}
+
+.icon-example__icon {
+  stroke: var(--pharos-color-black);
+  stroke-width: 0;
 }
 
 .list-example__no-bullets {
@@ -164,10 +212,6 @@ p.alert-example__content + p.alert-example__content {
   @include pharos.list-inline;
 }
 
-[tabindex='0'] {
-  @include pharos.interactive-focus;
-}
-
 @media only screen and (width <= 570px) {
   .hide-for-small {
     display: none !important; /* stylelint-disable-line declaration-no-important */
@@ -176,13 +220,4 @@ p.alert-example__content + p.alert-example__content {
   .show-for-small {
     display: inherit !important; /* stylelint-disable-line declaration-no-important */
   }
-}
-
-.header-example__input-group {
-  padding-bottom: var(--pharos-spacing-one-half-x);
-}
-
-//  hide something from sighted users but still be accessible to screen readers
-.visually-hidden {
-  @include mixins.hidden;
 }

@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { html } from 'lit';
 
 import { configureDocsPage } from '@config/docsPageConfig';
@@ -66,7 +66,7 @@ export const Events = {
       </storybook-pharos-toggle-button>
     </storybook-pharos-toggle-button-group>
   `,
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
 export const IconsOnly = {

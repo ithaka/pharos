@@ -1,4 +1,4 @@
-import { addons } from '@storybook/manager-api';
+import { addons } from 'storybook/manager-api';
 import theme from '../theme';
 
 window.STORYBOOK_GA_ID = 'UA-98658597-20';

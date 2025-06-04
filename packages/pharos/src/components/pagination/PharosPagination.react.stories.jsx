@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { PharosPagination } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
@@ -36,5 +36,5 @@ export const Base = {
 
 export const Events = {
   ...Base,
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };

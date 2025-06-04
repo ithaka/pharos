@@ -1,4 +1,4 @@
-import '../packages/pharos-site/static/styles/global.scss';
+import './styles.scss';
 import '../packages/pharos/lib/styles/fonts.css';
 import '../packages/pharos/lib/styles/variables.css';
 import '../packages/pharos/lib/styles/pharos-alert.css';

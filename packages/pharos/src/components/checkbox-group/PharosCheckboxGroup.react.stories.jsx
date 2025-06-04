@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { PharosButton, PharosCheckbox, PharosCheckboxGroup } from '../../react-components';
 import createFormData from '../../utils/createFormData';
