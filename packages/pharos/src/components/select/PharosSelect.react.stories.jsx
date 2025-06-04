@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { PharosSelect, PharosButton } from '../../react-components';
 import createFormData from '../../utils/createFormData';
@@ -92,7 +92,7 @@ export const Events = {
       <option value="2">Option 2 (Value is 2)</option>
     </PharosSelect>
   ),
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
 export const Validity = {

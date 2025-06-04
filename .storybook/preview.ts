@@ -1,9 +1,9 @@
-import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
 
 import a11yConfig from './a11yConfig';
 import theme from './theme';
 
-export const preview = {
+const preview = {
   parameters: {
     a11y: a11yConfig,
     controls: { expanded: true },
@@ -31,3 +31,5 @@ export const preview = {
     },
   },
 };
+
+export default preview;
