@@ -6,9 +6,9 @@ import path, { dirname, join } from 'path';
 const config = {
   stories: [],
   addons: [
-    getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@storybook/addon-docs'),
-    getAbsolutePath('@storybook/addon-links'),
+    { name: '@storybook/addon-a11y' },
+    { name: '@storybook/addon-docs' },
+    { name: '@storybook/addon-links' },
   ],
   async babel(config, { configType }) {
     config = {
@@ -58,7 +58,6 @@ const config = {
       optimizeDeps: {
         exclude: ['fsevents'],
         include: [
-          '@storybook/addon-docs',
           '@storybook/web-components',
           '@vitejs/plugin-react',
           'lit/directives/style-map.js',
