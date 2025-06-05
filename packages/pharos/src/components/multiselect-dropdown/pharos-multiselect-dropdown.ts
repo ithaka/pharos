@@ -77,6 +77,9 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   @query('#multiselect-dropdown__search-input')
   private _input!: HTMLInputElement;
 
+  @query('#multiselect-dropdown-list')
+  private _list!: HTMLInputElement;
+
   @state()
   private _searchValue = '';
 
@@ -91,6 +94,69 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   // The options that match the current search input
   @state()
   private matchingOptions: HTMLOptionElement[] = [];
+
+  @state()
+  private _isScrolling = false;
+
+  private _scrollObserver: IntersectionObserver | null = null;
+
+  public override firstUpdated(): void {
+    this._setupScrollObserver();
+  }
+
+  public override updated(changedProperties: Map<string, any>): void {
+    super.updated(changedProperties);
+
+    // When the dropdown opens or closes, observe or disconnect the scroll observer
+    if (changedProperties.has('_open') && this._open) {
+      this._updateScrollObserver();
+    }
+  }
+
+  public override disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this._teardownScrollObserver();
+  }
+
+  /**
+   * Sets up an IntersectionObserver to monitor the scroll state of the dropdown list.
+   * The observer updates the `_isScrolling` property based on whether the first item
+   * in the list is fully visible within the scrollable container (`_list`).
+   * This is used to add the visual elevation when a user is scrolling
+   *
+   * The observer is only created if the `IntersectionObserver` API is available in the browser.
+   */
+  private _setupScrollObserver(): void {
+    if ('IntersectionObserver' in window) {
+      this._scrollObserver = new IntersectionObserver(
+        (entries) => {
+          const firstItem = entries[0];
+          if (firstItem) {
+            this._isScrolling = !firstItem.isIntersecting;
+          }
+        },
+        { root: this._list, threshold: 1 }
+      );
+    }
+  }
+
+  private _teardownScrollObserver(): void {
+    if (this._scrollObserver) {
+      this._scrollObserver.disconnect();
+      this._scrollObserver = null;
+    }
+  }
+
+  private _updateScrollObserver(): void {
+    if (this._scrollObserver && this._list) {
+      this._scrollObserver.disconnect();
+
+      const firstOption = this._list.querySelector('.multiselect-dropdown__option');
+      if (firstOption) {
+        this._scrollObserver.observe(firstOption);
+      }
+    }
+  }
 
   public static override get styles(): CSSResultArray {
     return [super.styles, multiselectDropdownStyles];
@@ -273,113 +339,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       .toLowerCase();
   }
 
-  // private _renderList(): TemplateResult | typeof nothing {
-  //   const queryToCompare = this.looseMatch
-  //     ? this._normalizeString(this._searchValue)
-  //     : this._searchValue;
-  //   const regex = new RegExp(queryToCompare, 'gi');
-  //   this.matchingOptions = this.options.filter((child) => {
-  //     const childText = this.looseMatch ? this._normalizeString(child.text) : child.text;
-  //     return childText.match(regex);
-  //   });
-
-  //   const allMatchingSelected =
-  //     this.matchingOptions.length > 0 &&
-  //     this.matchingOptions.every((option) => this.pendingOptions.includes(option.text.trim()));
-
-  //   const allMatchingIndeterminate =
-  //     this.pendingOptions.length > 0 &&
-  //     !allMatchingSelected &&
-  //     this.matchingOptions.some((option) => this.pendingOptions.includes(option.text.trim()));
-
-  //   const selectAllText = allMatchingSelected
-  //     ? `Deselect ${this.matchingOptions.length}`
-  //     : `Select all ${this.matchingOptions.length}`;
-  //   return html`
-  //     <ul
-  //       aria-labelledby="input-label"
-  //       role="combobox"
-  //       id="multiselect-dropdown-list"
-  //       class="multiselect-dropdown__list"
-  //     >
-  //       ${this.matchingOptions.length > 1
-  //         ? html`<li
-  //             class=${classMap({
-  //               'multiselect-dropdown__option': true,
-  //               'multiselect-dropdown__select-all': true,
-  //             })}
-  //             role="option"
-  //             aria-selected="${allMatchingSelected}"
-  //           >
-  //             <pharos-checkbox
-  //               class="multiselect-dropdown__option__checkbox"
-  //               @click=${(event: Event) => this._handleSelectAllClicked(event)}
-  //               ?checked=${allMatchingSelected}
-  //               ?indeterminate="${allMatchingIndeterminate}"
-  //             >
-  //               <span slot="label"> ${selectAllText} </span>
-  //             </pharos-checkbox>
-  //           </li>`
-  //         : nothing}
-  //       ${this.matchingOptions.length
-  //         ? this.matchingOptions.map((child, index) => {
-  //             const option = child as HTMLOptionElement;
-  //             const exactMatch = this._searchValue === option.value;
-
-  //             const optionText = this._searchValue
-  //               ? option.text.replace(regex, (str) => {
-  //                   const classes = exactMatch
-  //                     ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
-  //                     : 'multiselect-dropdown__mark';
-
-  //                   return `<mark class="${classes}">${str}</mark>`;
-  //                 })
-  //               : option.text;
-
-  //             const isSelected = this.pendingOptions.includes(option.text.trim());
-  //             return html`
-  //               <li
-  //                 id="${`result-item-${index}`}"
-  //                 class=${classMap({
-  //                   [`multiselect-dropdown__option`]: true,
-  //                   [`multiselect-dropdown__option--selected`]: isSelected,
-  //                   [`multiselect-dropdown__option--disabled`]: option.disabled,
-  //                 })}
-  //                 role="option"
-  //                 aria-selected="${isSelected}"
-  //                 aria-disabled="${option.disabled}"
-  //                 aria-label="${option.text}"
-  //                 @click=${(event: Event) => this._handleOptionClick(option, event)}
-  //                 @keydown=${(event: KeyboardEvent) => {
-  //                   if (event.key === 'space') {
-  //                     this._handleOptionClick(option, event);
-  //                   }
-  //                 }}
-  //                 @mousedown=${(event: MouseEvent) => {
-  //                   event.preventDefault();
-  //                 }}
-  //               >
-  //                 ${html`
-  //                   <pharos-checkbox
-  //                     class="multiselect-dropdown__option__checkbox"
-  //                     ?checked=${isSelected}
-  //                   >
-  //                     <span slot="label">${unsafeHTML(optionText)} </span>
-  //                   </pharos-checkbox>
-  //                 `}
-  //               </li>
-  //             `;
-  //           })
-  //         : html`<li class="multiselect-dropdown__option">No results found</li>`}
-  //     </ul>
-  //     <div aria-live="polite" role="status" class="visually-hidden">
-  //       ${this.matchingOptions.length
-  //         ? `${this.matchingOptions.length} results available.`
-  //         : `No results found`}
-  //     </div>
-  //   `;
-  // }
-
   private renderDropdownPanel(): TemplateResult | typeof nothing {
     if (!this._open) {
       return nothing;
@@ -417,12 +376,18 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           >
             <slot name="label"></slot>
           </label>
-          <div class="multiselect-dropdown__search-input-wrapper">
+          <div
+            class=${classMap({
+              'multiselect-dropdown__search-input-wrapper': true,
+              'multiselect-dropdown__search-input-wrapper--scrolling': this._isScrolling,
+            })}
+          >
             <input
               id="multiselect-dropdown__search-input"
-              class="multiselect-dropdown__search-input ${this._displayValue
-                ? 'multiselect-dropdown__search-input--populated'
-                : null}"
+              class=${classMap({
+                'multiselect-dropdown__search-input': true,
+                'multiselect-dropdown__search-input--populated': this._searchValue.length > 0,
+              })}
               name="${this.name}"
               type="text"
               .value="${this._searchValue}"
