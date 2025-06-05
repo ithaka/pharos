@@ -74,8 +74,11 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     return [...this.children].filter((child) => !child.slot) as HTMLOptionElement[];
   }
 
+  @query('#button-element')
+  private _dropdown_button!: HTMLButtonElement;
+
   @query('#multiselect-dropdown__search-input')
-  private _input!: HTMLInputElement;
+  private _searchInput!: HTMLInputElement;
 
   @query('#multiselect-dropdown-list')
   private _list!: HTMLInputElement;
@@ -95,9 +98,12 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   @state()
   private matchingOptions: HTMLOptionElement[] = [];
 
+  // The combobox items have been scrolled below the top of the list
   @state()
   private _isScrolling = false;
 
+  // An IntersectionObserver to monitor the scroll state of the dropdown list
+  @state()
   private _scrollObserver: IntersectionObserver | null = null;
 
   public override firstUpdated(): void {
@@ -107,9 +113,15 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   public override updated(changedProperties: Map<string, any>): void {
     super.updated(changedProperties);
 
-    // When the dropdown opens or closes, observe or disconnect the scroll observer
-    if (changedProperties.has('_open') && this._open) {
-      this._updateScrollObserver();
+    // When the dropdown opens or closes, update/disconnect the scroll observer
+    if (changedProperties.has('_open')) {
+      if (this._open) {
+        this._updateScrollObserver();
+        this._searchInput.focus();
+      } else {
+        this._scrollObserver?.disconnect();
+        this._dropdown_button.focus();
+      }
     }
   }
 
@@ -119,12 +131,9 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   /**
-   * Sets up an IntersectionObserver to monitor the scroll state of the dropdown list.
-   * The observer updates the `_isScrolling` property based on whether the first item
+   * Sets up the IntersectionObserver to monitor the scroll state of the dropdown list.
+   * It toggled the `_isScrolling` state based on whether the first item
    * in the list is fully visible within the scrollable container (`_list`).
-   * This is used to add the visual elevation when a user is scrolling
-   *
-   * The observer is only created if the `IntersectionObserver` API is available in the browser.
    */
   private _setupScrollObserver(): void {
     if ('IntersectionObserver' in window) {
@@ -149,8 +158,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
 
   private _updateScrollObserver(): void {
     if (this._scrollObserver && this._list) {
-      this._scrollObserver.disconnect();
-
       const firstOption = this._list.querySelector('.multiselect-dropdown__option');
       if (firstOption) {
         this._scrollObserver.observe(firstOption);
@@ -163,7 +170,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private _handleSearchInput(): void {
-    this._searchValue = this._input.value;
+    this._searchValue = this._searchInput.value;
   }
 
   private _handleOptionClick(option: HTMLOptionElement, event: Event): void {
@@ -184,7 +191,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
   private _handleSelectAllClicked(event: Event): void {
     const selectAllCheckbox = event.target as PharosCheckbox;
-
+    event.preventDefault();
     if (!selectAllCheckbox.checked) {
       selectAllCheckbox.checked = true;
       const matchingOptionTexts = this.matchingOptions.map((option) => option.text.trim());
@@ -254,7 +261,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     nextOption.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     nextOption.setAttribute('highlighted', '');
     nextOption.setAttribute('aria-selected', 'true');
-    this._input.setAttribute('aria-activedescendant', nextOption.id);
+    this._searchInput.setAttribute('aria-activedescendant', nextOption.id);
   }
 
   private _selectHighlightedOption(): void {
@@ -303,6 +310,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   private _closeDropdown(): void {
     this._searchValue = '';
     this._open = false;
+    this._dropdown_button.focus();
   }
 
   private _handleDropdownButtonClick(): void {
