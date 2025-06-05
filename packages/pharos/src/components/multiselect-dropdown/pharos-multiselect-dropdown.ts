@@ -186,12 +186,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     const selectAllCheckbox = event.target as PharosCheckbox;
 
     if (!selectAllCheckbox.checked) {
+      selectAllCheckbox.checked = true;
       const matchingOptionTexts = this.matchingOptions.map((option) => option.text.trim());
       const newOptions = matchingOptionTexts.filter(
         (optionText) => !this.pendingOptions.includes(optionText)
       );
       this.pendingOptions = [...this.pendingOptions, ...newOptions];
     } else {
+      selectAllCheckbox.checked = false;
       this.pendingOptions = [...this.pendingOptions].filter(
         (pendingOption) =>
           !this.matchingOptions.some((option) => option.text.trim() === pendingOption)
@@ -391,7 +393,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
               name="${this.name}"
               type="text"
               .value="${this._searchValue}"
-              role="listbox"
+              role="combobox"
               aria-expanded="${true}"
               aria-controls="multiselect-dropdown-list"
               aria-autocomplete="list"
@@ -420,15 +422,15 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                   })}
                   role="option"
                   aria-selected="${allMatchingSelected}"
+                  @click=${(event: Event) => this._handleSelectAllClicked(event)}
+                  @keydown=${(event: KeyboardEvent) => {
+                    if (event.key === 'enter') {
+                      this._handleSelectAllClicked(event);
+                    }
+                  }}
                 >
                   <pharos-checkbox
                     class="multiselect-dropdown__option__checkbox"
-                    @click=${(event: Event) => this._handleSelectAllClicked(event)}
-                    @keydown=${(event: KeyboardEvent) => {
-                      if (event.key === 'space') {
-                        this._handleSelectAllClicked(event);
-                      }
-                    }}
                     ?checked=${allMatchingSelected}
                     ?indeterminate="${allMatchingIndeterminate}"
                   >
