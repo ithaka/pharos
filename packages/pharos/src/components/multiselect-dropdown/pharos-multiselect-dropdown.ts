@@ -112,13 +112,12 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
 
   public override updated(changedProperties: Map<string, any>): void {
     super.updated(changedProperties);
-
-    // When the dropdown opens or closes, update/disconnect the scroll observer
     if (changedProperties.has('_open')) {
       if (this._open) {
         this._updateScrollObserver();
         this._searchInput.focus();
-      } else {
+      } else if (changedProperties.get('_open') === true) {
+        // Only if the dropdown is closing, not on first render
         this._scrollObserver?.disconnect();
         this._dropdown_button.focus();
       }
