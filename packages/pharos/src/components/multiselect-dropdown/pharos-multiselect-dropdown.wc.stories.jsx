@@ -30,7 +30,7 @@ export const Base = {
       .placeholder=${ifDefined(args.placeholder)}
       message=${ifDefined(args.message)}
       ?required=${args.required}
-      style="display: grid; grid-template-columns: 300px;"
+      style="display: grid; grid-template-columns: 432px;"
     >
       <span slot="label">${args.label}</span>
       <option value="1">New Hampshire</option>
