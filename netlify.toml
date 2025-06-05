@@ -42,6 +42,3 @@
 
 [build]
   ignore = "bash ./build-ignore.sh"
-
-[[plugins]]
-  package = "@netlify/plugin-gatsby"
