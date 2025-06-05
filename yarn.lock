@@ -5340,6 +5340,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/react@patch:@storybook/react@npm%3A9.0.4#~/.yarn/patches/@storybook-react-npm-9.0.4-d4223a50a3.patch":
+  version: 9.0.4
+  resolution: "@storybook/react@patch:@storybook/react@npm%3A9.0.4#~/.yarn/patches/@storybook-react-npm-9.0.4-d4223a50a3.patch::version=9.0.4&hash=5da704"
+  dependencies:
+    "@storybook/global": "npm:^5.0.0"
+    "@storybook/react-dom-shim": "npm:9.0.4"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+    storybook: ^9.0.4
+    typescript: ">= 4.9.x"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/5880c1127ffe21d5ee74d436e7d4d417fd1ef8e82c77e22e4f5678deb09e2f8b910432e539ad1e941de52557d013c41ac0743b477bda29ca44176d636029c647
+  languageName: node
+  linkType: hard
+
 "@storybook/web-components-vite@npm:^9.0.4":
   version: 9.0.4
   resolution: "@storybook/web-components-vite@npm:9.0.4"

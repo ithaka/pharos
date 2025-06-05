@@ -116,6 +116,9 @@
       "packages/*"
     ]
   },
+  "resolutions": {
+    "@storybook/react@npm:9.0.4": "patch:@storybook/react@npm%3A9.0.4#~/.yarn/patches/@storybook-react-npm-9.0.4-d4223a50a3.patch"
+  },
   "size-limit": [
     {
       "path": "packages/pharos/lib/index.js"
