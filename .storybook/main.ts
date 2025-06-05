@@ -6,13 +6,10 @@ import path, { dirname, join } from 'path';
 const config = {
   stories: [],
   addons: [
-    getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-links'),
+    { name: '@storybook/addon-a11y' },
+    { name: '@storybook/addon-docs' },
+    { name: '@storybook/addon-links' },
   ],
-  docs: {
-    autodocs: true,
-  },
   async babel(config, { configType }) {
     config = {
       ...config,
@@ -61,9 +58,6 @@ const config = {
       optimizeDeps: {
         exclude: ['fsevents'],
         include: [
-          '@storybook/addon-viewport',
-          '@storybook/blocks',
-          '@storybook/theming/create',
           '@storybook/web-components',
           '@vitejs/plugin-react',
           'lit/directives/style-map.js',

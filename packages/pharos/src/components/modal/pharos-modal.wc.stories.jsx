@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { argTypes, defaultArgs } from './storyArgs';
 import { configureDocsPage } from '@config/docsPageConfig';
@@ -85,7 +85,6 @@ export const Events = {
     <storybook-pharos-modal
       id="my-event-modal"
       header="Event modal"
-      open
       @pharos-modal-open="${(e) => action('Open')(e.detail)}"
       @pharos-modal-opened="${(e) => action('Opened')(e.detail)}"
       @pharos-modal-close="${(e) => action('Close')(e.detail)}"
@@ -107,7 +106,7 @@ export const Events = {
       <storybook-pharos-button slot="footer" type="button">Submit</storybook-pharos-button>
     </storybook-pharos-modal>
   `,
-  parameters: { selectedPanel: 'addon-actions' },
+  parameters: { selectedPanel: 'storybook/actions/panel' },
 };
 
 export const Composition = {
@@ -121,7 +120,7 @@ export const Composition = {
     >
       Open modal
     </storybook-pharos-button>
-    <storybook-pharos-modal id="my-alert-modal" header="Add external link" open>
+    <storybook-pharos-modal id="my-alert-modal" header="Add external link">
       <div>
         <storybook-pharos-alert style="margin-bottom: 1rem" status="error"
           >We're sorry, we experienced an issue submitting your report. Please try again. If the

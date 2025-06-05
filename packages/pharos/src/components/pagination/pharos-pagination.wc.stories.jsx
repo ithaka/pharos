@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
@@ -28,5 +28,5 @@ export const Base = {
 
 export const Events = {
   ...Base,
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };

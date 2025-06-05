@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import createFormData from '../../utils/createFormData';
@@ -121,7 +121,7 @@ export const Events = {
       </storybook-pharos-combobox>
     </div>
   `,
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
 export const SearchMode = {

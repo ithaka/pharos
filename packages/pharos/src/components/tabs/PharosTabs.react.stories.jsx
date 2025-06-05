@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { PharosTabs, PharosTab, PharosTabPanel } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
@@ -82,7 +82,7 @@ export const Events = {
       </PharosTabPanel>
     </PharosTabs>
   ),
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
 export const PanelOrder = {

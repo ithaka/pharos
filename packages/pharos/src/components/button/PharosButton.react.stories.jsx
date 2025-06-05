@@ -11,7 +11,7 @@ import {
 } from '../../react-components';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { PharosContext } from '../../utils/PharosContext';
 
 export default {

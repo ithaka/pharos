@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { PharosButton, PharosCombobox } from '../../react-components';
 import createFormData from '../../utils/createFormData';
@@ -132,7 +132,7 @@ export const Events = {
       </PharosCombobox>
     </div>
   ),
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
 export const SearchMode = {

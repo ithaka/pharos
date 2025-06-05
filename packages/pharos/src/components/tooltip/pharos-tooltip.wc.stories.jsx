@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { useEffect } from '@storybook/preview-api';
+import { useEffect } from 'storybook/preview-api';
 
 import { defaultArgs, argTypes } from './storyArgs';
 import { configureDocsPage } from '@config/docsPageConfig';

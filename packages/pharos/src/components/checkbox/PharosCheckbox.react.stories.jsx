@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { PharosCheckbox, PharosLink } from '../../react-components';
 import { defaultArgs } from './storyArgs';
@@ -104,7 +104,7 @@ export const Events = {
     </PharosCheckbox>
   ),
   parameters: {
-    options: { selectedPanel: 'addon-actions' },
+    options: { selectedPanel: 'storybook/actions/panel' },
   },
 };
 

@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
@@ -77,7 +77,7 @@ export const Events = {
       <span slot="label">I fire events</span>
     </storybook-pharos-radio-button>
   `,
-  parameters: { options: { selectedPanel: 'addon-actions' } },
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
 export const Validity = {
