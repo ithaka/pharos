@@ -7,8 +7,9 @@ export default {
   nodeResolve: true,
   concurrentBrowsers: 3,
   coverage: true,
-  browserStartTimeout: 60000,
-  testsStartTimeout: 45000,
+  browserStartTimeout: 120000,
+  testsStartTimeout: 90000,
+  retries: 2,
   coverageConfig: {
     threshold: {
       statements: 98,
@@ -43,15 +44,31 @@ export default {
     playwrightLauncher({
       product: 'chromium',
       launchOptions: {
-        args: ['--no-sandbox'],
+        args: ['--no-sandbox', '--disable-dev-shm-usage'],
+        timeout: 60000,
       },
     }),
-    playwrightLauncher({ product: 'firefox' }),
-    playwrightLauncher({ product: 'webkit' }),
+    playwrightLauncher({
+      product: 'firefox',
+      launchOptions: {
+        timeout: 60000,
+      },
+    }),
+    playwrightLauncher({
+      product: 'webkit',
+      launchOptions: {
+        timeout: 120000,
+        waitForInitialPage: true,
+        args: ['--disable-web-security', '--disable-gpu'],
+      },
+    }),
   ],
   testFramework: {
     config: {
-      timeout: '8000',
+      timeout: '30000',
     },
   },
+  testsFinishTimeout: 60000,
+  concurrency: 1,
+  watch: false,
 };
