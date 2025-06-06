@@ -26,8 +26,8 @@ export const Base = {
     ></storybook-pharos-button>
     <storybook-pharos-sidenav
       id="storybook-sidenav"
-      ?open=${ifDefined(args.open)}
-      ?has-close-button=${ifDefined(args.hasCloseButton)}
+      .open=${ifDefined(args.open)}
+      .has-close-button=${ifDefined(args.hasCloseButton)}
     >
       <storybook-pharos-link slot="top" href="/" id="jstor-logo">
         <img src="${logo}" alt="Pharos Home" width="72" height="100" />

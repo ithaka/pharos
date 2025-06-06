@@ -79,8 +79,8 @@ describe('pharos-pagination', () => {
         current-page="3"
         total-results="112"
         page-size="25"
-        @prev-page="${onPrevClick}"
-        @next-page="${onNextClick}"
+        @prev-page=${onPrevClick}
+        @next-page=${onNextClick}
       ></test-pharos-pagination>
     `);
 
@@ -110,8 +110,8 @@ describe('pharos-pagination', () => {
         current-page="3"
         total-results="112"
         page-size="25"
-        @prev-page="${onPrevClick}"
-        @next-page="${onNextClick}"
+        @prev-page=${onPrevClick}
+        @next-page=${onNextClick}
       ></test-pharos-pagination>
     `);
 

@@ -171,8 +171,8 @@ export class PharosRadioGroup extends FormElement {
     return html`
       <fieldset
         class="radio-group radio-group--${this.horizontal ? 'horizontal' : 'vertical'}"
-        aria-required="${this.required}"
-        aria-invalid="${this.invalidated}"
+        aria-required=${this.required}
+        aria-invalid=${this.invalidated}
         aria-describedby=${ifDefined(this.messageId)}
         role="radiogroup"
       >

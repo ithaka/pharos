@@ -22,14 +22,14 @@ export const Base = {
       <storybook-pharos-text-input
         name="${args.name}"
         type="${ifDefined(args.type)}"
-        ?hide-label="${args.hideLabel}"
-        ?validated="${args.validated}"
-        ?invalidated="${args.invalidated}"
-        ?required="${args.required}"
+        .hide-label="${args.hideLabel}"
+        .validated="${args.validated}"
+        .invalidated="${args.invalidated}"
+        .required="${args.required}"
         .message="${args.message}"
         .placeholder=${args.placeholder}
-        ?disabled=${args.disabled}
-        ?readonly=${args.readonly}
+        .disabled=${args.disabled}
+        .readonly=${args.readonly}
         .value=${args.value}
       >
         <span slot="label">${args.label}</span>
@@ -103,9 +103,9 @@ export const CustomErrorMessage = {
         placeholder="Enter some text"
         @change="${(e) => action('Change')(e.target.value)}"
         @input="${(e) => action('Input')(e.target.value)}"
-        ?required="${args.required}"
-        ?invalidated=${args.invalidated}
-        ?validated=${args.validated}
+        .required="${args.required}"
+        .invalidated=${args.invalidated}
+        .validated=${args.validated}
         .message=${args.message}
       >
         <span slot="label">I am invalid</span>

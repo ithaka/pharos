@@ -85,8 +85,8 @@ export class PharosIcon extends PharosElement {
         class="icon"
         role="img"
         aria-hidden=${this.a11yHidden || nothing}
-        height="${size}"
-        width="${size}"
+        height=${size}
+        width=${size}
         focusable="false"
       >
         <title>${this.a11yTitle}</title>

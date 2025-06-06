@@ -8,8 +8,8 @@ export const Sidenav = (open: boolean, showCloseButton: boolean): TemplateResult
     class="reports-page__sidenav"
     id="report-sidenav"
     main-content-id="main-content"
-    ?open="${open}"
-    ?has-close-button="${showCloseButton}"
+    .open="${open}"
+    .has-close-button="${showCloseButton}"
   >
     <storybook-pharos-link slot="top" href="/" id="jstor-logo">
       <img src="${logo}" alt="Pharos Home" width="72" height="100" />

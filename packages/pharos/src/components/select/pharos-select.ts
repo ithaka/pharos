@@ -98,11 +98,11 @@ export class PharosSelect extends ScopedRegistryMixin(
           id="select-element"
           name=${this.name}
           .value=${this.value}
-          ?required="${this.required}"
+          ?required=${this.required}
           ?disabled=${this.disabled}
-          aria-required="${this.required}"
-          aria-invalid="${this.invalidated}"
-          aria-describedby="${ifDefined(this.messageId)}"
+          aria-required=${this.required}
+          aria-invalid=${this.invalidated}
+          aria-describedby=${ifDefined(this.messageId)}
           @change=${this.onChange}
         >
           ${[...this.children]

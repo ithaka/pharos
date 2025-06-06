@@ -172,7 +172,7 @@ describe('pharos-tooltip', () => {
 
   it('throws an error for invalid fallback values', async () => {
     component = await fixture(html`
-      <test-pharos-tooltip .fallbackPlacements="${['corner', 'right', 'fake'] as Placement[]}"
+      <test-pharos-tooltip .fallbackPlacements=${['corner', 'right', 'fake'] as Placement[]}
         >Hi there!</test-pharos-tooltip
       >
     `).catch((e) => e);

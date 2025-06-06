@@ -17,10 +17,10 @@ export default {
 export const Base = {
   render: (args) => html`
     <storybook-pharos-select
-      ?disabled=${args.disabled}
-      ?hide-label=${args.hideLabel}
-      ?required=${args.required}
-      ?invalidated=${args.invalidated}
+      .disabled=${args.disabled}
+      .hide-label=${args.hideLabel}
+      .required=${args.required}
+      .invalidated=${args.invalidated}
       .message=${args.message}
       style="display: grid; grid-template-columns: 300px;"
     >
