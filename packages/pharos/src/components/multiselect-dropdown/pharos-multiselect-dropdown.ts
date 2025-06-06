@@ -261,13 +261,11 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       moveForward
     );
     highlightedOption?.removeAttribute('highlighted');
-    highlightedOption?.setAttribute('aria-selected', 'false');
 
     const nextOption = options[nextOptionIndex];
 
     nextOption.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     nextOption.setAttribute('highlighted', '');
-    nextOption.setAttribute('aria-selected', 'true');
     this._searchInput.setAttribute('aria-activedescendant', nextOption.id);
   }
 
@@ -429,7 +427,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           </div>
           <ul
             aria-labelledby="input-label"
-            role="combobox"
+            role="listbox"
             id="multiselect-dropdown-list"
             class="multiselect-dropdown__list"
           >
@@ -442,6 +440,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                   id="result-item-select-all"
                   role="option"
                   aria-selected="${allMatchingSelected}"
+                  aria-label="${selectAllText}"
                   @click=${(event: Event) => this._handleSelectAllClicked(event)}
                   @keydown=${(event: KeyboardEvent) => {
                     if (event.key === 'enter') {
@@ -453,8 +452,12 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                     class="multiselect-dropdown__option__checkbox"
                     ?checked=${allMatchingSelected}
                     ?indeterminate="${allMatchingIndeterminate}"
+                    aria-hidden="true"
+                    tabindex="-1"
                   >
-                    <span slot="label"> ${selectAllText} </span>
+                    <span slot="label" class="multiselect-dropdown__option__label">
+                      ${selectAllText}
+                    </span>
                   </pharos-checkbox>
                 </li>`
               : nothing}
@@ -498,10 +501,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                     >
                       ${html`
                         <pharos-checkbox
+                          aria-hidden="true"
+                          tabindex="-1"
                           class="multiselect-dropdown__option__checkbox"
                           ?checked=${isSelected}
                         >
-                          <span slot="label">${unsafeHTML(optionText)} </span>
+                          <span slot="label" class="multiselect-dropdown__option__label"
+                            >${unsafeHTML(optionText)}
+                          </span>
                         </pharos-checkbox>
                       `}
                     </li>
