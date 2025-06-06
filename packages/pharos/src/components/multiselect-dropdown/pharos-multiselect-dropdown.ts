@@ -48,8 +48,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
    * Contains the currently selected options.
    * @attr selectedOptions
    */
-  @property({ type: Array, reflect: true })
-  public selectedOptions: String[] = [];
+  @property({ type: Array })
+  public selectedOptions: HTMLOptionElement[] = []; //TODO: make options
 
   /**
    * How long the dropdown list should be displayed.
@@ -92,7 +92,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
 
   // The currently selected (but not applied) options
   @state()
-  private pendingOptions: String[] = [];
+  private pendingOptions: HTMLOptionElement[] = [];
 
   // The options that match the current search input
   @state()
@@ -127,6 +127,16 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   public override disconnectedCallback(): void {
     super.disconnectedCallback();
     this._teardownScrollObserver();
+  }
+
+  public onChange(): void {
+    console.log('onChange called');
+    this.dispatchEvent(
+      new Event('change', {
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   /**
@@ -178,14 +188,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       return;
     }
 
-    if (this.pendingOptions.includes(option.text.trim())) {
+    if (this.pendingOptions.includes(option)) {
       this.pendingOptions = [
         ...this.pendingOptions.filter((pendingOption) => {
-          return pendingOption !== option.text.trim();
+          return pendingOption !== option;
         }),
       ];
     } else {
-      this.pendingOptions = [...this.pendingOptions, option.text.trim()];
+      this.pendingOptions = [...this.pendingOptions, option];
     }
   }
   private _handleSelectAllClicked(event: Event): void {
@@ -193,16 +203,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     event.preventDefault();
     if (!selectAllCheckbox.checked) {
       selectAllCheckbox.checked = true;
-      const matchingOptionTexts = this.matchingOptions.map((option) => option.text.trim());
-      const newOptions = matchingOptionTexts.filter(
-        (optionText) => !this.pendingOptions.includes(optionText)
+      const newOptions = this.matchingOptions.filter(
+        (option) => !this.pendingOptions.includes(option)
       );
       this.pendingOptions = [...this.pendingOptions, ...newOptions];
     } else {
       selectAllCheckbox.checked = false;
       this.pendingOptions = [...this.pendingOptions].filter(
-        (pendingOption) =>
-          !this.matchingOptions.some((option) => option.text.trim() === pendingOption)
+        (pendingOption) => !this.matchingOptions.includes(pendingOption)
       );
     }
   }
@@ -280,7 +288,9 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   _handleFormdata(event: CustomEvent): void {
     const { formData } = event;
     if (!this.disabled) {
-      formData.append(this.name, this.selectedOptions.join(','));
+      for (const option of this.selectedOptions) {
+        formData.append(this.name, option.value);
+      }
     }
   }
 
@@ -297,7 +307,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     if (this.selectedOptions.length === this.options.length) {
       return 'All Selected';
     }
-    const selectedOptionsText = this.selectedOptions.join(', ');
+    const selectedOptionsText = this.selectedOptions.map((option) => option.text).join(', ');
     if (selectedOptionsText.length <= this.displayCharacterCount) {
       return selectedOptionsText;
     } else {
@@ -325,11 +335,13 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   private _handleApplyClick(): void {
     this.selectedOptions = [...this.pendingOptions];
     this._closeDropdown();
+    this.onChange();
   }
 
   private _handleCancelClick(): void {
     this.pendingOptions = [];
     this._closeDropdown();
+    this.onChange();
   }
 
   /**
@@ -364,12 +376,12 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
 
     const allMatchingSelected =
       this.matchingOptions.length > 0 &&
-      this.matchingOptions.every((option) => this.pendingOptions.includes(option.text.trim()));
+      this.matchingOptions.every((option) => this.pendingOptions.includes(option));
 
     const allMatchingIndeterminate =
       this.pendingOptions.length > 0 &&
       !allMatchingSelected &&
-      this.matchingOptions.some((option) => this.pendingOptions.includes(option.text.trim()));
+      this.matchingOptions.some((option) => this.pendingOptions.includes(option));
 
     const selectAllText = allMatchingSelected
       ? `Deselect ${this.matchingOptions.length}`
@@ -460,7 +472,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                       })
                     : option.text;
 
-                  const isSelected = this.pendingOptions.includes(option.text.trim());
+                  const isSelected = this.pendingOptions.includes(option);
                   return html`
                     <li
                       id="${`result-item-${index}`}"

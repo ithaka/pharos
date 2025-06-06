@@ -31,6 +31,7 @@ export const Base = {
       message=${ifDefined(args.message)}
       ?required=${args.required}
       style="display: grid; grid-template-columns: 432px;"
+      @change="${(e) => console.log('Selected Options:', e.target.selectedOptions)}"
     >
       <span slot="label">${args.label}</span>
       <option value="1">New Hampshire</option>
