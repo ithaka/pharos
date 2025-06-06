@@ -80,6 +80,10 @@
     background-color: var(--pharos-color-ui-20);
     color: var(--pharos-dropdown-multiselect-color-text-hover);
 
+    .multiselect-dropdown__option__label {
+      color: var(--pharos-dropdown-multiselect-color-text-hover);
+    }
+
     .multiselect-dropdown__mark {
       color: var(--pharos-dropdown-multiselect-color-text-hover);
     }
