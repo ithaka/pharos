@@ -530,13 +530,13 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   protected override render(): TemplateResult {
     return html`
       <div class="multiselect-dropdown">
-        <span id="button-label" class="multiselect-dropdown__button-label">
+        <div id="button-label" class="multiselect-dropdown__button-label">
           <slot name="label"></slot>
-        </span>
+        </div>
         <button
           id="button-element"
           class="multiselect-dropdown__button"
-          aria-labelledby="button-label"
+          aria-labelledby="button-label button-element"
           aria-expanded="${this._open}"
           aria-haspopup="true"
           type="button"
