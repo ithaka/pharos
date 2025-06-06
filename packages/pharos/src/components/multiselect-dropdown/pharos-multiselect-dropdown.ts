@@ -439,6 +439,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                     'multiselect-dropdown__option': true,
                     'multiselect-dropdown__select-all': true,
                   })}
+                  id="result-item-select-all"
                   role="option"
                   aria-selected="${allMatchingSelected}"
                   @click=${(event: Event) => this._handleSelectAllClicked(event)}
