@@ -488,7 +488,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           class=${this._showSubtleOverlay() ? 'card__checkbox--subtle' : 'card__checkbox'}
           hide-label="true"
           .checked=${this._isSelected}
-          ?disabled=${this.disabled}
+          .disabled=${this.disabled}
           name="Select ${this.title}"
           @click=${this._cardToggleSelect}
           ><span slot="label">Select ${this.title}</span></pharos-checkbox
