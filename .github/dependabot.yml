@@ -30,10 +30,3 @@ updates:
       - dependency-name: '@types/react-dom'
         update-types:
           - 'version-update:semver-major'
-
-      # ithaka/pharos#866
-      - dependency-name: '@babel/core'
-        update-types:
-          - 'version-update:semver-patch'
-          - 'version-update:semver-minor'
-          - 'version-update:semver-major'
