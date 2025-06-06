@@ -139,12 +139,12 @@ export class PharosCheckbox extends FormMixin(FormElement) {
         type="checkbox"
         .value=${this.value}
         .indeterminate=${this.indeterminate}
-        .checked=${this.checked}
-        .required="${this.required}"
-        .disabled=${this.disabled}
-        aria-required="${this.required}"
-        aria-invalid="${this.invalidated}"
-        aria-describedby="${ifDefined(this.messageId)}"
+        ?checked=${this.checked}
+        ?required=${this.required}
+        ?disabled=${this.disabled}
+        aria-required=${this.required}
+        aria-invalid=${this.invalidated}
+        aria-describedby=${ifDefined(this.messageId)}
         @change=${this.onChange}
       />
       <div class="input-wrapper">
@@ -158,7 +158,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
           role="img"
           aria-hidden="true"
           focusable="false"
-          @click="${this._handleClick}"
+          @click=${this._handleClick}
           @mousedown=${this._handleMousedown}
         >
           <rect x="3" y="3" width="18" height="18" rx="3" class="focus" />
@@ -177,7 +177,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
         </svg>
         <label
           for="checkbox-element"
-          @click="${this._handleClick}"
+          @click=${this._handleClick}
           @mousedown=${this._handleMousedown}
         >
           <slot name="label"></slot>

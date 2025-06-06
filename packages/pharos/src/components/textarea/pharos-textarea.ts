@@ -173,18 +173,18 @@ export class PharosTextarea extends FormMixin(FormElement) {
           cols=${ifDefined(this.cols)}
           rows=${ifDefined(this.rows)}
           dirname=${ifDefined(this.dirname)}
-          name="${this.name}"
+          name=${this.name}
           .value=${this.value}
-          .required="${this.required}"
-          .disabled=${this.disabled}
-          .readonly=${this.readonly}
-          placeholder="${this.placeholder}"
+          ?required=${this.required}
+          ?disabled=${this.disabled}
+          ?readonly=${this.readonly}
+          placeholder=${this.placeholder}
           maxlength=${ifDefined(this.maxlength)}
           minlength=${ifDefined(this.minlength)}
           .wrap=${this.wrap}
-          aria-required="${this.required}"
-          aria-invalid="${this.invalidated}"
-          aria-describedby="${ifDefined(this.messageId)}"
+          aria-required=${this.required}
+          aria-invalid=${this.invalidated}
+          aria-describedby=${ifDefined(this.messageId)}
           @change=${this.onChange}
           @input=${this.onInput}
         ></textarea>

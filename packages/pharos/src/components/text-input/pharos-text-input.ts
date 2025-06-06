@@ -256,20 +256,20 @@ export class PharosTextInput extends ScopedRegistryMixin(FormMixin(FormElement))
         ${this.prependContent}
         <input
           id="input-element"
-          name="${this.name}"
-          .type="${this.type}"
+          name=${this.name}
+          .type=${this.type}
           .value=${this.value}
-          .required="${this.required}"
-          .disabled=${this.disabled}
-          .readonly=${this.readonly}
-          placeholder="${this.placeholder}"
-          autocomplete="${ifDefined(this.autocomplete)}"
+          ?required=${this.required}
+          ?disabled=${this.disabled}
+          ?readonly=${this.readonly}
+          placeholder=${this.placeholder}
+          autocomplete=${ifDefined(this.autocomplete)}
           maxlength=${ifDefined(this.maxlength)}
           minlength=${ifDefined(this.minlength)}
           pattern=${ifDefined(this.pattern)}
-          aria-required="${this.required}"
-          aria-invalid="${this.invalidated}"
-          aria-describedby="${ifDefined(this.messageId)}"
+          aria-required=${this.required}
+          aria-invalid=${this.invalidated}
+          aria-describedby=${ifDefined(this.messageId)}
           @change=${this.onChange}
           @input=${this.onInput}
           @keydown=${this._handleKeydown}

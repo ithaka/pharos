@@ -41,7 +41,9 @@ export class PharosProgressBar extends PharosElement {
         })
       : nothing;
 
-    const classList = ['progress-bar', isIndeterminate ? 'progress-bar--indeterminate' : ''].join(' ');
+    const classList = ['progress-bar', isIndeterminate ? 'progress-bar--indeterminate' : ''].join(
+      ' '
+    );
 
     return html`
       <div id="title" class="progress-bar__title"><slot name="title"></slot></div>
@@ -54,7 +56,7 @@ export class PharosProgressBar extends PharosElement {
         aria-describedby="description"
         class="progress-bar__wrapper"
       >
-        <div class="${classList}" style=${progressStyle}></div>
+        <div class=${classList} style=${progressStyle}></div>
       </div>
       <div id="description" class="progress-bar__description">
         <slot name="description"></slot>

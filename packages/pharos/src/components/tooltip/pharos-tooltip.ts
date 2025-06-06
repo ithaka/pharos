@@ -376,7 +376,7 @@ export class PharosTooltip extends OverlayElement {
 
   protected override render(): TemplateResult {
     return html`
-      <div class="tooltip__body" role="tooltip" aria-hidden="${!this.open}">
+      <div class="tooltip__body" role="tooltip" aria-hidden=${!this.open}>
         <span
           class=${classMap({
             [`tooltip__bubble`]: true,

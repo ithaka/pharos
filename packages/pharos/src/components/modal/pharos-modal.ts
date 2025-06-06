@@ -261,7 +261,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
           })}
           aria-modal="true"
           aria-labelledby="modal-header"
-          aria-describedby="${ifDefined(this.descriptionId)}"
+          aria-describedby=${ifDefined(this.descriptionId)}
           @click=${this._handleDialogClick}
         >
           <focus-trap>
