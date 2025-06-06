@@ -128,7 +128,7 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
       return html`
         <pharos-icon
           class="dropdown-menu-item__icon"
-          name="${this.icon}"
+          name=${this.icon}
           a11y-hidden="{true}"
         ></pharos-icon>
       `;
@@ -140,9 +140,9 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
     if (this._menu?.showSelected && this.selected) {
       return html`
         <pharos-icon
-          class="${classMap({
+          class=${classMap({
             [`dropdown-menu-item__icon--selected`]: true,
-          })}"
+          })}
           name="checkmark"
           a11y-hidden="true"
         ></pharos-icon>
@@ -175,19 +175,19 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
   protected override render(): TemplateResult {
     return html`
       <li
-        class="${classMap({
+        class=${classMap({
           [`dropdown-menu-item`]: true,
           [`dropdown-menu-item--last`]: this._last,
           [`dropdown-menu-item--selected`]: this._menu?.showSelected && this.selected,
           [`dropdown-menu-item--active`]: this._active,
-        })}"
+        })}
         role=${this.link ? 'none' : 'menuitem'}
       >
         ${this.link
           ? html`<a
               role="menuitem"
-              href="${this.link}"
-              target="${this.target}"
+              href=${this.link}
+              target=${this.target}
               rel=${ifDefined(this.rel)}
               class="dropdown-menu-item__link"
             >
@@ -195,11 +195,11 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
             </a> `
           : html`<button
               ?disabled=${this.disabled}
-              class="${classMap({
+              class=${classMap({
                 [`dropdown-menu-item__button`]: true,
                 [`dropdown-menu-item__button--first`]: this._first,
                 [`dropdown-menu-item__button--last`]: this._last,
-              })}"
+              })}
             >
               ${this.itemContent}
             </button>`}

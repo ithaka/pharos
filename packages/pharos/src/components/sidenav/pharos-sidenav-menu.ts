@@ -83,7 +83,7 @@ export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(PharosElem
           [`menu__container`]: true,
           [`menu__container--show`]: this.expanded,
         })}"
-        aria-hidden="${!this.expanded}"
+        aria-hidden=${!this.expanded}
       >
         <ul role="menu" class="menu__list">
           <slot></slot>
@@ -97,7 +97,7 @@ export class PharosSidenavMenu extends ScopedRegistryMixin(FocusMixin(PharosElem
       <button
         id="button-element"
         aria-haspopup="true"
-        aria-expanded="${this.expanded}"
+        aria-expanded=${this.expanded}
         @click=${this._handleClick}
       >
         ${this.label}${this._renderIcon()}

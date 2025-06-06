@@ -193,13 +193,13 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
                         ? 'combobox__mark combobox__mark--selected'
                         : 'combobox__mark';
 
-                      return this.searchMode ? `${str}` : `<mark class="${classes}">${str}</mark>`;
+                      return this.searchMode ? `${str}` : `<mark class=${classes}>${str}</mark>`;
                     })
                   : option.text;
 
                 return html`
                   <li
-                    id="${`result-item-${index}`}"
+                    id=${`result-item-${index}`}
                     class=${classMap({
                       [`combobox__option`]: true,
                       [`combobox__option--selected`]: exactMatch,
@@ -207,8 +207,8 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
                     })}
                     role="option"
                     aria-selected="false"
-                    aria-disabled="${option.disabled}"
-                    aria-label="${option.text}"
+                    aria-disabled=${option.disabled}
+                    aria-label=${option.text}
                     @click=${(event: Event) => this._handleOptionClick(option, event)}
                     @mousedown=${(event: MouseEvent) => {
                       event.preventDefault();
@@ -469,20 +469,20 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
         <input
           id="input-element"
           class="input-element ${this._displayValue ? 'input-element--populated' : null}"
-          name="${this.name}"
+          name=${this.name}
           type="text"
-          .value="${this._displayValue}"
-          ?required="${this.required}"
-          ?disabled="${this.disabled}"
-          placeholder="${this.placeholder}"
+          .value=${this._displayValue}
+          ?required=${this.required}
+          ?disabled=${this.disabled}
+          placeholder=${this.placeholder}
           role="combobox"
-          aria-expanded="${this.open}"
+          aria-expanded=${this.open}
           aria-controls="combobox-list"
           aria-autocomplete="list"
           aria-activedescendant=""
-          aria-required="${this.required}"
-          aria-invalid="${this.invalidated}"
-          aria-describedby="${ifDefined(this.messageId)}"
+          aria-required=${this.required}
+          aria-invalid=${this.invalidated}
+          aria-describedby=${ifDefined(this.messageId)}
           @input=${this.onInput}
           @change=${this.onChange}
           @blur=${this._handleInputBlur}

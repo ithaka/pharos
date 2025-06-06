@@ -21,15 +21,15 @@ export const Base = {
     <storybook-pharos-combobox
       .value=${ifDefined(args.value)}
       .name=${ifDefined(args.name)}
-      ?open=${args.open}
-      ?loose-match=${args.looseMatch}
-      ?disabled=${args.disabled}
-      ?hide-label=${args.hideLabel}
-      ?invalidated=${args.invalidated}
-      ?validated=${args.validated}
+      .open=${args.open}
+      .loose-match=${args.looseMatch}
+      .disabled=${args.disabled}
+      .hide-label=${args.hideLabel}
+      .invalidated=${args.invalidated}
+      .validated=${args.validated}
       .placeholder=${ifDefined(args.placeholder)}
       message=${ifDefined(args.message)}
-      ?required=${args.required}
+      .required=${args.required}
       style="display: grid; grid-template-columns: 300px;"
     >
       <span slot="label">${args.label}</span>
@@ -147,9 +147,9 @@ export const Validity = {
         placeholder="Enter some text"
         @change="${(e) => action('Change')(e.target.value)}"
         @input="${(e) => action('Input')(e.target['_input'].value)}"
-        ?required="${args.required}"
-        ?invalidated="${args.invalidated}"
-        ?validated="${args.validated}"
+        .required="${args.required}"
+        .invalidated="${args.invalidated}"
+        .validated="${args.validated}"
         message="${args.message}"
       >
         <span slot="label">Test me out</span>

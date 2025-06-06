@@ -17,8 +17,8 @@ export default {
 export const Base = {
   render: ({ disabled, checked }) =>
     html` <storybook-pharos-switch
-      ?disabled=${disabled}
-      ?checked=${checked}
+      .disabled=${disabled}
+      .checked=${checked}
       @change="${(e) => action('Change')(e.target.checked)}"
       ><span slot="label">Toggle Switch</span></storybook-pharos-switch
     >`,

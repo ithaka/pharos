@@ -259,7 +259,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
       icon = this.icon;
     }
 
-    return icon ? html` <pharos-icon name="${icon}" a11y-hidden="true"></pharos-icon> ` : nothing;
+    return icon ? html` <pharos-icon name=${icon} a11y-hidden="true"></pharos-icon> ` : nothing;
   }
 
   protected get buttonContent(): TemplateResult {
@@ -297,11 +297,11 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
       : html`
           <button
             id="button-element"
-            name="${ifDefined(this.name)}"
-            value="${ifDefined(this.value)}"
+            name=${ifDefined(this.name)}
+            value=${ifDefined(this.value)}
             ?autofocus=${this.autofocus}
             ?disabled=${this.a11yDisabled ? false : this.disabled}
-            type="${ifDefined(this.type)}"
+            type=${ifDefined(this.type)}
             aria-label=${ifDefined(this.a11yLabel)}
             aria-pressed=${ifDefined(this.a11yPressed)}
             aria-expanded=${ifDefined(this.a11yExpanded)}

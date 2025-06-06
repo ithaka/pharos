@@ -72,7 +72,7 @@ describe('pharos-loading-spinner', () => {
       count += 1;
     };
     component = await fixture(html`
-      <button @click="${onClick}">Can't press me!</button>
+      <button @click=${onClick}>Can't press me!</button>
       <test-pharos-loading-spinner></test-pharos-loading-spinner>
     `);
     const button = component.querySelector('button');

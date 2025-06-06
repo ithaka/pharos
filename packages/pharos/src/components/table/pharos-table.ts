@@ -219,7 +219,7 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
 
   private _renderPageSizeOptions(): TemplateResult[] {
     return this.pageSizeOptions.map(
-      (option: number) => html`<option value="${option}">${option}</option>`
+      (option: number) => html`<option value=${option}>${option}</option>`
     );
   }
 
@@ -257,11 +257,11 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
           </div>
           <pharos-pagination
             class="pagination"
-            current-page="${this._currentPage}"
-            total-results="${this.totalResults}"
-            page-size="${this._pageSize}"
-            @prev-page="${this._onPrevPage}"
-            @next-page="${this._onNextPage}"
+            current-page=${this._currentPage}
+            total-results=${this.totalResults}
+            page-size=${this._pageSize}
+            @prev-page=${this._onPrevPage}
+            @next-page=${this._onNextPage}
           ></pharos-pagination>
         </div>`
       : nothing;

@@ -33,8 +33,8 @@ export const Base = {
         >
         <storybook-pharos-tooltip
           id="${args.id}"
-          ?full-width="${args.fullWidth}"
-          ?open="${args.open}"
+          .fullWidth="${args.fullWidth}"
+          .open="${args.open}"
           .placement="${ifDefined(args.placement)}"
           .fallbackPlacements="${args.fallbackPlacements}"
           >${args.tooltipText}
@@ -110,9 +110,7 @@ export const MultipleTriggers = {
       <storybook-pharos-button data-tooltip-id="my-multi-tooltip"
         >Then focus me</storybook-pharos-button
       >
-      <storybook-pharos-tooltip id="my-multi-tooltip" full-width
-        >Hi there!</storybook-pharos-tooltip
-      >
+      <storybook-pharos-tooltip id="my-multi-tooltip" fullWidth>Hi there!</storybook-pharos-tooltip>
     </div>
   `,
 };

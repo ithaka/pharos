@@ -130,7 +130,7 @@ describe('pharos-dropdown-menu-item', () => {
   it('does not propagate a click event when disabled with click handler present', async () => {
     const event = new MouseEvent('click');
     component = await fixture(html`
-      <test-pharos-dropdown-menu-item disabled @click="${() => alert('clicked')}"
+      <test-pharos-dropdown-menu-item disabled @click=${() => alert('clicked')}
         >I am an item</test-pharos-dropdown-menu-item
       >
     `);

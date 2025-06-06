@@ -94,15 +94,15 @@ export class PharosSwitch extends FormMixin(FormElement) {
           type="checkbox"
           role="switch"
           .value=${this.value}
-          ?checked=${this.checked}
+          .checked=${this.checked}
           ?disabled=${this.disabled}
           @change=${this.onChange}
         />
         <div class="input-wrapper">
-          <label for="switch-element" class="switch__label" @click="${this._handleClick}">
+          <label for="switch-element" class="switch__label" @click=${this._handleClick}>
             <slot name="label"></slot>
           </label>
-          <span class="switch__control" aria-hidden="true" @click="${this._handleClick}"></span>
+          <span class="switch__control" aria-hidden="true" @click=${this._handleClick}></span>
         </div>
       </div>
     `;

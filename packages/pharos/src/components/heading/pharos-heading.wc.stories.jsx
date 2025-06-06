@@ -16,7 +16,7 @@ export default {
 
 export const Base = {
   render: (args) => html`
-    <storybook-pharos-heading level=${args.level} preset=${args.preset} ?no-margin=${args.noMargin}>
+    <storybook-pharos-heading level=${args.level} preset=${args.preset} .no-margin=${args.noMargin}>
       ${args.text}<br />second line
     </storybook-pharos-heading>
   `,

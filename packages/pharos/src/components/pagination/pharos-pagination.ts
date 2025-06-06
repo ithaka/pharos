@@ -114,7 +114,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           subtle
           flex
           href=""
-          @click="${this._handleClick}"
+          @click=${this._handleClick}
         >
           <pharos-icon name="chevron-left" a11y-hidden="true"></pharos-icon>
           Previous
@@ -133,7 +133,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           subtle
           flex
           href=""
-          @click="${this._handleClick}"
+          @click=${this._handleClick}
         >
           Next
           <pharos-icon name="chevron-right" a11y-hidden="true"></pharos-icon>

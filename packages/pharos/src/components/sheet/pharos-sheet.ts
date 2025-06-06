@@ -384,7 +384,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
           class="sheet__dialog"
           aria-modal="true"
           aria-label=${ifDefined(this.header)}
-          aria-describedby="${ifDefined(this.descriptionId)}"
+          aria-describedby=${ifDefined(this.descriptionId)}
           @click=${this._handleDialogClick}
           @touchstart=${this._handleTouchDragStart}
           @touchend=${this._handleDragEnd}

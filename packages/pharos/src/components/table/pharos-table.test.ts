@@ -41,9 +41,9 @@ describe('pharos-table', () => {
     beforeEach(async () => {
       component = await fixture(html`
         <test-pharos-table
-          .columns="${columns}"
-          .rowData="${rowData}"
-          .totalResults="${2}"
+          .columns=${columns}
+          .rowData=${rowData}
+          .totalResults=${2}
           caption="test table"
         >
         </test-pharos-table>
@@ -51,11 +51,11 @@ describe('pharos-table', () => {
 
       componentWithPagination = await fixture(html`
         <test-pharos-table
-          .columns="${columns}"
-          .rowData="${rowData}"
-          .showPagination="${true}"
-          .totalResults="${2}"
-          .pageSizeOptions="${[1, 2]}"
+          .columns=${columns}
+          .rowData=${rowData}
+          .showPagination=${true}
+          .totalResults=${2}
+          .pageSizeOptions=${[1, 2]}
           caption="test table with pagination"
         >
         </test-pharos-table>
@@ -186,11 +186,11 @@ describe('pharos-table', () => {
       try {
         await fixture(
           html`<test-pharos-table
-            .columns="${[]}"
-            .rowData="${[]}"
-            .showPagination="${true}"
-            .totalResults="${2}"
-            .pageSizeOptions="${[1, 2]}"
+            .columns=${[]}
+            .rowData=${[]}
+            .showPagination=${true}
+            .totalResults=${2}
+            .pageSizeOptions=${[1, 2]}
           >
           </test-pharos-table> `
         );
@@ -296,11 +296,11 @@ describe('pharos-table', () => {
       try {
         await fixture(
           html`<test-pharos-table
-            .columns="${[]}"
-            .rowData="${[]}"
-            .showPagination="${true}"
-            .totalResults="${2}"
-            .pageSizeOptions="${[1, 2]}"
+            .columns=${[]}
+            .rowData=${[]}
+            .showPagination=${true}
+            .totalResults=${2}
+            .pageSizeOptions=${[1, 2]}
           >
           </test-pharos-table> `
         );

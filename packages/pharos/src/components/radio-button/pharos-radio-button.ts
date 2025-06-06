@@ -83,10 +83,10 @@ export class PharosRadioButton extends FormMixin(FormElement) {
         type="radio"
         .value=${this.value}
         .checked=${this.checked}
-        ?required="${this.required}"
+        ?required=${this.required}
         ?disabled=${this.disabled}
         @change=${this.onChange}
-        aria-describedby="${ifDefined(this.messageId)}"
+        aria-describedby=${ifDefined(this.messageId)}
       />
       <div class="input-wrapper">
         <svg
@@ -99,14 +99,14 @@ export class PharosRadioButton extends FormMixin(FormElement) {
           role="img"
           aria-hidden="true"
           focusable="false"
-          @click="${this._handleClick}"
+          @click=${this._handleClick}
         >
           <circle cx="50%" cy="50%" r="9" class="focus" />
           <circle cx="50%" cy="50%" r="8" class="outer" />
           <circle cx="50%" cy="50%" r="7" class="hover" />
           <circle cx="50%" cy="50%" r="5" class="inner" />
         </svg>
-        <label for="radio-element" @click="${this._handleClick}">
+        <label for="radio-element" @click=${this._handleClick}>
           <slot name="label"></slot>
           ${this.requiredIndicator}
         </label>
