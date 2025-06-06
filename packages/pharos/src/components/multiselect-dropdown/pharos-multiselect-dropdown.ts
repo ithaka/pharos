@@ -226,7 +226,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       case 'Escape':
       case 'Esc':
         event.preventDefault();
-        this._handleInputClear();
+        this._closeDropdown();
         break;
       case 'Down':
       case 'ArrowDown':
@@ -277,10 +277,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     if (highlightedOption) {
       highlightedOption.click();
     }
-  }
-
-  private _handleInputClear(): void {
-    this._searchValue = '';
   }
 
   _handleFormdata(event: CustomEvent): void {
@@ -523,10 +519,28 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           </div>
         </div>
         <div class="multiselect-dropdown__button-container">
-          <pharos-button type="button" variant="secondary" @click=${this._handleCancelClick}>
+          <pharos-button
+            type="button"
+            variant="secondary"
+            @click=${this._handleCancelClick}
+            @keydown=${(event: KeyboardEvent) => {
+              if (event.key === 'Escape' || event.key === 'Esc') {
+                this._closeDropdown();
+              }
+            }}
+          >
             Cancel
           </pharos-button>
-          <pharos-button type="button" variant="primary" @click=${this._handleApplyClick}>
+          <pharos-button
+            type="button"
+            variant="primary"
+            @click=${this._handleApplyClick}
+            @keydown=${(event: KeyboardEvent) => {
+              if (event.key === 'Escape' || event.key === 'Esc') {
+                this._closeDropdown();
+              }
+            }}
+          >
             Apply
           </pharos-button>
         </div>
