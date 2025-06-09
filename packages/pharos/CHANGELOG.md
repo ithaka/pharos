@@ -1,5 +1,17 @@
 # @ithaka/pharos
 
+## 14.13.0
+
+### Minor Changes
+
+- [#942](https://github.com/ithaka/pharos/pull/942) [`483b57d`](https://github.com/ithaka/pharos/commit/483b57d7989ffb06b794712ae220262e8699198c) Thanks [@daneah](https://github.com/daneah)! - Sync design kit icons for additions and changes to icon set
+
+- [#953](https://github.com/ithaka/pharos/pull/953) [`7bac23d`](https://github.com/ithaka/pharos/commit/7bac23d6369535916babdc9199be64e459c37f6d) Thanks [@daneah](https://github.com/daneah)! - Sheet can now be closed on mouse devices by clicking outside the sheet content
+
+- [#975](https://github.com/ithaka/pharos/pull/975) [`3bf708d`](https://github.com/ithaka/pharos/commit/3bf708dfa81f13cf335fcc20c1877b786c2034d8) Thanks [@daneah](https://github.com/daneah)! - Add text editing iconography
+
+- [#943](https://github.com/ithaka/pharos/pull/943) [`0f12f28`](https://github.com/ithaka/pharos/commit/0f12f28877c1db987e30271f90b9571f562200e6) Thanks [@daneah](https://github.com/daneah)! - Upgrade to Lit 3 and latest scoped custom elements dependencies
+
 ## 14.12.1
 
 ### Patch Changes
