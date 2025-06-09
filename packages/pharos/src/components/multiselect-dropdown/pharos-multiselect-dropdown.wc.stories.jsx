@@ -1,8 +1,6 @@
 import { html } from 'lit';
-import { action } from '@storybook/addon-actions';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import createFormData from '../../utils/createFormData';
 import { configureDocsPage } from '@config/docsPageConfig';
 import { defaultArgs } from './storyArgs';
 
