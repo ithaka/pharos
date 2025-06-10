@@ -4,6 +4,7 @@ import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { multiselectDropdownStyles } from './pharos-multiselect-dropdown.css';
 
 import { FormElement } from '../base/form-element';
@@ -14,6 +15,8 @@ import { PharosButton } from '../button/pharos-button';
 import { loopWrapIndex } from '../../utils/math';
 import { PharosCheckbox } from '../checkbox/pharos-checkbox';
 import { PharosTextInput } from '../text-input/pharos-text-input';
+import checkmarkSmall from '../../styles/icons/checkmark-small';
+import dashSmall from '../../styles/icons/dash-small';
 
 /**
  * Pharos multiselect-dropdown component.
@@ -354,7 +357,39 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       .toLowerCase();
   }
 
-  private renderDropdownPanel(): TemplateResult | typeof nothing {
+  private _renderCheckboxIcon(
+    checked: boolean = false,
+    indeterminate: boolean = false
+  ): TemplateResult | typeof nothing {
+    return html`
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        class="input__icon"
+        role="img"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect x="3" y="3" width="18" height="18" rx="3" class="focus"></rect>
+        <rect x="4" y="4" width="16" height="16" rx="2" class="box"></rect>
+        <rect x="5" y="5" width="14" height="14" rx="1" class="hover"></rect>
+        <svg
+          x="4"
+          y="4"
+          class=${classMap({
+            [`checkmark`]: checked,
+            [`dash`]: indeterminate,
+          })}
+        >
+          ${unsafeSVG(indeterminate ? atob(dashSmall) : atob(checkmarkSmall))}
+        </svg>
+      </svg>
+    `;
+  }
+  private _renderDropdownPanel(): TemplateResult | typeof nothing {
     if (!this._open) {
       return nothing;
     }
@@ -444,17 +479,18 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                     }
                   }}
                 >
-                  <pharos-checkbox
-                    class="multiselect-dropdown__option__checkbox"
-                    ?checked=${allMatchingSelected}
-                    .indeterminate="${allMatchingIndeterminate}"
-                    aria-hidden="true"
-                    tabindex="-1"
+                  <div
+                    class=${classMap({
+                      [`multiselect-dropdown__option-checkmark-wrapper`]: true,
+                      [`multiselect-dropdown__option-checkmark-wrapper--checked`]:
+                        allMatchingSelected,
+                      [`multiselect-dropdown__option-checkmark-wrapper--indeterminate`]:
+                        allMatchingIndeterminate,
+                    })}
                   >
-                    <span slot="label" class="multiselect-dropdown__option__label">
-                      ${selectAllText}
-                    </span>
-                  </pharos-checkbox>
+                    ${this._renderCheckboxIcon(allMatchingSelected, allMatchingIndeterminate)}
+                  </div>
+                  <div class="multiselect-dropdown__option-label">${selectAllText}</div>
                 </li>`
               : nothing}
             ${this.matchingOptions.length
@@ -495,18 +531,17 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                         event.preventDefault();
                       }}
                     >
-                      ${html`
-                        <pharos-checkbox
-                          aria-hidden="true"
-                          tabindex="-1"
-                          class="multiselect-dropdown__option__checkbox"
-                          ?checked=${isSelected}
-                        >
-                          <span slot="label" class="multiselect-dropdown__option__label"
-                            >${unsafeHTML(optionText)}
-                          </span>
-                        </pharos-checkbox>
-                      `}
+                      <div
+                        class=${classMap({
+                          [`multiselect-dropdown__option-checkmark-wrapper`]: true,
+                          [`multiselect-dropdown__option-checkmark-wrapper--checked`]: isSelected,
+                        })}
+                      >
+                        ${this._renderCheckboxIcon(isSelected)}
+                      </div>
+                      <div class="multiselect-dropdown__option-label">
+                        ${unsafeHTML(optionText)}
+                      </div>
                     </li>
                   `;
                 })
@@ -570,7 +605,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
             class="multiselect-dropdown__icon"
           ></pharos-icon>
         </button>
-        ${this.renderDropdownPanel()}
+        ${this._renderDropdownPanel()}
       </div>
     `;
   }

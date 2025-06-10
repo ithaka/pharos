@@ -70,17 +70,18 @@
 
 .multiselect-dropdown__option {
   position: relative;
-
-  // padding: var(--pharos-spacing-one-quarter-x) 0;
   padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-1-x);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--pharos-spacing-one-quarter-x);
 
   &:hover,
   &[highlighted] {
     background-color: var(--pharos-color-ui-20);
     color: var(--pharos-dropdown-multiselect-color-text-hover);
 
-    .multiselect-dropdown__option__label {
+    .multiselect-dropdown__option-label {
       color: var(--pharos-dropdown-multiselect-color-text-hover);
     }
 
@@ -89,17 +90,6 @@
     }
   }
 }
-
-// .multiselect-dropdown__select-all {
-//   position: sticky;
-//   top: 0;
-//   z-index: 1;
-//   background: inherit;
-//   border-radius: var(--pharos-radius-base-standard);
-// }
-// .multiselect-dropdown__select-all--scrolled {
-//   box-shadow: var(--pharos-elevation-level-2);
-// }
 
 .multiselect-dropdown__search-input-label {
   @include mixins.hidden;
@@ -120,32 +110,21 @@
 .multiselect-dropdown__list {
   @include mixins.font-base;
 
-  // position: absolute;
-  // top: 100%;
-  // left: 0;
   max-height: var(--pharos-dropdown-multiselect-size-height-list);
   overflow-y: scroll;
   z-index: 1;
-
-  // width: 100%;
   box-sizing: content-box;
   background-color: var(--pharos-color-ui-10);
-
-  // margin-block: var(--pharos-spacing-one-half-x);
   margin-block: 0;
   list-style-type: none;
   padding-inline-start: 0;
-
-  // padding-left: 0;
-  // margin-left: -3px;
 }
 
-.multiselect-dropdown__mark--selected {
-  @include selected-text;
-}
-
+.multiselect-dropdown__mark--selected,
 .multiselect-dropdown__option--selected {
   @include selected-text;
+
+  font-weight: var(--pharos-font-weight-regular);
 }
 
 .multiselect-dropdown__option--disabled {
@@ -177,10 +156,6 @@
   margin-top: 2px;
 }
 
-// .multiselect-dropdown__input-container {
-// padding: var(--pharos-spacing-1-x) var(--pharos-spacing-1-x) 0 var(--pharos-spacing-1-x);
-// }
-
 .multiselect-dropdown__button-container {
   display: flex;
   flex-direction: row;
@@ -189,4 +164,56 @@
   padding: var(--pharos-spacing-1-x) var(--pharos-spacing-one-and-a-half-x);
   box-shadow: var(--pharos-elevation-level-2);
   border-radius: var(--pharos-radius-base-standard);
+}
+
+.multiselect-dropdown__option-checkmark-wrapper {
+  @include mixins.option-wrapper;
+}
+
+.multiselect-dropdown__option-checkmark-wrapper .input__icon {
+  display: block;
+  cursor: pointer;
+  overflow: visible;
+  box-sizing: border-box;
+
+  .box {
+    stroke: var(--pharos-form-element-color-border-base);
+    fill: var(--pharos-checkbox-color-background-base);
+  }
+
+  .checkmark,
+  .dash,
+  .focus,
+  .hover {
+    stroke: none;
+    fill: none;
+  }
+
+  .checkmark,
+  .dash,
+  .focus {
+    stroke-width: 2;
+  }
+}
+
+.multiselect-dropdown__option-checkmark-wrapper--checked .input__icon {
+  .box {
+    stroke: var(--pharos-form-element-color-background-selected);
+    fill: var(--pharos-form-element-color-background-selected);
+  }
+
+  .checkmark {
+    stroke: var(--pharos-color-interactive-tertiary);
+  }
+}
+
+.multiselect-dropdown__option-checkmark-wrapper--indeterminate .input__icon {
+  .box {
+    stroke: var(--pharos-form-element-color-background-selected);
+    fill: var(--pharos-form-element-color-background-selected);
+  }
+
+  .dash {
+    stroke: var(--pharos-color-interactive-tertiary);
+  }
 }
