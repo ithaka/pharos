@@ -185,6 +185,20 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     }
   }
 
+  private _setHighlightedOption(id: string): void {
+    const highlightedOption = this.renderRoot.querySelector(
+      '.multiselect-dropdown__option[highlighted]'
+    ) as HTMLLIElement;
+    if (highlightedOption) {
+      highlightedOption.removeAttribute('highlighted');
+    }
+    const newOption = this.renderRoot.querySelector(
+      `.multiselect-dropdown__option[id="${id}"]`
+    ) as HTMLLIElement;
+    newOption.setAttribute('highlighted', '');
+    this._searchInput.setAttribute('aria-activedescendant', id);
+  }
+
   public static override get styles(): CSSResultArray {
     return [super.styles, multiselectDropdownStyles];
   }
@@ -198,6 +212,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       event.preventDefault();
       return;
     }
+    this._setHighlightedOption((event.currentTarget as HTMLLIElement)?.id);
 
     if (this.pendingOptions.includes(option)) {
       this.pendingOptions = [
@@ -271,13 +286,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       (v) => v === highlightedOption?.innerText.trim(),
       moveForward
     );
-    highlightedOption?.removeAttribute('highlighted');
+    // highlightedOption?.removeAttribute('highlighted');
 
     const nextOption = options[nextOptionIndex];
 
     nextOption.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    nextOption.setAttribute('highlighted', '');
-    this._searchInput.setAttribute('aria-activedescendant', nextOption.id);
+    this._setHighlightedOption(nextOption.id);
+    // nextOption.setAttribute('highlighted', '');
+    // this._searchInput.setAttribute('aria-activedescendant', nextOption.id);
   }
 
   private _selectHighlightedOption(): void {
