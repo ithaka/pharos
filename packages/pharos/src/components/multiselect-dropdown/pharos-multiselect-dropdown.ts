@@ -556,6 +556,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
         <div class="multiselect-dropdown__button-container">
           <pharos-button
             type="button"
+            id="cancel-button"
             variant="secondary"
             @click=${this._handleCancelClick}
             @keydown=${(event: KeyboardEvent) => {
@@ -568,6 +569,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           </pharos-button>
           <pharos-button
             type="button"
+            id="apply-button"
             variant="primary"
             @click=${this._handleApplyClick}
             @keydown=${(event: KeyboardEvent) => {
@@ -597,6 +599,11 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           aria-haspopup="true"
           type="button"
           @click=${this._handleDropdownButtonClick}
+          @keydown=${(event: KeyboardEvent) => {
+            if (event.key === 'Enter' || event.key === 'Space') {
+              this._handleDropdownButtonClick();
+            }
+          }}
         >
           ${this._getButtonDisplayText()}
           <pharos-icon
