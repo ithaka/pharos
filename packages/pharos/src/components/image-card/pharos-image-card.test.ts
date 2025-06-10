@@ -751,7 +751,7 @@ describe('pharos-image-card', () => {
     const checkboxElement = component.renderRoot.querySelector(
       '[data-pharos-component="PharosCheckbox"]'
     );
-    expect(checkboxElement).not.to.be.null;
+    expect(document.activeElement).to.equal(checkboxElement);
   });
 
   it('renders the image preview not available in error state ', async () => {
