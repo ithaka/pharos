@@ -69,6 +69,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   public looseMatch = false;
 
   /**
+   * Add an option to select/deselect all options in the dropdown list.
+   * @attr useSelectAll
+   * @default true
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'use-select-all', useDefault: false })
+  public useSelectAll = true;
+
+  /**
    * The list of options available in the multiselect-dropdown dropdown list
    * @readonly
    */
@@ -462,7 +470,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
             id="multiselect-dropdown-list"
             class="multiselect-dropdown__list"
           >
-            ${this.matchingOptions.length > 1
+            ${this.useSelectAll && this.matchingOptions.length > 1
               ? html`<li
                   class=${classMap({
                     'multiselect-dropdown__option': true,
