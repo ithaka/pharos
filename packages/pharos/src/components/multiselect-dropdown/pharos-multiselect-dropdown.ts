@@ -447,7 +447,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                   <pharos-checkbox
                     class="multiselect-dropdown__option__checkbox"
                     ?checked=${allMatchingSelected}
-                    ?indeterminate="${allMatchingIndeterminate}"
+                    .indeterminate="${allMatchingIndeterminate}"
                     aria-hidden="true"
                     tabindex="-1"
                   >
