@@ -3,7 +3,6 @@ import { html, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators.js';
 import { property, query } from 'lit/decorators.js';
-// import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
@@ -285,6 +284,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           ${this._renderCheckbox()}
           <strong class="card__title--hover">${this.title}</strong>
           <slot name="metadata"></slot>
+          <slot name="overlay"></slot>
         </div>`
       : nothing;
   }
@@ -292,7 +292,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderBaseImage(): TemplateResult {
     return html`<div
       class="card__image-container"
-      @keydown=${this._handleForwardNavigation}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
@@ -315,7 +314,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         ${this._renderLinkContent()}${this._renderHoverMetadata()}
       </div>
       ${this._showSubtleOverlay() ? nothing : this._renderCheckbox()}
-      <slot name="overlay"></slot>
+      ${this._showSubtleOverlay() ? nothing : html`<slot name="overlay"></slot>`}
     </div>`;
   }
 
@@ -338,7 +337,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderTitle(): TemplateResult {
     return html`<pharos-link
-      @keydown=${this._handleBackwardNavigation}
       class="card__link--title"
       href=${this.link}
       subtle
@@ -398,28 +396,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     </div>`;
   }
 
-  private _handleNavigation(event: KeyboardEvent, directionMatches: boolean): void {
-    if (!this.subtleSelect || this._isCheckboxDisplayed()) {
-      return;
-    }
-
-    if (event.key == 'Tab' && directionMatches) {
-      event.preventDefault();
-      this._isSelectableHovered = true;
-      new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
-        this._checkbox.focus();
-      });
-    }
-  }
-
-  private _handleBackwardNavigation(event: KeyboardEvent): void {
-    this._handleNavigation(event, event.shiftKey);
-  }
-
-  private _handleForwardNavigation(event: KeyboardEvent): void {
-    this._handleNavigation(event, !event.shiftKey);
-  }
-
   private _cardToggleSelect(event: Event): void {
     const cardClicked = this._isSelectableViaCard() && event.target !== this._checkbox;
     const checkboxClicked = event.currentTarget === this._checkbox;
@@ -470,26 +446,35 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return this.disabled && this._isSelectable();
   }
 
-  private _isCheckboxDisplayed() {
-    return (
+  private _renderCheckbox(): TemplateResult | typeof nothing {
+    // Always render for selectable variants
+    if (!this._isSelectable()) {
+      return nothing;
+    }
+
+    const isCheckboxFocused = this._checkbox && this.shadowRoot?.activeElement === this._checkbox;
+
+    const showCheckbox =
       this._isSubtleSelectHover() ||
       this._isSelectableViaCard() ||
       this._isSelected ||
-      (this.disabled && this._isSelectable())
-    );
-  }
+      this._isDisabledSelectable() ||
+      isCheckboxFocused;
 
-  private _renderCheckbox(): TemplateResult | typeof nothing {
-    return this._isCheckboxDisplayed()
-      ? html`<pharos-checkbox
-          class=${this._showSubtleOverlay() ? 'card__checkbox--subtle' : 'card__checkbox'}
-          hide-label="true"
-          .checked=${this._isSelected}
-          .disabled=${this.disabled}
-          name="Select ${this.title}"
-          @click=${this._cardToggleSelect}
-          ><span slot="label">Select ${this.title}</span></pharos-checkbox
-        >`
-      : nothing;
+    const checkboxClass = this._showSubtleOverlay() ? 'card__checkbox--subtle' : 'card__checkbox';
+    return html`<pharos-checkbox
+      class=${classMap({
+        [checkboxClass]: true,
+        'card__checkbox--hidden': !showCheckbox,
+      })}
+      hide-label="true"
+      .checked=${this._isSelected}
+      .disabled=${this.disabled}
+      name="Select ${this.title}"
+      @focus=${() => this.requestUpdate()}
+      @blur=${() => this.requestUpdate()}
+      @click=${this._cardToggleSelect}
+      ><span slot="label">Select ${this.title}</span></pharos-checkbox
+    >`;
   }
 }

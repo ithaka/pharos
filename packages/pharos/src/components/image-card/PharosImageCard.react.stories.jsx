@@ -426,6 +426,7 @@ export const WithActionButtonSlot = {
             slot="action-button"
             data-dropdown-menu-id="dropdownId"
             icon="ellipses-vertical"
+            a11yLabel="Action menu"
             iconCondensed
             variant="subtle"
           ></PharosButton>
@@ -468,6 +469,7 @@ export const WithOverlayButtonSlot = {
             data-dropdown-menu-id="saveDropdownId"
             icon="save"
             iconCondensed
+            a11yLabel="Save"
             variant="overlay"
             style={{ position: 'absolute', bottom: '5px', right: '5px' }}
           ></PharosButton>
@@ -476,6 +478,7 @@ export const WithOverlayButtonSlot = {
             data-dropdown-menu-id="dropdownId"
             icon="ellipses-vertical"
             iconCondensed
+            a11yLabel="Action menu"
             variant="subtle"
           ></PharosButton>
         </PharosImageCard>

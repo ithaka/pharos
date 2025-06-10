@@ -54,7 +54,7 @@
 }
 
 :host([disabled]) .card__image {
-  color: var(--pharos-color-marble-gray-50);
+  color: var(--pharos-color-text-40);
   cursor: not-allowed;
   text-decoration: none;
   pointer-events: none;
@@ -72,14 +72,14 @@ slot[name='image']::slotted(img) {
 }
 
 :host([disabled]) .card__link--title {
-  color: var(--pharos-color-marble-gray-50);
+  color: var(--pharos-color-text-40);
   cursor: not-allowed;
   text-decoration: none;
   pointer-events: none;
 }
 
 :host([disabled]) .card__heading {
-  color: var(--pharos-color-marble-gray-50);
+  color: var(--pharos-color-text-40);
 }
 
 :host([variant='promotional']) .card__image {
@@ -110,7 +110,6 @@ slot[name='image']::slotted(img) {
   padding: var(--pharos-spacing-one-half-x);
   position: absolute;
   top: 0;
-  visibility: hidden;
   pointer-events: none;
   opacity: 0;
   transform: translate3d(0, 0, 0);
@@ -201,7 +200,7 @@ slot[name='image']::slotted(img) {
 }
 
 :host([disabled]) .card__image--collection {
-  color: var(--pharos-color-marble-gray-50);
+  color: var(--pharos-color-text-40);
   cursor: not-allowed;
   text-decoration: none;
   pointer-events: none;
@@ -242,6 +241,10 @@ slot[name='image']::slotted(img) {
   margin-left: var(--pharos-spacing-one-quarter-x);
 }
 
+.card__checkbox--hidden {
+  opacity: 0;
+}
+
 .card__image.card__image--selectable {
   background-color: var(--pharos-color-marble-gray-94);
 }
@@ -256,7 +259,6 @@ slot[name='image']::slotted(img) {
   &:focus-within {
     .card__metadata--hover {
       background-color: rgb(0 0 0 / 0.75);
-      visibility: visible;
       opacity: 1;
       pointer-events: auto;
     }
