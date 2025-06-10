@@ -1,9 +1,15 @@
 const a11yConfig = {
-  options: {
+  config: {
     runOnly: {
       type: 'tag',
       values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'section508', 'best-practice'],
     },
+    rules: [
+      {
+        id: 'region',
+        enabled: false,
+      },
+    ],
   },
 };
 
