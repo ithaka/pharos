@@ -417,7 +417,7 @@ describe('pharos-image-card', () => {
     expect(hovered).to.be.true;
   });
 
-  it('will show not show a checkbox when subtle-select is true', async () => {
+  it('will visually not show a checkbox when subtle-select is true', async () => {
     component = await fixture(
       html`<test-pharos-image-card variant="selectable" subtle-select="true" link="#">
         <img
@@ -433,7 +433,12 @@ describe('pharos-image-card', () => {
     checkboxElement = component.renderRoot.querySelector(
       '[data-pharos-component="PharosCheckbox"]'
     );
-    expect(checkboxElement).to.be.null;
+    expect(checkboxElement).not.to.be.null;
+    if (checkboxElement !== null) {
+      let checkboxElementStyle = window.getComputedStyle(checkboxElement);
+
+      expect(checkboxElementStyle.opacity).to.equal('0');
+    }
   });
 
   it('will show a checkbox when hovered and subtle-select is true', async () => {
@@ -575,7 +580,6 @@ describe('pharos-image-card', () => {
     );
 
     const title: PharosLink | null = component.renderRoot.querySelector('.card__image');
-
 
     let selected = false;
     const onSelectCard = (): void => {
@@ -747,11 +751,12 @@ describe('pharos-image-card', () => {
     );
 
     component.focus();
-    await sendKeys({ down: 'Tab' });
+    sendKeys({ press: 'Tab' });
     const checkboxElement = component.renderRoot.querySelector(
       '[data-pharos-component="PharosCheckbox"]'
     );
-    expect(document.activeElement).to.equal(checkboxElement);
+
+    expect(document.activeElement?.shadowRoot?.activeElement).to.equal(checkboxElement);
   });
 
   it('renders the image preview not available in error state ', async () => {
