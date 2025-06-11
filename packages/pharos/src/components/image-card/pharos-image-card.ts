@@ -224,9 +224,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       ? html`
           <div class="card__image--collection-container">
             <div
-              class=${classMap({
-                [`card__image--collection--error`]: true,
-              })}
+              class="card__image--collection--error"
             >
               <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
               <span class="unavailable-text">Image preview not available</span>
