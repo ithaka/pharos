@@ -223,9 +223,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return this.error
       ? html`
           <div class="card__image--collection-container">
-            <div
-              class="card__image--collection--error"
-            >
+            <div class="card__image--collection--error">
               <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
               <span class="unavailable-text">Image preview not available</span>
             </div>
@@ -333,24 +331,26 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     }[this.variant] as HeadingPreset;
   }
 
-  private _renderTitle(): TemplateResult {
-    return html`<pharos-link
-      class="card__link--title"
-      href=${this.link}
-      subtle
-      flex
-      ?indicate-visited=${this.indicateLinkVisited}
-      @click=${this._cardToggleSelect}
-      >${this.title
-        ? html`<pharos-heading
-            class="card__heading"
-            preset=${this._chooseHeadingPreset()}
-            level=${this.headingLevel || DEFAULT_HEADING_LEVEL}
-            no-margin
-            >${this.title}</pharos-heading
-          >`
-        : html`<slot name="title"></slot>`}
-    </pharos-link>`;
+  private _renderTitle(): TemplateResult | typeof nothing {
+    return this.title
+      ? html`<pharos-link
+          class="card__link--title"
+          href=${this.link}
+          subtle
+          flex
+          ?indicate-visited=${this.indicateLinkVisited}
+          @click=${this._cardToggleSelect}
+          >${this.title
+            ? html`<pharos-heading
+                class="card__heading"
+                preset=${this._chooseHeadingPreset()}
+                level=${this.headingLevel || DEFAULT_HEADING_LEVEL}
+                no-margin
+                >${this.title}</pharos-heading
+              >`
+            : html`<slot name="title"></slot>`}
+        </pharos-link>`
+      : nothing;
   }
 
   private _renderActionButton(): TemplateResult {
