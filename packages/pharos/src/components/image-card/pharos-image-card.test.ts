@@ -576,7 +576,6 @@ describe('pharos-image-card', () => {
 
     const title: PharosLink | null = component.renderRoot.querySelector('.card__image');
 
-    console.log(title);
 
     let selected = false;
     const onSelectCard = (): void => {
