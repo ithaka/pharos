@@ -1,5 +1,7 @@
 export const defaultArgs = {
-  label: 'Multiselect Dropdown Label',
+  label: 'Cities in Michigan',
+  displayCharacterCount: 40,
+  hideSelectAll: false,
   disabled: false,
   hideLabel: false,
   looseMatch: false,
