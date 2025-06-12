@@ -10,6 +10,10 @@
   width: 100%;
 }
 
+.multiselect-dropdown {
+  position: relative;
+}
+
 .multiselect-dropdown__icon {
   fill: var(--pharos-dropdown-multiselect-color-icon-dropdown);
 }
@@ -157,7 +161,10 @@
 .multiselect-dropdown__input-wrapper {
   border-radius: var(--pharos-radius-base-standard);
   box-shadow: var(--pharos-elevation-level-3);
-  margin-top: 2px;
+  margin-top: var(--pharos-spacing-one-eighth-x);
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
 
 .multiselect-dropdown__button-container {
