@@ -58,14 +58,19 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
    * How long the dropdown list should be displayed.
    * @attr displayCharacterCount
    */
-  @property({ type: Number, reflect: true })
+  @property({
+    type: Number,
+    reflect: true,
+    useDefault: false,
+    attribute: 'display-character-count',
+  })
   public displayCharacterCount: number = 40;
 
   /**
    * Use loose matching when comparing search value to options.
    * @attr looseMatch
    */
-  @property({ type: Boolean, reflect: true, attribute: 'loose-match' })
+  @property({ type: Boolean, reflect: true, attribute: 'loose-match', useDefault: false })
   public looseMatch = false;
 
   /**
@@ -109,7 +114,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   @state()
   private _matchingOptions: HTMLOptionElement[] = [];
 
-  // The combobox items have been scrolled below the top of the list
+  // Flag set if combobox items have been scrolled below the top of the list
   @state()
   private _isScrolling = false;
 
@@ -153,8 +158,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
 
   /**
    * Sets up the IntersectionObserver to monitor the scroll state of the dropdown list.
-   * It toggled the `_isScrolling` state based on whether the first item
-   * in the list is fully visible within the scrollable container (`_list`).
+   * It toggles the `_isScrolling` state based on whether the first item
+   * in the list is fully visible within the scrollable container (`this._list`).
    */
   private _setupScrollObserver(): void {
     if ('IntersectionObserver' in window) {
@@ -187,16 +192,17 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private _setHighlightedOption(id: string): void {
-    const highlightedOption = this.renderRoot.querySelector(
+    const currentlyHighlightedOption = this.renderRoot.querySelector(
       '.multiselect-dropdown__option[highlighted]'
     ) as HTMLLIElement;
-    if (highlightedOption) {
-      highlightedOption.removeAttribute('highlighted');
+    if (currentlyHighlightedOption) {
+      currentlyHighlightedOption.removeAttribute('highlighted');
     }
-    const newOption = this.renderRoot.querySelector(
+
+    const optionToHighlight = this.renderRoot.querySelector(
       `.multiselect-dropdown__option[id="${id}"]`
     ) as HTMLLIElement;
-    newOption.setAttribute('highlighted', '');
+    optionToHighlight.setAttribute('highlighted', '');
     this._searchInput.setAttribute('aria-activedescendant', id);
   }
 
@@ -337,7 +343,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     }
   }
 
-  // Dropdown handlers
   private _closeDropdown(): void {
     this._searchValue = '';
     this._open = false;
@@ -370,7 +375,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     }
   }
 
-  // Control button handlers
   private _handleApplyClick(): void {
     this.selectedOptions = [...this._pendingOptions];
     this._closeDropdown();
@@ -399,6 +403,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       .toLowerCase();
   }
 
+  // Renders the checkbox icon used in the dropdown options from an svg
   private _renderCheckboxIcon(
     checked: boolean = false,
     indeterminate: boolean = false
@@ -431,6 +436,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       </svg>
     `;
   }
+
   private _renderDropdownPanel(): TemplateResult | typeof nothing {
     if (!this._open) {
       return nothing;
@@ -505,10 +511,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           >
             ${this.useSelectAll && this._matchingOptions.length > 1
               ? html`<li
-                  class=${classMap({
-                    'multiselect-dropdown__option': true,
-                    'multiselect-dropdown__select-all': true,
-                  })}
+                  class="multiselect-dropdown__option multiselect-dropdown__select-all"
                   id="result-item-select-all"
                   role="option"
                   aria-selected="${allMatchingSelected}"
