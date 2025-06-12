@@ -339,13 +339,30 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     this._dropdown_button.focus();
   }
 
-  private _handleDropdownButtonClick(): void {
+  private _toggleDropdown(): void {
     if (this._open) {
       this._closeDropdown();
     } else {
       this._open = true;
     }
     this._pendingOptions = this.selectedOptions;
+  }
+
+  private _handleDropdownButtonClick(): void {
+    if (this.disabled) {
+      return;
+    }
+    this._toggleDropdown();
+  }
+
+  private _handleDropdownKeydown(event: KeyboardEvent): void {
+    if (this.disabled) {
+      event.preventDefault();
+      return;
+    }
+    if (event.key === 'Enter' || event.key === 'Space') {
+      this._handleDropdownButtonClick();
+    }
   }
 
   // Control button handlers
@@ -613,17 +630,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
         <button
           id="button-element"
           class="multiselect-dropdown__button"
+          ?disabled="${this.disabled}"
           aria-labelledby="button-label button-element"
           aria-expanded="${this._open}"
           aria-haspopup="true"
           aria-describedby="${ifDefined(this.messageId)}"
           type="button"
           @click=${this._handleDropdownButtonClick}
-          @keydown=${(event: KeyboardEvent) => {
-            if (event.key === 'Enter' || event.key === 'Space') {
-              this._handleDropdownButtonClick();
-            }
-          }}
+          @keydown=${this._handleDropdownKeydown}
         >
           ${this._getButtonDisplayText()}
           <pharos-icon
