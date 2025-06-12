@@ -315,7 +315,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   _handleFormReset(): void {
-    this.selectedOptions = [];
+    this.selectedOptions = this.options.filter((option) => option.selected);
     this.pendingOptions = [];
     this._searchValue = '';
   }
