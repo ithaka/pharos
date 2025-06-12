@@ -255,12 +255,10 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
         event.preventDefault();
         this._closeDropdown();
         break;
-      case 'Down':
       case 'ArrowDown':
         event.preventDefault();
         this._handleComboboxNavigation(true);
         break;
-      case 'Up':
       case 'ArrowUp':
         event.preventDefault();
         this._handleComboboxNavigation(false);
