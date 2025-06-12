@@ -466,7 +466,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
               aria-controls="multiselect-dropdown-list"
               aria-autocomplete="list"
               aria-activedescendant=""
-              aria-describedby="${ifDefined(this.messageId)}"
               @input=${this._handleSearchInput}
               @keydown=${this._handleSearchInputKeydown}
             />
@@ -617,6 +616,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           aria-labelledby="button-label button-element"
           aria-expanded="${this._open}"
           aria-haspopup="true"
+          aria-describedby="${ifDefined(this.messageId)}"
           type="button"
           @click=${this._handleDropdownButtonClick}
           @keydown=${(event: KeyboardEvent) => {
@@ -634,6 +634,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
         </button>
         ${this._renderDropdownPanel()}
       </div>
+      ${this.messageContent}
     `;
   }
 }
