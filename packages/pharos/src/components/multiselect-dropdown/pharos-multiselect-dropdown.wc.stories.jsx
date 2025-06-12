@@ -20,13 +20,15 @@ export const Base = {
   render: (args) => html`
     <storybook-pharos-multiselect-dropdown
       .name=${ifDefined(args.name)}
-      ?loose-match=${args.looseMatch}
+      .displayCharacterCount=${args.displayCharacterCount}
+      .hideSelectAll=${args.hideSelectAll}
+      .looseMatch=${args.looseMatch}
       ?disabled=${args.disabled}
       ?hide-label=${args.hideLabel}
       message=${ifDefined(args.message)}
       style="display: grid; grid-template-columns: 432px;"
     >
-      <span slot="label">Cities in Michigan</span>
+      <span slot="label">${args.label}</span>
       <option value="1">Ann Arbor</option>
       <option value="2">Battle Creek</option>
       <option value="3">Benton Harbor</option>
