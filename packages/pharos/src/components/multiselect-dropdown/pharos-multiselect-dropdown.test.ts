@@ -6,7 +6,7 @@ import type { PharosButton } from '../button/pharos-button';
 import type { PharosCheckbox } from '../checkbox/pharos-checkbox';
 import createFormData from '../../utils/createFormData';
 const setupComponent = async (
-  options: { open?: boolean; disabled?: boolean; looseMatch?: boolean } = {
+  options: { open?: boolean; disabled?: boolean; looseMatch?: boolean; hideSelectAll?: boolean } = {
     open: false,
   }
 ): Promise<PharosMultiselectDropdown> => {
@@ -14,6 +14,7 @@ const setupComponent = async (
     <test-pharos-multiselect-dropdown
       ?disabled=${options.disabled}
       ?loose-match=${options.looseMatch}
+      ?hide-select-all=${options.hideSelectAll}
     >
       <span slot="label">I am a label</span>
       <option value="1">Option 1</option>
@@ -591,6 +592,15 @@ describe('pharos-multiselect-dropdown', () => {
             expect(option.getAttribute('aria-selected')).to.equal('true');
           }
         });
+      });
+      it('does not display a "select all" option when hide-select-all is true', async () => {
+        const component = await setupComponent({ open: true, hideSelectAll: true });
+
+        const selectAllOption = component.renderRoot.querySelector(
+          '.multiselect-dropdown__select-all'
+        ) as PharosCheckbox;
+
+        expect(selectAllOption).not.to.exist;
       });
     });
 
