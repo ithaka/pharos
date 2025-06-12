@@ -209,6 +209,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private _handleOptionClick(option: HTMLOptionElement, event: Event): void {
+    console.log('Option clicked:', option);
     if (option.disabled) {
       event.preventDefault();
       return;
@@ -225,20 +226,24 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       this._pendingOptions = [...this._pendingOptions, option];
     }
   }
-  private _handleSelectAllClicked(event: Event): void {
-    const selectAllCheckbox = event.target as PharosCheckbox;
-    event.preventDefault();
-    if (!selectAllCheckbox.checked) {
-      selectAllCheckbox.checked = true;
+  private _handleSelectAllClicked(): void {
+    const selectAllOption = this.renderRoot.querySelector(
+      '.multiselect-dropdown__select-all'
+    ) as HTMLLIElement;
+
+    this._setHighlightedOption(selectAllOption.id);
+
+    if (selectAllOption.getAttribute('aria-selected') === 'true') {
+      this._pendingOptions = [...this._pendingOptions].filter(
+        (pendingOption) => !this._matchingOptions.includes(pendingOption)
+      );
+      selectAllOption.setAttribute('aria-selected', 'false');
+    } else {
       const newOptions = this._matchingOptions.filter(
         (option) => !this._pendingOptions.includes(option)
       );
       this._pendingOptions = [...this._pendingOptions, ...newOptions];
-    } else {
-      selectAllCheckbox.checked = false;
-      this._pendingOptions = [...this._pendingOptions].filter(
-        (pendingOption) => !this._matchingOptions.includes(pendingOption)
-      );
+      selectAllOption.setAttribute('aria-selected', 'true');
     }
   }
 
@@ -440,11 +445,11 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       return childText.match(regex);
     });
 
-    const allMatchingSelected =
+    const allMatchingSelected: boolean =
       this._matchingOptions.length > 0 &&
       this._matchingOptions.every((option) => this._pendingOptions.includes(option));
 
-    const allMatchingIndeterminate =
+    const allMatchingIndeterminate: boolean =
       this._pendingOptions.length > 0 &&
       !allMatchingSelected &&
       this._matchingOptions.some((option) => this._pendingOptions.includes(option));
@@ -508,11 +513,10 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                   role="option"
                   aria-selected="${allMatchingSelected}"
                   aria-label="${selectAllText}"
-                  @click=${(event: Event) => this._handleSelectAllClicked(event)}
-                  @keydown=${(event: KeyboardEvent) => {
-                    if (event.key === 'enter') {
-                      this._handleSelectAllClicked(event);
-                    }
+                  @click=${this._handleSelectAllClicked}
+                  @mousedown=${(event: MouseEvent) => {
+                    // Prevent stealing focus from the input
+                    event.preventDefault();
                   }}
                 >
                   <div
@@ -558,12 +562,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                       aria-disabled="${option.disabled}"
                       aria-label="${option.text}"
                       @click=${(event: Event) => this._handleOptionClick(option, event)}
-                      @keydown=${(event: KeyboardEvent) => {
-                        if (event.key === 'space') {
-                          this._handleOptionClick(option, event);
-                        }
-                      }}
                       @mousedown=${(event: MouseEvent) => {
+                        // Prevent stealing focus from the input
                         event.preventDefault();
                       }}
                     >
