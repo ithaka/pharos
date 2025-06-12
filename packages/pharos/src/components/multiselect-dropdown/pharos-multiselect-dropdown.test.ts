@@ -6,10 +6,15 @@ import type { PharosButton } from '../button/pharos-button';
 import type { PharosCheckbox } from '../checkbox/pharos-checkbox';
 import createFormData from '../../utils/createFormData';
 const setupComponent = async (
-  options: { open: boolean } = { open: false }
+  options: { open?: boolean; disabled?: boolean; looseMatch?: boolean } = {
+    open: false,
+  }
 ): Promise<PharosMultiselectDropdown> => {
   const component = (await fixture(html`
-    <test-pharos-multiselect-dropdown>
+    <test-pharos-multiselect-dropdown
+      ?disabled=${options.disabled}
+      ?loose-match=${options.looseMatch}
+    >
       <span slot="label">I am a label</span>
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
@@ -306,17 +311,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(noResultMessage.innerText.trim()).to.equal('No results found');
     });
     it('strictly matches search terms when loose-match is false', async () => {
-      component = await fixture(html`
-        <test-pharos-multiselect-dropdown name="my-multiselect-dropdown" ?loose-match=${false}>
-          <span slot="label">I am a label</span>
-          <option value="1" selected>Option 1</option>
-          <option value="2" selected>Option 2</option>
-          <option value="3">Option 3</option>
-        </test-pharos-multiselect-dropdown>
-      `);
-
-      component['_open'] = true;
-      await component.updateComplete;
+      const component = await setupComponent({ open: true, looseMatch: false });
 
       const searchInput = component.renderRoot.querySelector(
         '#multiselect-dropdown__search-input'
@@ -335,17 +330,7 @@ describe('pharos-multiselect-dropdown', () => {
     });
 
     it('normalizes search terms before matching when loose-match is true', async () => {
-      component = await fixture(html`
-        <test-pharos-multiselect-dropdown name="my-multiselect-dropdown" ?loose-match=${true}>
-          <span slot="label">I am a label</span>
-          <option value="1" selected>Option 1</option>
-          <option value="2" selected>Option 2</option>
-          <option value="3">Option 3</option>
-        </test-pharos-multiselect-dropdown>
-      `);
-
-      component['_open'] = true;
-      await component.updateComplete;
+      const component = await setupComponent({ open: true, looseMatch: true });
 
       const searchInput = component.renderRoot.querySelector(
         '#multiselect-dropdown__search-input'
