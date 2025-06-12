@@ -52,7 +52,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
    * @attr selectedOptions
    */
   @property({ type: Array })
-  public selectedOptions: HTMLOptionElement[] = []; //TODO: make options
+  public selectedOptions: HTMLOptionElement[] = [];
 
   /**
    * How long the dropdown list should be displayed.
@@ -103,11 +103,11 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
 
   // The currently selected (but not applied) options
   @state()
-  private pendingOptions: HTMLOptionElement[] = [];
+  private _pendingOptions: HTMLOptionElement[] = [];
 
   // The options that match the current search input
   @state()
-  private matchingOptions: HTMLOptionElement[] = [];
+  private _matchingOptions: HTMLOptionElement[] = [];
 
   // The combobox items have been scrolled below the top of the list
   @state()
@@ -120,7 +120,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   public override firstUpdated(): void {
     this._setupScrollObserver();
     this.selectedOptions = this.options.filter((option) => option.selected);
-    this.pendingOptions = [...this.selectedOptions];
+    this._pendingOptions = [...this.selectedOptions];
   }
 
   public override updated(changedProperties: Map<string, any>): void {
@@ -215,14 +215,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     }
     this._setHighlightedOption((event.currentTarget as HTMLLIElement)?.id);
 
-    if (this.pendingOptions.includes(option)) {
-      this.pendingOptions = [
-        ...this.pendingOptions.filter((pendingOption) => {
+    if (this._pendingOptions.includes(option)) {
+      this._pendingOptions = [
+        ...this._pendingOptions.filter((pendingOption) => {
           return pendingOption !== option;
         }),
       ];
     } else {
-      this.pendingOptions = [...this.pendingOptions, option];
+      this._pendingOptions = [...this._pendingOptions, option];
     }
   }
   private _handleSelectAllClicked(event: Event): void {
@@ -230,14 +230,14 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     event.preventDefault();
     if (!selectAllCheckbox.checked) {
       selectAllCheckbox.checked = true;
-      const newOptions = this.matchingOptions.filter(
-        (option) => !this.pendingOptions.includes(option)
+      const newOptions = this._matchingOptions.filter(
+        (option) => !this._pendingOptions.includes(option)
       );
-      this.pendingOptions = [...this.pendingOptions, ...newOptions];
+      this._pendingOptions = [...this._pendingOptions, ...newOptions];
     } else {
       selectAllCheckbox.checked = false;
-      this.pendingOptions = [...this.pendingOptions].filter(
-        (pendingOption) => !this.matchingOptions.includes(pendingOption)
+      this._pendingOptions = [...this._pendingOptions].filter(
+        (pendingOption) => !this._matchingOptions.includes(pendingOption)
       );
     }
   }
@@ -267,7 +267,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private async _handleComboboxNavigation(moveForward: boolean): Promise<void> {
-    if (this.matchingOptions.length === 0) {
+    if (this._matchingOptions.length === 0) {
       return;
     }
 
@@ -285,14 +285,11 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       (v) => v === highlightedOption?.innerText.trim(),
       moveForward
     );
-    // highlightedOption?.removeAttribute('highlighted');
 
     const nextOption = options[nextOptionIndex];
 
     nextOption.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     this._setHighlightedOption(nextOption.id);
-    // nextOption.setAttribute('highlighted', '');
-    // this._searchInput.setAttribute('aria-activedescendant', nextOption.id);
   }
 
   private _selectHighlightedOption(): void {
@@ -316,7 +313,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
 
   _handleFormReset(): void {
     this.selectedOptions = this.options.filter((option) => option.selected);
-    this.pendingOptions = [];
+    this._pendingOptions = [];
     this._searchValue = '';
   }
 
@@ -348,18 +345,18 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     } else {
       this._open = true;
     }
-    this.pendingOptions = this.selectedOptions;
+    this._pendingOptions = this.selectedOptions;
   }
 
   // Control button handlers
   private _handleApplyClick(): void {
-    this.selectedOptions = [...this.pendingOptions];
+    this.selectedOptions = [...this._pendingOptions];
     this._closeDropdown();
     this.onChange();
   }
 
   private _handleCancelClick(): void {
-    this.pendingOptions = [];
+    this._pendingOptions = [];
     this._closeDropdown();
     this.onChange();
   }
@@ -421,23 +418,23 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       ? this._normalizeString(this._searchValue)
       : this._searchValue;
     const regex = new RegExp(queryToCompare, 'gi');
-    this.matchingOptions = this.options.filter((child) => {
+    this._matchingOptions = this.options.filter((child) => {
       const childText = this.looseMatch ? this._normalizeString(child.text) : child.text;
       return childText.match(regex);
     });
 
     const allMatchingSelected =
-      this.matchingOptions.length > 0 &&
-      this.matchingOptions.every((option) => this.pendingOptions.includes(option));
+      this._matchingOptions.length > 0 &&
+      this._matchingOptions.every((option) => this._pendingOptions.includes(option));
 
     const allMatchingIndeterminate =
-      this.pendingOptions.length > 0 &&
+      this._pendingOptions.length > 0 &&
       !allMatchingSelected &&
-      this.matchingOptions.some((option) => this.pendingOptions.includes(option));
+      this._matchingOptions.some((option) => this._pendingOptions.includes(option));
 
     const selectAllText = allMatchingSelected
-      ? `Deselect ${this.matchingOptions.length}`
-      : `Select all ${this.matchingOptions.length}`;
+      ? `Deselect ${this._matchingOptions.length}`
+      : `Select all ${this._matchingOptions.length}`;
 
     return html`
       <div class="multiselect-dropdown__input-wrapper">
@@ -485,7 +482,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
             id="multiselect-dropdown-list"
             class="multiselect-dropdown__list"
           >
-            ${this.useSelectAll && this.matchingOptions.length > 1
+            ${this.useSelectAll && this._matchingOptions.length > 1
               ? html`<li
                   class=${classMap({
                     'multiselect-dropdown__option': true,
@@ -516,8 +513,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                   <div class="multiselect-dropdown__option-label">${selectAllText}</div>
                 </li>`
               : nothing}
-            ${this.matchingOptions.length
-              ? this.matchingOptions.map((child, index) => {
+            ${this._matchingOptions.length
+              ? this._matchingOptions.map((child, index) => {
                   const option = child as HTMLOptionElement;
                   const exactMatch = this._searchValue === option.value;
 
@@ -531,7 +528,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                       })
                     : option.text;
 
-                  const isSelected = this.pendingOptions.includes(option);
+                  const isSelected = this._pendingOptions.includes(option);
                   return html`
                     <li
                       id="${`result-item-${index}`}"
@@ -571,8 +568,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
               : html`<li class="multiselect-dropdown__no-options">No results found</li>`}
           </ul>
           <div aria-live="polite" role="status" class="visually-hidden">
-            ${this.matchingOptions.length
-              ? `${this.matchingOptions.length} results available.`
+            ${this._matchingOptions.length
+              ? `${this._matchingOptions.length} results available.`
               : `No results found`}
           </div>
         </div>
