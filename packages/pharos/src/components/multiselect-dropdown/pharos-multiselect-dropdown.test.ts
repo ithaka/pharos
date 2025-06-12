@@ -44,7 +44,10 @@ describe('pharos-multiselect-dropdown', () => {
       const component = await setupComponent({ open: true });
       await expect(component).to.be.accessible();
     });
-    it('passes basic accessibility checks when disabled', async () => {});
+    it('passes basic accessibility checks when disabled', async () => {
+      const component = await setupComponent({ disabled: true });
+      await expect(component).to.be.accessible();
+    });
   });
 
   describe('Dropdown Behavior', () => {
@@ -73,7 +76,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(searchInput).to.be.visible;
     });
 
-    it('opens when the enter key is pressed on the button', async () => {
+    it('opens when the space key is pressed on the button', async () => {
       const component = await setupComponent();
       const button = component.renderRoot.querySelector('button');
       expect(button).to.exist;
@@ -85,8 +88,43 @@ describe('pharos-multiselect-dropdown', () => {
       expect(searchInput).to.be.visible;
     });
 
-    it('does not open when it is disabled', async () => {
-      //TODO
+    it('does not open when it is clicked while disabled', async () => {
+      const component = await setupComponent({ disabled: true });
+      const button = component.renderRoot.querySelector('button');
+      expect(button).to.exist;
+
+      button!.click();
+      await component.updateComplete;
+
+      const searchInput = component.renderRoot.querySelector('#multiselect-dropdown__search-input');
+      expect(component['_open']).to.be.false;
+      expect(searchInput).not.to.exist;
+    });
+
+    it('does not open when the enter key is pressed on the button when disabled', async () => {
+      const component = await setupComponent({ disabled: true });
+      const button = component.renderRoot.querySelector('button');
+      expect(button).to.exist;
+
+      button!.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      await component.updateComplete;
+
+      const searchInput = component.renderRoot.querySelector('#multiselect-dropdown__search-input');
+      expect(component['_open']).to.be.false;
+      expect(searchInput).not.to.exist;
+    });
+
+    it('does not open when the space key is pressed on the button when disabled', async () => {
+      const component = await setupComponent({ disabled: true });
+      const button = component.renderRoot.querySelector('button');
+      expect(button).to.exist;
+
+      button!.dispatchEvent(new KeyboardEvent('keydown', { key: 'Space' }));
+      await component.updateComplete;
+
+      const searchInput = component.renderRoot.querySelector('#multiselect-dropdown__search-input');
+      expect(component['_open']).to.be.false;
+      expect(searchInput).not.to.exist;
     });
 
     it('closes the dropdown when it is open and the button is clicked', async () => {
