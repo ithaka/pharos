@@ -62,7 +62,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   public displayCharacterCount: number = 40;
 
   /**
-   * Use loose matching when comparing input value to options.
+   * Use loose matching when comparing search value to options.
    * @attr looseMatch
    */
   @property({ type: Boolean, reflect: true, attribute: 'loose-match' })
@@ -119,6 +119,8 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
 
   public override firstUpdated(): void {
     this._setupScrollObserver();
+    this.selectedOptions = this.options.filter((option) => option.selected);
+    this.pendingOptions = [...this.selectedOptions];
   }
 
   public override updated(changedProperties: Map<string, any>): void {
@@ -141,7 +143,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   public onChange(): void {
-    console.log('onChange called');
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,
