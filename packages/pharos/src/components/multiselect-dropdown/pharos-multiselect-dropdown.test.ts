@@ -32,27 +32,27 @@ const setupComponent = async (
   return component;
 };
 
-describe('pharos-multiselect-dropdown', () => {
+describe('PharosMultiselectDropdown', () => {
   let component: PharosMultiselectDropdown;
 
   describe('Accessibility', () => {
-    it('passes basic accessibility checks when closed', async () => {
+    it('should be accessible when closed', async () => {
       const component = await setupComponent();
       await expect(component).to.be.accessible();
     });
 
-    it('passes basic accessibility checks when open', async () => {
+    it('should be accessible when open', async () => {
       const component = await setupComponent({ open: true });
       await expect(component).to.be.accessible();
     });
-    it('passes basic accessibility checks when disabled', async () => {
+    it('should be accessible when disabled', async () => {
       const component = await setupComponent({ disabled: true });
       await expect(component).to.be.accessible();
     });
   });
 
-  describe('Dropdown Behavior', () => {
-    it('opens when the button is clicked', async () => {
+  describe('Dropdown open/close behavior', () => {
+    it('opens when the dropdown button is clicked', async () => {
       const component = await setupComponent();
       const button = component.renderRoot.querySelector('button');
       expect(button).to.exist;
@@ -65,7 +65,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(searchInput).to.be.visible;
     });
 
-    it('opens when the enter key is pressed on the button', async () => {
+    it('opens when pressing Enter on the dropdown button', async () => {
       const component = await setupComponent();
       const button = component.renderRoot.querySelector('button');
       expect(button).to.exist;
@@ -77,7 +77,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(searchInput).to.be.visible;
     });
 
-    it('opens when the space key is pressed on the button', async () => {
+    it('opens when pressing Space on the dropdown button', async () => {
       const component = await setupComponent();
       const button = component.renderRoot.querySelector('button');
       expect(button).to.exist;
@@ -89,7 +89,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(searchInput).to.be.visible;
     });
 
-    it('does not open when it is clicked while disabled', async () => {
+    it('does not open when clicked if disabled', async () => {
       const component = await setupComponent({ disabled: true });
       const button = component.renderRoot.querySelector('button');
       expect(button).to.exist;
@@ -102,7 +102,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(searchInput).not.to.exist;
     });
 
-    it('does not open when the enter key is pressed on the button when disabled', async () => {
+    it('does not open when pressing Enter if disabled', async () => {
       const component = await setupComponent({ disabled: true });
       const button = component.renderRoot.querySelector('button');
       expect(button).to.exist;
@@ -115,7 +115,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(searchInput).not.to.exist;
     });
 
-    it('does not open when the space key is pressed on the button when disabled', async () => {
+    it('does not open when pressing Space if disabled', async () => {
       const component = await setupComponent({ disabled: true });
       const button = component.renderRoot.querySelector('button');
       expect(button).to.exist;
@@ -128,7 +128,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(searchInput).not.to.exist;
     });
 
-    it('closes the dropdown when it is open and the button is clicked', async () => {
+    it('closes when clicking the dropdown button while open', async () => {
       const component = await setupComponent({ open: true });
 
       const button = component.renderRoot.querySelector('button');
@@ -140,7 +140,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(searchInput).not.to.exist;
     });
 
-    it('closes the dropdown when it is open and the escape key is pressed while the search is focused', async () => {
+    it('closes when pressing Escape in the search input', async () => {
       const component = await setupComponent({ open: true });
 
       const searchInput = component.renderRoot.querySelector(
@@ -156,7 +156,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(component['_open']).to.be.false;
     });
 
-    it('closes the dropdown when it is open and the escape key is pressed while the cancel button is focused', async () => {
+    it('closes when pressing Escape on the cancel button', async () => {
       const component = await setupComponent({ open: true });
 
       const cancelButton = component.renderRoot.querySelector('#cancel-button') as PharosButton;
@@ -169,7 +169,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(component['_open']).to.be.false;
     });
 
-    it('closes the dropdown when it is open and the escape key is pressed while the apply button is focused', async () => {
+    it('closes when pressing Escape on the apply button', async () => {
       const component = await setupComponent({ open: true });
 
       const cancelButton = component.renderRoot.querySelector('#apply-button') as PharosButton;
@@ -181,7 +181,7 @@ describe('pharos-multiselect-dropdown', () => {
 
       expect(component['_open']).to.be.false;
     });
-    it('sets focus on the search input when it opens', async () => {
+    it('focuses the search input when opening the dropdown', async () => {
       const component = await setupComponent();
       let activeElement = null;
       const onFocusIn = (event: Event): void => {
@@ -196,7 +196,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(activeElement === searchInput).to.be.true;
     });
 
-    it('sets focus on the dropdown button when it closes', async () => {
+    it('focuses the dropdown button when closing the dropdown', async () => {
       const component = await setupComponent();
       let activeElement = null;
       const onFocusIn = (event: Event): void => {
@@ -214,7 +214,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(activeElement === button).to.be.true;
     });
 
-    it('Updates the dropdown display text to "None Selected" when no options are selected', async () => {
+    it('shows "None Selected" when no options are selected', async () => {
       const component = await setupComponent();
       component.displayCharacterCount = 10;
       component['_open'] = true;
@@ -227,7 +227,7 @@ describe('pharos-multiselect-dropdown', () => {
       const button = component.renderRoot.querySelector('button');
       expect(button?.innerText.trim()).to.equal('None Selected');
     });
-    it('sets the dropdown display test to a comma delimited list when selectedOptions is more than displayCharacterCount', async () => {
+    it('shows a comma-separated list when selected options fit within displayCharacterCount', async () => {
       const component = await setupComponent({ open: true });
 
       const options = component.renderRoot.querySelectorAll(
@@ -244,7 +244,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(button?.innerText.trim()).to.equal('Option 1, Option 2');
     });
 
-    it('Updates the dropdown display text to "N Selected" when it is longer than displayCharacterCount', async () => {
+    it('shows "N Selected" when selected options exceed displayCharacterCount', async () => {
       const component = await setupComponent();
       component.displayCharacterCount = 10;
       component['_open'] = true;
@@ -264,7 +264,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(button?.innerText.trim()).to.equal('2 Selected');
     });
 
-    it('Updates the dropdown display text to "All Selected" when all options are selected', async () => {
+    it('shows "All Selected" when all options are selected', async () => {
       const component = await setupComponent({ open: true });
 
       const options = component.renderRoot.querySelectorAll(
@@ -281,8 +281,8 @@ describe('pharos-multiselect-dropdown', () => {
     });
   });
 
-  describe('Searching Options', () => {
-    it('filters the list of options based on the search term', async () => {
+  describe('Option search and filtering', () => {
+    it('filters options based on the search input', async () => {
       const component = await setupComponent({ open: true });
 
       const searchInput = component.renderRoot.querySelector(
@@ -305,7 +305,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(options[3].innerText.trim()).to.equal('Alternative 3');
     });
 
-    it('visually highlights search term partial matches with mark elements', async () => {
+    it('highlights matching text in options using <mark>', async () => {
       const component = await setupComponent({ open: true });
 
       const searchInput = component.renderRoot.querySelector(
@@ -326,7 +326,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(optionHTML).to.equal(expectedHTML);
     });
 
-    it('displays no results found when there are no matching options', async () => {
+    it('shows "No results found" when no options match the search', async () => {
       const component = await setupComponent({ open: true });
 
       const searchInput = component.renderRoot.querySelector(
@@ -349,7 +349,7 @@ describe('pharos-multiselect-dropdown', () => {
 
       expect(noResultMessage.innerText.trim()).to.equal('No results found');
     });
-    it('strictly matches search terms when loose-match is false', async () => {
+    it('performs strict matching when looseMatch is false', async () => {
       const component = await setupComponent({ open: true, looseMatch: false });
 
       const searchInput = component.renderRoot.querySelector(
@@ -368,7 +368,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(options.length).to.equal(0);
     });
 
-    it('normalizes search terms before matching when loose-match is true', async () => {
+    it('normalizes and matches search terms when looseMatch is true', async () => {
       const component = await setupComponent({ open: true, looseMatch: true });
 
       const searchInput = component.renderRoot.querySelector(
@@ -387,7 +387,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(options.length).to.equal(4);
       expect(options[1].innerText.trim()).to.equal('Option 1');
     });
-    it('highlights the first option when the down arrow is pressed from the search input', async () => {
+    it('highlights the first option when pressing ArrowDown in the search input', async () => {
       const component = await setupComponent({ open: true });
 
       const searchInput = component.renderRoot.querySelector(
@@ -407,7 +407,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(firstOption.hasAttribute('highlighted')).to.be.true;
     });
 
-    it('highlights the last option when the up arrow is pressed from the search input', async () => {
+    it('highlights the last option when pressing ArrowUp in the search input', async () => {
       const component = await setupComponent({ open: true });
 
       const searchInput = component.renderRoot.querySelector(
@@ -427,7 +427,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(lastOption.hasAttribute('highlighted')).to.be.true;
     });
 
-    it('highlights the last option when the up arrow is pressed on the first option', async () => {
+    it('wraps highlight to the last option when pressing ArrowUp on the first option', async () => {
       const component = await setupComponent({ open: true });
 
       const searchInput = component.renderRoot.querySelector(
@@ -451,9 +451,9 @@ describe('pharos-multiselect-dropdown', () => {
     });
   });
 
-  describe('Selecting Options', () => {
-    describe('Bulk Selection', () => {
-      it('displays a "select all" option when no options are selected', async () => {
+  describe('Option selection', () => {
+    describe('Bulk selection', () => {
+      it('shows a "select all" option when nothing is selected', async () => {
         const component = await setupComponent({ open: true });
 
         const selectAllOption = component.renderRoot.querySelector(
@@ -468,7 +468,7 @@ describe('pharos-multiselect-dropdown', () => {
         expect(selectAllOptionLabel.innerText.trim()).to.equal('Select all 6');
       });
 
-      it('displays the number of matching options next to the select all option', async () => {
+      it('shows the correct count in the select all option label', async () => {
         const component = await setupComponent({ open: true });
         const options = component.renderRoot.querySelectorAll(
           '.multiselect-dropdown__option'
@@ -487,7 +487,7 @@ describe('pharos-multiselect-dropdown', () => {
         expect(options[0].innerText.trim()).to.equal('Select all 3');
       });
 
-      it('hides the select/deselect all checkbox when there is only one matching option', async () => {
+      it('hides the select all option when only one option matches', async () => {
         const component = await setupComponent({ open: true });
 
         const searchInput = component.renderRoot.querySelector(
@@ -506,7 +506,7 @@ describe('pharos-multiselect-dropdown', () => {
         expect(options[0].innerText.trim()).to.equal('Alternative 1');
       });
 
-      it('selects all the options when the select all option is clicked when it is not already selected', async () => {
+      it('selects all options when clicking the select all option', async () => {
         const component = await setupComponent({ open: true });
 
         const options = component.renderRoot.querySelectorAll(
@@ -530,7 +530,7 @@ describe('pharos-multiselect-dropdown', () => {
         });
       });
 
-      it('deselects the options when the select all option is clicked when it is already selected', async () => {
+      it('deselects all options when clicking the select all option when selected', async () => {
         const component = await setupComponent({ open: true });
 
         const options = component.renderRoot.querySelectorAll(
@@ -565,7 +565,7 @@ describe('pharos-multiselect-dropdown', () => {
         });
       });
 
-      it('selects all options when the select all option is highlighted and the enter key is pressed', async () => {
+      it('selects all options when pressing Enter on the select all option when highlighted', async () => {
         const component = await setupComponent({ open: true });
 
         const searchInput = component.renderRoot.querySelector(
@@ -593,7 +593,7 @@ describe('pharos-multiselect-dropdown', () => {
           }
         });
       });
-      it('does not display a "select all" option when hide-select-all is true', async () => {
+      it('does not show a select all option when hideSelectAll is true', async () => {
         const component = await setupComponent({ open: true, hideSelectAll: true });
 
         const selectAllOption = component.renderRoot.querySelector(
@@ -604,8 +604,8 @@ describe('pharos-multiselect-dropdown', () => {
       });
     });
 
-    describe('Individual Selection', () => {
-      it('marks listbox items as selected when the option passed in has a selected value', async () => {
+    describe('Individual selection', () => {
+      it('marks options as selected if the slotted option element has the selected attribute', async () => {
         component = await fixture(html`
           <test-pharos-multiselect-dropdown>
             <span slot="label">I am a label</span>
@@ -637,7 +637,7 @@ describe('pharos-multiselect-dropdown', () => {
         expect(firstOption.getAttribute('aria-selected')).to.equal('true');
       });
 
-      it('deselects a selected option when it is clicked', async () => {
+      it('deselects an option when it is clicked again', async () => {
         component = await fixture(html`
           <test-pharos-multiselect-dropdown>
             <span slot="label">I am a label</span>
@@ -664,7 +664,7 @@ describe('pharos-multiselect-dropdown', () => {
         expect(firstOption.getAttribute('aria-selected')).to.equal('false');
       });
 
-      it('selects the highlighted option when the enter key is pressed from the search input', async () => {
+      it('selects the highlighted option when pressing Enter in the search input', async () => {
         const component = await setupComponent({ open: true });
 
         const searchInput = component.renderRoot.querySelector(
@@ -685,8 +685,8 @@ describe('pharos-multiselect-dropdown', () => {
     });
   });
 
-  describe('Applying selections', () => {
-    it('Updates selectedOptions when apply is clicked', async () => {
+  describe('Applying and cancelling selection', () => {
+    it('updates selectedOptions when clicking Apply', async () => {
       const component = await setupComponent({ open: true });
 
       const options = component.renderRoot.querySelectorAll(
@@ -706,7 +706,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(component.selectedOptions[2]).to.equal(component.options[4]);
     });
 
-    it('updates selectedOptions when apply is clicked', async () => {
+    it('updates selectedOptions when clicking Apply with multiple options', async () => {
       const component = await setupComponent({ open: true });
 
       const options = component.renderRoot.querySelectorAll(
@@ -726,7 +726,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(component.selectedOptions[2]).to.equal(component.options[4]);
     });
 
-    it("doesn't updates selectedOptions when cancel is clicked", async () => {
+    it('does not update selectedOptions when clicking Cancel', async () => {
       const component = await setupComponent({ open: true });
 
       const options = component.renderRoot.querySelectorAll(
@@ -742,7 +742,7 @@ describe('pharos-multiselect-dropdown', () => {
 
       expect(component.selectedOptions.length).to.equal(0);
     });
-    it('fires a change event', async () => {
+    it('fires a change event when selection is applied', async () => {
       let eventSource = null as Element | null;
       const onChange = (event: Event): void => {
         eventSource = event.composedPath()[0] as Element;
@@ -769,8 +769,8 @@ describe('pharos-multiselect-dropdown', () => {
       expect((eventSource as Element).isSameNode(component)).to.be.true;
     });
   });
-  describe('Form integrations', () => {
-    it('appends each selected item to the form value', async () => {
+  describe('Form integration', () => {
+    it('adds each selected value to the form data', async () => {
       const parentNode = document.createElement('form');
       parentNode.setAttribute('name', 'my-form');
       component = await fixture(
@@ -791,7 +791,7 @@ describe('pharos-multiselect-dropdown', () => {
       expect(formdata.getAll('my-multiselect-dropdown')).to.deep.equal(['1', '2']);
     });
 
-    it('resets the selectedOptions when the form is reset', async () => {
+    it('resets selectedOptions when the form is reset', async () => {
       const parentNode = document.createElement('form');
       parentNode.setAttribute('name', 'my-form');
       component = await fixture(
