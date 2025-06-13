@@ -403,7 +403,16 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       .toLowerCase();
   }
 
-  // Renders the checkbox icon used in the dropdown options from an svg
+  /**
+   * Renders the checkbox icon used in the dropdown options from an svg
+   *
+   * The checkboxes displayed next to each option in this component are purely
+   * decorative and serve as visual indicators of selection state. They are not
+   * interactive elements themselves, so we can't use the pharos-checkbox
+   * component. Instead, we render the checkbox icon using a SVG (like
+   * pharos-checkbox does internally) to ensure it is accessible and
+   * styled correctly.
+   * */
   private _renderCheckboxIcon(
     checked: boolean = false,
     indeterminate: boolean = false
