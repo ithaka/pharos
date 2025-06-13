@@ -145,7 +145,7 @@
   }
 }
 
-.visually-hidden {
+.multiselect-dropdown__aria-live-container {
   @include mixins.hidden;
 }
 
