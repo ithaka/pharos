@@ -595,7 +595,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                 })
               : html`<li class="multiselect-dropdown__no-options">No results found</li>`}
           </ul>
-          <div aria-live="polite" role="status" class="visually-hidden">
+          <div aria-live="polite" role="status" class="multiselect-dropdown__aria-live-container">
             ${this._matchingOptions.length
               ? `${this._matchingOptions.length} results available.`
               : `No results found`}
