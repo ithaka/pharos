@@ -395,7 +395,7 @@ describe('pharos-image-card', () => {
 
   it('dispatches the mouseenter event on pharos link mouseenter', async () => {
     component = await fixture(
-      html`<test-pharos-image-card link="#">
+      html`<test-pharos-image-card link="#" title="Card Title">
         <img
           slot="image"
           alt="Card Title"
@@ -443,7 +443,12 @@ describe('pharos-image-card', () => {
 
   it('will show a checkbox when hovered and subtle-select is true', async () => {
     component = await fixture(
-      html`<test-pharos-image-card variant="selectable" subtle-select="true" link="#">
+      html`<test-pharos-image-card
+        variant="selectable"
+        subtle-select="true"
+        link="#"
+        title="Card Title"
+      >
         <img
           slot="image"
           alt="Card Title"
@@ -468,7 +473,13 @@ describe('pharos-image-card', () => {
 
   it('will show a checkbox when hovered while subtle and subtle-select are true', async () => {
     component = await fixture(
-      html`<test-pharos-image-card variant="selectable" subtle-select="true" subtle="true" link="#">
+      html`<test-pharos-image-card
+        variant="selectable"
+        subtle-select="true"
+        subtle="true"
+        link="#"
+        title="Card Title"
+      >
         <img
           slot="image"
           alt="Card Title"
@@ -493,7 +504,7 @@ describe('pharos-image-card', () => {
 
   it('will show a checkbox when hovered while subtle is true', async () => {
     component = await fixture(
-      html`<test-pharos-image-card variant="selectable" subtle="true" link="#">
+      html`<test-pharos-image-card variant="selectable" subtle="true" link="#" title="Card Title">
         <img
           slot="image"
           alt="Card Title"
@@ -518,7 +529,7 @@ describe('pharos-image-card', () => {
 
   it('dispatches the mouseleave event on pharos link mouseleave', async () => {
     component = await fixture(
-      html`<test-pharos-image-card link="#">
+      html`<test-pharos-image-card link="#" title="Card Title">
         <img
           slot="image"
           alt="Card Title"
@@ -542,7 +553,7 @@ describe('pharos-image-card', () => {
 
   it('dispatches pharos-image-card-selected when the title of the select variant is clicked', async () => {
     component = await fixture(
-      html`<test-pharos-image-card variant="selectable" link="#">
+      html`<test-pharos-image-card variant="selectable" link="#" title="Card Title">
         <img
           slot="image"
           alt="Card Title"

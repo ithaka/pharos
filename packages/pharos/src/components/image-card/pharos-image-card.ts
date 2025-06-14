@@ -331,24 +331,43 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     }[this.variant] as HeadingPreset;
   }
 
-  private _renderTitle(): TemplateResult {
-    return html`<pharos-link
-      class="card__link--title"
-      href=${this.link}
-      subtle
-      flex
-      ?indicate-visited=${this.indicateLinkVisited}
-      @click=${this._cardToggleSelect}
-      >${this.title
-        ? html`<pharos-heading
-            class="card__heading"
-            preset=${this._chooseHeadingPreset()}
-            level=${this.headingLevel || DEFAULT_HEADING_LEVEL}
-            no-margin
-            >${this.title}</pharos-heading
-          >`
-        : html`<slot name="title"></slot>`}
-    </pharos-link>`;
+  private _hasTitle(): boolean {
+    const hasAttributeTitle = this.title && this.title.trim() !== '';
+
+    // Check if there are elements in the light DOM with slot="title"
+    const titleSlotElements = this.querySelectorAll('[slot="title"]');
+    const hasSlotContent =
+      titleSlotElements.length > 0 &&
+      Array.from(titleSlotElements).some((el) => {
+        if (el.nodeType === Node.TEXT_NODE) {
+          return el.textContent?.trim() !== '';
+        }
+        return true; // Element nodes count as content
+      });
+
+    return hasAttributeTitle || hasSlotContent;
+  }
+
+  private _renderTitle(): TemplateResult | typeof nothing {
+    return this._hasTitle()
+      ? html`<pharos-link
+          class="card__link--title"
+          href=${this.link}
+          subtle
+          flex
+          ?indicate-visited=${this.indicateLinkVisited}
+          @click=${this._cardToggleSelect}
+          >${this.title && this.title.trim() !== ''
+            ? html`<pharos-heading
+                class="card__heading"
+                preset=${this._chooseHeadingPreset()}
+                level=${this.headingLevel || DEFAULT_HEADING_LEVEL}
+                no-margin
+                >${this.title}</pharos-heading
+              >`
+            : html`<slot name="title"></slot>`}
+        </pharos-link>`
+      : nothing;
   }
 
   private _renderActionButton(): TemplateResult {
@@ -382,7 +401,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return html`<div class="card">
       ${this._renderImage()} ${this._renderSourceType()}
       <div
-        class="card__title"
+        class="${this._hasTitle() ? 'card__title' : ''}"
         @mouseenter=${this._handleMouseEnterSelectable}
         @mouseleave=${this._handleMouseLeaveSelectable}
       >

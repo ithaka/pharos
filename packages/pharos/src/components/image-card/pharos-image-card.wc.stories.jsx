@@ -117,6 +117,25 @@ export const Collection = {
           </storybook-pharos-image-card>
         </li>`;
       })}
+      <li class="image-card-example__card--collection">
+        <storybook-pharos-image-card id="card-1" link="#" variant="collection">
+          <img
+            id="image-1"
+            src="${collections[0].image}"
+            alt="${collections[0].title}"
+            slot="image"
+          />
+          <div slot="title">
+            <storybook-pharos-link href="#"
+              >${collections[0].title} metadata link</storybook-pharos-link
+            >
+          </div>
+          <strong id="items-1" slot="metadata">${collections[0].items} items</strong>
+          <div id="description-1" slot="metadata">
+            Selections from the global permanent collection.
+          </div>
+        </storybook-pharos-image-card>
+      </li>
     </storybook-pharos-layout>`,
 };
 
