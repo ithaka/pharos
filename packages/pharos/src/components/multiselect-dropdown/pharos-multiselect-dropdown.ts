@@ -515,6 +515,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
           <ul
             aria-labelledby="input-label"
             role="listbox"
+            tabindex="-1"
             id="multiselect-dropdown-list"
             class="multiselect-dropdown__list"
           >
