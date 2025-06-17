@@ -474,7 +474,7 @@ export const SelectableCollection = {
           variant="selectable-collection"
           subtle-select
         >
-          <img src="${collection2}" alt=""south hall" slot="image" />
+          <img src="${collection2}" alt="south hall" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </storybook-pharos-image-card>
