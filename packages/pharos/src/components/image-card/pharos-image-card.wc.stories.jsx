@@ -462,7 +462,7 @@ export const SelectableCollection = {
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li class="image-card-example__card--collection">
         <storybook-pharos-image-card title="Selectable" link="#" variant="selectable-collection">
-          <img src="${collection1}" alt=""south hall" slot="image" />
+          <img src="${collection1}" alt="south hall" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </storybook-pharos-image-card>
