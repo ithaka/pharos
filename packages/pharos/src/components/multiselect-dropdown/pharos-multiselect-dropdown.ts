@@ -476,13 +476,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     return html`
       <div class="multiselect-dropdown__input-wrapper">
         <div class="multiselect-dropdown__input-container">
-          <label
-            for="multiselect-dropdown__search-input"
-            class="multiselect-dropdown__search-input-label"
-            id="input-label"
-          >
-            <slot name="label"></slot>
-          </label>
           <div
             class=${classMap({
               'multiselect-dropdown__search-input-wrapper': true,
@@ -499,6 +492,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
               type="text"
               .value="${this._searchValue}"
               role="combobox"
+              aria-labelledby="button-label"
               aria-expanded="${true}"
               aria-controls="multiselect-dropdown-list"
               aria-autocomplete="list"
