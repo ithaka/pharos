@@ -2,10 +2,11 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { action } from 'storybook/actions';
 
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
+import type { Meta, StoryObj } from '@storybook/web-components';
 
-export default {
+const meta = {
   title: 'Components/Button',
   component: 'pharos-button',
   parameters: {
@@ -15,9 +16,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-button
       .disabled=${args.disabled}
@@ -39,7 +43,7 @@ export const Base = {
       target=${ifDefined(args.target)}
       type=${ifDefined(args.type)}
       variant=${ifDefined(args.variant)}
-      @click="${(e) => action('Click')(e.target)}"
+      @click="${(e: MouseEvent) => action('Click')(e.target)}"
     >
       ${args.text}
     </storybook-pharos-button>
@@ -47,7 +51,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const Variants = {
+export const Variants: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
       <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
@@ -91,7 +95,7 @@ export const Variants = {
   `,
 };
 
-export const Large = {
+export const Large: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
       <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
@@ -146,7 +150,7 @@ export const Large = {
   `,
 };
 
-export const WithIcons = {
+export const WithIcons: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
       <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
@@ -206,7 +210,7 @@ export const WithIcons = {
   `,
 };
 
-export const IconOnly = {
+export const IconOnly: Story = {
   ...Base,
   name: 'Icon only',
   args: {
@@ -217,7 +221,7 @@ export const IconOnly = {
   },
 };
 
-export const IconOnlyCondensed = {
+export const IconOnlyCondensed: Story = {
   ...IconOnly,
   name: 'Icon only (condensed)',
   args: {
@@ -226,7 +230,7 @@ export const IconOnlyCondensed = {
   },
 };
 
-export const Link = {
+export const Link: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -235,7 +239,7 @@ export const Link = {
   },
 };
 
-export const Forms = {
+export const Forms: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
       <form name="my-form" action="https://httpbin.org/post" method="POST">

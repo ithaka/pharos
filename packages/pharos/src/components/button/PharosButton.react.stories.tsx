@@ -9,12 +9,13 @@ import {
   PharosTextInput,
   PharosTextarea,
 } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { action } from 'storybook/actions';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Components/Button',
   component: PharosButton,
   decorators: [
@@ -31,9 +32,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <PharosButton
       disabled={args.disabled}
