@@ -1,8 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PharosBreadcrumb, PharosBreadcrumbItem } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Breadcrumb',
   component: PharosBreadcrumb,
   decorators: [
@@ -17,10 +19,12 @@ export default {
       page: configureDocsPage('breadcrumb'),
     },
   },
-  argTypes: {},
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: ({ firstCrumb, secondCrumb, thirdCrumb }) => (
     <PharosBreadcrumb>
       <PharosBreadcrumbItem href="#" id="firstBreadcrumb">
@@ -32,9 +36,5 @@ export const Base = {
       <PharosBreadcrumbItem id="thirdBreadcrumb">{thirdCrumb}</PharosBreadcrumbItem>
     </PharosBreadcrumb>
   ),
-  args: {
-    firstCrumb: 'Hover to see the full text of long content, which are truncated',
-    secondCrumb: 'Short texts will not',
-    thirdCrumb: 'Current',
-  },
+  args: defaultArgs,
 };

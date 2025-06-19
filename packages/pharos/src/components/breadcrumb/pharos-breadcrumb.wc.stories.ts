@@ -1,7 +1,9 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Breadcrumb',
   component: 'pharos-breadcrumb',
   parameters: {
@@ -9,9 +11,12 @@ export default {
       page: configureDocsPage('breadcrumb'),
     },
   },
-};
+} satisfies Meta;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: ({ firstCrumb, secondCrumb, thirdCrumb }) =>
     html` <storybook-pharos-breadcrumb>
       <storybook-pharos-breadcrumb-item href="#" id="firstBreadcrumb"
@@ -24,9 +29,5 @@ export const Base = {
         >${thirdCrumb}</storybook-pharos-breadcrumb-item
       >
     </storybook-pharos-breadcrumb>`,
-  args: {
-    firstCrumb: 'Hover to see the full text of long content, which are truncated',
-    secondCrumb: 'Short texts will not',
-    thirdCrumb: 'Current',
-  },
+  args: defaultArgs,
 };

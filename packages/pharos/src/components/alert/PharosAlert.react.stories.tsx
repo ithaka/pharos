@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PharosAlert, PharosLink } from '../../react-components';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
-import { defaultArgs, argTypes, type StoryArgs } from './storyArgs';
+import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
 
 const meta = {
@@ -20,10 +20,10 @@ const meta = {
     },
   },
   argTypes,
-} satisfies Meta<StoryArgs>;
+} satisfies Meta<ComponentArgs>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<StoryArgs>;
 
 const Base: Story = {
   render: ({ status, text, closable }) => (
