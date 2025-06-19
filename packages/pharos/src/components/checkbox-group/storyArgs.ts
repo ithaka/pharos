@@ -11,7 +11,7 @@ export interface ComponentArgs {
 export type StoryArgs = ComponentArgs & {
 };
 
-export const defaultArgs = {
+export const defaultArgs: StoryArgs = {
   disabled: false,
   hideLabel: false,
   horizontal: false,

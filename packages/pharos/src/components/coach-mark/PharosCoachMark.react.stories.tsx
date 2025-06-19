@@ -1,8 +1,10 @@
 import { PharosCoachMark } from '../../react-components/coach-mark/pharos-coach-mark';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Components/Coach Mark',
   component: PharosCoachMark,
   decorators: [
@@ -17,9 +19,12 @@ export default {
       page: configureDocsPage('coach-mark'),
     },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <>
       <div

@@ -1,10 +1,11 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { argTypes, defaultArgs } from './storyArgs';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { argTypes, defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
 
-export default {
+const meta = {
   title: 'Components/Coach Mark',
   component: 'pharos-coach-mark',
   parameters: {
@@ -14,9 +15,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) =>
     html` <div
         style="border:1px solid #eae8e1;padding:20px;margin:200px auto;width:fit-content"
