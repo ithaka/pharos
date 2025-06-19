@@ -2,11 +2,12 @@ import { action } from 'storybook/actions';
 
 import { PharosButton, PharosCheckbox, PharosCheckboxGroup } from '../../react-components';
 import createFormData from '../../utils/createFormData';
-import { defaultArgs } from './storyArgs';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Forms/Checkbox Group',
   component: PharosCheckboxGroup,
   subcomponents: { PharosCheckbox },
@@ -21,9 +22,12 @@ export default {
     docs: { page: configureDocsPage('checkbox') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <PharosCheckboxGroup
       disabled={args.disabled}
@@ -46,10 +50,10 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
     <PharosCheckboxGroup
-      onChange={(e) => action('Change')(JSON.stringify(e.target.value))}
+      onChange={(e) => action('Change')(JSON.stringify((e.target as HTMLInputElement).value))}
       name="group2"
     >
       <span slot="legend">Checkbox Group Header</span>
@@ -64,9 +68,10 @@ export const Events = {
       </PharosCheckbox>
     </PharosCheckboxGroup>
   ),
+  parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -76,12 +81,12 @@ export const Validity = {
   },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () => (
     <form name="my-form" action="https://httpbin.org/post" method="POST">
       <PharosCheckboxGroup
         style={{ marginBottom: '0.5rem' }}
-        onChange={(e) => action('Change')(e.target.value)}
+        onChange={(e) => action('Change')((e.target as HTMLInputElement).value)}
         name="checkbox-group4"
         required
       >
@@ -102,7 +107,7 @@ export const FormData = {
         onClick={(e) => {
           e.preventDefault();
           const form = document.querySelector('form[name="my-form"]');
-          const formData = createFormData(form);
+          const formData = createFormData(form as HTMLFormElement);
           const xhr = new XMLHttpRequest();
           xhr.open('POST', 'https://httpbin.org/post', true);
           xhr.onload = function () {

@@ -2,10 +2,12 @@ import { html } from 'lit';
 import { action } from 'storybook/actions';
 
 import createFormData from '../../utils/createFormData';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ChangeEvent } from 'react';
 
-export default {
+const meta = {
   title: 'Forms/Checkbox Group',
   component: 'pharos-checkbox-group',
   subcomponents: { PharosCheckbox: 'pharos-checkbox' },
@@ -15,9 +17,12 @@ export default {
       page: configureDocsPage('checkbox'),
     },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) =>
     html` <storybook-pharos-checkbox-group
       .disabled=${args.disabled}
@@ -39,10 +44,10 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () =>
     html` <storybook-pharos-checkbox-group
-      @change="${(e) => action('Change')(JSON.stringify(e.target.value))}"
+      @change="${(e: ChangeEvent) => action('Change')(JSON.stringify((e.target as HTMLInputElement).value))}"
       name="checkbox-group2"
     >
       <span slot="legend">Checkbox Group Header</span>
@@ -60,7 +65,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -70,11 +75,11 @@ export const Validity = {
   },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () =>
     html` <form name="my-form" action="https://httpbin.org/post" method="POST">
       <storybook-pharos-checkbox-group
-        @change="${(e) => action('Change')(e.target.value)}"
+        @change="${(e: ChangeEvent) => action('Change')((e.target as HTMLInputElement).value)}"
         name="checkbox-group4"
         style="margin-bottom: 0.5rem;"
         required
@@ -93,10 +98,10 @@ export const FormData = {
       <storybook-pharos-button
         type="submit"
         value="Submit"
-        @click="${(e) => {
+        @click="${(e: MouseEvent) => {
           e.preventDefault();
           const form = document.querySelector('form[name="my-form"]');
-          const formData = createFormData(form);
+          const formData = createFormData(form as HTMLFormElement);
           const xhr = new XMLHttpRequest();
           xhr.open('POST', 'https://httpbin.org/post', true);
           xhr.onload = function () {
