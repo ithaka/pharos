@@ -1,11 +1,12 @@
 import { action } from 'storybook/actions';
 
 import { PharosCheckbox, PharosLink } from '../../react-components';
-import { defaultArgs } from './storyArgs';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Forms/Checkbox',
   component: PharosCheckbox,
   decorators: [
@@ -21,9 +22,12 @@ export default {
       selectedPanel: 'addon-controls',
     },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <PharosCheckbox
       checked={args.checked}
@@ -40,7 +44,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () => (
     <div>
       <div>
@@ -92,13 +96,13 @@ export const States = {
   ),
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
     <PharosCheckbox
       value="My value"
-      onChange={(e) => action('Change')(e.target.checked)}
-      onInput={(e) => action('Input')(e.target.value)}
-      onClick={(e) => action('Click')(e.target.checked)}
+      onChange={(e) => action('Change')((e.target as HTMLInputElement).checked)}
+      onInput={(e) => action('Input')((e.target as HTMLInputElement).value)}
+      onClick={(e) => action('Click')((e.target as HTMLInputElement).checked)}
     >
       <span slot="label">I fire events</span>
     </PharosCheckbox>
@@ -108,7 +112,7 @@ export const Events = {
   },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -118,10 +122,10 @@ export const Validity = {
   },
 };
 
-export const IsOnBackground = {
+export const IsOnBackground: Story = {
   name: 'On background',
   render: () => (
-    <div>
+    <div style={{ backgroundColor: "#000000", padding: "1rem" }}>
       <div className="checkbox-example__container--is-on-background">
         <PharosCheckbox name="is-on-background" isOnBackground>
           <span slot="label">Unchecked</span>

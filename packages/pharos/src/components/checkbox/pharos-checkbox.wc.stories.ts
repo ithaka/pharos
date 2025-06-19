@@ -1,9 +1,11 @@
 import { html } from 'lit';
 import { action } from 'storybook/actions';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ChangeEvent } from 'react';
 
-export default {
+const meta = {
   title: 'Forms/Checkbox',
   component: 'pharos-checkbox',
   parameters: {
@@ -12,9 +14,12 @@ export default {
       selectedPanel: 'addon-controls',
     },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) =>
     html`<storybook-pharos-checkbox
       .checked=${args.checked}
@@ -29,7 +34,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () => html`
     <div>
       <storybook-pharos-checkbox name="one"
@@ -79,13 +84,13 @@ export const States = {
   `,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () =>
     html` <storybook-pharos-checkbox
       value="My value"
-      @change="${(e) => action('Change')(e.target.checked)}"
-      @input="${(e) => action('Input')(e.target.value)}"
-      @click="${(e) => action('Click')(e.target.checked)}"
+      @change="${(e: ChangeEvent) => action('Change')((e.target as HTMLInputElement).checked)}"
+      @input="${(e: InputEvent) => action('Input')((e.target as HTMLInputElement).value)}"
+      @click="${(e: MouseEvent) => action('Click')((e.target as HTMLInputElement).checked)}"
     >
       <span slot="label">I fire events</span>
     </storybook-pharos-checkbox>`,
@@ -94,7 +99,7 @@ export const Events = {
   },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -104,7 +109,7 @@ export const Validity = {
   },
 };
 
-export const IsOnBackground = {
+export const IsOnBackground: Story = {
   name: 'On background',
   render: () => html`
     <div style="background-color: #000000; padding: 1rem;">
