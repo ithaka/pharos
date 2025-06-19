@@ -1,8 +1,7 @@
-import React from 'react';
 import type { FC } from 'react';
 
-import { PharosLink } from '../packages/pharos/src/react-components/link/pharos-link';
-import { PharosContext } from '../packages/pharos/src/utils/PharosContext';
+import { PharosLink } from '../../react-components/link/pharos-link';
+import { PharosContext } from '../PharosContext';
 
 interface GuidelineLinkProps {
   path: string;

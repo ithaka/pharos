@@ -1,8 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Alert',
   component: 'storybook-pharos-alert',
   parameters: {
@@ -11,17 +13,20 @@ export default {
     },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-const Base = {
-  render: ({ status, text, closable }) =>
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+const Base: Story = {
+  render: ({ status, closable, text }) =>
     html`<storybook-pharos-alert status=${status} .closable=${closable}
       >${text}</storybook-pharos-alert
     >`,
   args: defaultArgs,
 };
 
-export const Info = {
+export const Info: Story = {
   ...Base,
   args: {
     status: 'info',
@@ -29,7 +34,7 @@ export const Info = {
   },
 };
 
-export const Success = {
+export const Success: Story = {
   ...Base,
   args: {
     status: 'success',
@@ -37,7 +42,7 @@ export const Success = {
   },
 };
 
-export const Warning = {
+export const Warning: Story = {
   render: ({ status, text, closable }) =>
     html` <storybook-pharos-alert status=${status} .closable=${closable}>
       <p class="alert-example__content">${text}</p>
@@ -51,7 +56,7 @@ export const Warning = {
   },
 };
 
-export const Error = {
+export const Error: Story = {
   render: ({ status, text, closable }) =>
     html` <storybook-pharos-alert status=${status} .closable=${closable}>
       <p class="alert-example__content">${text}</p>
@@ -66,7 +71,7 @@ export const Error = {
   },
 };
 
-export const Closable = {
+export const Closable: Story = {
   ...Error,
   args: {
     ...Error.args,

@@ -1,9 +1,8 @@
-import React from 'react';
 import { Controls, Description, Primary, Stories, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
-import { GuidelineLink } from '@config/GuidelineLink';
+import { GuidelineLink } from './GuidelineLink';
 
-export const configureDocsPage = (componentName) => {
+export const configureDocsPage = (componentName: string) => {
   return () => (
     <>
       <Title />

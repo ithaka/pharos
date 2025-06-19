@@ -1,9 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PharosAlert, PharosLink } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, argTypes, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
 
-export default {
+const meta = {
   title: 'Components/Alert',
   component: PharosAlert,
   decorators: [
@@ -19,9 +20,12 @@ export default {
     },
   },
   argTypes,
-};
+} satisfies Meta<StoryArgs>;
 
-const Base = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+const Base: Story = {
   render: ({ status, text, closable }) => (
     <PharosAlert status={status} closable={closable}>
       {text}
@@ -30,7 +34,7 @@ const Base = {
   args: defaultArgs,
 };
 
-export const Info = {
+export const Info: Story = {
   ...Base,
   args: {
     status: 'info',
@@ -38,7 +42,7 @@ export const Info = {
   },
 };
 
-export const Success = {
+export const Success: Story = {
   ...Base,
   args: {
     status: 'success',
@@ -46,7 +50,7 @@ export const Success = {
   },
 };
 
-export const Warning = {
+export const Warning: Story = {
   render: ({ status, text, closable }) => (
     <PharosAlert status={status} closable={closable}>
       <p className="alert-example__content">{text}</p>
@@ -61,7 +65,7 @@ export const Warning = {
   },
 };
 
-export const Error = {
+export const Error: Story = {
   render: ({ status, text, closable }) => (
     <PharosAlert status={status} closable={closable}>
       <p className="alert-example__content">{text}</p>
@@ -76,7 +80,7 @@ export const Error = {
   },
 };
 
-export const Closable = {
+export const Closable: Story = {
   ...Error,
   args: {
     ...Error.args,

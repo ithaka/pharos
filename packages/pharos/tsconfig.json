@@ -14,7 +14,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
@@ -34,5 +34,6 @@
       }
     ]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["src/pages/**", "**/storyArgs.ts", "src/utils/_storybook/*"]
 }
