@@ -8,10 +8,14 @@ import {
   PharosLink,
   PharosButton,
 } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { PharosButton as PBType } from '../button/pharos-button';
+import type { PharosDropdownMenu as PDMType } from './pharos-dropdown-menu';
 
-export default {
+const meta = {
   title: 'Components/Dropdown Menu',
   component: PharosDropdownMenu,
   subcomponents: { PharosDropdownMenuItem },
@@ -27,9 +31,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
     chromatic: { delay: 800 },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => (
     <div
       style={{
@@ -49,7 +56,7 @@ export const Base = {
   ),
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
     <div
       style={{
@@ -79,7 +86,7 @@ export const Events = {
   },
 };
 
-export const Icons = {
+export const Icons: Story = {
   render: () => (
     <div
       style={{
@@ -107,7 +114,7 @@ export const Icons = {
   ),
 };
 
-export const Descriptions = {
+export const Descriptions: Story = {
   render: () => (
     <div
       style={{
@@ -146,7 +153,7 @@ export const Descriptions = {
   ),
 };
 
-export const FullWidth = {
+export const FullWidth: Story = {
   render: () => (
     <div
       style={{
@@ -178,7 +185,7 @@ export const FullWidth = {
   ),
 };
 
-export const IsOnBackground = {
+export const IsOnBackground: Story = {
   render: () => (
     <div
       style={{
@@ -204,7 +211,7 @@ export const IsOnBackground = {
   ),
 };
 
-export const Links = {
+export const Links: Story = {
   render: () => (
     <div
       style={{
@@ -238,7 +245,7 @@ export const Links = {
   ),
 };
 
-export const MultipleTriggers = {
+export const MultipleTriggers: Story = {
   render: () => (
     <div
       style={{
@@ -273,7 +280,7 @@ export const MultipleTriggers = {
   ),
 };
 
-export const MultipleDynamicTriggers = {
+export const MultipleDynamicTriggers: Story = {
   render: () => (
     <div
       style={{
@@ -293,7 +300,7 @@ export const MultipleDynamicTriggers = {
         onClick={(e) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          menu.openWithTrigger(trigger);
+          if (menu && trigger) { (menu as PDMType).openWithTrigger(trigger as PBType); }
         }}
       >
         One
@@ -302,7 +309,7 @@ export const MultipleDynamicTriggers = {
         onClick={(e) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          menu.openWithTrigger(trigger);
+          if (menu && trigger) { (menu as PDMType).openWithTrigger(trigger as PBType); }
         }}
       >
         Two
@@ -311,7 +318,7 @@ export const MultipleDynamicTriggers = {
         onClick={(e) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          menu.openWithTrigger(trigger);
+          if (menu && trigger) { (menu as PDMType).openWithTrigger(trigger as PBType); }
         }}
       >
         Three
@@ -320,7 +327,7 @@ export const MultipleDynamicTriggers = {
   ),
 };
 
-export const Composition = {
+export const Composition: Story = {
   render: () => (
     <div
       style={{
@@ -345,7 +352,7 @@ export const Composition = {
             borderBottom: '1px solid var(--pharos-dropdown-menu-item-color-border-base)',
           }}
         >
-          <PharosHeading preset={'2'}>Save to...</PharosHeading>
+          <PharosHeading level={1} preset={'2'}>Save to...</PharosHeading>
         </div>
         <PharosDropdownMenuItem>Workspace</PharosDropdownMenuItem>
         <div
@@ -378,7 +385,7 @@ export const Composition = {
               }}
               onClick={() => {
                 const menu = document.querySelector('pharos-dropdown-menu');
-                menu.open = false;
+                if (menu) { (menu as PDMType).open = false; }
               }}
             >
               Create
@@ -391,7 +398,7 @@ export const Composition = {
               }}
               onClick={() => {
                 const menu = document.querySelector('pharos-dropdown-menu');
-                menu.open = false;
+                if (menu) { (menu as PDMType).open = false; }
               }}
             >
               Cancel
@@ -403,7 +410,7 @@ export const Composition = {
   ),
 };
 
-export const CoordinatingDropdowns = {
+export const CoordinatingDropdowns: Story = {
   render: () => (
     <div
       style={{
@@ -424,7 +431,7 @@ export const CoordinatingDropdowns = {
         onPharos-Dropdown-Menu-Select={() => {
           const triggerElement = document.querySelector('#coordinating-dropdown-trigger-button');
           const secondDropdown = document.querySelector('#second-dropdown');
-          secondDropdown.openWithTrigger(triggerElement);
+          if (secondDropdown && triggerElement) { (secondDropdown as PDMType).openWithTrigger(triggerElement as PBType); }
         }}
       >
         <PharosDropdownMenuItem>Click</PharosDropdownMenuItem>
@@ -435,7 +442,7 @@ export const CoordinatingDropdowns = {
         id="second-dropdown"
         onPharos-Dropdown-Menu-Closed={() => {
           const secondDropdown = document.querySelector('#second-dropdown');
-          secondDropdown.removeAllTriggers();
+          if (secondDropdown) { (secondDropdown as PDMType).removeAllTriggers(); }
         }}
       >
         <PharosDropdownMenuItem>I am</PharosDropdownMenuItem>

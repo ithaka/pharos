@@ -2,10 +2,13 @@ import { action } from 'storybook/actions';
 import { useEffect } from 'storybook/preview-api';
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { PharosDropdownMenu } from './pharos-dropdown-menu';
+import type { PharosButton } from '../button/pharos-button';
 
-export default {
+const meta = {
   title: 'Components/Dropdown Menu',
   component: 'pharos-dropdown-menu',
   subcomponents: { PharosDropdownMenuItem: 'pharos-dropdown-menu-item' },
@@ -14,9 +17,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
     chromatic: { delay: 800 },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
       <storybook-pharos-button
@@ -35,7 +41,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
       <storybook-pharos-button
@@ -48,8 +54,8 @@ export const Events = {
       <storybook-pharos-dropdown-menu
         id="my-menu-events"
         show-selected
-        @pharos-dropdown-menu-select="${(e) => action('Select')(e.detail)}"
-        @pharos-dropdown-menu-selected="${(e) => action('Selected')(e.detail)}"
+        @pharos-dropdown-menu-select="${(e: CustomEvent) => action('Select')(e.detail)}"
+        @pharos-dropdown-menu-selected="${(e: CustomEvent) => action('Selected')(e.detail)}"
       >
         <storybook-pharos-dropdown-menu-item>Menu item 1</storybook-pharos-dropdown-menu-item>
         <storybook-pharos-dropdown-menu-item>Menu item 2</storybook-pharos-dropdown-menu-item>
@@ -60,12 +66,13 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Icons = {
+export const Icons: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          document.querySelector('#my-button-icons').click();
+          const withIconsButton = document.querySelector('#my-button-icons')
+          if (withIconsButton) { (withIconsButton as HTMLElement).click(); }
         }, 700);
       });
     };
@@ -95,12 +102,13 @@ export const Icons = {
   },
 };
 
-export const Descriptions = {
+export const Descriptions: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          document.querySelector('#my-button-descriptions').click();
+          const withIconsButton = document.querySelector('#my-button-descriptions')
+          if (withIconsButton) { (withIconsButton as HTMLElement).click(); }
         }, 700);
       });
     };
@@ -141,12 +149,13 @@ export const Descriptions = {
   },
 };
 
-export const FullWidth = {
+export const FullWidth: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          document.querySelector('#my-button-full').click();
+          const withIconsButton = document.querySelector('#my-button-full')
+          if (withIconsButton) { (withIconsButton as HTMLElement).click(); }
         }, 700);
       });
     };
@@ -176,12 +185,13 @@ export const FullWidth = {
   },
 };
 
-export const IsOnBackground = {
+export const IsOnBackground: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          document.querySelector('#my-button-on-background').click();
+          const withIconsButton = document.querySelector('#my-button-on-background')
+          if (withIconsButton) { (withIconsButton as HTMLElement).click(); }
         }, 700);
       });
     };
@@ -209,12 +219,13 @@ export const IsOnBackground = {
   },
 };
 
-export const Links = {
+export const Links: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          document.querySelector('#my-link').dispatchEvent(new Event('mouseenter'));
+          const link = document.querySelector('#my-link');
+          if (link) { (link as HTMLElement).dispatchEvent(new Event('mouseenter')); }
         }, 700);
       });
     };
@@ -252,7 +263,7 @@ export const Links = {
   },
 };
 
-export const MultipleTriggers = {
+export const MultipleTriggers: Story = {
   render: () => html`
     <div
       style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
@@ -281,7 +292,7 @@ export const MultipleTriggers = {
   `,
 };
 
-export const MultipleDynamicTriggers = {
+export const MultipleDynamicTriggers: Story = {
   render: () => html`
     <div
       style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
@@ -292,28 +303,28 @@ export const MultipleDynamicTriggers = {
         <storybook-pharos-dropdown-menu-item>Item 3</storybook-pharos-dropdown-menu-item>
       </storybook-pharos-dropdown-menu>
       <storybook-pharos-button
-        @click="${(e) => {
+        @click="${(e: MouseEvent) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          menu.openWithTrigger(trigger);
+          if (menu && trigger) { (menu as PharosDropdownMenu).openWithTrigger(trigger as PharosButton); }
         }}"
       >
         One
       </storybook-pharos-button>
       <storybook-pharos-button
-        @click="${(e) => {
+        @click="${(e: MouseEvent) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          menu.openWithTrigger(trigger);
+          if (menu && trigger) { (menu as PharosDropdownMenu).openWithTrigger(trigger as PharosButton); }
         }}"
       >
         Two
       </storybook-pharos-button>
       <storybook-pharos-button
-        @click="${(e) => {
+        @click="${(e: MouseEvent) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          menu.openWithTrigger(trigger);
+          if (menu && trigger) { (menu as PharosDropdownMenu).openWithTrigger(trigger as PharosButton); }
         }}"
       >
         Three
@@ -322,12 +333,13 @@ export const MultipleDynamicTriggers = {
   `,
 };
 
-export const Composition = {
+export const Composition: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          document.querySelector('#my-button-composition').click();
+          const withIconsButton = document.querySelector('#my-button-composition')
+          if (withIconsButton) { (withIconsButton as HTMLElement).click(); }
         }, 700);
       });
     };
@@ -361,7 +373,7 @@ export const Composition = {
                 style="margin-right: auto"
                 @click="${() => {
                   const menu = document.querySelector('pharos-dropdown-menu');
-                  menu.open = false;
+                  if (menu) { (menu as PharosDropdownMenu).open = false; }
                 }}"
               >
                 Create
@@ -372,7 +384,7 @@ export const Composition = {
                 style="margin-left: auto"
                 @click="${() => {
                   const menu = document.querySelector('pharos-dropdown-menu');
-                  menu.open = false;
+                  if (menu) { (menu as PharosDropdownMenu).open = false; }
                 }}"
               >
                 Cancel
@@ -385,7 +397,7 @@ export const Composition = {
   },
 };
 
-export const CoordinatingDropdowns = {
+export const CoordinatingDropdowns: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
       <storybook-pharos-button
@@ -399,7 +411,7 @@ export const CoordinatingDropdowns = {
         @pharos-dropdown-menu-selected="${() => {
           const triggerElement = document.querySelector('#coordinating-dropdown-trigger-button');
           const secondDropdown = document.querySelector('#second-dropdown');
-          secondDropdown.openWithTrigger(triggerElement);
+          if (secondDropdown) { (secondDropdown as PharosDropdownMenu).openWithTrigger(triggerElement as PharosButton); }
         }}"
       >
         <storybook-pharos-dropdown-menu-item>Click</storybook-pharos-dropdown-menu-item>
@@ -410,7 +422,7 @@ export const CoordinatingDropdowns = {
         id="second-dropdown"
         @pharos-dropdown-menu-closed="${() => {
           const secondDropdown = document.querySelector('#second-dropdown');
-          secondDropdown.removeAllTriggers();
+          if (secondDropdown) { (secondDropdown as PharosDropdownMenu).removeAllTriggers(); }
         }}"
       >
         <storybook-pharos-dropdown-menu-item>I am</storybook-pharos-dropdown-menu-item>
