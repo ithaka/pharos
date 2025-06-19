@@ -2,11 +2,12 @@ import { action } from 'storybook/actions';
 
 import { PharosButton, PharosCombobox } from '../../react-components';
 import createFormData from '../../utils/createFormData';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Forms/Combobox',
   component: PharosCombobox,
   decorators: [
@@ -20,9 +21,12 @@ export default {
     docs: { page: configureDocsPage('combobox') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <PharosCombobox
       disabled={args.disabled}
@@ -56,7 +60,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: '7rem', gridTemplateColumns: 'repeat(2, 310px)' }}>
       <PharosCombobox name="default">
@@ -107,13 +111,13 @@ export const States = {
   ),
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 250px)' }}>
       <PharosCombobox
         placeholder="Select a state"
-        onChange={(e) => action('Change')(e.target.value)}
-        onInput={(e) => action('Input')(e.target.value)}
+        onChange={(e) => action('Change')((e.target as HTMLInputElement).value)}
+        onInput={(e) => action('Input')((e.target as any)._input.value)}
       >
         <span slot="label">Events fire on selection</span>
         <option value="NH">New Hampshire</option>
@@ -135,7 +139,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const SearchMode = {
+export const SearchMode: Story = {
   render: () => (
     <PharosCombobox
       placeholder="Search..."
@@ -159,14 +163,14 @@ export const SearchMode = {
   ),
 };
 
-export const Validity = {
+export const Validity: Story = {
   render: (args) => (
     <div style={{ display: 'grid', gridTemplateColumns: '300px' }}>
       <PharosCombobox
         name="my-combobox"
         placeholder="Enter some text"
-        onChange={(e) => action('Change')(e.target.value)}
-        onInput={(e) => action('Input')(e.target['_input'].value)}
+        onChange={(e) => action('Change')((e.target as HTMLInputElement).value)}
+        onInput={(e) => action('Input')((e.target as any)._input.value)}
         required={args.required}
         invalidated={args.invalidated}
         validated={args.validated}
@@ -187,7 +191,7 @@ export const Validity = {
   },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: '300px' }}>
       <form name="my-form" action="https://httpbin.org/post" method="POST">
@@ -195,8 +199,8 @@ export const FormData = {
           name="my-combobox"
           style={{ marginBottom: '0.5rem' }}
           placeholder="Enter some text"
-          onChange={(e) => action('Change')(e.target.value)}
-          onInput={(e) => action('Input')(e.target['_input'].value)}
+          onChange={(e) => action('Change')((e.target as HTMLInputElement).value)}
+          onInput={(e) => action('Input')((e.target as any)._input.value)}
           required
         >
           <span slot="label">Test me out</span>
@@ -207,10 +211,10 @@ export const FormData = {
         <PharosButton
           type="submit"
           value="Submit"
-          onclick={(e) => {
+          onClick={(e) => {
             e.preventDefault();
             const form = document.querySelector('form[name="my-form"]');
-            const formData = createFormData(form);
+            const formData = createFormData(form as HTMLFormElement);
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'https://httpbin.org/post', true);
             xhr.onload = function () {
