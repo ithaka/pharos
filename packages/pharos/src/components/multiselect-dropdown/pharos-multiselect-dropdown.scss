@@ -24,11 +24,11 @@
     $background-color: var(--pharos-button-color-base-secondary-background-base),
     $border-color: var(--pharos-button-color-base-secondary-border-base)
   );
-  
+
   width: 100%;
   justify-content: space-between;
   font-weight: var(--pharos-font-weight-regular);
-  
+
   @include mixins.button-hover;
   @include mixins.interactive-focus;
 }

@@ -7,7 +7,7 @@ export interface ComponentArgs {
   looseMatch?: boolean;
   name?: string;
   message?: string;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

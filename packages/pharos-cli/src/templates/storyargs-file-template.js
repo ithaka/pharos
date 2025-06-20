@@ -9,4 +9,3 @@ export argTypes = {};
 `;
 
 module.exports = template;
-

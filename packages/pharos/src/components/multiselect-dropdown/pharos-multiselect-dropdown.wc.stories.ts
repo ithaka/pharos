@@ -25,7 +25,7 @@ type Story = StoryObj<StoryArgs>;
 export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-multiselect-dropdown
-      .name=${ifDefined(args.name)}
+      .name=${args.name}
       .displayCharacterCount=${args.displayCharacterCount}
       .hideSelectAll=${args.hideSelectAll}
       .looseMatch=${args.looseMatch}
@@ -165,7 +165,8 @@ export const Events: Story = {
     <div style="display: grid; grid-template-columns: 300px;">
       <storybook-pharos-multiselect-dropdown
         name="event-demo"
-        @change="${(e: ChangeEvent) => action('Change')((e.target as PharosMultiselectDropdown).selectedOptions)}"
+        @change="${(e: ChangeEvent) =>
+          action('Change')((e.target as PharosMultiselectDropdown).selectedOptions)}"
         style="display: grid; grid-template-columns: 432px;"
       >
         <span slot="label">Cities in Michigan</span>
@@ -211,7 +212,8 @@ export const FormData: Story = {
       <form name="my-form" action="https://httpbin.org/post" method="post">
         <storybook-pharos-multiselect-dropdown
           name="my-multiselect-dropdown"
-          @change="${(e: ChangeEvent) => action('Change')((e.target as PharosMultiselectDropdown).selectedOptions)}"
+          @change="${(e: ChangeEvent) =>
+            action('Change')((e.target as PharosMultiselectDropdown).selectedOptions)}"
           style="display: grid; grid-template-columns: 432px;"
         >
           <span slot="label">Cities in Michigan</span>
