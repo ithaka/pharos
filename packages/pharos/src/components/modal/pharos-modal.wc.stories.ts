@@ -2,10 +2,13 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { action } from 'storybook/actions';
 
-import { argTypes, defaultArgs } from './storyArgs';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { argTypes, defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { PharosModal } from './pharos-modal';
+import type { PharosButton } from '../button/pharos-button';
 
-export default {
+const meta = {
   title: 'Components/Modal',
   component: 'pharos-modal',
   parameters: {
@@ -13,15 +16,18 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-button
       type="button"
       data-modal-id="my-base-modal"
-      @click="${(e) => {
-        e.target.focus();
+      @click="${(e: MouseEvent) => {
+        (e.target as PharosButton).focus();
       }}"
     >
       Open modal
@@ -42,7 +48,7 @@ export const Base = {
         type="button"
         @click="${() => {
           const modal = document.querySelector('pharos-modal');
-          modal.open = false;
+          if (modal) { (modal as PharosModal).open = false; }
         }}"
       >
         Ok
@@ -52,15 +58,15 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const NoFooter = {
+export const NoFooter: Story = {
   render: () => html`
     <storybook-pharos-button
       type="button"
       data-modal-id="no-footer-modal"
-      @click="${(e) => {
-        e.target.focus();
+      @click="${(e: MouseEvent) => {
+        (e.target as PharosButton).focus();
         const modal = document.querySelector('pharos-modal');
-        modal.open = true;
+        if (modal) { (modal as PharosModal).open = true; }
       }}"
     >
       Open modal
@@ -71,13 +77,13 @@ export const NoFooter = {
   `,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => html`
     <storybook-pharos-button
       type="button"
       data-modal-id="my-event-modal"
-      @click="${(e) => {
-        e.target.focus();
+      @click="${(e: MouseEvent) => {
+        (e.target as PharosButton).focus();
       }}"
     >
       Open modal
@@ -85,10 +91,10 @@ export const Events = {
     <storybook-pharos-modal
       id="my-event-modal"
       header="Event modal"
-      @pharos-modal-open="${(e) => action('Open')(e.detail)}"
-      @pharos-modal-opened="${(e) => action('Opened')(e.detail)}"
-      @pharos-modal-close="${(e) => action('Close')(e.detail)}"
-      @pharos-modal-closed="${(e) => action('Closed')(e.detail)}"
+      @pharos-modal-open="${(e: CustomEvent) => action('Open')(e.detail)}"
+      @pharos-modal-opened="${(e: CustomEvent) => action('Opened')(e.detail)}"
+      @pharos-modal-close="${(e: CustomEvent) => action('Close')(e.detail)}"
+      @pharos-modal-closed="${(e: CustomEvent) => action('Closed')(e.detail)}"
     >
       <p slot="description">Description for the modal</p>
       <storybook-pharos-text-input style="margin-bottom: 1rem" data-modal-focus>
@@ -109,13 +115,13 @@ export const Events = {
   parameters: { selectedPanel: 'storybook/actions/panel' },
 };
 
-export const Composition = {
+export const Composition: Story = {
   render: () => html`
     <storybook-pharos-button
       type="button"
       data-modal-id="my-alert-modal"
-      @click="${(e) => {
-        e.target.focus();
+      @click="${(e: MouseEvent) => {
+        (e.target as PharosButton).focus();
       }}"
     >
       Open modal

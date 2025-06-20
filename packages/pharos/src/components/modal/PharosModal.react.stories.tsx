@@ -8,11 +8,13 @@ import {
   PharosLink,
   PharosButton,
 } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, argTypes, type StoryArgs, type ComponentArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { PharosButton as PBType } from '../button/pharos-button';
 
-export default {
+const meta = {
   title: 'Components/Modal',
   component: PharosModal,
   decorators: [
@@ -27,16 +29,19 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <Fragment>
       <PharosButton
         type="button"
         data-modal-id="my-base-modal"
         onClick={(e) => {
-          e.target.focus();
+          (e.target as PBType).focus();
         }}
       >
         Open modal
@@ -61,14 +66,14 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const NoFooter = {
+export const NoFooter: Story = {
   render: () => (
     <Fragment>
       <PharosButton
         type="button"
         data-modal-id="my-event-modal"
         onClick={(e) => {
-          e.target.focus();
+          (e.target as PBType).focus();
         }}
       >
         Open modal
@@ -80,14 +85,14 @@ export const NoFooter = {
   ),
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
     <Fragment>
       <PharosButton
         type="button"
         data-modal-id="my-event-modal"
         onClick={(e) => {
-          e.target.focus();
+          (e.target as PBType).focus();
         }}
       >
         Open modal
@@ -122,14 +127,14 @@ export const Events = {
   parameters: { selectedPanel: 'storybook/actions/panel' },
 };
 
-export const Composition = {
+export const Composition: Story = {
   render: () => (
     <Fragment>
       <PharosButton
         type="button"
         data-modal-id="my-alert-modal"
         onClick={(e) => {
-          e.target.focus();
+          (e.target as PBType).focus();
         }}
       >
         Open modal
@@ -138,7 +143,7 @@ export const Composition = {
         <div style={{ maxWidth: '36rem' }}>
           <PharosAlert status="error">
             We&apos;re sorry, we experienced an issue submitting your report. Please try again. If
-            the issue persists, contact
+            the issue persists, contact{' '}
             <PharosLink id="support-link" href="#">
               support@jstor.org
             </PharosLink>
