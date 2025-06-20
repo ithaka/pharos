@@ -3,10 +3,13 @@ import { action } from 'storybook/actions';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import createFormData from '../../utils/createFormData';
-import { defaultArgs, argTypes } from './storyArgs';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ChangeEvent } from 'react';
+import type { PharosTextInput } from './pharos-text-input';
 
-export default {
+const meta = {
   title: 'Forms/Text Input',
   component: 'pharos-text-input',
   parameters: {
@@ -14,9 +17,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
       <storybook-pharos-text-input
@@ -39,7 +45,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: repeat(2, 300px); 1rem 300px">
       <storybook-pharos-text-input name="default"
@@ -70,13 +76,13 @@ export const States = {
   `,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
       <storybook-pharos-text-input
         placeholder="Enter some text"
-        @change="${(e) => action('Change')(e.target.value)}"
-        @input="${(e) => action('Input')(e.target.value)}"
+        @change="${(e: ChangeEvent) => action('Change')((e.target as PharosTextInput).value)}"
+        @input="${(e: InputEvent) => action('Input')((e.target as PharosTextInput).value)}"
       >
         <span slot="label">I fire events on input</span>
       </storybook-pharos-text-input>
@@ -85,7 +91,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -96,13 +102,13 @@ export const Validity = {
   },
 };
 
-export const CustomErrorMessage = {
+export const CustomErrorMessage: Story = {
   render: (args) => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
       <storybook-pharos-text-input
         placeholder="Enter some text"
-        @change="${(e) => action('Change')(e.target.value)}"
-        @input="${(e) => action('Input')(e.target.value)}"
+        @change="${(e: ChangeEvent) => action('Change')((e.target as PharosTextInput).value)}"
+        @input="${(e: InputEvent) => action('Input')((e.target as PharosTextInput).value)}"
         .required="${args.required}"
         .invalidated=${args.invalidated}
         .validated=${args.validated}
@@ -127,7 +133,7 @@ export const CustomErrorMessage = {
   },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
       <form name="my-form" action="https://httpbin.org/post" method="POST">
@@ -135,8 +141,8 @@ export const FormData = {
           style="margin-bottom: 0.5rem;"
           name="my-text-input"
           placeholder="Enter some text"
-          @change="${(e) => action('Change')(e.target.value)}"
-          @input="${(e) => action('Input')(e.target.value)}"
+          @change="${(e: ChangeEvent) => action('Change')((e.target as PharosTextInput).value)}"
+          @input="${(e: InputEvent) => action('Input')((e.target as PharosTextInput).value)}"
           required
         >
           <span slot="label">Test me out</span>
@@ -144,10 +150,10 @@ export const FormData = {
         <storybook-pharos-button
           type="submit"
           value="Submit"
-          @click="${(e) => {
+          @click="${(e: MouseEvent) => {
             e.preventDefault();
             const form = document.querySelector('form[name="my-form"]');
-            const formData = createFormData(form);
+            const formData = createFormData(form as HTMLFormElement);
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'https://httpbin.org/post', true);
             xhr.onload = function () {

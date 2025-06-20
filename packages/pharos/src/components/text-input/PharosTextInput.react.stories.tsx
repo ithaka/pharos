@@ -2,13 +2,15 @@ import { action } from 'storybook/actions';
 
 import { PharosTextInput, PharosButton } from '../../react-components';
 import createFormData from '../../utils/createFormData';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, argTypes, type StoryArgs, type ComponentArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { PharosTextInput as PTIType } from './pharos-text-input';
 
-export default {
+const meta = {
   title: 'Forms/Text Input',
-  components: PharosTextInput,
+  component: PharosTextInput,
   decorators: [
     (Story) => (
       <PharosContext.Provider value={{ prefix: 'storybook' }}>
@@ -21,9 +23,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <div
       style={{
@@ -52,7 +57,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () => (
     <div
       style={{
@@ -89,7 +94,7 @@ export const States = {
   ),
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
     <div
       style={{
@@ -100,8 +105,8 @@ export const Events = {
     >
       <PharosTextInput
         placeholder="Enter some text"
-        onChange={(e) => action('Change')(e.target.value)}
-        onInput={(e) => action('Input')(e.target.value)}
+        onChange={(e) => action('Change')((e.target as PTIType).value)}
+        onInput={(e) => action('Input')((e.target as PTIType).value)}
       >
         <span slot="label">I fire events on input</span>
       </PharosTextInput>
@@ -110,7 +115,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -121,7 +126,7 @@ export const Validity = {
   },
 };
 
-export const CustomErrorMessage = {
+export const CustomErrorMessage: Story = {
   render: (args) => (
     <div
       style={{
@@ -132,8 +137,8 @@ export const CustomErrorMessage = {
     >
       <PharosTextInput
         placeholder="Enter some text"
-        onChange={(e) => action('Change')(e.target.value)}
-        onInput={(e) => action('Input')(e.target.value)}
+        onChange={(e) => action('Change')((e.target as PTIType).value)}
+        onInput={(e) => action('Input')((e.target as PTIType).value)}
         required={args.required}
         invalidated={args.invalidated}
         validated={args.validated}
@@ -158,7 +163,7 @@ export const CustomErrorMessage = {
   },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () => (
     <div
       style={{
@@ -172,8 +177,8 @@ export const FormData = {
           style={{ marginBottom: '0.5rem' }}
           name="my-text-input"
           placeholder="Enter some text"
-          onChange={(e) => action('Change')(e.target.value)}
-          onInput={(e) => action('Input')(e.target.value)}
+          onChange={(e) => action('Change')((e.target as PTIType).value)}
+          onInput={(e) => action('Input')((e.target as PTIType).value)}
           required
         >
           <span slot="label">Test me out</span>
@@ -184,7 +189,7 @@ export const FormData = {
           onClick={(e) => {
             e.preventDefault();
             const form = document.querySelector('form[name="my-form"]');
-            const formData = createFormData(form);
+            const formData = createFormData(form as HTMLFormElement);
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'https://httpbin.org/post', true);
             xhr.onload = function () {
