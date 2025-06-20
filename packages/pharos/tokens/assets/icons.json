@@ -118,6 +118,7 @@
       "search": { "value": "assets/icons/search.svg" },
       "seek-backward": { "value": "assets/icons/seek-backward.svg" },
       "seek-forward": { "value": "assets/icons/seek-forward.svg" },
+      "select-text": { "value": "assets/icons/select-text.svg" },
       "send": { "value": "assets/icons/send.svg" },
       "share": { "value": "assets/icons/share.svg" },
       "side-panel": { "value": "assets/icons/side-panel.svg" },
