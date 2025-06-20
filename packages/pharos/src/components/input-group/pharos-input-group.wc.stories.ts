@@ -1,17 +1,22 @@
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Forms/Input Group',
   component: 'pharos-input-group',
   subcomponents: { PharosInputGroupSelect: 'pharos-input-group-select' },
   parameters: {
     docs: { page: configureDocsPage('input-group') },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
       <storybook-pharos-input-group name="my-input-group">
@@ -27,7 +32,7 @@ export const Base = {
   `,
 };
 
-export const Prominent = {
+export const Prominent: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
       <storybook-pharos-input-group name="my-input-group" variant="prominent">
@@ -84,7 +89,7 @@ export const Prominent = {
   `,
 };
 
-export const Validity = {
+export const Validity: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
       <storybook-pharos-input-group invalidated value="not an email" name="my-input-group">
@@ -109,7 +114,7 @@ export const Validity = {
   `,
 };
 
-export const Composition = {
+export const Composition: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 524px;">
       <storybook-pharos-input-group name="my-input-group-icon">

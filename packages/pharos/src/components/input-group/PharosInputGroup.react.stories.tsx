@@ -1,13 +1,15 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   PharosInputGroup,
   PharosInputGroupSelect,
   PharosButton,
   PharosIcon,
 } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Forms/Input Group',
   component: PharosInputGroup,
   subcomponents: { PharosInputGroupSelect },
@@ -21,9 +23,12 @@ export default {
   parameters: {
     docs: { page: configureDocsPage('input-group') },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => (
     <div
       style={{
@@ -45,7 +50,7 @@ export const Base = {
   ),
 };
 
-export const Prominent = {
+export const Prominent: Story = {
   render: () => (
     <div
       style={{
@@ -67,7 +72,7 @@ export const Prominent = {
   ),
 };
 
-export const Validity = {
+export const Validity: Story = {
   render: () => (
     <div
       style={{
@@ -98,7 +103,7 @@ export const Validity = {
   ),
 };
 
-export const Composition = {
+export const Composition: Story = {
   render: () => (
     <div
       style={{
