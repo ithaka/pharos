@@ -1,8 +1,10 @@
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Sheet',
   component: 'pharos-sheet',
   parameters: {
@@ -11,54 +13,57 @@ export default {
     },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => html`
     <div>
       <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
         Click Me
       </storybook-pharos-button>
-      <storybook-pharos-sheet id="my-sheet" label="Pharos sheet">
+      <storybook-pharos-sheet id="my-sheet">
         <div>Lorem ipsum dolor sit amet</div>
       </storybook-pharos-sheet>
     </div>
   `,
 };
 
-export const WithClose = {
+export const WithClose: Story = {
   render: () => html`
     <div>
       <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
         Click Me
       </storybook-pharos-button>
-      <storybook-pharos-sheet id="my-sheet" label="Pharos sheet" has-close>
+      <storybook-pharos-sheet id="my-sheet" has-close>
         <div>Lorem ipsum dolor sit amet</div>
       </storybook-pharos-sheet>
     </div>
   `,
 };
 
-export const Expanded = {
+export const Expanded: Story = {
   render: () => html`
     <div>
       <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
         Click Me
       </storybook-pharos-button>
-      <storybook-pharos-sheet id="my-sheet" label="Pharos sheet" expanded>
+      <storybook-pharos-sheet id="my-sheet" expanded>
         <div>Lorem ipsum dolor sit amet</div>
       </storybook-pharos-sheet>
     </div>
   `,
 };
 
-export const LongContent = {
+export const LongContent: Story = {
   render: () => html`
     <div>
       <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
         Click Me
       </storybook-pharos-button>
-      <storybook-pharos-sheet id="my-sheet" label="Pharos sheet">
+      <storybook-pharos-sheet id="my-sheet">
         <div>Lorem ipsum dolor sit amet</div>
         <div>Lorem ipsum dolor sit amet</div>
         <div>Lorem ipsum dolor sit amet</div>

@@ -1,8 +1,10 @@
 import { PharosSheet } from '../../react-components/sheet/pharos-sheet';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Sheet',
   component: PharosSheet,
   decorators: [
@@ -17,32 +19,35 @@ export default {
       page: configureDocsPage('sheet'),
     },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => <PharosSheet />,
   args: {},
 };
 
-export const WithClose = {
+export const WithClose: Story = {
   render: () => (
-    <PharosSheet id="my-sheet" label="Pharos sheet" with-close>
+    <PharosSheet id="my-sheet" with-close>
       <div>Lorem ipsum dolor sit amet</div>
     </PharosSheet>
   ),
 };
 
-export const Expanded = {
+export const Expanded: Story = {
   render: () => (
-    <PharosSheet id="my-sheet" label="Pharos sheet" expanded>
+    <PharosSheet id="my-sheet" expanded>
       <div>Lorem ipsum dolor sit amet</div>
     </PharosSheet>
   ),
 };
 
-export const LongContent = {
+export const LongContent: Story = {
   render: () => (
-    <PharosSheet id="my-sheet" label="Pharos sheet">
+    <PharosSheet id="my-sheet">
       <div>Lorem ipsum dolor sit amet</div>
       <div>Lorem ipsum dolor sit amet</div>
       <div>Lorem ipsum dolor sit amet</div>
