@@ -1,11 +1,12 @@
 import { Fragment } from 'react';
 
 import { PharosLink, PharosHeading } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Components/Link',
   component: PharosLink,
   decorators: [
@@ -18,9 +19,12 @@ export default {
   parameters: {
     docs: { page: configureDocsPage('link') },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <PharosLink
       bold={args.bold}
@@ -45,7 +49,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const VisitedLink = {
+export const VisitedLink: Story = {
   render: () => (
     <div style={{ marginBottom: '1rem' }}>
       <PharosLink href="https://www.google.com" target="_blank" indicateVisited>
@@ -55,21 +59,21 @@ export const VisitedLink = {
   ),
 };
 
-export const VisitedLinkHeading = {
+export const VisitedLinkHeadin: Story = {
   render: () => (
     <div style={{ marginBottom: '1rem' }}>
       <PharosLink href="https://www.google.com" target="_blank" indicateVisited>
-        <PharosHeading level="1"> Visited link heading </PharosHeading>
+        <PharosHeading level={1} preset="5"> Visited link heading </PharosHeading>
       </PharosLink>
     </div>
   ),
 };
 
-export const Button = {
+export const Button: Story = {
   render: () => (
     <Fragment>
       <div style={{ marginBottom: '1rem' }}>
-        <PharosLink name="primary" primary>
+        <PharosLink>
           I am a button
         </PharosLink>
       </div>
@@ -80,7 +84,7 @@ export const Button = {
           marginBottom: '1rem',
         }}
       >
-        <PharosLink name="is-on-background" isOnBackground>
+        <PharosLink isOnBackground>
           On compliant background
         </PharosLink>
       </div>
@@ -88,21 +92,21 @@ export const Button = {
   ),
 };
 
-export const Variants = {
+export const Variants: Story = {
   render: () => (
     <Fragment>
       <div style={{ marginBottom: '1rem' }}>
-        <PharosLink name="primary" href="#">
+        <PharosLink href="#">
           Primary link
         </PharosLink>
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <PharosLink name="subtle" href="#" subtle>
+        <PharosLink href="#" subtle>
           Subtle link
         </PharosLink>
       </div>
       <div style={{ width: '100px', marginBottom: '1rem' }}>
-        <PharosLink name="multi" href="#">
+        <PharosLink href="#">
           I have text that spans multiple lines
         </PharosLink>
       </div>
@@ -113,7 +117,7 @@ export const Variants = {
           marginBottom: '1rem',
         }}
       >
-        <PharosLink name="is-on-background" href="#" isOnBackground>
+        <PharosLink href="#" isOnBackground>
           On compliant background
         </PharosLink>
       </div>
@@ -124,7 +128,7 @@ export const Variants = {
           marginBottom: '1rem',
         }}
       >
-        <PharosLink name="is-on-background-subtle" href="#" isOnBackground subtle>
+        <PharosLink href="#" isOnBackground subtle>
           On compliant background with subtle
         </PharosLink>
       </div>
