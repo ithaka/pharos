@@ -2,11 +2,13 @@ import { action } from 'storybook/actions';
 
 import { PharosTextarea, PharosButton } from '../../react-components';
 import createFormData from '../../utils/createFormData';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { PharosTextarea as PTType } from './pharos-textarea';
 
-export default {
+const meta = {
   title: 'Forms/Textarea',
   component: PharosTextarea,
   decorators: [
@@ -20,9 +22,12 @@ export default {
     docs: { page: configureDocsPage('textarea') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <div
       style={{
@@ -53,7 +58,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () => (
     <div style={{ display: 'grid', gridGap: '1rem', gridTemplateColumns: 'repeat(2, 250px)' }}>
       <PharosTextarea>
@@ -78,7 +83,7 @@ export const States = {
   ),
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
     <div
       style={{
@@ -89,8 +94,8 @@ export const Events = {
     >
       <PharosTextarea
         placeholder="Enter some text"
-        onChange={(e) => action('Change')(e.target.value)}
-        onInput={(e) => action('Input')(e.target.value)}
+        onChange={(e) => action('Change')((e.target as PTType).value)}
+        onInput={(e) => action('Input')((e.target as PTType).value)}
       >
         <span slot="label">I fire events on input</span>
       </PharosTextarea>
@@ -99,7 +104,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -112,7 +117,7 @@ export const Validity = {
   },
 };
 
-export const CustomErrorMessage = {
+export const CustomErrorMessage: Story = {
   render: (args) => (
     <div
       style={{
@@ -123,8 +128,8 @@ export const CustomErrorMessage = {
     >
       <PharosTextarea
         placeholder="Enter some text"
-        onChange={(e) => action('Change')(e.target.value)}
-        onInput={(e) => action('Input')(e.target.value)}
+        onChange={(e) => action('Change')((e.target as PTType).value)}
+        onInput={(e) => action('Input')((e.target as PTType).value)}
         required={args.required}
         invalidated={args.invalidated}
         validated={args.validated}
@@ -144,7 +149,7 @@ export const CustomErrorMessage = {
   },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () => (
     <div
       style={{
@@ -158,8 +163,8 @@ export const FormData = {
           name="my-textarea"
           placeholder="Enter some text"
           style={{ marginBottom: '0.5rem' }}
-          onChange={(e) => action('Change')(e.target.value)}
-          onInput={(e) => action('Input')(e.target.value)}
+          onChange={(e) => action('Change')((e.target as PTType).value)}
+          onInput={(e) => action('Input')((e.target as PTType).value)}
           required
         >
           <span slot="label">I am invalid</span>
@@ -170,7 +175,7 @@ export const FormData = {
           onClick={(e) => {
             e.preventDefault();
             const form = document.querySelector('form[name="my-form"]');
-            const formData = createFormData(form);
+            const formData = createFormData(form as HTMLFormElement);
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'https://httpbin.org/post', true);
             xhr.onload = function () {
