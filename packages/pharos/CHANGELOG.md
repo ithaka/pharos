@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 14.14.0
+
+### Minor Changes
+
+- [#987](https://github.com/ithaka/pharos/pull/987) [`9e5d1a8`](https://github.com/ithaka/pharos/commit/9e5d1a85ce012d965ef86f7996f423c34896252a) Thanks [@ymouzakis](https://github.com/ymouzakis)! - add select text icon
+
+- [#962](https://github.com/ithaka/pharos/pull/962) [`e6ac3ed`](https://github.com/ithaka/pharos/commit/e6ac3edace8556ce47f6f421c20b5dd51826b579) Thanks [@brentswisher](https://github.com/brentswisher)! - Add multiselect dropdown component
+
 ## 14.13.0
 
 ### Minor Changes
