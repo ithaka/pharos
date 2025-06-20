@@ -1,9 +1,13 @@
 import { html } from 'lit';
 import { action } from 'storybook/actions';
 
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
+import type { ChangeEvent } from 'react';
+import type { PharosSwitch } from './pharos-switch';
 
-export default {
+const meta = {
   title: 'Forms/Switch',
   component: 'pharos-switch',
   parameters: {
@@ -12,14 +16,17 @@ export default {
     },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: ({ disabled, checked }) =>
     html` <storybook-pharos-switch
       .disabled=${disabled}
       .checked=${checked}
-      @change="${(e) => action('Change')(e.target.checked)}"
+      @change="${(e: ChangeEvent) => action('Change')((e.target as PharosSwitch).checked)}"
       ><span slot="label">Toggle Switch</span></storybook-pharos-switch
     >`,
   args: {
