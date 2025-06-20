@@ -1,9 +1,11 @@
 const template = ({ componentName, titleCaseName }) => `
 import { Pharos${titleCaseName} } from '../../react-components/${componentName}/pharos-${componentName}';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/${titleCaseName}',
   component: Pharos${titleCaseName},
   decorators: [
@@ -18,7 +20,10 @@ export default {
       page: configureDocsPage('${componentName}'),
     },
   },
-};
+} satisfies Meta<ComponentArgs>;
+
+export default meta;
+type Story = StoryObj<StoryArgs>;
 
 export const Base = {
   render: (args) => (

@@ -1,9 +1,11 @@
 const template = ({ titleCaseName, componentName }) => `
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/${titleCaseName}',
   component: 'pharos-${componentName}',
   parameters: {
@@ -12,9 +14,12 @@ export default {
     },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) =>
     html\`<storybook-pharos-${componentName}></storybook-pharos-${componentName}>\`,
   args: {},
