@@ -1,9 +1,12 @@
 import { useEffect } from 'storybook/preview-api';
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
+import type { PharosButton } from '../button/pharos-button';
 
-export default {
+const meta = {
   title: 'Components/Toast',
   component: 'pharos-toast',
   subcomponents: { PharosToaster: 'pharos-toaster' },
@@ -12,13 +15,17 @@ export default {
     options: { selectedPanel: 'addon-controls' },
     chromatic: { delay: 500 },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
-        document.querySelector('#success-toast-button').click();
+        const button = document.querySelector('#success-toast-button')
+        if (button) { (button as PharosButton).click(); }
       });
     };
     effect();
@@ -44,11 +51,12 @@ export const Base = {
   parameters: { chromatic: { viewports: [320, 1200] } },
 };
 
-export const Error = {
+export const Error: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
-        document.querySelector('#error-toast-button').click();
+        const button = document.querySelector('#error-toast-button')
+        if (button) { (button as PharosButton).click(); }
       });
     };
     effect();
@@ -74,12 +82,13 @@ export const Error = {
   },
 };
 
-export const LongContent = {
+export const LongContent: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          document.querySelector('#long-toast-button').click();
+          const button = document.querySelector('#long-toast-button')
+          if (button) { (button as PharosButton).click(); }
         }, 300);
       });
     };
@@ -106,11 +115,12 @@ export const LongContent = {
   parameters: { chromatic: { viewports: [320, 1200] } },
 };
 
-export const Info = {
+export const Info: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
-        document.querySelector('#info-toast-button').click();
+        const button = document.querySelector('#info-toast-button')
+        if (button) { (button as PharosButton).click(); }
       });
     };
     effect();
@@ -135,17 +145,18 @@ export const Info = {
   },
 };
 
-export const UpdateableToast = {
+export const UpdateableToast: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
-        document.querySelector('#info-toast-button').click();
+        const button = document.querySelector('#updateable-toast-button')
+        if (button) { (button as PharosButton).click(); }
       });
     };
     effect();
     return html`
       <storybook-pharos-button
-        id="info-toast-button"
+        id="updateable-toast-button"
         @click="${() => {
           const event = new CustomEvent('pharos-toast-open', {
             detail: {
@@ -167,7 +178,7 @@ export const UpdateableToast = {
               },
             });
             document.dispatchEvent(updateEvent);
-          }, '3000');
+          }, 3000);
           setTimeout(() => {
             const updateEvent = new CustomEvent('pharos-toast-close', {
               detail: {
@@ -175,7 +186,7 @@ export const UpdateableToast = {
               },
             });
             document.dispatchEvent(updateEvent);
-          }, '6000');
+          }, 6000);
         }}"
       >
         Save items to Workspace

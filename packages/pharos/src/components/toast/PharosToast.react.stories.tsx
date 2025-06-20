@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 
 import { PharosToast, PharosToaster, PharosButton } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
+import type { PharosButton as PBType } from '../button/pharos-button';
 
-export default {
+const meta = {
   title: 'Components/Toast',
   component: PharosToast,
   subcomponents: { PharosToaster },
@@ -19,9 +22,12 @@ export default {
     docs: { page: configureDocsPage('toast') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => (
     <>
       <PharosButton
@@ -43,7 +49,7 @@ export const Base = {
   ),
 };
 
-export const Error = {
+export const Error: Story = {
   render: () => (
     <>
       <PharosButton
@@ -66,12 +72,13 @@ export const Error = {
   ),
 };
 
-export const LongContent = {
+export const LongContent: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          document.querySelector('#long-toast-button').click();
+          const button = document.querySelector('#long-toast-button')
+          if (button) { (button as PBType).click(); }
         }, 300);
       });
     };
@@ -98,11 +105,12 @@ export const LongContent = {
   },
 };
 
-export const Info = {
+export const Info: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
-        document.querySelector('#info-toast-button').click();
+        const button = document.querySelector('#info-toast-button')
+        if (button) { (button as PBType).click(); }
       });
     };
     effect();
@@ -128,18 +136,19 @@ export const Info = {
   },
 };
 
-export const UpdateableToast = {
+export const UpdateableToast: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
-        document.querySelector('#info-toast-button').click();
+        const button = document.querySelector('#updateable-toast-button')
+        if (button) { (button as PBType).click(); }
       });
     };
     effect();
     return (
       <>
         <PharosButton
-          id="info-toast-button"
+          id="updateable-toast-button"
           onClick={() => {
             const event = new CustomEvent('pharos-toast-open', {
               detail: {
@@ -159,7 +168,7 @@ export const UpdateableToast = {
                 },
               });
               document.dispatchEvent(updateEvent);
-            }, '3000');
+            }, 3000);
             setTimeout(() => {
               const updateEvent = new CustomEvent('pharos-toast-close', {
                 detail: {
@@ -167,7 +176,7 @@ export const UpdateableToast = {
                 },
               });
               document.dispatchEvent(updateEvent);
-            }, '6000');
+            }, 6000);
           }}
         >
           Save items to Workspace
