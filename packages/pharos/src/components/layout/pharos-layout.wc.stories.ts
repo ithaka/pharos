@@ -1,10 +1,12 @@
 import { html } from 'lit';
 
 import { viewports, breakpoints } from '../../pages/shared/viewports';
-import { configureDocsPage } from '@config/docsPageConfig';
-import logo from '@config/assets/images/jstor-logo-inverse.svg';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import logo from '../../utils/_storybook/assets/images/jstor-logo-inverse.svg';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Layout',
   component: 'pharos-layout',
   parameters: {
@@ -15,10 +17,18 @@ export default {
     },
     layout: 'fullscreen',
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-const _gridItems = (rows) => {
-  const arr = [];
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+interface _LayoutSpec {
+  span: number;
+  cols: number;
+}
+
+const _gridItems = (rows: number[]) => {
+  const arr: _LayoutSpec[] = [];
   rows.forEach((items) => {
     for (let i = 0; i < items; i++) {
       arr.push({ span: 12 / items, cols: items });
@@ -32,8 +42,8 @@ const _gridItems = (rows) => {
   );
 };
 
-const _comboItems = (rows) => {
-  const arr = [];
+const _comboItems = (rows: number[]) => {
+  const arr: _LayoutSpec[] = [];
   rows.forEach((item) => {
     arr.push({ span: item, cols: item });
     arr.push({ span: 12 - item, cols: 12 - item });
@@ -54,12 +64,12 @@ const _gridColumns = () => {
   return arr;
 };
 
-export const OneColumn = {
+export const OneColumn: Story = {
   name: 'One column',
   render: () => html` <storybook-pharos-layout>${_gridColumns()}</storybook-pharos-layout> `,
 };
 
-export const OneColumnWithSidenav = {
+export const OneColumnWithSidenav: Story = {
   name: 'One column with sidenav',
   render: () => html`
     <div
@@ -77,7 +87,7 @@ export const OneColumnWithSidenav = {
   `,
 };
 
-export const OneColumnWithSidenavAndComfySpacing = {
+export const OneColumnWithSidenavAndComfySpacing: Story = {
   name: 'One column with sidenav and comfy spacing',
   render: () => html`
     <div
@@ -97,7 +107,7 @@ export const OneColumnWithSidenavAndComfySpacing = {
   `,
 };
 
-export const TwoColumn = {
+export const TwoColumn: Story = {
   name: 'Two column',
   render: () => html`
     <storybook-pharos-layout preset="2-col">
@@ -111,7 +121,7 @@ export const TwoColumn = {
   `,
 };
 
-export const ColumnLayouts = {
+export const ColumnLayouts: Story = {
   name: 'Column layouts',
   render: () => html`
     <storybook-pharos-layout style="margin: 1rem 0">

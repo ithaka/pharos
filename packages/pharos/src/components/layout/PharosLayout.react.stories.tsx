@@ -2,11 +2,13 @@ import { Fragment } from 'react';
 import { viewports } from '../../pages/shared/viewports';
 
 import { PharosLayout, PharosSidenav, PharosLink } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
-import logo from '@config/assets/images/jstor-logo-inverse.svg';
+import logo from '../../utils/_storybook/assets/images/jstor-logo-inverse.svg';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Components/Layout',
   component: PharosLayout,
   decorators: [
@@ -23,10 +25,18 @@ export default {
     },
     layout: 'fullscreen',
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-const _gridItems = (rows) => {
-  const arr = [];
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+interface _LayoutSpec {
+  span: number;
+  cols: number;
+}
+
+const _gridItems = (rows: number[]) => {
+  const arr: _LayoutSpec[] = [];
   rows.forEach((items) => {
     for (let i = 0; i < items; i++) {
       arr.push({ span: 12 / items, cols: items });
@@ -39,8 +49,8 @@ const _gridItems = (rows) => {
   ));
 };
 
-const _comboItems = (rows) => {
-  const arr = [];
+const _comboItems = (rows: number[]) => {
+  const arr: _LayoutSpec[] = [];
   rows.forEach((item) => {
     arr.push({ span: item, cols: item });
     arr.push({ span: 12 - item, cols: 12 - item });
@@ -60,7 +70,7 @@ const _gridColumns = () => {
   return arr;
 };
 
-export const OneColumn = {
+export const OneColumn: Story = {
   name: 'One column',
   render: () => <PharosLayout>{_gridColumns()}</PharosLayout>,
 };
@@ -88,7 +98,7 @@ export const OneColumnWithSidenav = {
   parameters: { docs: { disable: true } },
 };
 
-export const OneColumnWithSidenavAndComfySpacing = {
+export const OneColumnWithSidenavAndComfySpacing: Story = {
   name: 'One column with sidenav and comfy spacing',
   render: () => (
     <div
@@ -111,7 +121,7 @@ export const OneColumnWithSidenavAndComfySpacing = {
   parameters: { docs: { disable: true } },
 };
 
-export const TwoColumn = {
+export const TwoColumn: Story = {
   name: 'Two column',
   render: () => (
     <Fragment>
@@ -127,7 +137,7 @@ export const TwoColumn = {
   ),
 };
 
-export const ColumnLayouts = {
+export const ColumnLayouts: Story = {
   name: 'Column layouts',
   render: () => (
     <PharosLayout style={{ margin: '1rem 0' }}>
