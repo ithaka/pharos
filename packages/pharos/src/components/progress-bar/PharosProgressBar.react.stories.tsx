@@ -1,9 +1,10 @@
 import { PharosProgressBar } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, indeterminateArgs, argTypes } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, indeterminateArgs, argTypes, type StoryArgs, type ComponentArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Components/Progress Bar',
   component: PharosProgressBar,
   decorators: [
@@ -18,9 +19,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <PharosProgressBar value={args.value}>
       <div slot="title">{args.title}</div>
@@ -30,7 +34,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const Indeterminate = {
+export const Indeterminate: Story = {
   render: (args) => (
     <PharosProgressBar>
       <div slot="title">{args.title}</div>
@@ -40,7 +44,7 @@ export const Indeterminate = {
   args: indeterminateArgs,
 };
 
-export const Plain = {
+export const Plain: Story = {
   ...Base,
   args: {
     value: 10,
