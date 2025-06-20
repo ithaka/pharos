@@ -1,5 +1,5 @@
 ---
-'@ithaka/pharos': major
+'@ithaka/pharos': minor
 ---
 
 add select text icon
