@@ -1,11 +1,15 @@
 import { action } from 'storybook/actions';
 
-import { PharosMultiselectDropdown } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { PharosButton, PharosMultiselectDropdown } from '../../react-components';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useRef, type FormEvent } from 'react';
+import createFormData from '../../utils/createFormData';
+import type { PharosMultiselectDropdown as PMDType } from './pharos-multiselect-dropdown';
 
-export default {
+const meta = {
   title: 'Forms/Multiselect Dropdown',
   component: PharosMultiselectDropdown,
   decorators: [
@@ -20,7 +24,10 @@ export default {
     options: { selectedPanel: 'addon-controls' },
     controls: { expanded: true },
   },
-};
+} satisfies Meta<ComponentArgs>;
+
+export default meta;
+type Story = StoryObj<StoryArgs>;
 
 const cities = [
   'Ann Arbor',
@@ -55,7 +62,7 @@ const cities = [
   'Ypsilanti',
 ];
 
-export const Base = {
+export const Base: Story = {
   render: (args) => (
     <PharosMultiselectDropdown
       name={args.name}
@@ -78,7 +85,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () => (
     <div style={{ display: 'grid', gridGap: '7rem', gridTemplateColumns: 'repeat(2, 300px)' }}>
       <PharosMultiselectDropdown name="disabled" disabled>
@@ -179,12 +186,12 @@ export const States = {
   ),
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: '300px' }}>
       <PharosMultiselectDropdown
         name="event-demo"
-        onChange={(e) => action('Change')(e.target.selectedOptions)}
+        onChange={(e: FormEvent) => action('Change')((e.target as PMDType).selectedOptions)}
         style={{ display: 'grid', gridTemplateColumns: '432px' }}
       >
         <span slot="label">Cities in Michigan</span>
@@ -199,21 +206,23 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () => {
     const formRef = useRef(null);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.MouseEvent) => {
       e.preventDefault();
       const form = formRef.current;
-      const formData = createFormData(form);
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'https://httpbin.org/post', true);
-      xhr.onload = function () {
-        const response = JSON.parse(this.responseText);
-        action('FormData')(JSON.stringify(response.form));
-      };
-      xhr.send(formData);
+      if (form) {
+        const formData = createFormData(form as HTMLFormElement);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://httpbin.org/post', true);
+        xhr.onload = function () {
+          const response = JSON.parse(this.responseText);
+          action('FormData')(JSON.stringify(response.form));
+        };
+        xhr.send(formData);
+      }
     };
 
     return (
@@ -221,7 +230,7 @@ export const FormData = {
         <form name="my-form" action="https://httpbin.org/post" method="POST" ref={formRef}>
           <PharosMultiselectDropdown
             name="my-multiselect-dropdown"
-            onChange={(e) => action('Change')(e.target.selectedOptions)}
+            onChange={(e: FormEvent) => action('Change')((e.target as PMDType).selectedOptions)}
             style={{ display: 'grid', gridTemplateColumns: '432px' }}
           >
             <span slot="label">Cities in Michigan</span>
@@ -231,9 +240,9 @@ export const FormData = {
               </option>
             ))}
           </PharosMultiselectDropdown>
-          <storybook-pharos-button type="submit" value="Submit" onClick={handleSubmit}>
+          <PharosButton type="submit" value="Submit" onClick={handleSubmit}>
             Submit
-          </storybook-pharos-button>
+          </PharosButton>
         </form>
       </div>
     );

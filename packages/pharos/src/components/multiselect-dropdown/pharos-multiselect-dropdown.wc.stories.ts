@@ -3,10 +3,13 @@ import { action } from 'storybook/actions';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import createFormData from '../../utils/createFormData';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ChangeEvent } from 'react';
+import type { PharosMultiselectDropdown } from './pharos-multiselect-dropdown';
 
-export default {
+const meta = {
   title: 'Forms/Multiselect Dropdown',
   component: 'pharos-multiselect-dropdown',
   parameters: {
@@ -14,9 +17,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
     controls: { expanded: true },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-multiselect-dropdown
       .name=${ifDefined(args.name)}
@@ -64,7 +70,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 7rem; grid-template-columns: repeat(2, 300px);">
       <storybook-pharos-multiselect-dropdown name="disabled" disabled>
@@ -154,12 +160,12 @@ export const States = {
   `,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => html`
     <div style="display: grid; grid-template-columns: 300px;">
       <storybook-pharos-multiselect-dropdown
         name="event-demo"
-        @change="${(e) => action('Change')(e.target.selectedOptions)}"
+        @change="${(e: ChangeEvent) => action('Change')((e.target as PharosMultiselectDropdown).selectedOptions)}"
         style="display: grid; grid-template-columns: 432px;"
       >
         <span slot="label">Cities in Michigan</span>
@@ -199,13 +205,13 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () => html`
     <div style="display: grid; grid-template-columns: 300px;">
-      <form name="my-form" action="https://httpbin.org/post" method="POST">
+      <form name="my-form" action="https://httpbin.org/post" method="post">
         <storybook-pharos-multiselect-dropdown
           name="my-multiselect-dropdown"
-          @change="${(e) => action('Change')(e.target.selectedOptions)}"
+          @change="${(e: ChangeEvent) => action('Change')((e.target as PharosMultiselectDropdown).selectedOptions)}"
           style="display: grid; grid-template-columns: 432px;"
         >
           <span slot="label">Cities in Michigan</span>
@@ -244,10 +250,10 @@ export const FormData = {
         <storybook-pharos-button
           type="submit"
           value="Submit"
-          @click="${(e) => {
+          @click="${(e: MouseEvent) => {
             e.preventDefault();
             const form = document.querySelector('form[name="my-form"]');
-            const formData = createFormData(form);
+            const formData = createFormData(form as HTMLFormElement);
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'https://httpbin.org/post', true);
             xhr.onload = function () {
