@@ -2,24 +2,28 @@ import { html } from 'lit';
 import { viewports } from '../../pages/shared/viewports';
 
 import { items, collections } from '../../pages/item-detail/mocks';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 
-import collection5 from '@config/assets/images/item-detail/collection_5.png';
-import collection1 from '@config/assets/images/item-detail/open_collection_1.png';
-import collection2 from '@config/assets/images/item-detail/open_collection_2.png';
-import collection3 from '@config/assets/images/item-detail/open_collection_3.png';
+import collection5 from '../../utils/_storybook/assets/images/item-detail/collection_5.png';
+import collection1 from '../../utils/_storybook/assets/images/item-detail/open_collection_1.png';
+import collection2 from '../../utils/_storybook/assets/images/item-detail/open_collection_2.png';
+import collection3 from '../../utils/_storybook/assets/images/item-detail/open_collection_3.png';
+import type { Meta, StoryObj } from '@storybook/web-components';
 
-export default {
+const meta = {
   title: 'Components/Image Card',
   component: 'pharos-image-card',
   parameters: {
     docs: { page: configureDocsPage('image-card') },
     viewport: viewports,
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-const Template = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+const Template: Story = {
   render: (args) =>
     html`<storybook-pharos-layout style="margin: 1rem 0"
       ><storybook-pharos-image-card
@@ -46,7 +50,7 @@ const Template = {
   args: defaultArgs,
 };
 
-export const Base = {
+export const Base: Story = {
   render: () =>
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       ${items.map((item, index) => {
@@ -67,7 +71,7 @@ export const Base = {
     </storybook-pharos-layout>`,
 };
 
-export const WithSourceTypes = {
+export const WithSourceTypes: Story = {
   render: () =>
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       ${items.map((item, index) => {
@@ -93,7 +97,7 @@ export const WithSourceTypes = {
     </storybook-pharos-layout>`,
 };
 
-export const Collection = {
+export const Collection: Story = {
   render: () =>
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       ${collections.map((collection, index) => {
@@ -120,7 +124,7 @@ export const Collection = {
     </storybook-pharos-layout>`,
 };
 
-export const ErrorStateCollection = {
+export const ErrorStateCollection: Story = {
   render: () =>
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       ${collections.map((collection, index) => {
@@ -148,7 +152,7 @@ export const ErrorStateCollection = {
     </storybook-pharos-layout>`,
 };
 
-export const Promotional = {
+export const Promotional: Story = {
   render: () =>
     html` <storybook-pharos-layout style="margin: 1rem 0">
       <div class="image-card-example__card--promotional">
@@ -167,7 +171,7 @@ export const Promotional = {
     </storybook-pharos-layout>`,
 };
 
-export const Selectable = {
+export const Selectable: Story = {
   render: () =>
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
@@ -229,7 +233,7 @@ export const Selectable = {
     </storybook-pharos-layout>`,
 };
 
-export const SubtleSelectable = {
+export const SubtleSelectable: Story = {
   render: () =>
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">
@@ -302,7 +306,7 @@ export const SubtleSelectable = {
     </storybook-pharos-layout>`,
 };
 
-export const ErrorState = {
+export const ErrorState: Story = {
   ...Template,
   args: {
     ...Template.args,
@@ -310,7 +314,7 @@ export const ErrorState = {
   },
 };
 
-export const SubtleState = {
+export const SubtleState: Story = {
   ...Template,
   args: {
     ...Template.args,
@@ -318,7 +322,7 @@ export const SubtleState = {
   },
 };
 
-export const VisitedTitleLink = {
+export const VisitedTitleLink: Story = {
   ...Template,
   args: {
     ...Template.args,
@@ -326,7 +330,7 @@ export const VisitedTitleLink = {
   },
 };
 
-export const WithActionMenu = {
+export const WithActionMenu: Story = {
   render: () => html`
     <storybook-pharos-layout style="margin: 1rem 0">
       <storybook-pharos-image-card
@@ -354,7 +358,7 @@ export const WithActionMenu = {
   `,
 };
 
-export const WithActionButtonSlot = {
+export const WithActionButtonSlot: Story = {
   render: () => html`
     <storybook-pharos-layout style="margin: 1rem 0">
       <storybook-pharos-image-card
@@ -388,7 +392,7 @@ export const WithActionButtonSlot = {
   `,
 };
 
-export const WithOverlayButtonSlot = {
+export const WithOverlayButtonSlot: Story = {
   render: () => html`
     <storybook-pharos-layout style="margin: 1rem 0">
       <storybook-pharos-image-card
@@ -434,7 +438,7 @@ export const WithOverlayButtonSlot = {
   `,
 };
 
-export const SelectableCollection = {
+export const SelectableCollection: Story = {
   render: () =>
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li class="image-card-example__card--collection">
@@ -472,7 +476,7 @@ export const SelectableCollection = {
     </storybook-pharos-layout>`,
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: () =>
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li style="grid-column: span 3">

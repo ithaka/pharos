@@ -11,16 +11,17 @@ import {
 } from '../../react-components';
 
 import { items, collections } from '../../pages/item-detail/mocks';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
 
-import collection5 from '@config/assets/images/item-detail/collection_5.png';
-import collection1 from '@config/assets/images/item-detail/open_collection_1.png';
-import collection2 from '@config/assets/images/item-detail/open_collection_2.png';
-import collection3 from '@config/assets/images/item-detail/open_collection_3.png';
+import collection5 from '../../utils/_storybook/assets/images/item-detail/collection_5.png';
+import collection1 from '../../utils/_storybook/assets/images/item-detail/open_collection_1.png';
+import collection2 from '../../utils/_storybook/assets/images/item-detail/open_collection_2.png';
+import collection3 from '../../utils/_storybook/assets/images/item-detail/open_collection_3.png';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Components/Image Card',
   component: PharosImageCard,
   decorators: [
@@ -34,9 +35,12 @@ export default {
     docs: { page: configureDocsPage('image-card') },
     viewport: viewports,
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-const Template = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+const Template: Story = {
   render: (args) => (
     <PharosLayout style={{ margin: '1rem 0' }}>
       <PharosImageCard
@@ -69,7 +73,7 @@ const Template = {
   args: defaultArgs,
 };
 
-export const Base = {
+export const Base: Story = {
   render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       {items.map((item, index) => {
@@ -102,7 +106,7 @@ export const Base = {
   ),
 };
 
-export const WithSourceTypes = {
+export const WithSourceTypes: Story = {
   render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       {items.map((item, index) => {
@@ -135,7 +139,7 @@ export const WithSourceTypes = {
   ),
 };
 
-export const Collection = {
+export const Collection: Story = {
   render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       {collections.map((collection, index) => {
@@ -167,7 +171,7 @@ export const Collection = {
   ),
 };
 
-export const ErrorStateCollection = {
+export const ErrorStateCollection: Story = {
   render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       {collections.map((collection, index) => {
@@ -200,7 +204,7 @@ export const ErrorStateCollection = {
   ),
 };
 
-export const Promotional = {
+export const Promotional: Story = {
   render: () => (
     <PharosLayout style={{ margin: '1rem 0' }}>
       <div className="image-card-example__card--promotional">
@@ -216,7 +220,7 @@ export const Promotional = {
   ),
 };
 
-export const Selectable = {
+export const Selectable: Story = {
   render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       <li style={{ gridColumn: 'span 3' }}>
@@ -230,7 +234,7 @@ export const Selectable = {
           link="#"
           source-type="Image"
           variant="selectable"
-          subtle-select="true"
+          subtle-select
         >
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
@@ -241,8 +245,8 @@ export const Selectable = {
           link="#"
           source-type="Image"
           variant="selectable"
-          disabled="true"
-          selected="true"
+          disabled
+          _isSelected
         >
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
@@ -253,7 +257,7 @@ export const Selectable = {
           link="#"
           source-type="Image"
           variant="selectable"
-          error="true"
+          error
         >
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
@@ -264,8 +268,8 @@ export const Selectable = {
           link="#"
           source-type="Image"
           variant="selectable"
-          error="true"
-          subtle-select="true"
+          error
+          subtle-select
         >
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
@@ -274,7 +278,7 @@ export const Selectable = {
   ),
 };
 
-export const SubtleSelectable = {
+export const SubtleSelectable: Story = {
   render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       <li style={{ gridColumn: 'span 3' }}>
@@ -283,7 +287,7 @@ export const SubtleSelectable = {
           link="#"
           source-type="Image"
           variant="selectable"
-          subtle="true"
+          subtle
         >
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
@@ -294,8 +298,8 @@ export const SubtleSelectable = {
           link="#"
           source-type="Image"
           variant="selectable"
-          subtle="true"
-          subtle-select="true"
+          subtle
+          subtle-select
         >
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
@@ -306,9 +310,9 @@ export const SubtleSelectable = {
           link="#"
           source-type="Image"
           variant="selectable"
-          subtle="true"
-          disabled="true"
-          selected="true"
+          subtle
+          disabled
+          _isSelected
         >
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
@@ -319,8 +323,8 @@ export const SubtleSelectable = {
           link="#"
           source-type="Image"
           variant="selectable"
-          subtle="true"
-          error="true"
+          subtle
+          error
         >
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
@@ -331,9 +335,9 @@ export const SubtleSelectable = {
           link="#"
           source-type="Image"
           variant="selectable"
-          subtle="true"
-          error="true"
-          subtle-select="true"
+          subtle
+          error
+          subtle-select
         >
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
@@ -342,7 +346,7 @@ export const SubtleSelectable = {
   ),
 };
 
-export const ErrorState = {
+export const ErrorState: Story = {
   ...Template,
   args: {
     ...Template.args,
@@ -350,7 +354,7 @@ export const ErrorState = {
   },
 };
 
-export const SubtleState = {
+export const SubtleState: Story = {
   ...Template,
   args: {
     ...Template.args,
@@ -358,7 +362,7 @@ export const SubtleState = {
   },
 };
 
-export const VisitedTitleLink = {
+export const VisitedTitleLink: Story = {
   ...Template,
   args: {
     ...Template.args,
@@ -366,7 +370,7 @@ export const VisitedTitleLink = {
   },
 };
 
-export const WithActionMenu = {
+export const WithActionMenu: Story = {
   render: () => (
     <Fragment>
       <PharosLayout style={{ margin: '1rem 0' }}>
@@ -400,7 +404,7 @@ export const WithActionMenu = {
   ),
 };
 
-export const WithActionButtonSlot = {
+export const WithActionButtonSlot: Story = {
   render: () => (
     <Fragment>
       <PharosLayout style={{ margin: '1rem 0' }}>
@@ -440,7 +444,7 @@ export const WithActionButtonSlot = {
   ),
 };
 
-export const WithOverlayButtonSlot = {
+export const WithOverlayButtonSlot: Story = {
   render: () => (
     <Fragment>
       <PharosLayout style={{ margin: '1rem 0' }}>
@@ -492,7 +496,7 @@ export const WithOverlayButtonSlot = {
   ),
 };
 
-export const SelectableCollection = {
+export const SelectableCollection: Story = {
   render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       <li className="image-card-example__card--collection">
@@ -507,7 +511,7 @@ export const SelectableCollection = {
           title="Subtle Select"
           link="#"
           variant="selectable-collection"
-          subtle-select="true"
+          subtle-select
         >
           <img src={collection2} slot="image" />
           <strong slot="metadata">50 items</strong>
@@ -519,8 +523,8 @@ export const SelectableCollection = {
           title="Selected Disabled"
           link="#"
           variant="selectable-collection"
-          disabled="true"
-          selected="true"
+          disabled
+          _isSelected
         >
           <img src={collection3} slot="image" />
           <strong slot="metadata">50 items</strong>
@@ -531,11 +535,11 @@ export const SelectableCollection = {
   ),
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: () => (
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       <li style={{ gridColumn: 'span 3' }}>
-        <PharosImageCard title="Disabled" link="#" source-type="Image" disabled="true">
+        <PharosImageCard title="Disabled" link="#" source-type="Image" disabled>
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
       </li>
@@ -544,7 +548,7 @@ export const Disabled = {
           title="Selectable Disabled"
           link="#"
           source-type="Image"
-          disabled="true"
+          disabled
           variant="selectable"
         >
           <img src={collection5} alt="Card Title" slot="image" />
@@ -556,8 +560,8 @@ export const Disabled = {
           link="#"
           source-type="Image"
           variant="selectable"
-          disabled="true"
-          selected="true"
+          disabled
+          _isSelected
         >
           <img src={collection5} alt="Card Title" slot="image" />
         </PharosImageCard>
