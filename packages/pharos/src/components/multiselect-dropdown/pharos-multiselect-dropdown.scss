@@ -106,6 +106,7 @@
 
   width: auto;
   padding: var(--pharos-spacing-1-x);
+  background-color: var(--pharos-color-white);
 }
 
 .multiselect-dropdown__search-input-wrapper--scrolling {
@@ -173,6 +174,7 @@
   padding: var(--pharos-spacing-1-x) var(--pharos-spacing-one-and-a-half-x);
   box-shadow: var(--pharos-elevation-level-2);
   border-radius: var(--pharos-radius-base-standard);
+  background-color: var(--pharos-color-white);
 }
 
 .multiselect-dropdown__option-checkmark-wrapper {
