@@ -1,8 +1,11 @@
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
+import type { PharosPopover } from './pharos-popover';
 
-export default {
+const meta = {
   title: 'Components/Popover',
   component: 'pharos-popover',
   parameters: {
@@ -11,9 +14,12 @@ export default {
     },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => html`
     <div>
       <storybook-pharos-button
@@ -30,7 +36,7 @@ export const Base = {
   `,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => html`
     <div>
       <storybook-pharos-button
@@ -46,7 +52,7 @@ export const Events = {
           <storybook-pharos-button
             @click="${() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              menu.open = false;
+              if (menu) { (menu as PharosPopover).open = false; }
             }}"
           >
             Close
@@ -57,7 +63,7 @@ export const Events = {
   `,
 };
 
-export const DarkPopover = {
+export const DarkPopover: Story = {
   render: () => html`
     <div>
       <storybook-pharos-button
@@ -76,7 +82,7 @@ export const DarkPopover = {
             is-on-background
             @click="${() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              menu.open = false;
+              if (menu) { (menu as PharosPopover).open = false; }
             }}"
           >
             Close
@@ -87,7 +93,7 @@ export const DarkPopover = {
   `,
 };
 
-export const DarkPopoverOnBackground = {
+export const DarkPopoverOnBackground: Story = {
   render: () => html`
     <div>
       <storybook-pharos-button
@@ -107,7 +113,7 @@ export const DarkPopoverOnBackground = {
             is-on-background
             @click="${() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              menu.open = false;
+              if (menu) { (menu as PharosPopover).open = false; }
             }}"
           >
             Close
@@ -121,7 +127,7 @@ export const DarkPopoverOnBackground = {
   },
 };
 
-export const LargeContents = {
+export const LargeContents: Story = {
   render: () => html`
     <div>
       <storybook-pharos-button
@@ -148,7 +154,7 @@ export const LargeContents = {
           <storybook-pharos-button
             @click="${() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              menu.open = false;
+              if (menu) { (menu as PharosPopover).open = false; }
             }}"
           >
             Close
