@@ -130,7 +130,7 @@ export const States = {
       </PharosMultiselectDropdown>
 
       <PharosMultiselectDropdown name="some-selected-option">
-        <span slot="label">I have a multiple selected options</span>
+        <span slot="label">I have multiple selected options</span>
         <option value="1" selected>
           Option 1
         </option>

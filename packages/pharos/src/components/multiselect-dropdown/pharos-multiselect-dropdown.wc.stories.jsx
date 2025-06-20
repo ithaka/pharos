@@ -116,7 +116,7 @@ export const States = {
       </storybook-pharos-multiselect-dropdown>
 
       <storybook-pharos-multiselect-dropdown name="some-selected-option">
-        <span slot="label">I have a multiple selected options</span>
+        <span slot="label">I have multiple selected options</span>
         <option value="1" selected>Option 1</option>
         <option value="2">Option 2</option>
         <option value="3" selected>Option 3</option>
