@@ -2,11 +2,13 @@ import { action } from 'storybook/actions';
 
 import { PharosRadioGroup, PharosRadioButton, PharosButton } from '../../react-components';
 import createFormData from '../../utils/createFormData';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { PharosRadioGroup as PRGType } from './pharos-radio-group';
 
-export default {
+const meta = {
   title: 'Forms/Radio Group',
   component: PharosRadioGroup,
   subcomponents: { PharosRadioButton },
@@ -21,9 +23,12 @@ export default {
     docs: { page: configureDocsPage('radio-group') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <PharosRadioGroup
       name={args.name}
@@ -53,9 +58,9 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
-    <PharosRadioGroup onChange={(e) => action('Change')(e.target.value)} name="group2">
+    <PharosRadioGroup onChange={(e) => action('Change')((e.target as PRGType).value)} name="group2">
       <span slot="legend">Radio Group Header</span>
       <PharosRadioButton value="1">
         <span slot="label">Radio Button 1</span>
@@ -71,7 +76,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -81,14 +86,14 @@ export const Validity = {
   },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () => (
     <form name="my-form" action="https://httpbin.org/post" method="POST">
       <PharosRadioGroup
         style={{ marginBottom: '0.5rem' }}
         name="radio-group4"
         required
-        onChange={(e) => action('Change')(e.target.value)}
+        onChange={(e) => action('Change')((e.target as PRGType).value)}
       >
         <span slot="legend">Radio Group Header</span>
         <PharosRadioButton value="1">
@@ -107,7 +112,7 @@ export const FormData = {
         onClick={(e) => {
           e.preventDefault();
           const form = document.querySelector('form[name="my-form"]');
-          const formData = createFormData(form);
+          const formData = createFormData(form as HTMLFormElement);
           const xhr = new XMLHttpRequest();
           xhr.open('POST', 'https://httpbin.org/post', true);
           xhr.onload = function () {

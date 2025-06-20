@@ -2,10 +2,13 @@ import { html } from 'lit';
 import { action } from 'storybook/actions';
 
 import createFormData from '../../utils/createFormData';
-import { defaultArgs } from './storyArgs';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ChangeEvent } from 'react';
+import type { PharosRadioGroup } from './pharos-radio-group';
 
-export default {
+const meta = {
   title: 'Forms/Radio Group',
   component: 'pharos-radio-group',
   subcomponents: { PharosRadioButton: 'pharos-radio-button' },
@@ -13,9 +16,12 @@ export default {
     docs: { page: configureDocsPage('radio-group') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-radio-group
       name=${args.name}
@@ -45,10 +51,10 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () =>
     html` <storybook-pharos-radio-group
-      @change="${(e) => action('Change')(e.target.value)}"
+      @change="${(e: ChangeEvent) => action('Change')((e.target as PharosRadioGroup).value)}"
       name="radio-group2"
     >
       <span slot="legend">Radio Group Header</span>
@@ -65,7 +71,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -75,12 +81,12 @@ export const Validity = {
   },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () => html`
     <form name="my-form" action="https://httpbin.org/post" method="POST">
       <storybook-pharos-radio-group
         style="margin-bottom: 0.5rem;"
-        @change="${(e) => action('Change')(e.target.value)}"
+        @change="${(e: ChangeEvent) => action('Change')((e.target as PharosRadioGroup).value)}"
         name="radio-group4"
         required
       >
@@ -98,10 +104,10 @@ export const FormData = {
       <storybook-pharos-button
         type="submit"
         value="Submit"
-        @click="${(e) => {
+        @click="${(e: MouseEvent) => {
           e.preventDefault();
           const form = document.querySelector('form[name="my-form"]');
-          const formData = createFormData(form);
+          const formData = createFormData(form as HTMLFormElement);
           const xhr = new XMLHttpRequest();
           xhr.open('POST', 'https://httpbin.org/post', true);
           xhr.onload = function () {
