@@ -1,10 +1,11 @@
 import { PharosHeading, PharosCheckboxGroup, PharosCheckbox } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { allPresets } from './pharos-heading';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Components/Heading',
   component: PharosHeading,
   decorators: [
@@ -19,9 +20,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <PharosHeading level={args.level} preset={args.preset} noMargin={args.noMargin}>
       {args.text}
@@ -39,7 +43,7 @@ export const Base = {
   },
 };
 
-export const Bold = {
+export const Bold: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -54,7 +58,7 @@ export const Bold = {
   },
 };
 
-export const Legend = {
+export const Legend: Story = {
   render: (args) => (
     <PharosCheckboxGroup>
       <PharosHeading slot="legend" level={args.level} preset={args.preset}>

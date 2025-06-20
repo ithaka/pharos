@@ -1,10 +1,11 @@
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { allPresets } from './pharos-heading';
+import type { Meta, StoryObj } from '@storybook/web-components';
 
-export default {
+const meta = {
   title: 'Components/Heading',
   component: 'pharos-heading',
   parameters: {
@@ -12,9 +13,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-heading level=${args.level} preset=${args.preset} .no-margin=${args.noMargin}>
       ${args.text}<br />second line
@@ -30,7 +34,7 @@ export const Base = {
   },
 };
 
-export const Bold = {
+export const Bold: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -45,7 +49,7 @@ export const Bold = {
   },
 };
 
-export const Legend = {
+export const Legend: Story = {
   render: (args) => html`
     <storybook-pharos-checkbox-group>
       <storybook-pharos-heading slot="legend" level="${args.level}" preset="${args.preset}"
