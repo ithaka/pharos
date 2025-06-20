@@ -9,11 +9,14 @@ import {
   PharosButton,
   PharosLink,
 } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
-import logo from '@config/assets/images/jstor-logo-inverse.svg';
+import logo from '../../utils/_storybook/assets/images/jstor-logo-inverse.svg';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
+import type { PharosButton as PBType } from '../button/pharos-button';
 
-export default {
+const meta = {
   title: 'Components/Sidenav',
   component: PharosSidenav,
   decorators: [
@@ -31,9 +34,12 @@ export default {
   parameters: {
     docs: { page: configureDocsPage('sidenav') },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <Fragment>
       <PharosButton
@@ -41,7 +47,7 @@ export const Base = {
         icon="menu"
         a11yLabel="menu"
         onClick={(e) => {
-          e.target.focus();
+          (e.target as PBType).focus();
         }}
       ></PharosButton>
       <PharosSidenav id="storybook-sidenav" open={args.open} hasCloseButton={args.hasCloseButton}>

@@ -1,10 +1,12 @@
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
-import logo from '@config/assets/images/jstor-logo-inverse.svg';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import logo from '../../utils/_storybook/assets/images/jstor-logo-inverse.svg';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Sidenav',
   component: 'pharos-sidenav',
   subcomponents: {
@@ -16,9 +18,12 @@ export default {
     docs: { page: configureDocsPage('sidenav') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-button
       data-sidenav-id="storybook-sidenav"
