@@ -1,3 +1,4 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   PharosHeader,
   PharosLink,
@@ -10,11 +11,12 @@ import {
   PharosButton,
   PharosIcon,
 } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
-import logo from '@config/assets/images/jstor-logo.svg';
+import logo from '../../utils/_storybook/assets/images/jstor-logo.svg';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Organisms/Header',
   component: PharosHeader,
   decorators: [
@@ -28,14 +30,17 @@ export default {
     docs: { page: configureDocsPage('haeder') },
     layout: 'fullscreen',
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => (
     <PharosHeader>
       <div id="pds" slot="top" className="hide-for-small">
         <div
-          tabIndex="0"
+          tabIndex={0}
           style={{
             display: 'flex',
           }}
@@ -102,7 +107,7 @@ export const Base = {
           display: 'flex',
         }}
       >
-        <PharosDropdownMenuNav label="main navigation">
+        <PharosDropdownMenuNav ally-label="main navigation">
           <PharosDropdownMenuNavLink href="action/showAdvancedSearch" id="adv-search-link">
             Advanced Search
           </PharosDropdownMenuNavLink>
@@ -144,8 +149,8 @@ export const Base = {
   ),
 };
 
-const _accountNav = (section) => (
-  <PharosDropdownMenuNav label="profile">
+const _accountNav = (section: string) => (
+  <PharosDropdownMenuNav ally-label="profile">
     <PharosDropdownMenuNavCategory
       id={`profile-link-${section}`}
       data-dropdown-menu-id={`profile-menu-${section}`}

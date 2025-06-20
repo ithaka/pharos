@@ -9,7 +9,7 @@ import {
   PharosColorTextBase,
   PharosColorTextWhite,
 } from '../packages/pharos/lib/styles/variables.js';
-import logo from './assets/images/jstor-logo.svg';
+import logo from '../packages/pharos/src/utils/_storybook/assets/images/jstor-logo.svg';
 
 export default create({
   base: 'light',

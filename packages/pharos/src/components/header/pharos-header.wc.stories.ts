@@ -1,21 +1,26 @@
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
-import logo from '@config/assets/images/jstor-logo.svg';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import logo from '../../utils/_storybook/assets/images/jstor-logo.svg';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Organisms/Header',
   component: 'pharos-header',
   parameters: {
     docs: { page: configureDocsPage('header') },
     layout: 'fullscreen',
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => {
-    const accountNav = (section) => html`
-      <storybook-pharos-dropdown-menu-nav label="profile">
+    const accountNav = (section: string) => html`
+      <storybook-pharos-dropdown-menu-nav ally-label="profile">
         <storybook-pharos-dropdown-menu-nav-link
           href="/account/profile"
           id="profile-link-${section}"
@@ -105,7 +110,7 @@ export const Base = {
           <div>${accountNav('end')}</div>
         </div>
         <div slot="end-bottom" style="display: flex;">
-          <storybook-pharos-dropdown-menu-nav label="main navigation" style="display: inline-block">
+          <storybook-pharos-dropdown-menu-nav ally-label="main navigation" style="display: inline-block">
             <storybook-pharos-dropdown-menu-nav-link
               href="action/showAdvancedSearch"
               id="adv-search-link"

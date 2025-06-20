@@ -34,6 +34,6 @@
       }
     ]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["src/pages/**", "**/storyArgs.ts", "src/utils/_storybook/*"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/utils/_storybook/*.d.ts"],
+  "exclude": ["src/pages/**", "**/storyArgs.ts"]
 }

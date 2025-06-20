@@ -3,7 +3,7 @@ import type { TemplateResult } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
 import '../styles/header-revised.scss';
-import logo from '@config/assets/images/jstor-logo.svg';
+import logo from '../../../utils/_storybook/assets/images/jstor-logo.svg';
 
 export const HeaderRevised = (showSearch = false): TemplateResult => html`
   <div
