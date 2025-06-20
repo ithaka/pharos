@@ -28,6 +28,7 @@ if (typeof window !== `undefined`) {
     pharos.PharosLink,
     pharos.PharosLoadingSpinner,
     pharos.PharosModal,
+    pharos.PharosMultiselectDropdown,
     pharos.PharosPagination,
     pharos.PharosProgressBar,
     pharos.PharosRadioButton,
