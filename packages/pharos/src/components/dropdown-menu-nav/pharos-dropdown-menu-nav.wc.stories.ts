@@ -1,8 +1,10 @@
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Dropdown Menu Nav',
   component: 'pharos-dropdown-menu-nav',
   subcomponents: {
@@ -14,9 +16,12 @@ export default {
   parameters: {
     docs: { page: configureDocsPage('dropdown-menu-nav') },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () =>
     html`
       <storybook-pharos-dropdown-menu-nav>
@@ -24,7 +29,6 @@ export const Base = {
           id="category1-link"
           data-dropdown-menu-id="category1-menu"
           data-dropdown-menu-hover
-          target="_blank"
           ><span slot="category">Category 1<span></storybook-pharos-dropdown-menu-nav-category
         >
         <storybook-pharos-dropdown-menu id="category1-menu" data-dropdown-menu-hover>
@@ -36,7 +40,6 @@ export const Base = {
           id="category2-link"
           data-dropdown-menu-id="category2-menu"
           data-dropdown-menu-hover
-          target="_blank"
           ><span slot="category">Category 2<span></storybook-pharos-dropdown-menu-nav-category
         >
         <storybook-pharos-dropdown-menu id="category2-menu">
