@@ -2,10 +2,11 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { useEffect } from 'storybook/preview-api';
 
-import { defaultArgs, argTypes } from './storyArgs';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { defaultArgs, argTypes, type StoryArgs, type ComponentArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
 
-export default {
+const meta = {
   title: 'Components/Tooltip',
   component: 'pharos-tooltip',
   parameters: {
@@ -14,14 +15,18 @@ export default {
     chromatic: { delay: 800 },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          document.querySelector('#my-button').dispatchEvent(new Event('mouseenter'));
+          const button = document.querySelector('#my-button');
+          if (button) { button.dispatchEvent(new Event('mouseenter')); }
         }, 700);
       });
     };
@@ -45,7 +50,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const Placement = {
+export const Placement: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -54,7 +59,7 @@ export const Placement = {
   },
 };
 
-export const DismissBehavior = {
+export const DismissBehavior: Story = {
   render: () => html`
     <div
       style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
@@ -73,7 +78,7 @@ export const DismissBehavior = {
   `,
 };
 
-export const Fallbacks = {
+export const Fallbacks: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -83,7 +88,7 @@ export const Fallbacks = {
   },
 };
 
-export const FullWidth = {
+export const FullWidth: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -96,7 +101,7 @@ export const FullWidth = {
   },
 };
 
-export const MultipleTriggers = {
+export const MultipleTriggers: Story = {
   render: () => html`
     <div
       style="display: grid; grid-template-columns: repeat(3, auto); grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;"
@@ -115,7 +120,7 @@ export const MultipleTriggers = {
   `,
 };
 
-export const CustomBoundary = {
+export const CustomBoundary: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
       <storybook-pharos-button
