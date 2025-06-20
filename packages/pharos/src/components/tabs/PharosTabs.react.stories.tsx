@@ -1,10 +1,13 @@
 import { action } from 'storybook/actions';
 
 import { PharosTabs, PharosTab, PharosTabPanel } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
+import type { PharosTabs as PTType } from './pharos-tabs';
 
-export default {
+const meta = {
   title: 'Components/Tabs',
   component: PharosTabs,
   subcomponents: { PharosTab, PharosTabPanel },
@@ -19,9 +22,12 @@ export default {
     docs: { page: configureDocsPage('tabs') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => (
     <PharosTabs>
       <PharosTab id="tab-1" data-panel-id="panel-1">
@@ -59,9 +65,9 @@ export const Base = {
   ),
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
-    <PharosTabs onPharos-Tab-Selected={(e) => action('Select')(e.target.id)}>
+    <PharosTabs onPharos-Tab-Selected={(e: CustomEvent) => action('Select')((e.target as PTType).id)}>
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1
       </PharosTab>
@@ -85,7 +91,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const PanelOrder = {
+export const PanelOrder: Story = {
   render: () => (
     <PharosTabs>
       <PharosTab id="tab-1" data-panel-id="panel-1">
@@ -110,7 +116,7 @@ export const PanelOrder = {
   ),
 };
 
-export const PanelSeparator = {
+export const PanelSeparator: Story = {
   render: () => (
     <PharosTabs panelSeparator style={{ width: '100%' }}>
       <PharosTab id="tab-1" data-panel-id="panel-1">
@@ -135,7 +141,7 @@ export const PanelSeparator = {
   ),
 };
 
-export const HorizontalScrolling = {
+export const HorizontalScrolling: Story = {
   render: () => (
     <PharosTabs panelSeparator style={{ width: '100%' }}>
       <PharosTab id="tab-1" data-panel-id="panel-1">

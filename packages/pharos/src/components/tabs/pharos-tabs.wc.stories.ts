@@ -1,9 +1,12 @@
 import { action } from 'storybook/actions';
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
+import type { PharosTabs } from './pharos-tabs';
 
-export default {
+const meta = {
   title: 'Components/Tabs',
   component: 'pharos-tabs',
   subcomponents: { PharosTab: 'pharos-tab', PharosTabPanel: 'pharos-tab-panel' },
@@ -11,9 +14,12 @@ export default {
     docs: { page: configureDocsPage('tabs') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => html`
     <storybook-pharos-tabs>
       <storybook-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</storybook-pharos-tab>
@@ -41,11 +47,11 @@ export const Base = {
   `,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => html`
     <storybook-pharos-tabs
       selected-tab="2"
-      @pharos-tab-selected="${(e) => action('Selected')(e.target.id)}"
+      @pharos-tab-selected="${(e: CustomEvent) => action('Selected')((e.target as PharosTabs).id)}"
     >
       <storybook-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</storybook-pharos-tab>
       <storybook-pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</storybook-pharos-tab>
@@ -58,7 +64,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'addon-controls' } },
 };
 
-export const PanelOrder = {
+export const PanelOrder: Story = {
   render: () => html`
     <storybook-pharos-tabs>
       <storybook-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</storybook-pharos-tab>
@@ -77,7 +83,7 @@ export const PanelOrder = {
   `,
 };
 
-export const PanelSeparator = {
+export const PanelSeparator: Story = {
   render: () => html`
     <storybook-pharos-tabs panel-separator style="width: 100%">
       <storybook-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</storybook-pharos-tab>
@@ -96,7 +102,7 @@ export const PanelSeparator = {
   `,
 };
 
-export const HorizontalScrolling = {
+export const HorizontalScrolling: Story = {
   render: () => html`
     <storybook-pharos-tabs selected-tab="6" panel-separator style="width: 100%">
       <storybook-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</storybook-pharos-tab>
