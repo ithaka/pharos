@@ -3,11 +3,13 @@ import { action } from 'storybook/actions';
 
 import { PharosSelect, PharosButton } from '../../react-components';
 import createFormData from '../../utils/createFormData';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { PharosSelect as PSType } from './pharos-select';
 
-export default {
+const meta = {
   title: 'Forms/Select',
   component: PharosSelect,
   decorators: [
@@ -21,9 +23,12 @@ export default {
     docs: { page: configureDocsPage('select') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <PharosSelect
       disabled={args.disabled}
@@ -31,7 +36,7 @@ export const Base = {
       required={args.required}
       invalidated={args.invalidated}
       message={args.message}
-      value={3}
+      value={args.value}
       style={{ display: 'grid', gridTemplateColumns: '300px' }}
     >
       <span slot="label">Select Demo</span>
@@ -45,7 +50,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () => (
     <Fragment>
       <PharosSelect>
@@ -67,7 +72,7 @@ export const States = {
   ),
 };
 
-export const WithOptionGroups = {
+export const WithOptionGroups: Story = {
   name: 'With option groups',
   render: () => (
     <PharosSelect>
@@ -84,9 +89,9 @@ export const WithOptionGroups = {
   ),
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
-    <PharosSelect onChange={(e) => action('Change')(e.target.value)}>
+    <PharosSelect onChange={(e) => action('Change')((e.target as PSType).value)}>
       <span slot="label">Normal Select</span>
       <option value="1">Option 1 (Value is 1)</option>
       <option value="2">Option 2 (Value is 2)</option>
@@ -95,7 +100,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
@@ -105,7 +110,7 @@ export const Validity = {
   },
 };
 
-export const FormData = {
+export const FormData: Story = {
   render: () => (
     <form name="my-form" action="https://httpbin.org/post" method="POST">
       <PharosSelect name="my-select" required style={{ marginBottom: '0.5rem' }}>
@@ -122,7 +127,7 @@ export const FormData = {
         onClick={(e) => {
           e.preventDefault();
           const form = document.querySelector('form[name="my-form"]');
-          const formData = createFormData(form);
+          const formData = createFormData(form as HTMLFormElement);
           const xhr = new XMLHttpRequest();
           xhr.open('POST', 'https://httpbin.org/post', true);
           xhr.onload = function () {
