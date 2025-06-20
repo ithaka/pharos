@@ -1,10 +1,12 @@
 import { action } from 'storybook/actions';
 
 import { PharosLoadingSpinner, PharosHeading, PharosButton } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Loading Spinner',
   component: PharosLoadingSpinner,
   decorators: [
@@ -18,9 +20,12 @@ export default {
     docs: { page: configureDocsPage('loading-spinner') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => (
     <div>
       <PharosLoadingSpinner></PharosLoadingSpinner>
@@ -32,7 +37,7 @@ export const Base = {
   ),
 };
 
-export const Scoped = {
+export const Scoped: Story = {
   render: () => (
     <div
       style={{
@@ -43,6 +48,30 @@ export const Scoped = {
       }}
     >
       <PharosLoadingSpinner></PharosLoadingSpinner>
+    </div>
+  ),
+};
+
+export const OnBackground: Story = {
+  render: () => (
+    <div style={{height: "5rem", width: "5rem", background: "black", position: "relative"}}>
+      <PharosLoadingSpinner is-on-background></PharosLoadingSpinner>
+    </div>
+  ),
+};
+
+export const Small: Story = {
+  render: () => (
+    <div style={{height: "5rem", width: "5rem", position: "relative"}}>
+      <PharosLoadingSpinner small></PharosLoadingSpinner>
+    </div>
+  ),
+};
+
+export const SmallOnBackground: Story = {
+  render: () => (
+    <div style={{height: "5rem", width: "5rem", background: "black", position: "relative"}}>
+      <PharosLoadingSpinner small is-on-background></PharosLoadingSpinner>
     </div>
   ),
 };

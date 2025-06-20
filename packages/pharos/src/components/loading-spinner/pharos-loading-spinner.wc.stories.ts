@@ -1,9 +1,11 @@
 import { action } from 'storybook/actions';
 import { html } from 'lit';
 
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ComponentArgs, StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Loading Spinner',
   component: 'pharos-loading-spinner',
   parameters: {
@@ -11,9 +13,12 @@ export default {
     options: { selectedPanel: 'addon-controls' },
     chromatic: { disable: true },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: () => html`
     <storybook-pharos-loading-spinner></storybook-pharos-loading-spinner>
     <storybook-pharos-heading level="1" preset="5"
@@ -25,7 +30,7 @@ export const Base = {
   `,
 };
 
-export const Scoped = {
+export const Scoped: Story = {
   render: () => html`
     <div style="height: 5rem; width: 5rem; border: 1px solid black; position: relative;">
       <storybook-pharos-loading-spinner></storybook-pharos-loading-spinner>
@@ -33,7 +38,7 @@ export const Scoped = {
   `,
 };
 
-export const OnBackground = {
+export const OnBackground: Story = {
   render: () => html`
     <div style="height: 5rem; width: 5rem; background: black; position: relative;">
       <storybook-pharos-loading-spinner is-on-background></storybook-pharos-loading-spinner>
@@ -41,7 +46,7 @@ export const OnBackground = {
   `,
 };
 
-export const Small = {
+export const Small: Story = {
   render: () => html`
     <div style="height: 5rem; width: 5rem; position: relative;">
       <storybook-pharos-loading-spinner small></storybook-pharos-loading-spinner>
@@ -49,7 +54,7 @@ export const Small = {
   `,
 };
 
-export const SmallOnBackground = {
+export const SmallOnBackground: Story = {
   render: () => html`
     <div style="height: 5rem; width: 5rem; background: black; position: relative;">
       <storybook-pharos-loading-spinner small is-on-background></storybook-pharos-loading-spinner>
