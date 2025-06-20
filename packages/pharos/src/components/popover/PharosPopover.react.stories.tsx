@@ -33,7 +33,7 @@ export const Base: Story = {
         Click Me
       </PharosButton>
       <PharosPopover id="my-popover" a11yLabel="Pharos Popover">
-        <div style={{ padding: "1rem" }}>Lorem ipsum dolor sit amet</div>
+        <div style={{ padding: '1rem' }}>Lorem ipsum dolor sit amet</div>
       </PharosPopover>
     </div>
   ),
@@ -46,12 +46,14 @@ export const Events: Story = {
         Click Me
       </PharosButton>
       <PharosPopover id="my-popover" a11yLabel="Pharos Popover">
-        <div style={{ padding: "1rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
-          <div style={{ padding: "1rem" }}>Lorem ipsum dolor sit amet</div>
+        <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ padding: '1rem' }}>Lorem ipsum dolor sit amet</div>
           <PharosButton
             onClick={() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              if (menu) { (menu as PPType).open = false; }
+              if (menu) {
+                (menu as PPType).open = false;
+              }
             }}
           >
             Close
@@ -69,12 +71,23 @@ export const DarkPopover: Story = {
         Click Me
       </PharosButton>
       <PharosPopover id="my-popover" is-on-background a11yLabel="Pharos Popover">
-        <div style={{ background: '#444444', color: 'white', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div
+          style={{
+            background: '#444444',
+            color: 'white',
+            padding: '1rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+          }}
+        >
           <div style={{ padding: '1rem' }}>Lorem ipsum dolor sit amet</div>
           <PharosButton
             onClick={() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              if (menu) { (menu as PPType).open = false; }
+              if (menu) {
+                (menu as PPType).open = false;
+              }
             }}
           >
             Close
@@ -92,12 +105,23 @@ export const DarkPopoverOnBackground: Story = {
         Click Me
       </PharosButton>
       <PharosPopover id="my-popover" a11yLabel="Pharos Popover">
-        <div style={{ background: '#444444', color: 'white', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div
+          style={{
+            background: '#444444',
+            color: 'white',
+            padding: '1rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+          }}
+        >
           <div style={{ padding: '1rem' }}>Lorem ipsum dolor sit amet</div>
           <PharosButton
             onClick={() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              if (menu) { (menu as PPType).open = false; }
+              if (menu) {
+                (menu as PPType).open = false;
+              }
             }}
           >
             Close
@@ -118,9 +142,24 @@ export const LargeContents: Story = {
         Click Me
       </PharosButton>
       <PharosPopover id="my-popover" a11yLabel="Large Pharos Popover">
-        <div style={{ padding: '1rem', width: '300px', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div
+          style={{
+            padding: '1rem',
+            width: '300px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+          }}
+        >
           <h2>Large Pharos Popover</h2>
-          <div style={{ height: '200px', overflow: 'auto', border: '1px solid black', padding: '1rem' }}>
+          <div
+            style={{
+              height: '200px',
+              overflow: 'auto',
+              border: '1px solid black',
+              padding: '1rem',
+            }}
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
@@ -131,7 +170,9 @@ export const LargeContents: Story = {
           <PharosButton
             onClick={() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              if (menu) { (menu as PPType).open = false; }
+              if (menu) {
+                (menu as PPType).open = false;
+              }
             }}
           >
             Close

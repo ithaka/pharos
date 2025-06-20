@@ -47,7 +47,8 @@ export const Base: Story = {
 export const Events: Story = {
   render: () =>
     html` <storybook-pharos-checkbox-group
-      @change="${(e: ChangeEvent) => action('Change')(JSON.stringify((e.target as HTMLInputElement).value))}"
+      @change="${(e: ChangeEvent) =>
+        action('Change')(JSON.stringify((e.target as HTMLInputElement).value))}"
       name="checkbox-group2"
     >
       <span slot="legend">Checkbox Group Header</span>
@@ -77,7 +78,7 @@ export const Validity: Story = {
 
 export const FormData: Story = {
   render: () =>
-    html` <form name="my-form" action="https://httpbin.org/post" method="POST">
+    html` <form name="my-form" action="https://httpbin.org/post" method="post">
       <storybook-pharos-checkbox-group
         @change="${(e: ChangeEvent) => action('Change')((e.target as HTMLInputElement).value)}"
         name="checkbox-group4"

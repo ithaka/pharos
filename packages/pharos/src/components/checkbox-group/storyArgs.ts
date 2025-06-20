@@ -6,10 +6,9 @@ export interface ComponentArgs {
   message?: string;
   required?: boolean;
   validated?: boolean;
-};
+}
 
-export type StoryArgs = ComponentArgs & {
-};
+export type StoryArgs = ComponentArgs & {};
 
 export const defaultArgs: StoryArgs = {
   disabled: false,

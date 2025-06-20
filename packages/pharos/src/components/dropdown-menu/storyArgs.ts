@@ -3,7 +3,7 @@ export interface ComponentArgs {
   showSelected?: boolean;
   fullWidth?: boolean;
   isOnBackground?: boolean;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

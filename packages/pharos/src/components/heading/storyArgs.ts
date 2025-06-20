@@ -4,7 +4,7 @@ export interface ComponentArgs {
   level: HeadingLevel;
   noMargin?: boolean;
   preset: HeadingPreset;
-};
+}
 
 export type StoryArgs = ComponentArgs & {
   text: string;

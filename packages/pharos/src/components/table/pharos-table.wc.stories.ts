@@ -219,7 +219,7 @@ export const RowData: Story = {
       ]}"
       .showPagination="${showPagination}"
       caption="An example table using a data array"
-    />
+    ></storybook-pharos-table>
   `,
   args: {
     ...defaultArgs,
@@ -272,7 +272,7 @@ export const RowDataWithPagination: Story = {
       .totalResults="${10}"
       .pageSizeOptions="${[2, 4]}"
       caption="An example table using a data array with pagination"
-    />
+    ></storybook-pharos-table>
   `,
   args: {
     ...defaultArgs,

@@ -25,7 +25,7 @@ export interface ComponentArgs {
   target?: LinkTarget;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'primary' | 'secondary' | 'subtle' | 'overlay';
-};
+}
 
 export type StoryArgs = ComponentArgs & {
   text?: string;

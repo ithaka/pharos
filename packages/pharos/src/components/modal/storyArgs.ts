@@ -5,7 +5,7 @@ export interface ComponentArgs {
   open?: boolean;
   footerDivider?: boolean;
   header?: string;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

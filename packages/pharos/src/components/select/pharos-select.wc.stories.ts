@@ -81,7 +81,9 @@ export const WithOptionGroups: Story = {
 
 export const Events: Story = {
   render: () => html`
-    <storybook-pharos-select @change="${(e: ChangeEvent) => action('Change')((e.target as PharosSelect).value)}">
+    <storybook-pharos-select
+      @change="${(e: ChangeEvent) => action('Change')((e.target as PharosSelect).value)}"
+    >
       <span slot="label">Normal Select</span>
       <option value="1">Option 1 (Value is 1)</option>
       <option value="2">Option 2 (Value is 2)</option>
@@ -102,7 +104,7 @@ export const Validity: Story = {
 
 export const FormData: Story = {
   render: () => html`
-    <form name="my-form" action="https://httpbin.org/post" method="POST">
+    <form name="my-form" action="https://httpbin.org/post" method="post">
       <storybook-pharos-select name="my-select" required style="margin-bottom: 0.5rem;">
         <span slot="label">Select Demo</span>
         <option value="">Select an option</option>

@@ -77,8 +77,10 @@ export const LongContent: Story = {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          const button = document.querySelector('#long-toast-button')
-          if (button) { (button as PBType).click(); }
+          const button = document.querySelector('#long-toast-button');
+          if (button) {
+            (button as PBType).click();
+          }
         }, 300);
       });
     };
@@ -109,8 +111,10 @@ export const Info: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
-        const button = document.querySelector('#info-toast-button')
-        if (button) { (button as PBType).click(); }
+        const button = document.querySelector('#info-toast-button');
+        if (button) {
+          (button as PBType).click();
+        }
       });
     };
     effect();
@@ -140,8 +144,10 @@ export const UpdateableToast: Story = {
   render: () => {
     const effect = () => {
       useEffect(() => {
-        const button = document.querySelector('#updateable-toast-button')
-        if (button) { (button as PBType).click(); }
+        const button = document.querySelector('#updateable-toast-button');
+        if (button) {
+          (button as PBType).click();
+        }
       });
     };
     effect();

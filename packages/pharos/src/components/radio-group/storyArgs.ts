@@ -7,7 +7,7 @@ export interface ComponentArgs {
   validated?: boolean;
   name?: string;
   message?: string;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

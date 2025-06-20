@@ -71,8 +71,10 @@ export const Icons: Story = {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          const withIconsButton = document.querySelector('#my-button-icons')
-          if (withIconsButton) { (withIconsButton as HTMLElement).click(); }
+          const withIconsButton = document.querySelector('#my-button-icons');
+          if (withIconsButton) {
+            (withIconsButton as HTMLElement).click();
+          }
         }, 700);
       });
     };
@@ -107,8 +109,10 @@ export const Descriptions: Story = {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          const withIconsButton = document.querySelector('#my-button-descriptions')
-          if (withIconsButton) { (withIconsButton as HTMLElement).click(); }
+          const withIconsButton = document.querySelector('#my-button-descriptions');
+          if (withIconsButton) {
+            (withIconsButton as HTMLElement).click();
+          }
         }, 700);
       });
     };
@@ -154,8 +158,10 @@ export const FullWidth: Story = {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          const withIconsButton = document.querySelector('#my-button-full')
-          if (withIconsButton) { (withIconsButton as HTMLElement).click(); }
+          const withIconsButton = document.querySelector('#my-button-full');
+          if (withIconsButton) {
+            (withIconsButton as HTMLElement).click();
+          }
         }, 700);
       });
     };
@@ -190,8 +196,10 @@ export const IsOnBackground: Story = {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          const withIconsButton = document.querySelector('#my-button-on-background')
-          if (withIconsButton) { (withIconsButton as HTMLElement).click(); }
+          const withIconsButton = document.querySelector('#my-button-on-background');
+          if (withIconsButton) {
+            (withIconsButton as HTMLElement).click();
+          }
         }, 700);
       });
     };
@@ -225,7 +233,9 @@ export const Links: Story = {
       useEffect(() => {
         setTimeout(() => {
           const link = document.querySelector('#my-link');
-          if (link) { (link as HTMLElement).dispatchEvent(new Event('mouseenter')); }
+          if (link) {
+            (link as HTMLElement).dispatchEvent(new Event('mouseenter'));
+          }
         }, 700);
       });
     };
@@ -306,7 +316,9 @@ export const MultipleDynamicTriggers: Story = {
         @click="${(e: MouseEvent) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          if (menu && trigger) { (menu as PharosDropdownMenu).openWithTrigger(trigger as PharosButton); }
+          if (menu && trigger) {
+            (menu as PharosDropdownMenu).openWithTrigger(trigger as PharosButton);
+          }
         }}"
       >
         One
@@ -315,7 +327,9 @@ export const MultipleDynamicTriggers: Story = {
         @click="${(e: MouseEvent) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          if (menu && trigger) { (menu as PharosDropdownMenu).openWithTrigger(trigger as PharosButton); }
+          if (menu && trigger) {
+            (menu as PharosDropdownMenu).openWithTrigger(trigger as PharosButton);
+          }
         }}"
       >
         Two
@@ -324,7 +338,9 @@ export const MultipleDynamicTriggers: Story = {
         @click="${(e: MouseEvent) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          if (menu && trigger) { (menu as PharosDropdownMenu).openWithTrigger(trigger as PharosButton); }
+          if (menu && trigger) {
+            (menu as PharosDropdownMenu).openWithTrigger(trigger as PharosButton);
+          }
         }}"
       >
         Three
@@ -338,8 +354,10 @@ export const Composition: Story = {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          const withIconsButton = document.querySelector('#my-button-composition')
-          if (withIconsButton) { (withIconsButton as HTMLElement).click(); }
+          const withIconsButton = document.querySelector('#my-button-composition');
+          if (withIconsButton) {
+            (withIconsButton as HTMLElement).click();
+          }
         }, 700);
       });
     };
@@ -373,7 +391,9 @@ export const Composition: Story = {
                 style="margin-right: auto"
                 @click="${() => {
                   const menu = document.querySelector('pharos-dropdown-menu');
-                  if (menu) { (menu as PharosDropdownMenu).open = false; }
+                  if (menu) {
+                    (menu as PharosDropdownMenu).open = false;
+                  }
                 }}"
               >
                 Create
@@ -384,7 +404,9 @@ export const Composition: Story = {
                 style="margin-left: auto"
                 @click="${() => {
                   const menu = document.querySelector('pharos-dropdown-menu');
-                  if (menu) { (menu as PharosDropdownMenu).open = false; }
+                  if (menu) {
+                    (menu as PharosDropdownMenu).open = false;
+                  }
                 }}"
               >
                 Cancel
@@ -411,7 +433,9 @@ export const CoordinatingDropdowns: Story = {
         @pharos-dropdown-menu-selected="${() => {
           const triggerElement = document.querySelector('#coordinating-dropdown-trigger-button');
           const secondDropdown = document.querySelector('#second-dropdown');
-          if (secondDropdown) { (secondDropdown as PharosDropdownMenu).openWithTrigger(triggerElement as PharosButton); }
+          if (secondDropdown) {
+            (secondDropdown as PharosDropdownMenu).openWithTrigger(triggerElement as PharosButton);
+          }
         }}"
       >
         <storybook-pharos-dropdown-menu-item>Click</storybook-pharos-dropdown-menu-item>
@@ -422,7 +446,9 @@ export const CoordinatingDropdowns: Story = {
         id="second-dropdown"
         @pharos-dropdown-menu-closed="${() => {
           const secondDropdown = document.querySelector('#second-dropdown');
-          if (secondDropdown) { (secondDropdown as PharosDropdownMenu).removeAllTriggers(); }
+          if (secondDropdown) {
+            (secondDropdown as PharosDropdownMenu).removeAllTriggers();
+          }
         }}"
       >
         <storybook-pharos-dropdown-menu-item>I am</storybook-pharos-dropdown-menu-item>

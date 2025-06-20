@@ -67,7 +67,9 @@ export const Base: Story = {
 
 export const Events: Story = {
   render: () => (
-    <PharosTabs onPharos-Tab-Selected={(e: CustomEvent) => action('Select')((e.target as PTType).id)}>
+    <PharosTabs
+      onPharos-Tab-Selected={(e: CustomEvent) => action('Select')((e.target as PTType).id)}
+    >
       <PharosTab id="tab-1" data-panel-id="panel-1">
         Tab 1
       </PharosTab>

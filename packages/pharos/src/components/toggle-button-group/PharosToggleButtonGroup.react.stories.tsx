@@ -84,7 +84,11 @@ export const Base: Story = {
 
 export const Events: Story = {
   render: () => (
-    <PharosToggleButtonGroup onPharos-Toggle-Button-Selected={(e: CustomEvent) => action('Select')((e.target as PTBGType).id)}>
+    <PharosToggleButtonGroup
+      onPharos-Toggle-Button-Selected={(e: CustomEvent) =>
+        action('Select')((e.target as PTBGType).id)
+      }
+    >
       <PharosToggleButton id="list-mode-button" selected icon-left="view-list">
         List
       </PharosToggleButton>

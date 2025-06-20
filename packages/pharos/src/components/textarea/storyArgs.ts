@@ -1,4 +1,4 @@
-import type { TextAreaResize } from "./pharos-textarea";
+import type { TextAreaResize } from './pharos-textarea';
 
 export interface ComponentArgs {
   name?: string;
@@ -15,7 +15,7 @@ export interface ComponentArgs {
   value?: string;
   rows?: number;
   columns?: number;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

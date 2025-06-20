@@ -1,9 +1,9 @@
-import type { ColumnSpecification } from "./pharos-table";
+import type { ColumnSpecification } from './pharos-table';
 
 export interface ComponentArgs {
-  columns?: ColumnSpecification[]
+  columns?: ColumnSpecification[];
   showPagination?: boolean;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

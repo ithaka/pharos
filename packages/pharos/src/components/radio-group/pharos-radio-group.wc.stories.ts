@@ -83,7 +83,7 @@ export const Validity: Story = {
 
 export const FormData: Story = {
   render: () => html`
-    <form name="my-form" action="https://httpbin.org/post" method="POST">
+    <form name="my-form" action="https://httpbin.org/post" method="post">
       <storybook-pharos-radio-group
         style="margin-bottom: 0.5rem;"
         @change="${(e: ChangeEvent) => action('Change')((e.target as PharosRadioGroup).value)}"

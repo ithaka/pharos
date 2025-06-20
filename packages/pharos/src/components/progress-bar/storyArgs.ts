@@ -2,7 +2,7 @@ export interface ComponentArgs {
   title?: string;
   value?: number;
   description?: string;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

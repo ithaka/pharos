@@ -2,7 +2,7 @@ export interface ComponentArgs {
   totalResults?: number;
   pageSize?: number;
   currentPage?: number;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

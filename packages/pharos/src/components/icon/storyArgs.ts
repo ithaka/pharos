@@ -5,7 +5,7 @@ export interface ComponentArgs {
   name?: IconName;
   a11yTitle?: string;
   a11yHidden?: AriaHiddenState;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

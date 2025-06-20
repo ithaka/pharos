@@ -199,7 +199,8 @@ const VoiceAndTonePage: FC = () => {
           our systems.
         </p>
         <p>
-          We address readers directly. Use the word "you" for them and "we" for our organization.{' '}
+          We address readers directly. Use the word "you" for them and "we" for our
+          organization.{' '}
         </p>
         <p>
           Use the same wording to refer to the same items and actions; don't talk about the archive

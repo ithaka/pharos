@@ -300,7 +300,9 @@ export const MultipleDynamicTriggers: Story = {
         onClick={(e) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          if (menu && trigger) { (menu as PDMType).openWithTrigger(trigger as PBType); }
+          if (menu && trigger) {
+            (menu as PDMType).openWithTrigger(trigger as PBType);
+          }
         }}
       >
         One
@@ -309,7 +311,9 @@ export const MultipleDynamicTriggers: Story = {
         onClick={(e) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          if (menu && trigger) { (menu as PDMType).openWithTrigger(trigger as PBType); }
+          if (menu && trigger) {
+            (menu as PDMType).openWithTrigger(trigger as PBType);
+          }
         }}
       >
         Two
@@ -318,7 +322,9 @@ export const MultipleDynamicTriggers: Story = {
         onClick={(e) => {
           const trigger = e.target;
           const menu = document.querySelector('#my-menu-multiple-dynamic-triggers');
-          if (menu && trigger) { (menu as PDMType).openWithTrigger(trigger as PBType); }
+          if (menu && trigger) {
+            (menu as PDMType).openWithTrigger(trigger as PBType);
+          }
         }}
       >
         Three
@@ -352,7 +358,9 @@ export const Composition: Story = {
             borderBottom: '1px solid var(--pharos-dropdown-menu-item-color-border-base)',
           }}
         >
-          <PharosHeading level={1} preset={'2'}>Save to...</PharosHeading>
+          <PharosHeading level={1} preset={'2'}>
+            Save to...
+          </PharosHeading>
         </div>
         <PharosDropdownMenuItem>Workspace</PharosDropdownMenuItem>
         <div
@@ -385,7 +393,9 @@ export const Composition: Story = {
               }}
               onClick={() => {
                 const menu = document.querySelector('pharos-dropdown-menu');
-                if (menu) { (menu as PDMType).open = false; }
+                if (menu) {
+                  (menu as PDMType).open = false;
+                }
               }}
             >
               Create
@@ -398,7 +408,9 @@ export const Composition: Story = {
               }}
               onClick={() => {
                 const menu = document.querySelector('pharos-dropdown-menu');
-                if (menu) { (menu as PDMType).open = false; }
+                if (menu) {
+                  (menu as PDMType).open = false;
+                }
               }}
             >
               Cancel
@@ -431,7 +443,9 @@ export const CoordinatingDropdowns: Story = {
         onPharos-Dropdown-Menu-Select={() => {
           const triggerElement = document.querySelector('#coordinating-dropdown-trigger-button');
           const secondDropdown = document.querySelector('#second-dropdown');
-          if (secondDropdown && triggerElement) { (secondDropdown as PDMType).openWithTrigger(triggerElement as PBType); }
+          if (secondDropdown && triggerElement) {
+            (secondDropdown as PDMType).openWithTrigger(triggerElement as PBType);
+          }
         }}
       >
         <PharosDropdownMenuItem>Click</PharosDropdownMenuItem>
@@ -442,7 +456,9 @@ export const CoordinatingDropdowns: Story = {
         id="second-dropdown"
         onPharos-Dropdown-Menu-Closed={() => {
           const secondDropdown = document.querySelector('#second-dropdown');
-          if (secondDropdown) { (secondDropdown as PDMType).removeAllTriggers(); }
+          if (secondDropdown) {
+            (secondDropdown as PDMType).removeAllTriggers();
+          }
         }}
       >
         <PharosDropdownMenuItem>I am</PharosDropdownMenuItem>

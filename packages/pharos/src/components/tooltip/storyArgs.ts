@@ -6,8 +6,8 @@ export interface ComponentArgs {
   targetText?: string;
   id?: string;
   placement?: Placement | 'auto';
-  fallbackPlacements?: (Placement | "auto")[];
-};
+  fallbackPlacements?: (Placement | 'auto')[];
+}
 
 export type StoryArgs = ComponentArgs & {
   tooltipText?: string;

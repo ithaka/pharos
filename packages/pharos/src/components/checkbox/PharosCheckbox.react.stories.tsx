@@ -125,7 +125,7 @@ export const Validity: Story = {
 export const IsOnBackground: Story = {
   name: 'On background',
   render: () => (
-    <div style={{ backgroundColor: "#000000", padding: "1rem" }}>
+    <div style={{ backgroundColor: '#000000', padding: '1rem' }}>
       <div className="checkbox-example__container--is-on-background">
         <PharosCheckbox name="is-on-background" isOnBackground>
           <span slot="label">Unchecked</span>

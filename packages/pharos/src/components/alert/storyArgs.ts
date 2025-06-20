@@ -10,7 +10,7 @@ export const argTypes = {
 export interface ComponentArgs {
   status: AlertStatus;
   closable?: boolean;
-};
+}
 
 export type StoryArgs = ComponentArgs & {
   text: string;

@@ -1,2 +1,2 @@
-export interface ComponentArgs {};
+export interface ComponentArgs {}
 export type StoryArgs = ComponentArgs & {};

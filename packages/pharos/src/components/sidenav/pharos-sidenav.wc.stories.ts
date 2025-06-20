@@ -2,7 +2,6 @@ import { html } from 'lit';
 
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import logo from '../../utils/_storybook/assets/images/jstor-logo-inverse.svg';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
 
@@ -31,8 +30,8 @@ export const Base: Story = {
     ></storybook-pharos-button>
     <storybook-pharos-sidenav
       id="storybook-sidenav"
-      .open=${ifDefined(args.open)}
-      .has-close-button=${ifDefined(args.hasCloseButton)}
+      .open=${args.open}
+      .has-close-button=${args.hasCloseButton}
     >
       <storybook-pharos-link slot="top" href="/" id="jstor-logo">
         <img src="${logo}" alt="Pharos Home" width="72" height="100" />

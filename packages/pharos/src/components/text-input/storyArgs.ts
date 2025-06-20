@@ -13,7 +13,7 @@ export interface ComponentArgs {
   disabled?: boolean;
   readonly?: boolean;
   value?: string;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

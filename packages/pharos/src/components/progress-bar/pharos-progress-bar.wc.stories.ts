@@ -1,7 +1,13 @@
 import { html } from 'lit';
 
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
-import { defaultArgs, indeterminateArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
+import {
+  defaultArgs,
+  indeterminateArgs,
+  argTypes,
+  type ComponentArgs,
+  type StoryArgs,
+} from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
 
 const meta = {

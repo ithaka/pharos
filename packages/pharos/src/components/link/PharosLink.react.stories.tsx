@@ -63,7 +63,10 @@ export const VisitedLinkHeadin: Story = {
   render: () => (
     <div style={{ marginBottom: '1rem' }}>
       <PharosLink href="https://www.google.com" target="_blank" indicateVisited>
-        <PharosHeading level={1} preset="5"> Visited link heading </PharosHeading>
+        <PharosHeading level={1} preset="5">
+          {' '}
+          Visited link heading{' '}
+        </PharosHeading>
       </PharosLink>
     </div>
   ),
@@ -73,9 +76,7 @@ export const Button: Story = {
   render: () => (
     <Fragment>
       <div style={{ marginBottom: '1rem' }}>
-        <PharosLink>
-          I am a button
-        </PharosLink>
+        <PharosLink>I am a button</PharosLink>
       </div>
       <div
         style={{
@@ -84,9 +85,7 @@ export const Button: Story = {
           marginBottom: '1rem',
         }}
       >
-        <PharosLink isOnBackground>
-          On compliant background
-        </PharosLink>
+        <PharosLink isOnBackground>On compliant background</PharosLink>
       </div>
     </Fragment>
   ),
@@ -96,9 +95,7 @@ export const Variants: Story = {
   render: () => (
     <Fragment>
       <div style={{ marginBottom: '1rem' }}>
-        <PharosLink href="#">
-          Primary link
-        </PharosLink>
+        <PharosLink href="#">Primary link</PharosLink>
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <PharosLink href="#" subtle>
@@ -106,9 +103,7 @@ export const Variants: Story = {
         </PharosLink>
       </div>
       <div style={{ width: '100px', marginBottom: '1rem' }}>
-        <PharosLink href="#">
-          I have text that spans multiple lines
-        </PharosLink>
+        <PharosLink href="#">I have text that spans multiple lines</PharosLink>
       </div>
       <div
         style={{

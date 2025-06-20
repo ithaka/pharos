@@ -69,7 +69,8 @@ export const Base: Story = {
 export const Events: Story = {
   render: () => html`
     <storybook-pharos-toggle-button-group
-      @pharos-toggle-button-selected="${(e: CustomEvent) => action('Selected')((e.target as PharosToggleButtonGroup).id)}"
+      @pharos-toggle-button-selected="${(e: CustomEvent) =>
+        action('Selected')((e.target as PharosToggleButtonGroup).id)}"
     >
       <storybook-pharos-toggle-button id="list-mode-button" icon-left="view-list">
         List </storybook-pharos-toggle-button

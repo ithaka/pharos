@@ -56,7 +56,9 @@ export const VisitedLinkHeading: Story = {
   render: () => html`
     <div style="margin-bottom: 1rem">
       <storybook-pharos-link href="https://www.google.com" target="_blank" indicate-visited>
-        <pharos-heading level="1" preset="5"> Visited link heading </storybook-pharos-heading>
+        <storybook-pharos-heading level="1" preset="5"
+          >Visited link heading</storybook-pharos-heading
+        >
       </storybook-pharos-link>
     </div>
   `,
@@ -68,9 +70,7 @@ export const Button: Story = {
       <storybook-pharos-link>I am a button</storybook-pharos-link>
     </div>
     <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
-      <storybook-pharos-link is-on-background
-        >On compliant background</storybook-pharos-link
-      >
+      <storybook-pharos-link is-on-background>On compliant background</storybook-pharos-link>
     </div>
   `,
 };
@@ -84,9 +84,7 @@ export const Variants: Story = {
       <storybook-pharos-link href="#" subtle>Subtle link</storybook-pharos-link>
     </div>
     <div style="width:100px; margin-bottom: 1rem">
-      <storybook-pharos-link href="#"
-        >I have text that spans multiple lines</storybook-pharos-link
-      >
+      <storybook-pharos-link href="#">I have text that spans multiple lines</storybook-pharos-link>
     </div>
     <div style="background-color: #000000; padding: 1rem; margin-bottom: 1rem">
       <storybook-pharos-link href="#" is-on-background

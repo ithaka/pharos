@@ -1,6 +1,12 @@
 import { PharosProgressBar } from '../../react-components';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
-import { defaultArgs, indeterminateArgs, argTypes, type StoryArgs, type ComponentArgs } from './storyArgs';
+import {
+  defaultArgs,
+  indeterminateArgs,
+  argTypes,
+  type StoryArgs,
+  type ComponentArgs,
+} from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 

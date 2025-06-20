@@ -72,14 +72,18 @@ export const Base: Story = {
           >
             <span>Access provided by&nbsp;</span>
             <span style="font-weight: bold">JSTOR</span>
-            <storybook-pharos-icon name="chevron-down" style="margin-left: 1rem"  a11y-hidden="true"></storybook-pharos-icon>
+            <storybook-pharos-icon
+              name="chevron-down"
+              style="margin-left: 1rem"
+              a11y-hidden="true"
+            ></storybook-pharos-icon>
           </div>
           <storybook-pharos-dropdown-menu id="pds-menu" placement="bottom">
             <div style="padding: 1rem">
               <p>
                 Please contact
-                <storybook-pharos-link href="//jstor.org">JSTOR</storybook-pharos-link> for additional help and
-                information.
+                <storybook-pharos-link href="//jstor.org">JSTOR</storybook-pharos-link> for
+                additional help and information.
               </p>
             </div>
           </storybook-pharos-dropdown-menu>
@@ -106,11 +110,14 @@ export const Base: Story = {
             ></storybook-pharos-button>
           </storybook-pharos-input-group>
         </div>
-        <div slot="end-top"">
+        <div slot="end-top">
           <div>${accountNav('end')}</div>
         </div>
         <div slot="end-bottom" style="display: flex;">
-          <storybook-pharos-dropdown-menu-nav ally-label="main navigation" style="display: inline-block">
+          <storybook-pharos-dropdown-menu-nav
+            ally-label="main navigation"
+            style="display: inline-block"
+          >
             <storybook-pharos-dropdown-menu-nav-link
               href="action/showAdvancedSearch"
               id="adv-search-link"
@@ -120,12 +127,13 @@ export const Base: Story = {
               id="browse-link"
               data-dropdown-menu-id="browse-menu"
               data-dropdown-menu-hover
-              >
-                <span slot="category">Browse</span>
-              </storybook-pharos-dropdown-menu-nav-category
             >
+              <span slot="category">Browse</span>
+            </storybook-pharos-dropdown-menu-nav-category>
             <storybook-pharos-dropdown-menu id="browse-menu">
-              <storybook-pharos-dropdown-menu-item link="/subjects">by Subject</storybook-pharos-dropdown-menu-item>
+              <storybook-pharos-dropdown-menu-item link="/subjects"
+                >by Subject</storybook-pharos-dropdown-menu-item
+              >
               <storybook-pharos-dropdown-menu-item link="/action/showJournals?browseType=title"
                 >by Title</storybook-pharos-dropdown-menu-item
               >
@@ -140,10 +148,9 @@ export const Base: Story = {
               id="tools-link"
               data-dropdown-menu-id="tools-menu"
               data-dropdown-menu-hover
-              >
-                <span slot="category">Tools</span>
-              </storybook-pharos-dropdown-menu-nav-category
             >
+              <span slot="category">Tools</span>
+            </storybook-pharos-dropdown-menu-nav-category>
             <storybook-pharos-dropdown-menu id="tools-menu">
               <storybook-pharos-dropdown-menu-item link="/account/workspace"
                 >Workspace</storybook-pharos-dropdown-menu-item

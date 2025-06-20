@@ -1,4 +1,4 @@
-import type { LinkTarget } from "./pharos-link";
+import type { LinkTarget } from './pharos-link';
 
 export interface ComponentArgs {
   a11yLabel?: string;

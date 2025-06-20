@@ -136,7 +136,7 @@ export const CustomErrorMessage: Story = {
 export const FormData: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
-      <form name="my-form" action="https://httpbin.org/post" method="POST">
+      <form name="my-form" action="https://httpbin.org/post" method="post">
         <storybook-pharos-text-input
           style="margin-bottom: 0.5rem;"
           name="my-text-input"

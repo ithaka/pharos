@@ -35,8 +35,10 @@ export const Base: Story = {
     const effect = () => {
       useEffect(() => {
         setTimeout(() => {
-          const button = document.querySelector('#my-button')
-          if (button) { button.dispatchEvent(new Event('mouseenter')); }
+          const button = document.querySelector('#my-button');
+          if (button) {
+            button.dispatchEvent(new Event('mouseenter'));
+          }
         }, 700);
       });
     };

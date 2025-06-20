@@ -54,7 +54,7 @@ export const Scoped: Story = {
 
 export const OnBackground: Story = {
   render: () => (
-    <div style={{height: "5rem", width: "5rem", background: "black", position: "relative"}}>
+    <div style={{ height: '5rem', width: '5rem', background: 'black', position: 'relative' }}>
       <PharosLoadingSpinner is-on-background></PharosLoadingSpinner>
     </div>
   ),
@@ -62,7 +62,7 @@ export const OnBackground: Story = {
 
 export const Small: Story = {
   render: () => (
-    <div style={{height: "5rem", width: "5rem", position: "relative"}}>
+    <div style={{ height: '5rem', width: '5rem', position: 'relative' }}>
       <PharosLoadingSpinner small></PharosLoadingSpinner>
     </div>
   ),
@@ -70,7 +70,7 @@ export const Small: Story = {
 
 export const SmallOnBackground: Story = {
   render: () => (
-    <div style={{height: "5rem", width: "5rem", background: "black", position: "relative"}}>
+    <div style={{ height: '5rem', width: '5rem', background: 'black', position: 'relative' }}>
       <PharosLoadingSpinner small is-on-background></PharosLoadingSpinner>
     </div>
   ),

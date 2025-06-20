@@ -35,41 +35,48 @@ export const Base: Story = {
 };
 
 export const States: Story = {
-  render: () =>
-    html`
-      <div>
-        <storybook-pharos-radio-button name="base"><span slot="label">Default Radio Button</span></storybook-pharos-radio-button>
-      </div>
-      <div>
-        <storybook-pharos-radio-button name="disabled" disabled><span slot="label">Disabled input</span></storybook-pharos-radio-button>
-      </div>
-      <div>
-        <storybook-pharos-radio-button name="checked" checked><span slot="label">Checked button</span></storybook-pharos-radio-button>
-      </div>
-      <div>
-        <storybook-pharos-radio-button name="checked-disabled" checked disabled>
-          <span slot="label">Checked & Disabled</span>
-        </storybook-pharos-radio-button>
-      </div>
-      <div>
-        <storybook-pharos-radio-button name="multi" checked>
-          <div slot="label">
-            <div>Checked button</div>
-            <div>Multiple lines</div>
-          </div>
-        </storybook-pharos-radio-button>
-      </div>
-      <div>
-        <storybook-pharos-radio-button name="invalidated" invalidated><span slot="label">Error button</span></storybook-pharos-checkbox>
-      </div>
-      <div>
-        <storybook-pharos-radio-button name="with-link">
-          <span slot="label">
-            Label with a <storybook-pharos-link href="#">link</storybook-pharos-link>
-          </span>
-        </storybook-pharos-radio-button>
-      </div>
-    `,
+  render: () => html`
+    <div>
+      <storybook-pharos-radio-button name="base"
+        ><span slot="label">Default Radio Button</span></storybook-pharos-radio-button
+      >
+    </div>
+    <div>
+      <storybook-pharos-radio-button name="disabled" disabled
+        ><span slot="label">Disabled input</span></storybook-pharos-radio-button
+      >
+    </div>
+    <div>
+      <storybook-pharos-radio-button name="checked" checked
+        ><span slot="label">Checked button</span></storybook-pharos-radio-button
+      >
+    </div>
+    <div>
+      <storybook-pharos-radio-button name="checked-disabled" checked disabled>
+        <span slot="label">Checked & Disabled</span>
+      </storybook-pharos-radio-button>
+    </div>
+    <div>
+      <storybook-pharos-radio-button name="multi" checked>
+        <div slot="label">
+          <div>Checked button</div>
+          <div>Multiple lines</div>
+        </div>
+      </storybook-pharos-radio-button>
+    </div>
+    <div>
+      <storybook-pharos-radio-button name="invalidated" invalidated
+        ><span slot="label">Error button</span></storybook-pharos-radio-button
+      >
+    </div>
+    <div>
+      <storybook-pharos-radio-button name="with-link">
+        <span slot="label">
+          Label with a <storybook-pharos-link href="#">link</storybook-pharos-link>
+        </span>
+      </storybook-pharos-radio-button>
+    </div>
+  `,
 };
 
 export const Events: Story = {

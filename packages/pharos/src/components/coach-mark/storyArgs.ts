@@ -1,4 +1,4 @@
-import type { Alignment, Delay, Side, Variant } from "./pharos-coach-mark";
+import type { Alignment, Delay, Side, Variant } from './pharos-coach-mark';
 
 export interface ComponentArgs {
   hide?: boolean;
@@ -8,7 +8,7 @@ export interface ComponentArgs {
   delay?: Delay;
   variant?: Variant;
   width?: string;
-};
+}
 
 export type StoryArgs = ComponentArgs & {};
 

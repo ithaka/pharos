@@ -52,7 +52,9 @@ export const Events: Story = {
           <storybook-pharos-button
             @click="${() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              if (menu) { (menu as PharosPopover).open = false; }
+              if (menu) {
+                (menu as PharosPopover).open = false;
+              }
             }}"
           >
             Close
@@ -82,7 +84,9 @@ export const DarkPopover: Story = {
             is-on-background
             @click="${() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              if (menu) { (menu as PharosPopover).open = false; }
+              if (menu) {
+                (menu as PharosPopover).open = false;
+              }
             }}"
           >
             Close
@@ -113,7 +117,9 @@ export const DarkPopoverOnBackground: Story = {
             is-on-background
             @click="${() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              if (menu) { (menu as PharosPopover).open = false; }
+              if (menu) {
+                (menu as PharosPopover).open = false;
+              }
             }}"
           >
             Close
@@ -154,7 +160,9 @@ export const LargeContents: Story = {
           <storybook-pharos-button
             @click="${() => {
               const menu = document.querySelector('storybook-pharos-popover');
-              if (menu) { (menu as PharosPopover).open = false; }
+              if (menu) {
+                (menu as PharosPopover).open = false;
+              }
             }}"
           >
             Close

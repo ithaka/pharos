@@ -25,15 +25,15 @@ type Story = StoryObj<StoryArgs>;
 export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-combobox
-      .value=${ifDefined(args.value)}
-      .name=${ifDefined(args.name)}
+      .value=${args.value}
+      .name=${args.name}
       .open=${args.open}
       .loose-match=${args.looseMatch}
       .disabled=${args.disabled}
       .hide-label=${args.hideLabel}
       .invalidated=${args.invalidated}
       .validated=${args.validated}
-      .placeholder=${ifDefined(args.placeholder)}
+      .placeholder=${args.placeholder}
       message=${ifDefined(args.message)}
       .required=${args.required}
       style="display: grid; grid-template-columns: 300px;"
@@ -108,7 +108,7 @@ export const Events: Story = {
       <storybook-pharos-combobox
         placeholder="Select a state"
         @change="${(e: ChangeEvent) => action('Change')((e.target as HTMLInputElement).value)}"
-        @input="${(e: InputEvent) => action('Input')((e.target as PharosCombobox)["_input"].value)}"
+        @input="${(e: InputEvent) => action('Input')((e.target as PharosCombobox)['_input'].value)}"
       >
         <span slot="label">Events fire on selection</span>
         <option value="NH">New Hampshire</option>
@@ -152,7 +152,7 @@ export const Validity: Story = {
         name="my-combobox"
         placeholder="Enter some text"
         @change="${(e: ChangeEvent) => action('Change')((e.target as HTMLInputElement).value)}"
-        @input="${(e: InputEvent) => action('Input')((e.target as PharosCombobox)["_input"].value)}"
+        @input="${(e: InputEvent) => action('Input')((e.target as PharosCombobox)['_input'].value)}"
         .required="${args.required}"
         .invalidated="${args.invalidated}"
         .validated="${args.validated}"
@@ -176,13 +176,14 @@ export const Validity: Story = {
 export const FormData: Story = {
   render: () => html`
     <div style="display: grid; grid-template-columns: 300px;">
-      <form name="my-form" action="https://httpbin.org/post" method="POST">
+      <form name="my-form" action="https://httpbin.org/post" method="post">
         <storybook-pharos-combobox
           name="my-combobox"
           style="margin-bottom: 0.5rem;"
           placeholder="Enter some text"
           @change="${(e: ChangeEvent) => action('Change')((e.target as HTMLInputElement).value)}"
-          @input="${(e: InputEvent) => action('Input')((e.target as PharosCombobox)["_input"].value)}"
+          @input="${(e: InputEvent) =>
+            action('Input')((e.target as PharosCombobox)['_input'].value)}"
           required
         >
           <span slot="label">Test me out</span>

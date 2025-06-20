@@ -34,9 +34,9 @@ export const Base: Story = {
     </storybook-pharos-button>
     <storybook-pharos-modal
       id="my-base-modal"
-      .footer-divider=${ifDefined(args.footerDivider)}
+      .footer-divider=${args.footerDivider}
       header=${ifDefined(args.header)}
-      .open=${ifDefined(args.open)}
+      .open=${args.open}
       size=${ifDefined(args.size)}
     >
       <p>I am a modal</p>
@@ -48,7 +48,9 @@ export const Base: Story = {
         type="button"
         @click="${() => {
           const modal = document.querySelector('pharos-modal');
-          if (modal) { (modal as PharosModal).open = false; }
+          if (modal) {
+            (modal as PharosModal).open = false;
+          }
         }}"
       >
         Ok
@@ -66,7 +68,9 @@ export const NoFooter: Story = {
       @click="${(e: MouseEvent) => {
         (e.target as PharosButton).focus();
         const modal = document.querySelector('pharos-modal');
-        if (modal) { (modal as PharosModal).open = true; }
+        if (modal) {
+          (modal as PharosModal).open = true;
+        }
       }}"
     >
       Open modal

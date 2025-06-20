@@ -1,6 +1,5 @@
 import { html } from 'lit';
 import { action } from 'storybook/actions';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 import createFormData from '../../utils/createFormData';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
@@ -32,7 +31,7 @@ export const Base: Story = {
         .invalidated=${args.invalidated}
         .message=${args.message}
         .placeholder=${args.placeholder}
-        .resize="${ifDefined(args.resize)}"
+        .resize="${args.resize}"
         .readonly=${args.readonly}
         .required=${args.required}
         .rows="${args.rows}"
@@ -128,7 +127,7 @@ export const CustomErrorMessage: Story = {
 export const FormData: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 350px;">
-      <form name="my-form" action="https://httpbin.org/post" method="POST">
+      <form name="my-form" action="https://httpbin.org/post" method="post">
         <storybook-pharos-textarea
           name="my-textarea"
           placeholder="Enter some text"

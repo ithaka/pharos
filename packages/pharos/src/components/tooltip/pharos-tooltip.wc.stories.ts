@@ -1,5 +1,4 @@
 import { html } from 'lit';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { useEffect } from 'storybook/preview-api';
 
 import { defaultArgs, argTypes, type StoryArgs, type ComponentArgs } from './storyArgs';
@@ -26,7 +25,9 @@ export const Base: Story = {
       useEffect(() => {
         setTimeout(() => {
           const button = document.querySelector('#my-button');
-          if (button) { button.dispatchEvent(new Event('mouseenter')); }
+          if (button) {
+            button.dispatchEvent(new Event('mouseenter'));
+          }
         }, 700);
       });
     };
@@ -40,7 +41,7 @@ export const Base: Story = {
           id="${args.id}"
           .fullWidth="${args.fullWidth}"
           .open="${args.open}"
-          .placement="${ifDefined(args.placement)}"
+          .placement="${args.placement}"
           .fallbackPlacements="${args.fallbackPlacements}"
           >${args.tooltipText}
         </storybook-pharos-tooltip>

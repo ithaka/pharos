@@ -11,10 +11,9 @@ export interface ComponentArgs {
   required?: boolean;
   validated?: boolean;
   value?: string;
-};
+}
 
-export type StoryArgs = ComponentArgs & {
-};
+export type StoryArgs = ComponentArgs & {};
 
 export const defaultArgs: StoryArgs = {
   checked: false,

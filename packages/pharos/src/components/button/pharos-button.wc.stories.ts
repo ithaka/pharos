@@ -30,7 +30,7 @@ export const Base: Story = {
       .iconCondensed=${args.iconCondensed}
       icon-left=${ifDefined(args.iconLeft)}
       icon-right=${ifDefined(args.iconRight)}
-      .fullWidth=${ifDefined(args.fullWidth)}
+      .fullWidth=${args.fullWidth}
       href=${ifDefined(args.href)}
       hreflang=${ifDefined(args.hreflang)}
       a11y-label=${ifDefined(args.a11yLabel)}
@@ -242,7 +242,7 @@ export const Link: Story = {
 export const Forms: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
-      <form name="my-form" action="https://httpbin.org/post" method="POST">
+      <form name="my-form" action="https://httpbin.org/post" method="post">
         <storybook-pharos-text-input name="my-text-input" required>
           <span slot="label">Name</span>
         </storybook-pharos-text-input>
