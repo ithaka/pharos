@@ -2,11 +2,13 @@ import { Fragment } from 'react';
 import { action } from 'storybook/actions';
 
 import { PharosRadioButton, PharosLink } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
+import type { PharosRadioButton as PRBType } from './pharos-radio-button';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-export default {
+const meta = {
   title: 'Forms/Radio Button',
   component: PharosRadioButton,
   decorators: [
@@ -20,9 +22,12 @@ export default {
     docs: { page: configureDocsPage('radio-button') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => (
     <PharosRadioButton
       checked={args.checked}
@@ -38,7 +43,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () => (
     <Fragment>
       <div>
@@ -87,7 +92,7 @@ export const States = {
   ),
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => (
     <div
       style={{
@@ -98,9 +103,9 @@ export const Events = {
     >
       <PharosRadioButton
         value="My value"
-        onChange={(e) => action('Change')(e.target.checked)}
-        onInput={(e) => action('Input')(e.target.value)}
-        onClick={(e) => action('Click')(e.target.checked)}
+        onChange={(e) => action('Change')((e.target as PRBType).checked)}
+        onInput={(e) => action('Input')((e.target as PRBType).value)}
+        onClick={(e) => action('Click')((e.target as PRBType).checked)}
       >
         <span slot="label">I fire events</span>
       </PharosRadioButton>
@@ -109,7 +114,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,

@@ -1,18 +1,24 @@
 import { html } from 'lit';
 import { action } from 'storybook/actions';
 
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { ChangeEvent } from 'react';
+import type { PharosRadioButton } from './pharos-radio-button';
 
-export default {
+const meta = {
   title: 'Forms/Radio Button',
   parameters: {
     docs: { page: configureDocsPage('radio-button') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-radio-button
       .checked=${args.checked}
@@ -28,7 +34,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const States = {
+export const States: Story = {
   render: () =>
     html`
       <div>
@@ -66,13 +72,13 @@ export const States = {
     `,
 };
 
-export const Events = {
+export const Events: Story = {
   render: () => html`
     <storybook-pharos-radio-button
       value="My value"
-      @change="${(e) => action('Change')(e.target.checked)}"
-      @input="${(e) => action('Input')(e.target.value)}"
-      @click="${(e) => action('Click')(e.target.checked)}"
+      @change="${(e: ChangeEvent) => action('Change')((e.target as PharosRadioButton).checked)}"
+      @input="${(e: InputEvent) => action('Input')((e.target as PharosRadioButton).value)}"
+      @click="${(e: MouseEvent) => action('Click')((e.target as PharosRadioButton).checked)}"
     >
       <span slot="label">I fire events</span>
     </storybook-pharos-radio-button>
@@ -80,7 +86,7 @@ export const Events = {
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
 };
 
-export const Validity = {
+export const Validity: Story = {
   ...Base,
   args: {
     ...Base.args,
