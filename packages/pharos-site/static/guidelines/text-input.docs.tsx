@@ -281,7 +281,8 @@ const TextInputPage: FC = () => {
               <ul>
                 <li>
                   {' '}
-                  &lt;label for="fieldname" class="visuallyhideen"&gt;Field name: &lt;/label&gt;{' '}
+                  &lt;label for="fieldname" class="visuallyhideen"&gt;Field name:
+                  &lt;/label&gt;{' '}
                 </li>
                 <li> &lt;input type="text" name="fieldname" id="fieldname"&gt; </li>
                 <li>

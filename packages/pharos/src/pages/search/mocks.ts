@@ -1,8 +1,8 @@
-import result1 from '@config/assets/images/search/result_1.png';
-import result2 from '@config/assets/images/search/result_2.png';
-import result3 from '@config/assets/images/search/result_3.png';
-import result4 from '@config/assets/images/search/result_4.png';
-import result5 from '@config/assets/images/search/result_5.png';
+import result1 from '../../utils/_storybook/assets/images/search/result_1.png';
+import result2 from '../../utils/_storybook/assets/images/search/result_2.png';
+import result3 from '../../utils/_storybook/assets/images/search/result_3.png';
+import result4 from '../../utils/_storybook/assets/images/search/result_4.png';
+import result5 from '../../utils/_storybook/assets/images/search/result_5.png';
 
 export const imageResults = [
   {

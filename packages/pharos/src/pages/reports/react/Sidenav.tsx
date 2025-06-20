@@ -5,7 +5,7 @@ import { PharosLink } from '../../../react-components/link/pharos-link';
 import { PharosSidenavSection } from '../../../react-components/sidenav/pharos-sidenav-section';
 import { PharosSidenavLink } from '../../../react-components/sidenav/pharos-sidenav-link';
 import { PharosSidenavMenu } from '../../../react-components/sidenav/pharos-sidenav-menu';
-import logo from '@config/assets/images/jstor-logo-inverse.svg';
+import logo from '../../../utils/_storybook/assets/images/jstor-logo-inverse.svg';
 export interface SideNavProps {
   open: boolean;
   showCloseButton: boolean;

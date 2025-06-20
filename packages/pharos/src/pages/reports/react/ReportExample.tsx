@@ -3,7 +3,7 @@ import { Sidenav } from './Sidenav';
 import { CreateReportModal } from './CreateReportModal';
 import { ReportsTable } from './ReportsTable';
 import { historyTable, scheduledTable } from '../mocks';
-import logo from '@config/assets/images/reports/jstor-horizontal.svg';
+import logo from '../../../utils/_storybook/assets/images/reports/jstor-horizontal.svg';
 
 import {
   PharosHeading,

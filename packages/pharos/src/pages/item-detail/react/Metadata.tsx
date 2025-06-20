@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { item, metadata } from '../mocks';
 
 import { PharosHeading } from '../../../react-components/heading/pharos-heading';
-import logo from '@config/assets/images/item-detail/portal-logo.png';
+import logo from '../../../utils/_storybook/assets/images/item-detail/portal-logo.png';
 
 export const Metadata: FC = () => (
   <div className="item-detail-page__container--metadata">

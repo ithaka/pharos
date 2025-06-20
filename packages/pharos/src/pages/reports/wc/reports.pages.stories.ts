@@ -16,6 +16,8 @@ export default {
   },
 };
 export const Reports = (): TemplateResult => {
-  customElements.define('reports-example', ReportsExample);
+  if (!customElements.get('reports-example')) {
+    customElements.define('reports-example', ReportsExample);
+  }
   return html`<reports-example></reports-example>`;
 };

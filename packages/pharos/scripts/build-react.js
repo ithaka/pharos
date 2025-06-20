@@ -55,7 +55,7 @@ const createComponentInterface = (reactName) => {
       });
 
   return props || events
-    ? `interface ${reactName}Props extends ${REACT_PROP_TYPE} {\n` +
+    ? `export interface ${reactName}Props extends ${REACT_PROP_TYPE} {\n` +
         `${(props || []).join('')}` +
         `${(events || []).join('')}` +
         `}`
@@ -96,7 +96,7 @@ const setup = async () => {
 
 export const buildReact = async () => {
   for await (const componentPath of globbyStream(
-    './src/components/**/pharos-!(*.css|*.test|element)*.ts'
+    './src/components/**/pharos-!(*.css|*.test|element|*.stories)*.ts'
   )) {
     const dest = componentPath.replace('/components/', '/react-components/').replace('.ts', '.tsx');
     const webComponentFilePath = componentPath.split('components/')[1].split('.ts')[0];

@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
-import logo from '@config/assets/images/jstor-logo.svg';
+import logo from '../../../utils/_storybook/assets/images/jstor-logo.svg';
 
 const accountNav = (section: string) => html`
   <storybook-pharos-dropdown-menu-nav label="profile">

@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
-import logo from '@config/assets/images/jstor-logo-inverse.svg';
+import logo from '../../../utils/_storybook/assets/images/jstor-logo-inverse.svg';
 
 export const Sidenav = (open: boolean, showCloseButton: boolean): TemplateResult => html`
   <storybook-pharos-sidenav

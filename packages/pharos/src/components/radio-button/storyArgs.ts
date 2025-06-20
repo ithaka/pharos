@@ -1,4 +1,16 @@
-export const defaultArgs = {
+export interface ComponentArgs {
+  label?: string;
+  checked?: boolean;
+  disabled?: boolean;
+  hideLabel?: boolean;
+  invalidated?: boolean;
+  required?: boolean;
+  message?: string;
+}
+
+export type StoryArgs = ComponentArgs & {};
+
+export const defaultArgs: StoryArgs = {
   label: 'Default Radio Button',
   checked: false,
   disabled: false,

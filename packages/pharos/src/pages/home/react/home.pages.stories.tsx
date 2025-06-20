@@ -11,7 +11,7 @@ import { PharosSpacing7X } from '../../../styles/variables';
 
 import { PharosHeading, PharosLink, PharosLayout } from '../../../react-components';
 import { PharosContext } from '../../../utils/PharosContext';
-import hero from '@config/assets/images/home/hero.jpg';
+import hero from '../../../utils/_storybook/assets/images/home/hero.jpg';
 
 export default {
   title: 'Pages/Home',

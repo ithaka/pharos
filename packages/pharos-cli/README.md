@@ -4,7 +4,7 @@
 
 - [Getting started](#getting-started)
 - [Usage](#usage)
-  * [Example](#example)
+  - [Example](#example)
 
 <!-- tocstop -->
 

@@ -9,7 +9,7 @@ import { PharosDropdownMenu } from '../../../react-components/dropdown-menu/phar
 import { PharosDropdownMenuItem } from '../../../react-components/dropdown-menu/pharos-dropdown-menu-item';
 import { PharosButton } from '../../../react-components/button/pharos-button';
 import { PharosInputGroup } from '../../../react-components/input-group/pharos-input-group';
-import logo from '@config/assets/images/jstor-logo.svg';
+import logo from '../../../utils/_storybook/assets/images/jstor-logo.svg';
 
 export interface Header {
   showSearch?: boolean;

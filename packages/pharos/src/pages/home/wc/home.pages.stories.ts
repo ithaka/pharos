@@ -9,7 +9,7 @@ import { CollectionCard } from './collection-card';
 import { HeroSearch } from './hero-search';
 import { publicCollectionCards, communityCollectionCards } from '../mocks';
 import { PharosSpacing7X } from '../../../styles/variables';
-import hero from '@config/assets/images/home/hero.jpg';
+import hero from '../../../utils/_storybook/assets/images/home/hero.jpg';
 
 export default {
   title: 'Pages/Home',

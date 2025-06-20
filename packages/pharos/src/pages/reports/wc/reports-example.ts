@@ -3,7 +3,7 @@ import { ReportsTable } from './reports-table';
 import { historyTable, scheduledTable } from '../mocks';
 import { CreateReportModal } from './create-report-modal';
 import { Sidenav } from './sidenav';
-import logo from '@config/assets/images/reports/jstor-horizontal.svg';
+import logo from '../../../utils/_storybook/assets/images/reports/jstor-horizontal.svg';
 export class ReportsExample extends LitElement {
   override createRenderRoot() {
     // Keep example element in the light DOM to allow sharing styles with React story
