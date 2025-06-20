@@ -1,18 +1,22 @@
 import { html } from 'lit';
-import { defaultArgs } from './storyArgs';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import type { Meta, StoryObj } from '@storybook/web-components';
 
-export default {
+const meta = {
   title: 'Components/Table',
   component: 'pharos-table',
   parameters: {
     docs: { page: configureDocsPage('table') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-const getSampleTextRow = (rowId) =>
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+const getSampleTextRow = (rowId: number) =>
   html`<storybook-pharos-table-row>
     <storybook-pharos-table-cell>${rowId}</storybook-pharos-table-cell>
     <storybook-pharos-table-cell>123456.jpg</storybook-pharos-table-cell>
@@ -78,7 +82,7 @@ const sampleNonTextRow = html` <storybook-pharos-table-row>
   </storybook-pharos-table-cell>
 </storybook-pharos-table-row>`;
 
-export const Base = {
+export const Base: Story = {
   render: ({ columns, showPagination }) => html`
     <storybook-pharos-table
       .columns="${columns}"
@@ -96,7 +100,7 @@ export const Base = {
   },
 };
 
-export const HTMLContent = {
+export const HTMLContent: Story = {
   render: ({ showPagination }) => html`
     <storybook-pharos-table
       .columns="${[
@@ -135,7 +139,7 @@ export const HTMLContent = {
   },
 };
 
-export const HiddenCaption = {
+export const HiddenCaption: Story = {
   render: ({ columns, showPagination }) => html`
     <storybook-pharos-table
       .columns="${columns}"
@@ -154,7 +158,7 @@ export const HiddenCaption = {
   },
 };
 
-export const StickyHeader = {
+export const StickyHeader: Story = {
   render: ({ columns }) => html`
     <storybook-pharos-table
       .columns="${columns}"
@@ -172,8 +176,8 @@ export const StickyHeader = {
   },
 };
 
-export const RowData = {
-  render: ({ columns, rowData, showPagination }) => html`
+export const RowData: Story = {
+  render: ({ columns, showPagination }) => html`
     <storybook-pharos-table
       .columns="${columns}"
       .rowData="${[
@@ -223,7 +227,7 @@ export const RowData = {
   },
 };
 
-export const RowDataWithPagination = {
+export const RowDataWithPagination: Story = {
   render: ({ columns, showPagination }) => html`
     <storybook-pharos-table
       .columns="${columns}"
@@ -276,7 +280,7 @@ export const RowDataWithPagination = {
   },
 };
 
-export const TableWithCustomHeader = {
+export const TableWithCustomHeader: Story = {
   render: ({ showPagination }) => html`
     <storybook-pharos-table
       .showPagination="${showPagination}"

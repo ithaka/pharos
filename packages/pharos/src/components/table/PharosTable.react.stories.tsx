@@ -1,3 +1,4 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   PharosTable,
   PharosTableBody,
@@ -8,11 +9,11 @@ import {
   PharosToggleButton,
   PharosToggleButtonGroup,
 } from '../../react-components';
-import { configureDocsPage } from '@config/docsPageConfig';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
-import { defaultArgs } from './storyArgs';
+import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 
-export default {
+const meta = {
   title: 'Components/Table',
   component: PharosTable,
   decorators: [
@@ -26,9 +27,12 @@ export default {
     docs: { page: configureDocsPage('table') },
     options: { selectedPanel: 'addon-controls' },
   },
-};
+} satisfies Meta<ComponentArgs>;
 
-const getSampleTextRow = (rowId) => (
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+const getSampleTextRow = (rowId: number) => (
   <PharosTableRow key={rowId}>
     <PharosTableCell>{rowId}</PharosTableCell>
     <PharosTableCell>123456.jpg</PharosTableCell>
@@ -82,7 +86,8 @@ const sampleNonTextRow = (
     </PharosTableCell>
   </PharosTableRow>
 );
-export const Base = {
+
+export const Base: Story = {
   render: ({ columns, showPagination }) => (
     <PharosTable columns={columns} showPagination={showPagination} caption="An example table">
       <PharosTableBody>
@@ -96,7 +101,7 @@ export const Base = {
   },
 };
 
-export const HTMLContent = {
+export const HTMLContent: Story = {
   render: ({ showPagination }) => (
     <PharosTable
       columns={[
@@ -118,7 +123,7 @@ export const HTMLContent = {
   },
 };
 
-export const HiddenCaption = {
+export const HiddenCaption: Story = {
   render: ({ columns, showPagination }) => (
     <PharosTable
       columns={columns}
@@ -137,7 +142,7 @@ export const HiddenCaption = {
   },
 };
 
-export const StickyHeader = {
+export const StickyHeader: Story = {
   render: ({ columns }) => (
     <PharosTable columns={columns} hasStickyHeader caption="A sticky header example">
       <PharosTableBody>
@@ -151,8 +156,8 @@ export const StickyHeader = {
   },
 };
 
-export const RowData = {
-  render: ({ columns, rowData, showPagination }) => (
+export const RowData: Story = {
+  render: ({ columns, showPagination }) => (
     <PharosTable
       columns={columns}
       rowData={[
@@ -202,7 +207,7 @@ export const RowData = {
   },
 };
 
-export const RowDataWithPagination = {
+export const RowDataWithPagination: Story = {
   render: ({ columns, showPagination }) => (
     <PharosTable
       columns={columns}
