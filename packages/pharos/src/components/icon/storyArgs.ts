@@ -9,7 +9,7 @@ export interface ComponentArgs {
 
 export type StoryArgs = ComponentArgs & {};
 
-export const defaultArgs = {
+export const defaultArgs: StoryArgs = {
   name: 'checkmark' as IconName,
   a11yTitle: 'checkmark',
   a11yHidden: 'false' as AriaHiddenState,

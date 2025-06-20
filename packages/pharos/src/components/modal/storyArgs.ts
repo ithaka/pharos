@@ -9,7 +9,7 @@ export interface ComponentArgs {
 
 export type StoryArgs = ComponentArgs & {};
 
-export const defaultArgs = {
+export const defaultArgs: StoryArgs = {
   size: 'medium' as ModalSize,
   open: false,
   footerDivider: true,

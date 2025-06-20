@@ -6,7 +6,7 @@ export interface ComponentArgs {
 
 export type StoryArgs = ComponentArgs & {};
 
-export const defaultArgs = {
+export const defaultArgs: StoryArgs = {
   error: false,
   subtle: false,
   indicateLinkVisited: false,

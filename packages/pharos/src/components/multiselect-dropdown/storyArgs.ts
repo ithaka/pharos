@@ -11,7 +11,7 @@ export interface ComponentArgs {
 
 export type StoryArgs = ComponentArgs & {};
 
-export const defaultArgs = {
+export const defaultArgs: StoryArgs = {
   label: 'Cities in Michigan',
   displayCharacterCount: 40,
   hideSelectAll: false,

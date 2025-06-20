@@ -22,7 +22,7 @@ export type StoryArgs = ComponentArgs & {
   text: string;
 };
 
-export const defaultArgs = {
+export const defaultArgs: StoryArgs = {
   text: 'I am a link',
   bold: false,
   flex: false,
