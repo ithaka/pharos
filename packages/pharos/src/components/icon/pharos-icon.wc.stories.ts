@@ -1,10 +1,11 @@
 import { html } from 'lit';
 
 import { iconNames } from '../../utils/iconNames';
-import { configureDocsPage } from '@config/docsPageConfig';
-import { defaultArgs, argTypes } from './storyArgs';
+import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
+import type { Meta, StoryObj } from '@storybook/web-components';
 
-export default {
+const meta = {
   title: 'Components/Icon',
   component: 'pharos-icon',
   parameters: {
@@ -12,13 +13,15 @@ export default {
     options: { selectedPanel: 'addon-controls' },
   },
   argTypes,
-};
+} satisfies Meta<ComponentArgs>;
 
-export const Base = {
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-icon
       name=${args.name}
-      description=${args.description}
       a11y-title=${args.a11yTitle}
       a11y-hidden=${args.a11yHidden}
       class="icon-example__icon"
@@ -27,7 +30,7 @@ export const Base = {
   args: defaultArgs,
 };
 
-export const Names = {
+export const Names: Story = {
   render: () => html`
     <div
       style="display: grid; grid-template-columns: repeat(4, auto); grid-gap: 2rem; margin-top: 2rem; justify-content: space-evenly;"
