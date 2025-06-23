@@ -3,7 +3,7 @@ export interface ComponentArgs {};
 
 export type StoryArgs = ComponentArgs & {};
 
-export defaultArgs: StoryArgs = {};
+export const defaultArgs: StoryArgs = {};
 
 export argTypes = {};
 `;
