@@ -12,15 +12,6 @@ updates:
           - 'minor'
           - 'patch'
     ignore:
-      # ithaka/pharos#745
-      - dependency-name: '@lit-labs/scoped-registry-mixin'
-      - dependency-name: '@webcomponents/scoped-custom-element-registry'
-
-      # ithaka/pharos#634
-      - dependency-name: 'lit'
-        update-types:
-          - 'version-update:semver-major'
-
       # ithaka/pharos#780
       - dependency-name: 'style-dictionary'
         update-types:
@@ -38,11 +29,4 @@ updates:
           - 'version-update:semver-major'
       - dependency-name: '@types/react-dom'
         update-types:
-          - 'version-update:semver-major'
-
-      # ithaka/pharos#866
-      - dependency-name: '@babel/core'
-        update-types:
-          - 'version-update:semver-patch'
-          - 'version-update:semver-minor'
           - 'version-update:semver-major'

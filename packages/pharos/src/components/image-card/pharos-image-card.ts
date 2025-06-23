@@ -254,7 +254,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           [`card__link--collection`]: true,
           [`card__link--selected`]: this._isSelected,
         })}
-        href="${this.link}"
+        href=${this.link}
         a11y-label=${ifDefined(this.imageLinkLabel)}
         subtle
         flex
@@ -310,7 +310,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           [`card__link--selected`]: this._isSelected,
           [`card__link--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
         })}
-        href="${this.link}"
+        href=${this.link}
         a11y-label=${ifDefined(this.imageLinkLabel)}
         subtle
         no-hover
@@ -343,16 +343,16 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return html`<pharos-link
       @keydown=${this._handleBackwardNavigation}
       class="card__link--title"
-      href="${this.link}"
+      href=${this.link}
       subtle
       flex
-      ?indicate-visited="${this.indicateLinkVisited}"
+      ?indicate-visited=${this.indicateLinkVisited}
       @click=${this._cardToggleSelect}
       >${this.title
         ? html`<pharos-heading
             class="card__heading"
-            preset="${this._chooseHeadingPreset()}"
-            level="${this.headingLevel || DEFAULT_HEADING_LEVEL}"
+            preset=${this._chooseHeadingPreset()}
+            level=${this.headingLevel || DEFAULT_HEADING_LEVEL}
             no-margin
             >${this.title}</pharos-heading
           >`
@@ -485,12 +485,12 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderCheckbox(): TemplateResult | typeof nothing {
     return this._isCheckboxDisplayed()
       ? html`<pharos-checkbox
-          class="${this._showSubtleOverlay() ? 'card__checkbox--subtle' : 'card__checkbox'}"
+          class=${this._showSubtleOverlay() ? 'card__checkbox--subtle' : 'card__checkbox'}
           hide-label="true"
-          ?checked=${this._isSelected}
-          ?disabled=${this.disabled}
+          .checked=${this._isSelected}
+          .disabled=${this.disabled}
           name="Select ${this.title}"
-          @click="${this._cardToggleSelect}"
+          @click=${this._cardToggleSelect}
           ><span slot="label">Select ${this.title}</span></pharos-checkbox
         >`
       : nothing;

@@ -379,7 +379,7 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
         class="popover"
         role="dialog"
         aria-label=${ifDefined(this.a11yLabel)}
-        aria-labelledby="${ifDefined(this.labelledBy)}"
+        aria-labelledby=${ifDefined(this.labelledBy)}
       >
         <slot></slot>
       </div>

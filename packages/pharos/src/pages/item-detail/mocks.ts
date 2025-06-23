@@ -1,12 +1,12 @@
-import collection1 from '@config/assets/images/item-detail/collection_1.png';
-import collection2 from '@config/assets/images/item-detail/collection_2.png';
-import collection3 from '@config/assets/images/item-detail/collection_3.png';
-import collection4 from '@config/assets/images/item-detail/collection_4.png';
-import collection5 from '@config/assets/images/item-detail/collection_5.png';
-import collection6 from '@config/assets/images/item-detail/collection_6.png';
-import openCollection1 from '@config/assets/images/item-detail/open_collection_1.png';
-import openCollection2 from '@config/assets/images/item-detail/open_collection_2.png';
-import openCollection3 from '@config/assets/images/item-detail/open_collection_3.png';
+import collection1 from '../../utils/_storybook/assets/images/item-detail/collection_1.png';
+import collection2 from '../../utils/_storybook/assets/images/item-detail/collection_2.png';
+import collection3 from '../../utils/_storybook/assets/images/item-detail/collection_3.png';
+import collection4 from '../../utils/_storybook/assets/images/item-detail/collection_4.png';
+import collection5 from '../../utils/_storybook/assets/images/item-detail/collection_5.png';
+import collection6 from '../../utils/_storybook/assets/images/item-detail/collection_6.png';
+import openCollection1 from '../../utils/_storybook/assets/images/item-detail/open_collection_1.png';
+import openCollection2 from '../../utils/_storybook/assets/images/item-detail/open_collection_2.png';
+import openCollection3 from '../../utils/_storybook/assets/images/item-detail/open_collection_3.png';
 
 export const metadata = [
   { label: 'Work Type', value: 'bultos' },

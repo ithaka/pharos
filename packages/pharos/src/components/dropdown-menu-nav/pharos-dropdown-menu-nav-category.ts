@@ -43,7 +43,7 @@ export class PharosDropdownMenuNavCategory extends ScopedRegistryMixin(FocusMixi
 
   protected override render(): TemplateResult {
     return html`<button
-      aria-expanded="${this.isActive}"
+      aria-expanded=${this.isActive}
       aria-haspopup="true"
       id="category-element"
       class="${classMap({

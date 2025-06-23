@@ -1,6 +1,6 @@
 import { PharosElement } from '../base/pharos-element';
 import { html, nothing } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { query, property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { sheetStyles } from './pharos-sheet.css';
@@ -83,6 +83,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   private _newHeight = 0;
   private _isDragging = false;
 
+  @query('.sheet__content')
+  private _sheetContent!: HTMLDivElement;
+
+  @query('.sheet__overlay')
+  private _sheetOverlay!: HTMLDivElement;
+
   constructor() {
     super();
     this._handleKeydown = this._handleKeydown.bind(this);
@@ -110,8 +116,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
       if (this.open) {
-        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-        sheetContent.style.height = this.expanded
+        this._sheetContent.style.height = this.expanded
           ? this.MAX_EXPAND_PERCENTAGE
           : this.MIN_EXPAND_PERCENTAGE;
         this._focusContents();
@@ -125,8 +130,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
     if (changedProperties.has('expanded')) {
       if (this.expanded) {
-        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-        sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
+        this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
       }
     }
   }
@@ -189,8 +193,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         this.dispatchEvent(new CustomEvent('pharos-sheet-open', { ...details, cancelable: true }))
       ) {
         this.open = true;
-        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-        sheetContent.style.height = this.expanded
+        this._sheetContent.style.height = this.expanded
           ? this.MAX_EXPAND_PERCENTAGE
           : this.MIN_EXPAND_PERCENTAGE;
       }
@@ -204,10 +207,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
   }
 
-  private _handleOverlayClickOnTouch(event: TouchEvent): void {
-    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-    const overlayContent = this.shadowRoot?.querySelector(`.sheet__overlay`) as HTMLDivElement;
-    if (overlayContent.clientHeight - event.touches?.[0].clientY > sheetContent.clientHeight) {
+  private _handleOverlayInteraction(event: MouseEvent | TouchEvent): void {
+    const interactionY = event instanceof MouseEvent ? event.clientY : event.touches?.[0].clientY;
+    if (this._sheetOverlay.clientHeight - interactionY > this._sheetContent.clientHeight) {
       this._closeSheet(event.target);
     }
   }
@@ -225,8 +227,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       return;
     }
     this._isDragging = true;
-    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-    this._startHeight = sheetContent.clientHeight;
+    this._startHeight = this._sheetContent.clientHeight;
     this._startY = event.pageY;
     this._newHeight = this._startHeight;
   }
@@ -238,8 +239,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       return;
     }
     this._isDragging = true;
-    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-    this._startHeight = sheetContent.clientHeight;
+    this._startHeight = this._sheetContent.clientHeight;
     this._startY = event.touches?.[0].pageY;
     this._newHeight = this._startHeight;
   }
@@ -249,12 +249,14 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       const delta = this._startY - event.pageY;
       const newHeight = this._startHeight + delta;
       this._newHeight = newHeight;
-      const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-      if (sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE && event.pageY < this._startY) {
+      if (
+        this._sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE &&
+        event.pageY < this._startY
+      ) {
         this._isDragging = false;
         return;
       }
-      sheetContent.style.height = `${newHeight}px`;
+      this._sheetContent.style.height = `${newHeight}px`;
     }
   }
 
@@ -263,21 +265,19 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       const delta = this._startY - event.touches?.[0].pageY;
       const newHeight = this._startHeight + delta;
       this._newHeight = newHeight;
-      const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
       if (
-        sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE &&
+        this._sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE &&
         event.touches?.[0].pageY < this._startY
       ) {
         this._isDragging = false;
         return;
       }
-      sheetContent.style.height = `${newHeight}px`;
+      this._sheetContent.style.height = `${newHeight}px`;
     }
   }
 
   private _handleDragEnd(): void {
     if (this._isDragging) {
-      const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
       const details = {
         bubbles: true,
         composed: true,
@@ -287,12 +287,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         return;
       }
       if (this._newHeight > this._startHeight) {
-        sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
+        this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
         this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
         this.expanded = true;
       } else {
         if (this.expanded) {
-          sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
+          this._sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
           this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
           this.expanded = false;
         } else {
@@ -374,13 +374,17 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   protected override render(): TemplateResult {
     return html`
-      <div class="sheet__overlay" @touchstart=${this._handleOverlayClickOnTouch}>
+      <div
+        class="sheet__overlay"
+        @touchstart=${this._handleOverlayInteraction}
+        @click=${this._handleOverlayInteraction}
+      >
         <div
           role="dialog"
           class="sheet__dialog"
           aria-modal="true"
           aria-label=${ifDefined(this.header)}
-          aria-describedby="${ifDefined(this.descriptionId)}"
+          aria-describedby=${ifDefined(this.descriptionId)}
           @click=${this._handleDialogClick}
           @touchstart=${this._handleTouchDragStart}
           @touchend=${this._handleDragEnd}

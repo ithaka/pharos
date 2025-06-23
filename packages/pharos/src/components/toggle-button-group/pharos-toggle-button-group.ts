@@ -138,7 +138,7 @@ export class PharosToggleButtonGroup extends PharosElement {
 
   protected override render(): TemplateResult {
     return html`
-      <div class="toggle-button__list" role="group" aria-label="${this.groupLabel}">
+      <div class="toggle-button__list" role="group" aria-label=${this.groupLabel}>
         <slot></slot>
       </div>
     `;

@@ -1,12 +1,6 @@
 @use '@ithaka/pharos/lib/styles/pharos';
 @use '@ithaka/pharos/lib/utils/scss/mixins';
 
-.pharos-storybook__image {
-  margin-top: var(--pharos-spacing-three-quarters-x);
-  margin-bottom: var(--pharos-spacing-three-quarters-x);
-  max-width: 100%;
-}
-
 kbd {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
@@ -47,11 +41,6 @@ p.alert-example__content + p.alert-example__content {
 
 .alert-example__content > li {
   margin-top: 0;
-}
-
-.checkbox-example__container--on-background {
-  padding: 1rem;
-  background-color: var(--pharos-color-black);
 }
 
 .token-table-container {
@@ -189,93 +178,8 @@ p.alert-example__content + p.alert-example__content {
   }
 }
 
-@media (width <= 1024px) {
-  .hide-for-large {
-    display: none !important; /* stylelint-disable-line declaration-no-important */
-  }
-
-  .show-for-large {
-    display: inherit !important; /* stylelint-disable-line declaration-no-important */
-  }
-
-  .header-example__split-column {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    column-gap: 0.5rem;
-  }
-}
-
-@media (width <= 570px) {
-  .header-example__split-column {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 .header-example__input-group {
   padding-bottom: var(--pharos-spacing-one-half-x);
-}
-
-.layout-example__item {
-  background: var(--pharos-color-living-coral-80);
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.layout-example__column {
-  display: flex;
-  justify-content: center;
-  grid-column: span 1;
-  height: 100vh;
-  background-color: rgb(244 215 215 / 0.6);
-  padding-top: var(--pharos-spacing-1-x);
-}
-
-.layout-example__container--first {
-  grid-column: span 8;
-  grid-row: 1;
-  background: var(--pharos-color-glacier-blue-70);
-  height: 20rem;
-}
-
-.layout-example__container--second {
-  grid-column: span 8;
-  grid-row: 2;
-  background: var(--pharos-color-glacier-blue-70);
-  height: 14.5rem;
-}
-
-.layout-example__container--third {
-  grid-column: span 4;
-  grid-row: span 2;
-  background: var(--pharos-color-glacier-blue-70);
-  height: 38rem;
-}
-
-@include pharos.until(small) {
-  .layout-example__container--first,
-  .layout-example__container--second {
-    grid-column: span 4;
-  }
-}
-
-.image-card-example__card--collection {
-  grid-column: span 3;
-}
-
-@include pharos.until(medium) {
-  .image-card-example__card--collection {
-    grid-column: span 4;
-  }
-}
-
-.image-card-example__card--promotional {
-  grid-column: span 4;
-}
-
-.hide-in-storybook {
-  @include mixins.hidden;
 }
 
 //  hide something from sighted users but still be accessible to screen readers
