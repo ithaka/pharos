@@ -25,7 +25,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<StoryArgs>;
 
-export const Base = {
+export const Base: Story = {
   render: (args) => (
     <Pharos${titleCaseName} />
   ),
