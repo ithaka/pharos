@@ -2,7 +2,7 @@ import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
 import { item, metadata } from '../mocks';
-import logo from '@config/assets/images/item-detail/portal-logo.png';
+import logo from '../../../utils/_storybook/assets/images/item-detail/portal-logo.png';
 
 export const Metadata = (): TemplateResult => html`
   <div class="item-detail-page__container--metadata">

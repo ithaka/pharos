@@ -35,12 +35,16 @@ const createPharosComponent = async (componentName: ComponentName): Promise<void
       template: 'unit-test-template',
     },
     wcStorybook: {
-      path: `${baseFilePath}/pharos-${componentName}.wc.stories.jsx`,
-      template: 'wc-jsx-file-template',
+      path: `${baseFilePath}/pharos-${componentName}.wc.stories.ts`,
+      template: 'wc-story-file-template',
     },
     reactStorybook: {
-      path: `${baseFilePath}/Pharos${titleCaseName}.react.stories.jsx`,
-      template: 'react-jsx-file-template',
+      path: `${baseFilePath}/Pharos${titleCaseName}.react.stories.tsx`,
+      template: 'react-story-file-template',
+    },
+    storyArgs: {
+      path: `${baseFilePath}/storyArgs.ts`,
+      template: 'storyargs-file-template',
     },
     component: {
       path: `${baseFilePath}/pharos-${componentName}.ts`,

@@ -24,6 +24,7 @@ export type OutputFiles = {
   unitTest: OutputProperties;
   wcStorybook: OutputProperties;
   reactStorybook: OutputProperties;
+  storyArgs: OutputProperties;
   component: OutputProperties;
   styling: OutputProperties;
   css: OutputProperties;

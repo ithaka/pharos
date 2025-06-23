@@ -10,7 +10,7 @@ import { PharosDropdownMenuItem } from '../../../react-components/dropdown-menu/
 import { PharosInputGroup } from '../../../react-components/input-group/pharos-input-group';
 import { PharosButton } from '../../../react-components/button/pharos-button';
 import { PharosIcon } from '../../../react-components/icon/pharos-icon';
-import logo from '@config/assets/images/jstor-logo.svg';
+import logo from '../../../utils/_storybook/assets/images/jstor-logo.svg';
 
 const accountNav = (section: string) => (
   <PharosDropdownMenuNav a11yLabel="profile">
