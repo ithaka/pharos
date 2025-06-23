@@ -5,7 +5,7 @@ export type StoryArgs = ComponentArgs & {};
 
 export const defaultArgs: StoryArgs = {};
 
-export argTypes = {};
+export const argTypes = {};
 `;
 
 module.exports = template;
