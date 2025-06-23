@@ -1,6 +1,5 @@
 import { iconNames } from '../../utils/iconNames';
-import type { PharosButtonProps } from '../../react-components/button/pharos-button';
-import type { LinkTarget } from './pharos-button';
+import type { ButtonType, IconName, LinkTarget } from './pharos-button';
 
 export interface ComponentArgs {
   autofocus?: boolean;
@@ -15,15 +14,15 @@ export interface ComponentArgs {
   a11yDisabled?: AriaDisabledState;
   a11yHaspopup?: AriaPopupState;
   fullWidth?: boolean;
-  icon?: PharosButtonProps['icon'];
-  iconLeft?: PharosButtonProps['icon'];
-  iconRight?: PharosButtonProps['icon'];
+  icon?: IconName;
+  iconLeft?: IconName;
+  iconRight?: IconName;
   iconCondensed?: boolean;
   large?: boolean;
   isOnBackground?: boolean;
-  pressed?: boolean | 'mixed' | 'undefined';
+  pressed?: AriaPressedState;
   target?: LinkTarget;
-  type?: 'button' | 'submit' | 'reset';
+  type?: ButtonType;
   variant?: 'primary' | 'secondary' | 'subtle' | 'overlay';
 }
 
