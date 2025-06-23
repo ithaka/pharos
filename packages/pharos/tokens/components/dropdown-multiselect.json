@@ -1,0 +1,27 @@
+{
+  "dropdown-multiselect": {
+    "color": {
+      "text": {
+        "hover": {
+          "value": "{color.hover.primary.value}"
+        },
+        "selected": {
+          "value": "{color.text.base.value}"
+        }
+      },
+      "icon": {
+        "dropdown": {
+          "value": "{color.interactive.secondary.value}"
+        }
+      }
+    },
+    "size": {
+      "height": {
+        "list": {
+          "value": "16.75rem",
+          "comment": "TODO: Update with core token value"
+        }
+      }
+    }
+  }
+}
