@@ -227,7 +227,8 @@ const CheckboxPage: FC = () => {
           <PageSection subSectionLevel={2} title="Screen reader">
             <ul>
               <li>
-                Reads: "item name, state (checked or unchecked), checkbox, fieldset name, group"{' '}
+                Reads: "item name, state (checked or unchecked), checkbox, fieldset name,
+                group"{' '}
               </li>
             </ul>
           </PageSection>

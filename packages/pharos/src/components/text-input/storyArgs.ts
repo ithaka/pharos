@@ -1,6 +1,23 @@
-import { allTypes } from './pharos-text-input';
+import { allTypes, type TextInputType } from './pharos-text-input';
 
-export const defaultArgs = {
+export interface ComponentArgs {
+  name?: string;
+  type?: TextInputType;
+  label?: string;
+  hideLabel?: boolean;
+  validated?: boolean;
+  invalidated?: boolean;
+  required?: boolean;
+  message?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  readonly?: boolean;
+  value?: string;
+}
+
+export type StoryArgs = ComponentArgs & {};
+
+export const defaultArgs: StoryArgs = {
   name: 'story-input',
   type: 'text',
   label: 'I am a label',
@@ -19,7 +36,7 @@ export const argTypes = {
   type: {
     options: allTypes,
     control: {
-      type: 'inline-radio',
+      type: 'inline-radio' as const,
     },
   },
 };

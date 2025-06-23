@@ -1,9 +1,9 @@
-import highlightCollection1 from '@config/assets/images/home/highlight_collection_1.png';
-import highlightCollection2 from '@config/assets/images/home/highlight_collection_2.png';
-import communityCollection1 from '@config/assets/images/home/community_collection_1.png';
-import communityCollection2 from '@config/assets/images/home/community_collection_2.png';
-import communityCollection3 from '@config/assets/images/home/community_collection_3.png';
-import communityCollection4 from '@config/assets/images/home/community_collection_4.png';
+import highlightCollection1 from '../../utils/_storybook/assets/images/home/highlight_collection_1.png';
+import highlightCollection2 from '../../utils/_storybook/assets/images/home/highlight_collection_2.png';
+import communityCollection1 from '../../utils/_storybook/assets/images/home/community_collection_1.png';
+import communityCollection2 from '../../utils/_storybook/assets/images/home/community_collection_2.png';
+import communityCollection3 from '../../utils/_storybook/assets/images/home/community_collection_3.png';
+import communityCollection4 from '../../utils/_storybook/assets/images/home/community_collection_4.png';
 
 export const publicCollectionCards = [
   {

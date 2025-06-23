@@ -19,8 +19,6 @@
 }
 
 .multiselect-dropdown__button {
-  @include mixins.button-hover;
-  @include mixins.interactive-focus;
   @include mixins.button-base(
     $color: var(--pharos-button-color-base-secondary-text-base),
     $background-color: var(--pharos-button-color-base-secondary-background-base),
@@ -30,6 +28,9 @@
   width: 100%;
   justify-content: space-between;
   font-weight: var(--pharos-font-weight-regular);
+
+  @include mixins.button-hover;
+  @include mixins.interactive-focus;
 }
 
 .multiselect-dropdown__button-label {

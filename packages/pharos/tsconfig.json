@@ -14,7 +14,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
@@ -22,7 +22,7 @@
     "resolveJsonModule": true,
     "noImplicitOverride": true,
     "useDefineForClassFields": false,
-    "types": ["mocha"],
+    "types": ["mocha", "node"],
     "plugins": [
       {
         "name": "ts-lit-plugin",
@@ -34,5 +34,6 @@
       }
     ]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/utils/_storybook/*.d.ts"],
+  "exclude": ["src/pages/**", "**/storyArgs.ts"]
 }
