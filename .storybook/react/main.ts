@@ -15,7 +15,7 @@ const fullConfig: StorybookConfig = {
     },
     {
       directory: '../../packages/pharos',
-      files: '**/*.@(react|pages).stories.@(js|jsx|tsx)',
+      files: '**/*.@(react|pages).stories.tsx',
     },
   ],
 };

@@ -1,4 +1,17 @@
-export const defaultArgs = {
+export interface ComponentArgs {
+  label?: string;
+  displayCharacterCount?: number;
+  hideSelectAll?: boolean;
+  disabled?: boolean;
+  hideLabel?: boolean;
+  looseMatch?: boolean;
+  name?: string;
+  message?: string;
+}
+
+export type StoryArgs = ComponentArgs & {};
+
+export const defaultArgs: StoryArgs = {
   label: 'Cities in Michigan',
   displayCharacterCount: 40,
   hideSelectAll: false,
