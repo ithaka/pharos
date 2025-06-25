@@ -3,6 +3,7 @@ import { html, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators.js';
 import { property, query } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { imageCardStyles } from './pharos-image-card.css';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
@@ -75,6 +76,14 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
    */
   @property({ type: String, reflect: true })
   public link = '';
+
+  /**
+   * @deprecated
+   * Indicates the label to apply to the image link.
+   * @attr image-link-label
+   */
+  @property({ type: String, reflect: true, attribute: 'image-link-label' })
+  public imageLinkLabel?: string;
 
   /**
    * Indicates the variant of card.
@@ -352,6 +361,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           flex
           ?indicate-visited=${this.indicateLinkVisited}
           @click=${this._cardToggleSelect}
+          a11y-label=${ifDefined(this.imageLinkLabel)}
           >${this.title && this.title.trim() !== ''
             ? html`<pharos-heading
                 class="card__heading"
