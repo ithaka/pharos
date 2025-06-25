@@ -121,6 +121,25 @@ export const Collection: Story = {
           </storybook-pharos-image-card>
         </li>`;
       })}
+      <li class="image-card-example__card--collection">
+        <storybook-pharos-image-card id="card-1" link="#" variant="collection">
+          <img
+            id="image-1"
+            src="${collections[0].image}"
+            alt="${collections[0].title}"
+            slot="image"
+          />
+          <div slot="title">
+            <storybook-pharos-link href="#"
+              >${collections[0].title} metadata link</storybook-pharos-link
+            >
+          </div>
+          <strong id="items-1" slot="metadata">${collections[0].items} items</strong>
+          <div id="description-1" slot="metadata">
+            Selections from the global permanent collection.
+          </div>
+        </storybook-pharos-image-card>
+      </li>
     </storybook-pharos-layout>`,
 };
 
@@ -261,7 +280,8 @@ export const SubtleSelectable: Story = {
             slot="overlay"
             variant="overlay"
             icon="save"
-            style="float:right;margin-top:-40px;margin-right:20px;"
+            a11y-label="Save"
+            style="position: absolute; bottom: 20px; right: 20px;"
           ></storybook-pharos-button>
         </storybook-pharos-image-card>
       </li>
@@ -379,6 +399,7 @@ export const WithActionButtonSlot: Story = {
           slot="action-button"
           data-dropdown-menu-id="dropdownId"
           icon="ellipses-vertical"
+          a11y-label="More options"
           icon-condensed
           variant="subtle"
         ></storybook-pharos-button>
@@ -415,6 +436,7 @@ export const WithOverlayButtonSlot: Story = {
           data-dropdown-menu-id="saveDropdownId"
           icon="save"
           icon-condensed
+          a11y-label="Save"
           variant="overlay"
           style="position: absolute; bottom: 5px; right: 5px;"
         ></storybook-pharos-button>
@@ -423,6 +445,7 @@ export const WithOverlayButtonSlot: Story = {
           data-dropdown-menu-id="dropdownId"
           icon="ellipses-vertical"
           icon-condensed
+          a11y-label="More options"
           variant="subtle"
         ></storybook-pharos-button>
       </storybook-pharos-image-card>
@@ -443,7 +466,7 @@ export const SelectableCollection: Story = {
     html` <storybook-pharos-layout tag="ol" style="margin: 1rem 0">
       <li class="image-card-example__card--collection">
         <storybook-pharos-image-card title="Selectable" link="#" variant="selectable-collection">
-          <img src="${collection1}" slot="image" />
+          <img src="${collection1}" alt="south hall" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </storybook-pharos-image-card>
@@ -455,7 +478,7 @@ export const SelectableCollection: Story = {
           variant="selectable-collection"
           subtle-select
         >
-          <img src="${collection2}" slot="image" />
+          <img src="${collection2}" alt="south hall" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </storybook-pharos-image-card>
@@ -468,7 +491,7 @@ export const SelectableCollection: Story = {
           disabled
           selected
         >
-          <img src="${collection3}" slot="image" />
+          <img src="${collection3}" alt="south hall" slot="image" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </storybook-pharos-image-card>
