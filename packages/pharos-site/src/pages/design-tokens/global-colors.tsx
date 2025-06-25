@@ -5,23 +5,17 @@ import { ColorHead } from '../../components/statics/design-token/ColorHead';
 import PageSection from '../../components/statics/PageSection';
 import { FC } from 'react';
 
-{
-  /* TODO: doess this work? */
-}
 export let colorTokens = Object.keys(tokens.color)
   .filter((key) => key !== 'brand' && key !== 'base')
-  .map((key) => {
-    const currentToken = tokens.color[key];
+  .flatMap((key) => {
+    const currentToken = tokens.color[key] as Record<string, any>;
     if (currentToken.value) {
-      return currentToken;
+      return [currentToken];
     } else {
-      let childTokens = [];
-      Object.keys(currentToken).map((k) => {
-        if (currentToken[k].value) {
-          childTokens.push(currentToken[k]);
-        }
-      });
-      return childTokens;
+      return Object.keys(currentToken)
+        .filter((k) => k !== 'brand' && k !== 'base')
+        .map((k) => currentToken[k])
+        .filter((token) => token.value);
     }
   });
 
