@@ -249,9 +249,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           [`card__image--selected`]: this._isSelected,
         })}
         @click=${this._handleImageClick}
-        subtle
-        flex
-        no-hover
       >
         ${this._renderCollectionImageLinkContent()}
       </div>
@@ -304,8 +301,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           [`card__image--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
         })}
         @click=${this._handleImageClick}
-        subtle
-        no-hover
       >
         ${this._renderLinkContent()}${this._renderHoverMetadata()}
       </div>
