@@ -430,6 +430,7 @@ export const WithActionButtonSlot: Story = {
             slot="action-button"
             data-dropdown-menu-id="dropdownId"
             icon="ellipses-vertical"
+            a11yLabel="Action menu"
             iconCondensed
             variant="subtle"
           ></PharosButton>
@@ -472,6 +473,7 @@ export const WithOverlayButtonSlot: Story = {
             data-dropdown-menu-id="saveDropdownId"
             icon="save"
             iconCondensed
+            a11yLabel="Save"
             variant="overlay"
             style={{ position: 'absolute', bottom: '5px', right: '5px' }}
           ></PharosButton>
@@ -480,6 +482,7 @@ export const WithOverlayButtonSlot: Story = {
             data-dropdown-menu-id="dropdownId"
             icon="ellipses-vertical"
             iconCondensed
+            a11yLabel="Action menu"
             variant="subtle"
           ></PharosButton>
         </PharosImageCard>
@@ -501,7 +504,7 @@ export const SelectableCollection: Story = {
     <PharosLayout tag="ol" style={{ margin: '1rem 0' }}>
       <li className="image-card-example__card--collection">
         <PharosImageCard title="Selectable" link="#" variant="selectable-collection">
-          <img src={collection1} slot="image" />
+          <img src={collection1} slot="image" alt="selectable example" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </PharosImageCard>
@@ -513,7 +516,7 @@ export const SelectableCollection: Story = {
           variant="selectable-collection"
           subtle-select
         >
-          <img src={collection2} slot="image" />
+          <img src={collection2} slot="image" alt="subtle selectable example" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </PharosImageCard>
@@ -526,7 +529,7 @@ export const SelectableCollection: Story = {
           disabled
           _isSelected
         >
-          <img src={collection3} slot="image" />
+          <img src={collection3} slot="image" alt="selectable disabled example" />
           <strong slot="metadata">50 items</strong>
           <div slot="metadata">Selections from the global permanent collection.</div>
         </PharosImageCard>
