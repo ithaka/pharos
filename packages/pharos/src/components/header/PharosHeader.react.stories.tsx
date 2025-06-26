@@ -27,7 +27,7 @@ const meta = {
     ),
   ],
   parameters: {
-    docs: { page: configureDocsPage('haeder') },
+    docs: { page: configureDocsPage('header') },
     layout: 'fullscreen',
   },
 } satisfies Meta<ComponentArgs>;
@@ -107,7 +107,7 @@ export const Base: Story = {
           display: 'flex',
         }}
       >
-        <PharosDropdownMenuNav ally-label="main navigation">
+        <PharosDropdownMenuNav a11y-label="main navigation">
           <PharosDropdownMenuNavLink href="action/showAdvancedSearch" id="adv-search-link">
             Advanced Search
           </PharosDropdownMenuNavLink>
@@ -150,7 +150,7 @@ export const Base: Story = {
 };
 
 const _accountNav = (section: string) => (
-  <PharosDropdownMenuNav ally-label="profile">
+  <PharosDropdownMenuNav a11y-label="profile">
     <PharosDropdownMenuNavCategory
       id={`profile-link-${section}`}
       data-dropdown-menu-id={`profile-menu-${section}`}
