@@ -27,6 +27,7 @@ export const Base: Story = {
     <storybook-pharos-button
       data-sidenav-id="storybook-sidenav"
       icon="menu"
+      a11y-label="Open sidenav"
     ></storybook-pharos-button>
     <storybook-pharos-sidenav
       id="storybook-sidenav"
