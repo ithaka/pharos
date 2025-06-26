@@ -9,7 +9,7 @@ export const ItemCarouselItem: FC<Item> = (item) => (
   <Fragment>
     <PharosLink href="#" subtle flex>
       <div className="item-detail-page__grid--carousel-item">
-        <img src={item.image} alt={item.title} />
+        <img src={item.image} alt="" />
         <PharosHeading preset="1--bold" level={3} noMargin>
           {item.title}
         </PharosHeading>
