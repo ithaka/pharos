@@ -20,7 +20,7 @@ type Story = StoryObj<StoryArgs>;
 export const Base: Story = {
   render: () => {
     const accountNav = (section: string) => html`
-      <storybook-pharos-dropdown-menu-nav ally-label="profile">
+      <storybook-pharos-dropdown-menu-nav a11y-label="profile">
         <storybook-pharos-dropdown-menu-nav-link
           href="/account/profile"
           id="profile-link-${section}"
