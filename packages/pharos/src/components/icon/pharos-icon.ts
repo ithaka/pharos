@@ -62,7 +62,7 @@ export class PharosIcon extends PharosElement {
   protected override async updated(changedProperties: PropertyValues): Promise<void> {
     if (changedProperties.has('name')) {
       try {
-        const icon = await import(`../../styles/icons/${this.name}.svg`);
+        const icon = await import(`../../styles/icons/${this.name}`);
         this._svg = atob(icon.default);
       } catch (e) {
         console.log(e);
