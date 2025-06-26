@@ -3,7 +3,7 @@ import type { TemplateResult } from 'lit';
 import logo from '../../../utils/_storybook/assets/images/jstor-logo.svg';
 
 const accountNav = (section: string) => html`
-  <storybook-pharos-dropdown-menu-nav label="profile">
+  <storybook-pharos-dropdown-menu-nav a11y-label="profile">
     <storybook-pharos-dropdown-menu-nav-category
       id="profile-link-${section}"
       data-dropdown-menu-id="profile-menu-${section}"
