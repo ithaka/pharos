@@ -45,7 +45,7 @@ export const Base: Story = {
       <PharosButton
         data-sidenav-id="storybook-sidenav"
         icon="menu"
-        a11yLabel="menu"
+        a11yLabel="open sidenav"
         onClick={(e) => {
           (e.target as PBType).focus();
         }}

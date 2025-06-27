@@ -269,7 +269,7 @@ export const IconOnly = {
     ...Base.args,
     text: undefined,
     icon: 'download',
-    label: 'download',
+    a11yLabel: 'download',
   },
 };
 
