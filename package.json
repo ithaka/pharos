@@ -112,7 +112,7 @@
     "stylelint-config-standard-scss": "^15.0.1",
     "stylelint-scss": "^6.12.1",
     "svglint": "^4.1.0",
-    "vite": "^6.3.5"
+    "vite": "^7.0.0"
   },
   "workspaces": {
     "packages": [
