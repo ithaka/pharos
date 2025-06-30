@@ -208,6 +208,8 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleOverlayInteraction(event: MouseEvent | TouchEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
     const interactionY = event instanceof MouseEvent ? event.clientY : event.touches?.[0].clientY;
     if (this._sheetOverlay.clientHeight - interactionY > this._sheetContent.clientHeight) {
       this._closeSheet(event.target);
