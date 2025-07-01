@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "5.5.1",
+  "version": "5.6.0",
   "description": "Pharos Web Component Generator",
   "preferGlobal": true,
   "dependencies": {

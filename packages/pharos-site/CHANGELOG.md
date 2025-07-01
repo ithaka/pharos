@@ -1,5 +1,18 @@
 # @ithaka/pharos-site
 
+## 7.2.0
+
+### Minor Changes
+
+- [#990](https://github.com/ithaka/pharos/pull/990) [`c9d1c5c`](https://github.com/ithaka/pharos/commit/c9d1c5c455dd19d3ea53e72be8caaba092c50068) Thanks [@brentswisher](https://github.com/brentswisher)! - Add mutiselect dropdown component page
+
+### Patch Changes
+
+- [#996](https://github.com/ithaka/pharos/pull/996) [`f445546`](https://github.com/ithaka/pharos/commit/f4455466a6b3ac69eaf08c7f479e5fddb58303e1) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix global color token page not displaying all tokens
+
+- Updated dependencies [[`8d08a73`](https://github.com/ithaka/pharos/commit/8d08a73cd5556bc72f1c2a16af05561e24a2afcc), [`7fe729c`](https://github.com/ithaka/pharos/commit/7fe729cc25d31936c015be69ea23ed2f2d596f49), [`87e526a`](https://github.com/ithaka/pharos/commit/87e526a1718f701bf0533a4f22e58a151a9a1ebb)]:
+  - @ithaka/pharos@14.15.0
+
 ## 7.1.0
 
 ### Minor Changes
@@ -201,7 +214,6 @@
 ### Minor Changes
 
 - [#268](https://github.com/ithaka/pharos/pull/268) [`ffb2f63`](https://github.com/ithaka/pharos/commit/ffb2f63523bfe51ee2cc16de1740309590cded59) Thanks [@Niznikr](https://github.com/Niznikr)! - Add register utility:
-
   - Update `PharosElement` to set `[data-pharos-component]` with `constructor.name`
   - Update `PharosComponentMixin` to set `[data-pharos-component]` with base class name
   - Add register utility to simplify component registration and ensure trivial classes are used for custom elements:
@@ -246,7 +258,6 @@
 - [#242](https://github.com/ithaka/pharos/pull/242) [`9e491fa`](https://github.com/ithaka/pharos/commit/9e491faad5e371810227a903d762ef8c1c379368) Thanks [@Niznikr](https://github.com/Niznikr)! - Update to Gatsby 4 for Pharos site
 
 * [#226](https://github.com/ithaka/pharos/pull/226) [`7843568`](https://github.com/ithaka/pharos/commit/78435685eb15b1c88122c0c71bbc228272a6651d) Thanks [@Niznikr](https://github.com/Niznikr)! - require manual component registration:
-
   - Remove component self-registration
   - Scope registries for components composed of other Pharos components using [scoped-registry-mixin](https://github.com/lit/lit/tree/main/packages/labs/scoped-registry-mixin)
   - Update React wrapper to detect defined custom tag name
@@ -255,7 +266,6 @@
   - Update documentation
 
   **Migration Guidelines**
-
   1. Remove all individual imports of Pharos web components.
 
   2. Register them with a custom tag in your app's entrypoint in the form of `{app/bundle}-pharos-{component}`:
@@ -307,7 +317,6 @@
 ### Patch Changes
 
 - [#243](https://github.com/ithaka/pharos/pull/243) [`2bc785d`](https://github.com/ithaka/pharos/commit/2bc785d16f30c954c53fdcfcd39a65600c866476) Thanks [@Niznikr](https://github.com/Niznikr)! - update Stylelint:
-
   - Follow Stylelint [migration guidelines](https://stylelint.io/migration-guide/to-14/)
   - Address errors found
 
@@ -343,13 +352,11 @@
 ### Minor Changes
 
 - [#194](https://github.com/ithaka/pharos/pull/194) [`efea137`](https://github.com/ithaka/pharos/commit/efea137717110dff3c40df0138589f840588a9a6) Thanks [@Lham42](https://github.com/Lham42)! - Add closability function to alert component:
-
   - add `closable` property to `alert` component
 
 ### Patch Changes
 
 - [#188](https://github.com/ithaka/pharos/pull/188) [`767d6f8`](https://github.com/ithaka/pharos/commit/767d6f8f10267afcb111fa92d9a7b3a71c3fee4e) Thanks [@Niznikr](https://github.com/Niznikr)! - update to TypeScript 4.3:
-
   - Update packages to use TypeScript 4.3
   - Add `noImplicitOverride` flag
   - Update Prettier to support the new `override` keyword
@@ -402,7 +409,6 @@
 * [#116](https://github.com/ithaka/pharos/pull/116) [`b49a2a1`](https://github.com/ithaka/pharos/commit/b49a2a1b1ac49b35994a3d521cbb9747a117f558) Thanks [@facelessfool](https://github.com/facelessfool)! - Proper grammar used for guideline titles by changing the apostrophes used as plurality, and missing from contractions
 
 - [#122](https://github.com/ithaka/pharos/pull/122) [`60667c5`](https://github.com/ithaka/pharos/commit/60667c558fc476ac4df1c1c7185846e400a686af) Thanks [@Niznikr](https://github.com/Niznikr)! - implement layout component on the site:
-
   - Add preset `1-col--sidenav-comfy` to `<pharos-layout>` for larger margins on our breakpoints
   - Implement layouts with the new preset on the site
   - Update site styles for responsiveness on our breakpoints
@@ -431,7 +437,6 @@
 ### Patch Changes
 
 - [#103](https://github.com/ithaka/pharos/pull/103) [`ff9be47`](https://github.com/ithaka/pharos/commit/ff9be47f7eb42d62a9a9787b348c160c9a274f9c) Thanks [@Niznikr](https://github.com/Niznikr)! - update content based on legal review:
-
   - Remove logo downloads
   - Update footer copyright statement
   - Update imagery copy
@@ -447,7 +452,6 @@
 - [#98](https://github.com/ithaka/pharos/pull/98) [`3084eed`](https://github.com/ithaka/pharos/commit/3084eed72aedd0139f591a69a8b3bfe4f27a2bb2) Thanks [@Niznikr](https://github.com/Niznikr)! - add links to JSTOR from site
 
 * [#19](https://github.com/ithaka/pharos/pull/19) [`70f42ef`](https://github.com/ithaka/pharos/commit/70f42ef0776d1b0ff0ea32ae6560deef92757d8d) Thanks [@Niznikr](https://github.com/Niznikr)! - update to Lit 2:
-
   - Update to Lit 2 following upgrade guide
   - Update `@open-wc/testing` tools
   - Target `es2019` as recommended by Lit
@@ -475,7 +479,6 @@
 ### Minor Changes
 
 - [#66](https://github.com/ithaka/pharos/pull/66) [`54e9ce0`](https://github.com/ithaka/pharos/commit/54e9ce06e5033a1ef487e6fdbee4fb8aee25b19b) Thanks [@Lham42](https://github.com/Lham42)! - Add skip to main content functionality for sidenav component:
-
   - Add `skip` prop to `pharos-link` to specify whether the link must be hidden until focused
   - Add `main-content-id` prop to `pharos-sidenav` to render a skip link with target
   - Add skip links to the site sidenav and main element
@@ -489,7 +492,6 @@
 - [#28](https://github.com/ithaka/pharos/pull/28) [`54f3896`](https://github.com/ithaka/pharos/commit/54f38967a73c8965e8802098d255ffbf535e4930) Thanks [@Niznikr](https://github.com/Niznikr)! - remove /pharos prefix from Gatsby config
 
 * [#69](https://github.com/ithaka/pharos/pull/69) [`c6fb749`](https://github.com/ithaka/pharos/commit/c6fb7496f420f9590c8a7a4575242ad2823c4354) Thanks [@Lham42](https://github.com/Lham42)! - docs(pharos-site): add storybook links to public component sections
-
   - add `storyBookType` prop to `PageSection` component which takes in the element type for a specified component
   - if 'storyBookType' is passed, pharos link is rendered to component specified url
   - pass in `storyBookType` into the component sections
@@ -510,7 +512,6 @@
 ### Patch Changes
 
 - [#48](https://github.com/ithaka/pharos/pull/48) [`ced1c1f`](https://github.com/ithaka/pharos/commit/ced1c1f082e40b5e0b5c71830fb6c6cde1277b83) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies:
-
   - Update Gatsby dependencies
   - Update ESLint dependencies
   - Update Sass
@@ -524,7 +525,6 @@
 ### Minor Changes
 
 - [#31](https://github.com/ithaka/pharos/pull/31) [`faf789c`](https://github.com/ithaka/pharos/commit/faf789cfa753d355a7171622b4d591df90c4fd88) Thanks [@Niznikr](https://github.com/Niznikr)! - add image card component:
-
   - Add card component with `error` and `subtle` states
   - Add `action-menu` attribute to render an action button to act as the trigger for the menu
   - Add `collection` variant to present collection in 4:3 aspect ratio
@@ -544,7 +544,6 @@
 * [#24](https://github.com/ithaka/pharos/pull/24) [`4c46e19`](https://github.com/ithaka/pharos/commit/4c46e1922a5708b6f596baebf5cb8c54c34d8323) Thanks [@SMQuazi](https://github.com/SMQuazi)! - update component status page
 
 - [#22](https://github.com/ithaka/pharos/pull/22) [`516c13c`](https://github.com/ithaka/pharos/commit/516c13c4d1d51ef642a67330a5b33b9fc4e0f5b1) Thanks [@Niznikr](https://github.com/Niznikr)! - replace low res images on the site:
-
   - Replace low res images on the home and imagery pages
   - Remove unused images
   - Update `Principles` section on the iconography page
@@ -561,7 +560,6 @@
 ### Minor Changes
 
 - [#17](https://github.com/ithaka/pharos/pull/17) [`4dd7f01`](https://github.com/ithaka/pharos/commit/4dd7f010bdad906f0d21dbd35e48378e9bceffd7) Thanks [@Niznikr](https://github.com/Niznikr)! - add layout component:
-
   - Add design tokens for breakpoints and grid gutter
   - Add layout component which applies a 12-column grid for a specified layout
   - Add Sass mixins for establishing grid styles for the breakpoints
@@ -571,7 +569,6 @@
 ### Patch Changes
 
 - [#20](https://github.com/ithaka/pharos/pull/20) [`b8581b4`](https://github.com/ithaka/pharos/commit/b8581b4f72309037d0182266571e527a0dec86c5) Thanks [@Niznikr](https://github.com/Niznikr)! - remove component guidelines from Storybook:
-
   - Remove component guidelines from Storybook
   - Add links to the guidelines
   - Use React versions of components in the guidelines to render properly in Gatsby
@@ -585,7 +582,6 @@
 ### Major Changes
 
 - [`329505a`](https://github.com/ithaka/pharos/commit/329505af1475004a64b319ca29614d8a0f2177d7) Thanks [@Niznikr](https://github.com/Niznikr)! - rename packages to publish to Ithaka namespace:
-
   - Rename package `@pharos/core` to `@ithaka/pharos`
   - Rename package `@pharos/cli` to `@ithaka/pharos-cli`
   - Rename package `@pharos/site` to `@ithaka/pharos-site`
@@ -601,14 +597,12 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Lint mdx and js files:
-
   - Add `eslint-plugin-mdx` for linting mdx files
   - Add `eslint-plugin-no-smart-quotes` to find and replace smart quotes
   - Use eslint overrides to explicitly configure settings for each file type
   - Address linting errors
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Update images for open source compliance:
-
   - Replace images on Pharos site and Storybook with compliant ones
   - Update styles to match design
 
@@ -632,7 +626,6 @@
 - Thanks [@SMQuazi](https://github.com/SMQuazi)! - Add dropdown menu documentation to storybook and site
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Highlight component status page on the homepage:
-
   - Add copy for component status page on homepage hero
   - Update homepage layout with a 12 column grid
   - Add `data-sc` attributes on homepage links for GA tracking
@@ -653,14 +646,12 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Use the Pharos sidenav on site:
-
   - Replace standalone sidenav on site with the Pharos sidenav
   - Use Gatsby's `navigate` function to retain routing performance features
 
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Move out functional tests and fonts:
-
   - Move functional tests to new repo `pharos-functional-tests` and update test job
   - Remove fonts and pull them in from S3
   - Fix site home page hero font and layout
@@ -677,7 +668,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add editing checklist page to content style guide:
-
   - Add editing checklist page
   - Fix Dos and Donts styles
   - Remove unused button component
@@ -686,18 +676,15 @@
 * Thanks [@likwidsage](https://github.com/likwidsage)! - Add grammar and style page to content style guide
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Create Storybook example item detail page:
-
   - Create an item detail page inspired by latest designs
   - Update the revised header used in the example pages to allow enabling search for every breakpoint
   - Upgrade `husky` to v6
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Add web elements page to content style guide:
-
   - Add web elements page
   - Update `BestPractices` to account for multiple guidelines
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add input group documentation:
-
   - Add input group documentation and guidelines
   - Update Gatsby babel config to fix decorator runtime error
   - Remove `margin` and `padding` from `*` selector in site styles to not interfere with slotted component styles
@@ -705,7 +692,6 @@
 * Thanks [@likwidsage](https://github.com/likwidsage)! - Add Modal to Pharos site and storybook
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add JSTOR terms page to content style guide:
-
   - Add JSTOR terms page
 
 ### Patch Changes
@@ -722,7 +708,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Create Storybook example reports page:
-
   - Create a reports page inspired by latest designs
   - Keep margin at 56px until 320px breakpoint is reached
   - Remove 1440px from list of breakpoints
@@ -763,7 +748,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Upgrade to Gatsby v3:
-
   - Update dependencies and verify `develop` and `build` scripts.
   - Import CSS modules as ES modules
   - Preload fonts for Pharos site
@@ -771,7 +755,6 @@
   - Add `addon-backgrounds` to easily evaluate components on dark backgrounds
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Create Storybook example home page:
-
   - Create a home page inspired by latest designs
   - Create a revised header to use in the story
   - Change `contain` value for `pharos-heading` to address cutoff for large headings with prop `no-margin`
@@ -806,7 +789,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Conform design tokens:
-
   - Create new tokens without the word `brand` from color, line height, and spacing tokens
   - Update all styles to use the new tokens
   - Mark `base` and `brand` color, line height, and spacing tokens as deprecated
@@ -814,7 +796,6 @@
   - Ensure token related pages in Storybook and the Pharos site display updated names
 
   **Migration Guidelines**
-
   1. Remove `brand` from `pharos-color`, `pharos-line-height`, and `pharos-spacing` tokens:
 
      | Old Token                      | New Token                |
@@ -841,7 +822,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add sidenav component:
-
   - Create `SideElement` base class for `pharos-sidenav` and upcoming `pharos-sidebar` components to inherit styles from
   - Add `top` slot to `pharos-sidenav` for content shown above the main body
   - Construct default slot to house `pharos-sidenav-section`, `pharos-sidenav-menu`, and `pharos-sidenav-link` elements
@@ -875,7 +855,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Create Storybook search page to test interoperability between atoms and molecules:
-
   - Create a search page inspired by latest designs
   - Add stories to `Pages` category to fit atomic design model
   - Use `stories.ts` and `stories.tsx` format to emulate developer experience
@@ -937,7 +916,6 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update header and dropdown menu components to support a section for the PDS on JSTOR:
-
   - Add slot `top` to `pharos-header` for a top section on the header
   - Create base class `OverlayElement` for tooltips and dropdown menus to extend from
   - Update `pharos-dropdown-menus` to support menus with no items
@@ -976,7 +954,6 @@
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Update component statuses for 2021
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update input group and dropdown menu nav status:
-
   - Set input group and dropdown menu nav as released
 
 * Thanks [@likwidsage](https://github.com/likwidsage)! - Add token for font type scale 14
@@ -1013,7 +990,6 @@
 - Thanks [@likwidsage](https://github.com/likwidsage)! - Fix Navigation bar for Pharos Site
 
 * Thanks [@kelseytrabue](https://github.com/kelseytrabue)! - Improve Pharos site typography
-
   - Updated main heading styles to use different presets to align with the design
   - Replaced some buttons, links with Pharos components
   - Added, adjusted some spacing between sections for better vertical rhythm, this will still need work/re-work in the future
@@ -1027,7 +1003,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Upgrade to React 17:
-
   - Update dependencies
   - Follow guide to configure Storybook and Gatsby to use new JSX transform
   - Verify Storybook and Gatsby develop/build commands
@@ -1036,7 +1011,6 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Fix Gatsby reload and enable use of Pharos components in MDX:
-
   - Update Gatsby to fix the reload bug
   - Update MDXProvider config to enable use of Pharos React components in MDX
 
@@ -1057,7 +1031,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add component status page to Pharos site:
-
   - Add new icons for statuses
   - Create legend and status `json` files to indicate current status
   - Create component status page
@@ -1065,12 +1038,10 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add typography stories to Storybook:
-
   - Add typography stories
   - Add styles for lists
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Add `pharos-button` component:
-
   - Create button with `primary`, `secondary`, and `subtle` variants
   - Add `large`, `on-background`, `icon`, `icon-right`, and `icon-left` properties to further customize buttons
   - Remove `variant` property from links and instead allow buttons to be rendered as links with the `href` prop to allow for all design variations
@@ -1080,7 +1051,6 @@
   - Update `combobox` and `modal` components to use `button` component
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add `pharos-link` component:
-
   - Add link component with `primary`, `subtle`, and `on background` states
   - Add `primary-button` and `secondary-button` variants
   - Style links appropriately when in a non-error alert
@@ -1088,7 +1058,6 @@
   - Ensure focus outline is consistent for links that span multiple lines across all browsers
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Update icons in Pharos:
-
   - Remove `add-link`, `checkmark-large`, `close-inverse`, `external-link`, `external-link-arrow`, `gallery`, `list`, `magnifying-glass`, `new-folder`, `x` icons
   - Add `chevron-left-large`, `chevron-right-large`, `edit`, `email`, `facebook`, `fit-to-view`, `folder-new`, `fullscreen-minimize`, `fullscreen`, `instagram`, `link-add`, `link-external`, `linkedin`, `tumblr`, `twitter`, `view-grid`, `youtube`, `zoom-in`, `zoom-out` icons
   - Update existing icons
@@ -1109,7 +1078,6 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Deliver fonts from Pharos:
-
   - Generate font-face definitions from tokens
   - Include assets with delivered package
   - Create font-family tokens with fallbacks
@@ -1118,7 +1086,6 @@
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Import typography styles in Pharos site
 
 - Thanks [@daneah](https://github.com/daneah)! - Use tokens created in #267 to style Pharos components, add a few SCSS utilities where needed. Also update the Heading component to reflect the latest decisions from the Brand team on usage, leading to an API change:
-
   - Remove `expressive` and `size` properties
   - Add new `preset` property to indicate to Heading which visual display to use—these can be chosen quickly by designers and specified quickly in code to achieve the desired display.
 
@@ -1164,12 +1131,10 @@
 * Thanks [@likwidsage](https://github.com/likwidsage)! - Fix artifacts and fonts for Typography page
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Provide design tokens in es6 format:
-
   - Rename js object design tokens to `tokens.js`
   - Add es6 design tokens as `variables.js`
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Update components to use new brand color tokens:
-
   - Update component colors based off design
   - Remove irrelevant component tokens
   - Update radio and checkbox SVG sizing to match design
