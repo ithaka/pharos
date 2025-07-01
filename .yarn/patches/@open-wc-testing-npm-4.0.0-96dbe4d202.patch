@@ -1,0 +1,13 @@
+diff --git a/index.d.ts b/index.d.ts
+index 5d276bee72934d29e32d2257e118daf562c846b1..34f551904fa89765908983e2327013d8ff93ada6 100644
+--- a/index.d.ts
++++ b/index.d.ts
+@@ -17,7 +17,7 @@ export { fixtureCleanup } from '@open-wc/testing-helpers';
+ export { elementUpdated } from '@open-wc/testing-helpers';
+ export { waitUntil } from '@open-wc/testing-helpers';
+ 
+-import Chai from 'chai';
++import * as Chai from 'chai';
+ 
+ export declare const chai: typeof Chai;
+ export declare const expect: typeof Chai.expect;
