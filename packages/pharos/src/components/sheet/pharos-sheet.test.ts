@@ -67,6 +67,22 @@ describe('pharos-sheet', () => {
     expect(component.open).to.be.false;
   });
 
+  it('closes when the overlay is clicked without triggering propagation', async () => {
+    component.open = true;
+    await component.updateComplete;
+
+    const mockHandler = sinon.spy();
+    document.addEventListener('click', mockHandler);
+
+    const overlay = component.shadowRoot?.querySelector('.sheet__overlay') as HTMLElement;
+    overlay?.click();
+
+    await component.updateComplete;
+
+    expect(component.open).to.be.false;
+    expect(mockHandler.called).to.be.false;
+  });
+
   it('returns focus back to the trigger element when close', async () => {
     let activeElement = null;
     const onFocusIn = (event: Event): void => {
