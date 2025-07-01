@@ -74,7 +74,7 @@ describe('pharos-sheet', () => {
     const mockHandler = sinon.spy();
     document.addEventListener('click', mockHandler);
 
-    const overlay = component?.shadowRoot?.querySelector('.sheet__overlay') as HTMLElement;
+    const overlay = component.shadowRoot?.querySelector('.sheet__overlay') as HTMLElement;
     overlay?.click();
 
     await component.updateComplete;
