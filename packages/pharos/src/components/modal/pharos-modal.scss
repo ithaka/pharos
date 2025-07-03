@@ -62,17 +62,15 @@
 @media only screen and (width <= 570px) {
   .modal__overlay {
     display: block;
-    overflow-y: visible;
+    overflow-y: auto;
     transition-duration: var(--pharos-transition-duration-long);
-    height: 100%;
+    height: 100vh;
   }
 
   .modal__dialog {
     position: relative;
     min-width: 100vw;
     max-height: 100vh;
-    height: 100%;
-    top: 100%;
     transition:
       visibility var(--pharos-transition-duration-long) linear
         var(--pharos-transition-duration-long),
