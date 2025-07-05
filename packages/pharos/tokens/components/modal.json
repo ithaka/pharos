@@ -3,26 +3,26 @@
     "color": {
       "background": {
         "content": {
-          "value": "{color.White.value}"
+          "value": "{color.white}"
         }
       },
       "border": {
         "content": {
-          "value": "{color.Marble gray.base.value}"
+          "value": "{color.marble-gray.base}"
         }
       },
       "icon": {
         "close": {
-          "value": "{color.Marble gray.50.value}"
+          "value": "{color.marble-gray.50}"
         },
         "focus": {
-          "value": "{color.JSTOR red.value}"
+          "value": "{color.jstor-red}"
         }
       }
     },
     "spacing": {
       "base": {
-        "value": "{spacing.2-x.value}"
+        "value": "{spacing.2-x}"
       }
     },
     "size": {

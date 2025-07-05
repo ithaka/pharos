@@ -2,33 +2,33 @@
   "alert": {
     "color": {
       "background": {
-        "base"   : { "value": "{color.Marble gray.94.value}" },
-        "info"   : { "value": "{color.Glacier blue.90.value}" },
-        "error"  : { "value": "{color.Living coral.90.value}"},
-        "success": { "value": "{color.Green.93.value}" },
-        "warning": { "value": "{color.Yellow.97.value}" }
+        "base"   : { "value": "{color.marble-gray.94}" },
+        "info"   : { "value": "{color.glacier-blue.90}" },
+        "error"  : { "value": "{color.living-coral.90}"},
+        "success": { "value": "{color.green.93}" },
+        "warning": { "value": "{color.yellow.97}" }
       },
       "icon": {
-        "base"   : { "value": "{color.Black.value}" },
-        "info"   : { "value": "{color.Glacier blue.40.value}" },
-        "error"  : { "value": "{color.feedback.error.value}" },
-        "success": { "value": "{color.feedback.success.value}" },
-        "warning": { "value": "{color.feedback.warning.value}" }
+        "base"   : { "value": "{color.black}" },
+        "info"   : { "value": "{color.glacier-blue.40}" },
+        "error"  : { "value": "{color.feedback.error}" },
+        "success": { "value": "{color.feedback.success}" },
+        "warning": { "value": "{color.feedback.warning}" }
       },
       "text": {
-        "base"   : { "value": "{color.text.base.value}" },
-        "inverse": { "value": "{color.text.white.value}" }
+        "base"   : { "value": "{color.text.base}" },
+        "inverse": { "value": "{color.text.white}" }
       },
       "link": {
-        "base"   : { "value": "{color.interactive.secondary.value}" },
-        "inverse": { "value": "{color.White.value}" }
+        "base"   : { "value": "{color.interactive.secondary}" },
+        "inverse": { "value": "{color.white}" }
       },
       "border": {
-        "base"   : { "value": "{color.Marble gray.94.value}" },
-        "info"   : { "value": "{color.Glacier blue.40.value}" },
-        "error"  : { "value": "{color.feedback.error.value}" },
-        "success": { "value": "{color.feedback.success.value}" },
-        "warning": { "value": "{color.feedback.warning.value}" }
+        "base"   : { "value": "{color.marble-gray.94}" },
+        "info"   : { "value": "{color.glacier-blue.40}" },
+        "error"  : { "value": "{color.feedback.error}" },
+        "success": { "value": "{color.feedback.success}" },
+        "warning": { "value": "{color.feedback.warning}" }
       }
     }
   }

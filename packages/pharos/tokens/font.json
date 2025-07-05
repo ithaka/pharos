@@ -3,18 +3,18 @@
     "family": {
       "sans-serif": { "value": "GT America Standard, Helvetica, Helvetica Neue, Arial, Segoe UI, Roboto, Droid Sans, sans-serif" },
       "serif": { "value": "Ivar Headline, Times, Georgia, serif" },
-      "body": { "value": "{font.family.sans-serif.value}" }
+      "body": { "value": "{font.family.sans-serif}" }
     },
     "weight": {
       "regular": { "value": "400" },
       "bold": { "value": "700" }
     },
     "size": {
-      "micro": { "value": "{type.scale.1.value}" },
-      "small": { "value": "{type.scale.2.value}" },
-      "base": { "value": "{type.scale.3.value}" },
-      "large": { "value": "{type.scale.5.value}" },
-      "xlarge": { "value": "{type.scale.6.value}" }
+      "micro": { "value": "{type.scale.1}" },
+      "small": { "value": "{type.scale.2}" },
+      "base": { "value": "{type.scale.3}" },
+      "large": { "value": "{type.scale.5}" },
+      "xlarge": { "value": "{type.scale.6}" }
     }
   }
 }

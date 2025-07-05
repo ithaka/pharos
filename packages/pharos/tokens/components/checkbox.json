@@ -3,7 +3,7 @@
     "color": {
       "background": {
         "base": {
-          "value": "{color.ui.10.value}"
+          "value": "{color.ui.10}"
         }
       }
     }

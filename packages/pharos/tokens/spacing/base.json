@@ -49,7 +49,7 @@
       "comment": "160px"
     },
     "gutter": {
-      "value": "{spacing.3-x.value}",
+      "value": "{spacing.3-x}",
       "comment": "48px"
     }
   }
