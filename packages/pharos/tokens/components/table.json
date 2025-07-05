@@ -3,17 +3,17 @@
 	  "header": {	
 		"color": {
 			"background": {
-				"value": "{color.ui.20.value}"
+				"value": "{color.ui.20}"
 			},
 			"border": {
-				"value": "{color.ui.30.value}"
+				"value": "{color.ui.30}"
 			}
 		}
 	  },
 	  "body": {
 	  	"color": {
 			"border": {
-				"value": "{color.ui.30.value}"
+				"value": "{color.ui.30}"
 			}
 		}
 	  }

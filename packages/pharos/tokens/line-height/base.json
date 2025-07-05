@@ -6,6 +6,6 @@
     "large"  : { "value": "1.75rem", "comment": "28px" },
     "xlarge" : { "value": "2.25rem", "comment": "36px" },
     "heading-large" : { "value": "1" },
-    "text-base-condensed": { "value": "{line-height.small.value}", "comment": "20px" }
+    "text-base-condensed": { "value": "{line-height.small}", "comment": "20px" }
   }
 }

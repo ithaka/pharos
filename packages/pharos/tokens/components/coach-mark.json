@@ -2,24 +2,24 @@
     "coach-mark": {
         "color": {
             "background": {
-                "dark"   : { "value": "{color.Marble gray.10.value}" },
-                "light"   : { "value": "{color.White.value}" }
+                "dark"   : { "value": "{color.marble-gray.10}" },
+                "light"   : { "value": "{color.white}" }
             },
             "border": {
-                "dark"   : { "value": "{color.Marble gray.10.value}" },
-                "light"   : { "value": "{color.Marble gray.base.value}" }
+                "dark"   : { "value": "{color.marble-gray.10}" },
+                "light"   : { "value": "{color.marble-gray.base}" }
             },
             "heading": {
-                "dark"   : { "value": "{color.White.value}" },
-                "light"   : { "value": "{color.Marble gray.20.value}" }
+                "dark"   : { "value": "{color.white}" },
+                "light"   : { "value": "{color.marble-gray.20}" }
             },
             "text": {
-                "dark"   : { "value": "{color.Marble gray.80.value}" },
-                "light"   : { "value": "{color.Marble gray.20.value}" }
+                "dark"   : { "value": "{color.marble-gray.80}" },
+                "light"   : { "value": "{color.marble-gray.20}" }
             }
         },
         "size": {
-            "text": { "value": "{font.size.small.value}"},
+            "text": { "value": "{font.size.small}"},
             "border": { "value": "1px"},
             "pip": { "value": "10px"}
         }

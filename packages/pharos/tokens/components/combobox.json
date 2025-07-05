@@ -3,24 +3,24 @@
     "color": {
       "text": {
         "hover": {
-          "value": "{color.hover.primary.value}"
+          "value": "{color.hover.primary}"
         },
         "selected": {
-          "value": "{color.text.base.value}"
+          "value": "{color.text.base}"
         }
       },
       "icon": {
         "clear": {
-          "value": "{color.ui.50.value}"
+          "value": "{color.ui.50}"
         },
         "dropdown": {
-          "value": "{color.interactive.secondary.value}"
+          "value": "{color.interactive.secondary}"
         },
         "checkmark": {
-          "value": "{color.interactive.secondary.value}"
+          "value": "{color.interactive.secondary}"
         },
         "focus": {
-          "value": "{color.interactive.primary.value}"
+          "value": "{color.interactive.primary}"
         }
       }
     },
