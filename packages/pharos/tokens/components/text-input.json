@@ -3,10 +3,10 @@
     "color": {
       "icon": {
         "valid": {
-          "value": "{color.feedback.success.value}"
+          "value": "{color.feedback.success}"
         },
         "invalid": {
-          "value": "{color.feedback.error.value}"
+          "value": "{color.feedback.error}"
         }
       }
     }
