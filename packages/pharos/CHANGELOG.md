@@ -1,5 +1,18 @@
 # @ithaka/pharos
 
+## 14.16.0
+
+### Minor Changes
+
+- [#1007](https://github.com/ithaka/pharos/pull/1007) [`2c3db1e`](https://github.com/ithaka/pharos/commit/2c3db1e847c45e27f2eb0393ab6eb68047869b4e) Thanks [@JimFeather](https://github.com/JimFeather)! - Redesigned the modal component on mobile screen widths to enable scrolling.
+
+### Patch Changes
+
+- [#1008](https://github.com/ithaka/pharos/pull/1008) [`f34e3cb`](https://github.com/ithaka/pharos/commit/f34e3cb51a464c7fb3649748eaccfd8c926aacaa) Thanks [@daneah](https://github.com/daneah)! - Upgrade design tokens to Style Dictionary 5
+
+  This changes how tokens are specified internal to Pharos
+  and is not meant to affect the consumption of tokens in SCSS or JavaScript.
+
 ## 14.15.0
 
 ### Minor Changes
