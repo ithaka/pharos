@@ -46,7 +46,7 @@ export default {
       ],
     },
     'assets/embed/javascript': {
-      transforms: ['attribute/cti', 'name/cti/constant', 'asset/base64'],
+      transforms: ['attribute/cti', 'name/constant', 'asset/base64-custom'],
       prefix: 'pharos',
       buildPath: 'src/styles/icons/',
       files: Object.keys(icons.asset.icon).map((icon) => ({

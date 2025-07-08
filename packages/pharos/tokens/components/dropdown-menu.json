@@ -3,7 +3,7 @@
     "color": {
       "border": {
         "base": {
-          "value": "{color.Marble gray.80.value}"
+          "value": "{color.marble-gray.80}"
         }
       }
     },

@@ -2,10 +2,10 @@
   "checkbox-group": {
     "spacing": {
       "vertical": {
-        "value": "{spacing.one-half-x.value}"
+        "value": "{spacing.one-half-x}"
       },
       "horizontal": {
-        "value": "{spacing.one-and-a-half-x.value}"
+        "value": "{spacing.one-and-a-half-x}"
       }
     }
   }
