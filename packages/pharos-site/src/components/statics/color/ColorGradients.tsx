@@ -37,11 +37,9 @@ const ColorGradients: FC<ColorGradientsProps> = ({ gradients = [] }) => {
   const [StateGradient, setStateGradient] = useState<ReactElement[] | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: Record<string, any> = tokens.color;
-  console.log('COLORS', colors);
 
   useEffect(() => {
     const gradientsToDisplay = gradients.map((gradient, index) => {
-      console.log('GRADIENT', gradient.first, gradient.second);
       const firstColor =
         typeof gradient.first === 'string'
           ? colors[gradient.first.replace(/ /g, '-').toLowerCase()]
@@ -50,7 +48,6 @@ const ColorGradients: FC<ColorGradientsProps> = ({ gradients = [] }) => {
               gradient.first.map((color) => color.replace(/ /g, '-').toLowerCase())
             );
 
-      console.log('FIRST', firstColor);
       const secondColor =
         typeof gradient.second === 'string'
           ? colors[gradient.second.replace(/ /g, '-').toLowerCase()]
@@ -59,7 +56,6 @@ const ColorGradients: FC<ColorGradientsProps> = ({ gradients = [] }) => {
               gradient.second.map((color) => color.replace(/ /g, '-').toLowerCase())
             );
 
-      console.log('SECOND', secondColor);
       const gradientStyle = {
         background: `linear-gradient(to bottom right, ${firstColor.value} 55%, ${secondColor.value}`,
         border:
