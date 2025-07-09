@@ -23,9 +23,10 @@ const ColorCombos: FC<ColorCombosProps> = ({ colorNames, crossout }) => {
   }
 
   const getStyle = (name: string) => {
-    let returnValue = colors[name].value;
+    const normalizedName = name.replace(/ /g, '-').toLowerCase();
+    let returnValue = colors[normalizedName].value;
     if (!returnValue) {
-      returnValue = colors[name].base.value;
+      returnValue = colors[normalizedName].base.value;
     }
 
     if (!returnValue) {

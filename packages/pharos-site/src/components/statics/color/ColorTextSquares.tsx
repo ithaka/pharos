@@ -15,15 +15,17 @@ const ColorTextSquares: FC<ColorTextSquaresProps> = ({ bgName, fgName, text, sho
   const colors: Record<string, any> = tokens.color;
 
   const getColor = (name: string) => {
-    let returnValue = colors[name]?.value;
+    const normalizedName = name.replace(/ /g, '-').toLowerCase();
+
+    let returnValue = colors[normalizedName]?.value;
 
     const splitName = name.split(' ');
     if (splitName.length === 3) {
-      const color = colors[`${splitName[0]} ${splitName[1]}`];
+      const color = colors[`${splitName[0]} ${splitName[1]}`.replace(/ /g, '-').toLowerCase()];
       returnValue = color[splitName[2]]?.value;
     }
     if (!returnValue) {
-      returnValue = colors[name]?.base.value;
+      returnValue = colors[normalizedName]?.base.value;
     }
     if (!returnValue) {
       console.error(`Couldn't locate value for token color '${name}'`);

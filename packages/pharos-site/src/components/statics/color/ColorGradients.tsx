@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { FC, ReactElement } from 'react';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTitleCase } from '../../../utils/textConvert';
 import { colorGradient, gradientLabel, gradientContainer } from './ColorGradients.module.css';
 
 interface Gradient {
@@ -22,30 +23,43 @@ const getNestedObject = (nestedObj: Record<string, any>, pathArr: string[]) => {
 
 const getColorName = (path: string[]) => {
   return path.length === 2
-    ? path[path.length - 1]
-    : path
-        .slice(path.length - 2)
-        .join(' ')
-        .replace(/ base+$/g, '');
+    ? toTitleCase(path[path.length - 1].replace(/-/g, ' '))
+    : toTitleCase(
+        path
+          .slice(path.length - 2)
+          .join(' ')
+          .replace(/ base+$/g, '')
+          .replace(/-/g, ' ')
+      );
 };
 
 const ColorGradients: FC<ColorGradientsProps> = ({ gradients = [] }) => {
   const [StateGradient, setStateGradient] = useState<ReactElement[] | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: Record<string, any> = tokens.color;
+  console.log('COLORS', colors);
 
   useEffect(() => {
     const gradientsToDisplay = gradients.map((gradient, index) => {
+      console.log('GRADIENT', gradient.first, gradient.second);
       const firstColor =
         typeof gradient.first === 'string'
-          ? colors[gradient.first]
-          : getNestedObject(colors, gradient.first);
+          ? colors[gradient.first.replace(/ /g, '-').toLowerCase()]
+          : getNestedObject(
+              colors,
+              gradient.first.map((color) => color.replace(/ /g, '-').toLowerCase())
+            );
 
+      console.log('FIRST', firstColor);
       const secondColor =
         typeof gradient.second === 'string'
-          ? colors[gradient.second]
-          : getNestedObject(colors, gradient.second);
+          ? colors[gradient.second.replace(/ /g, '-').toLowerCase()]
+          : getNestedObject(
+              colors,
+              gradient.second.map((color) => color.replace(/ /g, '-').toLowerCase())
+            );
 
+      console.log('SECOND', secondColor);
       const gradientStyle = {
         background: `linear-gradient(to bottom right, ${firstColor.value} 55%, ${secondColor.value}`,
         border:
