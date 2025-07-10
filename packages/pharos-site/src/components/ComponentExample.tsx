@@ -1,5 +1,6 @@
 import { PharosHeading, PharosLink } from '@ithaka/pharos/lib/react-components';
 import type { FC } from 'react';
+import { toSlug } from '../utils/textConvert';
 
 interface ComponentExampleProps {
   children: React.ReactNode;
@@ -19,7 +20,7 @@ const ComponentExample: FC<ComponentExampleProps> = ({
     'https://pharos.jstor.org/storybook/?path=/story/web-components_' +
     storyBookType +
     '-' +
-    componentTitle.replace(/ /g, '-').toLowerCase() +
+    toSlug(componentTitle) +
     '--docs';
 
   return (

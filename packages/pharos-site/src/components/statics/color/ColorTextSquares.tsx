@@ -1,7 +1,7 @@
 import type { FC, CSSProperties } from 'react';
 import { container, container_text } from './ColorTextSquares.module.css';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
-import { toTitleCase } from '../../../utils/textConvert';
+import { toTitleCase, toSlug } from '../../../utils/textConvert';
 
 interface ColorTextSquaresProps {
   bgName: string;
@@ -15,13 +15,13 @@ const ColorTextSquares: FC<ColorTextSquaresProps> = ({ bgName, fgName, text, sho
   const colors: Record<string, any> = tokens.color;
 
   const getColor = (name: string) => {
-    const normalizedName = name.replace(/ /g, '-').toLowerCase();
+    const normalizedName = toSlug(name);
 
     let returnValue = colors[normalizedName]?.value;
 
     const splitName = name.split(' ');
     if (splitName.length === 3) {
-      const color = colors[`${splitName[0]} ${splitName[1]}`.replace(/ /g, '-').toLowerCase()];
+      const color = colors[toSlug(`${splitName[0]} ${splitName[1]}`)];
       returnValue = color[splitName[2]]?.value;
     }
     if (!returnValue) {
