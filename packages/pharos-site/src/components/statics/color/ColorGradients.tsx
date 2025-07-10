@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { FC, ReactElement } from 'react';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
-import { toTitleCase } from '../../../utils/textConvert';
+import { toTitleCase, toSlug } from '../../../utils/textConvert';
 import { colorGradient, gradientLabel, gradientContainer } from './ColorGradients.module.css';
 
 interface Gradient {
@@ -42,18 +42,18 @@ const ColorGradients: FC<ColorGradientsProps> = ({ gradients = [] }) => {
     const gradientsToDisplay = gradients.map((gradient, index) => {
       const firstColor =
         typeof gradient.first === 'string'
-          ? colors[gradient.first.replace(/ /g, '-').toLowerCase()]
+          ? colors[toSlug(gradient.first)]
           : getNestedObject(
               colors,
-              gradient.first.map((color) => color.replace(/ /g, '-').toLowerCase())
+              gradient.first.map((color) => toSlug(color))
             );
 
       const secondColor =
         typeof gradient.second === 'string'
-          ? colors[gradient.second.replace(/ /g, '-').toLowerCase()]
+          ? colors[toSlug(gradient.second)]
           : getNestedObject(
               colors,
-              gradient.second.map((color) => color.replace(/ /g, '-').toLowerCase())
+              gradient.second.map((color) => toSlug(color))
             );
 
       const gradientStyle = {
