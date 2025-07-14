@@ -59,7 +59,7 @@
     "@ithaka/focus-trap": "2.0.1",
     "@lit-labs/scoped-registry-mixin": "^1.0.4",
     "@open-wc/dedupe-mixin": "^2.0.1",
-    "lit": "^3.3.0",
+    "lit": "^3.3.1",
     "uuid": "^11.1.0"
   },
   "peerDependencies": {
