@@ -1,7 +1,7 @@
 @use '../../utils/scss/mixins';
 
 @mixin selected-text {
-  color: var(--pharos-multiselect-dropdown-color-text-selected);
+  color: var(--pharos-multiselect-dropdown-color-text-selected, var(--pharos-color-text-base));
   font-weight: var(--pharos-font-weight-bold);
 }
 
@@ -15,7 +15,7 @@
 }
 
 .multiselect-dropdown__icon {
-  fill: var(--pharos-multiselect-dropdown-color-icon-dropdown);
+  fill: var(--pharos-multiselect-dropdown-color-icon-dropdown, var(--pharos-color-hover-primary));
 }
 
 .multiselect-dropdown__button {
@@ -82,14 +82,23 @@
   &:hover,
   &[highlighted] {
     background-color: var(--pharos-color-ui-20);
-    color: var(--pharos-multiselect-dropdown-color-text-hover);
+    color: var(
+      --pharos-multiselect-dropdown-color-text-hover,
+      var(--pharos-color-interactive-secondary)
+    );
 
     .multiselect-dropdown__option-label {
-      color: var(--pharos-multiselect-dropdown-color-text-hover);
+      color: var(
+        --pharos-multiselect-dropdown-color-text-hover,
+        var(--pharos-color-interactive-secondary)
+      );
     }
 
     .multiselect-dropdown__mark {
-      color: var(--pharos-multiselect-dropdown-color-text-hover);
+      color: var(
+        --pharos-multiselect-dropdown-color-text-hover,
+        var(--pharos-color-interactive-secondary)
+      );
     }
   }
 }
@@ -118,7 +127,7 @@
 .multiselect-dropdown__list {
   @include mixins.font-base;
 
-  max-height: var(--pharos-multiselect-dropdown-size-height-list);
+  max-height: var(--pharos-multiselect-dropdown-size-height-list, 16.75rem);
   overflow-y: scroll;
   z-index: 1;
   box-sizing: content-box;
