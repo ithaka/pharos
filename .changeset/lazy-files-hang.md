@@ -3,4 +3,4 @@
 ---
 
 Fix multiselect dropdown token names to match component name
-Add fallback valued for new tokens
+Add fallback values for new tokens
