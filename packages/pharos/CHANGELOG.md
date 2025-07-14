@@ -1,5 +1,14 @@
 # @ithaka/pharos
 
+## 14.16.1
+
+### Patch Changes
+
+- [#1021](https://github.com/ithaka/pharos/pull/1021) [`a5bc6e8`](https://github.com/ithaka/pharos/commit/a5bc6e88192de979a34bc367551c9911b85c1236) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix multiselect dropdown token names to match component name
+  Add fallback values for new tokens
+
+- [#1017](https://github.com/ithaka/pharos/pull/1017) [`5637fc5`](https://github.com/ithaka/pharos/commit/5637fc5463d9872ab4bf7bbcc820619b5cf6ae71) Thanks [@brentswisher](https://github.com/brentswisher)! - Remove console log from multiselect-dropdown on click handler
+
 ## 14.16.0
 
 ### Minor Changes

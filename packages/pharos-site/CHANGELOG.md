@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 7.2.1
+
+### Patch Changes
+
+- [#1018](https://github.com/ithaka/pharos/pull/1018) [`11f7ac0`](https://github.com/ithaka/pharos/commit/11f7ac0b6c55f6a31104913627fb602ad0191efd) Thanks [@daneah](https://github.com/daneah)! - Fix color page to use Style Dictionary 5 color token format
+
+- Updated dependencies [[`a5bc6e8`](https://github.com/ithaka/pharos/commit/a5bc6e88192de979a34bc367551c9911b85c1236), [`5637fc5`](https://github.com/ithaka/pharos/commit/5637fc5463d9872ab4bf7bbcc820619b5cf6ae71)]:
+  - @ithaka/pharos@14.16.1
+
 ## 7.2.0
 
 ### Minor Changes
