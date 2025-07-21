@@ -1,4 +1,4 @@
-import { property, state } from 'lit/decorators.js';
+import { state } from 'lit/decorators.js';
 import type { CSSResultArray, PropertyValues } from 'lit';
 import { toggleButtonStyles } from './pharos-toggle-button.css';
 import { PharosButton } from '../button/pharos-button';
@@ -15,12 +15,6 @@ export type { ButtonType, LinkTarget, IconName, ButtonVariant };
  *
  */
 export class PharosToggleButton extends PharosButton {
-  /**
-   * Indicates that the button is currently toggled on and cannot be pressed or focused by the user.
-   * @attr selected
-   */
-  @property({ type: Boolean, reflect: true })
-  public override selected = false;
 
   @state()
   private _first = false;
