@@ -164,6 +164,13 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   @property({ type: String, reflect: true })
   public value?: string;
 
+  /**
+   * Indicates that the button is in a selected/active state.
+   * @attr selected
+   */
+  @property({ type: Boolean, reflect: true })
+  public selected = false;
+
   @query('#button-element')
   private _button!: HTMLButtonElement | HTMLAnchorElement;
 

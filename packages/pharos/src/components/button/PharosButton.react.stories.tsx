@@ -57,6 +57,7 @@ export const Base: Story = {
       large={args.large}
       isOnBackground={args.isOnBackground}
       ping={args.ping}
+      selected={args.selected}
       target={args.target}
       type={args.type}
       variant={args.variant}
@@ -347,6 +348,43 @@ export const Forms = {
           Submit
         </PharosButton>
       </form>
+    </div>
+  ),
+};
+
+export const Selected = {
+  render: () => (
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '2rem',
+        gridTemplateColumns: 'repeat(2, 250px)',
+      }}
+    >
+      <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
+        <h3>Secondary - Selected</h3>
+        <PharosButton variant="secondary" selected>
+          Text Button
+        </PharosButton>
+        <PharosButton variant="secondary" selected iconLeft="download">
+          With Icon
+        </PharosButton>
+        <PharosButton variant="secondary" selected disabled>
+          Disabled
+        </PharosButton>
+      </div>
+      <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
+        <h3>Subtle - Selected</h3>
+        <PharosButton variant="subtle" selected>
+          Text Button
+        </PharosButton>
+        <PharosButton variant="subtle" selected iconLeft="download">
+          With Icon
+        </PharosButton>
+        <PharosButton variant="subtle" selected disabled>
+          Disabled
+        </PharosButton>
+      </div>
     </div>
   ),
 };

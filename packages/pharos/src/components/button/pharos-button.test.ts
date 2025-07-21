@@ -150,6 +150,35 @@ describe('pharos-button', () => {
       );
       await expect(component).to.be.accessible();
     });
+
+    it('is accessible when selected with secondary variant', async () => {
+      component.variant = 'secondary';
+      component.selected = true;
+      await component.updateComplete;
+      await expect(component).to.be.accessible();
+    });
+    
+    it('is accessible when selected with subtle variant', async () => {
+      component.variant = 'subtle';
+      component.selected = true;
+      await component.updateComplete;
+      await expect(component).to.be.accessible();
+    });
+    
+    it('is accessible when selected on background', async () => {
+      const parentNode = document.createElement('div');
+      parentNode.style.backgroundColor = PharosColorBlack;
+    
+      component = await fixture(
+        html`<test-pharos-button variant="secondary" selected is-on-background
+          >I am a selected button</test-pharos-button
+        >`,
+        {
+          parentNode,
+        }
+      );
+      await expect(component).to.be.accessible();
+    });
   });
 
   describe('API', () => {
@@ -241,6 +270,59 @@ describe('pharos-button', () => {
       );
       expect(leftIcon).not.to.be.null;
       expect(rightIcon).not.to.be.null;
+    });
+
+    it('renders with selected attribute', async () => {
+      component.selected = true;
+      await component.updateComplete;
+      
+      expect(component.hasAttribute('selected')).to.be.true;
+    });
+    
+    it('applies selected styling to secondary variant', async () => {
+      component.variant = 'secondary';
+      component.selected = true;
+      await component.updateComplete;
+    
+      const button = component.renderRoot.querySelector('#button-element');
+      expect(button).not.to.be.null;
+      expect(component.hasAttribute('selected')).to.be.true;
+      expect(component.getAttribute('variant')).to.equal('secondary');
+    });
+    
+    it('applies selected styling to subtle variant', async () => {
+      component.variant = 'subtle';
+      component.selected = true;
+      await component.updateComplete;
+    
+      const button = component.renderRoot.querySelector('#button-element');
+      expect(button).not.to.be.null;
+      expect(component.hasAttribute('selected')).to.be.true;
+      expect(component.getAttribute('variant')).to.equal('subtle');
+    });
+
+    it('is accessible when pressed/selected', async () => {
+      component.a11yPressed = 'true';
+      await component.updateComplete;
+      await expect(component).to.be.accessible();
+    });
+    
+    it('applies pressed styling for secondary variant', async () => {
+      component.variant = 'secondary';
+      component.a11yPressed = 'true';
+      await component.updateComplete;
+    
+      expect(component.hasAttribute('a11y-pressed')).to.be.true;
+      expect(component.getAttribute('variant')).to.equal('secondary');
+    });
+    
+    it('applies pressed styling for subtle variant', async () => {
+      component.variant = 'subtle';
+      component.a11yPressed = 'true';
+      await component.updateComplete;
+    
+      expect(component.hasAttribute('a11y-pressed')).to.be.true;
+      expect(component.getAttribute('variant')).to.equal('subtle');
     });
   });
 

@@ -20,7 +20,7 @@ export class PharosToggleButton extends PharosButton {
    * @attr selected
    */
   @property({ type: Boolean, reflect: true })
-  public selected = false;
+  public override selected = false;
 
   @state()
   private _first = false;

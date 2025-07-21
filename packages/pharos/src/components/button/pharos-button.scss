@@ -151,13 +151,20 @@
 }
 
 :host([is-on-background][variant='primary']:not([disabled])) #button-element:hover,
-:host([is-on-background][variant='primary']:not([disabled])) #button-element:active,
-:host([is-on-background][variant='secondary']:not([disabled])) #button-element:hover,
-:host([is-on-background][variant='secondary']:not([disabled])) #button-element:active {
+:host([is-on-background][variant='primary']:not([disabled])) #button-element:active {
   @include mixins.button-color(
     $color: var(--pharos-button-color-on-background-primary-text-hover),
     $background-color: var(--pharos-button-color-on-background-primary-background-hover),
     $border-color: var(--pharos-button-color-on-background-primary-border-hover)
+  );
+}
+
+:host([is-on-background][variant='secondary']:not([disabled]):not([selected])) #button-element:hover,
+:host([is-on-background][variant='secondary']:not([disabled]):not([selected])) #button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-button-color-on-background-secondary-text-base),
+    $background-color: var(--pharos-color-marble-gray-97),
+    $border-color: var(--pharos-button-color-on-background-secondary-border-base)
   );
 }
 
@@ -170,7 +177,48 @@
   );
 }
 
+:host([variant='secondary']:not([disabled]):not([selected])) #button-element:hover,
+:host([variant='secondary']:not([disabled]):not([selected])) #button-element:active {
+  @include mixins.button-color(
+    $color: var(--pharos-button-color-base-secondary-text-base),
+    $background-color: var(--pharos-color-marble-gray-97),
+    $border-color: var(--pharos-button-color-base-secondary-border-base)
+  );
+}
+
 :host([icon][large]:not([disabled])) #button-element:hover,
 :host([icon][large]:not([disabled])) #button-element:active {
   padding: calc(var(--pharos-button-padding-large) - 1px);
+}
+
+:host([variant='secondary'][selected]) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-secondary),
+    $background-color: var(--pharos-button-color-base-secondary-background-base),
+    $border-color: var(--pharos-color-interactive-secondary)
+  );
+}
+
+:host([variant='subtle'][selected]) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-primary),
+    $background-color: var(--pharos-color-marble-gray-94),
+    $border-color: var(--pharos-color-marble-gray-94)
+  );
+}
+
+:host([is-on-background][variant='secondary'][selected]) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-secondary),
+    $background-color: var(--pharos-button-color-on-background-secondary-background-base),
+    $border-color: var(--pharos-color-interactive-secondary)
+  );
+}
+
+:host([is-on-background][variant='subtle'][selected]) #button-element {
+  @include mixins.button-color(
+    $color: var(--pharos-color-interactive-primary),
+    $background-color: var(--pharos-color-marble-gray-94),
+    $border-color: var(--pharos-color-marble-gray-94)
+  );
 }
