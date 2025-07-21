@@ -1,0 +1,91 @@
+{
+  "name": "@ithaka/pharos",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "14.16.1",
+  "description": "Pharos web components for products and experiences",
+  "files": [
+    "lib",
+    "custom-elements.json"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss",
+    "./src/test/initComponents.ts"
+  ],
+  "scripts": {
+    "analyze": "cem analyze --litelement --globs \"./src/(components|styles|utils|test)/**/!(*.css|*.test)*.ts\"",
+    "build:tokens": "node --experimental-json-modules ./scripts/build-tokens.mjs",
+    "prebuild": "yarn clean && yarn build:tokens && yarn analyze && yarn build:react && yarn build:assets && yarn build:sassdoc && yarn build:patches",
+    "build": "yarn prebuild && yarn build:styles && yarn build:tsc && yarn build:replace:imports && yarn build:minify:html",
+    "build:tsc": "tsc --project tsconfig.build.json",
+    "build:tsc:watch": "tsc -w --project tsconfig.build.json",
+    "build:react": "node --experimental-json-modules ./scripts/build-react.js",
+    "build:styles": "node ./scripts/build-styles.js",
+    "build:styles:watch": "node ./scripts/watch-styles.js",
+    "build:assets": "node ./scripts/build-assets.js",
+    "build:minify:html": "node ./scripts/build-minified-html.js",
+    "build:patches": "node ./scripts/build-patches.js",
+    "build:sassdoc": "node ./scripts/build-sassdoc.js",
+    "build:tests": "tsc --project tsconfig.json",
+    "build:replace": "replace-in-file \"/(import|from)( '[.]+/)(.*)(?<!.js)(';)/g\" \"\\$1\\$2\\$3.js\\$4\" \"lib/**/*.js, lib/**/*.d.ts\" --isRegex --verbose",
+    "build:replace:dynamic": "replace-in-file \"/(import[(])(.)([.]+/)(.*?)(?<!.js)(.[)])/g\" \"\\$1/* webpackChunkName: '[request]' */ \\$2\\$3\\$4.js\\$5\" \"lib/**/*.js\" --isRegex --verbose",
+    "build:replace:imports": "yarn build:replace && yarn build:replace:dynamic",
+    "prepublishOnly": "yarn build",
+    "clean": "rimraf lib src/react-components",
+    "pretest": "yarn prebuild && yarn build:styles && yarn build:tests && yarn build:replace:imports && yarn build:minify:html",
+    "test": "yarn pretest && wtr",
+    "test:watch": "wtr --watch"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "not IE 11"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ithaka/pharos.git",
+    "directory": "packages/pharos"
+  },
+  "author": "ITHAKA",
+  "license": "MIT",
+  "homepage": "https://pharos.jstor.org",
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.2",
+    "@ithaka/focus-trap": "2.0.1",
+    "@ithaka/pharos": "file:.yalc/@ithaka/pharos",
+    "@lit-labs/scoped-registry-mixin": "^1.0.4",
+    "@open-wc/dedupe-mixin": "^2.0.1",
+    "lit": "^3.3.1",
+    "uuid": "^11.1.0"
+  },
+  "peerDependencies": {
+    "sass": "^1.89.1"
+  },
+  "customElements": "custom-elements.json",
+  "exports": {
+    ".": "./lib/index.js",
+    "./lib": "./lib/index.js",
+    "./lib/index": "./lib/index.js",
+    "./lib/patches/*": "./lib/patches/*.js",
+    "./lib/components/*": "./lib/components/*.js",
+    "./lib/react-components": "./lib/react-components/index.js",
+    "./lib/react-components/*": "./lib/react-components/*.js",
+    "./lib/styles/*": "./lib/styles/*.js",
+    "./lib/styles/*.css": "./lib/styles/*.css",
+    "./lib/styles/*.scss": "./lib/styles/*.scss",
+    "./lib/styles/pharos": "./lib/styles/pharos.scss",
+    "./lib/utils/scss/mixins": "./lib/utils/scss/_mixins.scss",
+    "./lib/utils/registerComponents": "./lib/utils/registerComponents.js",
+    "./lib/utils/createFormData": "./lib/utils/createFormData.js",
+    "./lib/utils/PharosContext": "./lib/utils/PharosContext.js",
+    "./package.json": "./package.json",
+    "./custom-elements.json": "./custom-elements.json"
+  },
+  "yalcSig": "b4e2f095b6a746443ce5ce507516e0c9"
+}

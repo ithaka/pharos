@@ -308,9 +308,7 @@ export const Selected: Story = {
       </div>
       <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
         <h3>Subtle - Selected</h3>
-        <storybook-pharos-button variant="subtle" selected>
-          Text Button
-        </storybook-pharos-button>
+        <storybook-pharos-button variant="subtle" selected> Text Button </storybook-pharos-button>
         <storybook-pharos-button variant="subtle" selected icon-left="download">
           With Icon
         </storybook-pharos-button>
