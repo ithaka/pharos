@@ -54,6 +54,7 @@
   },
   "author": "ITHAKA",
   "license": "MIT",
+  "homepage": "https://pharos.jstor.org",
   "dependencies": {
     "@floating-ui/dom": "^1.7.2",
     "@ithaka/focus-trap": "2.0.1",
