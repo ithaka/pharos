@@ -292,6 +292,10 @@ export const Forms: Story = {
 };
 
 export const Selected: Story = {
+  args: {
+    pressed: 'true',
+  },
+
   render: () => html`
     <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(2, 250px);">
       <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
