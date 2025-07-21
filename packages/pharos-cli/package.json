@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.0.13",
+    "@types/node": "^24.0.15",
     "jest": "^30.0.4",
     "ts-jest": "^29.4.0",
     "ts-morph": "^26.0.0",
