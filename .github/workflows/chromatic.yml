@@ -10,16 +10,30 @@ on:
       - '.github/workflows/chromatic.yml'
     branches-ignore:
       - main
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to run Chromatic on'
+        required: true
+        type: string
 
 jobs:
   chromatic:
     name: Chromatic
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout Repo (Push)
+        if: github.event_name == 'push'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Checkout Repo (Manual Dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: refs/pull/${{ github.event.inputs.pr_number }}/merge
 
       - name: Setup Node.js 22.x
         uses: actions/setup-node@v4
