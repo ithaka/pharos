@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.16.2
+
+### Patch Changes
+
+- [#1030](https://github.com/ithaka/pharos/pull/1030) [`0a389e9`](https://github.com/ithaka/pharos/commit/0a389e9284e6e09599b793c390074022b01133b0) Thanks [@phosphotungstic](https://github.com/phosphotungstic)! - Moves propagation change into overlay code
+
 ## 14.16.1
 
 ### Patch Changes
