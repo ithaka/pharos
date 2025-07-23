@@ -164,6 +164,13 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   @property({ type: String, reflect: true })
   public value?: string;
 
+  /**
+   * Indicates that the button is in a selected/active state.
+   * @attr selected
+   */
+  @property({ type: Boolean, reflect: true })
+  public selected = false;
+
   @query('#button-element')
   private _button!: HTMLButtonElement | HTMLAnchorElement;
 
@@ -285,7 +292,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             rel=${ifDefined(this.rel)}
             target=${ifDefined(this.target)}
             aria-label=${ifDefined(this.a11yLabel)}
-            aria-pressed=${ifDefined(this.a11yPressed)}
+            aria-pressed=${ifDefined(this.selected ? 'true' : this.a11yPressed)}
             aria-expanded=${ifDefined(this.a11yExpanded)}
             aria-haspopup=${ifDefined(this.a11yHaspopup)}
             aria-disabled=${ifDefined(this.a11yDisabled)}
@@ -303,7 +310,7 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
             ?disabled=${this.a11yDisabled ? false : this.disabled}
             type=${ifDefined(this.type)}
             aria-label=${ifDefined(this.a11yLabel)}
-            aria-pressed=${ifDefined(this.a11yPressed)}
+            aria-pressed=${ifDefined(this.selected ? 'true' : this.a11yPressed)}
             aria-expanded=${ifDefined(this.a11yExpanded)}
             aria-haspopup=${ifDefined(this.a11yHaspopup)}
             aria-disabled=${ifDefined(this.a11yDisabled)}
