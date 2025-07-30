@@ -37,16 +37,6 @@ const Footer: FC = () => {
             <ul className={list}>
               <li>
                 <PharosLink
-                  href="/components/component-status"
-                  isOnBackground
-                  data-sc="link:component status footer"
-                  onClick={handleLinkClick}
-                >
-                  Component status page
-                </PharosLink>
-              </li>
-              <li>
-                <PharosLink
                   href="https://github.com/ithaka/pharos/blob/main/packages/pharos/CHANGELOG.md"
                   isOnBackground
                   target="_blank"

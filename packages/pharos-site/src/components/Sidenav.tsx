@@ -124,7 +124,6 @@ const Sidenav: FC<SidenavProps> = ({ isOpen, showCloseButton }) => {
         <PharosSidenavSection label="Design System">
           <PharosSidenavMenu label="Components" expanded={isExpanded('components')}>
             {[
-              'Component status',
               'Alert',
               'Button',
               'Breadcrumb',
