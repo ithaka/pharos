@@ -30,13 +30,45 @@ const sortItems = (a: { order: number }, b: { order: number }) => {
   return 0;
 };
 
-const HexToRGB = (hex: string) => {
-  const regex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (regex) {
-    return [parseInt(regex[1], 16), parseInt(regex[2], 16), parseInt(regex[3], 16)];
-  }
-  return [0, 0, 0];
+const HSL_RE =
+  /hsla?\(\s*(\d+(?:\.\d+)?)(?:deg)?(?:\s*[,\s]\s*|\s+)(\d+(?:\.\d+)?)%\s*(?:[,\s]\s*|\s+)(\d+(?:\.\d+)?)%\s*(?:\/\s*([\d.]+))?\s*\)/i;
+
+const HslToRgb = (hsl: string) => {
+  const match = hsl.match(HSL_RE);
+  if (!match) return [0, 0, 0];
+  const [, hStr, sStr, lStr] = match;
+
+  let h = parseInt(hStr);
+  let s = parseFloat(sStr);
+  let l = parseFloat(lStr);
+
+  // normalise
+  s /= 100;
+  l /= 100;
+
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+  const m = l - c / 2;
+
+  let r = 0,
+    g = 0,
+    b = 0;
+  if (h < 60) [r, g] = [c, x];
+  else if (h < 120) [r, g] = [x, c];
+  else if (h < 180) [g, b] = [c, x];
+  else if (h < 240) [g, b] = [x, c];
+  else if (h < 300) [r, b] = [x, c];
+  else [r, b] = [c, x];
+
+  return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
 };
+
+function RgbToHex(rgb: number[]) {
+  const r = rgb[0].toString(16).padStart(2, '0');
+  const g = rgb[1].toString(16).padStart(2, '0');
+  const b = rgb[2].toString(16).padStart(2, '0');
+  return `#${r}${g}${b}`.toUpperCase();
+}
 
 function RgbToCmyk(rgb: number[]) {
   let computedC = 0;
@@ -108,7 +140,8 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
           ? color.path[color.path.length - 1]
           : color.path.slice(color.path.length - 2).join(' ');
 
-      const RGB = HexToRGB(color.value);
+      const RGB = HslToRgb(color.value);
+      const Hex = RgbToHex(RGB);
       const CMYK = RgbToCmyk(RGB);
 
       return (
@@ -120,10 +153,13 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
                 {toTitleCase(name.replace(/ base+$/g, '').replace('-', ' '))}
               </div>
               <div>
-                <strong>Hex</strong> - {color.value.toUpperCase()}
+                <strong>Hex</strong> - {Hex}
               </div>
               {!hexOnlyLabel ? (
                 <>
+                  <div>
+                    <strong>HSL</strong> - {color.value}
+                  </div>
                   <div>
                     <strong>RGB</strong> - r{RGB[0]} g{RGB[1]} b{RGB[2]}
                   </div>
