@@ -115,7 +115,7 @@ export const Header: FC = () => (
           id="adv-search-menu-link"
           className="hide-for-small"
         >
-          <span slot="category">Advanced Search</span>
+          Advanced Search
         </PharosDropdownMenuNavLink>
         <PharosDropdownMenuNavCategory
           id="browse-link"

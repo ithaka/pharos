@@ -1,17 +1,17 @@
 {
-  "dropdown-multiselect": {
+  "multiselect-dropdown": {
     "color": {
       "text": {
         "hover": {
-          "value": "{color.hover.primary.value}"
+          "value": "{color.hover.primary}"
         },
         "selected": {
-          "value": "{color.text.base.value}"
+          "value": "{color.text.base}"
         }
       },
       "icon": {
         "dropdown": {
-          "value": "{color.interactive.secondary.value}"
+          "value": "{color.interactive.secondary}"
         }
       }
     },

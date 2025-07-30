@@ -2,15 +2,15 @@
   "tooltip": {
     "color": {
       "background": {
-        "base": { "value": "{color.Marble gray.20.value}" }
+        "base": { "value": "{color.marble-gray.20}" }
       },
       "text": {
-        "base": { "value": "{color.text.white.value}" }
+        "base": { "value": "{color.text.white}" }
       }
     },
     "size": {
       "text": {
-        "base": { "value": "{font.size.small.value}" }
+        "base": { "value": "{font.size.small}" }
       }
     }
   }

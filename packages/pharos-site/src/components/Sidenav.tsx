@@ -1,9 +1,10 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { FC, ReactElement } from 'react';
 import { withPrefix, useStaticQuery, graphql } from 'gatsby';
 import { useLocation } from '@reach/router';
 
 import handleLinkClick from '../utils/handleLinkClick';
+import { toSlug } from '../utils/textConvert';
 import { siteBrand__title, siteBrand__subTitle, sidenav } from './Sidenav.module.css';
 
 interface SidenavProps {
@@ -38,7 +39,7 @@ const Sidenav: FC<SidenavProps> = ({ isOpen, showCloseButton }) => {
     } = Pharos;
 
     const getLink = (pageName: string) => {
-      return pageName.replace(/\s/g, '-').toLowerCase();
+      return toSlug(pageName);
     };
 
     const createSidenavLink = (root: string, page: string, index: number) => {

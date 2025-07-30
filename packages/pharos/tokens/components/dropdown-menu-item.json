@@ -3,40 +3,40 @@
     "color": {
       "text": {
         "base": {
-          "value": "{color.Black.value}"
+          "value": "{color.black}"
         },
         "hover": {
-          "value": "{color.JSTOR red.value}"
+          "value": "{color.jstor-red}"
         },
         "disabled": {
-          "value": "{color.Marble gray.40.value}"
+          "value": "{color.marble-gray.40}"
         },
         "description": {
-          "value": "{color.Marble gray.40.value}"
+          "value": "{color.marble-gray.40}"
         }
       },
       "border": {
         "base": {
-          "value": "{color.Marble gray.80.value}"
+          "value": "{color.marble-gray.80}"
         }
       },
       "background": {
         "base": {
-          "value": "{color.White.value}"
+          "value": "{color.white}"
         },
         "active": {
-          "value": "{color.Marble gray.base.value}"
+          "value": "{color.marble-gray.base}"
         },
         "disabled": {
-          "value": "{color.Marble gray.base.value}"
+          "value": "{color.marble-gray.base}"
         },
         "hover": {
-          "value": "{color.Marble gray.94.value}"
+          "value": "{color.marble-gray.94}"
         }
       },
       "icon": {
         "base": {
-          "value": "{color.Black.value}"
+          "value": "{color.black}"
         }
       }
     }

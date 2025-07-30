@@ -1,5 +1,11 @@
 # @ithaka/pharos-cli
 
+## 5.6.0
+
+### Minor Changes
+
+- [#991](https://github.com/ithaka/pharos/pull/991) [`4c01223`](https://github.com/ithaka/pharos/commit/4c01223bf717affff6440ca9691d5b914de61846) Thanks [@daneah](https://github.com/daneah)! - Use TypeScript for component story creation
+
 ## 5.5.1
 
 ### Patch Changes
@@ -27,7 +33,6 @@
 ### Minor Changes
 
 - [#268](https://github.com/ithaka/pharos/pull/268) [`ffb2f63`](https://github.com/ithaka/pharos/commit/ffb2f63523bfe51ee2cc16de1740309590cded59) Thanks [@Niznikr](https://github.com/Niznikr)! - Add register utility:
-
   - Update `PharosElement` to set `[data-pharos-component]` with `constructor.name`
   - Update `PharosComponentMixin` to set `[data-pharos-component]` with base class name
   - Add register utility to simplify component registration and ensure trivial classes are used for custom elements:
@@ -58,7 +63,6 @@
 ### Minor Changes
 
 - [#226](https://github.com/ithaka/pharos/pull/226) [`7843568`](https://github.com/ithaka/pharos/commit/78435685eb15b1c88122c0c71bbc228272a6651d) Thanks [@Niznikr](https://github.com/Niznikr)! - require manual component registration:
-
   - Remove component self-registration
   - Scope registries for components composed of other Pharos components using [scoped-registry-mixin](https://github.com/lit/lit/tree/main/packages/labs/scoped-registry-mixin)
   - Update React wrapper to detect defined custom tag name
@@ -67,7 +71,6 @@
   - Update documentation
 
   **Migration Guidelines**
-
   1. Remove all individual imports of Pharos web components.
 
   2. Register them with a custom tag in your app's entrypoint in the form of `{app/bundle}-pharos-{component}`:
@@ -127,7 +130,6 @@
 ### Patch Changes
 
 - [#188](https://github.com/ithaka/pharos/pull/188) [`767d6f8`](https://github.com/ithaka/pharos/commit/767d6f8f10267afcb111fa92d9a7b3a71c3fee4e) Thanks [@Niznikr](https://github.com/Niznikr)! - update to TypeScript 4.3:
-
   - Update packages to use TypeScript 4.3
   - Add `noImplicitOverride` flag
   - Update Prettier to support the new `override` keyword
@@ -143,14 +145,12 @@
 ### Minor Changes
 
 - [#19](https://github.com/ithaka/pharos/pull/19) [`70f42ef`](https://github.com/ithaka/pharos/commit/70f42ef0776d1b0ff0ea32ae6560deef92757d8d) Thanks [@Niznikr](https://github.com/Niznikr)! - update to Lit 2:
-
   - Update to Lit 2 following upgrade guide
   - Update `@open-wc/testing` tools
   - Target `es2019` as recommended by Lit
   - Run tests on built JS package
 
 * [#42](https://github.com/ithaka/pharos/pull/42) [`84e5bfa`](https://github.com/ithaka/pharos/commit/84e5bfad249b5e5738cf6adf03bc6f25c769628d) Thanks [@Niznikr](https://github.com/Niznikr)! - remove support for IE11:
-
   - Remove polyfills
   - Remove design token imports in components
   - Update documentation
@@ -165,7 +165,6 @@
 ### Patch Changes
 
 - [#48](https://github.com/ithaka/pharos/pull/48) [`ced1c1f`](https://github.com/ithaka/pharos/commit/ced1c1f082e40b5e0b5c71830fb6c6cde1277b83) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies:
-
   - Update Gatsby dependencies
   - Update ESLint dependencies
   - Update Sass
@@ -176,7 +175,6 @@
 ### Patch Changes
 
 - [#33](https://github.com/ithaka/pharos/pull/33) [`46fbc67`](https://github.com/ithaka/pharos/commit/46fbc679c16f094aef2c207e4f4c05e71552a9bb) Thanks [@Niznikr](https://github.com/Niznikr)! - update Storybook to generate React API tables:
-
   - Update Storybook to 6.3 alpha
   - Follow migration guidelines
 
@@ -185,7 +183,6 @@
 ### Patch Changes
 
 - [#20](https://github.com/ithaka/pharos/pull/20) [`b8581b4`](https://github.com/ithaka/pharos/commit/b8581b4f72309037d0182266571e527a0dec86c5) Thanks [@Niznikr](https://github.com/Niznikr)! - remove component guidelines from Storybook:
-
   - Remove component guidelines from Storybook
   - Add links to the guidelines
   - Use React versions of components in the guidelines to render properly in Gatsby
@@ -196,7 +193,6 @@
 ### Major Changes
 
 - [`329505a`](https://github.com/ithaka/pharos/commit/329505af1475004a64b319ca29614d8a0f2177d7) Thanks [@Niznikr](https://github.com/Niznikr)! - rename packages to publish to Ithaka namespace:
-
   - Rename package `@pharos/core` to `@ithaka/pharos`
   - Rename package `@pharos/cli` to `@ithaka/pharos-cli`
   - Rename package `@pharos/site` to `@ithaka/pharos-site`
@@ -207,7 +203,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Lint mdx and js files:
-
   - Add `eslint-plugin-mdx` for linting mdx files
   - Add `eslint-plugin-no-smart-quotes` to find and replace smart quotes
   - Use eslint overrides to explicitly configure settings for each file type
@@ -230,7 +225,6 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update story title in cli templates:
-
   - Put stories in `Components` category
   - Generate component `.css.ts` file
 

@@ -116,7 +116,9 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
           <div className={`${colorSwatch} ${large ? largeSwatch : ''}`} style={swatchStyle}></div>
           {noLabel ? null : (
             <figcaption className={`${colorLabel}`}>
-              <div className={colorName}>{toTitleCase(name.replace(/ base+$/g, ''))}</div>
+              <div className={colorName}>
+                {toTitleCase(name.replace(/ base+$/g, '').replace('-', ' '))}
+              </div>
               <div>
                 <strong>Hex</strong> - {color.value.toUpperCase()}
               </div>

@@ -2,9 +2,9 @@
   "loading-spinner": {
     "color": {
       "stroke": {
-        "primary": { "value": "{color.JSTOR red.value}" },
-        "secondary": { "value": "{color.Living coral.base.value}" },
-        "on-background": { "value": "{color.White.value}" }
+        "primary": { "value": "{color.jstor-red}" },
+        "secondary": { "value": "{color.living-coral.base}" },
+        "on-background": { "value": "{color.white}" }
       }
     }
   }

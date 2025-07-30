@@ -244,7 +244,7 @@
       "name": "Mat Harris",
       "avatar_url": "https://avatars.githubusercontent.com/u/6874453?v=4",
       "profile": "https://matharris.dev/",
-      "contributions": ["a11y"]
+      "contributions": ["a11y", "code", "doc"]
     },
     {
       "login": "david-corneail",
@@ -266,7 +266,15 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/66334839?v=4",
       "profile": "https://github.com/Zahraa222",
       "contributions": ["code"]
+    },
+    {
+      "login": "phosphotungstic",
+      "name": "Patrick",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19981742?v=4",
+      "profile": "https://github.com/phosphotungstic",
+      "contributions": ["code"]
     }
   ],
   "contributorsPerLine": 7
 }
+

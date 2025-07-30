@@ -15,7 +15,7 @@
 > to change the world for the better.
 
 <p align="center">
-  <a href=".github/CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" alt="Contributor Covenant" /></a>
+  <a href=".github/CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.1%20adopted-ff69b4.svg" alt="Contributor Covenant" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Pharos is released under the MIT license" /></a>
   <a href="#contributors-"><img src="https://img.shields.io/github/all-contributors/ithaka/pharos?color=orange" alt="All Contributors" /></a>
   <a href="https://bundlephobia.com/package/@ithaka/pharos"><img src="https://img.shields.io/bundlephobia/min/@ithaka/pharos" alt="Bundlephobia stats" /></a>
@@ -102,12 +102,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mariadevadoss"><img src="https://avatars.githubusercontent.com/u/132926833?v=4?s=100" width="100px;" alt="mariadevadoss"/><br /><sub><b>mariadevadoss</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=mariadevadoss" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://brentswisher.com/"><img src="https://avatars.githubusercontent.com/u/6653970?v=4?s=100" width="100px;" alt="Brent Swisher"/><br /><sub><b>Brent Swisher</b></sub></a><br /><a href="https://github.com/ithaka/pharos/issues?q=author%3Abrentswisher" title="Bug reports">🐛</a> <a href="https://github.com/ithaka/pharos/commits?author=brentswisher" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/henryclong"><img src="https://avatars.githubusercontent.com/u/52258386?v=4?s=100" width="100px;" alt="Henry Long"/><br /><sub><b>Henry Long</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=henryclong" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://matharris.dev/"><img src="https://avatars.githubusercontent.com/u/6874453?v=4?s=100" width="100px;" alt="Mat Harris"/><br /><sub><b>Mat Harris</b></sub></a><br /><a href="#a11y-sirrah-tam" title="Accessibility">️️️️♿️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://matharris.dev/"><img src="https://avatars.githubusercontent.com/u/6874453?v=4?s=100" width="100px;" alt="Mat Harris"/><br /><sub><b>Mat Harris</b></sub></a><br /><a href="#a11y-sirrah-tam" title="Accessibility">️️️️♿️</a> <a href="https://github.com/ithaka/pharos/commits?author=sirrah-tam" title="Code">💻</a> <a href="https://github.com/ithaka/pharos/commits?author=sirrah-tam" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/david-corneail"><img src="https://avatars.githubusercontent.com/u/104939119?v=4?s=100" width="100px;" alt="david-corneail"/><br /><sub><b>david-corneail</b></sub></a><br /><a href="#design-david-corneail" title="Design">🎨</a> <a href="https://github.com/ithaka/pharos/commits?author=david-corneail" title="Documentation">📖</a></td>
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ymouzakis"><img src="https://avatars.githubusercontent.com/u/64924035?s=400&v=4?s=100" width="100px;" alt="Yanni Mouzakis"/><br /><sub><b>Yanni Mouzakis</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=ymouzakis" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Zahraa222"><img src="https://avatars.githubusercontent.com/u/66334839?v=4?s=100" width="100px;" alt="Zahraa Alhmood"/><br /><sub><b>Zahraa Alhmood</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=Zahraa222" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/phosphotungstic"><img src="https://avatars.githubusercontent.com/u/19981742?v=4?s=100" width="100px;" alt="Patrick"/><br /><sub><b>Patrick</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=phosphotungstic" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

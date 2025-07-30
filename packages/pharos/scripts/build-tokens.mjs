@@ -18,16 +18,14 @@ const getRem = (px) => {
   return px / BASE_FONT_SIZE;
 };
 
-const cssVar = (token, dictionary) => {
-  let value = JSON.stringify(token.value);
-  if (dictionary.usesReference(token.original.value)) {
-    const reference = dictionary.getReferences(token.original.value);
-    if (reference[0]?.name) {
-      value = `var(--${reference[0].name})`;
-    } else {
-      value = token.attributes.category === 'asset' ? `'${token.value}'` : token.value;
-    }
+const cssVar = (token) => {
+  let value;
+  // Check if the token has references by looking at the original value
+  if (typeof token.original?.value === 'string' && token.original.value.includes('{')) {
+    // This is a reference token, use CSS variable syntax
+    value = `var(--${token.name})`;
   } else {
+    // This is a direct value
     value = token.attributes.category === 'asset' ? `'${token.value}'` : token.value;
   }
 
@@ -50,11 +48,42 @@ const fileHeader = () => {
 StyleDictionary.registerTransform({
   name: 'scale/rem',
   type: 'value',
-  matcher: function (prop) {
+  filter: function (prop) {
     return prop.attributes.category === 'type' && prop.attributes.type === 'scale';
   },
-  transformer: function (prop) {
+  transform: function (prop) {
     return `${getRem(getTypeSize(prop.value))}rem`;
+  },
+});
+
+StyleDictionary.registerTransform({
+  name: 'asset/scss-string',
+  type: 'value',
+  filter: function (prop) {
+    return prop.attributes.category === 'asset';
+  },
+  transform: function (prop) {
+    return `"${prop.value}"`;
+  },
+});
+
+StyleDictionary.registerTransform({
+  name: 'asset/base64-custom',
+  type: 'value',
+  filter: function (prop) {
+    return prop.attributes.category === 'asset';
+  },
+  transform: async function (prop) {
+    const fs = await import('fs');
+    const path = await import('path');
+    try {
+      const filePath = path.resolve(prop.value);
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      return Buffer.from(fileContent).toString('base64');
+    } catch (error) {
+      console.error(`Error reading file: ${prop.value}`, error);
+      return prop.value;
+    }
   },
 });
 
@@ -65,23 +94,41 @@ StyleDictionary.registerTransform({
 
 StyleDictionary.registerTransformGroup({
   name: 'custom/scss',
-  transforms: StyleDictionary.transformGroup['scss'].concat(['scale/rem']),
+  transforms: [
+    'attribute/cti',
+    'name/kebab',
+    'time/seconds',
+    'html/icon',
+    'size/rem',
+    'color/hex',
+    'asset/scss-string',
+    'scale/rem',
+  ],
 });
 
 StyleDictionary.registerTransformGroup({
   name: 'custom/css',
-  transforms: StyleDictionary.transformGroup['css'].concat(['scale/rem']),
+  transforms: [
+    'attribute/cti',
+    'name/kebab',
+    'time/seconds',
+    'html/icon',
+    'size/rem',
+    'color/hex',
+    'asset/base64',
+    'scale/rem',
+  ],
 });
 
 StyleDictionary.registerFormat({
   name: 'css/js',
-  formatter: function (dictionary) {
+  format: function (dictionary) {
     return (
       fileHeader() +
       `import { css } from 'lit';\n\n` +
       `export const designTokens = css\`\n` +
       `  :host {\n` +
-      dictionary.allProperties.map((token) => '    ' + cssVar(token, dictionary)).join('\n') +
+      dictionary.allTokens.map((token) => '    ' + cssVar(token)).join('\n') +
       `\n  }\n` +
       `\`;\n`
     );
@@ -90,13 +137,13 @@ StyleDictionary.registerFormat({
 
 StyleDictionary.registerFormat({
   name: 'js/object',
-  formatter: function (dictionary) {
+  format: function (dictionary) {
     return (
       fileHeader() +
       'const ' +
       (this.name || '_styleDictionary') +
       ' = ' +
-      JSON.stringify(dictionary.properties, null, 2) +
+      JSON.stringify(dictionary.tokens, null, 2) +
       ';' +
       `\n\nexport default ` +
       (this.name || '_styleDictionary') +
@@ -107,10 +154,10 @@ StyleDictionary.registerFormat({
 
 StyleDictionary.registerFormat({
   name: 'javascript/es6-default',
-  formatter: function (dictionary) {
+  format: function (dictionary) {
     return (
       fileHeader() +
-      dictionary.allProperties
+      dictionary.allTokens
         .map(function (prop) {
           const value = `export default ${JSON.stringify(prop.value)};`;
           const comment = prop.comment ? ` // ${prop.comment}` : '';
@@ -124,10 +171,15 @@ StyleDictionary.registerFormat({
 // APPLY THE CONFIGURATION
 // IMPORTANT: the registration of custom transforms
 // needs to be done _before_ applying the configuration
-const StyleDictionaryExtended = StyleDictionary.extend(config);
+const StyleDictionaryExtended = new StyleDictionary({
+  ...config,
+  log: {
+    verbosity: 'verbose',
+  },
+});
 
 // FINALLY, BUILD ALL THE PLATFORMS
-StyleDictionaryExtended.buildAllPlatforms();
+await StyleDictionaryExtended.buildAllPlatforms();
 
 console.log('\n==============================================');
 console.log('\nBuild completed!');

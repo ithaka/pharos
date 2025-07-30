@@ -215,7 +215,6 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private _handleOptionClick(option: HTMLOptionElement, event: Event): void {
-    console.log('Option clicked:', option);
     if (option.disabled) {
       event.preventDefault();
       return;

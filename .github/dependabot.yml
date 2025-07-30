@@ -12,11 +12,6 @@ updates:
           - 'minor'
           - 'patch'
     ignore:
-      # ithaka/pharos#780
-      - dependency-name: 'style-dictionary'
-        update-types:
-          - 'version-update:semver-major'
-
       # ithaka/pharos#856
       - dependency-name: 'react'
         update-types:

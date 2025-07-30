@@ -2,7 +2,7 @@ import type { FC, CSSProperties } from 'react';
 import { colorBox } from './ColorCombos.module.css';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import CrossOut from '../CrossOut';
-import { toTitleCase } from '../../../utils/textConvert';
+import { toTitleCase, toSlug } from '../../../utils/textConvert';
 
 interface ColorCombosProps {
   colorNames: string[];
@@ -23,9 +23,10 @@ const ColorCombos: FC<ColorCombosProps> = ({ colorNames, crossout }) => {
   }
 
   const getStyle = (name: string) => {
-    let returnValue = colors[name].value;
+    const normalizedName = toSlug(name);
+    let returnValue = colors[normalizedName].value;
     if (!returnValue) {
-      returnValue = colors[name].base.value;
+      returnValue = colors[normalizedName].base.value;
     }
 
     if (!returnValue) {

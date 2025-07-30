@@ -1,4 +1,4 @@
-const historyColumns = ['Report Info', 'Type', 'Format', 'Date', ''];
+const historyColumns = ['Report Info', 'Type', 'Format', 'Date', 'Action'];
 
 const historyRows = [
   {
