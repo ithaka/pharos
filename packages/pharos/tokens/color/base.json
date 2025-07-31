@@ -11,7 +11,7 @@
       "40": { "value": "hsl(190, 89%, 39%)", "group": "tint", "palette": "secondary", "order": "1" },
       "70": { "value": "hsl(187, 75%, 70%)", "group": "tint", "palette": "secondary", "order": "1" },
       "80": { "value": "hsl(188, 47%, 80%)", "group": "tint", "palette": "secondary", "order": "2" },
-      "90": { "value": "hsl(186.3,37.3%,90%)", "group": "tint", "palette": "secondary", "order": "2" }
+      "90": { "value": "hsl(186.3, 37.3%, 90%)", "group": "tint", "palette": "secondary", "order": "2" }
     },
     "living-coral": {
       "base": { "value": "hsl(0, 95.7%, 63.3%)", "group": "secondary", "palette": "secondary"},
