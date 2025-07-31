@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { FC, ReactElement, CSSProperties } from 'react';
+import Color from 'colorjs.io';
+
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import {
   figure,
@@ -30,64 +32,25 @@ const sortItems = (a: { order: number }, b: { order: number }) => {
   return 0;
 };
 
-const HSL_RE =
-  /hsla?\(\s*(\d+(?:\.\d+)?)(?:deg)?(?:\s*[,\s]\s*|\s+)(\d+(?:\.\d+)?)%\s*(?:[,\s]\s*|\s+)(\d+(?:\.\d+)?)%\s*(?:\/\s*([\d.]+))?\s*\)/i;
-
-const HslToRgb = (hsl: string) => {
-  const match = hsl.match(HSL_RE);
-  if (!match) return [0, 0, 0];
-  const [, hStr, sStr, lStr] = match;
-
-  let h = parseInt(hStr);
-  let s = parseFloat(sStr);
-  let l = parseFloat(lStr);
-
-  // normalise
-  s /= 100;
-  l /= 100;
-
-  const c = (1 - Math.abs(2 * l - 1)) * s;
-  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
-  const m = l - c / 2;
-
-  let r = 0,
-    g = 0,
-    b = 0;
-  if (h < 60) [r, g] = [c, x];
-  else if (h < 120) [r, g] = [x, c];
-  else if (h < 180) [g, b] = [c, x];
-  else if (h < 240) [g, b] = [x, c];
-  else if (h < 300) [r, b] = [x, c];
-  else [r, b] = [c, x];
-
-  return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
-};
-
-function RgbToHex(rgb: number[]) {
-  const r = rgb[0].toString(16).padStart(2, '0');
-  const g = rgb[1].toString(16).padStart(2, '0');
-  const b = rgb[2].toString(16).padStart(2, '0');
-  return `#${r}${g}${b}`.toUpperCase();
-}
-
-function RgbToCmyk(rgb: number[]) {
+function toCMYK(color: Color) {
+  const rgb = color.to('srgb');
   let computedC = 0;
   let computedM = 0;
   let computedY = 0;
   let computedK = 0;
 
-  const r = rgb[0];
-  const g = rgb[1];
-  const b = rgb[2];
+  const r = rgb.r;
+  const g = rgb.g;
+  const b = rgb.b;
 
-  if (r == 0 && g == 0 && b == 0) {
+  if (r === 0 && g === 0 && b === 0) {
     computedK = 1;
     return [0, 0, 0, 1];
   }
 
-  computedC = 1 - r / 255;
-  computedM = 1 - g / 255;
-  computedY = 1 - b / 255;
+  computedC = 1 - r;
+  computedM = 1 - g;
+  computedY = 1 - b;
 
   const minCMY = Math.min(computedC, Math.min(computedM, computedY));
   computedC = Math.round(((computedC - minCMY) / (1 - minCMY)) * 100);
@@ -140,9 +103,15 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
           ? color.path[color.path.length - 1]
           : color.path.slice(color.path.length - 2).join(' ');
 
-      const RGB = HslToRgb(color.value);
-      const Hex = RgbToHex(RGB);
-      const CMYK = RgbToCmyk(RGB);
+      const colorRepresentation = new Color(color.value);
+      const rgb255Display = colorRepresentation.to('srgb').toString({
+        format: {
+          name: 'rgb',
+          coords: ['<number>[0, 255]', '<number>[0, 255]', '<number>[0, 255]'],
+        },
+        precision: 2,
+      });
+      const CMYK = toCMYK(colorRepresentation);
 
       return (
         <figure key={color.value} className={figure}>
@@ -153,18 +122,18 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
                 {toTitleCase(name.replace(/ base+$/g, '').replace('-', ' '))}
               </div>
               <div>
-                <strong>Hex</strong> - {Hex}
+                <strong>Hex</strong> - {colorRepresentation.to('srgb').toString({ format: 'hex' })}
               </div>
               {!hexOnlyLabel ? (
                 <>
                   <div>
-                    <strong>HSL</strong> - {color.value}
+                    <strong>HSL</strong> - {colorRepresentation.toString({ format: 'hsl' })}
                   </div>
                   <div>
-                    <strong>RGB</strong> - r{RGB[0]} g{RGB[1]} b{RGB[2]}
+                    <strong>RGB</strong> - {rgb255Display}
                   </div>
                   <div>
-                    <strong>CMYK</strong> - c{CMYK[0]} m{CMYK[1]} y{CMYK[2]} k{CMYK[3]}
+                    <strong>CMYK</strong> - cmyk({CMYK[0]}% {CMYK[1]}% {CMYK[2]}% {CMYK[3]}%)
                   </div>
                 </>
               ) : null}

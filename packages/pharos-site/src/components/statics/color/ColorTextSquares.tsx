@@ -1,4 +1,6 @@
 import type { FC, CSSProperties } from 'react';
+import Color from 'colorjs.io';
+
 import { container, container_text } from './ColorTextSquares.module.css';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTitleCase, toSlug } from '../../../utils/textConvert';
@@ -51,7 +53,8 @@ const ColorTextSquares: FC<ColorTextSquaresProps> = ({ bgName, fgName, text, sho
       </div>
       {showLabel ? (
         <div>
-          <strong>Hex</strong> - {getColor(fgName).toUpperCase()}
+          <strong>Hex</strong> -{' '}
+          {new Color(getColor(fgName)).to('srgb').toString({ format: 'hex' })}
         </div>
       ) : null}
     </div>
