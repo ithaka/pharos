@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { FC, ReactElement, CSSProperties } from 'react';
+import { converter, parse, formatHex, formatHsl, formatRgb } from 'culori';
+
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import {
   figure,
@@ -30,32 +32,30 @@ const sortItems = (a: { order: number }, b: { order: number }) => {
   return 0;
 };
 
-const HexToRGB = (hex: string) => {
-  const regex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (regex) {
-    return [parseInt(regex[1], 16), parseInt(regex[2], 16), parseInt(regex[3], 16)];
-  }
-  return [0, 0, 0];
-};
+function toCMYK(color: string) {
+  const toRgb = converter('rgb');
+  const rgb = toRgb(color);
 
-function RgbToCmyk(rgb: number[]) {
+  if (!rgb) {
+    throw new Error(`Invalid color format: ${color}`);
+  }
+
   let computedC = 0;
   let computedM = 0;
   let computedY = 0;
   let computedK = 0;
 
-  const r = rgb[0];
-  const g = rgb[1];
-  const b = rgb[2];
+  const r = rgb.r;
+  const g = rgb.g;
+  const b = rgb.b;
 
-  if (r == 0 && g == 0 && b == 0) {
-    computedK = 1;
-    return [0, 0, 0, 1];
+  if (r === 0 && g === 0 && b === 0) {
+    return { mode: 'cmyk', c: 0, m: 0, y: 0, k: 1 };
   }
 
-  computedC = 1 - r / 255;
-  computedM = 1 - g / 255;
-  computedY = 1 - b / 255;
+  computedC = 1 - r;
+  computedM = 1 - g;
+  computedY = 1 - b;
 
   const minCMY = Math.min(computedC, Math.min(computedM, computedY));
   computedC = Math.round(((computedC - minCMY) / (1 - minCMY)) * 100);
@@ -63,7 +63,7 @@ function RgbToCmyk(rgb: number[]) {
   computedY = Math.round(((computedY - minCMY) / (1 - minCMY)) * 100);
   computedK = Math.round(minCMY * 100);
 
-  return [computedC, computedM, computedY, computedK];
+  return { mode: 'cmyk', c: computedC, m: computedM, y: computedY, k: computedK };
 }
 
 const ColorSwatches: FC<ColorSwatchesProps> = ({
@@ -108,8 +108,12 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
           ? color.path[color.path.length - 1]
           : color.path.slice(color.path.length - 2).join(' ');
 
-      const RGB = HexToRGB(color.value);
-      const CMYK = RgbToCmyk(RGB);
+      const colorObject = parse(color.value);
+      const CMYK = toCMYK(color.value);
+
+      if (!colorObject) {
+        throw new Error(`Invalid color value: ${color.value}`);
+      }
 
       return (
         <figure key={color.value} className={figure}>
@@ -120,15 +124,18 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
                 {toTitleCase(name.replace(/ base+$/g, '').replace('-', ' '))}
               </div>
               <div>
-                <strong>Hex</strong> - {color.value.toUpperCase()}
+                <strong>Hex</strong> - {formatHex(colorObject)}
               </div>
               {!hexOnlyLabel ? (
                 <>
                   <div>
-                    <strong>RGB</strong> - r{RGB[0]} g{RGB[1]} b{RGB[2]}
+                    <strong>HSL</strong> - {formatHsl(colorObject)}
                   </div>
                   <div>
-                    <strong>CMYK</strong> - c{CMYK[0]} m{CMYK[1]} y{CMYK[2]} k{CMYK[3]}
+                    <strong>RGB</strong> - {formatRgb(colorObject)}
+                  </div>
+                  <div>
+                    <strong>CMYK</strong> - cmyk({CMYK.c}% {CMYK.m}% {CMYK.y}% {CMYK.k}%)
                   </div>
                 </>
               ) : null}

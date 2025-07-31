@@ -2,7 +2,8 @@ export const toTitleCase = (name: string): string =>
   name
     .split(' ')
     .map((word) => `${word.charAt(0).toUpperCase()}${word.substring(1)}`)
-    .join(' ');
+    .join(' ')
+    .replace('Jstor', 'JSTOR'); // Special case for JSTOR
 
 export const toSlug = (name: string): string =>
   name
