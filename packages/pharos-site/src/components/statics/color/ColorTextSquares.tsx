@@ -1,5 +1,5 @@
 import type { FC, CSSProperties } from 'react';
-import Color from 'colorjs.io';
+import { parse, formatHex } from 'culori';
 
 import { container, container_text } from './ColorTextSquares.module.css';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
@@ -53,8 +53,7 @@ const ColorTextSquares: FC<ColorTextSquaresProps> = ({ bgName, fgName, text, sho
       </div>
       {showLabel ? (
         <div>
-          <strong>Hex</strong> -{' '}
-          {new Color(getColor(fgName)).to('srgb').toString({ format: 'hex' })}
+          <strong>Hex</strong> - {formatHex(parse(getColor(fgName)))}
         </div>
       ) : null}
     </div>

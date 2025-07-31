@@ -3594,14 +3594,15 @@ __metadata:
     "@ithaka/pharos": "npm:^14.16.1"
     "@reach/router": "npm:^1.3.4"
     "@types/babel__core": "npm:^7.20.5"
+    "@types/culori": "npm:^4"
     "@types/reach__router": "npm:^1.3.15"
     "@types/react": "npm:^18.3.23"
     "@types/react-dom": "npm:^18.3.7"
     "@types/react-helmet": "npm:^6.1.11"
     "@webcomponents/scoped-custom-element-registry": "npm:^0.0.10"
     babel-preset-gatsby: "npm:^3.14.0"
-    colorjs.io: "npm:^0.5.2"
     core-js: "npm:^3.44.0"
+    culori: "npm:^4.0.2"
     gatsby: "npm:^5.14.5"
     gatsby-plugin-alias-imports: "npm:^1.0.5"
     gatsby-plugin-google-tagmanager: "npm:^5.14.0"
@@ -6295,6 +6296,13 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10c0/b5dd407040db7d8aa1bd36e79e5f3f32292f6b075abc287529e9f48df1a25fda3e3799ba30b4656667ffb931d3b75690c1d6ca71e39f7337ea6dfda8581916d0
+  languageName: node
+  linkType: hard
+
+"@types/culori@npm:^4":
+  version: 4.0.0
+  resolution: "@types/culori@npm:4.0.0"
+  checksum: 10c0/c2ceb21601773f6e5e2ec4e3cb6e86ef0f555f92da5a7042656dc2e08df24232d3d04616927f12501bec7c9bfcf9cc988ae277aa3bd554be680edb0236c8e726
   languageName: node
   linkType: hard
 
@@ -10119,13 +10127,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colorjs.io@npm:^0.5.2":
-  version: 0.5.2
-  resolution: "colorjs.io@npm:0.5.2"
-  checksum: 10c0/2e6ea43629e325e721b92429239de3a6f42fb6d88ba6e4c2aeff0288c196d876f2f7ee82aea95bd40072d5cdc8cb87f042f4d94c134dcabf0e34a717e4caacb9
-  languageName: node
-  linkType: hard
-
 "colors@npm:^1.4.0":
   version: 1.4.0
   resolution: "colors@npm:1.4.0"
@@ -11071,6 +11072,13 @@ __metadata:
   version: 3.1.3
   resolution: "csstype@npm:3.1.3"
   checksum: 10c0/80c089d6f7e0c5b2bd83cf0539ab41474198579584fa10d86d0cafe0642202343cbc119e076a0b1aece191989477081415d66c9fefbf3c957fc2fc4b7009f248
+  languageName: node
+  linkType: hard
+
+"culori@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "culori@npm:4.0.2"
+  checksum: 10c0/5d3c952b947ac5915409bab513e1d2e8bd813caa491af8ded0c769fdc1186a5ff61fb3c59fc8edf5393237d92074dbc54a492e6e99cb039dd6535d5d96106bfe
   languageName: node
   linkType: hard
 

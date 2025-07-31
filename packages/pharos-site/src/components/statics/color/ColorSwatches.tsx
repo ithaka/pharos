@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { FC, ReactElement, CSSProperties } from 'react';
-import Color from 'colorjs.io';
+import { converter, parse, formatHex, formatHsl, formatRgb } from 'culori';
 
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import {
@@ -32,8 +32,14 @@ const sortItems = (a: { order: number }, b: { order: number }) => {
   return 0;
 };
 
-function toCMYK(color: Color) {
-  const rgb = color.to('srgb');
+function toCMYK(color: string) {
+  const toRgb = converter('rgb');
+  const rgb = toRgb(color);
+
+  if (!rgb) {
+    throw new Error(`Invalid color format: ${color}`);
+  }
+
   let computedC = 0;
   let computedM = 0;
   let computedY = 0;
@@ -44,8 +50,7 @@ function toCMYK(color: Color) {
   const b = rgb.b;
 
   if (r === 0 && g === 0 && b === 0) {
-    computedK = 1;
-    return [0, 0, 0, 1];
+    return { mode: 'cmyk', c: 0, m: 0, y: 0, k: 1 };
   }
 
   computedC = 1 - r;
@@ -58,7 +63,7 @@ function toCMYK(color: Color) {
   computedY = Math.round(((computedY - minCMY) / (1 - minCMY)) * 100);
   computedK = Math.round(minCMY * 100);
 
-  return [computedC, computedM, computedY, computedK];
+  return { mode: 'cmyk', c: computedC, m: computedM, y: computedY, k: computedK };
 }
 
 const ColorSwatches: FC<ColorSwatchesProps> = ({
@@ -103,15 +108,12 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
           ? color.path[color.path.length - 1]
           : color.path.slice(color.path.length - 2).join(' ');
 
-      const colorRepresentation = new Color(color.value);
-      const rgb255Display = colorRepresentation.to('srgb').toString({
-        format: {
-          name: 'rgb',
-          coords: ['<number>[0, 255]', '<number>[0, 255]', '<number>[0, 255]'],
-        },
-        precision: 2,
-      });
-      const CMYK = toCMYK(colorRepresentation);
+      const colorObject = parse(color.value);
+      const CMYK = toCMYK(color.value);
+
+      if (!colorObject) {
+        throw new Error(`Invalid color value: ${color.value}`);
+      }
 
       return (
         <figure key={color.value} className={figure}>
@@ -122,18 +124,18 @@ const ColorSwatches: FC<ColorSwatchesProps> = ({
                 {toTitleCase(name.replace(/ base+$/g, '').replace('-', ' '))}
               </div>
               <div>
-                <strong>Hex</strong> - {colorRepresentation.to('srgb').toString({ format: 'hex' })}
+                <strong>Hex</strong> - {formatHex(colorObject)}
               </div>
               {!hexOnlyLabel ? (
                 <>
                   <div>
-                    <strong>HSL</strong> - {colorRepresentation.toString({ format: 'hsl' })}
+                    <strong>HSL</strong> - {formatHsl(colorObject)}
                   </div>
                   <div>
-                    <strong>RGB</strong> - {rgb255Display}
+                    <strong>RGB</strong> - {formatRgb(colorObject)}
                   </div>
                   <div>
-                    <strong>CMYK</strong> - cmyk({CMYK[0]}% {CMYK[1]}% {CMYK[2]}% {CMYK[3]}%)
+                    <strong>CMYK</strong> - cmyk({CMYK.c}% {CMYK.m}% {CMYK.y}% {CMYK.k}%)
                   </div>
                 </>
               ) : null}
