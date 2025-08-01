@@ -43,20 +43,6 @@ const IndexPage: FC = () => {
             <i>supportive, </i> and <i>beautiful</i> experiences for the{' '}
             <i>intellectually curious</i>.
           </h1>
-          <PharosHeading level="2" preset="1--bold" className={heading__status}>
-            Get a detailed breakdown of components and the status of their implementation
-          </PharosHeading>
-          <PharosLink
-            className={link__status}
-            href="/components/component-status"
-            isOnBackground
-            flex
-            data-sc="link:component status hero"
-            onClick={handleLinkClick}
-          >
-            Check out the component status page
-            <PharosIcon name="arrow-right" className={icon__arrow} a11yHidden="true"></PharosIcon>
-          </PharosLink>
         </PharosLayout>
 
         <div className={card__image}>
@@ -94,11 +80,11 @@ const IndexPage: FC = () => {
           <PharosButton
             className={button__card}
             variant="secondary"
-            href="/components/component-status"
-            data-sc="link:component status"
+            href="/storybook/"
+            data-sc="link:storybook components"
             onClick={handleLinkClick}
           >
-            See component status page
+            View components
           </PharosButton>
         </div>
         <div className={card__image}>

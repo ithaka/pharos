@@ -14,21 +14,6 @@ const FaqPage: FC = () => {
         </p>
       </PageSection>
 
-      <PageSection
-        title="I tried adopting a component but encountered a number of issues. How do I know when something is usable?"
-        subSectionLevel={2}
-      >
-        <p>
-          You can find the status of each component on the{' '}
-          <PharosLink href="https://pharos.jstor.org/components/component-status">
-            component status page
-          </PharosLink>
-          . This page will reflect the progress on various aspects of a component's readiness and
-          help you understand what to expect before adopting a component so you can plan
-          accordingly.
-        </p>
-      </PageSection>
-
       <PageSection title="What do I do if I still run into issues?" subSectionLevel={2}>
         <p>
           Give us the gift of feedback! When you run into issues it's important that you be vocal
