@@ -36,7 +36,7 @@ const GlobalColorsPage: FC = () => {
           {colorTokens
             .filter((color) => color.group === 'secondary')
             .map((color, i) => ColorRow(color, i))}
-          {ColorRow(tokens.color['Marble gray'].base)}
+          {ColorRow(tokens.color['marble-gray'].base)}
         </tbody>
       </TokenTable>
       <TokenTable title="Grayscale colors">

@@ -80,7 +80,7 @@ const IndexPage: FC = () => {
           <PharosButton
             className={button__card}
             variant="secondary"
-            href="https://pharos.jstor.org/storybooks/wc/"
+            href="/storybook/"
             data-sc="link:storybook components"
             onClick={handleLinkClick}
           >

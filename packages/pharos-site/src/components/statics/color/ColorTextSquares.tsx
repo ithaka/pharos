@@ -1,4 +1,6 @@
 import type { FC, CSSProperties } from 'react';
+import { parse, formatHex } from 'culori';
+
 import { container, container_text } from './ColorTextSquares.module.css';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTitleCase, toSlug } from '../../../utils/textConvert';
@@ -51,7 +53,7 @@ const ColorTextSquares: FC<ColorTextSquaresProps> = ({ bgName, fgName, text, sho
       </div>
       {showLabel ? (
         <div>
-          <strong>Hex</strong> - {getColor(fgName).toUpperCase()}
+          <strong>Hex</strong> - {formatHex(parse(getColor(fgName)))}
         </div>
       ) : null}
     </div>

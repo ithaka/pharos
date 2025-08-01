@@ -278,12 +278,12 @@ const AlertPage: FC = () => {
             </PharosLink>
           </li>
           <li>
-            <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html">
+            <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages">
               4.1.3 Status Messages
             </PharosLink>
           </li>
           <li>
-            <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html">
+            <PharosLink href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus">
               1.4.13 Content on Hover or Focus AA
             </PharosLink>
           </li>
