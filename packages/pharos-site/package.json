@@ -40,7 +40,7 @@
     "babel-preset-gatsby": "^3.14.0",
     "core-js": "^3.44.0",
     "culori": "^4.0.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "author": "ITHAKA",
   "license": "MIT",
