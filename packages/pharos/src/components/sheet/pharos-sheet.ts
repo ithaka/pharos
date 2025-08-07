@@ -312,7 +312,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   private async _focusContents(): Promise<void> {
     this._currentTrigger = this.ownerDocument.activeElement;
-    const focusElement = this.shadowRoot?.querySelector(FOCUS_ELEMENT);
+    const focusElement = this.querySelector(FOCUS_ELEMENT);
 
     if (focusElement) {
       await 0;
@@ -399,7 +399,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
                 @mousedown=${this._handleMouseDragStart}
                 @mouseup=${this._handleDragEnd}
               >
-                <div class="sheet__handle" tabindex="-1" data-sheet-focus></div>
+                <div class="sheet__handle" tabindex="-1" data-sheet-handle></div>
               </div>
               ${this._renderCloseButton()}
               <div class="sheet__body">

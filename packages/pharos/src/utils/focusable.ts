@@ -26,7 +26,8 @@ const focusable = `
   [data-pharos-component="PharosDropdownMenuNavCategory"],
   [data-pharos-component="PharosSidenavLink"][href],
   [data-pharos-component="PharosToast"],
-  [data-pharos-component="PharosBreadcrumbItem"][href]
+  [data-pharos-component="PharosBreadcrumbItem"][href],
+  [data-sheet-handle]
 `;
 
 export default focusable;

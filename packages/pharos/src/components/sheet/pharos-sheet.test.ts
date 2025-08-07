@@ -83,7 +83,7 @@ describe('pharos-sheet', () => {
     expect(mockHandler.called).to.be.false;
   });
 
-  it('returns focus back to the trigger element when close', async () => {
+  it('focus moves to the sheet after opening and return back to the trigger element when closed', async () => {
     let activeElement = null;
     const onFocusIn = (event: Event): void => {
       activeElement = event.composedPath()[0];
@@ -96,9 +96,12 @@ describe('pharos-sheet', () => {
     document.body.appendChild(trigger);
 
     const button = document.querySelector('#trigger') as HTMLButtonElement;
-    button.click();
     button.focus();
+    button.click();
     await component.updateComplete;
+
+    const sheetHandle = component.renderRoot.querySelector('.sheet__handle') as HTMLDivElement;
+    expect(activeElement === sheetHandle).to.be.true;
 
     component.open = false;
     await component.updateComplete;
