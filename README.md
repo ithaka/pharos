@@ -109,6 +109,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ymouzakis"><img src="https://avatars.githubusercontent.com/u/64924035?s=400&v=4?s=100" width="100px;" alt="Yanni Mouzakis"/><br /><sub><b>Yanni Mouzakis</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=ymouzakis" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Zahraa222"><img src="https://avatars.githubusercontent.com/u/66334839?v=4?s=100" width="100px;" alt="Zahraa Alhmood"/><br /><sub><b>Zahraa Alhmood</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=Zahraa222" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/phosphotungstic"><img src="https://avatars.githubusercontent.com/u/19981742?v=4?s=100" width="100px;" alt="Patrick"/><br /><sub><b>Patrick</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=phosphotungstic" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/afiasco"><img src="https://avatars.githubusercontent.com/u/61435767?v=4?s=100" width="100px;" alt="Andrew Fiasco"/><br /><sub><b>Andrew Fiasco</b></sub></a><br /><a href="https://github.com/ithaka/pharos/commits?author=afiasco" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
