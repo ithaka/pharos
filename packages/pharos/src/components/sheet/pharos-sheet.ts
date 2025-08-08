@@ -119,6 +119,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         this._sheetContent.style.height = this.expanded
           ? this.MAX_EXPAND_PERCENTAGE
           : this.MIN_EXPAND_PERCENTAGE;
+        this._focusContents();
       } else {
         this._returnTriggerFocus();
       }
@@ -195,7 +196,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         this._sheetContent.style.height = this.expanded
           ? this.MAX_EXPAND_PERCENTAGE
           : this.MIN_EXPAND_PERCENTAGE;
-        this._focusContents();
       }
     }
   }
