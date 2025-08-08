@@ -85,3 +85,16 @@ export const LongContent: Story = {
     </div>
   `,
 };
+
+export const StartHeight: Story = {
+  render: () => html`
+    <div>
+      <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
+        Click Me
+      </storybook-pharos-button>
+      <storybook-pharos-sheet id="my-sheet" sticky>
+        <div>Lorem ipsum dolor sit amet</div>
+      </storybook-pharos-sheet>
+    </div>
+  `,
+};
