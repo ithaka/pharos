@@ -57,7 +57,6 @@ export const Base: Story = {
       large={args.large}
       isOnBackground={args.isOnBackground}
       ping={args.ping}
-      selected={args.selected}
       target={args.target}
       type={args.type}
       variant={args.variant}
@@ -363,25 +362,25 @@ export const Selected = {
     >
       <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
         <h3>Secondary - Selected</h3>
-        <PharosButton variant="secondary" selected>
+        <PharosButton variant="secondary" a11y-pressed="true">
           Text Button
         </PharosButton>
-        <PharosButton variant="secondary" selected iconLeft="download">
+        <PharosButton variant="secondary" a11y-pressed="true" iconLeft="download">
           With Icon
         </PharosButton>
-        <PharosButton variant="secondary" selected disabled>
+        <PharosButton variant="secondary" a11y-pressed="true" disabled>
           Disabled
         </PharosButton>
       </div>
       <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
         <h3>Subtle - Selected</h3>
-        <PharosButton variant="subtle" selected>
+        <PharosButton variant="subtle" a11y-pressed="true">
           Text Button
         </PharosButton>
-        <PharosButton variant="subtle" selected iconLeft="download">
+        <PharosButton variant="subtle" a11y-pressed="true" iconLeft="download">
           With Icon
         </PharosButton>
-        <PharosButton variant="subtle" selected disabled>
+        <PharosButton variant="subtle" a11y-pressed="true" disabled>
           Disabled
         </PharosButton>
       </div>

@@ -40,7 +40,6 @@ export const Base: Story = {
       .large=${args.large}
       .isOnBackground=${args.isOnBackground}
       ping=${ifDefined(args.ping)}
-      .selected=${args.selected}
       target=${ifDefined(args.target)}
       type=${ifDefined(args.type)}
       variant=${ifDefined(args.variant)}
@@ -293,6 +292,7 @@ export const Forms: Story = {
 
 export const Selected: Story = {
   args: {
+    a11yPressed: 'true',
     pressed: 'true',
   },
 
@@ -300,23 +300,25 @@ export const Selected: Story = {
     <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(2, 250px);">
       <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
         <h3>Secondary - Selected</h3>
-        <storybook-pharos-button variant="secondary" selected>
+        <storybook-pharos-button variant="secondary" a11y-pressed="true">
           Text Button
         </storybook-pharos-button>
-        <storybook-pharos-button variant="secondary" selected icon-left="download">
+        <storybook-pharos-button variant="secondary" a11y-pressed="true" icon-left="download">
           With Icon
         </storybook-pharos-button>
-        <storybook-pharos-button variant="secondary" selected disabled>
+        <storybook-pharos-button variant="secondary" a11y-pressed="true" disabled>
           Disabled
         </storybook-pharos-button>
       </div>
       <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
         <h3>Subtle - Selected</h3>
-        <storybook-pharos-button variant="subtle" selected> Text Button </storybook-pharos-button>
-        <storybook-pharos-button variant="subtle" selected icon-left="download">
+        <storybook-pharos-button variant="subtle" a11y-pressed="true">
+          Text Button
+        </storybook-pharos-button>
+        <storybook-pharos-button variant="subtle" a11y-pressed="true" icon-left="download">
           With Icon
         </storybook-pharos-button>
-        <storybook-pharos-button variant="subtle" selected disabled>
+        <storybook-pharos-button variant="subtle" a11y-pressed="true" disabled>
           Disabled
         </storybook-pharos-button>
       </div>

@@ -21,7 +21,6 @@ export interface ComponentArgs {
   large?: boolean;
   isOnBackground?: boolean;
   pressed?: AriaPressedState;
-  selected?: boolean;
   target?: LinkTarget;
   type?: ButtonType;
   variant?: 'primary' | 'secondary' | 'subtle' | 'overlay';
@@ -48,9 +47,6 @@ export const argTypes = {
     options: ['false', 'true', 'mixed', 'undefined', undefined],
     control: { type: 'inline-radio' as const },
   },
-  selected: {
-    control: { type: 'boolean' as const },
-  },
   type: {
     options: ['button', 'submit', 'reset'],
     control: { type: 'inline-radio' as const },
@@ -72,7 +68,6 @@ export const defaultArgs: StoryArgs = {
   large: false,
   isOnBackground: false,
   pressed: undefined,
-  selected: false,
   type: 'button',
   variant: 'primary',
 };
