@@ -2649,9 +2649,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@custom-elements-manifest/analyzer@npm:^0.10.4":
-  version: 0.10.4
-  resolution: "@custom-elements-manifest/analyzer@npm:0.10.4"
+"@custom-elements-manifest/analyzer@npm:^0.10.5":
+  version: 0.10.5
+  resolution: "@custom-elements-manifest/analyzer@npm:0.10.5"
   dependencies:
     "@custom-elements-manifest/find-dependencies": "npm:^0.0.5"
     "@github/catalyst": "npm:^1.6.0"
@@ -2666,7 +2666,7 @@ __metadata:
   bin:
     cem: cem.js
     custom-elements-manifest: cem.js
-  checksum: 10c0/a0f60cb88363057a4e672139ebbfd8167ee7feea71fc743e2c8f066d5add3ba5f2bf45b3ac579f4fe64e50add7ba01bf609dec5a6683be9a3ef785fcaa1c1577
+  checksum: 10c0/f8916fcbaa432f00f0954a7bb9be1d41d8b46e36737e3673989c5c3225c9e257cd49d1dd68c18c708b6b8f4068ba294a9fa67da13d905d82aaa60956e952f20c
   languageName: node
   linkType: hard
 
@@ -3612,7 +3612,7 @@ __metadata:
     "@ithaka/pharos": "npm:^14.16.1"
     "@reach/router": "npm:^1.3.4"
     "@types/babel__core": "npm:^7.20.5"
-    "@types/culori": "npm:^4"
+    "@types/culori": "npm:^4.0.0"
     "@types/reach__router": "npm:^1.3.15"
     "@types/react": "npm:^18.3.23"
     "@types/react-dom": "npm:^18.3.7"
@@ -3646,7 +3646,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos@workspace:packages/pharos"
   dependencies:
-    "@custom-elements-manifest/analyzer": "npm:^0.10.4"
+    "@custom-elements-manifest/analyzer": "npm:^0.10.5"
     "@floating-ui/dom": "npm:^1.7.3"
     "@ithaka/focus-trap": "npm:2.0.1"
     "@lit-labs/scoped-registry-mixin": "npm:^1.0.4"
@@ -5269,10 +5269,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rolldown/pluginutils@npm:1.0.0-beta.27":
-  version: 1.0.0-beta.27
-  resolution: "@rolldown/pluginutils@npm:1.0.0-beta.27"
-  checksum: 10c0/9658f235b345201d4f6bfb1f32da9754ca164f892d1cb68154fe5f53c1df42bd675ecd409836dff46884a7847d6c00bdc38af870f7c81e05bba5c2645eb4ab9c
+"@rolldown/pluginutils@npm:1.0.0-beta.30":
+  version: 1.0.0-beta.30
+  resolution: "@rolldown/pluginutils@npm:1.0.0-beta.30"
+  checksum: 10c0/aff8b532cb9d82d94c9a4101fa12ecb10620ad47d52dbb9135a5c65bde1ad19895b41026b821f4d607083699239a5d0010198401b6a6a54ab6a10d0015302768
   languageName: node
   linkType: hard
 
@@ -6308,7 +6308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/culori@npm:^4":
+"@types/culori@npm:^4.0.0":
   version: 4.0.0
   resolution: "@types/culori@npm:4.0.0"
   checksum: 10c0/c2ceb21601773f6e5e2ec4e3cb6e86ef0f555f92da5a7042656dc2e08df24232d3d04616927f12501bec7c9bfcf9cc988ae277aa3bd554be680edb0236c8e726
@@ -7243,19 +7243,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:^4.7.0":
-  version: 4.7.0
-  resolution: "@vitejs/plugin-react@npm:4.7.0"
+"@vitejs/plugin-react@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@vitejs/plugin-react@npm:5.0.0"
   dependencies:
     "@babel/core": "npm:^7.28.0"
     "@babel/plugin-transform-react-jsx-self": "npm:^7.27.1"
     "@babel/plugin-transform-react-jsx-source": "npm:^7.27.1"
-    "@rolldown/pluginutils": "npm:1.0.0-beta.27"
+    "@rolldown/pluginutils": "npm:1.0.0-beta.30"
     "@types/babel__core": "npm:^7.20.5"
     react-refresh: "npm:^0.17.0"
   peerDependencies:
     vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
-  checksum: 10c0/692f23960972879485d647713663ec299c478222c96567d60285acf7c7dc5c178e71abfe9d2eefddef1eeb01514dacbc2ed68aad84628debf9c7116134734253
+  checksum: 10c0/e5813839d319ab5dc1b90cab40b6c08388f26e456166ba9df10ffc3c3f4ecc594cec06715b5c93390bba56140ca5f68a18f2233f7d275d77e5bbfeb979e4fd9b
   languageName: node
   linkType: hard
 
@@ -20881,7 +20881,7 @@ __metadata:
     "@types/uuid": "npm:^10.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.39.0"
     "@typescript-eslint/parser": "npm:^8.39.0"
-    "@vitejs/plugin-react": "npm:^4.7.0"
+    "@vitejs/plugin-react": "npm:^5.0.0"
     all-contributors-cli: "npm:^6.26.1"
     concurrently: "npm:^9.2.0"
     cssnano: "npm:^7.1.0"

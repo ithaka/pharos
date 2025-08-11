@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 
 import { viewports } from '../../shared/viewports';
 import '../home.scss';
