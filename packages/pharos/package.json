@@ -56,7 +56,7 @@
   "license": "MIT",
   "homepage": "https://pharos.jstor.org",
   "dependencies": {
-    "@floating-ui/dom": "^1.7.2",
+    "@floating-ui/dom": "^1.7.3",
     "@ithaka/focus-trap": "2.0.1",
     "@lit-labs/scoped-registry-mixin": "^1.0.4",
     "@open-wc/dedupe-mixin": "^2.0.1",
@@ -89,7 +89,7 @@
     "sinon": "^21.0.0",
     "style-dictionary": "^5.0.1",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "customElements": "custom-elements.json",
   "exports": {
