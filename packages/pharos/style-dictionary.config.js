@@ -13,6 +13,7 @@ export default {
           format: 'scss/variables',
           options: {
             outputReferences: true,
+            fileHeader: 'generated-file-header',
           },
         },
       ],
@@ -27,6 +28,7 @@ export default {
           format: 'css/variables',
           options: {
             outputReferences: true,
+            fileHeader: 'generated-file-header',
           },
         },
       ],
@@ -41,6 +43,7 @@ export default {
           format: 'css/js',
           options: {
             outputReferences: true,
+            fileHeader: 'generated-file-header',
           },
         },
       ],
@@ -58,6 +61,7 @@ export default {
           prop.attributes.item === icon,
         options: {
           outputReferences: true,
+          fileHeader: 'generated-file-header',
         },
       })),
     },
@@ -72,6 +76,7 @@ export default {
           format: 'js/object',
           options: {
             outputReferences: true,
+            fileHeader: 'generated-file-header',
           },
         },
       ],
@@ -86,6 +91,7 @@ export default {
           format: 'javascript/es6',
           options: {
             outputReferences: true,
+            fileHeader: 'generated-file-header',
           },
         },
       ],

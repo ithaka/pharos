@@ -6,9 +6,9 @@ import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import mediaMinMax from 'postcss-media-minmax';
-import { copyDir } from './copyDir.js';
+import { copyDir } from './copyDir.ts';
 
-const toCamelCase = (str) => {
+const toCamelCase = (str: string) => {
   return str.replace(/-([a-z])/g, (g) => {
     return g[1].toUpperCase();
   });

@@ -9,14 +9,14 @@ const REACT_PROP_TYPE = 'DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElem
 const modules = customElementsManifest.modules.map((module) => module.declarations).flat();
 
 // Convert web component tag to React component name
-const toCamelCase = (str) => {
+const toCamelCase = (str: string) => {
   return str.replace(/-([a-z])/g, (g) => {
     return g[1].toUpperCase();
   });
 };
 
 // Create prop interface using custom-elements.json
-const createComponentInterface = (reactName) => {
+const createComponentInterface = (reactName: string) => {
   const item = modules.find((item) => item.name == reactName);
   const publicFields = item.members.filter(
     (member) => member.kind === 'field' && member.privacy === 'public'
@@ -63,7 +63,7 @@ const createComponentInterface = (reactName) => {
 };
 
 // Define default prop values using custom-elements.json
-const createDefaultProps = (reactName) => {
+const createDefaultProps = (reactName: string) => {
   const item = modules.find((item) => item.name == reactName);
   const defaultFields = item.members.filter(
     (member) => member.kind === 'field' && member.privacy === 'public' && member.default
@@ -81,7 +81,7 @@ const createDefaultProps = (reactName) => {
 };
 
 // Import custom and package types for props
-const importTypes = (file, filePath) => {
+const importTypes = (file: string, filePath: string) => {
   const types = file.match(/(?<=export type\s+).*?(?=\s*;)/gs);
   if (types) {
     const typeNames = types.map((item) => item.split('=')[0].replace(/{/, '').replace(/}/, ''));
