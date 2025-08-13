@@ -53,8 +53,9 @@ export const Base: Story = {
 
 export const Variants: Story = {
   render: () => html`
-    <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
+    <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(4, 200px);">
       <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
+        <h4>Normal</h4>
         <storybook-pharos-button name="primary">Primary</storybook-pharos-button>
         <storybook-pharos-button name="secondary" variant="secondary"
           >Secondary</storybook-pharos-button
@@ -63,6 +64,18 @@ export const Variants: Story = {
         <storybook-pharos-button name="overlay" variant="overlay">Overlay</storybook-pharos-button>
       </div>
       <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
+        <h4>Pressed</h4>
+        <storybook-pharos-button name="primary-pressed">Primary</storybook-pharos-button>
+        <storybook-pharos-button name="secondary-pressed" variant="secondary" a11y-pressed="true"
+          >Secondary</storybook-pharos-button
+        >
+        <storybook-pharos-button name="subtle-pressed" variant="subtle" a11y-pressed="true"
+          >Subtle</storybook-pharos-button
+        >
+        <storybook-pharos-button name="overlay-pressed" variant="overlay">Overlay</storybook-pharos-button>
+      </div>
+      <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
+        <h4>Disabled</h4>
         <storybook-pharos-button name="primary-disabled" disabled>Primary</storybook-pharos-button>
         <storybook-pharos-button name="secondary-disabled" variant="secondary" disabled
           >Secondary</storybook-pharos-button
@@ -75,6 +88,7 @@ export const Variants: Story = {
         >
       </div>
       <div style="background-color: #000000; padding: 1rem; display: grid; grid-gap: 1.5rem;">
+        <h4>On Background</h4>
         <storybook-pharos-button name="primary-is-on-background" is-on-background
           >Primary</storybook-pharos-button
         >
@@ -286,42 +300,6 @@ export const Forms: Story = {
           >Submit</storybook-pharos-button
         >
       </form>
-    </div>
-  `,
-};
-
-export const Selected: Story = {
-  args: {
-    a11yPressed: 'true',
-    pressed: 'true',
-  },
-
-  render: () => html`
-    <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(2, 250px);">
-      <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
-        <h3>Secondary - Selected</h3>
-        <storybook-pharos-button variant="secondary" a11y-pressed="true">
-          Text Button
-        </storybook-pharos-button>
-        <storybook-pharos-button variant="secondary" a11y-pressed="true" icon-left="download">
-          With Icon
-        </storybook-pharos-button>
-        <storybook-pharos-button variant="secondary" a11y-pressed="true" disabled>
-          Disabled
-        </storybook-pharos-button>
-      </div>
-      <div style="padding: 1rem; display: grid; grid-gap: 1.5rem;">
-        <h3>Subtle - Selected</h3>
-        <storybook-pharos-button variant="subtle" a11y-pressed="true">
-          Text Button
-        </storybook-pharos-button>
-        <storybook-pharos-button variant="subtle" a11y-pressed="true" icon-left="download">
-          With Icon
-        </storybook-pharos-button>
-        <storybook-pharos-button variant="subtle" a11y-pressed="true" disabled>
-          Disabled
-        </storybook-pharos-button>
-      </div>
     </div>
   `,
 };

@@ -159,7 +159,7 @@
   );
 }
 
-:host([is-on-background][variant='secondary']:not([disabled],[selected]))
+:host([is-on-background][variant='secondary']:not([disabled],[a11y-pressed="true"]))
   #button-element:hover,
 :host([is-on-background][variant='secondary']:not([disabled],[selected]))
   #button-element:active {

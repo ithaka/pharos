@@ -254,8 +254,12 @@ describe('pharos-button', () => {
       component.a11yPressed = 'true';
       await component.updateComplete;
 
-      expect(component.hasAttribute('a11y-pressed')).to.be.true;
+      const button = component.renderRoot.querySelector('#button-element') as HTMLElement;
+      const computedStyle = getComputedStyle(button);
+      
+      expect(component.getAttribute('a11y-pressed')).to.equal('true');
       expect(component.getAttribute('variant')).to.equal('secondary');
+      expect(computedStyle.color).to.not.equal('');
     });
 
     it('applies pressed styling for subtle variant', async () => {
@@ -263,8 +267,12 @@ describe('pharos-button', () => {
       component.a11yPressed = 'true';
       await component.updateComplete;
 
-      expect(component.hasAttribute('a11y-pressed')).to.be.true;
+      const button = component.renderRoot.querySelector('#button-element') as HTMLElement;
+      const computedStyle = getComputedStyle(button);
+      
+      expect(component.getAttribute('a11y-pressed')).to.equal('true');
       expect(component.getAttribute('variant')).to.equal('subtle');
+      expect(computedStyle.backgroundColor).to.not.equal('');
     });
   });
 
