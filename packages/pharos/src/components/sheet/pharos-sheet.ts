@@ -69,6 +69,13 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   @property({ type: Boolean, reflect: true, attribute: 'has-close' })
   public hasClose = false;
 
+  /**
+   * Indicates if the sheet omits the overlay
+   * @attr overlay
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'omitOverlay' })
+  public omitOverlay = false;
+
   @property({type: Boolean, reflect: true, attribute: 'sticky'}) 
   public sticky = false;
 
@@ -441,17 +448,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         </div>`
       : nothing;
   }
-
-  protected override render(): TemplateResult {
+    protected renderSheet(): TemplateResult {
+    const sheetDialog = this.omitOverlay ? 'sheet__dialog_no_overlay' : "sheet__dialog";
     return html`
-      <div
-        class="sheet__overlay"
-        @touchstart=${this._handleOverlayInteraction}
-        @click=${this._handleOverlayInteraction}
-      >
         <div
           role="dialog"
-          class="sheet__dialog"
+          class="${sheetDialog}"
           aria-modal="true"
           aria-label=${ifDefined(this.header)}
           aria-describedby=${ifDefined(this.descriptionId)}
@@ -479,7 +481,21 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
             </div>
           </focus-trap>
         </div>
-      </div>
     `;
+  }
+
+  protected override render(): TemplateResult {
+    return this.omitOverlay ?
+    this.renderSheet() :
+    html`
+      <div
+        class="sheet__overlay"
+        @touchstart=${this._handleOverlayInteraction}
+        @click=${this._handleOverlayInteraction}
+      >
+        ${this.renderSheet()}
+      </div>
+    `
+    ;
   }
 }

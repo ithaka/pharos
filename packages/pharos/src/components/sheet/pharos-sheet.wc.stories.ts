@@ -98,3 +98,16 @@ export const StartHeight: Story = {
     </div>
   `,
 };
+
+export const NoOverlay: Story = {
+  render: () => html`
+    <div>
+      <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
+        Click Me
+      </storybook-pharos-button>
+      <storybook-pharos-sheet id="my-sheet" omitOverlay>
+        <div>Lorem ipsum dolor sit amet</div>
+      </storybook-pharos-sheet>
+    </div>
+  `,
+};
