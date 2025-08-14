@@ -41,68 +41,14 @@
     top var(--pharos-transition-duration-long) ease-in-out;
 }
 
-:host([open]:not([sticky])) {
+:host([open]) {
+  pointer-events: auto;
+
   .sheet__overlay {
+    background-color: rgb(0 0 0 / 0.5);
     visibility: visible;
-    background-color: rgba(0, 0, 0, 0.5);
-    pointer-events: auto;
   }
 
-  .sheet__dialog {
-    visibility: visible;
-    top: 0;
-    pointer-events: auto;
-    transition:
-      visibility 0s linear 0s,
-      top var(--pharos-transition-duration-long) ease-in-out;
-  }
-}
-
-:host([open][sticky]:not([docked])) {
-  .sheet__overlay {
-    visibility: visible;
-    background-color: rgba(0, 0, 0, 0.5);
-    pointer-events: auto;
-  }
-}
-
-:host([open][sticky][docked]) {
-  .sheet__overlay {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: auto;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    background-color: transparent;
-    pointer-events: none;
-    visibility: visible;
-    overflow: visible;
-    z-index: 9000;
-  }
-
-  .sheet__dialog {
-    position: relative;
-    top: auto;
-    bottom: 0;
-    height: auto;
-    min-width: 100vw;
-    pointer-events: auto;
-    visibility: visible;
-    z-index: 9001;
-  }
-
-  .sheet__content {
-    pointer-events: auto;
-    transition:
-      height var(--pharos-transition-duration-short) ease-in-out;
-  }
-}
-
-:host([open][sticky]:not([docked])){
   .sheet__dialog {
     visibility: visible;
     top: 0;
