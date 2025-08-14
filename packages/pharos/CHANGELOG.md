@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 14.17.0
+
+### Minor Changes
+
+- [#1043](https://github.com/ithaka/pharos/pull/1043) [`a84e29f`](https://github.com/ithaka/pharos/commit/a84e29fb0e5404f6a7d1409819ec3547fcaf9792) Thanks [@daneah](https://github.com/daneah)! - Add Bluesky and Threads icons
+
+- [#1041](https://github.com/ithaka/pharos/pull/1041) [`7034e05`](https://github.com/ithaka/pharos/commit/7034e058f913f25dc305846deaccbc2524db6241) Thanks [@afiasco](https://github.com/afiasco)! - Add a fallback option for focus management on the Sheet component
+
 ## 14.16.2
 
 ### Patch Changes
