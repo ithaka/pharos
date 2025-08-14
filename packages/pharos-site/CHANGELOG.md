@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 7.2.2
+
+### Patch Changes
+
+- [#1037](https://github.com/ithaka/pharos/pull/1037) [`1f8ad6e`](https://github.com/ithaka/pharos/commit/1f8ad6e7a543737f9d6e9308b351acace815717e) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Updating Pharos site docs
+
+- Updated dependencies [[`a84e29f`](https://github.com/ithaka/pharos/commit/a84e29fb0e5404f6a7d1409819ec3547fcaf9792), [`7034e05`](https://github.com/ithaka/pharos/commit/7034e058f913f25dc305846deaccbc2524db6241)]:
+  - @ithaka/pharos@14.17.0
+
 ## 7.2.1
 
 ### Patch Changes
