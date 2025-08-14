@@ -21078,7 +21078,6 @@ __metadata:
     "@typescript-eslint/parser": "npm:^8.38.0"
     "@vitejs/plugin-react": "npm:^4.7.0"
     all-contributors-cli: "npm:^6.26.1"
-    chokidar-cli: "npm:^3.0.0"
     concurrently: "npm:^9.2.0"
     cssnano: "npm:^7.1.0"
     eslint: "npm:^9.32.0"
