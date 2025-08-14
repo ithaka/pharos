@@ -273,6 +273,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/19981742?v=4",
       "profile": "https://github.com/phosphotungstic",
       "contributions": ["code"]
+    },
+    {
+      "login": "afiasco",
+      "name": "Andrew Fiasco",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61435767?v=4",
+      "profile": "https://github.com/afiasco",
+      "contributions": ["code"]
     }
   ],
   "contributorsPerLine": 7

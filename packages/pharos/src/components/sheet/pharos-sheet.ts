@@ -4,7 +4,6 @@ import { query, property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { sheetStyles } from './pharos-sheet.css';
-import focusable from '../../utils/focusable';
 
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosButton } from '../button/pharos-button';
@@ -13,6 +12,7 @@ import { FocusTrap } from '@ithaka/focus-trap';
 
 const CLOSE_BUTTONS = `[data-sheet-close],[data-pharos-component="PharosButton"]#close-button`;
 const FOCUS_ELEMENT = `[data-sheet-focus]`;
+const FOCUS_HANDLE = `[data-sheet-handle]`;
 
 /**
  * Pharos sheet component.
@@ -313,11 +313,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   private async _focusContents(): Promise<void> {
     this._currentTrigger = this.ownerDocument.activeElement;
     const focusElement = this.querySelector(FOCUS_ELEMENT);
+
     if (focusElement) {
       await 0;
       (focusElement as HTMLElement).focus();
     } else {
-      const tabbable = this.shadowRoot?.querySelector(focusable);
+      const tabbable = this.shadowRoot?.querySelector(FOCUS_HANDLE);
       if (tabbable) {
         await 0;
         (tabbable as HTMLElement).focus();
@@ -398,7 +399,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
                 @mousedown=${this._handleMouseDragStart}
                 @mouseup=${this._handleDragEnd}
               >
-                <div class="sheet__handle"></div>
+                <div class="sheet__handle" tabindex="-1" data-sheet-handle></div>
               </div>
               ${this._renderCloseButton()}
               <div class="sheet__body">
