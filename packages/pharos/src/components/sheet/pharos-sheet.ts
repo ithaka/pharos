@@ -10,13 +10,6 @@ import { PharosButton } from '../button/pharos-button';
 import { PharosHeading } from '../heading/pharos-heading';
 import { FocusTrap } from '@ithaka/focus-trap';
 
-import {
-  PharosSpacingOneQuarterX,
-  PharosSpacingOneHalfX,
-  PharosSpacing1X,
-} from '../../styles/variables';
-
-
 const CLOSE_BUTTONS = `[data-sheet-close],[data-pharos-component="PharosButton"]#close-button`;
 const FOCUS_ELEMENT = `[data-sheet-focus]`;
 const FOCUS_HANDLE = `[data-sheet-handle]`;
@@ -81,11 +74,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   public header = 'Sheet header';
 
   /**
-   * Minimum height in pharos spacing tokens
-   * @attr minHeignt
+   * min height
+   * @attr minHeight
    */
-  @property({ type: Number, reflect: true })
-  public minHeignt = undefined;
+  @property({reflect: true })
+  public minHeight: any;
 
   /**
    * Indicates if the sheet omits the overlay
@@ -136,27 +129,21 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
-      console.log("HAS OPEN")
       if (this.open) {
-        console.log("IS OPEN")
         this._sheetContent.style.height = this.expanded
           ? this.MAX_EXPAND_PERCENTAGE
-          : this._getMinHeight();
+          : this.MIN_EXPAND_PERCENTAGE;
         this._focusContents();
       } else {
-        console.log("IS NOT OPEN")
         this._returnTriggerFocus();
       }
 
       if (changedProperties.get('open') !== undefined) {
-        console.log("HMMMMMM");
         this._emitVisibilityChange();
       }
     }
     if (changedProperties.has('expanded')) {
-      console.log("HAS EXPANDED")
       if (this.expanded) {
-        console.log("IS EXPANDED")
         this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
       }
     }
@@ -208,44 +195,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
   }
 
-  private _getMinHeight(): any {
-
-    if(this.minHeignt) {
-      // Break down multiplier into integer and fractional parts
-      const whole = Math.floor(this.minHeignt);
-      const fraction = this.minHeignt - whole;
-
-      const parts = [];
-
-      // Add the whole number spacing constants
-      for (let i = 0; i < whole; i++) {
-        parts.push('PharosSpacing1X');
-      }
-
-      // Add the fractional spacing constants
-      if (fraction === 0.25) {
-        parts.push(PharosSpacingOneQuarterX);
-      } else if (fraction === 0.5) {
-        parts.push(PharosSpacingOneHalfX);
-      } else if (fraction === 0.75) {
-        parts.push(PharosSpacingOneHalfX);
-        parts.push(PharosSpacingOneQuarterX);
-      }
-
-      // If only one part, no need for calc
-      if (parts.length === 1) {
-        return parts[0];
-      }
-
-      // Join into a calc string
-      return `calc(${parts.join(' + ')})`;
-
-    } else {
-      return this.MIN_EXPAND_PERCENTAGE
-    }
-
-  }
-
   private _openSheet(trigger: EventTarget | null): void {
     if (!this.open) {
       const details = {
@@ -260,7 +209,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         this.open = true;
         this._sheetContent.style.height = this.expanded
           ? this.MAX_EXPAND_PERCENTAGE
-          : this._getMinHeight();
+          : this.MIN_EXPAND_PERCENTAGE;
       }
     }
   }
@@ -359,7 +308,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         this.expanded = true;
       } else {
         if (this.expanded) {
-          this._sheetContent.style.height = this._getMinHeight();
+          this._sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
           this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
           this.expanded = false;
         } else {
