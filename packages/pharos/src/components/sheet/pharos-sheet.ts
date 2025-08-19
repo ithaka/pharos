@@ -112,6 +112,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   constructor() {
     super();
+    // if (this.enableExpansion) {
+    //   this.addEventListener('touchend', this._handleDragEnd);
+    //   this.addEventListener('mouseup', this._handleDragEnd);
+    //   this.addEventListener('touchmove', this._handleTouchDragging);
+    //   this.addEventListener('mousemove', this._handleMouseDragging);
+    // }
     this._handleKeydown = this._handleKeydown.bind(this);
     this._handleTriggerClick = this._handleTriggerClick.bind(this);
     this._handleMouseDragging = this._handleMouseDragging.bind(this);
@@ -129,7 +135,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     this._addTriggerListeners();
     if (this.omitOverlay) {
       this.open = true;
-      this._sheetContent.style.height = this._getMinHeightStr();
     }
   }
 
@@ -210,24 +215,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _closeSheet(trigger: EventTarget | null): void {
-    if (this.omitOverlay) {
-      if (this.expanded) {
-        const details = { bubbles: true, composed: true };
-        if (
-          this.dispatchEvent(
-            new CustomEvent('pharos-sheet-close', {
-              ...details,
-              cancelable: true,
-            })
-          )
-        ) {
-          this.expanded = false;
-          this._sheetContent.style.height = this._getMinHeightStr();
-          this.dispatchEvent(new CustomEvent('pharos-sheet-closed', details));
-        }
-      }
-      return;
-    }
     if (this.open) {
       const details = {
         bubbles: true,
@@ -243,35 +230,16 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
           })
         )
       ) {
-        this.open = false;
+        if (!this.omitOverlay){
+          this.open = false;
+        }
         this.expanded = false;
       }
     }
   }
 
   private _openSheet(trigger: EventTarget | null): void {
-    if (this.omitOverlay) {
-      const details = {
-        bubbles: true,
-        composed: true,
-        detail: trigger,
-      };
-      if (!this.expanded) {
-        if (this.dispatchEvent(new CustomEvent('pharos-sheet-open', { ...details, cancelable: true }))) {
-          this.expanded = true;
-          this._sheetContent.style.height = this._getMaxHeightStr();
-          this.dispatchEvent(new CustomEvent('pharos-sheet-opened', details));
-        }
-      } else {
-        if (this.dispatchEvent(new CustomEvent('pharos-sheet-close', { ...details, cancelable: true }))) {
-          this.expanded = false;
-          this._sheetContent.style.height = this._getMinHeightStr();
-          this.dispatchEvent(new CustomEvent('pharos-sheet-closed', details));
-        }
-      }
-      return;
-    }
-    if (!this.open) {
+    if (!this.open || this.omitOverlay) {
       const details = {
         bubbles: true,
         composed: true,
@@ -282,6 +250,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         this.dispatchEvent(new CustomEvent('pharos-sheet-open', { ...details, cancelable: true }))
       ) {
         this.open = true;
+        if (this.omitOverlay && !this.expanded) {
+          this.expanded = true;
+        }
         this._sheetContent.style.height = this.expanded
           ? this._getMaxHeightStr()
           : this._getMinHeightStr();
@@ -298,7 +269,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   private _handleOverlayInteraction(event: MouseEvent | TouchEvent): void {
     const interactionY = event instanceof MouseEvent ? event.clientY : event.touches?.[0].clientY;
-    if (this._sheetOverlay && this._sheetOverlay.clientHeight - interactionY > this._sheetContent.clientHeight) {
+    if (this._sheetOverlay.clientHeight - interactionY > this._sheetContent.clientHeight) {
       event.preventDefault();
       event.stopPropagation();
       this._closeSheet(event.target);
@@ -329,10 +300,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     if (!this.enableExpansion) return;
     if (this._isDragging) {
       this._handleDragEnd();
-      return;
-    }
-    const target = event.target as Element | null;
-    if (!target || !target.closest('.sheet__handle_wrapper')) {
       return;
     }
     this._isDragging = true;
