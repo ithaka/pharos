@@ -56,7 +56,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
    * Indicates if the sheet is allowed to expand.
    * @attr enableExpansion
    */
-  @property({ type: Boolean, reflect: true, attribute: 'enble-expaansion' })
+  @property({ type: Boolean, reflect: true, attribute: 'enble-expansion' })
   public enableExpansion = true;
 
   /**
