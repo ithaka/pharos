@@ -42,6 +42,9 @@
       "93": { "value": "hsl(135, 22.2%, 92.9%)", "group": "", "palette": "feedback", "order": "1" },
       "97": { "value": "hsl(140, 60%, 97.0%)", "group": "", "palette": "feedback", "order": "1" }
     },
+    "engineering-orange": {
+      "base": { "value": "hsl(0, 81%, 43%)", "group": "secondary", "palette": "secondary", "order": "1"}
+    },
     "interactive": {
       "primary": {
         "value": "{color.jstor-red}"
