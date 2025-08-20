@@ -86,7 +86,7 @@ export const LongContent: Story = {
   `,
 };
 
-export const omitOverlay: Story = {
+export const OmitOverlay: Story = {
   render: () => html`
     <div>
       
