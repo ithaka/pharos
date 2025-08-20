@@ -10,7 +10,7 @@
 }
 
 :host([omit-overlay]) {
-  inset: auto 0 0 0;
+  inset: auto 0 0;
 }
 
 .sheet__overlay {

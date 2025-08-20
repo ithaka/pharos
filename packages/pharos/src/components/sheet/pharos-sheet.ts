@@ -112,12 +112,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   constructor() {
     super();
-    // if (this.enableExpansion) {
-    //   this.addEventListener('touchend', this._handleDragEnd);
-    //   this.addEventListener('mouseup', this._handleDragEnd);
-    //   this.addEventListener('touchmove', this._handleTouchDragging);
-    //   this.addEventListener('mousemove', this._handleMouseDragging);
-    // }
     this._handleKeydown = this._handleKeydown.bind(this);
     this._handleTriggerClick = this._handleTriggerClick.bind(this);
     this._handleMouseDragging = this._handleMouseDragging.bind(this);
@@ -352,12 +346,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       }
       if (this._newHeight > this._startHeight) {
         this.expanded = true;
-        this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
+        this._sheetContent.style.height = this._getMaxHeightStr();
         this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
       } else {
         if (this.expanded) {
           this.expanded = false;
-          this._sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
+          this._sheetContent.style.height = this._getMinHeightStr();
           this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
         } else {
           if (this.omitOverlay) {
