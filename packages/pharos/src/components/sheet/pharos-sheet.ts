@@ -56,7 +56,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
    * Indicates if the sheet is allowed to expand.
    * @attr enableExpansion
    */
-  @property({ type: Boolean, reflect: true, attribute: 'enable-expansion' })
+  @property({ type: Boolean, reflect: true, attribute: 'enble-expaansion' })
   public enableExpansion = true;
 
   /**
@@ -361,15 +361,18 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       }
       if (this._newHeight > this._startHeight) {
         this.expanded = true;
+        this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
         this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
       } else {
         if (this.expanded) {
           this.expanded = false;
+          this._sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
           this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
         } else {
           if (this.omitOverlay) {
             this._sheetContent.style.height = this._getMinHeightStr();
-          } else {
+          } 
+          else {
             this._closeSheet(null);
           }
         }
@@ -449,7 +452,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected renderSheet(): TemplateResult {
-    const sheetDialog = this.omitOverlay ? 'sheet__dialog_no_overlay' : 'sheet__dialog';
+    const sheetDialog = this.omitOverlay ? 'sheet__dialog--no-overlay' : 'sheet__dialog';
     return html`
       <div
         role="dialog"
