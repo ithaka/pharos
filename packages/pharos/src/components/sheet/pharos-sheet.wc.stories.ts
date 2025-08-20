@@ -89,11 +89,11 @@ export const LongContent: Story = {
 export const OmitOverlay: Story = {
   render: () => html`
     <div>
+      <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
+        Click Me
+      </storybook-pharos-button>
       <storybook-pharos-sheet id="my-sheet" omit-overlay start-height="200px" expanded-height="500px">
         <div>Lorem ipsum dolor sit amet</div>
-        <storybook-pharos-text-input name="story-input" data-sheet-id="my-sheet" type="text">
-          <span slot="label">I am a label</span>
-        </storybook-pharos-text-input>
       </storybook-pharos-sheet>
     </div>
   `,

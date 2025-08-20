@@ -191,25 +191,16 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     });
   }
 
-  private _normalizePx(value?: string, fallback = '60px'): string {
-    if (!value) return fallback;
-    const v = value.trim();
-    if (/^\d+px$/.test(v)) return v;
-    const n = parseInt(v, 10);
-    if (!Number.isNaN(n)) return `${n}px`;
-    return fallback;
-  }
-
   private _getMinHeightStr(): string {
     if (this.omitOverlay) {
-      return this._normalizePx(this.startHeight, '60px');
+      return this.startHeight ? this.startHeight : '60px';
     }
     return this.MIN_EXPAND_PERCENTAGE;
   }
 
   private _getMaxHeightStr(): string {
     if (this.omitOverlay) {
-      return this._normalizePx(this.expandedHeight, '400px');
+      return this.expandedHeight ? this.expandedHeight : '400px';
     }
     return this.MAX_EXPAND_PERCENTAGE;
   }
