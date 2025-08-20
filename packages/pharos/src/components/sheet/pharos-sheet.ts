@@ -482,7 +482,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected override render(): TemplateResult {
-    // omitOverlay -> do not render the overlay wrapper
     return this.omitOverlay
       ? this.renderSheet()
       : html`
