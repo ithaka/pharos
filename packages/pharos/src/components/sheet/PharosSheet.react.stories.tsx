@@ -71,7 +71,7 @@ export const LongContent: Story = {
 
 export const OmitOverlay: Story = {
   render: () => (
-    <PharosSheet id="my-sheet" omit-overlay start-height="100px" expanded-height="700px">
+    <PharosSheet id="my-sheet" omit-overlay start-height="100px" expanded-height="500px">
       <div>Lorem ipsum dolor sit amet</div>
     </PharosSheet>
   ),
