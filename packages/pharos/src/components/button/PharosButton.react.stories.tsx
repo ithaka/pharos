@@ -350,3 +350,40 @@ export const Forms = {
     </div>
   ),
 };
+
+export const Selected = {
+  render: () => (
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '2rem',
+        gridTemplateColumns: 'repeat(2, 250px)',
+      }}
+    >
+      <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
+        <h3>Secondary - Selected</h3>
+        <PharosButton variant="secondary" a11y-pressed="true">
+          Text Button
+        </PharosButton>
+        <PharosButton variant="secondary" a11y-pressed="true" iconLeft="download">
+          With Icon
+        </PharosButton>
+        <PharosButton variant="secondary" a11y-pressed="true" disabled>
+          Disabled
+        </PharosButton>
+      </div>
+      <div style={{ padding: '1rem', display: 'grid', gridGap: '1.5rem' }}>
+        <h3>Subtle - Selected</h3>
+        <PharosButton variant="subtle" a11y-pressed="true">
+          Text Button
+        </PharosButton>
+        <PharosButton variant="subtle" a11y-pressed="true" iconLeft="download">
+          With Icon
+        </PharosButton>
+        <PharosButton variant="subtle" a11y-pressed="true" disabled>
+          Disabled
+        </PharosButton>
+      </div>
+    </div>
+  ),
+};
