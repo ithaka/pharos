@@ -243,7 +243,6 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _setupMenu(): void {
-    const yOffset = this._navMenu ? 0 : 8;
     const placement = this.placement === 'auto' ? 'bottom-start' : this.placement;
     if (this._currentTrigger) {
       this._cleanup = autoUpdate(this._currentTrigger, this, () => {
@@ -252,7 +251,6 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
             placement: this._navMenu ? 'bottom-start' : placement,
             strategy: this.strategy,
             middleware: [
-              offset(yOffset),
               flip({
                 fallbackPlacements: this._filteredFallbackPlacements,
               }),
