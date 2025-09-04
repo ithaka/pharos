@@ -14,7 +14,7 @@ import FocusMixin from '../../utils/mixins/focus';
 import { FocusTrap } from '@ithaka/focus-trap';
 
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
-import { autoUpdate, computePosition, flip, offset } from '../base/overlay-element';
+import { autoUpdate, computePosition, flip } from '../base/overlay-element';
 import { loopWrapIndex } from '../../utils/math';
 export type { Placement, PositioningStrategy };
 
