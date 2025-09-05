@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.18.1
+
+### Patch Changes
+
+- [#1063](https://github.com/ithaka/pharos/pull/1063) [`545753c`](https://github.com/ithaka/pharos/commit/545753c6a869f657f552982a153ff3a1d78a2d46) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Adding the SVG for the error state of the base image card
+
 ## 14.18.0
 
 ### Minor Changes
