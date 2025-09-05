@@ -313,8 +313,47 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
             [`card__container--selectable-hover`]: this._isSelectableCardHover(),
           })}
         >
-          <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
-          <span class="unavailable-text">Image preview not available</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="73"
+            height="65"
+            viewBox="0 0 73 65"
+            fill="none"
+          >
+            <title>Image preview not available</title>
+            <rect
+              y="24.882"
+              width="42"
+              height="42"
+              transform="rotate(-19.9519 0 24.882)"
+              fill="#D1CFC7"
+            />
+            <rect
+              x="30.5576"
+              y="4"
+              width="39.6944"
+              height="40.8625"
+              transform="rotate(20.871 30.5576 4)"
+              fill="white"
+            />
+            <rect
+              x="29"
+              width="46.235"
+              height="45.5793"
+              transform="rotate(20.871 29 0)"
+              fill="white"
+            />
+            <path
+              d="M50.9424 44.2752L46.6176 25.4893L39.0461 30.6573L37.9063 27.3458L26.0366 34.7459L50.9424 44.2752Z"
+              fill="#D1CFC7"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M69.8494 17.2469L30 2L14.7531 41.8494L54.6025 57.0963L69.8494 17.2469ZM21.6401 38.7741L33.0753 8.88704L62.9624 20.3222L51.5272 50.2093L21.6401 38.7741Z"
+              fill="#D1CFC7"
+            />
+          </svg>
         </div>`
       : html`<slot name="image"></slot>`;
   }
