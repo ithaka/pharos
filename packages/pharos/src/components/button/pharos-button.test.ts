@@ -242,6 +242,38 @@ describe('pharos-button', () => {
       expect(leftIcon).not.to.be.null;
       expect(rightIcon).not.to.be.null;
     });
+
+    it('is accessible when pressed/selected', async () => {
+      component.a11yPressed = 'true';
+      await component.updateComplete;
+      await expect(component).to.be.accessible();
+    });
+
+    it('applies pressed styling for secondary variant', async () => {
+      component.variant = 'secondary';
+      component.a11yPressed = 'true';
+      await component.updateComplete;
+
+      const button = component.renderRoot.querySelector('#button-element') as HTMLElement;
+      const computedStyle = getComputedStyle(button);
+      
+      expect(component.getAttribute('a11y-pressed')).to.equal('true');
+      expect(component.getAttribute('variant')).to.equal('secondary');
+      expect(computedStyle.color).to.not.equal('');
+    });
+
+    it('applies pressed styling for subtle variant', async () => {
+      component.variant = 'subtle';
+      component.a11yPressed = 'true';
+      await component.updateComplete;
+
+      const button = component.renderRoot.querySelector('#button-element') as HTMLElement;
+      const computedStyle = getComputedStyle(button);
+      
+      expect(component.getAttribute('a11y-pressed')).to.equal('true');
+      expect(component.getAttribute('variant')).to.equal('subtle');
+      expect(computedStyle.backgroundColor).to.not.equal('');
+    });
   });
 
   describe('User interaction', () => {
