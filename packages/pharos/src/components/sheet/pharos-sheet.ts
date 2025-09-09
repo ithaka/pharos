@@ -119,8 +119,8 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   @query('.sheet__overlay')
   private _sheetOverlay!: HTMLDivElement;
 
-  @query('.sheet__dialog')
-  private _sheetDialog!: HTMLDivElement;
+  @query('.sheet__dialog--no-overlay')
+  private _sheetDialogNoOverlay!: HTMLDivElement;
 
   constructor() {
     super();
@@ -164,13 +164,16 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
     if (changedProperties.has('expanded')) {
       console.log("expanded updaqted")
-      this._sheetDialog.style.height = this.expanded
+      // if (this.expanded) {
+      //   this._sheetContent.style.height = this._getMaxHeightStr()
+      // }
+      this._sheetContent.style.height = this.expanded
           ? this._getMaxHeightStr()
           : this._getMinHeightStr();
     }
 
     if (this.omitOverlay) {
-      this._sheetDialog.style.height = this.expanded
+      this._sheetDialogNoOverlay.style.height = this.expanded
           ? this._getMaxHeightStr()
           : this._getMinHeightStr();
     }
@@ -473,7 +476,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected renderSheet(): TemplateResult {
-    const sheetDialog = this.omitOverlay ? 'sheet__dialog--no-overlay sheet__dialog' : 'sheet__dialog';
+    const sheetDialog = this.omitOverlay ? 'sheet__dialog--no-overlay' : 'sheet__dialog';
     return html`
       <div
         role="dialog"

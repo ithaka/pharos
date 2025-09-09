@@ -27,6 +27,18 @@
   height: 100%;
 }
 
+.sheet__dialog--no-overlay {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  background-color: rgb(0 0 0 / 0);
+  visibility: visible;
+  height: auto;
+}
 
 
 .sheet__dialog {
@@ -43,22 +55,6 @@
     top var(--pharos-transition-duration-long) ease-in-out;
 }
 
-
-.sheet__dialog--no-overlay {
-  all: unset;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  top: unset;
-  width: 100vw;
-  background-color: rgb(0 0 0 / 0);
-  visibility: visible;
-  bottom: 0;
-  height: auto;
-}
-
 :host([open]) {
   pointer-events: auto;
 
@@ -73,10 +69,6 @@
     transition:
       visibility 0s linear 0s,
       top var(--pharos-transition-duration-long) ease-in-out;
-  }
-  .sheet__dialog--no-overlay {
-    top: unset;
-    bottom: 0;
   }
 }
 
