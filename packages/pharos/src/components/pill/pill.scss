@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.pill {
+  border: 1px solid var(--pharos-color-marble-gray-40);
+  padding-left: var(--pharos-spacing-one-half-x);
+  padding-right: var(--pharos-spacing-one-half-x);
+  line-height: var(--pharos-line-height-medium);
+  gap: var(--pharos-spacing-one-quarter-x);
+  font-size: var(--pharos-font-size-small);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 24px;
+  color: var(--pharos-color-black);
+  background: var(--pharos-color-white);
+}
