@@ -21,3 +21,12 @@ export const Base: Story = {
   render: () => html` <storybook-pharos-pill>Some content</storybook-pharos-pill> `,
   args: defaultArgs,
 };
+
+export const Sizes: Story = {
+  render: () => html`
+    <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
+      <storybook-pharos-pill>Normal Pill</storybook-pharos-pill>
+      <storybook-pharos-pill size="small">Small Pill</storybook-pharos-pill>
+    </div>
+  `,
+};

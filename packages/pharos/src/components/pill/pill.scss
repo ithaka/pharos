@@ -17,3 +17,10 @@
   color: var(--pharos-color-black);
   background: var(--pharos-color-white);
 }
+
+.pill--small {
+  font-size: var(--pharos-font-size-micro);
+  padding-left: var(--pharos-spacing-one-quarter-x);
+  padding-right: var(--pharos-spacing-one-quarter-x);
+  line-height: var(--pharos-line-height-xsmall);
+}
