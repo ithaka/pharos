@@ -27,6 +27,8 @@
   height: 100%;
 }
 
+
+
 .sheet__dialog {
   position: relative;
   min-width: 100vw;
@@ -41,11 +43,27 @@
     top var(--pharos-transition-duration-long) ease-in-out;
 }
 
+
+.sheet__dialog--no-overlay {
+  all: unset;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: unset;
+  width: 100vw;
+  background-color: rgb(0 0 0 / 0);
+  visibility: visible;
+  bottom: 0;
+  height: auto;
+}
+
 :host([open]) {
   pointer-events: auto;
 
   .sheet__overlay {
-    background-color: rgb(0 0 0 / 0.5);
+    // background-color: rgb(0 0 0 / 0.5);
     visibility: visible;
   }
 
@@ -55,6 +73,10 @@
     transition:
       visibility 0s linear 0s,
       top var(--pharos-transition-duration-long) ease-in-out;
+  }
+  .sheet__dialog--no-overlay {
+    top: unset;
+    bottom: 0;
   }
 }
 
@@ -133,26 +155,15 @@
   }
 }
 
-.sheet__dialog--no-overlay {
-  position: fixed;
-  inset: auto 0 0;  
-  min-width: 100vw;
-  height: auto;
-  pointer-events: none;
-  z-index: 9001;
-  visibility: visible;
-  transition: none;
-}
+// :host([omit-overlay]) {
+//   pointer-events: none;
+//   transition:
+//     visibility var(--pharos-transition-duration-default) ease-in-out,
+//     background-color var(--pharos-transition-duration-default) ease-in-out;
+//   transition-duration: var(--pharos-transition-duration-long);
+// }
 
-:host([omit-overlay]) {
-  pointer-events: none;
-  transition:
-    visibility var(--pharos-transition-duration-default) ease-in-out,
-    background-color var(--pharos-transition-duration-default) ease-in-out;
-  transition-duration: var(--pharos-transition-duration-long);
-}
-
-:host([omit-overlay][expanded]) {
-  pointer-events: auto;
-  background-color: rgb(0 0 0 / 0.5);
-}
+// :host([omit-overlay][expanded]) {
+//   pointer-events: auto;
+//   background-color: rgb(0 0 0 / 0.5);
+// }
