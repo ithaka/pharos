@@ -59,6 +59,16 @@ export const Base: Story = {
   args: defaultArgs,
 };
 
+export const Variants: Story = {
+  render: () =>
+    html`<div>
+      <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
+        <storybook-pharos-pill variant="primary">Primary Pill</storybook-pharos-pill>
+        <storybook-pharos-pill variant="secondary">Secondary Pill</storybook-pharos-pill>
+      </div>
+    </div>`,
+};
+
 export const Sizes: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
@@ -69,7 +79,13 @@ export const Sizes: Story = {
 };
 
 export const Dismissible: Story = {
-  render: () => html`<storybook-pharos-pill dismissible>Dismissible Pill</storybook-pharos-pill> `,
+  render: () =>
+    html`<div>
+      <storybook-pharos-pill dismissible>Primary Dismissible Pill</storybook-pharos-pill>
+      <storybook-pharos-pill variant="secondary" dismissible
+        >Secondary Dismissible Pill</storybook-pharos-pill
+      >
+    </div>`,
 };
 
 export const Colors: Story = {
@@ -80,7 +96,10 @@ export const Colors: Story = {
       >
         ${sampleColors.map(
           (color) =>
-            html`<storybook-pharos-pill color="${color}">${color} pill</storybook-pharos-pill>`
+            html`<storybook-pharos-pill color="${color}">${color} pill</storybook-pharos-pill>
+              <storybook-pharos-pill color="${color}" dismissible
+                >${color} pill</storybook-pharos-pill
+              >`
         )}
       </div>
       <div
@@ -89,8 +108,11 @@ export const Colors: Story = {
         ${sampleLightColors.map(
           (color) =>
             html`<storybook-pharos-pill color="${color}" text-color="black"
-              >${color} pill</storybook-pharos-pill
-            >`
+                >${color} pill</storybook-pharos-pill
+              >
+              <storybook-pharos-pill color="${color}" text-color="black" dismissible
+                >${color} pill</storybook-pharos-pill
+              >`
         )}
       </div>
     </div>`,
