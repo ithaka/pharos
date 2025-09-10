@@ -100,4 +100,28 @@ describe('PharosPill', () => {
       expect(pillColor).to.equal(`var(--pharos-color-marble-gray-40)`);
     });
   });
+  describe('Pill Variants', () => {
+    it('should set the correct class when for the primary variant is set', async () => {
+      component = await fixture(
+        html`<test-pharos-pill variant="primary">Test Pill</test-pharos-pill>`
+      );
+
+      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
+      expect(pill.classList.contains('pill--primary')).to.be.true;
+    });
+    it('should set the correct class when for the secondary variant is set', async () => {
+      component = await fixture(
+        html`<test-pharos-pill variant="secondary">Test Pill</test-pharos-pill>`
+      );
+
+      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
+      expect(pill.classList.contains('pill--secondary')).to.be.true;
+    });
+    it('should default to the primary variant when one is not set', async () => {
+      component = await fixture(html`<test-pharos-pill>Test Pill</test-pharos-pill>`);
+
+      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
+      expect(pill.classList.contains('pill--primary')).to.be.true;
+    });
+  });
 });

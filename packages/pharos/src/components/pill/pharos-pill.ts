@@ -16,6 +16,7 @@ import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
  * @fires pharos-pill-dismissed - Fires when the pill is dismissed
  **/
 
+export type PillVariant = 'primary' | 'secondary';
 export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   /**
    * The size of the pill
@@ -47,6 +48,13 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
     reflect: true,
   })
   public color: string = 'marble-gray-40';
+
+  /**
+   * Indicates the variant of button.
+   * @attr variant
+   */
+  @property({ type: String, reflect: true })
+  public variant: PillVariant = 'primary';
 
   /**
    * The name of the color token to use for the pill color
@@ -95,7 +103,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected override render(): TemplateResult {
-    const classes = ['pill'];
+    const classes = ['pill', `pill--${this.variant}`];
     const style = `--pharos-pill-color: var(--pharos-color-${this.color}); --pharos-pill-text-color: var(--pharos-color-${this.textColor});`;
 
     if (this.size === 'small') {

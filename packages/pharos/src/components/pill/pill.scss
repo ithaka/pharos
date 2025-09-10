@@ -16,12 +16,36 @@
   display: inline-block;
   border-radius: 24px;
   background: transparent;
-  border: 1px solid var(--pharos-pill-color, var(--pharos-color-marble-gray-40));
-  color: var(--pharos-pill-color, var(--pharos-color-black));
 
   &:focus-visible {
     outline: 2px solid var(--pharos-color-focus);
     outline-offset: 2px;
+  }
+}
+
+.pill--primary {
+  background-color: var(--pharos-pill-color, var(--pharos-color-marble-gray-40));
+  color: var(--pharos-pill-text-color, var(--pharos-color-black));
+
+  &.pill--dismissible {
+    fill: var(--pharos-pill-text-color, var(--pharos-color-black));
+
+    &:hover {
+      background-color: var(--pharos-color-marble-gray-20);
+    }
+  }
+}
+
+.pill--secondary {
+  border: 1px solid var(--pharos-pill-color, var(--pharos-color-marble-gray-40));
+  color: var(--pharos-pill-color, var(--pharos-color-black));
+
+  &.pill--dismissible {
+    fill: var(--pharos-pill-color, var(--pharos-color-black));
+
+    &:hover {
+      background-color: var(--pharos-color-marble-gray-94);
+    }
   }
 }
 
