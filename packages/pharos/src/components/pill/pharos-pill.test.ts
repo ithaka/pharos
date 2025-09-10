@@ -80,4 +80,24 @@ describe('PharosPill', () => {
       expect(eventFired).to.be.true;
     });
   });
+
+  describe('Pill Colors', () => {
+    it(`should set the pill color variable correctly when a color attribute is set`, async () => {
+      component = await fixture(
+        html`<test-pharos-pill color="jstor-red">Test Pill</test-pharos-pill>`
+      );
+
+      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
+      const pillColor = pill.style.getPropertyValue('--pharos-pill-color');
+      expect(pillColor).to.equal(`var(--pharos-color-jstor-red)`);
+    });
+
+    it('should use default color values when no color attribute is provided', async () => {
+      component = await fixture(html`<test-pharos-pill>Test Pill</test-pharos-pill>`);
+
+      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
+      const pillColor = pill.style.getPropertyValue('--pharos-pill-color');
+      expect(pillColor).to.equal(`var(--pharos-color-marble-gray-40)`);
+    });
+  });
 });
