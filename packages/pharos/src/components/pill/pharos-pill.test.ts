@@ -32,4 +32,52 @@ describe('PharosPill', () => {
       expect(pill?.classList.contains('pill--small')).to.be.true;
     });
   });
+
+  describe('Dismissible Pill', () => {
+    it('is not dismissible by default', async () => {
+      expect(component.dismissible).to.be.false;
+      const dismissButton = component.renderRoot?.querySelector('.pill__dismiss-button');
+      expect(dismissButton).to.be.null;
+    });
+
+    it('renders as a button when dismissible', async () => {
+      component = await fixture(
+        html`<test-pharos-pill dismissible>Dismissible Pill</test-pharos-pill>`
+      );
+      expect(component.dismissible).to.be.true;
+      const pill = component.renderRoot?.querySelector('button.pill') as HTMLDivElement;
+      expect(pill).to.not.be.null;
+      expect(pill?.classList.contains('pill--dismissible')).to.be.true;
+    });
+
+    it('renders a close icon in the button', async () => {
+      component = await fixture(
+        html`<test-pharos-pill dismissible>Base Dismissible Pill</test-pharos-pill>`
+      );
+      const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement | null;
+      expect(icon).to.not.be.null;
+      const title = icon?.querySelector('title');
+      expect(title).to.not.be.null;
+      expect(title?.textContent).to.equal('Close Icon');
+    });
+
+    it('emits pharos-pill-dismissed event when button is clicked', async () => {
+      component = await fixture(
+        html`<test-pharos-pill dismissible>Event Test Pill</test-pharos-pill>`
+      );
+
+      let eventFired = false;
+      const handleDismissed = (): void => {
+        eventFired = true;
+      };
+      component.addEventListener('pharos-pill-dismissed', handleDismissed);
+
+      await component.updateComplete;
+
+      const pill = component.renderRoot?.querySelector('button.pill') as HTMLButtonElement;
+      pill.click();
+
+      expect(eventFired).to.be.true;
+    });
+  });
 });

@@ -30,3 +30,7 @@ export const Sizes: Story = {
     </div>
   `,
 };
+
+export const Dismissible: Story = {
+  render: () => html`<storybook-pharos-pill dismissible>Dismissible Pill</storybook-pharos-pill> `,
+};

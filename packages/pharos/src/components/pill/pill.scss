@@ -16,6 +16,11 @@
   border-radius: 24px;
   color: var(--pharos-color-black);
   background: var(--pharos-color-white);
+
+  &:focus-visible {
+    outline: 2px solid var(--pharos-color-focus);
+    outline-offset: 2px;
+  }
 }
 
 .pill--small {
@@ -23,4 +28,20 @@
   padding-left: var(--pharos-spacing-one-quarter-x);
   padding-right: var(--pharos-spacing-one-quarter-x);
   line-height: var(--pharos-line-height-xsmall);
+}
+
+.pill--dismissible {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 24px;
+  min-width: 24px;
+
+  &:hover {
+    // border: 1px solid var(--pharos-color-jstor-red);
+    background: var(--pharos-color-marble-gray-94);
+
+    // color: var(--pharos-color-jstor-red);
+  }
 }
