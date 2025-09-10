@@ -38,6 +38,27 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   })
   public dismissible = false;
 
+  /**
+   * The name of the color token to use for the pill color
+   * @attr color
+   */
+  @property({
+    type: String,
+    reflect: true,
+  })
+  public color: string = 'marble-gray-40';
+
+  /**
+   * The name of the color token to use for the pill color
+   * @attr color
+   */
+  @property({
+    type: String,
+    reflect: true,
+    attribute: 'text-color',
+  })
+  public textColor: string = 'white';
+
   public static override get styles(): CSSResultArray {
     return [pillStyles];
   }
@@ -75,6 +96,8 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
 
   protected override render(): TemplateResult {
     const classes = ['pill'];
+    const style = `--pharos-pill-color: var(--pharos-color-${this.color}); --pharos-pill-text-color: var(--pharos-color-${this.textColor});`;
+
     if (this.size === 'small') {
       classes.push('pill--small');
     }
@@ -85,6 +108,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
       return html`
         <button
           class="${classes.join(' ')}"
+          style="${style}"
           type="button"
           .aria-label="${labelText}"
           @click="${this._handleDismiss}"
@@ -94,7 +118,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
         </button>
       `;
     }
-    return html`<div class="${classes.join(' ')}">
+    return html`<div class="${classes.join(' ')}" style="${style}">
       <slot></slot>
     </div>`;
   }

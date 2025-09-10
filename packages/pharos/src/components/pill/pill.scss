@@ -1,10 +1,11 @@
+@use '../../styles/variables';
+
 :host {
   display: block;
   width: 100%;
 }
 
 .pill {
-  border: 1px solid var(--pharos-color-marble-gray-40);
   padding-left: var(--pharos-spacing-one-half-x);
   padding-right: var(--pharos-spacing-one-half-x);
   line-height: var(--pharos-line-height-medium);
@@ -14,8 +15,9 @@
   text-decoration: none;
   display: inline-block;
   border-radius: 24px;
-  color: var(--pharos-color-black);
-  background: var(--pharos-color-white);
+  background: transparent;
+  border: 1px solid var(--pharos-pill-color, var(--pharos-color-marble-gray-40));
+  color: var(--pharos-pill-color, var(--pharos-color-black));
 
   &:focus-visible {
     outline: 2px solid var(--pharos-color-focus);
