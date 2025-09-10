@@ -146,16 +146,3 @@
     margin-right: 1.25rem;
   }
 }
-
-// :host([omit-overlay]) {
-//   pointer-events: none;
-//   transition:
-//     visibility var(--pharos-transition-duration-default) ease-in-out,
-//     background-color var(--pharos-transition-duration-default) ease-in-out;
-//   transition-duration: var(--pharos-transition-duration-long);
-// }
-
-// :host([omit-overlay][expanded]) {
-//   pointer-events: auto;
-//   background-color: rgb(0 0 0 / 0.5);
-// }
