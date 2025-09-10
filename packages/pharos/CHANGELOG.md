@@ -1,5 +1,21 @@
 # @ithaka/pharos
 
+## 14.18.1
+
+### Patch Changes
+
+- [#1063](https://github.com/ithaka/pharos/pull/1063) [`545753c`](https://github.com/ithaka/pharos/commit/545753c6a869f657f552982a153ff3a1d78a2d46) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Adding the SVG for the error state of the base image card
+
+## 14.18.0
+
+### Minor Changes
+
+- [#1057](https://github.com/ithaka/pharos/pull/1057) [`a54ee5f`](https://github.com/ithaka/pharos/commit/a54ee5fe39ebda7d84eea2b5b0995335f29d913a) Thanks [@phosphotungstic](https://github.com/phosphotungstic)! - Removing yOffset in dropdown menu component
+
+### Patch Changes
+
+- [#1061](https://github.com/ithaka/pharos/pull/1061) [`ed67865`](https://github.com/ithaka/pharos/commit/ed678659bc9606ee66615f4983e7982139108253) Thanks [@afiasco](https://github.com/afiasco)! - Replace exclamation icon on image card error state with a new svg, removed associated error state text
+
 ## 14.17.0
 
 ### Minor Changes

@@ -321,14 +321,12 @@ describe('pharos-image-card', () => {
     expect(titleSlot).not.to.be.null;
   });
 
-  it('renders an exclamation icon in the error state', async () => {
+  it('renders an SVG in the error state', async () => {
     component.error = true;
     await component.updateComplete;
 
-    const icon = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosIcon"][name="exclamation-inverse"]'
-    );
-    expect(icon).not.to.be.null;
+    const svg = component.renderRoot.querySelector('svg');
+    expect(svg).not.to.be.null;
   });
 
   it('renders a container for the metadata', async () => {
@@ -360,15 +358,13 @@ describe('pharos-image-card', () => {
     expect(sourceType).not.to.be.null;
   });
 
-  it('renders an exclamation icon in the error state for collection variant', async () => {
+  it('renders an svg in the error state for collection variant', async () => {
     component.variant = 'collection';
     component.error = true;
     await component.updateComplete;
 
-    const icon = component.renderRoot.querySelector(
-      '[data-pharos-component="PharosIcon"][name="exclamation-inverse"]'
-    );
-    expect(icon).not.to.be.null;
+    const svg = component.renderRoot.querySelector('svg');
+    expect(svg).not.to.be.null;
   });
 
   it('renders a checkbox for the selectable variant', async () => {
