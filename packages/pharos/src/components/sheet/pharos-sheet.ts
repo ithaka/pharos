@@ -82,13 +82,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   @property({ type: String, attribute: 'start-height', reflect: true })
   public startHeight = 0;
 
-  // /**
-  //  * Expanded height for omitOverlay mode, only accepts px (e.g. "400px")
-  //  * @attr expanded-height
-  //  */
-  // @property({ type: String, attribute: 'expanded-height', reflect: true })
-  // public expandedHeight = '400px';
-
   /**
    * Indicates if the sheet omits the overlay
    * @attr omitOverlay
@@ -163,10 +156,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       }
     }
     if (changedProperties.has('expanded')) {
-      console.log("expanded updaqted")
-      // if (this.expanded) {
-      //   this._sheetContent.style.height = this._getMaxHeightStr()
-      // }
       this._sheetContent.style.height = this.expanded
           ? this._getMaxHeightStr()
           : this._getMinHeightStr();
@@ -196,13 +185,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _addTriggerListeners(): void {
-    console.log("adding TRIGGER listeners")
     const id = this.getAttribute('id');
-    console.log("id is: ", id)
     this._triggers = document.querySelectorAll(`[data-sheet-id="${id}"]`);
-    console.log("sheet ids are: ", document.querySelectorAll(`[data-sheet-id="${id}"]`))
     this._triggers.forEach((trigger) => {
-      console.log("adding listener to : ", trigger);
       trigger.addEventListener('click', this._handleTriggerClick);
     });
   }
@@ -213,11 +198,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   private _getMaxHeightStr(): string {
     return  this.MAX_EXPAND_PERCENTAGE;
-      // return this.expandedHeight ? this.expandedHeight : this.MAX_EXPAND_PERCENTAGE;
   }
 
   private _closeSheet(trigger: EventTarget | null): void {
-    console.log("_closeSheet")
     if (this.open) {
       const details = {
         bubbles: true,
@@ -240,7 +223,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _openSheet(trigger: EventTarget | null): void {
-    console.log("_openSheet")
     const details = {
         bubbles: true,
         composed: true,
@@ -257,7 +239,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
           : this._getMinHeightStr();
       }
     } else if (this.docked) {
-      console.log("we are docked");
         this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
         this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', {...details, cancelable: true}));
         this.expanded = true;
@@ -266,16 +247,13 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleKeydown(event: KeyboardEvent): void {
-    console.log("_handleKeydown")
     if ((event.key === 'Escape' || event.key === 'Esc') && this.open) {
       event.stopPropagation();
-      console.log("beemus")
       this._closeSheet(event.target);
     }
   }
 
   private _handleOverlayInteraction(event: MouseEvent | TouchEvent): void {
-    console.log("_handleOverlayInteraction")
     const interactionY = event instanceof MouseEvent ? event.clientY : event.touches?.[0].clientY;
     if (this._sheetOverlay.clientHeight - interactionY > this._sheetContent.clientHeight) {
       event.preventDefault();
@@ -285,15 +263,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleDialogClick(event: MouseEvent): void {
-    console.log("_handleDialogClick")
     if ((event.target as Element).matches(CLOSE_BUTTONS) && !this.docked) {
-      console.log("geemreeeeeeeebus")
       this._closeSheet(event.target);
-    } else if (this.docked) {
-      console.log("SET HEIGHT AS: ", this.expanded
-          ? this._getMaxHeightStr()
-          : this._getMinHeightStr())
-          
+    } else if (this.docked) {  
       this._sheetContent.style.height = this.expanded
           ? this._getMaxHeightStr()
           : this._getMinHeightStr();
@@ -301,8 +273,8 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleMouseDragStart(event: MouseEvent): void {
-    console.log("_handleMouseDragStart")
     if (!this.enableExpansion) return;
+
     if (this._isDragging) {
       this._handleDragEnd();
       return;
@@ -316,7 +288,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleTouchDragStart(event: TouchEvent): void {
-    console.log("_handleTouchDragStart")
     if (!this.enableExpansion) return;
     if (this._isDragging) {
       this._handleDragEnd();
@@ -351,7 +322,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleTouchDragging(event: TouchEvent): void {
-    console.log("_handleTouchDragging")
     if (this._isDragging) {
       const delta = this._startY - event.touches?.[0].pageY;
       const newHeight = this._startHeight + delta;
@@ -370,31 +340,25 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
 
   private _handleDragEnd(): void {
-    console.log("_handleDragEnd")
     if (this._isDragging) {
       const details = {
         bubbles: true,
         composed: true,
       };
       if (this._newHeight === this._startHeight) {
-        console.log("WE DID NOTHING")
         this._isDragging = false;
         return;
       }
       if (this._newHeight > this._startHeight) {
-        console.log("WILL EXPAND")
         this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
         this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
         this.expanded = true;
       } else {
-        console.log("BYE")
         if (this.expanded) {
-          console.log("REALLY BYE")
           this._sheetContent.style.height = this._getMinHeightStr();
           this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
           this.expanded = false;
         } else if(!this.docked) {
-          console.log("SUPER BYE")
           this._closeSheet(null);
         }
       }
@@ -403,13 +367,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleTriggerClick(event: MouseEvent): void {
-    console.log("_handleTriggerClick")
     event.preventDefault();
     this._openSheet(event.target);
   }
 
   private async _focusContents(): Promise<void> {
-    console.log("_focusContents")
     this._currentTrigger = this.ownerDocument.activeElement;
     const focusElement = this.querySelector(FOCUS_ELEMENT);
 
@@ -426,7 +388,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _returnTriggerFocus(): void {
-    console.log("_focusContents")
     if (this._currentTrigger && typeof (this._currentTrigger as HTMLElement).focus === 'function') {
       (this._currentTrigger as HTMLElement).focus();
       this._currentTrigger = null;
