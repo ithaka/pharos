@@ -1,12 +1,15 @@
-import { html } from 'lit';
-import type { TemplateResult, CSSResultArray } from 'lit';
+import { html, nothing } from 'lit';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { pillStyles } from './pill.css';
 
 import { PharosElement } from '../base/pharos-element';
-import { property } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import close from '../../styles/icons/close';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
+import { PharosIcon } from '../icon/pharos-icon';
+import type { IconName } from '../icon/pharos-icon';
+export type { IconName };
 
 /**
  * Pharos pill component.
@@ -18,6 +21,10 @@ import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 
 export type PillVariant = 'primary' | 'secondary';
 export class PharosPill extends ScopedRegistryMixin(PharosElement) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
   /**
    * The size of the pill
    * @attr size
@@ -67,8 +74,35 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   })
   public textColor: string = 'white';
 
+  /**
+   * The icon to be shown to the left of the pill content.
+   * @attr icon
+   * @type {IconName | undefined}
+   */
+  @property({
+    type: String,
+    reflect: true,
+    attribute: 'icon-left',
+  })
+  public iconLeft?: IconName;
+
+  @state()
+  private _icon: TemplateResult | undefined = undefined;
+
   public static override get styles(): CSSResultArray {
     return [pillStyles];
+  }
+
+  protected override async updated(changedProperties: PropertyValues): Promise<void> {
+    if (changedProperties.has('iconLeft')) {
+      try {
+        const icon = await import(`../../styles/icons/${this.iconLeft}`);
+        this._icon = this._renderIcon(icon.default, this.iconLeft ?? '', this.size);
+      } catch (e) {
+        console.log(e);
+        throw new Error(`Could not get icon named "${this.iconLeft}"`);
+      }
+    }
   }
 
   private _handleDismiss(event: MouseEvent): void {
@@ -80,10 +114,10 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
     this.dispatchEvent(dismissEvent);
   }
 
-  private _renderIcon(): TemplateResult | typeof undefined {
-    // We need the normal close icon proportions, but at a smaller size
-    // The close-small icon has different spacing inside the SVG that doesn't work here
-    const iconBlob = atob(close);
+  private _renderIcon(icon: string, title: string, size: string): TemplateResult | undefined {
+    // We need the normal icon proportions, but at smaller sizes, so we have to manually render the svg
+    const iconSize = size === 'small' ? 12 : 16;
+    const iconBlob = atob(icon);
     return html`
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -92,11 +126,12 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
         class="icon"
         role="img"
         aria-hidden="true"
-        height="16"
-        width="16"
+        height="${iconSize}"
+        width="${iconSize}"
         focusable="false"
+        class="pill__icon"
       >
-        <title>Close Icon</title>
+        <title>${title}</title>
         ${unsafeSVG(iconBlob)}
       </svg>
     `;
@@ -121,12 +156,14 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
           .aria-label="${labelText}"
           @click="${this._handleDismiss}"
         >
+          ${this._icon ?? nothing}
           <slot></slot>
-          ${this._renderIcon()}
+          ${this._renderIcon(close, 'close', this.size)}
         </button>
       `;
     }
     return html`<div class="${classes.join(' ')}" style="${style}">
+      ${this._icon ?? nothing}
       <slot></slot>
     </div>`;
   }

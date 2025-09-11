@@ -1,5 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
+import sinon from 'sinon';
 
 import type { PharosPill } from './pharos-pill';
 
@@ -58,7 +59,7 @@ describe('PharosPill', () => {
       expect(icon).to.not.be.null;
       const title = icon?.querySelector('title');
       expect(title).to.not.be.null;
-      expect(title?.textContent).to.equal('Close Icon');
+      expect(title?.textContent).to.equal('close');
     });
 
     it('emits pharos-pill-dismissed event when button is clicked', async () => {
@@ -122,6 +123,67 @@ describe('PharosPill', () => {
 
       const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
       expect(pill.classList.contains('pill--primary')).to.be.true;
+    });
+  });
+  describe('Icon Handling', () => {
+    it('renders the appropriate svg icon when icon-left is provided', async () => {
+      component = await fixture(
+        html`<test-pharos-pill icon-left="info-inverse">Test Pill</test-pharos-pill>`
+      );
+      await component.updateComplete;
+      // Wait for icon to load asynchronously
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
+      const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement | null;
+      expect(icon).to.not.be.null;
+      expect(icon?.querySelector('title')?.textContent).to.equal('info-inverse');
+      expect(icon!.getAttribute('height')).to.equal('16');
+      expect(icon!.getAttribute('width')).to.equal('16');
+    });
+
+    it('adjusts the size of the icon when the pill size is set to small', async () => {
+      component = await fixture(
+        html`<test-pharos-pill icon-left="search" size="small">Small Pill</test-pharos-pill>`
+      );
+
+      await component.updateComplete;
+      // Wait for icon to load asynchronously
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
+      const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement;
+      expect(icon.getAttribute('height')).to.equal('12');
+      expect(icon.getAttribute('width')).to.equal('12');
+    });
+
+    it('should throw an error when an invalid icon is passed in', async () => {
+      // Stub console.log to suppress expected error logging in test output
+      const consoleStub = sinon.stub(console, 'log');
+
+      let caughtError: Error | null = null;
+      component = await fixture(html`<test-pharos-pill>Test Pill</test-pharos-pill>`);
+
+      // Stub the updated lifecycle method to capture the error without throwing
+      const originalUpdated = (component as any).updated.bind(component);
+
+      sinon.stub(component as any, 'updated').callsFake(async (changedProperties) => {
+        try {
+          await originalUpdated(changedProperties);
+        } catch (error) {
+          caughtError = error as Error;
+        }
+      });
+
+      try {
+        component.iconLeft = 'invalid-icon' as any;
+        await component.updateComplete;
+        await new Promise((resolve) => setTimeout(resolve, 50));
+
+        // Check that the error was captured with the correct message
+        expect(caughtError).to.not.be.null;
+        expect(caughtError!.message).to.equal('Could not get icon named "invalid-icon"');
+      } finally {
+        consoleStub.restore();
+      }
     });
   });
 });
