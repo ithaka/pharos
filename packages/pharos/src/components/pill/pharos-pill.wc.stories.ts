@@ -55,7 +55,7 @@ const sampleLightColors = [
   'yellow-base',
 ];
 export const Base: Story = {
-  render: () => html` <storybook-pharos-pill>Some content</storybook-pharos-pill> `,
+  render: () => html`<storybook-pharos-pill>Some content</storybook-pharos-pill>`,
   args: defaultArgs,
 };
 
@@ -91,29 +91,58 @@ export const Dismissible: Story = {
 export const Colors: Story = {
   render: () =>
     html`<div>
-      <div
-        style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px); padding: 1rem;"
-      >
+      <storybook-pharos-heading level="2">Primary</storybook-pharos-heading>
+      <div style="padding: 1rem;">
         ${sampleColors.map(
           (color) =>
-            html`<storybook-pharos-pill color="${color}">${color} pill</storybook-pharos-pill>
-              <storybook-pharos-pill color="${color}" dismissible
+            html`<storybook-pharos-pill color="${color}">${color} pill</storybook-pharos-pill
+              ><storybook-pharos-pill color="${color}" dismissible
                 >${color} pill</storybook-pharos-pill
               >`
         )}
       </div>
-      <div
-        style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);background: var(--pharos-color-black); padding: 1rem;"
-      >
+      <div style="padding: 1rem;">
         ${sampleLightColors.map(
           (color) =>
             html`<storybook-pharos-pill color="${color}" text-color="black"
                 >${color} pill</storybook-pharos-pill
-              >
-              <storybook-pharos-pill color="${color}" text-color="black" dismissible
+              ><storybook-pharos-pill color="${color}" text-color="black" dismissible
+                >${color} pill</storybook-pharos-pill
+              >`
+        )}
+      </div>
+      <storybook-pharos-heading level="2">Secondary</storybook-pharos-heading>
+      <div style="padding: 1rem;">
+        ${sampleColors.map(
+          (color) =>
+            html`<storybook-pharos-pill color="${color}" variant="secondary"
+                >${color} pill</storybook-pharos-pill
+              ><storybook-pharos-pill color="${color}" variant="secondary" dismissible
+                >${color} pill</storybook-pharos-pill
+              >`
+        )}
+      </div>
+      <div style="background: var(--pharos-color-black); padding: 1rem;">
+        ${sampleLightColors.map(
+          (color) =>
+            html`<storybook-pharos-pill color="${color}" variant="secondary" text-color="black"
+                >${color} pill</storybook-pharos-pill
+              ><storybook-pharos-pill
+                color="${color}"
+                variant="secondary"
+                text-color="black"
+                dismissible
                 >${color} pill</storybook-pharos-pill
               >`
         )}
       </div>
     </div>`,
+};
+
+export const WithIcon: Story = {
+  render: () =>
+    html`<storybook-pharos-pill icon-left="info-inverse">Some content</storybook-pharos-pill
+      ><storybook-pharos-pill icon-left="info-inverse" variant="secondary" color="green-base"
+        >Some content</storybook-pharos-pill
+      ><storybook-pharos-pill icon-left="info-inverse" size="small">small</storybook-pharos-pill>`,
 };
