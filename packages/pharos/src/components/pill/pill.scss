@@ -26,26 +26,20 @@
 .pill--primary {
   background-color: var(--pharos-pill-color, var(--pharos-color-marble-gray-40));
   color: var(--pharos-pill-text-color, var(--pharos-color-black));
+  fill: var(--pharos-pill-text-color, var(--pharos-color-black));
 
-  &.pill--dismissible {
-    fill: var(--pharos-pill-text-color, var(--pharos-color-black));
-
-    &:hover {
-      background-color: var(--pharos-color-marble-gray-20);
-    }
+  &.pill--dismissible:hover {
+    background-color: var(--pharos-color-marble-gray-20);
   }
 }
 
 .pill--secondary {
   border: 1px solid var(--pharos-pill-color, var(--pharos-color-marble-gray-40));
   color: var(--pharos-pill-color, var(--pharos-color-black));
+  fill: var(--pharos-pill-color, var(--pharos-color-black));
 
-  &.pill--dismissible {
-    fill: var(--pharos-pill-color, var(--pharos-color-black));
-
-    &:hover {
-      background-color: var(--pharos-color-marble-gray-94);
-    }
+  &.pill--dismissible:hover {
+    background-color: var(--pharos-color-marble-gray-94);
   }
 }
 
