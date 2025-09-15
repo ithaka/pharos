@@ -23,10 +23,6 @@
     pointer-events: none;
     font-weight: var(--pharos-font-weight-bold);
     display: block;
-
-    @media speech {
-      display: none;
-    }
   }
 }
 

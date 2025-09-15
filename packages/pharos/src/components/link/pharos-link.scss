@@ -28,6 +28,7 @@
   @include mixins.interactive-focus;
 
   /* stylelint-disable no-duplicate-selectors */
+  /* stylelint-disable block-no-redundant-nested-style-rules */
   & {
     background-color: transparent;
     border: none;
@@ -35,6 +36,7 @@
     text-align: left;
     cursor: pointer;
   }
+  /* stylelint-enable block-no-redundant-nested-style-rules */
   /* stylelint-enable no-duplicate-selectors */
 }
 
@@ -42,9 +44,11 @@
   @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-tertiary));
 
   /* stylelint-disable no-duplicate-selectors */
+  /* stylelint-disable block-no-redundant-nested-style-rules */
   & {
     color: var(--pharos-color-interactive-tertiary);
   }
+  /* stylelint-enable block-no-redundant-nested-style-rules */
   /* stylelint-enable no-duplicate-selectors */
 
   @at-root &:hover {
@@ -122,9 +126,11 @@
   @include mixins.underline($text-decoration-color: var(--pharos-color-interactive-secondary));
 
   /* stylelint-disable no-duplicate-selectors */
+  /* stylelint-disable block-no-redundant-nested-style-rules */
   & {
     color: var(--pharos-color-interactive-secondary);
   }
+  /* stylelint-enable block-no-redundant-nested-style-rules */
   /* stylelint-enable no-duplicate-selectors */
 }
 
