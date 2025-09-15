@@ -56,7 +56,7 @@
   "license": "MIT",
   "homepage": "https://pharos.jstor.org",
   "dependencies": {
-    "@floating-ui/dom": "^1.7.2",
+    "@floating-ui/dom": "^1.7.4",
     "@ithaka/focus-trap": "2.0.1",
     "@lit-labs/scoped-registry-mixin": "^1.0.4",
     "@open-wc/dedupe-mixin": "^2.0.1",
@@ -67,10 +67,10 @@
     "sass": "^1.89.1"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "^0.10.5",
     "@open-wc/testing": "patch:@open-wc/testing@npm%3A4.0.0#~/.yarn/patches/@open-wc-testing-npm-4.0.0-96dbe4d202.patch",
     "@types/mocha": "^10.0.10",
-    "@types/react": "^18.3.23",
+    "@types/react": "^18.3.24",
     "@types/react-dom": "^18.3.7",
     "@web/test-runner": "^0.20.2",
     "@web/test-runner-commands": "^0.9.0",
@@ -87,9 +87,9 @@
     "rimraf": "^6.0.1",
     "sassdoc": "^2.7.4",
     "sinon": "^21.0.0",
-    "style-dictionary": "^5.0.1",
+    "style-dictionary": "^5.0.4",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "customElements": "custom-elements.json",
   "exports": {
