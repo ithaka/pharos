@@ -129,7 +129,6 @@
 /// @group interaction
 @mixin hidden {
   border: 0;
-  clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
   width: 1px;

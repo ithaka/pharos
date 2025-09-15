@@ -13,6 +13,7 @@
   @include mixins.interactive-focus;
 
   /* stylelint-disable no-duplicate-selectors */
+  /* stylelint-disable block-no-redundant-nested-style-rules */
   & {
     position: relative;
     margin: 0;
@@ -27,6 +28,7 @@
       opacity var(--pharos-transition-duration-short) linear;
     overflow: hidden;
   }
+  /* stylelint-enable block-no-redundant-nested-style-rules */
   /* stylelint-enable no-duplicate-selectors */
 }
 

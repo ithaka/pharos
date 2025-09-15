@@ -10,6 +10,7 @@
   @include mixins.interactive-focus;
 
   /* stylelint-disable no-duplicate-selectors */
+  /* stylelint-disable block-no-redundant-nested-style-rules */
   & {
     border: none;
     background: none;
@@ -25,6 +26,7 @@
     transition-property: background-color;
     transition-duration: var(--pharos-transition-duration-default);
   }
+  /* stylelint-enable block-no-redundant-nested-style-rules */
   /* stylelint-enable no-duplicate-selectors */
 
   &:focus {
@@ -59,10 +61,12 @@
   @include mixins.no-bullet;
 
   /* stylelint-disable no-duplicate-selectors */
+  /* stylelint-disable block-no-redundant-nested-style-rules */
   & {
     margin-top: 0;
     margin-bottom: var(--pharos-spacing-1-x);
     padding-left: 0;
   }
+  /* stylelint-enable block-no-redundant-nested-style-rules */
   /* stylelint-enable no-duplicate-selectors */
 }
