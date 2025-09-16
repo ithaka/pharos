@@ -61,7 +61,7 @@
     "@lit-labs/scoped-registry-mixin": "^1.0.4",
     "@open-wc/dedupe-mixin": "^2.0.1",
     "lit": "^3.3.1",
-    "uuid": "^11.1.0"
+    "uuid": "^13.0.0"
   },
   "peerDependencies": {
     "sass": "^1.89.1"
