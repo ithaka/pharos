@@ -516,7 +516,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         })
       );
     } else if (!isTitleClick) {
-      document.location = this.link;
+      document.location.href = this.link;
     }
   }
 
