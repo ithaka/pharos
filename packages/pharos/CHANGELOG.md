@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.19.0
+
+### Minor Changes
+
+- [#1069](https://github.com/ithaka/pharos/pull/1069) [`88dc682`](https://github.com/ithaka/pharos/commit/88dc682f5b3d195aa62c5cb54b88fde80d0205ff) Thanks [@afiasco](https://github.com/afiasco)! - Image-card subtle-select does not navigate when the checkbox is checked
+
 ## 14.18.1
 
 ### Patch Changes
