@@ -27,6 +27,20 @@
   height: 100%;
 }
 
+.sheet__dialog--no-overlay {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  background-color: rgb(0 0 0 / 0);
+  visibility: visible;
+  height: auto;
+}
+
+
 .sheet__dialog {
   position: relative;
   min-width: 100vw;
@@ -45,7 +59,7 @@
   pointer-events: auto;
 
   .sheet__overlay {
-    background-color: rgb(0 0 0 / 0.5);
+    // background-color: rgb(0 0 0 / 0.5);
     visibility: visible;
   }
 
