@@ -429,7 +429,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return this._hasTitle()
       ? html`<pharos-link
           class="card__link--title"
-          href=${this.link}
+          href=${ifDefined(this.link?.trim() ? this.link : undefined)}
           subtle
           flex
           ?indicate-visited=${this.indicateLinkVisited}
