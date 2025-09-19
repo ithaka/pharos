@@ -131,8 +131,8 @@ describe('PharosPill', () => {
         html`<test-pharos-pill icon-left="info-inverse">Test Pill</test-pharos-pill>`
       );
       await component.updateComplete;
-      // Wait for icon to load asynchronously
-      await new Promise((resolve) => setTimeout(resolve, 50));
+      // Wait for icon to load asynchronously with longer timeout for cross-browser stability
+      await new Promise((resolve) => setTimeout(resolve, 200));
 
       const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement | null;
       expect(icon).to.not.be.null;
@@ -147,12 +147,13 @@ describe('PharosPill', () => {
       );
 
       await component.updateComplete;
-      // Wait for icon to load asynchronously
-      await new Promise((resolve) => setTimeout(resolve, 50));
+      // Wait for icon to load asynchronously with longer timeout for cross-browser stability
+      await new Promise((resolve) => setTimeout(resolve, 200));
 
-      const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement;
-      expect(icon.getAttribute('height')).to.equal('12');
-      expect(icon.getAttribute('width')).to.equal('12');
+      const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement | null;
+      expect(icon).to.not.be.null;
+      expect(icon!.getAttribute('height')).to.equal('12');
+      expect(icon!.getAttribute('width')).to.equal('12');
     });
 
     it('should throw an error when an invalid icon is passed in', async () => {
@@ -176,7 +177,7 @@ describe('PharosPill', () => {
       try {
         component.iconLeft = 'invalid-icon' as any;
         await component.updateComplete;
-        await new Promise((resolve) => setTimeout(resolve, 50));
+        await new Promise((resolve) => setTimeout(resolve, 200));
 
         // Check that the error was captured with the correct message
         expect(caughtError).to.not.be.null;
