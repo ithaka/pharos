@@ -13,6 +13,7 @@
   @include mixins.interactive-focus;
 
   /* stylelint-disable no-duplicate-selectors */
+  /* stylelint-disable block-no-redundant-nested-style-rules */
   & {
     background-color: var(--pharos-color-ui-10);
     position: relative;
@@ -31,6 +32,7 @@
       visibility 0s var(--pharos-transition-duration-short),
       opacity var(--pharos-transition-duration-short) linear;
   }
+  /* stylelint-enable block-no-redundant-nested-style-rules */
   /* stylelint-enable no-duplicate-selectors */
 }
 

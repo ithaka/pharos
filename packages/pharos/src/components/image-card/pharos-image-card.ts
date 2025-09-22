@@ -196,10 +196,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     menu?.openWithTrigger(trigger);
   }
 
-  private _handleImageClick(): void {
-    document.location = this.link;
-  }
-
   private _handleImageMouseEnter(): void {
     if (!this.disabled) {
       this._title['_hover'] = true;
@@ -296,7 +292,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           [`card__image--collection`]: true,
           [`card__image--selected`]: this._isSelected,
         })}
-        @click=${this._handleImageClick}
       >
         ${this._renderCollectionImageLinkContent()}
       </div>
@@ -387,7 +382,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           [`card__image--selected`]: this._isSelected,
           [`card__image--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
         })}
-        @click=${this._handleImageClick}
       >
         ${this._renderLinkContent()}${this._renderHoverMetadata()}
       </div>
@@ -495,13 +489,20 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   private _cardToggleSelect(event: Event): void {
-    const cardClicked = this._isSelectableViaCard() && event.target !== this._checkbox;
-    const checkboxClicked = event.currentTarget === this._checkbox;
+    if (this.disabled) {
+      return;
+    }
 
-    if (!this.disabled && (cardClicked || checkboxClicked)) {
-      // this is required to prevent navigation on the link click
+    const isCardClick = this._isSelectableViaCard() && event.target !== this._checkbox;
+    const isCheckboxClick = event.currentTarget === this._checkbox;
+    const isCheckboxChecked = this._checkbox?.checked ?? false;
+    const isTitleClick = event.currentTarget === this._title;
+
+    if (isCardClick || isCheckboxClick || isCheckboxChecked) {
+      // Prevent navigation on link click
       event.preventDefault();
       event.stopPropagation();
+
       this._isSelected = !this._isSelected;
 
       this.dispatchEvent(
@@ -514,6 +515,8 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           },
         })
       );
+    } else if (!isTitleClick) {
+      document.location.href = this.link;
     }
   }
 
