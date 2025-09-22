@@ -27,7 +27,6 @@ const FOCUS_HANDLE = `[data-sheet-handle]`;
  * @fires pharos-sheet-expanded- Fires when the sheet has expanded
  * @fires pharos-sheet-close - Fires when the sheet is about to close - cancelable
  * @fires pharos-sheet-closed - Fires when the sheet has closed
- * @fires pharos-sheet-docked - Fires when the sheet has docked
  *
  */
 export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
@@ -76,11 +75,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   public header = 'Sheet header';
 
   /**
-   * Start height for omitOverlay mode, only accepts px (e.g. "200px")
-   * @attr startHeight
+   * Indicates the minimim height for the sheet in pixels
+   * @attr minHeight
    */
-  @property({ type: String, attribute: 'start-height', reflect: true })
-  public startHeight = 0;
+  @property({ type: String, attribute: 'min-height', reflect: true })
+  public minHeight = 0;
 
   /**
    * Indicates if the sheet omits the overlay
@@ -101,7 +100,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   private _triggers!: NodeListOf<HTMLElement>;
 
   @state()
-  private _startHeight = 0 || this.startHeight;
+  private _minHeight = 0 || this.minHeight;
   private _startY = 0;
   private _newHeight = 0;
   private _isDragging = false;
@@ -139,8 +138,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected override updated(changedProperties: PropertyValues): void {
-    
-    console.log("updated")
     if (changedProperties.has('open')) {
       if (this.open) {
         this._sheetContent.style.height = this.expanded
@@ -193,7 +190,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _getMinHeightStr(): string {
-    return this.startHeight ? `${this.startHeight}px` : this.MIN_EXPAND_PERCENTAGE;
+    return this.minHeight ? `${this.minHeight}px` : this.MIN_EXPAND_PERCENTAGE;
   }
 
   private _getMaxHeightStr(): string {
@@ -280,9 +277,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       return;
     }
     this._isDragging = true;
-    this._startHeight = this._sheetContent.clientHeight;
+    this._minHeight = this._sheetContent.clientHeight;
     this._startY = event.pageY;
-    this._newHeight = this._startHeight;
+    this._newHeight = this._minHeight;
     document.addEventListener('mousemove', this._handleMouseDragging);
     document.addEventListener('mouseup', this._handleDragEnd);
   }
@@ -294,9 +291,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       return;
     }
     this._isDragging = true;
-    this._startHeight = this._sheetContent.clientHeight;
+    this._minHeight = this._sheetContent.clientHeight;
     this._startY = event.touches?.[0].pageY;
-    this._newHeight = this._startHeight;
+    this._newHeight = this._minHeight;
     document.addEventListener('touchmove', this._handleTouchDragging, { passive: false } as any);
     document.addEventListener('touchend', this._handleDragEnd);
   }
@@ -304,9 +301,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   private _handleMouseDragging(event: MouseEvent): void {
     if (this._isDragging) {
       const delta = this._startY - event.pageY;
-      const newHeight = this._startHeight + delta;
+      const newHeight = this._minHeight + delta;
       this._newHeight = newHeight;
-      if (this.docked && newHeight <= this._startHeight) {
+      if (this.docked && newHeight <= this._minHeight) {
         console.log("NOPE")
         return;
       }
@@ -324,7 +321,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   private _handleTouchDragging(event: TouchEvent): void {
     if (this._isDragging) {
       const delta = this._startY - event.touches?.[0].pageY;
-      const newHeight = this._startHeight + delta;
+      const newHeight = this._minHeight + delta;
       this._newHeight = newHeight;
       if (
 
@@ -345,11 +342,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         bubbles: true,
         composed: true,
       };
-      if (this._newHeight === this._startHeight) {
+      if (this._newHeight === this._minHeight) {
         this._isDragging = false;
         return;
       }
-      if (this._newHeight > this._startHeight) {
+      if (this._newHeight > this._minHeight) {
         this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
         this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
         this.expanded = true;
