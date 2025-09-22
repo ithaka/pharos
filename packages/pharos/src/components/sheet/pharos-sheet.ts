@@ -143,6 +143,13 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         this._sheetContent.style.height = this.expanded
           ? this._getMaxHeightStr()
           : this._getMinHeightStr();
+
+        if (this.omitOverlay) {
+          this._sheetDialogNoOverlay.style.height = this.expanded
+          ? this._getMaxHeightStr()
+          : this._getMinHeightStr();
+        }
+
         this._focusContents();
       } else {
         this._returnTriggerFocus();
@@ -154,12 +161,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
     if (changedProperties.has('expanded')) {
       this._sheetContent.style.height = this.expanded
-          ? this._getMaxHeightStr()
-          : this._getMinHeightStr();
-    }
-
-    if (this.omitOverlay) {
-      this._sheetDialogNoOverlay.style.height = this.expanded
           ? this._getMaxHeightStr()
           : this._getMinHeightStr();
     }

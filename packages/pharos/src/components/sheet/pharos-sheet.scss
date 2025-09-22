@@ -4,8 +4,8 @@
   display: block;
   position: fixed;
   z-index: 9000;
-  pointer-events: none;
   inset: 0;
+  pointer-events: none;
   contain: layout size style;
 }
 
@@ -38,6 +38,7 @@
   background-color: rgb(0 0 0 / 0);
   visibility: visible;
   height: auto;
+  pointer-events: none;
 }
 
 
@@ -55,7 +56,7 @@
     top var(--pharos-transition-duration-long) ease-in-out;
 }
 
-:host([open]) {
+:host([open]:not([omit-overlay])) {
   pointer-events: auto;
 
   .sheet__overlay {
@@ -122,6 +123,26 @@
 :host(:not([open])) {
   .sheet__content {
     transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
+    box-shadow: none;
+  }
+}
+
+/* Docked: always visible and pinned bottom */
+:host([docked]:not([omit-overlay])) {
+  pointer-events: auto;
+
+  .sheet__overlay {
+    visibility: hidden;
+    background-color: rgb(0 0 0 / 0);
+    pointer-events: none;
+  }
+
+  .sheet__dialog {
+    visibility: visible;
+    top: 0;
+    transition:
+      visibility 0s linear 0s,
+      top var(--pharos-transition-duration-long) ease-in-out;
   }
 }
 
