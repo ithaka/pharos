@@ -304,7 +304,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       const newHeight = this._minHeight + delta;
       this._newHeight = newHeight;
       if (this.docked && newHeight <= this._minHeight) {
-        console.log("NOPE")
         return;
       }
       if (
