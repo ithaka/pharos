@@ -10,164 +10,290 @@
     },
     "preset": {
       "1": {
-        "base": {
+        "text": {
           "color": {
-            "value": "{color.marble-gray.50}"
-          },
-          "background": {
-            "value": "{color.white}"
+            "base": {
+              "value": "{color.black}"
+            },
+            "hover": {
+              "value": "{color.jstor-red}"
+            }
           }
         },
-        "hover": {
+        "border": {
           "color": {
-            "value": "{color.jstor-red}"
-          },
-          "background": {
-            "value": "{color.marble-gray.94}"
+            "base": {
+              "value": "{color.marble-gray.50}"
+            },
+            "hover": {
+              "value": "{color.jstor-red}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
           }
         }
       },
       "2": {
-        "base": {
+        "text": {
           "color": {
-            "value": "{color.white}"
-          },
-          "background": {
-            "value": "{color.marble-gray.20}"
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.white}"
+            }
           }
         },
-        "hover": {
+        "border": {
           "color": {
-            "value": "{color.white}"
-          },
-          "background": {
-            "value": "{color.marble-gray.30}"
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.white}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.marble-gray.20}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.30}"
+            }
           }
         }
       },
       "3": {
-        "base": {
+        "text": {
           "color": {
-            "value": "{color.living-coral.53}"
-          },
-          "background": {
-            "value": "{color.white}"
+            "base": {
+              "value": "{color.living-coral.53}"
+            },
+            "hover": {
+              "value": "{color.living-coral.53}"
+            }
           }
         },
-        "hover": {
+        "border": {
           "color": {
-            "value": "{color.living-coral.53}"
-          },
-          "background": {
-            "value": "{color.white}"
+            "base": {
+              "value": "{color.living-coral.53}"
+            },
+            "hover": {
+              "value": "{color.living-coral.53}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
           }
         }
       },
       "4": {
-        "base": {
+        "text": {
           "color": {
-            "value": "{color.dark-garnet}"
-          },
-          "background": {
-            "value": "{color.white}"
+            "base": {
+              "value": "{color.dark-garnet}"
+            },
+            "hover": {
+              "value": "{color.dark-garnet}"
+            }
           }
         },
-        "hover": {
+        "border": {
           "color": {
-            "value": "{color.dark-garnet}"
-          },
-          "background": {
-            "value": "{color.marble-gray.94}"
+            "base": {
+              "value": "{color.dark-garnet}"
+            },
+            "hover": {
+              "value": "{color.dark-garnet}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
           }
         }
       },
       "5": {
-        "base": {
+        "text": {
           "color": {
-            "value": "{color.green.base}"
-          },
-          "background": {
-            "value": "{color.white}"
+            "base": {
+              "value": "{color.green.base}"
+            },
+            "hover": {
+              "value": "{color.green.base}"
+            }
           }
         },
-        "hover": {
+        "border": {
           "color": {
-            "value": "{color.green.base}"
-          },
-          "background": {
-            "value": "{color.marble-gray.94}"
+            "base": {
+              "value": "{color.green.base}"
+            },
+            "hover": {
+              "value": "{color.green.base}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
           }
         }
       },
       "6": {
-        "base": {
+        "text": {
           "color": {
-            "value": "{color.glacier-blue.30}"
-          },
-          "background": {
-            "value": "{color.white}"
+            "base": {
+              "value": "{color.glacier-blue.30}"
+            },
+            "hover": {
+              "value": "{color.glacier-blue.30}"
+            }
           }
         },
-        "hover": {
+        "border": {
           "color": {
-            "value": "{color.glacier-blue.30}"
-          },
-          "background": {
-            "value": "{color.marble-gray.94}"
+            "base": {
+              "value": "{color.glacier-blue.30}"
+            },
+            "hover": {
+              "value": "{color.glacier-blue.30}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
           }
         }
       },
       "7": {
-        "base": {
+        "text": {
           "color": {
-            "value": "#1076DD"
-          },
-          "background": {
-            "value": "{color.white}"
+            "base": {
+              "value": "#1076DD"
+            },
+            "hover": {
+              "value": "#1076DD"
+            }
           }
         },
-        "hover": {
+        "border": {
           "color": {
-            "value": "#1076DD"
-          },
-          "background": {
-            "value": "{color.marble-gray.94}"
+            "base": {
+              "value": "#1076DD"
+            },
+            "hover": {
+              "value": "#1076DD"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
           }
         }
       },
       "8": {
-        "base": {
+        "text": {
           "color": {
-            "value": "#5C54F0"
-          },
-          "background": {
-            "value": "{color.white}"
+            "base": {
+              "value": "#5C54F0"
+            },
+            "hover": {
+              "value": "#5C54F0"
+            }
           }
         },
-        "hover": {
+        "border": {
           "color": {
-            "value": "#5C54F0"
-          },
-          "background": {
-            "value": "{color.marble-gray.94}"
+            "base": {
+              "value": "#5C54F0"
+            },
+            "hover": {
+              "value": "#5C54F0"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
           }
         }
       },
       "9": {
-        "base": {
+        "text": {
           "color": {
-            "value": "#B829BB"
-          },
-          "background": {
-            "value": "{color.white}"
+            "base": {
+              "value": "#B829BB"
+            },
+            "hover": {
+              "value": "#B829BB"
+            }
           }
         },
-        "hover": {
+        "border": {
           "color": {
-            "value": "#B829BB"
-          },
-          "background": {
-            "value": "{color.marble-gray.94}"
+            "base": {
+              "value": "#B829BB"
+            },
+            "hover": {
+              "value": "#B829BB"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
           }
         }
       }
