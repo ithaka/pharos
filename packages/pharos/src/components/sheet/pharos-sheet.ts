@@ -146,8 +146,8 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
         if (this.omitOverlay) {
           this._sheetDialogNoOverlay.style.height = this.expanded
-          ? this._getMaxHeightStr()
-          : this._getMinHeightStr();
+            ? this._getMaxHeightStr()
+            : this._getMinHeightStr();
         }
 
         this._focusContents();
@@ -161,8 +161,8 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
     if (changedProperties.has('expanded')) {
       this._sheetContent.style.height = this.expanded
-          ? this._getMaxHeightStr()
-          : this._getMinHeightStr();
+        ? this._getMaxHeightStr()
+        : this._getMinHeightStr();
     }
   }
 
@@ -195,7 +195,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _getMaxHeightStr(): string {
-    return  this.MAX_EXPAND_PERCENTAGE;
+    return this.MAX_EXPAND_PERCENTAGE;
   }
 
   private _closeSheet(trigger: EventTarget | null): void {
@@ -222,12 +222,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   private _openSheet(trigger: EventTarget | null): void {
     const details = {
-        bubbles: true,
-        composed: true,
-        detail: trigger,
-      };
+      bubbles: true,
+      composed: true,
+      detail: trigger,
+    };
     if (!this.open) {
-
       if (
         this.dispatchEvent(new CustomEvent('pharos-sheet-open', { ...details, cancelable: true }))
       ) {
@@ -237,10 +236,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
           : this._getMinHeightStr();
       }
     } else if (this.docked) {
-        this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
-        this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', {...details, cancelable: true}));
-        this.expanded = true;
-
+      this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
+      this.dispatchEvent(
+        new CustomEvent('pharos-sheet-expanded', { ...details, cancelable: true })
+      );
+      this.expanded = true;
     }
   }
 
@@ -263,10 +263,10 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   private _handleDialogClick(event: MouseEvent): void {
     if ((event.target as Element).matches(CLOSE_BUTTONS) && !this.docked) {
       this._closeSheet(event.target);
-    } else if (this.docked) {  
+    } else if (this.docked) {
       this._sheetContent.style.height = this.expanded
-          ? this._getMaxHeightStr()
-          : this._getMinHeightStr();
+        ? this._getMaxHeightStr()
+        : this._getMinHeightStr();
     }
   }
 
@@ -324,7 +324,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       const newHeight = this._minHeight + delta;
       this._newHeight = newHeight;
       if (
-
         this._sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE &&
         event.touches?.[0].pageY < this._startY
       ) {
@@ -334,7 +333,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       this._sheetContent.style.height = `${newHeight}px`;
     }
   }
-
 
   private _handleDragEnd(): void {
     if (this._isDragging) {
@@ -355,7 +353,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
           this._sheetContent.style.height = this._getMinHeightStr();
           this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
           this.expanded = false;
-        } else if(!this.docked) {
+        } else if (!this.docked) {
           this._closeSheet(null);
         }
       }

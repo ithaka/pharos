@@ -92,7 +92,7 @@ export const OmitOverlay: Story = {
       <storybook-pharos-button id="my-button" data-sheet-id="my-sheet" icon-right="chevron-down">
         Click Me
       </storybook-pharos-button>
-      <storybook-pharos-sheet id="my-sheet"  docked="true" omit-overlay>
+      <storybook-pharos-sheet id="my-sheet" docked="true" omit-overlay>
         <div>Lorem ipsum dolor sit amet</div>
       </storybook-pharos-sheet>
     </div>
@@ -108,4 +108,3 @@ export const Docked: Story = {
     </div>
   `,
 };
-
