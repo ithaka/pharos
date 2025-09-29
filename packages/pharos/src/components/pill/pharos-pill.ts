@@ -46,6 +46,16 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   public dismissible = false;
 
   /**
+   * Makes the pill disabled with a close button
+   * @attr disabled
+   */
+  @property({
+    type: Boolean,
+    reflect: true,
+  })
+  public disabled = false;
+
+  /**
    * Which style preset to use for the pill
    * @attr preset
    */
@@ -142,6 +152,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
       return html`
         <button
           class="${classes.join(' ')}"
+          ?disabled="${this.disabled}"
           type="button"
           .aria-label="${labelText}"
           @click="${this._handleDismiss}"
