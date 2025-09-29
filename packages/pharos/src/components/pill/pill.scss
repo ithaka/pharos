@@ -12,6 +12,7 @@
   margin: 0 var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-quarter-x) 0;
   line-height: var(--pharos-line-height-medium);
   gap: var(--pharos-spacing-one-quarter-x);
+  max-width: 100%;
 
   @include mixins.font-base(
     $font-family: var(--pharos-font-family-sans-serif),
@@ -28,6 +29,17 @@
     outline: 2px solid var(--pharos-color-focus);
     outline-offset: 2px;
   }
+}
+
+.pill__content {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pill__close {
+  display: flex;
 }
 
 .pill--primary {

@@ -88,6 +88,24 @@ export const Dismissible: Story = {
     </div>`,
 };
 
+export const Truncated: Story = {
+  render: () =>
+    html`<div>
+      <style>
+        .truncated {
+          max-width: 200px;
+        }
+      </style>
+      <storybook-pharos-pill class="truncated">
+        This is a very long pill that will truncate when it reaches the max width
+      </storybook-pharos-pill>
+      <br />
+      <storybook-pharos-pill class="truncated" dismissible>
+        This is a very long pill that will truncate when it reaches the max width
+      </storybook-pharos-pill>
+    </div>`,
+};
+
 export const Colors: Story = {
   render: () =>
     html`<div>

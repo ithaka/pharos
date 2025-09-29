@@ -156,15 +156,19 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
           .aria-label="${labelText}"
           @click="${this._handleDismiss}"
         >
-          ${this._icon ?? nothing}
-          <slot></slot>
-          ${this._renderIcon(close, 'close', this.size)}
+          <div class="pill__content">
+            ${this._icon ?? nothing}
+            <slot></slot>
+          </div>
+          <div class="pill__close">${this._renderIcon(close, 'close', this.size)}</div>
         </button>
       `;
     }
     return html`<div class="${classes.join(' ')}" style="${style}">
       ${this._icon ?? nothing}
-      <slot></slot>
+      <div class="pill__content">
+        <slot></slot>
+      </div>
     </div>`;
   }
 }
