@@ -125,6 +125,45 @@ describe('PharosPill', () => {
       expect(pill.classList.contains('pill--primary')).to.be.true;
     });
   });
+  describe('Text Truncation', () => {
+    it('visually truncates text when content exceeds container width', async () => {
+      component = await fixture(
+        html`<test-pharos-pill style="width: 80px;">
+          This is very long text that should definitely be truncated with ellipsis
+        </test-pharos-pill>`
+      );
+
+      await component.updateComplete;
+
+      const textContainer = component.renderRoot?.querySelector('.pill__content') as HTMLElement;
+      expect(textContainer).to.not.be.null;
+
+      // Check if text is actually being truncated by comparing scroll width vs client width
+      // When text is truncated, scrollWidth (full content width) > clientWidth (visible width)
+      expect(textContainer.scrollWidth).to.be.greaterThan(textContainer.clientWidth);
+
+      // Verify ellipsis CSS property is applied
+      const computedStyle = window.getComputedStyle(
+        component.renderRoot?.querySelector('.pill__content') as Element
+      );
+      expect(computedStyle.textOverflow).to.equal('ellipsis');
+    });
+
+    it('does not truncate text when content fits within container width', async () => {
+      component = await fixture(html`<test-pharos-pill>Short</test-pharos-pill>`);
+
+      await component.updateComplete;
+
+      const textContainer = component.renderRoot?.querySelector('.pill__content') as HTMLElement;
+      expect(textContainer).to.not.be.null;
+
+      // When text fits, scrollWidth should equal or be very close to clientWidth
+      // Allow small tolerance for browser differences in text measurement
+      const widthDifference = textContainer.scrollWidth - textContainer.clientWidth;
+      expect(widthDifference).to.be.lessThan(5);
+    });
+  });
+
   describe('Icon Handling', () => {
     it('renders the appropriate svg icon when icon-left is provided', async () => {
       component = await fixture(
