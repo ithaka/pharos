@@ -19,7 +19,6 @@ export type { IconName };
  * @fires pharos-pill-dismissed - Fires when the pill is dismissed
  **/
 
-export type PillVariant = 'primary' | 'secondary';
 export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
@@ -47,21 +46,14 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   public dismissible = false;
 
   /**
-   * The name of the color token to use for the pill color
-   * @attr color
+   * Which style preset to use for the pill
+   * @attr preset
    */
   @property({
     type: String,
     reflect: true,
   })
-  public color: string = 'marble-gray-40';
-
-  /**
-   * Indicates the variant of button.
-   * @attr variant
-   */
-  @property({ type: String, reflect: true })
-  public variant: PillVariant = 'primary';
+  public preset: string = '1';
 
   /**
    * The name of the color token to use for the pill color
@@ -138,8 +130,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected override render(): TemplateResult {
-    const classes = ['pill', `pill--${this.variant}`];
-    const style = `--pharos-pill-color: var(--pharos-color-${this.color}); --pharos-pill-text-color: var(--pharos-color-${this.textColor});`;
+    const classes = ['pill', `pill--preset-${this.preset}`];
 
     if (this.size === 'small') {
       classes.push('pill--small');
@@ -151,7 +142,6 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
       return html`
         <button
           class="${classes.join(' ')}"
-          style="${style}"
           type="button"
           .aria-label="${labelText}"
           @click="${this._handleDismiss}"
@@ -164,7 +154,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
         </button>
       `;
     }
-    return html`<div class="${classes.join(' ')}" style="${style}">
+    return html`<div class="${classes.join(' ')}">
       ${this._icon ?? nothing}
       <div class="pill__content">
         <slot></slot>

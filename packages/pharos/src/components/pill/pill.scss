@@ -31,6 +31,15 @@
   }
 }
 
+:host([disabled]) .pill,
+:host([disabled]) .pill:hover {
+  border: 1px solid var(--pharos-pill-disabled-color, var(--pharos-color-marble-gray-50));
+  color: var(--pharos-pill-disabled-color, var(--pharos-color-marble-gray-50));
+  fill: var(--pharos-pill-disabled-color, var(--pharos-color-marble-gray-50));
+  background-color: var(--pharos-pill-disabled-background, var(--pharos-color-marble-gray-base));
+  cursor: auto;
+}
+
 .pill__content {
   min-width: 0;
   white-space: nowrap;
@@ -40,6 +49,22 @@
 
 .pill__close {
   display: flex;
+}
+
+.pill--small {
+  @include mixins.font-base(
+    $font-family: var(--pharos-font-family-sans-serif),
+    $font-size: var(--pharos-font-size-micro),
+    $line-height: var(--pharos-line-height-xsmall)
+  );
+
+  padding: 0 var(--pharos-spacing-one-quarter-x);
+}
+
+.pill--dismissible {
+  cursor: pointer;
+  min-width: 24px;
+  transition: all 0.2s ease;
 }
 
 .pill--primary {
@@ -62,18 +87,25 @@
   }
 }
 
-.pill--small {
-  @include mixins.font-base(
-    $font-family: var(--pharos-font-family-sans-serif),
-    $font-size: var(--pharos-font-size-micro),
-    $line-height: var(--pharos-line-height-xsmall)
-  );
+@for $i from 1 through 9 {
+  .pill--preset-#{$i} {
+    border: 1px
+      solid
+      var(--pharos-pill-preset-#{$i}-base-color, var(--pharos-color-marble-gray-40));
+    color: var(--pharos-pill-preset-#{$i}-base-color, var(--pharos-color-black));
+    fill: var(--pharos-pill-preset-#{$i}-base-color, var(--pharos-color-black));
+    background-color: var(--pharos-pill-preset-#{$i}-base-background, var(--pharos-color-white));
 
-  padding: 0 var(--pharos-spacing-one-quarter-x);
-}
-
-.pill--dismissible {
-  cursor: pointer;
-  min-width: 24px;
-  transition: all 0.2s ease;
+    &.pill--dismissible:hover {
+      border: 1px
+        solid
+        var(--pharos-pill-preset-#{$i}-hover-color, var(--pharos-color-marble-gray-40));
+      color: var(--pharos-pill-preset-#{$i}-hover-color, var(--pharos-color-black));
+      fill: var(--pharos-pill-preset-#{$i}-hover-color, var(--pharos-color-black));
+      background-color: var(
+        --pharos-pill-preset-#{$i}-hover-background,
+        var(--pharos-color-marble-gray-94)
+      );
+    }
+  }
 }

@@ -59,16 +59,6 @@ export const Base: Story = {
   args: defaultArgs,
 };
 
-export const Variants: Story = {
-  render: () =>
-    html`<div>
-      <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
-        <storybook-pharos-pill variant="primary">Primary Pill</storybook-pharos-pill>
-        <storybook-pharos-pill variant="secondary">Secondary Pill</storybook-pharos-pill>
-      </div>
-    </div>`,
-};
-
 export const Sizes: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 2rem; grid-template-columns: repeat(3, 200px);">
@@ -106,54 +96,146 @@ export const Truncated: Story = {
     </div>`,
 };
 
-export const Colors: Story = {
+export const Presets: Story = {
   render: () =>
     html`<div>
-      <storybook-pharos-heading level="2">Primary</storybook-pharos-heading>
-      <div style="padding: 1rem;">
-        ${sampleColors.map(
-          (color) =>
-            html`<storybook-pharos-pill color="${color}">${color} pill</storybook-pharos-pill
-              ><storybook-pharos-pill color="${color}" dismissible
-                >${color} pill</storybook-pharos-pill
-              >`
-        )}
-      </div>
-      <div style="padding: 1rem;">
-        ${sampleLightColors.map(
-          (color) =>
-            html`<storybook-pharos-pill color="${color}" text-color="black"
-                >${color} pill</storybook-pharos-pill
-              ><storybook-pharos-pill color="${color}" text-color="black" dismissible
-                >${color} pill</storybook-pharos-pill
-              >`
-        )}
-      </div>
-      <storybook-pharos-heading level="2">Secondary</storybook-pharos-heading>
-      <div style="padding: 1rem;">
-        ${sampleColors.map(
-          (color) =>
-            html`<storybook-pharos-pill color="${color}" variant="secondary"
-                >${color} pill</storybook-pharos-pill
-              ><storybook-pharos-pill color="${color}" variant="secondary" dismissible
-                >${color} pill</storybook-pharos-pill
-              >`
-        )}
-      </div>
-      <div style="background: var(--pharos-color-black); padding: 1rem;">
-        ${sampleLightColors.map(
-          (color) =>
-            html`<storybook-pharos-pill color="${color}" variant="secondary" text-color="black"
-                >${color} pill</storybook-pharos-pill
-              ><storybook-pharos-pill
-                color="${color}"
-                variant="secondary"
-                text-color="black"
-                dismissible
-                >${color} pill</storybook-pharos-pill
-              >`
-        )}
-      </div>
+      <storybook-pharos-heading preset="2">Standard Pills</storybook-pharos-heading>
+      <storybook-pharos-pill preset="1">Preset 1</storybook-pharos-pill>
+      <storybook-pharos-pill preset="2">Preset 2</storybook-pharos-pill>
+      <storybook-pharos-pill preset="3">Preset 3</storybook-pharos-pill>
+      <storybook-pharos-pill preset="4">Preset 4</storybook-pharos-pill>
+      <storybook-pharos-pill preset="5">Preset 5</storybook-pharos-pill>
+      <storybook-pharos-pill preset="6">Preset 6</storybook-pharos-pill>
+      <storybook-pharos-pill preset="7">Preset 7</storybook-pharos-pill>
+      <storybook-pharos-pill preset="8">Preset 8</storybook-pharos-pill>
+      <storybook-pharos-pill preset="9">Preset 9</storybook-pharos-pill>
+
+      <storybook-pharos-heading preset="2">Dismissible Pills</storybook-pharos-heading>
+      <storybook-pharos-pill preset="1" dismissible>Preset 1 - Dismissible</storybook-pharos-pill>
+      <storybook-pharos-pill preset="2" dismissible>Preset 2 - Dismissible</storybook-pharos-pill>
+      <storybook-pharos-pill preset="3" dismissible>Preset 3 - Dismissible</storybook-pharos-pill>
+      <storybook-pharos-pill preset="4" dismissible>Preset 4 - Dismissible</storybook-pharos-pill>
+      <storybook-pharos-pill preset="5" dismissible>Preset 5 - Dismissible</storybook-pharos-pill>
+      <storybook-pharos-pill preset="6" dismissible>Preset 6 - Dismissible</storybook-pharos-pill>
+      <storybook-pharos-pill preset="7" dismissible>Preset 7 - Dismissible</storybook-pharos-pill>
+      <storybook-pharos-pill preset="8" dismissible>Preset 8 - Dismissible</storybook-pharos-pill>
+      <storybook-pharos-pill preset="9" dismissible>Preset 9 - Dismissible</storybook-pharos-pill>
+
+      <storybook-pharos-heading preset="2">Disabled Pills</storybook-pharos-heading>
+      <storybook-pharos-pill preset="1" disabled>Preset 1</storybook-pharos-pill>
+      <storybook-pharos-pill preset="2" disabled>Preset 2</storybook-pharos-pill>
+      <storybook-pharos-pill preset="3" disabled>Preset 3</storybook-pharos-pill>
+      <storybook-pharos-pill preset="4" disabled>Preset 4</storybook-pharos-pill>
+      <storybook-pharos-pill preset="5" disabled>Preset 5</storybook-pharos-pill>
+      <storybook-pharos-pill preset="6" disabled>Preset 6</storybook-pharos-pill>
+      <storybook-pharos-pill preset="7" disabled>Preset 7</storybook-pharos-pill>
+      <storybook-pharos-pill preset="8" disabled>Preset 8</storybook-pharos-pill>
+      <storybook-pharos-pill preset="9" disabled>Preset 9</storybook-pharos-pill>
+      <storybook-pharos-pill preset="1" dismissible disabled
+        >Preset 1 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill preset="2" dismissible disabled
+        >Preset 2 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill preset="3" dismissible disabled
+        >Preset 3 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill preset="4" dismissible disabled
+        >Preset 4 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill preset="5" dismissible disabled
+        >Preset 5 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill preset="6" dismissible disabled
+        >Preset 6 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill preset="7" dismissible disabled
+        >Preset 7 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill preset="8" dismissible disabled
+        >Preset 8 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill preset="9" dismissible disabled
+        >Preset 9 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-heading preset="1">Small Pills</storybook-pharos-heading>
+      <storybook-pharos-heading preset="2">Standard Pills</storybook-pharos-heading>
+      <storybook-pharos-pill size="small" preset="1">Preset 1</storybook-pharos-pill>
+      <storybook-pharos-pill size="small" preset="2">Preset 2</storybook-pharos-pill>
+      <storybook-pharos-pill size="small" preset="3">Preset 3</storybook-pharos-pill>
+      <storybook-pharos-pill size="small" preset="4">Preset 4</storybook-pharos-pill>
+      <storybook-pharos-pill size="small" preset="5">Preset 5</storybook-pharos-pill>
+      <storybook-pharos-pill size="small" preset="6">Preset 6</storybook-pharos-pill>
+      <storybook-pharos-pill size="small" preset="7">Preset 7</storybook-pharos-pill>
+      <storybook-pharos-pill size="small" preset="8">Preset 8</storybook-pharos-pill>
+      <storybook-pharos-pill size="small" preset="9">Preset 9</storybook-pharos-pill>
+
+      <storybook-pharos-heading preset="2">Dismissible Pills</storybook-pharos-heading>
+      <storybook-pharos-pill size="small" preset="1" dismissible
+        >Preset 1 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="2" dismissible
+        >Preset 2 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="3" dismissible
+        >Preset 3 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="4" dismissible
+        >Preset 4 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="5" dismissible
+        >Preset 5 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="6" dismissible
+        >Preset 6 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="7" dismissible
+        >Preset 7 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="8" dismissible
+        >Preset 8 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="9" dismissible
+        >Preset 9 - Dismissible</storybook-pharos-pill
+      >
+
+      <storybook-pharos-heading preset="2">Disabled Pills</storybook-pharos-heading>
+      <storybook-pharos-pill preset="1" disabled>Preset 1</storybook-pharos-pill>
+      <storybook-pharos-pill preset="2" disabled size="small">Preset 2</storybook-pharos-pill>
+      <storybook-pharos-pill preset="3" disabled size="small">Preset 3</storybook-pharos-pill>
+      <storybook-pharos-pill preset="4" disabled size="small">Preset 4</storybook-pharos-pill>
+      <storybook-pharos-pill preset="5" disabled size="small">Preset 5</storybook-pharos-pill>
+      <storybook-pharos-pill preset="6" disabled size="small">Preset 6</storybook-pharos-pill>
+      <storybook-pharos-pill preset="7" disabled size="small">Preset 7</storybook-pharos-pill>
+      <storybook-pharos-pill preset="8" disabled size="small">Preset 8</storybook-pharos-pill>
+      <storybook-pharos-pill preset="9" disabled size="small">Preset 9</storybook-pharos-pill>
+      <storybook-pharos-pill size="small" preset="1" dismissible disabled
+        >Preset 1 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="2" dismissible disabled
+        >Preset 2 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="3" dismissible disabled
+        >Preset 3 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="4" dismissible disabled
+        >Preset 4 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="5" dismissible disabled
+        >Preset 5 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="6" dismissible disabled
+        >Preset 6 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="7" dismissible disabled
+        >Preset 7 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="8" dismissible disabled
+        >Preset 8 - Dismissible</storybook-pharos-pill
+      >
+      <storybook-pharos-pill size="small" preset="9" dismissible disabled
+        >Preset 9 - Dismissible</storybook-pharos-pill
+      >
     </div>`,
 };
 
