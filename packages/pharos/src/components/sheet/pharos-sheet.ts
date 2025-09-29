@@ -24,7 +24,7 @@ const FOCUS_HANDLE = `[data-sheet-handle]`;
  *
  * @fires pharos-sheet-open - Fires when the sheet is about to open - cancelable
  * @fires pharos-sheet-opened - Fires when the sheet has opened
- * @fires pharos-sheet-expanded- Fires when the sheet has expanded
+ * @fires pharos-sheet-expanded - Fires when the sheet has expanded
  * @fires pharos-sheet-close - Fires when the sheet is about to close - cancelable
  * @fires pharos-sheet-closed - Fires when the sheet has closed
  *
@@ -75,7 +75,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   public header = 'Sheet header';
 
   /**
-   * Indicates the minimim height for the sheet in pixels
+   * Indicates the minimum height for the sheet in pixels
    * @attr minHeight
    */
   @property({ type: String, attribute: 'min-height', reflect: true })
