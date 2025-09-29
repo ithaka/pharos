@@ -75,7 +75,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   public header = 'Sheet header';
 
   /**
-   * Indicates the minimim height for the sheet in pixels
+   * Indicates the minimum height for the sheet in pixels
    * @attr minHeight
    */
   @property({ type: String, attribute: 'min-height', reflect: true })
