@@ -119,7 +119,7 @@
   }
 }
 
-:host(:not([open])) {
+:host(:not([open], [docked])) {
   .sheet__content {
     transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
     box-shadow: none;
