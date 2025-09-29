@@ -1,100 +1,176 @@
 {
   "pill": {
-	"disabled": {
-		"color": { "value": "{color.marble-gray.50}" },
-		"background": { "value": "{color.marble-gray.base}" }
-	},
+    "disabled": {
+      "color": {
+        "value": "{color.marble-gray.50}"
+      },
+      "background": {
+        "value": "{color.marble-gray.base}"
+      }
+    },
     "preset": {
-		"1": {
-		"base": {
-			"color": { "value": "{color.marble-gray.50}" },
-			"background": { "value": "{color.white}" }
-		},
-		"hover": {
-			"color": { "value": "{color.jstor-red}" },
-			"background": { "value": "{color.marble-gray.94}" }
-		}
-		},
-		"2": {
-		"base": {
-			"color": { "value": "{color.white}" },
-			"background": { "value": "{color.marble-gray.20}" }
-		},
-		"hover": {
-			"color": { "value": "{color.white}" },
-			"background": { "value": "{color.marble-gray.30}" }
-		}
-		},
-		"3": {
-		"base": {
-			"color": { "value": "{color.living-coral.53}" },
-			"background": { "value": "{color.white}" }
-		},
-		"hover": {
-			"color": { "value": "{color.living-coral.53}" },
-			"background": { "value": "{color.white}" }
-		}
-		},
-		"4": {
-		"base": {
-			"color": { "value": "{color.dark-garnet}" },
-			"background": { "value": "{color.white}" }
-		},
-		"hover": {
-			"color": { "value": "{color.dark-garnet}" },
-			"background": { "value": "{color.marble-gray.94}" }
-		}
-		},
-		"5": {
-		"base": {
-			"color": { "value": "{color.green.base}" },
-			"background": { "value": "{color.white}" }
-		},
-		"hover": {
-			"color": { "value": "{color.green.base}" },
-			"background": { "value": "{color.marble-gray.94}" }
-		}
-		},
-		"6": {
-		"base": {
-			"color": { "value": "{color.glacier-blue.30}" },
-			"background": { "value": "{color.white}" }
-		},
-		"hover": {
-			"color": { "value": "{color.glacier-blue.30}" },
-			"background": { "value": "{color.marble-gray.94}" }
-		}
-		},
-		"7": {
-		"base": {
-			"color": { "value": "#1076DD" },
-			"background": { "value": "{color.white}" }
-		},
-		"hover": {
-			"color": { "value": "#1076DD" },
-			"background": { "value": "{color.marble-gray.94}" }
-		}
-		},
-		"8": {
-		"base": {
-			"color": { "value": "#5C54F0" },
-			"background": { "value": "{color.white}" }
-		},
-		"hover": {
-			"color": { "value": "#5C54F0" },
-			"background": { "value": "{color.marble-gray.94}" }
-		}
-		},
-		"9": {
-		"base": {
-			"color": { "value": "#B829BB" },
-			"background": { "value": "{color.white}" }
-		},
-		"hover": {
-			"color": { "value": "#B829BB" },
-			"background": { "value": "{color.marble-gray.94}" }
-		}
-		}
-	}
+      "1": {
+        "base": {
+          "color": {
+            "value": "{color.marble-gray.50}"
+          },
+          "background": {
+            "value": "{color.white}"
+          }
+        },
+        "hover": {
+          "color": {
+            "value": "{color.jstor-red}"
+          },
+          "background": {
+            "value": "{color.marble-gray.94}"
+          }
+        }
+      },
+      "2": {
+        "base": {
+          "color": {
+            "value": "{color.white}"
+          },
+          "background": {
+            "value": "{color.marble-gray.20}"
+          }
+        },
+        "hover": {
+          "color": {
+            "value": "{color.white}"
+          },
+          "background": {
+            "value": "{color.marble-gray.30}"
+          }
+        }
+      },
+      "3": {
+        "base": {
+          "color": {
+            "value": "{color.living-coral.53}"
+          },
+          "background": {
+            "value": "{color.white}"
+          }
+        },
+        "hover": {
+          "color": {
+            "value": "{color.living-coral.53}"
+          },
+          "background": {
+            "value": "{color.white}"
+          }
+        }
+      },
+      "4": {
+        "base": {
+          "color": {
+            "value": "{color.dark-garnet}"
+          },
+          "background": {
+            "value": "{color.white}"
+          }
+        },
+        "hover": {
+          "color": {
+            "value": "{color.dark-garnet}"
+          },
+          "background": {
+            "value": "{color.marble-gray.94}"
+          }
+        }
+      },
+      "5": {
+        "base": {
+          "color": {
+            "value": "{color.green.base}"
+          },
+          "background": {
+            "value": "{color.white}"
+          }
+        },
+        "hover": {
+          "color": {
+            "value": "{color.green.base}"
+          },
+          "background": {
+            "value": "{color.marble-gray.94}"
+          }
+        }
+      },
+      "6": {
+        "base": {
+          "color": {
+            "value": "{color.glacier-blue.30}"
+          },
+          "background": {
+            "value": "{color.white}"
+          }
+        },
+        "hover": {
+          "color": {
+            "value": "{color.glacier-blue.30}"
+          },
+          "background": {
+            "value": "{color.marble-gray.94}"
+          }
+        }
+      },
+      "7": {
+        "base": {
+          "color": {
+            "value": "#1076DD"
+          },
+          "background": {
+            "value": "{color.white}"
+          }
+        },
+        "hover": {
+          "color": {
+            "value": "#1076DD"
+          },
+          "background": {
+            "value": "{color.marble-gray.94}"
+          }
+        }
+      },
+      "8": {
+        "base": {
+          "color": {
+            "value": "#5C54F0"
+          },
+          "background": {
+            "value": "{color.white}"
+          }
+        },
+        "hover": {
+          "color": {
+            "value": "#5C54F0"
+          },
+          "background": {
+            "value": "{color.marble-gray.94}"
+          }
+        }
+      },
+      "9": {
+        "base": {
+          "color": {
+            "value": "#B829BB"
+          },
+          "background": {
+            "value": "{color.white}"
+          }
+        },
+        "hover": {
+          "color": {
+            "value": "#B829BB"
+          },
+          "background": {
+            "value": "{color.marble-gray.94}"
+          }
+        }
+      }
+    }
   }
 }
