@@ -77,20 +77,20 @@
         "text": {
           "color": {
             "base": {
-              "value": "{color.living-coral.53}"
+              "value": "{color.living-coral.50}"
             },
             "hover": {
-              "value": "{color.living-coral.53}"
+              "value": "{color.living-coral.50}"
             }
           }
         },
         "border": {
           "color": {
             "base": {
-              "value": "{color.living-coral.53}"
+              "value": "{color.living-coral.50}"
             },
             "hover": {
-              "value": "{color.living-coral.53}"
+              "value": "{color.living-coral.50}"
             }
           }
         },
@@ -205,20 +205,20 @@
         "text": {
           "color": {
             "base": {
-              "value": "#1076DD"
+              "value": "hsl(210, 98%, 43%)"
             },
             "hover": {
-              "value": "#1076DD"
+              "value": "hsl(210, 98%, 43%)"
             }
           }
         },
         "border": {
           "color": {
             "base": {
-              "value": "#1076DD"
+              "value": "hsl(210, 98%, 43%)"
             },
             "hover": {
-              "value": "#1076DD"
+              "value": "hsl(210, 98%, 43%)"
             }
           }
         },
@@ -237,20 +237,20 @@
         "text": {
           "color": {
             "base": {
-              "value": "#5C54F0"
+              "value": "hsl(243, 84%, 64%)"
             },
             "hover": {
-              "value": "#5C54F0"
+              "value": "hsl(243, 84%, 64%)"
             }
           }
         },
         "border": {
           "color": {
             "base": {
-              "value": "#5C54F0"
+              "value": "hsl(243, 84%, 64%)"
             },
             "hover": {
-              "value": "#5C54F0"
+              "value": "hsl(243, 84%, 64%)"
             }
           }
         },
@@ -269,20 +269,20 @@
         "text": {
           "color": {
             "base": {
-              "value": "#B829BB"
+              "value": "hsl(299, 64%, 45%)"
             },
             "hover": {
-              "value": "#B829BB"
+              "value": "hsl(299, 64%, 45%)"
             }
           }
         },
         "border": {
           "color": {
             "base": {
-              "value": "#B829BB"
+              "value": "hsl(299, 64%, 45%)"
             },
             "hover": {
-              "value": "#B829BB"
+              "value": "hsl(299, 64%, 45%)"
             }
           }
         },
