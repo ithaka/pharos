@@ -130,6 +130,12 @@
   }
 }
 
+:host([omit-overlay]:not([open])) {
+  .sheet__content {
+    box-shadow: none;
+  }
+}
+
 /* Docked: always visible and pinned bottom */
 :host([docked]:not([omit-overlay])) {
   pointer-events: auto;

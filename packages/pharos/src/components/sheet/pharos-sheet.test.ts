@@ -95,6 +95,18 @@ describe('pharos-sheet', () => {
     expect(styles.pointerEvents).to.equal('auto');
   });
 
+  it('omits the box shadow when omit-overlay is set and sheet is closed', async () => {
+    const sheet = await fixture<PharosSheet>(
+      html`<test-pharos-sheet omit-overlay>
+        <div>I am sheet contents</div>
+      </test-pharos-sheet>`
+    );
+    await sheet.updateComplete;
+
+    const content = sheet.shadowRoot?.querySelector('.sheet__content') as HTMLElement;
+    expect(getComputedStyle(content).boxShadow).to.equal('none');
+  });
+
   it('focus moves to the sheet after opening and returns back to the trigger element when closed', async () => {
     let activeElement = null;
     const onFocusIn = (event: Event): void => {
