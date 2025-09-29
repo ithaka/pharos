@@ -83,6 +83,18 @@ describe('pharos-sheet', () => {
     expect(mockHandler.called).to.be.false;
   });
 
+  it('applies an opaque overlay when opened', async () => {
+    const sheet = await fixture<PharosSheet>(getSimpleSheet());
+    sheet.open = true;
+    await sheet.updateComplete;
+
+    const overlay = sheet.shadowRoot?.querySelector('.sheet__overlay') as HTMLElement;
+    const styles = getComputedStyle(overlay);
+
+    expect(styles.backgroundColor).to.equal('rgba(0, 0, 0, 0.5)');
+    expect(styles.pointerEvents).to.equal('auto');
+  });
+
   it('focus moves to the sheet after opening and returns back to the trigger element when closed', async () => {
     let activeElement = null;
     const onFocusIn = (event: Event): void => {
