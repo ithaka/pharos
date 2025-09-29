@@ -17,43 +17,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<StoryArgs>;
 
-const sampleColors = [
-  'jstor-red',
-  'night-blue-15',
-  'night-blue-base',
-  'living-coral-50',
-  'living-coral-53',
-  'marble-gray-10',
-  'marble-gray-20',
-  'marble-gray-30',
-  'marble-gray-40',
-  'black',
-  'green-base',
-  'engineering-orange',
-  'dark-garnet',
-];
-
-const sampleLightColors = [
-  'night-blue-60',
-  'glacier-blue-base',
-  'glacier-blue-40',
-  'glacier-blue-70',
-  'glacier-blue-80',
-  'glacier-blue-90',
-  'green-93',
-  'green-97',
-  'living-coral-base',
-  'living-coral-80',
-  'living-coral-90',
-  'marble-gray-50',
-  'marble-gray-80',
-  'marble-gray-94',
-  'marble-gray-97',
-  'marble-gray-base',
-  'white',
-  'yellow-97',
-  'yellow-base',
-];
 export const Base: Story = {
   render: () => html`<storybook-pharos-pill>Some content</storybook-pharos-pill>`,
   args: defaultArgs,
@@ -122,15 +85,6 @@ export const Presets: Story = {
       <storybook-pharos-pill preset="9" dismissible>Preset 9 - Dismissible</storybook-pharos-pill>
 
       <storybook-pharos-heading preset="2">Disabled Pills</storybook-pharos-heading>
-      <storybook-pharos-pill preset="1" disabled>Preset 1</storybook-pharos-pill>
-      <storybook-pharos-pill preset="2" disabled>Preset 2</storybook-pharos-pill>
-      <storybook-pharos-pill preset="3" disabled>Preset 3</storybook-pharos-pill>
-      <storybook-pharos-pill preset="4" disabled>Preset 4</storybook-pharos-pill>
-      <storybook-pharos-pill preset="5" disabled>Preset 5</storybook-pharos-pill>
-      <storybook-pharos-pill preset="6" disabled>Preset 6</storybook-pharos-pill>
-      <storybook-pharos-pill preset="7" disabled>Preset 7</storybook-pharos-pill>
-      <storybook-pharos-pill preset="8" disabled>Preset 8</storybook-pharos-pill>
-      <storybook-pharos-pill preset="9" disabled>Preset 9</storybook-pharos-pill>
       <storybook-pharos-pill preset="1" dismissible disabled
         >Preset 1 - Dismissible</storybook-pharos-pill
       >
@@ -200,15 +154,6 @@ export const Presets: Story = {
       >
 
       <storybook-pharos-heading preset="2">Disabled Pills</storybook-pharos-heading>
-      <storybook-pharos-pill preset="1" disabled>Preset 1</storybook-pharos-pill>
-      <storybook-pharos-pill preset="2" disabled size="small">Preset 2</storybook-pharos-pill>
-      <storybook-pharos-pill preset="3" disabled size="small">Preset 3</storybook-pharos-pill>
-      <storybook-pharos-pill preset="4" disabled size="small">Preset 4</storybook-pharos-pill>
-      <storybook-pharos-pill preset="5" disabled size="small">Preset 5</storybook-pharos-pill>
-      <storybook-pharos-pill preset="6" disabled size="small">Preset 6</storybook-pharos-pill>
-      <storybook-pharos-pill preset="7" disabled size="small">Preset 7</storybook-pharos-pill>
-      <storybook-pharos-pill preset="8" disabled size="small">Preset 8</storybook-pharos-pill>
-      <storybook-pharos-pill preset="9" disabled size="small">Preset 9</storybook-pharos-pill>
       <storybook-pharos-pill size="small" preset="1" dismissible disabled
         >Preset 1 - Dismissible</storybook-pharos-pill
       >
