@@ -82,47 +82,21 @@ describe('PharosPill', () => {
     });
   });
 
-  describe('Pill Colors', () => {
-    it(`should set the pill color variable correctly when a color attribute is set`, async () => {
-      component = await fixture(
-        html`<test-pharos-pill color="jstor-red">Test Pill</test-pharos-pill>`
-      );
-
-      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
-      const pillColor = pill.style.getPropertyValue('--pharos-pill-color');
-      expect(pillColor).to.equal(`var(--pharos-color-jstor-red)`);
-    });
-
-    it('should use default color values when no color attribute is provided', async () => {
+  describe('Pill Presets', () => {
+    it('should use preset 1 when no preset is provided', async () => {
       component = await fixture(html`<test-pharos-pill>Test Pill</test-pharos-pill>`);
-
+      expect(component.preset).to.equal('1');
       const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
-      const pillColor = pill.style.getPropertyValue('--pharos-pill-color');
-      expect(pillColor).to.equal(`var(--pharos-color-marble-gray-40)`);
+      expect(pill?.classList.contains('pill--preset-1')).to.be.true;
     });
-  });
-  describe('Pill Variants', () => {
-    it('should set the correct class when for the primary variant is set', async () => {
+
+    it('should apply the correct CSS class for the preset that is passed in', async () => {
       component = await fixture(
-        html`<test-pharos-pill variant="primary">Test Pill</test-pharos-pill>`
+        html`<test-pharos-pill preset="2">Test Pill with Preset 2</test-pharos-pill>`
       );
-
+      expect(component.preset).to.equal('2');
       const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
-      expect(pill.classList.contains('pill--primary')).to.be.true;
-    });
-    it('should set the correct class when for the secondary variant is set', async () => {
-      component = await fixture(
-        html`<test-pharos-pill variant="secondary">Test Pill</test-pharos-pill>`
-      );
-
-      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
-      expect(pill.classList.contains('pill--secondary')).to.be.true;
-    });
-    it('should default to the primary variant when one is not set', async () => {
-      component = await fixture(html`<test-pharos-pill>Test Pill</test-pharos-pill>`);
-
-      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
-      expect(pill.classList.contains('pill--primary')).to.be.true;
+      expect(pill?.classList.contains('pill--preset-2')).to.be.true;
     });
   });
   describe('Text Truncation', () => {
