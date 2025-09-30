@@ -99,7 +99,9 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
     if (changedProperties.has('iconLeft')) {
       try {
         const icon = await import(`../../styles/icons/${this.iconLeft}`);
-        this._icon = this._renderIcon(icon.default, this.iconLeft ?? '', this.size);
+        this._icon = html`<div class="pill__icon">
+          ${this._renderIcon(icon.default, this.iconLeft ?? '', this.size)}
+        </div>`;
       } catch (e) {
         console.log(e);
         throw new Error(`Could not get icon named "${this.iconLeft}"`);
@@ -131,7 +133,6 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
         height="${iconSize}"
         width="${iconSize}"
         focusable="false"
-        class="pill__icon"
       >
         <title>${title}</title>
         ${unsafeSVG(iconBlob)}
@@ -157,8 +158,8 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
           .aria-label="${labelText}"
           @click="${this._handleDismiss}"
         >
+          ${this._icon ?? nothing}
           <div class="pill__content">
-            ${this._icon ?? nothing}
             <slot></slot>
           </div>
           <div class="pill__close">${this._renderIcon(close, 'close', this.size)}</div>

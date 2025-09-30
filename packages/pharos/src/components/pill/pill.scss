@@ -41,6 +41,10 @@
   cursor: auto;
 }
 
+.pill__icon {
+  display: flex;
+}
+
 .pill__content {
   min-width: 0;
   white-space: nowrap;
