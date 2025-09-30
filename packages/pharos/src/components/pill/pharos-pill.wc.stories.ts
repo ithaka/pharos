@@ -287,7 +287,7 @@ export const Truncation: Story = {
       </div>
 
       <div
-        style="width:300px; padding:2rem; border:1px solid var(--pharos-color-black); margin-top:2rem;"
+        style="width:300px; padding:2rem; border:1px solid var(--pharos-color-black); margin-top:2rem; resize:horizontal; overflow:auto;"
       >
         <storybook-pharos-heading level="2" preset="5"
           >Truncating Pills (Container)</storybook-pharos-heading
