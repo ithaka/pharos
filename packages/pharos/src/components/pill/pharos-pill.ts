@@ -46,7 +46,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   public dismissible = false;
 
   /**
-   * Makes the pill disabled with a close button
+   * Makes the pill disabled, should only be used with dismissible pills
    * @attr disabled
    */
   @property({
@@ -56,7 +56,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   public disabled = false;
 
   /**
-   * Which style preset to use for the pill
+   * The preset color style of the pill
    * @attr preset
    */
   @property({
@@ -64,17 +64,6 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
     reflect: true,
   })
   public preset: string = '1';
-
-  /**
-   * The name of the color token to use for the pill color
-   * @attr color
-   */
-  @property({
-    type: String,
-    reflect: true,
-    attribute: 'text-color',
-  })
-  public textColor: string = 'white';
 
   /**
    * The icon to be shown to the left of the pill content.
@@ -96,6 +85,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected override async updated(changedProperties: PropertyValues): Promise<void> {
+    // Dynamically import the icon when the icon property is set
     if (changedProperties.has('iconLeft')) {
       try {
         const icon = await import(`../../styles/icons/${this.iconLeft}`);
@@ -109,17 +99,8 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
     }
   }
 
-  private _handleDismiss(event: MouseEvent): void {
-    event.stopPropagation();
-    const dismissEvent = new CustomEvent('pharos-pill-dismissed', {
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(dismissEvent);
-  }
-
+  // We need the normal icon proportions, but at smaller sizes, so we have to manually render the svg instead of using pharos-icon
   private _renderIcon(icon: string, title: string, size: string): TemplateResult | undefined {
-    // We need the normal icon proportions, but at smaller sizes, so we have to manually render the svg
     const iconSize = size === 'small' ? 12 : 16;
     const iconBlob = atob(icon);
     return html`
@@ -138,6 +119,15 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
         ${unsafeSVG(iconBlob)}
       </svg>
     `;
+  }
+
+  private _handleDismiss(event: MouseEvent): void {
+    event.stopPropagation();
+    const dismissEvent = new CustomEvent('pharos-pill-dismissed', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(dismissEvent);
   }
 
   protected override render(): TemplateResult {
