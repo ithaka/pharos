@@ -1,4 +1,4 @@
-import { fixture, expect } from '@open-wc/testing';
+import { fixture, expect, waitUntil } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import sinon from 'sinon';
 
@@ -144,14 +144,18 @@ describe('PharosPill', () => {
         html`<test-pharos-pill icon-left="info-inverse">Test Pill</test-pharos-pill>`
       );
       await component.updateComplete;
-      // Wait for icon to load asynchronously with longer timeout for cross-browser stability
-      await new Promise((resolve) => setTimeout(resolve, 200));
 
-      const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement | null;
+      // Wait for icon to load asynchronously
+      await waitUntil(
+        () => component.renderRoot?.querySelector('svg') !== null,
+        'Icon should be rendered'
+      );
+
+      const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement;
       expect(icon).to.not.be.null;
-      expect(icon?.querySelector('title')?.textContent).to.equal('info-inverse');
-      expect(icon!.getAttribute('height')).to.equal('16');
-      expect(icon!.getAttribute('width')).to.equal('16');
+      expect(icon.querySelector('title')?.textContent).to.equal('info-inverse');
+      expect(icon.getAttribute('height')).to.equal('16');
+      expect(icon.getAttribute('width')).to.equal('16');
     });
 
     it('adjusts the size of the icon when the pill size is set to small', async () => {
@@ -160,8 +164,11 @@ describe('PharosPill', () => {
       );
 
       await component.updateComplete;
-      // Wait for icon to load asynchronously with longer timeout for cross-browser stability
-      await new Promise((resolve) => setTimeout(resolve, 200));
+      // Wait for icon to load asynchronously
+      await waitUntil(
+        () => component.renderRoot?.querySelector('svg') !== null,
+        'Icon should be rendered'
+      );
 
       const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement | null;
       expect(icon).to.not.be.null;
@@ -190,10 +197,10 @@ describe('PharosPill', () => {
       try {
         component.iconLeft = 'invalid-icon' as any;
         await component.updateComplete;
-        await new Promise((resolve) => setTimeout(resolve, 200));
 
-        // Check that the error was captured with the correct message
-        expect(caughtError).to.not.be.null;
+        // Wait for error to be caught
+        await waitUntil(() => caughtError !== null, 'Error should be caught');
+
         expect(caughtError!.message).to.equal('Could not get icon named "invalid-icon"');
       } finally {
         consoleStub.restore();
