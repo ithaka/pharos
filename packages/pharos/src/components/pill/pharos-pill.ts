@@ -67,7 +67,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
 
   /**
    * The icon to be shown to the left of the pill content.
-   * @attr icon
+   * @attr icon-left
    * @type {IconName | undefined}
    */
   @property({
