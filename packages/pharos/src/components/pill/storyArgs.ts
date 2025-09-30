@@ -3,7 +3,8 @@ export interface ComponentArgs {
   dismissible: boolean;
   disabled: boolean;
   preset: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
-  'icon-left'?: string;
+  iconLeft?: string; // React prop name
+  'icon-left'?: string; // WC prop name
 }
 
 export type StoryArgs = ComponentArgs & {};
