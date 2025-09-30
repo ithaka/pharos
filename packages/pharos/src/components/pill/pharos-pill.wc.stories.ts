@@ -34,10 +34,7 @@ export const Sizes: Story = {
 export const Dismissible: Story = {
   render: () =>
     html`<div>
-      <storybook-pharos-pill dismissible>Primary Dismissible Pill</storybook-pharos-pill>
-      <storybook-pharos-pill variant="secondary" dismissible
-        >Secondary Dismissible Pill</storybook-pharos-pill
-      >
+      <storybook-pharos-pill dismissible>Dismissible Pill</storybook-pharos-pill>
     </div>`,
 };
 
@@ -56,6 +53,34 @@ export const Truncated: Story = {
       <storybook-pharos-pill class="truncated" dismissible>
         This is a very long pill that will truncate when it reaches the max width
       </storybook-pharos-pill>
+      <br />
+      <storybook-pharos-pill class="truncated" icon-left="info-inverse">
+        This is a very long pill that will truncate when it reaches the max width
+      </storybook-pharos-pill>
+      <br />
+      <storybook-pharos-pill class="truncated" icon-left="info-inverse" dismissible>
+        This is a very long pill that will truncate when it reaches the max width
+      </storybook-pharos-pill>
+      <br />
+    </div>`,
+};
+
+export const WithTooltip: Story = {
+  render: () =>
+    html`<div>
+      <style>
+        .truncated {
+          max-width: 200px;
+        }
+      </style>
+      <storybook-pharos-pill class="truncated" data-tooltip-id="pill-tooltip">
+        This is a very long pill that will truncate when it reaches the max width, but has a tooltip
+        to make it all readable.
+      </storybook-pharos-pill>
+      <storybook-pharos-tooltip id="pill-tooltip">
+        This is a very long pill that will truncate when it reaches the max width, but has a tooltip
+        to make it all readable.
+      </storybook-pharos-tooltip>
     </div>`,
 };
 
@@ -186,8 +211,10 @@ export const Presets: Story = {
 
 export const WithIcon: Story = {
   render: () =>
-    html`<storybook-pharos-pill icon-left="info-inverse">Some content</storybook-pharos-pill
-      ><storybook-pharos-pill icon-left="info-inverse" variant="secondary" color="green-base"
+    html`<storybook-pharos-pill icon-left="info-inverse">Some content</storybook-pharos-pill>
+      <storybook-pharos-pill icon-left="info-inverse" preset="5"
         >Some content</storybook-pharos-pill
-      ><storybook-pharos-pill icon-left="info-inverse" size="small">small</storybook-pharos-pill>`,
+      >
+      <br />
+      <storybook-pharos-pill icon-left="info-inverse" size="small">small</storybook-pharos-pill>`,
 };
