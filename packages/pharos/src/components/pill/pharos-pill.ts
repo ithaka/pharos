@@ -18,6 +18,7 @@ export type { IconName };
  * @fires pharos-pill-dismissed - Fires when the pill is dismissed
  **/
 
+export type PillPreset = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
 export class PharosPill extends ScopedRegistryMixin(PharosElement) {
   /**
    * The size of the pill
@@ -28,7 +29,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
     reflect: true,
     useDefault: false,
   })
-  public size: string = 'base';
+  public size: 'base' | 'small' = 'base';
 
   /**
    * Makes the pill dismissible with a close button
@@ -58,7 +59,7 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
     type: String,
     reflect: true,
   })
-  public preset: string = '1';
+  public preset: PillPreset = '1';
 
   /**
    * The icon to be shown to the left of the pill content.
