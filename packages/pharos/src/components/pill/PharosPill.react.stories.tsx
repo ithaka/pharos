@@ -422,6 +422,8 @@ export const Truncation: Story = {
           padding: '2rem',
           border: '1px solid var(--pharos-color-black)',
           marginTop: '2rem',
+          resize: 'horizontal',
+          overflow: 'auto',
         }}
       >
         <PharosHeading level={2} preset="5">
