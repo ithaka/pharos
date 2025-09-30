@@ -7,7 +7,6 @@ import { property, state } from 'lit/decorators.js';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import close from '../../styles/icons/close';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
-import { PharosIcon } from '../icon/pharos-icon';
 import type { IconName } from '../icon/pharos-icon';
 export type { IconName };
 
@@ -20,10 +19,6 @@ export type { IconName };
  **/
 
 export class PharosPill extends ScopedRegistryMixin(PharosElement) {
-  static elementDefinitions = {
-    'pharos-icon': PharosIcon,
-  };
-
   /**
    * The size of the pill
    * @attr size
