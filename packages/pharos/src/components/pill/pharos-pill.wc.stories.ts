@@ -32,7 +32,10 @@ const meta = {
       description: 'The icon to be shown to the left of the pill content',
     },
   },
-  args: defaultArgs,
+  args: {
+    ...defaultArgs,
+    iconLeft: undefined,
+  },
   parameters: {
     docs: { page: configureDocsPage('pill') },
     options: { selectedPanel: 'addon-controls' },
