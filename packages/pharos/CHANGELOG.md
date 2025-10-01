@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.20.0
+
+### Minor Changes
+
+- [#1051](https://github.com/ithaka/pharos/pull/1051) [`446435a`](https://github.com/ithaka/pharos/commit/446435aa853a8a0ae76f2bb9c13f9492729e3b78) Thanks [@vedanthkallakuri](https://github.com/vedanthkallakuri)! - Sheet now supports being `docked` or to `omitOverlay`
+
 ## 14.19.0
 
 ### Minor Changes
