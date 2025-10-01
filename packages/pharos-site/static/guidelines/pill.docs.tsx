@@ -65,8 +65,8 @@ const PillPage: FC = () => {
             </li>
             <li>
               If including an icon on the left-hand side, make certain the icon is consistent for
-              all data in the same category (i.e. if including a mail icon next to an email address,
-              all pills with email addresses should include the mail icon)
+              all data in the same category. As an example, when including a mail icon next to an email address,
+              all pills with email addresses should include the mail icon.
             </li>
             <li>
               If mixing interactive and informative pills, organize these into a list in the page
