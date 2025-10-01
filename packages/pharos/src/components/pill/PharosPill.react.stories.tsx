@@ -435,7 +435,7 @@ export const Truncation: Story = {
         <PharosHeading level={2} preset="5">
           Truncating Pills (Container)
         </PharosHeading>
-        <p>Pill will also be truncated when the are longer than their container.</p>
+        <p>Pills are truncated when they are longer than their container.</p>
         <PharosPill dismissible>Short pill</PharosPill>
         <PharosPill dismissible>Short pill</PharosPill>
         <PharosPill dismissible>
