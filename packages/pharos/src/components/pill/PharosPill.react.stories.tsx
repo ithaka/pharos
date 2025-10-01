@@ -77,6 +77,9 @@ export const Sizes: Story = {
         <PharosPill>Default Pill</PharosPill>
         <PharosPill dismissible>Default Pill</PharosPill>
         <PharosPill iconLeft="info-inverse">Default Pill</PharosPill>
+        <PharosPill iconLeft="info-inverse" dismissible>
+          Default Pill
+        </PharosPill>
       </div>
       <div>
         <PharosHeading level={2} preset="5">
@@ -87,6 +90,9 @@ export const Sizes: Story = {
           Small Pill
         </PharosPill>
         <PharosPill size="small" iconLeft="info-inverse">
+          Small Pill
+        </PharosPill>
+        <PharosPill size="small" iconLeft="info-inverse" dismissible>
           Small Pill
         </PharosPill>
       </div>
