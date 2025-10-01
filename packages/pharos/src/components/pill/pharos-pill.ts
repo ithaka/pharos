@@ -133,6 +133,10 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
       classes.push('pill--small');
     }
 
+    if (this.iconLeft) {
+      classes.push('pill--with-icon');
+    }
+
     if (this.dismissible) {
       classes.push('pill--dismissible');
       const labelText = `Dismiss ${this.textContent?.trim() || ''}`;
