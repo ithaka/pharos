@@ -1,3 +1,14 @@
+exports.createPages = async ({ actions }) => {
+  const { createRedirect } = actions;
+
+  createRedirect({
+    fromPath: '/storybook',
+    toPath: '/storybook/',
+    isPermanent: true,
+    redirectInBrowser: true,
+  });
+};
+
 exports.onCreateWebpackConfig = ({ getConfig, stage, actions, plugins }) => {
   if (stage === 'build-javascript') {
     const currentConfig = getConfig();
