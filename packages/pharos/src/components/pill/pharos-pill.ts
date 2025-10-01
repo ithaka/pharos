@@ -135,13 +135,13 @@ export class PharosPill extends ScopedRegistryMixin(PharosElement) {
 
     if (this.dismissible) {
       classes.push('pill--dismissible');
-      const labelText = `Dismiss ${this.renderRoot.querySelector('slot')?.innerText}`;
+      const labelText = `Dismiss ${this.textContent?.trim() || ''}`;
       return html`
         <button
           class="${classes.join(' ')}"
           ?disabled="${this.disabled}"
           type="button"
-          .aria-label="${labelText}"
+          aria-label="${labelText}"
           @click="${this._handleDismiss}"
         >
           ${this._icon ?? nothing}
