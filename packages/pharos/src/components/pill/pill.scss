@@ -51,6 +51,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  align-self: baseline; // aligns text properly when there is an icon
 }
 
 .pill__close {
