@@ -58,6 +58,14 @@
   display: flex;
 }
 
+.pill--with-icon {
+  padding-right: var(--pharos-spacing-three-quarters-x);
+
+  &.pill--small {
+    padding-right: var(--pharos-spacing-one-half-x);
+  }
+}
+
 .pill--small {
   @include mixins.font-base(
     $font-family: var(--pharos-font-family-sans-serif),
