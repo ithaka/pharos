@@ -2,4 +2,4 @@
 '@ithaka/pharos': minor
 ---
 
-Add new Pill component
+Add new Pill component for displaying discrete selections
