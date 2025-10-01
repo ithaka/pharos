@@ -68,12 +68,18 @@ export const Sizes: Story = {
         <storybook-pharos-pill>Default Pill</storybook-pharos-pill>
         <storybook-pharos-pill dismissible>Default Pill</storybook-pharos-pill>
         <storybook-pharos-pill icon-left="info-inverse">Default Pill</storybook-pharos-pill>
+        <storybook-pharos-pill icon-left="info-inverse" dismissible
+          >Default Pill</storybook-pharos-pill
+        >
       </div>
       <div>
         <storybook-pharos-heading level="2" preset="5">Small Size</storybook-pharos-heading>
         <storybook-pharos-pill size="small">Small Pill</storybook-pharos-pill>
         <storybook-pharos-pill size="small" dismissible>Small Pill</storybook-pharos-pill>
         <storybook-pharos-pill size="small" icon-left="info-inverse"
+          >Small Pill</storybook-pharos-pill
+        >
+        <storybook-pharos-pill size="small" icon-left="info-inverse" dismissible
           >Small Pill</storybook-pharos-pill
         >
       </div>
