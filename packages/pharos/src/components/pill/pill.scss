@@ -59,10 +59,9 @@
 }
 
 .pill--with-icon {
-  padding-right: var(--pharos-spacing-three-quarters-x);
-
+  padding-right: var(--pharos-spacing-three-quarters-x); // match the icon's visual weight
   &.pill--small {
-    padding-right: var(--pharos-spacing-one-half-x);
+    padding-right: var(--pharos-spacing-one-half-x); // match the icon's visual weight
   }
 }
 
@@ -80,6 +79,19 @@
   cursor: pointer;
   min-width: 24px;
   transition: all 0.2s ease;
+  padding-left: var(--pharos-spacing-three-quarters-x); // match the close icon's visual weight
+  &.pill--small {
+    padding-left: var(--pharos-spacing-one-half-x); // match the close icon's visual weight
+  }
+}
+
+// With both icons, don't need to adjust for visual weight
+.pill--dismissible.pill--with-icon {
+  padding: 0 var(--pharos-spacing-one-half-x);
+
+  &.pill--small {
+    padding: 0 var(--pharos-spacing-one-quarter-x);
+  }
 }
 
 .pill--primary {
