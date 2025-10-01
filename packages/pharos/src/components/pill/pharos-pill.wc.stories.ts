@@ -298,7 +298,7 @@ export const Truncation: Story = {
         <storybook-pharos-heading level="2" preset="5"
           >Truncating Pills (Container)</storybook-pharos-heading
         >
-        <p>Pill will also be truncated when the are longer than their container.</p>
+        <p>Pills are truncated when they are longer than their container.</p>
         <storybook-pharos-pill dismissible> Short pill </storybook-pharos-pill
         ><storybook-pharos-pill dismissible> Short pill </storybook-pharos-pill
         ><storybook-pharos-pill dismissible>
