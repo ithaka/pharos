@@ -20,7 +20,7 @@ const PillPage: FC = () => {
       </PageSection>
       <PageSection title="Usage">
         <p>
-          Pills are used to represent a discrete piece of information (i.e. email address, username,
+          Pills are used to represent a discrete piece of information (e.g. email address, username,
           role name) that the user can interact with, often in an input or a list format.
         </p>
         <PageSection subSectionLevel={1} title="When to use pills">
@@ -33,9 +33,9 @@ const PillPage: FC = () => {
         <PageSection subSectionLevel={1} title="When not to use pills">
           <ul>
             <li>
-              When needing multiple interactions within a single pill, consider a card or a tile
+              When you need multiple interactions for a single entity, consider a card or a tile
             </li>
-            <li>When needing to display long explanatory text. Consider using a caption instead</li>
+            <li>When you need to display long explanatory text, consider using a caption</li>
           </ul>
         </PageSection>
       </PageSection>
@@ -44,7 +44,7 @@ const PillPage: FC = () => {
           Do={
             <ul>
               <li>Stack pills if screen width is constrained</li>
-              <li>Limit pill text to 1-2 words long and reflect a discrete name for the data</li>
+              <li>Limit pill text to 1-2 words and reflect a discrete name for the data</li>
             </ul>
           }
           Dont={
@@ -77,11 +77,11 @@ const PillPage: FC = () => {
         <PageSection subSectionLevel={1} title="Pill content">
           <ul>
             <li>
-              Text should generally be 1-2 words long and reflect a discrete name for the data,
+              Text should generally be 1-2 words long and reflect a discrete name for the data;
               avoid sentences.
             </li>
             <li>
-              Text should not be wrapped inside the pill. Set a max-width on the pill or pill
+              Text should not be wrapped inside the pill. Set a <code>max-width</code> on the pill or pill
               container element to truncate long text with an ellipsis.
             </li>
           </ul>
@@ -170,7 +170,7 @@ const PillPage: FC = () => {
           <PageSection subSectionLevel={2} title="Design">
             <ul>
               <li>
-                Always pair error states with an icon to not only rely on color to signify errors
+                Always pair error states with an icon to rely on more than color alone to signify errors
               </li>
               <li>
                 Ensure color choices convey meaning consistently across the interface, not just
