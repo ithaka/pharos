@@ -1,5 +1,17 @@
 # @ithaka/pharos
 
+## 14.21.0
+
+### Minor Changes
+
+- [#1069](https://github.com/ithaka/pharos/pull/1087) [`43f4639`](https://github.com/ithaka/pharos/commit/43f46399dcb1740bd3af8ee9c36d75bc0dfbc2a5) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Fix to docked sheet overlay interaction
+
+## 14.20.0
+
+### Minor Changes
+
+- [#1069](https://github.com/ithaka/pharos/pull/1051) [`446435a`](https://github.com/ithaka/pharos/commit/446435aa853a8a0ae76f2bb9c13f9492729e3b78) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Update mobile sticky sheet
+
 ## 14.19.0
 
 ### Minor Changes
