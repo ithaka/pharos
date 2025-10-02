@@ -256,7 +256,17 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     if (this._sheetOverlay.clientHeight - interactionY > this._sheetContent.clientHeight) {
       event.preventDefault();
       event.stopPropagation();
-      this._closeSheet(event.target);
+      if (this.docked) {
+        const details = {
+          bubbles: true,
+          composed: true,
+        };
+        this._sheetContent.style.height = this._getMinHeightStr();
+        this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
+        this.expanded = false;
+      } else {
+        this._closeSheet(event.target);
+      }
     }
   }
 
