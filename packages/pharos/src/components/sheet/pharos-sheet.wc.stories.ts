@@ -102,13 +102,7 @@ export const OmitOverlay: Story = {
 export const Docked: Story = {
   render: () => html`
     <div>
-      <storybook-pharos-sheet
-        id="my-sheet"
-        omit-overlay
-        start-height="64"
-        open="true"
-        docked="true"
-      >
+      <storybook-pharos-sheet id="my-sheet" start-height="64" open="true" docked="true">
         <div>Lorem ipsum dolor sit amet</div>
       </storybook-pharos-sheet>
     </div>
