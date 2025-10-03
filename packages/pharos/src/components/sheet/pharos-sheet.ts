@@ -132,7 +132,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   protected override firstUpdated(): void {
     this._addTriggerListeners();
-    this._syncDockedHeightVariables();
   }
 
   protected override update(changedProperties: PropertyValues): void {
@@ -140,19 +139,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected override updated(changedProperties: PropertyValues): void {
-    if (changedProperties.has('docked') || changedProperties.has('minHeight')) {
-      this._syncDockedHeightVariables();
-    }
-
     if (changedProperties.has('open')) {
       if (this.open) {
-        if (this.docked) {
-          this._clearInlineHeightForDocked();
-        } else {
-          this._sheetContent.style.height = this.expanded
-            ? this._getMaxHeightStr()
-            : this._getMinHeightStr();
-        }
+        this._sheetContent.style.height = this.expanded
+          ? this._getMaxHeightStr()
+          : this._getMinHeightStr();
 
         if (this.omitOverlay) {
           this._sheetDialogNoOverlay.style.height = this.expanded
@@ -170,18 +161,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       }
     }
     if (changedProperties.has('expanded')) {
-      if (this.docked) {
-        this._clearInlineHeightForDocked();
-      } else {
-        this._sheetContent.style.height = this.expanded
-          ? this._getMaxHeightStr()
-          : this._getMinHeightStr();
-      }
-      if (this.omitOverlay) {
-        this._sheetDialogNoOverlay.style.height = this.expanded
-          ? this._getMaxHeightStr()
-          : this._getMinHeightStr();
-      }
+      this._sheetContent.style.height = this.expanded
+        ? this._getMaxHeightStr()
+        : this._getMinHeightStr();
     }
   }
 
@@ -215,27 +197,6 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   private _getMaxHeightStr(): string {
     return this.MAX_EXPAND_PERCENTAGE;
-  }
-
-  private _syncDockedHeightVariables(): void {
-    if (!this._sheetContent) {
-      return;
-    }
-
-    if (this.docked) {
-      this.style.setProperty('--pharos-sheet-docked-collapsed-height', this._getMinHeightStr());
-      this.style.setProperty('--pharos-sheet-docked-expanded-height', this._getMaxHeightStr());
-      this._clearInlineHeightForDocked();
-    } else {
-      this.style.removeProperty('--pharos-sheet-docked-collapsed-height');
-      this.style.removeProperty('--pharos-sheet-docked-expanded-height');
-    }
-  }
-
-  private _clearInlineHeightForDocked(): void {
-    if (this.docked && !this._isDragging) {
-      this._sheetContent.style.removeProperty('height');
-    }
   }
 
   private _closeSheet(trigger: EventTarget | null): void {
