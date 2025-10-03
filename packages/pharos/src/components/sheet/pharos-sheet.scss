@@ -9,11 +9,6 @@
   contain: layout size style;
 }
 
-// :host([open]),
-// :host([docked]) {
-//   pointer-events: auto;
-// }
-
 .sheet__overlay {
   display: block;
   justify-content: center;
@@ -48,9 +43,13 @@
   bottom: 0;
   width: 100vw;
   background-color: rgb(0 0 0 / 0);
-  visibility: visible;
+  visibility: hidden;
   height: auto;
-  pointer-events: none;
+  pointer-events: auto;
+  transform: translateY(100%);
+  transition:
+    visibility var(--pharos-transition-duration-long) linear var(--pharos-transition-duration-long),
+    transform var(--pharos-transition-duration-long) ease-in-out;
 }
 
 .sheet__dialog {
@@ -88,6 +87,14 @@
     visibility: visible;
     opacity: 1;
     pointer-events: none;
+  }
+
+  .sheet__dialog--no-overlay {
+    visibility: visible;
+    transform: translateY(0);
+    transition:
+      visibility 0s linear 0s,
+      transform var(--pharos-transition-duration-long) ease-in-out;
   }
 }
 
@@ -133,6 +140,11 @@
   }
 }
 
+:host([open][omit-overlay]),
+:host([docked][omit-overlay]) {
+  pointer-events: none;
+}
+
 @include mixins.at-least(medium) {
   .sheet__handle_wrapper {
     height: var(--pharos-spacing-one-and-a-half-x);
@@ -174,6 +186,15 @@
     visibility: visible;
     opacity: 1;
     pointer-events: none;
+  }
+
+  .sheet__dialog--no-overlay {
+    pointer-events: none;
+    visibility: visible;
+    transform: translateY(0);
+    transition:
+      visibility 0s linear 0s,
+      transform var(--pharos-transition-duration-long) ease-in-out;
   }
 }
 
