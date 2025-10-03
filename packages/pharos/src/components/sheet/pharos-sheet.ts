@@ -3,6 +3,7 @@ import { html, nothing } from 'lit';
 import { query, property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { sheetStyles } from './pharos-sheet.css';
 
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
@@ -115,6 +116,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   @query('.sheet__dialog--no-overlay')
   private _sheetDialogNoOverlay!: HTMLDivElement;
 
+  @query('.sheet__dialog')
+  private _sheetDialog!: HTMLDivElement;
+
   constructor() {
     super();
     this._handleKeydown = this._handleKeydown.bind(this);
@@ -164,6 +168,13 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       this._sheetContent.style.height = this.expanded
         ? this._getMaxHeightStr()
         : this._getMinHeightStr();
+
+      if (!this.omitOverlay) {
+        this._sheetDialog.style.height = '100%';
+        this._sheetContent.style.height = this.expanded
+          ? this._getMaxHeightStr()
+          : this._getMinHeightStr();
+      }
     }
   }
 
@@ -253,6 +264,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleOverlayInteraction(event: MouseEvent | TouchEvent): void {
+    if (this.omitOverlay) {
+      return;
+    }
     const interactionY = event instanceof MouseEvent ? event.clientY : event.touches?.[0].clientY;
     if (this._sheetOverlay.clientHeight - interactionY > this._sheetContent.clientHeight) {
       event.preventDefault();
@@ -476,16 +490,19 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected override render(): TemplateResult {
-    return this.omitOverlay
-      ? this.renderSheet()
-      : html`
-          <div
-            class="sheet__overlay"
-            @touchstart=${this._handleOverlayInteraction}
-            @click=${this._handleOverlayInteraction}
-          >
-            ${this.renderSheet()}
-          </div>
-        `;
+    const overlayClasses = {
+      sheet__overlay: true,
+      'sheet__overlay--omit': this.omitOverlay,
+    };
+
+    return html`
+      <div
+        class=${classMap(overlayClasses)}
+        @touchstart=${this._handleOverlayInteraction}
+        @click=${this._handleOverlayInteraction}
+      >
+        ${this.renderSheet()}
+      </div>
+    `;
   }
 }

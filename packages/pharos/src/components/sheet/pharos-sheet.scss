@@ -9,6 +9,11 @@
   contain: layout size style;
 }
 
+:host([open]),
+:host([docked]) {
+  pointer-events: auto;
+}
+
 .sheet__overlay {
   display: block;
   justify-content: center;
@@ -23,10 +28,15 @@
   opacity: 0;
   transition:
     visibility var(--pharos-transition-duration-default) ease-in-out,
-    opacity var(--pharos-transition-duration-default) ease-in-out;
+    opacity var(--pharos-transition-duration-default) ease-in-out,
+    background-color var(--pharos-transition-duration-default) ease-in-out;
   overflow-y: visible;
   transition-duration: var(--pharos-transition-duration-long);
   height: 100dvh;
+}
+
+.sheet__overlay--omit {
+  background-color: rgb(0 0 0 / 0);
 }
 
 .sheet__dialog--no-overlay {
@@ -58,8 +68,6 @@
 }
 
 :host([open]:not([omit-overlay])) {
-  pointer-events: auto;
-
   .sheet__overlay {
     visibility: visible;
     opacity: 1;
@@ -72,6 +80,14 @@
     transition:
       visibility 0s linear 0s,
       top var(--pharos-transition-duration-long) ease-in-out;
+  }
+}
+
+:host([open][omit-overlay]) {
+  .sheet__overlay {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: none;
   }
 }
 
@@ -138,8 +154,6 @@
 
 /* Docked: always visible and pinned bottom */
 :host([docked]:not([omit-overlay])) {
-  pointer-events: auto;
-
   .sheet__overlay {
     visibility: visible;
     opacity: 1;
@@ -152,6 +166,14 @@
     transition:
       visibility 0s linear 0s,
       top var(--pharos-transition-duration-long) ease-in-out;
+  }
+}
+
+:host([docked][omit-overlay]) {
+  .sheet__overlay {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: none;
   }
 }
 
