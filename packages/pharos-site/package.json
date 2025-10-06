@@ -25,10 +25,10 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
-    "sass": "^1.89.2"
+    "sass": "^1.93.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.0",
+    "@babel/core": "^7.28.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
     "@babel/plugin-transform-private-methods": "^7.27.1",
     "@types/babel__core": "^7.20.5",
@@ -40,7 +40,7 @@
     "babel-preset-gatsby": "^3.14.0",
     "core-js": "^3.44.0",
     "culori": "^4.0.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "author": "ITHAKA",
   "license": "MIT",
