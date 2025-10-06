@@ -1,0 +1,210 @@
+import { fixture, expect, waitUntil } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
+import sinon from 'sinon';
+
+import type { PharosPill } from './pharos-pill';
+
+let component: PharosPill;
+describe('PharosPill', () => {
+  beforeEach(async () => {
+    component = await fixture(html`<test-pharos-pill>Test Pill</test-pharos-pill>`);
+  });
+  describe('Basic Pill', () => {
+    it('is accessible', async () => {
+      await expect(component).to.be.accessible();
+    });
+
+    it('renders the text slot', async () => {
+      expect(component.innerText?.trim()).to.equal('Test Pill');
+    });
+  });
+
+  describe('Pill Sizes', () => {
+    it('defaults to the base size', async () => {
+      expect(component.size).to.equal('base');
+    });
+
+    it('renders a smaller pill when size is set to "small"', async () => {
+      component = await fixture(
+        html`<test-pharos-pill size="small">Some pill text</test-pharos-pill>`
+      );
+      expect(component.size).to.equal('small');
+      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
+      expect(pill?.classList.contains('pill--small')).to.be.true;
+    });
+  });
+
+  describe('Dismissible Pill', () => {
+    it('is not dismissible by default', async () => {
+      expect(component.dismissible).to.be.false;
+      const dismissButton = component.renderRoot?.querySelector('.pill__dismiss-button');
+      expect(dismissButton).to.be.null;
+    });
+
+    it('renders as a button when dismissible', async () => {
+      component = await fixture(
+        html`<test-pharos-pill dismissible>Dismissible Pill</test-pharos-pill>`
+      );
+      expect(component.dismissible).to.be.true;
+      const pill = component.renderRoot?.querySelector('button.pill') as HTMLDivElement;
+      expect(pill).to.not.be.null;
+      expect(pill?.classList.contains('pill--dismissible')).to.be.true;
+    });
+
+    it('renders a close icon in the button', async () => {
+      component = await fixture(
+        html`<test-pharos-pill dismissible>Base Dismissible Pill</test-pharos-pill>`
+      );
+      const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement | null;
+      expect(icon).to.not.be.null;
+      const title = icon?.querySelector('title');
+      expect(title).to.not.be.null;
+      expect(title?.textContent).to.equal('close');
+    });
+
+    it('emits pharos-pill-dismissed event when button is clicked', async () => {
+      component = await fixture(
+        html`<test-pharos-pill dismissible>Event Test Pill</test-pharos-pill>`
+      );
+
+      let eventFired = false;
+      const handleDismissed = (): void => {
+        eventFired = true;
+      };
+      component.addEventListener('pharos-pill-dismissed', handleDismissed);
+
+      await component.updateComplete;
+
+      const pill = component.renderRoot?.querySelector('button.pill') as HTMLButtonElement;
+      pill.click();
+
+      expect(eventFired).to.be.true;
+    });
+  });
+
+  describe('Pill Presets', () => {
+    it('should use preset 1 when no preset is provided', async () => {
+      component = await fixture(html`<test-pharos-pill>Test Pill</test-pharos-pill>`);
+      expect(component.preset).to.equal('1');
+      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
+      expect(pill?.classList.contains('pill--preset-1')).to.be.true;
+    });
+
+    it('should apply the correct CSS class for the preset that is passed in', async () => {
+      component = await fixture(
+        html`<test-pharos-pill preset="2">Test Pill with Preset 2</test-pharos-pill>`
+      );
+      expect(component.preset).to.equal('2');
+      const pill = component.renderRoot?.querySelector('.pill') as HTMLDivElement;
+      expect(pill?.classList.contains('pill--preset-2')).to.be.true;
+    });
+  });
+  describe('Text Truncation', () => {
+    it('visually truncates text when content exceeds container width', async () => {
+      component = await fixture(
+        html`<test-pharos-pill style="width: 80px;">
+          This is very long text that should definitely be truncated with ellipsis
+        </test-pharos-pill>`
+      );
+
+      await component.updateComplete;
+
+      const textContainer = component.renderRoot?.querySelector('.pill__content') as HTMLElement;
+      expect(textContainer).to.not.be.null;
+
+      // Check if text is actually being truncated by comparing scroll width vs client width
+      // When text is truncated, scrollWidth (full content width) > clientWidth (visible width)
+      expect(textContainer.scrollWidth).to.be.greaterThan(textContainer.clientWidth);
+
+      // Verify ellipsis CSS property is applied
+      const computedStyle = window.getComputedStyle(
+        component.renderRoot?.querySelector('.pill__content') as Element
+      );
+      expect(computedStyle.textOverflow).to.equal('ellipsis');
+    });
+
+    it('does not truncate text when content fits within container width', async () => {
+      component = await fixture(html`<test-pharos-pill>Short</test-pharos-pill>`);
+
+      await component.updateComplete;
+
+      const textContainer = component.renderRoot?.querySelector('.pill__content') as HTMLElement;
+      expect(textContainer).to.not.be.null;
+
+      // When text fits, scrollWidth should equal or be very close to clientWidth
+      // Allow small tolerance for browser differences in text measurement
+      const widthDifference = textContainer.scrollWidth - textContainer.clientWidth;
+      expect(widthDifference).to.be.lessThan(5);
+    });
+  });
+
+  describe('Icon Handling', () => {
+    it('renders the appropriate svg icon when icon-left is provided', async () => {
+      component = await fixture(
+        html`<test-pharos-pill icon-left="info-inverse">Test Pill</test-pharos-pill>`
+      );
+      await component.updateComplete;
+
+      // Wait for icon to load asynchronously
+      await waitUntil(
+        () => component.renderRoot?.querySelector('svg') !== null,
+        'Icon should be rendered'
+      );
+
+      const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement;
+      expect(icon).to.not.be.null;
+      expect(icon.querySelector('title')?.textContent).to.equal('info-inverse');
+      expect(icon.getAttribute('height')).to.equal('16');
+      expect(icon.getAttribute('width')).to.equal('16');
+    });
+
+    it('adjusts the size of the icon when the pill size is set to small', async () => {
+      component = await fixture(
+        html`<test-pharos-pill icon-left="search" size="small">Small Pill</test-pharos-pill>`
+      );
+
+      await component.updateComplete;
+      // Wait for icon to load asynchronously
+      await waitUntil(
+        () => component.renderRoot?.querySelector('svg') !== null,
+        'Icon should be rendered'
+      );
+
+      const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement | null;
+      expect(icon).to.not.be.null;
+      expect(icon!.getAttribute('height')).to.equal('12');
+      expect(icon!.getAttribute('width')).to.equal('12');
+    });
+
+    it('should throw an error when an invalid icon is passed in', async () => {
+      // Stub console.log to suppress expected error logging in test output
+      const consoleStub = sinon.stub(console, 'log');
+
+      let caughtError: Error | null = null;
+      component = await fixture(html`<test-pharos-pill>Test Pill</test-pharos-pill>`);
+
+      // Stub the updated lifecycle method to capture the error without throwing
+      const originalUpdated = (component as any).updated.bind(component);
+
+      sinon.stub(component as any, 'updated').callsFake(async (changedProperties) => {
+        try {
+          await originalUpdated(changedProperties);
+        } catch (error) {
+          caughtError = error as Error;
+        }
+      });
+
+      try {
+        component.iconLeft = 'invalid-icon' as any;
+        await component.updateComplete;
+
+        // Wait for error to be caught
+        await waitUntil(() => caughtError !== null, 'Error should be caught');
+
+        expect(caughtError!.message).to.equal('Could not get icon named "invalid-icon"');
+      } finally {
+        consoleStub.restore();
+      }
+    });
+  });
+});

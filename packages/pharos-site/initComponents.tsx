@@ -30,6 +30,7 @@ if (typeof window !== `undefined`) {
     pharos.PharosModal,
     pharos.PharosMultiselectDropdown,
     pharos.PharosPagination,
+    pharos.PharosPill,
     pharos.PharosProgressBar,
     pharos.PharosRadioButton,
     pharos.PharosRadioGroup,

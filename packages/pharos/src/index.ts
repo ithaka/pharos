@@ -24,6 +24,7 @@ export { PharosLoadingSpinner } from './components/loading-spinner/pharos-loadin
 export { PharosModal } from './components/modal/pharos-modal';
 export { PharosMultiselectDropdown } from './components/multiselect-dropdown/pharos-multiselect-dropdown';
 export { PharosPagination } from './components/pagination/pharos-pagination';
+export { PharosPill } from './components/pill/pharos-pill';
 export { PharosPopover } from './components/popover/pharos-popover';
 export { PharosProgressBar } from './components/progress-bar/pharos-progress-bar';
 export { PharosRadioButton } from './components/radio-button/pharos-radio-button';

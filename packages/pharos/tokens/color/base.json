@@ -8,6 +8,7 @@
     },
     "glacier-blue": {
       "base": {"value": "hsl(187.4, 75.6%, 51.8%)", "group": "primary", "palette": "secondary"},
+      "30": {"value": "hsl(190,80%,32%)", "group": "tint", "palette": "secondary","order": "1"},    
       "40": { "value": "hsl(190, 89%, 39%)", "group": "tint", "palette": "secondary", "order": "1" },
       "70": { "value": "hsl(187, 75%, 70%)", "group": "tint", "palette": "secondary", "order": "1" },
       "80": { "value": "hsl(188, 47%, 80%)", "group": "tint", "palette": "secondary", "order": "2" },
