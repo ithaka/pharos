@@ -3691,7 +3691,7 @@ __metadata:
     "@babel/core": "npm:^7.28.4"
     "@babel/plugin-proposal-object-rest-spread": "npm:^7.20.7"
     "@babel/plugin-transform-private-methods": "npm:^7.27.1"
-    "@ithaka/pharos": "npm:^14.17.0"
+    "@ithaka/pharos": "npm:^14.21.0"
     "@reach/router": "npm:^1.3.4"
     "@types/babel__core": "npm:^7.20.5"
     "@types/culori": "npm:^4"
@@ -3724,7 +3724,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ithaka/pharos@npm:^14.17.0, @ithaka/pharos@workspace:packages/pharos":
+"@ithaka/pharos@npm:^14.21.0, @ithaka/pharos@workspace:packages/pharos":
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos@workspace:packages/pharos"
   dependencies:
