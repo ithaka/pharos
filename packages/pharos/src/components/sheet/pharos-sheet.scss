@@ -23,10 +23,15 @@
   opacity: 0;
   transition:
     visibility var(--pharos-transition-duration-default) ease-in-out,
-    opacity var(--pharos-transition-duration-default) ease-in-out;
+    opacity var(--pharos-transition-duration-default) ease-in-out,
+    background-color var(--pharos-transition-duration-default) ease-in-out;
   overflow-y: visible;
   transition-duration: var(--pharos-transition-duration-long);
   height: 100dvh;
+}
+
+.sheet__overlay--omit {
+  background-color: rgb(0 0 0 / 0);
 }
 
 .sheet__dialog--no-overlay {
@@ -38,9 +43,13 @@
   bottom: 0;
   width: 100vw;
   background-color: rgb(0 0 0 / 0);
-  visibility: visible;
+  visibility: hidden;
   height: auto;
-  pointer-events: none;
+  pointer-events: auto;
+  transform: translateY(100%);
+  transition:
+    visibility var(--pharos-transition-duration-long) linear var(--pharos-transition-duration-long),
+    transform var(--pharos-transition-duration-long) ease-in-out;
 }
 
 .sheet__dialog {
@@ -58,8 +67,6 @@
 }
 
 :host([open]:not([omit-overlay])) {
-  pointer-events: auto;
-
   .sheet__overlay {
     visibility: visible;
     opacity: 1;
@@ -72,6 +79,22 @@
     transition:
       visibility 0s linear 0s,
       top var(--pharos-transition-duration-long) ease-in-out;
+  }
+}
+
+:host([open][omit-overlay]) {
+  .sheet__overlay {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  .sheet__dialog--no-overlay {
+    visibility: visible;
+    transform: translateY(0);
+    transition:
+      visibility 0s linear 0s,
+      transform var(--pharos-transition-duration-long) ease-in-out;
   }
 }
 
@@ -100,7 +123,6 @@
   box-shadow:
     0 1px 2px 0 rgb(18 18 18 / 0.3),
     0 -4px 8px 3px rgb(18 18 18 / 0.15);
-  contain: layout;
 
   .sheet__handle_wrapper {
     cursor: grab;
@@ -115,6 +137,11 @@
       box-sizing: border-box;
     }
   }
+}
+
+:host([open][omit-overlay]),
+:host([docked][omit-overlay]) {
+  pointer-events: none;
 }
 
 @include mixins.at-least(medium) {
@@ -138,8 +165,6 @@
 
 /* Docked: always visible and pinned bottom */
 :host([docked]:not([omit-overlay])) {
-  pointer-events: auto;
-
   .sheet__overlay {
     visibility: visible;
     opacity: 1;
@@ -152,6 +177,23 @@
     transition:
       visibility 0s linear 0s,
       top var(--pharos-transition-duration-long) ease-in-out;
+  }
+}
+
+:host([docked][omit-overlay]) {
+  .sheet__overlay {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  .sheet__dialog--no-overlay {
+    pointer-events: none;
+    visibility: visible;
+    transform: translateY(0);
+    transition:
+      visibility 0s linear 0s,
+      transform var(--pharos-transition-duration-long) ease-in-out;
   }
 }
 

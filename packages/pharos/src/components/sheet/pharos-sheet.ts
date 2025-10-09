@@ -3,6 +3,7 @@ import { html, nothing } from 'lit';
 import { query, property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { sheetStyles } from './pharos-sheet.css';
 
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
@@ -25,6 +26,7 @@ const FOCUS_HANDLE = `[data-sheet-handle]`;
  * @fires pharos-sheet-open - Fires when the sheet is about to open - cancelable
  * @fires pharos-sheet-opened - Fires when the sheet has opened
  * @fires pharos-sheet-expanded - Fires when the sheet has expanded
+ * @fires pharos-sheet-collapsed - Fires when the sheet has collapsed
  * @fires pharos-sheet-close - Fires when the sheet is about to close - cancelable
  * @fires pharos-sheet-closed - Fires when the sheet has closed
  *
@@ -114,6 +116,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   @query('.sheet__dialog--no-overlay')
   private _sheetDialogNoOverlay!: HTMLDivElement;
 
+  @query('.sheet__dialog')
+  private _sheetDialog!: HTMLDivElement;
+
   constructor() {
     super();
     this._handleKeydown = this._handleKeydown.bind(this);
@@ -163,6 +168,13 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       this._sheetContent.style.height = this.expanded
         ? this._getMaxHeightStr()
         : this._getMinHeightStr();
+
+      if (!this.omitOverlay) {
+        this._sheetDialog.style.height = '100%';
+        this._sheetContent.style.height = this.expanded
+          ? this._getMaxHeightStr()
+          : this._getMinHeightStr();
+      }
     }
   }
 
@@ -252,11 +264,24 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handleOverlayInteraction(event: MouseEvent | TouchEvent): void {
+    if (this.omitOverlay) {
+      return;
+    }
     const interactionY = event instanceof MouseEvent ? event.clientY : event.touches?.[0].clientY;
     if (this._sheetOverlay.clientHeight - interactionY > this._sheetContent.clientHeight) {
       event.preventDefault();
       event.stopPropagation();
-      this._closeSheet(event.target);
+      if (this.docked) {
+        const details = {
+          bubbles: true,
+          composed: true,
+        };
+        this._sheetContent.style.height = this._getMinHeightStr();
+        this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
+        this.expanded = false;
+      } else {
+        this._closeSheet(event.target);
+      }
     }
   }
 
@@ -349,11 +374,11 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
         this.expanded = true;
       } else {
-        if (this.expanded) {
+        if (this.expanded && this.docked) {
           this._sheetContent.style.height = this._getMinHeightStr();
           this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
           this.expanded = false;
-        } else if (!this.docked) {
+        } else {
           this._closeSheet(null);
         }
       }
@@ -465,16 +490,19 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   protected override render(): TemplateResult {
-    return this.omitOverlay
-      ? this.renderSheet()
-      : html`
-          <div
-            class="sheet__overlay"
-            @touchstart=${this._handleOverlayInteraction}
-            @click=${this._handleOverlayInteraction}
-          >
-            ${this.renderSheet()}
-          </div>
-        `;
+    const overlayClasses = {
+      sheet__overlay: true,
+      'sheet__overlay--omit': this.omitOverlay,
+    };
+
+    return html`
+      <div
+        class=${classMap(overlayClasses)}
+        @touchstart=${this._handleOverlayInteraction}
+        @click=${this._handleOverlayInteraction}
+      >
+        ${this.renderSheet()}
+      </div>
+    `;
   }
 }
