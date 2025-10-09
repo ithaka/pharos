@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 7.2.3
+
+### Patch Changes
+
+- [#1091](https://github.com/ithaka/pharos/pull/1091) [`22b0ef2`](https://github.com/ithaka/pharos/commit/22b0ef2925343506e2e9dce8cfa490931f05df9c) Thanks [@brentswisher](https://github.com/brentswisher)! - Update home page Storybook link to use a regular URL instead of Gatsby routing
+
+- Updated dependencies [[`6c7e181`](https://github.com/ithaka/pharos/commit/6c7e1817b8bcac9967a41879797d262f8b5e8329), [`d6b5718`](https://github.com/ithaka/pharos/commit/d6b5718b6c097b909e09afe6ca9bf056c0beb69f)]:
+  - @ithaka/pharos@14.21.0
+
 ## 7.2.2
 
 ### Patch Changes
