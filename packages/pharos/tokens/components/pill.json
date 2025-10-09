@@ -1,0 +1,302 @@
+{
+  "pill": {
+    "disabled": {
+      "color": {
+        "value": "{color.marble-gray.50}"
+      },
+      "background": {
+        "value": "{color.marble-gray.base}"
+      }
+    },
+    "preset": {
+      "1": {
+        "text": {
+          "color": {
+            "base": {
+              "value": "{color.black}"
+            },
+            "hover": {
+              "value": "{color.jstor-red}"
+            }
+          }
+        },
+        "border": {
+          "color": {
+            "base": {
+              "value": "{color.marble-gray.50}"
+            },
+            "hover": {
+              "value": "{color.jstor-red}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
+          }
+        }
+      },
+      "2": {
+        "text": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.white}"
+            }
+          }
+        },
+        "border": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.white}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.marble-gray.20}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.30}"
+            }
+          }
+        }
+      },
+      "3": {
+        "text": {
+          "color": {
+            "base": {
+              "value": "{color.living-coral.50}"
+            },
+            "hover": {
+              "value": "{color.living-coral.50}"
+            }
+          }
+        },
+        "border": {
+          "color": {
+            "base": {
+              "value": "{color.living-coral.50}"
+            },
+            "hover": {
+              "value": "{color.living-coral.50}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
+          }
+        }
+      },
+      "4": {
+        "text": {
+          "color": {
+            "base": {
+              "value": "{color.dark-garnet}"
+            },
+            "hover": {
+              "value": "{color.dark-garnet}"
+            }
+          }
+        },
+        "border": {
+          "color": {
+            "base": {
+              "value": "{color.dark-garnet}"
+            },
+            "hover": {
+              "value": "{color.dark-garnet}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
+          }
+        }
+      },
+      "5": {
+        "text": {
+          "color": {
+            "base": {
+              "value": "{color.green.base}"
+            },
+            "hover": {
+              "value": "{color.green.base}"
+            }
+          }
+        },
+        "border": {
+          "color": {
+            "base": {
+              "value": "{color.green.base}"
+            },
+            "hover": {
+              "value": "{color.green.base}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
+          }
+        }
+      },
+      "6": {
+        "text": {
+          "color": {
+            "base": {
+              "value": "{color.glacier-blue.30}"
+            },
+            "hover": {
+              "value": "{color.glacier-blue.30}"
+            }
+          }
+        },
+        "border": {
+          "color": {
+            "base": {
+              "value": "{color.glacier-blue.30}"
+            },
+            "hover": {
+              "value": "{color.glacier-blue.30}"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
+          }
+        }
+      },
+      "7": {
+        "text": {
+          "color": {
+            "base": {
+              "value": "hsl(210, 98%, 43%)"
+            },
+            "hover": {
+              "value": "hsl(210, 98%, 43%)"
+            }
+          }
+        },
+        "border": {
+          "color": {
+            "base": {
+              "value": "hsl(210, 98%, 43%)"
+            },
+            "hover": {
+              "value": "hsl(210, 98%, 43%)"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
+          }
+        }
+      },
+      "8": {
+        "text": {
+          "color": {
+            "base": {
+              "value": "hsl(243, 84%, 64%)"
+            },
+            "hover": {
+              "value": "hsl(243, 84%, 64%)"
+            }
+          }
+        },
+        "border": {
+          "color": {
+            "base": {
+              "value": "hsl(243, 84%, 64%)"
+            },
+            "hover": {
+              "value": "hsl(243, 84%, 64%)"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
+          }
+        }
+      },
+      "9": {
+        "text": {
+          "color": {
+            "base": {
+              "value": "hsl(299, 64%, 45%)"
+            },
+            "hover": {
+              "value": "hsl(299, 64%, 45%)"
+            }
+          }
+        },
+        "border": {
+          "color": {
+            "base": {
+              "value": "hsl(299, 64%, 45%)"
+            },
+            "hover": {
+              "value": "hsl(299, 64%, 45%)"
+            }
+          }
+        },
+        "background": {
+          "color": {
+            "base": {
+              "value": "{color.white}"
+            },
+            "hover": {
+              "value": "{color.marble-gray.97}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
