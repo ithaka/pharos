@@ -38,7 +38,7 @@
     "@types/react-dom": "^18.3.7",
     "@types/react-helmet": "^6.1.11",
     "babel-preset-gatsby": "^3.15.0",
-    "core-js": "^3.45.1",
+    "core-js": "^3.46.0",
     "culori": "^4.0.2",
     "typescript": "^5.9.3"
   },
