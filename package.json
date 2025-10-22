@@ -113,7 +113,7 @@
     "stylelint-scss": "^6.12.1",
     "svglint": "^4.1.2",
     "typescript": "^5.9.3",
-    "vite": "^7.1.9"
+    "vite": "^7.1.11"
   },
   "workspaces": {
     "packages": [
