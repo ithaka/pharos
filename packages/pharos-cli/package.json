@@ -8,7 +8,7 @@
   "preferGlobal": true,
   "dependencies": {
     "colors": "^1.4.0",
-    "commander": "^14.0.1",
+    "commander": "^14.0.2",
     "fs-extra": "^11.3.2"
   },
   "bin": {
