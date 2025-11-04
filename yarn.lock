@@ -5534,15 +5534,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-a11y@npm:^9.1.13":
-  version: 9.1.15
-  resolution: "@storybook/addon-a11y@npm:9.1.15"
+"@storybook/addon-a11y@npm:^10.0.4":
+  version: 10.0.4
+  resolution: "@storybook/addon-a11y@npm:10.0.4"
   dependencies:
     "@storybook/global": "npm:^5.0.0"
     axe-core: "npm:^4.2.0"
   peerDependencies:
-    storybook: ^9.1.15
-  checksum: 10c0/ce8d5ec4b5eb186e3d17df1e22988bd0e930d18bdba916a03ea63ad6f4b85e557eb772b8e28709949fed8e5623f13aaf315601e001ce2cb18b4c01036e005af9
+    storybook: ^10.0.4
+  checksum: 10c0/b1d6bf1ef906a341c101277934ef58c9831f2b9e448339d87f27790831e9024781ffc2865012a299cbd2533e1bcfc6ff74a061e8f3201446db1fd51a57863f69
   languageName: node
   linkType: hard
 
@@ -20232,7 +20232,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:^20.0.0"
     "@emotion/babel-plugin": "npm:^11.13.5"
     "@size-limit/preset-small-lib": "npm:^11.2.0"
-    "@storybook/addon-a11y": "npm:^9.1.13"
+    "@storybook/addon-a11y": "npm:^10.0.4"
     "@storybook/addon-docs": "npm:^9.1.13"
     "@storybook/addon-links": "npm:^9.1.13"
     "@storybook/react-vite": "npm:^9.1.13"
