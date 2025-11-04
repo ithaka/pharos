@@ -5578,6 +5578,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/builder-vite@npm:10.0.4":
+  version: 10.0.4
+  resolution: "@storybook/builder-vite@npm:10.0.4"
+  dependencies:
+    "@storybook/csf-plugin": "npm:10.0.4"
+    ts-dedent: "npm:^2.0.0"
+  peerDependencies:
+    storybook: ^10.0.4
+    vite: ^5.0.0 || ^6.0.0 || ^7.0.0
+  checksum: 10c0/4a3984518fef251934e43ca4aeeab4288ce77ff3b9a973d8601f11a5ef69b09f6509e26ffc2b729adf0454e0f6128702cd599f79fe57554c9303bd2575b232a6
+  languageName: node
+  linkType: hard
+
 "@storybook/builder-vite@npm:9.1.15":
   version: 9.1.15
   resolution: "@storybook/builder-vite@npm:9.1.15"
@@ -5588,6 +5601,30 @@ __metadata:
     storybook: ^9.1.15
     vite: ^5.0.0 || ^6.0.0 || ^7.0.0
   checksum: 10c0/90a1a0d5988641b32cbbc112c3342269744d7ca1d5620055db72bc52cb939fbb2614e47be2981fef54f31e01d3907f4bcc93d46f22a8033da9d43138d148f64f
+  languageName: node
+  linkType: hard
+
+"@storybook/csf-plugin@npm:10.0.4":
+  version: 10.0.4
+  resolution: "@storybook/csf-plugin@npm:10.0.4"
+  dependencies:
+    unplugin: "npm:^2.3.5"
+  peerDependencies:
+    esbuild: "*"
+    rollup: "*"
+    storybook: ^10.0.4
+    vite: "*"
+    webpack: "*"
+  peerDependenciesMeta:
+    esbuild:
+      optional: true
+    rollup:
+      optional: true
+    vite:
+      optional: true
+    webpack:
+      optional: true
+  checksum: 10c0/b525f1cc50e3d14d70a1d1bb4c096e15da742ea33dd163111e3cf7c57c68bc3f2e7e5d0a18fad7b340c9e34eed9f839a40ad11f434c0d09b6d32afc206e5176f
   languageName: node
   linkType: hard
 
@@ -5619,6 +5656,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/react-dom-shim@npm:10.0.4":
+  version: 10.0.4
+  resolution: "@storybook/react-dom-shim@npm:10.0.4"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    storybook: ^10.0.4
+  checksum: 10c0/96755c2e2432a9b4b7ae49bea828be48135650689b7f809b4cc44cb193c3923fa034befc57cf3b2d333df72df0bd531826ba929b1445a252d287ee1c775540cd
+  languageName: node
+  linkType: hard
+
 "@storybook/react-dom-shim@npm:9.1.15":
   version: 9.1.15
   resolution: "@storybook/react-dom-shim@npm:9.1.15"
@@ -5630,43 +5678,43 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react-vite@npm:^9.1.13":
-  version: 9.1.15
-  resolution: "@storybook/react-vite@npm:9.1.15"
+"@storybook/react-vite@npm:^10.0.4":
+  version: 10.0.4
+  resolution: "@storybook/react-vite@npm:10.0.4"
   dependencies:
     "@joshwooding/vite-plugin-react-docgen-typescript": "npm:0.6.1"
     "@rollup/pluginutils": "npm:^5.0.2"
-    "@storybook/builder-vite": "npm:9.1.15"
-    "@storybook/react": "npm:9.1.15"
-    find-up: "npm:^7.0.0"
+    "@storybook/builder-vite": "npm:10.0.4"
+    "@storybook/react": "npm:10.0.4"
+    empathic: "npm:^2.0.0"
     magic-string: "npm:^0.30.0"
     react-docgen: "npm:^8.0.0"
     resolve: "npm:^1.22.8"
     tsconfig-paths: "npm:^4.2.0"
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    storybook: ^9.1.15
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    storybook: ^10.0.4
     vite: ^5.0.0 || ^6.0.0 || ^7.0.0
-  checksum: 10c0/94468aed87a26172ac66aa93e16ae01191a7dd5bf6e4ab96f03e4515d5a7dc6a7ad7724c5f28860ff5ba857740e6fa266be9b1cf00103d723808450cf721e34a
+  checksum: 10c0/88c5378f0389bf4a8293d3bc9ed691e851975d4e1ed04f6d93fd3639f4aad476f6a619c538d8938fa275db59038ebc72a44e1b077e21883a78e3f3301ddf423b
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:9.1.15":
-  version: 9.1.15
-  resolution: "@storybook/react@npm:9.1.15"
+"@storybook/react@npm:10.0.4":
+  version: 10.0.4
+  resolution: "@storybook/react@npm:10.0.4"
   dependencies:
     "@storybook/global": "npm:^5.0.0"
-    "@storybook/react-dom-shim": "npm:9.1.15"
+    "@storybook/react-dom-shim": "npm:10.0.4"
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    storybook: ^9.1.15
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    storybook: ^10.0.4
     typescript: ">= 4.9.x"
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/a083f207f7a91f9561fc1019db5792cb37ddb34dcc074a688e99b887969e3d8426eb8bae50435369e6ad7c098f8317cc366f99fcf94dbe07f9efd6c7e94220d1
+  checksum: 10c0/4857d9bed0954c5f12fbe946e9e8ced39d937c5f65c3be7ccb94f9d9c2e1cae3527a72d86e2528f2643e05cdf1aaf3e8d42660e96b73c3b5a9f42763c3e7d284
   languageName: node
   linkType: hard
 
@@ -11685,6 +11733,13 @@ __metadata:
   version: 3.0.0
   resolution: "emojis-list@npm:3.0.0"
   checksum: 10c0/7dc4394b7b910444910ad64b812392159a21e1a7ecc637c775a440227dcb4f80eff7fe61f4453a7d7603fa23d23d30cc93fe9e4b5ed985b88d6441cd4a35117b
+  languageName: node
+  linkType: hard
+
+"empathic@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "empathic@npm:2.0.0"
+  checksum: 10c0/7d3b14b04a93b35c47bcc950467ec914fd241cd9acc0269b0ea160f13026ec110f520c90fae64720fde72cc1757b57f3f292fb606617b7fccac1f4d008a76506
   languageName: node
   linkType: hard
 
@@ -20235,7 +20290,7 @@ __metadata:
     "@storybook/addon-a11y": "npm:^10.0.4"
     "@storybook/addon-docs": "npm:^9.1.13"
     "@storybook/addon-links": "npm:^9.1.13"
-    "@storybook/react-vite": "npm:^9.1.13"
+    "@storybook/react-vite": "npm:^10.0.4"
     "@storybook/test-runner": "npm:^0.24.1"
     "@storybook/web-components": "npm:^9.1.13"
     "@storybook/web-components-vite": "npm:^9.1.13"
@@ -25861,6 +25916,18 @@ __metadata:
     acorn: "npm:^8.14.0"
     webpack-virtual-modules: "npm:^0.6.2"
   checksum: 10c0/dd5f8c5727d0135847da73cf03fb199107f1acf458167034886fda3405737dab871ad3926431b4f70e1e82cdac482ac1383cea4019d782a68515c8e3e611b6cc
+  languageName: node
+  linkType: hard
+
+"unplugin@npm:^2.3.5":
+  version: 2.3.10
+  resolution: "unplugin@npm:2.3.10"
+  dependencies:
+    "@jridgewell/remapping": "npm:^2.3.5"
+    acorn: "npm:^8.15.0"
+    picomatch: "npm:^4.0.3"
+    webpack-virtual-modules: "npm:^0.6.2"
+  checksum: 10c0/29dcd738772aeff91c6f0154f156c95c58a37a4674fcb7cc34d6868af763834f0f447a1c3af074818c0c5602baead49bd3b9399a13f0425d69a00a527e58ddda
   languageName: node
   linkType: hard
 
