@@ -67,7 +67,7 @@
     "sass": "^1.89.1"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.10",
+    "@custom-elements-manifest/analyzer": "^0.11.0",
     "@open-wc/testing": "patch:@open-wc/testing@npm%3A4.0.0#~/.yarn/patches/@open-wc-testing-npm-4.0.0-96dbe4d202.patch",
     "@types/mocha": "^10.0.10",
     "@types/react": "^18.3.26",
