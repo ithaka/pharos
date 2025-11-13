@@ -9,7 +9,6 @@ import type { PharosButton } from '../button/pharos-button';
 const meta = {
   title: 'Components/Toast',
   component: 'pharos-toast',
-  subcomponents: { PharosToaster: 'pharos-toaster' },
   parameters: {
     docs: { page: configureDocsPage('toast') },
     options: { selectedPanel: 'addon-controls' },

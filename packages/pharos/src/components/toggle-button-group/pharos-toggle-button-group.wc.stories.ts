@@ -9,7 +9,6 @@ import type { PharosToggleButtonGroup } from './pharos-toggle-button-group';
 const meta = {
   title: 'Components/Toggle Button Group',
   component: 'pharos-toggle-button-group',
-  subcomponents: { PharosToggleButton: 'pharos-toggle-button' },
   parameters: {
     docs: { page: configureDocsPage('toggle-button-group') },
     options: { selectedPanel: 'addon-controls' },
