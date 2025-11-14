@@ -2,6 +2,9 @@ import { mergeConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 import path, { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const config = {
   stories: [],

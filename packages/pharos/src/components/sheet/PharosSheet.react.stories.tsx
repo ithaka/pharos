@@ -68,3 +68,21 @@ export const LongContent: Story = {
     </PharosSheet>
   ),
 };
+
+export const OmitOverlay: Story = {
+  render: () => (
+    <PharosSheet id="my-sheet" omit-overlay min-height="100">
+      <div>Lorem ipsum dolor sit amet</div>
+    </PharosSheet>
+  ),
+};
+
+export const Docked: Story = {
+  render: () => (
+    <div>
+      <PharosSheet id="my-sheet" min-height="64" docked={true}>
+        <div>Lorem ipsum dolor sit amet</div>
+      </PharosSheet>
+    </div>
+  ),
+};

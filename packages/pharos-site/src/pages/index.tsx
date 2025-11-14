@@ -77,13 +77,7 @@ const IndexPage: FC = () => {
             Utilize our collection of reusable components, styles and their guidelines to build your
             products and sites.
           </p>
-          <PharosButton
-            className={button__card}
-            variant="secondary"
-            href="/storybook/"
-            data-sc="link:storybook components"
-            onClick={handleLinkClick}
-          >
+          <PharosButton className={button__card} variant="secondary" href="/storybook/">
             View components
           </PharosButton>
         </div>

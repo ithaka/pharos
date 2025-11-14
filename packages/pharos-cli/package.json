@@ -8,20 +8,20 @@
   "preferGlobal": true,
   "dependencies": {
     "colors": "^1.4.0",
-    "commander": "^14.0.0",
-    "fs-extra": "^11.3.0"
+    "commander": "^14.0.2",
+    "fs-extra": "^11.3.2"
   },
   "bin": {
     "pharos": "dist/index.js"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.1.0",
-    "jest": "^30.0.5",
-    "ts-jest": "^29.4.0",
-    "ts-morph": "^27.0.0",
+    "@types/node": "^24.10.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.5",
+    "ts-morph": "^27.0.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "scripts": {
     "test": "jest",

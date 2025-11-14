@@ -1,5 +1,21 @@
 # @ithaka/pharos
 
+## 14.21.0
+
+### Minor Changes
+
+- [#1066](https://github.com/ithaka/pharos/pull/1066) [`d6b5718`](https://github.com/ithaka/pharos/commit/d6b5718b6c097b909e09afe6ca9bf056c0beb69f) Thanks [@brentswisher](https://github.com/brentswisher)! - Add new Pill component for displaying discrete selections
+
+### Patch Changes
+
+- [#1087](https://github.com/ithaka/pharos/pull/1087) [`6c7e181`](https://github.com/ithaka/pharos/commit/6c7e1817b8bcac9967a41879797d262f8b5e8329) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Bug fix to pharos sheet. Docked sheet should never close.
+
+## 14.20.0
+
+### Minor Changes
+
+- [#1051](https://github.com/ithaka/pharos/pull/1051) [`446435a`](https://github.com/ithaka/pharos/commit/446435aa853a8a0ae76f2bb9c13f9492729e3b78) Thanks [@vedanthkallakuri](https://github.com/vedanthkallakuri)! - Sheet now supports being `docked` or to `omitOverlay`
+
 ## 14.19.0
 
 ### Minor Changes
