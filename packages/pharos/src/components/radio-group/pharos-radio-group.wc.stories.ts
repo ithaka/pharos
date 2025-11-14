@@ -11,7 +11,6 @@ import type { PharosRadioGroup } from './pharos-radio-group';
 const meta = {
   title: 'Forms/Radio Group',
   component: 'pharos-radio-group',
-  subcomponents: { PharosRadioButton: 'pharos-radio-button' },
   parameters: {
     docs: { page: configureDocsPage('radio-group') },
     options: { selectedPanel: 'addon-controls' },

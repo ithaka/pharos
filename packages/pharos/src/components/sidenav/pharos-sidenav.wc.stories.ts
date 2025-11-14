@@ -8,11 +8,6 @@ import type { ComponentArgs, StoryArgs } from './storyArgs';
 const meta = {
   title: 'Components/Sidenav',
   component: 'pharos-sidenav',
-  subcomponents: {
-    PharosSideNavMenu: 'pharos-sidenav-menu',
-    PharosSidenavSection: 'pharos-sidenav-section',
-    PharosSidenavLink: 'pharos-sidenav-link',
-  },
   parameters: {
     docs: { page: configureDocsPage('sidenav') },
     options: { selectedPanel: 'addon-controls' },
