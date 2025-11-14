@@ -10,7 +10,6 @@ import type { ChangeEvent } from 'react';
 const meta = {
   title: 'Forms/Checkbox Group',
   component: 'pharos-checkbox-group',
-  subcomponents: { PharosCheckbox: 'pharos-checkbox' },
   parameters: {
     options: { selectedPanel: 'addon-controls' },
     docs: {

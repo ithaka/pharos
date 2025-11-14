@@ -7,7 +7,6 @@ import type { ComponentArgs, StoryArgs } from './storyArgs';
 const meta = {
   title: 'Forms/Input Group',
   component: 'pharos-input-group',
-  subcomponents: { PharosInputGroupSelect: 'pharos-input-group-select' },
   parameters: {
     docs: { page: configureDocsPage('input-group') },
   },

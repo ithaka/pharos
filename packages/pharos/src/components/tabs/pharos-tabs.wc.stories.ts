@@ -9,7 +9,6 @@ import type { PharosTabs } from './pharos-tabs';
 const meta = {
   title: 'Components/Tabs',
   component: 'pharos-tabs',
-  subcomponents: { PharosTab: 'pharos-tab', PharosTabPanel: 'pharos-tab-panel' },
   parameters: {
     docs: { page: configureDocsPage('tabs') },
     options: { selectedPanel: 'addon-controls' },

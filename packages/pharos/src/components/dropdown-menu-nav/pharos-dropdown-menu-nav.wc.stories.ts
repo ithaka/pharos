@@ -7,12 +7,6 @@ import type { ComponentArgs, StoryArgs } from './storyArgs';
 const meta = {
   title: 'Components/Dropdown Menu Nav',
   component: 'pharos-dropdown-menu-nav',
-  subcomponents: {
-    PharosDropdownMenuNavLink: 'pharos-dropdown-menu-nav-link',
-    PharosDropdownMenu: 'pharos-dropdown-menu',
-    PharosDropdownMenuItem: 'pharos-dropdown-menu-item',
-    PharosDropdownMenuNavCategory: 'pharos-dropdown-menu-nav-category',
-  },
   parameters: {
     docs: { page: configureDocsPage('dropdown-menu-nav') },
   },

@@ -11,7 +11,6 @@ import type { PharosButton } from '../button/pharos-button';
 const meta = {
   title: 'Components/Dropdown Menu',
   component: 'pharos-dropdown-menu',
-  subcomponents: { PharosDropdownMenuItem: 'pharos-dropdown-menu-item' },
   parameters: {
     docs: { page: configureDocsPage('dropdown-menu') },
     options: { selectedPanel: 'addon-controls' },
