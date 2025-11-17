@@ -73,9 +73,10 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   /**
    * Indicates the link to apply to the title and image.
    * @attr link
+   * @type {string | null}
    */
   @property({ type: String, reflect: true })
-  public link = '';
+  public link: string | null = null;
 
   /**
    * @deprecated
@@ -428,7 +429,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return this._hasTitle()
       ? html`<pharos-link
           class="card__link--title"
-          href=${this.link}
+          href=${ifDefined(this.link?.trim() ? this.link.trim() : undefined)}
           subtle
           flex
           ?indicate-visited=${this.indicateLinkVisited}
@@ -515,7 +516,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           },
         })
       );
-    } else if (!isTitleClick) {
+    } else if (!isTitleClick && this.link !== null) {
       document.location.href = this.link;
     }
   }

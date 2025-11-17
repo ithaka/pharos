@@ -34,6 +34,20 @@ describe('pharos-image-card', () => {
     await expect(component).to.be.accessible();
   });
 
+  it('defaults link to null when not supplied', async () => {
+    component = (await fixture(
+      html`<test-pharos-image-card title="Card Title" image-link-label="Label for card image link">
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+      </test-pharos-image-card>`
+    )) as PharosImageCard;
+
+    expect(component.link).to.be.null;
+  });
+
   it('is accessible in the error state', async () => {
     component.error = true;
     await component.updateComplete;
@@ -411,6 +425,46 @@ describe('pharos-image-card', () => {
     imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
 
     expect(hovered).to.be.true;
+  });
+
+  it('will de-select checkbox when clicking on the image card and subtle-select is true', async () => {
+    component = await fixture(
+      html`<test-pharos-image-card
+        variant="selectable"
+        subtle-select="true"
+        link="#"
+        title="Card Title"
+      >
+        <img
+          slot="image"
+          alt="Card Title"
+          src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+        />
+        <div slot="overlay">Card overlay</div>
+      </test-pharos-image-card>`
+    );
+
+    const imageCard = component.renderRoot.querySelector('.card__image');
+
+    await aTimeout(100);
+    await elementUpdated(component);
+
+    let checkboxElement = component.renderRoot.querySelector(
+      '[data-pharos-component="PharosCheckbox"].card__checkbox'
+    );
+    expect(checkboxElement).not.to.be.null;
+    (checkboxElement as HTMLElement)?.click();
+
+    await aTimeout(100);
+    await elementUpdated(component);
+
+    expect((checkboxElement as HTMLElement).checked).to.be.true;
+
+    (imageCard as HTMLElement)?.click();
+    await aTimeout(100);
+    await elementUpdated(component);
+
+    expect((checkboxElement as HTMLElement).checked).to.be.false;
   });
 
   it('will visually not show a checkbox when subtle-select is true', async () => {
