@@ -5712,20 +5712,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-docs@npm:^9.1.13":
-  version: 9.1.15
-  resolution: "@storybook/addon-docs@npm:9.1.15"
+"@storybook/addon-docs@npm:^10.0.7":
+  version: 10.0.7
+  resolution: "@storybook/addon-docs@npm:10.0.7"
   dependencies:
     "@mdx-js/react": "npm:^3.0.0"
-    "@storybook/csf-plugin": "npm:9.1.15"
-    "@storybook/icons": "npm:^1.4.0"
-    "@storybook/react-dom-shim": "npm:9.1.15"
+    "@storybook/csf-plugin": "npm:10.0.7"
+    "@storybook/icons": "npm:^1.6.0"
+    "@storybook/react-dom-shim": "npm:10.0.7"
     react: "npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
     react-dom: "npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
     ts-dedent: "npm:^2.0.0"
   peerDependencies:
-    storybook: ^9.1.15
-  checksum: 10c0/08068a8e0f04abf0990cf25d54f151bed1c43526161422a34b68cf643bd36c24814edb79840ac397dda7147d1f81c2012b8d06dc7cbe1a69b172520ad597c357
+    storybook: ^10.0.7
+  checksum: 10c0/3af94d8df56f8f8a49481731c93b60af8aa17f14b2c6dbd71493c3aa47ce16143d225271d1311cea7b6d2ce7e1b914a479cc7b3091170a06486949ac79c2dac3
   languageName: node
   linkType: hard
 
@@ -5781,14 +5781,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/csf-plugin@npm:9.1.15":
-  version: 9.1.15
-  resolution: "@storybook/csf-plugin@npm:9.1.15"
+"@storybook/csf-plugin@npm:10.0.7":
+  version: 10.0.7
+  resolution: "@storybook/csf-plugin@npm:10.0.7"
   dependencies:
-    unplugin: "npm:^1.3.1"
+    unplugin: "npm:^2.3.5"
   peerDependencies:
-    storybook: ^9.1.15
-  checksum: 10c0/b9483228bdaf6e7f1e2941ebff31122e58af5fe128a4efc06ccdbfa5a5ac6dff411813029761d784d34a2af384d47c4c958adf607c59d7d8863b5c1281f76312
+    esbuild: "*"
+    rollup: "*"
+    storybook: ^10.0.7
+    vite: "*"
+    webpack: "*"
+  peerDependenciesMeta:
+    esbuild:
+      optional: true
+    rollup:
+      optional: true
+    vite:
+      optional: true
+    webpack:
+      optional: true
+  checksum: 10c0/1a6e350526dc3d221f287af42d2e9110d0fd462f8ce38e7e1f7edf48ea63acec08dacf8e55cc334da67db8364eda9fd8092e94c405511b4d076957be228b4512
   languageName: node
   linkType: hard
 
@@ -5799,7 +5812,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/icons@npm:^1.4.0, @storybook/icons@npm:^1.6.0":
+"@storybook/icons@npm:^1.6.0":
   version: 1.6.0
   resolution: "@storybook/icons@npm:1.6.0"
   peerDependencies:
@@ -5820,14 +5833,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react-dom-shim@npm:9.1.15":
-  version: 9.1.15
-  resolution: "@storybook/react-dom-shim@npm:9.1.15"
+"@storybook/react-dom-shim@npm:10.0.7":
+  version: 10.0.7
+  resolution: "@storybook/react-dom-shim@npm:10.0.7"
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    storybook: ^9.1.15
-  checksum: 10c0/126304e515778f91778d611ba79f02de11bffd8c3f1d1d8b529fea4e186e80419959b8a0d22f6244435031c4f1218a3b469ee4fd754d0041bea667a0701ee2c4
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    storybook: ^10.0.7
+  checksum: 10c0/f7d498e4e5224dfc876589e3f20a9df6215396f3c242f131cdde5407310e3eb45a57aa7db9442cf7fc2fe586cdd13fd686828680d52d7585d405b2abc9f4ca61
   languageName: node
   linkType: hard
 
@@ -20605,7 +20618,7 @@ __metadata:
     "@emotion/babel-plugin": "npm:^11.13.5"
     "@size-limit/preset-small-lib": "npm:^11.2.0"
     "@storybook/addon-a11y": "npm:^10.0.6"
-    "@storybook/addon-docs": "npm:^9.1.13"
+    "@storybook/addon-docs": "npm:^10.0.7"
     "@storybook/addon-links": "npm:^10.0.6"
     "@storybook/react-vite": "npm:^10.0.6"
     "@storybook/test-runner": "npm:^0.24.1"
@@ -26223,16 +26236,6 @@ __metadata:
   version: 1.0.0
   resolution: "unpipe@npm:1.0.0"
   checksum: 10c0/193400255bd48968e5c5383730344fbb4fa114cdedfab26e329e50dd2d81b134244bb8a72c6ac1b10ab0281a58b363d06405632c9d49ca9dfd5e90cbd7d0f32c
-  languageName: node
-  linkType: hard
-
-"unplugin@npm:^1.3.1":
-  version: 1.16.1
-  resolution: "unplugin@npm:1.16.1"
-  dependencies:
-    acorn: "npm:^8.14.0"
-    webpack-virtual-modules: "npm:^0.6.2"
-  checksum: 10c0/dd5f8c5727d0135847da73cf03fb199107f1acf458167034886fda3405737dab871ad3926431b4f70e1e82cdac482ac1383cea4019d782a68515c8e3e611b6cc
   languageName: node
   linkType: hard
 
