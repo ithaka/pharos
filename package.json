@@ -73,7 +73,7 @@
     "@storybook/addon-links": "^10.0.8",
     "@storybook/react-vite": "^10.0.8",
     "@storybook/test-runner": "^0.24.1",
-    "@storybook/web-components": "^9.1.13",
+    "@storybook/web-components": "^10.0.8",
     "@storybook/web-components-vite": "^10.0.8",
     "@types/uuid": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^8.46.4",
