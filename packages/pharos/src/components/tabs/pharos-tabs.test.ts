@@ -317,4 +317,23 @@ describe('pharos-tabs', () => {
 
     expect(spanElement).not.to.be.null;
   });
+
+  it('has no bottom padding or margin on the tab-list when compact is set ', async () => {
+    component = await fixture(html`
+      <test-pharos-tabs compact>
+        <test-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</test-pharos-tab>
+        <test-pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</test-pharos-tab>
+        <test-pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</test-pharos-tab>
+        <test-pharos-tab-panel id="panel-1" slot="panel">Panel 1</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-2" slot="panel">Panel 2</test-pharos-tab-panel>
+        <test-pharos-tab-panel id="panel-3" slot="panel">Panel 3</test-pharos-tab-panel>
+      </test-pharos-tabs>
+    `);
+
+    const tabList = component.renderRoot.querySelector('.tab__list') as HTMLDivElement;
+    const styles = window.getComputedStyle(tabList);
+
+    expect(styles.marginBottom).to.equal('0px');
+    expect(styles.paddingBottom).to.equal('0px');
+  });
 });

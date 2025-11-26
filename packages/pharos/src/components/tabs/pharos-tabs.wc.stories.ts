@@ -147,3 +147,115 @@ export const HorizontalScrolling: Story = {
     chromatic: { viewports: [320, 1200] },
   },
 };
+
+export const Compact: Story = {
+  render: () => html`
+    <storybook-pharos-tabs compact style="width: 100%; height: 500px">
+      <storybook-pharos-tab id="tab-1" data-panel-id="panel-1">Documents</storybook-pharos-tab>
+      <storybook-pharos-tab id="tab-2" data-panel-id="panel-2">Images</storybook-pharos-tab>
+      <storybook-pharos-tab id="tab-3" data-panel-id="panel-3">Audio</storybook-pharos-tab>
+      <storybook-pharos-tab-panel id="panel-1" slot="panel">
+        <storybook-pharos-table
+          .columns="${[
+            { name: 'ID', field: 'id' },
+            { name: 'Filename', field: 'filename' },
+            { name: 'Date Added', field: 'dateAdded' },
+            { name: 'Source', field: 'source' },
+          ]}"
+          caption="Documents table"
+          .hideCaption="${true}"
+          .hasStickyHeader="${true}"
+        >
+          <storybook-pharos-table-body>
+            <storybook-pharos-table-row>
+              <storybook-pharos-table-cell>1</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>document1.pdf</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>2024-01-15</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>Harvard University</storybook-pharos-table-cell>
+            </storybook-pharos-table-row>
+            <storybook-pharos-table-row>
+              <storybook-pharos-table-cell>2</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>report.docx</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>2024-02-20</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>Stanford University</storybook-pharos-table-cell>
+            </storybook-pharos-table-row>
+            <storybook-pharos-table-row>
+              <storybook-pharos-table-cell>3</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>thesis.pdf</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>2024-03-10</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>MIT</storybook-pharos-table-cell>
+            </storybook-pharos-table-row>
+          </storybook-pharos-table-body>
+        </storybook-pharos-table>
+      </storybook-pharos-tab-panel>
+      <storybook-pharos-tab-panel id="panel-2" slot="panel">
+        <storybook-pharos-table
+          .columns="${[
+            { name: 'ID', field: 'id' },
+            { name: 'Filename', field: 'filename' },
+            { name: 'Date Added', field: 'dateAdded' },
+            { name: 'Dimensions', field: 'dimensions' },
+          ]}"
+          caption="Images table"
+          .hideCaption="${true}"
+          .hasStickyHeader="${true}"
+        >
+          <storybook-pharos-table-body>
+            <storybook-pharos-table-row>
+              <storybook-pharos-table-cell>1</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>photo1.jpg</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>2024-01-20</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>1920x1080</storybook-pharos-table-cell>
+            </storybook-pharos-table-row>
+            <storybook-pharos-table-row>
+              <storybook-pharos-table-cell>2</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>artwork.png</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>2024-02-15</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>2560x1440</storybook-pharos-table-cell>
+            </storybook-pharos-table-row>
+            <storybook-pharos-table-row>
+              <storybook-pharos-table-cell>3</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>diagram.svg</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>2024-03-05</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>800x600</storybook-pharos-table-cell>
+            </storybook-pharos-table-row>
+          </storybook-pharos-table-body>
+        </storybook-pharos-table>
+      </storybook-pharos-tab-panel>
+      <storybook-pharos-tab-panel id="panel-3" slot="panel">
+        <storybook-pharos-table
+          .columns="${[
+            { name: 'ID', field: 'id' },
+            { name: 'Filename', field: 'filename' },
+            { name: 'Date Added', field: 'dateAdded' },
+            { name: 'Duration', field: 'duration' },
+          ]}"
+          caption="Audio table"
+          .hideCaption="${true}"
+          .hasStickyHeader="${true}"
+        >
+          <storybook-pharos-table-body>
+            <storybook-pharos-table-row>
+              <storybook-pharos-table-cell>1</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>recording1.mp3</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>2024-01-18</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>3:45</storybook-pharos-table-cell>
+            </storybook-pharos-table-row>
+            <storybook-pharos-table-row>
+              <storybook-pharos-table-cell>2</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>interview.wav</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>2024-02-22</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>15:30</storybook-pharos-table-cell>
+            </storybook-pharos-table-row>
+            <storybook-pharos-table-row>
+              <storybook-pharos-table-cell>3</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>podcast.mp3</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>2024-03-12</storybook-pharos-table-cell>
+              <storybook-pharos-table-cell>42:15</storybook-pharos-table-cell>
+            </storybook-pharos-table-row>
+          </storybook-pharos-table-body>
+        </storybook-pharos-table>
+      </storybook-pharos-tab-panel>
+    </storybook-pharos-tabs>
+  `,
+};
