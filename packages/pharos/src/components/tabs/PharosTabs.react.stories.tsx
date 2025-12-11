@@ -1,6 +1,14 @@
 import { action } from 'storybook/actions';
 
-import { PharosTabs, PharosTab, PharosTabPanel } from '../../react-components';
+import {
+  PharosTabs,
+  PharosTab,
+  PharosTabPanel,
+  PharosTable,
+  PharosTableBody,
+  PharosTableRow,
+  PharosTableCell,
+} from '../../react-components';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
 import type { Meta, StoryObj } from '@storybook/react-vite';
@@ -206,4 +214,122 @@ export const HorizontalScrolling: Story = {
     viewport: { defaultViewport: 'mobile1' },
     chromatic: { viewports: [320, 1200] },
   },
+};
+
+export const Compact: Story = {
+  render: () => (
+    <PharosTabs compact style={{ width: '100%', height: '500px' }}>
+      <PharosTab id="tab-1" data-panel-id="panel-1">
+        Documents
+      </PharosTab>
+      <PharosTab id="tab-2" data-panel-id="panel-2">
+        Images
+      </PharosTab>
+      <PharosTab id="tab-3" data-panel-id="panel-3">
+        Audio
+      </PharosTab>
+      <PharosTabPanel id="panel-1" slot="panel">
+        <PharosTable
+          columns={[
+            { name: 'ID', field: 'id' },
+            { name: 'Filename', field: 'filename' },
+            { name: 'Date Added', field: 'dateAdded' },
+            { name: 'Source', field: 'source' },
+          ]}
+          caption="Documents table"
+          hideCaption={true}
+          hasStickyHeader={true}
+        >
+          <PharosTableBody>
+            <PharosTableRow>
+              <PharosTableCell>1</PharosTableCell>
+              <PharosTableCell>document1.pdf</PharosTableCell>
+              <PharosTableCell>2024-01-15</PharosTableCell>
+              <PharosTableCell>Harvard University</PharosTableCell>
+            </PharosTableRow>
+            <PharosTableRow>
+              <PharosTableCell>2</PharosTableCell>
+              <PharosTableCell>report.docx</PharosTableCell>
+              <PharosTableCell>2024-02-20</PharosTableCell>
+              <PharosTableCell>Stanford University</PharosTableCell>
+            </PharosTableRow>
+            <PharosTableRow>
+              <PharosTableCell>3</PharosTableCell>
+              <PharosTableCell>thesis.pdf</PharosTableCell>
+              <PharosTableCell>2024-03-10</PharosTableCell>
+              <PharosTableCell>MIT</PharosTableCell>
+            </PharosTableRow>
+          </PharosTableBody>
+        </PharosTable>
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-2" slot="panel">
+        <PharosTable
+          columns={[
+            { name: 'ID', field: 'id' },
+            { name: 'Filename', field: 'filename' },
+            { name: 'Date Added', field: 'dateAdded' },
+            { name: 'Dimensions', field: 'dimensions' },
+          ]}
+          caption="Images table"
+          hideCaption={true}
+          hasStickyHeader={true}
+        >
+          <PharosTableBody>
+            <PharosTableRow>
+              <PharosTableCell>1</PharosTableCell>
+              <PharosTableCell>photo1.jpg</PharosTableCell>
+              <PharosTableCell>2024-01-20</PharosTableCell>
+              <PharosTableCell>1920x1080</PharosTableCell>
+            </PharosTableRow>
+            <PharosTableRow>
+              <PharosTableCell>2</PharosTableCell>
+              <PharosTableCell>artwork.png</PharosTableCell>
+              <PharosTableCell>2024-02-15</PharosTableCell>
+              <PharosTableCell>2560x1440</PharosTableCell>
+            </PharosTableRow>
+            <PharosTableRow>
+              <PharosTableCell>3</PharosTableCell>
+              <PharosTableCell>diagram.svg</PharosTableCell>
+              <PharosTableCell>2024-03-05</PharosTableCell>
+              <PharosTableCell>800x600</PharosTableCell>
+            </PharosTableRow>
+          </PharosTableBody>
+        </PharosTable>
+      </PharosTabPanel>
+      <PharosTabPanel id="panel-3" slot="panel">
+        <PharosTable
+          columns={[
+            { name: 'ID', field: 'id' },
+            { name: 'Filename', field: 'filename' },
+            { name: 'Date Added', field: 'dateAdded' },
+            { name: 'Duration', field: 'duration' },
+          ]}
+          caption="Audio table"
+          hideCaption={true}
+          hasStickyHeader={true}
+        >
+          <PharosTableBody>
+            <PharosTableRow>
+              <PharosTableCell>1</PharosTableCell>
+              <PharosTableCell>recording1.mp3</PharosTableCell>
+              <PharosTableCell>2024-01-18</PharosTableCell>
+              <PharosTableCell>3:45</PharosTableCell>
+            </PharosTableRow>
+            <PharosTableRow>
+              <PharosTableCell>2</PharosTableCell>
+              <PharosTableCell>interview.wav</PharosTableCell>
+              <PharosTableCell>2024-02-22</PharosTableCell>
+              <PharosTableCell>15:30</PharosTableCell>
+            </PharosTableRow>
+            <PharosTableRow>
+              <PharosTableCell>3</PharosTableCell>
+              <PharosTableCell>podcast.mp3</PharosTableCell>
+              <PharosTableCell>2024-03-12</PharosTableCell>
+              <PharosTableCell>42:15</PharosTableCell>
+            </PharosTableRow>
+          </PharosTableBody>
+        </PharosTable>
+      </PharosTabPanel>
+    </PharosTabs>
+  ),
 };

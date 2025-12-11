@@ -36,6 +36,11 @@
     var(--pharos-spacing-1-x);
 }
 
+:host([compact]) .tab__list {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 .tab__panels {
   display: flex;
   flex-direction: column;

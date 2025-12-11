@@ -38,6 +38,12 @@ export class PharosTabs extends PharosElement {
   @property({ type: Number, reflect: true, attribute: 'selected-tab' })
   public selectedTab = 0;
 
+  /**
+   * Removes the extra padding and margin from the tab list
+   */
+  @property({ type: Boolean, reflect: true, useDefault: false })
+  public compact = false;
+
   @query('.tab__list')
   private _tabList!: HTMLElement;
 
