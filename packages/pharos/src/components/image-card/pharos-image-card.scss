@@ -165,8 +165,6 @@ slot[name='image']::slotted(img) {
 }
 
 .card__image--collection {
-  display: grid;
-  align-self: end;
   cursor: pointer;
 }
 
@@ -293,4 +291,5 @@ slot[name='metadata']::slotted(strong) {
   position: absolute;
   object-fit: cover;
   object-position: 50% 30%;
+  inset: 0;
 }
