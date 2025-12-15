@@ -3,9 +3,9 @@ import { property, query, state } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { comboboxStyles } from './pharos-combobox.css';
 import debounce from '../../utils/debounce';
+import { highlightTextMatches } from '../../utils/highlightTextMatches';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
@@ -186,16 +186,14 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
             ? matchingOptions.map((child, index) => {
                 const option = child as HTMLOptionElement;
                 const exactMatch = this.value === option.value;
+                const highlightClass = exactMatch
+                  ? 'combobox__mark combobox__mark--selected'
+                  : 'combobox__mark';
 
-                const optionText = this._query
-                  ? option.text.replace(regex, (str) => {
-                      const classes = exactMatch
-                        ? 'combobox__mark combobox__mark--selected'
-                        : 'combobox__mark';
-
-                      return this.searchMode ? `${str}` : `<mark class=${classes}>${str}</mark>`;
-                    })
-                  : option.text;
+                const optionText =
+                  this._query && !this.searchMode
+                    ? highlightTextMatches(option.text, regex, highlightClass)
+                    : document.createTextNode(option.text);
 
                 return html`
                   <li
@@ -214,7 +212,7 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
                       event.preventDefault();
                     }}
                   >
-                    ${unsafeHTML(optionText)}
+                    ${optionText}
                     ${exactMatch && !this.searchMode
                       ? html`
                           <pharos-icon
