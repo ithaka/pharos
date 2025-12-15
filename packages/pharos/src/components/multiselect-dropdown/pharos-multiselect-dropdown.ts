@@ -3,9 +3,9 @@ import { property, query, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { multiselectDropdownStyles } from './pharos-multiselect-dropdown.css';
+import { highlightTextMatches } from '../../utils/highlightTextMatches';
 
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
@@ -544,16 +544,13 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
               ? this._matchingOptions.map((child, index) => {
                   const option = child as HTMLOptionElement;
                   const exactMatch = this._searchValue === option.value;
+                  const highlightClass = exactMatch
+                    ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
+                    : 'multiselect-dropdown__mark';
 
                   const optionText = this._searchValue
-                    ? option.text.replace(regex, (str) => {
-                        const classes = exactMatch
-                          ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
-                          : 'multiselect-dropdown__mark';
-
-                        return `<mark class="${classes}">${str}</mark>`;
-                      })
-                    : option.text;
+                    ? highlightTextMatches(option.text, regex, highlightClass)
+                    : document.createTextNode(option.text);
 
                   const isSelected = this._pendingOptions.includes(option);
                   return html`
@@ -582,9 +579,7 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
                       >
                         ${this._renderCheckboxIcon(isSelected)}
                       </div>
-                      <div class="multiselect-dropdown__option-label">
-                        ${unsafeHTML(optionText)}
-                      </div>
+                      <div class="multiselect-dropdown__option-label">${optionText}</div>
                     </li>
                   `;
                 })
