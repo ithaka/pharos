@@ -16,9 +16,10 @@ describe('pharos-pagination', () => {
 
   it('sets its default attributes', async () => {
     component = await fixture(html` <test-pharos-pagination></test-pharos-pagination> `);
-    expect(component).dom.to.equal(
-      `<test-pharos-pagination current-page="1" data-pharos-component="PharosPagination" total-results="0" page-size="25"></test-pharos-pagination>`
-    );
+    expect(component.getAttribute('current-page')).to.equal('1');
+    expect(component.getAttribute('total-results')).to.equal('0');
+    expect(component.getAttribute('page-size')).to.equal('25');
+    expect(component.getAttribute('variant')).to.equal('default');
   });
 
   it('shows/hides previous page link correctly', async () => {
@@ -151,5 +152,54 @@ describe('pharos-pagination', () => {
     `).catch((e) => e);
     expect("currentPage value '0' is invalid. Can only be a number greater than or equal to 1").to
       .be.thrown;
+  });
+
+  it('throws an error for an invalid variant value', async () => {
+    component = await fixture(html`
+      <test-pharos-pagination variant="fake"></test-pharos-pagination>
+    `).catch((e) => e);
+    expect('fake is not a valid variant. Valid variants are: default, input').to.be.thrown;
+  });
+
+  it('renders the page input variant', async () => {
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="3"
+        total-results="112"
+        page-size="25"
+        variant="input"
+      ></test-pharos-pagination>
+    `);
+
+    const pageInput = component.renderRoot.querySelector('.pagination__input');
+    expect(pageInput).to.exist;
+  });
+
+  it('fires page-input event with clamped value on change', async () => {
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="2"
+        total-results="112"
+        page-size="25"
+        variant="input"
+      ></test-pharos-pagination>
+    `);
+
+    let receivedPage = 0;
+    const onPageInput = (event: CustomEvent): void => {
+      receivedPage = (event.detail as { page: number }).page;
+    };
+    component.addEventListener('page-input', onPageInput);
+
+    const pageInput = component.renderRoot.querySelector('.pagination__input') as HTMLElement & {
+      value: string;
+    };
+    pageInput.value = '10';
+    pageInput.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, composed: true })
+    );
+    await component.updateComplete;
+
+    expect(receivedPage).to.equal(5);
   });
 });

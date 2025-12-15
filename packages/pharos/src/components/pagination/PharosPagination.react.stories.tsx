@@ -31,6 +31,7 @@ export const Base: Story = {
       totalResults={args.totalResults}
       pageSize={args.pageSize}
       currentPage={args.currentPage}
+      variant={args.variant}
       onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
       onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
     />
@@ -41,4 +42,19 @@ export const Base: Story = {
 export const Events: Story = {
   ...Base,
   parameters: { options: { selectedPanel: 'storybook/actions/panel' } },
+};
+
+export const Input: Story = {
+  render: (args) => (
+    <PharosPagination
+      totalResults={args.totalResults}
+      pageSize={args.pageSize}
+      currentPage={args.currentPage}
+      variant={args.variant}
+      onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
+      onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
+      onPage-Input={(e: CustomEvent) => action('Page Input')(JSON.stringify(e.detail))}
+    />
+  ),
+  args: { ...defaultArgs, variant: 'input' },
 };

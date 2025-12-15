@@ -53,6 +53,18 @@ const PaginationPage: FC = () => {
           Use the basic variant to navigate to different pages of large lists of items, and indicate
           which page you are currently viewing.
         </PageSection>
+        <PageSection title="Jump to page" subSectionLevel={1} lessMargin>
+          Use the jump-to-page variant when users need to navigate directly to a specific page in a
+          long result set without stepping through every page.
+          <div style={{ marginTop: 'var(--pharos-spacing-1-x)' }}>
+            <PharosPagination
+              totalResults={660}
+              pageSize={20}
+              currentPage={3}
+              variant="input"
+            ></PharosPagination>
+          </div>
+        </PageSection>
       </PageSection>
       <PageSection title="Accessibility">
         <PageSection title="Relevant WCAG guidelines" subSectionLevel={1} lessMargin>

@@ -1,12 +1,18 @@
 import { PharosElement } from '../base/pharos-element';
 import { html, nothing } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
+import { styleMap } from 'lit/directives/style-map.js';
 import { paginationStyles } from './pharos-pagination.css';
 
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosIcon } from '../icon/pharos-icon';
 import { PharosLink } from '../link/pharos-link';
+import { PharosTextInput } from '../text-input/pharos-text-input';
+import type { PharosTextInput as PharosTextInputType } from '../text-input/pharos-text-input';
+
+const VARIANTS = ['default', 'input'] as const;
+export type PaginationVariant = (typeof VARIANTS)[number];
 
 /**
  * Pharos pagination component.
@@ -15,11 +21,13 @@ import { PharosLink } from '../link/pharos-link';
  *
  * @fires prev-page - Fires when the previous page link is clicked
  * @fires next-page - Fires when the next page link is clicked
+  * @fires page-input - Fires when a page number is submitted in the input variant
  */
 export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
     'pharos-link': PharosLink,
+    'pharos-text-input': PharosTextInput,
   };
 
   /**
@@ -42,6 +50,16 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
    */
   @property({ type: Number, reflect: true, attribute: 'current-page' })
   public currentPage = 1;
+
+  /**
+   * Indicates the pagination variant.
+   * @attr variant
+   */
+  @property({ type: String, reflect: true })
+  public variant: PaginationVariant = 'default';
+
+  @state()
+  private _pageInputValue = '';
 
   public static override get styles(): CSSResultArray {
     return [paginationStyles];
@@ -76,6 +94,15 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
     ) {
       throw new Error(
         `currentPage value '${this.currentPage}' is invalid. Can only be a number greater than or equal to 1`
+      );
+    }
+    if (changedProperties.has('currentPage')) {
+      this._pageInputValue = '';
+    }
+
+    if (changedProperties.has('variant') && this.variant && !VARIANTS.includes(this.variant)) {
+      throw new Error(
+        `${this.variant} is not a valid variant. Valid variants are: ${VARIANTS.join(', ')}`
       );
     }
   }
@@ -143,11 +170,76 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
     return nothing;
   }
 
+  private _handlePageInput(event: Event): void {
+    if (this.totalPages < 1) {
+      return;
+    }
+
+    const target = event.currentTarget as PharosTextInputType;
+    const parsedValue = Number(target.value);
+    const desiredPage = Number.isNaN(parsedValue)
+      ? this.currentPage
+      : Math.min(Math.max(parsedValue, 1), this.totalPages);
+
+    target.value = desiredPage.toString();
+    this._pageInputValue = target.value;
+
+    if (desiredPage === this.currentPage) {
+      return;
+    }
+
+    this.dispatchEvent(
+      new CustomEvent('page-input', {
+        bubbles: true,
+        composed: true,
+        detail: { page: desiredPage },
+      })
+    );
+  }
+
+  private _handlePageKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this._handlePageInput(event);
+    }
+  }
+
+  private _handlePageInputChange(event: Event): void {
+    const target = event.currentTarget as PharosTextInputType;
+    this._pageInputValue = target.value;
+  }
+
+  private _renderPageInput(): TemplateResult {
+    const currentText = this._pageInputValue || this.currentPage.toString();
+    const digitWidth = currentText.length + 2;
+
+    return html`
+      <div class="pagination__input-wrapper">
+        <pharos-text-input
+          class="pagination__input"
+          style=${styleMap({ width: `${digitWidth}ch` })}
+          hide-label
+          name="page-number"
+          min="1"
+          max=${Math.max(this.totalPages, 1)}
+          value=${this.currentPage.toString()}
+          ?disabled=${this.totalPages < 1}
+          @keydown=${this._handlePageKeydown}
+          @input=${this._handlePageInputChange}
+        >
+          <span slot="label">Page number</span>
+        </pharos-text-input>
+        <span class="pagination__info">of ${this.totalPages}</span>
+      </div>
+    `;
+  }
+
   protected override render(): TemplateResult {
     return html`
       <div class="pagination__wrapper" role="navigation" aria-label="pagination">
         ${this._renderPrevLink()}
-        <span class="pagination__info">${this.currentPage} of ${this.totalPages}</span>
+        ${this.variant === 'input'
+          ? this._renderPageInput()
+          : html`<span class="pagination__info">${this.currentPage} of ${this.totalPages}</span>`}
         ${this._renderNextLink()}
       </div>
     `;
