@@ -102,7 +102,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
 
     if (changedProperties.has('variant') && this.variant && !VARIANTS.includes(this.variant)) {
       throw new Error(
-        `${this.variant} is not a valid variant. Valid variants are: ${VARIANTS.join(', ')}`
+        `${this.variant} is not a valid Pharos pagination variant. Valid variants are: ${VARIANTS.join(', ')}`
       );
     }
   }
