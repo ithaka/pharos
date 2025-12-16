@@ -186,8 +186,8 @@ describe('pharos-pagination', () => {
     `);
 
     let receivedPage = 0;
-    const onPageInput = (event: CustomEvent): void => {
-      receivedPage = (event.detail as { page: number }).page;
+    const onPageInput = (event: Event): void => {
+      receivedPage = (event as CustomEvent<{ page: number }>).detail.page;
     };
     component.addEventListener('page-input', onPageInput);
 
@@ -201,5 +201,82 @@ describe('pharos-pagination', () => {
     await component.updateComplete;
 
     expect(receivedPage).to.equal(5);
+  });
+
+  it('does not fire page-input on non-enter key press', async () => {
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="2"
+        total-results="112"
+        page-size="25"
+        variant="input"
+      ></test-pharos-pagination>
+    `);
+
+    let eventCount = 0;
+    const onPageInput = (): void => {
+      eventCount += 1;
+    };
+    component.addEventListener('page-input', onPageInput);
+
+    const pageInput = component.renderRoot.querySelector('.pagination__input') as HTMLElement & {
+      value: string;
+    };
+    pageInput.value = '3';
+    pageInput.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, composed: true })
+    );
+    await component.updateComplete;
+
+    expect(eventCount).to.equal(0);
+  });
+
+  it('clamps page-input to the minimum page', async () => {
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="2"
+        total-results="112"
+        page-size="25"
+        variant="input"
+      ></test-pharos-pagination>
+    `);
+
+    let receivedPage = 0;
+    const onPageInput = (event: Event): void => {
+      receivedPage = (event as CustomEvent<{ page: number }>).detail.page;
+    };
+    component.addEventListener('page-input', onPageInput);
+
+    const pageInput = component.renderRoot.querySelector('.pagination__input') as HTMLElement & {
+      value: string;
+    };
+    pageInput.value = '0';
+    pageInput.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, composed: true })
+    );
+    await component.updateComplete;
+
+    expect(receivedPage).to.equal(1);
+  });
+
+  it('adjusts page-input width based on user entry', async () => {
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="2"
+        total-results="112"
+        page-size="25"
+        variant="input"
+      ></test-pharos-pagination>
+    `);
+
+    const pageInput = component.renderRoot.querySelector('.pagination__input') as HTMLElement & {
+      value: string;
+    };
+    pageInput.value = '10';
+    pageInput.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+    await component.updateComplete;
+
+    const expectedWidth = String(pageInput.value.length) + 2;
+    expect(pageInput.getAttribute('style')).to.contain(`width: ${expectedWidth}ch`);
   });
 });
