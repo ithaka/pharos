@@ -19,8 +19,10 @@ export type PaginationVariant = (typeof VARIANTS)[number];
  *
  * @tag pharos-pagination
  *
+ * @fires first-page - Fires when the first page link is clicked
  * @fires prev-page - Fires when the previous page link is clicked
  * @fires next-page - Fires when the next page link is clicked
+ * @fires last-page - Fires when the last page link is clicked
   * @fires page-input - Fires when a page number is submitted in the input variant
  */
 export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
@@ -114,10 +116,14 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
     const targetElement = event.currentTarget as Element;
     let eventType: string;
 
-    if (targetElement.classList.contains('prev')) {
+    if (targetElement.classList.contains('first')) {
+      eventType = 'first-page';
+    } else if (targetElement.classList.contains('prev')) {
       eventType = 'prev-page';
     } else if (targetElement.classList.contains('next')) {
       eventType = 'next-page';
+    } else if (targetElement.classList.contains('last')) {
+      eventType = 'last-page';
     } else {
       throw new Error(
         `Unexpected click target during pagination handling: ${targetElement.tagName}`
@@ -130,6 +136,25 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
         composed: true,
       })
     );
+  }
+
+  private _renderFirstLink(): TemplateResult | typeof nothing {
+    if (this.variant === 'input' && this.currentPage > 1) {
+      return html`
+        <pharos-link
+          class="pagination__link first"
+          subtle
+          flex
+          href=""
+          aria-label="Go to first page"
+          @click=${this._handleClick}
+        >
+          <pharos-icon name="page-first" a11y-hidden="true"></pharos-icon>
+          <span class="pagination__visually-hidden">First page</span>
+        </pharos-link>
+      `;
+    }
+    return nothing;
   }
 
   private _renderPrevLink(): TemplateResult | typeof nothing {
@@ -164,6 +189,25 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
         >
           Next
           <pharos-icon name="chevron-right" a11y-hidden="true"></pharos-icon>
+        </pharos-link>
+      `;
+    }
+    return nothing;
+  }
+
+  private _renderLastLink(): TemplateResult | typeof nothing {
+    if (this.variant === 'input' && this.currentPage < this.totalPages) {
+      return html`
+        <pharos-link
+          class="pagination__link last"
+          subtle
+          flex
+          href=""
+          aria-label="Go to last page"
+          @click=${this._handleClick}
+        >
+          <pharos-icon name="page-last" a11y-hidden="true"></pharos-icon>
+          <span class="pagination__visually-hidden">Last page</span>
         </pharos-link>
       `;
     }
@@ -219,6 +263,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           style=${styleMap({ width: `${digitWidth}ch` })}
           hide-label
           name="page-number"
+          type="number"
           min="1"
           max=${Math.max(this.totalPages, 1)}
           value=${this.currentPage.toString()}
@@ -236,11 +281,13 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   protected override render(): TemplateResult {
     return html`
       <div class="pagination__wrapper" role="navigation" aria-label="pagination">
+        ${this.variant === 'input' ? this._renderFirstLink() : nothing}
         ${this._renderPrevLink()}
         ${this.variant === 'input'
           ? this._renderPageInput()
           : html`<span class="pagination__info">${this.currentPage} of ${this.totalPages}</span>`}
         ${this._renderNextLink()}
+        ${this.variant === 'input' ? this._renderLastLink() : nothing}
       </div>
     `;
   }

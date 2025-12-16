@@ -57,6 +57,30 @@ describe('pharos-pagination', () => {
     expect(prevLink).to.exist;
   });
 
+  it('shows/hides first page link correctly for input variant', async () => {
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="1"
+        total-results="112"
+        page-size="25"
+        variant="input"
+      ></test-pharos-pagination>
+    `);
+    let firstLink = component.renderRoot.querySelector('.first') as HTMLElement;
+    expect(firstLink).not.to.exist;
+
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="2"
+        total-results="112"
+        page-size="25"
+        variant="input"
+      ></test-pharos-pagination>
+    `);
+    firstLink = component.renderRoot.querySelector('.first') as HTMLElement;
+    expect(firstLink).to.exist;
+  });
+
   it('shows/hides next page link correctly', async () => {
     component = await fixture(html`
       <test-pharos-pagination
@@ -79,24 +103,76 @@ describe('pharos-pagination', () => {
     expect(nextLink).not.to.exist;
   });
 
-  it('fires prev-page and next-page events properly', async () => {
+  it('shows/hides last page link correctly for input variant', async () => {
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="1"
+        total-results="112"
+        page-size="25"
+        variant="input"
+      ></test-pharos-pagination>
+    `);
+    let lastLink = component.renderRoot.querySelector('.last') as HTMLElement;
+    expect(lastLink).to.exist;
+
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="5"
+        total-results="112"
+        page-size="25"
+        variant="input"
+      ></test-pharos-pagination>
+    `);
+    lastLink = component.renderRoot.querySelector('.last') as HTMLElement;
+    expect(lastLink).not.to.exist;
+  });
+
+  it('does not render first/last links for default variant', async () => {
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="2"
+        total-results="112"
+        page-size="25"
+      ></test-pharos-pagination>
+    `);
+
+    expect(component.renderRoot.querySelector('.first')).not.to.exist;
+    expect(component.renderRoot.querySelector('.last')).not.to.exist;
+  });
+
+  it('fires navigation events properly in input variant', async () => {
     let prevPageCount = 0;
     let nextPageCount = 0;
+    let firstPageCount = 0;
+    let lastPageCount = 0;
+    const onFirstClick = (): void => {
+      firstPageCount++;
+    };
     const onPrevClick = (): void => {
       prevPageCount++;
     };
     const onNextClick = (): void => {
       nextPageCount++;
     };
+    const onLastClick = (): void => {
+      lastPageCount++;
+    };
     component = await fixture(html`
       <test-pharos-pagination
         current-page="3"
         total-results="112"
         page-size="25"
+        variant="input"
+        @first-page=${onFirstClick}
         @prev-page=${onPrevClick}
         @next-page=${onNextClick}
+        @last-page=${onLastClick}
       ></test-pharos-pagination>
     `);
+
+    const firstLink = component.renderRoot.querySelector('.first') as HTMLElement;
+    firstLink.click();
+    await component.updateComplete;
 
     const prevLink = component.renderRoot.querySelector('.prev') as HTMLElement;
     prevLink.click();
@@ -106,28 +182,50 @@ describe('pharos-pagination', () => {
     nextLink.click();
     await component.updateComplete;
 
+    const lastLink = component.renderRoot.querySelector('.last') as HTMLElement;
+    lastLink.click();
+    await component.updateComplete;
+
+    expect(firstPageCount).to.equal(1);
     expect(prevPageCount).to.equal(1);
     expect(nextPageCount).to.equal(1);
+    expect(lastPageCount).to.equal(1);
   });
 
-  it('fires prev-page and next-page events when child element clicked', async () => {
+  it('fires navigation events when child element clicked in input variant', async () => {
     let prevPageCount = 0;
     let nextPageCount = 0;
+    let firstPageCount = 0;
+    let lastPageCount = 0;
+    const onFirstClick = (): void => {
+      firstPageCount++;
+    };
     const onPrevClick = (): void => {
       prevPageCount++;
     };
     const onNextClick = (): void => {
       nextPageCount++;
     };
+    const onLastClick = (): void => {
+      lastPageCount++;
+    };
     component = await fixture(html`
       <test-pharos-pagination
         current-page="3"
         total-results="112"
         page-size="25"
+        variant="input"
+        @first-page=${onFirstClick}
         @prev-page=${onPrevClick}
         @next-page=${onNextClick}
+        @last-page=${onLastClick}
       ></test-pharos-pagination>
     `);
+
+    const firstLinkChildElement = component.renderRoot.querySelector('.first')
+      ?.firstElementChild as HTMLElement;
+    firstLinkChildElement.click();
+    await component.updateComplete;
 
     const prevLinkChildElement = component.renderRoot.querySelector('.prev')
       ?.firstElementChild as HTMLElement;
@@ -139,8 +237,15 @@ describe('pharos-pagination', () => {
     nextLinkChildElement.click();
     await component.updateComplete;
 
+    const lastLinkChildElement = component.renderRoot.querySelector('.last')
+      ?.firstElementChild as HTMLElement;
+    lastLinkChildElement.click();
+    await component.updateComplete;
+
+    expect(firstPageCount).to.equal(1);
     expect(prevPageCount).to.equal(1);
     expect(nextPageCount).to.equal(1);
+    expect(lastPageCount).to.equal(1);
   });
 
   it('throws an error for an invalid total results value', async () => {
@@ -186,6 +291,7 @@ describe('pharos-pagination', () => {
 
     const pageInput = component.renderRoot.querySelector('.pagination__input');
     expect(pageInput).to.exist;
+    expect(pageInput?.getAttribute('type')).to.equal('number');
   });
 
   it('fires page-input event with input number exceeding the total page number', async () => {

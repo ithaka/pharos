@@ -21,13 +21,22 @@
   align-items: center;
 }
 
-.pagination__input {
-  &::part(input) {
-    padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
-  }
+/* Hide number input spinner arrows */
+pharos-text-input.pagination__input::part(input)::-webkit-outer-spin-button,
+pharos-text-input.pagination__input::part(input)::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+pharos-text-input.pagination__input::part(input) {
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .pagination__link {
+  height: var(--pharos-spacing-one-and-a-half-x);
   cursor: pointer;
 
   pharos-icon {
@@ -51,4 +60,8 @@
       stroke-width: 0;
     }
   }
+}
+
+.pagination__visually-hidden {
+  @include mixins.hidden;
 }

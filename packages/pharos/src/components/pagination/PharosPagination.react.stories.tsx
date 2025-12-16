@@ -32,8 +32,10 @@ export const Base: Story = {
       pageSize={args.pageSize}
       currentPage={args.currentPage}
       variant={args.variant}
+      onFirst-Page={(e: CustomEvent) => action('First Page')(JSON.stringify(e))}
       onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
       onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
+      onLast-Page={(e: CustomEvent) => action('Last Page')(JSON.stringify(e))}
     />
   ),
   args: defaultArgs,
@@ -51,8 +53,10 @@ export const Input: Story = {
       pageSize={args.pageSize}
       currentPage={args.currentPage}
       variant={args.variant}
+      onFirst-Page={(e: CustomEvent) => action('First Page')(JSON.stringify(e))}
       onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
       onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
+      onLast-Page={(e: CustomEvent) => action('Last Page')(JSON.stringify(e))}
       onPage-Input={(e: CustomEvent) => action('Page Input')(JSON.stringify(e.detail))}
     />
   ),
