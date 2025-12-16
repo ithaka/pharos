@@ -228,9 +228,13 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
         >
           <span slot="label">Page number</span>
         </pharos-text-input>
-        <span class="pagination__info">of ${this.totalPages}</span>
+        ${this._renderPaginationInfo()}
       </div>
     `;
+  }
+
+  private _renderPaginationInfo(): TemplateResult {
+    return html`<span class="pagination__info">${this.currentPage} of ${this.totalPages}</span>`;
   }
 
   protected override render(): TemplateResult {
@@ -239,7 +243,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
         ${this._renderPrevLink()}
         ${this.variant === 'input'
           ? this._renderPageInput()
-          : html`<span class="pagination__info">${this.currentPage} of ${this.totalPages}</span>`}
+          : this._renderPaginationInfo()}
         ${this._renderNextLink()}
       </div>
     `;

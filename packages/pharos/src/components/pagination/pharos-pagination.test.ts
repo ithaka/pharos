@@ -14,6 +14,19 @@ describe('pharos-pagination', () => {
     await expect(component).to.be.accessible();
   });
 
+  it('is accessible when using the input variant', async () => {
+    component = await fixture(html`
+      <test-pharos-pagination
+        current-page="2"
+        total-results="50"
+        page-size="10"
+        variant="input"
+      ></test-pharos-pagination>
+    `);
+
+    await expect(component).to.be.accessible();
+  });
+
   it('sets its default attributes', async () => {
     component = await fixture(html` <test-pharos-pagination></test-pharos-pagination> `);
     expect(component.getAttribute('current-page')).to.equal('1');
@@ -175,7 +188,7 @@ describe('pharos-pagination', () => {
     expect(pageInput).to.exist;
   });
 
-  it('fires page-input event with clamped value on change', async () => {
+  it('fires page-input event with input number exceeding the total page number', async () => {
     component = await fixture(html`
       <test-pharos-pagination
         current-page="2"

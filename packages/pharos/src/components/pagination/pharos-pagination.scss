@@ -22,8 +22,6 @@
 }
 
 .pagination__input {
-  height: 34px;
-
   &::part(input) {
     padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
   }
