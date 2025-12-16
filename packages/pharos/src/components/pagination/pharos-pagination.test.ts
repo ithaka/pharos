@@ -289,7 +289,7 @@ describe('pharos-pagination', () => {
     pageInput.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
     await component.updateComplete;
 
-    const expectedWidth = String(pageInput.value.length) + 2;
+    const expectedWidth = String(pageInput.value).length + 2;
     expect(pageInput.getAttribute('style')).to.contain(`width: ${expectedWidth}ch`);
   });
 });
