@@ -222,7 +222,7 @@ describe('pharos-image-card', () => {
     imageLink?.parentElement?.dispatchEvent(new Event('mouseenter'));
 
     await component.updateComplete;
-    expect(component['_title']['_hover']).to.be.true;
+    expect(component['_title']?.['_hover']).to.be.true;
   });
 
   it('does not set the title link hover state when the card is disabled and the link title is hovered', async () => {
@@ -245,7 +245,7 @@ describe('pharos-image-card', () => {
     imageLink?.parentElement?.dispatchEvent(new Event('mouseenter'));
 
     await component.updateComplete;
-    expect(component['_title']['_hover']).to.be.false;
+    expect(component['_title']?.['_hover']).to.be.false;
   });
 
   it('renders an action button when an action menu id is provided', async () => {
