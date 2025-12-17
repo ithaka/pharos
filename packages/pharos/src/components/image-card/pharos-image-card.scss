@@ -166,6 +166,8 @@ slot[name='image']::slotted(img) {
 
 .card__image--collection {
   cursor: pointer;
+  display: grid;
+  align-self: end;
 }
 
 .card__image--collection-container {
@@ -224,8 +226,8 @@ slot[name='image']::slotted(img) {
 
 .card__svg {
   display: block;
-  height: 100%;
   width: 100%;
+  grid-area: 1 / 1;
 }
 
 .card__checkbox--subtle {
