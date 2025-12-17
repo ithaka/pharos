@@ -8,8 +8,6 @@ import { paginationStyles } from './pharos-pagination.css';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosIcon } from '../icon/pharos-icon';
 import { PharosLink } from '../link/pharos-link';
-import { PharosTextInput } from '../text-input/pharos-text-input';
-import type { PharosTextInput as PharosTextInputType } from '../text-input/pharos-text-input';
 
 const VARIANTS = ['default', 'input'] as const;
 export type PaginationVariant = (typeof VARIANTS)[number];
@@ -26,10 +24,11 @@ export type PaginationVariant = (typeof VARIANTS)[number];
   * @fires page-input - Fires when a page number is submitted in the input variant
  */
 export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
+  private static _inputIdCounter = 0;
+
   static elementDefinitions = {
     'pharos-icon': PharosIcon,
     'pharos-link': PharosLink,
-    'pharos-text-input': PharosTextInput,
   };
 
   /**
@@ -62,6 +61,8 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
 
   @state()
   private _pageInputValue = '';
+
+  private readonly _inputId = `pagination-page-number-${PharosPagination._inputIdCounter++}`;
 
   public static override get styles(): CSSResultArray {
     return [paginationStyles];
@@ -219,7 +220,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
       return;
     }
 
-    const target = event.currentTarget as PharosTextInputType;
+    const target = event.currentTarget as HTMLInputElement;
     const parsedValue = Number(target.value);
     const desiredPage = Number.isNaN(parsedValue)
       ? this.currentPage
@@ -248,7 +249,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _handlePageInputChange(event: Event): void {
-    const target = event.currentTarget as PharosTextInputType;
+    const target = event.currentTarget as HTMLInputElement;
     this._pageInputValue = target.value;
   }
 
@@ -258,21 +259,20 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
 
     return html`
       <div class="pagination__input-wrapper">
-        <pharos-text-input
+        <label class="pagination__visually-hidden" for=${this._inputId}>Page number</label>
+        <input
+          id=${this._inputId}
           class="pagination__input"
           style=${styleMap({ width: `${digitWidth}ch` })}
-          hide-label
           name="page-number"
           type="number"
           min="1"
           max=${Math.max(this.totalPages, 1)}
-          value=${this.currentPage.toString()}
+          .value=${currentText}
           ?disabled=${this.totalPages < 1}
           @keydown=${this._handlePageKeydown}
           @input=${this._handlePageInputChange}
-        >
-          <span slot="label">Page number</span>
-        </pharos-text-input>
+        />
         <span class="pagination__info">of ${this.totalPages}</span>
       </div>
     `;

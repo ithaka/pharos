@@ -21,18 +21,35 @@
   align-items: center;
 }
 
-/* Hide number input spinner arrows */
-pharos-text-input.pagination__input::part(input)::-webkit-outer-spin-button,
-pharos-text-input.pagination__input::part(input)::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  appearance: none;
-  margin: 0;
-}
-
-pharos-text-input.pagination__input::part(input) {
+.pagination__input {
   padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
-  -moz-appearance: textfield;
-  appearance: textfield;
+  border: 1px solid var(--pharos-form-element-color-border-base);
+  border-radius: var(--pharos-radius-base-standard);
+  font: inherit;
+  color: var(--pharos-form-element-color-text-base);
+  background: none;
+  width: auto;
+  box-sizing: border-box;
+
+  &:focus {
+    @include mixins.input-focus;
+  }
+
+  &:disabled {
+    @include mixins.input-disabled;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
 }
 
 .pagination__link {
