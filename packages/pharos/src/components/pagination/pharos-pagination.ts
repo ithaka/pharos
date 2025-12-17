@@ -273,7 +273,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           @keydown=${this._handlePageKeydown}
           @input=${this._handlePageInputChange}
         />
-        <span class="pagination__info">of ${this.totalPages}</span>
+        <span class="pagination__input-info">of ${this.totalPages}</span>
       </div>
     `;
   }
