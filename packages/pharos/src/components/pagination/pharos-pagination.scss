@@ -30,13 +30,16 @@
   border: 1px solid var(--pharos-form-element-color-border-base);
   border-radius: var(--pharos-radius-base-standard);
   font: inherit;
+  font-variant-numeric: tabular-nums;
   color: var(--pharos-form-element-color-text-base);
   background: none;
   width: auto;
   box-sizing: border-box;
+  text-align: center;
 
   &:focus {
-    @include mixins.input-focus;
+    outline: 1px solid var(--pharos-color-focus);
+    border-color: var(--pharos-form-element-color-border-focus);
   }
 
   &:disabled {
