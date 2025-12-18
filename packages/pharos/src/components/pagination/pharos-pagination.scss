@@ -8,13 +8,57 @@
 .pagination__wrapper {
   width: 100%;
   display: inline-flex;
+  align-items: center;
 }
 
 .pagination__info {
   padding: 0 var(--pharos-spacing-1-x);
 }
 
+.pagination__input-info {
+  padding: 0 var(--pharos-spacing-1-x) 0 var(--pharos-spacing-one-half-x);
+}
+
+.pagination__input-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.pagination__input {
+  margin-left: var(--pharos-spacing-1-x);
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+  border: 1px solid var(--pharos-form-element-color-border-base);
+  border-radius: var(--pharos-radius-base-standard);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  color: var(--pharos-form-element-color-text-base);
+  background: none;
+  width: auto;
+  box-sizing: border-box;
+  text-align: center;
+
+  &:focus {
+    outline: 1px solid var(--pharos-color-focus);
+    border-color: var(--pharos-form-element-color-border-focus);
+  }
+
+  &:disabled {
+    @include mixins.input-disabled;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    appearance: textfield;
+  }
+}
+
 .pagination__link {
+  height: var(--pharos-spacing-one-and-a-half-x);
   cursor: pointer;
 
   pharos-icon {
@@ -38,4 +82,8 @@
       stroke-width: 0;
     }
   }
+}
+
+.pagination__visually-hidden {
+  @include mixins.hidden;
 }
