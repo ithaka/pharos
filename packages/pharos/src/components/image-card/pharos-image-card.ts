@@ -154,7 +154,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _isSelectableHovered = false;
 
   @query('.card__link--title')
-  private _title!: PharosLink;
+  private _title?: PharosLink;
 
   @query('[data-pharos-component="PharosCheckbox"]')
   private _checkbox!: PharosCheckbox;
@@ -199,7 +199,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _handleImageMouseEnter(): void {
     if (!this.disabled) {
-      this._title['_hover'] = true;
+      if (this._title) {
+        this._title['_hover'] = true;
+      }
       this._handleMouseEnterSelectable();
 
       const mouseEvent = new CustomEvent('pharos-image-card-image-mouseenter');
@@ -209,7 +211,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _handleImageMouseLeave(): void {
     if (!this.disabled) {
-      this._title['_hover'] = false;
+      if (this._title) {
+        this._title['_hover'] = false;
+      }
       this._handleMouseLeaveSelectable();
 
       const mouseEvent = new CustomEvent('pharos-image-card-image-mouseleave');
@@ -540,7 +544,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _isSelectableViaCard(): boolean {
     return Boolean(
       (this._isSelectable() && !this.subtleSelect && !this.disabled) ||
-        (this.subtleSelect && this._isSelected && !this.disabled)
+      (this.subtleSelect && this._isSelected && !this.disabled)
     );
   }
 
