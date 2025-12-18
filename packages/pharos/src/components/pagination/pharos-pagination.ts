@@ -147,7 +147,6 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           subtle
           flex
           href=""
-          aria-label="Go to first page"
           @click=${this._handleClick}
         >
           <pharos-icon name="page-first" a11y-hidden="true"></pharos-icon>
@@ -204,7 +203,6 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           subtle
           flex
           href=""
-          aria-label="Go to last page"
           @click=${this._handleClick}
         >
           <pharos-icon name="page-last" a11y-hidden="true"></pharos-icon>
