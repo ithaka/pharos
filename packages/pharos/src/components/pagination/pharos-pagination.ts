@@ -21,7 +21,7 @@ export type PaginationVariant = (typeof VARIANTS)[number];
  * @fires prev-page - Fires when the previous page link is clicked
  * @fires next-page - Fires when the next page link is clicked
  * @fires last-page - Fires when the last page link is clicked
-  * @fires page-input - Fires when a page number is submitted in the input variant
+ * @fires page-input - Fires when a page number is submitted in the input variant
  */
 export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   private static _inputIdCounter = 0;
