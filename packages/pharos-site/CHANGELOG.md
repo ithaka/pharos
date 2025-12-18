@@ -1,5 +1,18 @@
 # @ithaka/pharos-site
 
+## 7.3.0
+
+### Minor Changes
+
+- [#1152](https://github.com/ithaka/pharos/pull/1152) [`4ca59d4`](https://github.com/ithaka/pharos/commit/4ca59d4c109a56d9d4b5da6a76ae0e41e4c46e2a) Thanks [@jialin-he](https://github.com/jialin-he)! - Add input variant for pagination
+
+### Patch Changes
+
+- [#1103](https://github.com/ithaka/pharos/pull/1103) [`ac02bf9`](https://github.com/ithaka/pharos/commit/ac02bf9c8918ec8967ee1b7343c4ca70171afec3) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Deps-dev updates: bumps the non-major versions of packages
+
+- Updated dependencies [[`e10f4f6`](https://github.com/ithaka/pharos/commit/e10f4f6577a003b1a0e36117b62d9da6e90b093c), [`cadd08d`](https://github.com/ithaka/pharos/commit/cadd08daa2749f0afa394796939e3758f98fb366), [`4ca59d4`](https://github.com/ithaka/pharos/commit/4ca59d4c109a56d9d4b5da6a76ae0e41e4c46e2a), [`ac02bf9`](https://github.com/ithaka/pharos/commit/ac02bf9c8918ec8967ee1b7343c4ca70171afec3), [`8208d18`](https://github.com/ithaka/pharos/commit/8208d189ac959d2fcda42e0ad6bb1ba7c37f9a72), [`ef755f4`](https://github.com/ithaka/pharos/commit/ef755f495b53fd5a14dfbd6dbfd8f68a93ab9bbf), [`3ecf0d1`](https://github.com/ithaka/pharos/commit/3ecf0d1cb349af445b0558430de1a59b54769638), [`17f8fbd`](https://github.com/ithaka/pharos/commit/17f8fbd298063d40ccf09504ae61719bbd5fc2f3), [`3aba97a`](https://github.com/ithaka/pharos/commit/3aba97a356f7956db7fda7937a5ba26cb6391e35), [`ec05491`](https://github.com/ithaka/pharos/commit/ec0549100883fda8101bd683a435cbc8e0cfd518)]:
+  - @ithaka/pharos@14.22.0
+
 ## 7.2.3
 
 ### Patch Changes

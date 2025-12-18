@@ -1,5 +1,11 @@
 # @ithaka/pharos-cli
 
+## 5.6.1
+
+### Patch Changes
+
+- [#1103](https://github.com/ithaka/pharos/pull/1103) [`ac02bf9`](https://github.com/ithaka/pharos/commit/ac02bf9c8918ec8967ee1b7343c4ca70171afec3) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Deps-dev updates: bumps the non-major versions of packages
+
 ## 5.6.0
 
 ### Minor Changes
