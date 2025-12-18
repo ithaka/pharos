@@ -1,5 +1,31 @@
 # @ithaka/pharos
 
+## 14.22.0
+
+### Minor Changes
+
+- [#1078](https://github.com/ithaka/pharos/pull/1078) [`cadd08d`](https://github.com/ithaka/pharos/commit/cadd08daa2749f0afa394796939e3758f98fb366) Thanks [@afiasco](https://github.com/afiasco)! - Default link var to null to avoid additional navigational issues
+
+- [#1152](https://github.com/ithaka/pharos/pull/1152) [`4ca59d4`](https://github.com/ithaka/pharos/commit/4ca59d4c109a56d9d4b5da6a76ae0e41e4c46e2a) Thanks [@jialin-he](https://github.com/jialin-he)! - Add input variant for pagination
+
+- [#1123](https://github.com/ithaka/pharos/pull/1123) [`ef755f4`](https://github.com/ithaka/pharos/commit/ef755f495b53fd5a14dfbd6dbfd8f68a93ab9bbf) Thanks [@brentswisher](https://github.com/brentswisher)! - Add show and hide icons
+
+- [#1115](https://github.com/ithaka/pharos/pull/1115) [`3ecf0d1`](https://github.com/ithaka/pharos/commit/3ecf0d1cb349af445b0558430de1a59b54769638) Thanks [@brentswisher](https://github.com/brentswisher)! - Add gear icon
+
+### Patch Changes
+
+- [#1138](https://github.com/ithaka/pharos/pull/1138) [`e10f4f6`](https://github.com/ithaka/pharos/commit/e10f4f6577a003b1a0e36117b62d9da6e90b093c) Thanks [@brentswisher](https://github.com/brentswisher)! - Add compact spacing option to tabs
+
+- [#1103](https://github.com/ithaka/pharos/pull/1103) [`ac02bf9`](https://github.com/ithaka/pharos/commit/ac02bf9c8918ec8967ee1b7343c4ca70171afec3) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Deps-dev updates: bumps the non-major versions of packages
+
+- [#1154](https://github.com/ithaka/pharos/pull/1154) [`8208d18`](https://github.com/ithaka/pharos/commit/8208d189ac959d2fcda42e0ad6bb1ba7c37f9a72) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix console error thrown when hovering over an image card with no title
+
+- [#1149](https://github.com/ithaka/pharos/pull/1149) [`17f8fbd`](https://github.com/ithaka/pharos/commit/17f8fbd298063d40ccf09504ae61719bbd5fc2f3) Thanks [@brentswisher](https://github.com/brentswisher)! - Add shared helper to centralize text highlighting logic across components
+
+- [#1151](https://github.com/ithaka/pharos/pull/1151) [`3aba97a`](https://github.com/ithaka/pharos/commit/3aba97a356f7956db7fda7937a5ba26cb6391e35) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix display issue with error placeholder in collection image cards
+
+- [#1145](https://github.com/ithaka/pharos/pull/1145) [`ec05491`](https://github.com/ithaka/pharos/commit/ec0549100883fda8101bd683a435cbc8e0cfd518) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix bug where image cards were displaying with no height in Firefox
+
 ## 14.21.0
 
 ### Minor Changes

@@ -4,9 +4,9 @@
     "access": "public"
   },
   "description": "Pharos acts as a guiding light to helps us create consistent, dependable and focused experiences for all of JSTOR users.",
-  "version": "7.2.3",
+  "version": "7.3.0",
   "dependencies": {
-    "@ithaka/pharos": "^14.21.0",
+    "@ithaka/pharos": "^14.22.0",
     "@reach/router": "^1.3.4",
     "@webcomponents/scoped-custom-element-registry": "^0.0.10",
     "gatsby": "^5.15.0",
