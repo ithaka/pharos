@@ -21280,7 +21280,7 @@ __metadata:
     react-dom: "npm:^18.3.1"
     sass: "npm:^1.96.0"
     size-limit: "npm:^12.0.0"
-    storybook: "npm:^10.1.8"
+    storybook: "npm:^10.1.10"
     stylelint: "npm:^16.26.1"
     stylelint-config-standard-scss: "npm:^16.0.0"
     stylelint-scss: "npm:^6.13.0"
@@ -25091,9 +25091,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook@npm:^10.1.8":
-  version: 10.1.8
-  resolution: "storybook@npm:10.1.8"
+"storybook@npm:^10.1.10":
+  version: 10.1.10
+  resolution: "storybook@npm:10.1.10"
   dependencies:
     "@storybook/global": "npm:^5.0.0"
     "@storybook/icons": "npm:^2.0.0"
@@ -25114,7 +25114,7 @@ __metadata:
       optional: true
   bin:
     storybook: ./dist/bin/dispatcher.js
-  checksum: 10c0/f9d059f5ce3ccbe122f5b53f7547b1b0bf28d9de880d8160824bace7dfa18f24710a1424a1584cf52d460a4edfa2808836fbe2c46ab85dfeb392b0a5996fa1b5
+  checksum: 10c0/beff5472ee86a995cbde2789b2aabd941f823e31ca6957bb4434cb8ee3d3703cf1248e44f4b4d402416a52bfee94677e74f233cc906487901e831e8ab610defa
   languageName: node
   linkType: hard
 
