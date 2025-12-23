@@ -60,7 +60,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   public variant: PaginationVariant = 'default';
 
   @state()
-  private _pageInputValue = '';
+  private _pageInputValue: string | null = null;
 
   private readonly _inputId = `pagination-page-number-${PharosPagination._inputIdCounter++}`;
 
@@ -100,7 +100,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
       );
     }
     if (changedProperties.has('currentPage')) {
-      this._pageInputValue = '';
+      this._pageInputValue = null;
     }
 
     if (changedProperties.has('variant') && this.variant && !VARIANTS.includes(this.variant)) {
@@ -251,8 +251,12 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
     this._pageInputValue = target.value;
   }
 
+  private _handlePageInputBlur(): void {
+    this._pageInputValue = null;
+  }
+
   private _renderPageInput(): TemplateResult {
-    const currentText = this._pageInputValue || this.currentPage.toString();
+    const currentText = this._pageInputValue ?? this.currentPage.toString();
     const digitWidth = currentText.length + 2;
 
     return html`
@@ -270,6 +274,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           ?disabled=${this.totalPages < 1}
           @keydown=${this._handlePageKeydown}
           @input=${this._handlePageInputChange}
+          @blur=${this._handlePageInputBlur}
         />
         <span class="pagination__input-info">of ${this.totalPages}</span>
       </div>
