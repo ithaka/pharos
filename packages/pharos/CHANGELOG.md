@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.22.1
+
+### Patch Changes
+
+- [#1159](https://github.com/ithaka/pharos/pull/1159) [`222a3b0`](https://github.com/ithaka/pharos/commit/222a3b0aca1ddf1a9b18d9480b1f6aedfe9c52d5) Thanks [@jialin-he](https://github.com/jialin-he)! - Allow pagination input to delete into empty state
+
 ## 14.22.0
 
 ### Minor Changes
