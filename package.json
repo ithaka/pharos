@@ -91,7 +91,7 @@
     "eslint-plugin-react-hooks": "^7.0.0",
     "eslint-plugin-storybook": "^10.1.11",
     "eslint-plugin-wc": "^3.0.2",
-    "globals": "^16.5.0",
+    "globals": "^17.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
     "lit": "^3.3.2",
