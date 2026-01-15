@@ -87,7 +87,7 @@
     "rimraf": "^6.1.0",
     "sassdoc": "^2.7.4",
     "sinon": "^21.0.1",
-    "style-dictionary": "^5.1.1",
+    "style-dictionary": "^5.1.3",
     "ts-lit-plugin": "^2.0.2",
     "typescript": "^5.9.3"
   },
