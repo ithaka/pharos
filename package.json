@@ -100,7 +100,7 @@
     "postcss": "^8.5.6",
     "postcss-import": "^16.1.1",
     "postcss-media-minmax": "^5.0.0",
-    "postcss-preset-env": "^10.6.1",
+    "postcss-preset-env": "^11.1.1",
     "prettier": "^3.7.4",
     "pretty-quick": "^4.2.2",
     "react": "^18.3.1",
