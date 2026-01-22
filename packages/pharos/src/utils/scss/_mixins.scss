@@ -546,7 +546,9 @@
       $max-margin: list.nth(map.values($breakpoints), $i + 1);
 
       @include between($breakpoint, $upper) {
-        $layout-margin: if($fixed-margin, $margin, minmax($margin, $max-margin));
+        $layout-margin: if(
+          sass($fixed-margin): $margin; else: minmax($margin, $max-margin),
+        );
 
         grid-template-columns: $layout-margin auto $layout-margin;
         grid-template-rows: auto;
@@ -567,7 +569,9 @@
 @mixin layout-content-width($layout) {
   $breakpoints: map.get(variables.$layouts, $layout);
   $fixed-width: $layout == '1-col';
-  $property: if($fixed-width, width, min-width);
+  $property: if(
+    sass($fixed-width): width; else: min-width,
+  );
 
   @if $fixed-width {
     @include at-least(medium) {
