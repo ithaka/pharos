@@ -1,7 +1,9 @@
 @use 'sass:math';
 
 @function content-width($width, $margin, $sidenav: false) {
-  $side-width: if($sidenav, 17, 0);
+  $side-width: if(
+    sass($sidenav): 17; else: 0,
+  );
 
   @return $width - $side-width - 2 * $margin;
 }
