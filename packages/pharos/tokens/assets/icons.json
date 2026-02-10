@@ -2,6 +2,7 @@
   "asset": {
     "icon": {
       "academic-content": { "value": "assets/icons/academic-content.svg" },
+      "accessibility": { "value": "assets/icons/accessibility.svg" },
       "add": { "value": "assets/icons/add.svg" },
       "add-to-folder": { "value": "assets/icons/add-to-folder.svg" },
       "arrow-down": { "value": "assets/icons/arrow-down.svg" },
