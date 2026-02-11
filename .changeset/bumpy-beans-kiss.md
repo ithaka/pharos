@@ -2,4 +2,4 @@
 '@ithaka/pharos': patch
 ---
 
-Add new icon
+Add new accessibility icon
