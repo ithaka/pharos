@@ -35,10 +35,10 @@ jobs:
           fetch-depth: 0
           ref: refs/pull/${{ github.event.inputs.pr_number }}/merge
 
-      - name: Setup Node.js 22.x
+      - name: Setup Node.js 24.x
         uses: actions/setup-node@v6
         with:
-          node-version: 22.x
+          node-version: 24.x
           registry-url: 'https://registry.npmjs.org'
 
       - name: Get yarn cache directory path
