@@ -1,5 +1,13 @@
 # @ithaka/pharos
 
+## 14.22.2
+
+### Patch Changes
+
+- [#1193](https://github.com/ithaka/pharos/pull/1193) [`8160827`](https://github.com/ithaka/pharos/commit/81608276071f677a03820393b42b19e8491ae5a1) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add new accessibility icon
+
+- [#1192](https://github.com/ithaka/pharos/pull/1192) [`68e7f2d`](https://github.com/ithaka/pharos/commit/68e7f2d4571fe716ddc073636acd4fc62758cbfa) Thanks [@brentswisher](https://github.com/brentswisher)! - Migrate sass if usage to new syntax
+
 ## 14.22.1
 
 ### Patch Changes
