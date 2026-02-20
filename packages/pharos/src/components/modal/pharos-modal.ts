@@ -10,7 +10,7 @@ import focusable from '../../utils/focusable';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosButton } from '../button/pharos-button';
 import { PharosHeading } from '../heading/pharos-heading';
-import { FocusTrap } from '@ithaka/focus-trap';
+import { FocusTrapController } from '../../utils/focus-trap-controller';
 
 const CLOSE_BUTTONS = `[data-modal-close],[data-pharos-component="PharosButton"]#close-button`;
 const FOCUS_ELEMENT = `[data-modal-focus]`;
@@ -38,8 +38,12 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-button': PharosButton,
     'pharos-heading': PharosHeading,
-    'focus-trap': FocusTrap,
   };
+
+  private _focusTrapController = new FocusTrapController(
+    this,
+    () => this.shadowRoot?.querySelector('.modal__content') as HTMLElement | null
+  );
 
   /**
    * Indicates if the modal is open.
@@ -105,8 +109,10 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
       if (this.open) {
         body?.classList.add('pharos-modal__body');
         this._focusContents();
+        this._focusTrapController.activate();
       } else {
         body?.classList.remove('pharos-modal__body');
+        this._focusTrapController.deactivate();
         this._returnTriggerFocus();
       }
 
@@ -264,29 +270,27 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
           aria-describedby=${ifDefined(this.descriptionId)}
           @click=${this._handleDialogClick}
         >
-          <focus-trap>
-            <div class="modal__content">
-              <div class="modal__header">
-                <pharos-heading id="modal-header" level="2" preset="5" no-margin
-                  >${this.header}</pharos-heading
-                >
-                <pharos-button
-                  id="close-button"
-                  type="button"
-                  variant="subtle"
-                  icon="close"
-                  a11y-label="Close modal"
-                ></pharos-button>
-              </div>
-              <div class="modal__body">
-                ${this.descriptionContent}
-                <slot></slot>
-              </div>
-              <div class="modal__footer${this._isFooterEmpty ? '--empty' : ''}">
-                <slot @slotchange=${this._handleFooterSlotchange} name="footer"></slot>
-              </div>
+          <div class="modal__content">
+            <div class="modal__header">
+              <pharos-heading id="modal-header" level="2" preset="5" no-margin
+                >${this.header}</pharos-heading
+              >
+              <pharos-button
+                id="close-button"
+                type="button"
+                variant="subtle"
+                icon="close"
+                a11y-label="Close modal"
+              ></pharos-button>
             </div>
-          </focus-trap>
+            <div class="modal__body">
+              ${this.descriptionContent}
+              <slot></slot>
+            </div>
+            <div class="modal__footer${this._isFooterEmpty ? '--empty' : ''}">
+              <slot @slotchange=${this._handleFooterSlotchange} name="footer"></slot>
+            </div>
+          </div>
         </div>
       </div>
     `;

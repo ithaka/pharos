@@ -9,7 +9,7 @@ import { sheetStyles } from './pharos-sheet.css';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosButton } from '../button/pharos-button';
 import { PharosHeading } from '../heading/pharos-heading';
-import { FocusTrap } from '@ithaka/focus-trap';
+import { FocusTrapController } from '../../utils/focus-trap-controller';
 
 const CLOSE_BUTTONS = `[data-sheet-close],[data-pharos-component="PharosButton"]#close-button`;
 const FOCUS_ELEMENT = `[data-sheet-focus]`;
@@ -35,8 +35,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   static elementDefinitions = {
     'pharos-button': PharosButton,
     'pharos-heading': PharosHeading,
-    'focus-trap': FocusTrap,
   };
+
+  private _focusTrapController = new FocusTrapController(
+    this,
+    () => this.shadowRoot?.querySelector('.sheet__content') as HTMLElement | null
+  );
 
   MAX_EXPAND_PERCENTAGE = '95%';
   MIN_EXPAND_PERCENTAGE = '60%';
@@ -156,7 +160,9 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         }
 
         this._focusContents();
+        this._focusTrapController.activate();
       } else {
+        this._focusTrapController.deactivate();
         this._returnTriggerFocus();
       }
 
@@ -469,22 +475,20 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         @touchstart=${this._handleTouchDragStart}
         @touchend=${this._handleDragEnd}
       >
-        <focus-trap>
-          <div class="sheet__content">
-            <div
-              class="sheet__handle_wrapper"
-              @mousedown=${this._handleMouseDragStart}
-              @mouseup=${this._handleDragEnd}
-            >
-              <div class="sheet__handle" tabindex="-1" data-sheet-handle></div>
-            </div>
-            ${this._renderCloseButton()}
-            <div class="sheet__body">
-              ${this.descriptionContent}
-              <slot></slot>
-            </div>
+        <div class="sheet__content">
+          <div
+            class="sheet__handle_wrapper"
+            @mousedown=${this._handleMouseDragStart}
+            @mouseup=${this._handleDragEnd}
+          >
+            <div class="sheet__handle" tabindex="-1" data-sheet-handle></div>
           </div>
-        </focus-trap>
+          ${this._renderCloseButton()}
+          <div class="sheet__body">
+            ${this.descriptionContent}
+            <slot></slot>
+          </div>
+        </div>
       </div>
     `;
   }

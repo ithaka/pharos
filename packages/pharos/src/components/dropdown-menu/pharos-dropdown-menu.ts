@@ -11,7 +11,7 @@ import type { PharosDropdownMenuNavLink } from '../dropdown-menu-nav/pharos-drop
 import { OverlayElement } from '../base/overlay-element';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import FocusMixin from '../../utils/mixins/focus';
-import { FocusTrap } from '@ithaka/focus-trap';
+import { FocusTrapController } from '../../utils/focus-trap-controller';
 
 import type { Placement, PositioningStrategy } from '../base/overlay-element';
 import { autoUpdate, computePosition, flip } from '../base/overlay-element';
@@ -34,9 +34,10 @@ const _allMenuItemsSelector = '[data-pharos-component="PharosDropdownMenuItem"]'
  *
  */
 export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayElement)) {
-  static elementDefinitions = {
-    'focus-trap': FocusTrap,
-  };
+  private _focusTrapController = new FocusTrapController(
+    this,
+    () => this.shadowRoot?.querySelector('.dropdown-menu__list') as HTMLElement | null
+  );
 
   /**
    * Indicates if the dropdown should display a checkmark on the selected item.
@@ -155,6 +156,11 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
       if (this.open) {
         this._setupMenu();
+        if (!this._navMenu) {
+          this._focusTrapController.activate();
+        }
+      } else if (!this._navMenu) {
+        this._focusTrapController.deactivate();
       }
 
       if (!this._hasHover || this._enterByKey) {
@@ -541,8 +547,6 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   protected override render(): TemplateResult {
-    return this._navMenu
-      ? html`${this._renderList()}`
-      : html`<focus-trap>${this._renderList()}</focus-trap>`;
+    return html`${this._renderList()}`;
   }
 }
