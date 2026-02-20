@@ -674,7 +674,7 @@ describe('pharos-dropdown-menu', () => {
     component = await fixture(getNoItemDropdown(), {
       parentNode,
     });
-    expect(component.renderRoot.querySelector('focus-trap')).to.be.null;
+    expect(component['_focusTrapController']['_trap']).to.be.null;
   });
 
   it('can be opened dynamically', async () => {
