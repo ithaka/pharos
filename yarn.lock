@@ -3695,13 +3695,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ithaka/focus-trap@npm:2.0.1":
-  version: 2.0.1
-  resolution: "@ithaka/focus-trap@npm:2.0.1"
-  checksum: 10c0/b010c300c320077d6f5cc4c08f6100fc932ae0a16c294d2558604175cb5cc0809a2c283da57c11351fd6518d275cda09e13d60e276da1aae5801f86cf8c21226
-  languageName: node
-  linkType: hard
-
 "@ithaka/pharos-cli@workspace:packages/pharos-cli":
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos-cli@workspace:packages/pharos-cli"
@@ -3767,7 +3760,6 @@ __metadata:
   dependencies:
     "@custom-elements-manifest/analyzer": "npm:^0.11.0"
     "@floating-ui/dom": "npm:^1.7.5"
-    "@ithaka/focus-trap": "npm:2.0.1"
     "@lit-labs/scoped-registry-mixin": "npm:^1.0.4"
     "@open-wc/dedupe-mixin": "npm:^2.0.1"
     "@open-wc/testing": "patch:@open-wc/testing@npm%3A4.0.0#~/.yarn/patches/@open-wc-testing-npm-4.0.0-96dbe4d202.patch"
@@ -3779,6 +3771,7 @@ __metadata:
     "@web/test-runner-playwright": "npm:^0.11.1"
     autoprefixer: "npm:^10.4.24"
     chokidar: "npm:^5.0.0"
+    focus-trap: "npm:^7.6.4"
     globby: "npm:^16.1.0"
     lit: "npm:^3.3.2"
     minify-html-literals: "npm:^1.3.5"
@@ -13882,6 +13875,15 @@ __metadata:
     inherits: "npm:^2.0.3"
     readable-stream: "npm:^2.3.6"
   checksum: 10c0/2cd4f65b728d5f388197a03dafabc6a5e4f0c2ed1a2d912e288f7aa1c2996dd90875e55b50cf32c78dca55ad2e2dfae5d3db09b223838388033d87cf5920dd87
+  languageName: node
+  linkType: hard
+
+"focus-trap@npm:^7.6.4":
+  version: 7.8.0
+  resolution: "focus-trap@npm:7.8.0"
+  dependencies:
+    tabbable: "npm:^6.4.0"
+  checksum: 10c0/b75f97c2896de569fc779f9b898b7c4a48b0605176b2a7a4b70a64bc2ae39a0b3c66fc7c8b2cd4e5d1e0a439b031e025a7cd1031d3a68ab652c0495bc14f070a
   languageName: node
   linkType: hard
 
@@ -25401,6 +25403,13 @@ __metadata:
   version: 0.1.0
   resolution: "system-architecture@npm:0.1.0"
   checksum: 10c0/1969974ea5d31a9ac7c38f2657cfe8255b36f9e1d5ba3c58cb84c24fbeedf562778b8511f18a0abe6d70ae90148cfcaf145ecf26e37c0a53a3829076f3238cbb
+  languageName: node
+  linkType: hard
+
+"tabbable@npm:^6.4.0":
+  version: 6.4.0
+  resolution: "tabbable@npm:6.4.0"
+  checksum: 10c0/d931427f4a96b801fd8801ba296a702119e06f70ad262fed8abc5271225c9f1ca51b89fdec4fb2f22e1d35acb3d2881db0a17cedc758272e9ecb540d00299d76
   languageName: node
   linkType: hard
 

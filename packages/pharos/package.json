@@ -57,9 +57,9 @@
   "homepage": "https://pharos.jstor.org",
   "dependencies": {
     "@floating-ui/dom": "^1.7.5",
-    "@ithaka/focus-trap": "2.0.1",
     "@lit-labs/scoped-registry-mixin": "^1.0.4",
     "@open-wc/dedupe-mixin": "^2.0.1",
+    "focus-trap": "^7.6.4",
     "lit": "^3.3.2",
     "uuid": "^13.0.0"
   },
