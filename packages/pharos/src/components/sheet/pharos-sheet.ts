@@ -39,7 +39,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
 
   private _focusTrapController = new FocusTrapController(
     this,
-    () => this.shadowRoot?.querySelector('.sheet__content') as HTMLElement | null
+    () => this.shadowRoot?.querySelector('.focus-trap') as HTMLElement | null
   );
 
   MAX_EXPAND_PERCENTAGE = '95%';
@@ -475,7 +475,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
         @touchstart=${this._handleTouchDragStart}
         @touchend=${this._handleDragEnd}
       >
-        <div class="sheet__content">
+        <div class="sheet__content focus-trap">
           <div
             class="sheet__handle_wrapper"
             @mousedown=${this._handleMouseDragStart}
