@@ -36,7 +36,7 @@ const _allMenuItemsSelector = '[data-pharos-component="PharosDropdownMenuItem"]'
 export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayElement)) {
   private _focusTrapController = new FocusTrapController(
     this,
-    () => this.shadowRoot?.querySelector('.dropdown-menu__list') as HTMLElement | null
+    () => this.shadowRoot?.querySelector('.focus-trap') as HTMLElement | null
   );
 
   /**
@@ -534,7 +534,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   private _renderList(): TemplateResult {
     return html`
       <ul
-        class="dropdown-menu__list"
+        class="dropdown-menu__list focus-trap"
         style=${styleMap(this.fullWidth ? { width: `${this._targetWidth}px` } : {})}
         role="menu"
         tabindex=${this._hasItems() ? '-1' : '0'}

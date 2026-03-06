@@ -42,7 +42,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
 
   private _focusTrapController = new FocusTrapController(
     this,
-    () => this.shadowRoot?.querySelector('.modal__content') as HTMLElement | null
+    () => this.shadowRoot?.querySelector('.focus-trap') as HTMLElement | null
   );
 
   /**
@@ -270,7 +270,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
           aria-describedby=${ifDefined(this.descriptionId)}
           @click=${this._handleDialogClick}
         >
-          <div class="modal__content">
+          <div class="modal__content focus-trap">
             <div class="modal__header">
               <pharos-heading id="modal-header" level="2" preset="5" no-margin
                 >${this.header}</pharos-heading
