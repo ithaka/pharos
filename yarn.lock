@@ -20780,7 +20780,7 @@ __metadata:
     storybook: "npm:^10.2.8"
     stylelint: "npm:^17.4.0"
     stylelint-config-standard-scss: "npm:^17.0.0"
-    stylelint-scss: "npm:^6.14.0"
+    stylelint-scss: "npm:^7.0.0"
     svglint: "npm:^4.2.1"
     typescript: "npm:^5.9.3"
     vite: "npm:^7.3.1"
@@ -25139,24 +25139,6 @@ __metadata:
   peerDependencies:
     stylelint: ^17.0.0
   checksum: 10c0/d8942552d53a3afda59b64d0c49503bb626fe5cef39a9e8c9583fcd60869f21431125ef4480ff27a59f7f2cf0da8af810d377129ef1d670ddc5def4defe2880c
-  languageName: node
-  linkType: hard
-
-"stylelint-scss@npm:^6.14.0":
-  version: 6.14.0
-  resolution: "stylelint-scss@npm:6.14.0"
-  dependencies:
-    css-tree: "npm:^3.0.1"
-    is-plain-object: "npm:^5.0.0"
-    known-css-properties: "npm:^0.37.0"
-    mdn-data: "npm:^2.25.0"
-    postcss-media-query-parser: "npm:^0.2.3"
-    postcss-resolve-nested-selector: "npm:^0.1.6"
-    postcss-selector-parser: "npm:^7.1.1"
-    postcss-value-parser: "npm:^4.2.0"
-  peerDependencies:
-    stylelint: ^16.8.2
-  checksum: 10c0/8bb49acc172347c644770939171d4e236dc35f5a2e9095d97ec8abbf8d1f4afe4a77a6c7b7e5e4113aa6feb0ece72d0d9b31b368183d98c9fdb040014cf2742d
   languageName: node
   linkType: hard
 
