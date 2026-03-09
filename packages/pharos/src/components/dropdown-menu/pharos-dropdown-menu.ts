@@ -34,10 +34,7 @@ const _allMenuItemsSelector = '[data-pharos-component="PharosDropdownMenuItem"]'
  *
  */
 export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayElement)) {
-  private _focusTrapController = new FocusTrapController(
-    this,
-    () => this.shadowRoot?.querySelector('.focus-trap') as HTMLElement | null
-  );
+  private _focusTrapController = new FocusTrapController(this, '.focus-trap');
 
   /**
    * Indicates if the dropdown should display a checkmark on the selected item.

@@ -26,10 +26,7 @@ const FOCUS_ELEMENT = `[data-popover-focus]`;
  *
  */
 export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement)) {
-  private _focusTrapController = new FocusTrapController(
-    this,
-    () => this.shadowRoot?.querySelector('.popover') as HTMLElement | null
-  );
+  private _focusTrapController = new FocusTrapController(this, '.popover');
 
   /**
    * Indicates the menu item is displayed on a dark background.
