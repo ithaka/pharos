@@ -40,10 +40,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
     'pharos-heading': PharosHeading,
   };
 
-  private _focusTrapController = new FocusTrapController(
-    this,
-    () => this.shadowRoot?.querySelector('.focus-trap') as HTMLElement | null
-  );
+  private _focusTrapController = new FocusTrapController(this, '.focus-trap');
 
   /**
    * Indicates if the modal is open.
