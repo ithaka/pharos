@@ -1,5 +1,4 @@
 import js from '@eslint/js';
-import babelParser from '@babel/eslint-parser';
 import reactPlugin from 'eslint-plugin-react';
 import prettierPlugin from 'eslint-plugin-prettier';
 import storybookPlugin from 'eslint-plugin-storybook';
@@ -20,23 +19,12 @@ const globalIgnores = [
 
 const pharosConfig = {
   languageOptions: {
-    parser: babelParser,
     globals: {
       ...globals.browser,
       ...globals.node,
     },
-    parserOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
-      requireConfigFile: false,
-      ecmaFeatures: {
-        jsx: true,
-      },
-      babelOptions: {
-        plugins: ['@babel/plugin-syntax-import-assertions'],
-        presets: ['@babel/preset-react'],
-      },
-    },
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
   plugins: {
     reactPlugin,
