@@ -60,12 +60,7 @@ const config = {
       plugins: [react()],
       optimizeDeps: {
         exclude: ['fsevents'],
-        include: [
-          '@storybook/web-components',
-          '@vitejs/plugin-react',
-          'lit/directives/style-map.js',
-          'uuid',
-        ],
+        include: ['@storybook/web-components', 'lit/directives/style-map.js', 'uuid'],
       },
     });
   },
