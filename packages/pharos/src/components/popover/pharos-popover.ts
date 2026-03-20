@@ -26,7 +26,7 @@ const FOCUS_ELEMENT = `[data-popover-focus]`;
  *
  */
 export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement)) {
-  private _focusTrapController = new FocusTrapController(this, '.popover');
+  private _focusTrapController = new FocusTrapController(this, '.focus-trap');
 
   /**
    * Indicates the menu item is displayed on a dark background.
@@ -377,7 +377,7 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   protected override render(): TemplateResult {
     return html`
       <div
-        class="popover"
+        class="popover focus-trap"
         role="dialog"
         aria-label=${ifDefined(this.a11yLabel)}
         aria-labelledby=${ifDefined(this.labelledBy)}
