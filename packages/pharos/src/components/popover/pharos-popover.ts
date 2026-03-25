@@ -4,7 +4,7 @@ import { popoverStyles } from './pharos-popover.css';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import FocusMixin from '../../utils/mixins/focus';
 import { OverlayElement } from '../base/overlay-element';
-import { FocusTrap } from '@ithaka/focus-trap';
+import { FocusTrapController } from '../../utils/focus-trap-controller';
 import { query, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import debounce from '../../utils/debounce';
@@ -26,9 +26,7 @@ const FOCUS_ELEMENT = `[data-popover-focus]`;
  *
  */
 export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement)) {
-  static elementDefinitions = {
-    'focus-trap': FocusTrap,
-  };
+  private _focusTrapController = new FocusTrapController(this, '.focus-trap');
 
   /**
    * Indicates the menu item is displayed on a dark background.
@@ -114,6 +112,9 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
     if (changedProperties.has('open')) {
       if (this.open) {
         this._setupPopover();
+        this._focusTrapController.activate();
+      } else {
+        this._focusTrapController.deactivate();
       }
 
       if (!this._currentTrigger?.hasAttribute('data-popover-hover') || this._enterByKey) {
@@ -374,15 +375,15 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   protected override render(): TemplateResult {
-    return html` <focus-trap>
+    return html`
       <div
-        class="popover"
+        class="popover focus-trap"
         role="dialog"
         aria-label=${ifDefined(this.a11yLabel)}
         aria-labelledby=${ifDefined(this.labelledBy)}
       >
         <slot></slot>
       </div>
-    </focus-trap>`;
+    `;
   }
 }
