@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.22.3
+
+### Patch Changes
+
+- [#1239](https://github.com/ithaka/pharos/pull/1239) [`597e2d9`](https://github.com/ithaka/pharos/commit/597e2d90a0b6d265080083fe1badc3a286fd553e) Thanks [@brentswisher](https://github.com/brentswisher)! - Update underlying focus trap management library to https://github.com/focus-trap/focus-trap
+
 ## 14.22.2
 
 ### Patch Changes
