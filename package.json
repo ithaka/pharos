@@ -116,14 +116,13 @@
     "vite": "^7.3.1"
   },
   "resolutions": {
-    "@storybook/addon-a11y": "10.3.3",
-    "@storybook/addon-docs": "10.3.3",
-    "@storybook/addon-links": "10.3.3",
-    "@storybook/react-vite": "10.3.3",
-    "@storybook/web-components": "10.3.3",
-    "@storybook/web-components-vite": "10.3.3",
-    "eslint-plugin-storybook": "10.3.3",
-    "storybook": "10.3.3"
+    "immutable": "^3.8.3",
+    "marked": "^4.0.10",
+    "minimatch": "^9.0.7",
+    "path-to-regexp": "^0.1.13",
+    "picomatch": "^4.0.4",
+    "semver-regex": "^3.1.4",
+    "serialize-javascript": "^7.0.3"
   },
   "workspaces": {
     "packages": [
