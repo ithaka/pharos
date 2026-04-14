@@ -105,8 +105,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
 
       if (this.open) {
         body?.classList.add('pharos-modal__body');
-        this._focusContents();
-        this._focusTrapController.activate();
+        this._focusContents().then(() => this._focusTrapController.activate());
       } else {
         body?.classList.remove('pharos-modal__body');
         this._focusTrapController.deactivate();
@@ -201,15 +200,16 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
   private async _focusContents(): Promise<void> {
     this._currentTrigger = this.ownerDocument.activeElement;
     const focusElement = this.querySelector(FOCUS_ELEMENT);
+
+    await new Promise((r) => requestAnimationFrame(r));
+
     if (focusElement) {
-      await 0;
       (focusElement as HTMLElement).focus();
     } else {
-      const tabbable = this.shadowRoot?.querySelector(focusable);
-      if (tabbable) {
-        await 0;
-        (tabbable as HTMLElement).focus();
-      }
+      const tabbable =
+        this.shadowRoot?.querySelector<HTMLElement>(focusable) ??
+        this.shadowRoot?.querySelector<HTMLElement>('#close-button');
+      tabbable?.focus();
     }
   }
 
@@ -270,7 +270,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
           <div class="modal__content focus-trap">
             <div class="modal__header">
               <pharos-heading id="modal-header" level="2" preset="5" no-margin
-                >${this.header}</pharos-heading
+                >${this.header} THIS IS MY TEST</pharos-heading
               >
               <pharos-button
                 id="close-button"
