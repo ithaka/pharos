@@ -270,7 +270,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
           <div class="modal__content focus-trap">
             <div class="modal__header">
               <pharos-heading id="modal-header" level="2" preset="5" no-margin
-                >${this.header} THIS IS MY TEST</pharos-heading
+                >${this.header}</pharos-heading
               >
               <pharos-button
                 id="close-button"
