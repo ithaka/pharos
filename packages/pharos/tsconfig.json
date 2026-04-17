@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2021",
     "module": "es2022",
-    "lib": ["es2021", "dom", "dom.iterable"],
+    "lib": ["es2021", "dom"],
     "jsx": "react-jsx",
     "declaration": true,
     "declarationMap": true,
