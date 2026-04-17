@@ -1,4 +1,10 @@
 exports.onCreateWebpackConfig = ({ getConfig, stage, actions, plugins }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      symlinks: false,
+    },
+  });
+
   if (stage === 'build-javascript') {
     const currentConfig = getConfig();
 
