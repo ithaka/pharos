@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { iconNames } from '../../utils/iconNames';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
@@ -21,9 +22,9 @@ type Story = StoryObj<StoryArgs>;
 export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-icon
-      name=${args.name}
-      a11y-title=${args.a11yTitle}
-      a11y-hidden=${args.a11yHidden}
+      name=${ifDefined(args.name)}
+      a11y-title=${ifDefined(args.a11yTitle)}
+      a11y-hidden=${ifDefined(args.a11yHidden)}
       class="icon-example__icon"
     ></storybook-pharos-icon>
   `,

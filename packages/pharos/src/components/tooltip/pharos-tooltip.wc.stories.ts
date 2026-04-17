@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { useEffect } from 'storybook/preview-api';
 
 import { defaultArgs, argTypes, type StoryArgs, type ComponentArgs } from './storyArgs';
@@ -34,11 +35,11 @@ export const Base: Story = {
     effect();
     return html`
       <div style="display: grid; grid-gap: 8rem; margin-top: 5rem; justify-content: space-evenly;">
-        <storybook-pharos-button id="my-button" data-tooltip-id="${args.id}"
+        <storybook-pharos-button id="my-button" data-tooltip-id="${ifDefined(args.id)}"
           >${args.targetText}</storybook-pharos-button
         >
         <storybook-pharos-tooltip
-          id="${args.id}"
+          id="${ifDefined(args.id)}"
           .fullWidth="${args.fullWidth}"
           .open="${args.open}"
           .placement="${args.placement}"
