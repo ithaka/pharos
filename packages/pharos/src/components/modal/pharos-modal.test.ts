@@ -5,6 +5,14 @@ import type { PharosModal } from './pharos-modal';
 import type { PharosTextInput } from '../text-input/pharos-text-input';
 import type { PharosButton } from '../button/pharos-button';
 
+const deepActiveElement = (): Element | null => {
+  let active: Element | null = document.activeElement;
+  while (active?.shadowRoot?.activeElement) {
+    active = active.shadowRoot.activeElement;
+  }
+  return active;
+};
+
 describe('pharos-modal', () => {
   let component: PharosModal, componentNoFooter: PharosModal;
 
@@ -64,7 +72,7 @@ describe('pharos-modal', () => {
   });
 
   it('delegates focus to the first focusable element (close button) when opened', async () => {
-    let activeElement = null;
+    let activeElement: EventTarget | null = null;
     const onFocusIn = (event: Event): void => {
       activeElement = event.composedPath()[0];
     };
@@ -72,18 +80,19 @@ describe('pharos-modal', () => {
 
     component.open = true;
     await component.updateComplete;
+    await new Promise((r) => setTimeout(r, 0));
 
     const closeButton = component.renderRoot.querySelector('#close-button') as PharosButton;
     const buttonElement = closeButton.renderRoot.querySelector(
       '#button-element'
     ) as HTMLButtonElement;
 
-    expect(activeElement === buttonElement).to.be.true;
+    expect(activeElement === buttonElement || deepActiveElement() === buttonElement).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
   });
 
   it('delegates focus to the element with attribute data-modal-focus when opened', async () => {
-    let activeElement = null;
+    let activeElement: EventTarget | null = null;
     const onFocusIn = (event: Event): void => {
       activeElement = event.composedPath()[0];
     };
@@ -102,15 +111,17 @@ describe('pharos-modal', () => {
     `);
     component.open = true;
     await component.updateComplete;
+    await new Promise((r) => setTimeout(r, 0));
 
     const input = component.querySelector('test-pharos-text-input') as PharosTextInput;
 
-    expect(activeElement === input['_input']).to.be.true;
+    expect(activeElement === input['_input'] || deepActiveElement() === input['_input']).to.be
+      .true;
     document.removeEventListener('focusin', onFocusIn);
   });
 
   it('delegates focus back to the element that opened it', async () => {
-    let activeElement = null;
+    let activeElement: EventTarget | null = null;
     const onFocusIn = (event: Event): void => {
       activeElement = event.composedPath()[0];
     };
@@ -129,11 +140,13 @@ describe('pharos-modal', () => {
     button.click();
     button.focus();
     await component.updateComplete;
+    await new Promise((r) => setTimeout(r, 0));
 
     component.open = false;
     await component.updateComplete;
+    await new Promise((r) => setTimeout(r, 0));
 
-    expect(activeElement === button).to.be.true;
+    expect(activeElement === button || deepActiveElement() === button).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
   });
 

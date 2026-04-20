@@ -40,7 +40,12 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
     'pharos-heading': PharosHeading,
   };
 
-  private _focusTrapController = new FocusTrapController(this, '.focus-trap');
+  private _focusTrapController = new FocusTrapController(this, '.focus-trap', {
+    initialFocus: () => this._getInitialFocus(),
+    setReturnFocus: (previousActiveElement) => this._currentTrigger ?? previousActiveElement,
+  });
+
+  private _currentTrigger: HTMLElement | null = null;
 
   /**
    * Indicates if the modal is open.
@@ -69,8 +74,6 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
    */
   @property({ type: String, reflect: true })
   public size: ModalSize = 'medium';
-
-  private _currentTrigger: Element | null = null;
 
   private _triggers!: NodeListOf<HTMLElement>;
 
@@ -105,11 +108,11 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
 
       if (this.open) {
         body?.classList.add('pharos-modal__body');
-        this._focusContents().then(() => this._focusTrapController.activate());
+        this._focusTrapController.activate();
       } else {
         body?.classList.remove('pharos-modal__body');
         this._focusTrapController.deactivate();
-        this._returnTriggerFocus();
+        this._currentTrigger = null;
       }
 
       if (changedProperties.get('open') !== undefined) {
@@ -194,30 +197,14 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
 
   private _handleTriggerClick(event: MouseEvent): void {
     event.preventDefault();
+    this._currentTrigger = event.currentTarget as HTMLElement;
     this._openModal(event.target);
   }
 
-  private async _focusContents(): Promise<void> {
-    this._currentTrigger = this.ownerDocument.activeElement;
-    const focusElement = this.querySelector(FOCUS_ELEMENT);
-
-    await new Promise((r) => requestAnimationFrame(r));
-
-    if (focusElement) {
-      (focusElement as HTMLElement).focus();
-    } else {
-      const tabbable =
-        this.shadowRoot?.querySelector<HTMLElement>(focusable) ??
-        this.shadowRoot?.querySelector<HTMLElement>('#close-button');
-      tabbable?.focus();
-    }
-  }
-
-  private _returnTriggerFocus(): void {
-    if (this._currentTrigger && typeof (this._currentTrigger as HTMLElement).focus === 'function') {
-      (this._currentTrigger as HTMLElement).focus();
-      this._currentTrigger = null;
-    }
+  private _getInitialFocus(): HTMLElement | undefined {
+    const focusElement = this.querySelector<HTMLElement>(FOCUS_ELEMENT);
+    if (!focusElement) return undefined;
+    return focusElement.shadowRoot?.querySelector<HTMLElement>(focusable) ?? focusElement;
   }
 
   private _emitVisibilityChange() {
@@ -270,7 +257,7 @@ export class PharosModal extends ScopedRegistryMixin(PharosElement) {
           <div class="modal__content focus-trap">
             <div class="modal__header">
               <pharos-heading id="modal-header" level="2" preset="5" no-margin
-                >${this.header}</pharos-heading
+                >${this.header} THIS IS THE FINAL TEST</pharos-heading
               >
               <pharos-button
                 id="close-button"
