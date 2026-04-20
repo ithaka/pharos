@@ -5,14 +5,6 @@ import type { PharosModal } from './pharos-modal';
 import type { PharosTextInput } from '../text-input/pharos-text-input';
 import type { PharosButton } from '../button/pharos-button';
 
-const deepActiveElement = (): Element | null => {
-  let active: Element | null = document.activeElement;
-  while (active?.shadowRoot?.activeElement) {
-    active = active.shadowRoot.activeElement;
-  }
-  return active;
-};
-
 describe('pharos-modal', () => {
   let component: PharosModal, componentNoFooter: PharosModal;
 
@@ -87,7 +79,7 @@ describe('pharos-modal', () => {
       '#button-element'
     ) as HTMLButtonElement;
 
-    expect(activeElement === buttonElement || deepActiveElement() === buttonElement).to.be.true;
+    expect(activeElement === buttonElement).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -115,8 +107,7 @@ describe('pharos-modal', () => {
 
     const input = component.querySelector('test-pharos-text-input') as PharosTextInput;
 
-    expect(activeElement === input['_input'] || deepActiveElement() === input['_input']).to.be
-      .true;
+    expect(activeElement === input['_input']).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -146,7 +137,7 @@ describe('pharos-modal', () => {
     await component.updateComplete;
     await new Promise((r) => setTimeout(r, 0));
 
-    expect(activeElement === button || deepActiveElement() === button).to.be.true;
+    expect(activeElement === button).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
   });
 
