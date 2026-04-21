@@ -1,4 +1,4 @@
-import { fixture, expect, elementUpdated } from '@open-wc/testing';
+import { fixture, expect, elementUpdated, aTimeout } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 
 import type { PharosModal } from './pharos-modal';
@@ -72,7 +72,7 @@ describe('pharos-modal', () => {
 
     component.open = true;
     await component.updateComplete;
-    await new Promise((r) => setTimeout(r, 0));
+    await aTimeout(1);
 
     const closeButton = component.renderRoot.querySelector('#close-button') as PharosButton;
     const buttonElement = closeButton.renderRoot.querySelector(
@@ -103,7 +103,7 @@ describe('pharos-modal', () => {
     `);
     component.open = true;
     await component.updateComplete;
-    await new Promise((r) => setTimeout(r, 0));
+    await aTimeout(1);
 
     const input = component.querySelector('test-pharos-text-input') as PharosTextInput;
 
@@ -131,11 +131,11 @@ describe('pharos-modal', () => {
     button.click();
     button.focus();
     await component.updateComplete;
-    await new Promise((r) => setTimeout(r, 0));
+    await aTimeout(1);
 
     component.open = false;
     await component.updateComplete;
-    await new Promise((r) => setTimeout(r, 0));
+    await aTimeout(1);
 
     expect(activeElement === button).to.be.true;
     document.removeEventListener('focusin', onFocusIn);

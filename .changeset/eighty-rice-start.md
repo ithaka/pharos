@@ -1,5 +1,5 @@
 ---
-'@ithaka/pharos': minor
+'@ithaka/pharos': patch
 ---
 
 Update focus for modal
