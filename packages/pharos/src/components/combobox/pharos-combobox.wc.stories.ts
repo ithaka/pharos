@@ -156,7 +156,7 @@ export const Validity: Story = {
         .required="${args.required}"
         .invalidated="${args.invalidated}"
         .validated="${args.validated}"
-        message="${args.message}"
+        message="${ifDefined(args.message)}"
       >
         <span slot="label">Test me out</span>
         <option value="1">Option 1</option>

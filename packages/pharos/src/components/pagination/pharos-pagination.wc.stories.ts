@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { action } from 'storybook/actions';
 
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
@@ -20,10 +21,10 @@ type Story = StoryObj<StoryArgs>;
 export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-pagination
-      total-results=${args.totalResults}
-      page-size=${args.pageSize}
-      current-page=${args.currentPage}
-      variant=${args.variant}
+      total-results=${ifDefined(args.totalResults)}
+      page-size=${ifDefined(args.pageSize)}
+      current-page=${ifDefined(args.currentPage)}
+      variant=${ifDefined(args.variant)}
       @first-page="${(e: CustomEvent) => action('First Page')(JSON.stringify(e))}"
       @prev-page="${(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}"
       @next-page="${(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}"
@@ -41,10 +42,10 @@ export const Events: Story = {
 export const Input: Story = {
   render: (args) => html`
     <storybook-pharos-pagination
-      total-results=${args.totalResults}
-      page-size=${args.pageSize}
-      current-page=${args.currentPage}
-      variant=${args.variant}
+      total-results=${ifDefined(args.totalResults)}
+      page-size=${ifDefined(args.pageSize)}
+      current-page=${ifDefined(args.currentPage)}
+      variant=${ifDefined(args.variant)}
       @first-page="${(e: CustomEvent) => action('First Page')(JSON.stringify(e))}"
       @prev-page="${(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}"
       @next-page="${(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}"

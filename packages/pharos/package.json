@@ -89,7 +89,7 @@
     "sinon": "^21.0.3",
     "style-dictionary": "^5.4.0",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "customElements": "custom-elements.json",
   "exports": {
