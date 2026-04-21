@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import {
@@ -25,7 +26,7 @@ type Story = StoryObj<StoryArgs>;
 
 export const Base: Story = {
   render: (args) => html`
-    <storybook-pharos-progress-bar value=${args.value}>
+    <storybook-pharos-progress-bar value=${ifDefined(args.value)}>
       <div slot="title">${args.title}</div>
       <div slot="description">${args.description}</div>
     </storybook-pharos-progress-bar>

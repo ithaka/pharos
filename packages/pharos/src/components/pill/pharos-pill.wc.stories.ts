@@ -49,10 +49,10 @@ type Story = StoryObj<StoryArgs>;
 export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-pill
-      size=${args.size}
+      size=${ifDefined(args.size)}
       .dismissible=${args.dismissible}
       .disabled=${args.disabled}
-      preset=${args.preset}
+      preset=${ifDefined(args.preset)}
       icon-left=${ifDefined(args['icon-left'])}
     >
       Some content

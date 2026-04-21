@@ -26,7 +26,7 @@ export const Base: Story = {
   render: (args) => html`
     <div style="display: grid; grid-gap: 1rem; grid-template-columns: 300px;">
       <storybook-pharos-text-input
-        name="${args.name}"
+        name="${ifDefined(args.name)}"
         type="${ifDefined(args.type)}"
         .hide-label="${args.hideLabel}"
         .validated="${args.validated}"

@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { action } from 'storybook/actions';
 
 import createFormData from '../../utils/createFormData';
@@ -23,7 +24,7 @@ type Story = StoryObj<StoryArgs>;
 export const Base: Story = {
   render: (args) => html`
     <storybook-pharos-radio-group
-      name=${args.name}
+      name=${ifDefined(args.name)}
       .horizontal=${args.horizontal}
       .disabled=${args.disabled}
       .hide-label=${args.hideLabel}
