@@ -1,4 +1,4 @@
-import { fixture, expect, elementUpdated } from '@open-wc/testing';
+import { fixture, expect, elementUpdated, aTimeout } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 
 import type { PharosModal } from './pharos-modal';
@@ -64,7 +64,7 @@ describe('pharos-modal', () => {
   });
 
   it('delegates focus to the first focusable element (close button) when opened', async () => {
-    let activeElement = null;
+    let activeElement: EventTarget | null = null;
     const onFocusIn = (event: Event): void => {
       activeElement = event.composedPath()[0];
     };
@@ -72,6 +72,7 @@ describe('pharos-modal', () => {
 
     component.open = true;
     await component.updateComplete;
+    await aTimeout(1);
 
     const closeButton = component.renderRoot.querySelector('#close-button') as PharosButton;
     const buttonElement = closeButton.renderRoot.querySelector(
@@ -83,7 +84,7 @@ describe('pharos-modal', () => {
   });
 
   it('delegates focus to the element with attribute data-modal-focus when opened', async () => {
-    let activeElement = null;
+    let activeElement: EventTarget | null = null;
     const onFocusIn = (event: Event): void => {
       activeElement = event.composedPath()[0];
     };
@@ -102,6 +103,7 @@ describe('pharos-modal', () => {
     `);
     component.open = true;
     await component.updateComplete;
+    await aTimeout(1);
 
     const input = component.querySelector('test-pharos-text-input') as PharosTextInput;
 
@@ -110,7 +112,7 @@ describe('pharos-modal', () => {
   });
 
   it('delegates focus back to the element that opened it', async () => {
-    let activeElement = null;
+    let activeElement: EventTarget | null = null;
     const onFocusIn = (event: Event): void => {
       activeElement = event.composedPath()[0];
     };
@@ -129,9 +131,11 @@ describe('pharos-modal', () => {
     button.click();
     button.focus();
     await component.updateComplete;
+    await aTimeout(1);
 
     component.open = false;
     await component.updateComplete;
+    await aTimeout(1);
 
     expect(activeElement === button).to.be.true;
     document.removeEventListener('focusin', onFocusIn);
