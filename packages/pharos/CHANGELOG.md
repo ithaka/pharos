@@ -1,5 +1,15 @@
 # @ithaka/pharos
 
+## 14.23.0
+
+### Minor Changes
+
+- [#1246](https://github.com/ithaka/pharos/pull/1246) [`98e8a9e`](https://github.com/ithaka/pharos/commit/98e8a9e4401b5efb1a32286261ddd7c1e9c2f8fc) Thanks [@joiechang](https://github.com/joiechang)! - Add a history and pin filled icon
+
+### Patch Changes
+
+- [#1252](https://github.com/ithaka/pharos/pull/1252) [`64b3779`](https://github.com/ithaka/pharos/commit/64b3779515c7ffbc443ea47277c27a4a593da06a) Thanks [@phosphotungstic](https://github.com/phosphotungstic)! - Update focus for modal
+
 ## 14.22.3
 
 ### Patch Changes
