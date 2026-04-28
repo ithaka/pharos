@@ -78,7 +78,7 @@
     "@types/uuid": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^8.59.0",
     "@typescript-eslint/parser": "^8.59.0",
-    "@vitejs/plugin-react": "^5.2.0",
+    "@vitejs/plugin-react": "^6.0.1",
     "all-contributors-cli": "^6.26.1",
     "concurrently": "^9.2.1",
     "cssnano": "^7.1.7",
