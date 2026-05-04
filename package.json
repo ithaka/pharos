@@ -113,7 +113,7 @@
     "stylelint-scss": "^7.0.0",
     "svglint": "^4.2.1",
     "typescript": "^6.0.3",
-    "vite": "^7.3.2"
+    "vite": "^8.0.10"
   },
   "resolutions": {
     "immutable": "^3.8.3",
