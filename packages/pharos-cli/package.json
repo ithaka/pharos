@@ -9,14 +9,14 @@
   "dependencies": {
     "colors": "^1.4.0",
     "commander": "^14.0.3",
-    "fs-extra": "^11.3.4"
+    "fs-extra": "^11.3.5"
   },
   "bin": {
     "pharos": "dist/index.js"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.6.2",
     "jest": "^30.3.0",
     "ts-jest": "^29.4.9",
     "ts-morph": "^28.0.0",
