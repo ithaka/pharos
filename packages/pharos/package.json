@@ -60,7 +60,7 @@
     "@lit-labs/scoped-registry-mixin": "^1.0.4",
     "@open-wc/dedupe-mixin": "^2.0.1",
     "focus-trap": "^8.2.0",
-    "lit": "^3.3.2",
+    "lit": "^3.3.3",
     "uuid": "^14.0.0"
   },
   "peerDependencies": {
