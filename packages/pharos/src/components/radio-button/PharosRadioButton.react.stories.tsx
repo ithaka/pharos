@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { action } from 'storybook/actions';
 
-import { PharosRadioButton, PharosLink } from '../../react-components';
+import { PharosRadioButton, PharosRadioGroup, PharosLink } from '../../react-components';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { PharosContext } from '../../utils/PharosContext';
@@ -122,4 +122,68 @@ export const Validity: Story = {
     required: true,
     message: 'This field is required, please make a selection',
   },
+};
+
+export const FullWidth: Story = {
+  render: () => (
+    <>
+      <style>{`
+        .full-width-styled-example [data-pharos-component='PharosRadioButton'] {
+          box-sizing: border-box;
+          padding: var(--pharos-spacing-one-half-x, 0.5rem);
+          border: 1px solid var(--pharos-color-marble-gray-80, #c3c5c8);
+          border-radius: var(--pharos-radius-base, 4px);
+        }
+        /* When a radio button is checked, style it like an info alert */
+        .full-width-styled-example [data-pharos-component='PharosRadioButton'][checked] {
+          background-color: var(--pharos-alert-color-background-info);
+          border-color: var(--pharos-alert-color-border-info);
+        }
+      `}</style>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+        <PharosRadioGroup
+          name="full-width-example"
+          style={{
+            width: '480px',
+            border: '1px solid var(--pharos-color-marble-gray-80, #c3c5c8)',
+            padding: 'var(--pharos-spacing-one, 1rem)',
+            borderRadius: 'var(--pharos-radius-base, 4px)',
+          }}
+        >
+          <span slot="legend">Full Width</span>
+          <PharosRadioButton value="first" fullWidth checked>
+            <span slot="label">This is the first choice</span>
+          </PharosRadioButton>
+          <PharosRadioButton value="second" fullWidth>
+            <span slot="label">This is the second choice</span>
+          </PharosRadioButton>
+          <PharosRadioButton value="third" fullWidth>
+            <span slot="label">
+              This is the third choice with a label that is just entirely too long and someone
+              should have said something before shipping this to users
+            </span>
+          </PharosRadioButton>
+        </PharosRadioGroup>
+        <PharosRadioGroup
+          name="full-width-styled-example"
+          className="full-width-styled-example"
+          style={{ width: '480px' }}
+        >
+          <span slot="legend">Full Width with styles</span>
+          <PharosRadioButton value="first" fullWidth checked>
+            <span slot="label">This is the first choice</span>
+          </PharosRadioButton>
+          <PharosRadioButton value="second" fullWidth>
+            <span slot="label">This is the second choice</span>
+          </PharosRadioButton>
+          <PharosRadioButton value="third" fullWidth>
+            <span slot="label">
+              This is the third choice with a label that is just entirely too long and someone
+              should have said something before shipping this to users
+            </span>
+          </PharosRadioButton>
+        </PharosRadioGroup>
+      </div>
+    </>
+  ),
 };
