@@ -418,7 +418,7 @@ const SpacingTokens = () => html`
                 <td>${toTokenFormat(tokens.spacing[key].name)}</td>
                 <td>${tokens.spacing[key].comment} | ${tokens.spacing[key].value}</td>
                 <td>
-                  <div class="spacing-example" style="height:${tokens.spacing[key].value};" />
+                  <div class="spacing-example" style="height:${tokens.spacing[key].value};"></div>
                 </td>
               </tr>
             `
@@ -453,7 +453,7 @@ const RadiusTokens = () => html`
                 <div
                   class="radius-example"
                   style="border-radius:${tokens.radius.base[key].value};"
-                />
+                ></div>
               </td>
             </tr>
           `
@@ -478,7 +478,7 @@ const TransitionRow = (transition, widthRem, color) => {
           style="width:${widthRem}rem;transition:${transition.value};background:var(${color})"
           onmouseover='this.style.background="var(--pharos-color-jstor-red)"'
           onmouseout='this.style.background="var(${color})"'
-        />
+        ></div>
       </td>
     </tr>
   `;
@@ -601,7 +601,7 @@ const ElevationTokens = () => html`
                   class="elevation-example"
                   style="box-shadow:${tokens.elevation.level[key].value};
                     width: 100%;height: 142px;flex-shrink: 0;border-radius: 5px;background: #FFF;"
-                />
+                ></div>
               </td>
             </tr>
           `
