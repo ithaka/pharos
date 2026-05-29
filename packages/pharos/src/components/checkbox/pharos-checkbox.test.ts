@@ -284,6 +284,28 @@ describe('pharos-checkbox', () => {
     expect(clickSpy.callCount).to.equal(1);
   });
 
+  it('stretches to fill its container when full-width is set', async () => {
+    const parentNode = document.createElement('div');
+    parentNode.style.width = '400px';
+    component = await fixture(
+      html`<test-pharos-checkbox full-width
+        ><span slot="label">test checkbox</span></test-pharos-checkbox
+      >`,
+      { parentNode }
+    );
+    expect(getComputedStyle(component).width).to.equal('400px');
+  });
+
+  it('does not stretch to fill its container by default', async () => {
+    const parentNode = document.createElement('div');
+    parentNode.style.width = '400px';
+    component = await fixture(
+      html`<test-pharos-checkbox><span slot="label">test checkbox</span></test-pharos-checkbox>`,
+      { parentNode }
+    );
+    expect(getComputedStyle(component).width).to.not.equal('400px');
+  });
+
   it('resets checked when the form is reset', async () => {
     const parentNode = document.createElement('form');
     parentNode.setAttribute('name', 'my-form');
