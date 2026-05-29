@@ -171,8 +171,8 @@ export const FullWidth: Story = {
           </PharosCheckbox>
           <PharosCheckbox value="research" fullWidth>
             <span slot="label">
-              This is the third choice with a label that is really, really entirely too long and
-              someone should have said something before shipping this to to users
+              This is the third choice with a label that is just entirely too long and someone
+              should have said something before shipping this to users
             </span>
           </PharosCheckbox>
         </PharosCheckboxGroup>

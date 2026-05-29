@@ -152,8 +152,8 @@ export const FullWidth: Story = {
           >
           <storybook-pharos-checkbox value="research" full-width
             ><span slot="label"
-              >This is the third choice with a label that is really, really entirely too long and
-              someone should have said something before shipping this to to users</span
+              >This is the third choice with a label that is just entirely too long and someone
+              should have said something before shipping this to users</span
             ></storybook-pharos-checkbox
           >
         </storybook-pharos-checkbox-group>
