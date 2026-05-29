@@ -5,14 +5,14 @@ export default {
   parameters: { options: { selectedPanel: 'addon-controls' } },
 };
 
-const tableTitle = (title) => {
+const tableTitle = (title: string) => {
   return title
     .split('-')
     .map((str) => str[0].toUpperCase() + str.slice(1))
     .join(' ');
 };
 
-const MixinTable = (title) => {
+const MixinTable = (title: string) => {
   const mixins = sassDoc.filter((value) => value.context.type === 'mixin');
   return (
     <div className="token-table-container" style={{ width: '100%' }}>

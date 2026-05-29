@@ -1,13 +1,23 @@
-import { html } from 'lit';
+import { html, type TemplateResult } from 'lit';
 
-import tokens from './tokens.ts';
+import tokens from './tokens';
+
+type TokenEntry = {
+  name: string;
+  value: string | number;
+  original: { value: string };
+  group?: string;
+  palette?: string;
+  comment?: string;
+  [key: string]: unknown;
+};
 
 export default {
   title: 'Styles/Design Tokens',
   parameters: { options: { selectedPanel: 'addon-controls' } },
 };
 
-const toTokenFormat = (text) => {
+const toTokenFormat = (text: string) => {
   return html`<code style="font-size:var(--pharos-font-size-small);"
     >$${text
       .replace(/([a-z])([A-Z]|[0-9])/g, '$1-$2')
@@ -17,7 +27,7 @@ const toTokenFormat = (text) => {
   </code>`;
 };
 
-const ColorRow = (color) => {
+const ColorRow = (color: TokenEntry) => {
   let OGColorHtml = html``;
   if (color.original.value.startsWith('{color.')) {
     const OGColorToken =
@@ -45,7 +55,7 @@ const ColorRow = (color) => {
   `;
 };
 
-const TokenTable = (title, content) => {
+const TokenTable = (title: string, content: TemplateResult) => {
   return html`
     <div class="token-table-container">
       <h2>${title}</h2>
@@ -70,12 +80,15 @@ const UiColorTokens = () => html`
         </tr>
       </thead>
       <tbody>
-        ${Object.keys(tokens.color.interactive).map((key) =>
-          ColorRow(tokens.color.interactive[key])
+        ${Object.values(tokens.color.interactive).map((color) =>
+          ColorRow(color as unknown as TokenEntry)
         )}
-        ${Object.keys(tokens.color.ui).map((key) => ColorRow(tokens.color.ui[key]))}
-        ${ColorRow(tokens.color.disabled)} ${ColorRow(tokens.color.overlay)}
-        ${Object.keys(tokens.color.feedback).map((key) => ColorRow(tokens.color.feedback[key]))}
+        ${Object.values(tokens.color.ui).map((color) => ColorRow(color as unknown as TokenEntry))}
+        ${ColorRow(tokens.color.disabled as unknown as TokenEntry)}
+        ${ColorRow(tokens.color.overlay as unknown as TokenEntry)}
+        ${Object.values(tokens.color.feedback).map((color) =>
+          ColorRow(color as unknown as TokenEntry)
+        )}
       </tbody>
     `
   )}
@@ -90,7 +103,7 @@ const UiColorTokens = () => html`
         </tr>
       </thead>
       <tbody>
-        ${Object.keys(tokens.color.text).map((key) => ColorRow(tokens.color.text[key]))}
+        ${Object.values(tokens.color.text).map((color) => ColorRow(color as unknown as TokenEntry))}
       </tbody>
     `
   )}
@@ -105,8 +118,8 @@ const UiColorTokens = () => html`
         </tr>
       </thead>
       <tbody>
-        ${ColorRow(tokens.color.focus)}
-        ${Object.keys(tokens.color.hover).map((key) => ColorRow(tokens.color.hover[key]))}
+        ${ColorRow(tokens.color.focus as unknown as TokenEntry)}
+        ${Object.values(tokens.color.hover).map((color) => ColorRow(color as unknown as TokenEntry))}
       </tbody>
     `
   )}
@@ -117,17 +130,20 @@ export const AliasColors = {
 };
 
 const GlobalColorTokens = () => {
-  let colorTokens = [];
+  const colorTokens: TokenEntry[] = [];
   Object.keys(tokens.color)
     .filter((key) => key !== 'brand' && key !== 'base')
-    .map((key) => {
-      const currentToken = tokens.color[key];
-      if (currentToken.value) {
-        colorTokens.push(currentToken);
+    .forEach((key) => {
+      const currentToken = (tokens.color as Record<string, unknown>)[key] as
+        | TokenEntry
+        | Record<string, unknown>;
+      if ('value' in currentToken) {
+        colorTokens.push(currentToken as TokenEntry);
       } else {
-        Object.keys(currentToken).map((k) => {
-          if (currentToken[k].value) {
-            colorTokens.push(currentToken[k]);
+        Object.keys(currentToken).forEach((k) => {
+          const nestedToken = (currentToken as Record<string, unknown>)[k] as TokenEntry;
+          if (nestedToken.value) {
+            colorTokens.push(nestedToken);
           }
         });
       }
@@ -164,7 +180,7 @@ const GlobalColorTokens = () => {
           ${colorTokens
             .filter((color) => color.group === 'secondary')
             .map((color) => ColorRow(color))}
-          ${ColorRow(tokens.color['marble-gray'].base)}
+          ${ColorRow(tokens.color['marble-gray'].base as unknown as TokenEntry)}
         </tbody>
       `
     )}
@@ -236,28 +252,23 @@ const FontFamilyTokens = () => html`
         </tr>
       </thead>
       <tbody>
-        ${Object.keys(tokens.font.family).map(
-          (key) => html`
+        ${Object.values(tokens.font.family).map((token) => {
+          const currentToken = token as unknown as TokenEntry;
+          return html`
             <tr>
-              <td>${toTokenFormat(tokens.font.family[key].name)}</td>
-              <td>${tokens.font.family[key].value}</td>
+              <td>${toTokenFormat(currentToken.name)}</td>
+              <td>${currentToken.value}</td>
               <td>
-                <div
-                  style="font-family:${tokens.font.family[key]
-                    .value};font-size:1.5rem;line-height: normal;"
-                >
+                <div style="font-family:${currentToken.value as string};font-size:1.5rem;line-height: normal;">
                   ABCDEFGHIJKLMNOPQRSTUVWXYZ
                 </div>
-                <div
-                  style="font-family:${tokens.font.family[key]
-                    .value};font-size:1.5rem;line-height: normal;"
-                >
+                <div style="font-family:${currentToken.value as string};font-size:1.5rem;line-height: normal;">
                   abcdefghijklmnopqrstuvwxyz
                 </div>
               </td>
             </tr>
-          `
-        )}
+          `;
+        })}
       </tbody>
     `
   )}
@@ -279,22 +290,23 @@ const FontWeightTokens = () => html`
         </tr>
       </thead>
       <tbody>
-        ${Object.keys(tokens.font.weight).map(
-          (key) => html`
+        ${Object.values(tokens.font.weight).map((token) => {
+          const currentToken = token as unknown as TokenEntry;
+          return html`
             <tr>
-              <td>${toTokenFormat(tokens.font.weight[key].name)}</td>
-              <td>${tokens.font.weight[key].value}</td>
+              <td>${toTokenFormat(currentToken.name)}</td>
+              <td>${currentToken.value}</td>
               <td>
-                <div style="font-weight:${tokens.font.weight[key].value};line-height: normal;">
+                <div style="font-weight:${currentToken.value};line-height: normal;">
                   ABCDEFGHIJKLMNOPQRSTUVWXYZ
                 </div>
-                <div style="font-weight:${tokens.font.weight[key].value};line-height: normal;">
+                <div style="font-weight:${currentToken.value};line-height: normal;">
                   abcdefghijlkmnopqrstuvwxyz
                 </div>
               </td>
             </tr>
-          `
-        )}
+          `;
+        })}
       </tbody>
     `
   )}
@@ -305,9 +317,9 @@ export const FontWeight = {
 };
 
 const FontSizeTokens = () => {
-  const baseValue = tokens.font.size['base'].value;
-  const basePixels = tokens.type.scale[baseValue].comment;
-  const basePx = basePixels.substring(0, basePixels.length - 2);
+  const baseValue = String(tokens.font.size['base'].value);
+  const basePixels = (tokens.type.scale as Record<string, TokenEntry>)[baseValue].comment as string;
+  const basePx = Number(basePixels.substring(0, basePixels.length - 2));
   return html`
     ${TokenTable(
       'Font size tokens',
@@ -320,13 +332,16 @@ const FontSizeTokens = () => {
           </tr>
         </thead>
         <tbody>
-          ${Object.keys(tokens.font.size).map((key) => {
-            const tokenPixel = tokens.type.scale[tokens.font.size[key].value].comment;
-            const tokenPx = tokenPixel.substring(0, tokenPixel.length - 2);
+          ${Object.values(tokens.font.size).map((token) => {
+            const currentToken = token as unknown as TokenEntry;
+            const tokenPixel = (tokens.type.scale as Record<string, TokenEntry>)[
+              String(currentToken.value)
+            ].comment as string;
+            const tokenPx = Number(tokenPixel.substring(0, tokenPixel.length - 2));
             const tokenRem = tokenPx / basePx;
             return html`
               <tr>
-                <td>${toTokenFormat(tokens.font.size[key].name)}</td>
+                <td>${toTokenFormat(currentToken.name)}</td>
                 <td>${tokenPx}px | ${tokenRem}rem</td>
                 <td>
                   <div style="font-size:${tokenPixel};line-height: normal;">
@@ -363,23 +378,23 @@ const LineHeightToken = () => {
           </tr>
         </thead>
         <tbody>
-          ${Object.keys(tokens['line-height'])
-            .filter((key) => key !== 'brand' && key !== 'base')
-            .map((key, i) => {
-              const tokenPixel = tokens['line-height'][key].comment;
+          ${Object.entries(tokens['line-height'])
+            .filter(([key]) => key !== 'brand' && key !== 'base')
+            .map(([, token], i) => {
+              const currentToken = token as unknown as TokenEntry;
+              const tokenPixel = currentToken.comment;
               return html`
                 <tr>
-                  <td>${toTokenFormat(tokens['line-height'][key].name)}</td>
+                  <td>${toTokenFormat(currentToken.name)}</td>
                   <td>
-                    ${tokenPixel ? tokenPixel + ' | ' : ''}${tokens['line-height'][key].value}
+                    ${tokenPixel ? tokenPixel + ' | ' : ''}${currentToken.value}
                   </td>
                   <td>
                     <div
                       class="line-height-example"
-                      style="line-height:${tokens['line-height'][key]
-                        .value};font-size:${fontSizeMap[i]}px;${fontSizeMap[i] >= 24
+                      style="line-height:${currentToken.value};font-size:${fontSizeMap[i]}px;${fontSizeMap[i] >= 24
                         ? 'font-family: var(--pharos-font-family-serif)'
-                        : null}"
+                        : ''}"
                     >
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                       incididunt ut labore et dolore magna aliqua.
@@ -410,19 +425,20 @@ const SpacingTokens = () => html`
         </tr>
       </thead>
       <tbody>
-        ${Object.keys(tokens.spacing)
-          .filter((key) => key !== 'brand')
-          .map(
-            (key) => html`
+        ${Object.entries(tokens.spacing)
+          .filter(([key]) => key !== 'brand')
+          .map(([, token]) => {
+            const currentToken = token as unknown as TokenEntry;
+            return html`
               <tr>
-                <td>${toTokenFormat(tokens.spacing[key].name)}</td>
-                <td>${tokens.spacing[key].comment} | ${tokens.spacing[key].value}</td>
+                <td>${toTokenFormat(currentToken.name)}</td>
+                <td>${currentToken.comment} | ${currentToken.value}</td>
                 <td>
-                  <div class="spacing-example" style="height:${tokens.spacing[key].value};"></div>
+                  <div class="spacing-example" style="height:${currentToken.value};"></div>
                 </td>
               </tr>
-            `
-          )}
+            `;
+          })}
       </tbody>
     `
   )}
@@ -444,20 +460,18 @@ const RadiusTokens = () => html`
         </tr>
       </thead>
       <tbody>
-        ${Object.keys(tokens.radius.base).map(
-          (key) => html`
+        ${Object.values(tokens.radius.base).map((token) => {
+          const currentToken = token as unknown as TokenEntry;
+          return html`
             <tr>
-              <td>${toTokenFormat(tokens.radius.base[key].name)}</td>
-              <td>${tokens.radius.base[key].comment} | ${tokens.radius.base[key].value}</td>
+              <td>${toTokenFormat(currentToken.name)}</td>
+              <td>${currentToken.comment} | ${currentToken.value}</td>
               <td>
-                <div
-                  class="radius-example"
-                  style="border-radius:${tokens.radius.base[key].value};"
-                ></div>
+                <div class="radius-example" style="border-radius:${currentToken.value};"></div>
               </td>
             </tr>
-          `
-        )}
+          `;
+        })}
       </tbody>
     `
   )}
@@ -467,7 +481,7 @@ export const Radius = {
   render: () => RadiusTokens(),
 };
 
-const TransitionRow = (transition, widthRem, color) => {
+const TransitionRow = (transition: TokenEntry, widthRem: number, color: string) => {
   return html`
     <tr>
       <td>${toTokenFormat(transition.name)}</td>
@@ -505,9 +519,9 @@ const TransitionTokens = () => {
           </tr>
         </thead>
         <tbody>
-          ${TransitionRow(tokens.transition.base, 5, '--pharos-color-living-coral-80')}
-          ${Object.keys(tokens.transition.duration).map((key, i) =>
-            TransitionRow(tokens.transition.duration[key], exampleRems[i], exampleColors[i])
+          ${TransitionRow(tokens.transition.base as unknown as TokenEntry, 5, '--pharos-color-living-coral-80')}
+          ${Object.values(tokens.transition.duration).map((transition, i) =>
+            TransitionRow(transition as unknown as TokenEntry, exampleRems[i], exampleColors[i])
           )}
         </tbody>
       `
@@ -532,22 +546,17 @@ const TypeTokens = () => html`
         </tr>
       </thead>
       <tbody>
-        ${Object.keys(tokens.type.scale).map(
-          (key) => html`
+        ${Object.values(tokens.type.scale).map((token) => {
+          const currentToken = token as unknown as TokenEntry;
+          const tokenComment = currentToken.comment as string;
+          const tokenValue = Number(currentToken.value);
+          return html`
             <tr>
-              <td>${toTokenFormat(tokens.type.scale[key].name)}</td>
+              <td>${toTokenFormat(currentToken.name)}</td>
+              <td>${tokenComment} | ${tokenComment.substring(0, tokenComment.length - 2) / 16}rem</td>
               <td>
-                ${tokens.type.scale[key].comment} |
-                ${tokens.type.scale[key].comment.substring(
-                  0,
-                  tokens.type.scale[key].comment.length - 2
-                ) / 16}rem
-              </td>
-              <td>
-                ${tokens.type.scale[key].value < 10
-                  ? html`<span
-                      class="token-type-sans-serif"
-                      style="font-size:${tokens.type.scale[key].comment};"
+                ${tokenValue < 10
+                  ? html`<span class="token-type-sans-serif" style="font-size:${tokenComment};"
                       >GT America</span
                     >`
                   : html`<storybook-pharos-icon
@@ -556,10 +565,8 @@ const TypeTokens = () => html`
                     ></storybook-pharos-icon>`}
               </td>
               <td>
-                ${tokens.type.scale[key].value > 5
-                  ? html`<span
-                      class="token-type-serif"
-                      style="font-size:${tokens.type.scale[key].comment};"
+                ${tokenValue > 5
+                  ? html`<span class="token-type-serif" style="font-size:${tokenComment};"
                       >Ivar Headline</span
                     >`
                   : html`<storybook-pharos-icon
@@ -568,8 +575,8 @@ const TypeTokens = () => html`
                     ></storybook-pharos-icon>`}
               </td>
             </tr>
-          `
-        )}
+          `;
+        })}
       </tbody>
     `
   )}
@@ -591,21 +598,22 @@ const ElevationTokens = () => html`
         </tr>
       </thead>
       <tbody>
-        ${Object.keys(tokens.elevation.level).map(
-          (key) => html`
+        ${Object.values(tokens.elevation.level).map((token) => {
+          const currentToken = token as unknown as TokenEntry;
+          return html`
             <tr>
-              <td>${toTokenFormat(tokens.elevation.level[key].name)}</td>
-              <td>${tokens.elevation.level[key].value}</td>
+              <td>${toTokenFormat(currentToken.name)}</td>
+              <td>${currentToken.value}</td>
               <td>
                 <div
                   class="elevation-example"
-                  style="box-shadow:${tokens.elevation.level[key].value};
+                  style="box-shadow:${currentToken.value as string};
                     width: 100%;height: 142px;flex-shrink: 0;border-radius: 5px;background: #FFF;"
                 ></div>
               </td>
             </tr>
-          `
-        )}
+          `;
+        })}
       </tbody>
     `
   )}
