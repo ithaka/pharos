@@ -169,7 +169,7 @@ const GlobalColorTokens = () => {
             {colorTokens
               .filter((color) => color.group === 'secondary')
               .map((color) => ColorRow(color))}
-            {ColorRow(tokens.color['Marble gray'].base)}
+            {ColorRow(tokens.color['marble-gray'].base)}
           </tbody>
         </>
       )}
