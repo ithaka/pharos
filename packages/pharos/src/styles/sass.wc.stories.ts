@@ -28,9 +28,10 @@ const MixinTable = (title: string) => {
           </tr>
         </thead>
         <tbody>
-          ${mixins.map((mixin) => {
-            if (mixin.group.includes(title)) {
-              return html`
+          ${mixins
+            .filter((mixin) => mixin.group.includes(title))
+            .map(
+              (mixin) => html`
                 <tr>
                   <td>
                     <code style="font-size: var(--pharos-font-size-small)"
@@ -50,10 +51,8 @@ const MixinTable = (title: string) => {
                     </div>
                   </td>
                 </tr>
-              `;
-            }
-            return html``;
-          })}
+              `
+            )}
         </tbody>
       </table>
       <br />

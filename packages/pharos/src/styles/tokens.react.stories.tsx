@@ -52,7 +52,7 @@ const ColorRow = (color: TokenEntry) => {
         <div>{color.value}</div>
       </td>
       <td style={{ width: '25%' }}>
-        <div className="color-example" style={{ backgroundColor: color.value as string }}></div>
+        <div className="color-example" style={{ backgroundColor: typeof color.value === 'string' ? color.value : undefined }}></div>
       </td>
     </tr>
   );
