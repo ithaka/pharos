@@ -61,6 +61,7 @@
     "@open-wc/dedupe-mixin": "^2.0.1",
     "focus-trap": "^8.2.0",
     "lit": "^3.3.3",
+    "playwright": "^1.60.0",
     "uuid": "^14.0.0"
   },
   "peerDependencies": {
