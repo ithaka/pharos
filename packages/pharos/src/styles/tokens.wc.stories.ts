@@ -553,7 +553,7 @@ const TypeTokens = () => html`
           return html`
             <tr>
               <td>${toTokenFormat(currentToken.name)}</td>
-              <td>${tokenComment} | ${tokenComment.substring(0, tokenComment.length - 2) / 16}rem</td>
+              <td>${tokenComment} | ${Number(tokenComment.substring(0, tokenComment.length - 2)) / 16}rem</td>
               <td>
                 ${tokenValue < 10
                   ? html`<span class="token-type-sans-serif" style="font-size:${tokenComment};"

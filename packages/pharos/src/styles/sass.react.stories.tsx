@@ -60,6 +60,7 @@ const MixinTable = (title: string) => {
                 </tr>
               );
             }
+            return null;
           })}
         </tbody>
       </table>
