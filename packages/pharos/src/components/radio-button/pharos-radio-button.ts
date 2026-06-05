@@ -33,6 +33,13 @@ export class PharosRadioButton extends FormMixin(FormElement) {
   @property({ type: String, reflect: true })
   public value = '';
 
+  /**
+   * Stretches the radio button to fill the width of its container
+   * @attr full-width
+   */
+  @property({ type: Boolean, reflect: true })
+  public fullWidth = false;
+
   @query('#radio-element')
   private _radio!: HTMLInputElement;
 
