@@ -66,6 +66,11 @@
     max-height: 100dvh;
   }
 
+  .modal__body {
+    overflow-y: auto;
+    min-height: 0;
+  }
+
   :host([open]) .modal__dialog {
     transition:
       visibility 0s linear 0s,
