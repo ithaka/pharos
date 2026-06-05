@@ -52,6 +52,13 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   @property({ type: Boolean, reflect: true })
   public isOnBackground = false;
 
+  /**
+   * Stretches the checkbox to fill the width of its container
+   * @attr full-width
+   */
+  @property({ type: Boolean, reflect: true })
+  public fullWidth = false;
+
   @query('#checkbox-element')
   private _checkbox!: HTMLInputElement;
 

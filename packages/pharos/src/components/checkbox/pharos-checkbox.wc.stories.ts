@@ -109,6 +109,57 @@ export const Validity: Story = {
   },
 };
 
+export const FullWidth: Story = {
+  render: () =>
+    html` <style>
+        .full-width-styled-example storybook-pharos-checkbox {
+          box-sizing: border-box;
+          padding: var(--pharos-spacing-one-half-x, 0.5rem);
+          border: 1px solid var(--pharos-color-marble-gray-80, #c3c5c8);
+          border-radius: var(--pharos-radius-base, 4px);
+        }
+        /* When a checkbox is checked, style it like an info alert */
+        .full-width-styled-example storybook-pharos-checkbox[checked] {
+          background-color: var(--pharos-alert-color-background-info);
+          border-color: var(--pharos-alert-color-border-info);
+        }
+      </style>
+      <div style="display: flex; flex-direction: column; gap: 3rem;">
+        <storybook-pharos-checkbox-group
+          style="width: 480px; border: 1px solid var(--pharos-color-marble-gray-80, #c3c5c8); padding: var(--pharos-spacing-one, 1rem); border-radius: var(--pharos-radius-base, 4px);"
+        >
+          <span slot="legend">Full Width</span>
+          <storybook-pharos-checkbox value="email" full-width checked
+            ><span slot="label">This is the first choice</span></storybook-pharos-checkbox
+          >
+          <storybook-pharos-checkbox value="product" full-width
+            ><span slot="label">This is the second choice</span></storybook-pharos-checkbox
+          >
+          <storybook-pharos-checkbox value="research" full-width
+            ><span slot="label"
+              >This is the third choice with a label that is just entirely too long and someone
+              should have said something before shipping this to users</span
+            ></storybook-pharos-checkbox
+          >
+        </storybook-pharos-checkbox-group>
+        <storybook-pharos-checkbox-group class="full-width-styled-example" style="width: 480px;">
+          <span slot="legend">Full Width with styles</span>
+          <storybook-pharos-checkbox value="email" full-width checked
+            ><span slot="label">This is the first choice</span></storybook-pharos-checkbox
+          >
+          <storybook-pharos-checkbox value="product" full-width
+            ><span slot="label">This is the second choice</span></storybook-pharos-checkbox
+          >
+          <storybook-pharos-checkbox value="research" full-width
+            ><span slot="label"
+              >This is the third choice with a label that is just entirely too long and someone
+              should have said something before shipping this to users</span
+            ></storybook-pharos-checkbox
+          >
+        </storybook-pharos-checkbox-group>
+      </div>`,
+};
+
 export const IsOnBackground: Story = {
   name: 'On background',
   render: () => html`
