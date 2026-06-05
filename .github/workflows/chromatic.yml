@@ -21,6 +21,7 @@ jobs:
   chromatic:
     name: Chromatic
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout Repo (Push)
         if: github.event_name == 'push'
