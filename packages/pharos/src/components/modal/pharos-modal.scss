@@ -60,18 +60,10 @@
 }
 
 @media only screen and (width <= 570px) {
-  .modal__overlay {
-    align-items: flex-start;
-  }
-
   .modal__dialog {
     width: 100%;
     height: 100dvh;
     max-height: 100dvh;
-  }
-
-  .modal__content {
-    border-radius: 0;
   }
 
   :host([open]) .modal__dialog {
