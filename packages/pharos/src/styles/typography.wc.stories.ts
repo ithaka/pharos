@@ -1,5 +1,7 @@
 import { html } from 'lit';
 
+type StoryArgs = { text?: string; header?: string };
+
 export default {
   title: 'Styles/Typography',
   parameters: { options: { selectedPanel: 'addon-controls' } },
@@ -13,29 +15,29 @@ const list = html`
 `;
 
 export const PlainText = {
-  render: (args) => html` <span>${args.text}</span> `,
+  render: (args: StoryArgs) => html` <span>${args.text}</span> `,
   args: { text: 'I am plain text' },
 };
 
 export const BringToAttentionText = {
   name: 'Bring to Attention Text',
-  render: (args) =>
+  render: (args: StoryArgs) =>
     html` <span> This is an example of how to bring attention to <b>${args.text}</b>. </span>`,
   args: { text: 'specific text' },
 };
 
 export const StrongText = {
-  render: (args) => html` <span> This is an example of <strong>${args.text}</strong>. </span>`,
+  render: (args: StoryArgs) => html` <span> This is an example of <strong>${args.text}</strong>. </span>`,
   args: { text: 'strong text' },
 };
 
 export const SmallText = {
-  render: (args) => html`<span>This is an example of <small>${args.text}</small></span>`,
+  render: (args: StoryArgs) => html`<span>This is an example of <small>${args.text}</small></span>`,
   args: { text: 'small text' },
 };
 
 export const IdiomaticText = {
-  render: (args) =>
+  render: (args: StoryArgs) =>
     html`<span
       ><i>${args.text}</i> is a beacon leading ships safely toward our collective knowledge.</span
     >`,
@@ -43,12 +45,12 @@ export const IdiomaticText = {
 };
 
 export const StressEmphasisText = {
-  render: (args) => html`<span>This is an example of <em>${args.text}</em>.</span>`,
+  render: (args: StoryArgs) => html`<span>This is an example of <em>${args.text}</em>.</span>`,
   args: { text: 'emphasized text' },
 };
 
 export const Tables = {
-  render: (args) => html`
+  render: (args: StoryArgs) => html`
     <table class="typography-table-example" style="border-collapse: collapse;">
       <thead>
         <tr>
