@@ -23,7 +23,7 @@
     "noImplicitOverride": true,
     "useDefineForClassFields": false,
     "skipLibCheck": true,
-    "types": ["mocha", "node"],
+    "types": ["vitest/globals", "node"],
     "plugins": [
       {
         "name": "ts-lit-plugin",
