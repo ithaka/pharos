@@ -306,6 +306,36 @@ describe('pharos-checkbox', () => {
     expect(getComputedStyle(component).width).to.not.equal('400px');
   });
 
+  it('keeps the native input in sync when checked is set programmatically after a click', async () => {
+    component['_checkbox'].click();
+    await component.updateComplete;
+    expect(component.checked).to.be.true;
+
+    component.checked = false;
+    await component.updateComplete;
+    expect(component['_checkbox'].checked).to.be.false;
+  });
+
+  it('re-checks on the next click after being unchecked programmatically', async () => {
+    let lastChecked: boolean | null = null;
+    component.addEventListener('change', () => {
+      lastChecked = component.checked;
+    });
+
+    component['_checkbox'].click();
+    await component.updateComplete;
+    expect(component.checked).to.be.true;
+
+    component.checked = false;
+    await component.updateComplete;
+
+    component['_checkbox'].click();
+    await component.updateComplete;
+
+    expect(component.checked).to.be.true;
+    expect(lastChecked).to.be.true;
+  });
+
   it('resets checked when the form is reset', async () => {
     const parentNode = document.createElement('form');
     parentNode.setAttribute('name', 'my-form');
