@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "src/pages/**",
+    "**/storyArgs.ts",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx",
+    "src/react-components/**",
+    "src/utils/_storybook/**"
+  ]
+}
