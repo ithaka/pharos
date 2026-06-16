@@ -16,11 +16,11 @@ describe('pharos-sheet', () => {
     `);
   });
 
-  before(() => {
+  beforeAll(() => {
     logSpy = sinon.spy(console, 'error');
   });
 
-  after(() => {
+  afterAll(() => {
     logSpy.restore();
   });
 

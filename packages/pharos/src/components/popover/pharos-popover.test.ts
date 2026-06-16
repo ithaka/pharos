@@ -15,11 +15,11 @@ describe('pharos-popover', () => {
     `);
   });
 
-  before(() => {
+  beforeAll(() => {
     logSpy = sinon.spy(console, 'error');
   });
 
-  after(() => {
+  afterAll(() => {
     logSpy.restore();
   });
 
