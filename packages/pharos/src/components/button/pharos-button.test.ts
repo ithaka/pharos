@@ -86,6 +86,13 @@ describe('pharos-button', () => {
       await expect(component).to.be.accessible();
     });
 
+    it('is accessible as a full-width button with center alignment', async () => {
+      component = await fixture(
+        html`<test-pharos-button full-width alignment="center">I am a button</test-pharos-button>`
+      );
+      await expect(component).to.be.accessible();
+    });
+
     it('is accessible on a AA compliant background', async () => {
       const parentNode = document.createElement('div');
       parentNode.style.backgroundColor = PharosColorBlack;
@@ -180,6 +187,25 @@ describe('pharos-button', () => {
       `).catch((e) => e);
       expect('fake is not a valid variant. Valid variants are: primary, secondary, subtle').to.be
         .thrown;
+    });
+
+    it('throws an error for an invalid alignment value', async () => {
+      component = await fixture(html`
+        <test-pharos-button alignment="fake">I am a button</test-pharos-button>
+      `).catch((e) => e);
+      expect('fake is not a valid alignment. Valid alignments are: start, center').to.be.thrown;
+    });
+
+    it('defaults the alignment to start', async () => {
+      expect(component.alignment).to.equal('start');
+    });
+
+    it('centers the content when full-width with center alignment', async () => {
+      component = await fixture(
+        html`<test-pharos-button full-width alignment="center">I am a button</test-pharos-button>`
+      );
+      const button = component.renderRoot.querySelector('#button-element') as HTMLElement;
+      expect(getComputedStyle(button).justifyContent).to.equal('center');
     });
 
     it('throws an error for an icon only button with no accessible label', async () => {
