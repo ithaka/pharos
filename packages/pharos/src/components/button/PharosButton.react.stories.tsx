@@ -47,6 +47,7 @@ export const Base: Story = {
       iconLeft={args.iconLeft}
       iconRight={args.iconRight}
       fullWidth={args.fullWidth}
+      alignment={args.alignment}
       href={args.href}
       hreflang={args.hreflang}
       a11yLabel={args.a11yLabel}
@@ -191,6 +192,26 @@ export const Large = {
           Overlay
         </PharosButton>
       </div>
+    </div>
+  ),
+};
+
+export const FullWidthAlignment = {
+  name: 'Full width',
+  render: () => (
+    <div
+      style={{
+        display: 'grid',
+        gridGap: '1.5rem',
+        gridTemplateColumns: '600px',
+      }}
+    >
+      <PharosButton name="full-width-start" fullWidth>
+        Start aligned (default)
+      </PharosButton>
+      <PharosButton name="full-width-center" fullWidth alignment="center">
+        Center aligned
+      </PharosButton>
     </div>
   ),
 };

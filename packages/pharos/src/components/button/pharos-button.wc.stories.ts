@@ -31,6 +31,7 @@ export const Base: Story = {
       icon-left=${ifDefined(args.iconLeft)}
       icon-right=${ifDefined(args.iconRight)}
       .fullWidth=${args.fullWidth}
+      alignment=${ifDefined(args.alignment)}
       href=${ifDefined(args.href)}
       hreflang=${ifDefined(args.hreflang)}
       a11y-label=${ifDefined(args.a11yLabel)}
@@ -146,6 +147,28 @@ export const Large: Story = {
           >Overlay
         </storybook-pharos-button>
       </div>
+    </div>
+  `,
+};
+
+export const FullWidthAlignment: Story = {
+  args: {
+    iconRight: 'accessibility',
+    iconLeft: 'add',
+    alignment: 'start',
+    icon: 'add',
+  },
+
+  name: 'Full width',
+
+  render: () => html`
+    <div style="display: grid; grid-gap: 1.5rem; grid-template-columns: 600px;">
+      <storybook-pharos-button name="full-width-start" full-width
+        >Start aligned (default)</storybook-pharos-button
+      >
+      <storybook-pharos-button name="full-width-center" full-width alignment="center"
+        >Center aligned</storybook-pharos-button
+      >
     </div>
   `,
 };
