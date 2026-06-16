@@ -151,16 +151,7 @@ export const Large: Story = {
   `,
 };
 
-export const FullWidthAlignment: Story = {
-  args: {
-    iconRight: 'accessibility',
-    iconLeft: 'add',
-    alignment: 'start',
-    icon: 'add',
-  },
-
-  name: 'Full width',
-
+export const FullWidth: Story = {
   render: () => html`
     <div style="display: grid; grid-gap: 1.5rem; grid-template-columns: 600px;">
       <storybook-pharos-button name="full-width-start" full-width
