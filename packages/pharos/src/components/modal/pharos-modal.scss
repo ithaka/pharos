@@ -61,8 +61,14 @@
 
 @media only screen and (width <= 570px) {
   .modal__dialog {
-    max-height: 88vh;
-    width: 88vw;
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+
+  .modal__body {
+    overflow-y: auto;
+    min-height: 0;
   }
 
   :host([open]) .modal__dialog {
