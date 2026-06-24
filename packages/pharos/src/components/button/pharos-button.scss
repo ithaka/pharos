@@ -73,6 +73,10 @@
   }
 }
 
+:host([full-width][alignment='center']) #button-element {
+  justify-content: center;
+}
+
 :host([icon-condensed][icon]) #button-element {
   padding: var(--pharos-button-padding-condensed);
   border: 0;
