@@ -403,6 +403,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/helper-plugin-utils@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "@babel/helper-plugin-utils@npm:8.0.1"
+  peerDependencies:
+    "@babel/core": ^8.0.0
+  checksum: 10c0/ec56d98187a58dfbc2ce9d75fd5f880d6acacefb314e32fe40c57293c6c65c659fa116c665e430aff8b153b7d0ea63f16ca290e9d2283196e3c7a3dd61bffa94
+  languageName: node
+  linkType: hard
+
 "@babel/helper-remap-async-to-generator@npm:^7.27.1":
   version: 7.27.1
   resolution: "@babel/helper-remap-async-to-generator@npm:7.27.1"
@@ -748,14 +757,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-export-default-from@npm:^7.29.7":
-  version: 7.29.7
-  resolution: "@babel/plugin-proposal-export-default-from@npm:7.29.7"
+"@babel/plugin-proposal-export-default-from@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "@babel/plugin-proposal-export-default-from@npm:8.0.1"
   dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.29.7"
+    "@babel/helper-plugin-utils": "npm:^8.0.1"
   peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10c0/4208f28549960372ec17422ff63fccde001fdaec322d1b5b602856088c883d8e7f22159737cd32a691a1d6153a269aa6228cd55d6a10693dfa584864138d8614
+    "@babel/core": ^8.0.0
+  checksum: 10c0/74893465d3d5d4c6d88bd6953d659a64b0c46e41a58ab776102ce58e170c7bc1832de3af110b2d12ad0354a370a91fc7f266d83b3319457de0d397ee25188db9
   languageName: node
   linkType: hard
 
@@ -23342,7 +23351,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.29.7"
     "@babel/plugin-proposal-decorators": "npm:^7.29.7"
-    "@babel/plugin-proposal-export-default-from": "npm:^7.29.7"
+    "@babel/plugin-proposal-export-default-from": "npm:^8.0.1"
     "@babel/plugin-syntax-import-assertions": "npm:^7.29.7"
     "@babel/preset-env": "npm:^7.29.7"
     "@changesets/changelog-github": "npm:^0.7.0"
