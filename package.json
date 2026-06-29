@@ -56,7 +56,7 @@
   },
   "homepage": "https://github.com/ithaka/pharos#readme",
   "devDependencies": {
-    "@babel/core": "^7.29.7",
+    "@babel/core": "^8.0.0",
     "@babel/plugin-proposal-decorators": "^7.29.7",
     "@babel/plugin-proposal-export-default-from": "^7.29.7",
     "@babel/plugin-syntax-import-assertions": "^7.29.7",
