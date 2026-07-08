@@ -293,7 +293,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           @input=${this._handlePageInputChange}
           @blur=${this._handlePageInputBlur}
         />
-        <span class="pagination__input-info">of ${this.totalPages}</span>
+        <span class="pagination__input-info">of &nbsp;&nbsp;&nbsp;${this.totalPages}</span>
       </div>
     `;
   }
