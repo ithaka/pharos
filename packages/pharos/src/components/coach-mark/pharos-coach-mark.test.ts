@@ -14,11 +14,11 @@ describe('pharos-coach-mark', () => {
     );
   });
 
-  before(() => {
+  beforeAll(() => {
     logSpy = sinon.spy(console, 'error');
   });
 
-  after(() => {
+  afterAll(() => {
     logSpy.restore();
   });
 

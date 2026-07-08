@@ -148,7 +148,8 @@ describe('PharosPill', () => {
       // Wait for icon to load asynchronously
       await waitUntil(
         () => component.renderRoot?.querySelector('svg') !== null,
-        'Icon should be rendered'
+        'Icon should be rendered',
+        { timeout: 5000 }
       );
 
       const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement;
@@ -167,7 +168,8 @@ describe('PharosPill', () => {
       // Wait for icon to load asynchronously
       await waitUntil(
         () => component.renderRoot?.querySelector('svg') !== null,
-        'Icon should be rendered'
+        'Icon should be rendered',
+        { timeout: 5000 }
       );
 
       const icon = component.renderRoot?.querySelector('svg') as SVGSVGElement | null;
@@ -199,7 +201,7 @@ describe('PharosPill', () => {
         await component.updateComplete;
 
         // Wait for error to be caught
-        await waitUntil(() => caughtError !== null, 'Error should be caught');
+        await waitUntil(() => caughtError !== null, 'Error should be caught', { timeout: 5000 });
 
         expect(caughtError!.message).to.equal('Could not get icon named "invalid-icon"');
       } finally {

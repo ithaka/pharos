@@ -20,27 +20,27 @@
     "gatsby-plugin-sharp": "^5.16.0",
     "gatsby-source-filesystem": "^5.16.0",
     "gatsby-transformer-sharp": "^5.16.0",
-    "prettier": "^3.8.2",
+    "prettier": "^3.9.4",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
-    "sass": "^1.99.0"
+    "sass": "^1.101.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.0",
+    "@babel/core": "^8.0.1",
     "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "@babel/plugin-transform-private-methods": "^7.28.6",
+    "@babel/plugin-transform-private-methods": "^8.0.1",
     "@types/babel__core": "^7.20.5",
     "@types/culori": "^4.0.1",
     "@types/reach__router": "^1.3.15",
-    "@types/react": "^18.3.28",
+    "@types/react": "^18.3.31",
     "@types/react-dom": "^18.3.7",
     "@types/react-helmet": "^6.1.11",
     "babel-preset-gatsby": "^3.16.0",
     "core-js": "^3.49.0",
     "culori": "^4.0.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
   "author": "ITHAKA",
   "license": "MIT",

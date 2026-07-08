@@ -1,3 +1,5 @@
+type StoryArgs = { text?: string; header?: string };
+
 export default {
   title: 'Styles/Typography',
   parameters: { options: { selectedPanel: 'addon-controls' } },
@@ -13,13 +15,13 @@ const list = (
 );
 
 export const PlainText = {
-  render: (args) => <span>{args.text}</span>,
+  render: (args: StoryArgs) => <span>{args.text}</span>,
   args: { text: 'I am plain text' },
 };
 
 export const BringToAttentionText = {
   name: 'Bring to Attention Text',
-  render: (args) => (
+  render: (args: StoryArgs) => (
     <span>
       This is an example of how to bring attention to <b>{args.text}</b>.
     </span>
@@ -28,7 +30,7 @@ export const BringToAttentionText = {
 };
 
 export const StrongText = {
-  render: (args) => (
+  render: (args: StoryArgs) => (
     <span>
       This is an example of <strong>{args.text}</strong>.
     </span>
@@ -37,7 +39,7 @@ export const StrongText = {
 };
 
 export const SmallText = {
-  render: (args) => (
+  render: (args: StoryArgs) => (
     <span>
       This is an example of <small>{args.text}</small>.
     </span>
@@ -46,7 +48,7 @@ export const SmallText = {
 };
 
 export const IdiomaticText = {
-  render: (args) => (
+  render: (args: StoryArgs) => (
     <span>
       <i>{args.text}</i> is a beacon leading ships safely toward our collective knowledge.
     </span>
@@ -55,7 +57,7 @@ export const IdiomaticText = {
 };
 
 export const StressEmphasisText = {
-  render: (args) => (
+  render: (args: StoryArgs) => (
     <span>
       This is an example of <em>{args.text}</em>.
     </span>
@@ -64,7 +66,7 @@ export const StressEmphasisText = {
 };
 
 export const Tables = {
-  render: (args) => (
+  render: (args: StoryArgs) => (
     <table className="typography-table-example" style={{ borderCollapse: 'collapse' }}>
       <thead>
         <tr>

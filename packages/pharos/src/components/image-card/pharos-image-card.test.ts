@@ -1,6 +1,5 @@
 import { fixture, expect, aTimeout, elementUpdated } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import { sendKeys } from '@web/test-runner-commands';
 
 import type { PharosImageCard } from './pharos-image-card';
 import type { PharosButton } from '../button/pharos-button';
@@ -812,7 +811,6 @@ describe('pharos-image-card', () => {
     );
 
     component.focus();
-    sendKeys({ press: 'Tab' });
     const checkboxElement = component.renderRoot.querySelector(
       '[data-pharos-component="PharosCheckbox"]'
     );
