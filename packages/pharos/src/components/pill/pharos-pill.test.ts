@@ -184,7 +184,8 @@ describe('PharosPill', () => {
       // Suppress expected error logging in test output
       const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
 
-      const rejection = new Promise<Error>((resolve) => {
+      // The invalid icon error is thrown from the async `updated()`, so we can't just use the errorFixture to check it
+      const iconLoadError = new Promise<Error>((resolve) => {
         window.addEventListener(
           'unhandledrejection',
           (e) => {
@@ -197,7 +198,7 @@ describe('PharosPill', () => {
 
       component.iconLeft = 'invalid-icon' as any;
 
-      const error = await rejection;
+      const error = await iconLoadError;
       expect(error.message).toBe('Could not get icon named "invalid-icon"');
 
       consoleSpy.mockRestore();

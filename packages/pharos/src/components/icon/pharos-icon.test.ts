@@ -18,7 +18,8 @@ describe('pharos-icon', () => {
   });
 
   it('throws an error for an invalid icon name', async () => {
-    const rejection = new Promise<Error>((resolve) => {
+    // The invalid icon error is thrown from the async `updated()`, so we can't just use the errorFixture to check it
+    const iconLoadError = new Promise<Error>((resolve) => {
       window.addEventListener(
         'unhandledrejection',
         (e) => {
@@ -29,7 +30,7 @@ describe('pharos-icon', () => {
       );
     });
     fixture(html`<test-pharos-icon name="fake" a11y-title="fake-icon"></test-pharos-icon>`);
-    const error = await rejection;
+    const error = await iconLoadError;
     expect(error.message).toContain('Could not get icon named "fake"');
   });
 
