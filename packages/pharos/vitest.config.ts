@@ -3,11 +3,9 @@ import { playwright } from '@vitest/browser-playwright';
 
 const silencedLogs = ['Lit is in dev mode.', 'Multiple versions of Lit loaded.'];
 
-// Pre-existing unhandled rejections that wtr ignored, which we can now see and are silencing until resolved.
-// These back tests that intentionally trigger errors (async throws surfaced as unhandled rejections).
+// pharos-table throws this from `updated()`, so Lit re-surfaces it as an unhandled rejection
+//Ignore until the throw moves to `update()` like the other components.
 const ignoredUnhandledErrors = [
-  'is not a valid preset', // image-card
-  'Could not get icon named', // icon
   'Table must have an accessible name', // table
 ];
 
