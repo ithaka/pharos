@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosBreadcrumbItem } from './pharos-breadcrumb-item';
 import type { PharosLink } from '../link/pharos-link';
 
@@ -24,24 +25,24 @@ describe('pharos-breadcrumb-item', () => {
         parentNode,
       }
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('truncates long text', async () => {
     const anchor = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"]'
     ) as PharosLink;
-    await expect(anchor?.innerText).to.equal(`${longText.substr(0, 40)}...`);
+    expect(anchor?.innerText).toBe(`${longText.substr(0, 40)}...`);
   });
 
   it('contains tooltip with truncated text', async () => {
     const tooltip = component.renderRoot.querySelector('[data-pharos-component="PharosTooltip"]');
-    await expect(tooltip).to.exist;
+    expect(tooltip).not.toBeNull();
   });
 
   it('is a link if "href" attribute is passed', async () => {
     const anchor = component.renderRoot.querySelector('[data-pharos-component="PharosLink"]');
-    await expect(anchor).to.exist;
+    expect(anchor).not.toBeNull();
   });
 
   it('is a plan text span if no "href" attribute is passed', async () => {
@@ -50,9 +51,9 @@ describe('pharos-breadcrumb-item', () => {
     );
 
     const anchor = component.renderRoot.querySelector('[data-pharos-component="PharosLink"]');
-    await expect(anchor).to.not.exist;
+    expect(anchor).toBeNull();
     const span = component.renderRoot.querySelector('span');
-    await expect(span).to.exist;
+    expect(span).not.toBeNull();
   });
 
   it('does not truncate short text', async () => {
@@ -62,6 +63,6 @@ describe('pharos-breadcrumb-item', () => {
     const anchor = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"]'
     ) as PharosLink;
-    await expect(anchor?.innerText).to.equal(shortText);
+    expect(anchor?.innerText).toBe(shortText);
   });
 });

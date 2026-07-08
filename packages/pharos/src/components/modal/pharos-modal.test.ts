@@ -1,12 +1,17 @@
-import { fixture, expect, elementUpdated, aTimeout } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosModal } from './pharos-modal';
 import type { PharosTextInput } from '../text-input/pharos-text-input';
 import type { PharosButton } from '../button/pharos-button';
 
 describe('pharos-modal', () => {
   let component: PharosModal, componentNoFooter: PharosModal;
+
+  afterEach(() => {
+    document.body.replaceChildren();
+  });
 
   const getSimpleModal = () => {
     return html`
@@ -39,19 +44,19 @@ describe('pharos-modal', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when open', async () => {
     component.open = true;
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('has an attribute to open the modal', async () => {
     component.open = true;
     await component.updateComplete;
-    await expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('has an attribute to close the modal', async () => {
@@ -60,7 +65,7 @@ describe('pharos-modal', () => {
 
     component.open = false;
     await component.updateComplete;
-    await expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('delegates focus to the first focusable element (close button) when opened', async () => {
@@ -72,14 +77,13 @@ describe('pharos-modal', () => {
 
     component.open = true;
     await component.updateComplete;
-    await aTimeout(1);
 
     const closeButton = component.renderRoot.querySelector('#close-button') as PharosButton;
     const buttonElement = closeButton.renderRoot.querySelector(
       '#button-element'
     ) as HTMLButtonElement;
 
-    expect(activeElement === buttonElement).to.be.true;
+    await vi.waitFor(() => expect(activeElement === buttonElement).toBe(true));
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -103,11 +107,10 @@ describe('pharos-modal', () => {
     `);
     component.open = true;
     await component.updateComplete;
-    await aTimeout(1);
 
     const input = component.querySelector('test-pharos-text-input') as PharosTextInput;
 
-    expect(activeElement === input['_input']).to.be.true;
+    await vi.waitFor(() => expect(activeElement === input['_input']).toBe(true));
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -131,13 +134,12 @@ describe('pharos-modal', () => {
     button.click();
     button.focus();
     await component.updateComplete;
-    await aTimeout(1);
+    await vi.waitFor(() => expect(component.open).toBe(true));
 
     component.open = false;
     await component.updateComplete;
-    await aTimeout(1);
 
-    expect(activeElement === button).to.be.true;
+    await vi.waitFor(() => expect(activeElement === button).toBe(true));
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -148,7 +150,7 @@ describe('pharos-modal', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes when the escape key for IE is pressed', async () => {
@@ -158,7 +160,7 @@ describe('pharos-modal', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc' }));
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes when the close button is clicked', async () => {
@@ -169,7 +171,7 @@ describe('pharos-modal', () => {
     closeButton.click();
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes when the element with attribute data-modal-close is clicked', async () => {
@@ -179,7 +181,7 @@ describe('pharos-modal', () => {
     button.setAttribute('data-modal-close', '');
     footer.appendChild(button);
     component.appendChild(footer);
-    await elementUpdated(component);
+    await component.updateComplete;
 
     component.open = true;
     await component.updateComplete;
@@ -188,7 +190,7 @@ describe('pharos-modal', () => {
     closeButton.click();
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('does not close when the overlay is clicked', async () => {
@@ -199,7 +201,7 @@ describe('pharos-modal', () => {
     overlay.click();
     await component.updateComplete;
 
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('opens when the element with matching attribute data-modal-id is clicked', async () => {
@@ -212,7 +214,7 @@ describe('pharos-modal', () => {
 
     trigger.click();
     await component.updateComplete;
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('has a slot to contain a description of the modal for accessibility', async () => {
@@ -220,13 +222,13 @@ describe('pharos-modal', () => {
     description.setAttribute('slot', 'description');
     description.textContent = 'I am a description';
     component.appendChild(description);
-    await elementUpdated(component);
+    await component.updateComplete;
 
     component.open = true;
     await component.updateComplete;
 
     const dialog = component.renderRoot.querySelector('.modal__dialog') as HTMLDivElement;
-    expect(dialog.getAttribute('aria-describedby')).to.equal('description');
+    expect(dialog.getAttribute('aria-describedby')).toBe('description');
   });
 
   it('fires a cancelable custom event pharos-modal-close when starting to close by user interaction', async () => {
@@ -239,7 +241,7 @@ describe('pharos-modal', () => {
 
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     await component.updateComplete;
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('includes details of trigger when custom event pharos-modal-close is fired', async () => {
@@ -254,7 +256,7 @@ describe('pharos-modal', () => {
     const closeButton = component.renderRoot.querySelector('#close-button') as PharosButton;
     closeButton.click();
     await component.updateComplete;
-    expect(trigger === closeButton).to.be.true;
+    expect(trigger === closeButton).toBe(true);
   });
 
   it('fires a custom event pharos-modal-closed when closed by user interaction', async () => {
@@ -269,7 +271,7 @@ describe('pharos-modal', () => {
     const closeButton = component.renderRoot.querySelector('#close-button') as PharosButton;
     closeButton.click();
     await component.updateComplete;
-    expect(wasFired).to.be.true;
+    expect(wasFired).toBe(true);
   });
 
   it('fires a custom event pharos-modal-closed when closed via props', async () => {
@@ -283,7 +285,7 @@ describe('pharos-modal', () => {
     await component.updateComplete;
     component.open = false;
     await component.updateComplete;
-    expect(wasFired).to.be.true;
+    expect(wasFired).toBe(true);
   });
 
   it('fires a cancelable custom event pharos-modal-open when starting to open by user interaction', async () => {
@@ -300,7 +302,7 @@ describe('pharos-modal', () => {
     component.addEventListener('pharos-modal-open', handleOpen);
     trigger.click();
     await component.updateComplete;
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('includes details of trigger when custom event pharos-modal-open is fired', async () => {
@@ -318,7 +320,7 @@ describe('pharos-modal', () => {
     component.addEventListener('pharos-modal-open', handleOpen);
     trigger.click();
     await component.updateComplete;
-    expect(clicked === trigger).to.be.true;
+    expect(clicked === trigger).toBe(true);
   });
 
   it('fires a custom event pharos-modal-opened when opened by user interaction', async () => {
@@ -336,7 +338,7 @@ describe('pharos-modal', () => {
     component.addEventListener('pharos-modal-opened', handleOpen);
     trigger.click();
     await component.updateComplete;
-    expect(wasFired).to.be.true;
+    expect(wasFired).toBe(true);
   });
 
   it('fires a custom event pharos-modal-opened when opened via props', async () => {
@@ -348,7 +350,7 @@ describe('pharos-modal', () => {
 
     component.open = true;
     await component.updateComplete;
-    expect(wasFired).to.be.true;
+    expect(wasFired).toBe(true);
   });
 
   it('adds a class to prevent scrolling on the body when opened', async () => {
@@ -356,7 +358,7 @@ describe('pharos-modal', () => {
     await component.updateComplete;
 
     const body = document.querySelector('body');
-    expect(body?.classList.contains('pharos-modal__body')).to.be.true;
+    expect(body?.classList.contains('pharos-modal__body')).toBe(true);
   });
 
   it('removes the class that prevents scrolling on the body when closed', async () => {
@@ -366,14 +368,17 @@ describe('pharos-modal', () => {
     await component.updateComplete;
 
     const body = document.querySelector('body');
-    expect(body?.classList.contains('pharos-modal__body')).to.be.false;
+    expect(body?.classList.contains('pharos-modal__body')).toBe(false);
   });
 
   it('throws an error for an invalid size value', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-modal size="fake">Hi there!</test-pharos-modal>
-    `).catch((e) => e);
-    expect('fake is not a valid size. Valid sizes are: small, medium, large').to.be.thrown;
+    `);
+
+    expect(error.message).toContain(
+      'fake is not a valid size. Valid sizes are: small, medium, large'
+    );
   });
 
   it('it shows the footer when slotted content exists', async () => {
@@ -382,7 +387,7 @@ describe('pharos-modal', () => {
     const modalFooterWithSlottedContent = component.renderRoot.querySelector(
       '.modal__footer'
     ) as HTMLDivElement;
-    expect(modalFooterWithSlottedContent).not.to.be.null;
+    expect(modalFooterWithSlottedContent).not.toBeNull();
   });
 
   it('it hides the footer when missing slotted content', async () => {
@@ -391,6 +396,6 @@ describe('pharos-modal', () => {
     const modalFooterWithoutSlottedContent = componentNoFooter.renderRoot.querySelector(
       '.modal__footer--empty'
     ) as HTMLDivElement;
-    expect(modalFooterWithoutSlottedContent).not.to.be.null;
+    expect(modalFooterWithoutSlottedContent).not.toBeNull();
   });
 });

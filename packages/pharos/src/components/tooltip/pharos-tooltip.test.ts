@@ -1,6 +1,7 @@
-import { fixture, expect, aTimeout, nextFrame } from '@open-wc/testing';
+import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture, errorFixture } from '../../test/fixture';
 import type { Placement } from '../base/overlay-element';
 import type { PharosTooltip } from './pharos-tooltip';
 
@@ -37,23 +38,23 @@ describe('pharos-tooltip', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when opened', async () => {
     trigger.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('sets its default attributes', async () => {
-    expect(component).dom.to.equal(
+    expect(component).toEqualDom(
       `<test-pharos-tooltip id="my-tooltip" placement="top" strategy="absolute" boundary="clippingAncestors" data-pharos-component="PharosTooltip">Hi there!</test-pharos-tooltip>`
     );
   });
 
   it('renders a static shadowDom', async () => {
-    expect(component).shadowDom.to.equal(
+    expect(component).toEqualShadowDom(
       `
       <div
         aria-hidden="true"
@@ -80,7 +81,7 @@ describe('pharos-tooltip', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     await component.updateComplete;
 
-    expect(component.open).to.equal(false);
+    expect(component.open).toBe(false);
   });
 
   it('closes when the escape key for IE is pressed', async () => {
@@ -90,103 +91,90 @@ describe('pharos-tooltip', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc' }));
     await component.updateComplete;
 
-    expect(component.open).to.equal(false);
+    expect(component.open).toBe(false);
   });
 
   it('opens on mouseenter of trigger and closes on mouseleave', async () => {
     trigger.dispatchEvent(new Event('mouseenter'));
-    await component.updateComplete;
-    await aTimeout(100);
-    expect(component.open).to.equal(true);
+    await vi.waitFor(() => expect(component.open).toBe(true));
 
     trigger.dispatchEvent(new Event('mouseleave'));
-    await component.updateComplete;
-    await aTimeout(100);
-    expect(component.open).to.equal(false);
+    await vi.waitFor(() => expect(component.open).toBe(false));
   });
 
   it('opens on focusin of trigger and closes on focusout', async () => {
     trigger.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    expect(component.open).to.equal(true);
+    expect(component.open).toBe(true);
 
     trigger.dispatchEvent(new Event('focusout'));
     await component.updateComplete;
-    expect(component.open).to.equal(false);
+    expect(component.open).toBe(false);
   });
 
   it('throws an error for an invalid placement value', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-tooltip placement="side">Hi there!</test-pharos-tooltip>
-    `).catch((e) => e);
-    expect(
-      'side is not a valid placement. Valid placements are: top, top-start, top-end, bottom, bottom-start, bottom-end, right, right-start, right-end, left, left-start, left-end, auto, auto-start, auto-end'
-    ).to.be.thrown;
+    `);
+
+    expect(error.message).toContain('side is not a valid placement');
   });
 
   it('stays open on mouseenter of content and closes on mouseleave', async () => {
     trigger.dispatchEvent(new Event('mouseenter'));
-    await aTimeout(100);
-    await component.updateComplete;
+    await vi.waitFor(() => expect(component.open).toBe(true));
 
     component.dispatchEvent(new Event('mouseenter'));
-    await aTimeout(100);
-    await component.updateComplete;
-    expect(component.open).to.equal(true);
+    await vi.waitFor(() => expect(component.open).toBe(true));
 
     component.dispatchEvent(new Event('mouseleave'));
-    await aTimeout(100);
-    await component.updateComplete;
-    expect(component.open).to.equal(false);
+    await vi.waitFor(() => expect(component.open).toBe(false));
   });
 
   it('opens the first one on focus and then closes it upon hovering the second', async () => {
     trigger.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
     await secondComponent.updateComplete;
-    expect(component.open).to.equal(true);
-    expect(secondComponent.open).to.equal(false);
+    expect(component.open).toBe(true);
+    expect(secondComponent.open).toBe(false);
 
     secondTrigger.dispatchEvent(new Event('mouseenter'));
-    await component.updateComplete;
-    await secondComponent.updateComplete;
-    await aTimeout(100);
-    expect(component.open).to.equal(false);
-    expect(secondComponent.open).to.equal(true);
+    await vi.waitFor(() => {
+      expect(component.open).toBe(false);
+      expect(secondComponent.open).toBe(true);
+    });
   });
 
   it('opens the first one on hover and then closes it upon focusing the second', async () => {
     trigger.dispatchEvent(new Event('mouseenter'));
-    await component.updateComplete;
-    await aTimeout(100);
-    expect(component.open).to.equal(true);
-    expect(secondComponent.open).to.equal(false);
+    await vi.waitFor(() => expect(component.open).toBe(true));
+    expect(secondComponent.open).toBe(false);
 
     secondTrigger.dispatchEvent(new Event('focusin'));
-    await component.updateComplete;
-    await secondComponent.updateComplete;
-    await aTimeout(100);
-    expect(component.open).to.equal(false);
-    expect(secondComponent.open).to.equal(true);
+    await vi.waitFor(() => {
+      expect(component.open).toBe(false);
+      expect(secondComponent.open).toBe(true);
+    });
   });
 
   it('throws an error for invalid fallback values', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-tooltip .fallbackPlacements=${['corner', 'right', 'fake'] as Placement[]}
         >Hi there!</test-pharos-tooltip
       >
-    `).catch((e) => e);
-    expect(
-      'corner, fake are not valid fallbacks. Valid fallbacks are: top, top-start, top-end, bottom, bottom-start, bottom-end, right, right-start, right-end, left, left-start, left-end, auto, auto-start, auto-end'
-    ).to.be.thrown;
+    `);
+
+    expect(error.message).toContain('corner, fake are not valid fallbacks');
   });
 
   it('throws an error for invalid strategy values', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-tooltip strategy="relative">Hi there!</test-pharos-tooltip>
-    `).catch((e) => e);
-    expect('relative is not a valid positioning strategy. Valid strategies are: absolute, fixed').to
-      .be.thrown;
+    `);
+
+    expect(error.message).toContain(
+      'relative is not a valid positioning strategy. Valid strategies are: absolute, fixed'
+    );
   });
 
   it('applies text wrap class when tooltip content is longer than 30 characters', async () => {
@@ -196,19 +184,19 @@ describe('pharos-tooltip', () => {
       >
     `);
 
-    expect(component['_bubble'].classList.contains('tooltip__bubble--text-wrap')).to.be.true;
+    expect(component['_bubble'].classList.contains('tooltip__bubble--text-wrap')).toBe(true);
   });
 
   it('sets aria attributes on the trigger element', async () => {
     trigger.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    expect(trigger.getAttribute('aria-describedby')).to.equal('my-tooltip');
+    expect(trigger.getAttribute('aria-describedby')).toBe('my-tooltip');
   });
 
   it('opens programmatically if only a single trigger exists', async () => {
     component.open = true;
     await component.updateComplete;
-    expect(component.open).to.equal(true);
+    expect(component.open).toBe(true);
   });
 
   it('supports multiple triggers when open and another trigger is focused', async () => {
@@ -218,15 +206,11 @@ describe('pharos-tooltip', () => {
     `);
 
     trigger.dispatchEvent(new Event('mouseenter'));
-    await component.updateComplete;
-    await aTimeout(100);
+    await vi.waitFor(() => expect(component.open).toBe(true));
 
     thirdTrigger.dispatchEvent(new Event('focusin'));
-    await component.updateComplete;
-    await aTimeout(300);
 
-    await nextFrame();
-    expect(component.open).to.be.true;
+    await vi.waitFor(() => expect(component.open).toBe(true));
   });
 
   it('supports multiple triggers when open and another trigger is hovered', async () => {
@@ -236,15 +220,11 @@ describe('pharos-tooltip', () => {
     `);
 
     trigger.dispatchEvent(new Event('focusin'));
-    await aTimeout(100);
-    await component.updateComplete;
+    await vi.waitFor(() => expect(component.open).toBe(true));
 
     thirdTrigger.dispatchEvent(new Event('mouseenter'));
-    await component.updateComplete;
-    await aTimeout(100);
 
-    await nextFrame();
-    expect(component.open).to.be.true;
+    await vi.waitFor(() => expect(component.open).toBe(true));
   });
 
   it('has an attribute to set tooltip width to be within the boundary for short tooltip', async () => {
@@ -252,9 +232,8 @@ describe('pharos-tooltip', () => {
     document.body.appendChild(boundary);
     component.boundary = 'custom-boundary';
     await component.updateComplete;
-    await aTimeout(100);
 
-    expect(component['_bubble'].style.width).to.equal('52px');
+    await vi.waitFor(() => expect(component['_bubble'].style.width).toBe('52px'));
   });
 
   it('has an attribute to set tooltip width to be within the boundary for long tooltip', async () => {
@@ -267,8 +246,7 @@ describe('pharos-tooltip', () => {
     `);
     component.boundary = 'custom-boundary';
     await component.updateComplete;
-    await aTimeout(100);
 
-    expect(component['_bubble'].style.width).to.equal('36px');
+    await vi.waitFor(() => expect(component['_bubble'].style.width).toBe('36px'));
   });
 });

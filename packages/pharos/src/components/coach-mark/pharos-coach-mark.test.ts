@@ -1,12 +1,13 @@
-import { fixture, expect } from '@open-wc/testing';
+import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { MockInstance } from 'vitest';
 import { html } from 'lit/static-html.js';
-import sinon from 'sinon';
-import type { SinonSpy } from 'sinon';
+
+import { fixture } from '../../test/fixture';
 import type { PharosCoachMark } from './pharos-coach-mark';
 import type { PharosButton } from '../button/pharos-button';
 
 describe('pharos-coach-mark', () => {
-  let component: PharosCoachMark, logSpy: SinonSpy;
+  let component: PharosCoachMark, logSpy: MockInstance;
 
   beforeEach(async () => {
     component = await fixture(
@@ -15,27 +16,27 @@ describe('pharos-coach-mark', () => {
   });
 
   beforeAll(() => {
-    logSpy = sinon.spy(console, 'error');
+    logSpy = vi.spyOn(console, 'error');
   });
 
   afterAll(() => {
-    logSpy.restore();
+    logSpy.mockRestore();
   });
 
   it('is accessible', async () => {
-    expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when opened', async () => {
     component.hide = false;
     await component.updateComplete;
-    expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('has an attribute to open the coach mark', async () => {
     component.hide = false;
     await component.updateComplete;
-    expect(component.hide).to.be.false;
+    expect(component.hide).toBe(false);
   });
 
   it('has an attribute to close the coach mark', async () => {
@@ -44,7 +45,7 @@ describe('pharos-coach-mark', () => {
 
     component.hide = true;
     await component.updateComplete;
-    expect(component.hide).to.be.true;
+    expect(component.hide).toBe(true);
   });
 
   it('closes when the close button is clicked and emits closed event', async () => {
@@ -61,8 +62,8 @@ describe('pharos-coach-mark', () => {
     closeButton.click();
     await component.updateComplete;
 
-    expect(component.hide).to.be.true;
-    expect(wasFired).to.be.true;
+    expect(component.hide).toBe(true);
+    expect(wasFired).toBe(true);
   });
 
   it('displays the header set in the element attribute', async () => {
@@ -70,13 +71,13 @@ describe('pharos-coach-mark', () => {
       html`<test-pharos-coach-mark header="Test Header">Test Description</test-pharos-coach-mark>`
     );
     const header = component.renderRoot.querySelector('pharos-heading');
-    expect(header).to.have.text('Test Header');
+    expect(header).toHaveTextContent('Test Header');
   });
 
   it('displays content added as a child to the element', async () => {
     component = await fixture(
       html`<test-pharos-coach-mark>Test Description</test-pharos-coach-mark>`
     );
-    expect(component).to.have.text('Test Description');
+    expect(component).toHaveTextContent('Test Description');
   });
 });

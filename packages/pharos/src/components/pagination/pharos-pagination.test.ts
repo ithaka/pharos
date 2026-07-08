@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosPagination } from './pharos-pagination';
 
 describe('pharos-pagination', () => {
@@ -11,7 +12,7 @@ describe('pharos-pagination', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when using the input variant', async () => {
@@ -24,7 +25,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
 
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when simple with the default variant', async () => {
@@ -56,10 +57,10 @@ describe('pharos-pagination', () => {
 
   it('sets its default attributes', async () => {
     component = await fixture(html` <test-pharos-pagination></test-pharos-pagination> `);
-    expect(component.getAttribute('current-page')).to.equal('1');
-    expect(component.getAttribute('total-results')).to.equal('0');
-    expect(component.getAttribute('page-size')).to.equal('25');
-    expect(component.getAttribute('variant')).to.equal('default');
+    expect(component.getAttribute('current-page')).toBe('1');
+    expect(component.getAttribute('total-results')).toBe('0');
+    expect(component.getAttribute('page-size')).toBe('25');
+    expect(component.getAttribute('variant')).toBe('default');
   });
 
   it('shows/hides previous page link correctly', async () => {
@@ -71,7 +72,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
     let prevLink = component.renderRoot.querySelector('.prev') as HTMLElement;
-    expect(prevLink).not.to.exist;
+    expect(prevLink).toBeNull();
 
     component = await fixture(html`
       <test-pharos-pagination
@@ -81,7 +82,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
     prevLink = component.renderRoot.querySelector('.prev') as HTMLElement;
-    expect(prevLink).to.exist;
+    expect(prevLink).not.toBeNull();
   });
 
   it('shows/hides first page link correctly for input variant', async () => {
@@ -94,7 +95,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
     let firstLink = component.renderRoot.querySelector('.first') as HTMLElement;
-    expect(firstLink).not.to.exist;
+    expect(firstLink).toBeNull();
 
     component = await fixture(html`
       <test-pharos-pagination
@@ -105,7 +106,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
     firstLink = component.renderRoot.querySelector('.first') as HTMLElement;
-    expect(firstLink).to.exist;
+    expect(firstLink).not.toBeNull();
   });
 
   it('shows/hides next page link correctly', async () => {
@@ -117,7 +118,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
     let nextLink = component.renderRoot.querySelector('.next') as HTMLElement;
-    expect(nextLink).to.exist;
+    expect(nextLink).not.toBeNull();
 
     component = await fixture(html`
       <test-pharos-pagination
@@ -127,7 +128,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
     nextLink = component.renderRoot.querySelector('.next') as HTMLElement;
-    expect(nextLink).not.to.exist;
+    expect(nextLink).toBeNull();
   });
 
   it('shows/hides last page link correctly for input variant', async () => {
@@ -140,7 +141,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
     let lastLink = component.renderRoot.querySelector('.last') as HTMLElement;
-    expect(lastLink).to.exist;
+    expect(lastLink).not.toBeNull();
 
     component = await fixture(html`
       <test-pharos-pagination
@@ -151,7 +152,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
     lastLink = component.renderRoot.querySelector('.last') as HTMLElement;
-    expect(lastLink).not.to.exist;
+    expect(lastLink).toBeNull();
   });
 
   it('does not render first/last links for default variant', async () => {
@@ -163,8 +164,8 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
 
-    expect(component.renderRoot.querySelector('.first')).not.to.exist;
-    expect(component.renderRoot.querySelector('.last')).not.to.exist;
+    expect(component.renderRoot.querySelector('.first')).toBeNull();
+    expect(component.renderRoot.querySelector('.last')).toBeNull();
   });
 
   it('hides first/last links when simple with the input variant', async () => {
@@ -314,10 +315,10 @@ describe('pharos-pagination', () => {
     lastLink.click();
     await component.updateComplete;
 
-    expect(firstPageCount).to.equal(1);
-    expect(prevPageCount).to.equal(1);
-    expect(nextPageCount).to.equal(1);
-    expect(lastPageCount).to.equal(1);
+    expect(firstPageCount).toBe(1);
+    expect(prevPageCount).toBe(1);
+    expect(nextPageCount).toBe(1);
+    expect(lastPageCount).toBe(1);
   });
 
   it('fires navigation events when child element clicked in input variant', async () => {
@@ -370,10 +371,10 @@ describe('pharos-pagination', () => {
     lastLinkChildElement.click();
     await component.updateComplete;
 
-    expect(firstPageCount).to.equal(1);
-    expect(prevPageCount).to.equal(1);
-    expect(nextPageCount).to.equal(1);
-    expect(lastPageCount).to.equal(1);
+    expect(firstPageCount).toBe(1);
+    expect(prevPageCount).toBe(1);
+    expect(nextPageCount).toBe(1);
+    expect(lastPageCount).toBe(1);
   });
 
   it('fires prev-page and next-page events when simple', async () => {
@@ -426,34 +427,43 @@ describe('pharos-pagination', () => {
   });
 
   it('throws an error for an invalid total results value', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-pagination total-results="-1"></test-pharos-pagination>
-    `).catch((e) => e);
-    expect("totalResults value '-1' is invalid. Can only be a number greater than or equal to 0").to
-      .be.thrown;
+    `);
+
+    expect(error.message).toContain(
+      "totalResults value '-1' is invalid. Can only be a number greater than or equal to 0"
+    );
   });
 
   it('throws an error for an invalid page size value', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-pagination page-size="1.5"></test-pharos-pagination>
-    `).catch((e) => e);
-    expect("pageSize value '1.5' is invalid. Can only be a number greater than or equal to 1").to.be
-      .thrown;
+    `);
+
+    expect(error.message).toContain(
+      "pageSize value '1.5' is invalid. Can only be a number greater than or equal to 1"
+    );
   });
 
   it('throws an error for an invalid current page value', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-pagination current-page="0"></test-pharos-pagination>
-    `).catch((e) => e);
-    expect("currentPage value '0' is invalid. Can only be a number greater than or equal to 1").to
-      .be.thrown;
+    `);
+
+    expect(error.message).toContain(
+      "currentPage value '0' is invalid. Can only be a number greater than or equal to 1"
+    );
   });
 
   it('throws an error for an invalid variant value', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-pagination variant="fake"></test-pharos-pagination>
-    `).catch((e) => e);
-    expect('fake is not a valid variant. Valid variants are: default, input').to.be.thrown;
+    `);
+
+    expect(error.message).toContain(
+      'fake is not a valid Pharos pagination variant. Valid variants are: default, input'
+    );
   });
 
   it('renders the page input variant', async () => {
@@ -467,8 +477,8 @@ describe('pharos-pagination', () => {
     `);
 
     const pageInput = component.renderRoot.querySelector('.pagination__input');
-    expect(pageInput).to.exist;
-    expect(pageInput?.getAttribute('type')).to.equal('number');
+    expect(pageInput).not.toBeNull();
+    expect(pageInput?.getAttribute('type')).toBe('number');
   });
 
   it('fires page-input event with input number exceeding the total page number', async () => {
@@ -496,7 +506,7 @@ describe('pharos-pagination', () => {
     );
     await component.updateComplete;
 
-    expect(receivedPage).to.equal(5);
+    expect(receivedPage).toBe(5);
   });
 
   it('does not fire page-input on non-enter key press', async () => {
@@ -524,7 +534,7 @@ describe('pharos-pagination', () => {
     );
     await component.updateComplete;
 
-    expect(eventCount).to.equal(0);
+    expect(eventCount).toBe(0);
   });
 
   it('clamps page-input to the minimum page', async () => {
@@ -552,7 +562,7 @@ describe('pharos-pagination', () => {
     );
     await component.updateComplete;
 
-    expect(receivedPage).to.equal(1);
+    expect(receivedPage).toBe(1);
   });
 
   it('adjusts page-input width based on user entry', async () => {
@@ -573,6 +583,6 @@ describe('pharos-pagination', () => {
     await component.updateComplete;
 
     const expectedWidth = String(pageInput.value).length + 2;
-    expect(pageInput.getAttribute('style')).to.contain(`width: ${expectedWidth}ch`);
+    expect(pageInput.getAttribute('style')).toContain(`width: ${expectedWidth}ch`);
   });
 });
