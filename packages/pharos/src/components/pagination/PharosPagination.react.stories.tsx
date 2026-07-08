@@ -32,7 +32,7 @@ export const Base: Story = {
       pageSize={args.pageSize}
       currentPage={args.currentPage}
       variant={args.variant}
-      condensed={args.condensed}
+      simple={args.simple}
       onFirst-Page={(e: CustomEvent) => action('First Page')(JSON.stringify(e))}
       onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
       onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
@@ -54,7 +54,7 @@ export const Input: Story = {
       pageSize={args.pageSize}
       currentPage={args.currentPage}
       variant={args.variant}
-      condensed={args.condensed}
+      simple={args.simple}
       onFirst-Page={(e: CustomEvent) => action('First Page')(JSON.stringify(e))}
       onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
       onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
@@ -65,35 +65,35 @@ export const Input: Story = {
   args: { ...defaultArgs, variant: 'input' },
 };
 
-export const CondensedInput: Story = {
+export const SimpleInput: Story = {
   render: (args) => (
     <PharosPagination
       totalResults={args.totalResults}
       pageSize={args.pageSize}
       currentPage={args.currentPage}
       variant={args.variant}
-      condensed={args.condensed}
+      simple={args.simple}
       onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
       onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
       onPage-Input={(e: CustomEvent) => action('Page Input')(JSON.stringify(e.detail))}
     />
   ),
-  args: { ...defaultArgs, variant: 'input', condensed: true },
+  args: { ...defaultArgs, variant: 'input', simple: true },
 };
 
-export const Condensed: Story = {
+export const Simple: Story = {
   render: (args) => (
     <PharosPagination
       totalResults={args.totalResults}
       pageSize={args.pageSize}
       currentPage={args.currentPage}
       variant={args.variant}
-      condensed={args.condensed}
+      simple={args.simple}
       onFirst-Page={(e: CustomEvent) => action('First Page')(JSON.stringify(e))}
       onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
       onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
       onLast-Page={(e: CustomEvent) => action('Last Page')(JSON.stringify(e))}
     />
   ),
-  args: { ...defaultArgs, variant: 'default', condensed: true },
+  args: { ...defaultArgs, variant: 'default', simple: true },
 };

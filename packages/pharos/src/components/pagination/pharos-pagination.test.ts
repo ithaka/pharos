@@ -27,27 +27,27 @@ describe('pharos-pagination', () => {
     await expect(component).to.be.accessible();
   });
 
-  it('is accessible when condensed with the default variant', async () => {
+  it('is accessible when simple with the default variant', async () => {
     component = await fixture(html`
       <test-pharos-pagination
         current-page="2"
         total-results="50"
         page-size="10"
-        condensed
+        simple
       ></test-pharos-pagination>
     `);
 
     await expect(component).to.be.accessible();
   });
 
-  it('is accessible when condensed with the input variant', async () => {
+  it('is accessible when simple with the input variant', async () => {
     component = await fixture(html`
       <test-pharos-pagination
         current-page="2"
         total-results="50"
         page-size="10"
         variant="input"
-        condensed
+        simple
       ></test-pharos-pagination>
     `);
 
@@ -167,14 +167,14 @@ describe('pharos-pagination', () => {
     expect(component.renderRoot.querySelector('.last')).not.to.exist;
   });
 
-  it('hides first/last links when condensed with the input variant', async () => {
+  it('hides first/last links when simple with the input variant', async () => {
     component = await fixture(html`
       <test-pharos-pagination
         current-page="2"
         total-results="112"
         page-size="25"
         variant="input"
-        condensed
+        simple
       ></test-pharos-pagination>
     `);
 
@@ -182,13 +182,13 @@ describe('pharos-pagination', () => {
     expect(component.renderRoot.querySelector('.last')).not.to.exist;
   });
 
-  it('still hides first/last links when condensed with the default variant', async () => {
+  it('still hides first/last links when simple with the default variant', async () => {
     component = await fixture(html`
       <test-pharos-pagination
         current-page="2"
         total-results="112"
         page-size="25"
-        condensed
+        simple
       ></test-pharos-pagination>
     `);
 
@@ -196,14 +196,14 @@ describe('pharos-pagination', () => {
     expect(component.renderRoot.querySelector('.last')).not.to.exist;
   });
 
-  it('hides "Previous"/"Next" text when condensed with the input variant', async () => {
+  it('hides "Previous"/"Next" text when simple with the input variant', async () => {
     component = await fixture(html`
       <test-pharos-pagination
         current-page="3"
         total-results="112"
         page-size="25"
         variant="input"
-        condensed
+        simple
       ></test-pharos-pagination>
     `);
 
@@ -215,13 +215,13 @@ describe('pharos-pagination', () => {
     expect(nextLink.querySelector('.pagination__visually-hidden')).to.exist;
   });
 
-  it('hides "Previous"/"Next" text when condensed with the default variant', async () => {
+  it('hides "Previous"/"Next" text when simple with the default variant', async () => {
     component = await fixture(html`
       <test-pharos-pagination
         current-page="3"
         total-results="112"
         page-size="25"
-        condensed
+        simple
       ></test-pharos-pagination>
     `);
 
@@ -233,7 +233,7 @@ describe('pharos-pagination', () => {
     expect(nextLink.querySelector('.pagination__visually-hidden')).to.exist;
   });
 
-  it('shows "Previous"/"Next" text when not condensed with the default variant', async () => {
+  it('shows "Previous"/"Next" text when not simple with the default variant', async () => {
     component = await fixture(html`
       <test-pharos-pagination
         current-page="3"
@@ -250,7 +250,7 @@ describe('pharos-pagination', () => {
     expect(nextLink.querySelector('.pagination__visually-hidden')).not.to.exist;
   });
 
-  it('shows "Previous"/"Next" text when not condensed with the input variant', async () => {
+  it('shows "Previous"/"Next" text when not simple with the input variant', async () => {
     component = await fixture(html`
       <test-pharos-pagination
         current-page="3"
@@ -376,7 +376,7 @@ describe('pharos-pagination', () => {
     expect(lastPageCount).to.equal(1);
   });
 
-  it('fires prev-page and next-page events when condensed', async () => {
+  it('fires prev-page and next-page events when simple', async () => {
     let prevPageCount = 0;
     let nextPageCount = 0;
     const onPrevClick = (): void => {
@@ -391,7 +391,7 @@ describe('pharos-pagination', () => {
         total-results="112"
         page-size="25"
         variant="input"
-        condensed
+        simple
         @prev-page=${onPrevClick}
         @next-page=${onNextClick}
       ></test-pharos-pagination>
@@ -409,14 +409,14 @@ describe('pharos-pagination', () => {
     expect(nextPageCount).to.equal(1);
   });
 
-  it('renders the page input for condensed input variant', async () => {
+  it('renders the page input for simple input variant', async () => {
     component = await fixture(html`
       <test-pharos-pagination
         current-page="3"
         total-results="112"
         page-size="25"
         variant="input"
-        condensed
+        simple
       ></test-pharos-pagination>
     `);
 

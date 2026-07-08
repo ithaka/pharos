@@ -3,4 +3,4 @@
 '@ithaka/pharos': minor
 ---
 
-Add condensed prop for pagination
+Add simple prop for pagination

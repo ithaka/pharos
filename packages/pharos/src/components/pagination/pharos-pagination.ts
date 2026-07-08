@@ -60,13 +60,13 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   public variant: PaginationVariant = 'default';
 
   /**
-   * Indicates a condensed rendering, hiding the Previous/Next text labels
+   * Indicates a simple rendering, hiding the Previous/Next text labels
    * (icon-only, with visually-hidden text retained for accessibility) and
    * the first/last page buttons, regardless of variant.
-   * @attr condensed
+   * @attr simple
    */
   @property({ type: Boolean, reflect: true })
-  public condensed = false;
+  public simple = false;
 
   @state()
   private _pageInputValue: string | null = null;
@@ -149,7 +149,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _renderFirstLink(): TemplateResult | typeof nothing {
-    if (this.variant === 'input' && !this.condensed && this.currentPage > 1) {
+    if (this.variant === 'input' && !this.simple && this.currentPage > 1) {
       return html`
         <pharos-link
           class="pagination__link first"
@@ -168,7 +168,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
 
   private _renderPrevLink(): TemplateResult | typeof nothing {
     if (this.currentPage > 1) {
-      const iconOnly = this.condensed;
+      const iconOnly = this.simple;
       return html`
         <pharos-link
           class="pagination__link prev"
@@ -190,7 +190,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
 
   private _renderNextLink(): TemplateResult | typeof nothing {
     if (this.currentPage < this.totalPages) {
-      const iconOnly = this.condensed;
+      const iconOnly = this.simple;
       return html`
         <pharos-link
           class="pagination__link next"
@@ -209,7 +209,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _renderLastLink(): TemplateResult | typeof nothing {
-    if (this.variant === 'input' && !this.condensed && this.currentPage < this.totalPages) {
+    if (this.variant === 'input' && !this.simple && this.currentPage < this.totalPages) {
       return html`
         <pharos-link
           class="pagination__link last"

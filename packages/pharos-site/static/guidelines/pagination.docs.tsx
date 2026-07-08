@@ -65,8 +65,8 @@ const PaginationPage: FC = () => {
             ></PharosPagination>
           </div>
         </PageSection>
-        <PageSection title="Condensed" subSectionLevel={1} lessMargin>
-          Add the <code>condensed</code> attribute to any variant for tighter layouts. It hides the
+        <PageSection title="Simple" subSectionLevel={1} lessMargin>
+          Add the <code>simple</code> attribute to any variant for tighter layouts. It hides the
           "Previous"/"Next" text (icon-only, chevrons remain) and, when combined with the
           jump-to-page variant, also omits the first/last page buttons.
           <p>With the jump-to-page variant:</p>
@@ -76,7 +76,7 @@ const PaginationPage: FC = () => {
               pageSize={20}
               currentPage={3}
               variant="input"
-              condensed
+              simple
             ></PharosPagination>
           </div>
           <p>With the default variant:</p>
@@ -85,7 +85,7 @@ const PaginationPage: FC = () => {
               totalResults={660}
               pageSize={20}
               currentPage={3}
-              condensed
+              simple
             ></PharosPagination>
           </div>
         </PageSection>
