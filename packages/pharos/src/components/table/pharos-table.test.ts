@@ -3,7 +3,7 @@ import type { TemplateResult } from 'lit';
 
 import { html } from 'lit/static-html.js';
 
-import { fixture, errorFixture } from '../../test/fixture';
+import { fixture } from '../../test/fixture';
 import type { PharosTable } from './pharos-table';
 import type { PharosLink } from '../link/pharos-link';
 import type { PharosPagination } from '../pagination/pharos-pagination';
@@ -183,7 +183,20 @@ describe('pharos-table', () => {
     });
 
     it('throws an error if caption is not provided', async () => {
-      const error = await errorFixture(
+      // The accessible-name error is thrown from the async `updated()`, so it surfaces as an
+      // unhandled rejection rather than rejecting updateComplete; we can't use errorFixture to check it.
+      const tableError = new Promise<Error>((resolve) => {
+        window.addEventListener(
+          'unhandledrejection',
+          (e) => {
+            e.preventDefault();
+            resolve(e.reason as Error);
+          },
+          { once: true }
+        );
+      });
+
+      fixture(
         html`<test-pharos-table
           .columns=${[]}
           .rowData=${[]}
@@ -194,6 +207,7 @@ describe('pharos-table', () => {
         </test-pharos-table> `
       );
 
+      const error = await tableError;
       expect(error.message).toContain(
         'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption` property.'
       );
@@ -286,7 +300,20 @@ describe('pharos-table', () => {
     });
 
     it('throws an error if caption is not provided', async () => {
-      const error = await errorFixture(
+      // The accessible-name error is thrown from the async `updated()`, so it surfaces as an
+      // unhandled rejection rather than rejecting updateComplete; we can't use errorFixture to check it.
+      const tableError = new Promise<Error>((resolve) => {
+        window.addEventListener(
+          'unhandledrejection',
+          (e) => {
+            e.preventDefault();
+            resolve(e.reason as Error);
+          },
+          { once: true }
+        );
+      });
+
+      fixture(
         html`<test-pharos-table
           .columns=${[]}
           .rowData=${[]}
@@ -297,6 +324,7 @@ describe('pharos-table', () => {
         </test-pharos-table> `
       );
 
+      const error = await tableError;
       expect(error.message).toContain(
         'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption` property.'
       );

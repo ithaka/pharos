@@ -142,12 +142,25 @@ describe('pharos-image-card', () => {
   });
 
   it('throws an error for an invalid variant value', async () => {
-    const error = await errorFixture(html`
-      <test-pharos-image-card title="Card Title" link="#" variant="fake"></test-pharos-image-card>
-    `);
-    expect(error.message).toContain(
-      'fake is not a valid variant. Valid variants are: base, collection'
-    );
+    // An invalid variant makes the child heading reject async with "is not a valid preset"
+    // Consume that incidental rejection so it doesn't fail this test.
+    const suppressPresetRejection = (e: PromiseRejectionEvent): void => {
+      if ((e.reason as Error)?.message?.includes('is not a valid preset')) e.preventDefault();
+    };
+    window.addEventListener('unhandledrejection', suppressPresetRejection);
+
+    try {
+      const error = await errorFixture(html`
+        <test-pharos-image-card title="Card Title" link="#" variant="fake"></test-pharos-image-card>
+      `);
+      expect(error.message).toContain(
+        'fake is not a valid variant. Valid variants are: base, collection'
+      );
+    } finally {
+      // Let any queued microtask rejections fire before detaching the handler.
+      await new Promise((resolve) => setTimeout(resolve));
+      window.removeEventListener('unhandledrejection', suppressPresetRejection);
+    }
   });
 
   it('throws an error when using subtle-select with non-selectable variants', async () => {
