@@ -32,6 +32,7 @@ export const Base: Story = {
       pageSize={args.pageSize}
       currentPage={args.currentPage}
       variant={args.variant}
+      simple={args.simple}
       onFirst-Page={(e: CustomEvent) => action('First Page')(JSON.stringify(e))}
       onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
       onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
@@ -53,6 +54,7 @@ export const Input: Story = {
       pageSize={args.pageSize}
       currentPage={args.currentPage}
       variant={args.variant}
+      simple={args.simple}
       onFirst-Page={(e: CustomEvent) => action('First Page')(JSON.stringify(e))}
       onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
       onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
@@ -61,4 +63,37 @@ export const Input: Story = {
     />
   ),
   args: { ...defaultArgs, variant: 'input' },
+};
+
+export const SimpleInput: Story = {
+  render: (args) => (
+    <PharosPagination
+      totalResults={args.totalResults}
+      pageSize={args.pageSize}
+      currentPage={args.currentPage}
+      variant={args.variant}
+      simple={args.simple}
+      onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
+      onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
+      onPage-Input={(e: CustomEvent) => action('Page Input')(JSON.stringify(e.detail))}
+    />
+  ),
+  args: { ...defaultArgs, variant: 'input', simple: true },
+};
+
+export const Simple: Story = {
+  render: (args) => (
+    <PharosPagination
+      totalResults={args.totalResults}
+      pageSize={args.pageSize}
+      currentPage={args.currentPage}
+      variant={args.variant}
+      simple={args.simple}
+      onFirst-Page={(e: CustomEvent) => action('First Page')(JSON.stringify(e))}
+      onPrev-Page={(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}
+      onNext-Page={(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}
+      onLast-Page={(e: CustomEvent) => action('Last Page')(JSON.stringify(e))}
+    />
+  ),
+  args: { ...defaultArgs, variant: 'default', simple: true },
 };
