@@ -19,7 +19,6 @@ const meta = {
   parameters: {
     docs: { page: configureDocsPage('pagination') },
     options: { selectedPanel: 'addon-controls' },
-    chromatic: { delay: 800 },
   },
 } satisfies Meta<ComponentArgs>;
 

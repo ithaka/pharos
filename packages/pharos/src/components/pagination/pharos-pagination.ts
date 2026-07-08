@@ -172,7 +172,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
       return html`
         <pharos-link
           class="pagination__link prev"
-          ?bold=${!iconOnly}
+          bold
           subtle
           flex
           href=""
@@ -194,7 +194,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
       return html`
         <pharos-link
           class="pagination__link next"
-          ?bold=${!iconOnly}
+          bold
           subtle
           flex
           href=""
