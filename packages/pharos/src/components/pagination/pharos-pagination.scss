@@ -75,6 +75,13 @@
     }
   }
 
+  :host([simple]) & pharos-icon {
+    &[name='chevron-left'],
+    &[name='chevron-right'] {
+      margin: 0;
+    }
+  }
+
   &:hover {
     pharos-icon {
       stroke: var(--pharos-color-interactive-primary);

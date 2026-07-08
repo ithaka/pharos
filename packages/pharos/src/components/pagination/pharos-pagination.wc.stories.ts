@@ -25,6 +25,7 @@ export const Base: Story = {
       page-size=${ifDefined(args.pageSize)}
       current-page=${ifDefined(args.currentPage)}
       variant=${ifDefined(args.variant)}
+      .simple=${args.simple}
       @first-page="${(e: CustomEvent) => action('First Page')(JSON.stringify(e))}"
       @prev-page="${(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}"
       @next-page="${(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}"
@@ -46,6 +47,7 @@ export const Input: Story = {
       page-size=${ifDefined(args.pageSize)}
       current-page=${ifDefined(args.currentPage)}
       variant=${ifDefined(args.variant)}
+      .simple=${args.simple}
       @first-page="${(e: CustomEvent) => action('First Page')(JSON.stringify(e))}"
       @prev-page="${(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}"
       @next-page="${(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}"
@@ -54,4 +56,37 @@ export const Input: Story = {
     ></storybook-pharos-pagination>
   `,
   args: { ...defaultArgs, variant: 'input' },
+};
+
+export const SimpleInput: Story = {
+  render: (args) => html`
+    <storybook-pharos-pagination
+      total-results=${ifDefined(args.totalResults)}
+      page-size=${ifDefined(args.pageSize)}
+      current-page=${ifDefined(args.currentPage)}
+      variant=${ifDefined(args.variant)}
+      .simple=${args.simple}
+      @prev-page="${(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}"
+      @next-page="${(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}"
+      @page-input="${(e: CustomEvent) => action('Page Input')(JSON.stringify(e.detail))}"
+    ></storybook-pharos-pagination>
+  `,
+  args: { ...defaultArgs, variant: 'input', simple: true },
+};
+
+export const Simple: Story = {
+  render: (args) => html`
+    <storybook-pharos-pagination
+      total-results=${ifDefined(args.totalResults)}
+      page-size=${ifDefined(args.pageSize)}
+      current-page=${ifDefined(args.currentPage)}
+      variant=${ifDefined(args.variant)}
+      .simple=${args.simple}
+      @first-page="${(e: CustomEvent) => action('First Page')(JSON.stringify(e))}"
+      @prev-page="${(e: CustomEvent) => action('Prev Page')(JSON.stringify(e))}"
+      @next-page="${(e: CustomEvent) => action('Next Page')(JSON.stringify(e))}"
+      @last-page="${(e: CustomEvent) => action('Last Page')(JSON.stringify(e))}"
+    ></storybook-pharos-pagination>
+  `,
+  args: { ...defaultArgs, variant: 'default', simple: true },
 };
