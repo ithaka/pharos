@@ -1,5 +1,16 @@
 # @ithaka/pharos-site
 
+## 7.4.0
+
+### Minor Changes
+
+- [#1329](https://github.com/ithaka/pharos/pull/1329) [`1399472`](https://github.com/ithaka/pharos/commit/1399472a7019fda44f8a5108dff4b72d08fa4a90) Thanks [@phosphotungstic](https://github.com/phosphotungstic)! - Add simple prop for pagination
+
+### Patch Changes
+
+- Updated dependencies [[`1399472`](https://github.com/ithaka/pharos/commit/1399472a7019fda44f8a5108dff4b72d08fa4a90)]:
+  - @ithaka/pharos@14.25.0
+
 ## 7.3.0
 
 ### Minor Changes
