@@ -17,9 +17,13 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'subtle' | 'overlay';
 
+export type ButtonAlignment = 'start' | 'center';
+
 const TYPES = ['button', 'submit', 'reset'] as ButtonType[];
 
 const VARIANTS = ['primary', 'secondary', 'subtle', 'overlay'] as ButtonVariant[];
+
+const ALIGNMENTS = ['start', 'center'] as ButtonAlignment[];
 
 /**
  * Pharos button component.
@@ -151,6 +155,13 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
   public fullWidth = false;
 
   /**
+   * Indicates how the button's content is aligned. Only applies when full-width.
+   * @attr alignment
+   */
+  @property({ type: String, reflect: true })
+  public alignment: ButtonAlignment = 'start';
+
+  /**
    * Indicates the name when submitted with form data.
    * @attr name
    */
@@ -194,6 +205,15 @@ export class PharosButton extends ScopedRegistryMixin(FocusMixin(AnchorElement))
     if (changedProperties.has('variant') && this.variant && !VARIANTS.includes(this.variant)) {
       throw new Error(
         `${this.variant} is not a valid variant. Valid variants are: ${VARIANTS.join(', ')}`
+      );
+    }
+    if (
+      changedProperties.has('alignment') &&
+      this.alignment &&
+      !ALIGNMENTS.includes(this.alignment)
+    ) {
+      throw new Error(
+        `${this.alignment} is not a valid alignment. Valid alignments are: ${ALIGNMENTS.join(', ')}`
       );
     }
     if (this.icon && !this.a11yLabel) {

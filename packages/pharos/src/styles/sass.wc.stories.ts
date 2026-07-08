@@ -7,14 +7,14 @@ export default {
   parameters: { options: { selectedPanel: 'addon-controls' } },
 };
 
-const tableTitle = (title) => {
+const tableTitle = (title: string) => {
   return title
     .split('-')
     .map((str) => str[0].toUpperCase() + str.slice(1))
     .join(' ');
 };
 
-const MixinTable = (title) => {
+const MixinTable = (title: string) => {
   const mixins = sassDoc.filter((value) => value.context.type === 'mixin');
   return html`
     <div class="token-table-container" style="width: 100%">
@@ -28,9 +28,10 @@ const MixinTable = (title) => {
           </tr>
         </thead>
         <tbody>
-          ${mixins.map((mixin) => {
-            if (mixin.group.includes(title)) {
-              return html`
+          ${mixins
+            .filter((mixin) => mixin.group.includes(title))
+            .map(
+              (mixin) => html`
                 <tr>
                   <td>
                     <code style="font-size: var(--pharos-font-size-small)"
@@ -50,9 +51,8 @@ const MixinTable = (title) => {
                     </div>
                   </td>
                 </tr>
-              `;
-            }
-          })}
+              `
+            )}
         </tbody>
       </table>
       <br />

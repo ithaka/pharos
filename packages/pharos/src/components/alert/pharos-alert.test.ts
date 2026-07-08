@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosAlert } from './pharos-alert';
 import type { PharosButton } from '../button/pharos-button';
 import type { PharosLink } from '../link/pharos-link';
@@ -10,26 +11,26 @@ describe('pharos-alert', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <test-pharos-alert status="success"> It worked! </test-pharos-alert>
+      <test-pharos-alert status="success">It worked!</test-pharos-alert>
     `);
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
-  it('throws an error for missing status attribute', async () => {
-    component = await fixture(html` <test-pharos-alert> It worked! </test-pharos-alert> `).catch(
-      (e) => e
-    );
-    expect('status is a required attribute.').to.be.thrown;
+  it('throws an error for a missing status attribute', async () => {
+    const error = await errorFixture(html` <test-pharos-alert>It worked!</test-pharos-alert> `);
+
+    expect(error.message).toContain('status is a required attribute.');
   });
 
   it('renders the alert when a status is provided', async () => {
-    component = await fixture(html`
-      <test-pharos-alert status="info"> It worked! </test-pharos-alert>
+    const alert = await fixture<PharosAlert>(html`
+      <test-pharos-alert status="info">It worked!</test-pharos-alert>
     `);
-    expect(component).shadowDom.to.equal(`
+
+    expect(alert).toEqualShadowDom(`
       <div
         class="alert alert--info"
         role="alert"
@@ -47,16 +48,17 @@ describe('pharos-alert', () => {
         </div>
       </div>
     `);
+    expect(alert).toHaveTextContent('It worked!');
   });
-
   it('throws an error for an invalid status value', async () => {
-    component = await fixture(html`
-      <test-pharos-alert status="fake"> It worked! </test-pharos-alert>
-    `).catch((e) => e);
-    expect('fake is not a valid status. Valid statuses are: info, success, warning, error').to.be
-      .thrown;
-  });
+    const error = await errorFixture(html`
+      <test-pharos-alert status="fake">It worked!</test-pharos-alert>
+    `);
 
+    expect(error.message).toContain(
+      'fake is not a valid status. Valid statuses are: info, success, warning, error'
+    );
+  });
   it('adds a class to slotted links', async () => {
     const link = document.createElement('test-pharos-link') as PharosLink;
 
@@ -64,40 +66,37 @@ describe('pharos-alert', () => {
     await component.updateComplete;
     const anchor = link.renderRoot.querySelector('#link-element');
 
-    expect(anchor).to.have.class('link--alert');
+    expect(anchor?.classList.contains('link--alert')).toBe(true);
   });
 
   it('is closable', async () => {
-    component = await fixture(html`
+    const alert = await fixture<PharosAlert>(html`
       <test-pharos-alert status="success" closable id="closable-alert">
         It worked!
       </test-pharos-alert>
     `);
 
-    await component.updateComplete;
-
-    const closeButton = component.renderRoot.querySelector('.alert__button') as PharosButton;
+    const closeButton = alert.renderRoot.querySelector('.alert__button') as HTMLElement;
     closeButton.click();
 
-    expect(document.getElementById('closable-alert')).to.be.null;
+    expect(document.getElementById('closable-alert')).toBeNull();
   });
 
   it('fires a custom event pharos-alert-closed when closed by user interaction', async () => {
-    component = await fixture(html`
+    const alert = await fixture<PharosAlert>(html`
       <test-pharos-alert status="success" closable id="closable-alert">
         It worked!
       </test-pharos-alert>
     `);
-    let wasFired = false;
-    const handleClose = (): void => {
-      wasFired = true;
-    };
-    component.addEventListener('pharos-alert-closed', handleClose);
-    await component.updateComplete;
 
-    const closeButton = component.renderRoot.querySelector('.alert__button') as PharosButton;
+    let wasFired = false;
+    alert.addEventListener('pharos-alert-closed', () => {
+      wasFired = true;
+    });
+
+    const closeButton = alert.renderRoot.querySelector('.alert__button') as PharosButton;
     closeButton.click();
 
-    expect(wasFired).to.be.true;
+    expect(wasFired).toBe(true);
   });
 });

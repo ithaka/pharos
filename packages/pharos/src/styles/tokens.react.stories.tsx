@@ -1,14 +1,24 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 
-import tokens from './tokens.ts';
+import tokens from './tokens';
 import { PharosIcon } from '../react-components';
+
+type TokenEntry = {
+  name: string;
+  value: string | number;
+  original: { value: string };
+  group?: string;
+  palette?: string;
+  comment?: string;
+  [key: string]: unknown;
+};
 
 export default {
   title: 'Styles/Design Tokens',
   parameters: { options: { selectedPanel: 'addon-controls' } },
 };
 
-const toTokenFormat = (text) => {
+const toTokenFormat = (text: string) => {
   return (
     <code style={{ fontSize: 'var(--pharos-font-size-small)' }}>
       {text
@@ -20,8 +30,8 @@ const toTokenFormat = (text) => {
   );
 };
 
-const ColorRow = (color) => {
-  let OGColorHtml;
+const ColorRow = (color: TokenEntry) => {
+  let OGColorHtml: ReactNode = null;
   if (color.original.value.startsWith('{color.')) {
     const OGColorToken =
       '$pharos-' +
@@ -42,13 +52,13 @@ const ColorRow = (color) => {
         <div>{color.value}</div>
       </td>
       <td style={{ width: '25%' }}>
-        <div className="color-example" style={{ backgroundColor: color.value }}></div>
+        <div className="color-example" style={{ backgroundColor: typeof color.value === 'string' ? color.value : undefined }}></div>
       </td>
     </tr>
   );
 };
 
-const TokenTable = (title, content) => {
+const TokenTable = (title: string, content: ReactNode) => {
   return (
     <div className="token-table-container">
       <h2>{title}</h2>
@@ -72,13 +82,15 @@ const UiColorTokens = () => (
           </tr>
         </thead>
         <tbody>
-          {Object.keys(tokens.color.interactive).map((key) =>
-            ColorRow(tokens.color.interactive[key])
+          {Object.values(tokens.color.interactive).map((color) =>
+            ColorRow(color as unknown as TokenEntry)
           )}
-          {Object.keys(tokens.color.ui).map((key) => ColorRow(tokens.color.ui[key]))}
-          {ColorRow(tokens.color.disabled)}
-          {ColorRow(tokens.color.overlay)}
-          {Object.keys(tokens.color.feedback).map((key) => ColorRow(tokens.color.feedback[key]))}
+          {Object.values(tokens.color.ui).map((color) => ColorRow(color as unknown as TokenEntry))}
+          {ColorRow(tokens.color.disabled as unknown as TokenEntry)}
+          {ColorRow(tokens.color.overlay as unknown as TokenEntry)}
+          {Object.values(tokens.color.feedback).map((color) =>
+            ColorRow(color as unknown as TokenEntry)
+          )}
         </tbody>
       </>
     )}
@@ -93,7 +105,7 @@ const UiColorTokens = () => (
           </tr>
         </thead>
         <tbody>
-          {Object.keys(tokens.color.text).map((key) => ColorRow(tokens.color.text[key]))}
+          {Object.values(tokens.color.text).map((color) => ColorRow(color as unknown as TokenEntry))}
         </tbody>
       </>
     )}
@@ -108,8 +120,8 @@ const UiColorTokens = () => (
           </tr>
         </thead>
         <tbody>
-          {ColorRow(tokens.color.focus)}
-          {Object.keys(tokens.color.hover).map((key) => ColorRow(tokens.color.hover[key]))}
+          {ColorRow(tokens.color.focus as unknown as TokenEntry)}
+          {Object.values(tokens.color.hover).map((color) => ColorRow(color as unknown as TokenEntry))}
         </tbody>
       </>
     )}
@@ -121,17 +133,20 @@ export const AliasColors = {
 };
 
 const GlobalColorTokens = () => {
-  let colorTokens = [];
+  const colorTokens: TokenEntry[] = [];
   Object.keys(tokens.color)
     .filter((key) => key !== 'brand' && key !== 'base')
-    .map((key) => {
-      const currentToken = tokens.color[key];
-      if (currentToken.value) {
-        colorTokens.push(currentToken);
+    .forEach((key) => {
+      const currentToken = (tokens.color as Record<string, unknown>)[key] as
+        | TokenEntry
+        | Record<string, unknown>;
+      if ('value' in currentToken) {
+        colorTokens.push(currentToken as TokenEntry);
       } else {
-        Object.keys(currentToken).map((k) => {
-          if (currentToken[k].value) {
-            colorTokens.push(currentToken[k]);
+        Object.keys(currentToken).forEach((k) => {
+          const nestedToken = (currentToken as Record<string, unknown>)[k] as TokenEntry;
+          if (nestedToken.value) {
+            colorTokens.push(nestedToken);
           }
         });
       }
@@ -169,7 +184,7 @@ const GlobalColorTokens = () => {
             {colorTokens
               .filter((color) => color.group === 'secondary')
               .map((color) => ColorRow(color))}
-            {ColorRow(tokens.color['Marble gray'].base)}
+            {ColorRow(tokens.color['marble-gray'].base as unknown as TokenEntry)}
           </tbody>
         </>
       )}
@@ -243,32 +258,35 @@ const FontFamilyTokens = () => (
           </tr>
         </thead>
         <tbody>
-          {Object.keys(tokens.font.family).map((key, index) => (
-            <tr key={index}>
-              <td>{toTokenFormat(tokens.font.family[key].name)}</td>
-              <td>{tokens.font.family[key].value}</td>
-              <td>
-                <div
-                  style={{
-                    fontFamily: tokens.font.family[key].value,
-                    fontSize: '1.5rem',
-                    lineHeight: 'normal',
-                  }}
-                >
-                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
-                </div>
-                <div
-                  style={{
-                    fontFamily: tokens.font.family[key].value,
-                    fontSize: '1.5rem',
-                    lineHeight: 'normal',
-                  }}
-                >
-                  abcdefghijklmnopqrstuvwxyz
-                </div>
-              </td>
-            </tr>
-          ))}
+          {Object.values(tokens.font.family).map((token, index) => {
+            const currentToken = token as unknown as TokenEntry;
+            return (
+              <tr key={index}>
+                <td>{toTokenFormat(currentToken.name)}</td>
+                <td>{currentToken.value}</td>
+                <td>
+                  <div
+                    style={{
+                      fontFamily: currentToken.value as string,
+                      fontSize: '1.5rem',
+                      lineHeight: 'normal',
+                    }}
+                  >
+                    ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: currentToken.value as string,
+                      fontSize: '1.5rem',
+                      lineHeight: 'normal',
+                    }}
+                  >
+                    abcdefghijklmnopqrstuvwxyz
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </>
     )}
@@ -292,30 +310,33 @@ const FontWeightTokens = () => (
           </tr>
         </thead>
         <tbody>
-          {Object.keys(tokens.font.weight).map((key, index) => (
-            <tr key={index}>
-              <td>{toTokenFormat(tokens.font.weight[key].name)}</td>
-              <td>{tokens.font.weight[key].value}</td>
-              <td>
-                <div
-                  style={{
-                    fontWeight: tokens.font.weight[key].value,
-                    lineHeight: 'normal',
-                  }}
-                >
-                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
-                </div>
-                <div
-                  style={{
-                    fontWeight: tokens.font.weight[key].value,
-                    lineHeight: 'normal',
-                  }}
-                >
-                  abcdefghijlkmnopqrstuvwxyz
-                </div>
-              </td>
-            </tr>
-          ))}
+          {Object.values(tokens.font.weight).map((token, index) => {
+            const currentToken = token as unknown as TokenEntry;
+            return (
+              <tr key={index}>
+                <td>{toTokenFormat(currentToken.name)}</td>
+                <td>{currentToken.value}</td>
+                <td>
+                  <div
+                    style={{
+                      fontWeight: currentToken.value,
+                      lineHeight: 'normal',
+                    }}
+                  >
+                    ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                  </div>
+                  <div
+                    style={{
+                      fontWeight: currentToken.value,
+                      lineHeight: 'normal',
+                    }}
+                  >
+                    abcdefghijlkmnopqrstuvwxyz
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </>
     )}
@@ -327,9 +348,9 @@ export const FontWeight = {
 };
 
 const FontSizeTokens = () => {
-  const baseValue = tokens.font.size['base'].value;
-  const basePixels = tokens.type.scale[baseValue].comment;
-  const basePx = basePixels.substring(0, basePixels.length - 2);
+  const baseValue = String(tokens.font.size['base'].value);
+  const basePixels = (tokens.type.scale as Record<string, TokenEntry>)[baseValue].comment as string;
+  const basePx = Number(basePixels.substring(0, basePixels.length - 2));
   return (
     <>
       {TokenTable(
@@ -343,13 +364,16 @@ const FontSizeTokens = () => {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(tokens.font.size).map((key, index) => {
-              const tokenPixel = tokens.type.scale[tokens.font.size[key].value].comment;
-              const tokenPx = tokenPixel.substring(0, tokenPixel.length - 2);
+            {Object.values(tokens.font.size).map((token, index) => {
+              const currentToken = token as unknown as TokenEntry;
+              const tokenPixel = (tokens.type.scale as Record<string, TokenEntry>)[
+                String(currentToken.value)
+              ].comment as string;
+              const tokenPx = Number(tokenPixel.substring(0, tokenPixel.length - 2));
               const tokenRem = tokenPx / basePx;
               return (
                 <tr key={index}>
-                  <td>{toTokenFormat(tokens.font.size[key].name)}</td>
+                  <td>{toTokenFormat(currentToken.name)}</td>
                   <td>
                     {tokenPx}px | {tokenRem}rem
                   </td>
@@ -390,22 +414,23 @@ const LineHeightToken = () => {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(tokens['line-height'])
-              .filter((key) => key !== 'brand' && key !== 'base')
-              .map((key, i) => {
-                const tokenPixel = tokens['line-height'][key].comment;
+            {Object.entries(tokens['line-height'])
+              .filter(([key]) => key !== 'brand' && key !== 'base')
+              .map(([, token], i) => {
+                const currentToken = token as unknown as TokenEntry;
+                const tokenPixel = currentToken.comment;
                 return (
                   <tr key={i}>
-                    <td>{toTokenFormat(tokens['line-height'][key].name)}</td>
+                    <td>{toTokenFormat(currentToken.name)}</td>
                     <td>
                       {tokenPixel ? tokenPixel + ' | ' : ''}
-                      {tokens['line-height'][key].value}
+                      {currentToken.value}
                     </td>
                     <td>
                       <div
                         className="line-height-example"
                         style={{
-                          lineHeight: tokens['line-height'][key].value,
+                          lineHeight: currentToken.value,
                           fontSize: fontSizeMap[i],
                           fontFamily:
                             fontSizeMap[i] >= 24
@@ -444,19 +469,22 @@ const SpacingTokens = () => (
           </tr>
         </thead>
         <tbody>
-          {Object.keys(tokens.spacing)
-            .filter((key) => key !== 'brand')
-            .map((key, index) => (
-              <tr key={index}>
-                <td>{toTokenFormat(tokens.spacing[key].name)}</td>
-                <td>
-                  {tokens.spacing[key].comment} | {tokens.spacing[key].value}
-                </td>
-                <td>
-                  <div className="spacing-example" style={{ height: tokens.spacing[key].value }} />
-                </td>
-              </tr>
-            ))}
+          {Object.entries(tokens.spacing)
+            .filter(([key]) => key !== 'brand')
+            .map(([, token], index) => {
+              const currentToken = token as unknown as TokenEntry;
+              return (
+                <tr key={index}>
+                  <td>{toTokenFormat(currentToken.name)}</td>
+                  <td>
+                    {currentToken.comment} | {currentToken.value}
+                  </td>
+                  <td>
+                    <div className="spacing-example" style={{ height: currentToken.value }} />
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </>
     )}
@@ -480,20 +508,20 @@ const RadiusTokens = () => (
           </tr>
         </thead>
         <tbody>
-          {Object.keys(tokens.radius.base).map((key, index) => (
-            <tr key={index}>
-              <td>{toTokenFormat(tokens.radius.base[key].name)}</td>
-              <td>
-                {tokens.radius.base[key].comment} | {tokens.radius.base[key].value}
-              </td>
-              <td>
-                <div
-                  className="radius-example"
-                  style={{ borderRadius: tokens.radius.base[key].value }}
-                />
-              </td>
-            </tr>
-          ))}
+          {Object.values(tokens.radius.base).map((token, index) => {
+            const currentToken = token as unknown as TokenEntry;
+            return (
+              <tr key={index}>
+                <td>{toTokenFormat(currentToken.name)}</td>
+                <td>
+                  {currentToken.comment} | {currentToken.value}
+                </td>
+                <td>
+                  <div className="radius-example" style={{ borderRadius: currentToken.value }} />
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </>
     )}
@@ -504,7 +532,7 @@ export const Radius = {
   render: () => RadiusTokens(),
 };
 
-const TransitionRow = (transition, widthRem, color) => {
+const TransitionRow = (transition: TokenEntry, widthRem: number, color: string) => {
   const [bgc, setBgc] = useState(color);
   const HandleMouseEnter = () => {
     setBgc('--pharos-color-jstor-red');
@@ -521,7 +549,7 @@ const TransitionRow = (transition, widthRem, color) => {
           className="transition-example"
           style={{
             width: `${widthRem}rem`,
-            transition: transition.value,
+            transition: transition.value as string,
             background: `var(${bgc})`,
           }}
           onMouseEnter={HandleMouseEnter}
@@ -554,9 +582,9 @@ const TransitionTokens = () => {
             </tr>
           </thead>
           <tbody>
-            {TransitionRow(tokens.transition.base, 5, '--pharos-color-living-coral-80')}
-            {Object.keys(tokens.transition.duration).map((key, i) =>
-              TransitionRow(tokens.transition.duration[key], exampleRems[i], exampleColors[i])
+            {TransitionRow(tokens.transition.base as unknown as TokenEntry, 5, '--pharos-color-living-coral-80')}
+            {Object.values(tokens.transition.duration).map((transition, i) =>
+              TransitionRow(transition as unknown as TokenEntry, exampleRems[i], exampleColors[i])
             )}
           </tbody>
         </>
@@ -583,43 +611,38 @@ const TypeTokens = () => (
           </tr>
         </thead>
         <tbody>
-          {Object.keys(tokens.type.scale).map((key, index) => (
-            <tr key={index}>
-              <td>{toTokenFormat(tokens.type.scale[key].name)}</td>
-              <td>
-                {tokens.type.scale[key].comment} |{' '}
-                {tokens.type.scale[key].comment.substring(
-                  0,
-                  tokens.type.scale[key].comment.length - 2
-                ) / 16}
-                rem
-              </td>
-              <td>
-                {tokens.type.scale[key].value < 10 ? (
-                  <span
-                    className="token-type-sans-serif"
-                    style={{ fontSize: tokens.type.scale[key].comment }}
-                  >
-                    GT America
-                  </span>
-                ) : (
-                  <PharosIcon name="dash-small" a11yHidden="true"></PharosIcon>
-                )}
-              </td>
-              <td>
-                {tokens.type.scale[key].value > 5 ? (
-                  <span
-                    className="token-type-serif"
-                    style={{ fontSize: tokens.type.scale[key].comment }}
-                  >
-                    Ivar Headline
-                  </span>
-                ) : (
-                  <PharosIcon name="dash-small" a11yHidden="true"></PharosIcon>
-                )}
-              </td>
-            </tr>
-          ))}
+          {Object.values(tokens.type.scale).map((token, index) => {
+            const currentToken = token as unknown as TokenEntry;
+            const tokenComment = currentToken.comment as string;
+            const tokenValue = Number(currentToken.value);
+            return (
+              <tr key={index}>
+                <td>{toTokenFormat(currentToken.name)}</td>
+                <td>
+                  {tokenComment} | {Number(tokenComment.substring(0, tokenComment.length - 2)) / 16}
+                  rem
+                </td>
+                <td>
+                  {tokenValue < 10 ? (
+                    <span className="token-type-sans-serif" style={{ fontSize: tokenComment }}>
+                      GT America
+                    </span>
+                  ) : (
+                    <PharosIcon name="dash-small" a11yHidden="true"></PharosIcon>
+                  )}
+                </td>
+                <td>
+                  {tokenValue > 5 ? (
+                    <span className="token-type-serif" style={{ fontSize: tokenComment }}>
+                      Ivar Headline
+                    </span>
+                  ) : (
+                    <PharosIcon name="dash-small" a11yHidden="true"></PharosIcon>
+                  )}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </>
     )}
@@ -643,25 +666,28 @@ const ElevationTokens = () => (
           </tr>
         </thead>
         <tbody>
-          {Object.keys(tokens.elevation.level).map((key, index) => (
-            <tr key={index}>
-              <td>{toTokenFormat(tokens.elevation.level[key].name)}</td>
-              <td>{tokens.elevation.level[key].value}</td>
-              <td>
-                <div
-                  className="elevation-example"
-                  style={{
-                    boxShadow: tokens.elevation.level[key].value,
-                    width: '100%',
-                    height: '142px',
-                    flexShrink: '0',
-                    borderRadius: '5px',
-                    background: '#FFF',
-                  }}
-                />
-              </td>
-            </tr>
-          ))}
+          {Object.values(tokens.elevation.level).map((token, index) => {
+            const currentToken = token as unknown as TokenEntry;
+            return (
+              <tr key={index}>
+                <td>{toTokenFormat(currentToken.name)}</td>
+                <td>{currentToken.value}</td>
+                <td>
+                  <div
+                    className="elevation-example"
+                    style={{
+                      boxShadow: currentToken.value as string,
+                      width: '100%',
+                      height: '142px',
+                      flexShrink: 0,
+                      borderRadius: '5px',
+                      background: '#FFF',
+                    }}
+                  />
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </>
     )}

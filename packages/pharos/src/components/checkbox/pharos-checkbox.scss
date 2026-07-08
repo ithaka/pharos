@@ -10,6 +10,15 @@
   @include mixins.option-wrapper;
 }
 
+:host([full-width]) {
+  width: 100%;
+}
+
+// Grow the label to fill the row so the entire width is clickable, not just the text
+:host([full-width]) label {
+  flex: 1;
+}
+
 .input__icon {
   display: block;
   cursor: pointer;

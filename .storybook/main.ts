@@ -48,8 +48,12 @@ const config = {
   },
   async viteFinal(config) {
     return mergeConfig(config, {
-      esbuild: {
-        keepNames: true,
+      build: {
+        rolldownOptions: {
+          output: {
+            keepNames: true,
+          },
+        },
       },
       resolve: {
         alias: {

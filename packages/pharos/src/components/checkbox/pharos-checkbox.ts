@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { live } from 'lit/directives/live.js';
 import { checkboxStyles } from './pharos-checkbox.css';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -51,6 +52,13 @@ export class PharosCheckbox extends FormMixin(FormElement) {
    */
   @property({ type: Boolean, reflect: true })
   public isOnBackground = false;
+
+  /**
+   * Stretches the checkbox to fill the width of its container
+   * @attr full-width
+   */
+  @property({ type: Boolean, reflect: true })
+  public fullWidth = false;
 
   @query('#checkbox-element')
   private _checkbox!: HTMLInputElement;
@@ -139,7 +147,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
         type="checkbox"
         .value=${this.value}
         .indeterminate=${this.indeterminate}
-        ?checked=${this.checked}
+        .checked=${live(this.checked)}
         ?required=${this.required}
         ?disabled=${this.disabled}
         aria-required=${this.required}

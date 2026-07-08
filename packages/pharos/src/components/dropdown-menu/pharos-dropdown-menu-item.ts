@@ -129,7 +129,7 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
         <pharos-icon
           class="dropdown-menu-item__icon"
           name=${this.icon}
-          a11y-hidden="{true}"
+          a11y-hidden="true"
         ></pharos-icon>
       `;
     }

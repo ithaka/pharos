@@ -239,6 +239,30 @@ describe('pharos-radio-button', () => {
     expect(count).to.equal(1);
   });
 
+  it('stretches to fill its container when full-width is set', async () => {
+    const parentNode = document.createElement('div');
+    parentNode.style.width = '400px';
+    component = await fixture(
+      html`<test-pharos-radio-button full-width
+        ><span slot="label">test radio</span></test-pharos-radio-button
+      >`,
+      { parentNode }
+    );
+    expect(getComputedStyle(component).width).to.equal('400px');
+  });
+
+  it('does not stretch to fill its container by default', async () => {
+    const parentNode = document.createElement('div');
+    parentNode.style.width = '400px';
+    component = await fixture(
+      html`<test-pharos-radio-button
+        ><span slot="label">test radio</span></test-pharos-radio-button
+      >`,
+      { parentNode }
+    );
+    expect(getComputedStyle(component).width).to.not.equal('400px');
+  });
+
   it('resets checked when the form is reset', async () => {
     const parentNode = document.createElement('form');
     parentNode.setAttribute('name', 'my-form');

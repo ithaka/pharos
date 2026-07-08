@@ -6,10 +6,15 @@ on:
     branches:
       - develop
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v6
 
@@ -41,6 +46,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
 
@@ -66,11 +72,15 @@ jobs:
       - name: Install Dependencies
         run: yarn --check-cache --immutable
 
-      - name: Install Browsers
-        run: npx playwright install
+      - name: Cache Playwright browsers
+        uses: actions/cache@v5
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install Browsers Dependencies
-        run: npx playwright install-deps
+      - name: Install Browsers
+        run: npx playwright install --with-deps chromium firefox webkit # --with-deps needed as OS libs aren't cached just the browsers
 
       - name: Test
         run: yarn test

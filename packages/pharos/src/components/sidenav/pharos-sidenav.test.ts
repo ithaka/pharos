@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import { setViewport } from '@web/test-runner-commands';
+import { page } from 'vitest/browser';
 
 import type { PharosSidenav } from './pharos-sidenav';
 import type { PharosButton } from '../button/pharos-button';
@@ -67,7 +67,7 @@ describe('pharos-sidenav', () => {
   };
 
   beforeEach(async () => {
-    await setViewport({ width: 1440, height: 900 });
+    await page.viewport(1440, 900);
     component = await fixture(html`
       <test-pharos-sidenav has-close-button open>
         <test-pharos-link slot="top" href="/" id="jstor-logo">JSTOR</test-pharos-link>
