@@ -117,7 +117,9 @@ describe('pharos-tooltip', () => {
       <test-pharos-tooltip placement="side">Hi there!</test-pharos-tooltip>
     `);
 
-    expect(error.message).toContain('side is not a valid placement');
+    expect(error.message).toContain(
+      'side is not a valid placement. Valid placements are: top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start, left-end'
+    );
   });
 
   it('stays open on mouseenter of content and closes on mouseleave', async () => {
