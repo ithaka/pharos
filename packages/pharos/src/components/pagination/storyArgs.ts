@@ -3,6 +3,7 @@ export interface ComponentArgs {
   pageSize?: number;
   currentPage?: number;
   variant?: 'default' | 'input';
+  condensed?: boolean;
 }
 
 export type StoryArgs = ComponentArgs & {};
@@ -12,4 +13,5 @@ export const defaultArgs: StoryArgs = {
   pageSize: 25,
   currentPage: 2,
   variant: 'default',
+  condensed: false,
 };

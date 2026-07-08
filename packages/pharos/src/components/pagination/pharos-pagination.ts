@@ -59,6 +59,15 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   @property({ type: String, reflect: true })
   public variant: PaginationVariant = 'default';
 
+  /**
+   * Indicates a condensed rendering, hiding the Previous/Next text labels
+   * (icon-only, with visually-hidden text retained for accessibility) and
+   * the first/last page buttons, regardless of variant.
+   * @attr condensed
+   */
+  @property({ type: Boolean, reflect: true })
+  public condensed = false;
+
   @state()
   private _pageInputValue: string | null = null;
 
@@ -140,7 +149,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _renderFirstLink(): TemplateResult | typeof nothing {
-    if (this.variant === 'input' && this.currentPage > 1) {
+    if (this.variant === 'input' && !this.condensed && this.currentPage > 1) {
       return html`
         <pharos-link
           class="pagination__link first"
@@ -159,17 +168,20 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
 
   private _renderPrevLink(): TemplateResult | typeof nothing {
     if (this.currentPage > 1) {
+      const iconOnly = this.condensed;
       return html`
         <pharos-link
           class="pagination__link prev"
-          bold
+          ?bold=${!iconOnly}
           subtle
           flex
           href=""
           @click=${this._handleClick}
         >
           <pharos-icon name="chevron-left" a11y-hidden="true"></pharos-icon>
-          Previous
+          ${iconOnly
+            ? html`<span class="pagination__visually-hidden">Previous</span>`
+            : html`Previous`}
         </pharos-link>
       `;
     }
@@ -178,16 +190,17 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
 
   private _renderNextLink(): TemplateResult | typeof nothing {
     if (this.currentPage < this.totalPages) {
+      const iconOnly = this.condensed;
       return html`
         <pharos-link
           class="pagination__link next"
-          bold
+          ?bold=${!iconOnly}
           subtle
           flex
           href=""
           @click=${this._handleClick}
         >
-          Next
+          ${iconOnly ? html`<span class="pagination__visually-hidden">Next</span>` : html`Next`}
           <pharos-icon name="chevron-right" a11y-hidden="true"></pharos-icon>
         </pharos-link>
       `;
@@ -196,7 +209,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _renderLastLink(): TemplateResult | typeof nothing {
-    if (this.variant === 'input' && this.currentPage < this.totalPages) {
+    if (this.variant === 'input' && !this.condensed && this.currentPage < this.totalPages) {
       return html`
         <pharos-link
           class="pagination__link last"
@@ -255,7 +268,11 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
     this._pageInputValue = null;
   }
 
-  private _renderPageInput(): TemplateResult {
+  private _renderPageIndicator(): TemplateResult {
+    if (this.variant !== 'input') {
+      return html`<span class="pagination__info">${this.currentPage} of ${this.totalPages}</span>`;
+    }
+
     const currentText = this._pageInputValue ?? this.currentPage.toString();
     const digitWidth = currentText.length + 2;
 
@@ -284,13 +301,11 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   protected override render(): TemplateResult {
     return html`
       <div class="pagination__wrapper" role="navigation" aria-label="pagination">
-        ${this.variant === 'input' ? this._renderFirstLink() : nothing}
+        ${this._renderFirstLink()}
         ${this._renderPrevLink()}
-        ${this.variant === 'input'
-          ? this._renderPageInput()
-          : html`<span class="pagination__info">${this.currentPage} of ${this.totalPages}</span>`}
+        ${this._renderPageIndicator()}
         ${this._renderNextLink()}
-        ${this.variant === 'input' ? this._renderLastLink() : nothing}
+        ${this._renderLastLink()}
       </div>
     `;
   }
