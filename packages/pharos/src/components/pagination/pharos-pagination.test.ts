@@ -38,7 +38,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
 
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when simple with the input variant', async () => {
@@ -52,7 +52,7 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
 
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('sets its default attributes', async () => {
@@ -179,8 +179,8 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
 
-    expect(component.renderRoot.querySelector('.first')).not.to.exist;
-    expect(component.renderRoot.querySelector('.last')).not.to.exist;
+    expect(component.renderRoot.querySelector('.first')).toBeNull();
+    expect(component.renderRoot.querySelector('.last')).toBeNull();
   });
 
   it('still hides first/last links when simple with the default variant', async () => {
@@ -193,8 +193,8 @@ describe('pharos-pagination', () => {
       ></test-pharos-pagination>
     `);
 
-    expect(component.renderRoot.querySelector('.first')).not.to.exist;
-    expect(component.renderRoot.querySelector('.last')).not.to.exist;
+    expect(component.renderRoot.querySelector('.first')).toBeNull();
+    expect(component.renderRoot.querySelector('.last')).toBeNull();
   });
 
   it('hides "Previous"/"Next" text when simple with the input variant', async () => {
@@ -210,10 +210,10 @@ describe('pharos-pagination', () => {
 
     const prevLink = component.renderRoot.querySelector('.prev') as HTMLElement;
     const nextLink = component.renderRoot.querySelector('.next') as HTMLElement;
-    expect(prevLink.textContent?.trim()).to.equal('Previous');
-    expect(nextLink.textContent?.trim()).to.equal('Next');
-    expect(prevLink.querySelector('.pagination__visually-hidden')).to.exist;
-    expect(nextLink.querySelector('.pagination__visually-hidden')).to.exist;
+    expect(prevLink.textContent?.trim()).toBe('Previous');
+    expect(nextLink.textContent?.trim()).toBe('Next');
+    expect(prevLink.querySelector('.pagination__visually-hidden')).not.toBeNull();
+    expect(nextLink.querySelector('.pagination__visually-hidden')).not.toBeNull();
   });
 
   it('hides "Previous"/"Next" text when simple with the default variant', async () => {
@@ -228,10 +228,10 @@ describe('pharos-pagination', () => {
 
     const prevLink = component.renderRoot.querySelector('.prev') as HTMLElement;
     const nextLink = component.renderRoot.querySelector('.next') as HTMLElement;
-    expect(prevLink.textContent?.trim()).to.equal('Previous');
-    expect(nextLink.textContent?.trim()).to.equal('Next');
-    expect(prevLink.querySelector('.pagination__visually-hidden')).to.exist;
-    expect(nextLink.querySelector('.pagination__visually-hidden')).to.exist;
+    expect(prevLink.textContent?.trim()).toBe('Previous');
+    expect(nextLink.textContent?.trim()).toBe('Next');
+    expect(prevLink.querySelector('.pagination__visually-hidden')).not.toBeNull();
+    expect(nextLink.querySelector('.pagination__visually-hidden')).not.toBeNull();
   });
 
   it('shows "Previous"/"Next" text when not simple with the default variant', async () => {
@@ -245,10 +245,10 @@ describe('pharos-pagination', () => {
 
     const prevLink = component.renderRoot.querySelector('.prev') as HTMLElement;
     const nextLink = component.renderRoot.querySelector('.next') as HTMLElement;
-    expect(prevLink.textContent?.trim()).to.equal('Previous');
-    expect(nextLink.textContent?.trim()).to.equal('Next');
-    expect(prevLink.querySelector('.pagination__visually-hidden')).not.to.exist;
-    expect(nextLink.querySelector('.pagination__visually-hidden')).not.to.exist;
+    expect(prevLink.textContent?.trim()).toBe('Previous');
+    expect(nextLink.textContent?.trim()).toBe('Next');
+    expect(prevLink.querySelector('.pagination__visually-hidden')).toBeNull();
+    expect(nextLink.querySelector('.pagination__visually-hidden')).toBeNull();
   });
 
   it('shows "Previous"/"Next" text when not simple with the input variant', async () => {
@@ -263,10 +263,10 @@ describe('pharos-pagination', () => {
 
     const prevLink = component.renderRoot.querySelector('.prev') as HTMLElement;
     const nextLink = component.renderRoot.querySelector('.next') as HTMLElement;
-    expect(prevLink.textContent?.trim()).to.equal('Previous');
-    expect(nextLink.textContent?.trim()).to.equal('Next');
-    expect(prevLink.querySelector('.pagination__visually-hidden')).not.to.exist;
-    expect(nextLink.querySelector('.pagination__visually-hidden')).not.to.exist;
+    expect(prevLink.textContent?.trim()).toBe('Previous');
+    expect(nextLink.textContent?.trim()).toBe('Next');
+    expect(prevLink.querySelector('.pagination__visually-hidden')).toBeNull();
+    expect(nextLink.querySelector('.pagination__visually-hidden')).toBeNull();
   });
 
   it('fires navigation events properly in input variant', async () => {
@@ -406,8 +406,8 @@ describe('pharos-pagination', () => {
     nextLink.click();
     await component.updateComplete;
 
-    expect(prevPageCount).to.equal(1);
-    expect(nextPageCount).to.equal(1);
+    expect(prevPageCount).toBe(1);
+    expect(nextPageCount).toBe(1);
   });
 
   it('renders the page input for simple input variant', async () => {
@@ -422,8 +422,8 @@ describe('pharos-pagination', () => {
     `);
 
     const pageInput = component.renderRoot.querySelector('.pagination__input');
-    expect(pageInput).to.exist;
-    expect(pageInput?.getAttribute('type')).to.equal('number');
+    expect(pageInput).not.toBeNull();
+    expect(pageInput?.getAttribute('type')).toBe('number');
   });
 
   it('throws an error for an invalid total results value', async () => {
