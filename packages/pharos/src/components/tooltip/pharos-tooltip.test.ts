@@ -212,6 +212,8 @@ describe('pharos-tooltip', () => {
 
     thirdTrigger.dispatchEvent(new Event('focusin'));
 
+    // Wait for the other trigger, then confirm the tooltip stayed open
+    await vi.waitFor(() => expect(component['_currentTrigger']).toBe(thirdTrigger));
     await vi.waitFor(() => expect(component.open).toBe(true));
   });
 
