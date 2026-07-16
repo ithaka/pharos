@@ -5,14 +5,9 @@
   Pharos Design System
 </h1>
 
-> Pharos is JSTOR’s design system for creating cohesive, supportive
-> and beautiful experiences for the intellectually curious.
+> Pharos is JSTOR’s design system, which guides us in creating cohesive, supportive, and beautiful experiences for researchers, educators, and students.
 
-> JSTOR is a digital library for the intellectually curious.
-> We provide a platform for discovering and connecting research, images, and primary sources.
-> As a not-for-profit, we partner with libraries, museums, and publishers to reduce costs, extend access,
-> and preserve scholarship for the future. We do this because we believe in the power of knowledge
-> to change the world for the better.
+> JSTOR is a platform for discovering and connecting research, images, and primary sources. As a not-for-profit, we partner with libraries, museums, and publishers to reduce costs, extend access, and preserve scholarship for the future. We do this because we believe in the power of knowledge to change the world for the better.
 
 <p align="center">
   <a href=".github/CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.1%20adopted-ff69b4.svg" alt="Contributor Covenant" /></a>
