@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosTextInput } from './pharos-text-input';
 import createFormData from '../../utils/createFormData';
 
@@ -19,14 +20,16 @@ describe('pharos-text-input', () => {
     );
   });
 
+  afterEach(() => document.body.replaceChildren());
+
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when focused', async () => {
     component.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when disabled', async () => {
@@ -35,7 +38,7 @@ describe('pharos-text-input', () => {
         ><span slot="label">I am a label</span></test-pharos-text-input
       >`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when readonly', async () => {
@@ -44,7 +47,7 @@ describe('pharos-text-input', () => {
         ><span slot="label">I am a label</span></test-pharos-text-input
       >`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('sets its default attributes', async () => {
@@ -53,7 +56,7 @@ describe('pharos-text-input', () => {
         <span slot="label">I am a label</span>
       </test-pharos-text-input>
     `);
-    expect(component).dom.to.equal(
+    expect(component).toEqualDom(
       `<test-pharos-text-input data-pharos-component="PharosTextInput" message="" name="" placeholder="" type="text" value="" variant="primary"><span slot="label">I am a label</span></test-pharos-text-input>`
     );
   });
@@ -64,13 +67,13 @@ describe('pharos-text-input', () => {
         ><span slot="label">I am a label</span></test-pharos-text-input
       >
     `);
-    expect(component.getAttribute('placeholder')).to.equal('test');
-    expect(component['_input'].getAttribute('placeholder')).to.equal('test');
+    expect(component.getAttribute('placeholder')).toBe('test');
+    expect(component['_input'].getAttribute('placeholder')).toBe('test');
 
     component.placeholder = 'foo';
     await component.updateComplete;
-    expect(component.getAttribute('placeholder')).to.equal('foo');
-    expect(component['_input'].getAttribute('placeholder')).to.equal('foo');
+    expect(component.getAttribute('placeholder')).toBe('foo');
+    expect(component['_input'].getAttribute('placeholder')).toBe('foo');
   });
 
   it('has an attribute to set autocomplete', async () => {
@@ -79,7 +82,7 @@ describe('pharos-text-input', () => {
         ><span slot="label">I am a label</span></test-pharos-text-input
       >
     `);
-    expect(component['_input'].getAttribute('autocomplete')).to.equal('on');
+    expect(component['_input'].getAttribute('autocomplete')).toBe('on');
   });
 
   it('has an attribute to set input value', async () => {
@@ -88,8 +91,8 @@ describe('pharos-text-input', () => {
         ><span slot="label">I am a label</span></test-pharos-text-input
       >
     `);
-    expect(component.getAttribute('value')).to.equal('test');
-    expect(component['_input'].value).to.equal('test');
+    expect(component.getAttribute('value')).toBe('test');
+    expect(component['_input'].value).toBe('test');
   });
 
   it('has an attribute to set input type', async () => {
@@ -98,15 +101,15 @@ describe('pharos-text-input', () => {
         ><span slot="label">I am a label</span></test-pharos-text-input
       >
     `);
-    expect(component.getAttribute('type')).to.equal('number');
-    expect(component['_input'].type).to.equal('number');
+    expect(component.getAttribute('type')).toBe('number');
+    expect(component['_input'].type).toBe('number');
   });
 
   it('accepts input from the user', async () => {
     component['_input'].value = 'test';
     component['_input'].dispatchEvent(new Event('input'));
 
-    expect(component.value).to.equal('test');
+    expect(component.value).toBe('test');
   });
 
   it('fires a change event', async () => {
@@ -124,8 +127,8 @@ describe('pharos-text-input', () => {
     component['_input'].dispatchEvent(new Event('input'));
     component['_input'].dispatchEvent(new Event('change'));
 
-    expect(component.value).to.equal('test');
-    expect((eventSource as Element).isSameNode(component)).to.be.true;
+    expect(component.value).toBe('test');
+    expect((eventSource as Element).isSameNode(component)).toBe(true);
   });
 
   it('is able to receive focus', async () => {
@@ -137,7 +140,7 @@ describe('pharos-text-input', () => {
 
     component['_input'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_input']).to.be.true;
+    expect(activeElement === component['_input']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -156,20 +159,21 @@ describe('pharos-text-input', () => {
 
     component['_input'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_input']).to.be.false;
-    expect(document.activeElement === component).to.be.false;
+    expect(activeElement === component['_input']).toBe(false);
+    expect(document.activeElement === component).toBe(false);
     document.removeEventListener('focusin', onFocusIn);
   });
 
   it('throws an error for invalid type values', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-text-input type="fake"
         ><span slot="label">I am a label</span></test-pharos-text-input
       >
-    `).catch((e) => e);
-    expect(
+    `);
+
+    expect(error.message).toContain(
       'fake is not a valid text input type. Valid types are: email, hidden, number, password, search, tel, text, url'
-    ).to.be.thrown;
+    );
   });
 
   it('renders an exclamation icon when the input is invalidated', async () => {
@@ -178,7 +182,7 @@ describe('pharos-text-input', () => {
         ><span slot="label">I am a label</span></test-pharos-text-input
       >
     `);
-    expect(component).shadowDom.to.equal(`
+    expect(component).toEqualShadowDom(`
       <label for="input-element">
         <slot name="label">
         </slot>
@@ -210,7 +214,7 @@ describe('pharos-text-input', () => {
         ><span slot="label">I am a label</span></test-pharos-text-input
       >
     `);
-    expect(component).shadowDom.to.equal(`
+    expect(component).toEqualShadowDom(`
       <label for="input-element">
         <slot name="label">
         </slot>
@@ -242,7 +246,7 @@ describe('pharos-text-input', () => {
         ><span slot="label">I am a label</span></test-pharos-text-input
       >
     `);
-    expect(component).shadowDom.to.equal(`
+    expect(component).toEqualShadowDom(`
       <label for="input-element">
         <slot name="label">
         </slot>
@@ -274,7 +278,7 @@ describe('pharos-text-input', () => {
         ><span slot="label">I am a label</span></test-pharos-text-input
       >
     `);
-    expect(component).shadowDom.to.equal(`
+    expect(component).toEqualShadowDom(`
       <label for="input-element">
         <slot name="label">
         </slot>
@@ -308,8 +312,8 @@ describe('pharos-text-input', () => {
     component.validated = true;
     await component.updateComplete;
 
-    expect(component.invalidated).to.be.false;
-    expect(component.hasAttribute('invalidated')).to.be.false;
+    expect(component.invalidated).toBe(false);
+    expect(component.hasAttribute('invalidated')).toBe(false);
   });
 
   it('removes validated state when invalidated', async () => {
@@ -321,8 +325,8 @@ describe('pharos-text-input', () => {
     component.invalidated = true;
     await component.updateComplete;
 
-    expect(component.validated).to.be.false;
-    expect(component.hasAttribute('validated')).to.be.false;
+    expect(component.validated).toBe(false);
+    expect(component.hasAttribute('validated')).toBe(false);
   });
 
   it('updates the form value', async () => {
@@ -340,7 +344,7 @@ describe('pharos-text-input', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-input')).to.equal('test');
+    expect(formdata.get('my-input')).toBe('test');
   });
 
   it('does not update the form value when disabled', async () => {
@@ -358,7 +362,7 @@ describe('pharos-text-input', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-input')).to.be.null;
+    expect(formdata.get('my-input')).toBeNull();
   });
 
   it('is able to delegate focus', async () => {
@@ -370,7 +374,7 @@ describe('pharos-text-input', () => {
 
     component.focus();
 
-    expect(activeElement === component['_input']).to.be.true;
+    expect(activeElement === component['_input']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -400,7 +404,7 @@ describe('pharos-text-input', () => {
     component['_input'].dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await component.updateComplete;
 
-    expect(formdata.get('my-input')).to.equal('test');
+    expect(formdata.get('my-input')).toBe('test');
   });
 
   it('updates the form value when FormDataEvent is undefined and creates hidden inputs', async () => {
@@ -420,8 +424,8 @@ describe('pharos-text-input', () => {
     const formdata = createFormData(form as HTMLFormElement);
     const hiddenInput = form?.querySelector('input[type="hidden"]');
 
-    expect(formdata.get('my-input')).to.equal('test');
-    expect(hiddenInput?.getAttribute('name')).to.equal('my-input');
+    expect(formdata.get('my-input')).toBe('test');
+    expect(hiddenInput?.getAttribute('name')).toBe('my-input');
   });
 
   it('resets its value when the form is reset', async () => {
@@ -444,6 +448,6 @@ describe('pharos-text-input', () => {
     await component.updateComplete;
 
     const formdata = createFormData(form as HTMLFormElement);
-    expect(formdata.get('my-input')).to.equal('test');
+    expect(formdata.get('my-input')).toBe('test');
   });
 });

@@ -1,6 +1,6 @@
-import { fixture, expect, elementUpdated, aTimeout } from '@open-wc/testing';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { LitElement, html } from 'lit';
-import sinon from 'sinon';
+import { fixture } from '../test/fixture';
 import { FocusTrapController } from './focus-trap-controller';
 import type { FocusTrap } from 'focus-trap';
 
@@ -32,6 +32,8 @@ class FocusTrapTestElement extends LitElement {
 customElements.define('focus-trap-test-element', FocusTrapTestElement);
 
 describe('FocusTrapController', () => {
+  afterEach(() => document.body.replaceChildren());
+
   describe('activate()', () => {
     it('traps focus inside the container when activated', async () => {
       let activeElement: EventTarget | null = null;
@@ -47,11 +49,11 @@ describe('FocusTrapController', () => {
       );
 
       host.open = true;
-      await elementUpdated(host);
-      await aTimeout(1); // the focus-trap intentionally waits for a microtask to pass before moving focus
+      await host.updateComplete;
+      await new Promise((resolve) => setTimeout(resolve, 1)); // the focus-trap intentionally waits for a microtask to pass before moving focus
 
       const trapButton = host.renderRoot.querySelector('#trap-button') as HTMLButtonElement;
-      expect(activeElement === trapButton).to.be.true;
+      expect(activeElement === trapButton).toBe(true);
 
       document.removeEventListener('focusin', onFocusIn);
     });
@@ -64,16 +66,16 @@ describe('FocusTrapController', () => {
       }
       customElements.define('focus-trap-bad-selector-element', FocusTrapBadSelectorElement);
 
-      const warnSpy = sinon.spy(console, 'warn');
+      const warnSpy = vi.spyOn(console, 'warn');
       const host = await fixture<FocusTrapBadSelectorElement>(
         html`<focus-trap-bad-selector-element></focus-trap-bad-selector-element>`
       );
 
       host.open = true;
-      await elementUpdated(host);
+      await host.updateComplete;
 
-      expect(warnSpy.calledOnce).to.be.true;
-      expect(warnSpy.firstCall.args[0]).to.include(
+      expect(warnSpy).toHaveBeenCalledOnce();
+      expect(warnSpy.mock.calls[0][0]).toContain(
         'FocusTrapController: Container not found or trap already active.'
       );
     });
@@ -84,19 +86,19 @@ describe('FocusTrapController', () => {
       );
 
       host.open = true;
-      await elementUpdated(host);
+      await host.updateComplete;
 
       const internalTrap = host.focusTrap['_trap'] as FocusTrap;
-      const trapActivateSpy = sinon.spy(internalTrap, 'activate');
+      const trapActivateSpy = vi.spyOn(internalTrap, 'activate');
 
       host.open = true;
-      await elementUpdated(host);
+      await host.updateComplete;
 
       const currentInternalTrap = host.focusTrap['_trap'] as FocusTrap;
 
-      expect(currentInternalTrap).to.equal(internalTrap);
-      expect(trapActivateSpy.callCount).to.equal(0);
-      trapActivateSpy.restore();
+      expect(currentInternalTrap).toBe(internalTrap);
+      expect(trapActivateSpy).not.toHaveBeenCalled();
+      trapActivateSpy.mockRestore();
     });
   });
 
@@ -117,17 +119,17 @@ describe('FocusTrapController', () => {
         html`<focus-trap-test-element></focus-trap-test-element>`
       );
       host.open = true;
-      await elementUpdated(host);
-      await aTimeout(1); // the focus-trap intentionally waits for a microtask to pass before moving focus
+      await host.updateComplete;
+      await new Promise((resolve) => setTimeout(resolve, 1)); // the focus-trap intentionally waits for a microtask to pass before moving focus
 
       const trapButton = host.renderRoot.querySelector('#trap-button') as HTMLButtonElement;
-      expect(activeElement === trapButton).to.be.true;
+      expect(activeElement === trapButton).toBe(true);
 
       host.open = false;
-      await elementUpdated(host);
-      await aTimeout(1);
+      await host.updateComplete;
+      await new Promise((resolve) => setTimeout(resolve, 1));
 
-      expect(activeElement === trigger).to.be.true;
+      expect(activeElement === trigger).toBe(true);
     });
 
     it('allows the trap to be reactivated after deactivation', async () => {
@@ -141,17 +143,17 @@ describe('FocusTrapController', () => {
         html`<focus-trap-test-element></focus-trap-test-element>`
       );
       host.open = true;
-      await elementUpdated(host);
+      await host.updateComplete;
       host.open = false;
-      await elementUpdated(host);
+      await host.updateComplete;
 
       activeElement = null;
       host.open = true;
-      await elementUpdated(host);
-      await aTimeout(1); // the focus-trap intentionally waits for a microtask to pass before moving focus
+      await host.updateComplete;
+      await new Promise((resolve) => setTimeout(resolve, 1)); // the focus-trap intentionally waits for a microtask to pass before moving focus
 
       const trapButton = host.renderRoot.querySelector('#trap-button') as HTMLButtonElement;
-      expect(activeElement === trapButton).to.be.true;
+      expect(activeElement === trapButton).toBe(true);
 
       document.removeEventListener('focusin', onFocusIn);
     });
@@ -175,12 +177,12 @@ describe('FocusTrapController', () => {
         html`<focus-trap-test-element></focus-trap-test-element>`
       );
       host.open = true;
-      await elementUpdated(host);
+      await host.updateComplete;
 
       host.remove();
-      await elementUpdated(host);
+      await host.updateComplete;
 
-      expect(activeElement === trigger).to.be.true;
+      expect(activeElement === trigger).toBe(true);
 
       document.removeEventListener('focusin', onFocusIn);
     });
@@ -188,12 +190,14 @@ describe('FocusTrapController', () => {
 
   describe('option management', () => {
     it('passes additional options through to the underlying focus-trap library', async () => {
-      const onActivate = sinon.spy();
-      const host = await fixture<FocusTrapTestElement>(new FocusTrapTestElement({ onActivate }));
+      const onActivate = vi.fn();
+      const host = new FocusTrapTestElement({ onActivate });
+      document.body.appendChild(host);
+      await host.updateComplete;
 
       host.open = true;
 
-      expect(onActivate.calledOnce).to.be.true;
+      expect(onActivate).toHaveBeenCalledOnce();
     });
   });
 });

@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosLoadingSpinner } from './pharos-loading-spinner';
 
 describe('pharos-loading-spinner', () => {
@@ -15,11 +16,11 @@ describe('pharos-loading-spinner', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('renders the base spinner', async () => {
-    expect(component).shadowDom.to.equal(`
+    expect(component).toEqualShadowDom(`
       <div class="loading-spinner__wrapper" role="alert" aria-live="assertive" aria-label="Content is loading..." tabindex="0">
         <svg
           class="loading-spinner__icon"
@@ -43,7 +44,7 @@ describe('pharos-loading-spinner', () => {
   });
 
   it('renders the small spinner', async () => {
-    expect(smallComponent).shadowDom.to.equal(`
+    expect(smallComponent).toEqualShadowDom(`
       <div class="loading-spinner__wrapper" role="alert" aria-live="assertive" aria-label="Content is loading..." tabindex="0">
         <svg
           class="loading-spinner__icon"
@@ -77,6 +78,6 @@ describe('pharos-loading-spinner', () => {
     `);
     const button = component.querySelector('button');
     button?.click();
-    expect(count).to.equal(0);
+    expect(count).toBe(0);
   });
 });

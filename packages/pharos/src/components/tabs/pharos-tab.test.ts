@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosTab } from './pharos-tab';
 
 describe('pharos-tab', () => {
@@ -19,7 +20,7 @@ describe('pharos-tab', () => {
       `,
       { parentNode }
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('fires a custom event pharos-tab-selected when clicked', async () => {
@@ -32,6 +33,6 @@ describe('pharos-tab', () => {
     component.click();
     await component.updateComplete;
 
-    expect(selected === component).to.be.true;
+    expect(selected === component).toBe(true);
   });
 });

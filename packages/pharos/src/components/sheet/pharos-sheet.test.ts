@@ -1,12 +1,12 @@
-import { fixture, expect } from '@open-wc/testing';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
-import sinon from 'sinon';
-import type { SinonSpy } from 'sinon';
+
+import { fixture } from '../../test/fixture';
 import type { PharosSheet } from './pharos-sheet';
 import type { PharosButton } from '../button/pharos-button';
 
 describe('pharos-sheet', () => {
-  let component: PharosSheet, logSpy: SinonSpy;
+  let component: PharosSheet, logSpy: ReturnType<typeof vi.spyOn>;
 
   beforeEach(async () => {
     component = await fixture(html`
@@ -17,12 +17,14 @@ describe('pharos-sheet', () => {
   });
 
   beforeAll(() => {
-    logSpy = sinon.spy(console, 'error');
+    logSpy = vi.spyOn(console, 'error');
   });
 
   afterAll(() => {
-    logSpy.restore();
+    logSpy.mockRestore();
   });
+
+  afterEach(() => document.body.replaceChildren());
 
   const getSimpleSheet = () => {
     return html`
@@ -33,14 +35,14 @@ describe('pharos-sheet', () => {
   };
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when open', async () => {
     component.open = true;
     await component.updateComplete;
 
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('opens when the element with matching attribute data-sheet-id is clicked', async () => {
@@ -53,7 +55,7 @@ describe('pharos-sheet', () => {
 
     trigger.click();
     await component.updateComplete;
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('closes when the close button is pressed', async () => {
@@ -64,14 +66,14 @@ describe('pharos-sheet', () => {
     closeButton?.click();
 
     await component.updateComplete;
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes when the overlay is clicked without triggering propagation', async () => {
     component.open = true;
     await component.updateComplete;
 
-    const mockHandler = sinon.spy();
+    const mockHandler = vi.fn();
     document.addEventListener('click', mockHandler);
 
     const overlay = component.shadowRoot?.querySelector('.sheet__overlay') as HTMLElement;
@@ -79,8 +81,8 @@ describe('pharos-sheet', () => {
 
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
-    expect(mockHandler.called).to.be.false;
+    expect(component.open).toBe(false);
+    expect(mockHandler).not.toHaveBeenCalled();
   });
 
   it('applies an opaque overlay when opened', async () => {
@@ -91,8 +93,8 @@ describe('pharos-sheet', () => {
     const overlay = sheet.shadowRoot?.querySelector('.sheet__overlay') as HTMLElement;
     const styles = getComputedStyle(overlay);
 
-    expect(styles.backgroundColor).to.equal('rgba(0, 0, 0, 0.5)');
-    expect(styles.pointerEvents).to.equal('auto');
+    expect(styles.backgroundColor).toBe('rgba(0, 0, 0, 0.5)');
+    expect(styles.pointerEvents).toBe('auto');
   });
 
   it('omits the box shadow when omit-overlay is set and sheet is closed', async () => {
@@ -104,11 +106,11 @@ describe('pharos-sheet', () => {
     await sheet.updateComplete;
 
     const content = sheet.shadowRoot?.querySelector('.sheet__content') as HTMLElement;
-    expect(getComputedStyle(content).boxShadow).to.equal('none');
+    expect(getComputedStyle(content).boxShadow).toBe('none');
   });
 
   it('focus moves to the sheet after opening and returns back to the trigger element when closed', async () => {
-    let activeElement = null;
+    let activeElement: EventTarget | null = null;
     const onFocusIn = (event: Event): void => {
       activeElement = event.composedPath()[0];
     };
@@ -116,21 +118,27 @@ describe('pharos-sheet', () => {
 
     const trigger = document.createElement('button');
     trigger.setAttribute('id', 'trigger');
-    trigger.setAttribute('data-sheet-id', 'my-sheet');
+    trigger.setAttribute('data-sheet-id', 'focus-sheet');
     document.body.appendChild(trigger);
 
-    const button = document.querySelector('#trigger') as HTMLButtonElement;
-    button.focus();
-    button.click();
-    await component.updateComplete;
+    const sheet = await fixture<PharosSheet>(html`
+      <test-pharos-sheet id="focus-sheet" a11y-label="Test sheet">
+        <div>I am sheet contents</div>
+      </test-pharos-sheet>
+    `);
 
-    const sheetHandle = component.shadowRoot?.querySelector('.sheet__handle') as HTMLDivElement;
-    expect(activeElement === sheetHandle).to.be.true;
+    trigger.focus();
+    trigger.click();
+    await sheet.updateComplete;
 
-    component.open = false;
-    await component.updateComplete;
+    const sheetHandle = sheet.shadowRoot?.querySelector('.sheet__handle') as HTMLDivElement;
+    await vi.waitFor(() => expect(activeElement === sheetHandle).toBe(true));
 
-    expect(activeElement === button).to.be.true;
+    sheet.open = false;
+    await sheet.updateComplete;
+
+    await vi.waitFor(() => expect(activeElement === trigger).toBe(true));
+
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -145,7 +153,7 @@ describe('pharos-sheet', () => {
     component.open = true;
     await component.updateComplete;
 
-    expect(wasFired).to.be.true;
+    expect(wasFired).toBe(true);
   });
 
   it('fires a custom event pharos-sheet-closed when closed', async () => {
@@ -161,6 +169,6 @@ describe('pharos-sheet', () => {
 
     component.open = false;
     await component.updateComplete;
-    expect(wasFired).to.be.true;
+    expect(wasFired).toBe(true);
   });
 });

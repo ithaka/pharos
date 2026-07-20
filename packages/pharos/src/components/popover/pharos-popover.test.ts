@@ -1,11 +1,11 @@
-import { fixture, expect, aTimeout, elementUpdated } from '@open-wc/testing';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
-import sinon from 'sinon';
-import type { SinonSpy } from 'sinon';
+
+import { fixture } from '../../test/fixture';
 import type { PharosPopover } from './pharos-popover';
 
 describe('pharos-popover', () => {
-  let component: PharosPopover, logSpy: SinonSpy;
+  let component: PharosPopover, logSpy: ReturnType<typeof vi.spyOn>;
 
   beforeEach(async () => {
     component = await fixture(html`
@@ -15,12 +15,16 @@ describe('pharos-popover', () => {
     `);
   });
 
+  afterEach(() => {
+    document.body.replaceChildren();
+  });
+
   beforeAll(() => {
-    logSpy = sinon.spy(console, 'error');
+    logSpy = vi.spyOn(console, 'error');
   });
 
   afterAll(() => {
-    logSpy.restore();
+    logSpy.mockRestore();
   });
 
   const getSimplePopover = () => {
@@ -32,14 +36,14 @@ describe('pharos-popover', () => {
   };
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when open', async () => {
     component.open = true;
     await component.updateComplete;
 
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('sets aria attributes on the trigger element', async () => {
@@ -52,9 +56,9 @@ describe('pharos-popover', () => {
 
     trigger.click();
     await component.updateComplete;
-    expect(trigger.getAttribute('aria-expanded')).to.equal('true');
-    expect(trigger.getAttribute('aria-haspopup')).to.equal('true');
-    expect(trigger.getAttribute('aria-controls')).to.equal(component.getAttribute('id'));
+    expect(trigger.getAttribute('aria-expanded')).toBe('true');
+    expect(trigger.getAttribute('aria-haspopup')).toBe('true');
+    expect(trigger.getAttribute('aria-controls')).toBe(component.getAttribute('id'));
   });
 
   it('opens when the element with matching attribute data-popover-id is clicked', async () => {
@@ -67,7 +71,7 @@ describe('pharos-popover', () => {
 
     trigger.click();
     await component.updateComplete;
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('can support multiple triggers when open and another trigger is clicked', async () => {
@@ -88,9 +92,8 @@ describe('pharos-popover', () => {
 
     secondTrigger.click();
     await component.updateComplete;
-    await aTimeout(150);
-    expect(component.open).to.be.true;
-    expect(component['_currentTrigger'] === secondTrigger).to.be.true;
+    await vi.waitFor(() => expect(component.open).toBe(true));
+    expect(component['_currentTrigger'] === secondTrigger).toBe(true);
   });
 
   it('opens when the element with matching attribute data-popover-id and attribute data-popover-hover is hovered', async () => {
@@ -103,9 +106,7 @@ describe('pharos-popover', () => {
     component = await fixture(getSimplePopover());
 
     trigger.dispatchEvent(new MouseEvent('mouseenter'));
-    await aTimeout(150);
-    await component.updateComplete;
-    expect(component.open).to.be.true;
+    await vi.waitFor(() => expect(component.open).toBe(true));
   });
 
   it('opens when the element with matching attribute data-popover-id and attribute data-popover-hover is hovered', async () => {
@@ -118,9 +119,7 @@ describe('pharos-popover', () => {
     component = await fixture(getSimplePopover());
 
     trigger.dispatchEvent(new MouseEvent('mouseenter'));
-    await aTimeout(150);
-    await component.updateComplete;
-    expect(component.open).to.be.true;
+    await vi.waitFor(() => expect(component.open).toBe(true));
   });
 
   it('can support multiple triggers when open and another trigger is hovered', async () => {
@@ -142,9 +141,8 @@ describe('pharos-popover', () => {
 
     secondTrigger.dispatchEvent(new MouseEvent('mouseenter'));
     await component.updateComplete;
-    await aTimeout(150);
-    expect(component.open).to.be.true;
-    expect(component['_currentTrigger'] === secondTrigger).to.be.true;
+    await vi.waitFor(() => expect(component.open).toBe(true));
+    expect(component['_currentTrigger'] === secondTrigger).toBe(true);
   });
 
   it('remains open when hover is moved from the trigger element to the popover', async () => {
@@ -157,13 +155,10 @@ describe('pharos-popover', () => {
     component = await fixture(getSimplePopover());
 
     trigger.dispatchEvent(new MouseEvent('mouseenter'));
-    await aTimeout(150);
-    await component.updateComplete;
+    await vi.waitFor(() => expect(component.open).toBe(true));
 
     component.dispatchEvent(new MouseEvent('mouseenter'));
-    await aTimeout(150);
-    await component.updateComplete;
-    expect(component.open).to.be.true;
+    await vi.waitFor(() => expect(component.open).toBe(true));
   });
 
   it('opens when enter key is pressed on the element with attribute data-popover-hover', async () => {
@@ -177,7 +172,7 @@ describe('pharos-popover', () => {
 
     trigger.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await component.updateComplete;
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('opens when space key is pressed on the element with attribute data-popover-hover', async () => {
@@ -191,7 +186,7 @@ describe('pharos-popover', () => {
 
     trigger.dispatchEvent(new KeyboardEvent('keydown', { key: ' ' }));
     await component.updateComplete;
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('remains open when an element inside is clicked after the popover opens', async () => {
@@ -204,13 +199,13 @@ describe('pharos-popover', () => {
 
     const button = document.createElement('button');
     component.appendChild(button);
-    await elementUpdated(component);
+    await component.updateComplete;
 
     trigger.click();
     await component.updateComplete;
     button.click();
     await component.updateComplete;
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('delegates focus back to the element that opened it', async () => {
@@ -233,7 +228,7 @@ describe('pharos-popover', () => {
     component.open = false;
     await component.updateComplete;
 
-    expect(activeElement === button).to.be.true;
+    expect(activeElement === button).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -244,7 +239,7 @@ describe('pharos-popover', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes when the escape key for IE is pressed', async () => {
@@ -254,7 +249,7 @@ describe('pharos-popover', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc' }));
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes when the escape key is pressed in the popover', async () => {
@@ -264,7 +259,7 @@ describe('pharos-popover', () => {
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes when the escape key for IE is pressed in the popover', async () => {
@@ -274,7 +269,7 @@ describe('pharos-popover', () => {
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc' }));
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes when the element with matching attribute data-popover-id is clicked after the popover opens', async () => {
@@ -289,7 +284,7 @@ describe('pharos-popover', () => {
     await component.updateComplete;
     trigger.click();
     await component.updateComplete;
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes when an another outside element is clicked after the popover opens', async () => {
@@ -304,7 +299,7 @@ describe('pharos-popover', () => {
     await component.updateComplete;
     document.body.click();
     await component.updateComplete;
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes when hover is moved away from the popover', async () => {
@@ -317,17 +312,13 @@ describe('pharos-popover', () => {
     component = await fixture(getSimplePopover());
 
     trigger.dispatchEvent(new MouseEvent('mouseenter'));
-    await aTimeout(150);
-    await component.updateComplete;
+    await vi.waitFor(() => expect(component.open).toBe(true));
 
     component.dispatchEvent(new MouseEvent('mouseenter'));
-    await aTimeout(150);
-    await component.updateComplete;
+    await vi.waitFor(() => expect(component.open).toBe(true));
 
     component.dispatchEvent(new MouseEvent('mouseleave'));
-    await aTimeout(150);
-    await component.updateComplete;
-    expect(component.open).to.be.false;
+    await vi.waitFor(() => expect(component.open).toBe(false));
   });
 
   it('closes when the element with matching attribute data-popover-id and attribute data-popover-hover loses hover', async () => {
@@ -340,13 +331,10 @@ describe('pharos-popover', () => {
     component = await fixture(getSimplePopover());
 
     trigger.dispatchEvent(new MouseEvent('mouseenter'));
-    await aTimeout(150);
-    await component.updateComplete;
+    await vi.waitFor(() => expect(component.open).toBe(true));
 
     trigger.dispatchEvent(new MouseEvent('mouseleave'));
-    await aTimeout(150);
-    await component.updateComplete;
-    expect(component.open).to.be.false;
+    await vi.waitFor(() => expect(component.open).toBe(false));
   });
 
   it('remains open when the element with attribute data-popover-hover is hovered and then clicked', async () => {
@@ -359,12 +347,11 @@ describe('pharos-popover', () => {
     component = await fixture(getSimplePopover());
 
     trigger.dispatchEvent(new MouseEvent('mouseenter'));
-    await aTimeout(150);
-    await component.updateComplete;
+    await vi.waitFor(() => expect(component.open).toBe(true));
     trigger.click();
     await component.updateComplete;
 
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('can be opened dynamically', async () => {
@@ -376,7 +363,7 @@ describe('pharos-popover', () => {
     await component.openWithTrigger(trigger);
 
     await component.updateComplete;
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('fires a custom event pharos-popover-opened when opened', async () => {
@@ -390,7 +377,7 @@ describe('pharos-popover', () => {
     component.open = true;
     await component.updateComplete;
 
-    expect(wasFired).to.be.true;
+    expect(wasFired).toBe(true);
   });
 
   it('fires a custom event pharos-popover-closed when closed', async () => {
@@ -406,6 +393,6 @@ describe('pharos-popover', () => {
 
     component.open = false;
     await component.updateComplete;
-    expect(wasFired).to.be.true;
+    expect(wasFired).toBe(true);
   });
 });
