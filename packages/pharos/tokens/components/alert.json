@@ -6,7 +6,7 @@
         "info"   : { "value": "{color.glacier-blue.90}" },
         "error"  : { "value": "{color.living-coral.90}"},
         "success": { "value": "{color.green.93}" },
-        "warning": { "value": "{color.yellow.97}" }
+        "warning": { "value": "{color.green.93}" }
       },
       "icon": {
         "base"   : { "value": "{color.black}" },
