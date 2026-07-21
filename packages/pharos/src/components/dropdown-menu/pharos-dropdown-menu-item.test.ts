@@ -1,8 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
-import sinon from 'sinon';
-import type { SinonSpy } from 'sinon';
 
+import { fixture } from '../../test/fixture';
 import { PharosIcon } from '../icon/pharos-icon';
 import type { PharosDropdownMenuItem } from './pharos-dropdown-menu-item';
 
@@ -21,7 +20,7 @@ describe('pharos-dropdown-menu-item', () => {
       html` <test-pharos-dropdown-menu-item>I am an item</test-pharos-dropdown-menu-item> `,
       { parentNode }
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when disabled', async () => {
@@ -32,14 +31,14 @@ describe('pharos-dropdown-menu-item', () => {
       `,
       { parentNode }
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('renders as a button by default', async () => {
     const button = component.renderRoot.querySelector(
       '.dropdown-menu-item__button'
     ) as HTMLButtonElement;
-    expect(button).not.to.be.null;
+    expect(button).not.toBeNull();
   });
 
   it('renders as a link when the link attribute is set', async () => {
@@ -49,8 +48,8 @@ describe('pharos-dropdown-menu-item', () => {
     const link = component.renderRoot.querySelector(
       '.dropdown-menu-item__link'
     ) as HTMLAnchorElement;
-    expect(link).not.to.be.null;
-    expect(link.getAttribute('href')).to.equal(href);
+    expect(link).not.toBeNull();
+    expect(link.getAttribute('href')).toBe(href);
   });
 
   it('passes rel attribute from dropdown menu item to anchor tag', async () => {
@@ -61,17 +60,17 @@ describe('pharos-dropdown-menu-item', () => {
     const link = component.renderRoot.querySelector(
       '.dropdown-menu-item__link'
     ) as HTMLAnchorElement;
-    expect(link).not.to.be.null;
-    expect(link.getAttribute('rel')).to.equal('noopener');
+    expect(link).not.toBeNull();
+    expect(link.getAttribute('rel')).toBe('noopener');
   });
 
   it('renders an icon when the icon attribute is set', async () => {
     component.icon = 'download';
     await component.updateComplete;
     const icon = component.renderRoot.querySelector('.dropdown-menu-item__icon');
-    expect(icon).not.to.be.null;
-    expect(icon instanceof PharosIcon).to.be.true;
-    expect(icon?.getAttribute('name')).to.equal('download');
+    expect(icon).not.toBeNull();
+    expect(icon instanceof PharosIcon).toBe(true);
+    expect(icon?.getAttribute('name')).toBe('download');
   });
 
   it('has a slot to contain a description of the item', async () => {
@@ -83,7 +82,7 @@ describe('pharos-dropdown-menu-item', () => {
     `);
 
     const itemDescription = component.renderRoot.querySelector('.dropdown-menu-item__description');
-    expect(itemDescription).not.to.be.null;
+    expect(itemDescription).not.toBeNull();
   });
 
   it('renders a checkmark when selected and its parent menu has showSelected', async () => {
@@ -97,16 +96,16 @@ describe('pharos-dropdown-menu-item', () => {
     );
 
     const checkmark = component.renderRoot.querySelector('.dropdown-menu-item__icon--selected');
-    expect(checkmark).not.to.be.null;
-    expect(checkmark instanceof PharosIcon).to.be.true;
-    expect(checkmark?.getAttribute('name')).to.equal('checkmark');
+    expect(checkmark).not.toBeNull();
+    expect(checkmark instanceof PharosIcon).toBe(true);
+    expect(checkmark?.getAttribute('name')).toBe('checkmark');
   });
 
   it('renders active state on mousedown', async () => {
     component.dispatchEvent(new MouseEvent('mousedown'));
     await component.updateComplete;
     const activeItem = component.renderRoot.querySelector('.dropdown-menu-item--active');
-    expect(activeItem).to.not.be.null;
+    expect(activeItem).not.toBeNull();
   });
 
   it('clears active state on mouseup', async () => {
@@ -115,16 +114,16 @@ describe('pharos-dropdown-menu-item', () => {
     component.dispatchEvent(new MouseEvent('mouseup'));
     await component.updateComplete;
     const activeItem = component.renderRoot.querySelector('.dropdown-menu-item--active');
-    expect(activeItem).to.be.null;
+    expect(activeItem).toBeNull();
   });
 
   it('cannot be clicked when disabled', async () => {
     const event = new MouseEvent('click');
-    const clickSpy: SinonSpy = sinon.spy(event, 'preventDefault');
+    const clickSpy = vi.spyOn(event, 'preventDefault');
     component.disabled = true;
     await component.updateComplete;
     component.dispatchEvent(event);
-    expect(clickSpy.callCount).to.equal(1);
+    expect(clickSpy).toHaveBeenCalledTimes(1);
   });
 
   it('does not propagate a click event when disabled with click handler present', async () => {
@@ -135,10 +134,10 @@ describe('pharos-dropdown-menu-item', () => {
       >
     `);
     await component.updateComplete;
-    const clickSpy: SinonSpy = sinon.spy(event, 'preventDefault');
-    const propagationSpy: SinonSpy = sinon.spy(event, 'stopPropagation');
+    const clickSpy = vi.spyOn(event, 'preventDefault');
+    const propagationSpy = vi.spyOn(event, 'stopPropagation');
     component.dispatchEvent(event);
-    expect(clickSpy.callCount).to.equal(1);
-    expect(propagationSpy.callCount).to.equal(1);
+    expect(clickSpy).toHaveBeenCalledTimes(1);
+    expect(propagationSpy).toHaveBeenCalledTimes(1);
   });
 });

@@ -15,9 +15,6 @@ const hasUpdateComplete = (value: unknown): value is { updateComplete: Promise<u
 };
 
 const mount = (template: TemplateResult, parentNode?: HTMLElement): Element => {
-  // Clear the document body to ensure there are no elements left from earlier tests in the same file.
-  document.body.replaceChildren();
-
   const container = parentNode ?? document.createElement('div');
   document.body.appendChild(container);
 

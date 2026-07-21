@@ -1,6 +1,7 @@
-import { fixture, expect, aTimeout, elementUpdated } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosCombobox } from './pharos-combobox';
 import type { PharosTooltip } from '../tooltip/pharos-tooltip';
 import type { PharosButton } from '../button/pharos-button';
@@ -9,6 +10,10 @@ import createFormData from '../../utils/createFormData';
 
 describe('pharos-combobox', () => {
   let component: PharosCombobox;
+
+  afterEach(() => {
+    document.body.replaceChildren();
+  });
 
   beforeEach(async () => {
     component = await fixture(html`
@@ -22,13 +27,13 @@ describe('pharos-combobox', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when focused', async () => {
     component['_input'].dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when disabled', async () => {
@@ -37,7 +42,7 @@ describe('pharos-combobox', () => {
         ><span slot="label">test combobox</span></test-pharos-combobox
       >`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when it has disabled options', async () => {
@@ -49,7 +54,7 @@ describe('pharos-combobox', () => {
         <option value="3">Option 3</option>
       </test-pharos-combobox>
     `);
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('fires a change event', async () => {
@@ -68,7 +73,7 @@ describe('pharos-combobox', () => {
     component['_input'].dispatchEvent(new Event('input'));
     component['_input'].dispatchEvent(new Event('change'));
 
-    expect((eventSource as Element).isSameNode(component)).to.be.true;
+    expect((eventSource as Element).isSameNode(component)).toBe(true);
   });
 
   it('updates the value, closes the dropdown list, and blurs the input when an option is clicked', async () => {
@@ -93,9 +98,9 @@ describe('pharos-combobox', () => {
     });
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
-    expect(component.value).to.equal('2');
-    expect(activeElement === component['_input']).to.be.false;
+    expect(component.open).toBe(false);
+    expect(component.value).toBe('2');
+    expect(activeElement === component['_input']).toBe(false);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -124,7 +129,7 @@ describe('pharos-combobox', () => {
     });
     await component.updateComplete;
 
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('does not update the value when a disabled option is clicked', async () => {
@@ -152,7 +157,7 @@ describe('pharos-combobox', () => {
     });
     await component.updateComplete;
 
-    expect(component.value).to.equal('');
+    expect(component.value).toBe('');
   });
 
   it('renders disabled options with aria-disabled set to true', async () => {
@@ -171,9 +176,8 @@ describe('pharos-combobox', () => {
     const disabledOption = component.renderRoot.querySelector(
       '.combobox__option[aria-disabled="true"]'
     ) as HTMLLIElement;
-    console.log('disabledOption', disabledOption);
-    expect(disabledOption).to.not.be.null;
-    expect(disabledOption.innerText).to.equal('Option 2');
+    expect(disabledOption).not.toBeNull();
+    expect(disabledOption.innerText).toBe('Option 2');
   });
 
   it('skips disabled items when navigating with the arrow keys', async () => {
@@ -201,8 +205,8 @@ describe('pharos-combobox', () => {
 
     const expectedOption = Array.from(options)[2];
 
-    expect(expectedOption.hasAttribute('highlighted')).to.be.true;
-    expect(expectedOption.getAttribute('aria-selected')).to.equal('true');
+    expect(expectedOption.hasAttribute('highlighted')).toBe(true);
+    expect(expectedOption.getAttribute('aria-selected')).toBe('true');
   });
 
   it('renders the clear button with tooltip when an option is selected', async () => {
@@ -218,8 +222,8 @@ describe('pharos-combobox', () => {
       '[data-pharos-component="PharosTooltip"]'
     ) as PharosTooltip;
 
-    expect(clearButton).to.not.be.null;
-    expect(clearTooltip).to.not.be.null;
+    expect(clearButton).not.toBeNull();
+    expect(clearTooltip).not.toBeNull();
   });
 
   it('renders a checkmark on an option that has been selected', async () => {
@@ -232,21 +236,25 @@ describe('pharos-combobox', () => {
     matchingOption.click();
 
     component['_input'].dispatchEvent(new MouseEvent('click'));
-    await aTimeout(100);
-    await component.updateComplete;
+
+    await vi.waitFor(() => {
+      const selectedOption = component.renderRoot.querySelector(
+        '.combobox__option--selected'
+      ) as HTMLLIElement;
+      expect(selectedOption).not.toBeNull();
+    });
 
     const selectedOption = component.renderRoot.querySelector(
       '.combobox__option--selected'
     ) as HTMLLIElement;
 
     const checkmark = selectedOption.querySelector('.combobox__option__icon');
-    expect(selectedOption).to.not.be.null;
-    expect(checkmark instanceof PharosIcon).to.be.true;
+    expect(selectedOption).not.toBeNull();
+    expect(checkmark instanceof PharosIcon).toBe(true);
   });
 
   it('reverts to the selected option on blur', async () => {
     component['_input'].dispatchEvent(new FocusEvent('focus'));
-    await aTimeout(100);
     await component.updateComplete;
 
     component['_input'].value = 'Option 2';
@@ -261,16 +269,17 @@ describe('pharos-combobox', () => {
     await component.updateComplete;
 
     component['_input'].dispatchEvent(new FocusEvent('blur'));
-    await aTimeout(100);
-    await component.updateComplete;
 
-    expect(component.value).to.equal('2');
-    expect(component['_input'].value).to.equal('Option 2');
+    await vi.waitFor(() => {
+      expect(component.open).toBe(false);
+    });
+
+    expect(component.value).toBe('2');
+    expect(component['_input'].value).toBe('Option 2');
   });
 
   it('does not revert when no option is selected', async () => {
     component['_input'].dispatchEvent(new FocusEvent('focus'));
-    await aTimeout(100);
     await component.updateComplete;
 
     component['_input'].value = 'Gobbledegook';
@@ -278,11 +287,13 @@ describe('pharos-combobox', () => {
     await component.updateComplete;
 
     component['_input'].dispatchEvent(new FocusEvent('blur'));
-    await aTimeout(100);
-    await component.updateComplete;
 
-    expect(component.value).to.equal('');
-    expect(component['_input'].value).to.equal('Gobbledegook');
+    await vi.waitFor(() => {
+      expect(component.open).toBe(false);
+    });
+
+    expect(component.value).toBe('');
+    expect(component['_input'].value).toBe('Gobbledegook');
   });
 
   it('query matches text when loose-match is enabled and query contains accent', async () => {
@@ -305,8 +316,8 @@ describe('pharos-combobox', () => {
     const expectedHTML = '<mark class="combobox__mark">Option</mark> 1';
     const optionHTML = firstOption.innerHTML.replace(/<!--.*?-->/g, '').trim();
 
-    expect(optionHTML).to.equal(expectedHTML);
-    expect(options.length).to.equal(3);
+    expect(optionHTML).toBe(expectedHTML);
+    expect(options.length).toBe(3);
   });
 
   it('highlights text in the option that match the query', async () => {
@@ -322,7 +333,7 @@ describe('pharos-combobox', () => {
       '<mark class="combobox__mark">O</mark>pti<mark class="combobox__mark">o</mark>n 1';
     const optionHTML = firstOption.innerHTML.replace(/<!--.*?-->/g, '').trim();
 
-    expect(optionHTML).to.equal(expectedHTML);
+    expect(optionHTML).toBe(expectedHTML);
   });
 
   it('opens the list and highlights the first option when the down arrow key is pressed', async () => {
@@ -334,10 +345,10 @@ describe('pharos-combobox', () => {
     ) as NodeListOf<HTMLLIElement>;
     const firstOption = options[0];
 
-    expect(component.open).to.be.true;
-    expect(firstOption.hasAttribute('highlighted')).to.be.true;
-    expect(firstOption.getAttribute('aria-selected')).to.equal('true');
-    expect(component['_input'].getAttribute('aria-activedescendant')).to.equal(firstOption.id);
+    expect(component.open).toBe(true);
+    expect(firstOption.hasAttribute('highlighted')).toBe(true);
+    expect(firstOption.getAttribute('aria-selected')).toBe('true');
+    expect(component['_input'].getAttribute('aria-activedescendant')).toBe(firstOption.id);
   });
 
   it('opens the list and highlights the last option when the up arrow key is pressed', async () => {
@@ -349,10 +360,10 @@ describe('pharos-combobox', () => {
     ) as NodeListOf<HTMLLIElement>;
     const lastOption = options[options.length - 1];
 
-    expect(component.open).to.be.true;
-    expect(lastOption.hasAttribute('highlighted')).to.be.true;
-    expect(lastOption.getAttribute('aria-selected')).to.equal('true');
-    expect(component['_input'].getAttribute('aria-activedescendant')).to.equal(lastOption.id);
+    expect(component.open).toBe(true);
+    expect(lastOption.hasAttribute('highlighted')).toBe(true);
+    expect(lastOption.getAttribute('aria-selected')).toBe('true');
+    expect(component['_input'].getAttribute('aria-activedescendant')).toBe(lastOption.id);
   });
 
   it('highlights previous option when up arrow key is pressed', async () => {
@@ -366,10 +377,10 @@ describe('pharos-combobox', () => {
     ) as NodeListOf<HTMLLIElement>;
     const secondOption = options[1];
 
-    expect(component.open).to.be.true;
-    expect(secondOption.hasAttribute('highlighted')).to.be.true;
-    expect(secondOption.getAttribute('aria-selected')).to.equal('true');
-    expect(component['_input'].getAttribute('aria-activedescendant')).to.equal(secondOption.id);
+    expect(component.open).toBe(true);
+    expect(secondOption.hasAttribute('highlighted')).toBe(true);
+    expect(secondOption.getAttribute('aria-selected')).toBe('true');
+    expect(component['_input'].getAttribute('aria-activedescendant')).toBe(secondOption.id);
   });
 
   it('highlights the first option when moving forward from the last one', async () => {
@@ -383,10 +394,10 @@ describe('pharos-combobox', () => {
     ) as NodeListOf<HTMLLIElement>;
     const firstOption = options[0];
 
-    expect(component.open).to.be.true;
-    expect(firstOption.hasAttribute('highlighted')).to.be.true;
-    expect(firstOption.getAttribute('aria-selected')).to.equal('true');
-    expect(component['_input'].getAttribute('aria-activedescendant')).to.equal(firstOption.id);
+    expect(component.open).toBe(true);
+    expect(firstOption.hasAttribute('highlighted')).toBe(true);
+    expect(firstOption.getAttribute('aria-selected')).toBe('true');
+    expect(component['_input'].getAttribute('aria-activedescendant')).toBe(firstOption.id);
   });
 
   it('highlights the last option when moving backward from the first one', async () => {
@@ -400,10 +411,10 @@ describe('pharos-combobox', () => {
     ) as NodeListOf<HTMLLIElement>;
     const lastOption = options[options.length - 1];
 
-    expect(component.open).to.be.true;
-    expect(lastOption.hasAttribute('highlighted')).to.be.true;
-    expect(lastOption.getAttribute('aria-selected')).to.equal('true');
-    expect(component['_input'].getAttribute('aria-activedescendant')).to.equal(lastOption.id);
+    expect(component.open).toBe(true);
+    expect(lastOption.hasAttribute('highlighted')).toBe(true);
+    expect(lastOption.getAttribute('aria-selected')).toBe('true');
+    expect(component['_input'].getAttribute('aria-activedescendant')).toBe(lastOption.id);
   });
 
   it('selects an item in the list, updates the input value, and closes the list the input when the enter key is pressed', async () => {
@@ -412,9 +423,9 @@ describe('pharos-combobox', () => {
     component['_input'].dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
-    expect(component['_input'].getAttribute('aria-activedescendant')).to.equal('');
-    expect(component.value).to.equal('1');
+    expect(component.open).toBe(false);
+    expect(component['_input'].getAttribute('aria-activedescendant')).toBe('');
+    expect(component.value).toBe('1');
   });
 
   it('clears the input and closes the list when the escape key is pressed', async () => {
@@ -424,8 +435,8 @@ describe('pharos-combobox', () => {
     component['_input'].dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
-    expect(component.value).to.equal('');
+    expect(component.open).toBe(false);
+    expect(component.value).toBe('');
   });
 
   it('clears the input, closes the list, and returns focus to the input when the clear button is clicked', async () => {
@@ -445,9 +456,9 @@ describe('pharos-combobox', () => {
     clearButton.click();
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
-    expect(component.value).to.equal('');
-    expect(activeElement === component['_input']).to.be.true;
+    expect(component.open).toBe(false);
+    expect(component.value).toBe('');
+    expect(activeElement === component['_input']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -460,10 +471,10 @@ describe('pharos-combobox', () => {
       component.renderRoot.querySelectorAll('.combobox__option')
     ) as HTMLLIElement[];
 
-    expect(component.open).to.be.true;
-    expect(component['_noResults']).to.be.true;
-    expect(options.length).to.equal(1);
-    expect(options[0].innerText).to.equal('No results found');
+    expect(component.open).toBe(true);
+    expect(component['_noResults']).toBe(true);
+    expect(options.length).toBe(1);
+    expect(options[0].innerText).toBe('No results found');
   });
 
   it('does not highlight "No results found" option when the down arrow key is pressed', async () => {
@@ -477,48 +488,46 @@ describe('pharos-combobox', () => {
       '.combobox__option[highlighted]'
     ) as HTMLLIElement;
 
-    expect(component.open).to.be.true;
-    expect(component['_noResults']).to.be.true;
-    expect(highlightedOption).to.be.null;
+    expect(component.open).toBe(true);
+    expect(component['_noResults']).toBe(true);
+    expect(highlightedOption).toBeNull();
   });
 
   it('opens the dropdown list on focus of the dropdown button', async () => {
     component['_button'].dispatchEvent(new MouseEvent('click'));
-    await aTimeout(100);
     await component.updateComplete;
 
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('toggles the dropdown list on click of the input', async () => {
     component['_input'].dispatchEvent(new MouseEvent('click'));
     await component.updateComplete;
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
 
     component['_input'].dispatchEvent(new MouseEvent('click'));
     await component.updateComplete;
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('closes the dropdown list on blur of the dropdown button', async () => {
     component['_button'].dispatchEvent(new FocusEvent('focus'));
-    await aTimeout(100);
     await component.updateComplete;
     component['_button'].dispatchEvent(new FocusEvent('blur'));
-    await aTimeout(100);
-    await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    await vi.waitFor(() => {
+      expect(component.open).toBe(false);
+    });
   });
 
   it('closes the dropdown list on blur of the input', async () => {
     component['_input'].dispatchEvent(new KeyboardEvent('keydown', { key: 'Up' }));
     await component.updateComplete;
     component['_input'].dispatchEvent(new FocusEvent('blur'));
-    await aTimeout(100);
-    await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    await vi.waitFor(() => {
+      expect(component.open).toBe(false);
+    });
   });
 
   it('updates the form value', async () => {
@@ -538,7 +547,7 @@ describe('pharos-combobox', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-combobox')).to.equal('1');
+    expect(formdata.get('my-combobox')).toBe('1');
   });
 
   it('does not update the form value when disabled', async () => {
@@ -558,7 +567,7 @@ describe('pharos-combobox', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-combobox')).to.be.null;
+    expect(formdata.get('my-combobox')).toBeNull();
   });
 
   it('updates the displayed selection for asynchronously added options', async () => {
@@ -574,9 +583,10 @@ describe('pharos-combobox', () => {
     option.value = '3';
     option.text = 'Option 3';
     component.appendChild(option);
-    await elementUpdated(component);
 
-    expect(component['_input'].value).to.equal('Option 3');
+    await vi.waitFor(() => {
+      expect(component['_input'].value).toBe('Option 3');
+    });
   });
 
   it('does not update the displayed value when no matching options exist', async () => {
@@ -587,7 +597,7 @@ describe('pharos-combobox', () => {
         <option value="2">Option 2</option>
       </test-pharos-combobox>
     `);
-    expect(component['_input'].value).to.equal('');
+    expect(component['_input'].value).toBe('');
   });
 
   it('updates the displayed value when the value attribute changes', async () => {
@@ -599,9 +609,10 @@ describe('pharos-combobox', () => {
       </test-pharos-combobox>
     `);
     component.value = '1';
-    await elementUpdated(component);
 
-    expect(component['_input'].value).to.equal('Option 1');
+    await vi.waitFor(() => {
+      expect(component['_input'].value).toBe('Option 1');
+    });
   });
 
   it('is able to delegate focus', async () => {
@@ -613,7 +624,7 @@ describe('pharos-combobox', () => {
 
     component.focus();
 
-    expect(activeElement === component['_input']).to.be.true;
+    expect(activeElement === component['_input']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -639,7 +650,7 @@ describe('pharos-combobox', () => {
     await component.updateComplete;
 
     const formdata = createFormData(form as HTMLFormElement);
-    expect(formdata.get('my-combobox')).to.equal('1');
+    expect(formdata.get('my-combobox')).toBe('1');
   });
 
   it('sets the value on input in search mode', async () => {
@@ -655,7 +666,7 @@ describe('pharos-combobox', () => {
     component['_input'].value = 'this is not an option in the list, but it is valid';
     component['_input'].dispatchEvent(new Event('input'));
 
-    expect(component.value).to.equal('this is not an option in the list, but it is valid');
+    expect(component.value).toBe('this is not an option in the list, but it is valid');
   });
 
   it('it does not highlight matching text in search mode', async () => {
@@ -679,7 +690,7 @@ describe('pharos-combobox', () => {
     const expectedHTML = 'Option 1';
     const optionHTML = firstOption.innerHTML.replace(/<!--.*?-->/g, '').trim();
 
-    expect(optionHTML).to.equal(expectedHTML);
+    expect(optionHTML).toBe(expectedHTML);
   });
 
   it('does not render a checkmark on selected options in search mode', async () => {
@@ -702,14 +713,13 @@ describe('pharos-combobox', () => {
     const searchButton = component.renderRoot.querySelector('.search__button') as HTMLLIElement;
 
     searchButton.focus();
-    await aTimeout(100);
     await component.updateComplete;
 
     const selectedOption = component.renderRoot.querySelector(
       '.combobox__option--selected'
     ) as HTMLLIElement;
 
-    expect(selectedOption).to.be.null;
+    expect(selectedOption).toBeNull();
   });
 
   it('does not filter search results in search mode', async () => {
@@ -729,9 +739,9 @@ describe('pharos-combobox', () => {
       component.renderRoot.querySelectorAll('.combobox__option')
     ) as HTMLLIElement[];
 
-    expect(component.open).to.be.true;
-    expect(component['_noResults']).to.be.false;
-    expect(options.length).to.equal(3);
+    expect(component.open).toBe(true);
+    expect(component['_noResults']).toBe(false);
+    expect(options.length).toBe(3);
   });
 
   it('fires a change event when selecting a highlighted option in search mode', async () => {
@@ -752,7 +762,7 @@ describe('pharos-combobox', () => {
     component['_input'].dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await component.updateComplete;
 
-    expect((eventSource as Element).isSameNode(component)).to.be.true;
+    expect((eventSource as Element).isSameNode(component)).toBe(true);
   });
 
   it('does not show a no results message when there are no matching options in search mode', async () => {
@@ -769,7 +779,7 @@ describe('pharos-combobox', () => {
       component.renderRoot.querySelectorAll('.combobox__option')
     ) as HTMLLIElement[];
 
-    expect(options.length).to.equal(0);
+    expect(options.length).toBe(0);
   });
 
   it('will close the dropdown on enter when there is no option selected', async () => {
@@ -783,16 +793,20 @@ describe('pharos-combobox', () => {
     component['_input'].dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await component.updateComplete;
 
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('clears the displayed value when the value is cleared programmatically', async () => {
     component.value = '1';
-    await elementUpdated(component);
+
+    await vi.waitFor(() => {
+      expect(component['_input'].value).toBe('Option 1');
+    });
 
     component.value = '';
-    await elementUpdated(component);
 
-    expect(component['_input'].value).to.equal('');
+    await vi.waitFor(() => {
+      expect(component['_input'].value).toBe('');
+    });
   });
 });

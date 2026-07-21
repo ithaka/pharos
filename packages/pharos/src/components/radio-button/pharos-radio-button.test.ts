@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosRadioButton } from './pharos-radio-button';
 import type { PharosLink } from '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
@@ -16,14 +17,16 @@ describe('pharos-radio-button', () => {
     );
   });
 
+  afterEach(() => document.body.replaceChildren());
+
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when focused', async () => {
     component.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when disabled', async () => {
@@ -32,7 +35,7 @@ describe('pharos-radio-button', () => {
         ><span slot="label">test radio</span></test-pharos-radio-button
       >
     `);
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('has association with validation message', async () => {
@@ -41,9 +44,9 @@ describe('pharos-radio-button', () => {
         ><span slot="label">test radio</span></test-pharos-radio-button
       >
     `);
-    await expect(
-      component.renderRoot.querySelector('input')?.getAttribute('aria-describedby')
-    ).to.equal('message');
+    expect(component.renderRoot.querySelector('input')?.getAttribute('aria-describedby')).toBe(
+      'message'
+    );
   });
 
   it('has an attribute to set check value', async () => {
@@ -52,7 +55,7 @@ describe('pharos-radio-button', () => {
         ><span slot="label">test radio</span></test-pharos-radio-button
       >
     `);
-    await expect(component.checked).to.equal(true);
+    expect(component.checked).toBe(true);
   });
 
   it('fires a change event', async () => {
@@ -68,7 +71,7 @@ describe('pharos-radio-button', () => {
     component['_radio'].click();
     await component.updateComplete;
 
-    expect((eventSource as Element).isSameNode(component)).to.be.true;
+    expect((eventSource as Element).isSameNode(component)).toBe(true);
   });
 
   it('is able to receive focus', async () => {
@@ -80,7 +83,7 @@ describe('pharos-radio-button', () => {
 
     component['_radio'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_radio']).to.be.true;
+    expect(activeElement === component['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -99,8 +102,8 @@ describe('pharos-radio-button', () => {
 
     component['_radio'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_radio']).to.be.false;
-    expect(document.activeElement === component).to.be.false;
+    expect(activeElement === component['_radio']).toBe(false);
+    expect(document.activeElement === component).toBe(false);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -119,7 +122,7 @@ describe('pharos-radio-button', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-radio')).to.equal('test');
+    expect(formdata.get('my-radio')).toBe('test');
   });
 
   it('does not update the form value when disabled', async () => {
@@ -137,7 +140,7 @@ describe('pharos-radio-button', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-radio')).to.be.null;
+    expect(formdata.get('my-radio')).toBeNull();
   });
 
   it('can be clicked when the label is hidden', async () => {
@@ -157,8 +160,8 @@ describe('pharos-radio-button', () => {
     icon.dispatchEvent(new Event('click'));
     await component.updateComplete;
 
-    expect(component.checked).to.be.true;
-    expect(activeElement === component['_radio']).to.be.true;
+    expect(component.checked).toBe(true);
+    expect(activeElement === component['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -175,8 +178,8 @@ describe('pharos-radio-button', () => {
     icon.dispatchEvent(new Event('click'));
     await component.updateComplete;
 
-    expect(component.checked).to.be.true;
-    expect(activeElement === component['_radio']).to.be.true;
+    expect(component.checked).toBe(true);
+    expect(activeElement === component['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -189,7 +192,7 @@ describe('pharos-radio-button', () => {
 
     component.focus();
 
-    expect(activeElement === component['_radio']).to.be.true;
+    expect(activeElement === component['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -203,7 +206,7 @@ describe('pharos-radio-button', () => {
     link?.click();
     await component.updateComplete;
 
-    await expect(component.checked).to.be.false;
+    expect(component.checked).toBe(false);
   });
 
   it('allows Pharos links in the label to be clicked', async () => {
@@ -219,7 +222,7 @@ describe('pharos-radio-button', () => {
     anchor.click();
     await component.updateComplete;
 
-    await expect(component.checked).to.be.false;
+    expect(component.checked).toBe(false);
   });
 
   it('fires a single click event', async () => {
@@ -236,7 +239,7 @@ describe('pharos-radio-button', () => {
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
     label?.click();
     await component.updateComplete;
-    expect(count).to.equal(1);
+    expect(count).toBe(1);
   });
 
   it('stretches to fill its container when full-width is set', async () => {
@@ -248,7 +251,7 @@ describe('pharos-radio-button', () => {
       >`,
       { parentNode }
     );
-    expect(getComputedStyle(component).width).to.equal('400px');
+    expect(getComputedStyle(component).width).toBe('400px');
   });
 
   it('does not stretch to fill its container by default', async () => {
@@ -260,7 +263,7 @@ describe('pharos-radio-button', () => {
       >`,
       { parentNode }
     );
-    expect(getComputedStyle(component).width).to.not.equal('400px');
+    expect(getComputedStyle(component).width).not.toBe('400px');
   });
 
   it('resets checked when the form is reset', async () => {
@@ -283,6 +286,6 @@ describe('pharos-radio-button', () => {
     await component.updateComplete;
 
     const formdata = createFormData(form as HTMLFormElement);
-    expect(formdata.get('my-radio')).to.equal('test');
+    expect(formdata.get('my-radio')).toBe('test');
   });
 });

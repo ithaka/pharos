@@ -1,12 +1,17 @@
-import { fixture, expect, elementUpdated } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosSelect } from './pharos-select';
 import createFormData from '../../utils/createFormData';
 
 describe('pharos-select', () => {
   let component: PharosSelect;
   let disabled: PharosSelect;
+
+  afterEach(() => {
+    document.body.replaceChildren();
+  });
 
   beforeEach(async () => {
     component = await fixture(
@@ -33,17 +38,17 @@ describe('pharos-select', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when focused', async () => {
     component.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when disabled', async () => {
-    await expect(disabled).to.be.accessible();
+    await expect(disabled).toBeAccessible();
   });
 
   it('uses the first option by default', async () => {
@@ -54,7 +59,7 @@ describe('pharos-select', () => {
       </test-pharos-select>
     `);
 
-    expect(component.value).to.equal('1');
+    expect(component.value).toBe('1');
   });
 
   it('fires a change event', async () => {
@@ -73,7 +78,7 @@ describe('pharos-select', () => {
     component['_select'].dispatchEvent(new Event('change'));
     await component.updateComplete;
 
-    expect((eventSource as Element).isSameNode(component)).to.be.true;
+    expect((eventSource as Element).isSameNode(component)).toBe(true);
   });
 
   it('updates the value on change', async () => {
@@ -89,7 +94,7 @@ describe('pharos-select', () => {
     component['_select'].dispatchEvent(new Event('change'));
     await component.updateComplete;
 
-    expect(component.value).to.equal('2');
+    expect(component.value).toBe('2');
   });
 
   it('is able to receive focus', async () => {
@@ -101,7 +106,7 @@ describe('pharos-select', () => {
 
     component['_select'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_select']).to.be.true;
+    expect(activeElement === component['_select']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -114,8 +119,8 @@ describe('pharos-select', () => {
 
     disabled['_select'].focus();
     await disabled.updateComplete;
-    expect(activeElement === disabled['_select']).to.be.false;
-    expect(document.activeElement === disabled).to.be.false;
+    expect(activeElement === disabled['_select']).toBe(false);
+    expect(document.activeElement === disabled).toBe(false);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -139,7 +144,7 @@ describe('pharos-select', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-select')).to.equal('3');
+    expect(formdata.get('my-select')).toBe('3');
   });
 
   it('does not update the form value when disabled', async () => {
@@ -162,7 +167,7 @@ describe('pharos-select', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-select')).to.be.null;
+    expect(formdata.get('my-select')).toBeNull();
   });
 
   it('is able to delegate focus', async () => {
@@ -174,7 +179,7 @@ describe('pharos-select', () => {
 
     component.focus();
 
-    expect(activeElement === component['_select']).to.be.true;
+    expect(activeElement === component['_select']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -203,7 +208,7 @@ describe('pharos-select', () => {
     await component.updateComplete;
 
     const formdata = createFormData(form as HTMLFormElement);
-    expect(formdata.get('my-select')).to.equal('3');
+    expect(formdata.get('my-select')).toBe('3');
   });
 
   it('renders an additional option when one is added dynamically', async () => {
@@ -211,9 +216,10 @@ describe('pharos-select', () => {
     option.textContent = 'I am an option';
 
     component.appendChild(option);
-    await elementUpdated(component);
 
-    expect(component.renderRoot.querySelectorAll('option')?.length).to.equal(6);
+    await vi.waitFor(() => {
+      expect(component.renderRoot.querySelectorAll('option')?.length).toBe(6);
+    });
   });
 
   it('removes an option when one is removed dynamically', async () => {
@@ -222,9 +228,10 @@ describe('pharos-select', () => {
     if (option) {
       component.removeChild(option);
     }
-    await elementUpdated(component);
 
-    expect(component.renderRoot.querySelectorAll('option')?.length).to.equal(4);
+    await vi.waitFor(() => {
+      expect(component.renderRoot.querySelectorAll('option')?.length).toBe(4);
+    });
   });
 
   it('sets the selection when a value is initially passed', async () => {
@@ -239,6 +246,6 @@ describe('pharos-select', () => {
       </test-pharos-select>`
     );
     await component.updateComplete;
-    expect(component['_select'].value).to.equal('2');
+    expect(component['_select'].value).toBe('2');
   });
 });

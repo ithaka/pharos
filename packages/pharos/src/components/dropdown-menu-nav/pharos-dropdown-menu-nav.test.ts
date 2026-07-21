@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosDropdownMenuNav } from './pharos-dropdown-menu-nav';
 import type { PharosDropdownMenuNavLink } from './pharos-dropdown-menu-nav-link';
 import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
@@ -45,8 +46,12 @@ describe('pharos-dropdown-menu-nav', () => {
     `);
   });
 
+  afterEach(() => {
+    document.body.replaceChildren();
+  });
+
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('closes an open menu when focus moves to another link', async () => {
@@ -58,7 +63,7 @@ describe('pharos-dropdown-menu-nav', () => {
     link.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
 
-    expect(menu?.open).to.be.false;
+    expect(menu?.open).toBe(false);
   });
 
   it('closes an open menu when another link is hovered', async () => {
@@ -70,7 +75,7 @@ describe('pharos-dropdown-menu-nav', () => {
     link.dispatchEvent(new Event('mouseenter'));
     await component.updateComplete;
 
-    expect(menu?.open).to.be.false;
+    expect(menu?.open).toBe(false);
   });
 
   it('closes an open menu when focus moves to an element outside the nav', async () => {
@@ -87,6 +92,6 @@ describe('pharos-dropdown-menu-nav', () => {
     button.focus();
     await component.updateComplete;
 
-    expect(menu?.open).to.be.false;
+    expect(menu?.open).toBe(false);
   });
 });

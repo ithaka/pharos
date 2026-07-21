@@ -1,6 +1,7 @@
-import { fixture, expect, aTimeout } from '@open-wc/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosToggleButtonGroup } from './pharos-toggle-button-group';
 import type { PharosToggleButton } from './pharos-toggle-button';
 
@@ -36,35 +37,35 @@ describe('pharos-toggle-button-group', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('renders a group by default', async () => {
     const toggleButtonGroup = component.renderRoot.querySelector(
       '[role="group"]'
     ) as HTMLDivElement;
-    expect(toggleButtonGroup).not.to.be.null;
+    expect(toggleButtonGroup).not.toBeNull();
   });
 
   it('renders a default aria-label', async () => {
     const toggleButtonGroup = component.renderRoot.querySelector(
       '[role="group"]'
     ) as HTMLDivElement;
-    expect(toggleButtonGroup.getAttribute('aria-label')).to.equal('Options');
+    expect(toggleButtonGroup.getAttribute('aria-label')).toBe('Options');
   });
 
   it('renders the provided aria-label', async () => {
     const toggleButtonGroup = componentWithLabel.renderRoot.querySelector(
       '[role="group"]'
     ) as HTMLDivElement;
-    expect(toggleButtonGroup.getAttribute('aria-label')).to.equal('New options');
+    expect(toggleButtonGroup.getAttribute('aria-label')).toBe('New options');
   });
 
   it('has a slot to contain the toggle button elements', async () => {
     const toggleButtonGroup = component.renderRoot.querySelector(
       '[role="group"]'
     ) as HTMLDivElement;
-    expect(toggleButtonGroup.children[0]).to.be.an.instanceOf(HTMLSlotElement);
+    expect(toggleButtonGroup.children[0]).toBeInstanceOf(HTMLSlotElement);
   });
 
   it('has 3 toggle buttons within the slot', async () => {
@@ -72,7 +73,7 @@ describe('pharos-toggle-button-group', () => {
       component.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
-    expect(toggleButtons.length).to.be.eq(3);
+    expect(toggleButtons.length).toBe(3);
   });
 
   it('selects the first toggle button if no selection is defined', async () => {
@@ -80,12 +81,12 @@ describe('pharos-toggle-button-group', () => {
       component.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
-    expect(toggleButtons[0].selected).to.be.true;
-    expect(toggleButtons[0].a11yPressed).to.equal('true');
-    expect(toggleButtons[1].selected).to.be.false;
-    expect(toggleButtons[1].a11yPressed).to.equal('false');
-    expect(toggleButtons[2].selected).to.be.false;
-    expect(toggleButtons[2].a11yPressed).to.equal('false');
+    expect(toggleButtons[0].selected).toBe(true);
+    expect(toggleButtons[0].a11yPressed).toBe('true');
+    expect(toggleButtons[1].selected).toBe(false);
+    expect(toggleButtons[1].a11yPressed).toBe('false');
+    expect(toggleButtons[2].selected).toBe(false);
+    expect(toggleButtons[2].a11yPressed).toBe('false');
   });
 
   it('selects the defined toggle button', async () => {
@@ -93,12 +94,12 @@ describe('pharos-toggle-button-group', () => {
       componentLastButtonSelected.querySelectorAll(`test-pharos-toggle-button`)
     ) as PharosToggleButton[];
 
-    expect(toggleButtons[0].selected).to.be.false;
-    expect(toggleButtons[0].a11yPressed).to.equal('false');
-    expect(toggleButtons[1].selected).to.be.false;
-    expect(toggleButtons[1].a11yPressed).to.equal('false');
-    expect(toggleButtons[2].selected).to.be.true;
-    expect(toggleButtons[2].a11yPressed).to.equal('true');
+    expect(toggleButtons[0].selected).toBe(false);
+    expect(toggleButtons[0].a11yPressed).toBe('false');
+    expect(toggleButtons[1].selected).toBe(false);
+    expect(toggleButtons[1].a11yPressed).toBe('false');
+    expect(toggleButtons[2].selected).toBe(true);
+    expect(toggleButtons[2].a11yPressed).toBe('true');
   });
 
   it('changes the focus right with the right arrow key', async () => {
@@ -109,9 +110,8 @@ describe('pharos-toggle-button-group', () => {
     toggleButtons[1].focus();
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
     await component.updateComplete;
-    await aTimeout(1);
 
-    expect(document.activeElement === toggleButtons[2]).to.be.true;
+    await vi.waitFor(() => expect(document.activeElement).toBe(toggleButtons[2]));
   });
 
   it('changes the focus left with the left arrow key', async () => {
@@ -122,9 +122,8 @@ describe('pharos-toggle-button-group', () => {
     toggleButtons[1].focus();
     componentLastButtonSelected.dispatchEvent(new KeyboardEvent('keydown', { key: 'Left' }));
     await componentLastButtonSelected.updateComplete;
-    await aTimeout(1);
 
-    expect(document.activeElement === toggleButtons[0]).to.be.true;
+    await vi.waitFor(() => expect(document.activeElement).toBe(toggleButtons[0]));
   });
 
   it('changes the selection with keyboard', async () => {
@@ -135,17 +134,17 @@ describe('pharos-toggle-button-group', () => {
     toggleButtons[1].focus();
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
     await component.updateComplete;
-    await aTimeout(1);
+    await vi.waitFor(() => expect(document.activeElement).toBe(toggleButtons[2]));
+
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await component.updateComplete;
-    await aTimeout(1);
 
-    expect(toggleButtons[0].selected).to.be.false;
-    expect(toggleButtons[0].a11yPressed).to.equal('false');
-    expect(toggleButtons[1].selected).to.be.false;
-    expect(toggleButtons[1].a11yPressed).to.equal('false');
-    expect(toggleButtons[2].selected).to.be.true;
-    expect(toggleButtons[2].a11yPressed).to.equal('true');
+    await vi.waitFor(() => expect(toggleButtons[2].selected).toBe(true));
+    expect(toggleButtons[0].selected).toBe(false);
+    expect(toggleButtons[0].a11yPressed).toBe('false');
+    expect(toggleButtons[1].selected).toBe(false);
+    expect(toggleButtons[1].a11yPressed).toBe('false');
+    expect(toggleButtons[2].a11yPressed).toBe('true');
   });
 
   it('wraps focus to the last toggle button when left arrow is hit on the first button', async () => {
@@ -156,13 +155,13 @@ describe('pharos-toggle-button-group', () => {
     toggleButtons[1].focus();
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await component.updateComplete;
-    await aTimeout(1);
+    await vi.waitFor(() => expect(toggleButtons[1].selected).toBe(true));
+
     toggleButtons[0].focus();
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Left' }));
     await component.updateComplete;
-    await aTimeout(1);
 
-    expect(document.activeElement === toggleButtons[2]).to.be.true;
+    await vi.waitFor(() => expect(document.activeElement).toBe(toggleButtons[2]));
   });
 
   it('wraps focus to the first button when left arrow is hit on the last button', async () => {
@@ -173,13 +172,13 @@ describe('pharos-toggle-button-group', () => {
     toggleButtons[1].focus();
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await component.updateComplete;
-    await aTimeout(1);
+    await vi.waitFor(() => expect(toggleButtons[1].selected).toBe(true));
+
     toggleButtons[2].focus();
     componentLastButtonSelected.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
     await componentLastButtonSelected.updateComplete;
-    await aTimeout(1);
 
-    expect(document.activeElement === toggleButtons[0]).to.be.true;
+    await vi.waitFor(() => expect(document.activeElement).toBe(toggleButtons[0]));
   });
 
   it('changes the selected button on click', async () => {
@@ -189,13 +188,12 @@ describe('pharos-toggle-button-group', () => {
 
     toggleButtons[1].click();
     await component.updateComplete;
-    await aTimeout(1);
 
-    expect(toggleButtons[0].selected).to.be.false;
-    expect(toggleButtons[0].a11yPressed).to.equal('false');
-    expect(toggleButtons[1].selected).to.be.true;
-    expect(toggleButtons[1].a11yPressed).to.equal('true');
-    expect(toggleButtons[2].selected).to.be.false;
-    expect(toggleButtons[2].a11yPressed).to.equal('false');
+    await vi.waitFor(() => expect(toggleButtons[1].selected).toBe(true));
+    expect(toggleButtons[0].selected).toBe(false);
+    expect(toggleButtons[0].a11yPressed).toBe('false');
+    expect(toggleButtons[1].a11yPressed).toBe('true');
+    expect(toggleButtons[2].selected).toBe(false);
+    expect(toggleButtons[2].a11yPressed).toBe('false');
   });
 });

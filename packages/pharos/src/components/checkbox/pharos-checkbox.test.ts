@@ -1,8 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
-import sinon from 'sinon';
-import type { SinonSpy } from 'sinon';
 
+import { fixture } from '../../test/fixture';
 import type { PharosCheckbox } from './pharos-checkbox';
 import type { PharosLink } from '../link/pharos-link';
 import createFormData from '../../utils/createFormData';
@@ -16,14 +15,16 @@ describe('pharos-checkbox', () => {
     );
   });
 
+  afterEach(() => document.body.replaceChildren());
+
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when focused', async () => {
     component.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when disabled', async () => {
@@ -32,14 +33,14 @@ describe('pharos-checkbox', () => {
         ><span slot="label">test checkbox</span></test-pharos-checkbox
       >`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('has an attribute to set check value', async () => {
     component = await fixture(html`
       <test-pharos-checkbox checked><span slot="label">test checkbox</span></test-pharos-checkbox>
     `);
-    await expect(component.checked).to.equal(true);
+    expect(component.checked).toBe(true);
   });
 
   it('fires a change event', async () => {
@@ -56,7 +57,7 @@ describe('pharos-checkbox', () => {
     component['_checkbox'].click();
     await component.updateComplete;
 
-    expect((eventSource as Element).isSameNode(component)).to.be.true;
+    expect((eventSource as Element).isSameNode(component)).toBe(true);
   });
 
   it('is able to receive focus', async () => {
@@ -68,7 +69,7 @@ describe('pharos-checkbox', () => {
 
     component['_checkbox'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_checkbox']).to.be.true;
+    expect(activeElement === component['_checkbox']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -87,8 +88,8 @@ describe('pharos-checkbox', () => {
 
     component['_checkbox'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_checkbox']).to.be.false;
-    expect(document.activeElement === component).to.be.false;
+    expect(activeElement === component['_checkbox']).toBe(false);
+    expect(document.activeElement === component).toBe(false);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -107,7 +108,7 @@ describe('pharos-checkbox', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-checkbox')).to.equal('test');
+    expect(formdata.get('my-checkbox')).toBe('test');
   });
 
   it('updates the form value to "on" when no value is passed', async () => {
@@ -125,7 +126,7 @@ describe('pharos-checkbox', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-checkbox')).to.equal('on');
+    expect(formdata.get('my-checkbox')).toBe('on');
   });
 
   it('does not update the form value when disabled', async () => {
@@ -143,7 +144,7 @@ describe('pharos-checkbox', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-checkbox')).to.be.null;
+    expect(formdata.get('my-checkbox')).toBeNull();
   });
 
   it('can be clicked when the label is hidden', async () => {
@@ -163,8 +164,8 @@ describe('pharos-checkbox', () => {
     icon.dispatchEvent(new Event('click'));
     await component.updateComplete;
 
-    expect(component.checked).to.be.true;
-    expect(activeElement === component['_checkbox']).to.be.true;
+    expect(component.checked).toBe(true);
+    expect(activeElement === component['_checkbox']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -181,8 +182,8 @@ describe('pharos-checkbox', () => {
     icon.dispatchEvent(new Event('click'));
     await component.updateComplete;
 
-    expect(component.checked).to.be.true;
-    expect(activeElement === component['_checkbox']).to.be.true;
+    expect(component.checked).toBe(true);
+    expect(activeElement === component['_checkbox']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -195,7 +196,7 @@ describe('pharos-checkbox', () => {
 
     component.focus();
 
-    expect(activeElement === component['_checkbox']).to.be.true;
+    expect(activeElement === component['_checkbox']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -209,7 +210,7 @@ describe('pharos-checkbox', () => {
     link?.click();
     await component.updateComplete;
 
-    await expect(component.checked).to.be.false;
+    expect(component.checked).toBe(false);
   });
 
   it('allows Pharos links in the label to be clicked', async () => {
@@ -225,7 +226,7 @@ describe('pharos-checkbox', () => {
     anchor.click();
     await component.updateComplete;
 
-    await expect(component.checked).to.be.false;
+    expect(component.checked).toBe(false);
   });
 
   it('fires a single click event', async () => {
@@ -242,7 +243,7 @@ describe('pharos-checkbox', () => {
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
     label?.click();
     await component.updateComplete;
-    expect(count).to.equal(1);
+    expect(count).toBe(1);
   });
 
   it('fires a single click event but does not update if event prevented', async () => {
@@ -258,7 +259,7 @@ describe('pharos-checkbox', () => {
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
     label?.click();
     await component.updateComplete;
-    await expect(component.checked).to.be.false;
+    expect(component.checked).toBe(false);
   });
 
   it('is checked when clicked from indeterminate state', async () => {
@@ -271,17 +272,17 @@ describe('pharos-checkbox', () => {
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
     label?.click();
     await component.updateComplete;
-    expect(component.indeterminate).to.be.false;
-    expect(component.checked).to.be.true;
+    expect(component.indeterminate).toBe(false);
+    expect(component.checked).toBe(true);
   });
 
   it('prevents hover styles on mousedown', async () => {
     const event = new MouseEvent('mousedown');
-    const clickSpy: SinonSpy = sinon.spy(event, 'preventDefault');
+    const clickSpy = vi.spyOn(event, 'preventDefault');
 
     const icon = component.renderRoot.querySelector('svg') as SVGElement;
     icon.dispatchEvent(event);
-    expect(clickSpy.callCount).to.equal(1);
+    expect(clickSpy).toHaveBeenCalledTimes(1);
   });
 
   it('stretches to fill its container when full-width is set', async () => {
@@ -293,7 +294,7 @@ describe('pharos-checkbox', () => {
       >`,
       { parentNode }
     );
-    expect(getComputedStyle(component).width).to.equal('400px');
+    expect(getComputedStyle(component).width).toBe('400px');
   });
 
   it('does not stretch to fill its container by default', async () => {
@@ -303,17 +304,17 @@ describe('pharos-checkbox', () => {
       html`<test-pharos-checkbox><span slot="label">test checkbox</span></test-pharos-checkbox>`,
       { parentNode }
     );
-    expect(getComputedStyle(component).width).to.not.equal('400px');
+    expect(getComputedStyle(component).width).not.toBe('400px');
   });
 
   it('keeps the native input in sync when checked is set programmatically after a click', async () => {
     component['_checkbox'].click();
     await component.updateComplete;
-    expect(component.checked).to.be.true;
+    expect(component.checked).toBe(true);
 
     component.checked = false;
     await component.updateComplete;
-    expect(component['_checkbox'].checked).to.be.false;
+    expect(component['_checkbox'].checked).toBe(false);
   });
 
   it('re-checks on the next click after being unchecked programmatically', async () => {
@@ -324,7 +325,7 @@ describe('pharos-checkbox', () => {
 
     component['_checkbox'].click();
     await component.updateComplete;
-    expect(component.checked).to.be.true;
+    expect(component.checked).toBe(true);
 
     component.checked = false;
     await component.updateComplete;
@@ -332,8 +333,8 @@ describe('pharos-checkbox', () => {
     component['_checkbox'].click();
     await component.updateComplete;
 
-    expect(component.checked).to.be.true;
-    expect(lastChecked).to.be.true;
+    expect(component.checked).toBe(true);
+    expect(lastChecked).toBe(true);
   });
 
   it('resets checked when the form is reset', async () => {
@@ -350,18 +351,18 @@ describe('pharos-checkbox', () => {
 
     const form = document.querySelector('form');
     const formdataInitial = createFormData(form as HTMLFormElement);
-    expect(formdataInitial.get('my-checkbox')).to.equal('test');
+    expect(formdataInitial.get('my-checkbox')).toBe('test');
 
     component.checked = false;
     await component.updateComplete;
 
     const formdataUnchecked = createFormData(form as HTMLFormElement);
-    expect(formdataUnchecked.get('my-checkbox')).to.equal(null);
+    expect(formdataUnchecked.get('my-checkbox')).toBe(null);
 
     form?.dispatchEvent(new Event('reset'));
     await component.updateComplete;
 
     const formdataReset = createFormData(form as HTMLFormElement);
-    expect(formdataReset.get('my-checkbox')).to.equal('test');
+    expect(formdataReset.get('my-checkbox')).toBe('test');
   });
 });

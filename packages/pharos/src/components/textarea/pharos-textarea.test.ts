@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosTextarea } from './pharos-textarea';
 import createFormData from '../../utils/createFormData';
 
@@ -13,14 +14,18 @@ describe('pharos-textarea', () => {
     );
   });
 
+  afterEach(() => {
+    document.body.replaceChildren();
+  });
+
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when focused', async () => {
     component.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when disabled', async () => {
@@ -29,7 +34,7 @@ describe('pharos-textarea', () => {
         ><span slot="label">I am a label</span></test-pharos-textarea
       >`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when readonly', async () => {
@@ -38,7 +43,7 @@ describe('pharos-textarea', () => {
         ><span slot="label">I am a label</span></test-pharos-textarea
       >`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('sets its default attributes', async () => {
@@ -47,7 +52,7 @@ describe('pharos-textarea', () => {
         <span slot="label">I am a label</span>
       </test-pharos-textarea>
     `);
-    expect(component).dom.to.equal(
+    expect(component).toEqualDom(
       `<test-pharos-textarea cols="20" data-pharos-component="PharosTextarea" dirname="" message="" name="" placeholder="" resize="both" rows="2" value="" wrap="soft"><span slot="label">I am a label</span></test-pharos-textarea>`
     );
   });
@@ -58,13 +63,13 @@ describe('pharos-textarea', () => {
         ><span slot="label">I am a label</span></test-pharos-textarea
       >
     `);
-    expect(component.getAttribute('placeholder')).to.equal('test');
-    expect(component['_textarea'].getAttribute('placeholder')).to.equal('test');
+    expect(component.getAttribute('placeholder')).toBe('test');
+    expect(component['_textarea'].getAttribute('placeholder')).toBe('test');
 
     component.placeholder = 'foo';
     await component.updateComplete;
-    expect(component.getAttribute('placeholder')).to.equal('foo');
-    expect(component['_textarea'].getAttribute('placeholder')).to.equal('foo');
+    expect(component.getAttribute('placeholder')).toBe('foo');
+    expect(component['_textarea'].getAttribute('placeholder')).toBe('foo');
   });
 
   it('has an attribute to set input value', async () => {
@@ -73,8 +78,8 @@ describe('pharos-textarea', () => {
         ><span slot="label">I am a label</span></test-pharos-textarea
       >
     `);
-    expect(component.getAttribute('value')).to.equal('test');
-    expect(component['_textarea'].value).to.equal('test');
+    expect(component.getAttribute('value')).toBe('test');
+    expect(component['_textarea'].value).toBe('test');
   });
 
   it('has an attribute to set resize options', async () => {
@@ -83,17 +88,18 @@ describe('pharos-textarea', () => {
         ><span slot="label">I am a label</span></test-pharos-textarea
       >
     `);
-    expect(component.getAttribute('resize')).to.equal('none');
+    expect(component.getAttribute('resize')).toBe('none');
   });
 
   it('throws an error for an invalid resize value', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-textarea resize="blah"
         ><span slot="label">I am a label</span></test-pharos-textarea
       >
-    `).catch((e) => e);
-    expect('blah is not a valid resize value. Valid values are: none, vertical, horizontal, both')
-      .to.be.thrown;
+    `);
+    expect(error.message).toContain(
+      'blah is not a valid resize value. Valid values are: none, vertical, horizontal, both'
+    );
   });
 
   it('has an attribute to set wrap options', async () => {
@@ -102,23 +108,23 @@ describe('pharos-textarea', () => {
         ><span slot="label">I am a label</span></test-pharos-textarea
       >
     `);
-    expect(component.getAttribute('wrap')).to.equal('hard');
+    expect(component.getAttribute('wrap')).toBe('hard');
   });
 
   it('throws an error for an invalid wrap value', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-textarea wrap="blah"
         ><span slot="label">I am a label</span></test-pharos-textarea
       >
-    `).catch((e) => e);
-    expect('blah is not a valid wrap value. Valid values are: soft, hard').to.be.thrown;
+    `);
+    expect(error.message).toContain('blah is not a valid wrap value. Valid values are: soft, hard');
   });
 
   it('accepts input from the user', async () => {
     component['_textarea'].value = 'test';
     component['_textarea'].dispatchEvent(new Event('input'));
 
-    expect(component.value).to.equal('test');
+    expect(component.value).toBe('test');
   });
 
   it('fires a change event', async () => {
@@ -136,8 +142,8 @@ describe('pharos-textarea', () => {
     component['_textarea'].dispatchEvent(new Event('input'));
     component['_textarea'].dispatchEvent(new Event('change'));
 
-    expect(component.value).to.equal('test');
-    expect((eventSource as Element).isSameNode(component)).to.be.true;
+    expect(component.value).toBe('test');
+    expect((eventSource as Element).isSameNode(component)).toBe(true);
   });
 
   it('is able to receive focus', async () => {
@@ -149,7 +155,7 @@ describe('pharos-textarea', () => {
 
     component['_textarea'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_textarea']).to.be.true;
+    expect(activeElement === component['_textarea']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -168,8 +174,8 @@ describe('pharos-textarea', () => {
 
     component['_textarea'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_textarea']).to.be.false;
-    expect(document.activeElement === component).to.be.false;
+    expect(activeElement === component['_textarea']).toBe(false);
+    expect(document.activeElement === component).toBe(false);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -177,7 +183,7 @@ describe('pharos-textarea', () => {
     component = await fixture(html`
       <test-pharos-textarea required><span slot="label">I am a label</span></test-pharos-textarea>
     `);
-    expect(component).shadowDom.to.equal(`
+    expect(component).toEqualShadowDom(`
       <label for="textarea-element">
         <slot name="label">
         </slot>
@@ -213,7 +219,7 @@ describe('pharos-textarea', () => {
         ><span slot="label">I am a label</span></test-pharos-textarea
       >
     `);
-    expect(component).shadowDom.to.equal(`
+    expect(component).toEqualShadowDom(`
       <label for="textarea-element">
         <slot name="label">
         </slot>
@@ -256,8 +262,8 @@ describe('pharos-textarea', () => {
     component.validated = true;
     await component.updateComplete;
 
-    expect(component.invalidated).to.be.false;
-    expect(component.hasAttribute('invalidated')).to.be.false;
+    expect(component.invalidated).toBe(false);
+    expect(component.hasAttribute('invalidated')).toBe(false);
   });
 
   it('removes validated state when invalidated', async () => {
@@ -267,8 +273,8 @@ describe('pharos-textarea', () => {
     component.invalidated = true;
     await component.updateComplete;
 
-    expect(component.validated).to.be.false;
-    expect(component.hasAttribute('validated')).to.be.false;
+    expect(component.validated).toBe(false);
+    expect(component.hasAttribute('validated')).toBe(false);
   });
 
   it('updates the form value', async () => {
@@ -286,7 +292,7 @@ describe('pharos-textarea', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-textarea')).to.equal('test');
+    expect(formdata.get('my-textarea')).toBe('test');
   });
 
   it('does not update the form value when disabled', async () => {
@@ -304,7 +310,7 @@ describe('pharos-textarea', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-textarea')).to.be.null;
+    expect(formdata.get('my-textarea')).toBeNull();
   });
 
   it('is able to delegate focus', async () => {
@@ -316,7 +322,7 @@ describe('pharos-textarea', () => {
 
     component.focus();
 
-    expect(activeElement === component['_textarea']).to.be.true;
+    expect(activeElement === component['_textarea']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -340,6 +346,6 @@ describe('pharos-textarea', () => {
     await component.updateComplete;
 
     const formdata = createFormData(form as HTMLFormElement);
-    expect(formdata.get('my-textarea')).to.equal('test');
+    expect(formdata.get('my-textarea')).toBe('test');
   });
 });
