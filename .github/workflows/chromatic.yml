@@ -75,5 +75,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           storybookBuildDir: .storybook-static/wc
+          onlyChanged: true
+          externals: |
+            packages/pharos/assets/*
+            packages/pharos/tokens/*
           exitZeroOnChanges: true
           exitOnceUploaded: true
