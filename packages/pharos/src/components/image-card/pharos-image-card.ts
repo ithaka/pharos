@@ -20,11 +20,7 @@ import { PharosButton } from '../button/pharos-button';
 import { PharosCheckbox } from '../checkbox/pharos-checkbox';
 
 export type ImageCardVariant =
-  | 'base'
-  | 'collection'
-  | 'promotional'
-  | 'selectable'
-  | 'selectable-collection';
+  'base' | 'collection' | 'promotional' | 'selectable' | 'selectable-collection';
 
 const VARIANTS = [
   'base',
@@ -178,9 +174,9 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
       );
     }
 
-    if (this.selected && this._isSelectable()) {
+    if (this._isSelected && !this._isSelectable()) {
       throw new Error(
-        `Image card with variant type ${this.variant} cannot be selected. Only the selectable variants can be selected.}`
+        `Image card with variant type ${this.variant} cannot be selected. Only the selectable variants can be selected.`
       );
     }
   }
@@ -439,15 +435,17 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           ?indicate-visited=${this.indicateLinkVisited}
           @click=${this._cardToggleSelect}
           a11y-label=${ifDefined(this.imageLinkLabel)}
-          >${this.title && this.title.trim() !== ''
-            ? html`<pharos-heading
-                class="card__heading"
-                preset=${this._chooseHeadingPreset()}
-                level=${this.headingLevel || DEFAULT_HEADING_LEVEL}
-                no-margin
-                >${this.title}</pharos-heading
-              >`
-            : html`<slot name="title"></slot>`}
+          >${
+            this.title && this.title.trim() !== ''
+              ? html`<pharos-heading
+                  class="card__heading"
+                  preset=${this._chooseHeadingPreset()}
+                  level=${this.headingLevel || DEFAULT_HEADING_LEVEL}
+                  no-margin
+                  >${this.title}</pharos-heading
+                >`
+              : html`<slot name="title"></slot>`
+          }
         </pharos-link>`
       : nothing;
   }
