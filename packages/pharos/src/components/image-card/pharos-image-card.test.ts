@@ -177,10 +177,7 @@ describe('pharos-image-card', () => {
     );
   });
 
-  // This test was discovered to be silently failing as part of https://github.com/ithaka/pharos/issues/1009
-  // Bug filed here https://github.com/ithaka/pharos/issues/1331
-  // We can un-skip this once that is resolved
-  it.skip('throws an error when using the selected prop is used with a non-selectable variant', async () => {
+  it('throws an error when using the selected prop is used with a non-selectable variant', async () => {
     const error = await errorFixture(html`
       <test-pharos-image-card
         title="Card Title"
