@@ -77,7 +77,7 @@ jobs:
           storybookBuildDir: .storybook-static/wc
           onlyChanged: true
           externals: |
-            packages/pharos/assets/*
-            packages/pharos/tokens/*
+            packages/pharos/assets/**
+            packages/pharos/tokens/**
           exitZeroOnChanges: true
           exitOnceUploaded: true
