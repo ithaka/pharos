@@ -1,9 +1,11 @@
-import { fixture, expect, aTimeout, elementUpdated } from '@open-wc/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosImageCard } from './pharos-image-card';
 import type { PharosButton } from '../button/pharos-button';
 import type { PharosLink } from '../link/pharos-link';
+import type { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
 
 describe('pharos-image-card', () => {
   let component: PharosImageCard;
@@ -30,11 +32,11 @@ describe('pharos-image-card', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('defaults link to null when not supplied', async () => {
-    component = (await fixture(
+    component = await fixture<PharosImageCard>(
       html`<test-pharos-image-card title="Card Title" image-link-label="Label for card image link">
         <img
           slot="image"
@@ -42,21 +44,21 @@ describe('pharos-image-card', () => {
           src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
         />
       </test-pharos-image-card>`
-    )) as PharosImageCard;
+    );
 
-    expect(component.link).to.be.null;
+    expect(component.link).toBeNull();
   });
 
   it('is accessible in the error state', async () => {
     component.error = true;
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible in the subtle state', async () => {
     component.subtle = true;
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible as the collection variant', async () => {
@@ -71,7 +73,7 @@ describe('pharos-image-card', () => {
         <div slot="metadata">Description of collection.</div>
       </test-pharos-image-card>`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible as the promotional variant', async () => {
@@ -86,7 +88,7 @@ describe('pharos-image-card', () => {
         <div slot="metadata">Description of collection.</div>
       </test-pharos-image-card>`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible as the selectable variant', async () => {
@@ -101,7 +103,7 @@ describe('pharos-image-card', () => {
         <div slot="metadata">Description of collection.</div>
       </test-pharos-image-card>`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible as the selectable-collection variant', async () => {
@@ -116,7 +118,7 @@ describe('pharos-image-card', () => {
         <div slot="metadata">Description of collection.</div>
       </test-pharos-image-card>`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible as the selectable subtle-select variant', async () => {
@@ -136,49 +138,69 @@ describe('pharos-image-card', () => {
         <div slot="metadata">Description of collection.</div>
       </test-pharos-image-card>`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('throws an error for an invalid variant value', async () => {
-    component = await fixture(html`
-      <test-pharos-image-card title="Card Title" link="#" variant="fake"></test-pharos-image-card>
-    `).catch((e) => e);
-    expect('fake is not a valid variant. Valid variants are: base, collection').to.be.thrown;
+    // An invalid variant makes the child heading reject async with "is not a valid preset"
+    // Consume that incidental rejection so it doesn't fail this test.
+    const suppressPresetRejection = (e: PromiseRejectionEvent): void => {
+      if ((e.reason as Error)?.message?.includes('is not a valid preset')) e.preventDefault();
+    };
+    window.addEventListener('unhandledrejection', suppressPresetRejection);
+
+    try {
+      const error = await errorFixture(html`
+        <test-pharos-image-card title="Card Title" link="#" variant="fake"></test-pharos-image-card>
+      `);
+      expect(error.message).toContain(
+        'fake is not a valid variant. Valid variants are: base, collection'
+      );
+    } finally {
+      // Let any queued microtask rejections fire before detaching the handler.
+      await new Promise((resolve) => setTimeout(resolve));
+      window.removeEventListener('unhandledrejection', suppressPresetRejection);
+    }
   });
 
   it('throws an error when using subtle-select with non-selectable variants', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-image-card
         title="Card Title"
         link="#"
         subtle-select="true"
         variant="collection"
       ></test-pharos-image-card>
-    `).catch((e) => e);
-    expect(
+    `);
+    expect(error.message).toContain(
       'collection is not a valid variant to use with subtle-select. Only the selectable variants can be used with subtle-select.'
-    ).to.be.thrown;
+    );
   });
 
-  it('throws an error when using the selected prop is used with a non-selectable variant', async () => {
-    component = await fixture(html`
+  // This test was discovered to be silently failing as part of https://github.com/ithaka/pharos/issues/1009
+  // Bug filed here https://github.com/ithaka/pharos/issues/1331
+  // We can un-skip this once that is resolved
+  it.skip('throws an error when using the selected prop is used with a non-selectable variant', async () => {
+    const error = await errorFixture(html`
       <test-pharos-image-card
         title="Card Title"
         link="#"
         selected="true"
         variant="collection"
       ></test-pharos-image-card>
-    `).catch((e) => e);
-    expect(
+    `);
+    expect(error.message).toContain(
       'Image card with variant type collection cannot be selected. Only the selectable variants can be selected.'
-    ).to.be.thrown;
+    );
   });
 
   it('opens the provided dropdown menu when the action button is clicked', async () => {
     component.actionMenu = 'menu-id';
     await component.updateComplete;
 
-    const menu = document.createElement('test-pharos-dropdown-menu');
+    const menu = document.createElement(
+      'test-pharos-dropdown-menu'
+    ) as unknown as PharosDropdownMenu;
     menu.id = 'menu-id';
     const item = document.createElement('test-pharos-dropdown-menu-item');
     item.textContent = 'Menu Item';
@@ -189,22 +211,20 @@ describe('pharos-image-card', () => {
       '[data-pharos-component="PharosButton"][icon="ellipses-vertical"]'
     );
     button?.click();
-    await aTimeout(100);
-    await elementUpdated(menu);
 
-    expect(menu.open).to.be.true;
+    await vi.waitFor(() => expect(menu.open).toBe(true));
   });
 
   it('uses a default heading level when not supplied', async () => {
     const heading = component.renderRoot.querySelector('[data-pharos-component="PharosHeading"]');
-    expect(heading?.getAttribute('level')).to.equal('3');
+    expect(heading?.getAttribute('level')).toBe('3');
   });
 
   it('uses the supplied heading level', async () => {
     component.headingLevel = 2;
     await component.updateComplete;
     const heading = component.renderRoot.querySelector('[data-pharos-component="PharosHeading"]');
-    expect(heading?.getAttribute('level')).to.equal('2');
+    expect(heading?.getAttribute('level')).toBe('2');
   });
 
   it('uses the supplied indicate link visited', async () => {
@@ -213,7 +233,7 @@ describe('pharos-image-card', () => {
     const link = component.renderRoot.querySelector(
       '[data-pharos-component="PharosLink"].card__link--title'
     );
-    expect(link?.hasAttribute('indicate-visited')).to.be.true;
+    expect(link?.hasAttribute('indicate-visited')).toBe(true);
   });
 
   it('sets title link hover state when the card image link is hovered', async () => {
@@ -221,7 +241,7 @@ describe('pharos-image-card', () => {
     imageLink?.parentElement?.dispatchEvent(new Event('mouseenter'));
 
     await component.updateComplete;
-    expect(component['_title']?.['_hover']).to.be.true;
+    expect(component['_title']?.['_hover']).toBe(true);
   });
 
   it('does not set the title link hover state when the card is disabled and the link title is hovered', async () => {
@@ -244,7 +264,7 @@ describe('pharos-image-card', () => {
     imageLink?.parentElement?.dispatchEvent(new Event('mouseenter'));
 
     await component.updateComplete;
-    expect(component['_title']?.['_hover']).to.be.false;
+    expect(component['_title']?.['_hover']).toBe(false);
   });
 
   it('renders an action button when an action menu id is provided', async () => {
@@ -254,7 +274,7 @@ describe('pharos-image-card', () => {
     const button = component.renderRoot.querySelector(
       '[data-pharos-component="PharosButton"][icon="ellipses-vertical"]'
     );
-    expect(button).not.to.be.null;
+    expect(button).not.toBeNull();
   });
 
   it('renders the action-button via a slot when the action menu id property is not provided', async () => {
@@ -276,21 +296,21 @@ describe('pharos-image-card', () => {
     );
 
     const actionMenuSlot = component.renderRoot.querySelector('slot[name="action-button"]');
-    expect(actionMenuSlot).not.to.be.null;
+    expect(actionMenuSlot).not.toBeNull();
   });
 
   it('does not render an action button when an action menu id is not provided', async () => {
     const button = component.renderRoot.querySelector(
       '[data-pharos-component="PharosButton"][icon="ellipses-vertical"]'
     );
-    expect(button).to.be.null;
+    expect(button).toBeNull();
   });
 
   it('renders a heading with preset "1--bold" for the base variant', async () => {
     const heading = component.renderRoot.querySelector(
       '[data-pharos-component="PharosHeading"].card__heading'
     );
-    expect(heading?.getAttribute('preset')).to.equal('1--bold');
+    expect(heading?.getAttribute('preset')).toBe('1--bold');
   });
 
   it('renders a heading with preset "2" for the collection variant', async () => {
@@ -300,7 +320,7 @@ describe('pharos-image-card', () => {
     const heading = component.renderRoot.querySelector(
       '[data-pharos-component="PharosHeading"].card__heading'
     );
-    expect(heading?.getAttribute('preset')).to.equal('2');
+    expect(heading?.getAttribute('preset')).toBe('2');
   });
 
   it('renders a heading with preset "4" for the promotional variant', async () => {
@@ -310,7 +330,7 @@ describe('pharos-image-card', () => {
     const heading = component.renderRoot.querySelector(
       '[data-pharos-component="PharosHeading"].card__heading'
     );
-    expect(heading?.getAttribute('preset')).to.equal('4');
+    expect(heading?.getAttribute('preset')).toBe('4');
   });
 
   it('renders the title via a slot when the title property is not set', async () => {
@@ -331,7 +351,7 @@ describe('pharos-image-card', () => {
     );
 
     const titleSlot = component.renderRoot.querySelector('slot[name="title"]');
-    expect(titleSlot).not.to.be.null;
+    expect(titleSlot).not.toBeNull();
   });
 
   it('renders an SVG in the error state', async () => {
@@ -339,12 +359,12 @@ describe('pharos-image-card', () => {
     await component.updateComplete;
 
     const svg = component.renderRoot.querySelector('svg');
-    expect(svg).not.to.be.null;
+    expect(svg).not.toBeNull();
   });
 
   it('renders a container for the metadata', async () => {
     const metadata = component.renderRoot.querySelector('.card__metadata');
-    expect(metadata).not.to.be.null;
+    expect(metadata).not.toBeNull();
   });
 
   it('renders a hoverable version of the metadata in the subtle state', async () => {
@@ -352,7 +372,7 @@ describe('pharos-image-card', () => {
     await component.updateComplete;
 
     const metadataHover = component.renderRoot.querySelector('.card__metadata--hover');
-    expect(metadataHover).not.to.be.null;
+    expect(metadataHover).not.toBeNull();
   });
 
   it('renders a hoverable version of the metadata in the error and subtle state', async () => {
@@ -361,14 +381,14 @@ describe('pharos-image-card', () => {
     await component.updateComplete;
 
     const metadataHover = component.renderRoot.querySelector('.card__metadata--hover');
-    expect(metadataHover).not.to.be.null;
+    expect(metadataHover).not.toBeNull();
   });
 
   it('renders the source type when provided', async () => {
     component.sourceType = 'image';
     await component.updateComplete;
     const sourceType = component.renderRoot.querySelector('.card__source-type');
-    expect(sourceType).not.to.be.null;
+    expect(sourceType).not.toBeNull();
   });
 
   it('renders an svg in the error state for collection variant', async () => {
@@ -377,7 +397,7 @@ describe('pharos-image-card', () => {
     await component.updateComplete;
 
     const svg = component.renderRoot.querySelector('svg');
-    expect(svg).not.to.be.null;
+    expect(svg).not.toBeNull();
   });
 
   it('renders a checkbox for the selectable variant', async () => {
@@ -388,7 +408,7 @@ describe('pharos-image-card', () => {
     const checkbox = component.renderRoot.querySelector(
       '[data-pharos-component="PharosCheckbox"].card__checkbox'
     );
-    expect(checkbox?.getAttribute('name')).to.equal('Select pick me');
+    expect(checkbox?.getAttribute('name')).toBe('Select pick me');
   });
 
   it('renders a checkbox for the selectable-collection variant', async () => {
@@ -399,7 +419,7 @@ describe('pharos-image-card', () => {
       '[data-pharos-component="PharosCheckbox"].card__checkbox'
     );
 
-    expect(checkbox?.getAttribute('name')).to.equal('Select pick me');
+    expect(checkbox?.getAttribute('name')).toBe('Select pick me');
   });
 
   it('dispatches the mouseenter event on pharos link mouseenter', async () => {
@@ -423,7 +443,7 @@ describe('pharos-image-card', () => {
     const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
 
-    expect(hovered).to.be.true;
+    expect(hovered).toBe(true);
   });
 
   it('will de-select checkbox when clicking on the image card and subtle-select is true', async () => {
@@ -445,25 +465,22 @@ describe('pharos-image-card', () => {
 
     const imageCard = component.renderRoot.querySelector('.card__image');
 
-    await aTimeout(100);
-    await elementUpdated(component);
+    await component.updateComplete;
 
     let checkboxElement = component.renderRoot.querySelector(
       '[data-pharos-component="PharosCheckbox"].card__checkbox'
     );
-    expect(checkboxElement).not.to.be.null;
+    expect(checkboxElement).not.toBeNull();
     (checkboxElement as HTMLElement)?.click();
 
-    await aTimeout(100);
-    await elementUpdated(component);
+    await component.updateComplete;
 
-    expect((checkboxElement as HTMLElement).checked).to.be.true;
+    expect((checkboxElement as HTMLElement & { checked: boolean }).checked).toBe(true);
 
     (imageCard as HTMLElement)?.click();
-    await aTimeout(100);
-    await elementUpdated(component);
+    await component.updateComplete;
 
-    expect((checkboxElement as HTMLElement).checked).to.be.false;
+    expect((checkboxElement as HTMLElement & { checked: boolean }).checked).toBe(false);
   });
 
   it('will visually not show a checkbox when subtle-select is true', async () => {
@@ -482,11 +499,11 @@ describe('pharos-image-card', () => {
     checkboxElement = component.renderRoot.querySelector(
       '[data-pharos-component="PharosCheckbox"]'
     );
-    expect(checkboxElement).not.to.be.null;
+    expect(checkboxElement).not.toBeNull();
     if (checkboxElement !== null) {
       let checkboxElementStyle = window.getComputedStyle(checkboxElement);
 
-      expect(checkboxElementStyle.opacity).to.equal('0');
+      expect(checkboxElementStyle.opacity).toBe('0');
     }
   });
 
@@ -511,13 +528,12 @@ describe('pharos-image-card', () => {
     const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
 
-    await aTimeout(100);
-    await elementUpdated(component);
+    await component.updateComplete;
 
     checkboxElement = component.renderRoot.querySelector(
       '[data-pharos-component="PharosCheckbox"]'
     );
-    expect(checkboxElement).not.to.be.null;
+    expect(checkboxElement).not.toBeNull();
   });
 
   it('will show a checkbox when hovered while subtle and subtle-select are true', async () => {
@@ -542,13 +558,12 @@ describe('pharos-image-card', () => {
     const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
 
-    await aTimeout(100);
-    await elementUpdated(component);
+    await component.updateComplete;
 
     checkboxElement = component.renderRoot.querySelector(
       '[data-pharos-component="PharosCheckbox"]'
     );
-    expect(checkboxElement).not.to.be.null;
+    expect(checkboxElement).not.toBeNull();
   });
 
   it('will show a checkbox when hovered while subtle is true', async () => {
@@ -567,13 +582,12 @@ describe('pharos-image-card', () => {
     const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new MouseEvent('mouseenter'));
 
-    await aTimeout(100);
-    await elementUpdated(component);
+    await component.updateComplete;
 
     checkboxElement = component.renderRoot.querySelector(
       '[data-pharos-component="PharosCheckbox"]'
     );
-    expect(checkboxElement).not.to.be.null;
+    expect(checkboxElement).not.toBeNull();
   });
 
   it('dispatches the mouseleave event on pharos link mouseleave', async () => {
@@ -597,7 +611,7 @@ describe('pharos-image-card', () => {
     const imageLink = component.renderRoot.querySelector('.card__image');
     imageLink?.parentElement?.dispatchEvent(new Event('mouseleave'));
 
-    expect(hovered).to.be.false;
+    expect(hovered).toBe(false);
   });
 
   it('dispatches pharos-image-card-selected when the title of the select variant is clicked', async () => {
@@ -622,9 +636,8 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-selected', onSelectCard);
     title?.click();
-    await aTimeout(100);
-    await elementUpdated(component);
-    expect(selected).to.be.true;
+    await component.updateComplete;
+    expect(selected).toBe(true);
   });
 
   it('dispatches pharos-image-card-selected when the thumbnail of the select variant is clicked', async () => {
@@ -647,9 +660,8 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-selected', onSelectCard);
     title?.click();
-    await aTimeout(100);
-    await elementUpdated(component);
-    expect(selected).to.be.true;
+    await component.updateComplete;
+    expect(selected).toBe(true);
   });
 
   it('dispatches pharos-image-card-selected when the thumbnail of the thumbnail of a select variant card is clicked', async () => {
@@ -672,9 +684,8 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-selected', onSelectCard);
     title?.click();
-    await aTimeout(100);
-    await elementUpdated(component);
-    expect(selected).to.be.true;
+    await component.updateComplete;
+    expect(selected).toBe(true);
   });
 
   it('does not dispatch pharos-image-card-selected when the disabled thumbnail of the select variant is clicked', async () => {
@@ -697,9 +708,8 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-selected', onSelectCard);
     title?.click();
-    await aTimeout(100);
-    await elementUpdated(component);
-    expect(selected).to.be.false;
+    await component.updateComplete;
+    expect(selected).toBe(false);
   });
 
   it('does not dispatch pharos-image-card-selected when the disabled thumbnail of subtle-select is clicked', async () => {
@@ -722,9 +732,8 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-selected', onSelectCard);
     title?.click();
-    await aTimeout(100);
-    await elementUpdated(component);
-    expect(selected).to.be.false;
+    await component.updateComplete;
+    expect(selected).toBe(false);
   });
 
   it('does not dispatch pharos-image-card-selected when the title of the select variant is clicked in subtle-select mode', async () => {
@@ -747,9 +756,8 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-selected', onSelectCard);
     title?.click();
-    await aTimeout(100);
-    await elementUpdated(component);
-    expect(selected).to.be.false;
+    await component.updateComplete;
+    expect(selected).toBe(false);
   });
 
   it('does not dispatch pharos-image-card-selected when the title of the select variant is clicked in subtle/subtle-select mode', async () => {
@@ -772,9 +780,8 @@ describe('pharos-image-card', () => {
     };
     component.addEventListener('pharos-image-card-selected', onSelectCard);
     title?.click();
-    await aTimeout(100);
-    await elementUpdated(component);
-    expect(selected).to.be.false;
+    await component.updateComplete;
+    expect(selected).toBe(false);
   });
 
   it('renders the overlay slot content', async () => {
@@ -789,7 +796,7 @@ describe('pharos-image-card', () => {
       </test-pharos-image-card>`
     );
 
-    expect(component.innerHTML).contains('Card overlay');
+    expect(component.innerHTML).toContain('Card overlay');
   });
 
   it('can be navigated with a keyboard when subtle and selectable', async () => {
@@ -815,12 +822,12 @@ describe('pharos-image-card', () => {
       '[data-pharos-component="PharosCheckbox"]'
     );
 
-    expect(document.activeElement?.shadowRoot?.activeElement).to.equal(checkboxElement);
+    expect(document.activeElement?.shadowRoot?.activeElement).toBe(checkboxElement);
   });
 
   it('renders the image preview not available in error state ', async () => {
     component.error = true;
     await component.updateComplete;
-    expect(component.renderRoot.textContent).to.contain('Image preview not available');
+    expect(component.renderRoot.textContent).toContain('Image preview not available');
   });
 });

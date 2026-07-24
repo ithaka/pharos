@@ -1,8 +1,7 @@
-import { fixture, expect, nextFrame } from '@open-wc/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
-import sinon from 'sinon';
-import type { SinonSpy } from 'sinon';
 
+import { fixture } from '../../test/fixture';
 import type { PharosRadioGroup } from './pharos-radio-group';
 import type { PharosRadioButton } from '../radio-button/pharos-radio-button';
 
@@ -24,13 +23,13 @@ describe('pharos-radio-group', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when focused', async () => {
     component.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('updates value when a child radio is checked', async () => {
@@ -44,7 +43,7 @@ describe('pharos-radio-group', () => {
         >
       </test-pharos-radio-group>
     `);
-    expect(component.value).to.equal('2');
+    expect(component.value).toBe('2');
   });
 
   it('has an attribute to set orientation', async () => {
@@ -59,7 +58,7 @@ describe('pharos-radio-group', () => {
       </test-pharos-radio-group>
     `);
     const fieldset = component.renderRoot.querySelector('fieldset') as HTMLElement;
-    expect(fieldset.classList.contains('radio-group--horizontal')).to.be.true;
+    expect(fieldset.classList.contains('radio-group--horizontal')).toBe(true);
   });
 
   it('fires a change event', async () => {
@@ -83,7 +82,7 @@ describe('pharos-radio-group', () => {
     radio['_radio'].click();
     await component.updateComplete;
 
-    expect((eventSource as Element).isSameNode(component)).to.be.true;
+    expect((eventSource as Element).isSameNode(component)).toBe(true);
   });
 
   it('sets the name for each radio in the group', async () => {
@@ -101,7 +100,7 @@ describe('pharos-radio-group', () => {
       'test-pharos-radio-button'
     ) as NodeListOf<PharosRadioButton>;
     buttons.forEach((button) => {
-      expect(button.name).to.equal('group1');
+      expect(button.name).toBe('group1');
     });
   });
 
@@ -138,9 +137,9 @@ describe('pharos-radio-group', () => {
       'test-pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
-    expect(checkedRadio.checked).to.equal(true);
-    expect(checkedRadio.value).to.equal('3');
-    expect(activeElement === checkedRadio['_radio']).to.be.true;
+    expect(checkedRadio.checked).toBe(true);
+    expect(checkedRadio.value).toBe('3');
+    expect(activeElement === checkedRadio['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -177,9 +176,9 @@ describe('pharos-radio-group', () => {
       'test-pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
-    expect(checkedRadio.checked).to.equal(true);
-    expect(checkedRadio.value).to.equal('1');
-    expect(activeElement === checkedRadio['_radio']).to.be.true;
+    expect(checkedRadio.checked).toBe(true);
+    expect(checkedRadio.value).toBe('1');
+    expect(activeElement === checkedRadio['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -216,9 +215,9 @@ describe('pharos-radio-group', () => {
       'test-pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
-    expect(checkedRadio.checked).to.equal(true);
-    expect(checkedRadio.value).to.equal('1');
-    expect(activeElement === checkedRadio['_radio']).to.be.true;
+    expect(checkedRadio.checked).toBe(true);
+    expect(checkedRadio.value).toBe('1');
+    expect(activeElement === checkedRadio['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -255,9 +254,9 @@ describe('pharos-radio-group', () => {
       'test-pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
-    expect(checkedRadio.checked).to.equal(true);
-    expect(checkedRadio.value).to.equal('3');
-    expect(activeElement === checkedRadio['_radio']).to.be.true;
+    expect(checkedRadio.checked).toBe(true);
+    expect(checkedRadio.value).toBe('3');
+    expect(activeElement === checkedRadio['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -291,7 +290,7 @@ describe('pharos-radio-group', () => {
       'test-pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
-    expect(activeElement === checkedRadio['_radio']).to.be.true;
+    expect(activeElement === checkedRadio['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -305,7 +304,7 @@ describe('pharos-radio-group', () => {
 
     component.focus();
 
-    expect(activeElement === radio?.['_radio']).to.be.true;
+    expect(activeElement === radio?.['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -323,7 +322,7 @@ describe('pharos-radio-group', () => {
       </test-pharos-radio-group>
     `);
     const message = component.renderRoot.querySelector('.input-message__text');
-    expect(message?.textContent).to.equal(text);
+    expect(message?.textContent).toBe(text);
   });
 
   it('renders the provided message as the groups accessible description', async () => {
@@ -343,14 +342,12 @@ describe('pharos-radio-group', () => {
       .querySelector('fieldset')
       ?.getAttribute('aria-describedby');
 
-    expect(component.renderRoot.querySelector(`#${groupDescID}`)?.textContent?.trim())?.to.equal(
-      text
-    );
+    expect(component.renderRoot.querySelector(`#${groupDescID}`)?.textContent?.trim()).toBe(text);
   });
 
   it("stops propagation of its child's change event", async () => {
     const event = new Event('change');
-    const changeSpy: SinonSpy = sinon.spy(event, 'stopPropagation');
+    const changeSpy = vi.spyOn(event, 'stopPropagation');
 
     const radio = component.querySelector(
       'test-pharos-radio-button[value="2"]'
@@ -358,7 +355,7 @@ describe('pharos-radio-group', () => {
     radio.dispatchEvent(event);
     await component.updateComplete;
 
-    expect(changeSpy.callCount).to.equal(1);
+    expect(changeSpy).toHaveBeenCalledTimes(1);
   });
 
   it('updates the state of its children', async () => {
@@ -368,17 +365,17 @@ describe('pharos-radio-group', () => {
     component.disabled = true;
     await component.updateComplete;
     radios.forEach((radio) => {
-      expect(radio.disabled).to.be.true;
+      expect(radio.disabled).toBe(true);
     });
     component.invalidated = true;
     await component.updateComplete;
     radios.forEach((radio) => {
-      expect(radio.invalidated).to.be.true;
+      expect(radio.invalidated).toBe(true);
     });
     component.validated = true;
     await component.updateComplete;
     radios.forEach((radio) => {
-      expect(radio.validated).to.be.true;
+      expect(radio.validated).toBe(true);
     });
   });
 
@@ -404,13 +401,13 @@ describe('pharos-radio-group', () => {
       'test-pharos-radio-button[value="1"]'
     ) as PharosRadioButton;
     firstRadio.dispatchEvent(new Event('focusin'));
-    await nextFrame();
+    await component.updateComplete;
 
     const checkedRadio = component.querySelector(
       'test-pharos-radio-button[checked]'
     ) as PharosRadioButton;
 
-    expect(activeElement === checkedRadio['_radio']).to.be.true;
+    expect(activeElement === checkedRadio['_radio']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 });

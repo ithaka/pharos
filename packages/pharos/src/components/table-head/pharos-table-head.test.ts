@@ -1,6 +1,8 @@
-import { expect } from 'chai';
-import { fixture, html } from '@open-wc/testing';
-import { PharosTableHead } from './pharos-table-head';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { html } from 'lit/static-html.js';
+
+import { fixture } from '../../test/fixture';
+import type { PharosTableHead } from './pharos-table-head';
 
 describe('PharosTableHead', () => {
   let component: PharosTableHead;
@@ -9,11 +11,11 @@ describe('PharosTableHead', () => {
   });
 
   it('should have the correct role attribute on the custom element', async () => {
-    expect(component.getAttribute('role')).to.equal('rowgroup');
+    expect(component.getAttribute('role')).toBe('rowgroup');
   });
 
   it('should have the correct display style on the custom element', async () => {
     const displayValue = window.getComputedStyle(component, null).getPropertyValue('display');
-    expect(displayValue).to.equal('table-row-group');
+    expect(displayValue).toBe('table-row-group');
   });
 });

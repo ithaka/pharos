@@ -1,5 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
+
+import { fixture } from '../../test/fixture';
 
 describe('pharos-tab-panel', () => {
   it('has a tabindex when it contains no focusable elements', async () => {
@@ -8,7 +10,7 @@ describe('pharos-tab-panel', () => {
         >Panel 1</test-pharos-tab-panel
       >`
     );
-    await expect(component.getAttribute('tabindex')).to.equal('0');
+    expect(component.getAttribute('tabindex')).toBe('0');
   });
 
   it('does not have a tabindex when it contains focusable elements', async () => {
@@ -17,6 +19,6 @@ describe('pharos-tab-panel', () => {
         ><button>test</button></test-pharos-tab-panel
       >`
     );
-    await expect(component.hasAttribute('tabindex')).to.be.false;
+    expect(component.hasAttribute('tabindex')).toBe(false);
   });
 });

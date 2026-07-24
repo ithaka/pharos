@@ -1,5 +1,7 @@
-import { fixture, expect, aTimeout } from '@open-wc/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
+
+import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosToast } from './pharos-toast';
 import type { PharosIcon } from '../icon/pharos-icon';
 
@@ -16,14 +18,17 @@ describe('pharos-toast', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('throws an error for an invalid status value', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-toast status="fake">I am a toast</test-pharos-toast>
-    `).catch((e) => e);
-    expect('fake is not a valid status. Valid statuses are: success, error').to.be.thrown;
+    `);
+
+    expect(error.message).toContain(
+      'fake is not a valid status. Valid statuses are: success, error'
+    );
   });
 
   it('closes after 6 seconds upon losing focus', async () => {
@@ -31,20 +36,18 @@ describe('pharos-toast', () => {
     await component.updateComplete;
 
     component.dispatchEvent(new FocusEvent('focusout'));
-    await aTimeout(7000);
-    await component.updateComplete;
-
-    expect(component.open).to.be.false;
-  });
+    await vi.waitFor(() => expect(component.open).toBe(false), { timeout: 7000 });
+  }, 8000);
 
   it('remains open after 6 seconds when focused', async () => {
     component.focus();
     await component.updateComplete;
-    await aTimeout(6000);
+
+    await new Promise((resolve) => setTimeout(resolve, 6000));
     await component.updateComplete;
 
-    expect(component.open).to.be.true;
-  });
+    expect(component.open).toBe(true);
+  }, 7000);
 
   it('renders an exclamation icon with error status', async () => {
     component.status = 'error';
@@ -53,7 +56,7 @@ describe('pharos-toast', () => {
     const icon = component.renderRoot.querySelector(
       '[data-pharos-component="PharosIcon"]'
     ) as PharosIcon;
-    expect(icon?.name).to.equal('exclamation-inverse');
+    expect(icon?.name).toBe('exclamation-inverse');
   });
 
   it('renders an exclamation icon with info status', async () => {
@@ -63,7 +66,7 @@ describe('pharos-toast', () => {
     const icon = component.renderRoot.querySelector(
       '[data-pharos-component="PharosIcon"]'
     ) as PharosIcon;
-    expect(icon?.name).to.equal('exclamation-inverse');
+    expect(icon?.name).toBe('exclamation-inverse');
   });
 
   it('fires a custom event pharos-toast-close after closing', async () => {
@@ -77,10 +80,6 @@ describe('pharos-toast', () => {
     await component.updateComplete;
 
     component.dispatchEvent(new FocusEvent('focusout'));
-    await aTimeout(6000);
-    await component.updateComplete;
-    await aTimeout(500);
-
-    expect(actualId === component.id).to.be.true;
-  });
+    await vi.waitFor(() => expect(actualId).toBe(component.id), { timeout: 7000 });
+  }, 8000);
 });

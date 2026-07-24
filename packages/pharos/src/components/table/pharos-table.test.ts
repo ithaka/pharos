@@ -1,8 +1,9 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import type { TemplateResult } from 'lit';
 
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosTable } from './pharos-table';
 import type { PharosLink } from '../link/pharos-link';
 import type { PharosPagination } from '../pagination/pharos-pagination';
@@ -63,31 +64,31 @@ describe('pharos-table', () => {
     });
 
     it('is accessible', async () => {
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible with pagination', async () => {
-      await expect(componentWithPagination).to.be.accessible();
+      await expect(componentWithPagination).toBeAccessible();
     });
 
     it('has the correct number of rows', async () => {
       const rows = Array.prototype.slice.call(
         component.renderRoot.querySelectorAll(`[role="row"]`)
       ) as TemplateResult[];
-      expect(rows.length).to.be.eq(3);
+      expect(rows.length).toBe(3);
     });
 
     it('renders rows according to page size', async () => {
       const rows = Array.prototype.slice.call(
         componentWithPagination.renderRoot.querySelectorAll(`[role="row"]`)
       ) as TemplateResult[];
-      expect(rows.length).to.be.eq(2);
+      expect(rows.length).toBe(2);
     });
 
     it('shows correct page start number according to page size', async () => {
       let pageNumber: HTMLElement | null =
         componentWithPagination.renderRoot.querySelector(`.page-number-display`);
-      expect(pageNumber?.innerText).contains('Displaying 1-1 of 2');
+      expect(pageNumber?.innerText).toContain('Displaying 1-1 of 2');
 
       const selectDropdown = componentWithPagination.renderRoot.querySelector(
         `pharos-select`
@@ -98,14 +99,14 @@ describe('pharos-table', () => {
       await componentWithPagination.updateComplete;
 
       pageNumber = componentWithPagination.renderRoot.querySelector(`.page-number-display`);
-      expect(pageNumber?.innerText).contains('Displaying 1-2 of 2');
+      expect(pageNumber?.innerText).toContain('Displaying 1-2 of 2');
     });
 
     it('updates correctly after page size selection', async () => {
       let rows = Array.prototype.slice.call(
         componentWithPagination.renderRoot.querySelectorAll(`[role="row"]`)
       ) as TemplateResult[];
-      expect(rows.length).to.be.eq(2);
+      expect(rows.length).toBe(2);
 
       const selectDropdown = componentWithPagination.renderRoot.querySelector(
         `pharos-select`
@@ -118,7 +119,7 @@ describe('pharos-table', () => {
       rows = Array.prototype.slice.call(
         componentWithPagination.renderRoot.querySelectorAll(`[role="row"]`)
       ) as TemplateResult[];
-      expect(rows.length).to.be.eq(3);
+      expect(rows.length).toBe(3);
     });
 
     it('fires a custom event when going to previous and next page', async () => {
@@ -140,13 +141,13 @@ describe('pharos-table', () => {
       nextPageLink.click();
       await componentWithPagination.updateComplete;
 
-      expect(nextWasFired).to.be.true;
+      expect(nextWasFired).toBe(true);
 
       const prevPageLink = pagination.renderRoot.querySelector(`.prev`) as PharosLink;
       prevPageLink.click();
       await componentWithPagination.updateComplete;
 
-      expect(prevWasFired).to.be.true;
+      expect(prevWasFired).toBe(true);
     });
 
     it('renders a sticky table header when has-sticky-header is set', async () => {
@@ -154,8 +155,8 @@ describe('pharos-table', () => {
       await component.updateComplete;
       const headerRow = component.renderRoot.querySelector(
         `[data-pharos-component="PharosTableHead"]`
-      );
-      await expect(headerRow).to.have.style('position', 'sticky');
+      ) as HTMLElement;
+      expect(window.getComputedStyle(headerRow, null).getPropertyValue('position')).toBe('sticky');
     });
 
     it('sets an elevated state on a sticky header when the header intersects with the table', async () => {
@@ -166,7 +167,7 @@ describe('pharos-table', () => {
       const headerRow = component.renderRoot.querySelector(
         `[data-pharos-component="PharosTableHead"]`
       );
-      expect(headerRow).to.have.attribute('elevated');
+      expect(headerRow?.hasAttribute('elevated')).toBe(true);
     });
 
     it('removes the elevated state on a sticky header when the header no longer intersects with the table', async () => {
@@ -178,31 +179,38 @@ describe('pharos-table', () => {
       const headerRow = component.renderRoot.querySelector(
         `[data-pharos-component="PharosTableHead"]`
       );
-      expect(headerRow).not.to.have.attribute('elevated');
+      expect(headerRow?.hasAttribute('elevated')).toBe(false);
     });
 
     it('throws an error if caption is not provided', async () => {
-      let errorThrown = false;
-      try {
-        await fixture(
-          html`<test-pharos-table
-            .columns=${[]}
-            .rowData=${[]}
-            .showPagination=${true}
-            .totalResults=${2}
-            .pageSizeOptions=${[1, 2]}
-          >
-          </test-pharos-table> `
+      // The accessible-name error is thrown from the async `updated()`, so it surfaces as an
+      // unhandled rejection rather than rejecting updateComplete; we can't use errorFixture to check it.
+      const tableError = new Promise<Error>((resolve) => {
+        window.addEventListener(
+          'unhandledrejection',
+          (e) => {
+            e.preventDefault();
+            resolve(e.reason as Error);
+          },
+          { once: true }
         );
-      } catch (error) {
-        if (error instanceof Error) {
-          errorThrown = true;
-          expect(error?.message).to.be.equal(
-            'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption` property.'
-          );
-        }
-      }
-      expect(errorThrown).to.be.true;
+      });
+
+      fixture(
+        html`<test-pharos-table
+          .columns=${[]}
+          .rowData=${[]}
+          .showPagination=${true}
+          .totalResults=${2}
+          .pageSizeOptions=${[1, 2]}
+        >
+        </test-pharos-table> `
+      );
+
+      const error = await tableError;
+      expect(error.message).toContain(
+        'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption` property.'
+      );
     });
   });
 
@@ -242,17 +250,17 @@ describe('pharos-table', () => {
     });
 
     it('is accessible', async () => {
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('has the correct number of rows in the table body', async () => {
       const slot = component.renderRoot.querySelector('slot');
-      expect(slot).to.exist;
+      expect(slot).not.toBeNull();
 
       // `!.` casts this as non-null, which is validated in the expect above
       const slottedElements = slot!.assignedElements();
       const rows = slottedElements[1].querySelectorAll(`[role="row"]`);
-      expect(rows.length).to.be.eq(2);
+      expect(rows.length).toBe(2);
     });
 
     it('renders a sticky table header when has-sticky-header is set', async () => {
@@ -260,10 +268,10 @@ describe('pharos-table', () => {
       await component.updateComplete;
 
       const slot = component.renderRoot.querySelector('slot');
-      expect(slot).to.exist;
+      expect(slot).not.toBeNull();
       const slottedElements = slot!.assignedElements();
-      const headerRow = slottedElements[0];
-      await expect(headerRow).to.have.style('position', 'sticky');
+      const headerRow = slottedElements[0] as HTMLElement;
+      expect(window.getComputedStyle(headerRow, null).getPropertyValue('position')).toBe('sticky');
     });
 
     it('sets an elevated state on a sticky header when the header intersects with the table', async () => {
@@ -272,10 +280,10 @@ describe('pharos-table', () => {
       await component.updateComplete;
 
       const slot = component.renderRoot.querySelector('slot');
-      expect(slot).to.exist;
+      expect(slot).not.toBeNull();
       const slottedElements = slot!.assignedElements();
       const headerRow = slottedElements[0];
-      expect(headerRow).to.have.attribute('elevated');
+      expect(headerRow.hasAttribute('elevated')).toBe(true);
     });
 
     it('removes the elevated state on a sticky header when the header no longer intersects with the table', async () => {
@@ -285,34 +293,41 @@ describe('pharos-table', () => {
       await component.updateComplete;
 
       const slot = component.renderRoot.querySelector('slot');
-      expect(slot).to.exist;
+      expect(slot).not.toBeNull();
       const slottedElements = slot!.assignedElements();
       const headerRow = slottedElements[0];
-      expect(headerRow).not.to.have.attribute('elevated');
+      expect(headerRow.hasAttribute('elevated')).toBe(false);
     });
 
     it('throws an error if caption is not provided', async () => {
-      let errorThrown = false;
-      try {
-        await fixture(
-          html`<test-pharos-table
-            .columns=${[]}
-            .rowData=${[]}
-            .showPagination=${true}
-            .totalResults=${2}
-            .pageSizeOptions=${[1, 2]}
-          >
-          </test-pharos-table> `
+      // The accessible-name error is thrown from the async `updated()`, so it surfaces as an
+      // unhandled rejection rather than rejecting updateComplete; we can't use errorFixture to check it.
+      const tableError = new Promise<Error>((resolve) => {
+        window.addEventListener(
+          'unhandledrejection',
+          (e) => {
+            e.preventDefault();
+            resolve(e.reason as Error);
+          },
+          { once: true }
         );
-      } catch (error) {
-        if (error instanceof Error) {
-          errorThrown = true;
-          expect(error?.message).to.be.equal(
-            'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption` property.'
-          );
-        }
-      }
-      expect(errorThrown).to.be.true;
+      });
+
+      fixture(
+        html`<test-pharos-table
+          .columns=${[]}
+          .rowData=${[]}
+          .showPagination=${true}
+          .totalResults=${2}
+          .pageSizeOptions=${[1, 2]}
+        >
+        </test-pharos-table> `
+      );
+
+      const error = await tableError;
+      expect(error.message).toContain(
+        'Table must have an accessible name. Please provide a caption for the table using the `caption` attribute. You can hide the caption visually by setting the `hide-caption` property.'
+      );
     });
   });
 });
