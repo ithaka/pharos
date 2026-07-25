@@ -26,7 +26,7 @@
     "test-storybook:react": "test-storybook --ci --config-dir .storybook/react --url http://127.0.0.1:9001",
     "prestorybook:wc:dev": "yarn storybook:setup",
     "storybook:wc:dev": "yarn prestorybook:wc:dev && concurrently \"yarn:storybook:wc:start\" \"yarn:watch:styles\" --raw --kill-others",
-    "storybook:wc:build": "storybook build --webpack-stats-json -c .storybook/wc -o .storybook-static/wc",
+    "storybook:wc:build": "storybook build --stats-json -c .storybook/wc -o .storybook-static/wc",
     "prestorybook:react": "yarn storybook:setup",
     "storybook:react": "yarn prestorybook:react && yarn storybook:react:start",
     "storybook:react:start": "storybook dev -c .storybook/react -p 9001",
