@@ -13,7 +13,7 @@
         "info"   : { "value": "{color.glacier-blue.40}" },
         "error"  : { "value": "{color.feedback.error}" },
         "success": { "value": "{color.feedback.success}" },
-        "warning": { "value": "{color.feedback.error}" }
+        "warning": { "value": "{color.feedback.warning}" }
       },
       "text": {
         "base"   : { "value": "{color.text.base}" },
