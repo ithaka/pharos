@@ -15,7 +15,7 @@ export type AlertStatus = 'info' | 'success' | 'warning' | 'error';
 
 export enum ALERT_ICON {
   INFO = 'info-inverse',
-  ERROR = 'info-inverse',
+  ERROR = 'exclamation-inverse',
   SUCCESS = 'checkmark-inverse',
   WARNING = 'exclamation-inverse', // eslint-disable-line @typescript-eslint/no-duplicate-enum-values
 }
@@ -111,7 +111,6 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
     return this.closable
       ? html` <pharos-button
           type="button"
-          variant="subtle"
           icon="close"
           icon-condensed
           a11y-label="Close alert"
