@@ -15,9 +15,9 @@ export type AlertStatus = 'info' | 'success' | 'warning' | 'error';
 
 export enum ALERT_ICON {
   INFO = 'info-inverse',
-  ERROR = 'exclamation-inverse',
+  ERROR = 'info-inverse',
   SUCCESS = 'checkmark-inverse',
-  WARNING = 'checkmark-inverse', // eslint-disable-line @typescript-eslint/no-duplicate-enum-values
+  WARNING = 'exclamation-inverse', // eslint-disable-line @typescript-eslint/no-duplicate-enum-values
 }
 
 const STATUSES = ['info', 'success', 'warning', 'error'] as AlertStatus[];
