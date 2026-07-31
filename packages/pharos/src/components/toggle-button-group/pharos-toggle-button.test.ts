@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosToggleButton } from './pharos-toggle-button';
 import { PharosColorWhite } from '../../styles/variables';
 
@@ -21,15 +22,16 @@ describe('pharos-toggle-button', () => {
         parentNode,
       }
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('throws an error when an invalid property is set', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-toggle-button href="www.truedelta.com"></test-pharos-toggle-button>
-    `).catch((e) => e);
-    expect(
+    `);
+
+    expect(error.message).toContain(
       'The toggle button component does not support these properties: href, hreflang, ping, rel, and target.'
-    ).to.be.thrown;
+    );
   });
 });

@@ -1,8 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
-import sinon from 'sinon';
-import type { SinonSpy } from 'sinon';
 
+import { fixture } from '../../test/fixture';
 import type { PharosCheckboxGroup } from './pharos-checkbox-group';
 import type { PharosCheckbox } from '../checkbox/pharos-checkbox';
 
@@ -20,13 +19,13 @@ describe('pharos-checkbox-group', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when focused', async () => {
     component.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('has an attribute to set orientation', async () => {
@@ -39,7 +38,7 @@ describe('pharos-checkbox-group', () => {
       </test-pharos-checkbox-group>
     `);
     const fieldset = component.renderRoot.querySelector('fieldset') as HTMLElement;
-    expect(fieldset.classList.contains('checkbox-group--horizontal')).to.be.true;
+    expect(fieldset.classList.contains('checkbox-group--horizontal')).toBe(true);
   });
 
   it('fires a change event', async () => {
@@ -58,7 +57,7 @@ describe('pharos-checkbox-group', () => {
     box['_checkbox'].click();
     await component.updateComplete;
 
-    expect((eventSource as Element).isSameNode(component)).to.be.true;
+    expect((eventSource as Element).isSameNode(component)).toBe(true);
   });
 
   it('sets the name for each checkbox in the group', async () => {
@@ -70,7 +69,7 @@ describe('pharos-checkbox-group', () => {
     `);
     const boxes = component.querySelectorAll('test-pharos-checkbox') as NodeListOf<PharosCheckbox>;
     boxes.forEach((box) => {
-      expect(box.name).to.equal('group1');
+      expect(box.name).toBe('group1');
     });
   });
 
@@ -84,7 +83,7 @@ describe('pharos-checkbox-group', () => {
         <test-pharos-checkbox value="3"><span slot="label">Checkbox 3</span></test-pharos-checkbox>
       </test-pharos-checkbox-group>
     `);
-    expect(component.value).to.eql(['2']);
+    expect(component.value).toEqual(['2']);
   });
 
   it('sets value if multiple checkboxes are checked', async () => {
@@ -99,7 +98,7 @@ describe('pharos-checkbox-group', () => {
         >
       </test-pharos-checkbox-group>
     `);
-    expect(component.value).to.eql(['1', '3']);
+    expect(component.value).toEqual(['1', '3']);
   });
 
   it('is able to delegate focus', async () => {
@@ -112,7 +111,7 @@ describe('pharos-checkbox-group', () => {
 
     component.focus();
 
-    expect(activeElement === checkbox?.['_checkbox']).to.be.true;
+    expect(activeElement === checkbox?.['_checkbox']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -126,7 +125,7 @@ describe('pharos-checkbox-group', () => {
       </test-pharos-checkbox-group>
     `);
     const message = component.renderRoot.querySelector('.input-message__text');
-    expect(message?.textContent).to.equal(text);
+    expect(message?.textContent).toBe(text);
   });
 
   it('renders the provided message as the groups accessible description', async () => {
@@ -142,9 +141,7 @@ describe('pharos-checkbox-group', () => {
       .querySelector('fieldset')
       ?.getAttribute('aria-describedby');
 
-    expect(component.renderRoot.querySelector(`#${groupDescID}`)?.textContent?.trim())?.to.equal(
-      text
-    );
+    expect(component.renderRoot.querySelector(`#${groupDescID}`)?.textContent?.trim()).toBe(text);
   });
 
   it('updates the state of its children', async () => {
@@ -152,28 +149,28 @@ describe('pharos-checkbox-group', () => {
     component.disabled = true;
     await component.updateComplete;
     boxes.forEach((box) => {
-      expect(box.disabled).to.be.true;
+      expect(box.disabled).toBe(true);
     });
     component.invalidated = true;
     await component.updateComplete;
     boxes.forEach((box) => {
-      expect(box.invalidated).to.be.true;
+      expect(box.invalidated).toBe(true);
     });
     component.validated = true;
     await component.updateComplete;
     boxes.forEach((box) => {
-      expect(box.validated).to.be.true;
+      expect(box.validated).toBe(true);
     });
   });
 
   it("stops propagation of its child's change event", async () => {
     const event = new Event('change');
-    const changeSpy: SinonSpy = sinon.spy(event, 'stopPropagation');
+    const changeSpy = vi.spyOn(event, 'stopPropagation');
 
     const box = component.querySelector('test-pharos-checkbox[value="2"]') as PharosCheckbox;
     box.dispatchEvent(event);
     await component.updateComplete;
 
-    expect(changeSpy.callCount).to.equal(1);
+    expect(changeSpy).toHaveBeenCalledTimes(1);
   });
 });

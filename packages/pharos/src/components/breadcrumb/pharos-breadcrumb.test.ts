@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosBreadcrumb } from './pharos-breadcrumb';
 
 describe('pharos-breadcrumb', () => {
@@ -26,6 +27,6 @@ describe('pharos-breadcrumb', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 });

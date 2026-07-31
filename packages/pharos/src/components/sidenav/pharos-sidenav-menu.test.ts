@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosSidenavMenu } from './pharos-sidenav-menu';
 import type { PharosSidenavLink } from './pharos-sidenav-link';
 
@@ -17,14 +18,14 @@ describe('pharos-sidenav-menu', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('renders a chevron down icon when not expanded', async () => {
     const icon = component.renderRoot.querySelector(
       '[data-pharos-component="PharosIcon"][name="chevron-down"]'
     );
-    expect(icon).not.to.be.null;
+    expect(icon).not.toBeNull();
   });
 
   it('renders a chevron up icon when expanded', async () => {
@@ -34,7 +35,7 @@ describe('pharos-sidenav-menu', () => {
     const icon = component.renderRoot.querySelector(
       '[data-pharos-component="PharosIcon"][name="chevron-up"]'
     );
-    expect(icon).not.to.be.null;
+    expect(icon).not.toBeNull();
   });
 
   it('opens the menu when the button is clicked', async () => {
@@ -43,7 +44,7 @@ describe('pharos-sidenav-menu', () => {
     await component.updateComplete;
 
     const openMenu = component.renderRoot.querySelector('.menu__container--show');
-    expect(openMenu).not.to.be.null;
+    expect(openMenu).not.toBeNull();
   });
 
   it('sets each slotted sidenav link as a menu item', async () => {
@@ -52,8 +53,8 @@ describe('pharos-sidenav-menu', () => {
     ) as NodeListOf<PharosSidenavLink>;
 
     allLinks.forEach((link) => {
-      expect(link.menuItem).to.be.true;
-      expect(link.getAttribute('role')).to.equal('menuitem');
+      expect(link.menuItem).toBe(true);
+      expect(link.getAttribute('role')).toBe('menuitem');
     });
   });
 
@@ -64,6 +65,6 @@ describe('pharos-sidenav-menu', () => {
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     await component.updateComplete;
 
-    expect(component.expanded).to.be.false;
+    expect(component.expanded).toBe(false);
   });
 });

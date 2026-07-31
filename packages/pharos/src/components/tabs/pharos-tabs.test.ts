@@ -1,6 +1,7 @@
-import { fixture, expect, aTimeout } from '@open-wc/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosTabs } from './pharos-tabs';
 import type { PharosTab } from './pharos-tab';
 import type { PharosTabPanel } from './pharos-tab-panel';
@@ -57,17 +58,17 @@ describe('pharos-tabs', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('renders a tablist by default', async () => {
     const tablistDiv = component.renderRoot.querySelector('[role="tablist"]') as HTMLDivElement;
-    expect(tablistDiv).not.to.be.null;
+    expect(tablistDiv).not.toBeNull();
   });
 
   it('has a slot to contain the tab elements', async () => {
     const tablist = component.renderRoot.querySelector('[role="tablist"]') as HTMLDivElement;
-    expect(tablist.children[0]).to.be.a.instanceOf(HTMLSlotElement);
+    expect(tablist.children[0]).toBeInstanceOf(HTMLSlotElement);
   });
 
   it('has 3 tabs within the slot', async () => {
@@ -75,7 +76,7 @@ describe('pharos-tabs', () => {
       component.querySelectorAll(`test-pharos-tab`)
     ) as PharosTab[];
 
-    expect(tabs.length).to.be.eq(3);
+    expect(tabs.length).toBe(3);
   });
 
   it('selects the first tab if no selection is defined', async () => {
@@ -87,13 +88,13 @@ describe('pharos-tabs', () => {
       component.querySelectorAll(`test-pharos-tab-panel`)
     ) as PharosTabPanel[];
 
-    expect(tabs[0].selected).to.be.true;
-    expect(tabs[1].selected).to.be.false;
-    expect(tabs[2].selected).to.be.false;
+    expect(tabs[0].selected).toBe(true);
+    expect(tabs[1].selected).toBe(false);
+    expect(tabs[2].selected).toBe(false);
 
-    expect(panels[0].selected).to.be.true;
-    expect(panels[1].selected).to.be.false;
-    expect(panels[2].selected).to.be.false;
+    expect(panels[0].selected).toBe(true);
+    expect(panels[1].selected).toBe(false);
+    expect(panels[2].selected).toBe(false);
   });
 
   it('selects the defined tab', async () => {
@@ -108,13 +109,13 @@ describe('pharos-tabs', () => {
     await Promise.all(Array.from(tabs).map((tab) => tab.updateComplete));
     await Promise.all(Array.from(panels).map((panel) => panel.updateComplete));
 
-    expect(tabs[0].selected).to.be.false;
-    expect(tabs[1].selected).to.be.false;
-    expect(tabs[2].selected).to.be.true;
+    expect(tabs[0].selected).toBe(false);
+    expect(tabs[1].selected).toBe(false);
+    expect(tabs[2].selected).toBe(true);
 
-    expect(panels[0].selected).to.be.false;
-    expect(panels[1].selected).to.be.false;
-    expect(panels[2].selected).to.be.true;
+    expect(panels[0].selected).toBe(false);
+    expect(panels[1].selected).toBe(false);
+    expect(panels[2].selected).toBe(true);
   });
 
   it('changes the focus right with the right arrow key', async () => {
@@ -125,9 +126,7 @@ describe('pharos-tabs', () => {
     tabs[0].focus();
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
     await component.updateComplete;
-    await aTimeout(1);
-
-    expect(document.activeElement === tabs[1]).to.be.true;
+    await vi.waitFor(() => expect(document.activeElement === tabs[1]).toBe(true));
   });
 
   it('changes the focus left with the left arrow key', async () => {
@@ -138,9 +137,7 @@ describe('pharos-tabs', () => {
     tabs[2].focus();
     componentLastTabSelected.dispatchEvent(new KeyboardEvent('keydown', { key: 'Left' }));
     await componentLastTabSelected.updateComplete;
-    await aTimeout(1);
-
-    expect(document.activeElement === tabs[1]).to.be.true;
+    await vi.waitFor(() => expect(document.activeElement === tabs[1]).toBe(true));
   });
 
   it('changes the selection with keyboard', async () => {
@@ -151,14 +148,15 @@ describe('pharos-tabs', () => {
     tabs[0].focus();
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
     await component.updateComplete;
-    await aTimeout(1);
+    await vi.waitFor(() => expect(document.activeElement === tabs[1]).toBe(true));
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await component.updateComplete;
-    await aTimeout(1);
 
-    expect(tabs[0].selected).to.be.false;
-    expect(tabs[1].selected).to.be.true;
-    expect(tabs[2].selected).to.be.false;
+    await vi.waitFor(() => {
+      expect(tabs[0].selected).toBe(false);
+      expect(tabs[1].selected).toBe(true);
+      expect(tabs[2].selected).toBe(false);
+    });
   });
 
   it('wraps focus to the last tab when left arrow is hit on the first tab', async () => {
@@ -169,9 +167,7 @@ describe('pharos-tabs', () => {
     tabs[0].focus();
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Left' }));
     await component.updateComplete;
-    await aTimeout(1);
-
-    expect(document.activeElement === tabs[2]).to.be.true;
+    await vi.waitFor(() => expect(document.activeElement === tabs[2]).toBe(true));
   });
 
   it('wraps focus to the first tab when left arrow is hit on the last tab', async () => {
@@ -182,9 +178,7 @@ describe('pharos-tabs', () => {
     tabs[2].focus();
     componentLastTabSelected.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
     await componentLastTabSelected.updateComplete;
-    await aTimeout(1);
-
-    expect(document.activeElement === tabs[0]).to.be.true;
+    await vi.waitFor(() => expect(document.activeElement === tabs[0]).toBe(true));
   });
 
   it('changes the selected tab on click', async () => {
@@ -194,11 +188,12 @@ describe('pharos-tabs', () => {
 
     tabs[1].click();
     await component.updateComplete;
-    await aTimeout(1);
 
-    expect(tabs[0].selected).to.be.false;
-    expect(tabs[1].selected).to.be.true;
-    expect(tabs[2].selected).to.be.false;
+    await vi.waitFor(() => {
+      expect(tabs[0].selected).toBe(false);
+      expect(tabs[1].selected).toBe(true);
+      expect(tabs[2].selected).toBe(false);
+    });
   });
 
   it('changes only the selected nested tab on click', async () => {
@@ -213,13 +208,14 @@ describe('pharos-tabs', () => {
     topLevelTabs[1].click();
     nestedTabs[1].click();
     await component.updateComplete;
-    await aTimeout(1);
 
-    expect(topLevelTabs[0].selected).to.be.false;
-    expect(topLevelTabs[1].selected).to.be.true;
-    expect(topLevelTabs[2].selected).to.be.false;
-    expect(nestedTabs[0].selected).to.be.false;
-    expect(nestedTabs[1].selected).to.be.true;
+    await vi.waitFor(() => {
+      expect(topLevelTabs[0].selected).toBe(false);
+      expect(topLevelTabs[1].selected).toBe(true);
+      expect(topLevelTabs[2].selected).toBe(false);
+      expect(nestedTabs[0].selected).toBe(false);
+      expect(nestedTabs[1].selected).toBe(true);
+    });
   });
 
   it('shows the first panel by default', async () => {
@@ -227,9 +223,9 @@ describe('pharos-tabs', () => {
       component.querySelectorAll(`test-pharos-tab-panel`)
     ) as PharosTabPanel[];
 
-    expect(panels[0].selected).to.be.true;
-    expect(panels[1].selected).to.be.false;
-    expect(panels[2].selected).to.be.false;
+    expect(panels[0].selected).toBe(true);
+    expect(panels[1].selected).toBe(false);
+    expect(panels[2].selected).toBe(false);
   });
 
   it('changes the panel with keyboard selection', async () => {
@@ -244,14 +240,15 @@ describe('pharos-tabs', () => {
     tabs[0].focus();
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
     await component.updateComplete;
-    await aTimeout(1);
+    await vi.waitFor(() => expect(document.activeElement === tabs[1]).toBe(true));
     component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await component.updateComplete;
-    await aTimeout(1);
 
-    expect(panels[0].selected).to.be.false;
-    expect(panels[1].selected).to.be.true;
-    expect(panels[2].selected).to.be.false;
+    await vi.waitFor(() => {
+      expect(panels[0].selected).toBe(false);
+      expect(panels[1].selected).toBe(true);
+      expect(panels[2].selected).toBe(false);
+    });
   });
 
   it('changes the visible panel on click', async () => {
@@ -265,11 +262,12 @@ describe('pharos-tabs', () => {
 
     tabs[1].click();
     await component.updateComplete;
-    await aTimeout(1);
 
-    expect(panels[0].selected).to.be.false;
-    expect(panels[1].selected).to.be.true;
-    expect(panels[2].selected).to.be.false;
+    await vi.waitFor(() => {
+      expect(panels[0].selected).toBe(false);
+      expect(panels[1].selected).toBe(true);
+      expect(panels[2].selected).toBe(false);
+    });
   });
 
   it('does not receive key events from tab panels', async () => {
@@ -292,13 +290,13 @@ describe('pharos-tabs', () => {
     const input = component.querySelector('input') as HTMLInputElement;
     input?.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true, composed: true }));
     await component.updateComplete;
-    expect(count).to.equal(0);
+    expect(count).toBe(0);
   });
 
   it('does not render panel separator', async () => {
     const spanElement = component.renderRoot.querySelector('.panel-separator') as HTMLDivElement;
 
-    expect(spanElement).to.be.null;
+    expect(spanElement).toBeNull();
   });
 
   it('renders panel separator', async () => {
@@ -315,7 +313,7 @@ describe('pharos-tabs', () => {
 
     const spanElement = component.renderRoot.querySelector('.panel-separator') as HTMLDivElement;
 
-    expect(spanElement).not.to.be.null;
+    expect(spanElement).not.toBeNull();
   });
 
   it('has no bottom padding or margin on the tab-list when compact is set ', async () => {
@@ -333,7 +331,7 @@ describe('pharos-tabs', () => {
     const tabList = component.renderRoot.querySelector('.tab__list') as HTMLDivElement;
     const styles = window.getComputedStyle(tabList);
 
-    expect(styles.marginBottom).to.equal('0px');
-    expect(styles.paddingBottom).to.equal('0px');
+    expect(styles.marginBottom).toBe('0px');
+    expect(styles.paddingBottom).toBe('0px');
   });
 });

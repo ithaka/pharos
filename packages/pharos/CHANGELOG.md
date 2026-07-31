@@ -1,5 +1,25 @@
 # @ithaka/pharos
 
+## 14.25.0
+
+### Minor Changes
+
+- [#1329](https://github.com/ithaka/pharos/pull/1329) [`1399472`](https://github.com/ithaka/pharos/commit/1399472a7019fda44f8a5108dff4b72d08fa4a90) Thanks [@phosphotungstic](https://github.com/phosphotungstic)! - Add simple prop for pagination
+
+## 14.24.0
+
+### Minor Changes
+
+- [#1308](https://github.com/ithaka/pharos/pull/1308) [`c62112b`](https://github.com/ithaka/pharos/commit/c62112b40d8bd325e1b099aedcad0386f7301bf3) Thanks [@brentswisher](https://github.com/brentswisher)! - Add option to center align full width buttons
+
+- [#1287](https://github.com/ithaka/pharos/pull/1287) [`27ed3b9`](https://github.com/ithaka/pharos/commit/27ed3b9b241b3e452fec046ea15e96a1dfe029cb) Thanks [@brentswisher](https://github.com/brentswisher)! - Add full-width attribute to radio and checkbox components, which makes them fill their parent container. Default radio-group and checkbox-group width to 100%
+
+### Patch Changes
+
+- [#1294](https://github.com/ithaka/pharos/pull/1294) [`2b31e3b`](https://github.com/ithaka/pharos/commit/2b31e3b08cebddca27bfbe9daa015bd5cf655db0) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - fix(modal): make modal full width and height on mobile viewports
+
+- [#1327](https://github.com/ithaka/pharos/pull/1327) [`40e22b5`](https://github.com/ithaka/pharos/commit/40e22b5c83d906a815dfa167905da9c47775def0) Thanks [@michael-iden](https://github.com/michael-iden)! - Fix `a11y-hidden` attribute for icons within dropdown menu items
+
 ## 14.23.0
 
 ### Minor Changes

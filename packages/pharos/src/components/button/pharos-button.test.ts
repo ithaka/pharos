@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosButton } from './pharos-button';
 import type { PharosTextInput } from '../text-input/pharos-text-input';
 import createFormData from '../../utils/createFormData';
@@ -13,15 +14,19 @@ describe('pharos-button', () => {
     component = await fixture(html` <test-pharos-button>I am a button</test-pharos-button> `);
   });
 
+  afterEach(() => {
+    document.body.replaceChildren();
+  });
+
   describe('Accessibility', () => {
     it('is accessible', async () => {
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible as a button link', async () => {
       component.href = 'https://google.com';
       await component.updateComplete;
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('is renders aria-label on button and is accessible', async () => {
@@ -29,61 +34,66 @@ describe('pharos-button', () => {
       component.icon = label;
       component.a11yLabel = label;
       await component.updateComplete;
-      await expect(
-        component.renderRoot.querySelector('button')?.getAttribute('aria-label')
-      ).to.equal(label);
-      await expect(component).to.be.accessible();
+      expect(component.renderRoot.querySelector('button')?.getAttribute('aria-label')).toBe(label);
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible when disabled', async () => {
       component.disabled = true;
       await component.updateComplete;
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible when using aria-disabled', async () => {
       component.a11yDisabled = 'true';
       await component.updateComplete;
-      await expect(
-        component.renderRoot.querySelector('button')?.getAttribute('aria-disabled')
-      ).to.equal('true');
-      await expect(component).to.be.accessible();
+      expect(component.renderRoot.querySelector('button')?.getAttribute('aria-disabled')).toBe(
+        'true'
+      );
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible when using aria-expanded', async () => {
       component.a11yExpanded = 'true';
       await component.updateComplete;
-      await expect(
-        component.renderRoot.querySelector('button')?.getAttribute('aria-expanded')
-      ).to.equal('true');
-      await expect(component).to.be.accessible();
+      expect(component.renderRoot.querySelector('button')?.getAttribute('aria-expanded')).toBe(
+        'true'
+      );
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible when using aria-haspopup', async () => {
       component.a11yHaspopup = 'menu';
       await component.updateComplete;
-      await expect(
-        component.renderRoot.querySelector('button')?.getAttribute('aria-haspopup')
-      ).to.equal('menu');
-      await expect(component).to.be.accessible();
+      expect(component.renderRoot.querySelector('button')?.getAttribute('aria-haspopup')).toBe(
+        'menu'
+      );
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible as the secondary variant', async () => {
       component.variant = 'secondary';
       await component.updateComplete;
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible as the subtle variant', async () => {
       component.variant = 'subtle';
       await component.updateComplete;
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible as the overlay variant', async () => {
       component.variant = 'overlay';
       await component.updateComplete;
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
+    });
+
+    it('is accessible as a full-width button with center alignment', async () => {
+      component = await fixture(
+        html`<test-pharos-button full-width alignment="center">I am a button</test-pharos-button>`
+      );
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible on a AA compliant background', async () => {
@@ -96,7 +106,7 @@ describe('pharos-button', () => {
           parentNode,
         }
       );
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible on a AA compliant background as the secondary variant', async () => {
@@ -111,7 +121,7 @@ describe('pharos-button', () => {
           parentNode,
         }
       );
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible on a AA compliant background as the subtle variant', async () => {
@@ -126,7 +136,7 @@ describe('pharos-button', () => {
           parentNode,
         }
       );
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible on a AA compliant background as the overlay variant', async () => {
@@ -141,14 +151,14 @@ describe('pharos-button', () => {
           parentNode,
         }
       );
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
 
     it('is accessible when pressed', async () => {
       component = await fixture(
         html`<test-pharos-button a11y-pressed="true">I am a pressed button</test-pharos-button>`
       );
-      await expect(component).to.be.accessible();
+      await expect(component).toBeAccessible();
     });
   });
 
@@ -163,38 +173,60 @@ describe('pharos-button', () => {
       component.focus();
       const button = component.renderRoot.querySelector('#button-element');
 
-      expect(activeElement === button).to.be.true;
+      expect(activeElement === button).toBe(true);
       document.removeEventListener('focusin', onFocusIn);
     });
 
     it('throws an error for an invalid type value', async () => {
-      component = await fixture(html`
+      const error = await errorFixture(html`
         <test-pharos-button type="fake">I am a button</test-pharos-button>
-      `).catch((e) => e);
-      expect('fake is not a valid type. Valid types are: button, submit, reset').to.be.thrown;
+      `);
+
+      expect(error.message).toContain(
+        'fake is not a valid type. Valid types are: button, submit, reset'
+      );
     });
 
     it('throws an error for an invalid variant value', async () => {
-      component = await fixture(html`
+      const error = await errorFixture(html`
         <test-pharos-button variant="fake">I am a button</test-pharos-button>
-      `).catch((e) => e);
-      expect('fake is not a valid variant. Valid variants are: primary, secondary, subtle').to.be
-        .thrown;
+      `);
+
+      expect(error.message).toContain(
+        'fake is not a valid variant. Valid variants are: primary, secondary, subtle'
+      );
+    });
+
+    it('throws an error for an invalid alignment value', async () => {
+      const error = await errorFixture(html`
+        <test-pharos-button alignment="fake">I am a button</test-pharos-button>
+      `);
+
+      expect(error.message).toContain(
+        'fake is not a valid alignment. Valid alignments are: start, center'
+      );
+    });
+
+    it('defaults the alignment to start', async () => {
+      expect(component.alignment).toBe('start');
+    });
+
+    it('centers the content when full-width with center alignment', async () => {
+      component = await fixture(
+        html`<test-pharos-button full-width alignment="center">I am a button</test-pharos-button>`
+      );
+      const button = component.renderRoot.querySelector('#button-element') as HTMLElement;
+      expect(getComputedStyle(button).justifyContent).toBe('center');
     });
 
     it('throws an error for an icon only button with no accessible label', async () => {
-      let errorThrown = false;
-      try {
-        await fixture(html` <test-pharos-button icon="download"></test-pharos-button> `);
-      } catch (error) {
-        if (error instanceof Error) {
-          errorThrown = true;
-          expect(error?.message).to.be.equal(
-            "Icon only buttons must have an accessible name. Please provide an 'a11y-label' attribute for the button using the 'download' icon."
-          );
-        }
-      }
-      expect(errorThrown).to.be.true;
+      const error = await errorFixture(html`
+        <test-pharos-button icon="download"></test-pharos-button>
+      `);
+
+      expect(error.message).toBe(
+        "Icon only buttons must have an accessible name. Please provide an 'a11y-label' attribute for the button using the 'download' icon."
+      );
     });
 
     it('allows for an icon to be shown as the content of the button', async () => {
@@ -205,7 +237,7 @@ describe('pharos-button', () => {
       const icon = component.renderRoot.querySelector(
         `[data-pharos-component="PharosIcon"][name='download']`
       );
-      expect(icon).not.to.be.null;
+      expect(icon).not.toBeNull();
     });
 
     it('allows for an icon to be shown on the left', async () => {
@@ -215,7 +247,7 @@ describe('pharos-button', () => {
       const icon = component.renderRoot.querySelector(
         `[data-pharos-component="PharosIcon"][name='view-gallery']`
       );
-      expect(icon).not.to.be.null;
+      expect(icon).not.toBeNull();
     });
 
     it('allows for an icon to be shown on the right', async () => {
@@ -225,7 +257,7 @@ describe('pharos-button', () => {
       const icon = component.renderRoot.querySelector(
         `[data-pharos-component="PharosIcon"][name='chevron-down']`
       );
-      expect(icon).not.to.be.null;
+      expect(icon).not.toBeNull();
     });
 
     it('allows for an icon to be shown on the left and right', async () => {
@@ -239,8 +271,8 @@ describe('pharos-button', () => {
       const rightIcon = component.renderRoot.querySelector(
         `[data-pharos-component="PharosIcon"][name='chevron-down']`
       );
-      expect(leftIcon).not.to.be.null;
-      expect(rightIcon).not.to.be.null;
+      expect(leftIcon).not.toBeNull();
+      expect(rightIcon).not.toBeNull();
     });
   });
 
@@ -257,7 +289,7 @@ describe('pharos-button', () => {
       component['_button'].dispatchEvent(new KeyboardEvent('keyup', { key: ' ' }));
       await component.updateComplete;
 
-      expect(count).to.equal(1);
+      expect(count).toBe(1);
     });
 
     it('submits a form when type is set to "submit"', async () => {
@@ -288,7 +320,7 @@ describe('pharos-button', () => {
       submitButton?.click();
       await component.updateComplete;
 
-      expect(formdata.get('my-input')).to.equal('test');
+      expect(formdata.get('my-input')).toBe('test');
     });
 
     it('resets a form when type is set to "reset"', async () => {
@@ -325,7 +357,7 @@ describe('pharos-button', () => {
       resetButton?.click();
       await component.updateComplete;
 
-      expect(formdata.get('my-input')).to.equal('test');
+      expect(formdata.get('my-input')).toBe('test');
     });
 
     it('prevents leaking click events in a form', async () => {
@@ -360,7 +392,7 @@ describe('pharos-button', () => {
       submitButton?.click();
       await component.updateComplete;
 
-      expect(leak).to.be.false;
+      expect(leak).toBe(false);
     });
 
     it('allows clicks to be canceled when in a form and type is set to "submit"', async () => {
@@ -394,7 +426,7 @@ describe('pharos-button', () => {
       submitButton?.click();
       await component.updateComplete;
 
-      expect(formdata.get('my-input')).to.be.null;
+      expect(formdata.get('my-input')).toBeNull();
     });
   });
 });

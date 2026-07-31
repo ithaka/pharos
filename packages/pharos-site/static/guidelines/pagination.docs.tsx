@@ -65,6 +65,30 @@ const PaginationPage: FC = () => {
             ></PharosPagination>
           </div>
         </PageSection>
+        <PageSection title="Simple" subSectionLevel={1} lessMargin>
+          Add the <code>simple</code> attribute to any variant for tighter layouts. It hides the
+          "Previous"/"Next" text (icon-only, chevrons remain) and, when combined with the
+          jump-to-page variant, also omits the first/last page buttons.
+          <p>With the jump-to-page variant:</p>
+          <div style={{ marginTop: 'var(--pharos-spacing-1-x)' }}>
+            <PharosPagination
+              totalResults={660}
+              pageSize={20}
+              currentPage={3}
+              variant="input"
+              simple
+            ></PharosPagination>
+          </div>
+          <p>With the default variant:</p>
+          <div style={{ marginTop: 'var(--pharos-spacing-1-x)' }}>
+            <PharosPagination
+              totalResults={660}
+              pageSize={20}
+              currentPage={3}
+              simple
+            ></PharosPagination>
+          </div>
+        </PageSection>
       </PageSection>
       <PageSection title="Accessibility">
         <PageSection title="Relevant WCAG guidelines" subSectionLevel={1} lessMargin>

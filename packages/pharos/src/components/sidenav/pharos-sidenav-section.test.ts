@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosSidenavSection } from './pharos-sidenav-section';
 
 describe('pharos-sidenav-section', () => {
@@ -15,7 +16,7 @@ describe('pharos-sidenav-section', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('renders a heading when a label is provided', async () => {
@@ -25,7 +26,7 @@ describe('pharos-sidenav-section', () => {
     const heading = component.renderRoot.querySelector(
       '[data-pharos-component="PharosHeading"][preset="legend"]'
     );
-    expect(heading).not.to.be.null;
+    expect(heading).not.toBeNull();
   });
 
   it('renders a divider when showDivider is passed', async () => {
@@ -33,6 +34,6 @@ describe('pharos-sidenav-section', () => {
     await component.updateComplete;
 
     const divider = component.renderRoot.querySelector('hr.section__divider');
-    expect(divider).not.to.be.null;
+    expect(divider).not.toBeNull();
   });
 });

@@ -1,6 +1,7 @@
-import { fixture, expect, nextFrame } from '@open-wc/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosInputGroup } from './pharos-input-group';
 
 describe('pharos-input-group', () => {
@@ -16,7 +17,7 @@ describe('pharos-input-group', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('adjusts its padding when elements are appended to the group', async () => {
@@ -26,7 +27,7 @@ describe('pharos-input-group', () => {
       10
     );
 
-    expect(paddingRight).to.equal(expectedWidth);
+    expect(paddingRight).toBe(expectedWidth);
   });
 
   it('adjusts its padding when elements are prepended to the group', async () => {
@@ -41,15 +42,15 @@ describe('pharos-input-group', () => {
         ></test-pharos-button>
       </test-pharos-input-group>
     `);
-    await nextFrame();
 
     const expectedWidth = 12 + component['_prependGroupWidth'];
-    const paddingLeft = parseInt(
-      window.getComputedStyle(component['_input'], null).getPropertyValue('padding-left'),
-      10
-    );
-
-    expect(paddingLeft).to.equal(expectedWidth);
+    await vi.waitFor(() => {
+      const paddingLeft = parseInt(
+        window.getComputedStyle(component['_input'], null).getPropertyValue('padding-left'),
+        10
+      );
+      expect(paddingLeft).toBe(expectedWidth);
+    });
   });
 
   it('adjusts its padding when focused', async () => {
@@ -67,7 +68,7 @@ describe('pharos-input-group', () => {
       10
     );
 
-    expect(paddingRight).to.equal(expectedPadding);
+    expect(paddingRight).toBe(expectedPadding);
   });
 
   it('resets its padding when blurred', async () => {
@@ -86,14 +87,16 @@ describe('pharos-input-group', () => {
       10
     );
 
-    expect(paddingLeft).to.equal(expectedPadding);
+    expect(paddingLeft).toBe(expectedPadding);
   });
 
   it('adjusts the validated icon position when elements are appended to the group', async () => {
     component.validated = true;
     await component.updateComplete;
-    await nextFrame();
-    expect(component['_inputIcon'].style.right).to.equal('24px');
+
+    await vi.waitFor(() => {
+      expect(component['_inputIcon'].style.right).toBe('24px');
+    });
   });
 
   it('adjusts the validated icon position when elements are dynamically appended to the group', async () => {
@@ -104,7 +107,9 @@ describe('pharos-input-group', () => {
     component.validated = true;
 
     await component.updateComplete;
-    await nextFrame();
-    expect(component['_inputIcon'].style.right).to.equal('48px');
+
+    await vi.waitFor(() => {
+      expect(component['_inputIcon'].style.right).toBe('48px');
+    });
   });
 });

@@ -1,10 +1,14 @@
-import { fixture, expect, nextFrame } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
+
+import { fixture } from '../../test/fixture';
 import type { PharosToaster } from './pharos-toaster';
 import type { PharosToast } from './pharos-toast';
 
 describe('pharos-toaster', () => {
   let component: PharosToaster;
+
+  afterEach(() => document.body.replaceChildren());
 
   const fireOpenEvent = () => {
     const event = new CustomEvent('pharos-toast-open', {
@@ -63,7 +67,7 @@ describe('pharos-toaster', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('opens a new success toast when custom event pharos-toast-open is fired', async () => {
@@ -75,7 +79,7 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
 
     const toast = component.renderRoot.querySelector('pharos-toast');
-    expect(toast).to.not.be.null;
+    expect(toast).not.toBeNull();
   });
 
   it('can contain multiple open toasts', async () => {
@@ -87,10 +91,9 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
     trigger.click();
     await component.updateComplete;
-    await nextFrame();
 
     const toast = component.renderRoot.querySelectorAll('pharos-toast');
-    expect(toast.length).to.equal(2);
+    expect(toast.length).toBe(2);
   });
 
   it('delegates focus to a newly opened toast', async () => {
@@ -110,7 +113,7 @@ describe('pharos-toaster', () => {
     const toast = (
       component.renderRoot.querySelector('pharos-toast') as PharosToast
     )?.renderRoot.querySelector('.toast');
-    expect(activeElement === toast).to.be.true;
+    expect(activeElement === toast).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -123,7 +126,7 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
 
     const toast = component.renderRoot.querySelector('pharos-toast');
-    expect(toast).to.not.be.null;
+    expect(toast).not.toBeNull();
   });
 
   it('removes a toast when custom event pharos-toast-close is fired', async () => {
@@ -144,7 +147,7 @@ describe('pharos-toaster', () => {
     await component.updateComplete;
 
     const toast = component.querySelector('pharos-toast');
-    expect(toast).to.be.null;
+    expect(toast).toBeNull();
   });
 
   it('can update an existing toast', async () => {
@@ -153,7 +156,6 @@ describe('pharos-toaster', () => {
     document.body.appendChild(trigger);
     trigger.click();
     await component.updateComplete;
-    await nextFrame();
 
     const triggerUpdate = document.createElement('button');
     triggerUpdate.addEventListener('click', fireUpdateToastEvent);
@@ -161,7 +163,7 @@ describe('pharos-toaster', () => {
     triggerUpdate.click();
     await component.updateComplete;
 
-    expect(component).shadowDom.to.equal(`
+    expect(component).toEqualShadowDom(`
       <div class="toaster__container">
         <pharos-toast data-pharos-component="PharosToast" id="my-updateable-toast" indefinite="" open="" status="success">
           <div>
@@ -178,7 +180,6 @@ describe('pharos-toaster', () => {
     document.body.appendChild(trigger);
     trigger.click();
     await component.updateComplete;
-    await nextFrame();
 
     const triggerUpdate = document.createElement('button');
     triggerUpdate.addEventListener('click', fireUpdateToastEvent);
@@ -191,9 +192,8 @@ describe('pharos-toaster', () => {
     document.body.appendChild(triggerClose);
     triggerClose.click();
     await component.updateComplete;
-    await nextFrame();
 
-    expect(component).shadowDom.to.equal(`
+    expect(component).toEqualShadowDom(`
       <div class="toaster__container">
       </div>
     `);
@@ -229,7 +229,7 @@ describe('pharos-toaster', () => {
     component.dispatchEvent(new CustomEvent('pharos-toast-close', details));
     await component.updateComplete;
 
-    expect(activeElement === trigger).to.be.true;
+    expect(activeElement === trigger).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -263,7 +263,7 @@ describe('pharos-toaster', () => {
     component.dispatchEvent(new CustomEvent('pharos-toast-close', details));
     await component.updateComplete;
 
-    expect(activeElement === trigger).to.be.true;
+    expect(activeElement === trigger).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 });

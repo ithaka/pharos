@@ -1,7 +1,8 @@
-import { fixture, expect } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 import { page } from 'vitest/browser';
 
+import { fixture } from '../../test/fixture';
 import type { PharosSidenav } from './pharos-sidenav';
 import type { PharosButton } from '../button/pharos-button';
 
@@ -139,14 +140,18 @@ describe('pharos-sidenav', () => {
     `);
   });
 
+  afterEach(() => {
+    document.body.replaceChildren();
+  });
+
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('has an attribute to open the modal', async () => {
     component.open = true;
     await component.updateComplete;
-    await expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('has an attribute to close the modal', async () => {
@@ -155,7 +160,7 @@ describe('pharos-sidenav', () => {
 
     component.open = false;
     await component.updateComplete;
-    await expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('does not render a close button when attribute hasCloseButton is false', async () => {
@@ -164,7 +169,7 @@ describe('pharos-sidenav', () => {
     await component.updateComplete;
 
     const button = component.renderRoot.querySelector('.side-element__button') as PharosButton;
-    expect(button).to.be.null;
+    expect(button).toBeNull();
   });
 
   it('closes when the close button is clicked', async () => {
@@ -175,7 +180,7 @@ describe('pharos-sidenav', () => {
     const button = component.renderRoot.querySelector('.side-element__button') as PharosButton;
     button?.click();
     await component.updateComplete;
-    expect(component.open).to.be.false;
+    expect(component.open).toBe(false);
   });
 
   it('fires a custom event pharos-sidenav-close after closing', async () => {
@@ -191,14 +196,14 @@ describe('pharos-sidenav', () => {
     button?.click();
     await component.updateComplete;
 
-    expect(eventTriggered && detail === component).to.be.true;
+    expect(eventTriggered && detail === component).toBe(true);
   });
 
   it('renders a skip link when attribute main-content-id is passed', async () => {
     component.mainContentId = 'test';
     await component.updateComplete;
     const link = component.renderRoot.querySelector('#sidenav-skip-link');
-    expect(link).not.to.be.null;
+    expect(link).not.toBeNull();
   });
 
   it('opens when the element with matching attribute data-sidenav-id is clicked', async () => {
@@ -211,7 +216,7 @@ describe('pharos-sidenav', () => {
 
     trigger.click();
     await component.updateComplete;
-    expect(component.open).to.be.true;
+    expect(component.open).toBe(true);
   });
 
   it('delegates focus back to the element that opened it', async () => {
@@ -238,7 +243,7 @@ describe('pharos-sidenav', () => {
     component.open = false;
     await component.updateComplete;
 
-    expect(activeElement === button).to.be.true;
+    expect(activeElement === button).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 });

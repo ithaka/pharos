@@ -1,6 +1,7 @@
-import { fixture, expect, nextFrame } from '@open-wc/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosLink } from './pharos-link';
 import { PharosColorBlack } from '../../styles/variables';
 
@@ -12,19 +13,19 @@ describe('pharos-link', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible as a button', async () => {
     component.removeAttribute('href');
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible in the subtle state', async () => {
     component.subtle = true;
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible on a AA compliant background', async () => {
@@ -37,7 +38,7 @@ describe('pharos-link', () => {
         parentNode,
       }
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is able to delegate focus', async () => {
@@ -50,20 +51,22 @@ describe('pharos-link', () => {
     component.focus();
     const link = component.renderRoot.querySelector('#link-element');
 
-    expect(activeElement === link).to.be.true;
+    expect(activeElement === link).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
   it('throws an error for an invalid target value', async () => {
-    component = await fixture(html`
+    const error = await errorFixture(html`
       <test-pharos-link href="#" target="fake">I am a link</test-pharos-link>
-    `).catch((e) => e);
-    expect('fake is not a valid target. Valid targets are: _blank, _parent, _self, _top').to.be
-      .thrown;
+    `);
+
+    expect(error.message).toContain(
+      'fake is not a valid target. Valid targets are: _blank, _parent, _self, _top'
+    );
   });
 
   it('delegates focus to the target when clicked in the skip state', async () => {
-    let activeElement = null;
+    let activeElement: EventTarget | null = null;
     const onFocusIn = (event: Event): void => {
       activeElement = event.composedPath()[0];
     };
@@ -81,10 +84,11 @@ describe('pharos-link', () => {
 
     const anchor = component.renderRoot.querySelector('#link-element') as HTMLAnchorElement;
     anchor?.click();
-    await nextFrame();
-    await nextFrame();
 
-    expect(activeElement === link.renderRoot.querySelector('#link-element')).to.be.true;
+    await vi.waitFor(() => {
+      expect(activeElement === link.renderRoot.querySelector('#link-element')).toBe(true);
+    });
+
     document.removeEventListener('focusin', onFocusIn);
   });
 });

@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosProgressBar } from './pharos-progress-bar';
 
 describe('pharos-progress-bar', () => {
@@ -13,7 +14,7 @@ describe('pharos-progress-bar', () => {
   });
 
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('sets its default attributes', async () => {
@@ -23,7 +24,7 @@ describe('pharos-progress-bar', () => {
         <div slot="description">Processing headers</div>
       </test-pharos-progress-bar>
     `);
-    expect(component).dom.to.equal(
+    expect(component).toEqualDom(
       `<test-pharos-progress-bar data-pharos-component="PharosProgressBar">
         <div slot="title">Click.xls</div>
         <div slot="description">Processing headers</div>
@@ -36,7 +37,7 @@ describe('pharos-progress-bar', () => {
       <test-pharos-progress-bar value="20"></test-pharos-progress-bar>
     `);
     const internalBar = component.renderRoot.querySelector('.progress-bar') as HTMLDivElement;
-    expect(internalBar?.style.width).to.equal('20%');
+    expect(internalBar?.style.width).toBe('20%');
   });
 
   it('renders the progress bar with the correct gradient percentage', async () => {
@@ -50,6 +51,6 @@ describe('pharos-progress-bar', () => {
       slicedBackgroundColor.includes(
         'linear-gradient(to right, rgb(39, 202, 225) 95%, rgb(13, 48, 113))'
       )
-    ).to.be.true;
+    ).toBe(true);
   });
 });

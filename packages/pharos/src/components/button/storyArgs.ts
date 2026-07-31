@@ -1,5 +1,5 @@
 import { iconNames } from '../../utils/iconNames';
-import type { ButtonType, IconName, LinkTarget } from './pharos-button';
+import type { ButtonAlignment, ButtonType, IconName, LinkTarget } from './pharos-button';
 
 export interface ComponentArgs {
   autofocus?: boolean;
@@ -14,6 +14,7 @@ export interface ComponentArgs {
   a11yDisabled?: AriaDisabledState;
   a11yHaspopup?: AriaPopupState;
   fullWidth?: boolean;
+  alignment?: ButtonAlignment;
   icon?: IconName;
   iconLeft?: IconName;
   iconRight?: IconName;
@@ -55,6 +56,10 @@ export const argTypes = {
     options: ['primary', 'secondary', 'subtle', 'overlay'],
     control: { type: 'inline-radio' as const },
   },
+  alignment: {
+    options: ['start', 'center'],
+    control: { type: 'inline-radio' as const },
+  },
 };
 
 export const defaultArgs: StoryArgs = {
@@ -64,6 +69,7 @@ export const defaultArgs: StoryArgs = {
   autofocus: false,
   disabled: false,
   fullWidth: false,
+  alignment: 'start',
   iconCondensed: false,
   large: false,
   isOnBackground: false,

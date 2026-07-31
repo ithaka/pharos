@@ -1,6 +1,7 @@
-import { fixture, expect } from '@open-wc/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { html } from 'lit/static-html.js';
 
+import { fixture } from '../../test/fixture';
 import type { PharosSwitch } from './pharos-switch';
 import createFormData from '../../utils/createFormData';
 
@@ -13,28 +14,30 @@ describe('pharos-switch', () => {
     );
   });
 
+  afterEach(() => document.body.replaceChildren());
+
   it('is accessible', async () => {
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when focused', async () => {
     component.dispatchEvent(new Event('focusin'));
     await component.updateComplete;
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('is accessible when disabled', async () => {
     component = await fixture(
       html`<test-pharos-switch disabled><span slot="label">test switch</span></test-pharos-switch>`
     );
-    await expect(component).to.be.accessible();
+    await expect(component).toBeAccessible();
   });
 
   it('has an attribute to set check value', async () => {
     component = await fixture(html`
       <test-pharos-switch checked><span slot="label">test switch</span></test-pharos-switch>
     `);
-    await expect(component.checked).to.equal(true);
+    expect(component.checked).toBe(true);
   });
 
   it('fires a change event', async () => {
@@ -51,7 +54,7 @@ describe('pharos-switch', () => {
     component['_switch'].click();
     await component.updateComplete;
 
-    expect((eventSource as Element).isSameNode(component)).to.be.true;
+    expect((eventSource as Element).isSameNode(component)).toBe(true);
   });
 
   it('is able to receive focus', async () => {
@@ -63,7 +66,7 @@ describe('pharos-switch', () => {
 
     component['_switch'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_switch']).to.be.true;
+    expect(activeElement === component['_switch']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -80,8 +83,8 @@ describe('pharos-switch', () => {
 
     component['_switch'].focus();
     await component.updateComplete;
-    expect(activeElement === component['_switch']).to.be.false;
-    expect(document.activeElement === component).to.be.false;
+    expect(activeElement === component['_switch']).toBe(false);
+    expect(document.activeElement === component).toBe(false);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -100,7 +103,7 @@ describe('pharos-switch', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-switch')).to.equal('test');
+    expect(formdata.get('my-switch')).toBe('test');
   });
 
   it('updates the form value to "on" when no value is passed', async () => {
@@ -118,7 +121,7 @@ describe('pharos-switch', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-switch')).to.equal('on');
+    expect(formdata.get('my-switch')).toBe('on');
   });
 
   it('does not update the form value when disabled', async () => {
@@ -136,7 +139,7 @@ describe('pharos-switch', () => {
     const form = document.querySelector('form');
     const formdata = createFormData(form as HTMLFormElement);
 
-    expect(formdata.get('my-switch')).to.be.null;
+    expect(formdata.get('my-switch')).toBeNull();
   });
 
   it('can be clicked when the label is hidden', async () => {
@@ -150,7 +153,7 @@ describe('pharos-switch', () => {
     switchElement.dispatchEvent(new Event('click'));
     await component.updateComplete;
 
-    expect(component.checked).to.be.true;
+    expect(component.checked).toBe(true);
   });
 
   it('can be clicked when no label is present', async () => {
@@ -160,7 +163,7 @@ describe('pharos-switch', () => {
     switchElement.dispatchEvent(new Event('click'));
     await component.updateComplete;
 
-    expect(component.checked).to.be.true;
+    expect(component.checked).toBe(true);
   });
 
   it('is able to delegate focus', async () => {
@@ -172,7 +175,7 @@ describe('pharos-switch', () => {
 
     component.focus();
 
-    expect(activeElement === component['_switch']).to.be.true;
+    expect(activeElement === component['_switch']).toBe(true);
     document.removeEventListener('focusin', onFocusIn);
   });
 
@@ -186,7 +189,7 @@ describe('pharos-switch', () => {
     link?.click();
     await component.updateComplete;
 
-    await expect(component.checked).to.be.false;
+    expect(component.checked).toBe(false);
   });
 
   it('fires a single click event when label is clicked', async () => {
@@ -203,7 +206,7 @@ describe('pharos-switch', () => {
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
     label?.click();
     await component.updateComplete;
-    expect(count).to.equal(1);
+    expect(count).toBe(1);
   });
 
   it('fires a single click event but does not update if event prevented', async () => {
@@ -219,7 +222,7 @@ describe('pharos-switch', () => {
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
     label?.click();
     await component.updateComplete;
-    await expect(component.checked).to.be.false;
+    expect(component.checked).toBe(false);
   });
 
   it('resets checked when the form is reset', async () => {
@@ -236,18 +239,18 @@ describe('pharos-switch', () => {
 
     const form = document.querySelector('form');
     const formdataInitial = createFormData(form as HTMLFormElement);
-    expect(formdataInitial.get('my-switch')).to.equal('test');
+    expect(formdataInitial.get('my-switch')).toBe('test');
 
     component.checked = false;
     await component.updateComplete;
 
     const formdataUnchecked = createFormData(form as HTMLFormElement);
-    expect(formdataUnchecked.get('my-switch')).to.equal(null);
+    expect(formdataUnchecked.get('my-switch')).toBe(null);
 
     form?.dispatchEvent(new Event('reset'));
     await component.updateComplete;
 
     const formdataReset = createFormData(form as HTMLFormElement);
-    expect(formdataReset.get('my-switch')).to.equal('test');
+    expect(formdataReset.get('my-switch')).toBe('test');
   });
 });
