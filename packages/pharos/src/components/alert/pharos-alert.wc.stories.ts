@@ -3,7 +3,6 @@ import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
-import { PharosAlert } from './pharos-alert';
 
 const meta = {
   title: 'Components/Alert',
