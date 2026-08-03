@@ -67,7 +67,7 @@
     "@commitlint/config-conventional": "^21.2.0",
     "@emotion/babel-plugin": "^11.13.5",
     "@eslint/js": "^10.0.1",
-    "@size-limit/preset-small-lib": "^12.1.0",
+    "@size-limit/preset-small-lib": "^13.0.3",
     "@storybook/addon-a11y": "^10.5.2",
     "@storybook/addon-docs": "^10.5.2",
     "@storybook/addon-links": "^10.5.2",
