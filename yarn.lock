@@ -22224,7 +22224,7 @@ __metadata:
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     sass: "npm:^1.101.0"
-    size-limit: "npm:^12.1.0"
+    size-limit: "npm:^13.0.3"
     storybook: "npm:^10.5.2"
     stylelint: "npm:^17.14.1"
     stylelint-config-standard-scss: "npm:^17.0.0"
@@ -25751,7 +25751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"size-limit@npm:12.1.0, size-limit@npm:^12.1.0":
+"size-limit@npm:12.1.0":
   version: 12.1.0
   resolution: "size-limit@npm:12.1.0"
   dependencies:
@@ -25768,6 +25768,19 @@ __metadata:
   bin:
     size-limit: bin.js
   checksum: 10c0/74e7ded2d2a44ca8a45af0b4f86aa6eede483c672fbb3f20818e9d68c1c4e95b4f8ce850704079550c97692b413ad78a608755d4c29e19181bca13feb22bc193
+  languageName: node
+  linkType: hard
+
+"size-limit@npm:^13.0.3":
+  version: 13.0.3
+  resolution: "size-limit@npm:13.0.3"
+  dependencies:
+    bytes-iec: "npm:^3.1.1"
+    lilconfig: "npm:^3.1.3"
+    nanospinner: "npm:^1.2.2"
+  bin:
+    size-limit: bin.js
+  checksum: 10c0/fff22b2f5ebb4b411e47ce7a80fdebc73326c40e4dd8d8cb59be72d149112389dbf393b7593c883280ca27197da9f2ac0d83e76fef16b7ba7d33ac4826411257
   languageName: node
   linkType: hard
 

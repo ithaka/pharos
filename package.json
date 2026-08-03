@@ -106,7 +106,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.101.0",
-    "size-limit": "^12.1.0",
+    "size-limit": "^13.0.3",
     "storybook": "^10.5.2",
     "stylelint": "^17.14.1",
     "stylelint-config-standard-scss": "^17.0.0",
