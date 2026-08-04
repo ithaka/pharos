@@ -11,6 +11,10 @@ updates:
         update-types:
           - 'minor'
           - 'patch'
+      non-major-security:
+        applies-to: 'security-updates'
+        patterns:
+          - '*'
     ignore:
       # ithaka/pharos#856
       - dependency-name: 'react'
