@@ -160,8 +160,6 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   }
 
   protected override update(changedProperties: PropertyValues): void {
-    super.update && super.update(changedProperties);
-
     if (changedProperties.has('variant') && this.variant && !VARIANTS.includes(this.variant)) {
       throw new Error(
         `${this.variant} is not a valid variant. Valid variants are: ${VARIANTS.join(', ')}`
@@ -179,6 +177,8 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
         `Image card with variant type ${this.variant} cannot be selected. Only the selectable variants can be selected.`
       );
     }
+
+    super.update && super.update(changedProperties);
   }
 
   private _isSelectable() {
