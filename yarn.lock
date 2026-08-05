@@ -4922,7 +4922,7 @@ __metadata:
     globby: "npm:^16.2.2"
     lit: "npm:^3.3.3"
     minify-html-literals: "npm:^1.3.5"
-    playwright: "npm:^1.61.1"
+    playwright: "npm:^1.62.1"
     postcss: "npm:^8.5.25"
     prettier: "npm:^3.9.6"
     react: "npm:^18.3.1"
@@ -22030,7 +22030,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright@npm:^1.14.0, playwright@npm:^1.61.1":
+"playwright-core@npm:1.62.1":
+  version: 1.62.1
+  resolution: "playwright-core@npm:1.62.1"
+  bin:
+    playwright-core: cli.js
+  checksum: 10c0/a37d0f03bb73364cfd0eba704c4b3359b609c4779ae2649a88d8e2b3a29c7357dfcc58bdcf0cb68ddffdef7687abf78902c8356e89f189682c7e19be38e108f0
+  languageName: node
+  linkType: hard
+
+"playwright@npm:^1.14.0":
   version: 1.61.1
   resolution: "playwright@npm:1.61.1"
   dependencies:
@@ -22042,6 +22051,21 @@ __metadata:
   bin:
     playwright: cli.js
   checksum: 10c0/cea1bc4d2a64ec3ef683891606774029da7b8a8036ed98332565cec2f8e89549ca1fab9a89fbfba4e08e27e0d7e7d148031e965af66d5ff97bb3c34058cfcad0
+  languageName: node
+  linkType: hard
+
+"playwright@npm:^1.62.1":
+  version: 1.62.1
+  resolution: "playwright@npm:1.62.1"
+  dependencies:
+    fsevents: "npm:2.3.2"
+    playwright-core: "npm:1.62.1"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    playwright: cli.js
+  checksum: 10c0/4d3522cd46325f50c46f8874d31f70d036f6983228a9f8b9d68fc249e4c17464edcd97cc4adfbb24e712d1829c1386d3bc24e17f58a1ced94e7c423300c21845
   languageName: node
   linkType: hard
 
