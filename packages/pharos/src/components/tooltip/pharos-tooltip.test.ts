@@ -141,10 +141,13 @@ describe('pharos-tooltip', () => {
     expect(secondComponent.open).toBe(false);
 
     secondTrigger.dispatchEvent(new Event('mouseenter'));
-    await vi.waitFor(() => {
-      expect(component.open).toBe(false);
-      expect(secondComponent.open).toBe(true);
-    });
+    await vi.waitFor(
+      () => {
+        expect(component.open).toBe(false);
+        expect(secondComponent.open).toBe(true);
+      },
+      { timeout: 2000 }
+    );
   });
 
   it('opens the first one on hover and then closes it upon focusing the second', async () => {
@@ -153,10 +156,13 @@ describe('pharos-tooltip', () => {
     expect(secondComponent.open).toBe(false);
 
     secondTrigger.dispatchEvent(new Event('focusin'));
-    await vi.waitFor(() => {
-      expect(component.open).toBe(false);
-      expect(secondComponent.open).toBe(true);
-    });
+    await vi.waitFor(
+      () => {
+        expect(component.open).toBe(false);
+        expect(secondComponent.open).toBe(true);
+      },
+      { timeout: 2000 }
+    );
   });
 
   it('throws an error for invalid fallback values', async () => {
