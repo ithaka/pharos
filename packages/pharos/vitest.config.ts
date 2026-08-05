@@ -43,7 +43,15 @@ export default defineConfig({
     browser: {
       enabled: true,
       headless: true,
-      provider: playwright(),
+      provider: playwright({
+        launchOptions: {
+          args: [
+            '--disable-background-timer-throttling',
+            '--disable-backgrounding-occluded-windows',
+            '--disable-renderer-backgrounding',
+          ],
+        },
+      }),
       screenshotFailures: false,
       viewport: { width: 1280, height: 720 },
       instances: [{ browser: 'chromium' }, { browser: 'firefox' }, { browser: 'webkit' }],
