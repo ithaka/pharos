@@ -43,18 +43,25 @@ export default defineConfig({
     browser: {
       enabled: true,
       headless: true,
-      provider: playwright({
-        launchOptions: {
-          args: [
-            '--disable-background-timer-throttling',
-            '--disable-backgrounding-occluded-windows',
-            '--disable-renderer-backgrounding',
-          ],
-        },
-      }),
+      provider: playwright(),
       screenshotFailures: false,
       viewport: { width: 1280, height: 720 },
-      instances: [{ browser: 'chromium' }, { browser: 'firefox' }, { browser: 'webkit' }],
+      instances: [
+        {
+          browser: 'chromium',
+          provider: playwright({
+            launchOptions: {
+              args: [
+                '--disable-background-timer-throttling',
+                '--disable-backgrounding-occluded-windows',
+                '--disable-renderer-backgrounding',
+              ],
+            },
+          }),
+        },
+        { browser: 'firefox' },
+        { browser: 'webkit' },
+      ],
     },
   },
 });
