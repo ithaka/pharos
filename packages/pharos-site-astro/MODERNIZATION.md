@@ -33,12 +33,12 @@ This backlog undoes that where it no longer earns its keep.
 
 **Is byte-for-byte parity with the Gatsby site still the acceptance test?**
 
-As of the last session this was still open. It determines which tier below is
-safe to start. Tier 1 is safe regardless. Tier 2 and 3 change rendered output
-and must not start until parity is explicitly retired.
+**Still open.** It determines which tier below is safe to start. Tier 1 was
+safe regardless and is now done. Tier 2 and 3 change rendered output and must
+not start until parity is explicitly retired.
 
 If you are an agent and this question is still unanswered, **ask before starting
-Tier 2** — do not assume.
+Tier 2** — do not assume. Everything remaining in this backlog is gated on it.
 
 ## Verifying your work
 
@@ -61,66 +61,60 @@ yarn site-astro:build && diff -r /tmp/dist-before packages/pharos-site-astro/dis
 
 ---
 
-## Tier 1 — parity-safe, do anytime
+## Tier 1 — parity-safe ✅ DONE
 
-No change to rendered output. Safe even if parity is still required.
+All four items are complete. The build output was verified byte-identical to
+the pre-change `dist/` (`diff -r`, all 63 pages), and the 11 design-token pages
+were verified structurally identical to production — matching row counts, cell
+counts, and pixel width/height for every table.
 
-### 1. Delete the empty `src/content/` directory
+### 1. Delete the empty `src/content/` directory ✅
 
-Leftover scaffolding from the port. Zero risk.
+Removed.
 
-### 2. Fix the positional coupling in `line-height.astro` (latent bug)
+### 2. Fix the positional coupling in `line-height.astro` ✅
 
-`src/pages/design-tokens/line-height.astro` has:
+`fontSizeMap` is now keyed by token name rather than paired by array index, and
+throws on an unmapped token instead of silently rendering `undefined`. Adding,
+removing or reordering a line-height token can no longer shift every row onto
+the wrong font size.
 
-```ts
-const fontSizeMap = [12, 14, 16, 24, 32, 54, 16];
-```
+### 3. Consolidate the design-token tables ✅
 
-paired **by array index** against a filtered token list. If Pharos adds,
-removes, or reorders a line-height token, every example row silently renders at
-the wrong font size — no error, no build failure, no visual cue that it is
-wrong.
+Added `src/components/TokenRows.astro`, which renders the shared
+`Token / Value / Example` `<thead>` and the row loop from a `rows` array. All
+11 pages use it. The example cell — the one genuine variation — is passed per
+row as an HTML string and emitted with `set:html`.
 
-Key the map by token name instead. This is a real bug, not a style preference;
-worth doing even if nothing else here gets done.
+Pages went from 624 to 453 lines (520 including the new component). Column
+widths are a prop because the pages do not agree on them (40/30, 33/33/36,
+40/40, and type-scale's four-column 25/20/25).
 
-### 3. Consolidate the design-token tables
+The duplicated `comment?: string` interfaces were hoisted into
+`src/lib/tokenFormat.ts` as `CommentedToken`, plus `ScaleToken` for the two
+pages where `comment` is required.
 
-11 pages, 603 lines total, in `src/pages/design-tokens/`. Duplication:
+### 4. Add a nav-to-page assertion ✅
 
-- The same `Token / Value / Example` `<thead>` block appears in 7 pages.
-- A near-identical `interface XToken extends DesignToken { comment?: string }`
-  is declared in 6 pages (`font-size`, `global-colors`, `line-height`, `radius`,
-  `spacing`, `type-scale`). This belongs in `src/lib/tokenFormat.ts`, which
-  already exports `DesignToken`.
-- The row-mapping loop is structurally identical everywhere; only the example
-  cell genuinely varies.
+`src/lib/assertNavigation.ts` fails the build in both directions: a
+`navigation.ts` entry with no matching page, and a page absent from
+`navigation.ts`. Called once from `Sidenav.astro`. Explicit ordering is
+preserved — the check only compares sets, it never derives order.
 
-Collapse into one table component taking rows plus an example-renderer slot.
-Expect ~603 lines to drop to roughly 250. A column change becomes one edit
-rather than eleven.
+Both directions were verified by deliberately introducing each failure.
 
-`src/components/TokenTable.astro` already exists and is a thin wrapper — extend
-that rather than adding a parallel component.
+**Do not reach for `import.meta.glob` here.** The first attempt used it, and
+because the sidenav renders on every page, it made every page a style
+dependency of every other — each page's `<style is:global>` was pulled into one
+bundle and inlined into all 63 pages, adding ~2.6KB each. The check reads the
+pages directory with `node:fs` instead, which is inert. `PAGES_DIR` resolves
+from `process.cwd()`, not `import.meta.url`, because the module is bundled into
+`dist/.prerender/` before it runs.
 
-### 4. Add a nav-to-page assertion
-
-`src/lib/navigation.ts` hardcodes 32 component names. `src/components/Sidenav.astro`
-derives hrefs from them via `toSlug()`. Nothing verifies those slugs resolve to
-real pages, so:
-
-- Adding `src/pages/components/foo.astro` without editing `navigation.ts`
-  produces an orphan page reachable only by direct URL.
-- A typo in `navigation.ts` produces a sidenav link to a 404.
-
-Neither fails the build. Add a build-time check in `Sidenav.astro` using
-`import.meta.glob('/src/pages/**/*.{astro,mdx}')` that throws when a nav href
-has no matching page.
-
-Note that list **order is significant** — it is the order links appear in the
-sidenav. Any fix must preserve explicit ordering; do not derive order from the
-filesystem.
+Two pre-existing orphans are listed in `unlinkedByDesign` rather than fixed:
+`/content-style-guide/jstor-terms` and `/design-tokens/overview`. Neither
+appears in the Gatsby sidenav either, so linking or deleting them is a content
+decision, not a port fix.
 
 ---
 
@@ -231,6 +225,16 @@ dead code the way the rest of the monorepo is.
 - **`astro.config.mjs` `smartypants: false`** emits a deprecation warning
   pointing at a `satteri()` processor that does not exist in the installed
   `@astrojs/markdown-remark` (7.2.1). Revisit when that package is upgraded.
+
+## Fixed along the way
+
+**`src/lib/` was never committed with the port.** The repo's `.gitignore` has an
+unanchored `lib/` rule for compiled build output, which also matched
+`packages/pharos-site-astro/src/lib/`. All six hand-written modules there —
+including `navigation.ts` and `siteMetadata.ts` — were untracked, so a fresh
+clone had no `src/lib` at all and could not build the package. The rule is now
+negated for that one directory. Worth checking whether any other package hit the
+same trap.
 
 ## Assets note
 
