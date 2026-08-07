@@ -1,0 +1,74 @@
+---
+/**
+ * Renders a Markdown heading as the Pharos heading the `.astro` pages spelled
+ * out by hand.
+ *
+ * The `preset` carries the typography: Pharos sets the font, size, line-height
+ * and a `0.5em` bottom margin on the heading itself, and that bottom margin is
+ * left to it. What it does not set — by design, since it is a component and not
+ * a page layout — is any *top* margin, so it has no notion of "space before a
+ * new section".
+ *
+ * The hand-written pages got that from `PageSection`, which nested its sections
+ * and hung a `margin-bottom` on each wrapper. Markdown is flat, so the
+ * `md-heading` classes put the equivalent gap on the heading as `margin-top`
+ * (see `markdown.css`). Without them every level renders the same 24-32px gap,
+ * `##` and `###` become indistinguishable, and the page loses its structure —
+ * measured at 19% shorter on `jstor-terms`.
+ *
+ * The level/preset pairs below are lifted from `PageSection.astro` so a
+ * converted page keeps its typography:
+ *
+ *   Markdown | PageSection equivalent | level | preset  | no-margin
+ *   ---------|------------------------|-------|---------|----------
+ *   `#`      | `isHeader`             | 1     | 7--bold |
+ *   `##`     | top-level section      | 2     | 6       | yes
+ *   `###`    | `subSectionLevel={1}`  | 2     | 4       |
+ *   `####`   | `subSectionLevel={2}`  | 4     | 1--bold |
+ *   `#####`  | `subSectionLevel={3}`  | 5     | 1--bold |
+ *
+ * `##` and `###` both render `level="2"`; that is what `PageSection` did, and
+ * changing it would alter the accessibility tree relative to the live site.
+ */
+interface Props {
+  /** Markdown heading depth, 1-6. */
+  depth: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Anchor id remark generates from the heading text. */
+  id?: string;
+  /**
+   * Drops the heading's own bottom margin via Pharos' `no-margin` attribute.
+   * Defaults to on for `##`, off elsewhere — pass explicitly to override.
+   */
+  noMargin?: boolean;
+}
+
+/**
+ * `noMargin` on `##` because it opens a top-level section, where the gap to the
+ * following content comes from that content's own spacing rather than the
+ * heading — Pharos' `0.5em` would add to it. The other levels keep the
+ * component default.
+ */
+const PRESETS: Record<
+  Props['depth'],
+  { level: string; preset: string; noMargin?: boolean }
+> = {
+  1: { level: '1', preset: '7--bold' },
+  2: { level: '2', preset: '6', noMargin: true },
+  3: { level: '2', preset: '4' },
+  4: { level: '4', preset: '1--bold' },
+  5: { level: '5', preset: '1--bold' },
+  6: { level: '6', preset: '1--bold' },
+};
+
+const { depth, id, noMargin } = Astro.props;
+
+const { level, preset, noMargin: presetNoMargin = false } = PRESETS[depth];
+const hasNoMargin = noMargin ?? presetNoMargin;
+---
+
+<site-pharos-heading
+  class:list={['md-heading', `md-heading--${depth}`]}
+  level={level}
+  preset={preset}
+  no-margin={hasNoMargin ? '' : undefined}
+  id={id}><slot /></site-pharos-heading>

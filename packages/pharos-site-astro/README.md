@@ -22,9 +22,10 @@ Run from the repo root:
 
 The rendered output is the same; the implementation is not.
 
-- **Pages are `.astro`, not React.** Pages use the Pharos **web components**
-  (`<site-pharos-button>`) rather than the React wrappers, so no React runtime
-  ships. `src/pages/design-tokens/overview.mdx` is authored in MDX.
+- **Pages are `.astro` or `.mdx`, not React.** Pages use the Pharos **web
+  components** (`<site-pharos-button>`) rather than the React wrappers, so no
+  React runtime ships. Prose pages are moving to MDX — see
+  [Authoring a page in Markdown](#authoring-a-page-in-markdown).
 - **No client-side routing.** Gatsby intercepted link clicks and called
   `navigate()`; here links are ordinary anchors and each page is a static
   document.
@@ -33,6 +34,113 @@ The rendered output is the same; the implementation is not.
   imported directly from `@ithaka/pharos/lib/styles/tokens`.
 - **Work happens at build time.** Components that computed values in `useEffect`
   (colour conversions, token tables) now do so during the build.
+
+## Authoring a page in Markdown
+
+Put an `.mdx` file under `src/pages/`, add it to `src/lib/navigation.ts` (the
+build fails if the two disagree), and start it like this:
+
+```mdx
+---
+layout: '@layouts/MarkdownLayout.astro'
+title: 'Checkbox'
+description: 'The standfirst under the page title.'
+---
+
+import { mdxComponents } from '@components/markdown/mdxComponents';
+
+export const components = mdxComponents;
+
+## A section
+
+Ordinary prose. [A link](https://example.com) renders as a Pharos link and, being
+off-site, opens in a new tab.
+
+### A sub-section
+```
+
+`title` and `description` render the page heading and standfirst, so the body
+starts at `##`. That `export const components` line is what turns Markdown
+headings into Pharos elements — without it you get bare `<h2>` tags.
+
+Heading levels map to what `PageSection` used to spell out:
+
+| Markdown | Was                   | Renders                      |
+| -------- | --------------------- | ---------------------------- |
+| `#`      | `isHeader`            | `level="1" preset="7--bold"` |
+| `##`     | a top-level section   | `level="2" preset="6"`       |
+| `###`    | `subSectionLevel={1}` | `level="2" preset="4"`       |
+| `####`   | `subSectionLevel={2}` | `level="4" preset="1--bold"` |
+| `#####`  | `subSectionLevel={3}` | `level="5" preset="1--bold"` |
+
+Components still work — import and use them inline:
+
+```mdx
+import Example from '@components/markdown/Example.astro';
+import Canvas from '@components/Canvas.astro';
+
+<Example storyBookType="forms" componentTitle="Checkbox">
+  <site-pharos-checkbox>
+    <span slot="label">I am a checkbox</span>
+  </site-pharos-checkbox>
+</Example>
+```
+
+`<Example>` is the demo-plus-Storybook-link block that `PageSection`'s
+`storyBookType` prop used to render. It goes in the body, above the first `##`.
+
+`<BestPractices>` takes its guidance in a `do` and a `dont` slot:
+
+```mdx
+<BestPractices>
+  <Fragment slot="do">Ebooks preserved in Portico</Fragment>
+  <Fragment slot="dont">Portico preserves e-Books</Fragment>
+</BestPractices>
+```
+
+Slot content is Markdown, so a list is `-` bullets rather than `<ul><li>`:
+
+<!-- prettier-ignore -->
+```mdx
+<BestPractices>
+  <Fragment slot="do">
+    - Use checkboxes when choices are not mutually exclusive
+    - Checkboxes should always include a label
+  </Fragment>
+</BestPractices>
+```
+
+Line breaks inside these slots do not matter — see the multi-line note below,
+which `BestPractices` is exempt from. Either side may be omitted and that column
+is left out.
+
+Two rules that will bite you:
+
+- **Watch multi-line slot content.** MDX treats a tag whose content spans
+  several lines as Markdown and wraps it in a generated `<p>`, adding a
+  paragraph margin. `BestPractices` is exempt — a CSS rule zeroes that margin —
+  but other components are not, so keep their slot content on one line. This is
+  also why `src/pages/**/*.mdx` is in `.prettierignore`: prettier reflows long
+  `<li>` elements and silently changes the layout.
+- **Never write your own `#` heading.** The layout renders one from `title`, so
+  a page that adds its own gets two.
+- **Use `<DemoScript code={`…`} />` for a page's demo JavaScript**, not a bare
+  `<script>`. MDX parses a script block's contents as JSX, so the first `{`
+  breaks the build, and TypeScript is not transpiled there. Write plain JS in
+  that string.
+- **A bare URL in prose becomes a link.** GFM autolinks it, and a wrapping
+  element does not prevent that. If the URL is meant to be read rather than
+  clicked, write it as `{'https://example.com'}`.
+
+Spacing lives in `src/styles/markdown.css`, which re-expresses the old nested
+`PageSection` margins for a flat document. Read its comments before changing a
+value — the numbers came from measuring the rendered Gatsby pages, and the
+obvious-looking class in `components.css` is often not the one that applied.
+
+The `md-heading` classes there are spacing only; all the typography comes from
+the Pharos `preset`. They are not redundant with it: Pharos sets no top margin,
+because inter-section spacing is page layout rather than a component's job.
+Delete them and every heading level renders the same 24-32px gap.
 
 ## Things to know before editing
 
@@ -77,9 +185,9 @@ Astro scopes CSS per page. Anything global therefore belongs in
 notably the `@font-face` rules and the `p { margin-top: 0 }` reset, without which
 every non-home route renders in a fallback font and gains 16px per section.
 
-**`design-tokens/overview.mdx` is excluded from Prettier, deliberately.**
-Prettier rewrites MDX comment delimiters (`{/* */}` → `{/_ _/}`), which fails the
-build, and reflows `<dd>`/`<code>` onto several lines. MDX treats a tag whose
+**`src/pages/**/*.mdx` is excluded from Prettier, deliberately.** Prettier
+rewrites MDX comment delimiters (`{/* */}` → `{/_ _/}`), which fails the build,
+and reflows `<li>`/`<dd>`/`<code>` onto several lines. MDX treats a tag whose
 content spans multiple lines as Markdown and wraps it in a generated paragraph,
 which changes the page height. Keep those elements on one line, and prefer plain
 Markdown paragraphs over explicit `<p>` tags — a top-level `<p>` gets nested

@@ -10,11 +10,12 @@ packages/**/package-lock.json
 packages/pharos-site/public/
 packages/pharos-site/.cache/
 packages/pharos-site-astro/.astro/
-# Prettier rewrites this file's MDX comment delimiters ({/* */} -> {/_ _/}),
-# which breaks the build, and reflows its <dd>/<code> elements onto several
-# lines, which makes MDX wrap them in extra paragraphs and changes the rendered
-# layout. Formatting it is not safe.
-packages/pharos-site-astro/src/pages/design-tokens/overview.mdx
+# Prettier is not safe on these pages. It rewrites MDX comment delimiters
+# ({/* */} -> {/_ _/}), which breaks the build, and reflows elements such as
+# <li>/<dd>/<code> onto several lines. MDX treats a tag whose content spans
+# multiple lines as Markdown and wraps it in a generated <p>, so a purely
+# cosmetic reflow silently adds paragraph margins to the rendered page.
+packages/pharos-site-astro/src/pages/**/*.mdx
 package.json
 package-lock.json
 .changeset/

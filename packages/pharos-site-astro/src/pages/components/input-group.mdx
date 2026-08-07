@@ -1,0 +1,109 @@
+---
+layout: '@layouts/MarkdownLayout.astro'
+title: 'Input Group'
+description: 'Input groups allow users to provide information as part of a form in combination with a button, icon, or select element on either side of the text input for extra functionality.'
+---
+
+import { mdxComponents } from '@components/markdown/mdxComponents';
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+
+export const components = mdxComponents;
+
+<Example storyBookType="forms" componentTitle="Input Group">
+  <site-pharos-input-group name="my-input-group">
+    <span slot="label">Search</span>
+    <site-pharos-button name="search-button" icon="search" variant="subtle" a11y-label="search"></site-pharos-button>
+  </site-pharos-input-group>
+</Example>
+
+## Usage
+
+Use an input group when additional functionality is required for a text input, such as a way
+to clear the field or to visually indicate the type of input.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+    - Add buttons or a select when you want the user to perform additional actions related to
+      their input
+    - Prepend elements if they require interaction first before proceeding to the input
+  </Fragment>
+  <Fragment slot="dont">
+    - Don't add more than two elements to an input group
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+### Labels
+
+- The input label needs to be helpful in telling the user what is expected of them, but they
+  do not need to be instructive
+- Labels are placed above the input text field
+- Labels are to be written in sentence case and should only be 1-3 words long
+
+### Placeholder text
+
+Placeholder text is shown inside the text input to help users know what information they can
+enter.
+
+- Field placeholder text is used for supplementary information
+- The text should be written as examples instead of instructions
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [1.3.5 Identify Input Purpose AA](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose)
+- [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [3.3.2 Labels or Instructions A](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions)
+- [2.4.6 Headings and Labels](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html)
+- [4.1.2 Name, Role, Value](https://www.w3.org/TR/UNDERSTANDING-WCAG20/ensure-compat-rsv.html)
+
+### Importance
+
+Inputs allow the user to complete many different tasks. This can include filling out a form or
+submitting a search
+
+### Code expectations
+
+Via W3 there are 3 ways to approach input groups:
+
+- Visual label:
+  - `<label for="fieldname">Field name:</label>`
+  - `<input type="text" id="fieldname" autocomplete="fieldname">`
+    - Matching `for` and `id` names associate the label with its form
+      control
+    - Form control can only have one associated `<label>`
+    - This allows user to click the label and focus will be put into the field, ensuring
+      that the label is associated with the input
+  - We can also use an aria-label on the input to give the user more information about the
+    field
+
+The next two methods should ONLY be used when purpose can be determined with no visual
+label (such as a "Search" button next to the input).
+
+- Visually hidden label:
+  - `<label for="fieldname" class="visuallyhidden">Field name:</label>`
+  - `<input type="text" name="fieldname" id="fieldname">`
+  - `<button type="submit">Button Name</button>`
+    - Allows assistive technology to understand a visually hidden label
+- Aria-label:
+  - `<input type="text" name="fieldname" aria-label="Field Name">`
+  - `<button type="submit">Button Name</button>`
+
+### Expected actions
+
+#### Screen reader
+
+- Reads: "Field name, edit text"
+  - If autocomplete is enabled: "Field name, edit text with autofill menu"
+  - Aria label example: "designated aria-label, edit text"
+
+#### Keyboard
+
+- <kbd>Enter</kbd> submits the input
+- Input (and applicable controls such as a button) should be included in the logical tab
+  order

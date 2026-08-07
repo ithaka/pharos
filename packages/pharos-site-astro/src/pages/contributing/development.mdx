@@ -1,0 +1,79 @@
+---
+layout: '@layouts/MarkdownLayout.astro'
+title: 'Contributing development'
+---
+
+import { mdxComponents } from '@components/markdown/mdxComponents';
+
+export const components = mdxComponents;
+
+{/*
+The Gatsby page opened with a <PageSection title=""> — a section whose heading
+was an empty string. There is no Markdown spelling for an empty heading, so
+this content simply follows the page title.
+*/}
+
+Pharos is a living design system that continues to expand with help from the community. We're
+excited to work with contributors like you to further enrich the system. Discussions about issues,
+bugs, and features for Pharos take place on GitHub. If you don't have a GitHub account,
+[create one](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home)
+to join the community.
+
+You can contribute to Pharos in three ways:
+
+1. **Open an issue or feature request:** The maintainers will review the issue or request and
+   respond with appropriate next steps. If accepted, it will be added to an upcoming milestone. When
+   possible, a tentative timeline will be shared to give members an estimate of when to expect the
+   next release.
+2. **Make the change in Pharos:** To make the contribution yourself please follow the process
+   outlined below. The maintainers are more than happy to assist and support you through the
+   contribution.
+3. **Join a discussion:** Community members can get involved with asking or helping answer
+   questions, sharing updates, and following along with potential decisions in the project's
+   [open communication forum](https://github.com/ithaka/pharos/discussions) on GitHub.
+
+## The Pharos community
+
+### Users
+
+Pharos users follow the [system's guidelines](/brand-expressions/logos) to implement Pharos into
+their product or marketing needs.
+
+### Contributors
+
+Contributors are community members who report bugs, request new features, or make changes to the
+system. Changes can include adding a new feature, fixing a bug, or updating documentation.
+
+### Maintainers
+
+Maintainers are community members who are involved with helping maintain the repository,
+participating in planning future needs and milestones, triaging issues. This involves labeling,
+closing, and merging pull requests.
+
+## The process
+
+1. **Open a GitHub issue:**
+   1. If so, please comment on the issue that you'd like to address it so that the maintainers are
+      aware of your intent and can assign you.
+   2. If not, create one using either the
+      [feature request](https://github.com/ithaka/pharos/issues/new?assignees=&labels=feature+request&template=feature_request.md)
+      or
+      [bug report](https://github.com/ithaka/pharos/issues/new?assignees=&labels=bug&template=bug_report.md)
+      template, depending on the type of contribution. Then assign yourself to it for visibility.
+2. **Make the change:** If you haven't already done so, clone the
+   [repo](https://github.com/ithaka/pharos) and create a new branch for your contribution. Review
+   the [development guidelines](https://github.com/ithaka/pharos/blob/develop/docs/README.md) to
+   learn about contributing code to Pharos.
+3. **Open a pull request:** Follow the
+   [guidelines](https://github.com/ithaka/pharos/blob/develop/docs/development/conventions/pull-requests.md),
+   fill out the pull request template as best you can, and request a review from the <i>Pharos
+   maintainers</i> team.
+4. **Pass checks:**
+   1. Lint - Analyzes your code for problematic patterns
+   2. Test - Runs browser tests and validates code coverage thresholds are met
+   3. Chromatic (for Storybook and component related changes) - Takes snapshots of all stories in
+      Storybook and compares them against the baseline
+   4. Netlify preview (for site related changes) - Generates a preview build of the site for the
+      maintainers to review and provide feedback
+5. **Await approval:** Address feedback and get approval from development and design. From here the
+   maintainers will merge your changes and include it in the next release.

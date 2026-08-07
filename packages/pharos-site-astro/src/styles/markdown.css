@@ -1,0 +1,130 @@
+/*
+ * Spacing for Markdown-authored pages.
+ *
+ * The hand-written `.astro` pages nested `PageSection` components and put the
+ * spacing on each section's wrapper as `margin-bottom` (see the `.section*`
+ * rules in `components.css`). Markdown emits a flat document, so there is no
+ * wrapper to hang that margin on.
+ *
+ * The gaps are reproduced by moving them to `margin-top` on the headings. That
+ * works because a section's bottom margin only ever separated its content from
+ * the *next* heading, so the same visual gap appears whether it is spelled as
+ * the previous section's bottom margin or the next heading's top margin.
+ *
+ * The values are the gaps *measured* on the rendered Gatsby pages, not the
+ * `.section--*` declarations copied across — see the comment on the heading
+ * rules below for why those differ.
+ *
+ * One consequence of the flat model is worth knowing: the original nested
+ * sections, so the same `###` could take a different gap depending on the
+ * section it sat in. A single `margin-top` per level cannot express that, so
+ * individual headings do not line up with the Gatsby page exactly.
+ *
+ * Bottom margins are deliberately left to Pharos — the component's own `0.5em`,
+ * turned off on `##` with its `no-margin` attribute. Only the top margins
+ * (the inter-section gaps) live here. That makes both converted pages ~7%
+ * shorter than the Gatsby original, which is intended.
+ */
+
+/*
+ * The measured gaps on the hand-written pages, which these reproduce:
+ *
+ *   before a `##`  112px  (`.section`, 7x)
+ *   before a `###`  48px  (`.section--less-margin` 24px + the paragraph's 24px,
+ *                          which collapsed inside the section wrapper)
+ *   before a `####` 24px
+ *
+ * The `###` figure is the one worth not guessing at. `.section--level-one` is
+ * 80px and looks like the obvious source, but it only applies where a
+ * sub-section is nested directly under a top-level one; the common case on
+ * these pages is the 48px above.
+ */
+.md-heading--2 {
+  margin-top: var(--pharos-spacing-7-x);
+  /* Matches `.section__title--more-space`, which top-level section titles used. */
+  color: var(--pharos-color-black);
+}
+
+.md-heading--3 {
+  margin-top: var(--pharos-spacing-3-x);
+}
+
+.md-heading--4 {
+  margin-top: var(--pharos-spacing-2-x);
+}
+
+.md-heading--5 {
+  margin-top: var(--pharos-spacing-1-x);
+}
+
+/*
+ * A heading that immediately follows another heading (`##` then `###` with no
+ * prose between) drops the full section gap — the section it would separate
+ * from is empty. It keeps a small one rather than zero: `##` carries
+ * `no-margin`, so with nothing between them the two headings would otherwise
+ * collide.
+ */
+.md-heading + .md-heading {
+  margin-top: var(--pharos-spacing-1-x);
+}
+
+/*
+ * The first heading in the body still needs its gap: the page title and lede
+ * sit above `.md-body`, so this is not the top of the page.
+ *
+ * It takes the full 112px, not the difference between that and the lede's own
+ * 48px bottom margin. The lede and the heading are in separate parents, and
+ * `.md-body` establishes the boundary, so the two margins collapse to the
+ * larger rather than adding — 48px of the gap comes free.
+ */
+.md-body > .md-heading:first-child {
+  margin-top: var(--pharos-spacing-7-x);
+}
+
+/*
+ * The page-title block, equivalent to `PageSection`'s `isHeader`. The
+ * description under an `#` heading is the page's standfirst and is styled from
+ * `.section__description--is-header`.
+ */
+.md-heading--1 {
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+/*
+ * The page standfirst, rendered from the `description` frontmatter. Equivalent
+ * to what `PageSection` produced for a section marked `isHeader`.
+ *
+ * These are exactly the declarations in `.section__description--is-header`.
+ * Note what is *not* here: `.section__description` sets `width: 75%` and
+ * `color`, but `PageSection` picks between the two classes with a ternary
+ * rather than applying both, so a header description never received either. It
+ * inherits the default text colour and spans the full column.
+ */
+.md-lede {
+  font-size: var(--pharos-type-scale-6);
+  line-height: 2rem;
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+/*
+ * Paragraph and list spacing is left to the browser default (24px bottom;
+ * `layout.css` only resets `margin-top`), which is the gap the hand-written
+ * pages showed between paragraphs. Setting `margin-bottom` here stacks on top
+ * of that rather than replacing it.
+ *
+ * The margin does have to be cancelled immediately before a heading. In the
+ * `.astro` pages that 24px sat *inside* the section wrapper and collapsed
+ * against its bottom margin, so the gap was the section value alone. Here the
+ * heading is a sibling, and a wrapper with its own `margin-top` does not
+ * collapse with the paragraph above it — the two add up, putting 104px where
+ * the original had 80px. Zeroing the trailing margin restores the single gap
+ * and hands spacing control to the heading.
+ */
+.md-body :is(p, ul, ol):has(+ .md-heading) {
+  margin-bottom: 0;
+}
+
+/* `layout.css` colours `p` only, so list text would otherwise be darker. */
+.md-body li {
+  color: var(--pharos-color-text-20);
+}

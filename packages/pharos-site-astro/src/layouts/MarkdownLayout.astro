@@ -2,8 +2,27 @@
 /**
  * Layout for Markdown/MDX docs pages. Wraps the standard site chrome and maps
  * the frontmatter Astro passes in to the Layout props.
+ *
+ * The page title and standfirst come from frontmatter rather than the body, so
+ * a page starts at `##` and the `#` is generated here. That keeps the two in
+ * one place — `title` feeds both the `<title>` tag and the visible heading,
+ * which the hand-written pages had to repeat. Every page gets its title this
+ * way; a page must not write its own `#`, or it renders two.
+ *
+ * Frontmatter:
+ *   title       required. Document title and the page's `<h1>`.
+ *   description optional. The standfirst under the title. Also the meta
+ *               description, matching what `PageSection isHeader` rendered.
+ *
+ * Component pages put their live demo and Storybook link in the body with
+ * `<Example>`, not here — a layout cannot take a named slot from MDX
+ * frontmatter, and the demo has to sit between the standfirst and the first
+ * `##` anyway.
  */
 import Layout from '@layouts/Layout.astro';
+import Heading from '@components/markdown/Heading.astro';
+
+import '../styles/markdown.css';
 
 interface Props {
   frontmatter: {
@@ -13,8 +32,13 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props;
+const { title, description } = frontmatter;
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
-  <slot />
+<Layout title={title} description={description}>
+  <Heading depth={1}>{title}</Heading>
+  {description && <div class="md-lede">{description}</div>}
+  <div class="md-body">
+    <slot />
+  </div>
 </Layout>

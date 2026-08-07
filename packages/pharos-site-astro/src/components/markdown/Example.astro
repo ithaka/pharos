@@ -1,0 +1,29 @@
+---
+/**
+ * The live demo and Storybook link that opens a component page, for use from
+ * MDX.
+ *
+ * `PageSection` took a `storyBookType` prop and rendered this when present. A
+ * Markdown page has no equivalent wrapper to hang that prop on, so the block
+ * is written explicitly in the body:
+ *
+ *     <Example storyBookType="forms">
+ *       <site-pharos-checkbox>...</site-pharos-checkbox>
+ *     </Example>
+ *
+ * `componentTitle` defaults to the page title, which is what builds the
+ * Storybook URL. Pass it only if the two differ.
+ */
+import ComponentExample from '@components/ComponentExample.astro';
+
+interface Props {
+  storyBookType: string;
+  componentTitle: string;
+}
+
+const { storyBookType, componentTitle } = Astro.props;
+---
+
+<ComponentExample storyBookType={storyBookType} componentTitle={componentTitle}>
+  <slot />
+</ComponentExample>

@@ -1,0 +1,273 @@
+---
+layout: '@layouts/MarkdownLayout.astro'
+title: 'Web elements'
+description: 'Web elements are the components on a page that users interact with, such as forms, dropdown menus, and error messages, as well as the items that help guide them through the content, like headers and hyperlinks.'
+---
+
+import { mdxComponents } from '@components/markdown/mdxComponents';
+import BestPractices from '@components/BestPractices.astro';
+
+export const components = mdxComponents;
+
+## General
+
+Perhaps more than any other writing on our sites, web elements call for clarity and conciseness.
+They should help our users complete whatever they are there to do without confusing or distracting
+them.
+
+### Alerts
+
+Alerts should be as specific as possible, explaining what the issue is, what actions the user can
+take, and whenever possible, how long we expect the issue will take (such as in the case of expected
+updates or maintenance). Use sentence case and appropriate punctuation.
+
+### Calls to action (CTAs)
+
+CTAs such as buttons should suggest the action the user would take in the fewest words possible. Be
+clear and concise and write in sentence case.
+
+<BestPractices>
+  <Fragment slot="do">Cite</Fragment>
+  <Fragment slot="dont">Click here to copy or download citation</Fragment>
+</BestPractices>
+
+### Dropdown menus
+
+Keep the content on dropdown menus brief, no longer than three words. When using the term, use it as
+an adjective preceding a word like 'menu'. Use as a noun sparingly.
+
+<BestPractices>
+  <Fragment slot="do">Open the dropdown menu</Fragment>
+  <Fragment slot="dont">Tap the dropdown</Fragment>
+</BestPractices>
+
+### Error messages
+
+Error messages should be specific about what went wrong, then suggest what to do next, including a
+link to the appropriate Support page if available. Don't include error codes in the message.
+
+If the user made an error, the messaging should provide a reason for the error, a recommended next
+step, and a way to contact us, if needed. If there are multiple errors, summarize them in a logical
+order.
+
+<BestPractices>
+  <Fragment slot="do">
+    Please correct the following highlighted fields before continuing:
+
+    - Username
+    - Password
+    - Terms and Conditions
+
+  </Fragment>
+  <Fragment slot="dont">
+    You left multiple fields below blank. In order to continue, you must fill them in.
+  </Fragment>
+</BestPractices>
+
+If there is a system error or something went wrong on our end, be apologetic, take the blame,
+provide a reason for the alert, and a way to contact us.
+
+<BestPractices>
+  <Fragment slot="do">
+    Sorry, there was an issue processing your report. Please try again. If the issue persists, [contact JSTOR Support](#).
+  </Fragment>
+  <Fragment slot="dont">We cannot currently fulfill API requests at this time.</Fragment>
+</BestPractices>
+
+If the error message is a single sentence, don't add a period at the end. If it is more than one
+sentence, punctuate normally.
+
+<BestPractices>
+  <Fragment slot="do">Password does not meet requirements</Fragment>
+</BestPractices>
+
+<BestPractices>
+  <Fragment slot="do">
+    Sorry, we couldn't create your folder. Please try again later. If the issue persists, [contact JSTOR Support](#).
+  </Fragment>
+</BestPractices>
+
+Error messaging should be action oriented. Be as specific as possible when writing field validation
+errors.
+
+<BestPractices>
+  <Fragment slot="do">Enter an email address</Fragment>
+  <Fragment slot="dont">This field is required.</Fragment>
+</BestPractices>
+
+### Forms
+
+Form titles should describe the purpose of the form concisely. As with headings and subheadings, use
+sentence case.
+
+Labels are written in sentence case, and they should not end in punctuation. Labels are concise with
+no more than three words. Avoid punctuation and articles ("the," "a," "an"). Choose nouns over
+verbs.
+
+<BestPractices>
+  <label slot="do">Role</label>
+  <label slot="dont">Choose a role.</label>
+</BestPractices>
+
+As with labels, also use sentence case for checkboxes and radio button fields.
+
+### Headings and subheadings
+
+Organize your content with headings and subheadings to identify sections and groupings of content
+and make it easy for readers to scan. Headings are also important for accessibility, as they are
+used to navigate the page.
+
+The heading and subheadings should provide a glimpse of the most important aspect of the information
+that follows. Organize them by size (i.e. H1 &gt; H2 &gt; H3) corresponding to the content they're
+covering (main topic &gt; aspect of that topic &gt; finer points).
+
+Wherever possible, write headlines in sentence case — studies indicate that sentence case is easier
+to read, plus title case can come across as heavy and overly serious.
+
+### Links
+
+{/*
+  The bare URLs on this page are examples of copy, not links. GFM autolinks a
+  bare URL, which would turn this guidance — and the "don't" example below —
+  into clickable links the Gatsby page never rendered. Passing the string
+  through a JSX expression keeps it out of the Markdown scanner; a wrapping
+  element does not, because autolinking happens inside it.
+*/}
+
+Don't use URLs unless there's a compelling reason (such as an easy-to-memorize link like
+jstor.org/open). If you do use an URL, don't include "{'https://www.'}"
+
+Don't use "here" or "on this page" as a link. The link text should accurately describe what the user
+can expect when they click the link. It's good practice for accessibility, and it makes for better
+copy.
+
+<BestPractices>
+  <Fragment slot="do">
+    Your reports are [available for download](#).
+  </Fragment>
+  <Fragment slot="dont">
+    You can download your report [here](#).
+  </Fragment>
+</BestPractices>
+
+<BestPractices>
+  <Fragment slot="dont">
+    You can download your report at {'https://www.jstor.org/showLogin?redirect=/librarians'}.
+  </Fragment>
+</BestPractices>
+
+### Lists
+
+Lists are easier to scan than blocks of text; use them to present steps, groups, or sets of
+information. Start with a brief introduction to give context.
+
+Capitalize the first word of each item, but only use punctuation if any of the list items is a
+complete sentence. Number lists only when the order is important, otherwise use bullet points. Make
+the list items parallel in structure—don't change the subject in the list.
+
+<BestPractices>
+  <Fragment slot="do">
+    How to participate:
+
+    1. Choose your content
+    2. Find your classification
+    3. Request a quote
+    4. Sign and submit the agreement
+
+  </Fragment>
+  <Fragment slot="dont">
+    We offer collections of the latest book titles in core disciplines that are highly used on JSTOR, as listed below:
+
+    1. History
+    2. Language and Literature
+    3. Political Science
+    4. JSTOR collections provide perpetual access with no recurring fees
+
+  </Fragment>
+</BestPractices>
+
+### Navigation menus
+
+Menu headings and items should be clear and concise. Use one to three words.
+
+<BestPractices>
+  <Fragment slot="do">Browse</Fragment>
+  <Fragment slot="dont">Browse Content on JSTOR</Fragment>
+</BestPractices>
+
+<BestPractices>
+  <Fragment slot="do">Support</Fragment>
+  <Fragment slot="dont">Visit our Support Site</Fragment>
+</BestPractices>
+
+### Placeholder text
+
+In text inputs, placeholder text is shown inside the text input to help users know what information
+they can enter. Field placeholder text is used for supplementary information. The text should be
+written as examples instead of instructions.
+
+<BestPractices>
+  <Fragment slot="do">Sample University</Fragment>
+  <Fragment slot="dont">Enter the name of your institution</Fragment>
+</BestPractices>
+
+For selects (dropdown inputs), without a default option, the placeholder text should start with
+'Select' and follow with the label text.
+
+<BestPractices>
+  <Fragment slot="do">Select a role</Fragment>
+  <Fragment slot="dont">Type your role here.</Fragment>
+</BestPractices>
+
+## Accessibility
+
+Our job, always, is to help. Keep the user in mind and the particular needs we're addressing in each
+message. Our copy is focused on getting the user to take a specific action; help them understand
+what our product can do for them and how to do it.
+
+### Aria-label/writing for assistive technology
+
+Make the visual label and the accessible name the same when possible; otherwise, have the visible
+label text at the beginning of the accessible name.
+
+Make labels visible, unique, and descriptive, as having the same label for different items makes it
+difficult for speech software to understand which one the user is requesting.
+
+### Alt text
+
+Alt text should describe an image, graph, or chart briefly. While alt text is good for search engine
+optimization (SEO), our main focus is to help those who can't see the images on our website.
+
+Consider three aspects in the description: object (the main focus), action (what is happening), and
+context (the environment in which you find the object and action).
+
+Don't start with "image of…" Avoid describing the gender, age, or race of subjects in images, unless
+it's necessary to understand the content. If the image is just decorative, leave the alt tag blank
+so screen-readers will skip it.
+
+<BestPractices>
+  <Fragment slot="do">Three students looking at a tablet in a library.</Fragment>
+  <Fragment slot="dont">Image of a young Asian man in a museum</Fragment>
+</BestPractices>
+
+<BestPractices>
+  <Fragment slot="do">Chart representing the 12% growth of journal articles in 2019</Fragment>
+</BestPractices>
+
+### Consistent identification
+
+Make interactive elements consistent in identification and functionality. Don't label a search
+button "submit" on one page and "find" on another.
+
+### Directional language
+
+Avoid using phrases like "above," "below," "on the right," etc. or describing an element by color.
+
+<BestPractices>
+  <Fragment slot="do">Click Continue</Fragment>
+  <Fragment slot="dont">Click the large red button below</Fragment>
+</BestPractices>
+
+<div>
+  <p>For more on writing accessible content, visit the <site-pharos-link href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG)</site-pharos-link>.</p>
+</div>

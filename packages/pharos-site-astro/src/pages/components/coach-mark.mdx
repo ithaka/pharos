@@ -1,0 +1,120 @@
+---
+layout: '@layouts/MarkdownLayout.astro'
+title: 'Coach Mark'
+description: 'Coach marks highlight new or unique features, direct users in the right direction, or guide users during onboarding.'
+---
+
+import { mdxComponents } from '@components/markdown/mdxComponents';
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import DemoScript from '@components/markdown/DemoScript.astro';
+
+export const components = mdxComponents;
+
+<Example storyBookType="components" componentTitle="Coach Mark">
+  <div
+    style="border: 1px solid #eae8e1; padding: 20px; margin: 200px auto; width: fit-content;"
+    data-coach-mark="example-coachmark"
+  >
+    Lorem Ipsum
+  </div>
+  <site-pharos-coach-mark
+    id="example-coachmark"
+    side="bottom"
+    alignment="start"
+    header="Coach Mark"
+    delay="short"
+    variant="dark"
+  >
+    This is an example Coach Mark
+  </site-pharos-coach-mark>
+</Example>
+
+## Usage
+
+Coach marks can appear automatically, after a delay, to focus the user's attention on a single primary action or in response to an action.
+
+### Examples
+
+- When a user visits a page for the first time
+- When a new feature is added
+- Inform a user after they activated a process
+
+### Placement
+
+There are 12 placement options available. Coach marks can be placed top, bottom, left or
+      right of the target (e.g. button, icon, link, etc.) and the caret (triangle) can be placed at
+      the start, center or end of the coach mark.
+
+<strong>Where should I place a coach mark? </strong>
+
+The coach mark should be in close proximity to the feature that it highlights. There are 2
+      preferred placement options out of a total of the available 12. A coachmark should be placed
+      either on the top or bottom of a feature with the caret (triangle) appearing in the center.
+      The other placement options should only be used so that important features or information is
+      not hidden.
+
+### Types
+
+1. Informational: Focuses the attention of the user on a section of the page or process taking place.
+2. Instructional: Highlights a feature or action.
+
+### Light vs Dark
+
+The dark coach mark variant is the default state. Most of the backgrounds on JSTOR are white
+      and should use the dark coach mark for contrast. Consider using the light coach mark variant
+      when the coach mark will appear over dark backgrounds.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+    - Use coach marks to focus attention to important functionality and feedback in context
+    - Display coach marks on a page once per session
+    - Consider a coach mark to promote new features, functionality, or other changes to layout and patterns that may disorient the user
+  </Fragment>
+  <Fragment slot="dont">
+    - Do not repetitively display the same coach mark. You should be able to track whether the user has dismissed the coach mark and be confident it will not reappear
+    - Do not overuse the coach mark and consider where else in the user's journey they may be interacting with coach marks within the product
+    - Do not add more than one coach mark to a page. If features need explanation consider a tool tip or other passive communication devices (badges, external links, etc)
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+The coach mark headline and body copy should be informative, actionable, and concise. It should
+    Include the minimum amount of information that users need to know. It should not repeat what is
+    already visibly available to the user in the interface. For example, you should not use
+    "Workspace" as a headline if the coach mark is targeting a "Workspace" navigation link. Rather
+    you would expect something actionable like.. "Find what you saved". Content should be written
+    in sentence case. Refer to
+    [Voice and Tone guidelines](https://pharos.jstor.org/content-style-guide/voice-and-tone)
+    for more guidance.
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [4.1.3 Status Messages](https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html)
+- [1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+
+### Code expectations
+
+- Button contains "aria-haspopup="dialog"
+
+{/*
+  `hide` defaults to `true` on PharosCoachMark, and because it is a reflecting
+  boolean the attribute cannot express `false` -- any `hide` attribute at all
+  parses as true. The Gatsby page passed hide as a React prop with a false
+  value, so the property is set directly here once the element has upgraded,
+  which is what makes the example coach mark visible.
+*/}
+
+<DemoScript
+  code={`
+  customElements.whenDefined('site-pharos-coach-mark').then(() => {
+    const coachMark = document.getElementById('example-coachmark');
+    if (coachMark) coachMark.hide = false;
+  });
+`}
+/>
