@@ -7,6 +7,7 @@ import ColorTable from '@components/ColorTable.astro';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import type { DesignToken } from '@lib/tokenFormat';
 
+/** Global colour tokens carry palette groupings the alias tokens do not. */
 interface GlobalColorToken extends DesignToken {
   group?: string;
   palette?: string;

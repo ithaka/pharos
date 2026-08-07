@@ -3,43 +3,29 @@
 import Layout from '@layouts/Layout.astro';
 import PageSection from '@components/PageSection.astro';
 import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
-import { toTokenName } from '@lib/tokenFormat';
 import type { DesignToken } from '@lib/tokenFormat';
 
 const weights = Object.values(tokens.font.weight as Record<string, DesignToken>);
+
+const rows = weights.map((token) => {
+  const style = `font-weight: ${token.value}; line-height: normal;`;
+  return {
+    name: token.name,
+    value: token.value,
+    examples: [
+      // The lowercase alphabet reproduces the Gatsby source's "jlk" transposition.
+      `<div style="${style}">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div><div style="${style}">abcdefghijlkmnopqrstuvwxyz</div>`,
+    ],
+  };
+});
 ---
 
 <Layout title="Font weight">
   <PageSection title="Font weight" isHeader>
     <TokenTable>
-      <thead>
-        <tr>
-          <th style="width: 40%;">Token</th>
-          <th style="width: 30%;">Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          weights.map((token) => (
-            <tr>
-              <td>
-                <code class="token-code">{toTokenName(token.name)}</code>
-              </td>
-              <td>{token.value}</td>
-              <td>
-                <div style={`font-weight: ${token.value}; line-height: normal;`}>
-                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
-                </div>
-                <div style={`font-weight: ${token.value}; line-height: normal;`}>
-                  abcdefghijlkmnopqrstuvwxyz
-                </div>
-              </td>
-            </tr>
-          ))
-        }
-      </tbody>
+      <TokenRows rows={rows} />
     </TokenTable>
   </PageSection>
 </Layout>

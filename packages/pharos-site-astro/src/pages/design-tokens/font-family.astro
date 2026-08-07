@@ -3,43 +3,28 @@
 import Layout from '@layouts/Layout.astro';
 import PageSection from '@components/PageSection.astro';
 import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
-import { toTokenName } from '@lib/tokenFormat';
 import type { DesignToken } from '@lib/tokenFormat';
 
 const families = Object.values(tokens.font.family as Record<string, DesignToken>);
+
+const rows = families.map((token) => {
+  const style = `font-family: ${token.value}; font-size: 1.5rem; line-height: normal;`;
+  return {
+    name: token.name,
+    value: token.value,
+    examples: [
+      `<div style="${style}">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div><div style="${style}">abcdefghijklmnopqrstuvwxyz</div>`,
+    ],
+  };
+});
 ---
 
 <Layout title="Font family">
   <PageSection title="Font family" isHeader>
     <TokenTable>
-      <thead>
-        <tr>
-          <th style="width: 33%;">Token</th>
-          <th style="width: 33%;">Value</th>
-          <th style="width: 36%;">Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          families.map((token) => (
-            <tr>
-              <td>
-                <code class="token-code">{toTokenName(token.name)}</code>
-              </td>
-              <td>{token.value}</td>
-              <td>
-                <div style={`font-family: ${token.value}; font-size: 1.5rem; line-height: normal;`}>
-                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
-                </div>
-                <div style={`font-family: ${token.value}; font-size: 1.5rem; line-height: normal;`}>
-                  abcdefghijklmnopqrstuvwxyz
-                </div>
-              </td>
-            </tr>
-          ))
-        }
-      </tbody>
+      <TokenRows rows={rows} columnWidths={['33%', '33%', '36%']} />
     </TokenTable>
   </PageSection>
 </Layout>

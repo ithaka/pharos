@@ -3,13 +3,9 @@
 import Layout from '@layouts/Layout.astro';
 import PageSection from '@components/PageSection.astro';
 import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
-import { toTokenName } from '@lib/tokenFormat';
-import type { DesignToken } from '@lib/tokenFormat';
-
-interface ScaleToken extends DesignToken {
-  comment: string;
-}
+import type { DesignToken, ScaleToken } from '@lib/tokenFormat';
 
 const scale = tokens.type.scale as unknown as Record<string, ScaleToken>;
 const sizes = tokens.font.size as unknown as Record<string, DesignToken>;
@@ -19,44 +15,25 @@ const basePixels = scale[baseValue].comment;
 const basePx = Number(basePixels.substring(0, basePixels.length - 2));
 
 const rows = Object.keys(sizes).map((key) => {
-  const tokenPixel = scale[sizes[key].value].comment;
+  const token = sizes[key];
+  const tokenPixel = scale[token.value].comment;
   const tokenPx = Number(tokenPixel.substring(0, tokenPixel.length - 2));
-  return { token: sizes[key], tokenPixel, tokenPx, tokenRem: tokenPx / basePx };
+  const style = `font-size: ${tokenPixel}; line-height: normal;`;
+
+  return {
+    name: token.name,
+    value: `${tokenPx}px | ${tokenPx / basePx}rem`,
+    examples: [
+      `<div style="${style}">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div><div style="${style}">abcdefghijklmnopqrstuvwxyz</div>`,
+    ],
+  };
 });
 ---
 
 <Layout title="Font size">
   <PageSection title="Font size" isHeader>
     <TokenTable>
-      <thead>
-        <tr>
-          <th style="width: 40%;">Token</th>
-          <th style="width: 30%;">Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          rows.map(({ token, tokenPixel, tokenPx, tokenRem }) => (
-            <tr>
-              <td>
-                <code class="token-code">{toTokenName(token.name)}</code>
-              </td>
-              <td>
-                {tokenPx}px | {tokenRem}rem
-              </td>
-              <td>
-                <div style={`font-size: ${tokenPixel}; line-height: normal;`}>
-                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
-                </div>
-                <div style={`font-size: ${tokenPixel}; line-height: normal;`}>
-                  abcdefghijklmnopqrstuvwxyz
-                </div>
-              </td>
-            </tr>
-          ))
-        }
-      </tbody>
+      <TokenRows rows={rows} />
     </TokenTable>
   </PageSection>
 </Layout>

@@ -3,13 +3,9 @@
 import Layout from '@layouts/Layout.astro';
 import PageSection from '@components/PageSection.astro';
 import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
-import { toTokenName } from '@lib/tokenFormat';
-import type { DesignToken } from '@lib/tokenFormat';
-
-interface LineHeightToken extends DesignToken {
-  comment?: string;
-}
+import type { CommentedToken } from '@lib/tokenFormat';
 
 /**
  * Example font size per row, keyed by token name. Keyed rather than positional
@@ -26,11 +22,12 @@ const fontSizeMap: Record<string, number> = {
   'text-base-condensed': 16,
 };
 
-const lineHeights = tokens['line-height'] as unknown as Record<string, LineHeightToken>;
+const lineHeights = tokens['line-height'] as unknown as Record<string, CommentedToken>;
 
 const rows = Object.keys(lineHeights)
   .filter((key) => key !== 'brand' && key !== 'base')
   .map((key) => {
+    const token = lineHeights[key];
     const fontSize = fontSizeMap[key];
     if (fontSize === undefined) {
       throw new Error(
@@ -38,49 +35,30 @@ const rows = Object.keys(lineHeights)
           `Add it to fontSizeMap.`
       );
     }
-    return { key, token: lineHeights[key], fontSize };
+
+    const fontFamily =
+      fontSize >= 24
+        ? 'var(--pharos-font-family-serif)'
+        : 'var(--pharos-font-family-sans-serif)';
+    const text =
+      key === 'heading-large'
+        ? 'Lorem ipsum dolor sit amet...'
+        : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
+    return {
+      name: token.name,
+      value: `${token.comment ? token.comment + ' | ' : ''}${token.value}`,
+      examples: [
+        `<div class="line-height-example" style="line-height: ${token.value}; font-size: ${fontSize}px; font-family: ${fontFamily};">${text}</div>`,
+      ],
+    };
   });
 ---
 
 <Layout title="Line height">
   <PageSection title="Line height" isHeader>
     <TokenTable>
-      <thead>
-        <tr>
-          <th style="width: 40%;">Token</th>
-          <th style="width: 30%;">Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          rows.map(({ key, token, fontSize }) => (
-            <tr>
-              <td>
-                <code class="token-code">{toTokenName(token.name)}</code>
-              </td>
-              <td>
-                {token.comment ? token.comment + ' | ' : ''}
-                {token.value}
-              </td>
-              <td>
-                <div
-                  class="line-height-example"
-                  style={`line-height: ${token.value}; font-size: ${fontSize}px; font-family: ${
-                    fontSize >= 24
-                      ? 'var(--pharos-font-family-serif)'
-                      : 'var(--pharos-font-family-sans-serif)'
-                  };`}
-                >
-                  {key === 'heading-large'
-                    ? 'Lorem ipsum dolor sit amet...'
-                    : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
-                </div>
-              </td>
-            </tr>
-          ))
-        }
-      </tbody>
+      <TokenRows rows={rows} />
     </TokenTable>
   </PageSection>
 </Layout>

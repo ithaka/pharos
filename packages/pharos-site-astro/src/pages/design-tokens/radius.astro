@@ -3,47 +3,25 @@
 import Layout from '@layouts/Layout.astro';
 import PageSection from '@components/PageSection.astro';
 import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
-import { toTokenName } from '@lib/tokenFormat';
-import type { DesignToken } from '@lib/tokenFormat';
+import type { CommentedToken } from '@lib/tokenFormat';
 
-interface RadiusToken extends DesignToken {
-  comment?: string;
-}
+const radii = Object.values(tokens.radius.base as unknown as Record<string, CommentedToken>);
 
-const radii = Object.values(tokens.radius.base as unknown as Record<string, RadiusToken>);
+const rows = radii.map((token) => ({
+  name: token.name,
+  value: `${token.comment} | ${token.value}`,
+  examples: [
+    `<div class="radius-example" style="border-radius: ${token.value}; background: var(--pharos-color-living-coral-80); width: 2rem; height: 2rem; display: inline-block;"></div>`,
+  ],
+}));
 ---
 
 <Layout title="Radius">
   <PageSection title="Radius" isHeader>
     <TokenTable>
-      <thead>
-        <tr>
-          <th style="width: 40%;">Token</th>
-          <th style="width: 30%;">Value</th>
-          <th>Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          radii.map((token) => (
-            <tr>
-              <td>
-                <code class="token-code">{toTokenName(token.name)}</code>
-              </td>
-              <td>
-                {token.comment} | {token.value}
-              </td>
-              <td>
-                <div
-                  class="radius-example"
-                  style={`border-radius: ${token.value}; background: var(--pharos-color-living-coral-80); width: 2rem; height: 2rem; display: inline-block;`}
-                />
-              </td>
-            </tr>
-          ))
-        }
-      </tbody>
+      <TokenRows rows={rows} />
     </TokenTable>
   </PageSection>
 </Layout>

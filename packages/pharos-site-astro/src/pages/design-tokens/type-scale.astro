@@ -3,63 +3,42 @@
 import Layout from '@layouts/Layout.astro';
 import PageSection from '@components/PageSection.astro';
 import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
-import { toTokenName } from '@lib/tokenFormat';
-import type { DesignToken } from '@lib/tokenFormat';
-
-interface ScaleToken extends DesignToken {
-  comment: string;
-}
+import type { ScaleToken } from '@lib/tokenFormat';
 
 const scale = Object.values(tokens.type.scale as unknown as Record<string, ScaleToken>);
+
+/** Placeholder shown when a size is out of range for one of the two typefaces. */
+const dash = '<site-pharos-icon name="dash-small" a11y-hidden="true"></site-pharos-icon>';
+
+const rows = scale.map((token) => {
+  const px = token.comment;
+  const sansSerif =
+    Number(token.value) < 10
+      ? `<span class="token-type-sans-serif" style="font-size: ${px};">GT America</span>`
+      : dash;
+  const serif =
+    Number(token.value) > 5
+      ? `<span class="token-type-serif" style="font-size: ${px}; font-family: var(--pharos-font-family-serif); line-height: var(--pharos-line-height-heading-large);">Ivar Headline</span>`
+      : dash;
+
+  return {
+    name: token.name,
+    value: `${px} | ${Number(px.substring(0, px.length - 2)) / 16}rem`,
+    examples: [sansSerif, serif],
+  };
+});
 ---
 
 <Layout title="Type scale">
   <PageSection title="Type scale" isHeader>
     <TokenTable>
-      <thead>
-        <tr>
-          <th style="width: 25%;">Token</th>
-          <th style="width: 20%;">Value</th>
-          <th style="width: 25%;">Sans-Serif</th>
-          <th>Serif</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          scale.map((token) => (
-            <tr>
-              <td>
-                <code class="token-code">{toTokenName(token.name)}</code>
-              </td>
-              <td>
-                {token.comment} | {Number(token.comment.substring(0, token.comment.length - 2)) / 16}rem
-              </td>
-              <td>
-                {Number(token.value) < 10 ? (
-                  <span class="token-type-sans-serif" style={`font-size: ${token.comment};`}>
-                    GT America
-                  </span>
-                ) : (
-                  <site-pharos-icon name="dash-small" a11y-hidden="true" />
-                )}
-              </td>
-              <td>
-                {Number(token.value) > 5 ? (
-                  <span
-                    class="token-type-serif"
-                    style={`font-size: ${token.comment}; font-family: var(--pharos-font-family-serif); line-height: var(--pharos-line-height-heading-large);`}
-                  >
-                    Ivar Headline
-                  </span>
-                ) : (
-                  <site-pharos-icon name="dash-small" a11y-hidden="true" />
-                )}
-              </td>
-            </tr>
-          ))
-        }
-      </tbody>
+      <TokenRows
+        rows={rows}
+        exampleHeadings={['Sans-Serif', 'Serif']}
+        columnWidths={['25%', '20%', '25%']}
+      />
     </TokenTable>
   </PageSection>
 </Layout>

@@ -1,0 +1,67 @@
+---
+/**
+ * Renders the `thead` and `tbody` shared by the design-token tables.
+ *
+ * Seven token pages rendered a byte-identical `Token / Value / Example` header
+ * and a structurally identical row loop, differing only in the example cell.
+ * That cell is the one genuine variation, so it is passed per row as an HTML
+ * string (built by the page, which knows its own inline styles) and emitted
+ * with `set:html`. The value cell varies only slightly and is handled the same
+ * way when a page needs more than the token's raw value.
+ *
+ * Column widths are configurable because the pages do not agree on them
+ * (40/30, 33/33/36, 40/40 and a four-column variant on type-scale).
+ */
+import { toTokenName } from '@lib/tokenFormat';
+
+export interface TokenRow {
+  /** Token name, rendered through `toTokenName` into the first cell. */
+  name: string;
+  /** Second-cell content as HTML. */
+  value: string;
+  /** Remaining cells as HTML, one entry per example column. */
+  examples: string[];
+}
+
+interface Props {
+  rows: TokenRow[];
+  /** Header labels after `Token` and `Value`. */
+  exampleHeadings?: string[];
+  /** Inline `width` for each column, in order. Empty string means unset. */
+  columnWidths?: string[];
+}
+
+const {
+  rows,
+  exampleHeadings = ['Example'],
+  columnWidths = ['40%', '30%'],
+} = Astro.props;
+
+const headings = ['Token', 'Value', ...exampleHeadings];
+---
+
+<thead>
+  <tr>
+    {
+      headings.map((heading, i) => {
+        const width = columnWidths[i];
+        return width ? <th style={`width: ${width};`}>{heading}</th> : <th>{heading}</th>;
+      })
+    }
+  </tr>
+</thead>
+<tbody>
+  {
+    rows.map((row) => (
+      <tr>
+        <td>
+          <code class="token-code">{toTokenName(row.name)}</code>
+        </td>
+        <td set:html={row.value} />
+        {row.examples.map((example) => (
+          <td set:html={example} />
+        ))}
+      </tr>
+    ))
+  }
+</tbody>

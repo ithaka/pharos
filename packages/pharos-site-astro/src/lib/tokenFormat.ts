@@ -15,6 +15,24 @@ export interface DesignToken {
 }
 
 /**
+ * A token carrying a human-readable `comment` alongside its value — e.g. the
+ * pixel equivalent of a rem value. Optional because it is absent on some
+ * members of groups that otherwise have it.
+ */
+export interface CommentedToken extends DesignToken {
+  comment?: string;
+}
+
+/**
+ * A token whose `comment` is always present — the type-scale tokens and the
+ * font-size tokens that index into them, where the comment holds the pixel
+ * value the page does arithmetic on.
+ */
+export interface ScaleToken extends DesignToken {
+  comment: string;
+}
+
+/**
  * For alias tokens (whose original value references another token, e.g.
  * `{color.marbleGray.30.value}`) returns the referenced global token's name.
  * Ported from ColorRow.tsx.
