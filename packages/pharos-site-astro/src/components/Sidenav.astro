@@ -9,6 +9,7 @@ import {
   designTokenPages,
   stylePages,
 } from '@lib/navigation';
+import { assertNavigationMatchesPages } from '@lib/assertNavigation';
 
 interface Props {
   /** Current path, used to derive active/expanded state at build time. */
@@ -24,6 +25,12 @@ const currentPath = normalize(pathname);
 
 const isActive = (href: string) => currentPath === normalize(href);
 const isExpanded = (root: string) => currentPath.startsWith(`/${root}`);
+
+/**
+ * Fails the build if `navigation.ts` and `src/pages` disagree — a nav entry
+ * with no page, or a page nothing links to.
+ */
+assertNavigationMatchesPages();
 
 const sectionLinks = (root: string, pages: readonly string[]) =>
   pages.map((page) => ({ label: page, href: `/${root}/${toSlug(page)}` }));
