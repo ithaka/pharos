@@ -7,6 +7,10 @@ dist/
 .storybook-static/
 coverage/
 lib/
+# `lib/` above targets compiled build output, but is unanchored, so it also
+# swallowed the Astro site's hand-written src/lib/ — leaving that source
+# untracked and the package unbuildable from a fresh clone.
+!packages/pharos-site-astro/src/lib/
 packages/**/package-lock.json
 packages/pharos-site/public/
 packages/pharos-site/.cache/
