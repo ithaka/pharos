@@ -1,0 +1,123 @@
+---
+import { siteMetadata } from '@lib/siteMetadata';
+import { toSlug } from '@lib/textConvert';
+import {
+  brandExpressionPages,
+  componentPages,
+  contentStyleGuidePages,
+  contributingPages,
+  designTokenPages,
+  stylePages,
+} from '@lib/navigation';
+
+interface Props {
+  /** Current path, used to derive active/expanded state at build time. */
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+
+/** Normalizes away any trailing slash so `/help/` and `/help` compare equal. */
+const normalize = (path: string) => (path.length > 1 ? path.replace(/\/+$/, '') : path);
+
+const currentPath = normalize(pathname);
+
+const isActive = (href: string) => currentPath === normalize(href);
+const isExpanded = (root: string) => currentPath.startsWith(`/${root}`);
+
+const sectionLinks = (root: string, pages: readonly string[]) =>
+  pages.map((page) => ({ label: page, href: `/${root}/${toSlug(page)}` }));
+---
+
+<site-pharos-sidenav
+  main-content-id="skip-link"
+  id="site-sidenav"
+  class="sidenav"
+  open
+  data-mobile-breakpoint="1055"
+>
+  <site-pharos-link href="/" slot="top" flex>
+    <div>
+      <div class="site-brand__title">{siteMetadata.title}</div>
+      <div class="site-brand__sub-title">{siteMetadata.subtitle}</div>
+    </div>
+  </site-pharos-link>
+
+  <site-pharos-sidenav-section show-divider>
+    <site-pharos-sidenav-link href="/getting-started" is-active={isActive('/getting-started') || undefined}>
+      Getting started
+    </site-pharos-sidenav-link>
+    <site-pharos-sidenav-link href="/help" is-active={isActive('/help') || undefined}>
+      Help
+    </site-pharos-sidenav-link>
+    <site-pharos-sidenav-link href="/faqs" is-active={isActive('/faqs') || undefined}>
+      FAQs
+    </site-pharos-sidenav-link>
+    <site-pharos-sidenav-menu label="Contributing" expanded={isExpanded('contributing') || undefined}>
+      {
+        sectionLinks('contributing', contributingPages).map(({ label, href }) => (
+          <site-pharos-sidenav-link href={href} is-active={isActive(href) || undefined}>
+            {label}
+          </site-pharos-sidenav-link>
+        ))
+      }
+    </site-pharos-sidenav-menu>
+    <site-pharos-sidenav-link href="https://github.com/ithaka/pharos" target="_blank" external>
+      GitHub
+    </site-pharos-sidenav-link>
+    <site-pharos-sidenav-link href="https://www.jstor.org/" target="_blank" external>
+      JSTOR
+    </site-pharos-sidenav-link>
+  </site-pharos-sidenav-section>
+
+  <site-pharos-sidenav-section label="Brand Guidelines" show-divider>
+    <site-pharos-sidenav-menu label="Brand expressions" expanded={isExpanded('brand-expressions') || undefined}>
+      {
+        sectionLinks('brand-expressions', brandExpressionPages).map(({ label, href }) => (
+          <site-pharos-sidenav-link href={href} is-active={isActive(href) || undefined}>
+            {label}
+          </site-pharos-sidenav-link>
+        ))
+      }
+    </site-pharos-sidenav-menu>
+    <site-pharos-sidenav-menu label="Content style guide" expanded={isExpanded('content-style-guide') || undefined}>
+      {
+        sectionLinks('content-style-guide', contentStyleGuidePages).map(({ label, href }) => (
+          <site-pharos-sidenav-link href={href} is-active={isActive(href) || undefined}>
+            {label}
+          </site-pharos-sidenav-link>
+        ))
+      }
+    </site-pharos-sidenav-menu>
+  </site-pharos-sidenav-section>
+
+  <site-pharos-sidenav-section label="Design System">
+    <site-pharos-sidenav-menu label="Components" expanded={isExpanded('components') || undefined}>
+      {
+        sectionLinks('components', componentPages).map(({ label, href }) => (
+          <site-pharos-sidenav-link href={href} is-active={isActive(href) || undefined}>
+            {label}
+          </site-pharos-sidenav-link>
+        ))
+      }
+    </site-pharos-sidenav-menu>
+    <site-pharos-sidenav-menu label="Design tokens" expanded={isExpanded('design-tokens') || undefined}>
+      {
+        sectionLinks('design-tokens', designTokenPages).map(({ label, href }) => (
+          <site-pharos-sidenav-link href={href} is-active={isActive(href) || undefined}>
+            {label}
+          </site-pharos-sidenav-link>
+        ))
+      }
+    </site-pharos-sidenav-menu>
+    <site-pharos-sidenav-menu label="Styles" expanded={isExpanded('styles') || undefined}>
+      {
+        sectionLinks('styles', stylePages).map(({ label, href }) => (
+          <site-pharos-sidenav-link href={href} is-active={isActive(href) || undefined}>
+            {label}
+          </site-pharos-sidenav-link>
+        ))
+      }
+    </site-pharos-sidenav-menu>
+  </site-pharos-sidenav-section>
+</site-pharos-sidenav>

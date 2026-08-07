@@ -1,0 +1,42 @@
+---
+/** Ported from the Gatsby site's src/pages/design-tokens/alias-colors.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import ColorTable from '@components/ColorTable.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import type { DesignToken } from '@lib/tokenFormat';
+
+const color = tokens.color as Record<string, never>;
+
+/** Flattens a token group (e.g. `color.interactive`) into a list of tokens. */
+const group = (name: string): DesignToken[] =>
+  Object.values((color[name] ?? {}) as Record<string, DesignToken>);
+
+/** A group that is itself a single token, such as `color.disabled`. */
+const single = (name: string): DesignToken[] => (color[name] ? [color[name] as DesignToken] : []);
+
+const baseTokens = [
+  ...group('interactive'),
+  ...group('ui'),
+  ...single('disabled'),
+  ...single('overlay'),
+  ...group('feedback'),
+];
+const textTokens = group('text');
+const interactionTokens = [...single('focus'), ...group('hover')];
+---
+
+<Layout title="Alias colors">
+  <PageSection title="Alias colors" isHeader>
+    <TokenTable>
+      <ColorTable tokens={baseTokens} />
+    </TokenTable>
+    <TokenTable title="Text color">
+      <ColorTable tokens={textTokens} />
+    </TokenTable>
+    <TokenTable title="Interaction color">
+      <ColorTable tokens={interactionTokens} />
+    </TokenTable>
+  </PageSection>
+</Layout>

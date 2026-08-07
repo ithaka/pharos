@@ -1,0 +1,45 @@
+---
+/** Ported from the Gatsby site's src/pages/design-tokens/elevation.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTokenName } from '@lib/tokenFormat';
+import type { DesignToken } from '@lib/tokenFormat';
+
+const levels = tokens.elevation.level as unknown as Record<string, DesignToken>;
+const rows = Object.keys(levels)
+  .filter((key) => key !== 'gutter')
+  .map((key) => levels[key]);
+---
+
+<Layout title="Elevation">
+  <PageSection title="Elevation" isHeader>
+    <TokenTable>
+      <thead>
+        <tr>
+          <th style="width: 40%;">Token</th>
+          <th style="width: 30%;">Value</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map((token) => (
+            <tr>
+              <td>
+                <code class="token-code">{toTokenName(token.name)}</code>
+              </td>
+              <td>{token.value}</td>
+              <td>
+                <div
+                  style={`box-shadow: ${token.value}; background: #FFFFF; width: 201px; height: 142px; display: inline-block; border-radius: 2px;`}
+                />
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </TokenTable>
+  </PageSection>
+</Layout>

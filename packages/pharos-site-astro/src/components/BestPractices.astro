@@ -1,0 +1,55 @@
+---
+/**
+ * Ported from the Gatsby site's src/components/statics/BestPractices.tsx.
+ *
+ * The `Do` / `Dont` React props become named slots so guideline pages can pass
+ * lists and links rather than plain strings.
+ */
+import Grid from '@components/Grid.astro';
+
+const hasDo = Astro.slots.has('do');
+const hasDont = Astro.slots.has('dont');
+---
+
+<Grid columns={2} hSpace={3} bottom={2}>
+  <div>
+    {
+      hasDo && (
+        <>
+          <hr class="best-practices__line--do" />
+          <div class="best-practices__container">
+            <site-pharos-icon
+              name="checkmark"
+              a11y-title="Check mark"
+              class="best-practices__icon--do"
+            />
+            <div>
+              <div class="best-practices__text--do">Dos</div>
+              <div class="best-practices__guideline">
+                <slot name="do" />
+              </div>
+            </div>
+          </div>
+        </>
+      )
+    }
+  </div>
+  <div>
+    {
+      hasDont && (
+        <>
+          <hr class="best-practices__line--dont" />
+          <div class="best-practices__container">
+            <site-pharos-icon name="close" a11y-title="X" class="best-practices__icon--dont" />
+            <div>
+              <div class="best-practices__text--dont">Don'ts</div>
+              <div class="best-practices__guideline">
+                <slot name="dont" />
+              </div>
+            </div>
+          </div>
+        </>
+      )
+    }
+  </div>
+</Grid>

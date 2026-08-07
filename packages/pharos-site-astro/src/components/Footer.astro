@@ -1,0 +1,108 @@
+---
+/** Ported from the Gatsby site's src/components/footer.tsx. */
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer__container">
+  <site-pharos-layout preset="1-col--sidenav-comfy" rows="auto min-content" class="footer">
+    <div class="container__start">
+      <site-pharos-link class="logo__link" href="https://www.jstor.org/" target="_blank" flex>
+        <img src="/images/footer/logo-white.svg" alt="JSTOR Logo" width="70" height="100" />
+      </site-pharos-link>
+    </div>
+    <div class="container__center">
+      <ul class="list">
+        <li>
+          <site-pharos-link
+            href="https://github.com/ithaka/pharos/blob/main/packages/pharos/CHANGELOG.md"
+            is-on-background
+            target="_blank"
+            data-sc="link:changelog footer"
+          >
+            Changelog
+          </site-pharos-link>
+        </li>
+        <li>
+          <site-pharos-link
+            href="https://pharos.jstor.org/storybooks/wc/"
+            is-on-background
+            target="_blank"
+            data-sc="link:wc storybook footer"
+          >
+            Web Components Storybook
+          </site-pharos-link>
+        </li>
+        <li>
+          <site-pharos-link
+            href="https://pharos.jstor.org/storybooks/react/"
+            is-on-background
+            target="_blank"
+            data-sc="link:react storybook footer"
+          >
+            React Storybook
+          </site-pharos-link>
+        </li>
+      </ul>
+    </div>
+    <div class="container__center">
+      <ul class="list">
+        <li>
+          <site-pharos-link href="https://about.jstor.org/" is-on-background target="_blank">
+            About JSTOR
+          </site-pharos-link>
+        </li>
+        <li class="container__link">
+          <site-pharos-link href="https://www.ithaka.org/careers/" is-on-background target="_blank">
+            Careers
+          </site-pharos-link>
+          <strong class="badge">We're hiring!</strong>
+        </li>
+        <li>
+          <site-pharos-link id="cookie-settings-link" href="#" is-on-background>
+            Cookie settings
+          </site-pharos-link>
+        </li>
+      </ul>
+    </div>
+    <div class="container__end">
+      <site-pharos-heading level="2" preset="1--bold">Have questions?</site-pharos-heading>
+      <div>
+        <site-pharos-link
+          href="mailto:opensource@ithaka.org"
+          is-on-background
+          data-sc="link:email footer"
+        >
+          Email us
+        </site-pharos-link> or <site-pharos-link
+          href="https://github.com/ithaka/pharos"
+          is-on-background
+          target="_blank"
+          data-sc="link:repo footer"
+        >
+          open an issue on GitHub
+        </site-pharos-link>.
+      </div>
+    </div>
+    <div class="note copyright-statement">
+      &copy;2021&ndash;{currentYear} ITHAKA. All Rights Reserved. JSTOR&reg;, the JSTOR logo,
+      JPASS&reg;, Artstor&reg;, Reveal Digital&trade; and ITHAKA&reg; are registered trademarks of
+      ITHAKA.
+    </div>
+    <em class="note netlify-link">
+      This site is powered by <site-pharos-link href="https://www.netlify.com" is-on-background target="_blank">
+        Netlify
+      </site-pharos-link>
+    </em>
+  </site-pharos-layout>
+</footer>
+
+<script>
+  // The Gatsby site used an inline `onclick` attribute for the OneTrust banner;
+  // Astro templates cannot carry inline handlers into the custom element, so the
+  // listener is attached here instead.
+  const cookieLink = document.getElementById('cookie-settings-link');
+  cookieLink?.addEventListener('click', (event) => {
+    event.preventDefault();
+    (window as unknown as { OneTrust?: { ToggleInfoDisplay: () => void } }).OneTrust?.ToggleInfoDisplay();
+  });
+</script>

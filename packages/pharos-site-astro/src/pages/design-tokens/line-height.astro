@@ -1,0 +1,65 @@
+---
+/** Ported from the Gatsby site's src/pages/design-tokens/line-height.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTokenName } from '@lib/tokenFormat';
+import type { DesignToken } from '@lib/tokenFormat';
+
+interface LineHeightToken extends DesignToken {
+  comment?: string;
+}
+
+/** Example font size per row, paired positionally with the token list. */
+const fontSizeMap = [12, 14, 16, 24, 32, 54, 16];
+
+const lineHeights = tokens['line-height'] as unknown as Record<string, LineHeightToken>;
+
+const rows = Object.keys(lineHeights)
+  .filter((key) => key !== 'brand' && key !== 'base')
+  .map((key, i) => ({ key, token: lineHeights[key], fontSize: fontSizeMap[i] }));
+---
+
+<Layout title="Line height">
+  <PageSection title="Line height" isHeader>
+    <TokenTable>
+      <thead>
+        <tr>
+          <th style="width: 40%;">Token</th>
+          <th style="width: 30%;">Value</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map(({ key, token, fontSize }) => (
+            <tr>
+              <td>
+                <code class="token-code">{toTokenName(token.name)}</code>
+              </td>
+              <td>
+                {token.comment ? token.comment + ' | ' : ''}
+                {token.value}
+              </td>
+              <td>
+                <div
+                  class="line-height-example"
+                  style={`line-height: ${token.value}; font-size: ${fontSize}px; font-family: ${
+                    fontSize >= 24
+                      ? 'var(--pharos-font-family-serif)'
+                      : 'var(--pharos-font-family-sans-serif)'
+                  };`}
+                >
+                  {key === 'heading-large'
+                    ? 'Lorem ipsum dolor sit amet...'
+                    : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
+                </div>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </TokenTable>
+  </PageSection>
+</Layout>

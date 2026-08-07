@@ -1,0 +1,143 @@
+---
+/** Ported from the Gatsby site's src/components/layout.tsx + wrap-root-element.tsx. */
+import { toCleanPath } from '@lib/siteMetadata';
+import BaseHead from '@components/BaseHead.astro';
+import Sidenav from '@components/Sidenav.astro';
+import Footer from '@components/Footer.astro';
+
+// The @font-face rules for GT America Standard / Ivar Headline live here. The
+// Gatsby site imported this from a single page (src/pages/index.tsx) and got it
+// site-wide because Gatsby emits one global stylesheet; Astro scopes CSS per
+// page, so importing it there would leave the other 61 routes rendering in the
+// fallback sans-serif. It belongs in the shared layout.
+import '@ithaka/pharos/lib/styles/fonts.css';
+import '../styles/fonts-site.css';
+import '@ithaka/pharos/lib/styles/variables.css';
+import '@ithaka/pharos/lib/styles/pharos-alert.css';
+import '@ithaka/pharos/lib/styles/pharos-modal.css';
+import '@ithaka/pharos/lib/styles/pharos-footer.css';
+import '@ithaka/pharos/lib/styles/typography.scss';
+import '../styles/variables.css';
+import '../styles/layout.css';
+import '../styles/components.css';
+import '../styles/global.scss';
+
+interface Props {
+  /** Page title, used for the document title. Defaults to the derived page name. */
+  title?: string;
+  description?: string;
+  /**
+   * When true the page content spans the full grid (used by the homepage for
+   * its edge-to-edge hero), matching the Gatsby `fill` prop.
+   */
+  fill?: boolean;
+  /** Extra class applied to <body>, used to scope page-specific styles. */
+  bodyClass?: string;
+}
+
+const { title, description, fill = false, bodyClass } = Astro.props;
+
+const pathname = toCleanPath(Astro.url.pathname);
+
+/** Derives the page name from the path, as the Gatsby layout did. */
+const getPageName = (path: string) => {
+  const name = path.replace(/-([a-z])/g, (g) => ' ' + g[1].toUpperCase());
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};
+
+const segments = pathname.replace(/\/+$/, '').split('/');
+const derivedName = getPageName(segments[segments.length - 1] || '');
+const pageTitle = title ?? (derivedName || 'Home');
+
+const rowGap = fill ? 'var(--pharos-spacing-5-x)' : '0';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={pageTitle} description={description} pathname={pathname} />
+  </head>
+  <body class={bodyClass}>
+    <div class="container">
+      <Sidenav pathname={pathname} />
+      <main class="main">
+        <div class="top-bar">
+          <site-pharos-link id="skip-link" skip href="#sidenav-skip-link" is-on-background>
+            Skip to main navigation
+          </site-pharos-link>
+        </div>
+        <site-pharos-layout preset="1-col--sidenav-comfy" row-gap={rowGap}>
+          <site-pharos-button
+            id="sidenav-toggle"
+            variant="subtle"
+            icon="menu"
+            data-sidenav-id="site-sidenav"
+            a11y-label="Open side navigation"
+          ></site-pharos-button>
+        </site-pharos-layout>
+        <!--
+          On `fill` pages the hero sits in the `hero` grid area of the content
+          layout, spanning the full width, exactly as it did in the Gatsby site.
+        -->
+        <slot name="hero" />
+        <site-pharos-layout
+          preset="1-col--sidenav-comfy"
+          class={`content${fill ? ' content--fill' : ''}`}
+          row-gap={rowGap}
+        >
+          {fill ? <slot /> : <div class="page"><slot /></div>}
+        </site-pharos-layout>
+      </main>
+      <Footer />
+    </div>
+
+    <script>
+      import '@lib/initComponents';
+    </script>
+
+    <script is:inline>
+      // The Gatsby layout tracked viewport width in React state to decide whether
+      // the sidenav is open and whether the menu button and its close button show.
+      // Here the same rules are applied directly to the DOM.
+      (function () {
+        var MOBILE_BREAKPOINT = 1055;
+        var sidenav = document.getElementById('site-sidenav');
+        var toggle = document.getElementById('sidenav-toggle');
+
+        function apply() {
+          var isMobile = window.innerWidth < MOBILE_BREAKPOINT;
+          if (toggle) {
+            toggle.style.display = isMobile ? 'block' : 'none';
+            toggle.style.paddingTop = 'var(--pharos-spacing-2-x)';
+          }
+          if (sidenav) {
+            if (isMobile) {
+              sidenav.removeAttribute('open');
+              sidenav.setAttribute('has-close-button', '');
+            } else {
+              sidenav.setAttribute('open', '');
+              sidenav.removeAttribute('has-close-button');
+            }
+          }
+        }
+
+        apply();
+        window.addEventListener('resize', apply);
+      })();
+    </script>
+
+    <!-- Google Tag Manager, matching gatsby-plugin-google-tagmanager (GTM-WD42N5G). -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-WD42N5G');
+    </script>
+  </body>
+</html>

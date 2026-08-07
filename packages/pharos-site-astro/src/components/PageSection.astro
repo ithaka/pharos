@@ -1,0 +1,92 @@
+---
+/** Ported from the Gatsby site's src/components/statics/PageSection.tsx. */
+import ComponentExample from '@components/ComponentExample.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  isHeader?: boolean;
+  subSectionLevel?: 1 | 2 | 3;
+  moreTitleSpace?: boolean;
+  lessMargin?: boolean;
+  topMargin?: boolean;
+  storyBookType?: string;
+}
+
+const {
+  title,
+  description,
+  isHeader = false,
+  subSectionLevel,
+  moreTitleSpace = false,
+  lessMargin = false,
+  topMargin = false,
+  storyBookType,
+} = Astro.props;
+
+if (isHeader && subSectionLevel) {
+  console.error("isHeader can't be used with SubSectionLevel.");
+}
+
+/** Mirrors the nested ternary the Gatsby component used to pick its class. */
+const containerClass = topMargin
+  ? 'section--top-margin'
+  : lessMargin
+    ? 'section--less-margin'
+    : subSectionLevel === 1
+      ? 'section--level-one'
+      : subSectionLevel === 2
+        ? 'section--level-two'
+        : subSectionLevel === 3
+          ? 'section--level-three'
+          : 'section';
+
+/** Heading level/preset per section depth, matching the Gatsby component. */
+const heading = isHeader
+  ? { level: '1', preset: '7--bold' }
+  : subSectionLevel === 1
+    ? { level: '2', preset: '4' }
+    : subSectionLevel === 2
+      ? { level: '4', preset: '1--bold' }
+      : subSectionLevel === 3
+        ? { level: '5', preset: '1--bold' }
+        : { level: '2', preset: '6' };
+
+const titleClass = isHeader
+  ? 'section__title--is-header'
+  : moreTitleSpace
+    ? 'section__title--more-space'
+    : undefined;
+
+const descriptionClass = isHeader ? 'section__description--is-header' : 'section__description';
+---
+
+<div class={containerClass}>
+  <div class={titleClass}>
+    <site-pharos-heading level={heading.level} preset={heading.preset}>
+      {title}
+    </site-pharos-heading>
+  </div>
+  {
+    /*
+     * The Gatsby prop accepted a string or JSX. Plain text comes through the
+     * `description` prop; richer markup (links, inline code) uses the
+     * `description` slot instead.
+     */
+    (description || Astro.slots.has('description')) && (
+      <div class={descriptionClass}>
+        {description}
+        <slot name="description" />
+      </div>
+    )
+  }
+  {
+    storyBookType ? (
+      <ComponentExample storyBookType={storyBookType} componentTitle={title}>
+        <slot />
+      </ComponentExample>
+    ) : (
+      <slot />
+    )
+  }
+</div>

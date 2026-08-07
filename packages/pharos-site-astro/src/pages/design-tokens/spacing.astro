@@ -1,0 +1,51 @@
+---
+/** Ported from the Gatsby site's src/pages/design-tokens/spacing.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTokenName } from '@lib/tokenFormat';
+import type { DesignToken } from '@lib/tokenFormat';
+
+interface SpacingToken extends DesignToken {
+  comment?: string;
+}
+
+const spacing = tokens.spacing as unknown as Record<string, SpacingToken>;
+const rows = Object.keys(spacing)
+  .filter((key) => key !== 'gutter')
+  .map((key) => spacing[key]);
+---
+
+<Layout title="Spacing">
+  <PageSection title="Spacing" isHeader>
+    <TokenTable>
+      <thead>
+        <tr>
+          <th style="width: 40%;">Token</th>
+          <th style="width: 30%;">Value</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map((token) => (
+            <tr>
+              <td>
+                <code class="token-code">{toTokenName(token.name)}</code>
+              </td>
+              <td>
+                {token.comment} | {token.value}
+              </td>
+              <td>
+                <div
+                  style={`height: ${token.value}; background: var(--pharos-color-living-coral-80); width: 100%; display: inline-block;`}
+                />
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </TokenTable>
+  </PageSection>
+</Layout>

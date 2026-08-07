@@ -1,0 +1,79 @@
+---
+layout: '@layouts/MarkdownLayout.astro'
+title: 'Overview'
+---
+
+export const jstorRed = { color: 'var(--pharos-color-jstor-red' };
+export const nightBlue = { color: 'var(--pharos-color-night-blue' };
+export const glacierBlue = { color: 'var(--pharos-color-glacier-blue' };
+export const livingCoral = { color: 'var(--pharos-color-living-coral' };
+
+<site-pharos-heading level="1" preset="1">Design tokens</site-pharos-heading>
+
+{/*
+The literal underscores below are intentional: the Gatsby page rendered this
+string verbatim rather than as emphasis, so they are escaped to keep the
+visible text identical.
+*/}
+
+{/*
+These paragraphs are plain Markdown rather than explicit <p> elements. MDX
+wraps a block-level tag it finds here inside its own generated paragraph, so
+`<p>...</p>` becomes `<p><p>...</p>`; the browser closes the outer one
+immediately, leaving an empty paragraph whose 24px bottom margin does not
+collapse. Three of those made this page 72px taller than production.
+*/}
+
+We capture visual design decisions in named entities called \_design tokens\_.Tokens help us avoid
+using and repeating hard-coded values throughout the code base, which in turn helps carry new
+decisions forward everywhere tokens are used.
+
+Tokens provide a bridge between design and development teams to ensure everyone is using the same
+values, whether they're designing pages or implementing those designs.
+
+Although tokens capture high - level brand decisions like core <a href="/brand-expressions/color">color</a> and <a href="/brand-expressions/typography">typography</a> choices, they're also useful for capturing
+more granular decisions like border radii or padding for specific components.
+
+<site-pharos-heading level="2" preset="2">Token naming structure</site-pharos-heading>
+
+Because of the broad range of information they capture, design tokens benefit from a well - defined
+naming structure.Tokens in Pharos are named using the following structure:
+
+{/* prettier-ignore */}
+<p><code><span>pharos</span>[-<span style={jstorRed}></span>&lt;component&gt; ] -<span style={nightBlue}>&lt;category&gt;</span> -<span style={glacierBlue}>&lt;property/context&gt;</span>[-<span style={livingCoral}>&lt;state/variant/name&gt;</span>]</code></p>
+
+{/*
+  Each <dd> must stay on ONE line. MDX treats a tag whose content spans several
+  lines as Markdown and wraps it in a generated <p>, which adds ~35px per entry
+  (104px across this list) and does not match production. Prettier reflows these
+  by default, hence the ignore.
+*/}
+
+{/* prettier-ignore */}
+<dl>
+  <div><dt style={jstorRed}>Component</dt><dd>Describes the specific component for which the token is relevant, if any.</dd></div>
+  <div><dt style={nightBlue}>Category</dt><dd>Describes the broad type for the token. Categories are things like color, type, spacing, size, and so on.</dd></div>
+  <div><dt style={glacierBlue}>Property/context</dt><dd>Describes the attribute the token affects, or adds context about where the token should be used.</dd></div>
+  <div><dt style={livingCoral}>State/variant/name</dt><dd>Defines the name that differentiates the token from others, or the state for which the token is used. Whereas preceding segments of a token name help navigate available tokens, this segment helps choose a specific token to use.</dd></div>
+</dl>
+
+<site-pharos-heading level="3" preset="3">Examples</site-pharos-heading>
+
+{/* prettier-ignore */}
+<ul>
+  <li><code><span>pharos</span>-<span style={nightBlue}>color</span>-<span style={glacierBlue}>brand</span>-<span style={livingCoral}>jstor-red</span></code></li>
+  <li><code><span>pharos</span>-<span style={jstorRed}>alert</span>-<span style={nightBlue}>color</span>-<span style={glacierBlue}>icon</span>-<span style={livingCoral}>warning</span></code></li>
+  <li><code><span>pharos</span>-<span style={nightBlue}>transition</span>-<span style={glacierBlue}>duration</span>-<span style={livingCoral}>longer</span></code></li>
+  <li><code><span>pharos</span>-<span style={nightBlue}>type</span>-<span style={glacierBlue}>scale</span>-<span style={livingCoral}>5</span></code></li>
+  <li><code><span>pharos</span>-<span style={nightBlue}>spacing</span>-<span style={glacierBlue}>brand</span>-<span style={livingCoral}>one-and-a-half-x</span></code></li>
+</ul>
+
+<site-pharos-heading level="2" preset="2">Token architecture</site-pharos-heading>
+
+{/*
+The Gatsby page shipped this Markdown link syntax unrendered, showing the
+literal brackets and URL. The bracket is escaped so the text matches.
+*/}
+
+Read more about how tokens are created and stored in \[the development
+documentation](https://github.com/ithaka/pharos/blob/develop/docs/development/design-tokens.md#token-architecture).

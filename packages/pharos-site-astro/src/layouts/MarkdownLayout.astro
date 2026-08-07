@@ -1,0 +1,20 @@
+---
+/**
+ * Layout for Markdown/MDX docs pages. Wraps the standard site chrome and maps
+ * the frontmatter Astro passes in to the Layout props.
+ */
+import Layout from '@layouts/Layout.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title} description={frontmatter.description}>
+  <slot />
+</Layout>

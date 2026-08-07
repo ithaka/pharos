@@ -1,0 +1,25 @@
+/* Ported from the Gatsby site's src/components/variables.module.css. */
+:root {
+  --color-black: var(--pharos-color-black);
+  --color-white: var(--pharos-color-white);
+  --color-gray: var(--pharos-color-marble-gray-base);
+  --color-marble-gray-80: var(--pharos-color-marble-gray-80);
+  --color-marble-gray-50: var(--pharos-color-marble-gray-50);
+  --font-family-main-heading: var(--pharos-font-family-serif);
+  --font-family-body: var(--pharos-font-family-body);
+  --font-family-code: consolas, monospace;
+  --font-color: var(--color-black);
+  --font-color-inverse: var(--color-white);
+
+  /* Component tokens */
+  --sidebar-color-background: var(--color-black);
+  --sidebar-color-text: var(--font-color-inverse);
+  --sidebar-spacing-padding: var(--pharos-spacing-one-and-a-half-x);
+  --main-spacing-padding: var(--pharos-spacing-7-x);
+}
+
+@media screen and (width <= 1055px) {
+  :root {
+    --main-spacing-padding: var(--pharos-spacing-2-x);
+  }
+}

@@ -1,0 +1,183 @@
+---
+/** Ported from the Gatsby site's static/guidelines/icon.docs.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import BestPractices from '@components/BestPractices.astro';
+---
+
+<Layout title="Icon">
+  <PageSection
+    isHeader
+    storyBookType="components"
+    title="Icon"
+    description="Pharos Icons are SVG visual representations of objects, items or content, or actions a user can take."
+  >
+    <site-pharos-icon name="workspace" a11y-title="workspace"></site-pharos-icon>
+    <site-pharos-icon name="download" a11y-title="download"></site-pharos-icon>
+    <site-pharos-icon name="email" a11y-title="email"></site-pharos-icon>
+  </PageSection>
+
+  <PageSection topMargin title="Usage">
+    <PageSection title="When to use" subSectionLevel={1}>
+      <p>
+        Pharos icons seek to provide clarity and convey brand personality through color and style,
+        but must first communicate meaning in the content.
+      </p>
+      <p>
+        Icons can be used inside links or buttons and also alone when space is limited, with a high
+        amount of care and thought.
+      </p>
+      <site-pharos-heading level="4" preset="2">
+        Use in product for the following:
+      </site-pharos-heading>
+      <ul>
+        <li>CTA buttons or links, most specifically when paired with text</li>
+        <li>To symbolize tools (e.g., the viewer toolbar or project creator in Forum)</li>
+        <li>System actions (e.g., dropdown arrows, wayfinding, etc.)</li>
+        <li>Banners or alerts to bring attention to a specific message</li>
+        <li>Represent content types</li>
+        <li>Success and error states with text inputs for forms</li>
+      </ul>
+      <site-pharos-heading level="4" preset="2">Using with buttons or links</site-pharos-heading>
+      <p>
+        If the experience calls for it, buttons can be used with an icon to the left or the right of
+        the text. Icons should be used consistently, e.g., if there is a row of buttons, all of them
+        (or none of them) should include an icon
+      </p>
+      <p>
+        Links can also include an icon if needed. An example of this happens in the pagination
+        component.
+      </p>
+      <site-pharos-heading level="4" preset="2">Using with inputs</site-pharos-heading>
+      <p>
+        Pharos text inputs and input groups can include icons. Icons need to be vertically centered
+        within the input, which should automatically happen.
+      </p>
+    </PageSection>
+    <PageSection title="Formatting" subSectionLevel={1}>
+      <site-pharos-heading level="4" preset="2">Sizing</site-pharos-heading>
+      <p>
+        Pharos icons are most typically 24px by 24px. This aligns with our base font size's
+        line-height to make alignment smoother when icons are in use inline with text. A few icons
+        are smaller at 16px by 16px. Do not resize the icons manually. If you need a different size,
+        please contact the maintainers to discuss the need. Typically the answer will be to adjust
+        the design or to go another route that obviates the need.
+      </p>
+      <site-pharos-heading level="4" preset="2">Color</site-pharos-heading>
+      <p>
+        Icons are always a solid color and need to pass the same color contrast ratio as typography
+        (4.5:1). The color of the icon should reflect the importance of the icon's action.
+      </p>
+      <p>
+        The color can also signify different states to alert users. This occurs with <site-pharos-link
+          href="/components/toast">toasts</site-pharos-link
+        >, <site-pharos-link href="/components/alert">alerts</site-pharos-link> and error/success states
+        for <site-pharos-link href="/components/text-input">text inputs</site-pharos-link>. We use icons
+        so that color alone is not the only signal critical information to users in their workflow (
+        <site-pharos-link
+          href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-without-color.html"
+        >
+          SC 1.4.1
+        </site-pharos-link>
+        ).
+      </p>
+      <site-pharos-heading level="4" preset="2">Spacing</site-pharos-heading>
+      <p>
+        When used in interactive components, like buttons, the spacing will follow the attributes set
+        for the component. When icons are used next to text, there should be a minimum of 4px
+        ($pharos-spacing-one-quarter-x) between the text and the icon.
+      </p>
+      <site-pharos-heading level="4" preset="2">Alignment</site-pharos-heading>
+      <p>
+        When icons are used next to text, they should be aligned to the center of the first (or only)
+        line of text.
+      </p>
+      <site-pharos-heading level="4" preset="2">Contributing</site-pharos-heading>
+      <p>
+        Not finding an icon to support the design need? Please refer to the <site-pharos-link
+          href="/brand-expressions/iconography"
+        >
+          Iconography brand expressions
+        </site-pharos-link> to learn more about the principles and how to create an icon.
+      </p>
+    </PageSection>
+  </PageSection>
+
+  <PageSection title="Best practices">
+    <BestPractices>
+      <ul slot="do">
+        <li>
+          Whenever possible, icons should be accompanied with text as this is more effective in
+          communicating meaning than icons alone.
+        </li>
+        <li>
+          If an icon cannot have text paired next to it, the use of a tooltip will suffice (e.g.,
+          zoom in/zoom out on the viewer).
+        </li>
+        <li>Icons can be used to draw attention and create visual hierarchy for a UI element</li>
+      </ul>
+      <ul slot="dont">
+        <li>
+          Using icons should never be for purely decorative reasons. Icons should provide or
+          reinforce meaning to our users.
+        </li>
+        <li>Icons should never be resized.</li>
+      </ul>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="Content guidelines">
+    <p>
+      For the text labels, they should relate to the content or action being represented. The labels
+      should be concise and efficient.
+    </p>
+  </PageSection>
+
+  <PageSection title="Accessibility">
+    <PageSection title="Relevant WCAG guidelines" subSectionLevel={1} lessMargin>
+      <ul>
+        <li>
+          <site-pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">
+            1.4.1 Use of Color A
+          </site-pharos-link>
+        </li>
+        <li>
+          <site-pharos-link href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification">
+            3.2.4 Consistent Identification AA
+          </site-pharos-link>
+        </li>
+      </ul>
+    </PageSection>
+    <PageSection title="Importance" subSectionLevel={1} lessMargin>
+      <p>Icons provide users a visual representation of text or potential actions.</p>
+    </PageSection>
+    <PageSection title="Code expectations" subSectionLevel={1} lessMargin>
+      <ul>
+        <li>
+          If the icon is purely decorative and is accompanied by text, the icon should have an
+          <code>aria-hidden="true"</code> on the SVG to avoid being redundant.
+        </li>
+        <li>
+          If the icon is standalone without text, it should have a <code>&lt;title&gt;</code> element
+          that gives it a name.
+        </li>
+      </ul>
+    </PageSection>
+    <PageSection title="Expected actions" subSectionLevel={1} lessMargin>
+      <div style="margin-bottom: var(--pharos-spacing-1-x);">
+        <site-pharos-heading level="4" preset="1--bold">Screen reader</site-pharos-heading>
+        <ul>
+          <li>Reads the accompanying text if applicable</li>
+          <li>
+            Reads the <code>&lt;title&gt;</code> element text if the icon is standalone
+          </li>
+        </ul>
+      </div>
+      <site-pharos-heading level="4" preset="1--bold">Keyboard</site-pharos-heading>
+      <ul>
+        <li>Icon with accompanying text should be in tab index</li>
+        <li>Standalone icon should also be in tab index</li>
+      </ul>
+    </PageSection>
+  </PageSection>
+</Layout>

@@ -1,0 +1,39 @@
+---
+/** Ported from the Gatsby site's src/components/Grid.tsx. */
+interface Props {
+  columns?: number;
+  vSpace?: number;
+  hSpace?: number;
+  bottom?: number;
+  align?: string;
+  justify?: string;
+  minContent?: boolean;
+  justifyContent?: string;
+}
+
+const {
+  columns = 2,
+  vSpace = 1.5,
+  hSpace = 1.5,
+  bottom = 5,
+  align = 'stretch',
+  justify,
+  minContent = false,
+  justifyContent = 'normal',
+} = Astro.props;
+
+const style = [
+  'display: grid',
+  `column-gap: ${hSpace}rem`,
+  `row-gap: ${vSpace}rem`,
+  `grid-template-columns: repeat(${columns}, ${minContent ? 'min-content' : '1fr'})`,
+  `margin-bottom: ${bottom}rem`,
+  `align-items: ${align}`,
+  justify ? `justify-items: ${justify}` : '',
+  `justify-content: ${justifyContent}`,
+]
+  .filter(Boolean)
+  .join('; ');
+---
+
+<div style={style}><slot /></div>

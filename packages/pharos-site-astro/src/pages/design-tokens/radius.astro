@@ -1,0 +1,49 @@
+---
+/** Ported from the Gatsby site's src/pages/design-tokens/radius.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTokenName } from '@lib/tokenFormat';
+import type { DesignToken } from '@lib/tokenFormat';
+
+interface RadiusToken extends DesignToken {
+  comment?: string;
+}
+
+const radii = Object.values(tokens.radius.base as unknown as Record<string, RadiusToken>);
+---
+
+<Layout title="Radius">
+  <PageSection title="Radius" isHeader>
+    <TokenTable>
+      <thead>
+        <tr>
+          <th style="width: 40%;">Token</th>
+          <th style="width: 30%;">Value</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          radii.map((token) => (
+            <tr>
+              <td>
+                <code class="token-code">{toTokenName(token.name)}</code>
+              </td>
+              <td>
+                {token.comment} | {token.value}
+              </td>
+              <td>
+                <div
+                  class="radius-example"
+                  style={`border-radius: ${token.value}; background: var(--pharos-color-living-coral-80); width: 2rem; height: 2rem; display: inline-block;`}
+                />
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </TokenTable>
+  </PageSection>
+</Layout>

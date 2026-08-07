@@ -1,0 +1,155 @@
+---
+/** Ported from the Gatsby site's static/guidelines/pagination.docs.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import BestPractices from '@components/BestPractices.astro';
+import CodeBlock from '@components/CodeBlock.astro';
+
+const paginationCode = `
+            <nav role="navigation" aria-label="pagination navigation">
+              <ul>
+                <li>
+                  <a href="/example-page" aria-label="Go to previous/next page 1">
+                    1
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          `;
+---
+
+<Layout title="Pagination">
+  <PageSection
+    isHeader
+    storyBookType="components"
+    title="Pagination"
+    description="Pagination allows users to move through a list or set of items that have been split into different pages."
+  >
+    <site-pharos-pagination total-results="1146" page-size="25" current-page="2"
+    ></site-pharos-pagination>
+  </PageSection>
+
+  <PageSection topMargin title="Usage">
+    <p>
+      Pagination splits content into smaller chunks across several pages, making it easier to
+      consume.
+    </p>
+    <p>
+      Pagination only includes navigational elements for paging through the content and does not
+      manipulate data or control the display of the content. It is used only to provide navigation
+      and to indicate the current page and number of pages.
+    </p>
+  </PageSection>
+
+  <PageSection title="Best practices">
+    <BestPractices>
+      <ul slot="do">
+        <li>To be used only for lists with more than 25 items</li>
+        <li>
+          Place pagination below the set of items it paginates through, aligned to the right side of
+          the content being displayed
+        </li>
+        <li>
+          When the first page is selected the "Previous" button is not displayed and, similarly,
+          when the last page is selected the "Next" button is not displayed
+        </li>
+      </ul>
+      <ul slot="dont">
+        <li>Don't use pagination on a transactional service or a form</li>
+      </ul>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="Variants">
+    <PageSection title="Basic" subSectionLevel={1} lessMargin>
+      Use the basic variant to navigate to different pages of large lists of items, and indicate
+      which page you are currently viewing.
+    </PageSection>
+    <PageSection title="Jump to page" subSectionLevel={1} lessMargin>
+      Use the jump-to-page variant when users need to navigate directly to a specific page in a long
+      result set without stepping through every page.
+      <div style="margin-top: var(--pharos-spacing-1-x);">
+        <site-pharos-pagination
+          total-results="660"
+          page-size="20"
+          current-page="3"
+          variant="input"></site-pharos-pagination>
+      </div>
+    </PageSection>
+    <PageSection title="Simple" subSectionLevel={1} lessMargin>
+      Add the <code>simple</code> attribute to any variant for tighter layouts. It hides the
+      "Previous"/"Next" text (icon-only, chevrons remain) and, when combined with the jump-to-page
+      variant, also omits the first/last page buttons.
+      <p>With the jump-to-page variant:</p>
+      <div style="margin-top: var(--pharos-spacing-1-x);">
+        <site-pharos-pagination
+          total-results="660"
+          page-size="20"
+          current-page="3"
+          variant="input"
+          simple></site-pharos-pagination>
+      </div>
+      <p>With the default variant:</p>
+      <div style="margin-top: var(--pharos-spacing-1-x);">
+        <site-pharos-pagination total-results="660" page-size="20" current-page="3" simple
+        ></site-pharos-pagination>
+      </div>
+    </PageSection>
+  </PageSection>
+
+  <PageSection title="Accessibility">
+    <PageSection title="Relevant WCAG guidelines" subSectionLevel={1} lessMargin>
+      <ul>
+        <li>
+          <site-pharos-link
+            href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html"
+          >
+            1.3.1 Info and Relationships A
+          </site-pharos-link>
+        </li>
+      </ul>
+    </PageSection>
+    <PageSection title="Importance" subSectionLevel={1} lessMargin>
+      Pagination allows users to navigate multiple pages that are grouped together.
+    </PageSection>
+    <PageSection title="Code expectations" subSectionLevel={1} lessMargin>
+      <ul>
+        <li>
+          Everything should be wrapped in the <code>&lt;nav&gt;</code> tag
+        </li>
+        <li>
+          <code>&lt;nav&gt;</code> should also have a <code>role="navigation"</code> to ensure that all
+          assistive technologies will be given the information
+        </li>
+        <li>
+          You should add an aria-label that denotes this <code>&lt;nav&gt;</code> element as pagination
+        </li>
+        <li>
+          List elements should be given an aria-label that gives more information. This should
+          include "previous/next" and the page number.
+        </li>
+      </ul>
+      <CodeBlock language="html" code={paginationCode} />
+    </PageSection>
+    <PageSection title="Expected actions" subSectionLevel={1} lessMargin>
+      <div style="margin-bottom: var(--pharos-spacing-1-x);">
+        <site-pharos-heading level="4" preset="1--bold">Screen reader</site-pharos-heading>
+        <ul>
+          <li>Reads "Pagination navigation, go to (previous/next) page 1, list 1 of X, link"</li>
+        </ul>
+      </div>
+      <site-pharos-heading level="4" preset="1--bold">Keyboard</site-pharos-heading>
+      <ul>
+        <li>
+          <kbd>Tab</kbd>: goes to next pagination number
+        </li>
+        <li>
+          <kbd>Shift</kbd> + <kbd>Tab</kbd>: goes to the previous pagination number
+        </li>
+        <li>
+          <kbd>Enter</kbd>: goes to selected page
+        </li>
+      </ul>
+    </PageSection>
+  </PageSection>
+</Layout>

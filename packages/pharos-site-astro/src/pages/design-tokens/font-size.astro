@@ -1,0 +1,62 @@
+---
+/** Ported from the Gatsby site's src/pages/design-tokens/font-size.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTokenName } from '@lib/tokenFormat';
+import type { DesignToken } from '@lib/tokenFormat';
+
+interface ScaleToken extends DesignToken {
+  comment: string;
+}
+
+const scale = tokens.type.scale as unknown as Record<string, ScaleToken>;
+const sizes = tokens.font.size as unknown as Record<string, DesignToken>;
+
+const baseValue = sizes['base'].value;
+const basePixels = scale[baseValue].comment;
+const basePx = Number(basePixels.substring(0, basePixels.length - 2));
+
+const rows = Object.keys(sizes).map((key) => {
+  const tokenPixel = scale[sizes[key].value].comment;
+  const tokenPx = Number(tokenPixel.substring(0, tokenPixel.length - 2));
+  return { token: sizes[key], tokenPixel, tokenPx, tokenRem: tokenPx / basePx };
+});
+---
+
+<Layout title="Font size">
+  <PageSection title="Font size" isHeader>
+    <TokenTable>
+      <thead>
+        <tr>
+          <th style="width: 40%;">Token</th>
+          <th style="width: 30%;">Value</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map(({ token, tokenPixel, tokenPx, tokenRem }) => (
+            <tr>
+              <td>
+                <code class="token-code">{toTokenName(token.name)}</code>
+              </td>
+              <td>
+                {tokenPx}px | {tokenRem}rem
+              </td>
+              <td>
+                <div style={`font-size: ${tokenPixel}; line-height: normal;`}>
+                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                </div>
+                <div style={`font-size: ${tokenPixel}; line-height: normal;`}>
+                  abcdefghijklmnopqrstuvwxyz
+                </div>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </TokenTable>
+  </PageSection>
+</Layout>

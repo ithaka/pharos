@@ -1,0 +1,45 @@
+---
+/** Ported from the Gatsby site's src/pages/design-tokens/font-weight.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTokenName } from '@lib/tokenFormat';
+import type { DesignToken } from '@lib/tokenFormat';
+
+const weights = Object.values(tokens.font.weight as Record<string, DesignToken>);
+---
+
+<Layout title="Font weight">
+  <PageSection title="Font weight" isHeader>
+    <TokenTable>
+      <thead>
+        <tr>
+          <th style="width: 40%;">Token</th>
+          <th style="width: 30%;">Value</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          weights.map((token) => (
+            <tr>
+              <td>
+                <code class="token-code">{toTokenName(token.name)}</code>
+              </td>
+              <td>{token.value}</td>
+              <td>
+                <div style={`font-weight: ${token.value}; line-height: normal;`}>
+                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                </div>
+                <div style={`font-weight: ${token.value}; line-height: normal;`}>
+                  abcdefghijlkmnopqrstuvwxyz
+                </div>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </TokenTable>
+  </PageSection>
+</Layout>

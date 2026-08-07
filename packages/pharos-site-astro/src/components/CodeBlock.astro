@@ -1,0 +1,57 @@
+---
+/**
+ * Ported from the Gatsby site's src/components/CodeBlock.tsx, which used
+ * prism-react-renderer with its `nightOwl` theme. Astro ships Shiki, which has
+ * the same theme, so highlighting is done at build time with no client JS.
+ */
+import { Code } from 'astro:components';
+import codeTheme from '@lib/codeTheme';
+
+interface Props {
+  code: string;
+  language?: string;
+}
+
+const { code, language = 'tsx' } = Astro.props;
+---
+
+<Code
+  code={code.trim()}
+  lang={language as never}
+  theme={codeTheme}
+  style="padding: 20px; white-space: normal; font-size: var(--pharos-font-size-medium); font-family: var(--pharos-font-family-sans-serif);"
+/>
+
+<style is:global>
+  /*
+   * prism-react-renderer wrapped every line in a block-level
+   * `<div class="token-line">`, so lines broke structurally and the site's
+   * `white-space: normal` was harmless. Shiki instead emits inline
+   * `<span class="line">` separated by newline text nodes, which `normal`
+   * collapses -- the whole snippet renders as one wrapped paragraph. Making the
+   * lines block-level restores prism's line structure.
+   */
+  /*
+   * Shiki nests the lines inside a <code>, which the user agent resets to
+   * `monospace`; the font set on the <pre> therefore never reaches the text.
+   * prism rendered its lines in the site font, and monospace is wide enough to
+   * wrap lines that fit in production, silently adding a line per long snippet.
+   */
+  .astro-code code {
+    font-family: inherit;
+  }
+
+  .astro-code .line {
+    display: block;
+  }
+
+  /*
+   * prism kept a literal newline inside blank lines, so they still generated a
+   * full line box. Shiki emits a genuinely empty span, which collapses to 0px
+   * and makes multi-part snippets shorter than production. This restores the
+   * line box without contributing any visible text.
+   */
+  .astro-code .line:empty::before {
+    content: '\200b';
+  }
+</style>

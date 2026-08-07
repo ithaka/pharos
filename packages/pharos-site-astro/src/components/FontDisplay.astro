@@ -1,0 +1,38 @@
+---
+/** Ported from the Gatsby site's src/components/statics/typography/FontDisplay.tsx. */
+interface Props {
+  font: string;
+  title?: string;
+  dark?: boolean;
+  large?: boolean;
+  bold?: boolean;
+}
+
+const { font, title, dark = false, large = false, bold = false } = Astro.props;
+
+const outerStyle = [
+  `font-family: ${font}`,
+  `font-size: ${large ? '2rem' : '1.5rem'}`,
+  `font-weight: ${bold ? 'bold' : 'normal'}`,
+  'margin-top: -0.5rem',
+  'padding: 1rem',
+  `background-color: ${dark ? 'black' : 'transparent'}`,
+].join('; ');
+---
+
+<div style={outerStyle}>
+  <div class={dark ? 'font-display__text-color--dark' : 'font-display__text-color'}>
+    <div class={large ? 'font-display__text-size--large' : 'font-display__text-size'}>
+      {
+        title ? (
+          <div class={large ? 'font-display__title-size--large' : 'font-display__title-size'}>
+            {title}
+          </div>
+        ) : null
+      }
+      <div>AaBbCcDdEeFfGgHhIiJjKkLlMm</div>
+      <div>NnOoPpQqRrSsTtUuVvWwXxYyZz</div>
+      <div>1234567890!@#$%^&*()+=?</div>
+    </div>
+  </div>
+</div>

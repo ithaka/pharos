@@ -1,0 +1,344 @@
+/*
+ * Ported from the Gatsby site's src/components/statics/*.module.css.
+ * Declarations are unchanged; the hashed CSS Module class names become plain
+ * global ones.
+ */
+
+/* PageSection */
+.section {
+  margin-bottom: var(--pharos-spacing-7-x);
+}
+
+.section--less-margin {
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+.section--level-one {
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
+.section--level-two {
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+.section--level-three {
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+.section--top-margin {
+  margin-top: var(--pharos-spacing-5-x);
+}
+
+.section__title--more-space {
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+  color: var(--pharos-color-black);
+}
+
+.section__title--is-header {
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+.section__description {
+  width: 75%;
+  color: var(--pharos-color-text-20);
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+.section__description--is-header {
+  font-size: var(--pharos-type-scale-6);
+  line-height: 2rem;
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+/* BestPractices */
+.best-practices__icon--do {
+  fill: var(--pharos-color-feedback-success);
+}
+
+.best-practices__icon--dont {
+  fill: var(--pharos-color-feedback-error);
+}
+
+.best-practices__container {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: var(--pharos-spacing-1-x);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.best-practices__line--dont {
+  border: none;
+  height: 2px;
+  background-color: var(--pharos-color-feedback-error);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.best-practices__line--do {
+  border: none;
+  height: 2px;
+  background-color: var(--pharos-color-feedback-success);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.best-practices__text--do {
+  color: var(--pharos-color-feedback-success);
+  font-weight: bold;
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.best-practices__text--dont {
+  color: var(--pharos-color-feedback-error);
+  font-weight: var(--pharos-font-weight-bold);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.best-practices__guideline {
+  color: var(--pharos-color-marble-gray-20);
+}
+
+.best-practices__guideline ul li:not(:last-child) {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+.best-practices__guideline ::marker {
+  color: var(--pharos-color-marble-gray-20);
+}
+
+/* DosAndDonts */
+.dos-and-donts {
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
+.dos-and-donts__line--dont {
+  border: none;
+  height: 2px;
+  background-color: var(--pharos-color-feedback-error);
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.dos-and-donts__line--do {
+  border: none;
+  height: 2px;
+  background-color: var(--pharos-color-feedback-success);
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.dos-and-donts__title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: var(--pharos-spacing-2-x);
+  font-size: var(--pharos-spacing-one-and-a-half-x);
+  line-height: 0;
+}
+
+.dos-and-donts__text-container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 10fr;
+}
+
+.dos-and-donts__text--do {
+  color: var(--pharos-color-feedback-success);
+  margin-left: var(--pharos-spacing-one-half-x);
+}
+
+.dos-and-donts__text--dont {
+  color: var(--pharos-color-feedback-error);
+  margin-left: var(--pharos-spacing-one-half-x);
+}
+
+/* CrossOut */
+.cross-out__line {
+  transform: rotate(-45deg);
+  height: 3px;
+  background-color: var(--pharos-color-black);
+  border: 0;
+  position: relative;
+}
+
+/* Design token tables — ported from src/components/statics/design-token/*.module.css */
+.token-table {
+  width: 100%;
+}
+
+.token-table td {
+  padding-bottom: var(--pharos-spacing-one-and-a-half-x);
+  padding-right: var(--pharos-spacing-2-x);
+  padding-top: var(--pharos-spacing-one-and-a-half-x);
+  vertical-align: top;
+  border-top: 1px solid var(--pharos-color-ui-30);
+}
+
+.token-table__first-column {
+  width: 40%;
+}
+
+.token-table__second-column {
+  width: 40%;
+}
+
+.token-table__third-column {
+  width: 20%;
+}
+
+.token-table__color-example {
+  width: 10rem;
+  height: 3rem;
+  border: 1px solid #eee;
+}
+
+.token-code {
+  font-size: var(--pharos-font-size-small);
+  background: var(--pharos-color-ui-20);
+  border-radius: 1px;
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+  white-space: nowrap;
+}
+
+/* Color swatches — ported from src/components/statics/color/ColorSwatches.module.css */
+.color-swatch {
+  width: 8.25rem;
+  height: 8.25rem;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.colors-container {
+  display: grid;
+  gap: var(--pharos-spacing-2-x);
+}
+
+.color-name {
+  font-size: 18px;
+}
+
+.color-label {
+  margin-top: var(--pharos-spacing-one-and-a-half-x);
+  margin-left: var(--pharos-spacing-three-quarters-x);
+  line-height: var(--pharos-line-height-small);
+  white-space: nowrap;
+}
+
+.color-label div {
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.large-swatch {
+  width: 11rem;
+  height: 11rem;
+}
+
+.color-image {
+  margin-right: 3rem;
+  margin-bottom: 3rem;
+}
+
+.color-figure {
+  line-height: 0;
+}
+
+/* --- ColorCombos (ported from statics/color/ColorCombos.module.css) --- */
+.color-combos__box {
+  height: 7.75rem;
+  display: flex;
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+/* --- ColorGradients (ported from statics/color/ColorGradients.module.css) --- */
+.color-gradient {
+  width: 8.25rem;
+  height: 8.25rem;
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.gradient-container {
+  display: grid;
+  column-gap: var(--pharos-spacing-2-x);
+}
+
+.gradient-label {
+  margin-bottom: var(--pharos-spacing-2-x);
+  line-height: var(--pharos-line-height-small);
+}
+
+/* --- ColorTextSquares (ported from statics/color/ColorTextSquares.module.css) --- */
+.color-text-square {
+  height: var(--pharos-spacing-7-x);
+  width: var(--pharos-spacing-7-x);
+  display: grid;
+  margin-bottom: var(--pharos-spacing-1-x);
+  padding: var(--pharos-spacing-one-half-x);
+}
+
+.color-text-square__text {
+  place-self: center;
+  text-align: center;
+  font-family: var(--pharos-font-family-body);
+  font-size: var(--pharos-spacing-one-and-a-half-x);
+}
+
+/* --- FontDisplay (ported from statics/typography/FontDisplay.module.css) --- */
+.font-display__text-color {
+  color: var(--pharos-color-text-base);
+  line-height: var(--pharos-line-height-xlarge);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.font-display__text-color--dark {
+  color: var(--pharos-color-text-white);
+  line-height: var(--pharos-line-height-xlarge);
+}
+
+.font-display__title-size {
+  font-size: var(--pharos-type-scale-8);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.font-display__title-size--large {
+  font-size: var(--pharos-type-scale-11);
+  margin-bottom: var(--pharos-spacing-one-half-x);
+}
+
+.font-display__text-size {
+  font-size: var(--pharos-type-scale-6);
+  line-height: 2rem;
+}
+
+.font-display__text-size--large {
+  font-size: var(--pharos-type-scale-8);
+}
+
+/* --- IconsDisplay (ported from statics/iconography/IconsDisplay.module.css) --- */
+.all-icon-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--pharos-spacing-2-x);
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
+.icon__title {
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.icon-container {
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 0.5rem;
+}
+
+.icons-display__icon {
+  max-width: var(--pharos-spacing-one-and-a-half-x);
+  max-height: var(--pharos-spacing-one-and-a-half-x);
+  stroke: var(--pharos-color-black);
+  stroke-width: 0;
+}
+
+.icons-display__text {
+  margin-bottom: var(--pharos-spacing-one-half-x);
+  font-weight: var(--pharos-font-weight-bold);
+  color: var(--pharos-color-black);
+  line-height: var(--pharos-line-height-medium);
+  font-size: var(--pharos-font-size-small);
+}

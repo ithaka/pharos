@@ -1,0 +1,183 @@
+---
+/** Ported from the Gatsby site's src/pages/brand-expressions/imagery.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import Grid from '@components/Grid.astro';
+import BestPractices from '@components/BestPractices.astro';
+
+const base = '/images/brand-expressions/imagery';
+---
+
+<Layout title="Imagery">
+  <PageSection
+    title="Imagery"
+    description="We have a great opportunity to use imagery for expression. Our imagery style falls into two categories: Archival and Brand images."
+    isHeader
+  >
+    <Grid columns={1} justifyContent="center" minContent align="end">
+      <img
+        src={`${base}/imagery_hero_cover.png`}
+        alt="Archive images - Hero"
+        width="552"
+        height="443"
+      />
+    </Grid>
+  </PageSection>
+
+  <PageSection
+    title="Image types"
+    description="The two main categories of images are Archival and Brand. Archival includes content from Artstor, Community Collections, Primary Source, Journal and Book covers. Brand images are images portray users, research, and the places JSTOR is used."
+  >
+    <site-pharos-heading level="3" preset="4">Artstor</site-pharos-heading>
+    <Grid columns={5} hSpace={0.5} bottom={5} minContent align="end">
+      <div>
+        <img src={`${base}/imagery_artstor_1.png`} alt="Archival - Artstor 1" style="max-width: 124px;" />
+      </div>
+      <div>
+        <img src={`${base}/imagery_artstor_2.png`} alt="Archival - Artstor 2" style="max-width: 124px;" />
+      </div>
+      <div>
+        <img src={`${base}/imagery_artstor_3.png`} alt="Archival - Artstor 3" style="max-width: 124px;" />
+      </div>
+      <div>
+        <img src={`${base}/imagery_artstor_4.png`} alt="Archival - Artstor 4" style="max-width: 124px;" />
+      </div>
+      <div>
+        <img src={`${base}/imagery_artstor_5.png`} alt="Archival - Artstor 5" style="max-width: 124px;" />
+      </div>
+    </Grid>
+    <site-pharos-heading level="3" preset="4">Community Collections</site-pharos-heading>
+    <Grid columns={5} hSpace={0.5} bottom={5} minContent align="end">
+      <div>
+        <img
+          src={`${base}/imagery_community_1.png`}
+          alt="Archive - Community Collections 1"
+          style="max-width: 124px;"
+        />
+      </div>
+      <div>
+        <img
+          src={`${base}/imagery_community_2.png`}
+          alt="Archive - Community Collections 2"
+          style="max-width: 124px;"
+        />
+      </div>
+      <div>
+        <img
+          src={`${base}/imagery_community_3.png`}
+          alt="Archive - Community Collections 3"
+          style="max-width: 124px;"
+        />
+      </div>
+      <div>
+        <img
+          src={`${base}/imagery_community_4.png`}
+          alt="Archive - Community Collections 4"
+          style="max-width: 124px;"
+        />
+      </div>
+      <div>
+        <img
+          src={`${base}/imagery_community_5.png`}
+          alt="Archive - Community Collections 5"
+          style="max-width: 124px;"
+        />
+      </div>
+    </Grid>
+    <site-pharos-heading level="3" preset="4">Brand</site-pharos-heading>
+    <Grid columns={5} hSpace={0.5} bottom={5} minContent align="end">
+      <div>
+        <img src={`${base}/imagery_brand_1.png`} alt="Archival - Brand 1" style="max-width: 124px;" />
+      </div>
+      <div>
+        <img src={`${base}/imagery_brand_2.png`} alt="Archival - Brand 2" style="max-width: 124px;" />
+      </div>
+      <div>
+        <img src={`${base}/imagery_brand_3.png`} alt="Archival - Brand 3" style="max-width: 124px;" />
+      </div>
+      <div>
+        <img src={`${base}/imagery_brand_4.png`} alt="Archival - Brand 4" style="max-width: 124px;" />
+      </div>
+      <div>
+        <img src={`${base}/imagery_brand_5.png`} alt="Archival - Brand 5" style="max-width: 124px;" />
+      </div>
+    </Grid>
+  </PageSection>
+
+  <PageSection
+    title="Principles"
+    description="Visuals are the most immediate aspect of our brand, and we must be mindful of how we select them. Here are some basic guidelines to consider as you pick images for promoting services and products."
+  >
+    <div style="margin-bottom: var(--pharos-spacing-2-x);">
+      <site-pharos-heading level="3" preset="4">Diverse</site-pharos-heading>
+      <p style="color: var(--pharos-color-text-20);">
+        Archive images pull from collections on JSTOR (Artstor, Open Community Collections, Primary
+        Sources) as well as the diverse content types in them (art, objects, historical
+        documentation, science). When choosing non-western items, take care to look at their
+        intended purpose and not just how they look.
+      </p>
+      <p style="color: var(--pharos-color-text-20);">
+        Images of art or artifacts should represent different cultures and time periods, including
+        diversity in the creators (e.g., race, gender, location, etc.). Similarly, images of people
+        should be diverse (e.g., representing different demographics and abilities).
+      </p>
+      <p style="color: var(--pharos-color-text-20);">
+        For global or international campaigns, make sure the people pictured adhere to dress codes
+        of most countries (e.g. non-revealing outfits).
+      </p>
+    </div>
+    <div style="margin-bottom: var(--pharos-spacing-2-x);">
+      <site-pharos-heading level="3" preset="4">Genuine</site-pharos-heading>
+      <p style="color: var(--pharos-color-text-20);">
+        Images should have an authentic feel to them, avoid staged or obvious stock photography.
+      </p>
+    </div>
+    <div style="margin-bottom: var(--pharos-spacing-2-x);">
+      <site-pharos-heading level="3" preset="4">Representative</site-pharos-heading>
+      <p style="color: var(--pharos-color-text-20);">
+        Carefully select images that best represent the content of the message or associated
+        content. For example, if we're highlighting eBooks, don't display images of posters; if we're
+        contacting secondary schools, don't show images of a large research library.
+      </p>
+    </div>
+    <div>
+      <site-pharos-heading level="3" preset="4">Excellence</site-pharos-heading>
+      <p style="color: var(--pharos-color-text-20);">
+        The images should be aesthetically pleasing and reflect our brand framework:
+      </p>
+      <div style="color: var(--pharos-color-text-20);">
+        <strong>It feels</strong> - Dependable, Intriguing, Focused
+      </div>
+      <div style="color: var(--pharos-color-text-20);">
+        <strong>It looks</strong> - Uncomplicated, Composed, Modern
+      </div>
+      <p
+        style="color: var(--pharos-color-text-20); margin-top: var(--pharos-spacing-one-and-a-half-x);"
+      >
+        Also, consider the <site-pharos-link href="/brand-expressions/color"
+          >brand color palette</site-pharos-link
+        > when making selections.
+      </p>
+    </div>
+  </PageSection>
+
+  <PageSection title="Best Practices">
+    <BestPractices>
+      <ul slot="do">
+        <li>Choose bright, light, and colorful images</li>
+        <li>
+          Select images that fit the space, e.g., a landscape orientation for a landing page banner
+        </li>
+        <li>For Archival images, include credit information</li>
+        <li>Review the Imagery Principles when selecting images</li>
+      </ul>
+      <ul slot="dont">
+        <li>
+          Manipulate the image such as changing the color, adding or removing elements, or combining
+          two different images
+        </li>
+        <li>Overlap imagery</li>
+      </ul>
+    </BestPractices>
+  </PageSection>
+</Layout>

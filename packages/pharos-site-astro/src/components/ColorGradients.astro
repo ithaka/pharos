@@ -1,0 +1,100 @@
+---
+/**
+ * Ported from the Gatsby site's src/components/statics/color/ColorGradients.tsx.
+ *
+ * The React version built the gradient list in `useEffect`; here it is computed
+ * at build time.
+ */
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTitleCase, toSlug } from '@lib/textConvert';
+
+interface Gradient {
+  first: string | string[];
+  second: string | string[];
+}
+
+interface Props {
+  gradients: Gradient[];
+}
+
+const { gradients = [] } = Astro.props;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const colors: Record<string, any> = tokens.color;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getNestedObject = (nestedObj: Record<string, any>, pathArr: string[]) => {
+  return pathArr.reduce(
+    (obj, key) => (obj && obj[key] !== 'undefined' ? obj[key] : undefined),
+    nestedObj
+  );
+};
+
+const getColorName = (path: string[]) => {
+  return path.length === 2
+    ? toTitleCase(path[path.length - 1].replace(/-/g, ' '))
+    : toTitleCase(
+        path
+          .slice(path.length - 2)
+          .join(' ')
+          .replace(/ base+$/g, '')
+          .replace(/-/g, ' ')
+      );
+};
+
+const gradientsToDisplay = gradients.map((gradient) => {
+  const firstColor =
+    typeof gradient.first === 'string'
+      ? colors[toSlug(gradient.first)]
+      : getNestedObject(
+          colors,
+          gradient.first.map((color) => toSlug(color))
+        );
+
+  const secondColor =
+    typeof gradient.second === 'string'
+      ? colors[toSlug(gradient.second)]
+      : getNestedObject(
+          colors,
+          gradient.second.map((color) => toSlug(color))
+        );
+
+  // The Gatsby source omits the closing paren of `linear-gradient(`. React set
+  // this through the CSSOM, which repaired the declaration, so production
+  // renders the gradient; serialising the same broken string into a `style`
+  // attribute makes the browser discard it and the swatches disappear. The
+  // paren is closed here to match what production actually renders.
+  const gradientStyle = [
+    `background: linear-gradient(to bottom right, ${firstColor.value} 55%, ${secondColor.value})`,
+    `border: ${
+      firstColor.value === '#ffffff' || secondColor.value === '#ffffff'
+        ? '1px solid var(--pharos-color-marble-gray-80)'
+        : 'none'
+    }`,
+  ].join('; ');
+
+  return {
+    style: gradientStyle,
+    label: `${getColorName(firstColor.path)} to ${getColorName(secondColor.path)}`,
+  };
+});
+
+const containerStyle = [
+  `grid-template-columns: repeat(${gradients.length}, min-content)`,
+  'column-gap: var(--pharos-spacing-three-and-a-half-x)',
+  'justify-content: space-between',
+].join('; ');
+---
+
+<div class="gradient-container" style={containerStyle}>
+  {
+    gradientsToDisplay.map((gradient) => (
+      <figure>
+        <div class="color-gradient" style={gradient.style} />
+        <figcaption class="gradient-label">
+          <div>{gradient.label}</div>
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>

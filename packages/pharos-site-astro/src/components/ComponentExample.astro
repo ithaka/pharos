@@ -1,0 +1,26 @@
+---
+/** Ported from the Gatsby site's src/components/ComponentExample.tsx. */
+import { toSlug } from '@lib/textConvert';
+
+interface Props {
+  storyBookType: string;
+  componentTitle: string;
+}
+
+const { storyBookType, componentTitle } = Astro.props;
+
+const url = `https://pharos.jstor.org/storybook/?path=/story/web-components_${storyBookType}-${toSlug(
+  componentTitle
+)}--docs`;
+---
+
+<site-pharos-heading level="2" preset="6">Example</site-pharos-heading>
+<div style="margin: var(--pharos-spacing-2-x) 0;">
+  <slot />
+</div>
+<br />
+<div>
+  <site-pharos-link href={url} target="_blank">
+    See live code examples in Storybook
+  </site-pharos-link>
+</div>

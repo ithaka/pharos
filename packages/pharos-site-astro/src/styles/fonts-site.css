@@ -1,0 +1,53 @@
+/*
+ * Site-specific @font-face declarations, ported from the Gatsby site's
+ * src/pages/index.module.css.
+ *
+ * These are separate from `@ithaka/pharos/lib/styles/fonts.css` (which defines
+ * the "GT America Standard" and "Ivar Headline" families used for body copy).
+ * The families below are referenced by name on individual pages -- notably
+ * /brand-expressions/typography, which renders specimens in IvarDisplay-*.
+ *
+ * Gatsby emitted a single global stylesheet, so declaring these inside one
+ * page's CSS module made them available everywhere. Astro scopes page CSS, so
+ * they live here and are imported by Layout.astro to reach every route.
+ * Without that, specimen pages silently fall back to the default serif.
+ */
+
+@font-face {
+  font-family: GT-America-Standard-Bold;
+  src:
+    local('GT-America-Standard-Bold'),
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Bold.woff')
+      format('woff');
+}
+
+@font-face {
+  font-family: IvarDisplay-Regular;
+  src:
+    local('IvarDisplay-Regular'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Regular.woff') format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: IvarDisplay-Medium;
+  src:
+    local('IvarDisplay-Medium'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Medium.woff') format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: IvarDisplay-Bold;
+  src:
+    local('IvarDisplay-Bold'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Bold.woff') format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarDisplay-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Roboto;
+  src:
+    local('Roboto'),
+    url('https://static.ithaka.org/pharos/assets/fonts/Roboto-Regular.ttf') format('truetype');
+}

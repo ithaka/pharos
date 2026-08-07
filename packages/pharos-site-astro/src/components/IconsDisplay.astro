@@ -1,0 +1,38 @@
+---
+/**
+ * Ported from the Gatsby site's src/components/statics/iconography/IconsDisplay.tsx.
+ *
+ * The React version rendered the icon list in `useEffect` after lazily
+ * requiring the Pharos React bundle; the web components render directly here.
+ */
+interface Props {
+  title: string;
+  iconsToShow: string[];
+  rows: number;
+}
+
+const { title, iconsToShow, rows } = Astro.props;
+
+const icons = iconsToShow
+  .filter((name) => iconsToShow.includes(name))
+  .map((name) => ({
+    name,
+    displayName: name.replace('-', ' ').replace(/\w\S*/g, (txt: string) => txt.toLowerCase()),
+  }));
+---
+
+<div class="icon__title">
+  <h3>{title}</h3>
+</div>
+<div class="all-icon-container" style={`grid-template-rows: repeat(${rows}, 1fr);`}>
+  {
+    icons.map((item) => (
+      <div class="icon-container">
+        <div class="icons-display__icon">
+          <site-pharos-icon name={item.name} a11y-title={item.name} />
+        </div>
+        <div class="icons-display__text">{item.displayName}</div>
+      </div>
+    ))
+  }
+</div>

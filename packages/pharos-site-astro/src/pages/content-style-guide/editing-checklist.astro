@@ -1,0 +1,119 @@
+---
+/** Ported from the Gatsby site's src/pages/content-style-guide/editing-checklist.tsx. */
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import BestPractices from '@components/BestPractices.astro';
+
+const pdf = '/files/content-style-guide/Content_Style_Guide_Editing_checklist.pdf';
+---
+
+<Layout title="Editing checklist">
+  <PageSection
+    title="Editing checklist"
+    description="Check your writing against these 10 points for clear and concise copy."
+    isHeader
+  >
+    <site-pharos-button icon-left="download" href={pdf}>Download PDF</site-pharos-button>
+  </PageSection>
+
+  <PageSection title="1. Use simple words">
+    <p>Short, simple words are preferable to fancy ones.</p>
+    <BestPractices>
+      <Fragment slot="do">Use the new Publishers dashboard to monitor downloads.</Fragment>
+      <Fragment slot="dont">
+        You can now utilize the new Publishers dashboard to monitor download activity.
+      </Fragment>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="2. Main point first">
+    <p>
+      When you are describing a goal and the action needed to achieve it, start the sentence with the
+      goal.
+    </p>
+    <BestPractices>
+      <Fragment slot="do">To save the item to your Workspace, log in to your account</Fragment>
+      <Fragment slot="dont">Log in to your account to save the item to your Workspace</Fragment>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="3. Be concise">
+    <p>It's worth saying again: The way we write is simple and direct.</p>
+    <BestPractices>
+      <Fragment slot="do">Save changes?</Fragment>
+      <Fragment slot="dont">Would you like to save your changes?</Fragment>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="4. Be positive">
+    <p>Emphasize the action a user can take, not the action they can't.</p>
+    <BestPractices>
+      <Fragment slot="do">To sign in, you must be an authorized user.</Fragment>
+      <Fragment slot="dont">You're not authorized to view this page.</Fragment>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="5. Avoid jargon, idioms, and slang">
+    <p>
+      Communications need to be understood by users the world over. Even the most common expressions
+      in the US aren't always understandable in other countries. "Catch you later" for "goodbye" or
+      "no problem" instead of "you're welcome" can lead to confusion. Jargon and internal terminology
+      are also to be avoided.
+    </p>
+    <BestPractices>
+      <Fragment slot="do">Video is loading</Fragment>
+      <Fragment slot="dont">Buffering…</Fragment>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="6. Be consistent">
+    <p>
+      Use the same wording to refer to the same items and actions; don't talk about the archive in
+      one paragraph and switch to database in the next.
+    </p>
+    <BestPractices>
+      <Fragment slot="do">
+        Click here to download the PDF. If the PDF is large, it may take some time for the download
+        to start.
+      </Fragment>
+      <Fragment slot="dont">
+        Click here to download the PDF. If the document is large, it may take some time for the file
+        transfer to start.
+      </Fragment>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="7. Stay active">
+    <p>
+      Avoid passive voice. Use active verbs and direct forms of speech whenever possible. It's
+      clearer and sounds more personal. Things aren't done, we do things. It's clearer, and it sounds
+      better.
+    </p>
+    <BestPractices>
+      <Fragment slot="do">We are extending expanded access through December 31.</Fragment>
+      <Fragment slot="dont">Expanded access has been extended through December 31.</Fragment>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="8. Avoid negative constructions">
+    <BestPractices>
+      <Fragment slot="do">Sign up to access the content.</Fragment>
+      <Fragment slot="dont">You cannot access the content without signing up.</Fragment>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="9. Use contractions">
+    <p>Contractions sound more conversational.</p>
+    <BestPractices>
+      <Fragment slot="do">Don't hesitate to reach out.</Fragment>
+      <Fragment slot="dont">Do not hesitate to get in touch with us.</Fragment>
+    </BestPractices>
+  </PageSection>
+
+  <PageSection title="10. Read it aloud">
+    <p>
+      If it doesn't sound right, it doesn't read right either. It's also a good way to catch typos
+      and errors.
+    </p>
+  </PageSection>
+</Layout>

@@ -1,0 +1,43 @@
+---
+/**
+ * Renders a colour token table body, combining the Gatsby site's ColorHead and
+ * ColorRow components (src/components/statics/design-token/).
+ */
+import { toTokenName, toOriginalTokenName } from '@lib/tokenFormat';
+import type { DesignToken } from '@lib/tokenFormat';
+
+interface Props {
+  tokens: DesignToken[];
+}
+
+const { tokens } = Astro.props;
+---
+
+<thead>
+  <tr>
+    <th class="token-table__first-column">Token</th>
+    <th class="token-table__second-column">Value</th>
+    <th class="token-table__third-column">Example</th>
+  </tr>
+</thead>
+<tbody>
+  {
+    tokens.map((token) => {
+      const originalName = toOriginalTokenName(token);
+      return (
+        <tr>
+          <td>
+            <code class="token-code">{toTokenName(token.name)}</code>
+          </td>
+          <td>
+            {originalName && <div>{originalName}</div>}
+            <div>{token.value}</div>
+          </td>
+          <td>
+            <div class="token-table__color-example" style={`background-color: ${token.value};`} />
+          </td>
+        </tr>
+      );
+    })
+  }
+</tbody>

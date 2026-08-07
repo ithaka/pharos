@@ -10,6 +10,11 @@ lib/
 packages/**/package-lock.json
 packages/pharos-site/public/
 packages/pharos-site/.cache/
+packages/pharos-site-astro/.astro/
+# Brand-asset archives carried over from the Gatsby site's static/ directory.
+# Nothing in the source or the built HTML links to them, so they are kept out of
+# git history here rather than duplicating the ~7.4MB the Gatsby package tracks.
+packages/pharos-site-astro/public/files/**/*.zip
 react-components/
 packages/pharos/src/styles/**/*.ts
 packages/pharos/src/styles/_variables.scss

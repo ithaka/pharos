@@ -1,0 +1,63 @@
+---
+/** Ported from the Gatsby site's src/components/statics/color/ColorTextSquares.tsx. */
+import { parse, formatHex } from 'culori';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTitleCase, toSlug } from '@lib/textConvert';
+
+interface Props {
+  bgName: string;
+  fgName: string;
+  text?: string;
+  showLabel?: boolean;
+}
+
+const { bgName, fgName, text, showLabel = false } = Astro.props;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const colors: Record<string, any> = tokens.color;
+
+const getColor = (name: string) => {
+  const normalizedName = toSlug(name);
+
+  let returnValue = colors[normalizedName]?.value;
+
+  const splitName = name.split(' ');
+  if (splitName.length === 3) {
+    const color = colors[toSlug(`${splitName[0]} ${splitName[1]}`)];
+    returnValue = color[splitName[2]]?.value;
+  }
+  if (!returnValue) {
+    returnValue = colors[normalizedName]?.base.value;
+  }
+  if (!returnValue) {
+    console.error(`Couldn't locate value for token color '${name}'`);
+    return null;
+  }
+  return returnValue;
+};
+
+const getBgStyle = (name: string) => {
+  let returnStyle = `background-color: ${getColor(name)};`;
+  if (name === 'White') returnStyle += ' box-shadow: inset 0 0 0 1px #EAE8E1;';
+  return returnStyle;
+};
+
+const getFgStyle = (name: string) => `color: ${getColor(name)};`;
+
+const hex = showLabel ? formatHex(parse(getColor(fgName))) : undefined;
+---
+
+<div>
+  <div style={getBgStyle(bgName)} class="color-text-square">
+    <span style={getFgStyle(fgName)} class="color-text-square__text">
+      {toTitleCase(text || fgName)}
+    </span>
+  </div>
+  {
+    showLabel ? (
+      <div>
+        <strong>Hex</strong> - {hex}
+      </div>
+    ) : null
+  }
+</div>
