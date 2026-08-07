@@ -11,14 +11,35 @@ interface LineHeightToken extends DesignToken {
   comment?: string;
 }
 
-/** Example font size per row, paired positionally with the token list. */
-const fontSizeMap = [12, 14, 16, 24, 32, 54, 16];
+/**
+ * Example font size per row, keyed by token name. Keyed rather than positional
+ * so that adding, removing or reordering a line-height token cannot silently
+ * shift every row onto the wrong font size.
+ */
+const fontSizeMap: Record<string, number> = {
+  xsmall: 12,
+  small: 14,
+  medium: 16,
+  large: 24,
+  xlarge: 32,
+  'heading-large': 54,
+  'text-base-condensed': 16,
+};
 
 const lineHeights = tokens['line-height'] as unknown as Record<string, LineHeightToken>;
 
 const rows = Object.keys(lineHeights)
   .filter((key) => key !== 'brand' && key !== 'base')
-  .map((key, i) => ({ key, token: lineHeights[key], fontSize: fontSizeMap[i] }));
+  .map((key) => {
+    const fontSize = fontSizeMap[key];
+    if (fontSize === undefined) {
+      throw new Error(
+        `line-height.astro: no example font size mapped for token "${key}". ` +
+          `Add it to fontSizeMap.`
+      );
+    }
+    return { key, token: lineHeights[key], fontSize };
+  });
 ---
 
 <Layout title="Line height">
