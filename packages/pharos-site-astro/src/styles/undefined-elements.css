@@ -1,0 +1,222 @@
+/*
+ * Prevents a flash of unstyled content before the Pharos custom elements
+ * register.
+ *
+ * Astro server-renders the real `<site-pharos-*>` markup, so the browser paints
+ * it as soon as the HTML arrives. Registration happens in a `<script
+ * type="module">`, which is deferred by spec and additionally has to download
+ * and execute the Lit bundle, so there is a window where the elements exist in
+ * the DOM but are still *undefined*. An undefined custom element is an unknown
+ * tag, and unknown tags compute to `display: inline` -- so the whole page
+ * collapses into a run of inline text (the sidenav renders as one ~4300px-wide
+ * line of run-together link labels) and then snaps into place when the bundle
+ * lands.
+ *
+ * The Gatsby site never showed this because it shipped an empty container div
+ * and created every element client-side during hydration: there was no
+ * server-rendered markup to flash. That is a property of how Gatsby rendered,
+ * not something the port did wrong -- but it does mean this is a new regression
+ * relative to production, and it needs its own fix here.
+ *
+ * `:not(:defined)` matches only while an element is unregistered and stops
+ * matching the instant `customElements.define` runs, so this costs nothing
+ * after boot and needs no JS to clean it up. A CSS-animation failsafe at the
+ * bottom of this file guarantees the content appears even if that never
+ * happens.
+ *
+ * Two deliberate choices:
+ *
+ * 1. `visibility: hidden` rather than `display: none`. Both hide the flash, but
+ *    `display: none` takes the elements out of layout, so the page height jumps
+ *    when they appear. `visibility: hidden` keeps them in flow.
+ *
+ * 2. The blocks below still restore each element's *final* `display` while
+ *    hidden. Reserving the right box means the surrounding layout settles
+ *    before paint instead of reflowing when registration completes.
+ *
+ * This file must be imported ahead of any stylesheet that styles these
+ * elements, and must not be loaded asynchronously -- it only works if it is in
+ * effect for the first paint.
+ */
+
+/*
+ * CSS has no tag-name-prefix selector, so the tags are listed explicitly. They
+ * are grouped by the `display` each element resolves to once registered, so the
+ * box reserved while hidden matches the final one and nothing reflows.
+ *
+ * This list is the full set registered in `src/lib/initComponents.ts`, not just
+ * the tags in use today, so adding a component to a page needs no change here.
+ */
+site-pharos-layout:not(:defined) {
+  display: grid;
+  visibility: hidden;
+}
+
+site-pharos-alert:not(:defined),
+site-pharos-breadcrumb:not(:defined),
+site-pharos-button:not(:defined),
+site-pharos-checkbox:not(:defined),
+site-pharos-checkbox-group:not(:defined),
+site-pharos-coach-mark:not(:defined),
+site-pharos-combobox:not(:defined),
+site-pharos-dropdown-menu:not(:defined),
+site-pharos-dropdown-menu-item:not(:defined),
+site-pharos-dropdown-menu-nav:not(:defined),
+site-pharos-dropdown-menu-nav-category:not(:defined),
+site-pharos-dropdown-menu-nav-link:not(:defined),
+site-pharos-footer:not(:defined),
+site-pharos-header:not(:defined),
+site-pharos-heading:not(:defined),
+site-pharos-icon:not(:defined),
+site-pharos-image-card:not(:defined),
+site-pharos-input-group:not(:defined),
+site-pharos-link:not(:defined),
+site-pharos-loading-spinner:not(:defined),
+site-pharos-modal:not(:defined),
+site-pharos-multiselect-dropdown:not(:defined),
+site-pharos-pagination:not(:defined),
+site-pharos-pill:not(:defined),
+site-pharos-progress-bar:not(:defined),
+site-pharos-radio-button:not(:defined),
+site-pharos-radio-group:not(:defined),
+site-pharos-select:not(:defined),
+site-pharos-sidenav:not(:defined),
+site-pharos-sidenav-link:not(:defined),
+site-pharos-sidenav-menu:not(:defined),
+site-pharos-sidenav-section:not(:defined),
+site-pharos-switch:not(:defined),
+site-pharos-tab:not(:defined),
+site-pharos-tab-panel:not(:defined),
+site-pharos-table:not(:defined),
+site-pharos-tabs:not(:defined),
+site-pharos-text-input:not(:defined),
+site-pharos-textarea:not(:defined),
+site-pharos-toast:not(:defined),
+site-pharos-toast-button:not(:defined),
+site-pharos-toaster:not(:defined),
+site-pharos-toggle-button:not(:defined),
+site-pharos-toggle-button-group:not(:defined),
+site-pharos-tooltip:not(:defined) {
+  display: block;
+  visibility: hidden;
+}
+
+/*
+ * The skip link is a special case. Once registered it collapses to a 1px
+ * visually-hidden box that only expands on keyboard focus, so the `display:
+ * block` above over-reserves: an undefined one lays out as a full 24px line of
+ * text, which inflates the black `.top-bar` it sits in into a visible bar
+ * during the very window this file exists to smooth over.
+ *
+ * Reserving no height matches the registered state.
+ */
+#skip-link:not(:defined) {
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+
+/*
+ * Failsafe: reveal everything after 3s no matter what.
+ *
+ * Hiding content until JS runs means any failure to run it -- the bundle 404s,
+ * a CDN blocks it, it throws on an old browser, the user has JS off -- would
+ * otherwise leave the page permanently blank. That is a far worse outcome than
+ * the flash this file exists to prevent, so the reveal must not itself depend
+ * on JS.
+ *
+ * A JS-set flag (`data-pharos-ready`) was tried first and is wrong for exactly
+ * that reason: it cannot fire in the case it is meant to protect against.
+ * Blocking the module bundle left all 61 sidenav links hidden forever.
+ *
+ * A CSS animation runs off the document timeline, so it fires whether or not
+ * any script executes. It ends on `visibility: visible`, and because the
+ * animation is `forwards`-filled that value sticks. Elements that register
+ * normally stop matching `:not(:defined)` long before the delay elapses, so in
+ * the normal case this never becomes visible to the user.
+ *
+ * 3s is chosen to sit beyond a realistic slow-3G bundle fetch (~1.5-2s in
+ * testing) while still being well under the point where a visitor would give up
+ * on a blank page.
+ */
+@keyframes pharos-undefined-failsafe {
+  to {
+    visibility: visible;
+  }
+}
+
+/*
+ * Scoped to the same tag list hidden above rather than a bare
+ * `:not(:defined)` -- that pseudo-class matches every ordinary HTML element
+ * too (a `<div>` is not a defined custom element), so an unscoped rule would
+ * attach an animation to every node in the document.
+ */
+site-pharos-alert:not(:defined),
+site-pharos-breadcrumb:not(:defined),
+site-pharos-button:not(:defined),
+site-pharos-checkbox:not(:defined),
+site-pharos-checkbox-group:not(:defined),
+site-pharos-coach-mark:not(:defined),
+site-pharos-combobox:not(:defined),
+site-pharos-dropdown-menu:not(:defined),
+site-pharos-dropdown-menu-item:not(:defined),
+site-pharos-dropdown-menu-nav:not(:defined),
+site-pharos-dropdown-menu-nav-category:not(:defined),
+site-pharos-dropdown-menu-nav-link:not(:defined),
+site-pharos-footer:not(:defined),
+site-pharos-header:not(:defined),
+site-pharos-heading:not(:defined),
+site-pharos-icon:not(:defined),
+site-pharos-image-card:not(:defined),
+site-pharos-input-group:not(:defined),
+site-pharos-layout:not(:defined),
+site-pharos-link:not(:defined),
+site-pharos-loading-spinner:not(:defined),
+site-pharos-modal:not(:defined),
+site-pharos-multiselect-dropdown:not(:defined),
+site-pharos-pagination:not(:defined),
+site-pharos-pill:not(:defined),
+site-pharos-progress-bar:not(:defined),
+site-pharos-radio-button:not(:defined),
+site-pharos-radio-group:not(:defined),
+site-pharos-select:not(:defined),
+site-pharos-sidenav:not(:defined),
+site-pharos-sidenav-link:not(:defined),
+site-pharos-sidenav-menu:not(:defined),
+site-pharos-sidenav-section:not(:defined),
+site-pharos-switch:not(:defined),
+site-pharos-tab:not(:defined),
+site-pharos-tab-panel:not(:defined),
+site-pharos-table:not(:defined),
+site-pharos-tabs:not(:defined),
+site-pharos-text-input:not(:defined),
+site-pharos-textarea:not(:defined),
+site-pharos-toast:not(:defined),
+site-pharos-toast-button:not(:defined),
+site-pharos-toaster:not(:defined),
+site-pharos-toggle-button:not(:defined),
+site-pharos-toggle-button-group:not(:defined),
+site-pharos-tooltip:not(:defined) {
+  animation: pharos-undefined-failsafe 1ms linear 3s forwards;
+}
+
+/*
+ * The skip link needs its box back as well, not just its visibility, since the
+ * rule above collapses it to `height: 0`.
+ */
+@keyframes pharos-undefined-failsafe-skip-link {
+  to {
+    visibility: visible;
+    height: auto;
+  }
+}
+
+#skip-link:not(:defined) {
+  animation: pharos-undefined-failsafe-skip-link 1ms linear 3s forwards;
+}
+
+/*
+ * Users who have asked for reduced motion still need the failsafe -- it is a
+ * visibility switch, not motion -- so it is deliberately not disabled here.
+ * Keeping the duration at 1ms means there is nothing to perceive as animation.
+ */

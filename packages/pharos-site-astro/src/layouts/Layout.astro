@@ -10,6 +10,9 @@ import Footer from '@components/Footer.astro';
 // site-wide because Gatsby emits one global stylesheet; Astro scopes CSS per
 // page, so importing it there would leave the other 61 routes rendering in the
 // fallback sans-serif. It belongs in the shared layout.
+// Must come first: it suppresses the flash of unstyled custom elements before
+// they register, which only works if it applies to the very first paint.
+import '../styles/undefined-elements.css';
 import '@ithaka/pharos/lib/styles/fonts.css';
 import '../styles/fonts-site.css';
 import '@ithaka/pharos/lib/styles/variables.css';
