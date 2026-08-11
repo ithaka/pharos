@@ -154,6 +154,7 @@ const Sidenav: FC<SidenavProps> = ({ isOpen, showCloseButton }) => {
               'Sheet',
               'Sidenav',
               'Switch',
+              'Table',
               'Tabs',
               'Toast',
               'Tooltip',
