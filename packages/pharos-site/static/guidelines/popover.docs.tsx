@@ -6,7 +6,6 @@ const PopoverPage: FC = () => {
   const Pharos =
     typeof document !== `undefined` ? require('@ithaka/pharos/lib/react-components') : null;
   const [PageContent, setPageContent] = useState<ReactElement | null>(null);
-  // An internal dependency of Pharos references document, so we need to set the page content in a useEffect to build it with SSR
   useEffect(() => {
     const { PharosButton, PharosHeading, PharosLink, PharosPopover } = Pharos;
 
