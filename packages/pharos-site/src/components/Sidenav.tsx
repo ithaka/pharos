@@ -128,6 +128,7 @@ const Sidenav: FC<SidenavProps> = ({ isOpen, showCloseButton }) => {
               'Button',
               'Breadcrumb',
               'Checkbox',
+              'Checkbox group',
               'Coach Mark',
               'Combobox',
               'Dropdown menu',
