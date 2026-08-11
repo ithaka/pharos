@@ -32,9 +32,8 @@ describe('pharos-tooltip', () => {
     `);
   });
 
-  afterEach(async () => {
-    trigger.remove();
-    secondTrigger.remove();
+  afterEach(() => {
+    document.body.replaceChildren();
   });
 
   it('is accessible', async () => {
