@@ -146,6 +146,7 @@ const Sidenav: FC<SidenavProps> = ({ isOpen, showCloseButton }) => {
               'Multiselect dropdown',
               'Pagination',
               'Pill',
+              'Popover',
               'Progress bar',
               'Radio button',
               'Radio group',
