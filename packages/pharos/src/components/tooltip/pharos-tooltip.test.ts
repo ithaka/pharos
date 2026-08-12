@@ -16,6 +16,9 @@ describe('pharos-tooltip', () => {
     trigger.setAttribute('id', id);
     trigger.setAttribute('data-tooltip-id', tooltipId);
     trigger.textContent = 'I am a button';
+    // Keep the trigger clear of the headless cursor at (0, 0), which would
+    // otherwise fire an unwanted mouseenter.
+    trigger.style.margin = '50px';
     document.body.appendChild(trigger);
     return trigger;
   };
