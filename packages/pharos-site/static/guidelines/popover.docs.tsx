@@ -27,10 +27,6 @@ const PopoverPage: FC = () => {
                 <p>This is the popover content.</p>
               </div>
             </PharosPopover>
-            {/* Since the popover is positioned with `position: fixed`, it doesn't affect
-            document flow. This spacer reserves enough room below the trigger so the open
-            popover doesn't visually overlap the "See live code examples" link that follows. */}
-            <div aria-hidden="true" style={{ height: 'var(--pharos-spacing-5-x)' }} />
           </>
         </PageSection>
         <PageSection topMargin title="Usage">
