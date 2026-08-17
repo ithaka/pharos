@@ -16,6 +16,8 @@ export default defineConfig({
   },
   integrations: [mdx()],
   markdown: {
+    // disable GitHub Flavored Markdown to prevent links in examples being double linked
+    gfm: false,
     // Gatsby rendered page text verbatim. Astro's smartypants would rewrite
     // straight quotes and dashes into typographic ones ("they're" -> "they’re"),
     // which would change the copy, so it stays off.

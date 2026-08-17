@@ -184,10 +184,20 @@ Each of these failed the build or changed output, and each is now handled:
   so `as (HTMLElement & {...})` is a syntax error. Use
   `src/components/markdown/DemoScript.astro`, which takes the code as a string
   prop and emits it with `set:html`. Three pages needed this.
-- **GFM autolinks bare URLs.** `web-elements` documents _not_ writing out URLs,
-  and Markdown turned its examples into live links. Wrapping in `<span>` does
-  not help — autolinking happens inside it. Pass the string through a JSX
-  expression: `{'https://www.example.com'}`.
+- **GFM rewrote bare URLs and emails into links — now off at the config level.**
+  `web-elements` documents _not_ writing out URLs and Markdown turned its
+  examples into live links; worse, `alert` wrote
+  `<site-pharos-link href="#">support@jstor.org</site-pharos-link>` six times and
+  GFM autolinked the text _inside_ the link, producing nested anchors with
+  `href="mailto:…"` and `target="_blank"` that hijacked the click. `pill` turned
+  two plain-text demo labels into live `mailto:` links.
+
+  The per-occurrence fix was to escape each one as `{'support@jstor.org'}`.
+  `markdown: { gfm: false }` in `astro.config.mjs` removes the whole class
+  instead, and costs nothing here: **no page on the site uses a single GFM
+  feature** — every table is hand-written HTML, and there is no strikethrough or
+  task list. Verified by grep before switching it off.
+
 - **A closing tag followed by more content on the same line** ends the JSX block
   early (`button`). Put the run inside a wrapper element.
 - **A multi-line tag glued to the preceding word** loses the JSX whitespace
