@@ -2,6 +2,8 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 
+import { rehypeUnwrapPharosParagraphs } from './src/lib/rehypeUnwrapPharosParagraphs.ts';
+
 const resolve = (path) => fileURLToPath(new URL(path, import.meta.url));
 
 // https://astro.build
@@ -27,6 +29,9 @@ export default defineConfig({
     // (7.2.1) — it belongs to a later release. Revisit when that package is
     // upgraded; until then this option is what keeps the copy byte-identical.
     smartypants: false,
+    // Drops the `<p>` CommonMark puts around a Pharos element's content, so
+    // examples render correctly
+    rehypePlugins: [rehypeUnwrapPharosParagraphs],
   },
   vite: {
     resolve: {

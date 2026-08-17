@@ -198,6 +198,61 @@ Each of these failed the build or changed output, and each is now handled:
   feature** — every table is hand-written HTML, and there is no strikethrough or
   task list. Verified by grep before switching it off.
 
+### Element content on its own line — handled by a rehype plugin
+
+This one had the widest blast radius (14 pages) and is the reason
+`src/lib/rehypeUnwrapPharosParagraphs.ts` exists. Written naturally,
+
+```mdx
+<site-pharos-button large>
+  Large primary button
+</site-pharos-button>
+```
+
+CommonMark reads the indented text as a paragraph, so the output is
+`<site-pharos-button><p>…</p></site-pharos-button>`. The paragraph's 24px bottom
+margin inflates the element: standard buttons rendered 58px instead of 34px,
+large buttons 66px instead of 42px, and every row of `heading`'s preset demo was
+wrong — on the page whose entire job is showing what the presets look like.
+
+**There is no setting for this.** It is core Markdown semantics; neither the
+`markdown` options nor the MDX integration exposes a switch. `gfm: false` does
+not affect it (measured: 7 wrappers before and after on `button`). The
+alternative — keeping every element's content on its tag's line — makes source
+formatting load-bearing, which is a bad property for content pages.
+
+The plugin unwraps a *lone* generated `<p>` inside a `site-pharos-*` element, so
+both spellings render identically and formatting stops mattering. An element
+whose body is genuinely several paragraphs (the `alert` demos, `modal` with its
+footer buttons) is left alone, as is any `<p>` the author classed by hand.
+
+One gotcha if you touch it: in MDX a `<site-pharos-*>` tag is an
+`mdxJsxFlowElement` carrying a `name`, **not** a hast `element` carrying a
+`tagName`. A plugin that checks only for `element` silently matches nothing —
+the first version of this one did, and reported success while changing zero
+output.
+
+### `.prettierignore` is still required
+
+Not because of the `<p>` — the plugin makes that formatting-independent — but
+because **Prettier corrupts MDX outright**. Running it on `heading.mdx` reformats
+a multi-line tag into
+
+```mdx
+<site-pharos-heading
+level="2"
+
+> Presets
+> </site-pharos-heading>
+```
+
+reading the closing `>` as a blockquote marker and producing a file that no
+longer parses (`Unexpected end of file before attribute name`). Keep
+`src/pages/**/*.mdx` in `.prettierignore`.
+
+Relatedly, the MDX **build** parser rejects `>Text</tag>` on its own line even
+though the dev server accepts it. If you hand-format a multi-line tag, join it
+onto one line rather than leaving a bare `>` line.
 - **A closing tag followed by more content on the same line** ends the JSX block
   early (`button`). Put the run inside a wrapper element.
 - **A multi-line tag glued to the preceding word** loses the JSX whitespace
