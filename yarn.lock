@@ -2787,14 +2787,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/changelog-github@npm:^0.7.0":
-  version: 0.7.0
-  resolution: "@changesets/changelog-github@npm:0.7.0"
+"@changesets/changelog-github@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@changesets/changelog-github@npm:1.0.0"
   dependencies:
-    "@changesets/get-github-info": "npm:^0.8.0"
-    "@changesets/types": "npm:^6.1.0"
-    dotenv: "npm:^8.1.0"
-  checksum: 10c0/8054f8d5057e79eccf6658712603c9df04906f6b9c7a8b3581e63d178328ca9ba7cb27e4f2241115c3c3430099dd92ebdea097be86921d0a3cd0d07e06e896eb
+    "@changesets/get-github-info": "npm:^1.0.0"
+    "@changesets/types": "npm:^7.0.0"
+  checksum: 10c0/c53082e33b9b78330324634407e8ec06e3d1466d6266e0cd8cb3d72955b0a12009d09b3b09e560fe444b47fca31029ad442ba1af55aa04db401f6f7bbf1353a0
   languageName: node
   linkType: hard
 
@@ -2871,13 +2870,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/get-github-info@npm:^0.8.0":
-  version: 0.8.0
-  resolution: "@changesets/get-github-info@npm:0.8.0"
+"@changesets/get-github-info@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@changesets/get-github-info@npm:1.0.0"
   dependencies:
-    dataloader: "npm:^1.4.0"
-    node-fetch: "npm:^2.5.0"
-  checksum: 10c0/b7c53e368a1e77504a704de3080ee99c63e7610c3a69549ab6709089bdb3ae2faed33059852033440afe8225827504aae8124c464a65cd91a9ada1de1955cb9e
+    dataloader: "npm:^2.2.3"
+  checksum: 10c0/ae395c58bb360a425e09f07b342f6de49fdb1e21e9c196a9a821f87d6999fdbaab0e3c588ab5a748e54921d143912b2a9f44c4e7f1761944a7c6106a8449073f
   languageName: node
   linkType: hard
 
@@ -2982,6 +2980,13 @@ __metadata:
   version: 6.1.0
   resolution: "@changesets/types@npm:6.1.0"
   checksum: 10c0/b4cea3a4465d1eaf0bbd7be1e404aca5a055a61d4cc72aadcb73bbbda1670b4022736b8d3052616cbf1f451afa0637545d077697f4b923236539af9cd5abce6c
+  languageName: node
+  linkType: hard
+
+"@changesets/types@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@changesets/types@npm:7.0.0"
+  checksum: 10c0/494e09ff94968c1c81521f5ac8c6ab60a1e30d7d0cd9ea7f83c2cbac92efba38b03e008ee6fb4592d90b05d69bad864b6ae8155827d52a51c652f5c24d36ec83
   languageName: node
   linkType: hard
 
@@ -12757,10 +12762,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dataloader@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "dataloader@npm:1.4.0"
-  checksum: 10c0/5fa4c843b9e60195092f1fc7e2acaff318ed46886dc670ddff683bc560f12d4079e6d1e77749501b7e111a8582d26a2aa2a2fbe6d7d5e1520cef64f4e1fd242d
+"dataloader@npm:^2.2.3":
+  version: 2.2.3
+  resolution: "dataloader@npm:2.2.3"
+  checksum: 10c0/9b9a056fbc863ca86da87d59e053e871e263b4966aa4d55e40d61a65e96815fae5530ca220629064ca5f8e3000c0c4ec93292e170c38ff393fb34256b4d7c1aa
   languageName: node
   linkType: hard
 
@@ -13331,7 +13336,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^8.1.0, dotenv@npm:^8.6.0":
+"dotenv@npm:^8.6.0":
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
   checksum: 10c0/6750431dea8efbd54b9f2d9681b04e1ccc7989486461dcf058bb708d9e3d63b04115fcdf8840e38ad1e24a4a2e1e7c1560626c5e3ac7bc09371b127c49e2d45f
@@ -20972,7 +20977,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^2.5.0, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.11, node-fetch@npm:^2.7.0":
+"node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.11, node-fetch@npm:^2.7.0":
   version: 2.7.0
   resolution: "node-fetch@npm:2.7.0"
   dependencies:
@@ -22177,7 +22182,7 @@ __metadata:
     "@babel/plugin-proposal-export-default-from": "npm:^8.0.1"
     "@babel/plugin-syntax-import-assertions": "npm:^7.29.7"
     "@babel/preset-env": "npm:^8.0.2"
-    "@changesets/changelog-github": "npm:^0.7.0"
+    "@changesets/changelog-github": "npm:^1.0.0"
     "@changesets/cli": "npm:^2.31.1"
     "@commitlint/cli": "npm:^21.2.1"
     "@commitlint/config-conventional": "npm:^21.2.0"
