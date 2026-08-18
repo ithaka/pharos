@@ -102,20 +102,18 @@ Buttons should lead with a strong verb that encourages action. To provide enough
 
 {examples.map(({ good, bad }) => (
   <ul class="list-example__no-bullets">
-    <li style="display: flex; color: var(--pharos-color-green-base);">
+    <li class="guideline-example__item guideline-example__item--do">
       <site-pharos-icon
         name="checkmark"
-        class="checkmark"
-        style="margin-right: var(--pharos-spacing-one-half-x); fill: var(--pharos-color-green-base);"
+        class="guideline-example__icon"
         a11y-title="good example"
       />
       {good}
     </li>
-    <li style="display: flex; color: var(--pharos-color-living-coral-53);">
+    <li class="guideline-example__item guideline-example__item--dont">
       <site-pharos-icon
         name="close"
-        class="close"
-        style="margin-right: var(--pharos-spacing-one-half-x; fill: var(--pharos-color-living-coral-53);"
+        class="guideline-example__icon"
         a11y-title="bad example"
       />
       {bad}
@@ -131,20 +129,18 @@ Button text should suggest its action in an expected way and in the fewest words
 
 {conciseExamples.map(({ good, bad }) => (
   <ul class="list-example__no-bullets">
-    <li style="display: flex; color: var(--pharos-color-green-base);">
+    <li class="guideline-example__item guideline-example__item--do">
       <site-pharos-icon
         name="checkmark"
-        class="checkmark"
-        style="margin-right: var(--pharos-spacing-one-half-x); fill: var(--pharos-color-green-base);"
+        class="guideline-example__icon"
         a11y-title="good example"
       />
       {good}
     </li>
-    <li style="display: flex; color: var(--pharos-color-living-coral-53);">
+    <li class="guideline-example__item guideline-example__item--dont">
       <site-pharos-icon
         name="close"
-        class="close"
-        style="margin-right: var(--pharos-spacing-one-half-x; fill: var(--pharos-color-living-coral-53);"
+        class="guideline-example__icon"
         a11y-title="bad example"
       />
       {bad}
@@ -311,7 +307,7 @@ VoiceOver reads as: "visual label (or aria-label), button"
 
 ### Relevant WCAG guidelines
 
-<ul style="margin-bottom: var(--pharos-spacing-1-x);">
+<ul class="doc-label">
   <li>[1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships)</li>
   <li>[2.5.3 Label in Name AA](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name)</li>
   <li>[4.1.2 Name, Role, Value A](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value)</li>

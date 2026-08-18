@@ -21,7 +21,7 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
   >
     <Grid columns={1} vSpace={0} hSpace={0} bottom={0} justify="center">
       <div>
-        <div style="margin-bottom: var(--pharos-spacing-2-x);">
+        <div class="swatch-row">
           <ColorSwatches filter={{ key: 'group', value: 'primary' }} noLabel large smallSpacing />
         </div>
         <ColorSwatches filter={{ key: 'group', value: 'secondary' }} noLabel large smallSpacing />
@@ -53,27 +53,27 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
   <PageSection title="Principles" moreTitleSpace>
     <div>
       <site-pharos-heading level="3" preset="4">Expressive</site-pharos-heading>
-      <p style="color: var(--pharos-color-text-20);">
+      <p>
         Colors are used at memorable moments to reinforce our brand's style.
       </p>
     </div>
     <div>
       <site-pharos-heading level="3" preset="4">Legible</site-pharos-heading>
-      <p style="color: var(--pharos-color-text-20);">
+      <p>
         Text and important elements, like icons, meet legibility standards when appearing on colored
         backgrounds across all screen and device types.
       </p>
     </div>
     <div>
       <site-pharos-heading level="3" preset="4">Hierarchical</site-pharos-heading>
-      <p style="color: var(--pharos-color-text-20);">
+      <p>
         Color indicates which elements are interactive, how they relate to other components, and
         their level of prominence. Important elements should stand out the most.
       </p>
     </div>
     <div>
       <site-pharos-heading level="3" preset="4">Consistent</site-pharos-heading>
-      <p style="color: var(--pharos-color-text-20);">
+      <p>
         Color should be applied throughout a UI consistently and be compatible with the brand it
         represents.
       </p>
@@ -82,18 +82,18 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
 
   <PageSection title="Best practices">
     <DosAndDonts>
-      <div style="margin-bottom: var(--pharos-spacing-1-x);">
+      <div class="guidance">
         <site-pharos-heading level="3" preset="2--bold">
           Use recommended color combinations
         </site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
+        <p>
           JSTOR Red has prominence and is present in most materials.
         </p>
       </div>
-      <div style="margin-bottom: var(--pharos-spacing-1-x);">
+      <div class="guidance">
         <site-pharos-heading level="4" preset="1--bold">2-color combinations</site-pharos-heading>
       </div>
-      <div style="margin-bottom: var(--pharos-spacing-5-x);">
+      <div class="specimen">
         <Grid columns={4} vSpace={2} hSpace={3} bottom={0} minContent justifyContent="space-between">
           <ColorCombos colorNames={['JSTOR red', 'Night blue']} />
           <ColorCombos colorNames={['JSTOR red', 'Glacier blue']} />
@@ -102,7 +102,7 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
           <ColorCombos colorNames={['JSTOR red', 'Black']} />
         </Grid>
       </div>
-      <div style="margin-bottom: var(--pharos-spacing-1-x);">
+      <div class="guidance">
         <site-pharos-heading level="4" preset="1--bold">3-color combinations</site-pharos-heading>
       </div>
       <div>
@@ -114,29 +114,29 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
       </div>
     </DosAndDonts>
     <DosAndDonts dont>
-      <div style="margin-bottom: var(--pharos-spacing-one-and-a-half-x);">
+      <div class="guidance guidance--dont">
         <site-pharos-heading level="3" preset="2--bold">
           Don't use non-complimentary color combinations
         </site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
+        <p>
           These colors do not compliment each other well; therefore, do not pair them in your
           experiences.
         </p>
       </div>
-      <div style="margin-bottom: var(--pharos-spacing-three-and-a-half-x);">
+      <div class="specimen specimen--dont">
         <Grid columns={3} vSpace={2} hSpace={3} bottom={0} align="start">
           <ColorCombos colorNames={['Black', 'Living coral']} crossout />
           <ColorCombos colorNames={['Glacier blue', 'Living coral']} crossout />
           <ColorCombos colorNames={['JSTOR red', 'White', 'Night blue']} crossout />
         </Grid>
       </div>
-      <div style="margin-bottom: var(--pharos-spacing-one-and-a-half-x);">
+      <div class="guidance guidance--dont">
         <site-pharos-heading level="3" preset="2--bold">Don't alter JSTOR Red</site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
+        <p>
           Please do not darken or lighten JSTOR Red. It should always be used in its true color.
         </p>
       </div>
-      <div style="margin-bottom: var(--pharos-spacing-three-and-a-half-x);">
+      <div class="specimen specimen--dont">
         <Grid
           columns={5}
           vSpace={2}
@@ -163,7 +163,7 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
           </CrossOut>
         </Grid>
       </div>
-      <div style="margin-bottom: var(--pharos-spacing-one-and-a-half-x);">
+      <div class="guidance guidance--dont">
         <site-pharos-heading level="3" preset="2--bold">
           Don't use inaccessible colors
         </site-pharos-heading>
@@ -205,7 +205,7 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
     title="Gradients"
     description="Gradients provide depth and create visual interest helping move users through a design. Gradients should be used as subtle details in the corners of materials."
   >
-    <div style="margin-top: 4rem; margin-bottom: 4rem;">
+    <div class="palette-note">
       <ColorGradients
         gradients={[
           { first: 'JSTOR red', second: ['Living coral', 'base'] },
@@ -296,7 +296,7 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
   </PageSection>
 
   <PageSection title="Accessibility" description="Colors have been tested for on screen contrast.">
-    <div style="margin-bottom: var(--pharos-spacing-5-x);">
+    <div class="specimen">
       <Grid
         columns={4}
         vSpace={2}
@@ -319,11 +319,11 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
       </Grid>
     </div>
     <site-pharos-heading level="4" preset="2">Color test tools</site-pharos-heading>
-    <div style="margin-bottom: var(--pharos-spacing-2-x);">
+    <div class="tool-links">
       <site-pharos-link href="https://color.review/" target="_blank">Color Review</site-pharos-link>
       <site-pharos-icon
         name="link-external"
-        style="margin-right: var(--pharos-spacing-1-x);"
+        class="swatch-label"
         a11y-hidden="true"></site-pharos-icon>
       <site-pharos-link href="https://webaim.org/resources/contrastchecker/" target="_blank">
         WebAIM Color Contrast Checker
@@ -335,7 +335,7 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
   <PageSection title="Colors in action">
     <Grid columns={3} vSpace={2} hSpace={0} bottom={0} align="start">
       <div>
-        <div style="margin-bottom: var(--pharos-spacing-1-x);">Product Card</div>
+        <div class="figure-caption">Product Card</div>
         <img
           src="/images/brand-expressions/color/color-brochure.jpg"
           alt="Product card"
@@ -345,7 +345,7 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
         />
       </div>
       <div>
-        <div style="margin-bottom: var(--pharos-spacing-1-x);">Illustration</div>
+        <div class="figure-caption">Illustration</div>
         <img
           src="/images/brand-expressions/color/color-illustration.jpg"
           alt="Illustration"
@@ -355,7 +355,7 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
         />
       </div>
       <div>
-        <div style="margin-bottom: var(--pharos-spacing-1-x);">Notebook</div>
+        <div class="figure-caption">Notebook</div>
         <img
           src="/images/brand-expressions/color/color-notebook.jpg"
           alt="Notebook"
@@ -367,3 +367,60 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
     </Grid>
   </PageSection>
 </Layout>
+
+<style>
+  /*
+   * Page-specific layout, scoped to this page.
+   *
+   * The spacing here is named for what the block *is*, not what it measures.
+   * The page alternates a block of guidance (a heading plus prose) with the
+   * specimen it describes, and the two take different gaps: guidance sits close
+   * to the thing it explains, specimens are separated from the next section.
+   */
+  .guidance {
+    margin-bottom: var(--pharos-spacing-1-x);
+  }
+
+  /*
+   * The don't-column runs slightly looser than the do-column, and its specimens
+   * looser still. Preserved from the Gatsby port rather than unified — matching
+   * them is a design decision, not a refactor.
+   *
+   * Marked with an explicit modifier rather than inferred from the surrounding
+   * `DosAndDonts`: Astro scopes each component's styles with its own
+   * `data-astro-cid`, so a descendant selector written here does not reach
+   * markup that component renders.
+   */
+  .guidance--dont {
+    margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+  }
+
+  .specimen {
+    margin-bottom: var(--pharos-spacing-5-x);
+  }
+
+  .specimen--dont {
+    margin-bottom: var(--pharos-spacing-three-and-a-half-x);
+  }
+
+  .swatch-row {
+    margin-bottom: var(--pharos-spacing-2-x);
+  }
+
+  .figure-caption {
+    margin-bottom: var(--pharos-spacing-1-x);
+  }
+
+  .tool-links {
+    margin-bottom: var(--pharos-spacing-2-x);
+  }
+
+  .palette-note {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .swatch-label {
+    margin-right: var(--pharos-spacing-1-x);
+  }
+</style>

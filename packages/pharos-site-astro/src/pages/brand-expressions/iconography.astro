@@ -22,7 +22,7 @@ const base = '/images/brand-expressions/iconography';
     >
       View icons in Storybook
     </site-pharos-button>
-    <div style="margin-top: var(--pharos-spacing-5-x); margin-bottom: var(--pharos-spacing-7-x);">
+    <div class="hero">
       <Grid columns={1} justifyContent="center" minContent align="end">
         <img src={`${base}/icon_overview_hero.svg`} alt="Iconography" />
       </Grid>
@@ -128,8 +128,8 @@ const base = '/images/brand-expressions/iconography';
   </PageSection>
 
   <PageSection title="Principles">
-    <div style="margin-bottom: 4rem;">
-      <site-pharos-heading level="3" preset="4" style="margin-bottom: 1rem;">
+    <div class="icon-group">
+      <site-pharos-heading level="3" preset="4" class="icon-group__title">
         Simple over detailed
       </site-pharos-heading>
       <Grid columns={2} justify="center" bottom={1}>
@@ -145,17 +145,22 @@ const base = '/images/brand-expressions/iconography';
           </li>
         </ul>
         <ul slot="dont">
-          <li>Icons should not be too heavy in details, this increases cognitive load on the user</li>
+          <li>
+            Icons should not be too heavy in details, this increases cognitive load on the user
+          </li>
         </ul>
       </BestPractices>
     </div>
-    <div style="margin-bottom: 4rem;">
-      <site-pharos-heading level="3" preset="4" style="margin-bottom: 1rem;">
+    <div class="icon-group">
+      <site-pharos-heading level="3" preset="4" class="icon-group__title">
         Clear over conceptual
       </site-pharos-heading>
       <Grid columns={2} justify="center" bottom={1}>
         <img src={`${base}/iconography_clear-conceptual_do.svg`} alt="Clear over conceptual do" />
-        <img src={`${base}/iconography_clear-conceptual_dont.svg`} alt="Clear over conceptual dont" />
+        <img
+          src={`${base}/iconography_clear-conceptual_dont.svg`}
+          alt="Clear over conceptual dont"
+        />
       </Grid>
       <BestPractices>
         <ul slot="do">
@@ -174,8 +179,8 @@ const base = '/images/brand-expressions/iconography';
         </ul>
       </BestPractices>
     </div>
-    <div style="margin-bottom: 4rem;">
-      <site-pharos-heading level="3" preset="4" style="margin-bottom: .5rem;">
+    <div class="icon-group">
+      <site-pharos-heading level="3" preset="4" class="icon-group__title icon-group__title--tight">
         Family over friends
       </site-pharos-heading>
       <Grid columns={2} justify="center" bottom={1}>
@@ -195,7 +200,7 @@ const base = '/images/brand-expressions/iconography';
       </BestPractices>
     </div>
     <div>
-      <site-pharos-heading level="3" preset="4" style="margin-bottom: 1rem;">
+      <site-pharos-heading level="3" preset="4" class="icon-group__title">
         Labels over no labels
       </site-pharos-heading>
       <Grid columns={2} justify="center" bottom={1}>
@@ -205,11 +210,12 @@ const base = '/images/brand-expressions/iconography';
       <BestPractices>
         <ul slot="do">
           <li>
-            Whenever possible, pair an icon with text, it's more quickly recognizable and understood.
+            Whenever possible, pair an icon with text, it's more quickly recognizable and
+            understood.
           </li>
           <li>
-            If an icon cannot have text pair next to it, the use of a tooltip will suffice (e.g. zoom
-            in/zoom out on the viewer).
+            If an icon cannot have text pair next to it, the use of a tooltip will suffice (e.g.
+            zoom in/zoom out on the viewer).
           </li>
         </ul>
         <ul slot="dont">
@@ -234,7 +240,7 @@ const base = '/images/brand-expressions/iconography';
       alt="Icons are inspired by the square shape of the logo"
       width="220"
     />
-    <div style="margin-top: 4rem; margin-bottom: 5rem; width: 66%;">
+    <div class="closing-note">
       <site-pharos-heading level="3" preset="4">Steps</site-pharos-heading>
       <ol>
         <li>
@@ -243,12 +249,12 @@ const base = '/images/brand-expressions/iconography';
         </li>
         <li>
           Create a 24x24px rectangle or artboard with a 1px grid. All lines and shapes of the icon
-          are to snap to a pixel on the grid, so there shouldn't be any decimal sizes of the lines or
-          shapes you create.
+          are to snap to a pixel on the grid, so there shouldn't be any decimal sizes of the lines
+          or shapes you create.
         </li>
         <li>
-          Then, you'll need to use our grid template. Most product-based icons should be 16px, with a
-          max size of 20px. The grid's internal boxes decrease from 24px at 2px increments down to
+          Then, you'll need to use our grid template. Most product-based icons should be 16px, with
+          a max size of 20px. The grid's internal boxes decrease from 24px at 2px increments down to
           12px. These will serve as guidelines to snap your lines to.
         </li>
         <li>All icons have a 2px stroke width.</li>
@@ -261,7 +267,7 @@ const base = '/images/brand-expressions/iconography';
         <li>The caps/ends of the lines need to be square</li>
         <li>Align elements optically (e.g., a play button)</li>
       </ol>
-      <div style="margin-top: var(--pharos-spacing-2-x); margin-bottom: var(--pharos-spacing-2-x);">
+      <div class="usage-note">
         <site-pharos-heading level="4" preset="1--bold">
           Implementation details when creating icons
         </site-pharos-heading>
@@ -289,3 +295,34 @@ const base = '/images/brand-expressions/iconography';
     </ul>
   </PageSection>
 </Layout>
+
+<style>
+  .hero {
+    margin-top: var(--pharos-spacing-5-x);
+    margin-bottom: var(--pharos-spacing-7-x);
+  }
+
+  .icon-group {
+    margin-bottom: 4rem;
+  }
+
+  .icon-group__title {
+    margin-bottom: 1rem;
+  }
+
+  /* One group sets its title tighter than the rest; preserved from the port. */
+  .icon-group__title--tight {
+    margin-bottom: 0.5rem;
+  }
+
+  .closing-note {
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+    width: 66%;
+  }
+
+  .usage-note {
+    margin-top: var(--pharos-spacing-2-x);
+    margin-bottom: var(--pharos-spacing-2-x);
+  }
+</style>

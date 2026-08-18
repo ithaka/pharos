@@ -174,6 +174,45 @@ All render identically; none is a content change.
 | `combobox`                | `**not**` → `<strong>`, matching the baseline; a word-split artefact of the diff tool |
 | `link`                    | `<li> Note:` → `<li>Note:` — leading whitespace, which HTML collapses                 |
 
+#### Full-site audit against production
+
+All 62 routes were compared to the live site (rendered text, element counts,
+image loading, page height, horizontal overflow). **51 pages have no substantive
+difference.** The 10 that differ were each run down; none is a regression:
+
+| Page(s)                            | Difference                                                                 |
+| ---------------------------------- | -------------------------------------------------------------------------- |
+| `checkbox`, `switch`               | `` `disabled` `` was literal backticks in Gatsby, now `<code>`             |
+| `combobox`                         | `**not**` now renders as `<strong>`                                        |
+| `footer`                           | the `©2000-$2026` bug in the demo copy, fixed                              |
+| `coach-mark`, `modal`, `toast`     | demo `<script>` contents counted by `textContent`; invisible, and verified to execute without error |
+| `link`                             | a stray `- ` fixed — see below                                             |
+| `multiselect-dropdown`             | 3 WCAG links render as links locally, as plain text on production          |
+| `contributing/development`         | production emits an **empty** `<h2>`; the port does not                    |
+
+Two of these are places the port is *better* than the live site.
+`multiselect-dropdown` writes ordinary Markdown links, which Gatsby rendered as
+plain text — every other component page links them, so production is the outlier.
+`contributing/development`'s empty heading is a Gatsby artifact worth not
+reproducing.
+
+**Fixed: a doubled list marker on `link`.** The Gatsby source carried a stray
+dash inside a list item, which the live site renders as a literal `- ` in the
+text. Converted to MDX it became a *second* list level, so the page rendered an
+empty bullet wrapping a nested list. Removed — the list is now flat and the
+literal dash is gone.
+
+**Two traps in auditing this way**, both of which produced false alarms:
+
+- `document.title` is useless as a comparison. Production is a client-rendered
+  SPA that reports `Home | …` on every route regardless of the page.
+- `textContent` includes `<script>` contents and collapses element boundaries,
+  so a page with a demo script or a heading adjacent to its standfirst reports a
+  spurious diff. Squash all whitespace before comparing, and exclude scripts.
+
+The homepage is served at `/`, not `/index` — requesting the latter 404s and
+looks like a catastrophic diff.
+
 #### MDX gotchas this surfaced
 
 Each of these failed the build or changed output, and each is now handled:
@@ -269,9 +308,11 @@ flat, so `markdown.css` expresses each level as a single `margin-top`, which
 cannot reproduce a context-dependent gap.
 
 **Bottom margins come from Pharos; only top margins live in `markdown.css`.**
-`Heading.astro` passes through Pharos' `no-margin` attribute and turns it on for
-`##`, where the gap to the following content belongs to that content. The
-`margin-bottom` overrides that used to be in `markdown.css` are gone.
+The `margin-bottom` overrides that used to be in `markdown.css` are gone.
+
+`Heading.astro` originally also set Pharos' `no-margin` on `##`, on the reasoning
+that the following content supplies the gap. **That was wrong and has been
+reverted** — see "The `##` bottom margin" below.
 
 **Why the `md-heading` classes still exist, given Pharos styles headings.**
 Worth stating because it is the obvious thing to try deleting. `preset` sets
@@ -283,11 +324,31 @@ same 24–32px gap, `##` and `###` stop being distinguishable, the standfirst ru
 into the title, and `jstor-terms` loses 19% of its height. The classes now carry
 inter-section spacing and nothing else.
 
-**One rule depends on `no-margin` being set.** `.md-heading + .md-heading` (a
-`##` immediately followed by a `###`, no prose between) keeps a small
-`margin-top` rather than zero. With the `##`'s bottom margin gone, zero makes the
-two headings collide — visible on `jstor-terms` under "Organization and
-products".
+#### The `##` bottom margin
+
+`##` used to carry Pharos' `no-margin`, with `.md-heading + .md-heading` adding
+16px back when a `###` followed immediately. The two cancelled out on paper, but
+the model was wrong in a way that showed up visually:
+
+- The heading *box* rendered 36px against production's 52px, because the 16px
+  had moved off the heading and onto whatever followed it. Every element below a
+  `##` sat 16px high, compounding down the page.
+- The gap under a `##` was **inconsistent within a single page** — 0px before a
+  paragraph, 16px before a `###` — where production is a uniform 0. Visible on
+  `pagination`, which drifted ~90px by "Accessibility".
+
+Fixed by letting `##` keep Pharos' own bottom margin like every other level, and
+setting `.md-heading + .md-heading` to `margin-top: 0` (the `##`'s bottom margin
+is now the whole gap, which is what production shows).
+
+Every `##` now measures 52px, matching production exactly, and `pagination` went
+from a visible drift to +1% total page height. The remaining −3% to −9% on other
+pages is the intended spacing model described above, not this bug.
+
+**This is why a computed-style audit is not enough on its own.** Element counts,
+colours and text all matched; what was wrong was the *distribution* of a margin
+between two elements, which only shows up if you measure the heading box itself
+or look at the page.
 
 **Two findings worth keeping:**
 
@@ -404,10 +465,162 @@ Recurring values like `margin-bottom: var(--pharos-spacing-3-x)` and
 `font-size: var(--pharos-type-scale-4)` should become utility classes in
 `src/styles/layout.css`.
 
-While doing this, note `src/pages/components/button.astro:141`, which carries a
-malformed declaration (`--pharos-spacing-one-half-x;` — missing closing paren)
-preserved deliberately for parity. That is precisely the bug class inline styles
-hide and a scoped `<style>` block would surface. Fix it when parity is retired.
+**In progress.** 242 attributes at the start of this pass (the 254 above predates
+the MDX conversion); **77 remain** — a 68% reduction.
+
+Done so far:
+
+| Slice                        | Attributes | How                                                         |
+| ---------------------------- | ---------: | ----------------------------------------------------------- |
+| do/don't guideline lists     |         12 | `.guideline-example__*` in `global.scss`                    |
+| redundant `color` on `<p>`   |         31 | deleted — `layout.css` already sets exactly that colour     |
+| `margin-bottom` spacing      |         61 | semantic names — scoped per page, or `.doc-*` for MDX       |
+| `brand-expressions/` layout  |         61 | scoped `<style>` blocks, one per page                       |
+| `DosAndDonts` icon fills     |          2 | scoped `<style>` in the component                           |
+| `.best-practice--spaced`     |          2 | `components.css`, next to the other `best-practices__*`     |
+| malformed declarations       |          4 | see below                                                    |
+
+**All six `brand-expressions/` pages are now free of inline styles**, and
+`iconography`, `imagery`, `logos` and `color` are at zero.
+
+**Spacing is named for its reason, not its value.** The first pass used
+`.u-mb-1`-style utilities; they were replaced because a class named after a
+measurement tells a reader nothing about why the space is there, and the number
+is meaningless without knowing the Pharos scale. What the markup says now:
+
+| Was        | Now                                    | Means                                        |
+| ---------- | -------------------------------------- | -------------------------------------------- |
+| `u-mb-1`   | `.guidance`, `.doc-label`              | a heading/prose block sitting close to its example |
+| `u-mb-2`   | `.principle`, `.doc-topic`             | one named principle or documented topic      |
+| `u-mb-3`   | `.doc-topic--section`                  | a topic that opens a section                 |
+| `u-mb-5`   | `.specimen`, `.doc-specimen`           | a demo separated from what follows           |
+
+`.astro` pages express these in their own scoped `<style>`; MDX pages cannot
+carry one, so their four names live in `markdown.css` as `.doc-*`. Eleven of the
+heading cases needed no class at all — `.best-practice site-pharos-heading`
+covers them in one rule.
+
+Three traps, all caught by the before/after geometry check and worth knowing
+before extending this:
+
+- _Astro's scoping does not cross a component boundary._ A rule written in
+  `color.astro` cannot target markup that `DosAndDonts` renders: each component
+  gets its own `data-astro-cid`, and the selector is rewritten to match only the
+  page's own elements. An attempt to distinguish the don't-column with
+  `.dos-and-donts:has(…) .guidance` silently matched nothing. Use an explicit
+  modifier on markup the page itself owns.
+- _An element selector catches more than the class did._ Replacing
+  `class="u-mb-1"` on headings with `.best-practice site-pharos-heading` also
+  hit a heading followed by a `<p>`, which never had that margin — it gained
+  16px. The rule now ends `:not(:has(+ p))`.
+- _...and less._ Two headings in `System typefaces` carried `u-mb-1` but sit
+  outside `.best-practice`, so the same swap dropped their margin to zero. They
+  are `.specimen-label` now.
+
+**Scoped `<style>` is the right tool for page layout, and it works on Pharos
+elements.** The backlog noted only 3 files used Astro's scoped styles; that was
+the idiomatic tool going unused. Each brand-expressions page now carries one
+`<style>` block for its own layout. Verified that Astro's scoping applies
+correctly to `site-pharos-*` custom elements (checked on `DosAndDonts`, whose
+icon fills now match production exactly) — worth stating because scoping plus
+custom elements is a plausible place for it to go wrong.
+
+**What deliberately stays inline: content, as opposed to styling.** Nine of
+`typography.astro`'s remaining ten attributes are the `font-family` of a type
+specimen. Each one differs, and the typeface *is* what the page is
+demonstrating — hoisting them into classes would name nine single-use rules and
+put the demonstrated value one indirection away from the demo. Only the shared
+scaffolding around them (`font-size: 1.5rem; line-height: 2rem`, four
+occurrences) became `.sample--display`.
+
+The same test applies to the remaining 77: extract what is *layout*, leave what
+is the *subject* of the example.
+
+The redundant-colour slice is the one worth repeating first on any new file: all
+31 were `style="color: var(--pharos-color-text-20);"` on a `<p>`, which
+`layout.css` already colours identically. They needed no replacement class at
+all — check for that before writing CSS.
+
+Two findings from that first slice, both of which will recur:
+
+- _The malformed declarations are real, and there are four, not one._ A sweep for
+  unbalanced parens in `style` attributes finds
+  `margin-right: var(--pharos-spacing-one-half-x;` three times (`button` ×2,
+  `toast`), plus `margin-bottom: 4rem);` at
+  `brand-expressions/typography.astro:154`. The first kind renders *correctly* by
+  accident: the browser's error recovery closes the unterminated `var()` at
+  end-of-input and resolves the 8px token, while the `fill` it swallowed was
+  masked by the colour inherited from the `<li>`. Nothing flags it because
+  nothing parses an inline style until a browser does.
+
+  Re-run the sweep before touching a file:
+
+  ```bash
+  grep -rn 'style="' --include=*.astro --include=*.mdx src/ |
+    grep -vE 'style="[^"]*"' # or the paren-balance check in the commit notes
+  ```
+
+- _Extracted rules can lose to `markdown.css`._ `.md-body li` sets the body text
+  colour at specificity (0,1,1), so a plain `.guideline-example__item--do` ties
+  and loses on source order — the extraction silently rendered every icon grey.
+  Sidestepping that rule is *why* these were inline. Chain the block and modifier
+  (`.guideline-example__item.guideline-example__item--do`) rather than reaching
+  for `!important`. Verify colour, not just geometry: the first attempt had
+  correct margins and wrong colours everywhere.
+
+**Verification loop that works here.** `diff -r` against a saved `dist/` is
+useless on its own — any CSS change rewrites the bundle hash, which is inlined
+into all 63 pages, so every page "differs". Normalize it first:
+
+```bash
+diff <(sed 's/Layout\.[A-Za-z0-9_-]*\.css/H/g' dist-baseline/$f) \
+     <(sed 's/Layout\.[A-Za-z0-9_-]*\.css/H/g' dist/$f)
+```
+
+That reduces the noise to exactly the pages actually touched, and pairs with a
+Playwright pass comparing computed styles against the live site.
+
+**Fixed along the way: the `toast` guideline icons.** They rendered 24×48 against
+24×24 on production — the MDX `<p>` inside the `<li>` became a full-height flex
+item and stretched the icon. (`rehypeUnwrapPharosParagraphs` does not catch this
+one: the `<p>` is inside an `<li>`, not directly inside a Pharos element.)
+Confirmed present before this work, and fixed here because the cause was the
+same flex row being extracted — `flex-shrink: 0; align-self: start` on the icon,
+and zeroing the paragraph's margin. The page is 48px shorter as a result, which
+is the correction.
+
+**A utility class cannot always replace an inline style, and the failure is
+silent.** Two of the 14 pages regressed on the first attempt:
+
+- `components/sidenav` — `.md-body ul:has(+ .md-heading)` (0,2,1) zeroes the
+  bottom margin of a list that precedes a heading, which outranks `.u-mb-1`
+  (0,1,0), so the swap dropped 16px. That rule is *correct* — the heading owns
+  the gap — so the inline declaration was arguably always redundant. Reverted
+  with a comment rather than changed: removing it is a spacing decision, not a
+  styles-refactor one.
+- `components/toast` — text moved 8px. This one was the malformed
+  `var(--pharos-spacing-one-half-x;` finally applying properly, i.e. the
+  intended fix, not a regression.
+
+Both were caught only by comparing geometry, which is the point of the loop
+below.
+
+**Verify against the local site's own before/after, not production.** Production
+is the right baseline for `.astro` pages, but *wrong* for MDX-converted ones —
+their DOM legitimately differs from Gatsby, so a node-by-node comparison
+misaligns and reports every node as changed. `scratchpad/selfcheck.mjs` snapshots
+computed colour, margins, font-size and box geometry for every element in
+`main`, so a refactor can be diffed against itself:
+
+```bash
+git stash && node selfcheck.mjs before.json "$PAGES"; git stash pop
+node selfcheck.mjs after.json "$PAGES"   # then diff the two
+```
+
+Ignore `x,y` when comparing — the harness's scroll position leaks into
+`getBoundingClientRect()` and shifts every node uniformly (seen as a spurious
+621-node diff on `brand-expressions/color`, which was zero once position was
+excluded).
 
 ### 7. Move component pages to a content collection
 

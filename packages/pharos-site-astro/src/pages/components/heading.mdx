@@ -119,7 +119,7 @@ typography styles for the product, see our [typography brand expression page.](/
 JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix of both to
     express our heading styles.
 
-<div style="margin-bottom: var(--pharos-spacing-5-x);">
+<div class="doc-specimen">
   <site-pharos-heading level="2" preset="3">Ivar Headline</site-pharos-heading>
   <site-pharos-heading level="2" preset="3--bold">Ivar Headline Medium</site-pharos-heading>
   <site-pharos-heading level="2" preset="4">GT America</site-pharos-heading>
@@ -156,9 +156,9 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
   </tbody>
 </table>
 
-<div style="margin-bottom: var(--pharos-spacing-5-x);">
-  <div style="margin-bottom: var(--pharos-spacing-3-x);">
-    <site-pharos-heading level="3" preset="legend" style="margin-bottom: var(--pharos-spacing-1-x);">
+<div class="doc-specimen">
+  <div class="doc-topic--section">
+    <site-pharos-heading class="doc-label" level="3" preset="legend">
       Regular weight presets
     </site-pharos-heading>
     <site-pharos-heading level="4" preset="7">Heading Preset 7</site-pharos-heading>
@@ -193,7 +193,7 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
     <site-pharos-heading level="4" preset="2">Heading Preset 2</site-pharos-heading>
   </div>
   <div>
-    <site-pharos-heading level="3" preset="legend" style="margin-bottom: var(--pharos-spacing-1-x);">
+    <site-pharos-heading class="doc-label" level="3" preset="legend">
       Bold weight presets
     </site-pharos-heading>
     <site-pharos-heading level="4" preset="7--bold">Heading Preset 7--bold</site-pharos-heading>
@@ -215,7 +215,7 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
   </div>
 </div>
 
-<div style="margin-bottom: var(--pharos-spacing-5-x);">
+<div class="doc-specimen">
   <site-pharos-heading level="2" preset="6" style="color: var(--pharos-color-text-base);">
     Styling
   </site-pharos-heading>
@@ -266,8 +266,8 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
   </Fragment>
 </BestPractices>
 
-<div style="margin-bottom: var(--pharos-spacing-5-x);">
-  <site-pharos-heading level="2" preset="6" style="margin-bottom: var(--pharos-spacing-1-x);">
+<div class="doc-specimen">
+  <site-pharos-heading class="doc-label" level="2" preset="6">
     Content guidelines
   </site-pharos-heading>
   <p>
@@ -288,13 +288,13 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
   </p>
 </div>
 
-<div style="margin-bottom: var(--pharos-spacing-5-x);">
-  <site-pharos-heading level="2" preset="6" style="margin-bottom: var(--pharos-spacing-1-x);">
+<div class="doc-specimen">
+  <site-pharos-heading class="doc-label" level="2" preset="6">
     Accessibility
   </site-pharos-heading>
-  <div style="margin-bottom: var(--pharos-spacing-3-x);">
+  <div class="doc-topic--section">
     <site-pharos-heading level="3" preset="2">Relevant WCAG Guidelines</site-pharos-heading>
-    <ul style="margin-bottom: var(--pharos-spacing-1-x);">
+    <ul class="doc-label">
       {wcagLinks.map(({ href, label }) => (
         <li>
           <site-pharos-link href={href}>{label}</site-pharos-link>
@@ -302,18 +302,18 @@ JSTOR's brand utilizes two typefaces: GT America and Ivar Headline. We use a mix
       ))}
     </ul>
   </div>
-  <div style="margin-bottom: var(--pharos-spacing-3-x);">
+  <div class="doc-topic--section">
     <site-pharos-heading level="3" preset="2">Importance</site-pharos-heading>
     For screen reader users, headings describe relationships between sections and subsections. They
     provide both an outline and a means of navigation. Without headings, users have to step through
     every single element in turn, to get from one place to another.
   </div>
-  <div style="margin-bottom: var(--pharos-spacing-3-x);">
+  <div class="doc-topic--section">
     <site-pharos-heading level="3" preset="2">Visual expectations</site-pharos-heading>
     Color contrast of text to background should use WCAG 2.1 AA standards is 4.5:1, except, large text
     only needs 3:1.
   </div>
-  <div style="margin-bottom: var(--pharos-spacing-3-x);">
+  <div class="doc-topic--section">
     <site-pharos-heading level="3" preset="2">Code expectations</site-pharos-heading>
     <p>
       Each page starts with a level="1" (h1), and Heading levels should go in a logical order

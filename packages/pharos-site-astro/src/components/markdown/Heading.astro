@@ -43,17 +43,21 @@ interface Props {
 }
 
 /**
- * `noMargin` on `##` because it opens a top-level section, where the gap to the
- * following content comes from that content's own spacing rather than the
- * heading — Pharos' `0.5em` would add to it. The other levels keep the
- * component default.
+ * Every level keeps Pharos' own bottom margin.
+ *
+ * `##` used to set `no-margin`, on the reasoning that the following content
+ * supplies the gap. That holds when a paragraph follows, but not when a `###`
+ * does: the heading box itself ends up 16px shorter than on the live site, and
+ * everything below it shifts up. Measured on `pagination`, where the gap under
+ * a `##` was 0px before "Usage" but 16px before "Variants" — inconsistent
+ * within one page, where production is a uniform 0.
  */
 const PRESETS: Record<
   Props['depth'],
   { level: string; preset: string; noMargin?: boolean }
 > = {
   1: { level: '1', preset: '7--bold' },
-  2: { level: '2', preset: '6', noMargin: true },
+  2: { level: '2', preset: '6' },
   3: { level: '2', preset: '4' },
   4: { level: '4', preset: '1--bold' },
   5: { level: '5', preset: '1--bold' },

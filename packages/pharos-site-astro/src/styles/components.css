@@ -357,3 +357,11 @@
   line-height: var(--pharos-line-height-medium);
   font-size: var(--pharos-font-size-small);
 }
+
+/*
+ * A `.best-practice` block that is followed by another one inside the same
+ * `DosAndDonts` column
+ */
+.best-practice--spaced {
+  margin-bottom: 4rem;
+}

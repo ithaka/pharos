@@ -16,22 +16,22 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
   />
 
   <PageSection title="Elevation system">
-    <div style="width: 75%; margin-bottom: 3rem; color: var(--pharos-color-text-20);">
+    <div class="intro">
       JSTOR uses an elevation system to assign consistent elevation levels to certain components. By
       following the guide, usage will remain uniform across all JSTOR platforms.
     </div>
     <site-pharos-heading level="3" preset="4">Elevation guide</site-pharos-heading>
-    <p style="color: var(--pharos-color-text-20);">
+    <p>
       <strong> View CSS Codes under Design Tokens. </strong>
     </p>
     <img
       src="/images/brand-expressions/elevation/elevation_stack_guide.jpg"
       alt="Elevation stack guide"
       width="800px"
-      style="margin-bottom: 70px;"
+      class="figure figure--stack-guide"
     />
     <site-pharos-heading level="3" preset="4">Shadow definitions</site-pharos-heading>
-    <ul style="margin-bottom: 50px;">
+    <ul class="shadow-definitions">
       <li>Blur - How diffused a shadow will be.</li>
       <li>Spread - How large a shadow will be.</li>
       <li>Z-index - How elevated a shadow will be.</li>
@@ -41,7 +41,7 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
       </li>
     </ul>
     <site-pharos-heading level="3" preset="4">Shadow stacking</site-pharos-heading>
-    <p style="color: var(--pharos-color-text-20);">
+    <p>
       To avoid the harsh outline of a stroke, and also so that the stroke won't be misrepresented as
       a container, the outline of a component using elevation will be achieved by stacking shadows.
     </p>
@@ -49,9 +49,9 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
       src="/images/brand-expressions/elevation/effect_stacking.jpg"
       alt="Two different shadow effects"
       width="220px"
-      style="margin-bottom: 24px;"
+      class="figure figure--effect"
     />
-    <p style="color: var(--pharos-color-text-20);">
+    <p>
       The top shadow gives the illusion of a stroke, while the bottom shadow tackles the actual
       shadow. If you only have the top shadow, the component will blend into the background. If you
       only have the bottom shadow, the component will be undefined.
@@ -70,11 +70,11 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
 
   <PageSection title="Elevation calculations">
     <site-pharos-heading level="3" preset="4">Elevation values</site-pharos-heading>
-    <p style="color: var(--pharos-color-text-20);">
+    <p>
       JSTOR uses a consistent equation to calculate elevation levels as they rise. To maintain
       elevation levels, follow this important two-step system calculation:
     </p>
-    <ol style="color: var(--pharos-color-text-20);">
+    <ol class="calc-list">
       <li>
         The top shadow should consistently stay at these values no matter the elevation level:
         <ul>
@@ -87,10 +87,10 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
           src="/images/brand-expressions/elevation/top_drop_shadow.jpg"
           alt="Top drop shadow"
           width="220px"
-          style="margin-bottom: 40px;"
+          class="figure figure--shadow"
         />
       </li>
-      <li style="color: var(--pharos-color-text-20);">
+      <li class="calc-list__item">
         Calculations are used beginning at Level 2. The bottom shadow should comply with the
         following system as each level rises:
         <ul>
@@ -113,16 +113,16 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
 
   <PageSection title="Principles">
     <site-pharos-heading level="3" preset="4">Consistent</site-pharos-heading>
-    <div style="margin-bottom: var(--pharos-spacing-2-x); color: var(--pharos-color-text-20);">
+    <div class="practice-intro">
       All elevation is used at the appropriate level assigned to that component. Always follow the
       recommended shadow pairings.
     </div>
     <site-pharos-heading level="3" preset="4">Suitable</site-pharos-heading>
-    <div style="margin-bottom: var(--pharos-spacing-2-x); color: var(--pharos-color-text-20);">
+    <div class="practice-intro">
       Dynamic elevation should only change values when it is suitable for a component's behavior.
     </div>
     <site-pharos-heading level="3" preset="4">Practical</site-pharos-heading>
-    <div style="margin-bottom: var(--pharos-spacing-2-x); color: var(--pharos-color-text-20);">
+    <div class="practice-intro">
       Elevation is not solely used for visually enjoyment. It should communicate to users that there
       is an emphasis or prioritization when it comes to a given component.
     </div>
@@ -130,23 +130,21 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
 
   <PageSection title="Best Practices">
     <DosAndDonts>
-      <div class="best-practice" style="margin-bottom: 4rem;">
-        <site-pharos-heading level="3" preset="2--bold" style="margin-bottom: var(--pharos-spacing-1-x);">
+      <div class="best-practice best-practice--spaced">
+        <site-pharos-heading level="3" preset="2--bold">
           Use when there is content behind a component.
         </site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
-          Use elevation when a component can be interacted with, as well.
-        </p>
+        <p>Use elevation when a component can be interacted with, as well.</p>
         <img
           src="/images/brand-expressions/elevation/dos_content_behind.png"
           alt="For example a sticky header"
           width="220px"
-          style="margin-bottom: 60px;"
+          class="figure figure--practice"
         />
-        <site-pharos-heading level="3" preset="2--bold" style="margin-bottom: var(--pharos-spacing-1-x);">
+        <site-pharos-heading level="3" preset="2--bold">
           Alter the Y-axis for directional movement.
         </site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">For example, changing Y = 2 to Y = -2.</p>
+        <p>For example, changing Y = 2 to Y = -2.</p>
         <img
           src="/images/brand-expressions/elevation/up_and_down.jpg"
           alt="Y eequals positive 2 when a drawer slides up, Y equals negative 2 when a drawer slides down"
@@ -156,10 +154,10 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
     </DosAndDonts>
     <DosAndDonts dont>
       <div class="best-practice">
-        <site-pharos-heading level="3" preset="2--bold" style="margin-bottom: var(--pharos-spacing-1-x);">
+        <site-pharos-heading level="3" preset="2--bold">
           Apply elevation to make components visually pleasing.
         </site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
+        <p>
           The reason these components require elevation is because the reason can be articulated. If
           there is no plausible reason for elevation to be used, do not use it.
         </p>
@@ -167,12 +165,12 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
           src="/images/brand-expressions/elevation/dont_visually_please.jpg"
           alt="don't add elevation to components for fun"
           width="450px"
-          style="margin-bottom: 60px;"
+          class="figure figure--practice"
         />
-        <site-pharos-heading level="3" preset="2--bold" style="margin-bottom: var(--pharos-spacing-1-x);">
+        <site-pharos-heading level="3" preset="2--bold">
           Add elevation when content already includes icons to communicate user cues.
         </site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
+        <p>
           The ability to move content is already visually communicated through the reorder icon.
           Hover elevation is not needed for any purpose other than to provide visual enjoyment.
         </p>
@@ -180,12 +178,12 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
           src="/images/brand-expressions/elevation/with_iconography.jpg"
           alt="don't add to components that communicate user interactivity"
           width="190px"
-          style="margin-bottom: 60px;"
+          class="figure figure--practice"
         />
-        <site-pharos-heading level="3" preset="2--bold" style="margin-bottom: var(--pharos-spacing-1-x);">
+        <site-pharos-heading level="3" preset="2--bold">
           Change the light source.
         </site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
+        <p>
           Don't change the positioning of the shadow. By not following the elevation system
           guidelines, inconsistencies will start to pop up across ITHAKA platforms.
         </p>
@@ -198,3 +196,50 @@ const swatch = 'width: 201px; height: 142px; border-radius: var(--pharos-radius-
     </DosAndDonts>
   </PageSection>
 </Layout>
+
+<style>
+  .intro {
+    width: 75%;
+    margin-bottom: 3rem;
+    color: var(--pharos-color-text-20);
+  }
+
+  .practice-intro {
+    margin-bottom: var(--pharos-spacing-2-x);
+    color: var(--pharos-color-text-20);
+  }
+
+  .calc-list,
+  .calc-list__item {
+    color: var(--pharos-color-text-20);
+  }
+
+  .shadow-definitions {
+    margin-bottom: 50px;
+  }
+
+  .figure--stack-guide {
+    margin-bottom: 70px;
+  }
+
+  .figure--effect {
+    margin-bottom: 24px;
+  }
+
+  .figure--shadow {
+    margin-bottom: 40px;
+  }
+
+  .figure--practice {
+    margin-bottom: 60px;
+  }
+  /*
+   * Every heading inside a best-practice block labels the sample beneath it.
+   * Pharos deliberately sets no top margin on a heading (that is page layout,
+   * not a component concern), so the gap is supplied here once rather than as a
+   * class repeated on each heading.
+   */
+  .best-practice site-pharos-heading {
+    margin-bottom: var(--pharos-spacing-1-x);
+  }
+</style>

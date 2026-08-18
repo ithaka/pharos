@@ -60,12 +60,11 @@
 /*
  * A heading that immediately follows another heading (`##` then `###` with no
  * prose between) drops the full section gap — the section it would separate
- * from is empty. It keeps a small one rather than zero: `##` carries
- * `no-margin`, so with nothing between them the two headings would otherwise
- * collide.
+ * from is empty. It takes no top margin at all: the `##` above it keeps its own
+ * bottom margin, which is the whole gap, and production shows exactly 0 here.
  */
 .md-heading + .md-heading {
-  margin-top: var(--pharos-spacing-1-x);
+  margin-top: 0;
 }
 
 /*
@@ -127,4 +126,34 @@
 /* `layout.css` colours `p` only, so list text would otherwise be darker. */
 .md-body li {
   color: var(--pharos-color-text-20);
+}
+
+/*
+ * Named blocks for MDX pages.
+ *
+ * MDX cannot carry Astro's scoped `<style>`, so the spacing these express has
+ * to be global. They are named for the role the block plays in the document —
+ * a topic, the specimen demonstrating it, the label above it — rather than the
+ * amount of space they add, so the markup says why the gap exists.
+ *
+ * `.doc-topic` is the common case: a heading plus the prose explaining it,
+ * forming one unit of documentation.
+ */
+.doc-topic {
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+/* A topic that opens a section rather than continuing one. */
+.doc-topic--section {
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+/* A live demo or specimen, separated from the discussion that follows it. */
+.doc-specimen {
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
+/* The label immediately above a demo, which sits tight to it. */
+.doc-label {
+  margin-bottom: var(--pharos-spacing-1-x);
 }

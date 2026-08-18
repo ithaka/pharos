@@ -14,23 +14,21 @@ const base = '/images/brand-expressions/logos';
     description={`Our logo is based on turn of the century ornate bookplates. The filigree pattern is inspired by acanthus leaves; these are the same leaves that appear at the top of the Corinthian column. "JSTOR" is set in a modified Orpheus typeface.`}
     isHeader
   >
-    <img src={`${base}/logo_hero.svg`} alt="Hero logo" style="width: 100%;" />
+    <img src={`${base}/logo_hero.svg`} alt="Hero logo" class="logo-hero" />
   </PageSection>
 
   <PageSection title="Logo types" moreTitleSpace>
     <Grid columns={2}>
       <div>
         <site-pharos-heading level="3" preset="4">Primary Logo</site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
-          The vertical logo orientation should be the primary logo treatment used.
-        </p>
+        <p>The vertical logo orientation should be the primary logo treatment used.</p>
       </div>
       <img src={`${base}/logo_jstor-vertical.svg`} alt="Vertical logo" />
     </Grid>
     <Grid columns={2}>
       <div>
         <site-pharos-heading level="3" preset="4">Secondary Logo</site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
+        <p>
           The horizontal logo orientation should be used when the logo needs to scale small or the
           placement area is horizontal in width.
         </p>
@@ -40,9 +38,7 @@ const base = '/images/brand-expressions/logos';
     <Grid columns={2}>
       <div>
         <site-pharos-heading level="3" preset="4">Knocked out</site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
-          On dark backgrounds the logo should be white.
-        </p>
+        <p>On dark backgrounds the logo should be white.</p>
       </div>
       <img src={`${base}/logo_knockout.svg`} alt="Knocked out logo" />
     </Grid>
@@ -52,15 +48,11 @@ const base = '/images/brand-expressions/logos';
     <Grid columns={2}>
       <div>
         <site-pharos-heading level="3" preset="4">Heritage</site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
-          Our logo is the first and primary expression.
-        </p>
+        <p>Our logo is the first and primary expression.</p>
       </div>
       <div>
         <site-pharos-heading level="3" preset="4">Consistent</site-pharos-heading>
-        <p style="color: var(--pharos-color-text-20);">
-          The logo should be used according to the standards outlined in this guide.
-        </p>
+        <p>The logo should be used according to the standards outlined in this guide.</p>
       </div>
     </Grid>
   </PageSection>
@@ -72,7 +64,7 @@ const base = '/images/brand-expressions/logos';
           <img
             src={`${base}/logo_best-practices_dos_1.svg`}
             alt="Logos best practice 1"
-            style="width: 100%; margin-bottom: 1rem;"
+            class="logo-variant"
           />
           <p>Use the primary logo whenever possible</p>
         </div>
@@ -80,7 +72,7 @@ const base = '/images/brand-expressions/logos';
           <img
             src={`${base}/logo_best-practices_dos_2.svg`}
             alt="Logos best practice 2"
-            style="width: 100%; margin-bottom: 1rem;"
+            class="logo-variant"
           />
           <p>Use the logo in red or white, no other colors</p>
         </div>
@@ -88,7 +80,7 @@ const base = '/images/brand-expressions/logos';
           <img
             src={`${base}/logo_best-practices_dos_3.svg`}
             alt="Logos best practice 3"
-            style="width: 100%; margin-bottom: 1rem;"
+            class="logo-variant"
           />
           <p>
             The filigree and J are transparent and the "surface" they're put on can be seen through
@@ -98,7 +90,7 @@ const base = '/images/brand-expressions/logos';
           <img
             src={`${base}/logo_best-practices_dos_4.svg`}
             alt="Logos best practice 3"
-            style="width: 100%; margin-bottom: 1rem;"
+            class="logo-variant"
           />
           <p>On gradient backgrounds the logo should be white</p>
         </div>
@@ -128,7 +120,7 @@ const base = '/images/brand-expressions/logos';
         </div>
         <div>
           <img src={`${base}/logo_best-practices_donts_6.svg`} alt="Logos don'ts 6" />
-          <p>Use just the JSTOR words </p>
+          <p>Use just the JSTOR words</p>
         </div>
         <div>
           <img src={`${base}/logo_best-practices_donts_7.svg`} alt="Logos don'ts 7" />
@@ -138,3 +130,14 @@ const base = '/images/brand-expressions/logos';
     </DosAndDonts>
   </PageSection>
 </Layout>
+
+<style>
+  .logo-hero {
+    width: 100%;
+  }
+
+  .logo-variant {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+</style>
