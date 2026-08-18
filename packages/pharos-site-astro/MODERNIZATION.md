@@ -180,17 +180,17 @@ All 62 routes were compared to the live site (rendered text, element counts,
 image loading, page height, horizontal overflow). **51 pages have no substantive
 difference.** The 10 that differ were each run down; none is a regression:
 
-| Page(s)                            | Difference                                                                 |
-| ---------------------------------- | -------------------------------------------------------------------------- |
-| `checkbox`, `switch`               | `` `disabled` `` was literal backticks in Gatsby, now `<code>`             |
-| `combobox`                         | `**not**` now renders as `<strong>`                                        |
-| `footer`                           | the `©2000-$2026` bug in the demo copy, fixed                              |
-| `coach-mark`, `modal`, `toast`     | demo `<script>` contents counted by `textContent`; invisible, and verified to execute without error |
-| `link`                             | a stray `- ` fixed — see below                                             |
-| `multiselect-dropdown`             | 3 WCAG links render as links locally, as plain text on production          |
-| `contributing/development`         | production emits an **empty** `<h2>`; the port does not                    |
+| Page(s)                        | Difference                                                                                          |
+| ------------------------------ | --------------------------------------------------------------------------------------------------- |
+| `checkbox`, `switch`           | `` `disabled` `` was literal backticks in Gatsby, now `<code>`                                      |
+| `combobox`                     | `**not**` now renders as `<strong>`                                                                 |
+| `footer`                       | the `©2000-$2026` bug in the demo copy, fixed                                                       |
+| `coach-mark`, `modal`, `toast` | demo `<script>` contents counted by `textContent`; invisible, and verified to execute without error |
+| `link`                         | a stray `- ` fixed — see below                                                                      |
+| `multiselect-dropdown`         | 3 WCAG links render as links locally, as plain text on production                                   |
+| `contributing/development`     | production emits an **empty** `<h2>`; the port does not                                             |
 
-Two of these are places the port is *better* than the live site.
+Two of these are places the port is _better_ than the live site.
 `multiselect-dropdown` writes ordinary Markdown links, which Gatsby rendered as
 plain text — every other component page links them, so production is the outlier.
 `contributing/development`'s empty heading is a Gatsby artifact worth not
@@ -198,7 +198,7 @@ reproducing.
 
 **Fixed: a doubled list marker on `link`.** The Gatsby source carried a stray
 dash inside a list item, which the live site renders as a literal `- ` in the
-text. Converted to MDX it became a *second* list level, so the page rendered an
+text. Converted to MDX it became a _second_ list level, so the page rendered an
 empty bullet wrapping a nested list. Removed — the list is now flat and the
 literal dash is gone.
 
@@ -243,9 +243,7 @@ This one had the widest blast radius (14 pages) and is the reason
 `src/lib/rehypeUnwrapPharosParagraphs.ts` exists. Written naturally,
 
 ```mdx
-<site-pharos-button large>
-  Large primary button
-</site-pharos-button>
+<site-pharos-button large>Large primary button</site-pharos-button>
 ```
 
 CommonMark reads the indented text as a paragraph, so the output is
@@ -260,7 +258,7 @@ not affect it (measured: 7 wrappers before and after on `button`). The
 alternative — keeping every element's content on its tag's line — makes source
 formatting load-bearing, which is a bad property for content pages.
 
-The plugin unwraps a *lone* generated `<p>` inside a `site-pharos-*` element, so
+The plugin unwraps a _lone_ generated `<p>` inside a `site-pharos-*` element, so
 both spellings render identically and formatting stops mattering. An element
 whose body is genuinely several paragraphs (the `alert` demos, `modal` with its
 footer buttons) is left alone, as is any `<p>` the author classed by hand.
@@ -292,6 +290,7 @@ longer parses (`Unexpected end of file before attribute name`). Keep
 Relatedly, the MDX **build** parser rejects `>Text</tag>` on its own line even
 though the dev server accepts it. If you hand-format a multi-line tag, join it
 onto one line rather than leaving a bare `>` line.
+
 - **A closing tag followed by more content on the same line** ends the JSX block
   early (`button`). Put the run inside a wrapper element.
 - **A multi-line tag glued to the preceding word** loses the JSX whitespace
@@ -330,7 +329,7 @@ inter-section spacing and nothing else.
 16px back when a `###` followed immediately. The two cancelled out on paper, but
 the model was wrong in a way that showed up visually:
 
-- The heading *box* rendered 36px against production's 52px, because the 16px
+- The heading _box_ rendered 36px against production's 52px, because the 16px
   had moved off the heading and onto whatever followed it. Every element below a
   `##` sat 16px high, compounding down the page.
 - The gap under a `##` was **inconsistent within a single page** — 0px before a
@@ -346,7 +345,7 @@ from a visible drift to +1% total page height. The remaining −3% to −9% on o
 pages is the intended spacing model described above, not this bug.
 
 **This is why a computed-style audit is not enough on its own.** Element counts,
-colours and text all matched; what was wrong was the *distribution* of a margin
+colours and text all matched; what was wrong was the _distribution_ of a margin
 between two elements, which only shows up if you measure the heading box itself
 or look at the page.
 
@@ -465,20 +464,26 @@ Recurring values like `margin-bottom: var(--pharos-spacing-3-x)` and
 `font-size: var(--pharos-type-scale-4)` should become utility classes in
 `src/styles/layout.css`.
 
-**In progress.** 242 attributes at the start of this pass (the 254 above predates
-the MDX conversion); **77 remain** — a 68% reduction.
+**Done.** 242 literal attributes at the start of this pass (the 254 above
+predates the MDX conversion); **75 remain** — a 69% reduction. Counting note:
+`grep -c 'style='` reports 125, but 50 of those are `style={...}` template
+interpolations whose value is computed per instance (`CodeBlock`, `Grid`, the
+`${swatch}` locals in `elevation.astro`). Those are not extractable to a class
+and were never in scope. The 75 literals that remain are one-offs — 14
+`font-family` declarations on `brand-expressions/typography.astro` are the
+specimen _content_, not styling of it.
 
 Done so far:
 
-| Slice                        | Attributes | How                                                         |
-| ---------------------------- | ---------: | ----------------------------------------------------------- |
-| do/don't guideline lists     |         12 | `.guideline-example__*` in `global.scss`                    |
-| redundant `color` on `<p>`   |         31 | deleted — `layout.css` already sets exactly that colour     |
-| `margin-bottom` spacing      |         61 | semantic names — scoped per page, or `.doc-*` for MDX       |
-| `brand-expressions/` layout  |         61 | scoped `<style>` blocks, one per page                       |
-| `DosAndDonts` icon fills     |          2 | scoped `<style>` in the component                           |
-| `.best-practice--spaced`     |          2 | `components.css`, next to the other `best-practices__*`     |
-| malformed declarations       |          4 | see below                                                    |
+| Slice                       | Attributes | How                                                     |
+| --------------------------- | ---------: | ------------------------------------------------------- |
+| do/don't guideline lists    |         12 | `.guideline-example__*` in `global.scss`                |
+| redundant `color` on `<p>`  |         31 | deleted — `layout.css` already sets exactly that colour |
+| `margin-bottom` spacing     |         61 | semantic names — scoped per page, or `.doc-*` for MDX   |
+| `brand-expressions/` layout |         61 | scoped `<style>` blocks, one per page                   |
+| `DosAndDonts` icon fills    |          2 | scoped `<style>` in the component                       |
+| `.best-practice--spaced`    |          2 | `components.css`, next to the other `best-practices__*` |
+| malformed declarations      |          4 | see below                                               |
 
 **All six `brand-expressions/` pages are now free of inline styles**, and
 `iconography`, `imagery`, `logos` and `color` are at zero.
@@ -488,12 +493,12 @@ Done so far:
 measurement tells a reader nothing about why the space is there, and the number
 is meaningless without knowing the Pharos scale. What the markup says now:
 
-| Was        | Now                                    | Means                                        |
-| ---------- | -------------------------------------- | -------------------------------------------- |
-| `u-mb-1`   | `.guidance`, `.doc-label`              | a heading/prose block sitting close to its example |
-| `u-mb-2`   | `.principle`, `.doc-topic`             | one named principle or documented topic      |
-| `u-mb-3`   | `.doc-topic--section`                  | a topic that opens a section                 |
-| `u-mb-5`   | `.specimen`, `.doc-specimen`           | a demo separated from what follows           |
+| Was      | Now                          | Means                                              |
+| -------- | ---------------------------- | -------------------------------------------------- |
+| `u-mb-1` | `.guidance`, `.doc-label`    | a heading/prose block sitting close to its example |
+| `u-mb-2` | `.principle`, `.doc-topic`   | one named principle or documented topic            |
+| `u-mb-3` | `.doc-topic--section`        | a topic that opens a section                       |
+| `u-mb-5` | `.specimen`, `.doc-specimen` | a demo separated from what follows                 |
 
 `.astro` pages express these in their own scoped `<style>`; MDX pages cannot
 carry one, so their four names live in `markdown.css` as `.doc-*`. Eleven of the
@@ -527,14 +532,14 @@ custom elements is a plausible place for it to go wrong.
 
 **What deliberately stays inline: content, as opposed to styling.** Nine of
 `typography.astro`'s remaining ten attributes are the `font-family` of a type
-specimen. Each one differs, and the typeface *is* what the page is
+specimen. Each one differs, and the typeface _is_ what the page is
 demonstrating — hoisting them into classes would name nine single-use rules and
 put the demonstrated value one indirection away from the demo. Only the shared
 scaffolding around them (`font-size: 1.5rem; line-height: 2rem`, four
 occurrences) became `.sample--display`.
 
-The same test applies to the remaining 77: extract what is *layout*, leave what
-is the *subject* of the example.
+The same test applies to the remaining 77: extract what is _layout_, leave what
+is the _subject_ of the example.
 
 The redundant-colour slice is the one worth repeating first on any new file: all
 31 were `style="color: var(--pharos-color-text-20);"` on a `<p>`, which
@@ -547,7 +552,7 @@ Two findings from that first slice, both of which will recur:
   unbalanced parens in `style` attributes finds
   `margin-right: var(--pharos-spacing-one-half-x;` three times (`button` ×2,
   `toast`), plus `margin-bottom: 4rem);` at
-  `brand-expressions/typography.astro:154`. The first kind renders *correctly* by
+  `brand-expressions/typography.astro:154`. The first kind renders _correctly_ by
   accident: the browser's error recovery closes the unterminated `var()` at
   end-of-input and resolves the 8px token, while the `fill` it swallowed was
   masked by the colour inherited from the `<li>`. Nothing flags it because
@@ -563,7 +568,7 @@ Two findings from that first slice, both of which will recur:
 - _Extracted rules can lose to `markdown.css`._ `.md-body li` sets the body text
   colour at specificity (0,1,1), so a plain `.guideline-example__item--do` ties
   and loses on source order — the extraction silently rendered every icon grey.
-  Sidestepping that rule is *why* these were inline. Chain the block and modifier
+  Sidestepping that rule is _why_ these were inline. Chain the block and modifier
   (`.guideline-example__item.guideline-example__item--do`) rather than reaching
   for `!important`. Verify colour, not just geometry: the first attempt had
   correct margins and wrong colours everywhere.
@@ -594,7 +599,7 @@ silent.** Two of the 14 pages regressed on the first attempt:
 
 - `components/sidenav` — `.md-body ul:has(+ .md-heading)` (0,2,1) zeroes the
   bottom margin of a list that precedes a heading, which outranks `.u-mb-1`
-  (0,1,0), so the swap dropped 16px. That rule is *correct* — the heading owns
+  (0,1,0), so the swap dropped 16px. That rule is _correct_ — the heading owns
   the gap — so the inline declaration was arguably always redundant. Reverted
   with a comment rather than changed: removing it is a spacing decision, not a
   styles-refactor one.
@@ -606,7 +611,7 @@ Both were caught only by comparing geometry, which is the point of the loop
 below.
 
 **Verify against the local site's own before/after, not production.** Production
-is the right baseline for `.astro` pages, but *wrong* for MDX-converted ones —
+is the right baseline for `.astro` pages, but _wrong_ for MDX-converted ones —
 their DOM legitimately differs from Gatsby, so a node-by-node comparison
 misaligns and reports every node as changed. `scratchpad/selfcheck.mjs` snapshots
 computed colour, margins, font-size and box geometry for every element in
@@ -622,15 +627,59 @@ Ignore `x,y` when comparing — the harness's scroll position leaks into
 621-node diff on `brand-expressions/color`, which was zero once position was
 excluded).
 
-### 7. Move component pages to a content collection
+### 7. Move component pages to a content collection ✅ DONE
 
-32 near-identical pages in `src/pages/components/` with uniform structure
-(`title`, `description`, `storyBookType`). Replace with one `[...slug].astro`
-route plus a `src/content.config.ts` Zod schema, so missing frontmatter fails
-the build instead of review.
+The 32 pages under `src/pages/components/` moved to `src/content/components/`,
+rendered by a single `src/pages/components/[...slug].astro`. The frontmatter
+contract they repeated 32 times and enforced nowhere now lives once in
+`src/content.config.ts`, where `title` and `description` are both required —
+omitting one fails the build naming the file and the field, instead of
+rendering a page with no standfirst.
 
-This pairs naturally with item 4 — a collection can drive the sidenav, removing
-the hand-maintained list entirely (while keeping an explicit `order` field).
+All 32 pages build byte-for-byte identical to before the move.
+
+**`storyBookType` stayed in the body, deliberately.** The item description
+above assumed it was frontmatter; it is actually a prop on `<Example>` in the
+body, alongside the demo markup it configures. Moving it into the schema would
+let a `z.enum(['components', 'forms', 'organisms'])` catch a typo that today
+ships a 404 Storybook link silently — worth doing, but it splits the demo's
+configuration from the demo's markup, so it was left as a separate decision.
+
+**The sidenav still reads `navigation.ts`, and should keep doing so.** Deriving
+it from the collection looks like an easy win — delete 32 hand-maintained lines
+— but two things block it.
+
+First, the sidenav labels are not the page titles. 8 of the 32 differ in case:
+the sidenav uses sentence case (`Dropdown menu`, `Image card`, `Progress bar`)
+while the page's own `title` is title case (`Dropdown Menu`, ...). That is
+deliberate and matches production. Deriving labels from `title` would visibly
+change 8 sidenav entries; preserving them needs a `navLabel` field, trading one
+ordered list for 8 scattered overrides.
+
+Second, the hand-maintained list is what makes item 4's nav→page check real. A
+list generated from the collection cannot disagree with the collection, so that
+direction — a typo in `navigation.ts` linking the sidenav at a 404 — would stop
+being caught for the largest section on the site.
+
+Excluding components from the assertion instead was considered and rejected for
+the same reason: it would give up both directions on 32 of 63 pages.
+
+`assertNavigation.ts` had to learn about collections to keep working — it scans
+`src/pages` with `readdirSync`, which cannot see collection entries or resolve
+a `[...slug]` route, so it failed all 32 component pages on the first build
+after the move. It now enumerates collection entries separately
+(`collectCollectionHrefs`) and skips `[...]` route files, which are renderers
+rather than pages. Both failure directions were re-verified after the change.
+
+**Gotcha for any future collection.** As page routes these files each carried
+`export const components = mdxComponents`, which MDX honours only for a file
+that is itself a route. Rendered through `<Content />` that export is silently
+ignored, so the route must pass `components={mdxComponents}` explicitly.
+Without it the pages still build — every `##` just quietly renders as a plain
+`<h2>` instead of a `<site-pharos-heading>`.
+
+Note `z` is imported from `astro/zod`, not `astro:content`. Astro 6 deprecated
+the latter re-export; using it builds fine but emits four `astro check` hints.
 
 ---
 

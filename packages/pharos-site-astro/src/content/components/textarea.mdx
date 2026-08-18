@@ -1,0 +1,120 @@
+---
+title: 'Textarea'
+description: 'A text area allows users to enter long, freeform text that can be on multiple lines.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
+
+<Example storyBookType="forms" componentTitle="Textarea">
+  <site-pharos-textarea>
+    <span slot="label">I am a textarea</span>
+  </site-pharos-textarea>
+</Example>
+
+## Usage
+
+Textarea allows users to enter a sizeable amount of free-form text, like leaving feedback,
+adding a description, creating a note, and more. If an input requires users to write longer
+forms of text, use a textarea instead of a single text-input field.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+    - Labels should clearly indicate input expectations of the user
+    - Labels should describe purpose and must be used for all textarea inputs
+    - Placeholder text should be a word or short phrase that demonstrates the expected type of
+      data, rather than an explanatory message
+  </Fragment>
+  <Fragment slot="dont">
+    - Don't use placeholder text as a replacement for labels
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+### Labels
+
+- The textarea label should help users understand input expectations
+- Labels are placed above the textarea
+- Labels are to be written in sentence case and should only be 1-3 words long
+
+### Placeholder text
+
+Placeholder text is shown inside the textarea to help users know what information they can
+enter.
+
+- Field placeholder text is used for supplementary information
+- The text should be written as examples instead of instructions
+
+## State
+
+### Default
+
+Indicates that the user can interact with the text area.
+
+<Canvas>
+  <site-pharos-textarea>
+    <span slot="label">Textarea label</span>
+  </site-pharos-textarea>
+</Canvas>
+
+### Disabled
+
+Indicates that the user is unable to interact with the text area.
+
+<Canvas>
+  <site-pharos-textarea disabled>
+    <span slot="label">Textarea label</span>
+  </site-pharos-textarea>
+</Canvas>
+
+### Required
+
+Indicates that the user must specify a value for the input before the form can be submitted.
+
+<Canvas>
+  <site-pharos-textarea required>
+    <span slot="label">Textarea label</span>
+  </site-pharos-textarea>
+</Canvas>
+
+### Read-only
+
+Indicates that the field cannot be edited by the user.
+
+<Canvas>
+  <site-pharos-textarea readonly>
+    <span slot="label">Textarea label</span>
+  </site-pharos-textarea>
+</Canvas>
+
+### Error
+
+Indicates that an error occurred with the supplied value in the text area.
+
+<Canvas>
+  <site-pharos-textarea required invalidated message="This field is required">
+    <span slot="label">Textarea label</span>
+  </site-pharos-textarea>
+</Canvas>
+
+## Accessibility
+
+- Every textarea must have a label. A textarea without a label is ambiguous and not accessible
+- In cases where context is sufficient and a label could be hidden, make sure to have the
+  design reviewed
+
+### Accessibility best practices for labels
+
+<ul>
+  <li>Labels must be visible when an input gets focus</li>
+  <li>Labels must be announced to the screen reader on focus</li>
+  <li>Use sentence case</li>
+  <li>
+    If the text input is a required field include the aria-required property and indicate that it
+    is a required field and use the validation message for input errors.
+  </li>
+</ul>

@@ -1,5 +1,6 @@
 /**
- * Build-time consistency check between `navigation.ts` and `src/pages`.
+ * Build-time consistency check between `navigation.ts` and the site's pages —
+ * both the routes under `src/pages` and the entries of each content collection.
  *
  * Nothing otherwise verifies that the hardcoded nav lists line up with the
  * filesystem, so a typo in `navigation.ts` silently ships a sidenav link to a
@@ -32,6 +33,16 @@ import {
  * build` and `astro dev` run from the package root.
  */
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
+
+/**
+ * Collections are not routes on disk, so `PAGES_DIR` cannot see them. Each
+ * collection is rendered by a `[...slug]` route and contributes one href per
+ * entry, keyed by the directory it lives in.
+ */
+const CONTENT_DIR = join(process.cwd(), 'src', 'content');
+
+/** Collection directory -> the URL prefix its `[...slug]` route renders at. */
+const collectionRoots: Record<string, string> = { components: '/components' };
 
 /** Hrefs rendered by the sidenav that are not derived from `navigation.ts`. */
 const standaloneHrefs = ['/getting-started', '/help', '/faqs'];
@@ -70,15 +81,38 @@ const collectPageHrefs = (dir = PAGES_DIR, prefix = ''): string[] =>
       return [];
     }
     const base = entry.name.replace(/\.(astro|mdx)$/, '');
+    /*
+     * A `[...slug]` route is a renderer for a collection, not a page of its
+     * own. Its entries are enumerated by `collectCollectionHrefs`; counting
+     * the route file too would add a literal `/components/[...slug]` href
+     * that no nav entry can ever match.
+     */
+    if (base.startsWith('[')) {
+      return [];
+    }
     return [base === 'index' ? prefix || '/' : `${prefix}/${base}`];
   });
+
+/**
+ * Every collection entry, as the href its `[...slug]` route renders it at.
+ *
+ * Kept separate from `collectPageHrefs` because the mapping differs: a page's
+ * href follows its path under `src/pages`, whereas a collection entry's href
+ * is its slug appended to the route that renders the collection.
+ */
+const collectCollectionHrefs = (): string[] =>
+  Object.entries(collectionRoots).flatMap(([dir, root]) =>
+    readdirSync(join(CONTENT_DIR, dir), { withFileTypes: true })
+      .filter((entry) => entry.isFile() && /\.mdx?$/.test(entry.name))
+      .map((entry) => `${root}/${entry.name.replace(/\.mdx?$/, '')}`)
+  );
 
 /**
  * Throws if `navigation.ts` and `src/pages` disagree in either direction.
  * Called once from `Sidenav.astro`.
  */
 export const assertNavigationMatchesPages = (): void => {
-  const pageHrefs = new Set(collectPageHrefs());
+  const pageHrefs = new Set([...collectPageHrefs(), ...collectCollectionHrefs()]);
 
   const navHrefs = new Set([
     ...standaloneHrefs,

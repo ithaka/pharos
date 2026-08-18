@@ -1,0 +1,120 @@
+---
+title: 'Toggle Button Group'
+description: 'Toggle button groups present related actions together to allow the user to select from mutually exclusive options.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+
+<Example storyBookType="components" componentTitle="Toggle Button Group" />
+
+## Usage
+
+Within a toggle button group, only one option can be selected at a time. Selecting one option
+deselects all others.
+
+Use a toggle button group as a switch between different views. For example, use the component
+to allow users to switch between a list view and gallery view.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+    - Group items within a toggle button group that are related and have a logical connection to
+      each other
+    - Think about whether your toggle button group needs text and an icon, text only, or an icon
+      only
+    - Use short and concise text for the labels (if applicable)
+    - Place the toggle button group in close proximity (ideally just above) to the area it
+      controls
+  </Fragment>
+  <Fragment slot="dont">
+    - Don't group items that aren't clearly related
+    - Don't use an icon-only toggle if the actions aren't clearly understood
+    - Don't use a toggle button group if there are more than three options
+    - Avoid wrapping the toggle button group onto more than a single row.
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+If using labels, they should be concise and descriptive, using no more than three words.
+
+### States
+
+<site-pharos-heading level="4" preset="1--bold">Default</site-pharos-heading>
+
+Indicates that the user can interact with the button.
+
+<site-pharos-heading level="4" preset="1--bold">Selected</site-pharos-heading>
+
+Indicates that the button is selected.
+
+<site-pharos-heading level="4" preset="1--bold">Disabled</site-pharos-heading>
+
+Indicates that the user is unable to interact with the button.
+
+## Variants
+
+### Icon + Text
+
+<site-pharos-toggle-button-group>
+  <site-pharos-toggle-button id="gallery-mode-button" icon-left="view-gallery">
+    Gallery
+  </site-pharos-toggle-button>
+  <site-pharos-toggle-button id="list-mode-button" icon-left="view-list">
+    List
+  </site-pharos-toggle-button>
+</site-pharos-toggle-button-group>
+
+### Text only
+
+<site-pharos-toggle-button-group>
+  <site-pharos-toggle-button id="gallery-mode-button">Gallery</site-pharos-toggle-button>
+  <site-pharos-toggle-button id="list-mode-button">List</site-pharos-toggle-button>
+</site-pharos-toggle-button-group>
+
+### Icon only
+
+<site-pharos-toggle-button-group>
+  <site-pharos-toggle-button id="gallery-mode-button" icon-left="view-gallery"></site-pharos-toggle-button>
+  <site-pharos-toggle-button id="list-mode-button" icon-left="view-list"></site-pharos-toggle-button>
+</site-pharos-toggle-button-group>
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+
+### Code expectations
+
+<ul>
+  <li>
+    There is a <code>role="group"</code> attribute on the parent element
+    <ul>
+      <li>
+        If the toggle button group is part of a toolbar use <code>role="toolbar"</code>
+      </li>
+    </ul>
+  </li>
+  <li>
+    Use the semantic <code> &lt;button&gt; </code> on all grouped elements under the parent element
+  </li>
+  <li>
+    If the button needs additional information in order to be understood by assistive
+    technologies, use an <code>aria-label</code> attribute to convey this information
+  </li>
+</ul>
+
+### Expected actions
+
+#### Screen reader
+
+- Reads: "Button name (or aria-label), button"
+
+#### Keyboard
+
+- <kbd>Tab</kbd>: advances to the next element
+- <kbd>Shift</kbd> + <kbd>Tab</kbd>: goes to the previous element
+- <kbd>Enter</kbd> or <kbd>Space</kbd>: activates the element in focus
