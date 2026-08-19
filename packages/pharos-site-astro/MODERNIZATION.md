@@ -794,6 +794,62 @@ did not cover them, so pre-commit was skipping every page.
   pointing at a `satteri()` processor that does not exist in the installed
   `@astrojs/markdown-remark` (7.2.1). Revisit when that package is upgraded.
 
+## Inherited defects, cleaned up
+
+The port deliberately reproduced several bugs from the Gatsby source to keep
+parity. With the gating question answered _no_, the ones that are visible to a
+reader were fixed. Each was verified to change only its own page.
+
+- **`combobox` never linked to Storybook.** The Gatsby source spells the prop
+  `istoryBookType`, so `PageSection` received no `storyBookType` and silently
+  skipped the Example block — the only component page of 32 missing its
+  "See live code examples in Storybook" link. Now wrapped in `<Example
+  storyBookType="forms" componentTitle="Combobox">`, matching the other seven
+  form controls. The story exists (`title: 'Forms/Combobox'` in
+  `pharos-combobox.wc.stories.ts`), so the generated URL resolves. Worth
+  noting the published `storybook/index.json` lists only two docs entries, so
+  it cannot be used to check a story's existence — read the `.stories.ts`
+  `title` in this repo instead.
+- **`design-tokens/overview` showed raw Markdown.** Two strings the Gatsby page
+  rendered verbatim as JSX text were being escaped (`\_design tokens\_`,
+  `\[the development documentation](https://…)`) purely to match. The second
+  put a full GitHub URL in the body copy. Both are real Markdown now. The page
+  is 72px shorter as a result: the link paragraph drops a line, and the first
+  paragraph drops one because `_design tokens_.Tokens` was also missing the
+  space after its period.
+- **Three more prose typos on the same page**, all present in the Gatsby source
+  and all on production: a second missing space (`naming structure.Tokens`) and
+  two compound adjectives broken by a spaced hyphen (`high - level`,
+  `well - defined`). The hyphen ones are easy to miss two ways — the Gatsby
+  source wraps mid-phrase so a grep for the whole phrase does not match, and a
+  spaced hyphen is also legitimate as a dash elsewhere on the site
+  (`The default state - when no other state attribute…` on `combobox`,
+  `multiselect-dropdown` and `loading-spinner` are correct and were left
+  alone). Only compound adjectives were changed.
+- **Four more unterminated `var(` declarations**, in `overview.mdx`'s exported
+  style objects (`jstorRed`, `nightBlue`, `glacierBlue`, `livingCoral`, used
+  20×). Same class as the ones found earlier, and same reason nothing flagged
+  them. Confirmed harmless before changing: the browser's error recovery closes
+  the `var()` at end-of-input, and computed colours are byte-identical before
+  and after. Cosmetic fix only. (Three of the four resolve to black in both
+  builds — those tokens are not defined in this build, which is pre-existing
+  and untouched here.)
+- **"occured"** on `components/radio-button`.
+
+**Left alone deliberately:** `id="misson-text"` in the `footer` example. It
+looks like a typo and is not the site's to fix — that exact id ships from
+`packages/pharos/src/pages/shared/wc/footer.ts` and the React equivalent, so
+the demo copy is showing real library usage. Changing it here would make the
+example diverge from what consumers actually get.
+
+Verification: normalized `dist/` diff shows **exactly 3 of 63 pages changed**
+and the other 60 byte-identical; a Playwright pass confirms combobox gains its
+Storybook link (+164px), `radio-button` and a `button` control page are
+unchanged in height, and every `dt` swatch colour on `overview` is identical.
+Serve the built site with plain `npx serve dist`, **not** `serve -s` — SPA mode
+rewrites every route to `index.html`, which makes all 63 pages measure the same
+and looks like a passing comparison.
+
 ## Fixed along the way
 
 **`src/lib/` was never committed with the port.** The repo's `.gitignore` has an

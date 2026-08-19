@@ -3,20 +3,17 @@ title: 'Combobox'
 description: 'Comboboxes combine text inputs and dropdowns. The text input is used for filtering the options, while the dropdown allows the selecting of options.'
 ---
 
+import Example from '@components/markdown/Example.astro';
 import BestPractices from '@components/BestPractices.astro';
 import Canvas from '@components/Canvas.astro';
 
-{/*
-  The Gatsby source spells the prop `istoryBookType`, so PageSection never
-  received a `storyBookType` and the Storybook example block was not rendered.
-  The typo is preserved here by simply omitting the Example wrapper.
-*/}
-
-<site-pharos-combobox>
-  <span slot="label">I am a combobox</span>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-</site-pharos-combobox>
+<Example storyBookType="forms" componentTitle="Combobox">
+  <site-pharos-combobox>
+    <span slot="label">I am a combobox</span>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </site-pharos-combobox>
+</Example>
 
 ## Usage
 
