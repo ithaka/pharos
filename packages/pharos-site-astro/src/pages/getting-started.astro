@@ -39,8 +39,8 @@ const directoryLayout = `
   <br />
   <site-pharos-heading level="2" preset="6">Using Pharos components</site-pharos-heading>
   <p>
-    Pharos uses <site-pharos-link
-      href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</site-pharos-link
+    Pharos uses <site-pharos-link href="https://developer.mozilla.org/en-US/docs/Web/Web_Components"
+      >Web Components</site-pharos-link
     > to remain compatible with modern JavaScript frameworks, such as Vue or React. To accomodate patterns
     of each framework, the implementations vary slightly.
   </p>
@@ -52,9 +52,10 @@ const directoryLayout = `
     code={`<script src="https://cdn.jsdelivr.net/npm/@webcomponents/scoped-custom-element-registry@0.0.3/scoped-custom-element-registry.min.js"></script>`}
   />
   <p>
-    You then need to register components on the [custom element registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry)
-    for them to be usable in your code. To register components, you can use the `registerComponents` utility
-    to define all the Pharos components your application uses, with a consistent scoping prefix:
+    You then need to register components on the [custom element
+    registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) for them to be
+    usable in your code. To register components, you can use the `registerComponents` utility to
+    define all the Pharos components your application uses, with a consistent scoping prefix:
   </p>
   <CodeBlock
     code={`
@@ -104,7 +105,8 @@ const directoryLayout = `
   <br />
   <site-pharos-heading level="3" preset="4">Pharos + Vue</site-pharos-heading>
   <p>
-    Similarly, the following code shows how to use Pharos's button component with <strong>Vue</strong
+    Similarly, the following code shows how to use Pharos's button component with <strong
+      >Vue</strong
     > to produce a basic button, as seen below the code
   </p>
   <CodeBlock
@@ -123,16 +125,16 @@ const directoryLayout = `
   <p>
     The props for each component control various parts of the component, from style to function.
     Learning which props are available for each component, along with how they interact with the
-    component, is crucial in using the Pharos design system. Pharos components are fully documented to
-    allow IDEs to take advantage of intellisense features, which in turn allows you to browse through
-    props.
+    component, is crucial in using the Pharos design system. Pharos components are fully documented
+    to allow IDEs to take advantage of intellisense features, which in turn allows you to browse
+    through props.
   </p>
   <p>
     For a more interactive approach to understand props, Pharos provides a <site-pharos-link
       href="https://storybook.js.org/">Storybook</site-pharos-link
-    >. Our Storybook stories demonstrates the usage of props for each component, while providing the code
-    used in the demonstration. Many components' stories allow you adjust the values of different props
-    to preview and understand the impact of those props.
+    >. Our Storybook stories demonstrates the usage of props for each component, while providing the
+    code used in the demonstration. Many components' stories allow you adjust the values of
+    different props to preview and understand the impact of those props.
   </p>
   <site-pharos-link href="https://pharos.jstor.org/storybooks/wc/">
     Visit the Web Component Pharos Storybook
@@ -158,12 +160,15 @@ const directoryLayout = `
   <p>
     To use the correct fonts, start by importing them by importing <code
       >@ithaka/pharos/lib/styles/fonts.css</code
-    > at the top level of your web app. Once imported, set the root body font and styles by importing <code
-      >@ithaka/pharos/lib/styles/typography.scss</code
-    >. If there are places where the body font is being overwritten, apply the font wherever the style
-    is being overwritten by setting the <code>font-family</code> property to include either <code
-      >GT America Standard</code
-    > (generally for body) or <code>Ivar Headline</code> (generally for headers).
+    > at the top level of your web app. Once imported, set the root body font and styles by importing{
+      ' '
+    }
+    <code>@ithaka/pharos/lib/styles/typography.scss</code>. If there are places where the body font
+    is being overwritten, apply the font wherever the style is being overwritten by setting the <code
+      >font-family</code
+    > property to include either <code>GT America Standard</code> (generally for body) or <code
+      >Ivar Headline</code
+    > (generally for headers).
   </p>
   <p>
     The following examples use inline styling, but the same principles remain for other methods of
@@ -218,10 +223,10 @@ const directoryLayout = `
   <br />
   <site-pharos-heading level="3" preset="4">Pharos Design Tokens</site-pharos-heading>
   <p>
-    Pharos components use design tokens to keep values consistent for all facets of design, including
-    spacing, size, and colors. These design tokens are also provided to developers using Pharos in
-    order to provide assistance in creating a consistent look and feel in pages where both Pharos
-    components and other elements exist.
+    Pharos components use design tokens to keep values consistent for all facets of design,
+    including spacing, size, and colors. These design tokens are also provided to developers using
+    Pharos in order to provide assistance in creating a consistent look and feel in pages where both
+    Pharos components and other elements exist.
   </p>
   <p>
     To start using the design tokens, import the <code
@@ -260,8 +265,8 @@ const directoryLayout = `
   <br />
   <site-pharos-heading level="3" preset="4">Contribute</site-pharos-heading>
   <p>
-    Interested in contributing to the design system? Pharos is the result of collective contributions
-    of code, design, and guidance—we'd love to hear your input and ideas!
+    Interested in contributing to the design system? Pharos is the result of collective
+    contributions of code, design, and guidance—we'd love to hear your input and ideas!
   </p>
   <site-pharos-link href="https://github.com/ithaka/pharos">Help build Pharos</site-pharos-link>
   <br />

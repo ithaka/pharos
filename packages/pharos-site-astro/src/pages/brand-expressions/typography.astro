@@ -14,7 +14,6 @@ import sansSerif from '@images/brand-expressions/typography/sans-serif.svg';
 import typeInActionPresentation from '@images/brand-expressions/typography/type-in-action_presentation.jpg';
 import typeInActionSocialGraphic from '@images/brand-expressions/typography/type-in-action_social-graphic.jpg';
 import xHeight from '@images/brand-expressions/typography/x-height.svg';
-
 ---
 
 <Layout title="Typography">
@@ -87,7 +86,12 @@ import xHeight from '@images/brand-expressions/typography/x-height.svg';
         <site-pharos-heading level="4" preset="1--bold">Open apertures</site-pharos-heading>
       </div>
       <img src={xHeight.src} width={xHeight.width} height={xHeight.height} alt="x-height" />
-      <img src={openAperturesImage.src} width={openAperturesImage.width} height={openAperturesImage.height} alt="open apertures" />
+      <img
+        src={openAperturesImage.src}
+        width={openAperturesImage.width}
+        height={openAperturesImage.height}
+        alt="open apertures"
+      />
       <div>
         X-height is the vertical measure of a lowercase x. The shorter the x-height, the smaller the
         letter will appear, which can cause the type to become illegible.
@@ -105,10 +109,20 @@ import xHeight from '@images/brand-expressions/typography/x-height.svg';
         <site-pharos-heading level="4" preset="1--bold">Even spacing</site-pharos-heading>
       </div>
       <div class="principle-figure">
-        <img src={clearTerminal.src} width={clearTerminal.width} height={clearTerminal.height} alt="Clear Terminals" />
+        <img
+          src={clearTerminal.src}
+          width={clearTerminal.width}
+          height={clearTerminal.height}
+          alt="Clear Terminals"
+        />
       </div>
       <div class="principle-figure">
-        <img src={evenSpacing.src} width={evenSpacing.width} height={evenSpacing.height} alt="Even Spacing" />
+        <img
+          src={evenSpacing.src}
+          width={evenSpacing.width}
+          height={evenSpacing.height}
+          alt="Even Spacing"
+        />
       </div>
       <div>
         Terminals are the ends of the letter form. Clear terminals are easier to spot and signal
@@ -132,8 +146,18 @@ import xHeight from '@images/brand-expressions/typography/x-height.svg';
           Serif and sans-serif pairing
         </site-pharos-heading>
       </div>
-      <img src={humanistTerminals.src} width={humanistTerminals.width} height={humanistTerminals.height} alt="Humanist Terminals" />
-      <img src={sansSerif.src} width={sansSerif.width} height={sansSerif.height} alt="Serif and sans-serif pairing" />
+      <img
+        src={humanistTerminals.src}
+        width={humanistTerminals.width}
+        height={humanistTerminals.height}
+        alt="Humanist Terminals"
+      />
+      <img
+        src={sansSerif.src}
+        width={sansSerif.width}
+        height={sansSerif.height}
+        alt="Serif and sans-serif pairing"
+      />
       <div>
         Humanist fonts have a natural stroke, looking more like they're written by the human hand.
       </div>
@@ -236,11 +260,15 @@ import xHeight from '@images/brand-expressions/typography/x-height.svg';
     title="System typefaces"
     description="When it is not possible to use our brand typefaces, use the following system typefaces when appropriate for things like presentations, documents, etc."
   >
-    <site-pharos-heading class="specimen-label" level="3" preset="4"> Headline </site-pharos-heading>
+    <site-pharos-heading class="specimen-label" level="3" preset="4">
+      Headline
+    </site-pharos-heading>
     <Grid columns={2}>
       <FontDisplay font="Times" title="Times" dark />
     </Grid>
-    <site-pharos-heading class="specimen-label" level="3" preset="4"> Bodycopy </site-pharos-heading>
+    <site-pharos-heading class="specimen-label" level="3" preset="4">
+      Bodycopy
+    </site-pharos-heading>
     <Grid columns={2}>
       <FontDisplay font="Roboto" title="Roboto" dark />
       <FontDisplay font="Arial" title="Arial" dark />

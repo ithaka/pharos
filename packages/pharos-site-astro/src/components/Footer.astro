@@ -86,12 +86,15 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
     <div class="note copyright-statement">
-      &copy;2021&ndash;{currentYear} ITHAKA. All Rights Reserved. JSTOR&reg;, the JSTOR logo,
-      JPASS&reg;, Artstor&reg;, Reveal Digital&trade; and ITHAKA&reg; are registered trademarks of
-      ITHAKA.
+      &copy;2021&ndash;{currentYear} ITHAKA. All Rights Reserved. JSTOR&reg;, the JSTOR logo, JPASS&reg;,
+      Artstor&reg;, Reveal Digital&trade; and ITHAKA&reg; are registered trademarks of ITHAKA.
     </div>
     <em class="note netlify-link">
-      This site is powered by <site-pharos-link href="https://www.netlify.com" is-on-background target="_blank">
+      This site is powered by <site-pharos-link
+        href="https://www.netlify.com"
+        is-on-background
+        target="_blank"
+      >
         Netlify
       </site-pharos-link>
     </em>
@@ -105,6 +108,8 @@ const currentYear = new Date().getFullYear();
   const cookieLink = document.getElementById('cookie-settings-link');
   cookieLink?.addEventListener('click', (event) => {
     event.preventDefault();
-    (window as unknown as { OneTrust?: { ToggleInfoDisplay: () => void } }).OneTrust?.ToggleInfoDisplay();
+    (
+      window as unknown as { OneTrust?: { ToggleInfoDisplay: () => void } }
+    ).OneTrust?.ToggleInfoDisplay();
   });
 </script>

@@ -75,8 +75,7 @@ const rowGap = fill ? 'var(--pharos-spacing-5-x)' : '0';
             variant="subtle"
             icon="menu"
             data-sidenav-id="site-sidenav"
-            a11y-label="Open side navigation"
-          ></site-pharos-button>
+            a11y-label="Open side navigation"></site-pharos-button>
         </site-pharos-layout>
         <!--
           On `fill` pages the hero sits in the `hero` grid area of the content
@@ -88,7 +87,15 @@ const rowGap = fill ? 'var(--pharos-spacing-5-x)' : '0';
           class={`content${fill ? ' content--fill' : ''}`}
           row-gap={rowGap}
         >
-          {fill ? <slot /> : <div class="page"><slot /></div>}
+          {
+            fill ? (
+              <slot />
+            ) : (
+              <div class="page">
+                <slot />
+              </div>
+            )
+          }
         </site-pharos-layout>
       </main>
       <Footer />

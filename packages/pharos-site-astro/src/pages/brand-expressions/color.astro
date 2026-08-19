@@ -14,7 +14,8 @@ import colorBrochure from '@images/brand-expressions/color/color-brochure.jpg';
 import colorIllustration from '@images/brand-expressions/color/color-illustration.jpg';
 import colorNotebook from '@images/brand-expressions/color/color-notebook.jpg';
 
-const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacing-7-x); border-radius: 50%;';
+const redCircle =
+  'height: var(--pharos-spacing-7-x); width: var(--pharos-spacing-7-x); border-radius: 50%;';
 ---
 
 <Layout title="Color">
@@ -57,9 +58,7 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
   <PageSection title="Principles" moreTitleSpace>
     <div>
       <site-pharos-heading level="3" preset="4">Expressive</site-pharos-heading>
-      <p>
-        Colors are used at memorable moments to reinforce our brand's style.
-      </p>
+      <p>Colors are used at memorable moments to reinforce our brand's style.</p>
     </div>
     <div>
       <site-pharos-heading level="3" preset="4">Legible</site-pharos-heading>
@@ -90,15 +89,20 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
         <site-pharos-heading level="3" preset="2--bold">
           Use recommended color combinations
         </site-pharos-heading>
-        <p>
-          JSTOR Red has prominence and is present in most materials.
-        </p>
+        <p>JSTOR Red has prominence and is present in most materials.</p>
       </div>
       <div class="guidance">
         <site-pharos-heading level="4" preset="1--bold">2-color combinations</site-pharos-heading>
       </div>
       <div class="specimen">
-        <Grid columns={4} vSpace={2} hSpace={3} bottom={0} minContent justifyContent="space-between">
+        <Grid
+          columns={4}
+          vSpace={2}
+          hSpace={3}
+          bottom={0}
+          minContent
+          justifyContent="space-between"
+        >
           <ColorCombos colorNames={['JSTOR red', 'Night blue']} />
           <ColorCombos colorNames={['JSTOR red', 'Glacier blue']} />
           <ColorCombos colorNames={['JSTOR red', 'Living coral']} />
@@ -325,10 +329,8 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
     <site-pharos-heading level="4" preset="2">Color test tools</site-pharos-heading>
     <div class="tool-links">
       <site-pharos-link href="https://color.review/" target="_blank">Color Review</site-pharos-link>
-      <site-pharos-icon
-        name="link-external"
-        class="swatch-label"
-        a11y-hidden="true"></site-pharos-icon>
+      <site-pharos-icon name="link-external" class="swatch-label" a11y-hidden="true"
+      ></site-pharos-icon>
       <site-pharos-link href="https://webaim.org/resources/contrastchecker/" target="_blank">
         WebAIM Color Contrast Checker
       </site-pharos-link>
@@ -340,27 +342,27 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
     <Grid columns={3} vSpace={2} hSpace={0} bottom={0} align="start">
       <div>
         <div class="figure-caption">Product Card</div>
-        <Image src={colorBrochure}
+        <Image
+          src={colorBrochure}
           alt="Product card"
           width="227"
           height="350"
-          class="color-image" />
+          class="color-image"
+        />
       </div>
       <div>
         <div class="figure-caption">Illustration</div>
-        <Image src={colorIllustration}
+        <Image
+          src={colorIllustration}
           alt="Illustration"
           width="300"
           height="450"
-          class="color-image" />
+          class="color-image"
+        />
       </div>
       <div>
         <div class="figure-caption">Notebook</div>
-        <Image src={colorNotebook}
-          alt="Notebook"
-          width="215"
-          height="320"
-          class="color-image" />
+        <Image src={colorNotebook} alt="Notebook" width="215" height="320" class="color-image" />
       </div>
     </Grid>
   </PageSection>

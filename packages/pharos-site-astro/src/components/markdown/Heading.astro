@@ -52,10 +52,7 @@ interface Props {
  * a `##` was 0px before "Usage" but 16px before "Variants" — inconsistent
  * within one page, where production is a uniform 0.
  */
-const PRESETS: Record<
-  Props['depth'],
-  { level: string; preset: string; noMargin?: boolean }
-> = {
+const PRESETS: Record<Props['depth'], { level: string; preset: string; noMargin?: boolean }> = {
   1: { level: '1', preset: '7--bold' },
   2: { level: '2', preset: '6' },
   3: { level: '2', preset: '4' },
@@ -75,4 +72,5 @@ const hasNoMargin = noMargin ?? presetNoMargin;
   level={level}
   preset={preset}
   no-margin={hasNoMargin ? '' : undefined}
-  id={id}><slot /></site-pharos-heading>
+  id={id}><slot /></site-pharos-heading
+>

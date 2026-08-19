@@ -31,11 +31,7 @@ interface Props {
   columnWidths?: string[];
 }
 
-const {
-  rows,
-  exampleHeadings = ['Example'],
-  columnWidths = ['40%', '30%'],
-} = Astro.props;
+const { rows, exampleHeadings = ['Example'], columnWidths = ['40%', '30%'] } = Astro.props;
 
 const headings = ['Token', 'Value', ...exampleHeadings];
 ---

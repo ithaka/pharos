@@ -20,10 +20,8 @@ const { icon, a11yTitle, label } = COLUMNS[variant];
 
 <hr class={`best-practices__line--${variant}`} />
 <div class="best-practices__container">
-  <site-pharos-icon
-    name={icon}
-    a11y-title={a11yTitle}
-    class={`best-practices__icon--${variant}`}></site-pharos-icon>
+  <site-pharos-icon name={icon} a11y-title={a11yTitle} class={`best-practices__icon--${variant}`}
+  ></site-pharos-icon>
   <div>
     <div class={`best-practices__text--${variant}`}>{label}</div>
     <div class="best-practices__guideline">

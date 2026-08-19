@@ -98,8 +98,7 @@ const swatches = filtered.map((color) => {
 
   return {
     value: color.value,
-    border:
-      color.value === '#ffffff' ? '1px solid var(--pharos-color-marble-gray-80)' : 'none',
+    border: color.value === '#ffffff' ? '1px solid var(--pharos-color-marble-gray-80)' : 'none',
     label: toTitleCase(name.replace(/ base+$/g, '').replace('-', ' ')),
     hex: formatHex(colorObject),
     hsl: formatHsl(colorObject),
@@ -140,7 +139,8 @@ const containerStyle = [
                   <strong>RGB</strong> - {swatch.rgb}
                 </div>
                 <div>
-                  <strong>CMYK</strong> - cmyk({`${swatch.cmyk.c}% ${swatch.cmyk.m}% ${swatch.cmyk.y}% ${swatch.cmyk.k}%`})
+                  <strong>CMYK</strong> - cmyk(
+                  {`${swatch.cmyk.c}% ${swatch.cmyk.m}% ${swatch.cmyk.y}% ${swatch.cmyk.k}%`})
                 </div>
               </>
             )}

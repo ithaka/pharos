@@ -51,7 +51,10 @@ const sectionLinks = (root: string, pages: readonly string[]) =>
   </site-pharos-link>
 
   <site-pharos-sidenav-section show-divider>
-    <site-pharos-sidenav-link href="/getting-started" is-active={isActive('/getting-started') || undefined}>
+    <site-pharos-sidenav-link
+      href="/getting-started"
+      is-active={isActive('/getting-started') || undefined}
+    >
       Getting started
     </site-pharos-sidenav-link>
     <site-pharos-sidenav-link href="/help" is-active={isActive('/help') || undefined}>
@@ -60,7 +63,10 @@ const sectionLinks = (root: string, pages: readonly string[]) =>
     <site-pharos-sidenav-link href="/faqs" is-active={isActive('/faqs') || undefined}>
       FAQs
     </site-pharos-sidenav-link>
-    <site-pharos-sidenav-menu label="Contributing" expanded={isExpanded('contributing') || undefined}>
+    <site-pharos-sidenav-menu
+      label="Contributing"
+      expanded={isExpanded('contributing') || undefined}
+    >
       {
         sectionLinks('contributing', contributingPages).map(({ label, href }) => (
           <site-pharos-sidenav-link href={href} is-active={isActive(href) || undefined}>
@@ -78,7 +84,10 @@ const sectionLinks = (root: string, pages: readonly string[]) =>
   </site-pharos-sidenav-section>
 
   <site-pharos-sidenav-section label="Brand Guidelines" show-divider>
-    <site-pharos-sidenav-menu label="Brand expressions" expanded={isExpanded('brand-expressions') || undefined}>
+    <site-pharos-sidenav-menu
+      label="Brand expressions"
+      expanded={isExpanded('brand-expressions') || undefined}
+    >
       {
         sectionLinks('brand-expressions', brandExpressionPages).map(({ label, href }) => (
           <site-pharos-sidenav-link href={href} is-active={isActive(href) || undefined}>
@@ -87,7 +96,10 @@ const sectionLinks = (root: string, pages: readonly string[]) =>
         ))
       }
     </site-pharos-sidenav-menu>
-    <site-pharos-sidenav-menu label="Content style guide" expanded={isExpanded('content-style-guide') || undefined}>
+    <site-pharos-sidenav-menu
+      label="Content style guide"
+      expanded={isExpanded('content-style-guide') || undefined}
+    >
       {
         sectionLinks('content-style-guide', contentStyleGuidePages).map(({ label, href }) => (
           <site-pharos-sidenav-link href={href} is-active={isActive(href) || undefined}>
@@ -108,7 +120,10 @@ const sectionLinks = (root: string, pages: readonly string[]) =>
         ))
       }
     </site-pharos-sidenav-menu>
-    <site-pharos-sidenav-menu label="Design tokens" expanded={isExpanded('design-tokens') || undefined}>
+    <site-pharos-sidenav-menu
+      label="Design tokens"
+      expanded={isExpanded('design-tokens') || undefined}
+    >
       {
         sectionLinks('design-tokens', designTokenPages).map(({ label, href }) => (
           <site-pharos-sidenav-link href={href} is-active={isActive(href) || undefined}>
