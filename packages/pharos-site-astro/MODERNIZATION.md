@@ -690,10 +690,10 @@ the latter re-export; using it builds fine but emits four `astro check` hints.
 All 82 `<img>` tags are converted and the 61 referenced assets moved from
 `public/images/` to `src/images/`, where the build can see them. (The
 "parity-blocked" note here was stale — the gating question above was answered
-*no* before this ran.)
+_no_ before this ran.)
 
 **Rasters use `<Image />`; SVGs stay `<img>` with an imported asset.** Astro
-imports an SVG as a *component*, which inlines it. That is wrong for this site:
+imports an SVG as a _component_, which inlines it. That is wrong for this site:
 `logos.astro` alone references 511 kB of SVG, so inlining would take
 `logos.html` from 22 kB to ~530 kB of un-cacheable HTML to save 15 requests.
 Importing the SVG as an asset and using `src={x.src}` gets the same
