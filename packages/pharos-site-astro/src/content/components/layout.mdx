@@ -4,6 +4,8 @@ description: 'The layout component uses a flexible, responsive grid to create or
 ---
 
 import BestPractices from '@components/BestPractices.astro';
+import gridElements from '@images/components/layout/grid_elements.png';
+import { Image } from 'astro:assets';
 
 export const breakpoints = [
   { width: '360px', name: 'S', columns: '4' },
@@ -44,11 +46,9 @@ or within a component.
 
 ### Elements of the grid
 
-<img
-  src="/images/components/layout/grid_elements.png"
+<Image src={gridElements}
   alt="The elements consist of a gutter, column and margin"
-  class="pharos-storybook__image"
-/>
+  class="pharos-storybook__image" />
 
 <site-pharos-heading level="4" preset="1--bold">Column</site-pharos-heading>
 

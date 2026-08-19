@@ -5,6 +5,8 @@ description: 'Buttons communicate actions that users can take.'
 
 import Example from '@components/markdown/Example.astro';
 import BestPractices from '@components/BestPractices.astro';
+import buttonsEllipsesExample from '@images/components/button/buttons_ellipses-example.png';
+import { Image } from 'astro:assets';
 
 export const examples = [
   { good: 'Save', bad: 'Workspace' },
@@ -54,12 +56,10 @@ When you need to display multiple actions together in an array, use all secondar
 
 #### Grouping multiple actions
 
-<img
-  src="/images/components/button/buttons_ellipses-example.png"
+<Image src={buttonsEllipsesExample}
   alt="When grouping actions, you can utilize an ellipses icon button paired with a dropdown menu to display a list of actions"
   class="pharos-storybook__image"
-  width="400"
-/>
+  width="400" />
 
 If it makes sense to group multiple actions together, you can utilize an ellipses button
           paired with a dropdown menu. Use this pattern when there are 3 or more actions. Use this

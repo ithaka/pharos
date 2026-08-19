@@ -1,12 +1,20 @@
 ---
 /** Ported from the Gatsby site's src/pages/brand-expressions/typography.tsx. */
+import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import PageSection from '@components/PageSection.astro';
 import Grid from '@components/Grid.astro';
 import DosAndDonts from '@components/DosAndDonts.astro';
 import FontDisplay from '@components/FontDisplay.astro';
+import clearTerminal from '@images/brand-expressions/typography/clear_terminal.svg';
+import evenSpacing from '@images/brand-expressions/typography/even_spacing.svg';
+import humanistTerminals from '@images/brand-expressions/typography/humanist_terminals.svg';
+import openAperturesImage from '@images/brand-expressions/typography/open_apertures_image.svg';
+import sansSerif from '@images/brand-expressions/typography/sans-serif.svg';
+import typeInActionPresentation from '@images/brand-expressions/typography/type-in-action_presentation.jpg';
+import typeInActionSocialGraphic from '@images/brand-expressions/typography/type-in-action_social-graphic.jpg';
+import xHeight from '@images/brand-expressions/typography/x-height.svg';
 
-const base = '/images/brand-expressions/typography';
 ---
 
 <Layout title="Typography">
@@ -78,8 +86,8 @@ const base = '/images/brand-expressions/typography';
       <div>
         <site-pharos-heading level="4" preset="1--bold">Open apertures</site-pharos-heading>
       </div>
-      <img src={`${base}/x-height.svg`} alt="x-height" />
-      <img src={`${base}/open_apertures_image.svg`} alt="open apertures" />
+      <img src={xHeight.src} width={xHeight.width} height={xHeight.height} alt="x-height" />
+      <img src={openAperturesImage.src} width={openAperturesImage.width} height={openAperturesImage.height} alt="open apertures" />
       <div>
         X-height is the vertical measure of a lowercase x. The shorter the x-height, the smaller the
         letter will appear, which can cause the type to become illegible.
@@ -97,10 +105,10 @@ const base = '/images/brand-expressions/typography';
         <site-pharos-heading level="4" preset="1--bold">Even spacing</site-pharos-heading>
       </div>
       <div class="principle-figure">
-        <img src={`${base}/clear_terminal.svg`} alt="Clear Terminals" />
+        <img src={clearTerminal.src} width={clearTerminal.width} height={clearTerminal.height} alt="Clear Terminals" />
       </div>
       <div class="principle-figure">
-        <img src={`${base}/even_spacing.svg`} alt="Even Spacing" />
+        <img src={evenSpacing.src} width={evenSpacing.width} height={evenSpacing.height} alt="Even Spacing" />
       </div>
       <div>
         Terminals are the ends of the letter form. Clear terminals are easier to spot and signal
@@ -124,8 +132,8 @@ const base = '/images/brand-expressions/typography';
           Serif and sans-serif pairing
         </site-pharos-heading>
       </div>
-      <img src={`${base}/humanist_terminals.svg`} alt="Humanist Terminals" />
-      <img src={`${base}/sans-serif.svg`} alt="Serif and sans-serif pairing" />
+      <img src={humanistTerminals.src} width={humanistTerminals.width} height={humanistTerminals.height} alt="Humanist Terminals" />
+      <img src={sansSerif.src} width={sansSerif.width} height={sansSerif.height} alt="Serif and sans-serif pairing" />
       <div>
         Humanist fonts have a natural stroke, looking more like they're written by the human hand.
       </div>
@@ -244,10 +252,10 @@ const base = '/images/brand-expressions/typography';
       <div>Presentation</div>
       <div>Social graphic</div>
       <div class="type-in-action">
-        <img src={`${base}/type-in-action_presentation.jpg`} alt="x-height" />
+        <Image src={typeInActionPresentation} alt="x-height" />
       </div>
       <div class="type-in-action">
-        <img src={`${base}/type-in-action_social-graphic.jpg`} alt="x-height" />
+        <Image src={typeInActionSocialGraphic} alt="x-height" />
       </div>
     </Grid>
   </PageSection>
@@ -274,6 +282,9 @@ const base = '/images/brand-expressions/typography';
 
   .principle-figure {
     width: 100%;
+    /* Intrinsic width/height are emitted to reserve the box; height must
+       follow the aspect ratio so this width rule sizes the image. */
+    height: auto;
   }
 
   /* The shared scaffolding of a type specimen; the typeface itself is inline. */
@@ -290,6 +301,10 @@ const base = '/images/brand-expressions/typography';
   .type-in-action,
   .type-in-action img {
     max-width: 100%;
+  }
+
+  .type-in-action img {
+    height: auto;
   }
   /*
    * A heading inside a best-practice block labels the sample beneath it. Pharos

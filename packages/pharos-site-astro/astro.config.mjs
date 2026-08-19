@@ -38,7 +38,7 @@ export default defineConfig({
       alias: {
         '@components': resolve('./src/components'),
         '@layouts': resolve('./src/layouts'),
-        '@images': resolve('./public/images'),
+        '@images': resolve('./src/images'),
         '@lib': resolve('./src/lib'),
       },
       // The Pharos workspace package is symlinked; preserve that so a single

@@ -1,5 +1,6 @@
 ---
 /** Ported from the Gatsby site's src/pages/brand-expressions/color.tsx. */
+import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import PageSection from '@components/PageSection.astro';
 import Grid from '@components/Grid.astro';
@@ -9,6 +10,9 @@ import ColorSwatches from '@components/ColorSwatches.astro';
 import ColorGradients from '@components/ColorGradients.astro';
 import ColorCombos from '@components/ColorCombos.astro';
 import ColorTextSquares from '@components/ColorTextSquares.astro';
+import colorBrochure from '@images/brand-expressions/color/color-brochure.jpg';
+import colorIllustration from '@images/brand-expressions/color/color-illustration.jpg';
+import colorNotebook from '@images/brand-expressions/color/color-notebook.jpg';
 
 const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacing-7-x); border-radius: 50%;';
 ---
@@ -336,33 +340,27 @@ const redCircle = 'height: var(--pharos-spacing-7-x); width: var(--pharos-spacin
     <Grid columns={3} vSpace={2} hSpace={0} bottom={0} align="start">
       <div>
         <div class="figure-caption">Product Card</div>
-        <img
-          src="/images/brand-expressions/color/color-brochure.jpg"
+        <Image src={colorBrochure}
           alt="Product card"
           width="227"
           height="350"
-          class="color-image"
-        />
+          class="color-image" />
       </div>
       <div>
         <div class="figure-caption">Illustration</div>
-        <img
-          src="/images/brand-expressions/color/color-illustration.jpg"
+        <Image src={colorIllustration}
           alt="Illustration"
           width="300"
           height="450"
-          class="color-image"
-        />
+          class="color-image" />
       </div>
       <div>
         <div class="figure-caption">Notebook</div>
-        <img
-          src="/images/brand-expressions/color/color-notebook.jpg"
+        <Image src={colorNotebook}
           alt="Notebook"
           width="215"
           height="320"
-          class="color-image"
-        />
+          class="color-image" />
       </div>
     </Grid>
   </PageSection>

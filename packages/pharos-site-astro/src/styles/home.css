@@ -34,6 +34,10 @@
 .home .thumbnail {
   margin-bottom: var(--pharos-spacing-one-and-a-half-x);
 }
+.home .thumbnail img {
+  width: 100%;
+  height: auto;
+}
 
 .home .section-title {
   margin-bottom: var(--pharos-spacing-one-quarter-x);

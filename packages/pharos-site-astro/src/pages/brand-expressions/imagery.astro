@@ -1,11 +1,37 @@
 ---
 /** Ported from the Gatsby site's src/pages/brand-expressions/imagery.tsx. */
+import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import PageSection from '@components/PageSection.astro';
 import Grid from '@components/Grid.astro';
 import BestPractices from '@components/BestPractices.astro';
 
-const base = '/images/brand-expressions/imagery';
+import heroCover from '@images/brand-expressions/imagery/imagery_hero_cover.png';
+import artstor1 from '@images/brand-expressions/imagery/imagery_artstor_1.png';
+import artstor2 from '@images/brand-expressions/imagery/imagery_artstor_2.png';
+import artstor3 from '@images/brand-expressions/imagery/imagery_artstor_3.png';
+import artstor4 from '@images/brand-expressions/imagery/imagery_artstor_4.png';
+import artstor5 from '@images/brand-expressions/imagery/imagery_artstor_5.png';
+import community1 from '@images/brand-expressions/imagery/imagery_community_1.png';
+import community2 from '@images/brand-expressions/imagery/imagery_community_2.png';
+import community3 from '@images/brand-expressions/imagery/imagery_community_3.png';
+import community4 from '@images/brand-expressions/imagery/imagery_community_4.png';
+import community5 from '@images/brand-expressions/imagery/imagery_community_5.png';
+import brand1 from '@images/brand-expressions/imagery/imagery_brand_1.png';
+import brand2 from '@images/brand-expressions/imagery/imagery_brand_2.png';
+import brand3 from '@images/brand-expressions/imagery/imagery_brand_3.png';
+import brand4 from '@images/brand-expressions/imagery/imagery_brand_4.png';
+import brand5 from '@images/brand-expressions/imagery/imagery_brand_5.png';
+
+/**
+ * The thumbnail rows. Each image is displayed at `.thumb`'s 124px, so the
+ * widths below cover 1x and 2x on that box rather than the source's 272px.
+ */
+const THUMB_WIDTHS = [124, 248];
+
+const artstor = [artstor1, artstor2, artstor3, artstor4, artstor5];
+const community = [community1, community2, community3, community4, community5];
+const brand = [brand1, brand2, brand3, brand4, brand5];
 ---
 
 <Layout title="Imagery">
@@ -15,12 +41,7 @@ const base = '/images/brand-expressions/imagery';
     isHeader
   >
     <Grid columns={1} justifyContent="center" minContent align="end">
-      <img
-        src={`${base}/imagery_hero_cover.png`}
-        alt="Archive images - Hero"
-        width="552"
-        height="443"
-      />
+      <Image src={heroCover} alt="Archive images - Hero" width={552} height={443} />
     </Grid>
   </PageSection>
 
@@ -30,77 +51,51 @@ const base = '/images/brand-expressions/imagery';
   >
     <site-pharos-heading level="3" preset="4">Artstor</site-pharos-heading>
     <Grid columns={5} hSpace={0.5} bottom={5} minContent align="end">
-      <div>
-        <img src={`${base}/imagery_artstor_1.png`} alt="Archival - Artstor 1" class="thumb" />
-      </div>
-      <div>
-        <img src={`${base}/imagery_artstor_2.png`} alt="Archival - Artstor 2" class="thumb" />
-      </div>
-      <div>
-        <img src={`${base}/imagery_artstor_3.png`} alt="Archival - Artstor 3" class="thumb" />
-      </div>
-      <div>
-        <img src={`${base}/imagery_artstor_4.png`} alt="Archival - Artstor 4" class="thumb" />
-      </div>
-      <div>
-        <img src={`${base}/imagery_artstor_5.png`} alt="Archival - Artstor 5" class="thumb" />
-      </div>
+      {
+        artstor.map((image, i) => (
+          <div>
+            <Image
+              src={image}
+              alt={`Archival - Artstor ${i + 1}`}
+              widths={THUMB_WIDTHS}
+              sizes="124px"
+              class="thumb"
+            />
+          </div>
+        ))
+      }
     </Grid>
     <site-pharos-heading level="3" preset="4">Community Collections</site-pharos-heading>
     <Grid columns={5} hSpace={0.5} bottom={5} minContent align="end">
-      <div>
-        <img
-          src={`${base}/imagery_community_1.png`}
-          alt="Archive - Community Collections 1"
-          class="thumb"
-        />
-      </div>
-      <div>
-        <img
-          src={`${base}/imagery_community_2.png`}
-          alt="Archive - Community Collections 2"
-          class="thumb"
-        />
-      </div>
-      <div>
-        <img
-          src={`${base}/imagery_community_3.png`}
-          alt="Archive - Community Collections 3"
-          class="thumb"
-        />
-      </div>
-      <div>
-        <img
-          src={`${base}/imagery_community_4.png`}
-          alt="Archive - Community Collections 4"
-          class="thumb"
-        />
-      </div>
-      <div>
-        <img
-          src={`${base}/imagery_community_5.png`}
-          alt="Archive - Community Collections 5"
-          class="thumb"
-        />
-      </div>
+      {
+        community.map((image, i) => (
+          <div>
+            <Image
+              src={image}
+              alt={`Archive - Community Collections ${i + 1}`}
+              widths={THUMB_WIDTHS}
+              sizes="124px"
+              class="thumb"
+            />
+          </div>
+        ))
+      }
     </Grid>
     <site-pharos-heading level="3" preset="4">Brand</site-pharos-heading>
     <Grid columns={5} hSpace={0.5} bottom={5} minContent align="end">
-      <div>
-        <img src={`${base}/imagery_brand_1.png`} alt="Archival - Brand 1" class="thumb" />
-      </div>
-      <div>
-        <img src={`${base}/imagery_brand_2.png`} alt="Archival - Brand 2" class="thumb" />
-      </div>
-      <div>
-        <img src={`${base}/imagery_brand_3.png`} alt="Archival - Brand 3" class="thumb" />
-      </div>
-      <div>
-        <img src={`${base}/imagery_brand_4.png`} alt="Archival - Brand 4" class="thumb" />
-      </div>
-      <div>
-        <img src={`${base}/imagery_brand_5.png`} alt="Archival - Brand 5" class="thumb" />
-      </div>
+      {
+        brand.map((image, i) => (
+          <div>
+            <Image
+              src={image}
+              alt={`Archival - Brand ${i + 1}`}
+              widths={THUMB_WIDTHS}
+              sizes="124px"
+              class="thumb"
+            />
+          </div>
+        ))
+      }
     </Grid>
   </PageSection>
 
@@ -181,6 +176,10 @@ const base = '/images/brand-expressions/imagery';
 <style>
   .thumb {
     max-width: 124px;
+    /* `<Image>` emits intrinsic width/height to reserve layout space; without
+       this the explicit height attribute wins over the aspect ratio and the
+       thumbnails render at full height. */
+    height: auto;
   }
 
   .caption {

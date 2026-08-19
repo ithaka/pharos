@@ -6,15 +6,15 @@ description: 'Image cards group related visual and textual context.'
 import Example from '@components/markdown/Example.astro';
 import BestPractices from '@components/BestPractices.astro';
 import Canvas from '@components/Canvas.astro';
+import collection5 from '@images/components/image-card/collection_5.png';
+import { Image } from 'astro:assets';
 
 <Example storyBookType="components" componentTitle="Image Card">
   <site-pharos-image-card title="Card title" link="#">
-    <img
+    <Image src={collection5}
       id="image"
-      src="../images/components/image-card/collection_5.png"
       alt="south hall"
-      slot="image"
-    />
+      slot="image" />
     <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
     <div id="item-date" slot="metadata">1889-1892 (creation)</div>
     <div id="collection" slot="metadata">
@@ -75,12 +75,10 @@ The base variant is used to present individual items that have an associated ima
 
 <Canvas>
   <site-pharos-image-card title="Card title" link="#" style="width: 150px;">
-    <img
+    <Image src={collection5}
       id="image"
-      src="/images/components/image-card/collection_5.png"
       alt="south hall"
-      slot="image"
-    />
+      slot="image" />
     <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
     <div id="item-date" slot="metadata">1889-1892 (creation)</div>
     <div id="collection" slot="metadata">
@@ -101,12 +99,10 @@ The collection variant is used to portray a single collection. A larger image is
     variant="collection"
     style="width: 250px;"
   >
-    <img
+    <Image src={collection5}
       id="image"
-      src="/images/components/image-card/collection_5.png"
       alt="Collection image example"
-      slot="image"
-    />
+      slot="image" />
     <strong id="item-number" slot="metadata">452 items</strong>
     <div id="description" slot="metadata">Collection description goes here.</div>
   </site-pharos-image-card>
@@ -127,12 +123,10 @@ Use a subtle card state to indicate to the user that the image must be hovered f
     variant="base"
     style="width: 150px;"
   >
-    <img
+    <Image src={collection5}
       id="image"
-      src="/images/components/image-card/collection_5.png"
       alt="south hall"
-      slot="image"
-    />
+      slot="image" />
     <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
     <div id="item-date" slot="metadata">1889-1892 (creation)</div>
     <div id="collection" slot="metadata">
@@ -154,12 +148,10 @@ Display an error card state to indicate to the user that the image is not availa
     variant="base"
     style="width: 150px;"
   >
-    <img
+    <Image src={collection5}
       id="image"
-      src="/images/components/image-card/collection_5.png"
       alt="south hall"
-      slot="image"
-    />
+      slot="image" />
     <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
     <div id="item-date" slot="metadata">1889-1892 (creation)</div>
     <div id="collection" slot="metadata">
@@ -181,12 +173,10 @@ An image card that has an action menu indicates to the user that additional acti
     variant="base"
     style="width: 150px;"
   >
-    <img
+    <Image src={collection5}
       id="image"
-      src="/images/components/image-card/collection_5.png"
       alt="south hall"
-      slot="image"
-    />
+      slot="image" />
     <div id="creator" slot="metadata">Tubby, William Bunker (American architect,...</div>
     <div id="item-date" slot="metadata">1889-1892 (creation)</div>
     <div id="collection" slot="metadata">

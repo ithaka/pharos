@@ -5,11 +5,12 @@ description: 'Headers are generally used as a container for introductory content
 
 import Example from '@components/markdown/Example.astro';
 import BestPractices from '@components/BestPractices.astro';
+import jstorLogo from '@images/jstor-logo.svg';
 
 <Example storyBookType="organisms" componentTitle="Header">
   <site-pharos-header>
     <site-pharos-link slot="start" href="/" id="jstor-logo">
-      <img src="../images/jstor-logo.svg" alt="JSTOR Home" width="65" height="90" />
+      <img src={jstorLogo.src} alt="JSTOR Home" width="65" height="90" />
     </site-pharos-link>
     <div slot="center">
       <site-pharos-dropdown-menu-nav a11y-label="main navigation">

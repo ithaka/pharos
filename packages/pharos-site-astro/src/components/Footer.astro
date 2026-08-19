@@ -1,5 +1,7 @@
 ---
 /** Ported from the Gatsby site's src/components/footer.tsx. */
+import logoWhite from '@images/footer/logo-white.svg';
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -7,7 +9,7 @@ const currentYear = new Date().getFullYear();
   <site-pharos-layout preset="1-col--sidenav-comfy" rows="auto min-content" class="footer">
     <div class="container__start">
       <site-pharos-link class="logo__link" href="https://www.jstor.org/" target="_blank" flex>
-        <img src="/images/footer/logo-white.svg" alt="JSTOR Logo" width="70" height="100" />
+        <img src={logoWhite.src} alt="JSTOR Logo" width="70" height="100" />
       </site-pharos-link>
     </div>
     <div class="container__center">

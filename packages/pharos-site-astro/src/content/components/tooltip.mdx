@@ -6,6 +6,10 @@ description: 'Tooltips provide concise additional information upon hover or focu
 import Example from '@components/markdown/Example.astro';
 import BestPractices from '@components/BestPractices.astro';
 import Canvas from '@components/Canvas.astro';
+import tooltipOverflow from '@images/components/tooltip/tooltip_overflow.gif';
+import tooltipViewer1 from '@images/components/tooltip/tooltip_viewer-1.png';
+import tooltipViewer2 from '@images/components/tooltip/tooltip_viewer-2.png';
+import { Image } from 'astro:assets';
 
 {/* The twelve placement examples, each a target button plus its tooltip. */}
 export const placements = [
@@ -71,12 +75,10 @@ button.
 For content viewing experiences, the tooltip should sit below the viewer control icon
 buttons.
 
-<img
-  src="/images/components/tooltip/tooltip_viewer-1.png"
+<Image src={tooltipViewer1}
   alt="Tooltip placement for viewer full screen"
   class="pharos-storybook__image"
-  width="700"
-/>
+  width="700" />
 
 ##### Icon buttons
 
@@ -95,19 +97,15 @@ We use <site-pharos-link href="https://floating-ui.com/">Floating UI</site-pharo
 position our tooltips. By default, tooltips are placed in the center of the trigger, but the
 caret/arrow will move and remain "attached" with Floating UI's flip and shift functionality.
 
-<img
-  src="/images/components/tooltip/tooltip_overflow.gif"
+<Image src={tooltipOverflow}
   alt="Tooltip overflow example"
   class="pharos-storybook__image"
-  width="300"
-/>
+  width="300" />
 
-<img
-  src="/images/components/tooltip/tooltip_viewer-2.png"
+<Image src={tooltipViewer2}
   alt="Example tooltip caret placement in viewer"
   class="pharos-storybook__image"
-  width="700"
-/>
+  width="700" />
 
 ### Longer content
 

@@ -685,14 +685,79 @@ the latter re-export; using it builds fine but emits four `astro check` hints.
 
 ## Tier 3 — larger, independent decisions
 
-### 8. Adopt `astro:assets` for images
+### 8. Adopt `astro:assets` for images ✅ DONE
 
-82 raw `<img>` tags; `astro:assets` is not used at all. Astro's `<Image />`
-gives dimension inference (preventing layout shift), format conversion, and
-build-time validation that the file exists. Today a typo'd path under `/public`
-is a broken image in production with no warning.
+All 82 `<img>` tags are converted and the 61 referenced assets moved from
+`public/images/` to `src/images/`, where the build can see them. (The
+"parity-blocked" note here was stale — the gating question above was answered
+*no* before this ran.)
 
-Changes emitted markup, so this is parity-blocked.
+**Rasters use `<Image />`; SVGs stay `<img>` with an imported asset.** Astro
+imports an SVG as a *component*, which inlines it. That is wrong for this site:
+`logos.astro` alone references 511 kB of SVG, so inlining would take
+`logos.html` from 22 kB to ~530 kB of un-cacheable HTML to save 15 requests.
+Importing the SVG as an asset and using `src={x.src}` gets the same
+build-time validation, content-hashed URL, and intrinsic `width`/`height`
+without inlining — the useful two thirds of the feature. Worth re-checking if
+Astro ever separates "process an SVG" from "inline an SVG".
+
+Payload, 1x, over the pages with raster images: **5,699 kB -> 1,657 kB (-71%)**.
+Biggest wins are `color` (-93%), `tooltip` (-86%), `elevation` (-83%),
+`voice-and-tone` (-74%), `typography` (-73%), and `imagery`'s hero alone
+(1,458 kB PNG -> 47 kB WebP). The animated GIF on `tooltip` converts to
+animated WebP with its 82 frames intact (1,687 kB -> 320 kB) — worth checking
+whenever a GIF is involved, because losing the animation would be silent.
+
+Images with both `width` and `height` went from **1 of 82 to all 82**, so the
+boxes are reserved before load. `loading="lazy"` and `decoding="async"` are
+emitted too.
+
+**The one trap, and it bites every page: `<Image>` emits intrinsic
+`width`/`height`, so any CSS rule that sets only a width now needs
+`height: auto`.** Without it the height attribute pins the rendered height and
+the image stretches. It cost 650px of extra page height on `imagery` and broke
+`logos` and `typography` the same way. Four rules needed it: `.logo-hero`,
+`.logo-variant`, `.principle-figure`, `.type-in-action img`, plus `.thumb` and
+the home page thumbnails.
+
+**Do not fix that with a global `img { height: auto }`.** It looks like the
+tidy fix and it is not: Pharos' image-card sets its own image height, and a
+global rule overrides it — `components/image-card` grew 422px and the footer
+logo changed size on all 63 pages. Scope it to the rules that size by width.
+
+Three real bugs surfaced by the type checker and the build, all pre-existing
+and all inherited from the Gatsby source:
+
+- `voice-and-tone.mdx`'s image had **no `alt` at all**. `astro:assets` makes
+  that a build error. Gatsby shipped it to production silently. Alt text taken
+  from the caption directly beneath the image.
+- **Eight `width="800px"`-style attributes** on `elevation.astro`, plus
+  `width="100%"` on `index.astro`. `width` on `<img>` takes a bare number;
+  browsers were parsing the `px` leniently, so rendering was unaffected, but
+  `<Image>`'s types reject it. The `px` ones became numbers; `100%` moved to
+  CSS in `home.css`, where sizing belongs.
+- `header.mdx` referenced `../images/jstor-logo.svg`, a relative path that
+  happened to resolve. It is a real import now.
+
+**41 unreferenced files remain in `public/images/`** — 32 in `logos/` alone
+(the `ADFL*.svg` set), plus stragglers in `color/`, `elevation/`, `homepage/`.
+They were left in place: deleting them is a separate decision. Nothing links
+them.
+
+Verification: normalized `dist/` diff (asset URLs and the CSS hash masked)
+shows exactly the 12 pages with images changed and the other 51 byte-identical;
+Playwright geometry across all 14 affected routes plus a control page shows
+**12 of 14 pages at identical document height**, the other two off by 1-2px of
+sub-pixel rounding. Two type specimens on `typography` render 3-5px smaller —
+they now use the SVG's authored size (249x78, 347x94) instead of being scaled
+~4% by their container, which is the more correct rendering and does not
+reflow the page.
+
+**Harness note:** `loading="lazy"` means a viewport-sized screenshot or an
+unscrolled DOM query reports below-the-fold images as broken. Scroll the page
+before measuring (`scratchpad/geomcheck.mjs` does). One image on
+`components/image-card` legitimately never loads — it is the error-state card,
+which Pharos hides on purpose; it was 0x0 before this change too.
 
 ### 9. Lint `.astro` files ✅ DONE
 

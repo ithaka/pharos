@@ -4,6 +4,8 @@ title: 'Voice and tone'
 ---
 
 import { mdxComponents } from '@components/markdown/mdxComponents';
+import voiceToneStyleImage from '@images/content-style-guide/voice-tone-style_image.jpg';
+import { Image } from 'astro:assets';
 
 export const components = mdxComponents;
 
@@ -23,7 +25,11 @@ stay as <site-pharos-heading> so they keep their place in the wrapper.
 {/* prettier-ignore */}
 <div style="padding: 0 var(--pharos-spacing-5-x);">
   <div>
-    <img src="/images/content-style-guide/voice-tone-style_image.jpg" style="height: auto; max-width: 100%;" />
+    <Image
+      src={voiceToneStyleImage}
+      alt="Felice Feliciano da Verona, Letters, 15th century, Bodleian Library, University of Oxford"
+      style="height: auto; max-width: 100%;"
+    />
   </div>
   <div>
     <site-pharos-link href="https://www.jstor.org/stable/community.14612489" target="_blank">Felice Feliciano da Verona, Letters, 15th century, Bodleian Library, University of Oxford</site-pharos-link>
