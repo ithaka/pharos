@@ -180,8 +180,10 @@ p.alert-example__content + p.alert-example__content {
 
 .guideline-example__icon {
   margin-right: var(--pharos-spacing-one-half-x);
+
   /* Inherits the colour set on the row, so the pair cannot drift apart. */
   fill: currentcolor;
+
   /* The row is a flex container, so the icon would otherwise stretch to the
      height of the text beside it. Visible on `toast`, where MDX wraps the
      example copy in a `<p>` and the icon rendered 24x48 against 24x24 on the

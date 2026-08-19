@@ -41,6 +41,7 @@
  */
 .md-heading--2 {
   margin-top: var(--pharos-spacing-7-x);
+
   /* Matches `.section__title--more-space`, which top-level section titles used. */
   color: var(--pharos-color-black);
 }

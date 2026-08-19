@@ -694,11 +694,22 @@ is a broken image in production with no warning.
 
 Changes emitted markup, so this is parity-blocked.
 
-### 9. Lint `.astro` files
+### 9. Lint `.astro` files ✅ DONE
 
-`lint` is aliased to `astro check`, which is type-checking only. There is no
-ESLint pass over `.astro` files, so pages are not linted for accessibility or
-dead code the way the rest of the monorepo is.
+`eslint-plugin-astro` + `astro-eslint-parser` now run over the package's
+`.astro` and `.ts` files. `lint` in this package is `astro check && eslint`,
+and the root `lint:astro` calls it, so `yarn lint` covers both. **65 files, 0
+errors, 0 warnings.**
+
+The parser hands frontmatter to the TypeScript parser and the template to the
+jsx-a11y rules, which is the coverage `astro check` never had — a missing
+`alt`, a click handler with no keyboard equivalent, and unused frontmatter
+bindings all fail the build now. Verified by injecting each and watching it
+fail, rather than trusting a clean run: **a lint that matches no files also
+exits 0**, which is exactly the trap described below.
+
+`.astro` was added to `lint-staged.config.js` too; its `*.{ts,tsx,js,mjs}` glob
+did not cover them, so pre-commit was skipping every page.
 
 ---
 
