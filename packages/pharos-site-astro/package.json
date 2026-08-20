@@ -8,6 +8,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@astrojs/markdown-remark": "7.2.1",
     "@ithaka/pharos": "^14.25.0",
     "@webcomponents/scoped-custom-element-registry": "^0.0.10",
     "astro": "~7.1.4",

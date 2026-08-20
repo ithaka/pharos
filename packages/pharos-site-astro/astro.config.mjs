@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import { unified } from '@astrojs/markdown-remark';
 
 import { rehypeUnwrapPharosParagraphs } from './src/lib/rehypeUnwrapPharosParagraphs.ts';
 
@@ -18,20 +19,22 @@ export default defineConfig({
   },
   integrations: [mdx()],
   markdown: {
-    // disable GitHub Flavored Markdown to prevent links in examples being double linked
-    gfm: false,
-    // Gatsby rendered page text verbatim. Astro's smartypants would rewrite
-    // straight quotes and dashes into typographic ones ("they're" -> "they’re"),
-    // which would change the copy, so it stays off.
-    //
-    // This emits a deprecation warning pointing at a `satteri()` processor, but
-    // that export does not exist in the installed @astrojs/markdown-remark
-    // (7.2.1) — it belongs to a later release. Revisit when that package is
-    // upgraded; until then this option is what keeps the copy byte-identical.
-    smartypants: false,
-    // Drops the `<p>` CommonMark puts around a Pharos element's content, so
-    // examples render correctly
-    rehypePlugins: [rehypeUnwrapPharosParagraphs],
+    // These options live on the processor rather than on `markdown` directly;
+    // setting them here is deprecated. The warning suggests `satteri()`, which
+    // is the default processor in a later release and does not exist in the
+    // installed @astrojs/markdown-remark (7.2.1) — `unified()` is the drop-in
+    // for the remark/rehype pipeline this site already uses.
+    processor: unified({
+      // disable GitHub Flavored Markdown to prevent links in examples being double linked
+      gfm: false,
+      // Gatsby rendered page text verbatim. Astro's smartypants would rewrite
+      // straight quotes and dashes into typographic ones ("they're" -> "they’re"),
+      // which would change the copy, so it stays off.
+      smartypants: false,
+      // Drops the `<p>` CommonMark puts around a Pharos element's content, so
+      // examples render correctly
+      rehypePlugins: [rehypeUnwrapPharosParagraphs],
+    }),
   },
   vite: {
     resolve: {

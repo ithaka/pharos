@@ -819,9 +819,24 @@ did not cover them, so pre-commit was skipping every page.
   as a substring of that longer name. `home-contribute.svg` was never referenced
   by the Gatsby source either — the homepage has three cards, not four.
 
-- **`astro.config.mjs` `smartypants: false`** emits a deprecation warning
-  pointing at a `satteri()` processor that does not exist in the installed
-  `@astrojs/markdown-remark` (7.2.1). Revisit when that package is upgraded.
+- **`astro.config.mjs` `smartypants: false`** emitted a deprecation warning.
+  ✅ **DONE**, and it did **not** need the package upgraded — that conclusion
+  came from reading only half the warning. It names two replacements: the
+  `satteri()` processor, which is the default in a later release and genuinely
+  absent here, and **`unified()`, which 7.2.1 does export** and is the drop-in
+  for the remark/rehype pipeline this site already runs. `gfm`, `smartypants`
+  and `rehypePlugins` moved onto `markdown.processor: unified({...})`, which
+  also clears the separate `rehypePlugins` deprecation.
+
+  `@astrojs/markdown-remark` had to become a direct dependency to be imported.
+  Pin it **exactly** (`7.2.1`, not `~7.2.1`): the caret/tilde range resolves to
+  7.2.2 while `@astrojs/mdx` stays on 7.2.1, and two copies of the Markdown
+  processor is the same trap as the `cookie` split in the README.
+
+  Verified by inverting the option rather than trusting an unchanged build —
+  a moved option that is silently ignored also produces an identical `dist/`.
+  `smartypants: true` yields 217 curly apostrophes; `false` returns to 3
+  authored literals.
 
 ## Inherited defects, cleaned up
 

@@ -5662,6 +5662,7 @@ __metadata:
   resolution: "@ithaka/pharos-site-astro@workspace:packages/pharos-site-astro"
   dependencies:
     "@astrojs/check": "npm:~0.9.10"
+    "@astrojs/markdown-remark": "npm:7.2.1"
     "@astrojs/mdx": "npm:~7.0.4"
     "@ithaka/pharos": "npm:^14.25.0"
     "@webcomponents/scoped-custom-element-registry": "npm:^0.0.10"
