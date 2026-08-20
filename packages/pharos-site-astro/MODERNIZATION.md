@@ -780,10 +780,22 @@ did not cover them, so pre-commit was skipping every page.
 
 ## Smaller cleanups
 
-- **`src/components/PageSection.astro:28`** uses `console.error` for the invalid
-  `isHeader` + `subSectionLevel` combination. This runs at build time, so the
-  message scrolls past unnoticed. Make it `throw`, or better, express the
-  constraint as a discriminated union in `Props` so `astro check` catches it.
+- **`src/components/PageSection.astro:28`** used `console.error` for the invalid
+  `isHeader` + `subSectionLevel` combination. ✅ **DONE**, though not as
+  proposed. A discriminated union would have typed a combination that can no
+  longer occur: converting the prose pages to MDX (item 5) moved sub-section
+  headings to `markdown/Heading.astro`, leaving **`subSectionLevel`,
+  `lessMargin` and `topMargin` with zero call sites**. Deleting the three dead
+  props removes the conflict along with the check, collapses both nested
+  ternaries, and drops five now-unreachable `.section--*` rules from
+  `components.css` (-302 B). `markdown.css` kept the gap measurements it
+  derived from those rules, reworded to state the values directly rather than
+  name classes that no longer exist.
+
+  Grep is misleading here — all four surviving `subSectionLevel` mentions are
+  prose inside doc comments, so the prop reads as live until you check for an
+  actual call site. Passing it is now a build-failing type error, verified by
+  injecting one rather than trusting a clean run.
 - **`astro.config.mjs:39`** set `preserveSymlinks: false`, which is Vite's
   default — a no-op. ✅ **DONE.** Removed with its comment, which also had the
   meaning backwards: `false` resolves symlinks to their real path rather than

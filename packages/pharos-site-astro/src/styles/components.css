@@ -9,26 +9,6 @@
   margin-bottom: var(--pharos-spacing-7-x);
 }
 
-.section--less-margin {
-  margin-bottom: var(--pharos-spacing-3-x);
-}
-
-.section--level-one {
-  margin-bottom: var(--pharos-spacing-5-x);
-}
-
-.section--level-two {
-  margin-bottom: var(--pharos-spacing-3-x);
-}
-
-.section--level-three {
-  margin-bottom: var(--pharos-spacing-2-x);
-}
-
-.section--top-margin {
-  margin-top: var(--pharos-spacing-5-x);
-}
-
 .section__title--more-space {
   margin-bottom: var(--pharos-spacing-one-and-a-half-x);
   color: var(--pharos-color-black);

@@ -2,9 +2,8 @@
  * Spacing for Markdown-authored pages.
  *
  * The hand-written `.astro` pages nested `PageSection` components and put the
- * spacing on each section's wrapper as `margin-bottom` (see the `.section*`
- * rules in `components.css`). Markdown emits a flat document, so there is no
- * wrapper to hang that margin on.
+ * spacing on each section's wrapper as `margin-bottom`. Markdown emits a flat
+ * document, so there is no wrapper to hang that margin on.
  *
  * The gaps are reproduced by moving them to `margin-top` on the headings. That
  * works because a section's bottom margin only ever separated its content from
@@ -12,8 +11,8 @@
  * the previous section's bottom margin or the next heading's top margin.
  *
  * The values are the gaps *measured* on the rendered Gatsby pages, not the
- * `.section--*` declarations copied across — see the comment on the heading
- * rules below for why those differ.
+ * section declarations copied across — see the comment on the heading rules
+ * below for why those differ.
  *
  * One consequence of the flat model is worth knowing: the original nested
  * sections, so the same `###` could take a different gap depending on the
@@ -30,14 +29,13 @@
  * The measured gaps on the hand-written pages, which these reproduce:
  *
  *   before a `##`  112px  (`.section`, 7x)
- *   before a `###`  48px  (`.section--less-margin` 24px + the paragraph's 24px,
+ *   before a `###`  48px  (a 24px section gap plus the paragraph's own 24px,
  *                          which collapsed inside the section wrapper)
  *   before a `####` 24px
  *
- * The `###` figure is the one worth not guessing at. `.section--level-one` is
- * 80px and looks like the obvious source, but it only applies where a
- * sub-section is nested directly under a top-level one; the common case on
- * these pages is the 48px above.
+ * The `###` figure is the one worth not guessing at: 80px looks like the
+ * obvious value, but that applied only where a sub-section was nested directly
+ * under a top-level one. The common case on these pages is the 48px above.
  */
 .md-heading--2 {
   margin-top: var(--pharos-spacing-7-x);
