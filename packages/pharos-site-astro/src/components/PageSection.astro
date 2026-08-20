@@ -1,15 +1,10 @@
 ---
-/** Ported from the Gatsby site's src/components/statics/PageSection.tsx. */
 import ComponentExample from '@components/ComponentExample.astro';
 
 /*
- * The Gatsby component also took `subSectionLevel`, `lessMargin` and
- * `topMargin` to render nested sub-sections. Converting the prose pages to
- * MDX moved that job to `markdown/Heading.astro`, which maps `###`/`####`/
- * `#####` itself, and no call site passes any of the three any more. They are
- * dropped here along with the `isHeader`/`subSectionLevel` conflict check,
- * which guarded a combination that can no longer occur. `Heading.astro`
- * documents the level/preset mapping they used.
+ * Sub-section headings are `markdown/Heading.astro`'s job — it maps `###`,
+ * `####` and `#####` to their own level and preset. This component covers only
+ * the top-level section heading, so it takes no nesting depth.
  */
 interface Props {
   title: string;
@@ -19,13 +14,7 @@ interface Props {
   storyBookType?: string;
 }
 
-const {
-  title,
-  description,
-  isHeader = false,
-  moreTitleSpace = false,
-  storyBookType,
-} = Astro.props;
+const { title, description, isHeader = false, moreTitleSpace = false, storyBookType } = Astro.props;
 
 const heading = isHeader ? { level: '1', preset: '7--bold' } : { level: '2', preset: '6' };
 
@@ -46,9 +35,8 @@ const descriptionClass = isHeader ? 'section__description--is-header' : 'section
   </div>
   {
     /*
-     * The Gatsby prop accepted a string or JSX. Plain text comes through the
-     * `description` prop; richer markup (links, inline code) uses the
-     * `description` slot instead.
+     * Plain text comes through the `description` prop; richer markup (links,
+     * inline code) uses the `description` slot instead.
      */
     (description || Astro.slots.has('description')) && (
       <div class={descriptionClass}>

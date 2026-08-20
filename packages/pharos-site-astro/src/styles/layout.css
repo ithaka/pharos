@@ -1,9 +1,6 @@
 /*
- * Ported from the Gatsby site's src/components/layout.module.css,
- * src/components/Sidenav.module.css and src/components/footer.module.css.
- *
- * CSS Modules hashed these class names; here they are plain global classes, so
- * the selectors are namespaced but the declarations are unchanged.
+ * Layout, sidenav and footer styles. These are plain global class names, so the
+ * selectors are namespaced by hand.
  */
 
 * {

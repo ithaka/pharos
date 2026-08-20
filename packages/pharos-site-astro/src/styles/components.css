@@ -1,8 +1,4 @@
-/*
- * Ported from the Gatsby site's src/components/statics/*.module.css.
- * Declarations are unchanged; the hashed CSS Module class names become plain
- * global ones.
- */
+/* Component styles, as plain global class names. */
 
 /* PageSection */
 .section {

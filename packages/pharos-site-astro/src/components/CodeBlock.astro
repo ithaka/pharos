@@ -1,8 +1,7 @@
 ---
 /**
- * Ported from the Gatsby site's src/components/CodeBlock.tsx, which used
- * prism-react-renderer with its `nightOwl` theme. Astro ships Shiki, which has
- * the same theme, so highlighting is done at build time with no client JS.
+ * Syntax highlighting runs at build time through Shiki, using its `nightOwl`
+ * theme, so no highlighting JavaScript ships to the client.
  */
 import { Code } from 'astro:components';
 import codeTheme from '@lib/codeTheme';

@@ -1,4 +1,3 @@
-/** Ported from the Gatsby site's design-token/toTokenFormat.tsx (string part only). */
 export const toTokenName = (text: string): string =>
   '$' +
   text

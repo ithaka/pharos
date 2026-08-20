@@ -1,10 +1,5 @@
 ---
-/**
- * Ported from the Gatsby site's src/components/statics/iconography/IconsDisplay.tsx.
- *
- * The React version rendered the icon list in `useEffect` after lazily
- * requiring the Pharos React bundle; the web components render directly here.
- */
+/** Renders the icon list directly through the Pharos web components. */
 interface Props {
   title: string;
   iconsToShow: string[];

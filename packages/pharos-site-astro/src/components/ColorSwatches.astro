@@ -1,9 +1,7 @@
 ---
 /**
- * Ported from the Gatsby site's src/components/statics/color/ColorSwatches.tsx.
- *
- * The React version computed the colour conversions in `useEffect`; here they
- * are evaluated at build time, so the page ships no JavaScript for this.
+ * Colour conversions are evaluated at build time, so this component ships no
+ * client JavaScript.
  */
 import { converter, parse, formatHex, formatHsl, formatRgb } from 'culori';
 import tokens from '@ithaka/pharos/lib/styles/tokens';

@@ -800,10 +800,32 @@ did not cover them, so pre-commit was skipping every page.
   default — a no-op. ✅ **DONE.** Removed with its comment, which also had the
   meaning backwards: `false` resolves symlinks to their real path rather than
   preserving them. `dist/` byte-identical across all 63 pages.
-- **62 near-identical `/** Ported from the Gatsby site's ... */` file headers**
-  are useful while both packages coexist and become archaeology once
-  `packages/pharos-site` is deleted. Fold the mapping into the README at that
-  point.
+- **43 `/** Ported from the Gatsby site's ... */` file headers** (62 predates
+  the MDX conversion). ✅ **DONE**, ahead of the Gatsby package being deleted —
+  removed on request rather than waiting for that call, and without folding the
+  mapping into the README: `git log` already records where each file came from.
+
+  They were not all alike. **32 were pure one-liners** naming a source file and
+  nothing else — deleted outright. The other **11 carried real documentation**
+  (`BestPractices`' slot API and its MDX `<p>`-margin gotcha, `CrossOut`'s
+  measuring script, `home.css` on why the `@font-face` blocks moved). Deleting
+  those wholesale would have lost content worth keeping, so each was reworded to
+  stand on its own — several read purely as comparisons ("the React version did
+  this in `useEffect`; here it is build-time") and say the same thing more
+  directly as a plain statement about this code.
+
+  **The ~50 other Gatsby mentions in `src/` were deliberately left.** They are
+  not file mappings but explanations of why something non-obvious is the way it
+  is — a CSS rule that exists because Gatsby's single global stylesheet leaked,
+  a Shiki token colour overridden to match, MDX comments recording a source
+  construct that was deliberately *not* reproduced. Those keep their value until
+  the comparison itself stops mattering.
+
+  Two prettier failures surfaced here, both from earlier commits in this
+  sequence and neither caught by `yarn lint`, which does not run prettier:
+  `Canvas.astro` (a blank line the header removal collapsed) and
+  `PageSection.astro` (its destructure fits one line now that item S1 removed
+  three props). Run prettier over touched files as well as `lint`.
 - **38 unreferenced files in `public/images/`** (5.2 MB). ✅ **DONE.** Deleted,
   with the empty directories they left behind — several of which `astro:assets`
   had already emptied. `logo.svg` is unreferenced too and was **kept**: it is

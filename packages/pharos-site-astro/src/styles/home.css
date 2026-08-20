@@ -1,9 +1,9 @@
 /*
- * Ported from the Gatsby site's src/pages/index.module.css.
+ * Home page styles.
  *
- * The @font-face blocks that used to live here now sit in fonts-site.css, which
- * the shared layout imports: Gatsby made them global from this one page file,
- * and pages such as /brand-expressions/typography rely on them.
+ * The @font-face blocks sit in fonts-site.css, which the shared layout imports,
+ * rather than here: pages such as /brand-expressions/typography rely on them,
+ * so they must not be scoped to this one page.
  */
 
 .home .hero {
