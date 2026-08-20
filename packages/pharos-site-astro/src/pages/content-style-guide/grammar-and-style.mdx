@@ -38,15 +38,8 @@ If there's a chance your reader won't recognize an abbreviation or acronym, spel
 time you mention it and follow with the acronym in parenthesis. After that, you can just use the
 acronym.
 
-{/*
-The doubled <ul> is deliberate: the outer list has no <li> of its own and exists
-only for the extra indent it produces.
-*/}
-
 <ul>
-  <ul>
-    {acronyms.map((string) => <li style="list-style: none;">{string}</li>)}
-  </ul>
+  {acronyms.map((string) => <li style="list-style: none;">{string}</li>)}
 </ul>
 
 If the acronym is only used once in the copy, consider skipping it altogether and just use the full
