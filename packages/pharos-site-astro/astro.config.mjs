@@ -41,9 +41,6 @@ export default defineConfig({
         '@images': resolve('./src/images'),
         '@lib': resolve('./src/lib'),
       },
-      // The Pharos workspace package is symlinked; preserve that so a single
-      // copy of Lit is used and custom elements register only once.
-      preserveSymlinks: false,
     },
     ssr: {
       // Pharos ships Lit-based custom elements that must not be externalized,

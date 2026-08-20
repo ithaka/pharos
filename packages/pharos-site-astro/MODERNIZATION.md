@@ -784,8 +784,10 @@ did not cover them, so pre-commit was skipping every page.
   `isHeader` + `subSectionLevel` combination. This runs at build time, so the
   message scrolls past unnoticed. Make it `throw`, or better, express the
   constraint as a discriminated union in `Props` so `astro check` catches it.
-- **`astro.config.mjs:39`** sets `preserveSymlinks: false`, which is Vite's
-  default — a no-op. Harmless, but the comment makes it read as load-bearing.
+- **`astro.config.mjs:39`** set `preserveSymlinks: false`, which is Vite's
+  default — a no-op. ✅ **DONE.** Removed with its comment, which also had the
+  meaning backwards: `false` resolves symlinks to their real path rather than
+  preserving them. `dist/` byte-identical across all 63 pages.
 - **62 near-identical `/** Ported from the Gatsby site's ... */` file headers**
   are useful while both packages coexist and become archaeology once
   `packages/pharos-site` is deleted. Fold the mapping into the README at that
