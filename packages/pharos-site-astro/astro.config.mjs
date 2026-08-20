@@ -10,11 +10,10 @@ const resolve = (path) => fileURLToPath(new URL(path, import.meta.url));
 // https://astro.build
 export default defineConfig({
   site: 'https://pharos.jstor.org',
-  // Matches the Gatsby site's `trailingSlash: 'never'` so URLs are identical.
   trailingSlash: 'never',
   build: {
-    // Emit `/about.html` rather than `/about/index.html` to keep extensionless,
-    // slash-free URLs consistent with the Gatsby output.
+    // Emit `/about.html` rather than `/about/index.html` to keep URLs
+    // extensionless and slash-free.
     format: 'file',
   },
   integrations: [mdx()],
@@ -27,9 +26,8 @@ export default defineConfig({
     processor: unified({
       // disable GitHub Flavored Markdown to prevent links in examples being double linked
       gfm: false,
-      // Gatsby rendered page text verbatim. Astro's smartypants would rewrite
-      // straight quotes and dashes into typographic ones ("they're" -> "they’re"),
-      // which would change the copy, so it stays off.
+      // Smartypants would rewrite straight quotes and dashes into typographic
+      // ones ("they're" -> "they’re"), changing the copy, so it stays off.
       smartypants: false,
       // Drops the `<p>` CommonMark puts around a Pharos element's content, so
       // examples render correctly

@@ -54,11 +54,6 @@ const gradientsToDisplay = gradients.map((gradient) => {
           gradient.second.map((color) => toSlug(color))
         );
 
-  // The Gatsby source omits the closing paren of `linear-gradient(`. React set
-  // this through the CSSOM, which repaired the declaration, so production
-  // renders the gradient; serialising the same broken string into a `style`
-  // attribute makes the browser discard it and the swatches disappear. The
-  // paren is closed here to match what production actually renders.
   const gradientStyle = [
     `background: linear-gradient(to bottom right, ${firstColor.value} 55%, ${secondColor.value})`,
     `border: ${

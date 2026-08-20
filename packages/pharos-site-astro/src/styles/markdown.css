@@ -10,19 +10,19 @@
  * the *next* heading, so the same visual gap appears whether it is spelled as
  * the previous section's bottom margin or the next heading's top margin.
  *
- * The values are the gaps *measured* on the rendered Gatsby pages, not the
- * section declarations copied across — see the comment on the heading rules
+ * The values are the gaps *measured* on the rendered hand-written pages, not
+ * the section declarations copied across — see the comment on the heading rules
  * below for why those differ.
  *
- * One consequence of the flat model is worth knowing: the original nested
- * sections, so the same `###` could take a different gap depending on the
- * section it sat in. A single `margin-top` per level cannot express that, so
- * individual headings do not line up with the Gatsby page exactly.
+ * One consequence of the flat model is worth knowing: the hand-written pages
+ * nest sections, so the same `###` can take a different gap depending on the
+ * section it sits in. A single `margin-top` per level cannot express that, so
+ * individual headings do not line up with those pages exactly.
  *
  * Bottom margins are deliberately left to Pharos — the component's own `0.5em`,
  * turned off on `##` with its `no-margin` attribute. Only the top margins
- * (the inter-section gaps) live here. That makes both converted pages ~7%
- * shorter than the Gatsby original, which is intended.
+ * (the inter-section gaps) live here. That makes converted pages ~7% shorter
+ * than the hand-written ones, which is intended.
  */
 
 /*

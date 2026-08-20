@@ -12,11 +12,10 @@
  * line of run-together link labels) and then snaps into place when the bundle
  * lands.
  *
- * The Gatsby site never showed this because it shipped an empty container div
- * and created every element client-side during hydration: there was no
- * server-rendered markup to flash. That is a property of how Gatsby rendered,
- * not something the port did wrong -- but it does mean this is a new regression
- * relative to production, and it needs its own fix here.
+ * A client-rendered site does not show this: with an empty container div and
+ * every element created during hydration there is no server-rendered markup to
+ * flash. Static server-rendered markup is the better tradeoff, but it does mean
+ * the flash is real here and needs its own fix.
  *
  * `:not(:defined)` matches only while an element is unregistered and stops
  * matching the instant `customElements.define` runs, so this costs nothing

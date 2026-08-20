@@ -68,12 +68,11 @@ p.alert-example__content + p.alert-example__content {
   }
 
   /*
-   * Mirrors the Gatsby site's TokenTable.module.css exactly. Notably there is
-   * no `th` rule -- the header picks up its 4px padding and 14px size from
-   * Pharos' own typography styles, and adding one here overrode them. The rule
-   * below must use `border-top` rather than a `border-bottom` on each row: the
-   * bottom variant adds a trailing 1px per table, which accumulated into the
-   * multi-pixel height drift across every /design-tokens/* page.
+   * Notably there is no `th` rule -- the header picks up its 4px padding and
+   * 14px size from Pharos' own typography styles, and adding one here overrode
+   * them. The rule below must use `border-top` rather than a `border-bottom` on
+   * each row: the bottom variant adds a trailing 1px per table, which
+   * accumulates into multi-pixel height drift across every /design-tokens/* page.
    */
   td {
     padding-bottom: var(--pharos-spacing-one-and-a-half-x);
@@ -90,9 +89,9 @@ p.alert-example__content + p.alert-example__content {
   }
 
   /*
-   * No max-height/overflow here: the Gatsby page sets only the class name and
-   * lets each example grow to its own line-height, so clipping it truncates the
-   * sample text mid-sentence and makes the page ~790px shorter than production.
+   * No max-height/overflow here: each example grows to its own line-height.
+   * Clipping it truncates the sample text mid-sentence and makes the page
+   * ~790px shorter.
    */
 
   .radius-example {
@@ -103,8 +102,8 @@ p.alert-example__content + p.alert-example__content {
   }
 
   /*
-   * The Gatsby page styles these specimens entirely through the inline `style`
-   * prop and defines no CSS for the classes. In particular there is no
+   * These specimens are sized entirely through inline `style` attributes; the
+   * classes carry only the family. In particular there is no
    * `white-space: nowrap` -- adding it stops "Ivar Headline" wrapping at the
    * large end of the scale, so the text overflows the table instead of growing
    * the row, leaving the page ~250px short.
@@ -118,10 +117,10 @@ p.alert-example__content + p.alert-example__content {
   }
 
   /*
-   * No `display` here. The Gatsby page renders a plain <div> and sets only
-   * width/height/transition/background inline, so it stays block-level; making
-   * it inline-block puts each example on a text baseline and adds ~6px to every
-   * row.
+   * No `display` here. The example is a plain <div> with only
+   * width/height/transition/background set inline, so it stays block-level;
+   * making it inline-block puts each example on a text baseline and adds ~6px
+   * to every row.
    */
   .transition-example {
     height: 3rem;

@@ -3,9 +3,9 @@ import type { ThemeRegistration } from 'shiki';
 
 /**
  * The `night-owl` theme with import/export keywords restyled to match the
- * Gatsby site.
+ * prism-react-renderer rendering the site's code blocks were designed around.
  *
- * Both sites use "Night Owl", but they tokenize differently: prism-react-renderer
+ * Both highlighters use "Night Owl", but they tokenize differently: prism
  * classified `import`, `export` and `from` as operators, which the theme paints
  * cyan (#7fdbca) and upright. Shiki's TextMate grammar reports them as
  * `keyword.control.*`, which the same theme paints purple (#c792ea) and italic.
@@ -39,8 +39,8 @@ const codeTheme: ThemeRegistration = {
     },
     /*
      * Shell snippets (`yarn add @ithaka/pharos`) are highlighted as TSX, since
-     * that is CodeBlock's default and the Gatsby page passed no language
-     * either. The TSX grammar reads `@ithaka/pharos` as a decorator, and Night
+     * that is CodeBlock's default and the pages pass no language. The TSX
+     * grammar reads `@ithaka/pharos` as a decorator, and Night
      * Owl then paints the `/` purple where prism painted it cyan. These rules
      * restore prism's colouring for the decorator punctuation and its name.
      */
@@ -62,10 +62,10 @@ const codeTheme: ThemeRegistration = {
       },
     },
     /*
-     * Markup snippets. CodeBlock has no language prop on either site, so even
-     * the HTML examples are highlighted as TSX -- hence the `.tsx` scopes here
-     * rather than `.html` ones. prism and Shiki's grammars disagree on nearly
-     * every token, so these restore the colours the Gatsby site rendered:
+     * Markup snippets. CodeBlock has no language prop, so even the HTML
+     * examples are highlighted as TSX -- hence the `.tsx` scopes here rather
+     * than `.html` ones. prism and Shiki's grammars disagree on nearly every
+     * token, so these restore the colours prism rendered:
      * brackets, `=` and quotes purple; tag names and attribute values cyan;
      * attribute names the brighter green.
      */

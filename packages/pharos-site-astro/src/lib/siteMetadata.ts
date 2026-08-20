@@ -1,4 +1,3 @@
-/** Mirrors `siteMetadata` from the Gatsby site's gatsby-config.js. */
 export const siteMetadata = {
   title: 'Pharos',
   subtitle: `JSTOR's Design System`,
@@ -19,7 +18,7 @@ export const siteMetadata = {
  * `build.format: 'file'` emits `/help.html`, so `Astro.url.pathname` carries a
  * `.html` suffix during the build while the site is served at `/help`. Stripping
  * it (and any trailing slash) keeps sidenav active state and canonical URLs
- * matching the Gatsby output.
+ * pointing at the served paths.
  */
 export const toCleanPath = (pathname: string): string => {
   const withoutHtml = pathname.replace(/\.html$/, '');

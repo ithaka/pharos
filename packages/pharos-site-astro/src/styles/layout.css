@@ -47,9 +47,8 @@ a {
 }
 
 /*
- * The Gatsby `content___fill` grid also positioned the hero via named areas.
- * The hero is now rendered above this layout (see Layout.astro's `hero` slot),
- * so only the spacing overrides remain.
+ * The hero is rendered above this layout (see Layout.astro's `hero` slot)
+ * rather than placed into a named grid area, so only spacing overrides remain.
  */
 .content--fill {
   padding: 0;
@@ -77,11 +76,10 @@ ul {
 }
 
 /*
- * Definition lists render as inline "Term: description" pairs. These rules
- * lived in the Gatsby homepage's CSS Module but, being element selectors, they
- * leaked globally and the design-tokens overview page depends on them — so they
- * are global here too. The `dt::after` colon also absorbs the whitespace
- * between the two elements, keeping the rendered text identical.
+ * Definition lists render as inline "Term: description" pairs. Both the
+ * homepage and the design-tokens overview page depend on these, so they are
+ * global rather than page-scoped. The `dt::after` colon also absorbs the
+ * whitespace between the two elements, keeping the rendered text tight.
  */
 dt {
   font-weight: var(--pharos-font-weight-bold);
@@ -105,14 +103,12 @@ dl > div {
 }
 
 /*
- * These sit next to the `dl` rules above in the Gatsby site's
- * src/pages/index.module.css. Gatsby emitted one global stylesheet, so rules
- * authored in a single page's module applied site-wide; Astro scopes page CSS,
- * so they have to live here to reach every route.
+ * A site-wide paragraph reset. Astro scopes page CSS, so this has to live here
+ * to reach every route.
  *
  * Without the `margin-top` reset the user-agent's `margin-block-start: 1em`
  * shows through on every paragraph, adding 16px per section and pushing long
- * pages hundreds of pixels taller than production.
+ * pages hundreds of pixels taller than intended.
  */
 p {
   color: var(--pharos-color-text-20);

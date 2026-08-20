@@ -1,16 +1,14 @@
 /*
- * Site-specific @font-face declarations, ported from the Gatsby site's
- * src/pages/index.module.css.
+ * Site-specific @font-face declarations.
  *
  * These are separate from `@ithaka/pharos/lib/styles/fonts.css` (which defines
  * the "GT America Standard" and "Ivar Headline" families used for body copy).
  * The families below are referenced by name on individual pages -- notably
  * /brand-expressions/typography, which renders specimens in IvarDisplay-*.
  *
- * Gatsby emitted a single global stylesheet, so declaring these inside one
- * page's CSS module made them available everywhere. Astro scopes page CSS, so
- * they live here and are imported by Layout.astro to reach every route.
- * Without that, specimen pages silently fall back to the default serif.
+ * Astro scopes page CSS, so these live here and are imported by Layout.astro to
+ * reach every route. Declared inside a single page's styles instead, specimen
+ * pages elsewhere would silently fall back to the default serif.
  */
 
 @font-face {

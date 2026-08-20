@@ -1,4 +1,3 @@
-/** Ported verbatim from the Gatsby site's src/utils/textConvert.ts. */
 export const toTitleCase = (name: string): string =>
   name
     .split(' ')

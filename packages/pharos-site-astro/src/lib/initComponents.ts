@@ -8,8 +8,8 @@ import type { LitElement } from 'lit';
  *
  * Pharos' own `registerComponents` helper reads `clazz.name`, which the
  * production minifier rewrites (`PharosButton` -> `oo`), registering broken
- * tags like `<site-oo>` and leaving every element undefined. Gatsby avoided
- * this with Terser's `keep_classnames`, but Astro minifies these bundles with
+ * tags like `<site-oo>` and leaving every element undefined. Terser's
+ * `keep_classnames` would prevent that, but Astro minifies these bundles with
  * esbuild and the option does not survive into the vendor chunk. Deriving the
  * tag from a string literal is minifier-independent, so it holds in both dev
  * and production builds.
@@ -77,8 +77,8 @@ const toTagName = (exportName: string): string =>
 const componentExports = pharos as unknown as Record<string, typeof LitElement | undefined>;
 
 /**
- * Registers the Pharos custom elements under the `site` prefix, matching the
- * Gatsby site so markup such as `<site-pharos-button>` renders identically.
+ * Registers the Pharos custom elements under the `site` prefix, so markup such
+ * as `<site-pharos-button>` resolves.
  *
  * `customElements.define` throws on a repeat registration, and Astro can run
  * this module more than once across HMR reloads, so each tag is checked first.

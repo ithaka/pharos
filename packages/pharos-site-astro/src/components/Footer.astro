@@ -101,9 +101,8 @@ const currentYear = new Date().getFullYear();
 </footer>
 
 <script>
-  // The Gatsby site used an inline `onclick` attribute for the OneTrust banner;
-  // Astro templates cannot carry inline handlers into the custom element, so the
-  // listener is attached here instead.
+  // Astro templates cannot carry an inline handler into the custom element, so
+  // the OneTrust banner listener is attached here instead.
   const cookieLink = document.getElementById('cookie-settings-link');
   cookieLink?.addEventListener('click', (event) => {
     event.preventDefault();

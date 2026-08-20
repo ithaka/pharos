@@ -1,7 +1,6 @@
 /**
- * The site navigation, mirroring the hardcoded lists in the Gatsby site's
- * src/components/Sidenav.tsx. Order is significant — it is the order links
- * appear in the sidenav.
+ * The site navigation. Order is significant — it is the order links appear in
+ * the sidenav.
  */
 
 export const contributingPages = ['Documentation', 'Development'] as const;

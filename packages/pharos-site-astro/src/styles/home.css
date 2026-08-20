@@ -8,9 +8,8 @@
 
 .home .hero {
   /*
-   * The Gatsby hero sat in the `hero` grid area of the fill layout. Here it is
-   * rendered just above that layout instead, so it spans the main column
-   * naturally and no grid placement is needed.
+   * The hero is rendered just above the fill layout rather than inside it, so
+   * it spans the main column naturally and needs no grid placement.
    */
   background: linear-gradient(
     to right bottom,

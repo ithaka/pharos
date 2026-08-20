@@ -44,10 +44,9 @@ const rows = [
 
 <style is:global>
   /*
-   * The Gatsby page swapped the background colour with React state on mouse
-   * enter/leave. A CSS hover gives the same result without any client JS.
-   * Each row passes its own colour as `--example-color` so the hover rule can
-   * override it without needing `!important`.
+   * A CSS hover swaps the background colour without any client JS. Each row
+   * passes its own colour as `--example-color` so the hover rule can override
+   * it without needing `!important`.
    */
   .token-table .transition-example {
     background: var(--example-color);
