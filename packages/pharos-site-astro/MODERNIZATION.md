@@ -739,10 +739,10 @@ and all inherited from the Gatsby source:
 - `header.mdx` referenced `../images/jstor-logo.svg`, a relative path that
   happened to resolve. It is a real import now.
 
-**41 unreferenced files remain in `public/images/`** — 32 in `logos/` alone
-(the `ADFL*.svg` set), plus stragglers in `color/`, `elevation/`, `homepage/`.
-They were left in place: deleting them is a separate decision. Nothing links
-them.
+**38 unreferenced files remained in `public/images/`** — 33 under
+`brand-expressions/` (the `logos/` set including `ADFL*.svg`, plus stragglers in
+`color/` and `elevation/`), `homepage/home-contribute.svg`, and
+`jstor-logo-inverse.svg`. ✅ **DONE** — deleted, see the smaller cleanup below.
 
 Verification: normalized `dist/` diff (asset URLs and the CSS hash masked)
 shows exactly the 12 pages with images changed and the other 51 byte-identical;
@@ -804,6 +804,21 @@ did not cover them, so pre-commit was skipping every page.
   are useful while both packages coexist and become archaeology once
   `packages/pharos-site` is deleted. Fold the mapping into the README at that
   point.
+- **38 unreferenced files in `public/images/`** (5.2 MB). ✅ **DONE.** Deleted,
+  with the empty directories they left behind — several of which `astro:assets`
+  had already emptied. `logo.svg` is unreferenced too and was **kept**: it is
+  the site's own logo and a plausible favicon asset, so its absence from the
+  markup reads as an omission rather than dead weight, which makes removing it
+  a content decision rather than a cleanup.
+
+  Two traps when re-checking this kind of sweep. A `public/` file is consumed by
+  URL, so grepping `src/` is not sufficient — sweep the repo and check built
+  HTML. And a basename match is not a reference: `jstor-logo-inverse.svg` looks
+  live because six files in `packages/pharos` name it, but each imports that
+  package's own copy under `src/utils/_storybook/`; `logo.svg` looked live only
+  as a substring of that longer name. `home-contribute.svg` was never referenced
+  by the Gatsby source either — the homepage has three cards, not four.
+
 - **`astro.config.mjs` `smartypants: false`** emits a deprecation warning
   pointing at a `satteri()` processor that does not exist in the installed
   `@astrojs/markdown-remark` (7.2.1). Revisit when that package is upgraded.
