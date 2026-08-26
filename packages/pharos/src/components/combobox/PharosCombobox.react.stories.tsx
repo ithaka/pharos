@@ -40,6 +40,7 @@ export const Base: Story = {
       style={{ display: 'grid', gridTemplateColumns: '300px' }}
       validated={args.validated}
       value={args.value}
+      inline={args.inline}
     >
       <span slot="label">{args.label}</span>
       <option value="1">New Hampshire</option>
