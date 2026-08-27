@@ -1,5 +1,5 @@
 ---
-'@ithaka/pharos': patch
+'@ithaka/pharos': minor
 ---
 
 Add `disable` icon
