@@ -120,8 +120,8 @@
       "delete": {
         "value": "assets/icons/delete.svg"
       },
-      "disabled": {
-        "value": "assets/icons/disabled.svg"
+      "disable": {
+        "value": "assets/icons/disable.svg"
       },
       "download": {
         "value": "assets/icons/download.svg"
