@@ -7,12 +7,10 @@ import type { LitElement } from 'lit';
  * derived from these strings rather than from each class's `name` property.
  *
  * Pharos' own `registerComponents` helper reads `clazz.name`, which the
- * production minifier rewrites (`PharosButton` -> `oo`), registering broken
- * tags like `<site-oo>` and leaving every element undefined. Terser's
- * `keep_classnames` would prevent that, but Astro minifies these bundles with
- * esbuild and the option does not survive into the vendor chunk. Deriving the
- * tag from a string literal is minifier-independent, so it holds in both dev
- * and production builds.
+ * production minifier can rewrite, registering broken tags like `<site-oo>`
+ * and leaving every element undefined. Restoring each constructor's name from
+ * these string literals keeps both top-level tags and components created in
+ * scoped shadow registries minifier-independent.
  */
 const COMPONENT_NAMES = [
   'PharosAlert',
@@ -92,16 +90,21 @@ const registerPharosComponents = (): void => {
       continue;
     }
 
+    // PharosElement uses `this.constructor.name` for data-pharos-component.
+    // Restore the public export name before scoped registries create nested
+    // elements, because production bundling can rename the constructor.
+    Object.defineProperty(component, 'name', {
+      configurable: true,
+      value: exportName,
+    });
+
     const tagName = `${PREFIX}-${toTagName(exportName)}`;
     if (customElements.get(tagName)) {
       continue;
     }
 
-    // Pharos registers a trivial subclass wrapped in `PharosComponentMixin`,
-    // which stamps `data-pharos-component` from the base class's `name`. That
-    // attribute is a styling hook (see `[data-pharos-component='PharosIcon']`
-    // in global.scss), so it is set from the export name here for the same
-    // minification reason the tag name is.
+    // Preserve the stable export name for these top-level elements as a
+    // defensive styling and behavior hook.
     customElements.define(
       tagName,
       class extends component {
