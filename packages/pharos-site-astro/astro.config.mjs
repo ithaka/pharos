@@ -35,6 +35,15 @@ export default defineConfig({
     }),
   },
   vite: {
+    // Pharos stamps `data-pharos-component` from `constructor.name` and styles
+    // itself through it (`[data-pharos-component="PharosIcon"]`). Mangling that
+    // name unmatches the selector
+    esbuild: {
+      keepNames: true,
+    },
+    build: {
+      minify: 'esbuild',
+    },
     resolve: {
       alias: {
         '@components': resolve('./src/components'),
