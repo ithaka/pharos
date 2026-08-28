@@ -173,6 +173,7 @@
   font-size: 0.75em;
   font-weight: var(--pharos-font-weight-bold);
   margin-left: 1px;
+
   /* Keeps the raised numeral from stretching the code line's height. */
   line-height: 0;
 }

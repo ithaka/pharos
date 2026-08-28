@@ -33,10 +33,12 @@ const COMPONENT_NAMES = [
   'PharosMultiselectDropdown',
   'PharosPagination',
   'PharosPill',
+  'PharosPopover',
   'PharosProgressBar',
   'PharosRadioButton',
   'PharosRadioGroup',
   'PharosSelect',
+  'PharosSheet',
   'PharosSidenav',
   'PharosSidenavLink',
   'PharosSidenavMenu',
@@ -77,7 +79,7 @@ const registerPharosComponents = (): void => {
     if (!component) {
       continue;
     }
-
+    
     const tagName = `${PREFIX}-${toTagName(exportName)}`;
     if (customElements.get(tagName)) {
       continue;

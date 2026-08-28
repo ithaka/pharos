@@ -33,6 +33,7 @@
 .home .thumbnail {
   margin-bottom: var(--pharos-spacing-one-and-a-half-x);
 }
+
 .home .thumbnail img {
   width: 100%;
   height: auto;

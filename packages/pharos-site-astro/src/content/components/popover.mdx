@@ -1,0 +1,104 @@
+---
+title: 'Popover'
+description: "Popovers are lightweight overlays that display supplemental content or actions anchored to a triggering element, without interrupting the user's overall workflow."
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+
+<Example storyBookType="components" componentTitle="Popover">
+  <site-pharos-button data-popover-id="docs-popover" icon-right="chevron-down">
+    Open popover
+  </site-pharos-button>
+  <site-pharos-popover id="docs-popover" a11y-label="Pharos popover">
+    <div style="padding: var(--pharos-spacing-1-x);">
+      <p>This is the popover content.</p>
+    </div>
+  </site-pharos-popover>
+  {/* Since the popover is positioned with `position: fixed`, it doesn't affect document flow. This
+  spacer reserves enough room below the trigger so the open popover doesn't visually overlap the
+  "See live code examples" link that follows. */}
+  <div aria-hidden="true" style="height: var(--pharos-spacing-5-x);" />
+</Example>
+
+## Usage
+
+### Overview
+
+Popovers anchor supplemental content or actions to a triggering element, such as a button or icon.
+They can be opened by a click or, optionally, by hovering the trigger. Popovers automatically
+reposition themselves to remain visible within the viewport.
+
+### When to Use
+
+- To display a small amount of supplemental content tied to a specific trigger
+- To present a short list of contextual actions, such as a menu
+- When information doesn't warrant a full modal or sheet, but still needs to be called out from
+  the rest of the page
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Use for small amounts of contextual content or a short list of actions
+    - Anchor the popover to the element that triggered it
+    - Allow the popover to be dismissed by clicking outside of it or pressing Escape
+
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Don't use for large amounts of content—use a modal or sheet instead
+    - Don't nest popovers inside other popovers
+    - Don't use a popover for content that's critical to completing a primary task
+
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+### Popover content
+
+Keep popover content short and focused. It can include text, links, or a small set of actions
+relevant to the trigger that opened it.
+
+## Variants
+
+### Dark background
+
+Use the `is-on-background` attribute when the popover's trigger sits on a dark background, so the
+popover's styling remains legible in context.
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [2.1.1 Keyboard A](https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html)
+- [1.4.13 Content on Hover or Focus AA](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html)
+
+### Importance
+
+Popovers should not open automatically. Users should always initiate opening a popover via an
+explicit action, and focus should move into the popover contents when opened so keyboard and
+screen reader users can interact with it.
+
+### Code expectations
+
+- The trigger element has `aria-haspopup="true"` and `aria-controls` pointing to the popover's id
+- The popover uses `a11y-label` or `labelled-by` to provide an accessible name
+- Focus is trapped within the popover while it is open; no elements behind it should be reachable
+  via keyboard
+- When the popover closes, focus is returned to the element that triggered it
+
+### Expected actions
+
+<site-pharos-heading level="4" preset="1--bold">Screen reader</site-pharos-heading>
+
+- Announces the focused element within the popover contents when it opens
+
+<site-pharos-heading level="4" preset="1--bold">Keyboard</site-pharos-heading>
+
+- <kbd>Enter</kbd> / <kbd>Space</kbd>: opens the popover when the trigger has focus
+- <kbd>Tab</kbd>: moves focus forward within the popover
+- <kbd>Shift</kbd> + <kbd>Tab</kbd>: moves focus to the previous element in the tab order
+- <kbd>Esc</kbd>: closes the popover
