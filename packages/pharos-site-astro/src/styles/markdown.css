@@ -156,3 +156,23 @@
 .doc-label {
   margin-bottom: var(--pharos-spacing-1-x);
 }
+
+/*
+ * The numeral marking each segment of a token name on the design-tokens
+ * overview. Colour alone cannot carry the mapping from a segment to its
+ * definition — WCAG 1.4.1 rules out colour as the sole means of conveying
+ * information, and the four hues include two reds and two blues close in
+ * lightness — so the numeral repeats the mapping in a form that survives
+ * monochrome printing and colour-blindness.
+ *
+ * The markup sets `aria-hidden` on these: a screen reader gets the mapping
+ * from the <dt> text, and reading the examples as "pharos dash color two
+ * dash brand three" would be noise.
+ */
+.segment-marker {
+  font-size: 0.75em;
+  font-weight: var(--pharos-font-weight-bold);
+  margin-left: 1px;
+  /* Keeps the raised numeral from stretching the code line's height. */
+  line-height: 0;
+}
