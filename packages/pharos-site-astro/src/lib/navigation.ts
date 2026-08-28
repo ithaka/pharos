@@ -58,6 +58,7 @@ export const componentPages = [
 ] as const;
 
 export const designTokenPages = [
+  'Overview',
   'Alias colors',
   'Global colors',
   'Font family',
