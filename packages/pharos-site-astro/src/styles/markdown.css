@@ -176,3 +176,22 @@
   /* Keeps the raised numeral from stretching the code line's height. */
   line-height: 0;
 }
+
+/*
+ * The term/description list on the design-tokens overview runs each pair
+ * inline, as one sentence. Pharos already separates the two with a `": "` on
+ * `dt::after`, so the UA stylesheet's `margin-inline-start: 40px` on <dd> —
+ * meant to indent a block-level description under its term — only stacks on
+ * top of it, opening a hole whose width varies with the length of the
+ * preceding term.
+ *
+ * The trailing space in `": "` collapses at the element boundary, so the gap
+ * is set on the pseudo-element rather than left to that space.
+ */
+.md-body dd {
+  margin-inline-start: 0;
+}
+
+.md-body dt::after {
+  margin-right: 0.25em;
+}
