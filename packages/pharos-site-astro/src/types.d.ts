@@ -1,9 +1,8 @@
 /**
- * The Pharos web components are registered at runtime under the `site-` prefix
- * (see src/lib/initComponents.ts), so TypeScript has no intrinsic element for
- * them. Declaring an index signature for `site-pharos-*` lets `astro check`
- * type-check the pages without inventing per-component prop types that would
- * drift from the real Pharos definitions.
+ * The Pharos components are registered at runtime under the `site-` prefix (see
+ * src/lib/initComponents.ts), so TypeScript has no intrinsic element for them.
+ * An index signature lets `astro check` run without inventing per-component
+ * prop types that would drift from the real Pharos definitions.
  */
 declare namespace astroHTML.JSX {
   interface IntrinsicElements {
@@ -12,10 +11,9 @@ declare namespace astroHTML.JSX {
 }
 
 /**
- * `@ithaka/pharos/lib/styles/tokens` ships the generated design tokens without
- * type declarations. The tree is deeply nested and its shape varies per
- * category, so it is typed as a recursive record; pages narrow to the concrete
- * token shape they need (see `DesignToken` in src/lib/tokenFormat.ts).
+ * The generated design tokens ship without type declarations. The tree is
+ * deeply nested and varies per category, so it is typed as a recursive record;
+ * pages narrow to the shape they need (`DesignToken` in lib/tokenFormat.ts).
  */
 declare module '@ithaka/pharos/lib/styles/tokens' {
   interface TokenTree {

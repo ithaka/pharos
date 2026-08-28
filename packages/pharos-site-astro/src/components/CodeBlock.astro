@@ -22,34 +22,21 @@ const { code, language = 'tsx' } = Astro.props;
 />
 
 <style is:global>
-  /*
-   * prism-react-renderer wrapped every line in a block-level
-   * `<div class="token-line">`, so lines broke structurally and the site's
-   * `white-space: normal` was harmless. Shiki instead emits inline
-   * `<span class="line">` separated by newline text nodes, which `normal`
-   * collapses -- the whole snippet renders as one wrapped paragraph. Making the
-   * lines block-level restores prism's line structure.
-   */
-  /*
-   * Shiki nests the lines inside a <code>, which the user agent resets to
-   * `monospace`; the font set on the <pre> therefore never reaches the text.
-   * prism rendered its lines in the site font, and monospace is wide enough to
-   * wrap lines that fit in production, silently adding a line per long snippet.
-   */
+  /* Shiki nests the lines inside a <code>, which the user agent resets to
+   * `monospace`, so the font set on the <pre>
+   * never reaches the text — and monospace wraps lines that otherwise fit. */
   .astro-code code {
     font-family: inherit;
   }
 
+  /* Shiki emits inline `<span class="line">` separated by newline text nodes,
+   * which `white-space: normal` collapses into one wrapped paragraph. */
   .astro-code .line {
     display: block;
   }
 
-  /*
-   * prism kept a literal newline inside blank lines, so they still generated a
-   * full line box. Shiki emits a genuinely empty span, which collapses to 0px
-   * and makes multi-part snippets shorter than production. This restores the
-   * line box without contributing any visible text.
-   */
+  /* An empty span collapses to 0px; this restores the line box for blank lines
+   * without contributing visible text. */
   .astro-code .line:empty::before {
     content: '\200b';
   }

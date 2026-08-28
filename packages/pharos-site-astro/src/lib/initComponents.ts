@@ -3,14 +3,7 @@ import * as pharos from '@ithaka/pharos/lib/index';
 import type { LitElement } from 'lit';
 
 /**
- * The Pharos component exports to register, by export name. The tag name is
- * derived from these strings rather than from each class's `name` property.
- *
- * Pharos' own `registerComponents` helper reads `clazz.name`, which the
- * production minifier can rewrite, registering broken tags like `<site-oo>`
- * and leaving every element undefined. Restoring each constructor's name from
- * these string literals keeps both top-level tags and components created in
- * scoped shadow registries minifier-independent.
+ * The Pharos component exports to register, by export name.
  */
 const COMPONENT_NAMES = [
   'PharosAlert',
@@ -79,9 +72,6 @@ const componentExports = pharos as unknown as Record<string, typeof LitElement |
 /**
  * Registers the Pharos custom elements under the `site` prefix, so markup such
  * as `<site-pharos-button>` resolves.
- *
- * `customElements.define` throws on a repeat registration, and Astro can run
- * this module more than once across HMR reloads, so each tag is checked first.
  */
 const registerPharosComponents = (): void => {
   for (const exportName of COMPONENT_NAMES) {
@@ -95,8 +85,9 @@ const registerPharosComponents = (): void => {
       continue;
     }
 
-    // Preserve the stable export name for these top-level elements as a
-    // defensive styling and behavior hook.
+    // `data-pharos-component` is a styling hook (see global.scss) that Pharos
+    // stamps from the class `name`, so it is set from the export name here for
+    // the same minification reason the tag name is.
     customElements.define(
       tagName,
       class extends component {

@@ -2,14 +2,10 @@
 /**
  * Renders every page in the `components` collection at `/components/<slug>`.
  *
- *
- * `components={mdxComponents}` is required here and is easy to miss. As page
- * routes the files each carried `export const components = mdxComponents`,
- * which MDX honours only for a file that is itself a route. Rendered through
- * `<Content />` that export is ignored, and without this prop every `##` in
- * all pages silently falls back to a plain `<h2>` instead of a
- * `<site-pharos-heading>` — the pages still build, they just lose their
- * heading styles.
+ * `components={mdxComponents}` is required: MDX honours a
+ * file's own `export const components` only when that file is itself a route,
+ * so rendered through `<Content />` it is ignored. Without the prop the pages
+ * still build, but every `##` falls back to a plain `<h2>`.
  */
 import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
