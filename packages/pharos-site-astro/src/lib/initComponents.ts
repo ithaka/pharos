@@ -89,15 +89,7 @@ const registerPharosComponents = (): void => {
     if (!component) {
       continue;
     }
-
-    // PharosElement uses `this.constructor.name` for data-pharos-component.
-    // Restore the public export name before scoped registries create nested
-    // elements, because production bundling can rename the constructor.
-    Object.defineProperty(component, 'name', {
-      configurable: true,
-      value: exportName,
-    });
-
+    
     const tagName = `${PREFIX}-${toTagName(exportName)}`;
     if (customElements.get(tagName)) {
       continue;
