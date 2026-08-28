@@ -51,10 +51,12 @@ const directoryLayout = `
     code={`<script src="https://cdn.jsdelivr.net/npm/@webcomponents/scoped-custom-element-registry@0.0.3/scoped-custom-element-registry.min.js"></script>`}
   />
   <p>
-    You then need to register components on the [custom element
-    registry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) for them to be
-    usable in your code. To register components, you can use the `registerComponents` utility to
-    define all the Pharos components your application uses, with a consistent scoping prefix:
+    You then need to register components on the <site-pharos-link
+      href="https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry"
+      >custom element registry</site-pharos-link
+    > for them to be usable in your code. To register components, you can use the
+    <code>registerComponents</code> utility to define all the Pharos components your application uses,
+    with a consistent scoping prefix:
   </p>
   <CodeBlock
     code={`
