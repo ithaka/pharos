@@ -4,12 +4,10 @@ import BaseHead from '@components/BaseHead.astro';
 import Sidenav from '@components/Sidenav.astro';
 import Footer from '@components/Footer.astro';
 
-// The @font-face rules for GT America Standard / Ivar Headline live here.
-// Astro scopes CSS per page, so importing them from a single page would leave
-// the other 61 routes rendering in the fallback sans-serif. They belong in the
-// shared layout.
-// Must come first: it suppresses the flash of unstyled custom elements before
-// they register, which only works if it applies to the very first paint.
+// The @font-face rules live here because Astro scopes CSS per page, so
+// importing them from one page leaves every other route in the fallback font.
+// `undefined-elements.css` must come first: it hides custom elements until they
+// register, avoiding a flash of unstyled content.
 import '../styles/undefined-elements.css';
 import '@ithaka/pharos/lib/styles/fonts.css';
 import '../styles/fonts-site.css';

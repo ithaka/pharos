@@ -1,17 +1,9 @@
 /**
  * Build-time consistency check between `navigation.ts` and the site's pages —
  * both the routes under `src/pages` and the entries of each content collection.
- *
- * Nothing otherwise verifies that the hardcoded nav lists line up with the
- * filesystem, so a typo in `navigation.ts` silently ships a sidenav link to a
- * 404, and a new page that nobody adds to `navigation.ts` is reachable only by
- * direct URL. Both are build failures here.
- *
- * The page list is read with `node:fs` rather than `import.meta.glob`. A glob
- * makes every matched page a dependency of whichever module calls it — and
- * because this runs from the sidenav, which is on every page, that pulled each
- * page's `<style is:global>` block into a shared bundle and inlined all of them
- * into all 63 pages. Reading the directory is inert by comparison.
+ * A nav entry with no page would link to a 404; a page absent from the nav is
+ * reachable only by direct URL. Both are build failures here.
+
  */
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
@@ -28,17 +20,12 @@ import {
 
 /**
  * Resolved from the working directory, not `import.meta.url`: this module is
- * bundled into `dist/.prerender/` before it runs, so a URL relative to itself
- * points into the build output rather than at the source tree. Both `astro
- * build` and `astro dev` run from the package root.
+ * bundled into `dist/.prerender/` before it runs, so a self-relative URL points
+ * at the build output. Both `astro build` and `astro dev` run from the root.
  */
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
 
-/**
- * Collections are not routes on disk, so `PAGES_DIR` cannot see them. Each
- * collection is rendered by a `[...slug]` route and contributes one href per
- * entry, keyed by the directory it lives in.
- */
+/** Collections are not routes on disk, so `PAGES_DIR` cannot see them. */
 const CONTENT_DIR = join(process.cwd(), 'src', 'content');
 
 /** Collection directory -> the URL prefix its `[...slug]` route renders at. */
@@ -73,10 +60,9 @@ const collectPageHrefs = (dir = PAGES_DIR, prefix = ''): string[] =>
     }
     const base = entry.name.replace(/\.(astro|mdx)$/, '');
     /*
-     * A `[...slug]` route is a renderer for a collection, not a page of its
-     * own. Its entries are enumerated by `collectCollectionHrefs`; counting
-     * the route file too would add a literal `/components/[...slug]` href
-     * that no nav entry can ever match.
+     * A `[...slug]` route renders a collection rather than being a page itself;
+     * its entries come from `collectCollectionHrefs`. Counting the route file
+     * would add a literal `/components/[...slug]` href nothing can match.
      */
     if (base.startsWith('[')) {
       return [];
@@ -86,10 +72,8 @@ const collectPageHrefs = (dir = PAGES_DIR, prefix = ''): string[] =>
 
 /**
  * Every collection entry, as the href its `[...slug]` route renders it at.
- *
- * Kept separate from `collectPageHrefs` because the mapping differs: a page's
- * href follows its path under `src/pages`, whereas a collection entry's href
- * is its slug appended to the route that renders the collection.
+ * Separate from `collectPageHrefs` because the mapping differs: a page's href
+ * follows its path on disk, an entry's is its slug appended to its route.
  */
 const collectCollectionHrefs = (): string[] =>
   Object.entries(collectionRoots).flatMap(([dir, root]) =>
@@ -98,10 +82,7 @@ const collectCollectionHrefs = (): string[] =>
       .map((entry) => `${root}/${entry.name.replace(/\.mdx?$/, '')}`)
   );
 
-/**
- * Throws if `navigation.ts` and `src/pages` disagree in either direction.
- * Called once from `Sidenav.astro`.
- */
+/** Throws if the nav and the pages disagree. Called from `Sidenav.astro`. */
 export const assertNavigationMatchesPages = (): void => {
   const pageHrefs = new Set([...collectPageHrefs(), ...collectCollectionHrefs()]);
 

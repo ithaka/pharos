@@ -14,10 +14,8 @@
  * `markdown` options nor the MDX integration exposes a switch for it. The only
  * alternative is to keep every element's content on the same line as its tag.
  *
- * Only a *lone* paragraph is unwrapped. An element whose body is genuinely
- * several paragraphs — the `alert` demos — keeps them, since there the spacing
- * is the point.
- *
+ * Only a *lone* paragraph is unwrapped — an element whose body is genuinely
+ * several paragraphs keeps them.
  */
 import type { Root, RootContent } from 'hast';
 

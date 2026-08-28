@@ -1,17 +1,8 @@
 ---
 /**
- * Wraps a page's demo `<script>` so it survives MDX.
- *
- * A bare `<script>` in an `.mdx` file is not treated as opaque the way it is in
- * `.astro`: MDX parses the block's contents as JSX, so the `{` opening any
- * arrow-function or object literal starts an expression it cannot finish, and
- * the build fails with "Could not parse expression". Astro also transpiles
- * TypeScript inside an `.astro` script but not inside MDX, so type annotations
- * are a syntax error there too.
- *
- * Passing the code as a string prop sidesteps both: MDX only sees a string, and
- * `set:html` emits it verbatim into a real `<script>` that Astro then processes
- * as usual.
+ * Wraps a page's demo `<script>` so it survives MDX, which parses a bare script
+ * block as JSX — any `{` starts an expression it cannot finish — and does not
+ * transpile TypeScript. Passing the code as a string sidesteps both.
  *
  *     <DemoScript code={`
  *       document.getElementById('x')?.addEventListener('click', () => {});

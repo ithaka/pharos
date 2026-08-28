@@ -1,34 +1,10 @@
 ---
 /**
- * Renders a Markdown heading as the Pharos heading the `.astro` pages spelled
- * out by hand.
+ * Renders a Markdown heading as a Pharos heading.
  *
- * The `preset` carries the typography: Pharos sets the font, size, line-height
- * and a `0.5em` bottom margin on the heading itself, and that bottom margin is
- * left to it. What it does not set — by design, since it is a component and not
- * a page layout — is any *top* margin, so it has no notion of "space before a
- * new section".
- *
- * The hand-written pages got that from `PageSection`, which nested its sections
- * and hung a `margin-bottom` on each wrapper. Markdown is flat, so the
- * `md-heading` classes put the equivalent gap on the heading as `margin-top`
- * (see `markdown.css`). Without them every level renders the same 24-32px gap,
- * `##` and `###` become indistinguishable, and the page loses its structure —
- * measured at 19% shorter on `jstor-terms`.
- *
- * The level/preset pairs below are lifted from `PageSection.astro` so a
- * converted page keeps its typography:
- *
- *   Markdown | PageSection equivalent | level | preset  | no-margin
- *   ---------|------------------------|-------|---------|----------
- *   `#`      | `isHeader`             | 1     | 7--bold |
- *   `##`     | top-level section      | 2     | 6       | yes
- *   `###`    | `subSectionLevel={1}`  | 2     | 4       |
- *   `####`   | `subSectionLevel={2}`  | 4     | 1--bold |
- *   `#####`  | `subSectionLevel={3}`  | 5     | 1--bold |
- *
- * `##` and `###` both render `level="2"`; that is what `PageSection` did, and
- * changing it would alter the accessibility tree relative to the live site.
+ * The `preset` carries the typography, including a `0.5em` bottom margin.  *
+ * `##` and `###` both render `level="2"`, matching `PageSection`. Changing it
+ * would alter the accessibility tree.
  */
 interface Props {
   /** Markdown heading depth, 1-6. */
@@ -42,16 +18,6 @@ interface Props {
   noMargin?: boolean;
 }
 
-/**
- * Every level keeps Pharos' own bottom margin.
- *
- * `##` used to set `no-margin`, on the reasoning that the following content
- * supplies the gap. That holds when a paragraph follows, but not when a `###`
- * does: the heading box itself ends up 16px shorter than on the live site, and
- * everything below it shifts up. Measured on `pagination`, where the gap under
- * a `##` was 0px before "Usage" but 16px before "Variants" — inconsistent
- * within one page, where production is a uniform 0.
- */
 const PRESETS: Record<Props['depth'], { level: string; preset: string; noMargin?: boolean }> = {
   1: { level: '1', preset: '7--bold' },
   2: { level: '2', preset: '6' },

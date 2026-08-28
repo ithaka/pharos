@@ -1,16 +1,6 @@
 ---
 /**
- * Renders the `thead` and `tbody` shared by the design-token tables.
- *
- * Seven token pages rendered a byte-identical `Token / Value / Example` header
- * and a structurally identical row loop, differing only in the example cell.
- * That cell is the one genuine variation, so it is passed per row as an HTML
- * string (built by the page, which knows its own inline styles) and emitted
- * with `set:html`. The value cell varies only slightly and is handled the same
- * way when a page needs more than the token's raw value.
- *
- * Column widths are configurable because the pages do not agree on them
- * (40/30, 33/33/36, 40/40 and a four-column variant on type-scale).
+ * Renders the `thead` and `tbody` shared by the seven design-token tables.
  */
 import { toTokenName } from '@lib/tokenFormat';
 

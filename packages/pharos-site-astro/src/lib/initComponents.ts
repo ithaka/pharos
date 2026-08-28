@@ -3,16 +3,7 @@ import * as pharos from '@ithaka/pharos/lib/index';
 import type { LitElement } from 'lit';
 
 /**
- * The Pharos component exports to register, by export name. The tag name is
- * derived from these strings rather than from each class's `name` property.
- *
- * Pharos' own `registerComponents` helper reads `clazz.name`, which the
- * production minifier rewrites (`PharosButton` -> `oo`), registering broken
- * tags like `<site-oo>` and leaving every element undefined. Terser's
- * `keep_classnames` would prevent that, but Astro minifies these bundles with
- * esbuild and the option does not survive into the vendor chunk. Deriving the
- * tag from a string literal is minifier-independent, so it holds in both dev
- * and production builds.
+ * The Pharos component exports to register, by export name.
  */
 const COMPONENT_NAMES = [
   'PharosAlert',
@@ -79,9 +70,6 @@ const componentExports = pharos as unknown as Record<string, typeof LitElement |
 /**
  * Registers the Pharos custom elements under the `site` prefix, so markup such
  * as `<site-pharos-button>` resolves.
- *
- * `customElements.define` throws on a repeat registration, and Astro can run
- * this module more than once across HMR reloads, so each tag is checked first.
  */
 const registerPharosComponents = (): void => {
   for (const exportName of COMPONENT_NAMES) {
@@ -95,11 +83,9 @@ const registerPharosComponents = (): void => {
       continue;
     }
 
-    // Pharos registers a trivial subclass wrapped in `PharosComponentMixin`,
-    // which stamps `data-pharos-component` from the base class's `name`. That
-    // attribute is a styling hook (see `[data-pharos-component='PharosIcon']`
-    // in global.scss), so it is set from the export name here for the same
-    // minification reason the tag name is.
+    // `data-pharos-component` is a styling hook (see global.scss) that Pharos
+    // stamps from the class `name`, so it is set from the export name here for
+    // the same minification reason the tag name is.
     customElements.define(
       tagName,
       class extends component {

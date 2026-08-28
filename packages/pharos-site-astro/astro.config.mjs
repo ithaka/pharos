@@ -18,11 +18,6 @@ export default defineConfig({
   },
   integrations: [mdx()],
   markdown: {
-    // These options live on the processor rather than on `markdown` directly;
-    // setting them here is deprecated. The warning suggests `satteri()`, which
-    // is the default processor in a later release and does not exist in the
-    // installed @astrojs/markdown-remark (7.2.1) — `unified()` is the drop-in
-    // for the remark/rehype pipeline this site already uses.
     processor: unified({
       // disable GitHub Flavored Markdown to prevent links in examples being double linked
       gfm: false,
@@ -37,7 +32,7 @@ export default defineConfig({
   vite: {
     // Pharos stamps `data-pharos-component` from `constructor.name` and styles
     // itself through it (`[data-pharos-component="PharosIcon"]`). Mangling that
-    // name unmatches the selector
+    // name unmatches the selector and breaks the styles
     esbuild: {
       keepNames: true,
     },

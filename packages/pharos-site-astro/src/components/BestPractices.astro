@@ -7,17 +7,9 @@
  *     <Fragment slot="dont">Portico preserves e-Books</Fragment>
  *   </BestPractices>
  *
- * Slot content is Markdown, so a list is written with `-` bullets rather than
- * `<ul><li>`.
+ * Slot content is Markdown, so lists use `-` bullets. Either side may be
+ * omitted to show a "do" with no matching "don't".
  *
- * Line breaks inside a slot do not matter. MDX wraps a tag whose children span
- * several lines in a generated `<p>`, which would otherwise add a 24px margin
- * the single-line form does not have — so whether an author wrapped the text
- * would change the rendering. `.best-practices__guideline > p:only-child` in
- * `components.css` zeroes that margin, making the two forms render identically.
- *
- * Either side may be omitted; the column is then left out entirely, which is
- * how pages show a "do" with no matching "don't".
  */
 import Grid from '@components/Grid.astro';
 import BestPracticesColumn from '@components/BestPracticesColumn.astro';
