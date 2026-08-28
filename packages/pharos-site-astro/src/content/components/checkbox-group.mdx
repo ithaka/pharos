@@ -1,0 +1,190 @@
+---
+title: 'Checkbox Group'
+description: 'Checkbox groups present a set of related checkboxes together, along with a shared legend and optional message, so users can select any number of options within a set.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
+
+<Example storyBookType="forms" componentTitle="Checkbox Group">
+  <site-pharos-checkbox-group>
+    <span slot="legend">Checkbox group header</span>
+    <site-pharos-checkbox value="1">
+      <span slot="label">Checkbox 1</span>
+    </site-pharos-checkbox>
+    <site-pharos-checkbox value="2">
+      <span slot="label">Checkbox 2</span>
+    </site-pharos-checkbox>
+  </site-pharos-checkbox-group>
+</Example>
+
+## Usage
+
+The checkbox group component wraps a set of checkboxes in a fieldset with a shared legend. It
+provides a consistent way to lay out related checkboxes, collect their combined value, and display
+a single validation message for the group.
+
+### Alignment
+
+By default, checkboxes within a group are stacked vertically. Use the `horizontal` attribute to
+lay the checkboxes out side by side when there are only a few short options.
+
+### Placement
+
+Checkbox groups are often used when faceting results so users can narrow their focus, or on forms
+where users may select multiple related options at once.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Use a checkbox group whenever two or more related checkboxes appear together
+    - Provide a concise legend that describes the group as a whole
+    - Keep the list of choices in a logical order
+    - Use the group-level message to communicate a single validation error
+
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Don't use a checkbox group for a single, standalone checkbox—use the checkbox component
+      directly instead
+    - Don't use where only one choice is allowed. Consider the radio group component instead
+
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+### Group legend
+
+- The legend should briefly describe what the grouping of checkboxes represents. This is
+  especially helpful if there are multiple groups on a page, form, or experience.
+- Use Sentence case for the group legend.
+
+### Checkbox labels
+
+- Labels for the checkboxes within the group should be descriptive and succinct, and should not
+  end in punctuation.
+- Use Sentence case for individual checkbox labels.
+
+## Variants
+
+### Horizontal
+
+Use the horizontal layout when there are only a few short, related options.
+
+<Canvas>
+  <site-pharos-checkbox-group horizontal>
+    <span slot="legend">Checkbox group header</span>
+    <site-pharos-checkbox value="1">
+      <span slot="label">Checkbox 1</span>
+    </site-pharos-checkbox>
+    <site-pharos-checkbox value="2">
+      <span slot="label">Checkbox 2</span>
+    </site-pharos-checkbox>
+  </site-pharos-checkbox-group>
+</Canvas>
+
+## States
+
+### Default
+
+Indicates that the checkboxes in the group are interactable.
+
+<Canvas>
+  <site-pharos-checkbox-group>
+    <span slot="legend">Checkbox group header</span>
+    <site-pharos-checkbox value="1">
+      <span slot="label">Checkbox 1</span>
+    </site-pharos-checkbox>
+    <site-pharos-checkbox value="2">
+      <span slot="label">Checkbox 2</span>
+    </site-pharos-checkbox>
+  </site-pharos-checkbox-group>
+</Canvas>
+
+### Disabled
+
+Indicates that the group of checkboxes should not be interactable.
+
+<Canvas>
+  <site-pharos-checkbox-group disabled>
+    <span slot="legend">Checkbox group header</span>
+    <site-pharos-checkbox value="1">
+      <span slot="label">Checkbox 1</span>
+    </site-pharos-checkbox>
+    <site-pharos-checkbox value="2">
+      <span slot="label">Checkbox 2</span>
+    </site-pharos-checkbox>
+  </site-pharos-checkbox-group>
+</Canvas>
+
+### Required
+
+Indicates that the user must select at least one option in the group before the form can be
+submitted.
+
+<Canvas>
+  <site-pharos-checkbox-group required>
+    <span slot="legend">Checkbox group header</span>
+    <site-pharos-checkbox value="1">
+      <span slot="label">Checkbox 1</span>
+    </site-pharos-checkbox>
+    <site-pharos-checkbox value="2">
+      <span slot="label">Checkbox 2</span>
+    </site-pharos-checkbox>
+  </site-pharos-checkbox-group>
+</Canvas>
+
+### Error
+
+Indicates that an error occurred within the checkbox group.
+
+<Canvas>
+  <site-pharos-checkbox-group
+    required
+    invalidated
+    message="This field is required, please make a selection."
+  >
+    <span slot="legend">Checkbox group header</span>
+    <site-pharos-checkbox value="1">
+      <span slot="label">Checkbox 1</span>
+    </site-pharos-checkbox>
+    <site-pharos-checkbox value="2">
+      <span slot="label">Checkbox 2</span>
+    </site-pharos-checkbox>
+  </site-pharos-checkbox-group>
+</Canvas>
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [4.1.2 Name, Role, Value A](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value)
+- [1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+
+### Importance
+
+Grouping related checkboxes together with a shared legend helps users, especially those using
+assistive technology, understand how the individual options relate to one another.
+
+### Code expectations
+
+- The group is rendered as a `fieldset` with a `legend` describing the grouping.
+  [Here's an example.](https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes)
+- Some assistive technology reads the legend text for each fieldset, so it should be brief and
+  descriptive.
+- Checkboxes identified with the `disabled` attribute are ignored in the tab order.
+
+### Expected actions
+
+#### Screen reader
+
+- Reads the fieldset's legend followed by each checkbox's label and state.
+
+#### Keyboard
+
+- The <kbd>Space</kbd> key can be used to select and deselect each checkbox when it has focus.
+- Users can navigate between checkboxes by pressing <kbd>Tab</kbd> or <kbd>Shift</kbd>-<kbd>Tab</kbd>.

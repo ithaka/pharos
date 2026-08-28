@@ -1,0 +1,120 @@
+---
+title: 'Table'
+description: 'Tables organize and display data in rows and columns, making it easy for users to scan, compare, and take action on structured information.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
+
+<Example storyBookType="components" componentTitle="Table">
+  <site-pharos-table
+    caption="Example table"
+    columns='[{"name":"Item","field":"item"},{"name":"Filename","field":"filename"},{"name":"Created on","field":"created_on"}]'
+    row-data='[{"item":1,"filename":"123456.jpg","created_on":"2020-1-1"},{"item":2,"filename":"234567.jpg","created_on":"2021-3-4"},{"item":3,"filename":"345678.jpg","created_on":"2022-6-9"}]'
+  ></site-pharos-table>
+</Example>
+
+## Usage
+
+### Overview
+
+Tables display data as a grid of rows and columns, providing structure that helps users scan and
+compare related pieces of information. Columns are defined by a `columns` specification, and the
+table's content is provided via a `row-data` array.
+
+Tables support optional pagination, a sticky header, and a caption to describe the purpose of the
+data being presented.
+
+### When to Use
+
+- To display structured, tabular data that benefits from row and column alignment
+- When users need to scan, compare, or sort many related data points at once
+- When a dataset is large enough to require pagination
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Use clear, concise column headers that describe the data beneath them
+    - Provide a caption that describes the purpose of the table
+    - Use pagination for large datasets to improve performance and scannability
+    - Use a sticky header for tables with many rows so column headers stay visible while scrolling
+
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Don't use a table for small amounts of unrelated content
+    - Don't overload a single table with too many columns—consider splitting data across multiple
+      tables or views
+
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+### Caption
+
+The caption should briefly describe what the table contains. It's visually hidden by default using
+the `hide-caption` attribute, but remains available to assistive technology to provide context
+about the table's purpose.
+
+### Column headers
+
+Column headers should be short, descriptive, and written in Sentence case.
+
+## Variants
+
+### With pagination
+
+Use the `show-pagination` attribute along with `page-size-options` and `total-results` for large
+datasets that should be paged through rather than fully rendered at once.
+
+<Canvas>
+  <site-pharos-table
+    caption="Example table with pagination"
+    columns='[{"name":"Item","field":"item"},{"name":"Filename","field":"filename"},{"name":"Created on","field":"created_on"}]'
+    row-data='[{"item":1,"filename":"123456.jpg","created_on":"2020-1-1"},{"item":2,"filename":"234567.jpg","created_on":"2021-3-4"},{"item":3,"filename":"345678.jpg","created_on":"2022-6-9"}]'
+    show-pagination
+    total-results="3"
+    page-size-options="[1,2,3]"
+  ></site-pharos-table>
+</Canvas>
+
+### Sticky header
+
+Use the `has-sticky-header` attribute to keep the column headers visible while scrolling through a
+long table.
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [W3C Tables Tutorial](https://www.w3.org/WAI/tutorials/tables/)
+
+### Importance
+
+Proper table markup with headers and a caption allows assistive technology users to understand the
+relationships between column headers and the data cells beneath them, and to navigate the table
+efficiently.
+
+### Code expectations
+
+- The table is rendered using semantic `table`, `thead`, `tbody`, `tr`, and `th`/`td` elements.
+- The `caption` attribute provides an accessible description of the table, even when visually
+  hidden via `hide-caption`.
+- Column headers are associated with their data cells using scope attributes.
+
+### Expected actions
+
+#### Screen reader
+
+- Announces the table caption, followed by the column header and value when navigating into a
+  data cell.
+
+#### Keyboard
+
+- <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd>: moves focus between interactive elements
+  within the table, such as pagination controls
