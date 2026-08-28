@@ -51,16 +51,10 @@ const standaloneHrefs = ['/getting-started', '/help', '/faqs'];
  * Pages that are deliberately not in the sidenav. These are pre-existing and
  * match the Gatsby site — none of them appear in its sidenav either:
  *   - `/` is the home page, linked from the logo, and `/404` is never linked.
- *   - `/content-style-guide/jstor-terms` and `/design-tokens/overview` are
- *     orphans in production too. Worth linking or deleting, but that is a
- *     content decision, not a port fix.
+ *   - `/design-tokens/overview` is an orphan in production too. Worth linking
+ *     or deleting, but that is a content decision, not a port fix.
  */
-const unlinkedByDesign = new Set([
-  '/',
-  '/404',
-  '/content-style-guide/jstor-terms',
-  '/design-tokens/overview',
-]);
+const unlinkedByDesign = new Set(['/', '/404', '/design-tokens/overview']);
 
 const sections: [string, readonly string[]][] = [
   ['contributing', contributingPages],

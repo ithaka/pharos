@@ -16,6 +16,7 @@ export const brandExpressionPages = [
 
 export const contentStyleGuidePages = [
   'Voice and tone',
+  'JSTOR terms',
   'Web elements',
   'Grammar and style',
   'Editing checklist',
