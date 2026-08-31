@@ -1,4 +1,5 @@
 import '@webcomponents/scoped-custom-element-registry';
+// @ts-ignore - import is valid at build and runtime, where Vite resolves it against the built package.
 import * as pharos from '@ithaka/pharos/lib/index';
 import type { LitElement } from 'lit';
 
