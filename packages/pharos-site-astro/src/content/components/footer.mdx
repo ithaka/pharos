@@ -1,0 +1,213 @@
+---
+title: 'Footer'
+description: 'Footers are used as a container for site navigational elements and disclaimers.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+
+export const browseLinks = [
+  { id: 'subject-link', href: '/subjects', label: 'By Subject' },
+  { id: 'title-link', href: '/action/showJournals?browseType=title', label: 'By Title' },
+  { id: 'collections-link', href: '/site/collection-list', label: 'By Collections' },
+  { id: 'publisher-link', href: '/publishers', label: 'By Publisher' },
+  { id: 'adv-search-link', href: '/action/showAdvancedSearch', label: 'Advanced Search' },
+  { id: 'dfr-link', href: '/dfr', label: 'Data for Research' },
+];
+
+export const supportLinks = [
+  {
+    id: 'access-link',
+    href: 'https://support.jstor.org/hc/en-us/articles/360000313328-Need-Help-Logging-in-To-JSTOR',
+    label: 'Get Access',
+  },
+  { id: 'support-link', href: 'https://support.jstor.org', label: 'Support' },
+  { id: 'libguides-link', href: 'https://guides.jstor.org', label: 'LibGuides' },
+  {
+    id: 'research-link',
+    href: 'https://guides.jstor.org/researchbasics',
+    label: 'Research Basics',
+  },
+];
+
+export const aboutLinks = [
+  { id: 'about-link', href: 'https://about.jstor.org', label: 'About JSTOR' },
+  {
+    id: 'mission-link',
+    href: 'https://about.jstor.org/mission-history/',
+    label: 'Mission and History',
+  },
+  {
+    id: 'in-jstor-link',
+    href: 'https://about.jstor.org/whats-in-jstor/',
+    label: "What's in JSTOR",
+  },
+  { id: 'get-jstor-link', href: 'https://about.jstor.org/get-jstor/', label: 'Get JSTOR' },
+  { id: 'news-link', href: 'https://about.jstor.org/news/', label: 'News' },
+  { id: 'webinars-link', href: 'https://about.jstor.org/webinars/', label: 'Webinars' },
+];
+
+export const ithakaLinks = [
+  { id: 'labs-link', href: 'https://labs.jstor.org/', label: 'JSTOR Labs' },
+  { id: 'daily-link', href: 'https://daily.jstor.org/', label: 'JSTOR Daily' },
+  { id: 'careers-link', href: 'https://www.ithaka.org/careers/', label: 'Careers' },
+  { id: 'contact-link', href: '/contact-us/', label: 'Contact Us' },
+];
+
+export const socialLinks = [
+  { id: 'twitter-link', href: 'https://twitter.com/JSTOR', name: 'twitter' },
+  { id: 'facebook-link', href: 'https://www.facebook.com/JSTOR.org', name: 'facebook' },
+  { id: 'instagram-link', href: 'https://www.instagram.com/jstor_org', name: 'instagram' },
+  {
+    id: 'youtube-link',
+    href: 'https://www.youtube.com/channel/UCQM-7sUBV6Z-PVas0S4k0lw',
+    name: 'youtube',
+  },
+  { id: 'linkedin-link', href: 'https://www.linkedin.com/company/ithaka', name: 'linkedin' },
+  { id: 'tumblr-link', href: 'https://jstor.tumblr.com', name: 'tumblr' },
+];
+
+export const legalLinks = [
+  { id: 'terms-link', href: 'https://about.jstor.org/terms', label: 'Terms & Conditions of Use' },
+  { id: 'privacy-link', href: 'https://www.ithaka.org/privacypolicy', label: 'Privacy Policy' },
+  { id: 'cookie-link', href: 'https://www.ithaka.org/cookies', label: 'Cookie Policy' },
+  {
+    id: 'accessibility-link',
+    href: 'https://about.jstor.org/accessibility',
+    label: 'Accessibility',
+  },
+];
+
+<Example storyBookType="organisms" componentTitle="Footer">
+  <site-pharos-footer>
+    <ul slot="links-group">
+      {browseLinks.map(({ id, href, label }) => (
+        <li>
+          <site-pharos-link id={id} is-on-background subtle href={href} target="_blank">
+            {label}
+          </site-pharos-link>
+        </li>
+      ))}
+    </ul>
+    <ul slot="links-group">
+      {supportLinks.map(({ id, href, label }) => (
+        <li>
+          <site-pharos-link id={id} is-on-background subtle href={href} target="_blank">
+            {label}
+          </site-pharos-link>
+        </li>
+      ))}
+    </ul>
+    <ul slot="links-group">
+      {aboutLinks.map(({ id, href, label }) => (
+        <li>
+          <site-pharos-link id={id} is-on-background subtle href={href} target="_blank">
+            {label}
+          </site-pharos-link>
+        </li>
+      ))}
+    </ul>
+    <ul slot="links-group">
+      {ithakaLinks.map(({ id, href, label }) => (
+        <li>
+          <site-pharos-link id={id} is-on-background subtle href={href} target="_blank">
+            {label}
+          </site-pharos-link>
+        </li>
+      ))}
+    </ul>
+    <ul slot="button-links">
+      <li>
+        <site-pharos-button
+          id="for-librarians-link"
+          variant="secondary"
+          is-on-background
+          href="https://about.jstor.org/librarians/"
+          target="_blank"
+        >
+          For Librarians
+        </site-pharos-button>
+      </li>
+      <li>
+        <site-pharos-button
+          id="for-publishers-link"
+          variant="secondary"
+          is-on-background
+          href="https://about.jstor.org/publishers/"
+          target="_blank"
+        >
+          For Publishers
+        </site-pharos-button>
+      </li>
+    </ul>
+    <ul slot="social-links">
+      {socialLinks.map(({ id, href, name }) => (
+        <li>
+          <site-pharos-link
+            id={id}
+            href={href}
+            target="_blank"
+            a11y-label={`${name} - This link opens in a new window`}
+          >
+            <site-pharos-icon name={name} a11y-hidden="true" />
+          </site-pharos-link>
+        </li>
+      ))}
+    </ul>
+    <span id="misson-text" slot="mission-statement">
+      JSTOR is part of
+      <site-pharos-link is-on-background href="https://www.ithaka.org">
+        ITHAKA
+      </site-pharos-link>
+      , a not-for-profit organization helping the academic community use digital technologies to preserve
+      the scholarly record and to advance research and teaching in sustainable ways.
+    </span>
+    <span id="copyright-text" slot="copyright-statement">
+      &copy;2000-{new Date().getFullYear()} ITHAKA. All Rights Reserved. JSTOR&reg;, the JSTOR logo,
+      JPASS&reg;, Artstor&reg;, Reveal Digital&trade; and ITHAKA&reg; are registered trademarks of ITHAKA.
+    </span>
+    <ul slot="legal-links">
+      {legalLinks.map(({ id, href, label }) => (
+        <li>
+          <site-pharos-link id={id} is-on-background subtle href={href} target="_blank">
+            {label}
+          </site-pharos-link>
+        </li>
+      ))}
+    </ul>
+  </site-pharos-footer>
+</Example>
+
+## Usage
+
+The footer contains links to various pages on the platform and information about copyright data.
+      It is not sectioning content and does not introduce a new section in the outline of a page.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Use On Background, subtle links as these are best suited for navigational elements on darker, accessible backgrounds
+    - Ensure grouped links are related in the kinds of pages they link out to
+    - Use icons with links to social media pages
+    - Use text approved by Legal for the mission and copyright statements
+
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Include links to specific content on the platform
+
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+Footers contain site-wide information, such as copyright information, mission statements, links
+      to pages and legal disclaimers.
+
+### Relevant WCAG guidelines
+
+- [W3 Page Regions](https://www.w3.org/WAI/tutorials/page-structure/regions/#page-footer)
+- Use the semantic `<footer>` element to create this region
+- `<footer>` element should have a `role="contentinfo"`

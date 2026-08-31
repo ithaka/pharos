@@ -1,0 +1,28 @@
+---
+/**
+ * Layout for Markdown/MDX docs pages. Wraps the site and maps the
+ * frontmatter Astro passes in to the Layout props.
+ */
+import Layout from '@layouts/Layout.astro';
+import Heading from '@components/markdown/Heading.astro';
+
+import '../styles/markdown.css';
+
+interface Props {
+  frontmatter: {
+    title: string; //Feeds both the `<title>` tag and the page's `<h1>`
+    description?: string; //The standfirst, and the meta description.
+  };
+}
+
+const { frontmatter } = Astro.props;
+const { title, description } = frontmatter;
+---
+
+<Layout title={title} description={description}>
+  <Heading depth={1}>{title}</Heading>
+  {description && <div class="md-lede">{description}</div>}
+  <div class="md-body">
+    <slot />
+  </div>
+</Layout>

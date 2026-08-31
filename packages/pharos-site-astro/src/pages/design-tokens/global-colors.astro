@@ -1,0 +1,56 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import ColorTable from '@components/ColorTable.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import type { DesignToken } from '@lib/tokenFormat';
+
+/** Global colour tokens carry palette groupings the alias tokens do not. */
+interface GlobalColorToken extends DesignToken {
+  group?: string;
+  palette?: string;
+}
+
+const color = tokens.color as Record<string, never>;
+
+/** Flattens `tokens.color` into a single list, skipping brand/base groupings. */
+const colorTokens: GlobalColorToken[] = Object.keys(color)
+  .filter((key) => key !== 'brand' && key !== 'base')
+  .flatMap((key) => {
+    const currentToken = color[key] as Record<string, GlobalColorToken> & { value?: string };
+    if (currentToken.value) {
+      return [currentToken as unknown as GlobalColorToken];
+    }
+    return Object.keys(currentToken)
+      .filter((k) => k !== 'brand' && k !== 'base')
+      .map((k) => currentToken[k])
+      .filter((token) => token?.value);
+  });
+
+const byGroup = (group: string) => colorTokens.filter((c) => c.group === group);
+const byPalette = (palette: string) => colorTokens.filter((c) => c.palette === palette);
+
+const marbleGrayBase = (color['marble-gray'] as unknown as Record<string, DesignToken>)?.base;
+const secondaryTokens = [...byGroup('secondary'), ...(marbleGrayBase ? [marbleGrayBase] : [])];
+---
+
+<Layout title="Global colors">
+  <PageSection title="Global colors" isHeader>
+    <TokenTable title="Primary colors">
+      <ColorTable tokens={byGroup('primary')} />
+    </TokenTable>
+    <TokenTable title="Secondary colors">
+      <ColorTable tokens={secondaryTokens} />
+    </TokenTable>
+    <TokenTable title="Grayscale colors">
+      <ColorTable tokens={byPalette('grayscale')} />
+    </TokenTable>
+    <TokenTable title="Tints">
+      <ColorTable tokens={byGroup('tint')} />
+    </TokenTable>
+    <TokenTable title="Feedback colors">
+      <ColorTable tokens={byPalette('feedback')} />
+    </TokenTable>
+  </PageSection>
+</Layout>

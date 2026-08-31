@@ -1,0 +1,120 @@
+---
+title: 'Progress Bar'
+description: 'The progress bar visually represents progress of a particular process. It shows how much of the task has been completed and how much is remaining.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+
+<Example storyBookType="components" componentTitle="Progress Bar">
+  <site-pharos-progress-bar value="75">
+    <div slot="title">A Title</div>
+    <div slot="description">Doing something...</div>
+  </site-pharos-progress-bar>
+</Example>
+
+## Usage
+
+This component can be used to visually represent the completion of a task, such as importing
+or uploading files or when a process time can be calculated and takes longer than 10 seconds.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Give users an indication of how much of the task has completed and how much is left
+    - Display the file being uploaded to reinforce that action a user is taking
+
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Use a progress bar as a placeholder to indicate page, section or content loading, use a
+      skeleton loader or loading spinner instead
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+### Progress descriptions
+
+- If the progress bar calls for descriptions, these should be written as short sentence
+  fragments
+- Written in sentence case of the processes
+- The copy should be concise and human sounding
+- When the process is complete "Done!" should be in the description
+- Three dots should be present at the end of each statement to help indicate progress e.g.,
+  "Extracting the headers…"
+
+## States
+
+<site-pharos-progress-bar value="25">
+  <div slot="title">Title.xls</div>
+  <div slot="description">Processing</div>
+</site-pharos-progress-bar>
+<site-pharos-progress-bar value="50">
+  <div slot="title">Title.xls</div>
+  <div slot="description">Extracting headers...</div>
+</site-pharos-progress-bar>
+<site-pharos-progress-bar value="75">
+  <div slot="title">Title.xls</div>
+  <div slot="description">Mapping your fields...</div>
+</site-pharos-progress-bar>
+<site-pharos-progress-bar value="100">
+  <div slot="title">Title.xls</div>
+  <div slot="description">Done!</div>
+</site-pharos-progress-bar>
+
+## Variants
+
+The progress bar can be used with the file name and description text of the processes, just
+the filename, or just the progress bar itself. Use the progress bar alone when a filename and
+processes are unknown.
+
+### File Name only
+
+<site-pharos-progress-bar value="100">
+  <div slot="title">Title.xls</div>
+</site-pharos-progress-bar>
+
+### No Title
+
+<site-pharos-progress-bar value="100"></site-pharos-progress-bar>
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+
+### Importance
+
+For screen reader users, a progress bar will inform the user how far they are into a certain
+process
+
+### Code expectations
+
+Via [Deque](https://dequeuniversity.com/library/aria/progress-bar-bounded):
+
+- We want to use the HTML &lt;Progress&gt; element. Within this element, there should be:
+  - role="progressbar"
+  - aria-valuemin="0"
+  - aria-valuemax="100"
+  - aria-label="description of what the progress bar is for"
+
+### Expected actions
+
+#### Screen reader
+
+- Keep them updated with the status of a process
+
+#### Screenreader specifics
+
+- Reads: "percent/value that is currently given to progress bar"
+- On completion can give an update such as "complete"
+
+<div style="font-weight: bold;">Keyboard</div>
+<div>
+  The progress bar should be in the tax index so that users can get the information when in
+  focus, even if the information is announced automatically.
+</div>

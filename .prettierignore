@@ -9,6 +9,19 @@ packages/pharos/custom-elements.json
 packages/**/package-lock.json
 packages/pharos-site/public/
 packages/pharos-site/.cache/
+packages/pharos-site-astro/.astro/
+# Prettier is not safe on any MDX in this package. It rewrites MDX comment
+# delimiters ({/* */} -> {/_ _/}), which produces invalid JSX and fails the
+# build outright, and it reflows elements such as <li>/<dd>/<code> onto several
+# lines. MDX treats a tag whose content spans multiple lines as Markdown and
+# wraps it in a generated <p>, so a purely cosmetic reflow silently adds
+# paragraph margins to the rendered page.
+#
+# This must match src/** and not just src/pages/**: the component pages moved
+# to src/content/ in the collection refactor, and a src/pages-only glob left
+# all 32 of them unprotected. {/* prettier-ignore */} is not an alternative --
+# prettier corrupts the marker's own delimiters before it can take effect.
+packages/pharos-site-astro/src/**/*.mdx
 package.json
 package-lock.json
 .changeset/

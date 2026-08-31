@@ -1,0 +1,31 @@
+---
+/**
+ * One column of a `BestPractices` block. Not used directly by pages — it exists
+ * so `BestPractices.astro` describes the do/don't pair once instead of twice.
+ */
+interface Props {
+  /** Which side this column is, driving the icon, colour and heading. */
+  variant: 'do' | 'dont';
+}
+
+const { variant } = Astro.props;
+
+const COLUMNS = {
+  do: { icon: 'checkmark', a11yTitle: 'Check mark', label: 'Dos' },
+  dont: { icon: 'close', a11yTitle: 'X', label: "Don'ts" },
+} as const;
+
+const { icon, a11yTitle, label } = COLUMNS[variant];
+---
+
+<hr class={`best-practices__line--${variant}`} />
+<div class="best-practices__container">
+  <site-pharos-icon name={icon} a11y-title={a11yTitle} class={`best-practices__icon--${variant}`}
+  ></site-pharos-icon>
+  <div>
+    <div class={`best-practices__text--${variant}`}>{label}</div>
+    <div class="best-practices__guideline">
+      <slot />
+    </div>
+  </div>
+</div>

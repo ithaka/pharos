@@ -1,0 +1,40 @@
+---
+/**
+ * Guidance goes in the `do` and `dont` slots:
+ *
+ *   <BestPractices>
+ *     <Fragment slot="do">Ebooks preserved in Portico</Fragment>
+ *     <Fragment slot="dont">Portico preserves e-Books</Fragment>
+ *   </BestPractices>
+ *
+ * Slot content is Markdown, so lists use `-` bullets. Either side may be
+ * omitted to show a "do" with no matching "don't".
+ *
+ */
+import Grid from '@components/Grid.astro';
+import BestPracticesColumn from '@components/BestPracticesColumn.astro';
+
+const hasDo = Astro.slots.has('do');
+const hasDont = Astro.slots.has('dont');
+---
+
+<Grid columns={2} hSpace={3} bottom={2}>
+  <div>
+    {
+      hasDo && (
+        <BestPracticesColumn variant="do">
+          <slot name="do" />
+        </BestPracticesColumn>
+      )
+    }
+  </div>
+  <div>
+    {
+      hasDont && (
+        <BestPracticesColumn variant="dont">
+          <slot name="dont" />
+        </BestPracticesColumn>
+      )
+    }
+  </div>
+</Grid>

@@ -1,0 +1,146 @@
+---
+title: 'Radio button'
+description: 'Radio buttons present items in a list of two or more options where the user can select only one option at a time.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
+
+<Example storyBookType="forms" componentTitle="Radio button">
+  <site-pharos-radio-button>
+    <span slot="label">I am a radio</span>
+  </site-pharos-radio-button>
+</Example>
+
+## Usage
+
+Radio buttons are normally presented in radio groups (a collection of radio buttons which will
+be grouped by the radio button group component). Only one radio button in a group can be
+selected at a time.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Use a label to provide context for radio buttons
+    - Include two or more mutually exclusive items in a group
+    - Use when users need to see the available options at a glance
+    - Use horizontally oriented only if there are a few options
+
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Don't use radio buttons when there are either no choices or multiple choices per group
+    - Don't display a set of radio buttons without a default selection
+    - Don't use radio buttons if the list of choices gets long. (The select component may be
+      better suited)
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+### Labels
+
+- Labels are descriptive and succinct. They should provide further clarity for the user.
+- Labels should not end in punctuation.
+- Avoid using negative language, as it can be counterintuitive. For example, "I want to
+  receive a promotional email" instead of "I don't want to receive promotional email."
+
+## States
+
+### Default
+
+Indicates that the user can interact with the radio button.
+
+<Canvas>
+  <site-pharos-radio-button>
+    <span slot="label">Radio label</span>
+  </site-pharos-radio-button>
+</Canvas>
+
+### Checked
+
+Indicates the value used for the radio group.
+
+<Canvas>
+  <site-pharos-radio-button checked>
+    <span slot="label">Radio label</span>
+  </site-pharos-radio-button>
+</Canvas>
+
+### Disabled
+
+Indicates that the user can interact with the radio button.
+
+<Canvas>
+  <site-pharos-radio-button disabled>
+    <span slot="label">Radio label</span>
+  </site-pharos-radio-button>
+</Canvas>
+
+### Error
+
+Indicates that an error has occurred with the radio button.
+
+<Canvas>
+  <site-pharos-radio-button
+    required
+    invalidated
+    message="This field is required, please make a selection"
+  >
+    <span slot="label">Radio label</span>
+  </site-pharos-radio-button>
+</Canvas>
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [3.3.2 Labels or Instructions A](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions)
+
+### Importance
+
+- Uses aria-checked attribute to make sure the information communicated to assistive
+  technology is the same as the visual state. (e.g. img element)
+- Use disabled prop to prevent the checkbox from interaction
+- Do we allow for help text?
+- Let's look at the[WCAG guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton)
+
+### Code expectations
+
+- Provide a `fieldset` that surrounds the entire grouping of radio buttons. Also,
+  provide a`legend`, which is a description for the grouping.[Here's an example.](https://www.w3.org/TR/wai-aria-practices-1.1/#naming_with_legends)
+- Some assistive technology read the legend ("title" prop for radio group) for each fieldset.
+  It should be brief and descriptive to help someone using assistive technology quickly
+  understand the question they are answering with the group of radio buttons.
+- Each radio button element has a role of "radio".
+- If a radio button is checked, the radio element has "aria-checked" set to `true`. If it is not checked, it has "aria-checked" set to `false`.
+
+### Expected actions
+
+#### Screen reader
+
+- Reads the label, the option, checked or unchecked and X out of X.
+  - For example:
+    - Download file as:
+      - .doc
+      -  .pdf
+  - The above example (with focus on the .doc and is NOT checked) should read as
+    "Download file as, .doc, unchecked, 1 of 2"
+    - [Example](https://www.youtube.com/watch?v=X__fAJDyBjo)
+
+#### Keyboard
+
+- <kbd>Space</kbd> checks the focused radio button, if it is not already checked.
+- <kbd>↑</kbd> / <kbd>←</kbd> move the indicator/focus to the radio button
+  **before** the current selected
+- <kbd>↓</kbd> / <kbd>→</kbd> move the indicator/focus to the radio button
+  **after** the current selected
+- <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> moves the focus into and out of the radio
+  group. When focus moves into a radio group:
+  - If a radio button is checked, focus is set on the checked button.
+  - If none of the radio buttons are checked, focus is set on the first radio button in
+    the group.

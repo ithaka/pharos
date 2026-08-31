@@ -1,0 +1,57 @@
+---
+import ComponentExample from '@components/ComponentExample.astro';
+
+/*
+ * Sub-section headings are `markdown/Heading.astro`'s job — it maps `###`,
+ * `####` and `#####` to their own level and preset. This component covers only
+ * the top-level section heading, so it takes no nesting depth.
+ */
+interface Props {
+  title: string;
+  description?: string;
+  isHeader?: boolean;
+  moreTitleSpace?: boolean;
+  storyBookType?: string;
+}
+
+const { title, description, isHeader = false, moreTitleSpace = false, storyBookType } = Astro.props;
+
+const heading = isHeader ? { level: '1', preset: '7--bold' } : { level: '2', preset: '6' };
+
+const titleClass = isHeader
+  ? 'section__title--is-header'
+  : moreTitleSpace
+    ? 'section__title--more-space'
+    : undefined;
+
+const descriptionClass = isHeader ? 'section__description--is-header' : 'section__description';
+---
+
+<div class="section">
+  <div class={titleClass}>
+    <site-pharos-heading level={heading.level} preset={heading.preset}>
+      {title}
+    </site-pharos-heading>
+  </div>
+  {
+    /*
+     * Plain text comes through the `description` prop; richer markup (links,
+     * inline code) uses the `description` slot instead.
+     */
+    (description || Astro.slots.has('description')) && (
+      <div class={descriptionClass}>
+        {description}
+        <slot name="description" />
+      </div>
+    )
+  }
+  {
+    storyBookType ? (
+      <ComponentExample storyBookType={storyBookType} componentTitle={title}>
+        <slot />
+      </ComponentExample>
+    ) : (
+      <slot />
+    )
+  }
+</div>

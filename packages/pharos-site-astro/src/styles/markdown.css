@@ -1,0 +1,198 @@
+/*
+ * Spacing for Markdown-authored pages.
+ *
+ * The hand-written `.astro` pages nested `PageSection` components and put the
+ * spacing on each section's wrapper as `margin-bottom`. Markdown emits a flat
+ * document, so there is no wrapper to hang that margin on.
+ *
+ * The gaps are reproduced by moving them to `margin-top` on the headings. That
+ * works because a section's bottom margin only ever separated its content from
+ * the *next* heading, so the same visual gap appears whether it is spelled as
+ * the previous section's bottom margin or the next heading's top margin.
+ *
+ * The values are the gaps *measured* on the rendered hand-written pages, not
+ * the section declarations copied across — see the comment on the heading rules
+ * below for why those differ.
+ *
+ * One consequence of the flat model is worth knowing: the hand-written pages
+ * nest sections, so the same `###` can take a different gap depending on the
+ * section it sits in. A single `margin-top` per level cannot express that, so
+ * individual headings do not line up with those pages exactly.
+ *
+ * Bottom margins are deliberately left to Pharos — the component's own `0.5em`,
+ * turned off on `##` with its `no-margin` attribute. Only the top margins
+ * (the inter-section gaps) live here. That makes converted pages ~7% shorter
+ * than the hand-written ones, which is intended.
+ */
+
+/*
+ * The measured gaps on the hand-written pages, which these reproduce:
+ *
+ *   before a `##`  112px  (`.section`, 7x)
+ *   before a `###`  48px  (a 24px section gap plus the paragraph's own 24px,
+ *                          which collapsed inside the section wrapper)
+ *   before a `####` 24px
+ *
+ * The `###` figure is the one worth not guessing at: 80px looks like the
+ * obvious value, but that applied only where a sub-section was nested directly
+ * under a top-level one. The common case on these pages is the 48px above.
+ */
+.md-heading--2 {
+  margin-top: var(--pharos-spacing-7-x);
+
+  /* Matches `.section__title--more-space`, which top-level section titles used. */
+  color: var(--pharos-color-black);
+}
+
+.md-heading--3 {
+  margin-top: var(--pharos-spacing-3-x);
+}
+
+.md-heading--4 {
+  margin-top: var(--pharos-spacing-2-x);
+}
+
+.md-heading--5 {
+  margin-top: var(--pharos-spacing-1-x);
+}
+
+/*
+ * A heading that immediately follows another heading (`##` then `###` with no
+ * prose between) drops the full section gap — the section it would separate
+ * from is empty. It takes no top margin at all: the `##` above it keeps its own
+ * bottom margin, which is the whole gap, and production shows exactly 0 here.
+ */
+.md-heading + .md-heading {
+  margin-top: 0;
+}
+
+/*
+ * The first heading in the body still needs its gap: the page title and lede
+ * sit above `.md-body`, so this is not the top of the page.
+ *
+ * It takes the full 112px, not the difference between that and the lede's own
+ * 48px bottom margin. The lede and the heading are in separate parents, and
+ * `.md-body` establishes the boundary, so the two margins collapse to the
+ * larger rather than adding — 48px of the gap comes free.
+ */
+.md-body > .md-heading:first-child {
+  margin-top: var(--pharos-spacing-7-x);
+}
+
+/*
+ * The page-title block, equivalent to `PageSection`'s `isHeader`. The
+ * description under an `#` heading is the page's standfirst and is styled from
+ * `.section__description--is-header`.
+ */
+.md-heading--1 {
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+/*
+ * The page standfirst, rendered from the `description` frontmatter. Equivalent
+ * to what `PageSection` produced for a section marked `isHeader`.
+ *
+ * These are exactly the declarations in `.section__description--is-header`.
+ * Note what is *not* here: `.section__description` sets `width: 75%` and
+ * `color`, but `PageSection` picks between the two classes with a ternary
+ * rather than applying both, so a header description never received either. It
+ * inherits the default text colour and spans the full column.
+ */
+.md-lede {
+  font-size: var(--pharos-type-scale-6);
+  line-height: 2rem;
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+/*
+ * Paragraph and list spacing is left to the browser default (24px bottom;
+ * `layout.css` only resets `margin-top`), which is the gap the hand-written
+ * pages showed between paragraphs. Setting `margin-bottom` here stacks on top
+ * of that rather than replacing it.
+ *
+ * The margin does have to be cancelled immediately before a heading. In the
+ * `.astro` pages that 24px sat *inside* the section wrapper and collapsed
+ * against its bottom margin, so the gap was the section value alone. Here the
+ * heading is a sibling, and a wrapper with its own `margin-top` does not
+ * collapse with the paragraph above it — the two add up, putting 104px where
+ * the original had 80px. Zeroing the trailing margin restores the single gap
+ * and hands spacing control to the heading.
+ */
+.md-body :is(p, ul, ol):has(+ .md-heading) {
+  margin-bottom: 0;
+}
+
+/* `layout.css` colours `p` only, so list text would otherwise be darker. */
+.md-body li {
+  color: var(--pharos-color-text-20);
+}
+
+/*
+ * Named blocks for MDX pages.
+ *
+ * MDX cannot carry Astro's scoped `<style>`, so the spacing these express has
+ * to be global. They are named for the role the block plays in the document —
+ * a topic, the specimen demonstrating it, the label above it — rather than the
+ * amount of space they add, so the markup says why the gap exists.
+ *
+ * `.doc-topic` is the common case: a heading plus the prose explaining it,
+ * forming one unit of documentation.
+ */
+.doc-topic {
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+/* A topic that opens a section rather than continuing one. */
+.doc-topic--section {
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+/* A live demo or specimen, separated from the discussion that follows it. */
+.doc-specimen {
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
+/* The label immediately above a demo, which sits tight to it. */
+.doc-label {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+/*
+ * The numeral marking each segment of a token name on the design-tokens
+ * overview. Colour alone cannot carry the mapping from a segment to its
+ * definition — WCAG 1.4.1 rules out colour as the sole means of conveying
+ * information, and the four hues include two reds and two blues close in
+ * lightness — so the numeral repeats the mapping in a form that survives
+ * monochrome printing and colour-blindness.
+ *
+ * The markup sets `aria-hidden` on these: a screen reader gets the mapping
+ * from the <dt> text, and reading the examples as "pharos dash color two
+ * dash brand three" would be noise.
+ */
+.segment-marker {
+  font-size: 0.75em;
+  font-weight: var(--pharos-font-weight-bold);
+  margin-left: 1px;
+
+  /* Keeps the raised numeral from stretching the code line's height. */
+  line-height: 0;
+}
+
+/*
+ * The term/description list on the design-tokens overview runs each pair
+ * inline, as one sentence. Pharos already separates the two with a `": "` on
+ * `dt::after`, so the UA stylesheet's `margin-inline-start: 40px` on <dd> —
+ * meant to indent a block-level description under its term — only stacks on
+ * top of it, opening a hole whose width varies with the length of the
+ * preceding term.
+ *
+ * The trailing space in `": "` collapses at the element boundary, so the gap
+ * is set on the pseudo-element rather than left to that space.
+ */
+.md-body dd {
+  margin-inline-start: 0;
+}
+
+.md-body dt::after {
+  margin-right: 0.25em;
+}

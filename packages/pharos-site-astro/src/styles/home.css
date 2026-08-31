@@ -1,0 +1,163 @@
+/*
+ * Home page styles.
+ *
+ * The @font-face blocks sit in fonts-site.css, which the shared layout imports,
+ * rather than here: pages such as /brand-expressions/typography rely on them,
+ * so they must not be scoped to this one page.
+ */
+
+.home .hero {
+  /*
+   * The hero is rendered just above the fill layout rather than inside it, so
+   * it spans the main column naturally and needs no grid placement.
+   */
+  background: linear-gradient(
+    to right bottom,
+    var(--pharos-color-night-blue-base) 55%,
+    var(--pharos-color-living-coral-base)
+  );
+  padding: var(--pharos-spacing-7-x) 0 var(--pharos-spacing-5-x) 0;
+  color: var(--pharos-color-text-white);
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
+.home .hero__heading {
+  font-size: var(--pharos-type-scale-14);
+  font-family: var(--pharos-font-family-serif);
+  line-height: 1.1;
+  font-weight: normal;
+  grid-column: span 10;
+  margin: 0 0 var(--pharos-spacing-5-x) 0;
+}
+
+.home .thumbnail {
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.home .thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+.home .section-title {
+  margin-bottom: var(--pharos-spacing-one-quarter-x);
+}
+
+.home .description {
+  color: var(--pharos-color-text-20);
+  margin-bottom: var(--pharos-spacing-one-and-a-half-x);
+}
+
+.home .icon {
+  margin-bottom: var(--pharos-spacing-one-quarter-x);
+}
+
+.home .caption {
+  font-size: var(--pharos-font-size-small);
+}
+
+.home p {
+  color: var(--pharos-color-text-20);
+  margin-top: 0;
+}
+
+.home hr {
+  grid-column: span 12;
+  border: 1px var(--pharos-color-ui-20);
+  width: 100%;
+  height: 2px;
+  background-color: var(--pharos-color-ui-20);
+}
+
+.home .list {
+  list-style-type: none;
+}
+
+.home .list > li {
+  margin-left: 0;
+}
+
+.home .icon__arrow {
+  margin-left: var(--pharos-spacing-one-quarter-x);
+  fill: var(--pharos-color-text-white);
+}
+
+.home .heading__status {
+  grid-column: span 12;
+}
+
+.home .link__status {
+  grid-column: span 12;
+}
+
+.home .card {
+  grid-column: span 6;
+}
+
+.home .card__image {
+  grid-column: span 4;
+  display: grid;
+}
+
+.home figure {
+  margin: 0;
+}
+
+.home .button__card {
+  align-self: end;
+}
+
+.home .badge {
+  text-transform: uppercase;
+  font-size: var(--pharos-font-size-micro);
+  line-height: var(--pharos-line-height-xsmall);
+  background-color: var(--pharos-color-glacier-blue-80);
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+}
+
+.home .container__heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--pharos-spacing-three-quarters-x);
+  column-gap: var(--pharos-spacing-three-quarters-x);
+}
+
+@media screen and (width <= 48rem) {
+  .home hr,
+  .home .heading__status,
+  .home .link__status,
+  .home .hero__heading {
+    grid-column: span 8;
+  }
+
+  .home .card,
+  .home .card__image {
+    grid-column: span 4;
+  }
+}
+
+@media screen and (width <= 22.5rem) {
+  .home hr,
+  .home .heading__status,
+  .home .link__status,
+  .home .hero__heading {
+    grid-column: span 4;
+  }
+
+  .home .card,
+  .home .card__image {
+    grid-column: span 4;
+  }
+
+  .home .hero {
+    padding: var(--pharos-spacing-5-x) 0;
+  }
+
+  .home .hero__heading {
+    font-size: var(--pharos-type-scale-10);
+  }
+
+  .home .badge {
+    display: none;
+  }
+}

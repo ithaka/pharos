@@ -1,0 +1,26 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import type { CommentedToken } from '@lib/tokenFormat';
+
+const radii = Object.values(tokens.radius.base as unknown as Record<string, CommentedToken>);
+
+const rows = radii.map((token) => ({
+  name: token.name,
+  value: `${token.comment} | ${token.value}`,
+  examples: [
+    `<div class="radius-example" style="border-radius: ${token.value}; background: var(--pharos-color-living-coral-80); width: 2rem; height: 2rem; display: inline-block;"></div>`,
+  ],
+}));
+---
+
+<Layout title="Radius">
+  <PageSection title="Radius" isHeader>
+    <TokenTable>
+      <TokenRows rows={rows} />
+    </TokenTable>
+  </PageSection>
+</Layout>

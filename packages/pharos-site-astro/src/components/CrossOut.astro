@@ -1,0 +1,45 @@
+---
+/**
+ * The diagonal line is sized from the rendered content, so the measurement runs
+ * in a small client-side script.
+ */
+---
+
+<div class="cross-out">
+  <hr class="cross-out__line" />
+  <div class="cross-out__content" style="width: min-content; margin: 0;">
+    <slot />
+  </div>
+</div>
+
+<script>
+  class CrossOutElement {
+    static measure(root: HTMLElement) {
+      const content = root.querySelector<HTMLElement>('.cross-out__content');
+      const line = root.querySelector<HTMLElement>('.cross-out__line');
+      if (!content || !line) return;
+
+      const { clientWidth, clientHeight } = content;
+      let lineWidth =
+        Math.round(Math.sqrt(Math.pow(clientWidth, 2) + Math.pow(clientHeight, 2))) * 1.1;
+      if (lineWidth > clientHeight * 2) {
+        lineWidth = clientHeight * 2;
+      }
+
+      root.style.width = `${clientWidth}px`;
+      line.style.top = `${clientHeight / 2}px`;
+      line.style.left = `${(clientWidth / 4) * -1}px`;
+      line.style.width = `${lineWidth}px`;
+    }
+  }
+
+  const measureAll = () =>
+    document
+      .querySelectorAll<HTMLElement>('.cross-out')
+      .forEach((el) => CrossOutElement.measure(el));
+
+  measureAll();
+  // Re-measure once webfonts land, since they change the content's size.
+  document.fonts?.ready.then(measureAll);
+  window.addEventListener('resize', measureAll);
+</script>

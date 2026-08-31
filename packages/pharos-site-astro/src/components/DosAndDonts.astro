@@ -1,0 +1,48 @@
+---
+interface Props {
+  /** Renders the "Don'ts" variant when true, otherwise "Dos". */
+  dont?: boolean;
+}
+
+const { dont = false } = Astro.props;
+---
+
+<div class="dos-and-donts">
+  <hr class={dont ? 'dos-and-donts__line--dont' : 'dos-and-donts__line--do'} />
+  <span class="dos-and-donts__title">
+    <div class="dos-and-donts__text-container">
+      {
+        dont ? (
+          <>
+            <site-pharos-icon name="close" a11y-title="X" class="dos-and-donts__icon--dont" />
+            <site-pharos-heading level="4" preset="4--bold" no-margin>
+              <span class="dos-and-donts__text--dont">Don'ts</span>
+            </site-pharos-heading>
+          </>
+        ) : (
+          <>
+            <site-pharos-icon
+              name="checkmark"
+              a11y-title="Checkmark"
+              class="dos-and-donts__icon--do"
+            />
+            <site-pharos-heading level="4" preset="4--bold" no-margin>
+              <span class="dos-and-donts__text--do">Dos</span>
+            </site-pharos-heading>
+          </>
+        )
+      }
+    </div>
+  </span>
+  <slot />
+</div>
+
+<style>
+  .dos-and-donts__icon--do {
+    fill: var(--pharos-color-feedback-success);
+  }
+
+  .dos-and-donts__icon--dont {
+    fill: var(--pharos-color-feedback-error);
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+/**
+ * Syntax highlighting runs at build time through Shiki, using its `nightOwl`
+ * theme, so no highlighting JavaScript ships to the client.
+ */
+import { Code } from 'astro:components';
+import codeTheme from '@lib/codeTheme';
+
+interface Props {
+  code: string;
+  language?: string;
+}
+
+const { code, language = 'tsx' } = Astro.props;
+---
+
+<Code
+  code={code.trim()}
+  lang={language as never}
+  theme={codeTheme}
+  style="padding: 20px; white-space: normal; font-size: var(--pharos-font-size-medium); font-family: var(--pharos-font-family-sans-serif);"
+/>
+
+<style is:global>
+  /* Shiki nests the lines inside a <code>, which the user agent resets to
+   * `monospace`, so the font set on the <pre>
+   * never reaches the text — and monospace wraps lines that otherwise fit. */
+  .astro-code code {
+    font-family: inherit;
+  }
+
+  /* Shiki emits inline `<span class="line">` separated by newline text nodes,
+   * which `white-space: normal` collapses into one wrapped paragraph. */
+  .astro-code .line {
+    display: block;
+  }
+
+  /* An empty span collapses to 0px; this restores the line box for blank lines
+   * without contributing visible text. */
+  .astro-code .line:empty::before {
+    content: '\200b';
+  }
+</style>

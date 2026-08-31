@@ -1,0 +1,22 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<div>
+  {
+    title && (
+      <site-pharos-heading level="1" preset="6">
+        {title}
+      </site-pharos-heading>
+    )
+  }
+  {subtitle && <div>{subtitle}</div>}
+  <table class="token-table"><slot /></table>
+  <br />
+  <br />
+</div>
