@@ -116,7 +116,7 @@
     "vite": "^8.2.2"
   },
   "resolutions": {
-    "immutable": "^3.8.3",
+    "immutable": "^3.8.4",
     "marked": "^4.0.10",
     "minimatch": "^9.0.7",
     "path-to-regexp": "^0.1.13",
