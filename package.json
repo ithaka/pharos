@@ -81,7 +81,7 @@
     "@vitejs/plugin-react": "^6.1.0",
     "all-contributors-cli": "^6.26.1",
     "concurrently": "^10.0.5",
-    "cssnano": "^8.0.7",
+    "cssnano": "^9.0.1",
     "eslint": "^10.9.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
