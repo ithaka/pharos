@@ -72,7 +72,7 @@
     "@types/react": "^18.3.31",
     "@types/react-dom": "^18.3.7",
     "@vitest/browser-playwright": "^4.1.11",
-    "@vitest/coverage-istanbul": "^4.1.11",
+    "@vitest/coverage-istanbul": "^5.0.0",
     "@webcomponents/scoped-custom-element-registry": "^0.0.10",
     "autoprefixer": "^10.5.4",
     "axe-core": "^4.13.0",
