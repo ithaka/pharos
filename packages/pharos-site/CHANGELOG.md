@@ -1,5 +1,14 @@
 # @ithaka/pharos-site
 
+## 7.4.1
+
+### Patch Changes
+
+- [#1357](https://github.com/ithaka/pharos/pull/1357) [`1240bc4`](https://github.com/ithaka/pharos/commit/1240bc4cc1f166e852e887704ccaa50652da8b1c) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Add missing documentation pages for Sheet, Checkbox group, Radio group, Popover, and Table. Also fixes the Sheet and Popover components not working on the docs site ([#1089](https://github.com/ithaka/pharos/issues/1089)) by registering them as custom elements.
+
+- Updated dependencies [[`1d15ad7`](https://github.com/ithaka/pharos/commit/1d15ad7f962e43e8c3411d8221e0b6b146fb5db0), [`3a0aa2e`](https://github.com/ithaka/pharos/commit/3a0aa2ee8616f2da1eee9c5931392f2e94605f88), [`6c816ad`](https://github.com/ithaka/pharos/commit/6c816add4feb26b92a97ed56d917528925cc8e6e)]:
+  - @ithaka/pharos@14.26.0
+
 ## 7.4.0
 
 ### Minor Changes
