@@ -62,7 +62,7 @@
     "@babel/plugin-syntax-import-assertions": "^7.29.7",
     "@babel/preset-env": "^8.0.5",
     "@changesets/changelog-github": "^1.0.1",
-    "@changesets/cli": "^2.31.1",
+    "@changesets/cli": "^3.0.3",
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
     "@emotion/babel-plugin": "^11.13.5",
