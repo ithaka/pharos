@@ -30,6 +30,10 @@ export default defineConfig({
     }),
   },
   vite: {
+    // An empty inline PostCSS config, which stops Vite searching the parent
+    // directories and finding the repo root's `postcss.config.js which errors here
+    css: { postcss: {} },
+
     // Pharos stamps `data-pharos-component` from `constructor.name` and styles
     // itself through it (`[data-pharos-component="PharosIcon"]`). Mangling that
     // name unmatches the selector and breaks the styles
