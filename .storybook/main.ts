@@ -58,6 +58,7 @@ const config = {
       resolve: {
         alias: {
           '@lib': path.resolve(__dirname, '../packages/pharos/lib'),
+          '@src': path.resolve(__dirname, '../packages/pharos/src'),
           '@config': path.resolve(__dirname, './'),
         },
       },
