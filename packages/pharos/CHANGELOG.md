@@ -1,5 +1,17 @@
 # @ithaka/pharos
 
+## 14.26.0
+
+### Minor Changes
+
+- [#1395](https://github.com/ithaka/pharos/pull/1395) [`1d15ad7`](https://github.com/ithaka/pharos/commit/1d15ad7f962e43e8c3411d8221e0b6b146fb5db0) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Add `disable` icon
+
+### Patch Changes
+
+- [#1387](https://github.com/ithaka/pharos/pull/1387) [`3a0aa2e`](https://github.com/ithaka/pharos/commit/3a0aa2ee8616f2da1eee9c5931392f2e94605f88) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Fix Popover component missing `background-color`, which allowed content behind it to visually show through despite the correct `box-shadow` and `z-index`. See [#1386](https://github.com/ithaka/pharos/issues/1386).
+
+- [#1343](https://github.com/ithaka/pharos/pull/1343) [`6c816ad`](https://github.com/ithaka/pharos/commit/6c816add4feb26b92a97ed56d917528925cc8e6e) Thanks [@brentswisher](https://github.com/brentswisher)! - Correctly throw an error when a non-selectable image card is marked as selected
+
 ## 14.25.0
 
 ### Minor Changes
