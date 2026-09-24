@@ -1,0 +1,61 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import type { CommentedToken } from '@lib/tokenFormat';
+
+/**
+ * Example font size per row, keyed by token name. Keyed rather than positional
+ * so that adding, removing or reordering a line-height token cannot silently
+ * shift every row onto the wrong font size.
+ */
+const fontSizeMap: Record<string, number> = {
+  xsmall: 12,
+  small: 14,
+  medium: 16,
+  large: 24,
+  xlarge: 32,
+  'heading-large': 54,
+  'text-base-condensed': 16,
+};
+
+const lineHeights = tokens['line-height'] as unknown as Record<string, CommentedToken>;
+
+const rows = Object.keys(lineHeights)
+  .filter((key) => key !== 'brand' && key !== 'base')
+  .map((key) => {
+    const token = lineHeights[key];
+    const fontSize = fontSizeMap[key];
+    if (fontSize === undefined) {
+      throw new Error(
+        `line-height.astro: no example font size mapped for token "${key}". ` +
+          `Add it to fontSizeMap.`
+      );
+    }
+
+    const fontFamily =
+      fontSize >= 24 ? 'var(--pharos-font-family-serif)' : 'var(--pharos-font-family-sans-serif)';
+    const text =
+      key === 'heading-large'
+        ? 'Lorem ipsum dolor sit amet...'
+        : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
+    return {
+      name: token.name,
+      value: `${token.comment ? token.comment + ' | ' : ''}${token.value}`,
+      examples: [
+        `<div class="line-height-example" style="line-height: ${token.value}; font-size: ${fontSize}px; font-family: ${fontFamily};">${text}</div>`,
+      ],
+    };
+  });
+---
+
+<Layout title="Line height">
+  <PageSection title="Line height" isHeader>
+    <TokenTable>
+      <TokenRows rows={rows} />
+    </TokenTable>
+  </PageSection>
+</Layout>

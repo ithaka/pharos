@@ -1,0 +1,42 @@
+---
+/**
+ * Renders a Markdown heading as a Pharos heading.
+ *
+ * The `preset` carries the typography, including a `0.5em` bottom margin.  *
+ * `##` and `###` both render `level="2"`, matching `PageSection`. Changing it
+ * would alter the accessibility tree.
+ */
+interface Props {
+  /** Markdown heading depth, 1-6. */
+  depth: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Anchor id remark generates from the heading text. */
+  id?: string;
+  /**
+   * Drops the heading's own bottom margin via Pharos' `no-margin` attribute.
+   * Defaults to on for `##`, off elsewhere — pass explicitly to override.
+   */
+  noMargin?: boolean;
+}
+
+const PRESETS: Record<Props['depth'], { level: string; preset: string; noMargin?: boolean }> = {
+  1: { level: '1', preset: '7--bold' },
+  2: { level: '2', preset: '6' },
+  3: { level: '2', preset: '4' },
+  4: { level: '4', preset: '1--bold' },
+  5: { level: '5', preset: '1--bold' },
+  6: { level: '6', preset: '1--bold' },
+};
+
+const { depth, id, noMargin } = Astro.props;
+
+const { level, preset, noMargin: presetNoMargin = false } = PRESETS[depth];
+const hasNoMargin = noMargin ?? presetNoMargin;
+---
+
+<site-pharos-heading
+  class:list={['md-heading', `md-heading--${depth}`]}
+  level={level}
+  preset={preset}
+  no-margin={hasNoMargin ? '' : undefined}
+  id={id}><slot /></site-pharos-heading
+>

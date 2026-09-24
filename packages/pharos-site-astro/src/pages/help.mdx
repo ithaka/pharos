@@ -1,0 +1,30 @@
+---
+layout: '@layouts/MarkdownLayout.astro'
+title: 'Help'
+---
+
+import { mdxComponents } from '@components/markdown/mdxComponents';
+
+export const components = mdxComponents;
+
+## GitHub
+
+Code for all our components, styles, tokens, assets, documentation, and this site lives in our
+[Pharos repository](https://github.com/ithaka/pharos).
+
+<p>
+  <site-pharos-button
+    variant="secondary"
+    icon-right="link-external"
+    href="https://github.com/ithaka/pharos"
+    target="_blank"
+  >
+    Go to GitHub
+  </site-pharos-button>
+</p>
+
+## Report an issue
+
+If you find an issue with this site or a Pharos component, you can bring it to the maintainers'
+attention by creating a [Github issue](https://github.com/ithaka/pharos/issues) in the Pharos
+repository.

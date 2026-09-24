@@ -1,0 +1,63 @@
+---
+/** Renders the document's SEO and font tags directly into <head>. */
+import { siteMetadata } from '@lib/siteMetadata';
+
+interface Props {
+  title: string;
+  description?: string;
+  pathname?: string;
+}
+
+const { title, description = '', pathname } = Astro.props;
+
+const { siteUrl } = siteMetadata;
+const metaDescription = description || siteMetadata.description;
+const pageTitle = `${title ? title + ' | ' : ''}${siteMetadata.title}: ${siteMetadata.subtitle}`;
+const imagePath = siteUrl + siteMetadata.image.path;
+const pagePath = pathname ? siteUrl + pathname : siteUrl;
+
+const fonts = [
+  'GT-America-Standard-Medium-Italic',
+  'GT-America-Standard-Medium',
+  'GT-America-Standard-Regular-Italic',
+  'GT-America-Standard-Regular',
+  'IvarHeadline-Italic',
+  'IvarHeadline-Medium',
+  'IvarHeadline-MediumItalic',
+  'IvarHeadline-Regular',
+];
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/images/favicon.ico" />
+
+<title>{pageTitle}</title>
+<meta name="description" content={metaDescription} />
+<link rel="canonical" href={pagePath} />
+
+<meta property="og:url" content={pagePath} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:image" content={imagePath} />
+<meta property="og:image:height" content={siteMetadata.image.height} />
+<meta property="og:image:width" content={siteMetadata.image.width} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content={siteMetadata.author} />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={metaDescription} />
+<meta name="twitter:image" content={imagePath} />
+
+{
+  fonts.map((font) => (
+    <link
+      rel="preload"
+      href={`https://static.ithaka.org/pharos/assets/fonts/${font}.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+  ))
+}

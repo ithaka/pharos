@@ -1,0 +1,150 @@
+---
+title: 'Select'
+description: 'A select allows users to choose one option from a list in a form.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
+
+<Example storyBookType="forms" componentTitle="Select">
+  <site-pharos-select>
+    <span slot="label">I am a select</span>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </site-pharos-select>
+</Example>
+
+## Usage
+
+Select inputs allow users to submit data from a list of options. Although the select component
+itself is styled to align with the brand, the options components within it are left to be
+styled by the browser.
+
+## Best practices
+
+Select is a type of input that is used in forms, where a user is submitting data and chooses
+one option from a list.
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Use when you have 6 or more pre-defined, mutually exclusive options for the user to choose
+      from (instead of radio buttons)
+    - Have a default selection when possible
+    - Use "Select" as the default placeholder option if there's no logical default option
+    - Labels should be concise
+
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Don't use a select for navigational needs. A dropdown menu will suffice
+    - Don't use wordy labels for the options, aim for 1-3 words
+
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+### Labels
+
+- Write labels succinctly so they're no more than 3 words
+- Write in sentence case
+- Avoid punctuation and articles ("the," "a," "an")
+
+### Select options
+
+- Start with "Select" as a placeholder if there isn't a default option
+- Options should be related to intended functionality if presenting a list of actions
+- List options alphabetically or in a logical order (like frequency of use)
+- Write in sentence case
+- Avoid punctuation and articles ("the," "a," "an")
+
+## States
+
+### Default
+
+Indicates that the user can interact with the select component.
+
+<Canvas>
+  <site-pharos-select>
+    <span slot="label">Select label</span>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </site-pharos-select>
+</Canvas>
+
+### Disabled
+
+Indicates that the user is unable to interact with the select component.
+
+<Canvas>
+  <site-pharos-select disabled>
+    <span slot="label">Select label</span>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </site-pharos-select>
+</Canvas>
+
+### Required
+
+Indicates that the select dropdown requires the user to make a selection.
+
+<Canvas>
+  <site-pharos-select required>
+    <span slot="label">Select label</span>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </site-pharos-select>
+</Canvas>
+
+### Error
+
+Indicates that an error occurred within the select dropdown.
+
+<Canvas>
+  <site-pharos-select required invalidated message="This field is required, please make a selection">
+    <span slot="label">Select label</span>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </site-pharos-select>
+</Canvas>
+
+## Validation
+
+Real-time validation helps to streamline the process and keep data clean when the user is
+filling out forms.
+
+## Accessibility
+
+### Relevant WCAG Guidelines
+
+- [1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG21/Understanding/keyboard)
+
+### Importance
+
+- Select allows all users to better understand how form items are related based on their
+  grouping
+
+### Visual expectations
+
+-  Select include some indication that they are expandable/interactable
+
+### Code expectations
+
+-  Select list item has aria-haspopup="true" and aria-expanded="false"
+- There is another list of &lt;option&gt; elements with the &lt;select&gt; element on its
+  child elements
+-  Will have aria-required="true" if applicable
+
+### Expected actions
+
+#### Screen reader
+
+- Reads "option name, menu popup collapsed, button, required (if applicable)"
+
+#### Keyboard
+
+- <kbd>Enter</kbd>: selects option (which collapses select)
+- <kbd>up</kbd>/<kbd>down</kbd> arrows: moves focus up and down (which expands the select)

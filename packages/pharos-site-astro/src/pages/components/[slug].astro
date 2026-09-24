@@ -1,0 +1,27 @@
+---
+/**
+ * Renders every page in the `components` collection at `/components/<slug>`.
+ *
+ * `components={mdxComponents}` is required: MDX honours a
+ * file's own `export const components` only when that file is itself a route,
+ * so rendered through `<Content />` it is ignored. Without the prop the pages
+ * still build, but every `##` falls back to a plain `<h2>`.
+ */
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+import MarkdownLayout from '@layouts/MarkdownLayout.astro';
+import { mdxComponents } from '@components/markdown/mdxComponents';
+
+export const getStaticPaths = (async () => {
+  const pages = await getCollection('components');
+  return pages.map((page) => ({ params: { slug: page.id }, props: { page } }));
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<MarkdownLayout frontmatter={page.data}>
+  <Content components={mdxComponents} />
+</MarkdownLayout>

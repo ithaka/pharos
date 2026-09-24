@@ -1,0 +1,46 @@
+---
+layout: '@layouts/MarkdownLayout.astro'
+title: 'Pharos FAQ'
+---
+
+import { mdxComponents } from '@components/markdown/mdxComponents';
+
+export const components = mdxComponents;
+
+#### How can Pharos help my development?
+
+Pharos contains visual and behavioral components that are consistent with our design decisions out of
+the box.
+
+#### What do I do if I still run into issues?
+
+Give us the gift of feedback! When you run into issues it's important that you be vocal about it and
+not let that inhibit or discourage you from adopting Pharos. We need your help to identify the gaps
+and sincerely welcome feedback no matter how tough it is.
+
+You can start providing feed back via [GitHub issues](https://github.com/ithaka/pharos/issues). For
+more on dealing with issues, check out the
+[contribution guide](https://pharos.jstor.org/contributing/development).
+
+#### What are the risks of adopting components late or infrequently? How will we manage this?
+
+Design systems help bring consistency to platforms, so falling behind may result in duplication of
+effort in replicating styles and behaviors. It may also result in more catch up. Finally, if you're
+on an unsupported version of Pharos you may not benefit from the latest bug and security fixes.
+
+We'll be managing this by developing a support policy, using semantic versioning, and communicating
+changes through change logs and discussions.
+
+#### I expected Pharos components to make my page more performant, but they made my bundle bigger. Why is that happening?
+
+The Pharos core package delivers components that are
+[tree shakable](https://webpack.js.org/guides/tree-shaking/), so that you can be sure you only end up
+with the code you need. To benefit from tree shaking, though, you may need to update your build
+process to match it.
+
+#### I don't know enough about components before trying to use them. How can I find out more?
+
+We're continuously working on the documentation—for both
+[development](https://pharos.jstor.org/storybook/?path=/story/pharos-10-1-0-intro--page) and
+[design](https://pharos.jstor.org)—to make sure it's accurate and thorough. If you find that a
+component isn't documented properly or thoroughly, please communicate how it can be improved.

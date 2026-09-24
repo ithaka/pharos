@@ -1,3 +1,11 @@
+[build]
+  command = "yarn site-astro:build"
+  publish = "packages/pharos-site-astro/dist"
+  ignore = "bash ./build-ignore.sh"
+
+[build.environment]
+  NODE_VERSION = "24"
+
 [[redirects]]
   from = "/storybook"
   to = "https://pharos-storybooks.netlify.app/main/"
@@ -39,6 +47,3 @@
     [headers.values]
     Access-Control-Allow-Origin = "*"
     X-Frame-Options = "SAMEORIGIN"
-
-[build]
-  ignore = "bash ./build-ignore.sh"

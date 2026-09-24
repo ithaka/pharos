@@ -1,0 +1,58 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import type { DesignToken } from '@lib/tokenFormat';
+
+const exampleRems = [1, 2, 5, 10, 20];
+const exampleColors = [
+  '--pharos-color-living-coral-90',
+  '--pharos-color-living-coral-80',
+  '--pharos-color-glacier-blue-80',
+  '--pharos-color-glacier-blue-40',
+  '--pharos-color-night-blue-base',
+];
+
+const durations = tokens.transition.duration as unknown as Record<string, DesignToken>;
+
+const rows = [
+  { token: tokens.transition.base as DesignToken, widthRem: 5, color: exampleColors[1] },
+  ...Object.keys(durations).map((key, i) => ({
+    token: durations[key],
+    widthRem: exampleRems[i],
+    color: exampleColors[i],
+  })),
+].map(({ token, widthRem, color }) => ({
+  name: token.name,
+  value: token.value,
+  examples: [
+    `<div class="transition-example" style="width: ${widthRem}rem; transition: ${token.value}; --example-color: var(${color}); height: 3rem;"></div>`,
+  ],
+}));
+---
+
+<Layout title="Transitions">
+  <PageSection title="Transitions" isHeader>
+    <p>Hover over the colorful boxes to view the transitions.</p>
+    <TokenTable>
+      <TokenRows rows={rows} columnWidths={['40%', '40%']} />
+    </TokenTable>
+  </PageSection>
+</Layout>
+
+<style is:global>
+  /*
+   * A CSS hover swaps the background colour without any client JS. Each row
+   * passes its own colour as `--example-color` so the hover rule can override
+   * it without needing `!important`.
+   */
+  .token-table .transition-example {
+    background: var(--example-color);
+  }
+
+  .token-table .transition-example:hover {
+    background: var(--pharos-color-jstor-red);
+  }
+</style>

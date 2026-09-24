@@ -1,0 +1,237 @@
+---
+title: 'Tooltip'
+description: 'Tooltips provide concise additional information upon hover or focus. The content should be contextual, helpful, and non-critical.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
+import tooltipOverflow from '@images/components/tooltip/tooltip_overflow.gif';
+import tooltipViewer1 from '@images/components/tooltip/tooltip_viewer-1.png';
+import tooltipViewer2 from '@images/components/tooltip/tooltip_viewer-2.png';
+import { Image } from 'astro:assets';
+
+{/* The twelve placement examples, each a target button plus its tooltip. */}
+export const placements = [
+  'top-start',
+  'top',
+  'top-end',
+  'left-start',
+  'left',
+  'left-end',
+  'right-start',
+  'right',
+  'right-end',
+  'bottom-start',
+  'bottom',
+  'bottom-end',
+];
+
+<Example storyBookType="components" componentTitle="Tooltip">
+  <site-pharos-button data-tooltip-id="tooltip-example">Hover here</site-pharos-button>
+  <site-pharos-tooltip id="tooltip-example" placement="bottom">Hello there!</site-pharos-tooltip>
+</Example>
+
+## Usage
+
+### Placement
+
+There are 12 placement options available. Tooltips can be placed top, bottom, left or right
+of the target (e.g. button, icon, link, etc.) and the caret (triangle) can be placed at the
+start, center or end of the tooltip.
+
+<Canvas>
+  <div class="tooltip-example__container">
+    {placements.map((placement) => (
+      <>
+        <button data-tooltip-id={`my-${placement}-tooltip`} class="tooltip-example__target">
+          <site-pharos-icon
+            name="info-inverse"
+            a11y-title={`Hover over to see ${placement} tooltip example`}
+          />
+        </button>
+        <site-pharos-tooltip id={`my-${placement}-tooltip`} open placement={placement}>
+          {placement}
+        </site-pharos-tooltip>
+      </>
+    ))}
+  </div>
+</Canvas>
+
+#### Where should I place the tooltip?
+
+All tooltips, by default, are positioned top-center.
+
+You can also decide to position the tooltip in a more appropriate place depending on the
+use case.
+
+##### Navigational
+
+For navigational items, the tooltip should be placed to the left of the associated icon
+button.
+
+##### Icon toolbar
+
+For content viewing experiences, the tooltip should sit below the viewer control icon
+buttons.
+
+<Image src={tooltipViewer1}
+  alt="Tooltip placement for viewer full screen"
+  class="pharos-storybook__image"
+  width="700" />
+
+##### Icon buttons
+
+For tooltips that are near other objects or items, display the tooltip to have more
+contrast, prominence and readability. In the example below, the tooltip has a top
+placement.
+
+##### Longer titles
+
+For titles that need a tooltip to display the full title, it should sit above the
+content, so the link text is still visible to the user.
+
+##### Caret placement
+
+We use <site-pharos-link href="https://floating-ui.com/">Floating UI</site-pharos-link> to
+position our tooltips. By default, tooltips are placed in the center of the trigger, but the
+caret/arrow will move and remain "attached" with Floating UI's flip and shift functionality.
+
+<Image src={tooltipOverflow}
+  alt="Tooltip overflow example"
+  class="pharos-storybook__image"
+  width="300" />
+
+<Image src={tooltipViewer2}
+  alt="Example tooltip caret placement in viewer"
+  class="pharos-storybook__image"
+  width="700" />
+
+### Longer content
+
+Larger tooltips can be used to display further additional information. It is highly
+recommended that you consider if you need a tooltip or not for the design. "Throw it in a
+tooltip" is not the answer.
+
+<Canvas>
+  <div class="tooltip-example__container">
+    <button data-tooltip-id="my-large-tooltip" class="tooltip-example__target">
+      <site-pharos-icon name="info-inverse" a11y-title="Info"></site-pharos-icon>
+    </button>
+    <site-pharos-tooltip id="my-large-tooltip" open>
+      Large tooltip for more text goes here and here and here
+    </site-pharos-tooltip>
+  </div>
+</Canvas>
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Use tooltips to clarify expected behavior when interacting with icon buttons, buttons, or
+      links with an associated keyboard shortcut.
+    - Use tooltips sparingly. If you're building something that requires a lot of tooltips, work
+      on clarifying the design and the language in the experience. Do you NEED a tooltip?
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Don't include interactive content such as buttons or links.
+    - Don't include imagery, concise text will do.
+    - Don't use tooltips to restate visible text in the UI.
+    - Don't use tooltips to communicate critical information, like errors or other interaction
+      feedback.
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+<em>Tooltips should:</em>
+
+- Be concise and scannable
+- Be written in sentence case
+- Not be used to communicate error messages or critical info
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [1.4.13 Content on Hover or Focus AA](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html)
+
+### Importance
+
+Tooltips give additional information to the user by providing information that isn't presented
+visually. Tooltips can take multiple forms, such as a label for an icon (similar to our metadata
+icon on the item page) or providing additional information or clarification about an element (usually
+in the form of a "i" or a "?" icon). Tooltips do not need to receive focus, but rather just live
+on the button, link or form field that it relates to. There may be additional Aria tags that need
+to be added to make the tooltip available to assistive technologies, such as aria-describedby.
+
+### Code expectations
+
+<ul>
+  <li>
+    For labels (similar to the metadata and thumbnail hover on<site-pharos-link href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">item page</site-pharos-link>
+    )
+    <ul>
+      <li> Use aria-labelledby and have the id share the same label</li>
+      <li>
+        Make it the &lt;button&gt; attribute with a &lt;class&gt; attribute as well
+      </li>
+      <li>
+        Within the &lt;div&gt; add "role=tooltip" and the id attribute that corresponds to the
+        aria-labelledby. Also add whatever you want the tooltip to give the user
+        <ul>
+          <li>
+            <site-pharos-link href="https://inclusive-components.design/tooltips-toggletips/">
+              Example
+            </site-pharos-link>
+            (via Inclusive Components by Heydon Pickering)
+          </li>
+          <li>The role of "tooltip" assures that the aria-labelledby will work correctly</li>
+          <li>The button role will also ensure that this works correctly </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    For tooltips that provide additional or clarifying information (similar to the ? next to
+    "Stable URL" on the<site-pharos-link href="https://www.jstor.org/stable/24562158?seq=1#metadata_info_tab_contents">item page</site-pharos-link>
+    )
+    <ul>
+      <li>
+        Similar to the structure of the example above
+        <ul>
+          <li>
+            However, we need to add the label aspect with something other than the
+            aria-labelledby because we need to use this for the new information
+          </li>
+          <li>
+            We can put the title into a hidden class to make this work effectively
+            <ul>
+              <li>
+                <site-pharos-link href="https://inclusive-components.design/tooltips-toggletips/">Example</site-pharos-link>
+                (via Inclusive Components by Heydon Pickering)
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+### Expected actions
+
+#### Screen reader
+
+- Reads similarly to a text label
+- Announces the tooltip on hover/focus
+
+#### Keyboard
+
+- Pressing <kbd>Escape</kbd> dismisses the tooltip.
+- Should be included in tab order logically
+- Tooltip should open when focus is given to the element
+- Tooltip should not automatically disappear
+- After tooltip is closed, focus should remain on the trigger

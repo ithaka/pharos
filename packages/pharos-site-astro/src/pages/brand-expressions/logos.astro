@@ -1,0 +1,218 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import Grid from '@components/Grid.astro';
+import DosAndDonts from '@components/DosAndDonts.astro';
+import logoBestPracticesDonts1 from '@images/brand-expressions/logos/logo_best-practices_donts_1.svg';
+import logoBestPracticesDonts2 from '@images/brand-expressions/logos/logo_best-practices_donts_2.svg';
+import logoBestPracticesDonts3 from '@images/brand-expressions/logos/logo_best-practices_donts_3.svg';
+import logoBestPracticesDonts4 from '@images/brand-expressions/logos/logo_best-practices_donts_4.svg';
+import logoBestPracticesDonts5 from '@images/brand-expressions/logos/logo_best-practices_donts_5.svg';
+import logoBestPracticesDonts6 from '@images/brand-expressions/logos/logo_best-practices_donts_6.svg';
+import logoBestPracticesDonts7 from '@images/brand-expressions/logos/logo_best-practices_donts_7.svg';
+import logoBestPracticesDos1 from '@images/brand-expressions/logos/logo_best-practices_dos_1.svg';
+import logoBestPracticesDos2 from '@images/brand-expressions/logos/logo_best-practices_dos_2.svg';
+import logoBestPracticesDos3 from '@images/brand-expressions/logos/logo_best-practices_dos_3.svg';
+import logoBestPracticesDos4 from '@images/brand-expressions/logos/logo_best-practices_dos_4.svg';
+import logoHero from '@images/brand-expressions/logos/logo_hero.svg';
+import logoJstorHorizontal from '@images/brand-expressions/logos/logo_jstor-horizontal.svg';
+import logoJstorVertical from '@images/brand-expressions/logos/logo_jstor-vertical.svg';
+import logoKnockout from '@images/brand-expressions/logos/logo_knockout.svg';
+---
+
+<Layout title="Logos">
+  <PageSection
+    title="Logos"
+    description={`Our logo is based on turn of the century ornate bookplates. The filigree pattern is inspired by acanthus leaves; these are the same leaves that appear at the top of the Corinthian column. "JSTOR" is set in a modified Orpheus typeface.`}
+    isHeader
+  >
+    <img
+      src={logoHero.src}
+      width={logoHero.width}
+      height={logoHero.height}
+      alt="Hero logo"
+      class="logo-hero"
+    />
+  </PageSection>
+
+  <PageSection title="Logo types" moreTitleSpace>
+    <Grid columns={2}>
+      <div>
+        <site-pharos-heading level="3" preset="4">Primary Logo</site-pharos-heading>
+        <p>The vertical logo orientation should be the primary logo treatment used.</p>
+      </div>
+      <img
+        src={logoJstorVertical.src}
+        width={logoJstorVertical.width}
+        height={logoJstorVertical.height}
+        alt="Vertical logo"
+      />
+    </Grid>
+    <Grid columns={2}>
+      <div>
+        <site-pharos-heading level="3" preset="4">Secondary Logo</site-pharos-heading>
+        <p>
+          The horizontal logo orientation should be used when the logo needs to scale small or the
+          placement area is horizontal in width.
+        </p>
+      </div>
+      <img src={logoJstorHorizontal.src} alt="Horizontal logo" height="70" />
+    </Grid>
+    <Grid columns={2}>
+      <div>
+        <site-pharos-heading level="3" preset="4">Knocked out</site-pharos-heading>
+        <p>On dark backgrounds the logo should be white.</p>
+      </div>
+      <img
+        src={logoKnockout.src}
+        width={logoKnockout.width}
+        height={logoKnockout.height}
+        alt="Knocked out logo"
+      />
+    </Grid>
+  </PageSection>
+
+  <PageSection title="Principles" moreTitleSpace>
+    <Grid columns={2}>
+      <div>
+        <site-pharos-heading level="3" preset="4">Heritage</site-pharos-heading>
+        <p>Our logo is the first and primary expression.</p>
+      </div>
+      <div>
+        <site-pharos-heading level="3" preset="4">Consistent</site-pharos-heading>
+        <p>The logo should be used according to the standards outlined in this guide.</p>
+      </div>
+    </Grid>
+  </PageSection>
+
+  <PageSection title="Best Practices">
+    <DosAndDonts>
+      <Grid columns={3}>
+        <div>
+          <img
+            src={logoBestPracticesDos1.src}
+            width={logoBestPracticesDos1.width}
+            height={logoBestPracticesDos1.height}
+            alt="Logos best practice 1"
+            class="logo-variant"
+          />
+          <p>Use the primary logo whenever possible</p>
+        </div>
+        <div>
+          <img
+            src={logoBestPracticesDos2.src}
+            width={logoBestPracticesDos2.width}
+            height={logoBestPracticesDos2.height}
+            alt="Logos best practice 2"
+            class="logo-variant"
+          />
+          <p>Use the logo in red or white, no other colors</p>
+        </div>
+        <div>
+          <img
+            src={logoBestPracticesDos3.src}
+            width={logoBestPracticesDos3.width}
+            height={logoBestPracticesDos3.height}
+            alt="Logos best practice 3"
+            class="logo-variant"
+          />
+          <p>
+            The filigree and J are transparent and the "surface" they're put on can be seen through
+          </p>
+        </div>
+        <div>
+          <img
+            src={logoBestPracticesDos4.src}
+            width={logoBestPracticesDos4.width}
+            height={logoBestPracticesDos4.height}
+            alt="Logos best practice 3"
+            class="logo-variant"
+          />
+          <p>On gradient backgrounds the logo should be white</p>
+        </div>
+      </Grid>
+    </DosAndDonts>
+    <DosAndDonts dont>
+      <Grid columns={3}>
+        <div>
+          <img
+            src={logoBestPracticesDonts1.src}
+            width={logoBestPracticesDonts1.width}
+            height={logoBestPracticesDonts1.height}
+            alt="Logos don'ts 1"
+          />
+          <p>Use just the square mark</p>
+        </div>
+        <div>
+          <img
+            src={logoBestPracticesDonts2.src}
+            width={logoBestPracticesDonts2.width}
+            height={logoBestPracticesDonts2.height}
+            alt="Logos don'ts 2"
+          />
+          <p>Stretch or distort the logo</p>
+        </div>
+        <div>
+          <img
+            src={logoBestPracticesDonts3.src}
+            width={logoBestPracticesDonts3.width}
+            height={logoBestPracticesDonts3.height}
+            alt="Logos don'ts 3"
+          />
+          <p>Delete the red box around the filigree</p>
+        </div>
+        <div>
+          <img
+            src={logoBestPracticesDonts4.src}
+            width={logoBestPracticesDonts4.width}
+            height={logoBestPracticesDonts4.height}
+            alt="Logos don'ts 4"
+          />
+          <p>Use the original logo design</p>
+        </div>
+        <div>
+          <img
+            src={logoBestPracticesDonts5.src}
+            width={logoBestPracticesDonts5.width}
+            height={logoBestPracticesDonts5.height}
+            alt="Logos don'ts 5"
+          />
+          <p>Change the color of the logo, use it in JSTOR red or knocked out white only</p>
+        </div>
+        <div>
+          <img
+            src={logoBestPracticesDonts6.src}
+            width={logoBestPracticesDonts6.width}
+            height={logoBestPracticesDonts6.height}
+            alt="Logos don'ts 6"
+          />
+          <p>Use just the JSTOR words</p>
+        </div>
+        <div>
+          <img
+            src={logoBestPracticesDonts7.src}
+            width={logoBestPracticesDonts7.width}
+            height={logoBestPracticesDonts7.height}
+            alt="Logos don'ts 7"
+          />
+          <p>Put the logo on a black background</p>
+        </div>
+      </Grid>
+    </DosAndDonts>
+  </PageSection>
+</Layout>
+
+<style>
+  .logo-hero {
+    width: 100%;
+    /* Intrinsic width/height are emitted to reserve the box; height must
+       follow the aspect ratio so this width rule sizes the image. */
+    height: auto;
+  }
+
+  .logo-variant {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+</style>

@@ -1,0 +1,150 @@
+---
+/**
+ * Colour conversions are evaluated at build time, so this component ships no
+ * client JavaScript.
+ */
+import { converter, parse, formatHex, formatHsl, formatRgb } from 'culori';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import { toTitleCase } from '@lib/textConvert';
+
+interface Props {
+  filter: { key: string; value: string };
+  noLabel?: boolean;
+  hexOnlyLabel?: boolean;
+  large?: boolean;
+  colorsPerRow?: number;
+  smallSpacing?: boolean;
+}
+
+const {
+  filter,
+  large = false,
+  noLabel = false,
+  hexOnlyLabel = false,
+  colorsPerRow = 3,
+  smallSpacing = false,
+} = Astro.props;
+
+interface ColorToken {
+  value: string;
+  path: string[];
+  order: number;
+  [key: string]: unknown;
+}
+
+const colors = tokens.color as unknown as Record<string, ColorToken | Record<string, ColorToken>>;
+
+const sortItems = (a: { order: number }, b: { order: number }) => {
+  if (a.order < b.order) return -1;
+  if (a.order > b.order) return 1;
+  return 0;
+};
+
+/** Converts a CSS colour to CMYK percentages. Ported verbatim. */
+function toCMYK(color: string) {
+  const toRgb = converter('rgb');
+  const rgb = toRgb(color);
+
+  if (!rgb) {
+    throw new Error(`Invalid color format: ${color}`);
+  }
+
+  const { r, g, b } = rgb;
+
+  if (r === 0 && g === 0 && b === 0) {
+    return { mode: 'cmyk', c: 0, m: 0, y: 0, k: 1 };
+  }
+
+  let computedC = 1 - r;
+  let computedM = 1 - g;
+  let computedY = 1 - b;
+
+  const minCMY = Math.min(computedC, Math.min(computedM, computedY));
+  computedC = Math.round(((computedC - minCMY) / (1 - minCMY)) * 100);
+  computedM = Math.round(((computedM - minCMY) / (1 - minCMY)) * 100);
+  computedY = Math.round(((computedY - minCMY) / (1 - minCMY)) * 100);
+  const computedK = Math.round(minCMY * 100);
+
+  return { mode: 'cmyk', c: computedC, m: computedM, y: computedY, k: computedK };
+}
+
+const flattened = Object.keys(colors)
+  .filter((key) => key !== 'brand' && key !== 'base')
+  .map((color) => {
+    const entry = colors[color];
+    const isNested = !('value' in entry);
+    return isNested
+      ? Object.keys(entry).map((name) => (entry as Record<string, ColorToken>)[name])
+      : (entry as ColorToken);
+  });
+
+const filtered = (flattened.flat() as ColorToken[]).sort(sortItems).filter((item) => {
+  const values = (item?.[filter.key] as string | undefined)?.split(', ');
+  return values?.includes(filter.value);
+});
+
+const swatches = filtered.map((color) => {
+  const name =
+    color.path.length === 2
+      ? color.path[color.path.length - 1]
+      : color.path.slice(color.path.length - 2).join(' ');
+
+  const colorObject = parse(color.value);
+  if (!colorObject) {
+    throw new Error(`Invalid color value: ${color.value}`);
+  }
+
+  return {
+    value: color.value,
+    border: color.value === '#ffffff' ? '1px solid var(--pharos-color-marble-gray-80)' : 'none',
+    label: toTitleCase(name.replace(/ base+$/g, '').replace('-', ' ')),
+    hex: formatHex(colorObject),
+    hsl: formatHsl(colorObject),
+    rgb: formatRgb(colorObject),
+    cmyk: toCMYK(color.value),
+  };
+});
+
+const containerStyle = [
+  `grid-template-columns: repeat(${colorsPerRow}, ${large ? 'min-content' : '0.25fr'})`,
+  large ? 'column-gap: var(--pharos-spacing-5-x)' : '',
+  smallSpacing ? 'column-gap: var(--pharos-spacing-one-and-a-half-x)' : '',
+]
+  .filter(Boolean)
+  .join('; ');
+---
+
+<div class="colors-container" style={containerStyle}>
+  {
+    swatches.map((swatch) => (
+      <figure class="color-figure">
+        <div
+          class={`color-swatch${large ? ' large-swatch' : ''}`}
+          style={`background-color: ${swatch.value}; border: ${swatch.border};`}
+        />
+        {!noLabel && (
+          <figcaption class="color-label">
+            <div class="color-name">{swatch.label}</div>
+            <div>
+              <strong>Hex</strong> - {swatch.hex}
+            </div>
+            {!hexOnlyLabel && (
+              <>
+                <div>
+                  <strong>HSL</strong> - {swatch.hsl}
+                </div>
+                <div>
+                  <strong>RGB</strong> - {swatch.rgb}
+                </div>
+                <div>
+                  <strong>CMYK</strong> - cmyk(
+                  {`${swatch.cmyk.c}% ${swatch.cmyk.m}% ${swatch.cmyk.y}% ${swatch.cmyk.k}%`})
+                </div>
+              </>
+            )}
+          </figcaption>
+        )}
+      </figure>
+    ))
+  }
+</div>

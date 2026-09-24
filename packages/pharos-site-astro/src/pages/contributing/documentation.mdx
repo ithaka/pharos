@@ -1,0 +1,128 @@
+---
+layout: '@layouts/MarkdownLayout.astro'
+title: 'Contributing documentation'
+description: 'For all Pharos components and elements, contributors create useful, thorough documentation to provide an understanding of its proper usage and context.'
+---
+
+import { mdxComponents } from '@components/markdown/mdxComponents';
+
+export const components = mdxComponents;
+
+export const pdf = '/files/documentations/documentation-template.pdf';
+
+{/*
+The <site-pharos-heading level="4" preset="2"> headings below are kept as
+hand-written elements: no Markdown level maps to that pair (`####` renders
+level 4 with preset `1--bold`), so writing them as `####` would change the
+type. The `level="4" preset="1--bold"` ones are left explicit too, so the two
+tiers stay visibly distinct.
+*/}
+
+## Importance
+
+Documentation is essential to upholding quality and cohesion. Articulate and thorough documentation
+allows for users and contributors to acquire knowledge more efficiently, motivating further
+contribution and information sharing. Referring to documentation helps to reduce redundancy in
+components and features while ensuring all implemented features are being used appropriately and to
+their fullest potential.
+
+## When documentation is needed
+
+When a new component or feature is added, supporting documentation should be written to communicate
+and provide guidelines for its proper usage. Additionally, if changes are made to existing
+components that affect their usage or functionality, the documentation should reflect these changes.
+
+## Writing documentation
+
+### Getting started
+
+To get started, use the <site-pharos-link href={pdf}>documentation template</site-pharos-link> to
+ensure all needed sections are included and consistent.
+
+### Writing guidelines
+
+Please refer to the [JSTOR content style guide](/content-style-guide/voice-and-tone) to gain a
+better understanding of our collective writing style and structure. We apply our writing principles
+when creating documentation.
+
+<site-pharos-heading level="4" preset="2">Concise</site-pharos-heading>
+
+The way we write is simple and direct, and for all reading levels. It should be understandable by
+anyone regardless of their culture, language, or ability. We aim to provide the right amount of
+context so our users know how to use Pharos components or elements successfully.
+
+<site-pharos-heading level="4" preset="2">Consistent</site-pharos-heading>
+
+We use the same template for each of the components to create predictability in understanding their
+purpose, standards, and variations. We also aim to use consistent language in all documentation so
+users experience a seamless transition as they make their way through the site.
+
+<site-pharos-heading level="4" preset="2">Style</site-pharos-heading>
+
+Wherever possible, write headings and titles in sentence case — studies indicate that sentence case
+is easier to read, plus title case can come across as heavy and overly serious.
+
+### Documentation categories
+
+<site-pharos-heading level="4" preset="2">Title</site-pharos-heading>
+
+Title of the Component (singular)
+
+<site-pharos-heading level="4" preset="2">Deck</site-pharos-heading>
+
+Tweet-length description of the component and its purpose.
+
+<site-pharos-heading level="4" preset="2">Usage</site-pharos-heading>
+
+Explain the implementation of the element (e.g. orientation, placement, use cases). Indicate any
+behavior that a user would need to know that should happen when using this component in their UI.
+
+<site-pharos-heading level="4" preset="2">Best practices</site-pharos-heading>
+
+<site-pharos-heading level="4" preset="1--bold">Do's</site-pharos-heading>
+
+Explain appropriate use cases for the component, general guidelines to follow when using, and other
+considerations that should be made in the component's usage.
+
+<site-pharos-heading level="4" preset="1--bold">Don'ts</site-pharos-heading>
+
+Include common misuse cases for the component, common errors made in its usage, and other actions to
+avoid.
+
+<site-pharos-heading level="4" preset="2">Content guidelines (If applicable)</site-pharos-heading>
+
+If a component has content, please include guidelines for how the content should be written for the
+needs of the component (e.g., how labels should be written).
+
+<site-pharos-heading level="4" preset="2">Variants (If applicable)</site-pharos-heading>
+
+If a component has variants, display an example of the Pharos variant along with their title,
+purposes, and use cases (e.g. Error, Warning, Info, and Success Alerts).
+
+<site-pharos-heading level="4" preset="2">States (If applicable)</site-pharos-heading>
+
+If a component has multiple states (e.g. disabled, enabled, error, required), please include them.
+Include an example of the component in each state.
+
+<site-pharos-heading level="4" preset="2">Accessibility</site-pharos-heading>
+
+<site-pharos-heading level="4" preset="1--bold">Relevant guidelines</site-pharos-heading>
+
+Include any WCAG guidelines that are applicable to the component for reference.
+
+<site-pharos-heading level="4" preset="1--bold">Visual expectations</site-pharos-heading>
+
+If a component has any design elements that are specifically for accessibility reasons add that
+here. This section will not always appear as previous sections in the documentation may cover this
+content.
+
+<site-pharos-heading level="4" preset="1--bold">Code expectations</site-pharos-heading>
+
+Outlines any code needed to successfully implement the component. Semantic elements should be
+indicated with <code>&lt;code&gt;</code> tags for clarity. In addition, include any important points
+pertaining to implementation.
+
+<site-pharos-heading level="4" preset="1--bold">Expected actions</site-pharos-heading>
+
+Include any relevant keyboard commands and their behavior. There also needs to be a screen reader
+section, which should list what to expect audibly when interacting with a component.

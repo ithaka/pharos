@@ -1,0 +1,29 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import type { DesignToken } from '@lib/tokenFormat';
+
+const families = Object.values(tokens.font.family as Record<string, DesignToken>);
+
+const rows = families.map((token) => {
+  const style = `font-family: ${token.value}; font-size: 1.5rem; line-height: normal;`;
+  return {
+    name: token.name,
+    value: token.value,
+    examples: [
+      `<div style="${style}">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div><div style="${style}">abcdefghijklmnopqrstuvwxyz</div>`,
+    ],
+  };
+});
+---
+
+<Layout title="Font family">
+  <PageSection title="Font family" isHeader>
+    <TokenTable>
+      <TokenRows rows={rows} columnWidths={['33%', '33%', '36%']} />
+    </TokenTable>
+  </PageSection>
+</Layout>

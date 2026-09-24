@@ -1,0 +1,194 @@
+---
+title: 'Radio Group'
+description: 'Radio groups present a set of mutually exclusive radio buttons together, along with a shared legend and optional message, so users can select exactly one option within a set.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
+
+<Example storyBookType="forms" componentTitle="Radio Group">
+  <site-pharos-radio-group>
+    <span slot="legend">Radio group header</span>
+    <site-pharos-radio-button value="1">
+      <span slot="label">Radio button 1</span>
+    </site-pharos-radio-button>
+    <site-pharos-radio-button value="2">
+      <span slot="label">Radio button 2</span>
+    </site-pharos-radio-button>
+  </site-pharos-radio-group>
+</Example>
+
+## Usage
+
+The radio group component wraps a set of radio buttons in a fieldset with a shared legend. Only
+one radio button in the group can be selected at a time, and the group exposes the selected value
+along with a single validation message.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Use a radio group whenever two or more mutually exclusive options are presented
+    - Provide a concise legend that describes what the group of options represents
+    - Use when users need to see all available options at a glance
+    - Use the horizontal layout only if there are a few short options
+
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Don't use radio groups when there are either no choices or only one choice
+    - Don't display a radio group without a default selection when one is expected
+    - Don't use a radio group if the list of choices gets long—the select component may be better
+      suited
+
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+### Group legend
+
+- The legend should briefly describe what the group of radio buttons represents. This is
+  especially helpful when there are multiple groups on a page or form.
+- Use Sentence case for the group legend.
+
+### Radio button labels
+
+- Labels are descriptive and succinct. They should provide further clarity for the user.
+- Labels should not end in punctuation.
+- Avoid using negative language, as it can be counterintuitive. For example, "I want to receive a
+  promotional email" instead of "I don't want to receive promotional email."
+
+## Variants
+
+### Horizontal
+
+Use the horizontal layout when there are only a few short, related options.
+
+<Canvas>
+  <site-pharos-radio-group horizontal>
+    <span slot="legend">Radio group header</span>
+    <site-pharos-radio-button value="1">
+      <span slot="label">Radio button 1</span>
+    </site-pharos-radio-button>
+    <site-pharos-radio-button value="2">
+      <span slot="label">Radio button 2</span>
+    </site-pharos-radio-button>
+  </site-pharos-radio-group>
+</Canvas>
+
+## States
+
+### Default
+
+Indicates that the radio buttons in the group are interactable.
+
+<Canvas>
+  <site-pharos-radio-group>
+    <span slot="legend">Radio group header</span>
+    <site-pharos-radio-button value="1">
+      <span slot="label">Radio button 1</span>
+    </site-pharos-radio-button>
+    <site-pharos-radio-button value="2">
+      <span slot="label">Radio button 2</span>
+    </site-pharos-radio-button>
+  </site-pharos-radio-group>
+</Canvas>
+
+### Disabled
+
+Indicates that the group of radio buttons should not be interactable.
+
+<Canvas>
+  <site-pharos-radio-group disabled>
+    <span slot="legend">Radio group header</span>
+    <site-pharos-radio-button value="1">
+      <span slot="label">Radio button 1</span>
+    </site-pharos-radio-button>
+    <site-pharos-radio-button value="2">
+      <span slot="label">Radio button 2</span>
+    </site-pharos-radio-button>
+  </site-pharos-radio-group>
+</Canvas>
+
+### Required
+
+Indicates that the user must select an option in the group before the form can be submitted.
+
+<Canvas>
+  <site-pharos-radio-group required>
+    <span slot="legend">Radio group header</span>
+    <site-pharos-radio-button value="1">
+      <span slot="label">Radio button 1</span>
+    </site-pharos-radio-button>
+    <site-pharos-radio-button value="2">
+      <span slot="label">Radio button 2</span>
+    </site-pharos-radio-button>
+  </site-pharos-radio-group>
+</Canvas>
+
+### Error
+
+Indicates that an error occurred within the radio group.
+
+<Canvas>
+  <site-pharos-radio-group
+    required
+    invalidated
+    message="This field is required, please make a selection."
+  >
+    <span slot="legend">Radio group header</span>
+    <site-pharos-radio-button value="1">
+      <span slot="label">Radio button 1</span>
+    </site-pharos-radio-button>
+    <site-pharos-radio-button value="2">
+      <span slot="label">Radio button 2</span>
+    </site-pharos-radio-button>
+  </site-pharos-radio-group>
+</Canvas>
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [3.3.2 Labels or Instructions A](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions)
+
+### Importance
+
+Grouping related radio buttons together with a shared legend helps users, especially those using
+assistive technology, understand that the options are mutually exclusive and belong to the same
+set.
+
+### Code expectations
+
+- Provide a `fieldset` that surrounds the entire grouping of radio buttons. Also, provide a
+  `legend`, which is a description for the grouping.
+  [Here's an example.](https://www.w3.org/TR/wai-aria-practices-1.1/#naming_with_legends)
+- Some assistive technology reads the legend for each fieldset, so it should be brief and
+  descriptive to help someone using assistive technology quickly understand the question they are
+  answering with the group of radio buttons.
+- Each radio button element has a role of "radio".
+- If a radio button is checked, the element has `aria-checked` set to `true`. If it is not
+  checked, it has `aria-checked` set to `false`.
+
+### Expected actions
+
+#### Screen reader
+
+- Reads the fieldset's legend, followed by each radio button's label, checked state, and position
+  within the group (e.g., "1 of 2").
+
+#### Keyboard
+
+- <kbd>Space</kbd> checks the focused radio button, if it is not already checked.
+- <kbd>↑</kbd> / <kbd>←</kbd> move the indicator/focus to the radio button **before** the current
+  selection.
+- <kbd>↓</kbd> / <kbd>→</kbd> move the indicator/focus to the radio button **after** the current
+  selection.
+- <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> moves the focus into and out of the radio
+  group. When focus moves into a radio group:
+  - If a radio button is checked, focus is set on the checked button.
+  - If none of the radio buttons are checked, focus is set on the first radio button in the group.

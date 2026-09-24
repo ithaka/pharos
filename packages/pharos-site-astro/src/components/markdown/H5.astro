@@ -1,0 +1,8 @@
+---
+/** Markdown `#####` — see Heading.astro for the level/preset mapping. */
+import Heading from './Heading.astro';
+
+const { id, noMargin } = Astro.props;
+---
+
+<Heading depth={5} id={id} noMargin={noMargin}><slot /></Heading>

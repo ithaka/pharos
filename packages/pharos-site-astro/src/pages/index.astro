@@ -1,0 +1,211 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '@layouts/Layout.astro';
+import pharosPkg from '@ithaka/pharos/package.json';
+
+// fonts.css is imported by Layout.astro so every route gets the @font-face
+// rules, not just this one.
+import '../styles/home.css';
+import homeBrandGuidelines from '@images/homepage/home-brand-guidelines.png';
+import homeComponents from '@images/homepage/home-components.svg';
+import homeGetStarted from '@images/homepage/home-get-started.svg';
+---
+
+<Layout title="Home" fill bodyClass="home">
+  <site-pharos-layout slot="hero" preset="1-col--sidenav-comfy" row-gap="0" class="hero">
+    <h1 class="hero__heading">
+      Pharos, JSTOR's design system, guides us to create <i>cohesive, </i><i>supportive, </i> and <i
+        >beautiful</i
+      > experiences for the <i>intellectually curious</i>.
+    </h1>
+  </site-pharos-layout>
+
+  <div class="card__image">
+    <div class="thumbnail">
+      <Image src={homeBrandGuidelines} alt="Brand Guideline" />
+    </div>
+    <site-pharos-heading level="2" preset="4">Brand guidelines</site-pharos-heading>
+    <p class="description">
+      Learn more about JSTOR's visual language and brand expressions that create consistency and
+      clarity across our experiences.
+    </p>
+    <site-pharos-button
+      class="button__card"
+      variant="secondary"
+      href="/brand-expressions/color"
+      data-sc="link:logos"
+    >
+      Start with color
+    </site-pharos-button>
+  </div>
+
+  <div class="card__image">
+    <div class="thumbnail">
+      <img
+        src={homeComponents.src}
+        alt="Components"
+        width={homeComponents.width}
+        height={homeComponents.height}
+      />
+    </div>
+    <site-pharos-heading level="2" preset="4">Components</site-pharos-heading>
+    <p class="description">
+      Utilize our collection of reusable components, styles and their guidelines to build your
+      products and sites.
+    </p>
+    <site-pharos-button class="button__card" variant="secondary" href="/storybook/">
+      View components
+    </site-pharos-button>
+  </div>
+
+  <div class="card__image">
+    <div class="thumbnail">
+      <img
+        src={homeGetStarted.src}
+        alt="Get Started"
+        width={homeGetStarted.width}
+        height={homeGetStarted.height}
+      />
+    </div>
+    <site-pharos-heading level="2" preset="4">Get started</site-pharos-heading>
+    <p class="description">
+      Pharos streamlines the development and design process. Check out our resources to use Pharos
+      for your project.
+    </p>
+    <site-pharos-button
+      class="button__card"
+      variant="secondary"
+      href="/getting-started"
+      data-sc="link:getting started"
+    >
+      Get started
+    </site-pharos-button>
+  </div>
+
+  <hr />
+
+  <div class="card">
+    <div class="icon">
+      <site-pharos-icon name="new" a11y-hidden="true"></site-pharos-icon>
+    </div>
+    <site-pharos-heading level="2" preset="4">
+      What's new: Pharos {pharosPkg.version}
+    </site-pharos-heading>
+    <p class="description">
+      Upgrade to the latest version of Pharos today to explore new possibilities for your apps and
+      projects, and help maintain consistency on JSTOR.
+    </p>
+    <ul class="list">
+      <li>
+        <site-pharos-link
+          href="https://github.com/ithaka/pharos/blob/main/packages/pharos/CHANGELOG.md"
+          target="_blank"
+          data-sc="link:changelog"
+        >
+          Changelog
+        </site-pharos-link>
+      </li>
+      <li>
+        <site-pharos-link
+          href="https://pharos.jstor.org/storybooks/wc/"
+          target="_blank"
+          data-sc="link:wc storybook"
+        >
+          Web Components Storybook
+        </site-pharos-link>
+      </li>
+      <li>
+        <site-pharos-link
+          href="https://pharos.jstor.org/storybooks/react/"
+          target="_blank"
+          data-sc="link:react storybook"
+        >
+          React Components Storybook
+        </site-pharos-link>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="icon">
+      <site-pharos-icon name="question-inverse" a11y-hidden="true"></site-pharos-icon>
+    </div>
+    <site-pharos-heading level="2" preset="4">Support</site-pharos-heading>
+    <p class="description">
+      Experiencing a Pharos-related issue or just need some help? Report an issue in GitHub or get
+      in touch via Slack.
+    </p>
+    <ul class="list">
+      <li>
+        <site-pharos-link href="/help" data-sc="link:help">Help</site-pharos-link>
+      </li>
+      <li>
+        <site-pharos-link href="mailto:opensource@ithaka.org">Contact us</site-pharos-link>
+      </li>
+      <li>
+        <site-pharos-link href="https://github.com/ithaka/pharos/issues" target="_blank">
+          Report an issue
+        </site-pharos-link>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="icon">
+      <site-pharos-icon name="add" a11y-hidden="true"></site-pharos-icon>
+    </div>
+    <site-pharos-heading level="2" preset="4">Contribute to Pharos</site-pharos-heading>
+    <p class="description">
+      Interested in contributing to the design system? Pharos is the result of collective
+      contributions of code, design, and guidance, we'd love to hear your input and ideas!
+    </p>
+    <ul class="list">
+      <li>
+        <site-pharos-link
+          href="https://github.com/ithaka/pharos"
+          target="_blank"
+          data-sc="link:repo"
+        >
+          Help build Pharos
+        </site-pharos-link>
+      </li>
+      <li>
+        <site-pharos-link
+          href="https://github.com/ithaka/pharos/blob/main/docs/README.md"
+          target="_blank"
+          data-sc="link:contribution guidelines"
+        >
+          See the contribution guidelines
+        </site-pharos-link>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="icon">
+      <site-pharos-icon name="workspace" a11y-hidden="true"></site-pharos-icon>
+    </div>
+    <div class="container__heading">
+      <site-pharos-heading level="2" preset="4" no-margin>
+        Work with us at ITHAKA
+      </site-pharos-heading>
+      <strong class="badge">We're hiring!</strong>
+    </div>
+    <p class="description">
+      JSTOR is part of ITHAKA, a not-for-profit dedicated to expanding access to knowledge and
+      education worldwide. Our staff makes us who we are. We're hiring — join us!
+    </p>
+    <ul class="list">
+      <li>
+        <site-pharos-link href="https://www.ithaka.org/careers/" target="_blank">
+          See career opportunities
+        </site-pharos-link>
+      </li>
+      <li>
+        <site-pharos-link href="https://www.ithaka.org/" target="_blank">
+          Learn more about ITHAKA
+        </site-pharos-link>
+      </li>
+    </ul>
+  </div>
+</Layout>
