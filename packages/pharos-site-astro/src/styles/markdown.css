@@ -65,18 +65,11 @@
 .md-heading + .md-heading {
   margin-top: 0;
 }
-
 /*
- * The first heading in the body still needs its gap: the page title and lede
- * sit above `.md-body`, so this is not the top of the page.
- *
- * It takes the full 112px, not the difference between that and the lede's own
- * 48px bottom margin. The lede and the heading are in separate parents, and
- * `.md-body` establishes the boundary, so the two margins collapse to the
- * larger rather than adding — 48px of the gap comes free.
- */
-.md-body > .md-heading:first-child {
-  margin-top: var(--pharos-spacing-7-x);
+* Reset the top heading if there is body content right after the page title.
+*/
+.md-heading--1 + .md-body > .md-heading:first-child {
+  margin-top: 0;
 }
 
 /*
