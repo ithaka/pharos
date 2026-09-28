@@ -5,8 +5,18 @@ description: 'Toggle button groups present related actions together to allow the
 
 import Example from '@components/markdown/Example.astro';
 import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
 
-<Example storyBookType="components" componentTitle="Toggle Button Group" />
+<Example storyBookType="components" componentTitle="Toggle Button Group">
+  <site-pharos-toggle-button-group>
+    <site-pharos-toggle-button id="example-gallery-button" icon-left="view-gallery">
+      Gallery
+    </site-pharos-toggle-button>
+    <site-pharos-toggle-button id="example-list-button" icon-left="view-list">
+      List
+    </site-pharos-toggle-button>
+  </site-pharos-toggle-button-group>
+</Example>
 
 ## Usage
 
@@ -61,28 +71,34 @@ Indicates that the user is unable to interact with the button.
 
 ### Icon + Text
 
-<site-pharos-toggle-button-group>
-  <site-pharos-toggle-button id="gallery-mode-button" icon-left="view-gallery">
-    Gallery
-  </site-pharos-toggle-button>
-  <site-pharos-toggle-button id="list-mode-button" icon-left="view-list">
-    List
-  </site-pharos-toggle-button>
-</site-pharos-toggle-button-group>
+<Canvas>
+  <site-pharos-toggle-button-group>
+    <site-pharos-toggle-button id="icon-text-gallery-button" icon-left="view-gallery">
+      Gallery
+    </site-pharos-toggle-button>
+    <site-pharos-toggle-button id="icon-text-list-button" icon-left="view-list">
+      List
+    </site-pharos-toggle-button>
+  </site-pharos-toggle-button-group>
+</Canvas>
 
 ### Text only
 
-<site-pharos-toggle-button-group>
-  <site-pharos-toggle-button id="gallery-mode-button">Gallery</site-pharos-toggle-button>
-  <site-pharos-toggle-button id="list-mode-button">List</site-pharos-toggle-button>
-</site-pharos-toggle-button-group>
+<Canvas>
+  <site-pharos-toggle-button-group>
+    <site-pharos-toggle-button id="text-only-gallery-button">Gallery</site-pharos-toggle-button>
+    <site-pharos-toggle-button id="text-only-list-button">List</site-pharos-toggle-button>
+  </site-pharos-toggle-button-group>
+</Canvas>
 
 ### Icon only
 
-<site-pharos-toggle-button-group>
-  <site-pharos-toggle-button id="gallery-mode-button" icon-left="view-gallery"></site-pharos-toggle-button>
-  <site-pharos-toggle-button id="list-mode-button" icon-left="view-list"></site-pharos-toggle-button>
-</site-pharos-toggle-button-group>
+<Canvas>
+  <site-pharos-toggle-button-group>
+    <site-pharos-toggle-button id="icon-only-gallery-button" icon-left="view-gallery"></site-pharos-toggle-button>
+    <site-pharos-toggle-button id="icon-only-list-button" icon-left="view-list"></site-pharos-toggle-button>
+  </site-pharos-toggle-button-group>
+</Canvas>
 
 ## Accessibility
 
