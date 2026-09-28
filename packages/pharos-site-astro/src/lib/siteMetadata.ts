@@ -2,7 +2,7 @@ export const siteMetadata = {
   title: 'Pharos',
   subtitle: `JSTOR's Design System`,
   description:
-    'The Pharos design system is our guiding light toward creating cohesive, supportive, and beautiful experiences for the intellectually curious.',
+    `Pharos is JSTOR's design system, which guides us in creating cohesive, supportive, and beautiful experiences for researchers, educators, and students.`,
   author: '@jstor',
   image: {
     path: '/images/pharos-orb.png',
