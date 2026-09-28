@@ -101,9 +101,16 @@ const rowGap = fill ? 'var(--pharos-spacing-5-x)' : '0';
         var MOBILE_BREAKPOINT = 1055;
         var sidenav = document.getElementById('site-sidenav');
         var toggle = document.getElementById('sidenav-toggle');
+        var wasMobile;
 
         function apply() {
           var isMobile = window.innerWidth < MOBILE_BREAKPOINT;
+          if (isMobile === wasMobile) {
+            // Don't close an open sidenav when the breakpoint hasn't changed,
+            // like rotating the device or resizing the window slightly on mobile.
+            return;
+          }
+          wasMobile = isMobile;
           if (toggle) {
             toggle.style.display = isMobile ? 'block' : 'none';
             toggle.style.paddingTop = 'var(--pharos-spacing-2-x)';
