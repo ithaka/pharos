@@ -5,6 +5,7 @@ description: 'Headers are generally used as a container for introductory content
 
 import Example from '@components/markdown/Example.astro';
 import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
 import jstorLogo from '@images/jstor-logo.svg';
 
 <Example storyBookType="organisms" componentTitle="Header">
@@ -80,11 +81,13 @@ The Pharos Header provides three slots that removes some of the intricacies of l
       and navigation elements: start, center and end. The three slots correspond to the first, second
       and third column of the header, as shown below.
 
-<site-pharos-header>
-  <div slot="start">start</div>
-  <div slot="center">center</div>
-  <div slot="end-bottom">end</div>
-</site-pharos-header>
+<Canvas>
+  <site-pharos-header>
+    <div slot="start">start</div>
+    <div slot="center">center</div>
+    <div slot="end-bottom">end</div>
+  </site-pharos-header>
+</Canvas>
 
 ## Best practices
 

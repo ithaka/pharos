@@ -5,6 +5,7 @@ description: 'The progress bar visually represents progress of a particular proc
 
 import Example from '@components/markdown/Example.astro';
 import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
 
 <Example storyBookType="components" componentTitle="Progress Bar">
   <site-pharos-progress-bar value="75">
@@ -48,22 +49,24 @@ or uploading files or when a process time can be calculated and takes longer tha
 
 ## States
 
-<site-pharos-progress-bar value="25">
-  <div slot="title">Title.xls</div>
-  <div slot="description">Processing</div>
-</site-pharos-progress-bar>
-<site-pharos-progress-bar value="50">
-  <div slot="title">Title.xls</div>
-  <div slot="description">Extracting headers...</div>
-</site-pharos-progress-bar>
-<site-pharos-progress-bar value="75">
-  <div slot="title">Title.xls</div>
-  <div slot="description">Mapping your fields...</div>
-</site-pharos-progress-bar>
-<site-pharos-progress-bar value="100">
-  <div slot="title">Title.xls</div>
-  <div slot="description">Done!</div>
-</site-pharos-progress-bar>
+<Canvas>
+  <site-pharos-progress-bar value="25">
+    <div slot="title">Title.xls</div>
+    <div slot="description">Processing</div>
+  </site-pharos-progress-bar>
+  <site-pharos-progress-bar value="50">
+    <div slot="title">Title.xls</div>
+    <div slot="description">Extracting headers...</div>
+  </site-pharos-progress-bar>
+  <site-pharos-progress-bar value="75">
+    <div slot="title">Title.xls</div>
+    <div slot="description">Mapping your fields...</div>
+  </site-pharos-progress-bar>
+  <site-pharos-progress-bar value="100">
+    <div slot="title">Title.xls</div>
+    <div slot="description">Done!</div>
+  </site-pharos-progress-bar>
+</Canvas>
 
 ## Variants
 
@@ -73,13 +76,17 @@ processes are unknown.
 
 ### File Name only
 
-<site-pharos-progress-bar value="100">
-  <div slot="title">Title.xls</div>
-</site-pharos-progress-bar>
+<Canvas>
+  <site-pharos-progress-bar value="100">
+    <div slot="title">Title.xls</div>
+  </site-pharos-progress-bar>
+</Canvas>
 
 ### No Title
 
-<site-pharos-progress-bar value="100"></site-pharos-progress-bar>
+<Canvas>
+  <site-pharos-progress-bar value="100"></site-pharos-progress-bar>
+</Canvas>
 
 ## Accessibility
 
