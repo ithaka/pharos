@@ -13,8 +13,6 @@ packages/**/package-lock.json
 packages/pharos-site/public/
 packages/pharos-site/.cache/
 packages/pharos-site-astro/.astro/
-# Temporarily exclude while we see if these files are needed on the new site
-packages/pharos-site-astro/public/files/**/*.zip
 react-components/
 packages/pharos/src/styles/**/*.ts
 packages/pharos/src/styles/_variables.scss
