@@ -28,6 +28,7 @@
 .md-heading + .md-heading {
   margin-top: 0;
 }
+
 /* No section gap on the first heading after the page title. */
 .md-heading--1 + .md-body > .md-heading:first-child {
   margin-top: 0;
