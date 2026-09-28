@@ -1,10 +1,7 @@
 ---
 /**
- * Renders a Markdown link as a Pharos link, so `[text](url)` in a page gives
- * the same element the hand-written pages spelled as `<site-pharos-link>`.
- *
- * Off-site links open in a new tab, which is what the `.astro` pages did by
- * hand with `target="_blank"`. Anything starting `/`, `#` or `.` is internal.
+ * Renders a Markdown link as a `<site-pharos-link>`. Off-site links open in a
+ * new tab; anything starting `/`, `#` or `.` counts as internal.
  */
 interface Props {
   href?: string;

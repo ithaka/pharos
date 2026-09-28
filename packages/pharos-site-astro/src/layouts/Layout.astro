@@ -4,10 +4,9 @@ import BaseHead from '@components/BaseHead.astro';
 import Sidenav from '@components/Sidenav.astro';
 import Footer from '@components/Footer.astro';
 
-// The @font-face rules live here because Astro scopes CSS per page, so
-// importing them from one page leaves every other route in the fallback font.
-// `undefined-elements.css` must come first: it hides custom elements until they
-// register, avoiding a flash of unstyled content.
+// Astro scopes CSS per page, so the @font-face rules are imported here to reach
+// every route. `undefined-elements.css` must come first: it hides custom
+// elements until they register, avoiding a flash of unstyled content.
 import '../styles/undefined-elements.css';
 import '@ithaka/pharos/lib/styles/fonts.css';
 import '../styles/fonts-site.css';
@@ -25,10 +24,7 @@ interface Props {
   /** Page title, used for the document title. Defaults to the derived page name. */
   title?: string;
   description?: string;
-  /**
-   * When true the page content spans the full grid (used by the homepage for
-   * its edge-to-edge hero).
-   */
+  /** Spans the page content across the full grid, for the homepage hero. */
   fill?: boolean;
   /** Extra class applied to <body>, used to scope page-specific styles. */
   bodyClass?: string;
@@ -100,7 +96,7 @@ const rowGap = fill ? 'var(--pharos-spacing-5-x)' : '0';
 
     <script is:inline>
       // Viewport width decides whether the sidenav is open and whether the menu
-      // button and its close button show. Applied directly to the DOM.
+      // and close buttons show.
       (function () {
         var MOBILE_BREAKPOINT = 1055;
         var sidenav = document.getElementById('site-sidenav');

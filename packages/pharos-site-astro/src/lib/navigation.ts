@@ -1,7 +1,4 @@
-/**
- * The site navigation. Order is significant — it is the order links appear in
- * the sidenav.
- */
+/** The site navigation. Order here is the order links appear in the sidenav. */
 
 export const contributingPages = ['Documentation', 'Development'] as const;
 

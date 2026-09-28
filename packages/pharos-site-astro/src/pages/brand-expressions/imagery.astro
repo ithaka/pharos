@@ -22,10 +22,6 @@ import brand3 from '@images/brand-expressions/imagery/imagery_brand_3.png';
 import brand4 from '@images/brand-expressions/imagery/imagery_brand_4.png';
 import brand5 from '@images/brand-expressions/imagery/imagery_brand_5.png';
 
-/**
- * The thumbnail rows. Each image is displayed at `.thumb`'s 124px, so the
- * widths below cover 1x and 2x on that box rather than the source's 272px.
- */
 const THUMB_WIDTHS = [124, 248];
 
 const artstor = [artstor1, artstor2, artstor3, artstor4, artstor5];
@@ -176,8 +172,7 @@ const brand = [brand1, brand2, brand3, brand4, brand5];
   .thumb {
     max-width: 124px;
     /* `<Image>` emits intrinsic width/height to reserve layout space; without
-       this the explicit height attribute wins over the aspect ratio and the
-       thumbnails render at full height. */
+       this its height attribute wins over the aspect ratio. */
     height: auto;
   }
 

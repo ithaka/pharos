@@ -299,8 +299,8 @@ import xHeight from '@images/brand-expressions/typography/x-height.svg';
 
   .principle-figure {
     width: 100%;
-    /* Intrinsic width/height are emitted to reserve the box; height must
-       follow the aspect ratio so this width rule sizes the image. */
+    /* Intrinsic width/height reserve the box; height must follow the aspect
+       ratio for the width rule above to size the image. */
     height: auto;
   }
 
@@ -324,12 +324,9 @@ import xHeight from '@images/brand-expressions/typography/x-height.svg';
     height: auto;
   }
   /*
-   * A heading inside a best-practice block labels the sample beneath it. Pharos
-   * deliberately sets no top margin on a heading (that is page layout, not a
-   * component concern), so the gap is supplied here once rather than as a class
-   * repeated on each heading.
-   *
-   * Excluded where a paragraph follows: that paragraph carries its own spacing.
+   * A heading in a best-practice block labels the sample beneath it.
+   * Excluded where a paragraph follows, since that paragraph handles spacing
+  
    */
   .best-practice site-pharos-heading:not(:has(+ p)) {
     margin-bottom: var(--pharos-spacing-1-x);

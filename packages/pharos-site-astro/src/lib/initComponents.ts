@@ -1,11 +1,8 @@
 import '@webcomponents/scoped-custom-element-registry';
-// @ts-ignore - import is valid at build and runtime, where Vite resolves it against the built package.
+// @ts-ignore - Vite resolves this against the built package at build and runtime.
 import * as pharos from '@ithaka/pharos/lib/index';
 import type { LitElement } from 'lit';
 
-/**
- * The Pharos component exports to register, by export name.
- */
 const COMPONENT_NAMES = [
   'PharosAlert',
   'PharosBreadcrumb',
@@ -86,9 +83,9 @@ const registerPharosComponents = (): void => {
       continue;
     }
 
-    // `data-pharos-component` is a styling hook (see global.scss) that Pharos
-    // stamps from the class `name`, so it is set from the export name here for
-    // the same minification reason the tag name is.
+    // `data-pharos-component` is a styling hook (see global.scss) Pharos stamps
+    // from the class `name`; set from the export name so minification cannot
+    // change it.
     customElements.define(
       tagName,
       class extends component {

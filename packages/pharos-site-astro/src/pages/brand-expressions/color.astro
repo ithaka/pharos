@@ -368,28 +368,10 @@ const redCircle =
 </Layout>
 
 <style>
-  /*
-   * Page-specific layout, scoped to this page.
-   *
-   * The spacing here is named for what the block *is*, not what it measures.
-   * The page alternates a block of guidance (a heading plus prose) with the
-   * specimen it describes, and the two take different gaps: guidance sits close
-   * to the thing it explains, specimens are separated from the next section.
-   */
   .guidance {
     margin-bottom: var(--pharos-spacing-1-x);
   }
 
-  /*
-   * The don't-column runs slightly looser than the do-column, and its specimens
-   * looser still. Left as-is rather than unified — matching them is a design
-   * decision, not a refactor.
-   *
-   * Marked with an explicit modifier rather than inferred from the surrounding
-   * `DosAndDonts`: Astro scopes each component's styles with its own
-   * `data-astro-cid`, so a descendant selector written here does not reach
-   * markup that component renders.
-   */
   .guidance--dont {
     margin-bottom: var(--pharos-spacing-one-and-a-half-x);
   }

@@ -45,17 +45,14 @@ const isPharosElement = (node: unknown): boolean =>
 
 const isUnwrapTarget = (node: unknown): boolean => isPharosElement(node);
 
-/**
- * The demo containers, whose whole subtree is markup, so no bare `<p>` should be injected
- */
+/** Example containers whose whole subtree is markup, so no bare `<p>` should be added. */
 const DEMO_CONTAINERS = new Set(['Example', 'Canvas']);
 
 const isDemoContainer = (node: unknown): boolean =>
   isMdxJsx(node) && typeof node.name === 'string' && DEMO_CONTAINERS.has(node.name);
 
 /**
- * Replaces every bare paragraph in a subtree with its own children, however
- * deep and however many siblings it has. Only used under a demo container.
+ * Replaces every bare paragraph in a subtree with its own children, at any v
  */
 const stripParagraphs = (node: Parent): void => {
   const children = (node as { children?: RootContent[] }).children;

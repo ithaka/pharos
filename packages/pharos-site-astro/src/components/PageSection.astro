@@ -2,9 +2,8 @@
 import ComponentExample from '@components/ComponentExample.astro';
 
 /*
- * Sub-section headings are `markdown/Heading.astro`'s job — it maps `###`,
- * `####` and `#####` to their own level and preset. This component covers only
- * the top-level section heading, so it takes no nesting depth.
+ * Top-level section headings only, so there is no nesting depth to pass.
+ * Sub-section headings are `markdown/Heading.astro`'s job.
  */
 interface Props {
   title: string;
@@ -34,10 +33,7 @@ const descriptionClass = isHeader ? 'section__description--is-header' : 'section
     </site-pharos-heading>
   </div>
   {
-    /*
-     * Plain text comes through the `description` prop; richer markup (links,
-     * inline code) uses the `description` slot instead.
-     */
+    /* Plain text uses the `description` prop, richer markup uses the description slot. */
     (description || Astro.slots.has('description')) && (
       <div class={descriptionClass}>
         {description}

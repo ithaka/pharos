@@ -1,10 +1,7 @@
 import nightOwl from '@shikijs/themes/night-owl';
 import type { ThemeRegistration } from 'shiki';
 
-/**
- * The `night-owl` theme with import/export keywords restyled to match the legacy  site's
- * code blocks
- */
+/** `night-owl`, with import/export keywords restyled */
 const KEYWORDS = ['import', 'export', 'from', 'as', 'default'];
 const LANGUAGES = ['tsx', 'ts', 'js', 'jsx', 'html'];
 
@@ -22,10 +19,8 @@ const codeTheme: ThemeRegistration = {
         foreground: '#7fdbca',
       },
     },
-    /*
-     * Shell snippets (`yarn add @ithaka/pharos`) are highlighted as TSX, 
-     * These restore the intended decorator colouring.
-     */
+    // Shell snippets (`yarn add @ithaka/pharos`) are highlighted as TSX; these
+    // restore the intended decorator colouring.
     {
       scope: LANGUAGES.flatMap((lang) => [
         `punctuation.decorator.${lang}`,
@@ -43,9 +38,7 @@ const codeTheme: ThemeRegistration = {
         foreground: '#82aaff',
       },
     },
-    /*
-     * Markup snippets, also highlighted as TSX rather than HTML
-     */
+    // Markup snippets, also highlighted as TSX rather than HTML.
     {
       scope: LANGUAGES.flatMap((lang) => [
         `punctuation.definition.tag.begin.${lang}`,

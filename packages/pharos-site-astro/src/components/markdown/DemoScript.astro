@@ -2,13 +2,12 @@
 /**
  * Wraps a page's demo `<script>` so it survives MDX, which parses a bare script
  * block as JSX — any `{` starts an expression it cannot finish — and does not
- * transpile TypeScript. Passing the code as a string sidesteps both.
+ * transpile TypeScript. Passing the code as a string sidesteps both, so write
+ * plain JavaScript in it.
  *
  *     <DemoScript code={`
  *       document.getElementById('x')?.addEventListener('click', () => {});
  *     `} />
- *
- * Write plain JavaScript in that string — no TypeScript.
  */
 interface Props {
   /** JavaScript source, emitted verbatim inside a `<script>`. */

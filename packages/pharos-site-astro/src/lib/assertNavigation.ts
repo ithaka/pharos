@@ -1,9 +1,6 @@
 /**
  * Build-time consistency check between `navigation.ts` and the site's pages —
  * both the routes under `src/pages` and the entries of each content collection.
- * A nav entry with no page would link to a 404; a page absent from the nav is
- * reachable only by direct URL. Both are build failures here.
-
  */
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
@@ -19,9 +16,9 @@ import {
 } from './navigation';
 
 /**
- * Resolved from the working directory, not `import.meta.url`: this module is
- * bundled into `dist/.prerender/` before it runs, so a self-relative URL points
- * at the build output. Both `astro build` and `astro dev` run from the root.
+ * From the working directory, not `import.meta.url`: this module is bundled into
+ * `dist/.prerender/` before it runs, so a self-relative URL would point at the
+ * build output. Both `astro build` and `astro dev` run from the package root.
  */
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
 
@@ -59,11 +56,8 @@ const collectPageHrefs = (dir = PAGES_DIR, prefix = ''): string[] =>
       return [];
     }
     const base = entry.name.replace(/\.(astro|mdx)$/, '');
-    /*
-     * A `[...slug]` route renders a collection rather than being a page itself;
-     * its entries come from `collectCollectionHrefs`. Counting the route file
-     * would add a literal `/components/[...slug]` href nothing can match.
-     */
+    // A `[...slug]` route is not a page itself; its entries come from
+    // `collectCollectionHrefs`.
     if (base.startsWith('[')) {
       return [];
     }
@@ -72,8 +66,8 @@ const collectPageHrefs = (dir = PAGES_DIR, prefix = ''): string[] =>
 
 /**
  * Every collection entry, as the href its `[...slug]` route renders it at.
- * Separate from `collectPageHrefs` because the mapping differs: a page's href
- * follows its path on disk, an entry's is its slug appended to its route.
+ * Separate from `collectPageHrefs`: a page's href follows its path on disk, an
+ * entry's is its slug appended to its route.
  */
 const collectCollectionHrefs = (): string[] =>
   Object.entries(collectionRoots).flatMap(([dir, root]) =>

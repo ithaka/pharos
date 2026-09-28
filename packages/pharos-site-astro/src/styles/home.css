@@ -1,16 +1,9 @@
 /*
- * Home page styles.
- *
- * The @font-face blocks sit in fonts-site.css, which the shared layout imports,
- * rather than here: pages such as /brand-expressions/typography rely on them,
- * so they must not be scoped to this one page.
+ * Home page styles. The @font-face blocks live in fonts-site.css, which the
+ * shared layout imports, because other pages rely on them too.
  */
 
 .home .hero {
-  /*
-   * The hero is rendered just above the fill layout rather than inside it, so
-   * it spans the main column naturally and needs no grid placement.
-   */
   background: linear-gradient(
     to right bottom,
     var(--pharos-color-night-blue-base) 55%,

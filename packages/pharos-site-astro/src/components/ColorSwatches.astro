@@ -1,8 +1,5 @@
 ---
-/**
- * Colour conversions are evaluated at build time, so this component ships no
- * client JavaScript.
- */
+/** Colour conversions run at build time. */
 import { converter, parse, formatHex, formatHsl, formatRgb } from 'culori';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import { toTitleCase } from '@lib/textConvert';

@@ -1,8 +1,5 @@
 ---
-/**
- * The diagonal line is sized from the rendered content, so the measurement runs
- * in a small client-side script.
- */
+/** The diagonal is sized from rendered content, so it is measured client-side. */
 ---
 
 <div class="cross-out">
@@ -39,7 +36,7 @@
       .forEach((el) => CrossOutElement.measure(el));
 
   measureAll();
-  // Re-measure once webfonts land, since they change the content's size.
+  // Webfonts change the content's size, so re-measure once they land.
   document.fonts?.ready.then(measureAll);
   window.addEventListener('resize', measureAll);
 </script>

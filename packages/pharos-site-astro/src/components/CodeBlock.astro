@@ -1,8 +1,5 @@
 ---
-/**
- * Syntax highlighting runs at build time through Shiki, using its `nightOwl`
- * theme, so no highlighting JavaScript ships to the client.
- */
+/** Shiki highlights at build time, so no highlighting JavaScript ships. */
 import { Code } from 'astro:components';
 import codeTheme from '@lib/codeTheme';
 
@@ -22,9 +19,9 @@ const { code, language = 'tsx' } = Astro.props;
 />
 
 <style is:global>
-  /* Shiki nests the lines inside a <code>, which the user agent resets to
-   * `monospace`, so the font set on the <pre>
-   * never reaches the text — and monospace wraps lines that otherwise fit. */
+  /* Shiki nests the lines in a <code>, which the user agent resets to
+   * `monospace`, so the <pre>'s font never reaches the text — and monospace
+   * wraps lines that otherwise fit. */
   .astro-code code {
     font-family: inherit;
   }

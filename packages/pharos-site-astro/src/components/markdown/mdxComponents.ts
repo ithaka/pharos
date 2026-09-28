@@ -1,6 +1,6 @@
 /**
- * The element map handed to MDX so plain Markdown renders as Pharos elements:
- * substitution replaces the HTML tags t. See
+ * The element map handed to MDX, substituting Pharos elements for the HTML tags
+ * plain Markdown would emit. See
  * https://docs.astro.build/en/guides/integrations-guide/mdx/#custom-components-with-imported-mdx
  */
 import H1 from './H1.astro';

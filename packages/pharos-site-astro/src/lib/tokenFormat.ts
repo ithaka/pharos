@@ -13,16 +13,12 @@ export interface DesignToken {
   original: { value: string };
 }
 
-/**
- * A token carrying a human-readable `comment` .
- */
+/** A token that may carry a human-readable `comment`. */
 export interface CommentedToken extends DesignToken {
   comment?: string;
 }
 
-/**
- * A token whose `comment` is always present 
- */
+/** A token whose `comment` is always present. */
 export interface ScaleToken extends DesignToken {
   comment: string;
 }

@@ -1,8 +1,6 @@
 /**
- * Content collections.
- *
- * `components` holds the 32 component reference pages
- * `src/pages/components/[...slug].astro` renders them.
+ * Content collections. `components` holds the component reference pages, which
+ * `src/pages/components/[...slug].astro` renders.
  */
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';

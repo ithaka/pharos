@@ -1,19 +1,17 @@
 ---
 /**
  * The live demo and Storybook link that opens a component page, for use from
- * MDX.
+ * MDX. `componentTitle` builds the Storybook URL and defaults to the page title.
  *
  *     <Example storyBookType="forms">
  *       <site-pharos-checkbox>...</site-pharos-checkbox>
  *     </Example>
- *
- * `componentTitle` builds the Storybook URL and defaults to the page title.
  */
 import ComponentExample from '@components/ComponentExample.astro';
 
 interface Props {
   storyBookType: string;
-  componentTitle: string;
+  componentTitle: string; // builds the Storybook URL and defaults to the page title
 }
 
 const { storyBookType, componentTitle } = Astro.props;

@@ -7,9 +7,8 @@ import tokens from '@ithaka/pharos/lib/styles/tokens';
 import type { CommentedToken } from '@lib/tokenFormat';
 
 /**
- * Example font size per row, keyed by token name. Keyed rather than positional
- * so that adding, removing or reordering a line-height token cannot silently
- * shift every row onto the wrong font size.
+ * Example font size per row, keyed by token name rather than position so that
+ * reordering the tokens cannot silently shift rows onto the wrong size.
  */
 const fontSizeMap: Record<string, number> = {
   xsmall: 12,

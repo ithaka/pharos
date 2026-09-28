@@ -7,17 +7,13 @@ dist/
 .storybook-static/
 coverage/
 lib/
-# `lib/` above targets compiled build output, but is unanchored, so it also
-# swallowed the Astro site's hand-written src/lib/ — leaving that source
-# untracked and the package unbuildable from a fresh clone.
+# Preserve Astro site's src/lib/.
 !packages/pharos-site-astro/src/lib/
 packages/**/package-lock.json
 packages/pharos-site/public/
 packages/pharos-site/.cache/
 packages/pharos-site-astro/.astro/
-# Brand-asset archives carried over from the Gatsby site's static/ directory.
-# Nothing in the source or the built HTML links to them, so they are kept out of
-# git history here rather than duplicating the ~7.4MB the Gatsby package tracks.
+# Temporarily exclude while we see if these files are needed on the new site
 packages/pharos-site-astro/public/files/**/*.zip
 react-components/
 packages/pharos/src/styles/**/*.ts

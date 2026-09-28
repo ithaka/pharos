@@ -21,22 +21,18 @@ export default defineConfig({
     processor: unified({
       // disable GitHub Flavored Markdown to prevent links in examples being double linked
       gfm: false,
-      // Smartypants would rewrite straight quotes and dashes into typographic
-      // ones ("they're" -> "they’re"), changing the copy, so it stays off.
+      // Smartypants would rewrite straight quotes and dashes into typographic ones 
       smartypants: false,
-      // Drops the `<p>` CommonMark puts around a Pharos element's content, so
-      // examples render correctly
       rehypePlugins: [rehypeUnwrapPharosParagraphs],
     }),
   },
   vite: {
-    // An empty inline PostCSS config, which stops Vite searching the parent
-    // directories and finding the repo root's `postcss.config.js which errors here
+    // An empty inline config stops Vite searching upwards and finding the repo
+    // root's `postcss.config.js`, which errors here.
     css: { postcss: {} },
 
-    // Pharos stamps `data-pharos-component` from `constructor.name` and styles
-    // itself through it (`[data-pharos-component="PharosIcon"]`). Mangling that
-    // name unmatches the selector and breaks the styles
+    // Pharos uses `data-pharos-component` from `constructor.name` for styling, so mangling
+    // the name breaks some css  selectors
     esbuild: {
       keepNames: true,
     },
@@ -52,14 +48,12 @@ export default defineConfig({
       },
     },
     ssr: {
-      // Pharos ships Lit-based custom elements that must not be externalized,
-      // otherwise `customElements` is touched during SSR.
+      // Externalized, Pharos' Lit elements interact with `customElements` during SSR.
       //
       // `cookie` is bundled because Astro's prerender entry imports it from
-      // `dist/`, which sits outside this workspace's `node_modules`. Left
-      // external, Node resolves the older CommonJS `cookie` hoisted to the repo
-      // root by Gatsby/express instead of the ESM v2 copy Astro requires, and
-      // the build fails on the missing `parseCookie` named export.
+      // `dist/`, outside this workspace's `node_modules`. Left external, Node
+      // resolves the CommonJS copy hoisted to the repo root instead of the ESM
+      // v2 one Astro needs, and the build fails on a missing `parseCookie`.
       noExternal: ['@ithaka/pharos', 'cookie'],
     },
   },
