@@ -65,7 +65,8 @@ Run from the repo root:
 
 A few principles run through the code:
 
-- **Pages use the Pharos web components** (`<site-pharos-button>`) whenever possible
+- **Pages use the Pharos web components** (`<site-pharos-button>`) wherever
+  possible, rather than custom markup.
 - **Every page is a static document.** Links are ordinary anchors; there is no
   client-side routing.
 - **Data comes from imports.** Site metadata lives in `src/lib/siteMetadata.ts`,
@@ -85,7 +86,7 @@ A few principles run through the code:
    sidenav. The order there is the order links appear. An entry's name becomes
    its URL slug (lowercased, spaces to hyphens, punctuation removed), so
    `'Checkbox group'` must match `checkbox-group.mdx`.
-3. Run `yarn site-astro:build` to verify the site builds correctly or run the development server with `yarn site-astro:dev` to preview it locally.
+3. Preview the page with `yarn site-astro:develop`, and check the full build with `yarn site-astro:build`.
 4. Open a [pull request](https://github.com/ithaka/pharos/pulls) with the
    change.
 
@@ -100,10 +101,10 @@ It is possible to create `.astro` pages, but they are kept for things which
 require custom layouts or special handling:
 
 - The home page
-- The design token pages (which generate their tables from the token data)
-- The brand expression pages.
+- The design token pages
+- The brand expression pages
 
-Using MDX helps keeps the content accessible for contributors who are not familiar with HTML, as well as ensuring consistent styling and behavior across the site.
+Using MDX helps keep the content accessible for contributors who are not familiar with HTML, as well as ensuring consistent styling and behavior across the site.
 
 Start a new `.mdx` page under `src/pages/` with this:
 
@@ -136,7 +137,7 @@ entry's own `export const components` is ignored.
 
 ### Using components
 
-Pharos elements (`<site-pharos-button>`, `<site-pharos-link>) are
+Pharos elements (`<site-pharos-button>`, `<site-pharos-link>`) are
 registered for the whole site, so you can use them directly with no import.
 Any other components need to be imported at the top of each page that uses them:
 
@@ -155,7 +156,7 @@ Put every live demo inside an `<Example>` or a `<Canvas>`:
 - `<Example>` renders a live demo with a link to the component's Storybook
   page. It usually opens a component page, in the body above the first `##`.
   `storyBookType` is the Storybook section (`components`, `forms` or
-  `organisms`), and `componentTitle` is the story's title.
+  `organisms`), and `componentTitle` is the component's name, which becomes part of the Storybook URL.
 - `<Canvas>` renders a live demo with no Storybook link, and can go anywhere.
 
 ```mdx
@@ -198,8 +199,7 @@ than `<ul><li>`:
 </BestPractices>
 ```
 
-Either slot may be omitted and that column is left out. Slot content can span
-several lines; a CSS rule removes the margin from the paragraph MDX wraps it in.
+Either slot may be omitted and that column is left out.
 
 #### CodeBlock
 
@@ -238,8 +238,9 @@ transpile TypeScript. Pass plain JavaScript as a string:
   `site-pharos-*` element. Any other tag keeps it, so keep that tag's content on
   one line.
 - **Don't write a bare `<script>`.** Use [`<DemoScript>`](#demoscript).
-- **Don't use GitHub Flavored Markdown.** It's turned off, so Markdown tables,
-  strikethrough and task lists don't render. Write tables in HTML.
+- **Don't use Markdown tables, strikethrough or task lists.** They come from
+  GitHub Flavored Markdown, which is
+  [turned off](#how-markdown-is-processed).
 
 ### How Markdown is processed
 
@@ -259,9 +260,9 @@ transpile TypeScript. Pass plain JavaScript as a string:
 
 ### Spacing
 
-Spacing lives in `src/styles/markdown.css`. The `md-heading` classes there are
-spacing only; all the typography comes from the Pharos `preset`. Because inter-section
-spacing is page layout rather than a component's job, it differs from component spacing.
+Spacing lives in `src/styles/markdown.css`. Read its comments before changing a value.
+
+The `md-heading` classes there set spacing only; all the typography comes from the Pharos `preset`.
 
 ## Things to know before editing
 
@@ -278,8 +279,9 @@ between a run of text and a following inline element. Writing
 renders `use thehideSelectAll`. Keep the tag on the same line as the preceding
 text, or break inside the tag itself.
 
-**CSS is scoped per page.** A rule in one page's styles does not apply anywhere
-else. Anything global belongs in `src/styles/layout.css`,
+**Styles are scoped to the file they're written in.** Astro scopes a `<style>`
+block to its own page or component, so its rules don't apply anywhere else.
+Anything global belongs in `src/styles/layout.css`,
 `src/styles/fonts-site.css`, or the shared layout.
 
 **`src/**/*.mdx` is excluded from Prettier, deliberately.** Prettier
