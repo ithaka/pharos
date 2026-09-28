@@ -82,6 +82,23 @@
 }
 
 /*
+ * The Help page runs tighter than the sitewide rhythm: its title sits directly
+ * on the first section, and the gap between its two sections is 32px rather
+ * than the 112px `.md-heading--2` sets. Opted in per page via `bodyClass`, so
+ * nothing else picks it up.
+ *
+ * The first `##` is already at `margin-top: 0` from the rule above, so the
+ * section gap here only applies from the second one on.
+ */
+.help .md-heading--1 {
+  margin-bottom: 0;
+}
+
+.help .md-body > .md-heading--2 {
+  margin-top: var(--pharos-spacing-2-x);
+}
+
+/*
  * The page standfirst, rendered from the `description` frontmatter. Equivalent
  * to what `PageSection` produced for a section marked `isHeader`.
  *

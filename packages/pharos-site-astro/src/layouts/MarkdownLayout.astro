@@ -12,14 +12,15 @@ interface Props {
   frontmatter: {
     title: string; //Feeds both the `<title>` tag and the page's `<h1>`
     description?: string; //The standfirst, and the meta description.
+    bodyClass?: string; //Opt-in hook for per-page styles, as `index.astro` uses.
   };
 }
 
 const { frontmatter } = Astro.props;
-const { title, description } = frontmatter;
+const { title, description, bodyClass } = frontmatter;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} bodyClass={bodyClass}>
   <Heading depth={1}>{title}</Heading>
   {description && <div class="md-lede">{description}</div>}
   <div class="md-body">
