@@ -37,12 +37,6 @@
     "storybook:main:dev": "storybook dev -c .storybook/main -p 9002",
     "storybook:main:build": "storybook build -c .storybook/main -o .storybook-static/main",
     "build-storybook": "yarn storybook:build",
-    "presite:build": "yarn build:core",
-    "site:build": "yarn presite:build && yarn workspace @ithaka/pharos-site build",
-    "presite:develop": "yarn build:core",
-    "site:develop": "yarn presite:develop && yarn workspace @ithaka/pharos-site develop",
-    "site:serve": "yarn workspace @ithaka/pharos-site serve",
-    "site:clean": "yarn workspace @ithaka/pharos-site clean",
     "presite-astro:build": "yarn build:core",
     "site-astro:build": "yarn presite-astro:build && yarn workspace @ithaka/pharos-site-astro build",
     "presite-astro:develop": "yarn build:core",
@@ -131,10 +125,8 @@
     "immutable": "^3.8.4",
     "marked": "^4.0.10",
     "minimatch": "^9.0.7",
-    "path-to-regexp": "^0.1.13",
     "picomatch": "^4.0.4",
-    "semver-regex": "^3.1.4",
-    "serialize-javascript": "^7.0.3"
+    "semver-regex": "^3.1.4"
   },
   "workspaces": {
     "packages": [
