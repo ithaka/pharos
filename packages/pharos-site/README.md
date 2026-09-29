@@ -1,4 +1,4 @@
-# @ithaka/pharos-site-astro
+# @ithaka/pharos-site
 
 The Pharos documentation site, hosted at [pharos.jstor.org](https://pharos.jstor.org), built with [Astro](https://astro.build).
 
@@ -32,7 +32,7 @@ from the repo root:
 
 ```shell
 $ yarn install
-$ yarn site-astro:develop
+$ yarn site:develop
 ```
 
 This builds the Pharos core package first, then serves the site at
@@ -42,13 +42,13 @@ This builds the Pharos core package first, then serves the site at
 
 Run from the repo root:
 
-| Command                   | Description                                              |
-| ------------------------- | -------------------------------------------------------- |
-| `yarn site-astro:develop` | Build Pharos core, then start the dev server             |
-| `yarn site-astro:build`   | Build Pharos core, then build the static site to `dist/` |
-| `yarn site-astro:serve`   | Preview a built site                                     |
-| `yarn site-astro:check`   | Type-check `.astro` files (also runs as `yarn lint`)     |
-| `yarn site-astro:clean`   | Remove `dist/` and `.astro/`                             |
+| Command             | Description                                              |
+| ------------------- | -------------------------------------------------------- |
+| `yarn site:develop` | Build Pharos core, then start the dev server             |
+| `yarn site:build`   | Build Pharos core, then build the static site to `dist/` |
+| `yarn site:serve`   | Preview a built site                                     |
+| `yarn site:check`   | Type-check `.astro` files (also runs as `yarn lint`)     |
+| `yarn site:clean`   | Remove `dist/` and `.astro/`                             |
 
 ## Project structure
 
@@ -86,7 +86,7 @@ A few principles run through the code:
    sidenav. The order there is the order links appear. An entry's name becomes
    its URL slug (lowercased, spaces to hyphens, punctuation removed), so
    `'Checkbox group'` must match `checkbox-group.mdx`.
-3. Preview the page with `yarn site-astro:develop`, and check the full build with `yarn site-astro:build`.
+3. Preview the page with `yarn site:develop`, and check the full build with `yarn site:build`.
 4. Open a [pull request](https://github.com/ithaka/pharos/pulls) with the
    change.
 
