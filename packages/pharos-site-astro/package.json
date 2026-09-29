@@ -19,6 +19,7 @@
   "devDependencies": {
     "@astrojs/check": "~0.9.10",
     "@astrojs/mdx": "~7.0.8",
+    "@types/culori": "^4.0.1",
     "typescript": "^6.0.3"
   },
   "author": "ITHAKA",
