@@ -1,0 +1,18 @@
+---
+/**
+ * Renders a Markdown link as a `<site-pharos-link>`. Off-site links open in a
+ * new tab; anything starting `/`, `#` or `.` counts as internal.
+ */
+interface Props {
+  href?: string;
+  title?: string;
+}
+
+const { href = '', title } = Astro.props;
+
+const isInternal = /^[/#.]/.test(href);
+---
+
+<site-pharos-link href={href} title={title} target={isInternal ? undefined : '_blank'}>
+  <slot />
+</site-pharos-link>

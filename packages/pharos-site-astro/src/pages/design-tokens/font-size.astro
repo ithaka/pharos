@@ -1,0 +1,38 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import type { DesignToken, ScaleToken } from '@lib/tokenFormat';
+
+const scale = tokens.type.scale as unknown as Record<string, ScaleToken>;
+const sizes = tokens.font.size as unknown as Record<string, DesignToken>;
+
+const baseValue = sizes['base'].value;
+const basePixels = scale[baseValue].comment;
+const basePx = Number(basePixels.substring(0, basePixels.length - 2));
+
+const rows = Object.keys(sizes).map((key) => {
+  const token = sizes[key];
+  const tokenPixel = scale[token.value].comment;
+  const tokenPx = Number(tokenPixel.substring(0, tokenPixel.length - 2));
+  const style = `font-size: ${tokenPixel}; line-height: normal;`;
+
+  return {
+    name: token.name,
+    value: `${tokenPx}px | ${tokenPx / basePx}rem`,
+    examples: [
+      `<div style="${style}">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div><div style="${style}">abcdefghijklmnopqrstuvwxyz</div>`,
+    ],
+  };
+});
+---
+
+<Layout title="Font size">
+  <PageSection title="Font size" isHeader>
+    <TokenTable>
+      <TokenRows rows={rows} />
+    </TokenTable>
+  </PageSection>
+</Layout>

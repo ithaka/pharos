@@ -1,0 +1,53 @@
+# Config for the `pharos` Netlify site, which finds this file through its
+# Package directory setting (packages/pharos-site-astro). Paths are relative to
+# the base directory, the repo root. The root netlify.toml is for
+# `pharos-storybooks`.
+[build]
+  command = "yarn site-astro:build"
+  publish = "packages/pharos-site-astro/dist"
+  ignore = "bash ./build-ignore.sh"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[[redirects]]
+  from = "/storybook"
+  to = "https://pharos-storybooks.netlify.app/main/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybook/*"
+  to = "https://pharos-storybooks.netlify.app/main/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybooks/wc"
+  to = "https://pharos-storybooks.netlify.app/wc/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybooks/wc/*"
+  to = "https://pharos-storybooks.netlify.app/wc/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybooks/react"
+  to = "https://pharos-storybooks.netlify.app/react/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/storybooks/react/*"
+  to = "https://pharos-storybooks.netlify.app/react/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+    X-Frame-Options = "SAMEORIGIN"

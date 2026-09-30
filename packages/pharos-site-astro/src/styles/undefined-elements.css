@@ -1,0 +1,36 @@
+/*
+ * Hides custom elements until they register, to avoid a flash of unstyled content.
+ * A 3s animation reveals them anyway if JS never runs, so the page can't stay blank.
+ */
+@keyframes pharos-undefined-failsafe {
+  to {
+    visibility: visible;
+  }
+}
+
+:not(:defined) {
+  display: block;
+  visibility: hidden;
+  animation: pharos-undefined-failsafe 1ms linear 3s forwards;
+}
+
+site-pharos-layout:not(:defined) {
+  display: grid;
+}
+
+/*
+ * The skip link reserves no height until it registers, so it doesn't make the top bar taller.
+ * Its failsafe restores the height along with visibility.
+ */
+@keyframes pharos-undefined-failsafe-skip-link {
+  to {
+    visibility: visible;
+    height: auto;
+  }
+}
+
+#skip-link:not(:defined) {
+  height: 0;
+  overflow: hidden;
+  animation: pharos-undefined-failsafe-skip-link 1ms linear 3s forwards;
+}
