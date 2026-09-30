@@ -36,11 +36,11 @@
 
 This repository contains a number of packages related to Pharos:
 
-| Syntax                                                    | Description                             |
-| --------------------------------------------------------- | --------------------------------------- |
-| [@ithaka/pharos](./packages/pharos)                       | Pharos Component library                |
-| [@ithaka/pharos-cli](./packages/pharos-cli)               | CLI tool for building Pharos components |
-| [@ithaka/pharos-site-astro](./packages/pharos-site-astro) | Site & Documentation for Pharos         |
+| Syntax                                        | Description                             |
+| --------------------------------------------- | --------------------------------------- |
+| [@ithaka/pharos](./packages/pharos)           | Pharos Component library                |
+| [@ithaka/pharos-cli](./packages/pharos-cli)   | CLI tool for building Pharos components |
+| [@ithaka/pharos-site](./packages/pharos-site) | Site & Documentation for Pharos         |
 
 In addition to these packages, this repository contains [the configuration for Pharos Storybooks](./.storybook).
 

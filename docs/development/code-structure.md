@@ -4,11 +4,11 @@
 
 - [Infrastructure code](#infrastructure-code)
 - [`@ithaka/pharos` package](#ithakapharos-package)
-- [`@ithaka/pharos-site-astro` package](#ithakapharos-site-astro-package)
+- [`@ithaka/pharos-site` package](#ithakapharos-site-package)
 
 <!-- tocstop -->
 
-At a high level, the Pharos code base consists of two packages, `@ithaka/pharos` and `@ithaka/pharos-site-astro`, along with supporting continuous integration infrastructure code.
+At a high level, the Pharos code base consists of two packages, `@ithaka/pharos` and `@ithaka/pharos-site`, along with supporting continuous integration infrastructure code.
 
 ## Infrastructure code
 
@@ -28,6 +28,6 @@ packages/pharos
 
 The `scripts/` directory contains code for building the package. The `src/` directory contains the TypeScript code for all Pharos components, along with utilities for developing those components. The `tokens/` directory contains the [design tokens](./design-tokens.md) used to define Pharos' visual language.
 
-## `@ithaka/pharos-site-astro` package
+## `@ithaka/pharos-site` package
 
-The `@ithaka/pharos-site-astro` package contains the [Astro](https://astro.build)-based documentation site hosted at [pharos.jstor.org](https://pharos.jstor.org), where Pharos consumers can read the Pharos design guidelines, component documentation, and so on. See [its README](../../packages/pharos-site-astro/README.md) for details.
+The `@ithaka/pharos-site` package contains the [Astro](https://astro.build)-based documentation site hosted at [pharos.jstor.org](https://pharos.jstor.org), where Pharos consumers can read the Pharos design guidelines, component documentation, and so on. See [its README](../../packages/pharos-site/README.md) for details.

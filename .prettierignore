@@ -7,9 +7,9 @@ packages/pharos/src/styles/**/*.ts
 packages/pharos/tokens/
 packages/pharos/custom-elements.json
 packages/**/package-lock.json
-packages/pharos-site-astro/.astro/
+packages/pharos-site/.astro/
 # Prettier is not safe on any MDX in the astro site.
-packages/pharos-site-astro/src/**/*.mdx
+packages/pharos-site/src/**/*.mdx
 package.json
 package-lock.json
 .changeset/

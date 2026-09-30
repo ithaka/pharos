@@ -1,11 +1,10 @@
 {
-  "name": "@ithaka/pharos-site-astro",
+  "name": "@ithaka/pharos-site",
   "publishConfig": {
     "access": "public"
   },
   "description": "Pharos acts as a guiding light to helps us create consistent, dependable and focused experiences for all of JSTOR users.",
-  "version": "0.1.0",
-  "private": true,
+  "version": "7.4.1",
   "type": "module",
   "dependencies": {
     "@astrojs/markdown-remark": "7.3.1",
@@ -37,6 +36,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ithaka/pharos.git",
-    "directory": "packages/pharos-site-astro"
+    "directory": "packages/pharos-site"
   }
 }

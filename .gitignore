@@ -8,9 +8,9 @@ dist/
 coverage/
 lib/
 # Preserve Astro site's src/lib/.
-!packages/pharos-site-astro/src/lib/
+!packages/pharos-site/src/lib/
 packages/**/package-lock.json
-packages/pharos-site-astro/.astro/
+packages/pharos-site/.astro/
 react-components/
 packages/pharos/src/styles/**/*.ts
 packages/pharos/src/styles/_variables.scss
