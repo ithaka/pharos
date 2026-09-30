@@ -11,8 +11,6 @@ const globalIgnores = [
   'packages/pharos/coverage/',
   'packages/pharos/lib/',
   'packages/pharos/src/styles/**/*.ts',
-  'packages/pharos-site/public/',
-  'packages/pharos-site/.cache/',
   'packages/pharos-site-astro/.astro/',
   '**/dist/',
   '**/node_modules/',

@@ -5,5 +5,3 @@ lib/
 .storybook-static/
 packages/pharos/src/styles/**/*.ts
 packages/pharos/src/styles/_variables.scss
-packages/pharos-site/public/
-packages/pharos-site/.cache/

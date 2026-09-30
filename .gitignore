@@ -10,8 +10,6 @@ lib/
 # Preserve Astro site's src/lib/.
 !packages/pharos-site-astro/src/lib/
 packages/**/package-lock.json
-packages/pharos-site/public/
-packages/pharos-site/.cache/
 packages/pharos-site-astro/.astro/
 react-components/
 packages/pharos/src/styles/**/*.ts

@@ -59,7 +59,6 @@ At the final step the tool will show the changeset it will generate, and confirm
 ---
 '@ithaka/pharos-cli': patch
 '@ithaka/pharos': patch
-'@ithaka/pharos-site': patch
 ---
 
 Replace Lerna with Yarn and Changesets
