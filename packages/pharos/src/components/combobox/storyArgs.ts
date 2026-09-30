@@ -11,6 +11,7 @@ export interface ComponentArgs {
   required?: boolean;
   validated?: boolean;
   value?: string;
+  inline?: boolean;
 }
 
 export type StoryArgs = ComponentArgs & {};
@@ -28,4 +29,5 @@ export const defaultArgs: StoryArgs = {
   required: false,
   validated: false,
   value: '',
+  inline: false,
 };

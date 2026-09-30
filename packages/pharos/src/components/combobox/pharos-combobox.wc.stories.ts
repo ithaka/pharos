@@ -36,6 +36,7 @@ export const Base: Story = {
       .placeholder=${args.placeholder}
       message=${ifDefined(args.message)}
       .required=${args.required}
+      .inline=${args.inline}
       style="display: grid; grid-template-columns: 300px;"
     >
       <span slot="label">${args.label}</span>
