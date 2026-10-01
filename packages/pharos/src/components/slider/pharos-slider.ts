@@ -293,6 +293,7 @@ export class PharosSlider extends FormMixin(FormElement) {
     return html`
       <label for="input-element">
         <slot name="label"></slot>
+        ${this.requiredIndicator}
       </label>
       <input
         id="input-element"

@@ -70,6 +70,17 @@ describe('pharos-slider', () => {
     expect(label.htmlFor).toBe(getInput(component).id);
   });
 
+  it('renders a required asterisk and hidden text in the label when required', async () => {
+    component.required = true;
+    await component.updateComplete;
+    const indicator = component.renderRoot.querySelector('label .required-indicator');
+    expect(indicator?.textContent).toBe('*required');
+  });
+
+  it('does not render a required indicator when not required', async () => {
+    expect(component.renderRoot.querySelector('.required-indicator')).toBeNull();
+  });
+
   it('hides the option labels from assistive technology', async () => {
     const options = component.renderRoot.querySelector('.slider__options') as HTMLElement;
     expect(options.getAttribute('aria-hidden')).toBe('true');
