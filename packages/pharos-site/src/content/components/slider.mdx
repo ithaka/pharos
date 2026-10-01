@@ -1,0 +1,186 @@
+---
+title: 'Slider'
+description: 'Sliders let users choose a value along a range that increases from left to right.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
+import DemoScript from '@components/markdown/DemoScript.astro';
+
+<Example storyBookType="forms" componentTitle="Slider">
+  <site-pharos-slider value="2" step="1">
+    <span slot="label">Search depth</span>
+    <site-pharos-slider-option value="1">
+      Quick
+      <span slot="description">Fastest</span>
+    </site-pharos-slider-option>
+    <site-pharos-slider-option value="2">
+      Standard
+      <span slot="description">Balanced</span>
+    </site-pharos-slider-option>
+    <site-pharos-slider-option value="3">
+      Deep
+      <span slot="description">Most thorough</span>
+    </site-pharos-slider-option>
+  </site-pharos-slider>
+</Example>
+
+## Usage
+
+Sliders signal increasing or decreasing value and provide a more tactile input than radio
+buttons. The value moves in increments of the required step, between a minimum and maximum.
+
+### Range
+
+Every slider needs a step. The minimum and maximum default to the lowest and highest option
+values, or to 0 and 100 when there are no options. Without a value, the slider starts at the
+midpoint of its range. Values outside the range or between steps are moved to the nearest step.
+
+### Options
+
+Options are optional labels for stops along the track. Each option has a numeric value, a label,
+and an optional description. Option values must be unique and fall on a step within the range.
+Keep option content to plain text: the option labels are hidden from assistive technology, so
+links or other interactive content inside them cannot be reached.
+
+### Width
+
+Sliders fill the width of their container. Keep sliders at least 22.5rem (360px) wide so their
+labels have room. Option labels wrap at 5.5rem, or sooner when the slider is too narrow to fit
+them side by side. Use the `--pharos-slider-option-max-width` custom property to change where
+labels wrap.
+
+### Discrete
+
+A discrete slider has an option at every step, so its value can only be set to one of the
+defined options.
+
+### Continuous
+
+A continuous slider has no options, or labels only some of its steps. Use the `valueFormatter`
+property to describe values without an option to assistive technology, such as adding a unit.
+
+<Canvas>
+  <site-pharos-slider id="example-continuous-slider" step="5">
+    <span slot="label">Volume</span>
+  </site-pharos-slider>
+</Canvas>
+
+{/*
+  `valueFormatter` is a function, so it can only be set as a property once the
+  element has upgraded, not as an attribute.
+*/}
+
+<DemoScript
+  code={`
+  customElements.whenDefined('site-pharos-slider').then(() => {
+    const slider = document.getElementById('example-continuous-slider');
+    if (slider) slider.valueFormatter = (value) => value + ' percent';
+  });
+`}
+/>
+
+### Interaction
+
+Users can drag the handle, click an option label, or use the keyboard to change the value.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Use between 3 and 5 options for a discrete slider
+    - Arrange options to reflect their amount or weight, from least to greatest
+    - Always include a label for the slider
+
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Don't use a slider for a choice between 2 values. Consider using the switch or toggle
+      button group component instead
+    - Don't use arbitrary values or options that have no natural order
+
+  </Fragment>
+</BestPractices>
+
+## States
+
+### Default
+
+Indicates that the slider is interactable.
+
+<Canvas>
+  <site-pharos-slider step="1">
+    <span slot="label">Text size</span>
+    <site-pharos-slider-option value="1">Small</site-pharos-slider-option>
+    <site-pharos-slider-option value="2">Medium</site-pharos-slider-option>
+    <site-pharos-slider-option value="3">Large</site-pharos-slider-option>
+    <site-pharos-slider-option value="4">Extra large</site-pharos-slider-option>
+  </site-pharos-slider>
+</Canvas>
+
+### Disabled
+
+Indicates that the slider should not be interactable.
+
+<Canvas>
+  <site-pharos-slider step="1" disabled>
+    <span slot="label">Text size</span>
+    <site-pharos-slider-option value="1">Small</site-pharos-slider-option>
+    <site-pharos-slider-option value="2">Medium</site-pharos-slider-option>
+    <site-pharos-slider-option value="3">Large</site-pharos-slider-option>
+    <site-pharos-slider-option value="4">Extra large</site-pharos-slider-option>
+  </site-pharos-slider>
+</Canvas>
+
+### Invalid
+
+Indicates that the selected value is not allowed. Since a slider always has a value, use this for
+rules specific to your form, and describe the problem with a message.
+
+<Canvas>
+  <site-pharos-slider
+    step="1"
+    value="4"
+    invalidated
+    message="This selection is invalid. Please make another selection."
+  >
+    <span slot="label">Text size</span>
+    <site-pharos-slider-option value="1">Small</site-pharos-slider-option>
+    <site-pharos-slider-option value="2">Medium</site-pharos-slider-option>
+    <site-pharos-slider-option value="3">Large</site-pharos-slider-option>
+    <site-pharos-slider-option value="4">Extra large</site-pharos-slider-option>
+  </site-pharos-slider>
+</Canvas>
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [4.1.2 Name, Role, Value A](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value)
+- [2.1.1 Keyboard A](https://www.w3.org/WAI/WCAG21/Understanding/keyboard)
+
+### Code expectations
+
+- The slider is a native `input type="range"`, which has the role "slider".
+- When the value matches an option, its label and description are set as `aria-valuetext`, so
+  the option name is announced instead of its numeric value. Otherwise the value is announced,
+  formatted by `valueFormatter` when provided.
+- The option labels below the track are hidden from assistive technology, since the slider
+  already announces the selected option.
+
+### Expected actions
+
+#### Screen reader
+
+- Reads: "slider name, slider, selected option label, description"
+- Reads the newly selected option when the value changes
+
+#### Keyboard
+
+- The slider is a single tab stop. Users can move to and from it by pressing <kbd>Tab</kbd> or
+  <kbd>Shift</kbd>-<kbd>Tab</kbd>.
+- The arrow keys move to the previous or next step, and <kbd>Home</kbd> and <kbd>End</kbd> move
+  to the minimum and maximum.
+- Disabled sliders are ignored in the tab order.

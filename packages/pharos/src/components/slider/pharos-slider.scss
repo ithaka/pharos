@@ -1,0 +1,152 @@
+@use '../../utils/scss/mixins';
+
+// The thumb's ring is drawn on its outer edge, so it renders at 18px like the 16px knob in the
+// design, whose stroke is centered on its edge. The input is taller than the thumb so it stays
+// a comfortable target to drag and click.
+$thumb-size: 1.125rem;
+$track-height: 0.375rem;
+$input-height: 1.5rem;
+
+// Horizontal position of a stop along the track, where the thumb's center sits at a given
+// fraction (0 to 1) of the range. The thumb travels the track width minus its own size.
+@function stop-position($fraction) {
+  @return calc(#{$thumb-size} / 2 + #{$fraction} * (100% - #{$thumb-size}));
+}
+
+@mixin track($fill-color: var(--pharos-color-night-blue-base)) {
+  box-sizing: border-box;
+  height: $track-height;
+  border-radius: $track-height;
+  background: linear-gradient(
+    to right,
+    #{$fill-color} stop-position(var(--pharos-slider-fill)),
+    var(--pharos-color-marble-gray-94) stop-position(var(--pharos-slider-fill))
+  );
+}
+
+@mixin thumb {
+  box-sizing: border-box;
+  height: $thumb-size;
+  width: $thumb-size;
+  border: 2px solid var(--pharos-color-glacier-blue-40);
+  border-radius: 50%;
+  background-color: var(--pharos-color-white);
+  box-shadow: var(--pharos-elevation-level-4);
+  cursor: pointer;
+}
+
+:host {
+  display: block;
+  container-type: inline-size;
+}
+
+.slider__input {
+  @include mixins.interactive-focus;
+
+  appearance: none;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: $input-height;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+
+  &::-webkit-slider-runnable-track {
+    @include track;
+  }
+
+  &::-moz-range-track {
+    @include track;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb;
+
+    appearance: none;
+    margin-top: calc((#{$track-height} - #{$thumb-size}) / 2);
+  }
+
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+
+  // Outline the track while invalid, giving way to the focus outline so focus stays visible
+  :host([invalidated]) &:not(:focus-visible) {
+    outline: 2px solid var(--pharos-form-element-color-border-invalid);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: default;
+
+    &::-webkit-slider-runnable-track {
+      @include track(var(--pharos-color-marble-gray-50));
+    }
+
+    &::-moz-range-track {
+      @include track(var(--pharos-color-marble-gray-50));
+    }
+
+    &::-webkit-slider-thumb {
+      border-color: var(--pharos-color-marble-gray-50);
+      box-shadow: none;
+      cursor: default;
+    }
+
+    &::-moz-range-thumb {
+      border-color: var(--pharos-color-marble-gray-50);
+      box-shadow: none;
+      cursor: default;
+    }
+  }
+}
+
+.slider__options {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: var(--pharos-spacing-one-half-x);
+}
+
+.slider__options--empty {
+  display: none;
+}
+
+// Stack every option in the same grid cell so the row is as tall as the tallest option,
+// then offset each one to sit under its stop on the track. The anchor is set by the slider:
+// 0 lines an option up with the start of the track, 1 with the end, and 0.5 centers it.
+::slotted([data-pharos-component='PharosSliderOption']) {
+  grid-area: 1 / 1;
+  justify-self: start;
+
+  // Size to the content, since the offset leaves options near the end of the track no room to
+  // grow, then wrap once an option reaches its share of the slider width or the max width
+  width: max-content;
+  max-width: min(
+    var(--pharos-slider-option-max-width, 5.5rem),
+    100cqi / var(--pharos-slider-option-count)
+  );
+  margin-left: calc(
+    #{stop-position(var(--pharos-slider-option-position))} +
+      (var(--pharos-slider-option-anchor) - 0.5) * #{$thumb-size}
+  );
+  transform: translateX(calc(var(--pharos-slider-option-anchor) * -100%));
+  text-align: var(--pharos-slider-option-align);
+  color: var(--pharos-color-text-40);
+  cursor: pointer;
+  transition: color var(--pharos-transition-duration-default) ease-out;
+}
+
+::slotted([data-pharos-component='PharosSliderOption']:hover),
+::slotted([data-pharos-component='PharosSliderOption'][selected]) {
+  color: var(--pharos-color-text-base);
+}
+
+:host([disabled]) ::slotted([data-pharos-component='PharosSliderOption']) {
+  color: var(--pharos-color-text-50);
+  cursor: default;
+}
+
+:host([disabled]) ::slotted([data-pharos-component='PharosSliderOption'][selected]) {
+  color: var(--pharos-color-text-40);
+}
