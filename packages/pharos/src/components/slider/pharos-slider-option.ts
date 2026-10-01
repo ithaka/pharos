@@ -99,7 +99,6 @@ export class PharosSliderOption extends PharosElement {
     return html`
       <span class="slider-option__label"><slot></slot></span>
       <span class="slider-option__description"><slot name="description"></slot></span>
-      ${this.label}
     `;
   }
 }
