@@ -28,10 +28,10 @@ export const Base: Story = {
       min=${ifDefined(args.min)}
       max=${ifDefined(args.max)}
       step=${ifDefined(args.step)}
-      ?disabled=${args.disabled}
-      ?hide-label=${args.hideLabel}
-      ?invalidated=${args.invalidated}
-      ?validated=${args.validated}
+      .disabled=${args.disabled}
+      .hideLabel=${args.hideLabel}
+      .invalidated=${args.invalidated}
+      .validated=${args.validated}
       message=${ifDefined(args.message)}
     >
       <span slot="label">Search depth</span>
