@@ -17,14 +17,32 @@ const ObserveChildrenMixinImplementation = <T extends Constructor<LitElement>>(B
       this.requestUpdate();
     };
 
-    override connectedCallback(): void {
-      super.connectedCallback && super.connectedCallback();
-      this._childrenObserver = new MutationObserver(this._handleMutation);
-      this._childrenObserver?.observe(this, {
+    /**
+     * The mutation types that will trigger an update.
+     * Overridable by subclasses to customize which mutations trigger an update.
+     */
+    protected get _childrenObserverOptions(): MutationObserverInit {
+      return {
         attributes: true,
         childList: true,
         subtree: true,
-      });
+      };
+    }
+
+    override connectedCallback(): void {
+      super.connectedCallback && super.connectedCallback();
+      this._childrenObserver = new MutationObserver(this._handleMutation);
+      this._childrenObserver?.observe(this, this._childrenObserverOptions);
+    }
+
+    /**
+     * Clears any child mutations queued before the update that performUpdate is about to run,
+     * since the update already reflects them. Done in performUpdate so it runs even
+     * if a subclass's update throws.
+     */
+    protected override performUpdate(): void {
+      this._childrenObserver?.takeRecords();
+      super.performUpdate();
     }
 
     override disconnectedCallback(): void {
