@@ -79,6 +79,10 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
 
   private _defaultValue?: number;
 
+  // The set value, before limiting to range and aligning with a step,
+  // so it survives changes to the range
+  private _requestedValue?: number;
+
   private _valueBeforeInteraction?: number;
 
   public static override get styles(): CSSResultArray {
@@ -97,7 +101,7 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
   }
 
   protected override firstUpdated(): void {
-    this._defaultValue = this.value;
+    this._defaultValue = this._requestedValue;
   }
 
   private get _options(): PharosSliderOption[] {
@@ -123,8 +127,11 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
   }
 
   protected override update(changedProperties: PropertyValues): void {
+    if (changedProperties.has('value')) {
+      this._requestedValue = this.value;
+    }
     this._validate();
-    this.value = this._sanitize(this.value);
+    this.value = this._sanitize(this._requestedValue);
     super.update(changedProperties);
   }
 

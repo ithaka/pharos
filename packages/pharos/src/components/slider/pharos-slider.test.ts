@@ -83,6 +83,45 @@ describe('pharos-slider', () => {
     });
   });
 
+  it('keeps the value attribute when options are registered after it renders', async () => {
+    component = await fixture(html`
+      <test-pharos-slider step="10" value="15">
+        <span slot="label">Result size</span>
+        <late-value-pharos-slider-option value="5">Small</late-value-pharos-slider-option>
+        <late-value-pharos-slider-option value="15">Medium</late-value-pharos-slider-option>
+        <late-value-pharos-slider-option value="25">Large</late-value-pharos-slider-option>
+      </test-pharos-slider>
+    `);
+    registerComponents('late-value', [PharosSliderOption]);
+
+    await vi.waitFor(() => expect(component.value).toBe(15));
+  });
+
+  it('resets to the value attribute when options are registered after it renders', async () => {
+    const parentNode = document.createElement('form');
+    component = await fixture(
+      html`
+        <test-pharos-slider step="10" value="15">
+          <span slot="label">Result size</span>
+          <late-reset-pharos-slider-option value="5">Small</late-reset-pharos-slider-option>
+          <late-reset-pharos-slider-option value="15">Medium</late-reset-pharos-slider-option>
+          <late-reset-pharos-slider-option value="25">Large</late-reset-pharos-slider-option>
+        </test-pharos-slider>
+      `,
+      { parentNode }
+    );
+    registerComponents('late-reset', [PharosSliderOption]);
+    await vi.waitFor(() => expect(getInput(component).min).toBe('5'));
+
+    component.value = 25;
+    await component.updateComplete;
+
+    parentNode.dispatchEvent(new Event('reset'));
+    await component.updateComplete;
+
+    expect(component.value).toBe(15);
+  });
+
   it('labels the range input with the label slot', async () => {
     const label = component.renderRoot.querySelector('label') as HTMLLabelElement;
     expect(label.htmlFor).toBe(getInput(component).id);
