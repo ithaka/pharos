@@ -2,6 +2,14 @@
 
 :host {
   display: block;
+  color: var(--pharos-color-text-40);
+  cursor: pointer;
+  transition: color var(--pharos-transition-duration-default) ease-out;
+}
+
+:host(:hover),
+:host([selected]) {
+  color: var(--pharos-color-text-base);
 }
 
 .slider-option__label {

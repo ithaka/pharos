@@ -1,7 +1,6 @@
 import { html } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import type { PropertyValues, TemplateResult, CSSResultArray } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -151,7 +150,6 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
       );
       option.style.setProperty('--pharos-slider-option-anchor', String(anchor));
       option.style.setProperty('--pharos-slider-option-align', align);
-      option.style.setProperty('--pharos-slider-option-count', String(options.length));
     });
   }
 
@@ -334,7 +332,8 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
         @change=${this._handleChange}
       />
       <div
-        class=${classMap({ slider__options: true, 'slider__options--empty': !options.length })}
+        class="slider__options"
+        style=${styleMap({ '--pharos-slider-option-count': String(options.length) })}
         aria-hidden="true"
         @click=${this._handleOptionClick}
       >

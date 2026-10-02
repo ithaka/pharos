@@ -240,11 +240,9 @@ describe('pharos-slider', () => {
     expect(anchors).toEqual(['0', '0.5', '1']);
   });
 
-  it('sets the number of options on each option', async () => {
-    const counts = getOptions(component).map((option) =>
-      option.style.getPropertyValue('--pharos-slider-option-count')
-    );
-    expect(counts).toEqual(['3', '3', '3']);
+  it('sets the number of options on the option row', async () => {
+    const options = component.renderRoot.querySelector('.slider__options') as HTMLElement;
+    expect(options.style.getPropertyValue('--pharos-slider-option-count')).toBe('3');
   });
 
   it('centers options that are not at the ends of the track', async () => {
@@ -518,12 +516,12 @@ describe('pharos-slider', () => {
       <test-pharos-slider step="1"><span slot="label">Volume</span></test-pharos-slider>
     `);
     const options = component.renderRoot.querySelector('.slider__options') as HTMLElement;
-    expect(options.classList.contains('slider__options--empty')).toBe(true);
+    expect(options.offsetHeight).toBe(0);
   });
 
   it('does not hide the option row when there are options', async () => {
     const options = component.renderRoot.querySelector('.slider__options') as HTMLElement;
-    expect(options.classList.contains('slider__options--empty')).toBe(false);
+    expect(options.offsetHeight).toBeGreaterThan(0);
   });
 
   it('throws an error when the step is missing', async () => {

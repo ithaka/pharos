@@ -13,15 +13,20 @@ $input-height: 1.5rem;
   @return calc(#{$thumb-size} / 2 + #{$fraction} * (100% - #{$thumb-size}));
 }
 
-@mixin track($fill-color: var(--pharos-color-night-blue-base)) {
-  box-sizing: border-box;
-  height: $track-height;
-  border-radius: $track-height;
+@mixin track-fill($fill-color) {
   background: linear-gradient(
     to right,
     #{$fill-color} stop-position(var(--pharos-slider-fill)),
     var(--pharos-color-marble-gray-94) stop-position(var(--pharos-slider-fill))
   );
+}
+
+@mixin track {
+  @include track-fill(var(--pharos-color-night-blue-base));
+
+  box-sizing: border-box;
+  height: $track-height;
+  border-radius: $track-height;
 }
 
 @mixin thumb {
@@ -79,26 +84,22 @@ $input-height: 1.5rem;
   }
 
   &:disabled {
-    cursor: default;
-
     &::-webkit-slider-runnable-track {
-      @include track(var(--pharos-color-marble-gray-50));
+      @include track-fill(var(--pharos-color-marble-gray-50));
     }
 
     &::-moz-range-track {
-      @include track(var(--pharos-color-marble-gray-50));
+      @include track-fill(var(--pharos-color-marble-gray-50));
     }
 
     &::-webkit-slider-thumb {
       border-color: var(--pharos-color-marble-gray-50);
       box-shadow: none;
-      cursor: default;
     }
 
     &::-moz-range-thumb {
       border-color: var(--pharos-color-marble-gray-50);
       box-shadow: none;
-      cursor: default;
     }
   }
 }
@@ -106,11 +107,6 @@ $input-height: 1.5rem;
 .slider__options {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  margin-top: var(--pharos-spacing-one-half-x);
-}
-
-.slider__options--empty {
-  display: none;
 }
 
 // Stack every option in the same grid cell so the row is as tall as the tallest option,
@@ -118,7 +114,6 @@ $input-height: 1.5rem;
 // 0 lines an option up with the start of the track, 1 with the end, and 0.5 centers it.
 ::slotted([data-pharos-component='PharosSliderOption']) {
   grid-area: 1 / 1;
-  justify-self: start;
 
   // Size to the content, since the offset leaves options near the end of the track no room to
   // grow, then wrap once an option reaches its share of the slider width or the max width
@@ -127,27 +122,19 @@ $input-height: 1.5rem;
     var(--pharos-slider-option-max-width, 5.5rem),
     100cqi / var(--pharos-slider-option-count)
   );
+  margin-top: var(--pharos-spacing-one-half-x);
   margin-left: calc(
     #{stop-position(var(--pharos-slider-option-position))} +
       (var(--pharos-slider-option-anchor) - 0.5) * #{$thumb-size}
   );
   transform: translateX(calc(var(--pharos-slider-option-anchor) * -100%));
   text-align: var(--pharos-slider-option-align);
-  color: var(--pharos-color-text-40);
-  cursor: pointer;
-  transition: color var(--pharos-transition-duration-default) ease-out;
-}
-
-::slotted([data-pharos-component='PharosSliderOption']:hover),
-::slotted([data-pharos-component='PharosSliderOption'][selected]) {
-  color: var(--pharos-color-text-base);
 }
 
 :host([disabled]) ::slotted([data-pharos-component='PharosSliderOption']) {
   color: var(--pharos-color-text-50);
-  cursor: default;
 }
 
 :host([disabled]) ::slotted([data-pharos-component='PharosSliderOption'][selected]) {
-  color: var(--pharos-color-text-40);
+  color: var(--pharos-form-element-color-text-disabled);
 }
