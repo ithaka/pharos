@@ -155,10 +155,6 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
     });
   }
 
-  private _handleSlotChange(): void {
-    this.requestUpdate();
-  }
-
   private _validate(): void {
     const { step } = this;
     const min = this._rangeMin;
@@ -342,7 +338,7 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
         aria-hidden="true"
         @click=${this._handleOptionClick}
       >
-        <slot @slotchange=${this._handleSlotChange}></slot>
+        <slot></slot>
       </div>
       ${this.messageContent}
     `;
