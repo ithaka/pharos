@@ -3,7 +3,6 @@ import Layout from '@layouts/Layout.astro';
 import PageSection from '@components/PageSection.astro';
 import TokenTable from '@components/TokenTable.astro';
 import TokenRows from '@components/TokenRows.astro';
-import CodeBlock from '@components/CodeBlock.astro';
 import tokens from '@ithaka/pharos/lib/styles/tokens';
 import type { DesignToken } from '@lib/tokenFormat';
 
@@ -17,35 +16,6 @@ const groups = Object.entries(
     examples: [`<div style="background-image: ${token.value}; width: 12rem; height: 5rem;"></div>`],
   })),
 }));
-
-const backgroundExample = `.gradient-background {
-  background-image: var(
-    --pharos-gradient-subdued-cyan-blue,
-    linear-gradient(var(--pharos-color-night-blue-base), var(--pharos-color-night-blue-base))
-  );
-}`;
-
-const textExample = `.gradient-text {
-  color: var(--pharos-color-night-blue-base);
-}
-
-@supports (background-clip: text) {
-  .gradient-text {
-    background-image: var(
-      --pharos-gradient-subdued-cyan-blue,
-      linear-gradient(var(--pharos-color-night-blue-base), var(--pharos-color-night-blue-base))
-    );
-    background-clip: text;
-    color: transparent;
-  }
-}
-
-@media (forced-colors: active) {
-  .gradient-text {
-    background-image: none;
-    color: CanvasText;
-  }
-}`;
 ---
 
 <Layout title="Gradients">
@@ -57,44 +27,5 @@ const textExample = `.gradient-text {
         </TokenTable>
       ))
     }
-    <p>Use a gradient as a background image rather than a color or background-color value:</p>
-    <CodeBlock code={backgroundExample} language="css" />
-    <p>
-      The fallback uses the existing Night Blue token when the gradient token is unavailable. For
-      text, clip the background to the glyphs and retain a solid color when clipping is unsupported:
-    </p>
-    <p class="gradient-text">Discover knowledge with JSTOR</p>
-    <CodeBlock code={textExample} language="css" />
-    <p>
-      These tokens are also available as Sass variables and JavaScript exports through the existing
-      Pharos styles entry points. Applying a gradient to an icon requires an SVG or masking
-      technique; it cannot be assigned directly to color or fill.
-    </p>
   </PageSection>
 </Layout>
-
-<style>
-  .gradient-text {
-    color: var(--pharos-color-night-blue-base);
-    font-size: var(--pharos-font-size-large);
-    width: fit-content;
-  }
-
-  @supports (background-clip: text) {
-    .gradient-text {
-      background-image: var(
-        --pharos-gradient-subdued-cyan-blue,
-        linear-gradient(var(--pharos-color-night-blue-base), var(--pharos-color-night-blue-base))
-      );
-      background-clip: text;
-      color: transparent;
-    }
-  }
-
-  @media (forced-colors: active) {
-    .gradient-text {
-      background-image: none;
-      color: CanvasText;
-    }
-  }
-</style>
