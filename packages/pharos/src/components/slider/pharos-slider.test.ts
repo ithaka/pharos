@@ -3,8 +3,9 @@ import { html } from 'lit/static-html.js';
 
 import { fixture, errorFixture } from '../../test/fixture';
 import type { PharosSlider } from './pharos-slider';
-import type { PharosSliderOption } from './pharos-slider-option';
+import { PharosSliderOption } from './pharos-slider-option';
 import createFormData from '../../utils/createFormData';
+import registerComponents from '../../utils/registerComponents';
 
 describe('pharos-slider', () => {
   let component: PharosSlider;
@@ -63,6 +64,23 @@ describe('pharos-slider', () => {
     expect(input.min).toBe('10');
     expect(input.max).toBe('30');
     expect(input.step).toBe('10');
+  });
+
+  it('derives the range from options registered after it renders', async () => {
+    component = await fixture(html`
+      <test-pharos-slider step="10">
+        <span slot="label">Result size</span>
+        <late-pharos-slider-option value="10">Small</late-pharos-slider-option>
+        <late-pharos-slider-option value="30">Large</late-pharos-slider-option>
+      </test-pharos-slider>
+    `);
+    registerComponents('late', [PharosSliderOption]);
+
+    await vi.waitFor(() => {
+      const input = getInput(component);
+      expect(input.min).toBe('10');
+      expect(input.max).toBe('30');
+    });
   });
 
   it('labels the range input with the label slot', async () => {

@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { property } from 'lit/decorators.js';
-import type { LitElement, PropertyValues, TemplateResult, CSSResultArray } from 'lit';
+import type { TemplateResult, CSSResultArray } from 'lit';
 import { sliderOptionStyles } from './pharos-slider-option.css';
 
 import { PharosElement } from '../base/pharos-element';
@@ -27,10 +27,6 @@ export class PharosSliderOption extends PharosElement {
    */
   @property({ type: Boolean, reflect: true })
   public selected = false;
-
-  private _contentObserver: MutationObserver = new MutationObserver(() => {
-    this._notifySlider();
-  });
 
   public static override get styles(): CSSResultArray {
     return [sliderOptionStyles];
@@ -62,37 +58,6 @@ export class PharosSliderOption extends PharosElement {
       .join(' ')
       .replace(/\s+/g, ' ')
       .trim();
-  }
-
-  public override connectedCallback(): void {
-    super.connectedCallback();
-    this._contentObserver.observe(this, {
-      subtree: true,
-      childList: true,
-      characterData: true,
-      attributeFilter: ['slot'],
-    });
-  }
-
-  public override disconnectedCallback(): void {
-    this._contentObserver.disconnect();
-    super.disconnectedCallback();
-  }
-
-  protected override willUpdate(changedProperties: PropertyValues): void {
-    // The slider reads each option's initial value itself, so only later changes need a notice
-    if (this.hasUpdated && changedProperties.has('value')) {
-      this._notifySlider();
-    }
-  }
-
-  /**
-   * Let the parent slider recalculate its range and announced text
-   */
-  private _notifySlider(): void {
-    if (this.parentElement?.dataset.pharosComponent === 'PharosSlider') {
-      (this.parentElement as LitElement).requestUpdate();
-    }
   }
 
   protected override render(): TemplateResult {

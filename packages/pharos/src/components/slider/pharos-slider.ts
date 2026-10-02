@@ -9,6 +9,7 @@ import { sliderStyles } from './pharos-slider.css';
 import type { PharosSliderOption } from './pharos-slider-option';
 
 import FormMixin from '../../utils/mixins/form';
+import ObserveChildrenMixin from '../../utils/mixins/observe-children';
 import { FormElement } from '../base/form-element';
 
 const _allOptionsSelector = '[data-pharos-component="PharosSliderOption"]';
@@ -37,7 +38,7 @@ const isSameValue = (a: number, b: number): boolean => Math.abs(a - b) < EPSILON
  * @fires input - Fires when the value changes while the user is interacting with the slider
  * @fires change - Fires when the value has changed
  */
-export class PharosSlider extends FormMixin(FormElement) {
+export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
   /**
    * The value of the slider. Clamped to the range and snapped to the nearest step,
    * defaulting to the midpoint of the range.
@@ -82,6 +83,17 @@ export class PharosSlider extends FormMixin(FormElement) {
 
   public static override get styles(): CSSResultArray {
     return [super.styles, sliderStyles];
+  }
+
+  // Limit what ObserveChildrenMixin watches so the attributes the slider sets on its
+  // options don't trigger cascading updates
+  protected get _childrenObserverOptions(): MutationObserverInit {
+    return {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributeFilter: ['value', 'slot', 'data-pharos-component'],
+    };
   }
 
   protected override firstUpdated(): void {
