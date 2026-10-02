@@ -2,11 +2,18 @@ import { dedupeMixin } from '@open-wc/dedupe-mixin';
 import type { Constructor } from '@open-wc/dedupe-mixin';
 import type { LitElement } from 'lit';
 
+// Describes the members a component can override, so overrides are type-checked
+export declare class ObserveChildrenInterface {
+  protected get _childrenObserverOptions(): MutationObserverInit;
+}
+
 /**
  * @param Base The base class for the mixin to modify.
  * @returns A mixin to observe changes to children passed to a component without a slot.
  */
-const ObserveChildrenMixinImplementation = <T extends Constructor<LitElement>>(Base: T): T => {
+const ObserveChildrenMixinImplementation = <T extends Constructor<LitElement>>(
+  Base: T
+): T & Constructor<ObserveChildrenInterface> => {
   /**
    * A mixin class to handle observing changes to children.
    */
@@ -53,7 +60,7 @@ const ObserveChildrenMixinImplementation = <T extends Constructor<LitElement>>(B
       super.disconnectedCallback && super.disconnectedCallback();
     }
   }
-  return ObserveChildren;
+  return ObserveChildren as unknown as T & Constructor<ObserveChildrenInterface>;
 };
 
 const ObserveChildrenMixin = dedupeMixin(ObserveChildrenMixinImplementation);

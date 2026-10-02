@@ -15,7 +15,7 @@ customElements.define('observe-children-test-element', ObserveChildrenTestElemen
 
 // Narrows the observed mutations to text edits and the value attribute
 class ObserveChildrenOptionsTestElement extends ObserveChildrenTestElement {
-  protected get _childrenObserverOptions(): MutationObserverInit {
+  protected override get _childrenObserverOptions(): MutationObserverInit {
     return {
       childList: true,
       subtree: true,

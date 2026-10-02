@@ -91,7 +91,7 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
 
   // Limit what ObserveChildrenMixin watches so the attributes the slider sets on its
   // options don't trigger cascading updates
-  protected get _childrenObserverOptions(): MutationObserverInit {
+  protected override get _childrenObserverOptions(): MutationObserverInit {
     return {
       childList: true,
       subtree: true,
