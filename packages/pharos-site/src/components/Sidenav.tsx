@@ -167,6 +167,7 @@ const Sidenav: FC<SidenavProps> = ({ isOpen, showCloseButton }) => {
             {[
               'Alias colors',
               'Global colors',
+              'Gradients',
               'Font family',
               'Font size',
               'Font weight',

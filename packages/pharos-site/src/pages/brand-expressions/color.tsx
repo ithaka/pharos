@@ -273,6 +273,10 @@ const ColorPage: FC = () => {
         title="Gradients"
         description="Gradients provide depth and create visual interest helping move users through a design. Gradients should be used as subtle details in the corners of materials."
       >
+        <p>
+          See the <PharosLink href="/design-tokens/gradients">gradient tokens</PharosLink> for
+          reusable subdued and saturated gradients and implementation guidance.
+        </p>
         <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
           <ColorGradients
             gradients={[

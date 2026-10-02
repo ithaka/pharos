@@ -1,0 +1,23 @@
+.gradientText {
+  color: var(--pharos-color-night-blue-base);
+  font-size: var(--pharos-font-size-large);
+  width: fit-content;
+}
+
+@supports (background-clip: text) {
+  .gradientText {
+    background-image: var(
+      --pharos-gradient-subdued-cyan-blue,
+      linear-gradient(var(--pharos-color-night-blue-base), var(--pharos-color-night-blue-base))
+    );
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@media (forced-colors: active) {
+  .gradientText {
+    background-image: none;
+    color: CanvasText;
+  }
+}

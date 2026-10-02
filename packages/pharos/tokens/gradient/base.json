@@ -1,0 +1,23 @@
+{
+  "gradient": {
+    "subdued": {
+      "cyan-blue-red": {
+        "value": "linear-gradient(100deg, #197D97 0%, #194D72 30%, #990000 100%)"
+      },
+      "cyan-blue": {
+        "value": "linear-gradient(100deg, #197D97 0%, #194D72 100%)"
+      },
+      "blue-red": {
+        "value": "linear-gradient(100deg, #194D72 0%, #990000 100%)"
+      }
+    },
+    "saturated": {
+      "cyan-blue-red": {
+        "value": "linear-gradient(100deg, #27CAE1 0%, #0D3071 40%, #990000 100%)"
+      },
+      "cyan-blue": {
+        "value": "linear-gradient(100deg, #27CAE1 0%, #0D3071 100%)"
+      }
+    }
+  }
+}
