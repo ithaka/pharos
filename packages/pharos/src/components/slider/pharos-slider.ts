@@ -85,6 +85,14 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
 
   private _valueBeforeInteraction?: number;
 
+  // Worked out in willUpdate, before each update
+  private _options: PharosSliderOption[] = [];
+
+  // The range in use: min and max if set, else the lowest and highest option values, else 0 to 100
+  private _rangeMin = DEFAULT_MIN;
+
+  private _rangeMax = DEFAULT_MAX;
+
   public static override get styles(): CSSResultArray {
     return [super.styles, sliderStyles];
   }
@@ -104,26 +112,15 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
     this._defaultValue = this._requestedValue;
   }
 
-  private get _options(): PharosSliderOption[] {
-    return [...this.children].filter((child) =>
+  protected override willUpdate(): void {
+    this._options = [...this.children].filter((child) =>
       child.matches(_allOptionsSelector)
     ) as PharosSliderOption[];
-  }
-
-  private get _optionValues(): number[] {
-    return this._options
+    const values = this._options
       .map((option) => option.value)
       .filter((value): value is number => value != null);
-  }
-
-  private get _min(): number {
-    const values = this._optionValues;
-    return this.min ?? (values.length ? Math.min(...values) : DEFAULT_MIN);
-  }
-
-  private get _max(): number {
-    const values = this._optionValues;
-    return this.max ?? (values.length ? Math.max(...values) : DEFAULT_MAX);
+    this._rangeMin = this.min ?? (values.length ? Math.min(...values) : DEFAULT_MIN);
+    this._rangeMax = this.max ?? (values.length ? Math.max(...values) : DEFAULT_MAX);
   }
 
   protected override update(changedProperties: PropertyValues): void {
@@ -138,8 +135,8 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
   protected override updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
 
-    const min = this._min;
-    const max = this._max;
+    const min = this._rangeMin;
+    const max = this._rangeMax;
     const options = this._options;
     options.forEach((option) => {
       const value = option.value as number;
@@ -164,8 +161,8 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
 
   private _validate(): void {
     const { step } = this;
-    const min = this._min;
-    const max = this._max;
+    const min = this._rangeMin;
+    const max = this._rangeMax;
 
     if (step == null) {
       throw new Error(`step is a required attribute.`);
@@ -217,8 +214,8 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
    * range input sanitizes its value. Without a value, it defaults to the midpoint.
    */
   private _sanitize(value?: number): number {
-    const min = this._min;
-    const max = this._max;
+    const min = this._rangeMin;
+    const max = this._rangeMax;
     const step = this.step as number;
 
     const target = Math.min(Math.max(value ?? min + (max - min) / 2, min), max);
@@ -310,8 +307,8 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
 
   protected override render(): TemplateResult {
     const options = this._options;
-    const min = this._min;
-    const max = this._max;
+    const min = this._rangeMin;
+    const max = this._rangeMax;
     const value = this.value as number;
     const selected = this._selectedOption;
     const valueText = selected
