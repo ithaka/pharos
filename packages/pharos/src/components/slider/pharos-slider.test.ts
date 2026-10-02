@@ -540,6 +540,27 @@ describe('pharos-slider', () => {
     expect(error.message).toBe('0 is not a valid step. The step must be greater than 0.');
   });
 
+  it('throws an error when the step is not a number', async () => {
+    const error = await errorFixture(html`
+      <test-pharos-slider step="any"><span slot="label">Volume</span></test-pharos-slider>
+    `);
+    expect(error.message).toBe('NaN is not a valid step. The step must be a number.');
+  });
+
+  it('throws an error when the min is not a number', async () => {
+    const error = await errorFixture(html`
+      <test-pharos-slider min="low" step="1"><span slot="label">Volume</span></test-pharos-slider>
+    `);
+    expect(error.message).toBe('NaN is not a valid min. The min must be a number.');
+  });
+
+  it('throws an error when the max is not a number', async () => {
+    const error = await errorFixture(html`
+      <test-pharos-slider max="high" step="1"><span slot="label">Volume</span></test-pharos-slider>
+    `);
+    expect(error.message).toBe('NaN is not a valid max. The max must be a number.');
+  });
+
   it('throws an error when the min is not less than the max', async () => {
     const error = await errorFixture(html`
       <test-pharos-slider min="50" max="50" step="1"

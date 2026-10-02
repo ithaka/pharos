@@ -170,6 +170,15 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
     if (step == null) {
       throw new Error(`step is a required attribute.`);
     }
+    if (!Number.isFinite(step)) {
+      throw new Error(`${step} is not a valid step. The step must be a number.`);
+    }
+    if (this.min != null && !Number.isFinite(this.min)) {
+      throw new Error(`${this.min} is not a valid min. The min must be a number.`);
+    }
+    if (this.max != null && !Number.isFinite(this.max)) {
+      throw new Error(`${this.max} is not a valid max. The max must be a number.`);
+    }
     if (step <= 0) {
       throw new Error(`${step} is not a valid step. The step must be greater than 0.`);
     }
