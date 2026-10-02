@@ -1,0 +1,174 @@
+---
+title: 'Pill'
+description: 'A pill is used to display discrete information, create categorization, and label items. They can be interactive (dismissible) or informative.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import Canvas from '@components/Canvas.astro';
+
+<Example storyBookType="components" componentTitle="Pill">
+  <Canvas>
+    <site-pharos-pill>Email address</site-pharos-pill>
+    <site-pharos-pill dismissible>Topic: Art History</site-pharos-pill>
+  </Canvas>
+</Example>
+
+## Usage
+
+Pills are used to represent a discrete piece of information (e.g. email address, username,
+role name) that the user can interact with, often in an input or a list format.
+
+### When to use pills
+
+- When you want to add/remove discrete items to a list
+- When you need to apply dynamic filters
+- When you want to display tags or labels on an item
+
+### When not to use pills
+
+- When you need multiple interactions for a single entity, consider a card or a tile
+- When you need to display long explanatory text, consider using a caption
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - Stack pills if screen width is constrained
+    - Limit pill text to 1-2 words and reflect a discrete name for the data
+
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Do not wrap contents inside the pill
+    - Do not use a pill to replace a button
+    - Do not use a pill to navigate to another page
+
+  </Fragment>
+</BestPractices>
+
+## Content guidelines
+
+### Pill groups
+
+- Avoid mixing and matching colors unless the different color of the pill conveys important
+  meaning about the data inside
+- If including an icon on the left-hand side, make certain the icon is consistent for all
+  data in the same category. As an example, when including a mail icon next to an email
+  address, all pills with email addresses should include the mail icon.
+- If mixing interactive and informative pills, organize these into a list in the page
+  hierarchy
+
+### Pill content
+
+- Text should generally be 1-2 words long and reflect a discrete name for the data; avoid
+  sentences.
+- Text should not be wrapped inside the pill. Set a `max-width` on the pill or pill
+  container element to truncate long text with an ellipsis.
+
+## Size
+
+In general, pills should use the base size. The small size should only be used when there is
+limited space on compact displays.
+
+<Canvas>
+  <site-pharos-pill>Base pill</site-pharos-pill>
+  <site-pharos-pill size="small">Small pill</site-pharos-pill>
+</Canvas>
+
+## Dismissible
+
+The `dismissible` attribute makes pills interactive with a close button. These pills
+are semantically buttons that can be activated by clicking or keyboard interaction. When dismissed,
+they fire the `pharos-pill-dismissed` event.
+
+<Canvas>
+  <site-pharos-pill>Informational pill</site-pharos-pill>
+  <site-pharos-pill dismissible>Dismissible pill</site-pharos-pill>
+</Canvas>
+
+## Preset
+
+The `preset` attribute controls the color styles of the pill. There are nine preset
+options available, which can be used to categorize or differentiate pills. Preset 1 is the default
+style.
+
+### Presets
+
+<Canvas>
+  <site-pharos-pill preset="1">Preset 1 (default)</site-pharos-pill>
+  <site-pharos-pill preset="2">Preset 2</site-pharos-pill>
+  <site-pharos-pill preset="3">Preset 3</site-pharos-pill>
+  <site-pharos-pill preset="4">Preset 4</site-pharos-pill>
+  <site-pharos-pill preset="5">Preset 5</site-pharos-pill>
+  <site-pharos-pill preset="6">Preset 6</site-pharos-pill>
+  <site-pharos-pill preset="7">Preset 7</site-pharos-pill>
+  <site-pharos-pill preset="8">Preset 8</site-pharos-pill>
+  <site-pharos-pill preset="9">Preset 9</site-pharos-pill>
+</Canvas>
+
+## Icon left
+
+The `icon-left` attribute adds a Pharos icon to the left side of the pill content. Use
+this to further categorize the type of pill being displayed. Make certain the icon is consistent
+for all data in the same category.
+
+<Canvas>
+  <site-pharos-pill icon-left="email">user@example.com</site-pharos-pill>
+  <site-pharos-pill dismissible icon-left="email">user@example.com</site-pharos-pill>
+</Canvas>
+
+## Disabled
+
+The `disabled` attribute should only be used with dismissible pills. Use this state
+when a dismissible pill cannot be interacted with at the current time.
+
+<Canvas>
+  <site-pharos-pill dismissible disabled>Disabled pill</site-pharos-pill>
+</Canvas>
+
+## Accessibility
+
+### What's built in
+
+- Interactive pills (dismissible) are semantically buttons that have focus applied to the
+  entire pill
+- Informative pills are div elements that do not receive focus, as they are not interactive
+- Variants use predefined color schemes that meet contrast requirements
+
+### Considerations
+
+#### Design
+
+- Always pair error states with an icon to rely on more than color alone to signify errors
+- Ensure color choices convey meaning consistently across the interface, not just
+  aesthetic variety
+
+#### Development
+
+- For dismissible pills, clicking any part of it will remove it. Ensure that focus is
+  properly managed after removing elements that were previously in focus (e.g., move focus
+  to the logically next element or to start of section)
+- When grouping pills, organize them in a list to convey their discrete nature to
+  assistive technologies
+
+### Expected actions
+
+#### Screen reader
+
+- Informational pills are read as regular text content: "[pill text]"
+- Dismissible pills are read as: "Dismiss [pill text], button"
+
+#### Keyboard
+
+- **Tab:** Moves focus to the next dismissible pill (informational pills are not
+  focusable)
+- **Enter or Space:** Dismisses the focused pill and fires the `pharos-pill-dismissed` event
+
+### Relevant WCAG guidelines
+
+- [1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships)
+- [1.4.1 Use of Color A](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color)
+- [2.5.8 Target Size (Minimum) AA](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum)
+- [4.1.2 Name, Role, Value A](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value)

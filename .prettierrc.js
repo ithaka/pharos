@@ -1,4 +1,5 @@
 module.exports = {
+  plugins: ['prettier-plugin-astro'],
   printWidth: 100,
   trailingComma: 'es5',
   tabWidth: 2,

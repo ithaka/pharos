@@ -1,23 +1,16 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "target": "es2021",
-    "module": "es2022",
-    "lib": ["es2021", "dom", "esnext.array"],
-    "jsx": "react-jsx",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@lib/*": ["src/lib/*"]
+    },
     "resolveJsonModule": true,
-    "types": ["node"]
+    "allowSyntheticDefaultImports": true,
+    "types": ["astro/client"]
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["src/**/*", ".astro/types.d.ts"],
+  "exclude": ["dist"]
 }

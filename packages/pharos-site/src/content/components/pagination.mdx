@@ -1,0 +1,127 @@
+---
+title: 'Pagination'
+description: 'Pagination allows users to move through a list or set of items that have been split into different pages.'
+---
+
+import Example from '@components/markdown/Example.astro';
+import BestPractices from '@components/BestPractices.astro';
+import CodeBlock from '@components/CodeBlock.astro';
+
+export const paginationCode = `
+            <nav role="navigation" aria-label="pagination navigation">
+              <ul>
+                <li>
+                  <a href="/example-page" aria-label="Go to previous/next page 1">
+                    1
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          `;
+
+<Example storyBookType="components" componentTitle="Pagination">
+  <site-pharos-pagination total-results="1146" page-size="25" current-page="2"></site-pharos-pagination>
+</Example>
+
+## Usage
+
+Pagination splits content into smaller chunks across several pages, making it easier to
+consume.
+
+Pagination only includes navigational elements for paging through the content and does not
+manipulate data or control the display of the content. It is used only to provide navigation
+and to indicate the current page and number of pages.
+
+## Best practices
+
+<BestPractices>
+  <Fragment slot="do">
+
+    - To be used only for lists with more than 25 items
+    - Place pagination below the set of items it paginates through, aligned to the right side of
+      the content being displayed
+    - When the first page is selected the "Previous" button is not displayed and, similarly,
+      when the last page is selected the "Next" button is not displayed
+  </Fragment>
+  <Fragment slot="dont">
+
+    - Don't use pagination on a transactional service or a form
+
+  </Fragment>
+</BestPractices>
+
+## Variants
+
+### Basic
+
+Use the basic variant to navigate to different pages of large lists of items, and indicate
+which page you are currently viewing.
+
+### Jump to page
+
+Use the jump-to-page variant when users need to navigate directly to a specific page in a long
+result set without stepping through every page.
+
+<div style="margin-top: var(--pharos-spacing-1-x);">
+  <site-pharos-pagination
+    total-results="660"
+    page-size="20"
+    current-page="3"
+    variant="input"></site-pharos-pagination>
+</div>
+
+### Simple
+
+Add the `simple` attribute to any variant for tighter layouts. It hides the
+"Previous"/"Next" text (icon-only, chevrons remain) and, when combined with the jump-to-page
+variant, also omits the first/last page buttons.
+
+With the jump-to-page variant:
+
+<div style="margin-top: var(--pharos-spacing-1-x);">
+  <site-pharos-pagination
+    total-results="660"
+    page-size="20"
+    current-page="3"
+    variant="input"
+    simple></site-pharos-pagination>
+</div>
+
+With the default variant:
+
+<div style="margin-top: var(--pharos-spacing-1-x);">
+  <site-pharos-pagination total-results="660" page-size="20" current-page="3" simple></site-pharos-pagination>
+</div>
+
+## Accessibility
+
+### Relevant WCAG guidelines
+
+- [1.3.1 Info and Relationships A](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+
+### Importance
+
+Pagination allows users to navigate multiple pages that are grouped together.
+
+### Code expectations
+
+- Everything should be wrapped in the `<nav>` tag
+- `<nav>` should also have a `role="navigation"` to ensure that all
+  assistive technologies will be given the information
+- You should add an aria-label that denotes this `<nav>` element as pagination
+- List elements should be given an aria-label that gives more information. This should
+  include "previous/next" and the page number.
+
+<CodeBlock language="html" code={paginationCode} />
+
+### Expected actions
+
+<site-pharos-heading level="4" preset="1--bold">Screen reader</site-pharos-heading>
+
+- Reads "Pagination navigation, go to (previous/next) page 1, list 1 of X, link"
+
+<site-pharos-heading level="4" preset="1--bold">Keyboard</site-pharos-heading>
+
+- <kbd>Tab</kbd>: goes to next pagination number
+- <kbd>Shift</kbd> + <kbd>Tab</kbd>: goes to the previous pagination number
+- <kbd>Enter</kbd>: goes to selected page

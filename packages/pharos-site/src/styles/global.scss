@@ -1,0 +1,195 @@
+@use '@ithaka/pharos/lib/styles/pharos';
+@use '@ithaka/pharos/lib/utils/scss/mixins';
+
+kbd {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  color: #333;
+  background-color: #fcfcfc;
+  border: 0.1rem solid #e8e8e8;
+  border-bottom-color: #9c9c9c;
+  box-shadow:
+    0 1px 0 #9c9c9c,
+    0 0 0 2px #fcfcfc inset;
+}
+
+.tooltip-example__target {
+  border-radius: 50%;
+  border: none;
+  fill: var(--pharos-color-night-blue-base);
+  padding: 0;
+  cursor: pointer;
+  background: none;
+}
+
+.tooltip-example__container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  justify-content: space-evenly;
+}
+
+.alert-example__content {
+  margin: 0;
+}
+
+p.alert-example__content + p.alert-example__content {
+  margin-top: 1rem;
+}
+
+.alert-example__content > li {
+  margin-top: 0;
+}
+
+.token-table-container {
+  width: 80%;
+  margin: auto;
+
+  h2 {
+    font-weight: normal;
+  }
+}
+
+.token-table {
+  width: 100%;
+
+  code {
+    background: var(--pharos-color-ui-20);
+    border-radius: 1px;
+    padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+    white-space: nowrap;
+  }
+
+  [data-pharos-component='PharosIcon'] {
+    fill: var(--pharos-color-black);
+    stroke: var(--pharos-color-black);
+  }
+
+  td {
+    padding-bottom: var(--pharos-spacing-one-and-a-half-x);
+    padding-right: var(--pharos-spacing-2-x);
+    padding-top: var(--pharos-spacing-one-and-a-half-x);
+    vertical-align: top;
+    border-top: 1px solid var(--pharos-color-ui-30);
+  }
+
+  .color-example {
+    width: 10rem;
+    height: 3rem;
+    border: 1px solid #eee;
+  }
+
+  /* No max-height/overflow: each example grows to its own line-height, and
+   * clipping truncates the sample text mid-sentence. */
+
+  .radius-example {
+    background: var(--pharos-color-living-coral-80);
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+  }
+
+  .token-type-sans-serif {
+    font-family: var(--pharos-font-family-sans-serif);
+  }
+
+  .token-type-serif {
+    font-family: var(--pharos-font-family-serif);
+  }
+
+  .transition-example {
+    height: 3rem;
+  }
+}
+
+.typography-table-example {
+  border: 1px solid var(--pharos-color-ui-40);
+  padding: var(--pharos-spacing-one-quarter-x) var(--pharos-spacing-one-half-x);
+}
+
+.icon-example__icon {
+  stroke: var(--pharos-color-black);
+  stroke-width: 0;
+}
+
+.icon-example__container {
+  display: flex;
+  align-items: center;
+  padding: var(--pharos-spacing-one-quarter-x);
+}
+
+.icon-example__name {
+  margin-left: var(--pharos-spacing-three-quarters-x);
+}
+
+/*
+ * The do/don't lists on the `button` and `toast` pages: a coloured tick or cross
+ * followed by an example of the copy.
+ */
+.guideline-example__item {
+  display: flex;
+}
+
+/*
+ * Chained to `.guideline-example__item` to outrank `markdown.css`'s `.md-body li`
+ */
+.guideline-example__item.guideline-example__item--do {
+  color: var(--pharos-color-green-base);
+}
+
+.guideline-example__item.guideline-example__item--dont {
+  color: var(--pharos-color-living-coral-53);
+}
+
+.guideline-example__icon {
+  margin-right: var(--pharos-spacing-one-half-x);
+
+  /* Inherits the colour set on the row, so the pair cannot drift apart. */
+  fill: currentcolor;
+
+  /* The row is a flex container, so the icon would otherwise stretch to the
+     height of the text beside it. */
+  flex-shrink: 0;
+  align-self: start;
+}
+
+.guideline-example__item > p {
+  margin: 0;
+}
+
+.list-example__no-bullets {
+  @include pharos.no-bullet;
+}
+
+.list-example__nested {
+  @include pharos.list-nested;
+}
+
+.list-example__inline {
+  @include pharos.list-inline;
+}
+
+[tabindex='0'] {
+  @include pharos.interactive-focus;
+}
+
+@media only screen and (width <= 570px) {
+  .hide-for-small {
+    display: none !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  .show-for-small {
+    display: inherit !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.header-example__input-group {
+  padding-bottom: var(--pharos-spacing-one-half-x);
+}
+
+//  hide something from sighted users but still be accessible to screen readers
+.visually-hidden {
+  @include mixins.hidden;
+}

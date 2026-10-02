@@ -1,0 +1,115 @@
+/*
+ * Spacing for Markdown-authored pages.
+ *
+ */
+.md-heading--2 {
+  margin-top: var(--pharos-spacing-7-x);
+
+  /* Matches `.section__title--more-space`, which top-level section titles used. */
+  color: var(--pharos-color-black);
+}
+
+.md-heading--3 {
+  margin-top: var(--pharos-spacing-3-x);
+}
+
+.md-heading--4 {
+  margin-top: var(--pharos-spacing-2-x);
+}
+
+.md-heading--5 {
+  margin-top: var(--pharos-spacing-1-x);
+}
+
+/*
+ * A heading straight after another (`##` then `###`) takes no top margin
+ *  the `##`'s own bottom margin covers it.
+ */
+.md-heading + .md-heading {
+  margin-top: 0;
+}
+
+/* No section gap on the first heading after the page title. */
+.md-heading--1 + .md-body > .md-heading:first-child {
+  margin-top: 0;
+}
+
+/* The page-title block, equivalent to `PageSection`'s `isHeader`. */
+.md-heading--1 {
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+/*
+ * The Help page has tighter spacing because there is so little content
+ */
+.help .md-heading--1 {
+  margin-bottom: 0;
+}
+
+.help .md-body > .md-heading--2 {
+  margin-top: var(--pharos-spacing-2-x);
+}
+
+/*
+ * The page introduction paragraph, from the `description` frontmatter 
+ */
+.md-lede {
+  font-size: var(--pharos-type-scale-6);
+  line-height: 2rem;
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+/*
+ * Paragraph and list spacing is  left to the browser default, but It has to be cancelled before a heading.
+ */
+.md-body :is(p, ul, ol):has(+ .md-heading) {
+  margin-bottom: 0;
+}
+
+/* `layout.css` colours `p` only, so list text would otherwise be darker. */
+.md-body li {
+  color: var(--pharos-color-text-20);
+}
+
+/*
+ * Named blocks for MDX pages
+ */
+.doc-topic {
+  margin-bottom: var(--pharos-spacing-2-x);
+}
+
+/* A topic that opens a section rather than continuing one. */
+.doc-topic--section {
+  margin-bottom: var(--pharos-spacing-3-x);
+}
+
+/* A live demo or specimen, separated from the discussion that follows it. */
+.doc-specimen {
+  margin-bottom: var(--pharos-spacing-5-x);
+}
+
+/* The label immediately above a demo, which sits tight to it. */
+.doc-label {
+  margin-bottom: var(--pharos-spacing-1-x);
+}
+
+.segment-marker {
+  font-size: 0.75em;
+  font-weight: var(--pharos-font-weight-bold);
+  margin-left: 1px;
+
+  /* Keeps the raised numeral from stretching the code line's height. */
+  line-height: 0;
+}
+
+/*
+ *GThe `": "`'s trailing space collapses at the element boundary, so the gap is
+ * set on the pseudo-element instead.
+ */
+.md-body dd {
+  margin-inline-start: 0;
+}
+
+.md-body dt::after {
+  margin-right: 0.25em;
+}

@@ -30,4 +30,4 @@ The `scripts/` directory contains code for building the package. The `src/` dire
 
 ## `@ithaka/pharos-site` package
 
-The `@ithaka/pharos-site` package contains a [Gatsby](https://www.gatsbyjs.org/)-based site that will act as a portal for Pharos consumers to read the Pharos design guidelines, download brand assets, and so on. The site is in active design and development but not yet ready for mass consumption.
+The `@ithaka/pharos-site` package contains the [Astro](https://astro.build)-based documentation site hosted at [pharos.jstor.org](https://pharos.jstor.org), where Pharos consumers can read the Pharos design guidelines, component documentation, and so on. See [its README](../../packages/pharos-site/README.md) for details.
