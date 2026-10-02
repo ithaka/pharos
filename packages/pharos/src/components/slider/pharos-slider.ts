@@ -13,15 +13,6 @@ import { FormElement } from '../base/form-element';
 
 const _allOptionsSelector = '[data-pharos-component="PharosSliderOption"]';
 
-// Matches the defaults of a native range input
-const DEFAULT_MIN = 0;
-const DEFAULT_MAX = 100;
-
-// Tolerance for comparing values produced by floating point step math, e.g. 0.1 + 0.2
-const EPSILON = 1e-9;
-
-const isSameValue = (a: number, b: number): boolean => Math.abs(a - b) < EPSILON;
-
 /**
  * Pharos slider component. Built on a native range input, with optional
  * `pharos-slider-option` children that label stops along the track.
@@ -39,33 +30,41 @@ const isSameValue = (a: number, b: number): boolean => Math.abs(a - b) < EPSILON
  */
 export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
   /**
-   * The value of the slider. Clamped to the range and snapped to the nearest step,
-   * defaulting to the midpoint of the range.
+   * The value of the slider. Limited to the range and snapped to the nearest step by the
+   * native range input, defaulting to the midpoint of the range. Like a native input, the
+   * value attribute sets the starting value and does not change with it.
    * @attr value
    */
-  @property({ type: Number, reflect: true })
-  public value?: number;
+  // The value is read from the input, so it can't be compared before and after it is set
+  @property({ type: Number, hasChanged: () => true })
+  public get value(): number | undefined {
+    return this._input ? Number(this._input.value) : this._requestedValue;
+  }
+
+  public set value(value: number | undefined) {
+    this._requestedValue = value;
+  }
 
   /**
-   * The minimum value of the slider. Defaults to the lowest option value, or 0 without options.
+   * The minimum value of the slider.
    * @attr min
    */
   @property({ type: Number, reflect: true })
-  public min?: number;
+  public min = 0;
 
   /**
-   * The maximum value of the slider. Defaults to the highest option value, or 100 without options.
+   * The maximum value of the slider.
    * @attr max
    */
   @property({ type: Number, reflect: true })
-  public max?: number;
+  public max = 100;
 
   /**
    * The granularity the value must adhere to.
    * @attr step
    */
   @property({ type: Number, reflect: true })
-  public step?: number;
+  public step = 1;
 
   /**
    * Formats the value announced by assistive technology when it does not match an option.
@@ -78,19 +77,16 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
 
   private _defaultValue?: number;
 
-  // The set value, before limiting to range and aligning with a step,
+  // The set value, before the input limits it to the range and snaps it to a step,
   // so it survives changes to the range
   private _requestedValue?: number;
+
+  private _isInteracting = false;
 
   private _valueBeforeInteraction?: number;
 
   // Worked out in willUpdate, before each update
   private _options: PharosSliderOption[] = [];
-
-  // The range in use: min and max if set, else the lowest and highest option values, else 0 to 100
-  private _rangeMin = DEFAULT_MIN;
-
-  private _rangeMax = DEFAULT_MAX;
 
   public static override get styles(): CSSResultArray {
     return [super.styles, sliderStyles];
@@ -115,138 +111,84 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
     this._options = [...this.children].filter((child) =>
       child.matches(_allOptionsSelector)
     ) as PharosSliderOption[];
-    const values = this._options
-      .map((option) => option.value)
-      .filter((value): value is number => value != null);
-    this._rangeMin = this.min ?? (values.length ? Math.min(...values) : DEFAULT_MIN);
-    this._rangeMax = this.max ?? (values.length ? Math.max(...values) : DEFAULT_MAX);
   }
 
-  protected override update(changedProperties: PropertyValues): void {
-    if (changedProperties.has('value')) {
-      this._requestedValue = this.value;
-    }
-    this._validate();
-    this.value = this._sanitize(this._requestedValue);
-    super.update(changedProperties);
-  }
-
+  // The input has limited the value to the range and snapped it to a step by now,
+  // so everything that depends on the value is set after rendering
   protected override updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
+    this._validate();
 
-    const min = this._rangeMin;
-    const max = this._rangeMax;
-    const options = this._options;
-    options.forEach((option) => {
-      const value = option.value as number;
+    const value = this.value as number;
+    const selected = this._selectedOption;
+    this._input.ariaValueText = selected
+      ? [selected.label, selected.description].filter(Boolean).join(', ')
+      : (this.valueFormatter?.(value) ?? null);
+    this._input.style.setProperty('--pharos-slider-fill', String(this._position(value)));
+
+    this._options.forEach((option) => {
+      const position = this._position(option.value as number);
       // Options at the ends of the track line up with its edges, all others center on their stop
-      const anchor = isSameValue(value, min) ? 0 : isSameValue(value, max) ? 1 : 0.5;
-      const align = ['left', 'center', 'right'][anchor * 2];
+      const anchor = position === 0 || position === 1 ? position : 0.5;
+      const align = position === 0 ? 'left' : position === 1 ? 'right' : 'center';
 
-      option.selected = this.value !== undefined && isSameValue(value, this.value);
-      option.style.setProperty(
-        '--pharos-slider-option-position',
-        String(this._position(value, min, max))
-      );
+      option.selected = option.value === value;
+      option.style.setProperty('--pharos-slider-option-position', String(position));
       option.style.setProperty('--pharos-slider-option-anchor', String(anchor));
       option.style.setProperty('--pharos-slider-option-align', align);
     });
   }
 
+  // Checks each option value by setting it on the input and seeing if the input keeps it
   private _validate(): void {
-    const { step } = this;
-    const min = this._rangeMin;
-    const max = this._rangeMax;
-
-    if (step == null) {
-      throw new Error(`step is a required attribute.`);
-    }
-    if (!Number.isFinite(step)) {
-      throw new Error(`${step} is not a valid step. The step must be a number.`);
-    }
-    if (this.min != null && !Number.isFinite(this.min)) {
-      throw new Error(`${this.min} is not a valid min. The min must be a number.`);
-    }
-    if (this.max != null && !Number.isFinite(this.max)) {
-      throw new Error(`${this.max} is not a valid max. The max must be a number.`);
-    }
-    if (step <= 0) {
-      throw new Error(`${step} is not a valid step. The step must be greater than 0.`);
-    }
-    if (min >= max) {
-      throw new Error(`The min (${min}) must be less than the max (${max}).`);
-    }
-
-    const seen: number[] = [];
+    const input = this._input;
+    const { value } = input;
+    const seen = new Set<number>();
     this._options.forEach((option) => {
-      const { value } = option;
-      if (value == null) {
+      if (option.value == null) {
         throw new Error(`pharos-slider-option is missing its required value attribute.`);
       }
-      if (value < min || value > max) {
+      input.value = String(option.value);
+      if (Number(input.value) !== option.value) {
         throw new Error(
-          `${value} is not a valid option value. Option values must be between the min (${min}) and max (${max}).`
+          `${option.value} is not a valid option value. Option values must fall on a step of ${this.step} between the min (${this.min}) and max (${this.max}).`
         );
       }
-      const steps = (value - min) / step;
-      if (!isSameValue(steps, Math.round(steps))) {
+      if (seen.has(option.value)) {
         throw new Error(
-          `${value} is not a valid option value. Option values must fall on a step of ${step} from the min (${min}).`
+          `${option.value} is not a valid option value. Each option must have a unique value.`
         );
       }
-      if (seen.some((seenValue) => isSameValue(seenValue, value))) {
-        throw new Error(
-          `${value} is not a valid option value. Each option must have a unique value.`
-        );
-      }
-      seen.push(value);
+      seen.add(option.value);
     });
-  }
-
-  /**
-   * Clamp a value to the range and snap it to the nearest step, matching how a native
-   * range input sanitizes its value. Without a value, it defaults to the midpoint.
-   */
-  private _sanitize(value?: number): number {
-    const min = this._rangeMin;
-    const max = this._rangeMax;
-    const step = this.step as number;
-
-    const target = Math.min(Math.max(value ?? min + (max - min) / 2, min), max);
-    // Ties round up, as they do natively
-    let snapped = min + Math.round((target - min) / step) * step;
-    if (snapped > max + EPSILON) {
-      snapped -= step;
-    }
-    // Drop floating point noise, e.g. 0.30000000000000004
-    return parseFloat(snapped.toPrecision(12));
+    input.value = value;
   }
 
   private get _selectedOption(): PharosSliderOption | undefined {
-    const { value } = this;
-    return value === undefined
-      ? undefined
-      : this._options.find((option) => isSameValue(option.value as number, value));
+    return this._options.find((option) => option.value === this.value);
   }
 
   /**
    * The position of a value along the track as a fraction from 0 to 1,
    * matching where the native range input places its thumb.
    */
-  private _position(value: number, min: number, max: number): number {
-    return (value - min) / (max - min);
+  private _position(value: number): number {
+    return (value - this.min) / (this.max - this.min);
   }
 
+  // By the time the input fires an event, it already has the new value, so the value before
+  // it is the one that was set
   private _handleInput(): void {
-    if (this._valueBeforeInteraction === undefined) {
-      this._valueBeforeInteraction = this.value;
+    if (!this._isInteracting) {
+      this._isInteracting = true;
+      this._valueBeforeInteraction = this._requestedValue;
     }
     this.value = Number(this._input.value);
   }
 
   private _handleChange(): void {
-    const previousValue = this._valueBeforeInteraction ?? this.value;
-    this._valueBeforeInteraction = undefined;
+    const previousValue = this._isInteracting ? this._valueBeforeInteraction : this._requestedValue;
+    this._isInteracting = false;
     this.value = Number(this._input.value);
     this._dispatchChange(previousValue);
   }
@@ -266,7 +208,7 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
     this.value = option.value;
     this._input.value = String(option.value);
     this._input.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
-    this._valueBeforeInteraction = undefined;
+    this._isInteracting = false;
     this._dispatchChange(previousValue);
   }
 
@@ -300,15 +242,6 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
   }
 
   protected override render(): TemplateResult {
-    const options = this._options;
-    const min = this._rangeMin;
-    const max = this._rangeMax;
-    const value = this.value as number;
-    const selected = this._selectedOption;
-    const valueText = selected
-      ? [selected.label, selected.description].filter(Boolean).join(', ')
-      : this.valueFormatter?.(value);
-
     return html`
       <label for="input-element">
         <slot name="label"></slot>
@@ -319,21 +252,19 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
         class="slider__input"
         type="range"
         name=${this.name}
-        min=${min}
-        max=${max}
-        step=${ifDefined(this.step)}
-        .value=${live(String(value))}
+        min=${this.min}
+        max=${this.max}
+        step=${this.step}
+        .value=${live(this._requestedValue === undefined ? '' : String(this._requestedValue))}
         ?disabled=${this.disabled}
-        aria-valuetext=${ifDefined(valueText)}
         aria-invalid=${this.invalidated}
         aria-describedby=${ifDefined(this.messageId)}
-        style=${styleMap({ '--pharos-slider-fill': String(this._position(value, min, max)) })}
         @input=${this._handleInput}
         @change=${this._handleChange}
       />
       <div
         class="slider__options"
-        style=${styleMap({ '--pharos-slider-option-count': String(options.length) })}
+        style=${styleMap({ '--pharos-slider-option-count': String(this._options.length) })}
         aria-hidden="true"
         @click=${this._handleOptionClick}
       >

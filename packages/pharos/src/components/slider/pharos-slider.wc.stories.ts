@@ -54,7 +54,7 @@ export const Base: Story = {
 
 export const FourOptions: Story = {
   render: () => html`
-    <storybook-pharos-slider name="slider2" value="2" step="1">
+    <storybook-pharos-slider name="slider2" value="2" min="1" max="4" step="1">
       <span slot="label">Text size</span>
       <storybook-pharos-slider-option value="1">
         Small
@@ -78,7 +78,7 @@ export const FourOptions: Story = {
 
 export const FiveOptions: Story = {
   render: () => html`
-    <storybook-pharos-slider name="slider3" value="30" step="10">
+    <storybook-pharos-slider name="slider3" value="30" min="10" max="50" step="10">
       <span slot="label">Results per page</span>
       <storybook-pharos-slider-option value="10">10</storybook-pharos-slider-option>
       <storybook-pharos-slider-option value="20">20</storybook-pharos-slider-option>
@@ -133,6 +133,8 @@ export const Events: Story = {
   render: () => html`
     <storybook-pharos-slider
       name="slider4"
+      min="1"
+      max="3"
       step="1"
       @input=${(e: Event) => action('Input')((e.target as PharosSlider).value)}
       @change=${(e: Event) => action('Change')((e.target as PharosSlider).value)}
@@ -158,7 +160,14 @@ export const Events: Story = {
 export const FormData: Story = {
   render: () => html`
     <form name="slider-form">
-      <storybook-pharos-slider name="depth" value="2" step="1" style="margin-bottom: 1rem;">
+      <storybook-pharos-slider
+        name="depth"
+        value="2"
+        min="1"
+        max="3"
+        step="1"
+        style="margin-bottom: 1rem;"
+      >
         <span slot="label">Search depth</span>
         <storybook-pharos-slider-option value="1">
           Quick

@@ -1,8 +1,7 @@
 @use '../../utils/scss/mixins';
 
-// The thumb's ring is drawn on its outer edge, so it renders at 18px like the 16px knob in the
-// design, whose stroke is centered on its edge. The input is taller than the thumb so it stays
-// a comfortable target to drag and click.
+// Custom sized for the range input
+// stored as variables because they are used in calculation throughout the styles
 $thumb-size: 1.125rem;
 $track-height: 0.375rem;
 $input-height: 1.5rem;

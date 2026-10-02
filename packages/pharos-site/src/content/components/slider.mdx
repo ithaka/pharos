@@ -9,7 +9,7 @@ import Canvas from '@components/Canvas.astro';
 import DemoScript from '@components/markdown/DemoScript.astro';
 
 <Example storyBookType="forms" componentTitle="Slider">
-  <site-pharos-slider value="2" step="1">
+  <site-pharos-slider value="2" min="1" max="3" step="1">
     <span slot="label">Search depth</span>
     <site-pharos-slider-option value="1">
       Quick
@@ -29,13 +29,13 @@ import DemoScript from '@components/markdown/DemoScript.astro';
 ## Usage
 
 Sliders signal increasing or decreasing value and provide a more tactile input than radio
-buttons. The value moves in increments of the required step, between a minimum and maximum.
+buttons. The value moves in increments of the step, between a minimum and maximum.
 
 ### Range
 
-Every slider needs a step. The minimum and maximum default to the lowest and highest option
-values, or to 0 and 100 when there are no options. Without a value, the slider starts at the
-midpoint of its range. Values outside the range or between steps are moved to the nearest step.
+The minimum, maximum, and step work like those of a native range input, defaulting to 0, 100,
+and 1. Without a value, the slider starts at the midpoint of its range. Values outside the range
+or between steps are moved to the nearest step.
 
 ### Options
 
@@ -111,7 +111,7 @@ Users can drag the handle, click an option label, or use the keyboard to change 
 Indicates that the slider is interactable.
 
 <Canvas>
-  <site-pharos-slider step="1">
+  <site-pharos-slider min="1" max="4" step="1">
     <span slot="label">Text size</span>
     <site-pharos-slider-option value="1">Small</site-pharos-slider-option>
     <site-pharos-slider-option value="2">Medium</site-pharos-slider-option>
@@ -125,7 +125,7 @@ Indicates that the slider is interactable.
 Indicates that the slider should not be interactable.
 
 <Canvas>
-  <site-pharos-slider step="1" disabled>
+  <site-pharos-slider min="1" max="4" step="1" disabled>
     <span slot="label">Text size</span>
     <site-pharos-slider-option value="1">Small</site-pharos-slider-option>
     <site-pharos-slider-option value="2">Medium</site-pharos-slider-option>
@@ -141,6 +141,8 @@ rules specific to your form, and describe the problem with a message.
 
 <Canvas>
   <site-pharos-slider
+    min="1"
+    max="4"
     step="1"
     value="4"
     invalidated

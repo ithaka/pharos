@@ -21,5 +21,7 @@ export const defaultArgs: StoryArgs = {
   name: 'slider1',
   message: '',
   value: 2,
+  min: 1,
+  max: 3,
   step: 1,
 };

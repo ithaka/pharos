@@ -62,7 +62,7 @@ export const Base: Story = {
 
 export const FourOptions: Story = {
   render: () => (
-    <PharosSlider name="slider2" value={2} step={1}>
+    <PharosSlider name="slider2" value={2} min={1} max={4} step={1}>
       <span slot="label">Text size</span>
       <PharosSliderOption value={1}>
         Small
@@ -86,7 +86,7 @@ export const FourOptions: Story = {
 
 export const FiveOptions: Story = {
   render: () => (
-    <PharosSlider name="slider3" value={30} step={10}>
+    <PharosSlider name="slider3" value={30} min={10} max={50} step={10}>
       <span slot="label">Results per page</span>
       <PharosSliderOption value={10}>10</PharosSliderOption>
       <PharosSliderOption value={20}>20</PharosSliderOption>
@@ -137,6 +137,8 @@ export const Events: Story = {
   render: () => (
     <PharosSlider
       name="slider4"
+      min={1}
+      max={3}
       step={1}
       onInput={(e) => action('Input')((e.target as PSType).value)}
       onChange={(e) => action('Change')((e.target as PSType).value)}
@@ -162,7 +164,14 @@ export const Events: Story = {
 export const FormData: Story = {
   render: () => (
     <form name="slider-form">
-      <PharosSlider name="depth" value={2} step={1} style={{ marginBottom: '1rem' }}>
+      <PharosSlider
+        name="depth"
+        value={2}
+        min={1}
+        max={3}
+        step={1}
+        style={{ marginBottom: '1rem' }}
+      >
         <span slot="label">Search depth</span>
         <PharosSliderOption value={1}>
           Quick

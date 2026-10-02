@@ -19,7 +19,7 @@ describe('pharos-slider', () => {
 
   beforeEach(async () => {
     component = await fixture(html`
-      <test-pharos-slider name="size" step="10" value="10">
+      <test-pharos-slider name="size" min="10" max="30" step="10" value="10">
         <span slot="label">Result size</span>
         <test-pharos-slider-option value="10"
           >Small<span slot="description">Fewer results</span></test-pharos-slider-option
@@ -59,16 +59,16 @@ describe('pharos-slider', () => {
     expect(getInput(component).type).toBe('range');
   });
 
-  it('derives the range from its options', async () => {
+  it('passes the range to the native range input', async () => {
     const input = getInput(component);
     expect(input.min).toBe('10');
     expect(input.max).toBe('30');
     expect(input.step).toBe('10');
   });
 
-  it('derives the range from options registered after it renders', async () => {
+  it('positions options registered after it renders', async () => {
     component = await fixture(html`
-      <test-pharos-slider step="10">
+      <test-pharos-slider min="10" max="30" step="10">
         <span slot="label">Result size</span>
         <late-pharos-slider-option value="10">Small</late-pharos-slider-option>
         <late-pharos-slider-option value="30">Large</late-pharos-slider-option>
@@ -77,15 +77,16 @@ describe('pharos-slider', () => {
     registerComponents('late', [PharosSliderOption]);
 
     await vi.waitFor(() => {
-      const input = getInput(component);
-      expect(input.min).toBe('10');
-      expect(input.max).toBe('30');
+      const positions = [
+        ...component.querySelectorAll<PharosSliderOption>('late-pharos-slider-option'),
+      ].map((option) => option.style.getPropertyValue('--pharos-slider-option-position'));
+      expect(positions).toEqual(['0', '1']);
     });
   });
 
   it('keeps the value attribute when options are registered after it renders', async () => {
     component = await fixture(html`
-      <test-pharos-slider step="10" value="15">
+      <test-pharos-slider min="5" max="25" step="10" value="15">
         <span slot="label">Result size</span>
         <late-value-pharos-slider-option value="5">Small</late-value-pharos-slider-option>
         <late-value-pharos-slider-option value="15">Medium</late-value-pharos-slider-option>
@@ -101,7 +102,7 @@ describe('pharos-slider', () => {
     const parentNode = document.createElement('form');
     component = await fixture(
       html`
-        <test-pharos-slider step="10" value="15">
+        <test-pharos-slider min="5" max="25" step="10" value="15">
           <span slot="label">Result size</span>
           <late-reset-pharos-slider-option value="5">Small</late-reset-pharos-slider-option>
           <late-reset-pharos-slider-option value="15">Medium</late-reset-pharos-slider-option>
@@ -111,7 +112,12 @@ describe('pharos-slider', () => {
       { parentNode }
     );
     registerComponents('late-reset', [PharosSliderOption]);
-    await vi.waitFor(() => expect(getInput(component).min).toBe('5'));
+    await vi.waitFor(() =>
+      expect(
+        component.querySelector<PharosSliderOption>('late-reset-pharos-slider-option[value="15"]')
+          ?.selected
+      ).toBe(true)
+    );
 
     component.value = 25;
     await component.updateComplete;
@@ -145,7 +151,7 @@ describe('pharos-slider', () => {
 
   it('defaults the value to the midpoint of the range', async () => {
     component = await fixture(html`
-      <test-pharos-slider step="10">
+      <test-pharos-slider min="10" max="30" step="10">
         <span slot="label">Result size</span>
         <test-pharos-slider-option value="10">Small</test-pharos-slider-option>
         <test-pharos-slider-option value="20">Medium</test-pharos-slider-option>
@@ -166,7 +172,7 @@ describe('pharos-slider', () => {
 
   it('sets the value from the value attribute', async () => {
     component = await fixture(html`
-      <test-pharos-slider step="10" value="20">
+      <test-pharos-slider min="10" max="30" step="10" value="20">
         <span slot="label">Result size</span>
         <test-pharos-slider-option value="10">Small</test-pharos-slider-option>
         <test-pharos-slider-option value="20">Medium</test-pharos-slider-option>
@@ -194,10 +200,10 @@ describe('pharos-slider', () => {
     expect(component.value).toBe(10);
   });
 
-  it('reflects the snapped value to the value attribute', async () => {
-    component.value = 24;
+  it('keeps the value attribute as the starting value when the value changes', async () => {
+    component.value = 20;
     await component.updateComplete;
-    expect(component.getAttribute('value')).toBe('20');
+    expect(component.getAttribute('value')).toBe('10');
   });
 
   it('snaps to steps without floating point error', async () => {
@@ -207,18 +213,6 @@ describe('pharos-slider', () => {
       </test-pharos-slider>
     `);
     expect(component.value).toBe(0.3);
-  });
-
-  it('uses the min and max attributes over the options', async () => {
-    component = await fixture(html`
-      <test-pharos-slider min="0" max="40" step="10">
-        <span slot="label">Result size</span>
-        <test-pharos-slider-option value="10">Small</test-pharos-slider-option>
-        <test-pharos-slider-option value="30">Large</test-pharos-slider-option>
-      </test-pharos-slider>
-    `);
-    const input = getInput(component);
-    expect([input.min, input.max]).toEqual(['0', '40']);
   });
 
   it('renders the options inside the hidden option row', async () => {
@@ -261,7 +255,7 @@ describe('pharos-slider', () => {
 
   it('positions options by value regardless of their order', async () => {
     component = await fixture(html`
-      <test-pharos-slider step="10">
+      <test-pharos-slider min="10" max="30" step="10">
         <span slot="label">Result size</span>
         <test-pharos-slider-option value="30">Large</test-pharos-slider-option>
         <test-pharos-slider-option value="10">Small</test-pharos-slider-option>
@@ -524,48 +518,11 @@ describe('pharos-slider', () => {
     expect(options.offsetHeight).toBeGreaterThan(0);
   });
 
-  it('throws an error when the step is missing', async () => {
-    const error = await errorFixture(html`
-      <test-pharos-slider><span slot="label">Volume</span></test-pharos-slider>
+  it('defaults to the native step when there is no step', async () => {
+    component = await fixture(html`
+      <test-pharos-slider value="42"><span slot="label">Volume</span></test-pharos-slider>
     `);
-    expect(error.message).toBe('step is a required attribute.');
-  });
-
-  it('throws an error when the step is not greater than 0', async () => {
-    const error = await errorFixture(html`
-      <test-pharos-slider step="0"><span slot="label">Volume</span></test-pharos-slider>
-    `);
-    expect(error.message).toBe('0 is not a valid step. The step must be greater than 0.');
-  });
-
-  it('throws an error when the step is not a number', async () => {
-    const error = await errorFixture(html`
-      <test-pharos-slider step="any"><span slot="label">Volume</span></test-pharos-slider>
-    `);
-    expect(error.message).toBe('NaN is not a valid step. The step must be a number.');
-  });
-
-  it('throws an error when the min is not a number', async () => {
-    const error = await errorFixture(html`
-      <test-pharos-slider min="low" step="1"><span slot="label">Volume</span></test-pharos-slider>
-    `);
-    expect(error.message).toBe('NaN is not a valid min. The min must be a number.');
-  });
-
-  it('throws an error when the max is not a number', async () => {
-    const error = await errorFixture(html`
-      <test-pharos-slider max="high" step="1"><span slot="label">Volume</span></test-pharos-slider>
-    `);
-    expect(error.message).toBe('NaN is not a valid max. The max must be a number.');
-  });
-
-  it('throws an error when the min is not less than the max', async () => {
-    const error = await errorFixture(html`
-      <test-pharos-slider min="50" max="50" step="1"
-        ><span slot="label">Volume</span></test-pharos-slider
-      >
-    `);
-    expect(error.message).toBe('The min (50) must be less than the max (50).');
+    expect(component.value).toBe(42);
   });
 
   it('throws an error when an option is outside of the range', async () => {
@@ -576,7 +533,7 @@ describe('pharos-slider', () => {
       </test-pharos-slider>
     `);
     expect(error.message).toBe(
-      '110 is not a valid option value. Option values must be between the min (0) and max (100).'
+      '110 is not a valid option value. Option values must fall on a step of 10 between the min (0) and max (100).'
     );
   });
 
@@ -588,7 +545,7 @@ describe('pharos-slider', () => {
       </test-pharos-slider>
     `);
     expect(error.message).toBe(
-      '15 is not a valid option value. Option values must fall on a step of 10 from the min (0).'
+      '15 is not a valid option value. Option values must fall on a step of 10 between the min (0) and max (100).'
     );
   });
 
