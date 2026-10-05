@@ -108,14 +108,13 @@ $input-height: 1.5rem;
 }
 
 // Every option is in the same grid cell so the row height matches,
-// the horizontally offset each one to sit under the right spot.
+// then horizontally offset each one to sit under the right spot.
 ::slotted([data-pharos-component='PharosSliderOption']) {
   grid-area: 1 / 1;
 
-  // Size the options to the content, since the offset leaves options near the end of the track no room to
-  // Size the options to the container, An end option grows inward its full width and
-  // the centered option next to it grows back half its width, so 1.5 options have to fit in the
-  // space between two stops.
+  // Size the options to their content, but no wider than their share of the container.
+  // An end option grows inward its full width and the centered option next to it grows
+  // back half its width, so 1.5 options have to fit in the space between two stops.
   width: max-content;
   max-width: calc(100cqi / (var(--pharos-slider-option-count) - 1) / 1.5);
   margin-top: var(--pharos-spacing-one-half-x);
