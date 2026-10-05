@@ -213,14 +213,7 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
 
   private _dispatchChange(previousValue?: number): void {
     const notCancelled = this.dispatchEvent(
-      new CustomEvent('change', {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          target: this._input, // pass the native range input in the event
-        },
-      })
+      new Event('change', { bubbles: true, cancelable: true, composed: true })
     );
 
     // If the event was prevented, the value returns to its previous state
