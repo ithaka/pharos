@@ -52,81 +52,31 @@ export const Base: Story = {
   args: defaultArgs,
 };
 
-export const FourOptions: Story = {
+export const CustomizedRange: Story = {
   render: () => html`
-    <storybook-pharos-slider name="slider2" value="2" min="1" max="4" step="1">
+    <storybook-pharos-slider name="slider2" value="2" min="12" max="20" step="2">
       <span slot="label">Text size</span>
-      <storybook-pharos-slider-option value="1">
+      <storybook-pharos-slider-option value="12">
         Tiny
         <span slot="description">12px</span>
       </storybook-pharos-slider-option>
-      <storybook-pharos-slider-option value="1">
+      <storybook-pharos-slider-option value="14">
         Small
         <span slot="description">14px</span>
       </storybook-pharos-slider-option>
-      <storybook-pharos-slider-option value="2">
+      <storybook-pharos-slider-option value="16">
         Medium
         <span slot="description">16px</span>
       </storybook-pharos-slider-option>
-      <storybook-pharos-slider-option value="3">
+      <storybook-pharos-slider-option value="18">
         Large
         <span slot="description">18px</span>
       </storybook-pharos-slider-option>
-      <storybook-pharos-slider-option value="4">
+      <storybook-pharos-slider-option value="20">
         Extra large
         <span slot="description">20px</span>
       </storybook-pharos-slider-option>
     </storybook-pharos-slider>
-  `,
-};
-
-export const FiveOptions: Story = {
-  render: () => html`
-    <storybook-pharos-slider name="slider3" value="30" min="10" max="50" step="10">
-      <span slot="label">Results per page</span>
-      <storybook-pharos-slider-option value="10">10</storybook-pharos-slider-option>
-      <storybook-pharos-slider-option value="20">20</storybook-pharos-slider-option>
-      <storybook-pharos-slider-option value="30">30</storybook-pharos-slider-option>
-      <storybook-pharos-slider-option value="40">40</storybook-pharos-slider-option>
-      <storybook-pharos-slider-option value="50">50</storybook-pharos-slider-option>
-    </storybook-pharos-slider>
-  `,
-};
-
-export const ContainerWidth: Story = {
-  render: () => html`
-    <div
-      style="width:640px; max-width:100%; padding:2rem; border:1px solid var(--pharos-color-black); resize:horizontal; overflow:auto;"
-    >
-      <p>
-        Drag the bottom right corner to resize. Options wrap based on the width of the slider, not
-        the window.
-      </p>
-      <storybook-pharos-slider name="slider7" value="2" min="1" max="4" step="1">
-        <span slot="label">Search scope</span>
-        <storybook-pharos-slider-option value="1">
-          Titles only
-          <span slot="description">Match words in the titles of articles, books, and chapters</span>
-        </storybook-pharos-slider-option>
-        <storybook-pharos-slider-option value="2">
-          Titles and abstracts
-          <span slot="description">Also match the summaries written by authors and publishers</span>
-        </storybook-pharos-slider-option>
-        <storybook-pharos-slider-option value="3">
-          Full text
-          <span slot="description"
-            >Search every page of journals, books, and primary source collections</span
-          >
-        </storybook-pharos-slider-option>
-        <storybook-pharos-slider-option value="4">
-          Full text and related collections
-          <span slot="description"
-            >Include partner archives and open access content available through your
-            institution</span
-          >
-        </storybook-pharos-slider-option>
-      </storybook-pharos-slider>
-    </div>
   `,
 };
 
