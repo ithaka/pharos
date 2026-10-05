@@ -30,9 +30,9 @@ const _allOptionsSelector = '[data-pharos-component="PharosSliderOption"]';
  */
 export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
   /**
-   * The value of the slider. Limited to the range and snapped to the nearest step by the
-   * native range input, defaulting to the midpoint of the range. Like a native input, the
-   * value attribute sets the starting value and does not change with it.
+   * The value of the slider. Limited to the range and set to the nearest step.
+   * range. Like a native input, the value attribute sets the starting value
+   * and does not change with it.
    * @attr value
    */
   // The value is read from the input, so it can't be compared before and after it is set
@@ -60,7 +60,7 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
   public max = 100;
 
   /**
-   * The granularity the value must adhere to.
+   * The granularity or the slider
    * @attr step
    */
   @property({ type: Number, reflect: true })
@@ -77,8 +77,8 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
 
   private _defaultValue?: number;
 
-  // The set value, before the input limits it to the range and snaps it to a step,
-  // so it survives changes to the range
+  // The set value, before the input limits it to the range and maps it to a
+  // valid step, so it survives changes to the range
   private _requestedValue?: number;
 
   private _isInteracting = false;
@@ -113,7 +113,7 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
     ) as PharosSliderOption[];
   }
 
-  // The input has limited the value to the range and snapped it to a step by now,
+  // The input has limited the value to the range and mapped it to a step by now,
   // so everything that depends on the value is set after rendering
   protected override updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
@@ -169,8 +169,7 @@ export class PharosSlider extends ObserveChildrenMixin(FormMixin(FormElement)) {
   }
 
   /**
-   * The position of a value along the track as a fraction from 0 to 1,
-   * matching where the native range input places its thumb.
+   * The position of a value along the track as a fraction from 0 to 1
    */
   private _position(value: number): number {
     return (value - this.min) / (this.max - this.min);
