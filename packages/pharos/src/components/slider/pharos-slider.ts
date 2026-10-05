@@ -23,8 +23,6 @@ const _allOptionsSelector = '[data-pharos-component="PharosSliderOption"]';
  * @slot - Contains the slider options (the default slot).
  * @slot message - Contains message content to show below the slider.
  *
- * @cssprop {Length} --pharos-slider-option-max-width - The width at which option labels wrap, unless the slider is too narrow to fit them. Defaults to 5.5rem.
- *
  * @fires input - Fires when the value changes while the user is interacting with the slider
  * @fires change - Fires when the value has changed
  */

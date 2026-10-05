@@ -1,7 +1,6 @@
 @use '../../utils/scss/mixins';
 
-// Custom sized for the range input
-// stored as variables because they are used in calculation throughout the styles
+// Sizes for the range input elements
 $thumb-size: 1.125rem;
 $track-height: 0.375rem;
 $input-height: 1.5rem;
@@ -108,19 +107,17 @@ $input-height: 1.5rem;
   grid-template-columns: minmax(0, 1fr);
 }
 
-// Stack every option in the same grid cell so the row is as tall as the tallest option,
-// then offset each one to sit under its stop on the track. The anchor is set by the slider:
-// 0 lines an option up with the start of the track, 1 with the end, and 0.5 centers it.
+// Every option is in the same grid cell so the row height matches,
+// the horizontally offset each one to sit under the right spot.
 ::slotted([data-pharos-component='PharosSliderOption']) {
   grid-area: 1 / 1;
 
-  // Size to the content, since the offset leaves options near the end of the track no room to
-  // grow, then wrap once an option reaches its share of the slider width or the max width
+  // Size the options to the content, since the offset leaves options near the end of the track no room to
+  // Size the options to the container, An end option grows inward its full width and
+  // the centered option next to it grows back half its width, so 1.5 options have to fit in the
+  // space between two stops.
   width: max-content;
-  max-width: min(
-    var(--pharos-slider-option-max-width, 5.5rem),
-    100cqi / var(--pharos-slider-option-count)
-  );
+  max-width: calc(100cqi / (var(--pharos-slider-option-count) - 1) / 1.5);
   margin-top: var(--pharos-spacing-one-half-x);
   margin-left: calc(
     #{stop-position(var(--pharos-slider-option-position))} +

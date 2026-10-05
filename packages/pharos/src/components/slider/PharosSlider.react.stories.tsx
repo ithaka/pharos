@@ -65,6 +65,10 @@ export const FourOptions: Story = {
     <PharosSlider name="slider2" value={2} min={1} max={4} step={1}>
       <span slot="label">Text size</span>
       <PharosSliderOption value={1}>
+        Tiny
+        <span slot="description">12px</span>
+      </PharosSliderOption>
+      <PharosSliderOption value={1}>
         Small
         <span slot="description">14px</span>
       </PharosSliderOption>
@@ -94,6 +98,49 @@ export const FiveOptions: Story = {
       <PharosSliderOption value={40}>40</PharosSliderOption>
       <PharosSliderOption value={50}>50</PharosSliderOption>
     </PharosSlider>
+  ),
+};
+
+export const ContainerWidth: Story = {
+  render: () => (
+    <div
+      style={{
+        width: '640px',
+        maxWidth: '100%',
+        padding: '2rem',
+        border: '1px solid var(--pharos-color-black)',
+        resize: 'horizontal',
+        overflow: 'auto',
+      }}
+    >
+      <p>
+        Drag the bottom right corner to resize. Options wrap based on the width of the slider, not
+        the window.
+      </p>
+      <PharosSlider name="slider7" value={2} min={1} max={4} step={1}>
+        <span slot="label">Search scope</span>
+        <PharosSliderOption value={1}>
+          Titles only
+          <span slot="description">Match words in the titles of articles, books, and chapters</span>
+        </PharosSliderOption>
+        <PharosSliderOption value={2}>
+          Titles and abstracts
+          <span slot="description">Also match the summaries written by authors and publishers</span>
+        </PharosSliderOption>
+        <PharosSliderOption value={3}>
+          Full text
+          <span slot="description">
+            Search every page of journals, books, and primary source collections
+          </span>
+        </PharosSliderOption>
+        <PharosSliderOption value={4}>
+          Full text and related collections
+          <span slot="description">
+            Include partner archives and open access content available through your institution
+          </span>
+        </PharosSliderOption>
+      </PharosSlider>
+    </div>
   ),
 };
 
