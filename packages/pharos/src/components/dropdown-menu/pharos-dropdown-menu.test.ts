@@ -75,7 +75,7 @@ describe('pharos-dropdown-menu', () => {
     trigger.setAttribute('id', 'trigger');
     trigger.setAttribute('data-dropdown-menu-id', 'my-dropdown');
 
-    // Simulate libraries (e.g. Sentry) that wrap each listener in a new function,
+    // Simulate libraries that wrap each listener in a new function,
     // which defeats the browser's de-duplication of identical listeners
     const originalAddEventListener = trigger.addEventListener.bind(trigger);
     trigger.addEventListener = (
