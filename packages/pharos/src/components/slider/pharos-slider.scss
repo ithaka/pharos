@@ -1,0 +1,135 @@
+@use '../../utils/scss/mixins';
+
+// Sizes for the range input elements
+$thumb-size: 1.125rem;
+$track-height: 0.375rem;
+$input-height: 1.5rem;
+
+// Horizontal position of a stop along the track, where the thumb's center sits at a given
+// fraction (0 to 1) of the range. The thumb travels the track width minus its own size.
+@function stop-position($fraction) {
+  @return calc(#{$thumb-size} / 2 + #{$fraction} * (100% - #{$thumb-size}));
+}
+
+@mixin track-fill($fill-color) {
+  background: linear-gradient(
+    to right,
+    #{$fill-color} stop-position(var(--pharos-slider-fill)),
+    var(--pharos-color-marble-gray-94) stop-position(var(--pharos-slider-fill))
+  );
+}
+
+@mixin track {
+  @include track-fill(var(--pharos-color-night-blue-base));
+
+  box-sizing: border-box;
+  height: $track-height;
+  border-radius: $track-height;
+}
+
+@mixin thumb {
+  box-sizing: border-box;
+  height: $thumb-size;
+  width: $thumb-size;
+  border: 2px solid var(--pharos-color-glacier-blue-40);
+  border-radius: 50%;
+  background-color: var(--pharos-color-white);
+  box-shadow: var(--pharos-elevation-level-4);
+  cursor: pointer;
+}
+
+:host {
+  display: block;
+  width: 100%;
+  container-type: inline-size;
+}
+
+.slider__input {
+  @include mixins.interactive-focus;
+
+  appearance: none;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: $input-height;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+
+  &::-webkit-slider-runnable-track {
+    @include track;
+  }
+
+  &::-moz-range-track {
+    @include track;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb;
+
+    appearance: none;
+    margin-top: calc((#{$track-height} - #{$thumb-size}) / 2);
+  }
+
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+
+  // Outline the track while invalid, giving way to the focus outline so focus stays visible
+  :host([invalidated]) &:not(:focus-visible) {
+    outline: 2px solid var(--pharos-form-element-color-border-invalid);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    &::-webkit-slider-runnable-track {
+      @include track-fill(var(--pharos-color-marble-gray-50));
+    }
+
+    &::-moz-range-track {
+      @include track-fill(var(--pharos-color-marble-gray-50));
+    }
+
+    &::-webkit-slider-thumb {
+      border-color: var(--pharos-color-marble-gray-50);
+      box-shadow: none;
+    }
+
+    &::-moz-range-thumb {
+      border-color: var(--pharos-color-marble-gray-50);
+      box-shadow: none;
+    }
+  }
+}
+
+.slider__options {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+// Every option is in the same grid cell so the row height matches,
+// then horizontally offset each one to sit under the right spot.
+::slotted([data-pharos-component='PharosSliderOption']) {
+  grid-area: 1 / 1;
+
+  // Size the options to their content, but no wider than their share of the container.
+  // An end option grows inward its full width and the centered option next to it grows
+  // back half its width, so 1.5 options have to fit in the space between two stops.
+  width: max-content;
+  max-width: calc(100cqi / (var(--pharos-slider-option-count) - 1) / 1.5);
+  margin-top: var(--pharos-spacing-one-half-x);
+  margin-left: calc(
+    #{stop-position(var(--pharos-slider-option-position))} +
+      (var(--pharos-slider-option-anchor) - 0.5) * #{$thumb-size}
+  );
+  transform: translateX(calc(var(--pharos-slider-option-anchor) * -100%));
+  text-align: var(--pharos-slider-option-align);
+}
+
+:host([disabled]) ::slotted([data-pharos-component='PharosSliderOption']) {
+  color: var(--pharos-color-text-50);
+}
+
+:host([disabled]) ::slotted([data-pharos-component='PharosSliderOption'][selected]) {
+  color: var(--pharos-form-element-color-text-disabled);
+}
