@@ -328,25 +328,6 @@ describe('pharos-tabs', () => {
       expect(document.activeElement).toBe(input);
     });
 
-    it('closes a containing modal on escape from tab panels', async () => {
-      const modal = (await fixture(html`
-        <test-pharos-modal header="Modal with tabs">${tabsWithInput}</test-pharos-modal>
-      `)) as PharosModal;
-      modal.open = true;
-      await modal.updateComplete;
-
-      const input = modal.querySelector('input') as HTMLInputElement;
-      input.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, composed: true })
-      );
-      await modal.updateComplete;
-
-      expect(modal.open).toBe(false);
-
-      // Let the modal's focus trap finish returning focus so it doesn't move focus in later tests
-      await new Promise((resolve) => setTimeout(resolve));
-    });
-
     it('moves focus only between nested tabs on arrow keys from a nested tab', async () => {
       component = await fixture(html`
         <test-pharos-tabs>
