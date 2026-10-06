@@ -75,7 +75,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   private _targetWidth = 0;
 
   private _triggers!: HTMLElement[];
-  private _triggerListeners = new AbortController();
+  private _triggersAbortController = new AbortController();
   private _currentTrigger: Element | null = null;
   private _hasHover = false;
   private _moveFocusToLast = false;
@@ -200,8 +200,8 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
 
   private _removeTriggerListeners(): void {
     // Aborting removes the trigger listeners
-    this._triggerListeners.abort();
-    this._triggerListeners = new AbortController();
+    this._triggersAbortController.abort();
+    this._triggersAbortController = new AbortController();
     this._triggers = [];
   }
 
@@ -235,7 +235,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _setupTriggerElement(trigger: HTMLElement) {
-    const { signal } = this._triggerListeners;
+    const { signal } = this._triggersAbortController;
     trigger.addEventListener('click', this._handleTriggerClick, { signal });
     trigger.addEventListener('keydown', this._handleTriggerKeydown, { signal });
 
