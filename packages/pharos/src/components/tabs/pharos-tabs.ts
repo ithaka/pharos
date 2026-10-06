@@ -194,6 +194,10 @@ export class PharosTabs extends PharosElement {
   }
 
   private _handleKeydown(event: KeyboardEvent): void {
+    if (!Array.from(this._tabs).includes(event.target as PharosTab)) {
+      return;
+    }
+
     switch (event.key) {
       case 'Right':
       case 'ArrowRight':
