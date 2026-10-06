@@ -5,7 +5,6 @@ import { fixture } from '../../test/fixture';
 import type { PharosTabs } from './pharos-tabs';
 import type { PharosTab } from './pharos-tab';
 import type { PharosTabPanel } from './pharos-tab-panel';
-import type { PharosModal } from '../modal/pharos-modal';
 
 describe('pharos-tabs', () => {
   let component: PharosTabs,
