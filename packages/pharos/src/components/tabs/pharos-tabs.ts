@@ -194,6 +194,8 @@ export class PharosTabs extends PharosElement {
   }
 
   private _handleKeydown(event: KeyboardEvent): void {
+    // Ignore keydown events that don't come from this instance's own tabs (e.g. from
+    // panel content or nested tabs) so they propagate untouched to other listeners.
     if (!Array.from(this._tabs).includes(event.target as PharosTab)) {
       return;
     }
