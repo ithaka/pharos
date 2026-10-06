@@ -153,8 +153,7 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   private _removeTriggerListeners(): void {
-    // Aborting removes the listeners as the browser registered them, even if another
-    // library wrapped them when patching addEventListener
+    // Aborting removes the trigger listeners
     this._triggerListeners.abort();
     this._triggerListeners = new AbortController();
 
