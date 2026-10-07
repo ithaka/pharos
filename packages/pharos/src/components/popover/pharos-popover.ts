@@ -52,7 +52,8 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   @query('.popover')
   private _popover!: HTMLUListElement;
 
-  private _triggers!: HTMLElement[];
+  private _triggers: HTMLElement[] = [];
+  private _triggersAbortController = new AbortController();
   private _currentTrigger: Element | null = null;
   private _hasHover = false;
   private _enterByKey = false;
@@ -152,16 +153,13 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   private _removeTriggerListeners(): void {
+    // Aborting removes the trigger listeners
+    this._triggersAbortController.abort();
+    this._triggersAbortController = new AbortController();
+
     this._triggers.forEach((trigger) => {
-      trigger.removeEventListener('click', this._handleTriggerClick);
-      trigger.removeEventListener('keydown', this._handleTriggerKeydown);
       trigger.removeAttribute('aria-haspopup');
       trigger.removeAttribute('aria-controls');
-
-      if (trigger.hasAttribute('data-popover-hover')) {
-        trigger.removeEventListener('mouseenter', this._handleTriggerHover);
-        trigger.removeEventListener('mouseleave', this._handleTriggerHover);
-      }
     });
     this._triggers = [];
   }
@@ -179,6 +177,8 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   private _addTriggerListeners(): void {
+    this._removeTriggerListeners();
+
     this._triggers = Array.prototype.slice.call(
       document.querySelectorAll(`[data-popover-id="${this._popoverId()}"]`)
     );
@@ -194,14 +194,15 @@ export class PharosPopover extends ScopedRegistryMixin(FocusMixin(OverlayElement
   }
 
   private _setupTriggerElement(trigger: HTMLElement) {
-    trigger.addEventListener('click', this._handleTriggerClick);
-    trigger.addEventListener('keydown', this._handleTriggerKeydown);
+    const { signal } = this._triggersAbortController;
+    trigger.addEventListener('click', this._handleTriggerClick, { signal });
+    trigger.addEventListener('keydown', this._handleTriggerKeydown, { signal });
     trigger.setAttribute('aria-haspopup', 'true');
     trigger.setAttribute('aria-controls', this._popoverId());
 
     if (trigger.hasAttribute('data-popover-hover')) {
-      trigger.addEventListener('mouseenter', this._handleTriggerHover);
-      trigger.addEventListener('mouseleave', this._handleTriggerHover);
+      trigger.addEventListener('mouseenter', this._handleTriggerHover, { signal });
+      trigger.addEventListener('mouseleave', this._handleTriggerHover, { signal });
     }
   }
 

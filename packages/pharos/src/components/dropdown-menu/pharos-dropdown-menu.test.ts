@@ -70,6 +70,32 @@ describe('pharos-dropdown-menu', () => {
     expect(component.open).toBe(true);
   });
 
+  it('opens when the trigger is clicked while addEventListener is wrapped', async () => {
+    const trigger = document.createElement('button');
+    trigger.setAttribute('id', 'trigger');
+    trigger.setAttribute('data-dropdown-menu-id', 'my-dropdown');
+
+    // Simulate libraries that wrap each listener in a new function,
+    // which defeats the browser's de-duplication of identical listeners
+    const originalAddEventListener = trigger.addEventListener.bind(trigger);
+    trigger.addEventListener = (
+      type: string,
+      listener: EventListenerOrEventListenerObject,
+      options?: boolean | AddEventListenerOptions
+    ) => {
+      const wrapped =
+        typeof listener === 'function' ? (event: Event) => listener.call(trigger, event) : listener;
+      originalAddEventListener(type, wrapped, options);
+    };
+    document.body.appendChild(trigger);
+
+    component = await fixture(getSimpleDropdown());
+
+    trigger.click();
+    await component.updateComplete;
+    expect(component.open).toBe(true);
+  });
+
   it('can support multiple triggers when open and another trigger is clicked', async () => {
     const trigger = document.createElement('button');
     trigger.setAttribute('id', 'trigger');

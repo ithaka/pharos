@@ -75,6 +75,7 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   private _targetWidth = 0;
 
   private _triggers!: HTMLElement[];
+  private _triggersAbortController = new AbortController();
   private _currentTrigger: Element | null = null;
   private _hasHover = false;
   private _moveFocusToLast = false;
@@ -198,15 +199,9 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _removeTriggerListeners(): void {
-    this._triggers.forEach((trigger) => {
-      trigger.removeEventListener('click', this._handleTriggerClick);
-      trigger.removeEventListener('keydown', this._handleTriggerKeydown);
-
-      if (trigger.hasAttribute('data-dropdown-menu-hover')) {
-        trigger.removeEventListener('mouseenter', this._handleTriggerHover);
-        trigger.removeEventListener('mouseleave', this._handleTriggerHover);
-      }
-    });
+    // Aborting removes the trigger listeners
+    this._triggersAbortController.abort();
+    this._triggersAbortController = new AbortController();
     this._triggers = [];
   }
 
@@ -223,6 +218,8 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _addTriggerListeners(): void {
+    this._removeTriggerListeners();
+
     this._triggers = Array.prototype.slice.call(
       document.querySelectorAll(`[data-dropdown-menu-id="${this._dropdownId()}"]`)
     );
@@ -238,12 +235,13 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
   }
 
   private _setupTriggerElement(trigger: HTMLElement) {
-    trigger.addEventListener('click', this._handleTriggerClick);
-    trigger.addEventListener('keydown', this._handleTriggerKeydown);
+    const { signal } = this._triggersAbortController;
+    trigger.addEventListener('click', this._handleTriggerClick, { signal });
+    trigger.addEventListener('keydown', this._handleTriggerKeydown, { signal });
 
     if (trigger.hasAttribute('data-dropdown-menu-hover')) {
-      trigger.addEventListener('mouseenter', this._handleTriggerHover);
-      trigger.addEventListener('mouseleave', this._handleTriggerHover);
+      trigger.addEventListener('mouseenter', this._handleTriggerHover, { signal });
+      trigger.addEventListener('mouseleave', this._handleTriggerHover, { signal });
     }
   }
 
@@ -538,9 +536,11 @@ export class PharosDropdownMenu extends ScopedRegistryMixin(FocusMixin(OverlayEl
         role="menu"
         tabindex=${this._hasItems() ? '-1' : '0'}
       >
-        ${this._hasItems()
-          ? this._renderSlot()
-          : html`<li role="menuitem">${this._renderSlot()}</li>`}
+        ${
+          this._hasItems()
+            ? this._renderSlot()
+            : html`<li role="menuitem">${this._renderSlot()}</li>`
+        }
       </ul>
     `;
   }
