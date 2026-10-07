@@ -115,8 +115,8 @@ interface PharosMatchers<R = unknown> {
   toEqualShadowDom(expected: string, options?: DiffOptions): R;
 }
 
+// Vitest's Assertion and asymmetric matchers both extend Matchers, so this is the
+// only interface we need to extend.
 declare module 'vitest' {
-  interface Matchers<T> extends PharosMatchers<T> {}
-  interface Assertion<T> extends PharosMatchers<T> {}
-  interface AsymmetricMatchersContaining extends PharosMatchers {}
+  interface Matchers<R extends void | Promise<void>> extends PharosMatchers<R> {}
 }
