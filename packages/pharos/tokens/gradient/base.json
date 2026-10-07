@@ -2,21 +2,21 @@
   "gradient": {
     "subdued": {
       "cyan-blue-red": {
-        "value": "linear-gradient(100deg, #197D97 0%, #194D72 30%, #990000 100%)"
+        "value": "linear-gradient(100deg, {color.gradient.subdued.secondary} 0%, {color.gradient.subdued.tertiary} 30%, {color.jstor-red} 100%)"
       },
       "cyan-blue": {
-        "value": "linear-gradient(100deg, #197D97 0%, #194D72 100%)"
+        "value": "linear-gradient(100deg, {color.gradient.subdued.secondary} 0%, {color.gradient.subdued.tertiary} 100%)"
       },
       "blue-red": {
-        "value": "linear-gradient(100deg, #194D72 0%, #990000 100%)"
+        "value": "linear-gradient(100deg, {color.gradient.subdued.tertiary} 0%, {color.jstor-red} 100%)"
       }
     },
     "saturated": {
       "cyan-blue-red": {
-        "value": "linear-gradient(100deg, #27CAE1 0%, #0D3071 40%, #990000 100%)"
+        "value": "linear-gradient(100deg, {color.glacier-blue.base} 0%, {color.night-blue.base} 40%, {color.jstor-red} 100%)"
       },
       "cyan-blue": {
-        "value": "linear-gradient(100deg, #27CAE1 0%, #0D3071 100%)"
+        "value": "linear-gradient(100deg, {color.glacier-blue.base} 0%, {color.night-blue.base} 100%)"
       }
     }
   }
