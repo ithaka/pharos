@@ -1,0 +1,33 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: block;
+  color: var(--pharos-color-text-40);
+  cursor: pointer;
+  transition: color var(--pharos-transition-duration-default) ease-out;
+}
+
+:host(:hover),
+:host([selected]) {
+  color: var(--pharos-color-text-base);
+}
+
+.slider-option__label {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $font-weight: var(--pharos-font-weight-bold),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  display: block;
+  text-transform: uppercase;
+}
+
+.slider-option__description {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-micro),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  display: block;
+}

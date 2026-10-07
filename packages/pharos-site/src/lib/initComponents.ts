@@ -41,6 +41,8 @@ const COMPONENT_NAMES = [
   'PharosSidenavLink',
   'PharosSidenavMenu',
   'PharosSidenavSection',
+  'PharosSlider',
+  'PharosSliderOption',
   'PharosSwitch',
   'PharosTabs',
   'PharosTab',

@@ -27,15 +27,10 @@ export class PharosTabPanel extends PharosElement {
 
   protected override firstUpdated(): void {
     this.setAttribute('role', 'tabpanel');
-    this.addEventListener('keydown', this._handleKeydown);
     const focusableElements = this.querySelector(focusable);
     if (!focusableElements) {
       this.setAttribute('tabindex', '0');
     }
-  }
-
-  private _handleKeydown(event: KeyboardEvent): void {
-    event.stopPropagation();
   }
 
   protected override render(): TemplateResult {

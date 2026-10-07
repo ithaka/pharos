@@ -49,6 +49,7 @@ export const componentPages = [
   'Select',
   'Sheet',
   'Sidenav',
+  'Slider',
   'Switch',
   'Table',
   'Tabs',

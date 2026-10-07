@@ -35,6 +35,8 @@ export { PharosSidenav } from './components/sidenav/pharos-sidenav';
 export { PharosSidenavLink } from './components/sidenav/pharos-sidenav-link';
 export { PharosSidenavMenu } from './components/sidenav/pharos-sidenav-menu';
 export { PharosSidenavSection } from './components/sidenav/pharos-sidenav-section';
+export { PharosSlider } from './components/slider/pharos-slider';
+export { PharosSliderOption } from './components/slider/pharos-slider-option';
 export { PharosSwitch } from './components/switch/pharos-switch';
 export { PharosTab } from './components/tabs/pharos-tab';
 export { PharosTable } from './components/table/pharos-table';

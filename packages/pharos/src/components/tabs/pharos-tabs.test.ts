@@ -124,7 +124,7 @@ describe('pharos-tabs', () => {
     ) as PharosTab[];
 
     tabs[0].focus();
-    component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
+    tabs[0].dispatchEvent(new KeyboardEvent('keydown', { key: 'Right', bubbles: true }));
     await component.updateComplete;
     await vi.waitFor(() => expect(document.activeElement === tabs[1]).toBe(true));
   });
@@ -135,7 +135,7 @@ describe('pharos-tabs', () => {
     ) as PharosTab[];
 
     tabs[2].focus();
-    componentLastTabSelected.dispatchEvent(new KeyboardEvent('keydown', { key: 'Left' }));
+    tabs[2].dispatchEvent(new KeyboardEvent('keydown', { key: 'Left', bubbles: true }));
     await componentLastTabSelected.updateComplete;
     await vi.waitFor(() => expect(document.activeElement === tabs[1]).toBe(true));
   });
@@ -146,10 +146,10 @@ describe('pharos-tabs', () => {
     ) as PharosTab[];
 
     tabs[0].focus();
-    component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
+    tabs[0].dispatchEvent(new KeyboardEvent('keydown', { key: 'Right', bubbles: true }));
     await component.updateComplete;
     await vi.waitFor(() => expect(document.activeElement === tabs[1]).toBe(true));
-    component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    tabs[1].dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
     await component.updateComplete;
 
     await vi.waitFor(() => {
@@ -165,7 +165,7 @@ describe('pharos-tabs', () => {
     ) as PharosTab[];
 
     tabs[0].focus();
-    component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Left' }));
+    tabs[0].dispatchEvent(new KeyboardEvent('keydown', { key: 'Left', bubbles: true }));
     await component.updateComplete;
     await vi.waitFor(() => expect(document.activeElement === tabs[2]).toBe(true));
   });
@@ -176,7 +176,7 @@ describe('pharos-tabs', () => {
     ) as PharosTab[];
 
     tabs[2].focus();
-    componentLastTabSelected.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
+    tabs[2].dispatchEvent(new KeyboardEvent('keydown', { key: 'Right', bubbles: true }));
     await componentLastTabSelected.updateComplete;
     await vi.waitFor(() => expect(document.activeElement === tabs[0]).toBe(true));
   });
@@ -238,10 +238,10 @@ describe('pharos-tabs', () => {
     ) as PharosTabPanel[];
 
     tabs[0].focus();
-    component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Right' }));
+    tabs[0].dispatchEvent(new KeyboardEvent('keydown', { key: 'Right', bubbles: true }));
     await component.updateComplete;
     await vi.waitFor(() => expect(document.activeElement === tabs[1]).toBe(true));
-    component.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    tabs[1].dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
     await component.updateComplete;
 
     await vi.waitFor(() => {
@@ -270,13 +270,9 @@ describe('pharos-tabs', () => {
     });
   });
 
-  it('does not receive key events from tab panels', async () => {
-    let count = 0;
-    const onKeydown = (): void => {
-      count++;
-    };
-    component = await fixture(html`
-      <test-pharos-tabs @keydown=${onKeydown}>
+  describe('key events from tab panels', () => {
+    const tabsWithInput = html`
+      <test-pharos-tabs>
         <test-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</test-pharos-tab>
         <test-pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</test-pharos-tab>
         <test-pharos-tab id="tab-3" data-panel-id="panel-3">Tab 3</test-pharos-tab>
@@ -286,11 +282,86 @@ describe('pharos-tabs', () => {
         <test-pharos-tab-panel id="panel-2" slot="panel">Panel 2</test-pharos-tab-panel>
         <test-pharos-tab-panel id="panel-3" slot="panel">Panel 3</test-pharos-tab-panel>
       </test-pharos-tabs>
-    `);
-    const input = component.querySelector('input') as HTMLInputElement;
-    input?.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true, composed: true }));
-    await component.updateComplete;
-    expect(count).toBe(0);
+    `;
+
+    it('propagates key events from tab panels to the document', async () => {
+      component = await fixture(tabsWithInput);
+      let count = 0;
+      const onKeydown = (): void => {
+        count++;
+      };
+      document.addEventListener('keydown', onKeydown);
+
+      const input = component.querySelector('input') as HTMLInputElement;
+      input.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'a', bubbles: true, composed: true })
+      );
+      document.removeEventListener('keydown', onKeydown);
+
+      expect(count).toBe(1);
+    });
+
+    it('does not prevent the default action of key events from tab panels', async () => {
+      component = await fixture(tabsWithInput);
+      const input = component.querySelector('input') as HTMLInputElement;
+      const event = new KeyboardEvent('keydown', {
+        key: ' ',
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      });
+      input.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('does not move focus between tabs on arrow keys from tab panels', async () => {
+      component = await fixture(tabsWithInput);
+      const input = component.querySelector('input') as HTMLInputElement;
+      input.focus();
+      input.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, composed: true })
+      );
+      await component.updateComplete;
+
+      expect(document.activeElement).toBe(input);
+    });
+
+    it('moves focus only between nested tabs on arrow keys from a nested tab', async () => {
+      component = await fixture(html`
+        <test-pharos-tabs>
+          <test-pharos-tab id="tab-1" data-panel-id="panel-1">Tab 1</test-pharos-tab>
+          <test-pharos-tab id="tab-2" data-panel-id="panel-2">Tab 2</test-pharos-tab>
+          <test-pharos-tab-panel id="panel-1" slot="panel">
+            <test-pharos-tabs>
+              <test-pharos-tab id="tab-1-1" data-panel-id="panel-1-1">Nested tab 1</test-pharos-tab>
+              <test-pharos-tab id="tab-1-2" data-panel-id="panel-1-2">Nested tab 2</test-pharos-tab>
+              <test-pharos-tab-panel id="panel-1-1" slot="panel"
+                >Nested panel 1</test-pharos-tab-panel
+              >
+              <test-pharos-tab-panel id="panel-1-2" slot="panel"
+                >Nested panel 2</test-pharos-tab-panel
+              >
+            </test-pharos-tabs>
+          </test-pharos-tab-panel>
+          <test-pharos-tab-panel id="panel-2" slot="panel">Panel 2</test-pharos-tab-panel>
+        </test-pharos-tabs>
+      `);
+      const nestedTabs = Array.prototype.slice.call(
+        component.querySelectorAll(`test-pharos-tab-panel test-pharos-tab`)
+      ) as PharosTab[];
+
+      const outerTab = component.querySelector('#tab-2') as PharosTab;
+
+      nestedTabs[0].focus();
+      nestedTabs[0].dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Left', bubbles: true, composed: true })
+      );
+      await vi.waitFor(() => expect(document.activeElement === nestedTabs[1]).toBe(true));
+      await outerTab.updateComplete;
+
+      expect(outerTab.getAttribute('tabindex')).toBe('-1');
+    });
   });
 
   it('does not render panel separator', async () => {
