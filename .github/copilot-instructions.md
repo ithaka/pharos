@@ -1,7 +1,11 @@
-## Review component documentation
+## Component documentation
 
-When reviewing a pull request, check whether changes to public Pharos components require corresponding
-documentation updates.
+These instructions supplement your normal implementation and review responsibilities; they do not
+replace checks for correctness, security, accessibility, tests, or maintainability.
+
+When implementing or reviewing consumer-visible changes to public Pharos components, check whether
+the relevant documentation and examples need updating. When implementing changes, update them as
+needed. When reviewing changes, report concrete documentation gaps.
 
 - Identify changes to public properties and attributes, events, slots, defaults, supported values,
   usage, keyboard interactions, or accessibility behavior. Include consumer-visible changes introduced
