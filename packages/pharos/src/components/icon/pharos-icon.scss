@@ -1,6 +1,8 @@
 :host {
   display: inline-flex;
   contain: content;
+  stroke-width: 0;
+  stroke: var(--pharos-color-black);
 }
 
 .icon {
