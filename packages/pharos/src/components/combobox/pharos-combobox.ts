@@ -75,6 +75,13 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
   public looseMatch = false;
 
   /**
+   * Indicates if the label should be positioned inline with the input.
+   * @attr inline
+   */
+  @property({ type: Boolean, reflect: true })
+  public inline = false;
+
+  /**
    * The list of options available in the combobox dropdown list
    * @readonly
    */
@@ -458,8 +465,8 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
   }
 
   protected override render(): TemplateResult {
-    return html`
-      <label for="input-element" id="input-label">
+    const content = html`
+      <label for="input-element" id="input-label" class=${this.inline ? 'input-label--inline' : ''}>
         <slot name="label"></slot>
         ${this.requiredIndicator}
       </label>
@@ -489,7 +496,15 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
         />
         ${this._renderClearButton()} ${this._renderIconButton()} ${this._renderList()}
       </div>
-      ${this.messageContent}
     `;
+
+    if (this.inline) {
+      return html`
+        <div class="combobox-wrapper">${content}</div>
+        ${this.messageContent}
+      `;
+    } else {
+      return html` ${content} ${this.messageContent} `;
+    }
   }
 }
