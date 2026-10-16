@@ -21,7 +21,7 @@ export default defineConfig({
     processor: unified({
       // disable GitHub Flavored Markdown to prevent links in examples being double linked
       gfm: false,
-      // Smartypants would rewrite straight quotes and dashes into typographic ones 
+      // Smartypants would rewrite straight quotes and dashes into typographic ones
       smartypants: false,
       rehypePlugins: [rehypeUnwrapPharosParagraphs],
     }),

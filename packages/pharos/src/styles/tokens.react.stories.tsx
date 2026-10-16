@@ -52,7 +52,10 @@ const ColorRow = (color: TokenEntry) => {
         <div>{color.value}</div>
       </td>
       <td style={{ width: '25%' }}>
-        <div className="color-example" style={{ backgroundColor: typeof color.value === 'string' ? color.value : undefined }}></div>
+        <div
+          className="color-example"
+          style={{ backgroundColor: typeof color.value === 'string' ? color.value : undefined }}
+        ></div>
       </td>
     </tr>
   );
@@ -105,7 +108,9 @@ const UiColorTokens = () => (
           </tr>
         </thead>
         <tbody>
-          {Object.values(tokens.color.text).map((color) => ColorRow(color as unknown as TokenEntry))}
+          {Object.values(tokens.color.text).map((color) =>
+            ColorRow(color as unknown as TokenEntry)
+          )}
         </tbody>
       </>
     )}
@@ -121,7 +126,9 @@ const UiColorTokens = () => (
         </thead>
         <tbody>
           {ColorRow(tokens.color.focus as unknown as TokenEntry)}
-          {Object.values(tokens.color.hover).map((color) => ColorRow(color as unknown as TokenEntry))}
+          {Object.values(tokens.color.hover).map((color) =>
+            ColorRow(color as unknown as TokenEntry)
+          )}
         </tbody>
       </>
     )}
@@ -138,8 +145,7 @@ const GlobalColorTokens = () => {
     .filter((key) => key !== 'brand' && key !== 'base')
     .forEach((key) => {
       const currentToken = (tokens.color as Record<string, unknown>)[key] as
-        | TokenEntry
-        | Record<string, unknown>;
+        TokenEntry | Record<string, unknown>;
       if ('value' in currentToken) {
         colorTokens.push(currentToken as TokenEntry);
       } else {
@@ -582,7 +588,11 @@ const TransitionTokens = () => {
             </tr>
           </thead>
           <tbody>
-            {TransitionRow(tokens.transition.base as unknown as TokenEntry, 5, '--pharos-color-living-coral-80')}
+            {TransitionRow(
+              tokens.transition.base as unknown as TokenEntry,
+              5,
+              '--pharos-color-living-coral-80'
+            )}
             {Object.values(tokens.transition.duration).map((transition, i) =>
               TransitionRow(transition as unknown as TokenEntry, exampleRems[i], exampleColors[i])
             )}
@@ -696,4 +706,40 @@ const ElevationTokens = () => (
 
 export const Elevation = {
   render: () => ElevationTokens(),
+};
+
+export const Gradients = {
+  render: () => (
+    <>
+      {Object.entries(tokens.gradient).map(([group, gradients]) => (
+        <div key={group}>
+          {TokenTable(
+            `${group === 'subdued' ? 'Subdued' : 'Saturated'} gradients`,
+            <>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.values(gradients).map((token) => (
+                  <tr key={token.name}>
+                    <td>{toTokenFormat(token.name)}</td>
+                    <td>{token.value}</td>
+                    <td>
+                      <div
+                        style={{ backgroundImage: token.value, width: '12rem', height: '5rem' }}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </>
+          )}
+        </div>
+      ))}
+    </>
+  ),
 };

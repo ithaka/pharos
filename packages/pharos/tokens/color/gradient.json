@@ -1,0 +1,14 @@
+{
+  "color": {
+    "gradient": {
+      "subdued": {
+        "secondary": {
+          "value": "#197D97"
+        },
+        "tertiary": {
+          "value": "#194D72"
+        }
+      }
+    }
+  }
+}

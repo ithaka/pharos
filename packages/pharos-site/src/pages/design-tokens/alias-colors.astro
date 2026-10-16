@@ -22,6 +22,9 @@ const baseTokens = [
   ...single('overlay'),
   ...group('feedback'),
 ];
+const gradientTokens = Object.values(
+  tokens.color.gradient.subdued as unknown as Record<string, DesignToken>
+);
 const textTokens = group('text');
 const interactionTokens = [...single('focus'), ...group('hover')];
 ---
@@ -30,6 +33,9 @@ const interactionTokens = [...single('focus'), ...group('hover')];
   <PageSection title="Alias colors" isHeader>
     <TokenTable>
       <ColorTable tokens={baseTokens} />
+    </TokenTable>
+    <TokenTable title="Subdued gradient colors">
+      <ColorTable tokens={gradientTokens} />
     </TokenTable>
     <TokenTable title="Text color">
       <ColorTable tokens={textTokens} />
