@@ -197,6 +197,9 @@
       "gear": {
         "value": "assets/icons/gear.svg"
       },
+      "gear-ai": {
+        "value": "assets/icons/gear-ai.svg"
+      },
       "gen-ai": {
         "value": "assets/icons/gen-ai.svg"
       },
