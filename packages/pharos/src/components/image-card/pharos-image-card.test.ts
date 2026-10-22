@@ -12,11 +12,7 @@ describe('pharos-image-card', () => {
 
   beforeEach(async () => {
     component = await fixture(
-      html`<test-pharos-image-card
-        title="Card Title"
-        link="#"
-        image-link-label="Label for card image link"
-      >
+      html`<test-pharos-image-card title="Card Title" link="#">
         <img
           slot="image"
           alt="Card Title"
@@ -37,7 +33,7 @@ describe('pharos-image-card', () => {
 
   it('defaults link to null when not supplied', async () => {
     component = await fixture<PharosImageCard>(
-      html`<test-pharos-image-card title="Card Title" image-link-label="Label for card image link">
+      html`<test-pharos-image-card title="Card Title">
         <img
           slot="image"
           alt="Card Title"
