@@ -4689,7 +4689,7 @@ __metadata:
     "@astrojs/check": "npm:~0.9.11"
     "@astrojs/markdown-remark": "npm:7.3.3"
     "@astrojs/mdx": "npm:~8.1.0"
-    "@ithaka/pharos": "npm:^14.25.0"
+    "@ithaka/pharos": "npm:^14.27.0"
     "@types/culori": "npm:^4.0.1"
     "@webcomponents/scoped-custom-element-registry": "npm:^0.0.10"
     astro: "npm:~7.4.1"
@@ -4700,7 +4700,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ithaka/pharos@npm:^14.25.0, @ithaka/pharos@workspace:packages/pharos":
+"@ithaka/pharos@npm:^14.27.0, @ithaka/pharos@workspace:packages/pharos":
   version: 0.0.0-use.local
   resolution: "@ithaka/pharos@workspace:packages/pharos"
   dependencies:
