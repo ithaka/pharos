@@ -1,5 +1,11 @@
 # @ithaka/pharos
 
+## 14.27.1
+
+### Patch Changes
+
+- [#1473](https://github.com/ithaka/pharos/pull/1473) [`8e85d17`](https://github.com/ithaka/pharos/commit/8e85d17a93810988faf0c1e3b45a728552d5ca80) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix release process bug which resulted in 14.27.0 being published without its build output. This release contains the 14.27.0 changes.
+
 ## 14.27.0
 
 ### Minor Changes
