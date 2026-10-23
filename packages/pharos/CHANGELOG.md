@@ -1,5 +1,21 @@
 # @ithaka/pharos
 
+## 14.27.0
+
+### Minor Changes
+
+- [#1438](https://github.com/ithaka/pharos/pull/1438) [`e68ab8b`](https://github.com/ithaka/pharos/commit/e68ab8bf30478983246730788bda3f2a8d550687) Thanks [@brentswisher](https://github.com/brentswisher)! - Add Slider component for choosing a value along a range, with optional labeled stops, along with the related documentation.
+
+### Patch Changes
+
+- [#1467](https://github.com/ithaka/pharos/pull/1467) [`5f15bf4`](https://github.com/ithaka/pharos/commit/5f15bf48fc7009e947f491e0937c2ce37c00c021) Thanks [@joiechang](https://github.com/joiechang)! - Add gear-ai icon
+
+- [#1446](https://github.com/ithaka/pharos/pull/1446) [`9f16db6`](https://github.com/ithaka/pharos/commit/9f16db6c63f9dcd1645227e830dff779ce8c4cbe) Thanks [@brentswisher](https://github.com/brentswisher)! - Prevent Dropdown menu and Popover triggers from registering duplicate listeners, which in some situations caused a single click to open and immediately close them.
+
+- [#1460](https://github.com/ithaka/pharos/pull/1460) [`7f719c7`](https://github.com/ithaka/pharos/commit/7f719c7b5cb7cdb1ac0942eafd1e36fad7246188) Thanks [@brentswisher](https://github.com/brentswisher)! - Add css with default stroke width and color to icons
+
+- [#1445](https://github.com/ithaka/pharos/pull/1445) [`9520ec0`](https://github.com/ithaka/pharos/commit/9520ec04711c2983b68af9082825bcb28025e24c) Thanks [@brentswisher](https://github.com/brentswisher)! - Stop tab panels from blocking keydown events so document-level and delegated key handlers work for content inside a panel
+
 ## 14.26.0
 
 ### Minor Changes
