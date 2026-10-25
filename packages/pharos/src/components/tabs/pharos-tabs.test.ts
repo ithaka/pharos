@@ -405,4 +405,15 @@ describe('pharos-tabs', () => {
     expect(styles.marginBottom).toBe('0px');
     expect(styles.paddingBottom).toBe('0px');
   });
+
+  it('can be removed before its first update has finished', async () => {
+    const tabs = document.createElement('test-pharos-tabs') as PharosTabs;
+    tabs.innerHTML = `
+      <test-pharos-tab id="tab-7" data-panel-id="panel-7">Tab 1</test-pharos-tab>
+      <test-pharos-tab-panel id="panel-7" slot="panel">Panel 1</test-pharos-tab-panel>
+    `;
+    document.body.appendChild(tabs);
+
+    expect(() => tabs.remove()).not.toThrow();
+  });
 });
