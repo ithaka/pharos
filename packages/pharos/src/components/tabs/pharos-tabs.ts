@@ -95,8 +95,8 @@ export class PharosTabs extends PharosElement {
     }
   }
 
-  private _tabOverflowObserver!: IntersectionObserver;
-  private _tabListResizeObserver!: ResizeObserver;
+  private _tabOverflowObserver?: IntersectionObserver;
+  private _tabListResizeObserver?: ResizeObserver;
 
   private _watchTablistScrolling(): void {
     this._tabOverflowObserver = new IntersectionObserver(
@@ -137,8 +137,10 @@ export class PharosTabs extends PharosElement {
   }
 
   override disconnectedCallback() {
-    this._tabOverflowObserver.disconnect();
-    this._tabListResizeObserver.disconnect();
+    // The observers are created at the end of the async firstUpdated(),
+    // so they don't exist yet if the element is removed before that.
+    this._tabOverflowObserver?.disconnect();
+    this._tabListResizeObserver?.disconnect();
     super.disconnectedCallback();
   }
 
