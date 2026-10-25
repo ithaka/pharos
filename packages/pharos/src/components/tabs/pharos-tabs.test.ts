@@ -416,4 +416,28 @@ describe('pharos-tabs', () => {
 
     expect(() => tabs.remove()).not.toThrow();
   });
+
+  it('does not start observers when removed while its first update is pending', async () => {
+    const tabs = document.createElement('test-pharos-tabs') as PharosTabs;
+    tabs.innerHTML = `
+      <test-pharos-tab id="tab-8" data-panel-id="panel-8">Tab 1</test-pharos-tab>
+      <test-pharos-tab-panel id="panel-8" slot="panel">Panel 1</test-pharos-tab-panel>
+    `;
+    document.body.appendChild(tabs);
+    tabs.remove();
+    await tabs.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    const observers = tabs as unknown as {
+      _tabOverflowObserver?: IntersectionObserver;
+      _tabListResizeObserver?: ResizeObserver;
+    };
+    expect(observers._tabOverflowObserver).toBeUndefined();
+    expect(observers._tabListResizeObserver).toBeUndefined();
+
+    document.body.appendChild(tabs);
+    expect(observers._tabOverflowObserver).toBeDefined();
+    expect(observers._tabListResizeObserver).toBeDefined();
+    tabs.remove();
+  });
 });
