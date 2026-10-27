@@ -7,17 +7,17 @@
   "version": "8.0.0",
   "type": "module",
   "dependencies": {
-    "@astrojs/markdown-remark": "7.3.3",
+    "@astrojs/markdown-remark": "7.3.4",
     "@ithaka/pharos": "^14.27.0",
     "@webcomponents/scoped-custom-element-registry": "^0.0.10",
-    "astro": "~7.4.1",
+    "astro": "~7.4.2",
     "cookie": "^2.0.1",
     "culori": "^4.0.2",
-    "sass": "^1.105.2"
+    "sass": "^1.106.1"
   },
   "devDependencies": {
-    "@astrojs/check": "~0.9.11",
-    "@astrojs/mdx": "~8.1.0",
+    "@astrojs/check": "~0.9.12",
+    "@astrojs/mdx": "~8.1.1",
     "@types/culori": "^4.0.1",
     "typescript": "^6.0.3"
   },
