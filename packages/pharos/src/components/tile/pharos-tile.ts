@@ -374,7 +374,6 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
           name=${this.name}
           .value=${this.value}
           .checked=${this.selected}
-          ?required=${this.required}
           ?disabled=${this.disabled}
           tabindex=${this.focusable ? '0' : '-1'}
           aria-labelledby="title"

@@ -285,6 +285,23 @@ describe('pharos-tile-group', () => {
     form.remove();
   });
 
+  it('marks a required single-selection group with aria-required and not each tile', async () => {
+    component.required = true;
+    await component.updateComplete;
+    const fieldset = component.renderRoot.querySelector('fieldset') as HTMLElement;
+    expect(fieldset.getAttribute('aria-required')).toBe('true');
+    ['1', '2', '3'].forEach((value) => expect(tileOf(component, value).required).toBe(false));
+  });
+
+  it('does not set aria-required for multiple selection', async () => {
+    component.selection = 'multiple';
+    component.required = true;
+    await component.updateComplete;
+    const fieldset = component.renderRoot.querySelector('fieldset') as HTMLElement;
+    expect(fieldset.hasAttribute('aria-required')).toBe(false);
+    expect(tileOf(component, '1').required).toBe(false);
+  });
+
   it('describes the group with the message', async () => {
     component = await fixture(html`
       <test-pharos-tile-group name="group" message="Pick one" invalidated>

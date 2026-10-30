@@ -75,7 +75,6 @@ export class PharosTileGroup extends FormElement {
     if (
       changedProperties.has('name') ||
       changedProperties.has('disabled') ||
-      changedProperties.has('required') ||
       changedProperties.has('invalidated') ||
       changedProperties.has('validated') ||
       changedProperties.has('selection')
@@ -158,7 +157,6 @@ export class PharosTileGroup extends FormElement {
       tile.addEventListener('change', this._handleTileChange);
       tile.selection = this.selection;
       tile.name = this.name;
-      tile.required = this.required;
       if (this.disabled && !tile.disabled) {
         this._disabledByGroup.add(tile);
         tile.disabled = true;
@@ -184,12 +182,18 @@ export class PharosTileGroup extends FormElement {
     tiles.forEach((tile) => (tile.focusable = tile === stop));
   }
 
+  // `aria-required` is only valid on the radiogroup role used for single selection
+  private get _ariaRequired(): 'true' | 'false' | undefined {
+    if (this.selection !== 'single') return undefined;
+    return this.required ? 'true' : 'false';
+  }
+
   protected override render(): TemplateResult {
     return html`
       <fieldset
         class="tile-group"
         role=${ifDefined(this.selection === 'single' ? 'radiogroup' : undefined)}
-        aria-required=${ifDefined(this.selection === 'single' ? String(this.required) : undefined)}
+        aria-required=${ifDefined(this._ariaRequired)}
         aria-invalid=${this.invalidated}
         aria-describedby=${ifDefined(this.messageId)}
       >
