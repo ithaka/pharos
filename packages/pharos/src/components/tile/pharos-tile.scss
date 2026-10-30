@@ -161,12 +161,12 @@
 }
 
 // Hover
-:host([href]:not([disabled]):not([selection])) .tile:hover,
+:host([href]:not([disabled], [selection])) .tile:hover,
 :host([selection]:not([disabled])) .tile__input:hover + .tile {
   border-color: var(--pharos-color-hover-primary);
 }
 
-:host([href]:not([disabled]):not([selection])) .tile:hover .tile__title,
+:host([href]:not([disabled], [selection])) .tile:hover .tile__title,
 :host([selection]:not([disabled])) .tile__input:hover + .tile .tile__title {
   color: var(--pharos-color-hover-primary);
 }
