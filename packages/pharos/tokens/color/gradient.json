@@ -3,10 +3,10 @@
     "gradient": {
       "subdued": {
         "secondary": {
-          "value": "#197D97"
+          "value": "hsl(192.381, 71.5909%, 34.5098%)"
         },
         "tertiary": {
-          "value": "#194D72"
+          "value": "hsl(204.9438, 64.0288%, 27.2549%)"
         }
       }
     }
