@@ -78,8 +78,12 @@ export class PharosTabs extends PharosElement {
     }
 
     this._selectInitialTab();
-    this._watchTablistScrolling();
-    this._watchResize();
+    // Skip the observers if the element was removed while the loop above was awaiting.
+    // connectedCallback() sets them up if it is attached again.
+    if (this.isConnected) {
+      this._watchTablistScrolling();
+      this._watchResize();
+    }
   }
 
   protected override async updated(changedProperties: PropertyValues): Promise<void> {
@@ -95,10 +99,13 @@ export class PharosTabs extends PharosElement {
     }
   }
 
-  private _tabOverflowObserver!: IntersectionObserver;
-  private _tabListResizeObserver!: ResizeObserver;
+  private _tabOverflowObserver?: IntersectionObserver;
+  private _tabListResizeObserver?: ResizeObserver;
 
   private _watchTablistScrolling(): void {
+    if (this._tabOverflowObserver || !this._tabs.length) {
+      return;
+    }
     this._tabOverflowObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -126,6 +133,9 @@ export class PharosTabs extends PharosElement {
   }
 
   private _watchResize(): void {
+    if (this._tabListResizeObserver) {
+      return;
+    }
     this._tabListResizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.target === this._tabList) {
@@ -136,9 +146,22 @@ export class PharosTabs extends PharosElement {
     this._tabListResizeObserver.observe(this._tabList);
   }
 
+  override connectedCallback() {
+    super.connectedCallback();
+    // Re-attached after a removal: firstUpdated() won't run again, so restore the observers.
+    if (this.hasUpdated) {
+      this._watchTablistScrolling();
+      this._watchResize();
+    }
+  }
+
   override disconnectedCallback() {
-    this._tabOverflowObserver.disconnect();
-    this._tabListResizeObserver.disconnect();
+    // The observers are created at the end of the async firstUpdated(),
+    // so they don't exist yet if the element is removed before that.
+    this._tabOverflowObserver?.disconnect();
+    this._tabOverflowObserver = undefined;
+    this._tabListResizeObserver?.disconnect();
+    this._tabListResizeObserver = undefined;
     super.disconnectedCallback();
   }
 
