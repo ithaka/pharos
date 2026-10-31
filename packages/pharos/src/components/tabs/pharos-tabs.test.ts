@@ -428,16 +428,12 @@ describe('pharos-tabs', () => {
     await tabs.updateComplete;
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    const observers = tabs as unknown as {
-      _tabOverflowObserver?: IntersectionObserver;
-      _tabListResizeObserver?: ResizeObserver;
-    };
-    expect(observers._tabOverflowObserver).toBeUndefined();
-    expect(observers._tabListResizeObserver).toBeUndefined();
+    expect(tabs['_tabOverflowObserver']).toBeUndefined();
+    expect(tabs['_tabListResizeObserver']).toBeUndefined();
 
     document.body.appendChild(tabs);
-    expect(observers._tabOverflowObserver).toBeDefined();
-    expect(observers._tabListResizeObserver).toBeDefined();
+    expect(tabs['_tabOverflowObserver']).toBeDefined();
+    expect(tabs['_tabListResizeObserver']).toBeDefined();
     tabs.remove();
   });
 });
