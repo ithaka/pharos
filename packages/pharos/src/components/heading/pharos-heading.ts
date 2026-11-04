@@ -100,6 +100,9 @@ export class PharosHeading extends PharosElement {
   protected override render(): TemplateResult {
     const template = `
       <h${this.level} class="heading">
+        <br />
+        <br />
+        <br />
         <slot></slot>
       </h${this.level}>
     `;
