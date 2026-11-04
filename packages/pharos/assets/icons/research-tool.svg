@@ -1,135 +1,30 @@
 <g>
   <defs>
-    <radialGradient id="research-tool-0" cx="12.776" cy="11.223" r="8.625" fx="17.249" fy="13.455" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FF433E"/>
-      <stop offset="0.083" stop-color="#FF423D"/>
-      <stop offset="0.167" stop-color="#FF403C"/>
-      <stop offset="0.25" stop-color="#F93936"/>
-      <stop offset="0.333" stop-color="#EF2E2E"/>
-      <stop offset="0.417" stop-color="#E02323"/>
-      <stop offset="0.5" stop-color="#CD1618"/>
-      <stop offset="0.583" stop-color="#B60C0E"/>
-      <stop offset="0.667" stop-color="#990005"/>
-      <stop offset="0.75" stop-color="#7D0003"/>
-      <stop offset="0.833" stop-color="#4D0000"/>
-      <stop offset="0.917" stop-color="#010000"/>
-      <stop offset="1" stop-color="#000000"/>
+    <clipPath id="sphere-clip">
+      <circle cx="12" cy="13" r="7.78" />
+    </clipPath>
+
+    <linearGradient id="sphere-base" x1="15%" y1="15%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#08080c" />
+      <stop offset="55%" stop-color="#10101a" />
+      <stop offset="100%" stop-color="#07141c" />
+    </linearGradient>
+
+    <radialGradient id="sphere-red" cx="75%" cy="30%" r="68%">
+      <stop offset="0%" stop-color="#ff263f" />
+      <stop offset="38%" stop-color="#e5092b" />
+      <stop offset="100%" stop-color="#e5092b" stop-opacity="0" />
     </radialGradient>
-    <radialGradient id="research-tool-1" cx="17.306" cy="44.486" r="34.758" fx="12.27" fy="23.048" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#005E6C" stop-opacity="0.87"/>
-      <stop offset="0.125" stop-color="#005E6C" stop-opacity="0"/>
-      <stop offset="0.25" stop-color="#005E6C" stop-opacity="1"/>
-      <stop offset="0.375" stop-color="#005E6C" stop-opacity="0.835"/>
-      <stop offset="0.5" stop-color="#005E6C" stop-opacity="0.564"/>
-      <stop offset="0.625" stop-color="#005E6C" stop-opacity="0.338"/>
-      <stop offset="0.75" stop-color="#005E6C" stop-opacity="0.159"/>
-      <stop offset="0.875" stop-color="#005E6C" stop-opacity="0.045"/>
-      <stop offset="1" stop-color="#005E6C" stop-opacity="0"/>
+
+    <radialGradient id="sphere-teal" cx="74%" cy="100%" r="62%">
+      <stop offset="0%" stop-color="#087f82" stop-opacity=".9" />
+      <stop offset="100%" stop-color="#087f82" stop-opacity="0" />
     </radialGradient>
-    <radialGradient id="research-tool-2" cx="44.703" cy="122.561" r="112.694" fx="23.605" fy="25.985" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#000000" stop-opacity="1"/>
-      <stop offset="0.125" stop-color="#000000" stop-opacity="1"/>
-      <stop offset="0.25" stop-color="#000000" stop-opacity="0.999"/>
-      <stop offset="0.375" stop-color="#000000" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#000000" stop-opacity="1"/>
-      <stop offset="0.625" stop-color="#000000" stop-opacity="0.107"/>
-      <stop offset="0.75" stop-color="#000000" stop-opacity="0.14"/>
-      <stop offset="0.875" stop-color="#000000" stop-opacity="0.048"/>
-      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="research-tool-3" x1="19.992" y1="33.252" x2="13.993" y2="0.666" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FF00FF" stop-opacity="0.002"/>
-      <stop offset="0.125" stop-color="#FF00FF" stop-opacity="0"/>
-      <stop offset="0.25" stop-color="#FF00FF" stop-opacity="0"/>
-      <stop offset="0.375" stop-color="#FF00FF" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#FF00FF" stop-opacity="0.136"/>
-      <stop offset="0.625" stop-color="#FF00FF" stop-opacity="0.079"/>
-      <stop offset="0.75" stop-color="#FF00FF" stop-opacity="0.024"/>
-      <stop offset="0.875" stop-color="#FF00FF" stop-opacity="0"/>
-      <stop offset="1" stop-color="#FF00FF" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="research-tool-4" x1="9.743" y1="2.372" x2="17.211" y2="19.795" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FFFF00" stop-opacity="0"/>
-      <stop offset="0.125" stop-color="#FFFF00" stop-opacity="0"/>
-      <stop offset="0.25" stop-color="#FFFF00" stop-opacity="0.026"/>
-      <stop offset="0.375" stop-color="#FFFF00" stop-opacity="0.02"/>
-      <stop offset="0.5" stop-color="#FFFF00" stop-opacity="0.014"/>
-      <stop offset="0.625" stop-color="#FFFF00" stop-opacity="0.004"/>
-      <stop offset="0.75" stop-color="#FFFF00" stop-opacity="0"/>
-      <stop offset="0.875" stop-color="#FFFF00" stop-opacity="0"/>
-      <stop offset="1" stop-color="#FFFF00" stop-opacity="0.057"/>
-    </linearGradient>
-    <radialGradient id="research-tool-5" cx="10.553" cy="11.796" r="6.303" fx="8.079" fy="12.581" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#00E5FF" stop-opacity="0.125"/>
-      <stop offset="0.125" stop-color="#00E5FF" stop-opacity="0.123"/>
-      <stop offset="0.25" stop-color="#00E5FF" stop-opacity="0.112"/>
-      <stop offset="0.375" stop-color="#00E5FF" stop-opacity="0.094"/>
-      <stop offset="0.5" stop-color="#00E5FF" stop-opacity="0.069"/>
-      <stop offset="0.625" stop-color="#00E5FF" stop-opacity="0.041"/>
-      <stop offset="0.75" stop-color="#00E5FF" stop-opacity="0.015"/>
-      <stop offset="0.875" stop-color="#00E5FF" stop-opacity="0"/>
-      <stop offset="1" stop-color="#00E5FF" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="research-tool-6" x1="19.378" y1="9.683" x2="6.958" y2="11.542" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FFFFB9" stop-opacity="0.13"/>
-      <stop offset="0.125" stop-color="#FFFFB9" stop-opacity="0.037"/>
-      <stop offset="0.25" stop-color="#FFFFB9" stop-opacity="0"/>
-      <stop offset="0.375" stop-color="#FFFFB9" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#FFFFB9" stop-opacity="0"/>
-      <stop offset="0.625" stop-color="#FFFFB9" stop-opacity="0.003"/>
-      <stop offset="0.75" stop-color="#FFFFB9" stop-opacity="0.006"/>
-      <stop offset="0.875" stop-color="#FFFFB9" stop-opacity="0.013"/>
-      <stop offset="1" stop-color="#FFFFB9" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="research-tool-7" x1="16.065" y1="6.493" x2="7.144" y2="17.133" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#000001" stop-opacity="0"/>
-      <stop offset="0.125" stop-color="#000001" stop-opacity="0"/>
-      <stop offset="0.25" stop-color="#000001" stop-opacity="0"/>
-      <stop offset="0.375" stop-color="#000001" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#000001" stop-opacity="0.051"/>
-      <stop offset="0.625" stop-color="#000001" stop-opacity="0.157"/>
-      <stop offset="0.75" stop-color="#000001" stop-opacity="0.324"/>
-      <stop offset="0.875" stop-color="#000001" stop-opacity="0.542"/>
-      <stop offset="1" stop-color="#000001" stop-opacity="0.882"/>
-    </linearGradient>
-    <linearGradient id="research-tool-8" x1="1.95" y1="8.574" x2="17.719" y2="14.399" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#190000" stop-opacity="0.997"/>
-      <stop offset="0.125" stop-color="#190000" stop-opacity="0.91"/>
-      <stop offset="0.25" stop-color="#190000" stop-opacity="0.34"/>
-      <stop offset="0.375" stop-color="#190000" stop-opacity="0.22"/>
-      <stop offset="0.5" stop-color="#190000" stop-opacity="0.12"/>
-      <stop offset="0.625" stop-color="#190000" stop-opacity="0.034"/>
-      <stop offset="0.75" stop-color="#190000" stop-opacity="0"/>
-      <stop offset="0.875" stop-color="#190000" stop-opacity="0"/>
-      <stop offset="1" stop-color="#190000" stop-opacity="0.081"/>
-    </linearGradient>
-    <linearGradient id="research-tool-9" x1="18.907" y1="17.223" x2="13.003" y2="12.986" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#00A3FF" stop-opacity="0"/>
-      <stop offset="0.125" stop-color="#00A3FF" stop-opacity="0.068"/>
-      <stop offset="0.25" stop-color="#00A3FF" stop-opacity="0.062"/>
-      <stop offset="0.375" stop-color="#00A3FF" stop-opacity="0.036"/>
-      <stop offset="0.5" stop-color="#00A3FF" stop-opacity="0.018"/>
-      <stop offset="0.625" stop-color="#00A3FF" stop-opacity="0.015"/>
-      <stop offset="0.75" stop-color="#00A3FF" stop-opacity="0.015"/>
-      <stop offset="0.875" stop-color="#00A3FF" stop-opacity="0.013"/>
-      <stop offset="1" stop-color="#00A3FF" stop-opacity="0.012"/>
-    </linearGradient>
-    <mask id="research-tool-shape" mask-type="alpha">
-      <path transform="matrix(.0125 0 0 .0125 0 1)" d="M1583.1 964.1l-.2 7.7-.3 7.6-.4 7.6-.3 7.7-.4 7.6-.7 7.6-.5 7.6-.7 7.7-.9 7.6-.9 7.5-1.1 7.6-1.1 7.6-1.1 7.5-1.5 7.5-1.3 7.6-1.4 7.5-1.7 7.5-1.6 7.4-1.8 7.5-1.8 7.4-1.9 7.4-2.1 7.3-2.1 7.4-2.2 7.3-2.3 7.3-2.4 7.3-2.5 7.2-2.6 7.2-2.5 7.2-2.9 7.1-2.9 7.1-2.9 7-2.9 7.1-3.1 7-3.2 6.9-3.3 6.9-3.4 6.9-3.4 6.9-3.5 6.8-3.7 6.7-3.6 6.7-3.8 6.6-3.9 6.6-3.8 6.6-4 6.6-4.1 6.4-4.2 6.4-4.3 6.3-4.3 6.3-4.4 6.3-4.4 6.3-4.6 6-4.7 6.1-4.6 6.1-4.9 5.9-4.8 6-4.9 5.8-5 5.8-5.1 5.7-5.2 5.6-5.1 5.7-5.3 5.5-5.2 5.6-5.6 5.2-5.4 5.5-5.6 5.2-5.6 5.2-5.6 5.2-5.8 4.9-5.7 5.1-5.9 4.9-5.9 4.9-6 4.7-6 4.7-6.1 4.7-6.2 4.5-6.1 4.5-6.3 4.4-6.3 4.4-6.4 4.1-6.3 4.3-6.6 4-6.4 4.1-6.6 3.9-6.6 3.8-6.7 3.7-6.7 3.8-6.7 3.5-6.7 3.7-7 3.2-6.8 3.5-6.9 3.1-6.9 3.3-7.1 3.1-7 3.1-7.1 2.7-7 3-7.2 2.8-7.1 2.6-7.3 2.5-7.2 2.4-7.3 2.4-7.2 2.4-7.3 2.3-7.4 2-7.4 2-7.4 2-7.4 1.9-7.4 1.7-7.5 1.8-7.5 1.5-7.5 1.5-7.5 1.4-7.5 1.2-7.5 1.4-7.6 1-7.6 1-7.6 .9-7.6 .9-7.6 .7-7.6 .6-7.6 .7-7.7 .3-7.6 .5-7.6 .3-7.7 .1-7.6-.2-7.7 .3-7.6-.1-7.6-.1-7.7-.3-7.6-.5-7.6-.3-7.7-.6-7.6-.8-7.6-.7-7.6-1-7.6-.7-7.5-1.1-7.6-1.2-7.5-1.1-7.6-1.4-7.5-1.4-7.5-1.5-7.4-1.6-7.5-1.6-7.4-1.9-7.4-2-7.4-1.8-7.4-1.9-7.3-2.3-7.3-2.2-7.3-2.4-7.2-2.4-7.3-2.4-7.2-2.6-7.2-2.6-7.1-2.7-7-3-7.1-2.9-7-3-7-3.1-6.9-3.3-6.9-3.3-7-3.1-6.6-3.8-6.9-3.4-6.8-3.4-6.7-3.8-6.6-3.8-6.6-3.7-6.6-4-6.4-4-6.5-4.2-6.3-4.2-6.4-4.2-6.3-4.3-6.2-4.4-6.2-4.5-6.1-4.6-6.1-4.6-6.1-4.7-5.9-4.8-5.8-4.9-6-4.8-5.8-5-5.7-5.1-5.6-5.2-5.6-5.1-5.6-5.2-5.2-5.6-5.9-4.9-5-5.8-5.3-5.5-5.1-5.7-5.1-5.7-5.1-5.7-5-5.8-4.9-5.9-4.7-5.9-4.9-5.9-4.7-6-4.6-6.1-4.6-6.1-4.4-6.3-4.5-6.1-4.3-6.3-4.2-6.4-4.1-6.4-4.1-6.5-4-6.5-3.9-6.5-3.9-6.6-3.7-6.7-3.8-6.6-3.5-6.8-3.5-6.8-3.6-6.7-3-7-3.5-6.8-3-7.1-3.1-6.9-3.1-7-2.9-7.1-2.9-7-2.6-7.2-2.7-7.2-2.6-7.2-2.5-7.2-2.4-7.2-2.1-7.3-2.4-7.3-2.2-7.3-1.9-7.4-2-7.4-1.8-7.4-1.8-7.4-1.6-7.5-1.6-7.4-1.4-7.5-1.5-7.5-1.2-7.6-1.2-7.5-1.2-7.5-1-7.6-1-7.6-.7-7.6-.8-7.5-.7-7.7-.5-7.6-.4-7.6-.5-7.6-.2-7.6-.3-7.7-.3-7.6 .4-7.6 0-7.7 .2-7.6 .2-7.6 .5-7.6 .4-7.7 .6-7.6 .6-7.6 .9-7.5 .7-7.6 1-7.6 1.1-7.6 1-7.5 1.3-7.6 1.3-7.5 1.3-7.5 1.6-7.5 1.6-7.4 1.7-7.5 1.7-7.4 1.9-7.4 1.9-7.4 2.1-7.3 2.1-7.3 2.2-7.4 2.3-7.2 2.4-7.3 2.5-7.2 2.5-7.2 2.7-7.1 2.8-7.1 2.7-7.1 3.1-7 2.9-7.1 3.1-7 3.2-6.9 3.2-6.9 3.4-6.8 3.4-6.9 3.5-6.7 3.7-6.7 3.6-6.8 3.9-6.5 3.7-6.7 3.9-6.5 4.1-6.5 4-6.5 4.3-6.3 4.1-6.4 4.3-6.3 4.5-6.2 4.4-6.2 4.6-6.1 4.6-6.1 4.6-6.1 4.9-5.9 4.7-5.9 5-5.8 5-5.8 5.1-5.7 5.1-5.6 5.2-5.6 5.2-5.6 5.5-5.3 5.1-5.6 5.6-5.2 5.5-5.3 5.6-5.2 5.7-5.1 5.7-5.1 5.8-5 5.8-4.9 6-4.8 5.9-4.8 6-4.7 6.1-4.5 6.1-4.7 6.2-4.4 6.2-4.4 6.3-4.4 6.3-4.2 6.4-4.1 6.5-4.1 6.5-3.9 6.5-4 6.6-3.9 6.6-3.7 6.7-3.7 6.7-3.7 6.9-3.3 6.7-3.6 6.9-3.3 6.9-3.3 7-3.1 6.9-3.3 7.1-2.8 7-3 7.1-2.8 7.1-2.8 7.1-2.6 7.2-2.6 7.2-2.4 7.2-2.5 7.3-2.3 7.3-2.2 7.4-2.1 7.3-2.1 7.4-2 7.4-1.7 7.4-1.7 7.5-1.7 7.4-1.8 7.5-1.4 7.5-1.3 7.5-1.5 7.6-1 7.5-1.2 7.6-1.1 7.6-.8 7.5-.9 7.6-.9 7.6-.5 7.6-.6 7.7-.4 7.6-.5 7.6-.2 7.6-.4 7.7 0 7.6 .3 7.6-.3 7.6 .3 7.7 .3 7.6 .3 7.6 .5 7.6 .6 7.6 .7 7.6 .6 7.6 1 7.6 .9 7.5 1 7.6 1 7.5 1.3 7.6 1.2 7.5 1.5 7.4 1.5 7.5 1.5 7.5 1.6 7.3 2 7.5 1.7 7.4 1.9 7.3 2.1 7.4 2.1 7.3 2.1 7.2 2.4 7.2 2.6 7.3 2.3 7.2 2.5 7.1 2.8 7.2 2.5 7.1 3 7.1 2.8 6.9 3.2 7 3 7 3.2 6.9 3.2 6.8 3.4 6.8 3.4 6.9 3.5 6.7 3.6 6.6 3.8 6.7 3.6 6.7 3.8 6.4 4 6.6 4 6.4 4.1 6.4 4.1 6.4 4.2 6.3 4.3 6.3 4.4 6.1 4.5 6.2 4.5 6 4.6 6 4.9 6.1 4.5 5.8 5 5.9 4.8 5.8 5 5.7 5.1 5.6 5.1 5.7 5.2 5.6 5.2 5.6 5.1 4.9 6 5.7 5 5.1 5.7 5.3 5.6 5.2 5.5 5 5.8 5 5.8 5 5.7 4.7 6.1 4.9 5.8 4.6 6.2 4.9 5.8 4.3 6.3 4.6 6.1 4.3 6.3 4.4 6.3 4.3 6.3 4.1 6.5 4.2 6.3 3.9 6.6 4 6.5 3.8 6.6 3.8 6.7 3.8 6.6 3.5 6.8 3.6 6.7 3.5 6.8 3.4 6.9 3 7 3.3 6.9 3.1 7 3 7 3 7 2.8 7.1 2.8 7.2 2.7 7.1 2.5 7.2 2.5 7.2 2.3 7.3 2.4 7.3 2.2 7.3 2.2 7.3 2 7.4 2 7.4 1.8 7.4 1.9 7.4 1.7 7.5 1.4 7.5 1.7 7.4 1.3 7.6 1.3 7.5 1.2 7.5 1.2 7.6 1 7.6 .9 7.6 .8 7.6 .8 7.5 .8 7.7 .4 7.6 .6 7.6 .4 7.6 .2 7.7 .3 7.6-.1 7.7z"/>
-    </mask>
   </defs>
-  <g mask="url(#research-tool-shape)">
-    <g style="isolation: isolate">
-      <rect x="4" y="5" width="16" height="16" fill="url(#research-tool-0)"/>
-      <rect x="4" y="5" width="16" height="16" fill="url(#research-tool-1)"/>
-      <rect x="4" y="5" width="16" height="16" fill="url(#research-tool-2)"/>
-      <rect x="4" y="5" width="16" height="16" fill="url(#research-tool-3)"/>
-      <rect x="4" y="5" width="16" height="16" fill="url(#research-tool-4)"/>
-      <rect x="4" y="5" width="16" height="16" fill="url(#research-tool-5)"/>
-      <rect x="4" y="5" width="16" height="16" fill="url(#research-tool-6)"/>
-      <rect x="4" y="5" width="16" height="16" fill="url(#research-tool-7)"/>
-      <rect x="4" y="5" width="16" height="16" fill="url(#research-tool-8)"/>
-      <rect x="4" y="5" width="16" height="16" fill="url(#research-tool-9)"/>
-    </g>
+
+  <g clip-path="url(#sphere-clip)">
+    <circle cx="12" cy="13" r="7.78" fill="url(#sphere-base)" />
+    <circle cx="12" cy="13" r="7.78" fill="url(#sphere-red)" />
+    <circle cx="12" cy="13" r="7.78" fill="url(#sphere-teal)" />
   </g>
 </g>
