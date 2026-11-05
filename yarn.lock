@@ -13018,9 +13018,9 @@ __metadata:
   linkType: hard
 
 "fast-uri@npm:^3.0.1":
-  version: 3.1.8
-  resolution: "fast-uri@npm:3.1.8"
-  checksum: 10c0/c9c47860a7f9110176d94bb30a02942182f0bfc8d6780e9702f320336dc2dadb83b1d9879cceaf8d4b439642d1ec6d78c317cb808ab155455551bd5d9d7c22d8
+  version: 3.1.9
+  resolution: "fast-uri@npm:3.1.9"
+  checksum: 10c0/052757540d8c0bbc16bb124a45b8f5cb5d0932f9b89f019221ee41cdb3cafc1db44b2e809d6b888b87922af3e5560a863124454e9d9193e1fc955887357b5add
   languageName: node
   linkType: hard
 
@@ -13292,12 +13292,12 @@ __metadata:
   linkType: hard
 
 "follow-redirects@npm:^1.16.0":
-  version: 1.16.1
-  resolution: "follow-redirects@npm:1.16.1"
+  version: 1.16.2
+  resolution: "follow-redirects@npm:1.16.2"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: 10c0/544e24ccb93b7afb5dd5a2199bd556e167b84de2af7c13b2ced08494239677359d7883bae56ae43a9ca98ac5451e75cf4834a5fadd6fa79053b9248fac5447a4
+  checksum: 10c0/ff38c8ceb904e505021057f58d395ea5f2e7c34257032960a76b21df1726395ce753f5678b6ee3b15210a557277c00b2607c67b682ee4dec1f33cb5147e08e90
   languageName: node
   linkType: hard
 
@@ -20751,12 +20751,12 @@ __metadata:
   linkType: hard
 
 "qs@npm:^6.12.3, qs@npm:^6.5.2":
-  version: 6.16.0
-  resolution: "qs@npm:6.16.0"
+  version: 6.17.1
+  resolution: "qs@npm:6.17.1"
   dependencies:
     es-define-property: "npm:^1.0.1"
     side-channel: "npm:^1.1.1"
-  checksum: 10c0/eb3e31992fbd70e31a1791e571ed817d70975de7d3bfcbbbec93d77d1dd305877e9e8fdbcc62303c228ee5c3606685622cd6231c042dbc4790bb4e7c65fcbe18
+  checksum: 10c0/55f09dd0282fda70ce9475719158f910f2214477b95aa7284675fb9977c9cdae89fb495423399227331de76766703aaa71372e96cded05046e21713c033e885d
   languageName: node
   linkType: hard
 
