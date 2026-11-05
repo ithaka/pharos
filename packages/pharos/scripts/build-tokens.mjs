@@ -1,4 +1,5 @@
 import StyleDictionary from 'style-dictionary';
+import { createPropertyFormatter } from 'style-dictionary/utils';
 import { default as config } from '../style-dictionary.config.js';
 
 console.log('Build started...');
@@ -16,21 +17,6 @@ const getTypeSize = (step) => {
 
 const getRem = (px) => {
   return px / BASE_FONT_SIZE;
-};
-
-const cssVar = (token) => {
-  let value;
-  // Check if the token has references by looking at the original value
-  if (typeof token.original?.value === 'string' && token.original.value.includes('{')) {
-    // This is a reference token, use CSS variable syntax
-    value = `var(--${token.name})`;
-  } else {
-    // This is a direct value
-    value = token.attributes.category === 'asset' ? `'${token.value}'` : token.value;
-  }
-
-  const comment = token.comment ? ` /* ${token.comment} */` : '';
-  return `--${token.name}: ${value}${comment};`;
 };
 
 const fileHeader = () => {
@@ -122,13 +108,25 @@ StyleDictionary.registerTransformGroup({
 
 StyleDictionary.registerFormat({
   name: 'css/js',
-  format: function (dictionary) {
+  format: function ({ dictionary, options }) {
+    const formatProperty = createPropertyFormatter({
+      format: 'css',
+      dictionary,
+      outputReferences: options.outputReferences,
+      formatting: { indentation: '    ' },
+    });
     return (
       fileHeader() +
       `import { css } from 'lit';\n\n` +
       `export const designTokens = css\`\n` +
       `  :host {\n` +
-      dictionary.allTokens.map((token) => '    ' + cssVar(token)).join('\n') +
+      dictionary.allTokens
+        .map((token) =>
+          formatProperty(
+            token.attributes.category === 'asset' ? { ...token, value: `'${token.value}'` } : token
+          )
+        )
+        .join('\n') +
       `\n  }\n` +
       `\`;\n`
     );
