@@ -197,6 +197,9 @@
       "gear": {
         "value": "assets/icons/gear.svg"
       },
+      "gear-ai": {
+        "value": "assets/icons/gear-ai.svg"
+      },
       "gen-ai": {
         "value": "assets/icons/gen-ai.svg"
       },
@@ -226,6 +229,12 @@
       },
       "institution": {
         "value": "assets/icons/institution.svg"
+      },
+      "institution-none": {
+        "value": "assets/icons/institution-none.svg"
+      },
+      "institution-valid": {
+        "value": "assets/icons/institution-valid.svg"
       },
       "laptop": {
         "value": "assets/icons/laptop.svg"

@@ -195,11 +195,6 @@ p.alert-example__content + p.alert-example__content {
   margin-left: var(--pharos-spacing-three-quarters-x);
 }
 
-.icon-example__icon {
-  stroke: var(--pharos-color-black);
-  stroke-width: 0;
-}
-
 .list-example__no-bullets {
   @include pharos.no-bullet;
 }

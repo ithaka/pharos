@@ -1,5 +1,20 @@
 # @ithaka/pharos-site
 
+## 8.0.0
+
+### Major Changes
+
+- [#1433](https://github.com/ithaka/pharos/pull/1433) [`a3324d1`](https://github.com/ithaka/pharos/commit/a3324d16fb2736bddebdc295c4d6452f0cff77de) Thanks [@brentswisher](https://github.com/brentswisher)! - Replace the Gatsby-based documentation site with the Astro site
+
+### Minor Changes
+
+- [#1438](https://github.com/ithaka/pharos/pull/1438) [`e68ab8b`](https://github.com/ithaka/pharos/commit/e68ab8bf30478983246730788bda3f2a8d550687) Thanks [@brentswisher](https://github.com/brentswisher)! - Add Slider component for choosing a value along a range, with optional labeled stops, along with the related documentation.
+
+### Patch Changes
+
+- Updated dependencies [[`5f15bf4`](https://github.com/ithaka/pharos/commit/5f15bf48fc7009e947f491e0937c2ce37c00c021), [`9f16db6`](https://github.com/ithaka/pharos/commit/9f16db6c63f9dcd1645227e830dff779ce8c4cbe), [`e68ab8b`](https://github.com/ithaka/pharos/commit/e68ab8bf30478983246730788bda3f2a8d550687), [`7f719c7`](https://github.com/ithaka/pharos/commit/7f719c7b5cb7cdb1ac0942eafd1e36fad7246188), [`9520ec0`](https://github.com/ithaka/pharos/commit/9520ec04711c2983b68af9082825bcb28025e24c)]:
+  - @ithaka/pharos@14.27.0
+
 ## 7.4.1
 
 ### Patch Changes

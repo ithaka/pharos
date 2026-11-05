@@ -1,5 +1,7 @@
 const ignoreFillColors = [
   'google-color',
+  'institution-none',
+  'institution-valid',
   'microsoft-color',
   'notification-unread',
   'research-tool',

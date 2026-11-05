@@ -1,0 +1,47 @@
+name: Close stale issues and pull requests
+
+on:
+  schedule:
+    - cron: '30 1 * * *' # Runs every day at 01:30 AM UTC
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    # Prevents the workflow from running on forks
+    if: github.repository == 'ithaka/pharos'
+    name: Stale
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/stale@v11
+        with:
+          stale-issue-label: 'status/stale'
+          stale-pr-label: 'status/stale'
+
+          days-before-issue-stale: 365
+          days-before-issue-close: 30
+          exempt-issue-labels: 'note/keep open'
+          close-issue-reason: 'not_planned'
+          stale-issue-message: >
+            This issue has had no activity in the past year and has been marked as stale.
+            It will be closed in 30 days if there is no further activity.
+            If this is still relevant to you, please leave a comment with any additional context
+            and it will remain open.
+          close-issue-message: >
+            This issue has been closed because it has had no activity since being marked as stale.
+            If it is still relevant, feel free to reopen it or open a new issue with updated details.
+
+          days-before-pr-stale: 60
+          days-before-pr-close: 14
+          exempt-pr-labels: 'note/keep open,dependencies'
+          stale-pr-message: >
+            This pull request has had no activity in the past 60 days and has been marked as stale.
+            It will be closed in 14 days if there is no further activity.
+          close-pr-message: >
+            This pull request has been closed because it has had no activity since being marked as stale.
+            Feel free to reopen it if you would like to continue working on it.

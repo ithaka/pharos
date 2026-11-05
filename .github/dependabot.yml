@@ -29,3 +29,7 @@ updates:
       - dependency-name: '@types/react-dom'
         update-types:
           - 'version-update:semver-major'
+      # Playwright 1.64.x patched Firefox breaks focus moving between iframes, failing our focus tests
+      # https://github.com/microsoft/playwright/issues/43506
+      - dependency-name: 'playwright'
+        versions: ['1.64.0', '1.64.1']

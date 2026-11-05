@@ -70,16 +70,22 @@ describe('pharos-toast', () => {
   });
 
   it('fires a custom event pharos-toast-close after closing', async () => {
-    let actualId = '';
-    const handleClose = (e: Event): void => {
-      actualId = (e as CustomEvent).detail.id;
-    };
-    component.addEventListener('pharos-toast-close', handleClose);
+    vi.useFakeTimers();
+    try {
+      let actualId = '';
+      const handleClose = (e: Event): void => {
+        actualId = (e as CustomEvent).detail.id;
+      };
+      component.addEventListener('pharos-toast-close', handleClose);
 
-    component.focus();
-    await component.updateComplete;
+      component.focus();
+      await component.updateComplete;
 
-    component.dispatchEvent(new FocusEvent('focusout'));
-    await vi.waitFor(() => expect(actualId).toBe(component.id), { timeout: 7000 });
-  }, 8000);
+      component.dispatchEvent(new FocusEvent('focusout'));
+      await vi.advanceTimersByTimeAsync(6500);
+      expect(actualId).toBe(component.id);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
 });
