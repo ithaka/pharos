@@ -111,7 +111,6 @@ export class PharosAlert extends ScopedRegistryMixin(FocusMixin(PharosElement)) 
     return this.closable
       ? html` <pharos-button
           type="button"
-          variant="subtle"
           icon="close"
           icon-condensed
           a11y-label="Close alert"

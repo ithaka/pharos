@@ -56,8 +56,8 @@ import {
   PharosToggleButton,
   PharosToggleButtonGroup,
   PharosTooltip,
-} from '../packages/pharos/lib/index';
-import registerComponents from '../packages/pharos/lib/utils/registerComponents';
+} from '@src/index';
+import registerComponents from '@src/utils/registerComponents';
 
 registerComponents('storybook', [
   PharosAlert,
