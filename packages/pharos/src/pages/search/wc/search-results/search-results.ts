@@ -3,6 +3,20 @@ import type { TemplateResult } from 'lit';
 
 import { SearchResultsItem } from './search-results-item';
 import { searchResults } from '../../mocks';
+import registerStorybookComponents from '../../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../../components/button/pharos-button';
+import { PharosDropdownMenu } from '../../../../components/dropdown-menu/pharos-dropdown-menu';
+import { PharosDropdownMenuItem } from '../../../../components/dropdown-menu/pharos-dropdown-menu-item';
+import { PharosHeading } from '../../../../components/heading/pharos-heading';
+import { PharosPagination } from '../../../../components/pagination/pharos-pagination';
+
+registerStorybookComponents([
+  PharosButton,
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosHeading,
+  PharosPagination,
+]);
 
 export const SearchResults = (): TemplateResult => html`
   <div class="search-page__container--search-results">

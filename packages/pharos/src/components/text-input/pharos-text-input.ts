@@ -10,14 +10,7 @@ import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosIcon } from '../icon/pharos-icon';
 
 export type TextInputType =
-  | 'email'
-  | 'hidden'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'text'
-  | 'url';
+  'email' | 'hidden' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
 
 export type TextInputVariant = 'primary' | 'prominent';
 

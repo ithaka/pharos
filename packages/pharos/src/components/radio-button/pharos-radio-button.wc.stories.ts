@@ -5,10 +5,16 @@ import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ChangeEvent } from 'react';
-import type { PharosRadioButton } from './pharos-radio-button';
+import { PharosRadioButton } from './pharos-radio-button';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosLink } from '../link/pharos-link';
+import { PharosRadioGroup } from '../radio-group/pharos-radio-group';
+
+registerStorybookComponents([PharosLink, PharosRadioButton, PharosRadioGroup]);
 
 const meta = {
   title: 'Forms/Radio Button',
+  component: 'pharos-radio-button',
   parameters: {
     docs: { page: configureDocsPage('radio-button') },
     options: { selectedPanel: 'addon-controls' },

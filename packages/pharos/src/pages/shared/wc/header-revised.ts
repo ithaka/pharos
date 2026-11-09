@@ -4,6 +4,24 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import '../styles/header-revised.scss';
 import logo from '../../../utils/_storybook/assets/images/jstor-logo.svg';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../components/button/pharos-button';
+import { PharosDropdownMenu } from '../../../components/dropdown-menu/pharos-dropdown-menu';
+import { PharosDropdownMenuItem } from '../../../components/dropdown-menu/pharos-dropdown-menu-item';
+import { PharosDropdownMenuNav } from '../../../components/dropdown-menu-nav/pharos-dropdown-menu-nav';
+import { PharosDropdownMenuNavCategory } from '../../../components/dropdown-menu-nav/pharos-dropdown-menu-nav-category';
+import { PharosInputGroup } from '../../../components/input-group/pharos-input-group';
+import { PharosLink } from '../../../components/link/pharos-link';
+
+registerStorybookComponents([
+  PharosButton,
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosDropdownMenuNav,
+  PharosDropdownMenuNavCategory,
+  PharosInputGroup,
+  PharosLink,
+]);
 
 export const HeaderRevised = (showSearch = false): TemplateResult => html`
   <div

@@ -182,55 +182,61 @@ export class PharosCombobox extends ScopedRegistryMixin(FormMixin(FormElement)) 
 
       return html`
         <ul aria-labelledby="input-label" role="listbox" id="combobox-list" class="combobox__list">
-          ${matchingOptions.length
-            ? matchingOptions.map((child, index) => {
-                const option = child as HTMLOptionElement;
-                const exactMatch = this.value === option.value;
-                const highlightClass = exactMatch
-                  ? 'combobox__mark combobox__mark--selected'
-                  : 'combobox__mark';
+          ${
+            matchingOptions.length
+              ? matchingOptions.map((child, index) => {
+                  const option = child as HTMLOptionElement;
+                  const exactMatch = this.value === option.value;
+                  const highlightClass = exactMatch
+                    ? 'combobox__mark combobox__mark--selected'
+                    : 'combobox__mark';
 
-                const optionText =
-                  this._query && !this.searchMode
-                    ? highlightTextMatches(option.text, regex, highlightClass)
-                    : document.createTextNode(option.text);
+                  const optionText =
+                    this._query && !this.searchMode
+                      ? highlightTextMatches(option.text, regex, highlightClass)
+                      : document.createTextNode(option.text);
 
-                return html`
-                  <li
-                    id=${`result-item-${index}`}
-                    class=${classMap({
-                      [`combobox__option`]: true,
-                      [`combobox__option--selected`]: exactMatch,
-                      [`combobox__option--disabled`]: option.disabled,
-                    })}
-                    role="option"
-                    aria-selected="false"
-                    aria-disabled=${option.disabled}
-                    aria-label=${option.text}
-                    @click=${(event: Event) => this._handleOptionClick(option, event)}
-                    @mousedown=${(event: MouseEvent) => {
-                      event.preventDefault();
-                    }}
-                  >
-                    ${optionText}
-                    ${exactMatch && !this.searchMode
-                      ? html`
-                          <pharos-icon
-                            class="combobox__option__icon"
-                            name="checkmark"
-                            a11y-hidden="true"
-                          ></pharos-icon>
-                        `
-                      : nothing}
-                  </li>
-                `;
-              })
-            : html`<li class="combobox__option">No results found</li>`}
+                  return html`
+                    <li
+                      id=${`result-item-${index}`}
+                      class=${classMap({
+                        [`combobox__option`]: true,
+                        [`combobox__option--selected`]: exactMatch,
+                        [`combobox__option--disabled`]: option.disabled,
+                      })}
+                      role="option"
+                      aria-selected="false"
+                      aria-disabled=${option.disabled}
+                      aria-label=${option.text}
+                      @click=${(event: Event) => this._handleOptionClick(option, event)}
+                      @mousedown=${(event: MouseEvent) => {
+                        event.preventDefault();
+                      }}
+                    >
+                      ${optionText}
+                      ${
+                        exactMatch && !this.searchMode
+                          ? html`
+                              <pharos-icon
+                                class="combobox__option__icon"
+                                name="checkmark"
+                                a11y-hidden="true"
+                              ></pharos-icon>
+                            `
+                          : nothing
+                      }
+                    </li>
+                  `;
+                })
+              : html`<li class="combobox__option">No results found</li>`
+          }
         </ul>
         <div aria-live="polite" role="status" class="visually-hidden">
-          ${matchingOptions.length
-            ? `${matchingOptions.length} results available.`
-            : `No results found`}
+          ${
+            matchingOptions.length
+              ? `${matchingOptions.length} results available.`
+              : `No results found`
+          }
         </div>
       `;
     }

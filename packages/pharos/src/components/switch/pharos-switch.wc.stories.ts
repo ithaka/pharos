@@ -5,7 +5,10 @@ import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
 import type { ChangeEvent } from 'react';
-import type { PharosSwitch } from './pharos-switch';
+import { PharosSwitch } from './pharos-switch';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+
+registerStorybookComponents([PharosSwitch]);
 
 const meta = {
   title: 'Forms/Switch',

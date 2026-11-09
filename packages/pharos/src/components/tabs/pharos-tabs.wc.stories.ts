@@ -4,7 +4,24 @@ import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
-import type { PharosTabs } from './pharos-tabs';
+import { PharosTabs } from './pharos-tabs';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosTab } from './pharos-tab';
+import { PharosTabPanel } from './pharos-tab-panel';
+import { PharosTable } from '../table/pharos-table';
+import { PharosTableBody } from '../table-body/pharos-table-body';
+import { PharosTableCell } from '../table-cell/pharos-table-cell';
+import { PharosTableRow } from '../table-row/pharos-table-row';
+
+registerStorybookComponents([
+  PharosTab,
+  PharosTabPanel,
+  PharosTable,
+  PharosTableBody,
+  PharosTableCell,
+  PharosTableRow,
+  PharosTabs,
+]);
 
 const meta = {
   title: 'Components/Tabs',

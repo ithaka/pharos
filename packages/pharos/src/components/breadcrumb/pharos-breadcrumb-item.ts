@@ -83,22 +83,26 @@ export class PharosBreadcrumbItem extends ScopedRegistryMixin(FocusMixin(AnchorE
     };
 
     return html`
-      ${this.href
-        ? html`<pharos-link
-            class=${classMap(classes)}
-            href=${ifDefined(this.href)}
-            target=${ifDefined(this.target)}
-            data-tooltip-id=${ifDefined(this._isTruncated ? 'truncate-tooltip' : undefined)}
-            >${this._displayText}</pharos-link
-          >`
-        : html`<span
-            class=${classMap(classes)}
-            data-tooltip-id=${ifDefined(this._isTruncated ? 'truncate-tooltip' : undefined)}
-            >${this._displayText}</span
-          >`}
-      ${this._isTruncated
-        ? html`<pharos-tooltip id="truncate-tooltip">${this._fullText}</pharos-tooltip>`
-        : null}
+      ${
+        this.href
+          ? html`<pharos-link
+              class=${classMap(classes)}
+              href=${ifDefined(this.href)}
+              target=${ifDefined(this.target)}
+              data-tooltip-id=${ifDefined(this._isTruncated ? 'truncate-tooltip' : undefined)}
+              >${this._displayText}</pharos-link
+            >`
+          : html`<span
+              class=${classMap(classes)}
+              data-tooltip-id=${ifDefined(this._isTruncated ? 'truncate-tooltip' : undefined)}
+              >${this._displayText}</span
+            >`
+      }
+      ${
+        this._isTruncated
+          ? html`<pharos-tooltip id="truncate-tooltip">${this._fullText}</pharos-tooltip>`
+          : null
+      }
     `;
   }
 }

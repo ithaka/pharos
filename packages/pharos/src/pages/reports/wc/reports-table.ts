@@ -1,6 +1,11 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 import type { HistoryRow, ScheduledRow, HistoryTable, ScheduledTable } from '../types';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../components/button/pharos-button';
+import { PharosLink } from '../../../components/link/pharos-link';
+
+registerStorybookComponents([PharosButton, PharosLink]);
 
 export const ReportsTable = (table: HistoryTable | ScheduledTable): TemplateResult => {
   const isHistory = !Object.keys(table.rows[0]).includes('frequency');
@@ -46,24 +51,26 @@ export const ReportsTable = (table: HistoryTable | ScheduledTable): TemplateResu
                 }
                 return html`<td class="reports-page__table-cell">${value}</td>`;
               })}
-              ${isHistory
-                ? html`<td class="reports-page__table-cell--download">
-                    <storybook-pharos-button
-                      variant="secondary"
-                      @click="${() => {
-                        const event = new CustomEvent('pharos-toast-open', {
-                          detail: {
-                            status: 'error',
-                            content:
-                              'Sorry, we were unable to process your download. Please try again later. If the issue persists, <storybook-pharos-link href="#" is-on-background bold>contact JSTOR Support</storybook-pharos-link>.',
-                          },
-                        });
-                        document.dispatchEvent(event);
-                      }}"
-                      >Download</storybook-pharos-button
-                    >
-                  </td>`
-                : null}
+              ${
+                isHistory
+                  ? html`<td class="reports-page__table-cell--download">
+                      <storybook-pharos-button
+                        variant="secondary"
+                        @click="${() => {
+                          const event = new CustomEvent('pharos-toast-open', {
+                            detail: {
+                              status: 'error',
+                              content:
+                                'Sorry, we were unable to process your download. Please try again later. If the issue persists, <storybook-pharos-link href="#" is-on-background bold>contact JSTOR Support</storybook-pharos-link>.',
+                            },
+                          });
+                          document.dispatchEvent(event);
+                        }}"
+                        >Download</storybook-pharos-button
+                      >
+                    </td>`
+                  : null
+              }
             </tr>
           `;
         })}

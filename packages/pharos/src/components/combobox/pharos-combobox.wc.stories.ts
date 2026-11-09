@@ -7,7 +7,11 @@ import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ChangeEvent } from 'react';
-import type { PharosCombobox } from './pharos-combobox';
+import { PharosCombobox } from './pharos-combobox';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+
+registerStorybookComponents([PharosButton, PharosCombobox]);
 
 const meta = {
   title: 'Forms/Combobox',

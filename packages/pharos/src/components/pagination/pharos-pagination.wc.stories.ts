@@ -5,6 +5,10 @@ import { action } from 'storybook/actions';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosPagination } from './pharos-pagination';
+
+registerStorybookComponents([PharosPagination]);
 
 const meta = {
   title: 'Components/Pagination',

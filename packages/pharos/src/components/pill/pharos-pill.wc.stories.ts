@@ -4,6 +4,13 @@ import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+import { PharosHeading } from '../heading/pharos-heading';
+import { PharosPill } from './pharos-pill';
+import { PharosTooltip } from '../tooltip/pharos-tooltip';
+
+registerStorybookComponents([PharosButton, PharosHeading, PharosPill, PharosTooltip]);
 
 const meta = {
   title: 'Components/Pill',

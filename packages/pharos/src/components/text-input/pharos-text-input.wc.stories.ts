@@ -7,7 +7,11 @@ import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './sto
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ChangeEvent } from 'react';
-import type { PharosTextInput } from './pharos-text-input';
+import { PharosTextInput } from './pharos-text-input';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+
+registerStorybookComponents([PharosButton, PharosTextInput]);
 
 const meta = {
   title: 'Forms/Text Input',

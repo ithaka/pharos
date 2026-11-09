@@ -5,8 +5,22 @@ import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
-import type { PharosDropdownMenu } from './pharos-dropdown-menu';
-import type { PharosButton } from '../button/pharos-button';
+import { PharosDropdownMenu } from './pharos-dropdown-menu';
+import { PharosButton } from '../button/pharos-button';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosDropdownMenuItem } from './pharos-dropdown-menu-item';
+import { PharosHeading } from '../heading/pharos-heading';
+import { PharosLink } from '../link/pharos-link';
+import { PharosTextInput } from '../text-input/pharos-text-input';
+
+registerStorybookComponents([
+  PharosButton,
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosHeading,
+  PharosLink,
+  PharosTextInput,
+]);
 
 const meta = {
   title: 'Components/Dropdown Menu',

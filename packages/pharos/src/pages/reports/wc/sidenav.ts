@@ -2,6 +2,20 @@ import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 
 import logo from '../../../utils/_storybook/assets/images/jstor-logo-inverse.svg';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosLink } from '../../../components/link/pharos-link';
+import { PharosSidenav } from '../../../components/sidenav/pharos-sidenav';
+import { PharosSidenavLink } from '../../../components/sidenav/pharos-sidenav-link';
+import { PharosSidenavMenu } from '../../../components/sidenav/pharos-sidenav-menu';
+import { PharosSidenavSection } from '../../../components/sidenav/pharos-sidenav-section';
+
+registerStorybookComponents([
+  PharosLink,
+  PharosSidenav,
+  PharosSidenavLink,
+  PharosSidenavMenu,
+  PharosSidenavSection,
+]);
 
 export const Sidenav = (open: boolean, showCloseButton: boolean): TemplateResult => html`
   <storybook-pharos-sidenav

@@ -4,6 +4,24 @@ import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import logo from '../../utils/_storybook/assets/images/jstor-logo-inverse.svg';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+import { PharosInputGroup } from '../input-group/pharos-input-group';
+import { PharosLink } from '../link/pharos-link';
+import { PharosSidenav } from './pharos-sidenav';
+import { PharosSidenavLink } from './pharos-sidenav-link';
+import { PharosSidenavMenu } from './pharos-sidenav-menu';
+import { PharosSidenavSection } from './pharos-sidenav-section';
+
+registerStorybookComponents([
+  PharosButton,
+  PharosInputGroup,
+  PharosLink,
+  PharosSidenav,
+  PharosSidenavLink,
+  PharosSidenavMenu,
+  PharosSidenavSection,
+]);
 
 const meta = {
   title: 'Components/Sidenav',

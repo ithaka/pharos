@@ -1,6 +1,11 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 import type { CheckboxGroupItem } from '../../types';
+import registerStorybookComponents from '../../../../utils/_storybook/registerStorybookComponents';
+import { PharosCheckbox } from '../../../../components/checkbox/pharos-checkbox';
+import { PharosCheckboxGroup } from '../../../../components/checkbox-group/pharos-checkbox-group';
+
+registerStorybookComponents([PharosCheckbox, PharosCheckboxGroup]);
 
 export const MultiSelectFacet = (
   name: string,

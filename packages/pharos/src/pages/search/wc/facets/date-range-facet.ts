@@ -1,5 +1,11 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
+import registerStorybookComponents from '../../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../../components/button/pharos-button';
+import { PharosHeading } from '../../../../components/heading/pharos-heading';
+import { PharosTextInput } from '../../../../components/text-input/pharos-text-input';
+
+registerStorybookComponents([PharosButton, PharosHeading, PharosTextInput]);
 
 export const DateRangeFacet = (): TemplateResult => html`
   <fieldset class="search-page__fieldset--date">

@@ -151,13 +151,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   private _renderFirstLink(): TemplateResult | typeof nothing {
     if (this.variant === 'input' && !this.simple && this.currentPage > 1) {
       return html`
-        <pharos-link
-          class="pagination__link first"
-          subtle
-          flex
-          href=""
-          @click=${this._handleClick}
-        >
+        <pharos-link class="pagination__link first" subtle flex href="" @click=${this._handleClick}>
           <pharos-icon name="page-first" a11y-hidden="true"></pharos-icon>
           <span class="pagination__visually-hidden">First page</span>
         </pharos-link>
@@ -179,9 +173,11 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
           @click=${this._handleClick}
         >
           <pharos-icon name="chevron-left" a11y-hidden="true"></pharos-icon>
-          ${iconOnly
-            ? html`<span class="pagination__visually-hidden">Previous</span>`
-            : html`Previous`}
+          ${
+            iconOnly
+              ? html`<span class="pagination__visually-hidden">Previous</span>`
+              : html`Previous`
+          }
         </pharos-link>
       `;
     }
@@ -211,13 +207,7 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   private _renderLastLink(): TemplateResult | typeof nothing {
     if (this.variant === 'input' && !this.simple && this.currentPage < this.totalPages) {
       return html`
-        <pharos-link
-          class="pagination__link last"
-          subtle
-          flex
-          href=""
-          @click=${this._handleClick}
-        >
+        <pharos-link class="pagination__link last" subtle flex href="" @click=${this._handleClick}>
           <pharos-icon name="page-last" a11y-hidden="true"></pharos-icon>
           <span class="pagination__visually-hidden">Last page</span>
         </pharos-link>
@@ -301,11 +291,8 @@ export class PharosPagination extends ScopedRegistryMixin(PharosElement) {
   protected override render(): TemplateResult {
     return html`
       <div class="pagination__wrapper" role="navigation" aria-label="pagination">
-        ${this._renderFirstLink()}
-        ${this._renderPrevLink()}
-        ${this._renderPageIndicator()}
-        ${this._renderNextLink()}
-        ${this._renderLastLink()}
+        ${this._renderFirstLink()} ${this._renderPrevLink()} ${this._renderPageIndicator()}
+        ${this._renderNextLink()} ${this._renderLastLink()}
       </div>
     `;
   }

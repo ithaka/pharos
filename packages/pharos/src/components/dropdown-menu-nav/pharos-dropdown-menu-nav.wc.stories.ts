@@ -3,6 +3,20 @@ import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
+import { PharosDropdownMenuItem } from '../dropdown-menu/pharos-dropdown-menu-item';
+import { PharosDropdownMenuNav } from './pharos-dropdown-menu-nav';
+import { PharosDropdownMenuNavCategory } from './pharos-dropdown-menu-nav-category';
+import { PharosDropdownMenuNavLink } from './pharos-dropdown-menu-nav-link';
+
+registerStorybookComponents([
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosDropdownMenuNav,
+  PharosDropdownMenuNavCategory,
+  PharosDropdownMenuNavLink,
+]);
 
 const meta = {
   title: 'Components/Dropdown Menu Nav',
