@@ -105,6 +105,25 @@ describe('PharosMultiselectDropdown', () => {
       expect(searchInput).toBeNull();
     });
 
+    it('discards pending options when disabled while open', async () => {
+      const component = await setupComponent({ open: true });
+      const option = component.renderRoot.querySelector<HTMLElement>('[aria-label="Option 2"]');
+      const apply = component.renderRoot.querySelector<PharosButton>('#apply-button');
+      let changes = 0;
+      component.addEventListener('change', () => changes++);
+
+      option!.click();
+      await component.updateComplete;
+      component.disabled = true;
+      await component.updateComplete;
+      apply!.click();
+      await component.updateComplete;
+
+      expect(component.selectedOptions).toEqual([]);
+      expect(changes).toBe(0);
+      expect(component.renderRoot.querySelector('[role="listbox"]')).toBeNull();
+    });
+
     it('does not open when pressing Enter if disabled', async () => {
       const component = await setupComponent({ disabled: true });
       const button = component.renderRoot.querySelector('button');

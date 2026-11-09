@@ -1,6 +1,6 @@
 import { html, nothing } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
-import type { TemplateResult, CSSResultArray } from 'lit';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
@@ -128,6 +128,15 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
     this._pendingOptions = [...this.selectedOptions];
   }
 
+  protected override willUpdate(changedProperties: PropertyValues<this>): void {
+    super.willUpdate(changedProperties);
+    if (changedProperties.has('disabled') && this.disabled && this._open) {
+      this._open = false;
+      this._searchValue = '';
+      this._pendingOptions = [];
+    }
+  }
+
   public override updated(changedProperties: Map<string, any>): void {
     super.updated(changedProperties);
     if (changedProperties.has('_open')) {
@@ -137,7 +146,9 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
       } else if (changedProperties.get('_open') === true) {
         // Only if the dropdown is closing, not on first render
         this._scrollObserver?.disconnect();
-        this._dropdown_button.focus();
+        if (!this.disabled) {
+          this._dropdown_button.focus();
+        }
       }
     }
   }
@@ -375,6 +386,9 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
   }
 
   private _handleApplyClick(): void {
+    if (this.disabled) {
+      return;
+    }
     this.selectedOptions = [...this._pendingOptions];
     this._closeDropdown();
     this.onChange();
