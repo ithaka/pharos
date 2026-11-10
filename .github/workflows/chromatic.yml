@@ -18,7 +18,7 @@ on:
         type: string
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.inputs.pr_number || github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -38,17 +38,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          ref: refs/pull/${{ github.event.inputs.pr_number }}/head
-
-      - name: Resolve PR head (Manual Dispatch)
-        if: github.event_name == 'workflow_dispatch'
-        id: pr
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.inputs.pr_number }}
-        run: |
-          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-          echo "branch=$(gh pr view "$PR_NUMBER" --json headRefName -q .headRefName)" >> "$GITHUB_OUTPUT"
+          ref: refs/pull/${{ github.event.inputs.pr_number }}/merge
 
       - name: Setup Node.js 24.x
         uses: actions/setup-node@v6
@@ -94,9 +84,7 @@ jobs:
           storybookBuildDir: .storybook-static/wc
           exitZeroOnChanges: true
           exitOnceUploaded: true
-          onlyChanged: true
-          chromaticSha: ${{ steps.pr.outputs.sha }}
-          branchName: ${{ steps.pr.outputs.branch }}
+          onlyChanged: ${{ github.event_name == 'push' }}
           externals: |
             packages/pharos/src/**/*.scss
             packages/pharos/tokens/**
