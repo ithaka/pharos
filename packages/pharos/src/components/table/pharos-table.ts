@@ -224,18 +224,16 @@ export class PharosTable extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _renderTableHeader(): TemplateResult {
-    return html` ${
-      this.columns.length === 0
-        ? nothing
-        : html`<pharos-table-head>
-            <pharos-table-row>
-              ${this.columns.map(
-                (column: ColumnSpecification) =>
-                  html`<pharos-table-column-header>${column.name}</pharos-table-column-header>`
-              )}
-            </pharos-table-row>
-          </pharos-table-head>`
-    }`;
+    return html` ${this.columns.length === 0
+      ? nothing
+      : html`<pharos-table-head>
+          <pharos-table-row>
+            ${this.columns.map(
+              (column: ColumnSpecification) =>
+                html`<pharos-table-column-header>${column.name}</pharos-table-column-header>`
+            )}
+          </pharos-table-row>
+        </pharos-table-head>`}`;
   }
 
   private _renderPagination(): TemplateResult | typeof nothing {

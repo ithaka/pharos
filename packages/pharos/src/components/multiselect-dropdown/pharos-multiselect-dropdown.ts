@@ -513,88 +513,82 @@ export class PharosMultiselectDropdown extends ScopedRegistryMixin(FormMixin(For
             id="multiselect-dropdown-list"
             class="multiselect-dropdown__list"
           >
-            ${
-              this._matchingOptions.length > 1 && !this.hideSelectAll
-                ? html`<li
-                    class="multiselect-dropdown__option multiselect-dropdown__select-all"
-                    id="result-item-select-all"
-                    role="option"
-                    aria-selected="${allMatchingSelected}"
-                    aria-label="${selectAllText}"
-                    @click=${this._handleSelectAllClicked}
-                    @mousedown=${(event: MouseEvent) => {
-                      // Prevent stealing focus from the input
-                      event.preventDefault();
-                    }}
+            ${this._matchingOptions.length > 1 && !this.hideSelectAll
+              ? html`<li
+                  class="multiselect-dropdown__option multiselect-dropdown__select-all"
+                  id="result-item-select-all"
+                  role="option"
+                  aria-selected="${allMatchingSelected}"
+                  aria-label="${selectAllText}"
+                  @click=${this._handleSelectAllClicked}
+                  @mousedown=${(event: MouseEvent) => {
+                    // Prevent stealing focus from the input
+                    event.preventDefault();
+                  }}
+                >
+                  <div
+                    class=${classMap({
+                      [`multiselect-dropdown__option-checkmark-wrapper`]: true,
+                      [`multiselect-dropdown__option-checkmark-wrapper--checked`]:
+                        allMatchingSelected,
+                      [`multiselect-dropdown__option-checkmark-wrapper--indeterminate`]:
+                        allMatchingIndeterminate,
+                    })}
                   >
-                    <div
+                    ${this._renderCheckboxIcon(allMatchingSelected, allMatchingIndeterminate)}
+                  </div>
+                  <div class="multiselect-dropdown__option-label">${selectAllText}</div>
+                </li>`
+              : nothing}
+            ${this._matchingOptions.length
+              ? this._matchingOptions.map((child, index) => {
+                  const option = child as HTMLOptionElement;
+                  const exactMatch = this._searchValue === option.value;
+                  const highlightClass = exactMatch
+                    ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
+                    : 'multiselect-dropdown__mark';
+
+                  const optionText = this._searchValue
+                    ? highlightTextMatches(option.text, regex, highlightClass)
+                    : document.createTextNode(option.text);
+
+                  const isSelected = this._pendingOptions.includes(option);
+                  return html`
+                    <li
+                      id="${`result-item-${index}`}"
                       class=${classMap({
-                        [`multiselect-dropdown__option-checkmark-wrapper`]: true,
-                        [`multiselect-dropdown__option-checkmark-wrapper--checked`]:
-                          allMatchingSelected,
-                        [`multiselect-dropdown__option-checkmark-wrapper--indeterminate`]:
-                          allMatchingIndeterminate,
+                        [`multiselect-dropdown__option`]: true,
+                        [`multiselect-dropdown__option--selected`]: isSelected,
+                        [`multiselect-dropdown__option--disabled`]: option.disabled,
                       })}
+                      role="option"
+                      aria-selected="${isSelected}"
+                      aria-disabled="${option.disabled}"
+                      aria-label="${option.text}"
+                      @click=${(event: Event) => this._handleOptionClick(option, event)}
+                      @mousedown=${(event: MouseEvent) => {
+                        // Prevent stealing focus from the input
+                        event.preventDefault();
+                      }}
                     >
-                      ${this._renderCheckboxIcon(allMatchingSelected, allMatchingIndeterminate)}
-                    </div>
-                    <div class="multiselect-dropdown__option-label">${selectAllText}</div>
-                  </li>`
-                : nothing
-            }
-            ${
-              this._matchingOptions.length
-                ? this._matchingOptions.map((child, index) => {
-                    const option = child as HTMLOptionElement;
-                    const exactMatch = this._searchValue === option.value;
-                    const highlightClass = exactMatch
-                      ? 'multiselect-dropdown__mark multiselect-dropdown__mark--selected'
-                      : 'multiselect-dropdown__mark';
-
-                    const optionText = this._searchValue
-                      ? highlightTextMatches(option.text, regex, highlightClass)
-                      : document.createTextNode(option.text);
-
-                    const isSelected = this._pendingOptions.includes(option);
-                    return html`
-                      <li
-                        id="${`result-item-${index}`}"
+                      <div
                         class=${classMap({
-                          [`multiselect-dropdown__option`]: true,
-                          [`multiselect-dropdown__option--selected`]: isSelected,
-                          [`multiselect-dropdown__option--disabled`]: option.disabled,
+                          [`multiselect-dropdown__option-checkmark-wrapper`]: true,
+                          [`multiselect-dropdown__option-checkmark-wrapper--checked`]: isSelected,
                         })}
-                        role="option"
-                        aria-selected="${isSelected}"
-                        aria-disabled="${option.disabled}"
-                        aria-label="${option.text}"
-                        @click=${(event: Event) => this._handleOptionClick(option, event)}
-                        @mousedown=${(event: MouseEvent) => {
-                          // Prevent stealing focus from the input
-                          event.preventDefault();
-                        }}
                       >
-                        <div
-                          class=${classMap({
-                            [`multiselect-dropdown__option-checkmark-wrapper`]: true,
-                            [`multiselect-dropdown__option-checkmark-wrapper--checked`]: isSelected,
-                          })}
-                        >
-                          ${this._renderCheckboxIcon(isSelected)}
-                        </div>
-                        <div class="multiselect-dropdown__option-label">${optionText}</div>
-                      </li>
-                    `;
-                  })
-                : html`<li class="multiselect-dropdown__no-options">No results found</li>`
-            }
+                        ${this._renderCheckboxIcon(isSelected)}
+                      </div>
+                      <div class="multiselect-dropdown__option-label">${optionText}</div>
+                    </li>
+                  `;
+                })
+              : html`<li class="multiselect-dropdown__no-options">No results found</li>`}
           </ul>
           <div aria-live="polite" role="status" class="multiselect-dropdown__aria-live-container">
-            ${
-              this._matchingOptions.length
-                ? `${this._matchingOptions.length} results available.`
-                : `No results found`
-            }
+            ${this._matchingOptions.length
+              ? `${this._matchingOptions.length} results available.`
+              : `No results found`}
           </div>
         </div>
         <div class="multiselect-dropdown__button-container">

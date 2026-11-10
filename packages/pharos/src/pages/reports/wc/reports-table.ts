@@ -51,26 +51,24 @@ export const ReportsTable = (table: HistoryTable | ScheduledTable): TemplateResu
                 }
                 return html`<td class="reports-page__table-cell">${value}</td>`;
               })}
-              ${
-                isHistory
-                  ? html`<td class="reports-page__table-cell--download">
-                      <storybook-pharos-button
-                        variant="secondary"
-                        @click="${() => {
-                          const event = new CustomEvent('pharos-toast-open', {
-                            detail: {
-                              status: 'error',
-                              content:
-                                'Sorry, we were unable to process your download. Please try again later. If the issue persists, <storybook-pharos-link href="#" is-on-background bold>contact JSTOR Support</storybook-pharos-link>.',
-                            },
-                          });
-                          document.dispatchEvent(event);
-                        }}"
-                        >Download</storybook-pharos-button
-                      >
-                    </td>`
-                  : null
-              }
+              ${isHistory
+                ? html`<td class="reports-page__table-cell--download">
+                    <storybook-pharos-button
+                      variant="secondary"
+                      @click="${() => {
+                        const event = new CustomEvent('pharos-toast-open', {
+                          detail: {
+                            status: 'error',
+                            content:
+                              'Sorry, we were unable to process your download. Please try again later. If the issue persists, <storybook-pharos-link href="#" is-on-background bold>contact JSTOR Support</storybook-pharos-link>.',
+                          },
+                        });
+                        document.dispatchEvent(event);
+                      }}"
+                      >Download</storybook-pharos-button
+                    >
+                  </td>`
+                : null}
             </tr>
           `;
         })}

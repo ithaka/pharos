@@ -183,28 +183,26 @@ export class PharosDropdownMenuItem extends ScopedRegistryMixin(FocusMixin(Pharo
         })}
         role=${this.link ? 'none' : 'menuitem'}
       >
-        ${
-          this.link
-            ? html`<a
-                role="menuitem"
-                href=${this.link}
-                target=${this.target}
-                rel=${ifDefined(this.rel)}
-                class="dropdown-menu-item__link"
-              >
-                ${this.itemContent}
-              </a> `
-            : html`<button
-                ?disabled=${this.disabled}
-                class=${classMap({
-                  [`dropdown-menu-item__button`]: true,
-                  [`dropdown-menu-item__button--first`]: this._first,
-                  [`dropdown-menu-item__button--last`]: this._last,
-                })}
-              >
-                ${this.itemContent}
-              </button>`
-        }
+        ${this.link
+          ? html`<a
+              role="menuitem"
+              href=${this.link}
+              target=${this.target}
+              rel=${ifDefined(this.rel)}
+              class="dropdown-menu-item__link"
+            >
+              ${this.itemContent}
+            </a> `
+          : html`<button
+              ?disabled=${this.disabled}
+              class=${classMap({
+                [`dropdown-menu-item__button`]: true,
+                [`dropdown-menu-item__button--first`]: this._first,
+                [`dropdown-menu-item__button--last`]: this._last,
+              })}
+            >
+              ${this.itemContent}
+            </button>`}
       </li>
     `;
   }
