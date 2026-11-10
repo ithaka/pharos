@@ -101,3 +101,5 @@ jobs:
             packages/pharos/src/**/*.scss
             packages/pharos/tokens/**
             packages/pharos/assets/**
+            packages/pharos/scripts/**
+            packages/pharos/style-dictionary.config.js
