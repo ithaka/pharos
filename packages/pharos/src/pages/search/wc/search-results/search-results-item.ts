@@ -1,6 +1,13 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 import type { SearchResult } from '../../types';
+import registerStorybookComponents from '../../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../../components/button/pharos-button';
+import { PharosCheckbox } from '../../../../components/checkbox/pharos-checkbox';
+import { PharosHeading } from '../../../../components/heading/pharos-heading';
+import { PharosLink } from '../../../../components/link/pharos-link';
+
+registerStorybookComponents([PharosButton, PharosCheckbox, PharosHeading, PharosLink]);
 
 export const SearchResultsItem = (result: SearchResult): TemplateResult => html`
   <div class="search-page__grid--result">

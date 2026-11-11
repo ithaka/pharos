@@ -3,6 +3,10 @@ import type { TemplateResult } from 'lit';
 
 import { item, metadata } from '../mocks';
 import logo from '../../../utils/_storybook/assets/images/item-detail/portal-logo.png';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosHeading } from '../../../components/heading/pharos-heading';
+
+registerStorybookComponents([PharosHeading]);
 
 export const Metadata = (): TemplateResult => html`
   <div class="item-detail-page__container--metadata">

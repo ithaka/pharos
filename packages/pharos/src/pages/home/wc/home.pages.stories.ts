@@ -10,6 +10,12 @@ import { HeroSearch } from './hero-search';
 import { publicCollectionCards, communityCollectionCards } from '../mocks';
 import { PharosSpacing7X } from '../../../styles/variables';
 import hero from '../../../utils/_storybook/assets/images/home/hero.jpg';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosHeading } from '../../../components/heading/pharos-heading';
+import { PharosLayout } from '../../../components/layout/pharos-layout';
+import { PharosLink } from '../../../components/link/pharos-link';
+
+registerStorybookComponents([PharosHeading, PharosLayout, PharosLink]);
 
 export default {
   title: 'Pages/Home',

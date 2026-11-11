@@ -5,6 +5,10 @@ import { iconNames } from '../../utils/iconNames';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosIcon } from './pharos-icon';
+
+registerStorybookComponents([PharosIcon]);
 
 const meta = {
   title: 'Components/Icon',

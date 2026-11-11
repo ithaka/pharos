@@ -4,6 +4,12 @@ import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+import { PharosHeading } from '../heading/pharos-heading';
+import { PharosLoadingSpinner } from './pharos-loading-spinner';
+
+registerStorybookComponents([PharosButton, PharosHeading, PharosLoadingSpinner]);
 
 const meta = {
   title: 'Components/Loading Spinner',

@@ -1,6 +1,10 @@
 import { html, type TemplateResult } from 'lit';
 
 import tokens from './tokens';
+import registerStorybookComponents from '../utils/_storybook/registerStorybookComponents';
+import { PharosIcon } from '../components/icon/pharos-icon';
+
+registerStorybookComponents([PharosIcon]);
 
 type TokenEntry = {
   name: string;

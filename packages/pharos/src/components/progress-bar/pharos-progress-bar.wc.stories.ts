@@ -10,6 +10,10 @@ import {
   type StoryArgs,
 } from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosProgressBar } from './pharos-progress-bar';
+
+registerStorybookComponents([PharosProgressBar]);
 
 const meta = {
   title: 'Components/Progress Bar',

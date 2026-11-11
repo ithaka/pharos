@@ -1,5 +1,23 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../components/button/pharos-button';
+import { PharosInputGroup } from '../../../components/input-group/pharos-input-group';
+import { PharosModal } from '../../../components/modal/pharos-modal';
+import { PharosRadioButton } from '../../../components/radio-button/pharos-radio-button';
+import { PharosRadioGroup } from '../../../components/radio-group/pharos-radio-group';
+import { PharosSelect } from '../../../components/select/pharos-select';
+import { PharosTextInput } from '../../../components/text-input/pharos-text-input';
+
+registerStorybookComponents([
+  PharosButton,
+  PharosInputGroup,
+  PharosModal,
+  PharosRadioButton,
+  PharosRadioGroup,
+  PharosSelect,
+  PharosTextInput,
+]);
 
 export const CreateReportModal = (): TemplateResult => html`
   <storybook-pharos-modal id="create-report-modal" header="Create Report" size="large">
