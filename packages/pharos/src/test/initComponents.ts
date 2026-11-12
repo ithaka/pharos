@@ -55,6 +55,8 @@ import {
   PharosToastButton,
   PharosToggleButton,
   PharosToggleButtonGroup,
+  PharosTile,
+  PharosTileGroup,
   PharosTooltip,
 } from '../index';
 import registerComponents from '../utils/registerComponents';
@@ -116,5 +118,7 @@ registerComponents('test', [
   PharosToastButton,
   PharosToggleButton,
   PharosToggleButtonGroup,
+  PharosTile,
+  PharosTileGroup,
   PharosTooltip,
 ]);

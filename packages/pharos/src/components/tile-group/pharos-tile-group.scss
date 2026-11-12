@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  contain: layout;
+}
+
+.tile-group {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+}
+
+.tile-group__tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+  gap: var(--pharos-spacing-1-x);
+}

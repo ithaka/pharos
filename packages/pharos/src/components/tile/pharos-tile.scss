@@ -1,0 +1,287 @@
+@use '../../utils/scss/mixins';
+
+:host {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+  box-sizing: border-box;
+  contain: layout;
+}
+
+.tile {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--pharos-spacing-one-half-x);
+  box-sizing: border-box;
+  min-width: 0;
+  padding: var(--pharos-spacing-1-x);
+  color: var(--pharos-color-text-base);
+  background-color: var(--pharos-color-white);
+  border: 1px solid var(--pharos-color-marble-gray-80);
+  border-radius: var(--pharos-radius-base-standard);
+  transition: border-color var(--pharos-transition-duration-short) ease-in-out;
+}
+
+.tile__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pharos-spacing-one-half-x);
+}
+
+.tile__title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pharos-spacing-one-half-x);
+
+  .tile__icon {
+    flex: none;
+    margin-top: var(--pharos-spacing-one-eighth-x);
+  }
+
+  .tile__title {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.tile__label {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  align-self: flex-start;
+  margin-inline-start: auto;
+  color: var(--pharos-color-text-20);
+}
+
+.tile__title {
+  display: block;
+}
+
+.tile__description {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  color: var(--pharos-color-marble-gray-40);
+}
+
+.tile__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--pharos-spacing-one-half-x);
+  margin-top: auto;
+}
+
+.tile__footer-content {
+  @include mixins.font-base(
+    $font-size: var(--pharos-font-size-small),
+    $line-height: var(--pharos-line-height-small)
+  );
+
+  flex: 1;
+  min-width: 0;
+}
+
+.tile__arrow,
+.tile__indicator {
+  flex: none;
+  margin-inline-start: auto;
+}
+
+// Link tile: the title anchor stretches over the whole tile so the tile is one click target.
+.tile__link {
+  color: inherit;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--pharos-radius-base-standard);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+// Selection tile: the native input stretches over the whole tile.
+.tile__input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.tile__indicator {
+  display: block;
+  flex: none;
+  overflow: visible;
+  box-sizing: border-box;
+
+  .outer,
+  .box {
+    stroke: var(--pharos-form-element-color-border-base);
+  }
+
+  .outer {
+    fill: var(--pharos-radio-button-color-background-base);
+  }
+
+  .box {
+    fill: var(--pharos-checkbox-color-background-base);
+  }
+
+  .inner,
+  .checkmark,
+  .focus,
+  .hover {
+    stroke: none;
+    fill: none;
+  }
+
+  .checkmark,
+  .focus {
+    stroke-width: 2;
+  }
+}
+
+// Hover
+:host([href]:not([disabled], [selection])) .tile:hover,
+:host([selection]:not([disabled])) .tile__input:hover + .tile {
+  border-color: var(--pharos-color-hover-primary);
+}
+
+:host([href]:not([disabled], [selection])) .tile:hover .tile__title,
+:host([selection]:not([disabled])) .tile__input:hover + .tile .tile__title {
+  color: var(--pharos-color-hover-primary);
+}
+
+// Focus
+.tile__link:focus-visible::after,
+.tile__input:focus-visible + .tile {
+  outline: 2px solid var(--pharos-color-focus);
+  outline-offset: 2px;
+}
+
+// Selected
+:host([selected]:not([disabled])) .tile {
+  border-color: var(--pharos-color-interactive-secondary);
+  box-shadow: inset 0 0 0 1px var(--pharos-color-interactive-secondary);
+}
+
+:host([selected]:not([invalidated], [disabled])) .tile__indicator {
+  &--radio {
+    .outer {
+      stroke: var(--pharos-color-interactive-secondary);
+    }
+
+    .inner {
+      fill: var(--pharos-color-interactive-secondary);
+    }
+  }
+
+  &--checkbox {
+    .box {
+      stroke: var(--pharos-form-element-color-background-selected);
+      fill: var(--pharos-form-element-color-background-selected);
+    }
+
+    .checkmark {
+      stroke: var(--pharos-color-interactive-tertiary);
+    }
+  }
+}
+
+// Invalid (set by the tile group)
+:host([invalidated]:not([disabled])) .tile {
+  border-color: var(--pharos-form-element-color-border-invalid);
+}
+
+:host([invalidated]:not([disabled])) .tile__indicator {
+  .outer,
+  .box {
+    stroke: var(--pharos-form-element-color-border-invalid);
+  }
+}
+
+:host([selected][invalidated]:not([disabled])) .tile__indicator {
+  &--radio .inner {
+    fill: var(--pharos-form-element-color-border-invalid);
+  }
+
+  &--checkbox .checkmark {
+    stroke: var(--pharos-form-element-color-border-invalid);
+  }
+}
+
+// Indicator hover and focus follow the radio and checkbox
+:host(:not([selected], [disabled])) .tile__input:not(:focus):hover + .tile .tile__indicator {
+  .outer,
+  .box,
+  .hover {
+    stroke: var(--pharos-color-hover-primary);
+  }
+}
+
+.tile__input:focus-visible + .tile .tile__indicator {
+  .outer,
+  .box,
+  .focus {
+    stroke: var(--pharos-form-element-color-border-focus);
+  }
+}
+
+// Disabled
+:host([disabled]) {
+  pointer-events: none;
+}
+
+:host([disabled]) .tile {
+  color: var(--pharos-color-text-disabled);
+  background-color: var(--pharos-form-element-color-background-disabled);
+  border-color: var(--pharos-color-marble-gray-80);
+}
+
+:host([disabled]) .tile__description {
+  color: var(--pharos-color-text-disabled);
+}
+
+:host([disabled]) .tile__input {
+  cursor: not-allowed;
+}
+
+:host([disabled]) .tile__arrow {
+  display: none;
+}
+
+:host([disabled]) .tile__indicator {
+  .outer,
+  .box {
+    fill: var(--pharos-form-element-color-background-disabled);
+  }
+}
+
+:host([disabled][selected]) .tile__indicator {
+  &--radio .inner {
+    fill: var(--pharos-color-text-disabled);
+  }
+
+  &--checkbox .checkmark {
+    stroke: var(--pharos-color-text-disabled);
+  }
+}

@@ -55,6 +55,8 @@ import {
   PharosToastButton,
   PharosToggleButton,
   PharosToggleButtonGroup,
+  PharosTile,
+  PharosTileGroup,
   PharosTooltip,
 } from '../packages/pharos/lib/index';
 import registerComponents from '../packages/pharos/lib/utils/registerComponents';
@@ -116,5 +118,7 @@ registerComponents('storybook', [
   PharosToastButton,
   PharosToggleButton,
   PharosToggleButtonGroup,
+  PharosTile,
+  PharosTileGroup,
   PharosTooltip,
 ]);
