@@ -9,17 +9,11 @@ import { tileStyles } from './pharos-tile.css';
 import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
-import { PharosHeading } from '../heading/pharos-heading';
-import type { HeadingLevel } from '../heading/pharos-heading';
 import { PharosIcon } from '../icon/pharos-icon';
-import type { IconName } from '../icon/pharos-icon';
-export type { HeadingLevel, IconName };
 
 export type TileSelection = 'single' | 'multiple';
 
 export const TILE_STATE_CHANGE_EVENT = 'pharos-tile-state-change';
-
-const DEFAULT_HEADING_LEVEL = 3 as HeadingLevel;
 
 /**
  * Pharos tile component.
@@ -29,56 +23,16 @@ const DEFAULT_HEADING_LEVEL = 3 as HeadingLevel;
  *
  * @tag pharos-tile
  *
- * @slot header - Contains the content of a header row above the title, such as an icon on its own line. The label shares this row, aligned right.
- * @slot label - Contains custom label content, such as an icon, aligned to the top right (renders if label prop is not set).
- * @slot title - Contains the title for the tile (renders if title prop is not set).
- * @slot - Contains the description for the tile (renders if description prop is not set).
+ * @slot header - Contains the header row of the tile, such as an icon, a heading for the title and a label. It is the accessible name of the tile.
+ * @slot - Contains the body of the tile, such as a description.
  * @slot footer - Contains the footer content of the tile, such as status text.
  *
  * @fires change - Fires when the selected state has changed (selection tiles only)
  */
 export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
   static elementDefinitions = {
-    'pharos-heading': PharosHeading,
     'pharos-icon': PharosIcon,
   };
-
-  /**
-   * Indicates the title of the tile.
-   * @attr title
-   */
-  @property({ type: String, reflect: true })
-  public override title = '';
-
-  /**
-   * Indicates the description of the tile.
-   * @attr description
-   */
-  @property({ type: String, reflect: true })
-  public description = '';
-
-  /**
-   * Indicates the name of the icon to show in the header.
-   * @attr icon
-   * @type {IconName | undefined}
-   */
-  @property({ type: String, reflect: true })
-  public icon?: IconName;
-
-  /**
-   * Indicates the text of the label, aligned to the top right of the tile.
-   * @attr label
-   */
-  @property({ type: String, reflect: true })
-  public label?: string;
-
-  /**
-   * The heading level to use for the title.
-   * @attr heading-level
-   * @type {HeadingLevel | undefined}
-   */
-  @property({ type: Number, reflect: true, attribute: 'heading-level' })
-  public headingLevel?: HeadingLevel;
 
   /**
    * Indicates the URL the tile navigates to, making it a link tile.
@@ -243,68 +197,25 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
     );
   }
 
-  private _renderIcon(): TemplateResult | typeof nothing {
-    return this.icon
-      ? html`<pharos-icon class="tile__icon" name=${this.icon} a11y-hidden="true"></pharos-icon>`
-      : nothing;
-  }
-
-  private get _hasLabel(): boolean {
-    return !!this.label || this._hasSlot('label');
-  }
-
-  private _renderLabel(): TemplateResult | typeof nothing {
-    return this._hasLabel
-      ? html`<span class="tile__label"
-          >${this.label ? this.label : html`<slot name="label"></slot>`}</span
-        >`
-      : nothing;
-  }
-
-  // With header slot content the label joins the header row, otherwise it joins the title row.
   private _renderHeader(): TemplateResult | typeof nothing {
+    if (this._isLink) {
+      return html`<a
+        id="header"
+        class="tile__header tile__link"
+        href=${ifDefined(this.disabled ? undefined : this.href)}
+        target=${ifDefined(this.target)}
+        rel=${ifDefined(this.rel)}
+        download=${ifDefined(this.download)}
+        role=${ifDefined(this.disabled ? 'link' : undefined)}
+        aria-disabled=${ifDefined(this.disabled ? 'true' : undefined)}
+        aria-describedby="description"
+        ><slot name="header"></slot
+      ></a>`;
+    }
+
     return this._hasSlot('header')
-      ? html`<div class="tile__header"><slot name="header"></slot>${this._renderLabel()}</div>`
+      ? html`<div id="header" class="tile__header"><slot name="header"></slot></div>`
       : nothing;
-  }
-
-  private _renderTitleContent(): TemplateResult {
-    return html`${this.title ? this.title : html`<slot name="title"></slot>`}`;
-  }
-
-  private _renderTitle(): TemplateResult {
-    const content = this._renderTitleContent();
-
-    const heading = html`<pharos-heading
-      id="title"
-      class="tile__title"
-      preset="2"
-      level=${this.headingLevel || DEFAULT_HEADING_LEVEL}
-      no-margin
-      >${
-        this._isLink
-          ? html`<a
-              class="tile__link"
-              href=${ifDefined(this.disabled ? undefined : this.href)}
-              target=${ifDefined(this.target)}
-              rel=${ifDefined(this.rel)}
-              download=${ifDefined(this.download)}
-              role=${ifDefined(this.disabled ? 'link' : undefined)}
-              aria-disabled=${ifDefined(this.disabled ? 'true' : undefined)}
-              aria-describedby="description"
-              >${content}</a
-            >`
-          : content
-      }</pharos-heading
-    >`;
-
-    const showLabel = this._hasLabel && !this._hasSlot('header');
-
-    return this.icon || showLabel
-      ? html`<div class="tile__title-row">
-          ${this._renderIcon()} ${heading} ${showLabel ? this._renderLabel() : nothing}
-        </div>`
-      : heading;
   }
 
   private _renderIndicator(): TemplateResult | typeof nothing {
@@ -376,7 +287,7 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
           .checked=${this.selected}
           ?disabled=${this.disabled}
           tabindex=${this.focusable ? '0' : '-1'}
-          aria-labelledby="title"
+          aria-labelledby="header"
           aria-describedby="description"
           @change=${this._handleChange}
         />`
@@ -387,12 +298,10 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
     return html`
       ${this._renderInput()}
       <div class="tile">
-        ${this._renderHeader()} ${this._renderTitle()}
+        ${this._renderHeader()}
         ${
-          this.description || this._hasSlot()
-            ? html`<div id="description" class="tile__description">
-                ${this.description ? this.description : html`<slot></slot>`}
-              </div>`
+          this._hasSlot()
+            ? html`<div id="description" class="tile__description"><slot></slot></div>`
             : nothing
         }
         ${this._renderFooter()}

@@ -10,11 +10,10 @@ describe('pharos-tile', () => {
   describe('link tile', () => {
     beforeEach(async () => {
       component = await fixture(html`
-        <test-pharos-tile
-          href="/preservation"
-          title="Preservation"
-          description="Enable preservation in Portico"
-        ></test-pharos-tile>
+        <test-pharos-tile href="/preservation">
+          <span slot="header">Preservation</span>
+          Enable preservation in Portico
+        </test-pharos-tile>
       `);
     });
 
@@ -22,14 +21,14 @@ describe('pharos-tile', () => {
       await expect(component).toBeAccessible();
     });
 
-    it('renders the title as the only link', () => {
+    it('wraps the header content in the only link', () => {
       const links = component.renderRoot.querySelectorAll('a');
       expect(links.length).toBe(1);
       expect(links[0].getAttribute('href')).toBe('/preservation');
-      expect(links[0].textContent?.trim()).toBe('Preservation');
+      expect(links[0].querySelector('slot[name="header"]')).not.toBeNull();
     });
 
-    it('describes the link with the description', () => {
+    it('describes the link with the body', () => {
       const link = component.renderRoot.querySelector('a') as HTMLAnchorElement;
       expect(link.getAttribute('aria-describedby')).toBe('description');
       expect(component.renderRoot.querySelector('#description')).not.toBeNull();
@@ -57,98 +56,40 @@ describe('pharos-tile', () => {
       expect(link.getAttribute('aria-disabled')).toBe('true');
       await expect(component).toBeAccessible();
     });
-
-    it('uses the heading level and preset 2', async () => {
-      component.headingLevel = 4;
-      await component.updateComplete;
-      const heading = component.renderRoot.querySelector('pharos-heading, test-pharos-heading');
-      expect(heading?.getAttribute('level')).toBe('4');
-      expect(heading?.getAttribute('preset')).toBe('2');
-    });
   });
 
   describe('content', () => {
-    it('renders the label as plain text inline with the title', async () => {
+    it('renders slotted header content in the header row', async () => {
       component = await fixture(html`
-        <test-pharos-tile href="/a" title="Title" label="Beta"></test-pharos-tile>
-      `);
-      const label = component.renderRoot.querySelector('.tile__title-row .tile__label');
-      expect(label?.textContent).toBe('Beta');
-      expect(component.renderRoot.querySelector('.tile__header')).toBeNull();
-      expect(component.renderRoot.querySelector('pharos-pill, test-pharos-pill')).toBeNull();
-    });
-
-    it('puts the label in the header row, next to the slotted header content', async () => {
-      component = await fixture(html`
-        <test-pharos-tile href="/a" title="T" label="Beta">
+        <test-pharos-tile selection="single" name="choice" value="a">
           <span slot="header">Icon</span>
+          <span slot="header">Title</span>
         </test-pharos-tile>
       `);
-      expect(component.renderRoot.querySelector('.tile__header .tile__label')).not.toBeNull();
-      expect(component.renderRoot.querySelector('.tile__title-row')).toBeNull();
-    });
-
-    it('renders slotted label content in place of the label prop', async () => {
-      component = await fixture(html`
-        <test-pharos-tile href="/a" title="T">
-          <span slot="label">Custom</span>
-        </test-pharos-tile>
-      `);
-      expect(
-        component.renderRoot.querySelector('.tile__title-row .tile__label slot[name="label"]')
-      ).not.toBeNull();
-    });
-
-    it('puts slotted label content in the header row when there is a header slot', async () => {
-      component = await fixture(html`
-        <test-pharos-tile href="/a" title="T">
-          <span slot="header">Regular plan</span>
-          <span slot="label">Custom</span>
-        </test-pharos-tile>
-      `);
-      expect(
-        component.renderRoot.querySelector('.tile__header .tile__label slot[name="label"]')
-      ).not.toBeNull();
-    });
-
-    it('always places the icon inline with the title', async () => {
-      component = await fixture(
-        html`<test-pharos-tile href="/a" title="T" icon="gen-ai" label="Beta"></test-pharos-tile>`
-      );
-      expect(component.renderRoot.querySelector('.tile__title-row .tile__icon')).not.toBeNull();
-      expect(component.renderRoot.querySelector('.tile__header')).toBeNull();
-    });
-
-    it('renders slotted header content in its own row above the title', async () => {
-      component = await fixture(html`
-        <test-pharos-tile href="/a" title="T">
-          <div slot="header">Custom header</div>
-        </test-pharos-tile>
-      `);
-      const slot = component.renderRoot.querySelector('slot[name="header"]') as HTMLSlotElement;
-      expect(slot.assignedElements().length).toBe(1);
-      expect(component.renderRoot.querySelector('.tile__header')).not.toBeNull();
+      const slot = component.renderRoot.querySelector(
+        '.tile__header slot[name="header"]'
+      ) as HTMLSlotElement;
+      expect(slot.assignedElements().length).toBe(2);
     });
 
     it('hides the arrow with hide-indicator', async () => {
       component = await fixture(
-        html`<test-pharos-tile href="/a" title="T" hide-indicator></test-pharos-tile>`
+        html`<test-pharos-tile href="/a" hide-indicator
+          ><span slot="header">T</span></test-pharos-tile
+        >`
       );
       expect(component.renderRoot.querySelector('.tile__arrow')).toBeNull();
     });
 
-    it('omits the header and title row when there is no icon, label or header content', async () => {
-      component = await fixture(
-        html`<test-pharos-tile href="/a" title="Title"></test-pharos-tile>`
-      );
+    it('omits the header row when there is no header content', async () => {
+      component = await fixture(html`<test-pharos-tile>Body</test-pharos-tile>`);
       expect(component.renderRoot.querySelector('.tile__header')).toBeNull();
     });
 
-    it('renders slotted header, title, body and footer content', async () => {
+    it('renders slotted header, body and footer content', async () => {
       component = await fixture(html`
         <test-pharos-tile href="/a">
           <div slot="header">Regular plan</div>
-          <span slot="title">$19 / month</span>
           <ul>
             <li>10 PDF downloads</li>
           </ul>
@@ -156,25 +97,15 @@ describe('pharos-tile', () => {
         </test-pharos-tile>
       `);
       expect(component.renderRoot.querySelector('slot[name="header"]')).not.toBeNull();
-      expect(component.renderRoot.querySelector('slot[name="title"]')).not.toBeNull();
-      expect(component.renderRoot.querySelector('#description')).not.toBeNull();
+      expect(component.renderRoot.querySelector('#description slot:not([name])')).not.toBeNull();
       expect(component.renderRoot.querySelector('slot[name="footer"]')).not.toBeNull();
-    });
-
-    it('renders the description prop alongside other slotted content', async () => {
-      component = await fixture(html`
-        <test-pharos-tile href="/a" title="T" description="Described">
-          <span slot="footer">Status</span>
-        </test-pharos-tile>
-      `);
-      expect(component.renderRoot.querySelector('#description')?.textContent?.trim()).toBe(
-        'Described'
-      );
     });
 
     it('renders slotted content that is added after the first render', async () => {
       component = await fixture(
-        html`<test-pharos-tile href="/a" title="T" hide-indicator></test-pharos-tile>`
+        html`<test-pharos-tile href="/a" hide-indicator
+          ><span slot="header">T</span></test-pharos-tile
+        >`
       );
       expect(component.renderRoot.querySelector('.tile__footer-content')).toBeNull();
 
@@ -190,9 +121,9 @@ describe('pharos-tile', () => {
       expect(component.renderRoot.querySelector('.tile__footer-content')).toBeNull();
     });
 
-    it('omits the description area when there is no description', async () => {
+    it('omits the body area when there is no body content', async () => {
       component = await fixture(
-        html`<test-pharos-tile href="/a" title="Title"></test-pharos-tile>`
+        html`<test-pharos-tile href="/a"><span slot="header">Title</span></test-pharos-tile>`
       );
       expect(component.renderRoot.querySelector('#description')).toBeNull();
     });
@@ -200,7 +131,9 @@ describe('pharos-tile', () => {
 
   describe('without href or group', () => {
     it('is inert', async () => {
-      component = await fixture(html`<test-pharos-tile title="Title"></test-pharos-tile>`);
+      component = await fixture(
+        html`<test-pharos-tile><span slot="header">Title</span></test-pharos-tile>`
+      );
       expect(component.renderRoot.querySelector('a')).toBeNull();
       expect(component.renderRoot.querySelector('input')).toBeNull();
       expect(component.renderRoot.querySelector('.tile__arrow')).toBeNull();
@@ -210,13 +143,10 @@ describe('pharos-tile', () => {
   describe('selection tile', () => {
     beforeEach(async () => {
       component = await fixture(html`
-        <test-pharos-tile
-          selection="single"
-          value="new"
-          name="choice"
-          title="Create a new project"
-          description="Start from scratch"
-        ></test-pharos-tile>
+        <test-pharos-tile selection="single" value="new" name="choice">
+          <span slot="header">Create a new project</span>
+          Start from scratch
+        </test-pharos-tile>
       `);
     });
 
@@ -224,10 +154,10 @@ describe('pharos-tile', () => {
       await expect(component).toBeAccessible();
     });
 
-    it('renders a radio input labelled by the title and described by the description', () => {
+    it('renders a radio input labelled by the header and described by the body', () => {
       const input = component.renderRoot.querySelector('input') as HTMLInputElement;
       expect(input.type).toBe('radio');
-      expect(input.getAttribute('aria-labelledby')).toBe('title');
+      expect(input.getAttribute('aria-labelledby')).toBe('header');
       expect(input.getAttribute('aria-describedby')).toBe('description');
       expect(component.renderRoot.querySelector('a')).toBeNull();
     });
@@ -271,12 +201,9 @@ describe('pharos-tile', () => {
       const form = document.createElement('form');
       document.body.appendChild(form);
       component = await fixture(
-        html`<test-pharos-tile
-          selection="single"
-          name="choice"
-          value="new"
-          title="T"
-        ></test-pharos-tile>`,
+        html`<test-pharos-tile selection="single" name="choice" value="new"
+          ><span slot="header">T</span></test-pharos-tile
+        >`,
         { parentNode: form }
       );
       component.select();
@@ -289,12 +216,9 @@ describe('pharos-tile', () => {
       const form = document.createElement('form');
       document.body.appendChild(form);
       component = await fixture(
-        html`<test-pharos-tile
-          selection="single"
-          name="choice"
-          value="new"
-          title="T"
-        ></test-pharos-tile>`,
+        html`<test-pharos-tile selection="single" name="choice" value="new"
+          ><span slot="header">T</span></test-pharos-tile
+        >`,
         { parentNode: form }
       );
       component.select();

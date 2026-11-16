@@ -20,9 +20,9 @@ describe('pharos-tile-group', () => {
     component = await fixture(html`
       <test-pharos-tile-group name="group">
         <span slot="legend">Choose a project type</span>
-        <test-pharos-tile value="1" title="One" description="First"></test-pharos-tile>
-        <test-pharos-tile value="2" title="Two" description="Second"></test-pharos-tile>
-        <test-pharos-tile value="3" title="Three" description="Third"></test-pharos-tile>
+        <test-pharos-tile value="1"><span slot="header">One</span>First</test-pharos-tile>
+        <test-pharos-tile value="2"><span slot="header">Two</span>Second</test-pharos-tile>
+        <test-pharos-tile value="3"><span slot="header">Three</span>Third</test-pharos-tile>
       </test-pharos-tile-group>
     `);
   });
@@ -55,8 +55,8 @@ describe('pharos-tile-group', () => {
   it('keeps individually disabled tiles disabled', async () => {
     component = await fixture(html`
       <test-pharos-tile-group name="group">
-        <test-pharos-tile value="1" title="One"></test-pharos-tile>
-        <test-pharos-tile value="2" title="Two" disabled></test-pharos-tile>
+        <test-pharos-tile value="1"><span slot="header">One</span></test-pharos-tile>
+        <test-pharos-tile value="2" disabled><span slot="header">Two</span></test-pharos-tile>
       </test-pharos-tile-group>
     `);
     expect(tileOf(component, '2').disabled).toBe(true);
@@ -170,8 +170,8 @@ describe('pharos-tile-group', () => {
     document.body.appendChild(form);
     component = await fixture(
       html`<test-pharos-tile-group name="plans" selection="multiple">
-        <test-pharos-tile value="a" title="A"></test-pharos-tile>
-        <test-pharos-tile value="b" title="B"></test-pharos-tile>
+        <test-pharos-tile value="a"><span slot="header">A</span></test-pharos-tile>
+        <test-pharos-tile value="b"><span slot="header">B</span></test-pharos-tile>
       </test-pharos-tile-group>`,
       { parentNode: form }
     );
@@ -193,8 +193,8 @@ describe('pharos-tile-group', () => {
   it('only re-enables tiles that the group disabled', async () => {
     component = await fixture(html`
       <test-pharos-tile-group name="group">
-        <test-pharos-tile value="1" title="One"></test-pharos-tile>
-        <test-pharos-tile value="2" title="Two" disabled></test-pharos-tile>
+        <test-pharos-tile value="1"><span slot="header">One</span></test-pharos-tile>
+        <test-pharos-tile value="2" disabled><span slot="header">Two</span></test-pharos-tile>
       </test-pharos-tile-group>
     `);
     component.disabled = true;
@@ -210,10 +210,11 @@ describe('pharos-tile-group', () => {
   it('does not hijack arrow keys from slotted tile content', async () => {
     component = await fixture(html`
       <test-pharos-tile-group name="group">
-        <test-pharos-tile value="1" title="One" selected>
+        <test-pharos-tile value="1" selected>
+          <span slot="header">One</span>
           <input slot="footer" id="inner" />
         </test-pharos-tile>
-        <test-pharos-tile value="2" title="Two"></test-pharos-tile>
+        <test-pharos-tile value="2"><span slot="header">Two</span></test-pharos-tile>
       </test-pharos-tile-group>
     `);
     const input = component.querySelector('#inner') as HTMLInputElement;
@@ -256,8 +257,8 @@ describe('pharos-tile-group', () => {
   it('keeps only one tile selected when several start selected in single mode', async () => {
     component = await fixture(html`
       <test-pharos-tile-group name="group">
-        <test-pharos-tile value="1" title="One" selected></test-pharos-tile>
-        <test-pharos-tile value="2" title="Two" selected></test-pharos-tile>
+        <test-pharos-tile value="1" selected><span slot="header">One</span></test-pharos-tile>
+        <test-pharos-tile value="2" selected><span slot="header">Two</span></test-pharos-tile>
       </test-pharos-tile-group>
     `);
     expect(component.value).toBe('1');
@@ -268,8 +269,8 @@ describe('pharos-tile-group', () => {
     document.body.appendChild(form);
     component = await fixture(
       html`<test-pharos-tile-group name="group">
-        <test-pharos-tile value="1" title="One"></test-pharos-tile>
-        <test-pharos-tile value="2" title="Two"></test-pharos-tile>
+        <test-pharos-tile value="1"><span slot="header">One</span></test-pharos-tile>
+        <test-pharos-tile value="2"><span slot="header">Two</span></test-pharos-tile>
       </test-pharos-tile-group>`,
       { parentNode: form }
     );
@@ -305,7 +306,7 @@ describe('pharos-tile-group', () => {
   it('describes the group with the message', async () => {
     component = await fixture(html`
       <test-pharos-tile-group name="group" message="Pick one" invalidated>
-        <test-pharos-tile value="1" title="One"></test-pharos-tile>
+        <test-pharos-tile value="1"><span slot="header">One</span></test-pharos-tile>
       </test-pharos-tile-group>
     `);
     const fieldset = component.renderRoot.querySelector('fieldset') as HTMLElement;

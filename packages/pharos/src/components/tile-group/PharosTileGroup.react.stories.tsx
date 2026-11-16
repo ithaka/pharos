@@ -1,7 +1,8 @@
 import { action } from 'storybook/actions';
 
-import { PharosTileGroup, PharosTile, PharosIcon } from '../../react-components';
+import { PharosTileGroup, PharosTile, PharosIcon, PharosHeading } from '../../react-components';
 import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
+import { headerIconStyleReact, headerStackStyleReact } from '../tile/storyArgs';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { PharosContext } from '../../utils/PharosContext';
 import type { Meta, StoryObj } from '@storybook/react-vite';
@@ -41,23 +42,31 @@ export const Base: Story = {
       onChange={(e) => action('Change')((e.target as PTGType).value)}
     >
       <span slot="legend">How do you want to start?</span>
-      <PharosTile
-        value="new"
-        title="Create a new project"
-        description="Create a new project from scratch with a pre-defined metadata template"
-      />
-      <PharosTile
-        value="interpretive"
-        title="Interpretive"
-        description="Derives historical framing and draw connections beyond what is literally visible in the item"
-      />
-      <PharosTile
-        value="seeklight"
-        title="Seeklight Management"
-        description="Enable generation on project fields. Configure metadata generation output."
-        icon="gen-ai"
-      />
-      <PharosTile value="archive" title="Archive" description="Not available right now" disabled />
+      <PharosTile value="new">
+        <PharosHeading slot="header" level={3} preset="2" noMargin>
+          Create a new project
+        </PharosHeading>
+        Create a new project from scratch with a pre-defined metadata template
+      </PharosTile>
+      <PharosTile value="interpretive">
+        <PharosHeading slot="header" level={3} preset="2" noMargin>
+          Interpretive
+        </PharosHeading>
+        Derives historical framing and draw connections beyond what is literally visible in the item
+      </PharosTile>
+      <PharosTile value="seeklight">
+        <PharosIcon slot="header" name="gen-ai" a11yHidden="true" style={headerIconStyleReact} />
+        <PharosHeading slot="header" level={3} preset="2" noMargin>
+          Seeklight Management
+        </PharosHeading>
+        Enable generation on project fields. Configure metadata generation output.
+      </PharosTile>
+      <PharosTile value="archive" disabled>
+        <PharosHeading slot="header" level={3} preset="2" noMargin>
+          Archive
+        </PharosHeading>
+        Not available right now
+      </PharosTile>
     </PharosTileGroup>
   ),
   args: defaultArgs,
@@ -68,10 +77,12 @@ export const Pricing: Story = {
     <PharosTileGroup name="plan">
       <span slot="legend">Choose a plan</span>
       <PharosTile value="regular" hideIndicator>
-        <span slot="header">Regular plan</span>
-        <span slot="title">
-          <strong>$19</strong> / month
-        </span>
+        <div slot="header" style={headerStackStyleReact}>
+          <span>Regular plan</span>
+          <PharosHeading level={3} preset="2" noMargin>
+            <strong>$19</strong> / month
+          </PharosHeading>
+        </div>
         <ul
           style={{
             listStyle: 'none',
@@ -116,10 +127,12 @@ export const Pricing: Story = {
         </ul>
       </PharosTile>
       <PharosTile value="plus" hideIndicator>
-        <span slot="header">Plus plan</span>
-        <span slot="title">
-          <strong>$29</strong> / month
-        </span>
+        <div slot="header" style={headerStackStyleReact}>
+          <span>Plus plan</span>
+          <PharosHeading level={3} preset="2" noMargin>
+            <strong>$29</strong> / month
+          </PharosHeading>
+        </div>
         <ul
           style={{
             listStyle: 'none',

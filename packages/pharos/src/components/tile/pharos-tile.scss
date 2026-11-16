@@ -4,7 +4,8 @@
   display: flex;
   position: relative;
   width: 100%;
-  min-width: 200px;
+  min-width: 120px;
+  max-width: 400px;
   box-sizing: border-box;
   contain: layout;
 }
@@ -26,43 +27,13 @@
 
 .tile__header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--pharos-spacing-one-half-x);
-}
-
-.tile__title-row {
-  display: flex;
   align-items: flex-start;
   gap: var(--pharos-spacing-one-half-x);
 
-  .tile__icon {
-    flex: none;
-    margin-top: var(--pharos-spacing-one-eighth-x);
-  }
-
-  .tile__title {
+  slot::slotted(:is(h1, h2, h3, h4, h5, h6, [level])) {
     flex: 1;
     min-width: 0;
   }
-}
-
-.tile__label {
-  @include mixins.font-base(
-    $font-size: var(--pharos-font-size-small),
-    $line-height: var(--pharos-line-height-small)
-  );
-
-  display: inline-flex;
-  align-items: center;
-  flex: none;
-  align-self: flex-start;
-  margin-inline-start: auto;
-  color: var(--pharos-color-text-20);
-}
-
-.tile__title {
-  display: block;
 }
 
 .tile__description {
@@ -166,8 +137,15 @@
   border-color: var(--pharos-color-hover-primary);
 }
 
-:host([href]:not([disabled], [selection])) .tile:hover .tile__title,
-:host([selection]:not([disabled])) .tile__input:hover + .tile .tile__title {
+:host([href]:not([disabled], [selection]))
+  .tile:hover
+  .tile__header
+  slot::slotted(:is(h1, h2, h3, h4, h5, h6, [level])),
+:host([selection]:not([disabled]))
+  .tile__input:hover
+  + .tile
+  .tile__header
+  slot::slotted(:is(h1, h2, h3, h4, h5, h6, [level])) {
   color: var(--pharos-color-hover-primary);
 }
 
