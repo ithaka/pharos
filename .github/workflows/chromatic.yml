@@ -67,7 +67,14 @@ jobs:
         run: yarn storybook:setup
 
       - name: Build Storybook
-        run: yarn storybook:wc:build
+        run: yarn storybook:wc:build --stats-json
+
+      - name: Verify TurboSnap stats file
+        run: |
+          if [ ! -f .storybook-static/wc/preview-stats.json ]; then
+            echo "::error::.storybook-static/wc/preview-stats.json is missing; TurboSnap needs it to trace changed stories"
+            exit 1
+          fi
 
       - name: Publish to Chromatic
         uses: chromaui/action@latest
@@ -77,3 +84,10 @@ jobs:
           storybookBuildDir: .storybook-static/wc
           exitZeroOnChanges: true
           exitOnceUploaded: true
+          onlyChanged: ${{ github.event_name == 'push' }}
+          externals: |
+            packages/pharos/src/**/*.scss
+            packages/pharos/tokens/**
+            packages/pharos/assets/**
+            packages/pharos/scripts/**
+            packages/pharos/style-dictionary.config.js

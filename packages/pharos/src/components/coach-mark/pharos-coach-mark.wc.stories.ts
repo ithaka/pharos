@@ -4,6 +4,10 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { argTypes, defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosCoachMark } from './pharos-coach-mark';
+
+registerStorybookComponents([PharosCoachMark]);
 
 const meta = {
   title: 'Components/Coach Mark',

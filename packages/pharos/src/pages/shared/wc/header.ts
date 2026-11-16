@@ -1,6 +1,30 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 import logo from '../../../utils/_storybook/assets/images/jstor-logo.svg';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../components/button/pharos-button';
+import { PharosDropdownMenu } from '../../../components/dropdown-menu/pharos-dropdown-menu';
+import { PharosDropdownMenuItem } from '../../../components/dropdown-menu/pharos-dropdown-menu-item';
+import { PharosDropdownMenuNav } from '../../../components/dropdown-menu-nav/pharos-dropdown-menu-nav';
+import { PharosDropdownMenuNavCategory } from '../../../components/dropdown-menu-nav/pharos-dropdown-menu-nav-category';
+import { PharosDropdownMenuNavLink } from '../../../components/dropdown-menu-nav/pharos-dropdown-menu-nav-link';
+import { PharosHeader } from '../../../components/header/pharos-header';
+import { PharosIcon } from '../../../components/icon/pharos-icon';
+import { PharosInputGroup } from '../../../components/input-group/pharos-input-group';
+import { PharosLink } from '../../../components/link/pharos-link';
+
+registerStorybookComponents([
+  PharosButton,
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosDropdownMenuNav,
+  PharosDropdownMenuNavCategory,
+  PharosDropdownMenuNavLink,
+  PharosHeader,
+  PharosIcon,
+  PharosInputGroup,
+  PharosLink,
+]);
 
 const accountNav = (section: string) => html`
   <storybook-pharos-dropdown-menu-nav a11y-label="profile">

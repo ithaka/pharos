@@ -3,6 +3,12 @@ import type { TemplateResult } from 'lit';
 
 import { ImageResultsItem } from './image-results-item';
 import { imageResults } from '../../mocks';
+import registerStorybookComponents from '../../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../../components/button/pharos-button';
+import { PharosHeading } from '../../../../components/heading/pharos-heading';
+import { PharosLink } from '../../../../components/link/pharos-link';
+
+registerStorybookComponents([PharosButton, PharosHeading, PharosLink]);
 
 export const ImageResults = (): TemplateResult => html`
   <div class="search-page__container--image-results">

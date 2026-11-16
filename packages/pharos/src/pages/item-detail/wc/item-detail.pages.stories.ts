@@ -8,6 +8,13 @@ import { Footer } from '../../shared/wc/footer';
 import { ItemCarousel } from './item-carousel/item-carousel';
 import { CollectionCarousel } from './collection-carousel/collection-carousel';
 import { Metadata } from './metadata';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../components/button/pharos-button';
+import { PharosIcon } from '../../../components/icon/pharos-icon';
+import { PharosLayout } from '../../../components/layout/pharos-layout';
+import { PharosLink } from '../../../components/link/pharos-link';
+
+registerStorybookComponents([PharosButton, PharosIcon, PharosLayout, PharosLink]);
 
 export default {
   title: 'Pages/Item Detail',

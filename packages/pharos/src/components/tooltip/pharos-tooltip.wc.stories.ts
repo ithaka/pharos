@@ -5,6 +5,18 @@ import { useEffect } from 'storybook/preview-api';
 import { defaultArgs, argTypes, type StoryArgs, type ComponentArgs } from './storyArgs';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+import { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
+import { PharosDropdownMenuItem } from '../dropdown-menu/pharos-dropdown-menu-item';
+import { PharosTooltip } from './pharos-tooltip';
+
+registerStorybookComponents([
+  PharosButton,
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosTooltip,
+]);
 
 const meta = {
   title: 'Components/Tooltip',

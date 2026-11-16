@@ -4,6 +4,12 @@ import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ChangeEvent } from 'react';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosCheckbox } from './pharos-checkbox';
+import { PharosCheckboxGroup } from '../checkbox-group/pharos-checkbox-group';
+import { PharosLink } from '../link/pharos-link';
+
+registerStorybookComponents([PharosCheckbox, PharosCheckboxGroup, PharosLink]);
 
 const meta = {
   title: 'Forms/Checkbox',

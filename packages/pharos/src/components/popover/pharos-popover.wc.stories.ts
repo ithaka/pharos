@@ -3,7 +3,12 @@ import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
-import type { PharosPopover } from './pharos-popover';
+import { PharosPopover } from './pharos-popover';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+import { PharosHeading } from '../heading/pharos-heading';
+
+registerStorybookComponents([PharosButton, PharosHeading, PharosPopover]);
 
 const meta = {
   title: 'Components/Popover',

@@ -1,6 +1,10 @@
 import { html, type TemplateResult } from 'lit';
 
 import tokens from './tokens';
+import registerStorybookComponents from '../utils/_storybook/registerStorybookComponents';
+import { PharosIcon } from '../components/icon/pharos-icon';
+
+registerStorybookComponents([PharosIcon]);
 
 type TokenEntry = {
   name: string;
@@ -621,4 +625,36 @@ const ElevationTokens = () => html`
 
 export const Elevation = {
   render: () => ElevationTokens(),
+};
+
+export const Gradients = {
+  render: () => html`
+    ${Object.entries(tokens.gradient).map(([group, gradients]) =>
+      TokenTable(
+        `${group === 'subdued' ? 'Subdued' : 'Saturated'} gradients`,
+        html`
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th>Value</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${Object.values(gradients).map(
+              (token) => html`
+                <tr>
+                  <td>${toTokenFormat(token.name)}</td>
+                  <td>${token.value}</td>
+                  <td>
+                    <div style="background-image:${token.value};width:12rem;height:5rem;"></div>
+                  </td>
+                </tr>
+              `
+            )}
+          </tbody>
+        `
+      )
+    )}
+  `,
 };

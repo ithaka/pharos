@@ -4,6 +4,26 @@ import { historyTable, scheduledTable } from '../mocks';
 import { CreateReportModal } from './create-report-modal';
 import { Sidenav } from './sidenav';
 import logo from '../../../utils/_storybook/assets/images/reports/jstor-horizontal.svg';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../components/button/pharos-button';
+import { PharosHeading } from '../../../components/heading/pharos-heading';
+import { PharosLayout } from '../../../components/layout/pharos-layout';
+import { PharosLink } from '../../../components/link/pharos-link';
+import { PharosTab } from '../../../components/tabs/pharos-tab';
+import { PharosTabPanel } from '../../../components/tabs/pharos-tab-panel';
+import { PharosTabs } from '../../../components/tabs/pharos-tabs';
+import { PharosToaster } from '../../../components/toast/pharos-toaster';
+
+registerStorybookComponents([
+  PharosButton,
+  PharosHeading,
+  PharosLayout,
+  PharosLink,
+  PharosTab,
+  PharosTabPanel,
+  PharosTabs,
+  PharosToaster,
+]);
 export class ReportsExample extends LitElement {
   override createRenderRoot() {
     // Keep example element in the light DOM to allow sharing styles with React story

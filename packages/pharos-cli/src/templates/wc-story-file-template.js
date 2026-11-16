@@ -2,8 +2,12 @@ const template = ({ titleCaseName, componentName }) => `
 import { html } from 'lit';
 
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
+import { Pharos${titleCaseName} } from './pharos-${componentName}';
+
+registerStorybookComponents([Pharos${titleCaseName}]);
 
 const meta = {
   title: 'Components/${titleCaseName}',

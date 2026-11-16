@@ -6,7 +6,11 @@ import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ChangeEvent } from 'react';
-import type { PharosSelect } from './pharos-select';
+import { PharosSelect } from './pharos-select';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+
+registerStorybookComponents([PharosButton, PharosSelect]);
 
 const meta = {
   title: 'Forms/Select',

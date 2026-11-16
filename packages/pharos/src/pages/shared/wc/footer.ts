@@ -1,5 +1,12 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../../../components/button/pharos-button';
+import { PharosFooter } from '../../../components/footer/pharos-footer';
+import { PharosIcon } from '../../../components/icon/pharos-icon';
+import { PharosLink } from '../../../components/link/pharos-link';
+
+registerStorybookComponents([PharosButton, PharosFooter, PharosIcon, PharosLink]);
 
 export const Footer = (): TemplateResult => {
   return html`

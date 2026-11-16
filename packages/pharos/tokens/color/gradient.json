@@ -1,0 +1,14 @@
+{
+  "color": {
+    "gradient": {
+      "subdued": {
+        "secondary": {
+          "value": "hsl(192.381, 71.5909%, 34.5098%)"
+        },
+        "tertiary": {
+          "value": "hsl(204.9438, 64.0288%, 27.2549%)"
+        }
+      }
+    }
+  }
+}

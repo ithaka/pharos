@@ -3,10 +3,15 @@ import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, argTypes } from './storyArgs';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosAlert } from './pharos-alert';
+import { PharosLink } from '../link/pharos-link';
+
+registerStorybookComponents([PharosAlert, PharosLink]);
 
 const meta = {
   title: 'Components/Alert',
-  component: 'storybook-pharos-alert',
+  component: 'pharos-alert',
   parameters: {
     docs: {
       page: configureDocsPage('alert'),

@@ -230,6 +230,12 @@
       "institution": {
         "value": "assets/icons/institution.svg"
       },
+      "institution-none": {
+        "value": "assets/icons/institution-none.svg"
+      },
+      "institution-valid": {
+        "value": "assets/icons/institution-valid.svg"
+      },
       "laptop": {
         "value": "assets/icons/laptop.svg"
       },

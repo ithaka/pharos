@@ -5,6 +5,28 @@ import { action } from 'storybook/actions';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
 import type { Meta, StoryObj } from '@storybook/web-components';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from './pharos-button';
+import { PharosCheckbox } from '../checkbox/pharos-checkbox';
+import { PharosCheckboxGroup } from '../checkbox-group/pharos-checkbox-group';
+import { PharosCombobox } from '../combobox/pharos-combobox';
+import { PharosRadioButton } from '../radio-button/pharos-radio-button';
+import { PharosRadioGroup } from '../radio-group/pharos-radio-group';
+import { PharosSelect } from '../select/pharos-select';
+import { PharosTextInput } from '../text-input/pharos-text-input';
+import { PharosTextarea } from '../textarea/pharos-textarea';
+
+registerStorybookComponents([
+  PharosButton,
+  PharosCheckbox,
+  PharosCheckboxGroup,
+  PharosCombobox,
+  PharosRadioButton,
+  PharosRadioGroup,
+  PharosSelect,
+  PharosTextInput,
+  PharosTextarea,
+]);
 
 const meta = {
   title: 'Components/Button',
