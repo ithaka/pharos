@@ -25,6 +25,7 @@ const meta = {
   parameters: {
     docs: { page: configureDocsPage('tile') },
     options: { selectedPanel: 'addon-controls' },
+    controls: { exclude: ['hideLabel', 'hide-label'] },
   },
 } satisfies Meta<ComponentArgs>;
 
@@ -48,7 +49,7 @@ const listItemStyle = {
 
 export const Base: Story = {
   render: (args) => (
-    <PharosTile href={args.href} disabled={args.disabled}>
+    <PharosTile href={args.href} hideIndicator={args.hideIndicator} disabled={args.disabled}>
       <PharosIcon slot="header" name="gear" a11yHidden="true" style={headerIconStyleReact} />
       <PharosHeading slot="header" level={3} preset="2" noMargin>
         Preservation

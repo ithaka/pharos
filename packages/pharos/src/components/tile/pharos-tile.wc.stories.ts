@@ -19,6 +19,7 @@ const meta = {
   parameters: {
     docs: { page: configureDocsPage('tile') },
     options: { selectedPanel: 'addon-controls' },
+    controls: { exclude: ['hideIndicator', 'hideLabel', 'hide-label'] },
   },
 } satisfies Meta<ComponentArgs>;
 
@@ -32,7 +33,11 @@ const listItemStyle =
 
 export const Base: Story = {
   render: (args) => html`
-    <storybook-pharos-tile href=${ifDefined(args.href)} ?disabled=${args.disabled}>
+    <storybook-pharos-tile
+      href=${ifDefined(args.href)}
+      .disabled=${args.disabled}
+      .hideIndicator=${args['hide-indicator'] ?? args.hideIndicator}
+    >
       <storybook-pharos-icon
         slot="header"
         name="gear"

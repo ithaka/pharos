@@ -1,5 +1,7 @@
 export interface ComponentArgs {
   href?: string;
+  hideIndicator?: boolean; // React prop name
+  'hide-indicator'?: boolean; // WC attribute name
   disabled?: boolean;
 }
 
@@ -7,6 +9,7 @@ export type StoryArgs = ComponentArgs & {};
 
 export const defaultArgs: StoryArgs = {
   href: '#',
+  hideIndicator: false,
   disabled: false,
 };
 
