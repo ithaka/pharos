@@ -8,7 +8,14 @@ import { headerIconStyle, headerStackStyle } from '../tile/storyArgs';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ChangeEvent } from 'react';
-import type { PharosTileGroup } from './pharos-tile-group';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosTileGroup } from './pharos-tile-group';
+import { PharosTile } from '../tile/pharos-tile';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosHeading } from '../heading/pharos-heading';
+import { PharosButton } from '../button/pharos-button';
+
+registerStorybookComponents([PharosTileGroup, PharosTile, PharosIcon, PharosHeading, PharosButton]);
 
 const meta = {
   title: 'Components/Tile Group',

@@ -13,6 +13,12 @@ import {
 } from './storyArgs';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosTile } from './pharos-tile';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosHeading } from '../heading/pharos-heading';
+
+registerStorybookComponents([PharosTile, PharosIcon, PharosHeading]);
 
 const meta = {
   title: 'Components/Tile',
