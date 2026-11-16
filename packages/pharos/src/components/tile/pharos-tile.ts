@@ -12,6 +12,7 @@ import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosIcon } from '../icon/pharos-icon';
 import type { IconName } from '../icon/pharos-icon';
 
+export type { IconName };
 export type TileSelection = 'single' | 'multiple';
 export type TileIndicatorPosition = 'bottom-end' | 'top-end';
 
