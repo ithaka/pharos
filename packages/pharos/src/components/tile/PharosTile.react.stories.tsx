@@ -1,6 +1,7 @@
 import { PharosTile, PharosIcon, PharosHeading } from '../../react-components';
 import {
   defaultArgs,
+  argTypesReact,
   headerIconStyleReact,
   headerLabelStyleReact,
   headerRowStyleReact,
@@ -15,6 +16,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 const meta = {
   title: 'Components/Tile',
   component: PharosTile,
+  argTypes: argTypesReact,
   decorators: [
     (Story) => (
       <PharosContext.Provider value={{ prefix: 'storybook' }}>
@@ -49,7 +51,12 @@ const listItemStyle = {
 
 export const Base: Story = {
   render: (args) => (
-    <PharosTile href={args.href} hideIndicator={args.hideIndicator} disabled={args.disabled}>
+    <PharosTile
+      href={args.href}
+      hideIndicator={args.hideIndicator}
+      indicatorPosition={args.indicatorPosition}
+      disabled={args.disabled}
+    >
       <PharosIcon slot="header" name="gear" a11yHidden="true" style={headerIconStyleReact} />
       <PharosHeading slot="header" level={3} preset="2" noMargin>
         Preservation
@@ -71,6 +78,18 @@ export const IconWithTitle: Story = {
         Seeklight Management
       </PharosHeading>
       Enable generation on project fields. Configure metadata generation output.
+    </PharosTile>
+  ),
+};
+
+export const CustomIndicator: Story = {
+  name: 'Custom indicator icon',
+  render: () => (
+    <PharosTile href="https://example.com" target="_blank" indicatorIcon="link-external">
+      <PharosHeading slot="header" level={3} preset="2" noMargin>
+        Open the documentation
+      </PharosHeading>
+      The icon replaces the arrow on a link tile
     </PharosTile>
   ),
 };
@@ -102,7 +121,7 @@ export const CustomLabel: Story = {
       </PharosHeading>
       <PharosIcon
         slot="header"
-        name="checkmark-filled-circle"
+        name="checkmark-inverse"
         a11yTitle="Enabled"
         style={headerLabelStyleReact}
       />
@@ -145,7 +164,7 @@ export const CustomContent: Story = {
         <div style={headerRowStyleReact}>
           <span>Regular plan</span>
           <PharosIcon
-            name="checkmark-filled-circle"
+            name="checkmark-inverse"
             a11yTitle="Current plan"
             style={{ color: 'var(--pharos-color-text-20)' }}
           />

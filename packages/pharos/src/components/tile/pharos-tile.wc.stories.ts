@@ -3,6 +3,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import {
   defaultArgs,
+  argTypesWC,
   headerIconStyle,
   headerLabelStyle,
   headerRowStyle,
@@ -16,10 +17,13 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 const meta = {
   title: 'Components/Tile',
   component: 'pharos-tile',
+  argTypes: argTypesWC,
   parameters: {
     docs: { page: configureDocsPage('tile') },
     options: { selectedPanel: 'addon-controls' },
-    controls: { exclude: ['hideIndicator', 'hideLabel', 'hide-label'] },
+    controls: {
+      exclude: ['hideIndicator', 'indicatorPosition', 'indicatorIcon', 'hideLabel', 'hide-label'],
+    },
   },
 } satisfies Meta<ComponentArgs>;
 
@@ -36,6 +40,7 @@ export const Base: Story = {
     <storybook-pharos-tile
       href=${ifDefined(args.href)}
       .disabled=${args.disabled}
+      .indicatorPosition=${args['indicator-position'] ?? 'bottom-end'}
       .hideIndicator=${args['hide-indicator'] ?? args.hideIndicator}
     >
       <storybook-pharos-icon
@@ -71,6 +76,22 @@ export const IconWithTitle: Story = {
   `,
 };
 
+export const CustomIndicator: Story = {
+  name: 'Custom indicator icon',
+  render: () => html`
+    <storybook-pharos-tile
+      href="https://example.com"
+      target="_blank"
+      indicator-icon="link-external"
+    >
+      <storybook-pharos-heading slot="header" level="3" preset="2" no-margin
+        >Open the documentation</storybook-pharos-heading
+      >
+      The icon replaces the arrow on a link tile
+    </storybook-pharos-tile>
+  `,
+};
+
 export const IconAboveTitle: Story = {
   name: 'Icon above title',
   render: () => html`
@@ -96,7 +117,7 @@ export const CustomLabel: Story = {
       >
       <storybook-pharos-icon
         slot="header"
-        name="checkmark-filled-circle"
+        name="checkmark-inverse"
         a11y-title="Enabled"
         style=${headerLabelStyle}
       ></storybook-pharos-icon>
@@ -144,7 +165,7 @@ export const CustomContent: Story = {
         <div style=${headerRowStyle}>
           <span>Regular plan</span>
           <storybook-pharos-icon
-            name="checkmark-filled-circle"
+            name="checkmark-inverse"
             a11y-title="Current plan"
             style="color: var(--pharos-color-text-20);"
           ></storybook-pharos-icon>

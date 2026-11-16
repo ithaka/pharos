@@ -64,9 +64,36 @@
 }
 
 .tile__arrow,
-.tile__indicator {
+.tile__indicator,
+.tile__indicator-icon {
   flex: none;
   margin-inline-start: auto;
+}
+
+.tile__indicator-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: var(--pharos-color-interactive-secondary);
+
+  &--empty {
+    visibility: hidden;
+  }
+}
+
+:host([indicator-position='top-end']) {
+  .tile__arrow,
+  .tile__indicator,
+  .tile__indicator-icon {
+    position: absolute;
+    inset-block-start: calc(var(--pharos-spacing-1-x) + 1px);
+    inset-inline-end: calc(var(--pharos-spacing-1-x) + 1px);
+    margin: 0;
+  }
+
+  .tile__header {
+    padding-inline-end: calc(24px + var(--pharos-spacing-one-half-x));
+  }
 }
 
 // Link tile: the title anchor stretches over the whole tile so the tile is one click target.
@@ -245,6 +272,14 @@
 
 :host([disabled]) .tile__arrow {
   display: none;
+}
+
+:host([disabled]) .tile__indicator-icon {
+  color: var(--pharos-color-text-disabled);
+}
+
+:host([invalidated]:not([disabled])) .tile__indicator-icon {
+  color: var(--pharos-form-element-color-border-invalid);
 }
 
 :host([disabled]) .tile__indicator {

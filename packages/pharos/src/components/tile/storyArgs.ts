@@ -1,11 +1,40 @@
+import type { IconName } from '../icon/pharos-icon';
+import type { TileIndicatorPosition } from './pharos-tile';
+
 export interface ComponentArgs {
   href?: string;
   hideIndicator?: boolean; // React prop name
   'hide-indicator'?: boolean; // WC attribute name
+  indicatorPosition?: TileIndicatorPosition; // React prop name
+  'indicator-position'?: TileIndicatorPosition; // WC attribute name
+  indicatorIcon?: IconName; // React prop name
+  'indicator-icon'?: IconName; // WC attribute name
   disabled?: boolean;
 }
 
 export type StoryArgs = ComponentArgs & {};
+
+// The manifest types of these are aliases Storybook can't resolve, so it would show an object editor
+const indicatorPositionArgType = {
+  control: { type: 'select' as const },
+  options: ['bottom-end', 'top-end'],
+  description: 'Where the indicator is placed',
+};
+const indicatorIconArgType = {
+  control: { type: 'text' as const },
+  description:
+    'Icon name that replaces the indicator: the arrow on a link tile, or the selected-only icon on a selection tile',
+};
+
+export const argTypesWC = {
+  'indicator-position': indicatorPositionArgType,
+  'indicator-icon': indicatorIconArgType,
+};
+
+export const argTypesReact = {
+  indicatorPosition: indicatorPositionArgType,
+  indicatorIcon: indicatorIconArgType,
+};
 
 export const defaultArgs: StoryArgs = {
   href: '#',

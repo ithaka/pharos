@@ -75,7 +75,11 @@ export const Pricing: Story = {
   render: () => html`
     <storybook-pharos-tile-group name="plan">
       <span slot="legend">Choose a plan</span>
-      <storybook-pharos-tile value="regular" hide-indicator>
+      <storybook-pharos-tile
+        value="regular"
+        indicator-icon="checkmark-inverse"
+        indicator-position="top-end"
+      >
         <div slot="header" style=${headerStackStyle}>
           <span>Regular plan</span>
           <storybook-pharos-heading level="3" preset="2" no-margin
@@ -99,7 +103,11 @@ export const Pricing: Story = {
           </li>
         </ul>
       </storybook-pharos-tile>
-      <storybook-pharos-tile value="plus" hide-indicator>
+      <storybook-pharos-tile
+        value="plus"
+        indicator-icon="checkmark-inverse"
+        indicator-position="top-end"
+      >
         <div slot="header" style=${headerStackStyle}>
           <span>Plus plan</span>
           <storybook-pharos-heading level="3" preset="2" no-margin
@@ -118,6 +126,56 @@ export const Pricing: Story = {
             >Cancel anytime
           </li>
         </ul>
+      </storybook-pharos-tile>
+    </storybook-pharos-tile-group>
+  `,
+};
+
+export const IndicatorTopRight: Story = {
+  name: 'Indicator top right',
+  render: () => html`
+    <storybook-pharos-tile-group name="topright">
+      <span slot="legend">Indicator at the top right</span>
+      <storybook-pharos-tile value="one" indicator-position="top-end">
+        <storybook-pharos-heading slot="header" level="3" preset="2" no-margin
+          >Create a new project</storybook-pharos-heading
+        >
+        Start from scratch
+      </storybook-pharos-tile>
+      <storybook-pharos-tile value="two" indicator-position="top-end">
+        <storybook-pharos-heading slot="header" level="3" preset="2" no-margin
+          >Import a project</storybook-pharos-heading
+        >
+        Bring in an existing project
+      </storybook-pharos-tile>
+    </storybook-pharos-tile-group>
+  `,
+};
+
+export const SelectedIcon: Story = {
+  name: 'Selected icon only',
+  render: () => html`
+    <storybook-pharos-tile-group name="selectedicon">
+      <span slot="legend">Only the selected tile shows an icon</span>
+      <storybook-pharos-tile
+        value="one"
+        indicator-icon="checkmark-inverse"
+        indicator-position="top-end"
+      >
+        <storybook-pharos-heading slot="header" level="3" preset="2" no-margin
+          >Create a new project</storybook-pharos-heading
+        >
+        Start from scratch
+      </storybook-pharos-tile>
+      <storybook-pharos-tile
+        value="two"
+        indicator-icon="checkmark-inverse"
+        indicator-position="top-end"
+      >
+        <storybook-pharos-heading slot="header" level="3" preset="2" no-margin
+          >Import a project</storybook-pharos-heading
+        >
+        Bring in an existing project
       </storybook-pharos-tile>
     </storybook-pharos-tile-group>
   `,

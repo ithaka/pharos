@@ -10,8 +10,10 @@ import { FormElement } from '../base/form-element';
 import FormMixin from '../../utils/mixins/form';
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosIcon } from '../icon/pharos-icon';
+import type { IconName } from '../icon/pharos-icon';
 
 export type TileSelection = 'single' | 'multiple';
+export type TileIndicatorPosition = 'bottom-end' | 'top-end';
 
 export const TILE_STATE_CHANGE_EVENT = 'pharos-tile-state-change';
 
@@ -68,6 +70,24 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
    */
   @property({ type: Boolean, reflect: true, attribute: 'hide-indicator' })
   public hideIndicator = false;
+
+  /**
+   * Indicates where the indicator (the arrow or selection control) is placed. The `top-end` position
+   * anchors it to the top right of the tile instead of the footer row.
+   * @attr indicator-position
+   */
+  @property({ type: String, reflect: true, attribute: 'indicator-position' })
+  public indicatorPosition: TileIndicatorPosition = 'bottom-end';
+
+  /**
+   * Indicates the name of an icon that replaces the indicator. On a link tile it replaces the arrow.
+   * On a selection tile it replaces the radio or checkbox and only shows when the tile is selected,
+   * so unselected tiles show no indicator.
+   * @attr indicator-icon
+   * @type {IconName | undefined}
+   */
+  @property({ type: String, reflect: true, attribute: 'indicator-icon' })
+  public indicatorIcon?: IconName;
 
   /**
    * Indicates the value of the tile when used in a tile group.
@@ -222,14 +242,26 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
     if (this.hideIndicator) return nothing;
 
     if (this._isLink) {
+      // The indicator icon replaces the arrow and, unlike on selection tiles, is always shown
       return html`<pharos-icon
-        class="tile__arrow"
-        name="arrow-right"
+        class=${this.indicatorIcon ? 'tile__arrow tile__indicator-icon' : 'tile__arrow'}
+        name=${this.indicatorIcon ?? 'arrow-right'}
         a11y-hidden="true"
       ></pharos-icon>`;
     }
 
     if (!this._isSelectable) return nothing;
+
+    if (this.indicatorIcon) {
+      // Unselected tiles keep an empty placeholder so the tile does not change size on selection
+      return this.selected
+        ? html`<pharos-icon
+            class="tile__indicator-icon"
+            name=${this.indicatorIcon}
+            a11y-hidden="true"
+          ></pharos-icon>`
+        : html`<span class="tile__indicator-icon tile__indicator-icon--empty"></span>`;
+    }
 
     return this.selection === 'multiple'
       ? html`<svg
@@ -266,8 +298,14 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
         </svg>`;
   }
 
-  private _renderFooter(): TemplateResult | typeof nothing {
-    const indicator = this._renderIndicator();
+  private get _indicatorAtTop(): boolean {
+    return this.indicatorPosition === 'top-end';
+  }
+
+  private _renderFooter(
+    indicator: TemplateResult | typeof nothing
+  ): TemplateResult | typeof nothing {
+    if (this._indicatorAtTop) indicator = nothing;
     if (indicator === nothing && !this._hasSlot('footer')) return nothing;
 
     return html`<div class="tile__footer">
@@ -295,16 +333,18 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
   }
 
   protected override render(): TemplateResult {
+    const indicator = this._renderIndicator();
+
     return html`
       ${this._renderInput()}
       <div class="tile">
-        ${this._renderHeader()}
+        ${this._indicatorAtTop ? indicator : nothing} ${this._renderHeader()}
         ${
           this._hasSlot()
             ? html`<div id="description" class="tile__description"><slot></slot></div>`
             : nothing
         }
-        ${this._renderFooter()}
+        ${this._renderFooter(indicator)}
       </div>
     `;
   }

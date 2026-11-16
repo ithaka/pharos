@@ -76,7 +76,7 @@ export const Pricing: Story = {
   render: () => (
     <PharosTileGroup name="plan">
       <span slot="legend">Choose a plan</span>
-      <PharosTile value="regular" hideIndicator>
+      <PharosTile value="regular" indicatorIcon="checkmark-inverse" indicatorPosition="top-end">
         <div slot="header" style={headerStackStyleReact}>
           <span>Regular plan</span>
           <PharosHeading level={3} preset="2" noMargin>
@@ -126,7 +126,7 @@ export const Pricing: Story = {
           </li>
         </ul>
       </PharosTile>
-      <PharosTile value="plus" hideIndicator>
+      <PharosTile value="plus" indicatorIcon="checkmark-inverse" indicatorPosition="top-end">
         <div slot="header" style={headerStackStyleReact}>
           <span>Plus plan</span>
           <PharosHeading level={3} preset="2" noMargin>
@@ -165,6 +165,48 @@ export const Pricing: Story = {
             Cancel anytime
           </li>
         </ul>
+      </PharosTile>
+    </PharosTileGroup>
+  ),
+};
+
+export const IndicatorTopRight: Story = {
+  name: 'Indicator top right',
+  render: () => (
+    <PharosTileGroup name="topright">
+      <span slot="legend">Indicator at the top right</span>
+      <PharosTile value="one" indicatorPosition="top-end">
+        <PharosHeading slot="header" level={3} preset="2" noMargin>
+          Create a new project
+        </PharosHeading>
+        Start from scratch
+      </PharosTile>
+      <PharosTile value="two" indicatorPosition="top-end">
+        <PharosHeading slot="header" level={3} preset="2" noMargin>
+          Import a project
+        </PharosHeading>
+        Bring in an existing project
+      </PharosTile>
+    </PharosTileGroup>
+  ),
+};
+
+export const SelectedIcon: Story = {
+  name: 'Selected icon only',
+  render: () => (
+    <PharosTileGroup name="selectedicon">
+      <span slot="legend">Only the selected tile shows an icon</span>
+      <PharosTile value="one" indicatorIcon="checkmark-inverse" indicatorPosition="top-end">
+        <PharosHeading slot="header" level={3} preset="2" noMargin>
+          Create a new project
+        </PharosHeading>
+        Start from scratch
+      </PharosTile>
+      <PharosTile value="two" indicatorIcon="checkmark-inverse" indicatorPosition="top-end">
+        <PharosHeading slot="header" level={3} preset="2" noMargin>
+          Import a project
+        </PharosHeading>
+        Bring in an existing project
       </PharosTile>
     </PharosTileGroup>
   ),
