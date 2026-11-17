@@ -66,14 +66,7 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
   public download?: string;
 
   /**
-   * Hides the trailing arrow or selection indicator. Selection is still shown through the tile border.
-   * @attr hide-indicator
-   */
-  @property({ type: Boolean, reflect: true, attribute: 'hide-indicator' })
-  public hideIndicator = false;
-
-  /**
-   * Indicates where the indicator (the arrow or selection control) is placed. The `top-end` position
+   * Indicates where the indicator icon is placed. The `top-end` position
    * anchors it to the top right of the tile instead of the footer row.
    * @attr indicator-position
    */
@@ -81,9 +74,9 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
   public indicatorPosition: TileIndicatorPosition = 'bottom-end';
 
   /**
-   * Indicates the name of an icon that replaces the indicator. On a link tile it replaces the arrow.
-   * On a selection tile it replaces the radio or checkbox and only shows when the tile is selected,
-   * so unselected tiles show no indicator.
+   * Indicates the name of the indicator icon. Link tiles show no indicator without it. On a link tile
+   * the icon is always shown; on a selection tile it replaces the radio or checkbox and only shows
+   * when the tile is selected.
    * @attr indicator-icon
    * @type {IconName | undefined}
    */
@@ -240,15 +233,14 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
   }
 
   private _renderIndicator(): TemplateResult | typeof nothing {
-    if (this.hideIndicator) return nothing;
-
     if (this._isLink) {
-      // The indicator icon replaces the arrow and, unlike on selection tiles, is always shown
-      return html`<pharos-icon
-        class=${this.indicatorIcon ? 'tile__arrow tile__indicator-icon' : 'tile__arrow'}
-        name=${this.indicatorIcon ?? 'arrow-right'}
-        a11y-hidden="true"
-      ></pharos-icon>`;
+      return this.indicatorIcon
+        ? html`<pharos-icon
+            class="tile__indicator-icon"
+            name=${this.indicatorIcon}
+            a11y-hidden="true"
+          ></pharos-icon>`
+        : nothing;
     }
 
     if (!this._isSelectable) return nothing;

@@ -53,7 +53,6 @@ export const Base: Story = {
   render: (args) => (
     <PharosTile
       href={args.href}
-      hideIndicator={args.hideIndicator}
       indicatorPosition={args.indicatorPosition}
       disabled={args.disabled}
     >
@@ -159,7 +158,7 @@ export const Disabled: Story = {
 export const CustomContent: Story = {
   name: 'Custom content (pricing)',
   render: () => (
-    <PharosTile hideIndicator>
+    <PharosTile>
       <div slot="header" style={headerStackStyleReact}>
         <div style={headerRowStyleReact}>
           <span>Regular plan</span>

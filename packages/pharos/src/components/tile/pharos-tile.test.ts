@@ -34,8 +34,7 @@ describe('pharos-tile', () => {
       expect(component.renderRoot.querySelector('#description')).not.toBeNull();
     });
 
-    it('renders an arrow and no input', () => {
-      expect(component.renderRoot.querySelector('.tile__arrow')).not.toBeNull();
+    it('renders no input', () => {
       expect(component.renderRoot.querySelector('input')).toBeNull();
     });
 
@@ -72,13 +71,11 @@ describe('pharos-tile', () => {
       expect(slot.assignedElements().length).toBe(2);
     });
 
-    it('hides the arrow with hide-indicator', async () => {
+    it('shows no indicator on a link tile without an indicator icon', async () => {
       component = await fixture(
-        html`<test-pharos-tile href="/a" hide-indicator
-          ><span slot="header">T</span></test-pharos-tile
-        >`
+        html`<test-pharos-tile href="/a"><span slot="header">T</span></test-pharos-tile>`
       );
-      expect(component.renderRoot.querySelector('.tile__arrow')).toBeNull();
+      expect(component.renderRoot.querySelector('.tile__indicator-icon')).toBeNull();
     });
 
     it('omits the header row when there is no header content', async () => {
@@ -103,9 +100,7 @@ describe('pharos-tile', () => {
 
     it('renders slotted content that is added after the first render', async () => {
       component = await fixture(
-        html`<test-pharos-tile href="/a" hide-indicator
-          ><span slot="header">T</span></test-pharos-tile
-        >`
+        html`<test-pharos-tile href="/a"><span slot="header">T</span></test-pharos-tile>`
       );
       expect(component.renderRoot.querySelector('.tile__footer-content')).toBeNull();
 
@@ -132,30 +127,41 @@ describe('pharos-tile', () => {
   describe('indicator', () => {
     it('places the indicator in the footer row by default', async () => {
       component = await fixture(html`
-        <test-pharos-tile href="/a"><span slot="header">Title</span></test-pharos-tile>
+        <test-pharos-tile href="/a" indicator-icon="arrow-right">
+          <span slot="header">Title</span>
+        </test-pharos-tile>
       `);
-      expect(component.renderRoot.querySelector('.tile__footer .tile__arrow')).not.toBeNull();
+      expect(
+        component.renderRoot.querySelector('.tile__footer .tile__indicator-icon')
+      ).not.toBeNull();
     });
 
     it('moves the indicator out of the footer with indicator-position="top-end"', async () => {
       component = await fixture(html`
-        <test-pharos-tile selection="single" name="choice" value="a" indicator-position="top-end">
+        <test-pharos-tile
+          selection="single"
+          name="choice"
+          value="a"
+          indicator-icon="checkmark"
+          selected
+          indicator-position="top-end"
+        >
           <span slot="header">Title</span>
         </test-pharos-tile>
       `);
       expect(component.renderRoot.querySelector('.tile__footer')).toBeNull();
-      expect(component.renderRoot.querySelector('.tile > .tile__indicator')).not.toBeNull();
+      expect(component.renderRoot.querySelector('.tile > .tile__indicator-icon')).not.toBeNull();
     });
 
     it('keeps footer content when the indicator is at the top', async () => {
       component = await fixture(html`
-        <test-pharos-tile href="/a" indicator-position="top-end">
+        <test-pharos-tile href="/a" indicator-icon="arrow-right" indicator-position="top-end">
           <span slot="header">Title</span>
           <span slot="footer">Status</span>
         </test-pharos-tile>
       `);
-      expect(component.renderRoot.querySelector('.tile__footer .tile__arrow')).toBeNull();
-      expect(component.renderRoot.querySelector('.tile > .tile__arrow')).not.toBeNull();
+      expect(component.renderRoot.querySelector('.tile__footer .tile__indicator-icon')).toBeNull();
+      expect(component.renderRoot.querySelector('.tile > .tile__indicator-icon')).not.toBeNull();
       expect(component.renderRoot.querySelector('.tile__footer-content')).not.toBeNull();
     });
 
@@ -165,7 +171,6 @@ describe('pharos-tile', () => {
           <span slot="header">Title</span>
         </test-pharos-tile>
       `);
-      expect(component.renderRoot.querySelector('.tile__indicator')).toBeNull();
       expect(component.renderRoot.querySelector('pharos-icon, test-pharos-icon')).toBeNull();
       expect(component.renderRoot.querySelector('.tile__indicator-icon--empty')).not.toBeNull();
 
@@ -178,7 +183,19 @@ describe('pharos-tile', () => {
       expect(component.renderRoot.querySelector('.tile__indicator-icon--empty')).toBeNull();
     });
 
-    it('replaces the arrow of a link tile with the indicator icon', async () => {
+    it('shows the radio or checkbox on a selection tile without an indicator icon', async () => {
+      component = await fixture(html`
+        <test-pharos-tile selection="multiple" name="choice" value="a">
+          <span slot="header">Title</span>
+        </test-pharos-tile>
+      `);
+      expect(component.renderRoot.querySelector('.tile__indicator--checkbox')).not.toBeNull();
+      component.selection = 'single';
+      await component.updateComplete;
+      expect(component.renderRoot.querySelector('.tile__indicator--radio')).not.toBeNull();
+    });
+
+    it('shows the indicator icon on a link tile with the indicator icon', async () => {
       component = await fixture(html`
         <test-pharos-tile href="/a" indicator-icon="link-external">
           <span slot="header">Title</span>
@@ -186,23 +203,7 @@ describe('pharos-tile', () => {
       `);
       const icon = component.renderRoot.querySelector('.tile__indicator-icon');
       expect(icon?.getAttribute('name')).toBe('link-external');
-      expect(component.renderRoot.querySelectorAll('.tile__arrow').length).toBe(1);
-    });
-
-    it('still hides the indicator icon with hide-indicator', async () => {
-      component = await fixture(html`
-        <test-pharos-tile
-          selection="single"
-          name="choice"
-          value="a"
-          selected
-          indicator-icon="checkmark"
-          hide-indicator
-        >
-          <span slot="header">Title</span>
-        </test-pharos-tile>
-      `);
-      expect(component.renderRoot.querySelector('.tile__indicator-icon')).toBeNull();
+      expect(component.renderRoot.querySelectorAll('.tile__indicator-icon').length).toBe(1);
     });
   });
 
@@ -213,7 +214,7 @@ describe('pharos-tile', () => {
       );
       expect(component.renderRoot.querySelector('a')).toBeNull();
       expect(component.renderRoot.querySelector('input')).toBeNull();
-      expect(component.renderRoot.querySelector('.tile__arrow')).toBeNull();
+      expect(component.renderRoot.querySelector('.tile__indicator-icon')).toBeNull();
     });
   });
 

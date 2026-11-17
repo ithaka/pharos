@@ -28,7 +28,7 @@ const meta = {
     docs: { page: configureDocsPage('tile') },
     options: { selectedPanel: 'addon-controls' },
     controls: {
-      exclude: ['hideIndicator', 'indicatorPosition', 'indicatorIcon', 'hideLabel', 'hide-label'],
+      exclude: ['indicatorPosition', 'indicatorIcon', 'hideLabel', 'hide-label'],
     },
   },
 } satisfies Meta<ComponentArgs>;
@@ -47,7 +47,6 @@ export const Base: Story = {
       href=${ifDefined(args.href)}
       .disabled=${args.disabled}
       .indicatorPosition=${args['indicator-position'] ?? 'bottom-end'}
-      .hideIndicator=${args['hide-indicator'] ?? args.hideIndicator}
     >
       <storybook-pharos-icon
         slot="header"
@@ -166,7 +165,7 @@ export const Disabled: Story = {
 export const CustomContent: Story = {
   name: 'Custom content (pricing)',
   render: () => html`
-    <storybook-pharos-tile hide-indicator>
+    <storybook-pharos-tile>
       <div slot="header" style=${headerStackStyle}>
         <div style=${headerRowStyle}>
           <span>Regular plan</span>

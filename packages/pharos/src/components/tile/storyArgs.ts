@@ -3,8 +3,6 @@ import type { TileIndicatorPosition } from './pharos-tile';
 
 export interface ComponentArgs {
   href?: string;
-  hideIndicator?: boolean; // React prop name
-  'hide-indicator'?: boolean; // WC attribute name
   indicatorPosition?: TileIndicatorPosition; // React prop name
   'indicator-position'?: TileIndicatorPosition; // WC attribute name
   indicatorIcon?: IconName; // React prop name
@@ -23,7 +21,7 @@ const indicatorPositionArgType = {
 const indicatorIconArgType = {
   control: { type: 'text' as const },
   description:
-    'Icon name that replaces the indicator: the arrow on a link tile, or the selected-only icon on a selection tile',
+    'Icon name for the indicator. On a link tile it is always shown and there is no indicator without it; on a selection tile it replaces the radio or checkbox and shows only when selected',
 };
 
 export const argTypesWC = {
@@ -38,7 +36,6 @@ export const argTypesReact = {
 
 export const defaultArgs: StoryArgs = {
   href: '#',
-  hideIndicator: false,
   disabled: false,
 };
 
