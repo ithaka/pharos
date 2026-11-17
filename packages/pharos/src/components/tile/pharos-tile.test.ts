@@ -38,13 +38,11 @@ describe('pharos-tile', () => {
       expect(component.renderRoot.querySelector('input')).toBeNull();
     });
 
-    it('passes target and rel to the anchor', async () => {
+    it('passes target to the anchor', async () => {
       component.target = '_blank';
-      component.rel = 'noopener';
       await component.updateComplete;
       const link = component.renderRoot.querySelector('a') as HTMLAnchorElement;
       expect(link.target).toBe('_blank');
-      expect(link.rel).toBe('noopener');
     });
 
     it('removes the href and marks the link disabled when disabled', async () => {

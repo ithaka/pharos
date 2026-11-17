@@ -52,20 +52,6 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
   public target?: string;
 
   /**
-   * Indicates the relationship of the linked URL to the current page.
-   * @attr rel
-   */
-  @property({ type: String, reflect: true })
-  public rel?: string;
-
-  /**
-   * Indicates to save the linked URL instead of navigating to it.
-   * @attr download
-   */
-  @property({ type: String, reflect: true })
-  public download?: string;
-
-  /**
    * Indicates where the indicator icon is placed. The `top-end` position
    * anchors it to the top right of the tile instead of the footer row.
    * @attr indicator-position
@@ -218,8 +204,6 @@ export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
         class="tile__header tile__link"
         href=${ifDefined(this.disabled ? undefined : this.href)}
         target=${ifDefined(this.target)}
-        rel=${ifDefined(this.rel)}
-        download=${ifDefined(this.download)}
         role=${ifDefined(this.disabled ? 'link' : undefined)}
         aria-disabled=${ifDefined(this.disabled ? 'true' : undefined)}
         aria-describedby="description"

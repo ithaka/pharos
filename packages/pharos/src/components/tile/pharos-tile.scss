@@ -22,7 +22,9 @@
   background-color: var(--pharos-color-white);
   border: 1px solid var(--pharos-color-marble-gray-80);
   border-radius: var(--pharos-radius-base-standard);
-  transition: border-color var(--pharos-transition-duration-short) ease-in-out;
+  transition:
+    background-color var(--pharos-transition-duration-short) ease-in-out,
+    border-color var(--pharos-transition-duration-short) ease-in-out;
 }
 
 .tile__header {
@@ -159,19 +161,8 @@
 // Hover
 :host([href]:not([disabled], [selection])) .tile:hover,
 :host([selection]:not([disabled])) .tile__input:hover + .tile {
+  background-color: var(--pharos-color-marble-gray-97);
   border-color: var(--pharos-color-hover-primary);
-}
-
-:host([href]:not([disabled], [selection]))
-  .tile:hover
-  .tile__header
-  slot::slotted(:is(h1, h2, h3, h4, h5, h6, [level])),
-:host([selection]:not([disabled]))
-  .tile__input:hover
-  + .tile
-  .tile__header
-  slot::slotted(:is(h1, h2, h3, h4, h5, h6, [level])) {
-  color: var(--pharos-color-hover-primary);
 }
 
 // Focus
@@ -232,15 +223,7 @@
   }
 }
 
-// Indicator hover and focus follow the radio and checkbox
-:host(:not([selected], [disabled])) .tile__input:not(:focus):hover + .tile .tile__indicator {
-  .outer,
-  .box,
-  .hover {
-    stroke: var(--pharos-color-hover-primary);
-  }
-}
-
+// Indicator focus follows the radio and checkbox
 .tile__input:focus-visible + .tile .tile__indicator {
   .outer,
   .box,
