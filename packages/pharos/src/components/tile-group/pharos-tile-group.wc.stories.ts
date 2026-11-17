@@ -211,7 +211,9 @@ export const Form: Story = {
           Second
         </storybook-pharos-tile>
       </storybook-pharos-tile-group>
-      <storybook-pharos-button type="submit">Submit</storybook-pharos-button>
+      <storybook-pharos-button type="submit" style="margin-top: var(--pharos-spacing-1-x);"
+        >Submit</storybook-pharos-button
+      >
     </form>
   `,
 };
