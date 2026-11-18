@@ -313,4 +313,12 @@ describe('pharos-tile-group', () => {
     expect(fieldset.getAttribute('aria-describedby')).toBe('message');
     expect(fieldset.getAttribute('aria-invalid')).toBe('true');
   });
+
+  it('is not compact by default and reflects the compact attribute', async () => {
+    expect(component.compact).toBe(false);
+    expect(component.hasAttribute('compact')).toBe(false);
+    component.compact = true;
+    await component.updateComplete;
+    expect(component.hasAttribute('compact')).toBe(true);
+  });
 });

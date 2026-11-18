@@ -1,6 +1,12 @@
 import { action } from 'storybook/actions';
 
-import { PharosTileGroup, PharosTile, PharosIcon, PharosHeading } from '../../react-components';
+import {
+  PharosTileGroup,
+  PharosTile,
+  PharosIcon,
+  PharosHeading,
+  PharosButton,
+} from '../../react-components';
 import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { headerIconStyleReact, headerStackStyleReact } from '../tile/storyArgs';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
@@ -78,9 +84,9 @@ export const Pricing: Story = {
       <span slot="legend">Choose a plan</span>
       <PharosTile value="regular" indicatorIcon="checkmark-inverse" indicatorPosition="top-end">
         <div slot="header" style={headerStackStyleReact}>
-          <span>Regular plan</span>
+          <span>Plan A</span>
           <PharosHeading level={3} preset="2" noMargin>
-            <strong>$19</strong> / month
+            <strong>$X</strong> / month
           </PharosHeading>
         </div>
         <ul
@@ -102,7 +108,7 @@ export const Pricing: Story = {
             }}
           >
             <PharosIcon name="checkmark-small" a11yHidden="true" />
-            10 PDF downloads / month
+            Point A
           </li>
           <li
             style={{
@@ -112,7 +118,7 @@ export const Pricing: Story = {
             }}
           >
             <PharosIcon name="checkmark-small" a11yHidden="true" />
-            Unlimited reading and saving online
+            Point B
           </li>
           <li
             style={{
@@ -122,15 +128,15 @@ export const Pricing: Story = {
             }}
           >
             <PharosIcon name="checkmark-small" a11yHidden="true" />
-            Cancel anytime
+            Point C
           </li>
         </ul>
       </PharosTile>
       <PharosTile value="plus" indicatorIcon="checkmark-inverse" indicatorPosition="top-end">
         <div slot="header" style={headerStackStyleReact}>
-          <span>Plus plan</span>
+          <span>Plan B</span>
           <PharosHeading level={3} preset="2" noMargin>
-            <strong>$29</strong> / month
+            <strong>$X</strong> / month
           </PharosHeading>
         </div>
         <ul
@@ -152,7 +158,7 @@ export const Pricing: Story = {
             }}
           >
             <PharosIcon name="checkmark-small" a11yHidden="true" />
-            Unlimited PDF downloads
+            Point A
           </li>
           <li
             style={{
@@ -162,7 +168,7 @@ export const Pricing: Story = {
             }}
           >
             <PharosIcon name="checkmark-small" a11yHidden="true" />
-            Cancel anytime
+            Point B
           </li>
         </ul>
       </PharosTile>
@@ -209,5 +215,28 @@ export const SelectedIcon: Story = {
         Bring in an existing project
       </PharosTile>
     </PharosTileGroup>
+  ),
+};
+
+export const Compact: Story = {
+  render: () => (
+    <>
+      <PharosTileGroup name="compact" compact>
+        <span slot="legend">Compact removes the padding below the group</span>
+        <PharosTile value="one">
+          <PharosHeading slot="header" level={3} preset="2" noMargin>
+            Create a new project
+          </PharosHeading>
+          Start from scratch
+        </PharosTile>
+        <PharosTile value="two">
+          <PharosHeading slot="header" level={3} preset="2" noMargin>
+            Import a project
+          </PharosHeading>
+          Bring in an existing project
+        </PharosTile>
+      </PharosTileGroup>
+      <PharosButton>Button directly below the group</PharosButton>
+    </>
   ),
 };

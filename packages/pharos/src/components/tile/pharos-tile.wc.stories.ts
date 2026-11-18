@@ -163,12 +163,12 @@ export const Disabled: Story = {
 };
 
 export const CustomContent: Story = {
-  name: 'Custom content (pricing)',
+  name: 'Custom content',
   render: () => html`
     <storybook-pharos-tile>
       <div slot="header" style=${headerStackStyle}>
         <div style=${headerRowStyle}>
-          <span>Regular plan</span>
+          <span>Plan A</span>
           <storybook-pharos-icon
             name="checkmark-inverse"
             a11y-title="Current plan"
@@ -176,21 +176,21 @@ export const CustomContent: Story = {
           ></storybook-pharos-icon>
         </div>
         <storybook-pharos-heading level="3" preset="2" no-margin
-          ><strong>$19</strong> / month</storybook-pharos-heading
+          ><strong>$X</strong> / month</storybook-pharos-heading
         >
       </div>
       <ul style=${listStyle}>
         <li style=${listItemStyle}>
           <storybook-pharos-icon name="checkmark-small" a11y-hidden="true"></storybook-pharos-icon
-          >10 PDF downloads / month
+          >Point A
         </li>
         <li style=${listItemStyle}>
           <storybook-pharos-icon name="checkmark-small" a11y-hidden="true"></storybook-pharos-icon
-          >Unlimited reading and saving online
+          >Point B
         </li>
         <li style=${listItemStyle}>
           <storybook-pharos-icon name="checkmark-small" a11y-hidden="true"></storybook-pharos-icon
-          >Cancel anytime
+          >Point C
         </li>
       </ul>
     </storybook-pharos-tile>

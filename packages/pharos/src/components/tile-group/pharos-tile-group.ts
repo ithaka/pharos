@@ -32,6 +32,13 @@ export class PharosTileGroup extends FormElement {
   public selection: TileSelection = 'single';
 
   /**
+   * Removes the extra padding below the tile group
+   * @attr compact
+   */
+  @property({ type: Boolean, reflect: true, useDefault: false })
+  public compact = false;
+
+  /**
    * Indicates the selected tile value (single selection) or values (multiple selection).
    * @readonly
    */

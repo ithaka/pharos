@@ -156,12 +156,12 @@ export const Disabled: Story = {
 };
 
 export const CustomContent: Story = {
-  name: 'Custom content (pricing)',
+  name: 'Custom content',
   render: () => (
     <PharosTile>
       <div slot="header" style={headerStackStyleReact}>
         <div style={headerRowStyleReact}>
-          <span>Regular plan</span>
+          <span>Plan A</span>
           <PharosIcon
             name="checkmark-inverse"
             a11yTitle="Current plan"
@@ -169,21 +169,21 @@ export const CustomContent: Story = {
           />
         </div>
         <PharosHeading level={3} preset="2" noMargin>
-          <strong>$19</strong> / month
+          <strong>$X</strong> / month
         </PharosHeading>
       </div>
       <ul style={listStyle}>
         <li style={listItemStyle}>
           <PharosIcon name="checkmark-small" a11yHidden="true" />
-          10 PDF downloads / month
+          Point A
         </li>
         <li style={listItemStyle}>
           <PharosIcon name="checkmark-small" a11yHidden="true" />
-          Unlimited reading and saving online
+          Point B
         </li>
         <li style={listItemStyle}>
           <PharosIcon name="checkmark-small" a11yHidden="true" />
-          Cancel anytime
+          Point C
         </li>
       </ul>
     </PharosTile>

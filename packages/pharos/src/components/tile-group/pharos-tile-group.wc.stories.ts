@@ -88,9 +88,9 @@ export const Pricing: Story = {
         indicator-position="top-end"
       >
         <div slot="header" style=${headerStackStyle}>
-          <span>Regular plan</span>
+          <span>Plan A</span>
           <storybook-pharos-heading level="3" preset="2" no-margin
-            ><strong>$19</strong> / month</storybook-pharos-heading
+            ><strong>$X</strong> / month</storybook-pharos-heading
           >
         </div>
         <ul
@@ -98,15 +98,15 @@ export const Pricing: Story = {
         >
           <li style="display: flex; gap: var(--pharos-spacing-one-quarter-x); align-items: center;">
             <storybook-pharos-icon name="checkmark-small" a11y-hidden="true"></storybook-pharos-icon
-            >10 PDF downloads / month
+            >Point A
           </li>
           <li style="display: flex; gap: var(--pharos-spacing-one-quarter-x); align-items: center;">
             <storybook-pharos-icon name="checkmark-small" a11y-hidden="true"></storybook-pharos-icon
-            >Unlimited reading and saving online
+            >Point B
           </li>
           <li style="display: flex; gap: var(--pharos-spacing-one-quarter-x); align-items: center;">
             <storybook-pharos-icon name="checkmark-small" a11y-hidden="true"></storybook-pharos-icon
-            >Cancel anytime
+            >Point C
           </li>
         </ul>
       </storybook-pharos-tile>
@@ -116,9 +116,9 @@ export const Pricing: Story = {
         indicator-position="top-end"
       >
         <div slot="header" style=${headerStackStyle}>
-          <span>Plus plan</span>
+          <span>Plan B</span>
           <storybook-pharos-heading level="3" preset="2" no-margin
-            ><strong>$29</strong> / month</storybook-pharos-heading
+            ><strong>$X</strong> / month</storybook-pharos-heading
           >
         </div>
         <ul
@@ -126,11 +126,11 @@ export const Pricing: Story = {
         >
           <li style="display: flex; gap: var(--pharos-spacing-one-quarter-x); align-items: center;">
             <storybook-pharos-icon name="checkmark-small" a11y-hidden="true"></storybook-pharos-icon
-            >Unlimited PDF downloads
+            >Point A
           </li>
           <li style="display: flex; gap: var(--pharos-spacing-one-quarter-x); align-items: center;">
             <storybook-pharos-icon name="checkmark-small" a11y-hidden="true"></storybook-pharos-icon
-            >Cancel anytime
+            >Point B
           </li>
         </ul>
       </storybook-pharos-tile>
@@ -211,9 +211,28 @@ export const Form: Story = {
           Second
         </storybook-pharos-tile>
       </storybook-pharos-tile-group>
-      <storybook-pharos-button type="submit" style="margin-top: var(--pharos-spacing-1-x);"
-        >Submit</storybook-pharos-button
-      >
+      <storybook-pharos-button type="submit">Submit</storybook-pharos-button>
     </form>
+  `,
+};
+
+export const Compact: Story = {
+  render: () => html`
+    <storybook-pharos-tile-group name="compact" compact>
+      <span slot="legend">Compact removes the padding below the group</span>
+      <storybook-pharos-tile value="one">
+        <storybook-pharos-heading slot="header" level="3" preset="2" no-margin
+          >Create a new project</storybook-pharos-heading
+        >
+        Start from scratch
+      </storybook-pharos-tile>
+      <storybook-pharos-tile value="two">
+        <storybook-pharos-heading slot="header" level="3" preset="2" no-margin
+          >Import a project</storybook-pharos-heading
+        >
+        Bring in an existing project
+      </storybook-pharos-tile>
+    </storybook-pharos-tile-group>
+    <storybook-pharos-button>Button directly below the group</storybook-pharos-button>
   `,
 };

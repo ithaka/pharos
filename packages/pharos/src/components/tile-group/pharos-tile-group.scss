@@ -7,8 +7,13 @@
   border: 0;
   padding: 0;
   margin: 0;
+  padding-block-end: var(--pharos-spacing-1-x);
   width: 100%;
   min-width: 0;
+}
+
+:host([compact]) .tile-group {
+  padding-block-end: 0;
 }
 
 .tile-group__tiles {

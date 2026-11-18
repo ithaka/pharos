@@ -1,5 +1,6 @@
 export interface ComponentArgs {
   selection?: 'single' | 'multiple';
+  compact?: boolean;
   name?: string;
   required?: boolean;
   disabled?: boolean;
@@ -12,6 +13,7 @@ export type StoryArgs = ComponentArgs & {};
 
 export const defaultArgs: StoryArgs = {
   selection: 'single',
+  compact: false,
   name: 'group1',
   required: false,
   disabled: false,
