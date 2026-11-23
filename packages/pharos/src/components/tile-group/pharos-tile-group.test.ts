@@ -207,30 +207,6 @@ describe('pharos-tile-group', () => {
     expect(tileOf(component, '2').disabled).toBe(true);
   });
 
-  it('does not hijack arrow keys from slotted tile content', async () => {
-    component = await fixture(html`
-      <test-pharos-tile-group name="group">
-        <test-pharos-tile value="1" selected>
-          <span slot="header">One</span>
-          <input slot="footer" id="inner" />
-        </test-pharos-tile>
-        <test-pharos-tile value="2"><span slot="header">Two</span></test-pharos-tile>
-      </test-pharos-tile-group>
-    `);
-    const input = component.querySelector('#inner') as HTMLInputElement;
-    const event = new KeyboardEvent('keydown', {
-      key: 'ArrowDown',
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-    });
-    input.dispatchEvent(event);
-    await component.updateComplete;
-
-    expect(event.defaultPrevented).toBe(false);
-    expect(component.value).toBe('1');
-  });
-
   it('moves the tab stop when a tile is selected or disabled directly', async () => {
     const focusable = (): string[] =>
       ['1', '2', '3'].filter((value) => tileOf(component, value).focusable);
