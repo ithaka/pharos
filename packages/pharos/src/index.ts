@@ -54,4 +54,6 @@ export { PharosToastButton } from './components/toast/pharos-toast-button';
 export { PharosToaster } from './components/toast/pharos-toaster';
 export { PharosToggleButton } from './components/toggle-button-group/pharos-toggle-button';
 export { PharosToggleButtonGroup } from './components/toggle-button-group/pharos-toggle-button-group';
+export { PharosTile } from './components/tile/pharos-tile';
+export { PharosTileGroup } from './components/tile-group/pharos-tile-group';
 export { PharosTooltip } from './components/tooltip/pharos-tooltip';

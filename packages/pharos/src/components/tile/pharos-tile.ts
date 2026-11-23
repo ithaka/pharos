@@ -1,0 +1,328 @@
+import { html, nothing } from 'lit';
+import { property, query } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
+import checkmarkSmall from '../../styles/icons/checkmark-small';
+import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
+import { tileStyles } from './pharos-tile.css';
+
+import { FormElement } from '../base/form-element';
+import FormMixin from '../../utils/mixins/form';
+import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
+import { PharosIcon } from '../icon/pharos-icon';
+import type { IconName } from '../icon/pharos-icon';
+
+export type { IconName };
+export type TileSelection = 'single' | 'multiple';
+export type TileIndicatorPosition = 'bottom-end' | 'top-end';
+
+export const TILE_STATE_CHANGE_EVENT = 'pharos-tile-state-change';
+
+/**
+ * Pharos tile component.
+ *
+ * A tile is a single click target for either navigation (when `href` is set) or selection
+ * (when placed within a `pharos-tile-group`).
+ *
+ * @tag pharos-tile
+ *
+ * @slot header - Contains the header row of the tile, such as an icon, a heading for the title and a label. It is the accessible name of the tile.
+ * @slot - Contains the body of the tile, such as a description.
+ * @slot footer - Contains the footer content of the tile, such as status text.
+ *
+ * @fires change - Fires when the selected state has changed (selection tiles only)
+ */
+export class PharosTile extends ScopedRegistryMixin(FormMixin(FormElement)) {
+  static elementDefinitions = {
+    'pharos-icon': PharosIcon,
+  };
+
+  /**
+   * Indicates the URL the tile navigates to, making it a link tile.
+   * @attr href
+   */
+  @property({ type: String, reflect: true })
+  public href?: string;
+
+  /**
+   * Indicates where to display the linked URL.
+   * @attr target
+   */
+  @property({ type: String, reflect: true })
+  public target?: string;
+
+  /**
+   * Indicates where the indicator icon is placed. The `top-end` position
+   * anchors it to the top right of the tile instead of the footer row.
+   * @attr indicator-position
+   */
+  @property({ type: String, reflect: true, attribute: 'indicator-position' })
+  public indicatorPosition: TileIndicatorPosition = 'bottom-end';
+
+  /**
+   * Indicates the name of the indicator icon. Link tiles show no indicator without it. On a link tile
+   * the icon is always shown; on a selection tile it replaces the radio or checkbox and only shows
+   * when the tile is selected.
+   * @attr indicator-icon
+   * @type {IconName | undefined}
+   */
+  @property({ type: String, reflect: true, attribute: 'indicator-icon' })
+  public indicatorIcon?: IconName;
+
+  /**
+   * Indicates the value of the tile when used in a tile group.
+   * @attr value
+   */
+  @property({ type: String, reflect: true })
+  public value = '';
+
+  /**
+   * Indicates if the tile is selected.
+   * @attr selected
+   */
+  @property({ type: Boolean, reflect: true })
+  public selected = false;
+
+  /**
+   * Indicates the type of selection. Set by the parent tile group; makes the tile a selection tile.
+   * @attr selection
+   * @type {TileSelection | undefined}
+   */
+  @property({ type: String, reflect: true })
+  public selection?: TileSelection;
+
+  /**
+   * Indicates if the selection input is part of the tab order. Managed by the parent tile group.
+   * @attr focusable
+   */
+  @property({ type: Boolean, attribute: false })
+  public focusable = true;
+
+  @query('#tile-input')
+  private _input?: HTMLInputElement;
+
+  public static override get styles(): CSSResultArray {
+    return [super.styles, tileStyles];
+  }
+
+  private _observer?: MutationObserver;
+
+  override connectedCallback(): void {
+    super.connectedCallback();
+
+    // Slotted content decides which sections render, so re-render when it changes
+    this._observer = new MutationObserver(() => this.requestUpdate());
+    this._observer.observe(this, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['slot'],
+    });
+  }
+
+  override disconnectedCallback(): void {
+    this._observer?.disconnect();
+    super.disconnectedCallback();
+  }
+
+  protected override firstUpdated(): void {
+    if (this._input) {
+      this._input.defaultChecked = this.selected;
+    }
+  }
+
+  protected override updated(changedProperties: PropertyValues): void {
+    super.updated(changedProperties);
+
+    if (changedProperties.has('selection') && this._input) {
+      this._input.defaultChecked = this.selected;
+    }
+
+    // Lets a parent tile group keep its tab stop and selection in step with direct changes
+    if (changedProperties.has('selected') || changedProperties.has('disabled')) {
+      this.dispatchEvent(new Event(TILE_STATE_CHANGE_EVENT, { bubbles: true }));
+    }
+  }
+
+  /**
+   * Selects the tile and moves focus to it. Used by the tile group for keyboard navigation.
+   */
+  public select(): void {
+    this._input?.click();
+    this._input?.focus();
+  }
+
+  private get _isSelectable(): boolean {
+    return !!this.selection;
+  }
+
+  private get _isLink(): boolean {
+    return !this._isSelectable && (!!this.href || (this.disabled && this.hasAttribute('href')));
+  }
+
+  private _handleChange(): void {
+    if (!this._input) return;
+    this.selected = this._input.checked;
+
+    this.dispatchEvent(
+      new Event('change', {
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+
+  _handleFormdata(event: CustomEvent): void {
+    const { formData } = event;
+    if (this._isSelectable && !this.disabled && this.selected && this.name) {
+      formData.append(this.name, this.value);
+    }
+  }
+
+  _handleFormReset(): void {
+    if (this._input) {
+      this.selected = this._input.defaultChecked;
+    }
+  }
+
+  private _hasSlot(name?: string): boolean {
+    if (name) {
+      return [...this.children].some((child) => child.slot === name);
+    }
+    return [...this.childNodes].some(
+      (node) =>
+        (node.nodeType === Node.ELEMENT_NODE && !(node as Element).slot) ||
+        (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim())
+    );
+  }
+
+  private _renderHeader(): TemplateResult | typeof nothing {
+    if (this._isLink) {
+      return html`<a
+        id="header"
+        class="tile__header tile__link"
+        href=${ifDefined(this.disabled ? undefined : this.href)}
+        target=${ifDefined(this.target)}
+        role=${ifDefined(this.disabled ? 'link' : undefined)}
+        aria-disabled=${ifDefined(this.disabled ? 'true' : undefined)}
+        aria-describedby="description"
+        ><slot name="header"></slot
+      ></a>`;
+    }
+
+    return this._hasSlot('header')
+      ? html`<div id="header" class="tile__header"><slot name="header"></slot></div>`
+      : nothing;
+  }
+
+  private _renderIndicator(): TemplateResult | typeof nothing {
+    if (this._isLink) {
+      return this.indicatorIcon
+        ? html`<pharos-icon
+            class="tile__indicator-icon"
+            name=${this.indicatorIcon}
+            a11y-hidden="true"
+          ></pharos-icon>`
+        : nothing;
+    }
+
+    if (!this._isSelectable) return nothing;
+
+    if (this.indicatorIcon) {
+      // Unselected tiles keep an empty placeholder so the tile does not change size on selection
+      return this.selected
+        ? html`<pharos-icon
+            class="tile__indicator-icon"
+            name=${this.indicatorIcon}
+            a11y-hidden="true"
+          ></pharos-icon>`
+        : html`<span class="tile__indicator-icon tile__indicator-icon--empty"></span>`;
+    }
+
+    return this.selection === 'multiple'
+      ? html`<svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          class="tile__indicator tile__indicator--checkbox input__icon"
+          role="img"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <rect x="3" y="3" width="18" height="18" rx="3" class="focus" />
+          <rect x="4" y="4" width="16" height="16" rx="2" class="box" />
+          <rect x="5" y="5" width="14" height="14" rx="1" class="hover" />
+          <svg x="4" y="4" class="checkmark">${unsafeSVG(atob(checkmarkSmall))}</svg>
+        </svg>`
+      : html`<svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          class="tile__indicator tile__indicator--radio input__icon"
+          role="img"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="50%" cy="50%" r="9" class="focus" />
+          <circle cx="50%" cy="50%" r="8" class="outer" />
+          <circle cx="50%" cy="50%" r="7" class="hover" />
+          <circle cx="50%" cy="50%" r="5" class="inner" />
+        </svg>`;
+  }
+
+  private get _indicatorAtTop(): boolean {
+    return this.indicatorPosition === 'top-end';
+  }
+
+  private _renderFooter(
+    indicator: TemplateResult | typeof nothing
+  ): TemplateResult | typeof nothing {
+    if (this._indicatorAtTop) indicator = nothing;
+    if (indicator === nothing && !this._hasSlot('footer')) return nothing;
+
+    return html`<div class="tile__footer">
+      <div class="tile__footer-content"><slot name="footer"></slot></div>
+      ${indicator}
+    </div>`;
+  }
+
+  private _renderInput(): TemplateResult | typeof nothing {
+    return this._isSelectable
+      ? html`<input
+          id="tile-input"
+          class="tile__input"
+          type=${this.selection === 'multiple' ? 'checkbox' : 'radio'}
+          name=${this.name}
+          .value=${this.value}
+          .checked=${this.selected}
+          ?disabled=${this.disabled}
+          tabindex=${this.focusable ? '0' : '-1'}
+          aria-labelledby="header"
+          aria-describedby="description"
+          @change=${this._handleChange}
+        />`
+      : nothing;
+  }
+
+  protected override render(): TemplateResult {
+    const indicator = this._renderIndicator();
+
+    return html`
+      ${this._renderInput()}
+      <div class="tile">
+        ${this._indicatorAtTop ? indicator : nothing} ${this._renderHeader()}
+        ${
+          this._hasSlot()
+            ? html`<div id="description" class="tile__description"><slot></slot></div>`
+            : nothing
+        }
+        ${this._renderFooter(indicator)}
+      </div>
+    `;
+  }
+}
