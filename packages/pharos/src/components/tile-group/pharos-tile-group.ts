@@ -128,11 +128,6 @@ export class PharosTileGroup extends FormElement {
   private _handleKeydown(event: KeyboardEvent): void {
     if (this.selection !== 'single') return;
 
-    // Only the tile's own input should move the selection, not slotted content
-    const origin = event.composedPath()[0] as HTMLElement;
-    const tile = event.target as Element;
-    if (origin.id !== 'tile-input' || (origin.getRootNode() as ShadowRoot).host !== tile) return;
-
     switch (event.key) {
       case 'Down':
       case 'Right':
