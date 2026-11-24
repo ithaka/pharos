@@ -4,7 +4,11 @@ import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
-import type { PharosToggleButtonGroup } from './pharos-toggle-button-group';
+import { PharosToggleButtonGroup } from './pharos-toggle-button-group';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosToggleButton } from './pharos-toggle-button';
+
+registerStorybookComponents([PharosToggleButton, PharosToggleButtonGroup]);
 
 const meta = {
   title: 'Components/Toggle Button Group',

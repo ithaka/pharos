@@ -10,6 +10,22 @@ import collection1 from '../../utils/_storybook/assets/images/item-detail/open_c
 import collection2 from '../../utils/_storybook/assets/images/item-detail/open_collection_2.png';
 import collection3 from '../../utils/_storybook/assets/images/item-detail/open_collection_3.png';
 import type { Meta, StoryObj } from '@storybook/web-components';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+import { PharosDropdownMenu } from '../dropdown-menu/pharos-dropdown-menu';
+import { PharosDropdownMenuItem } from '../dropdown-menu/pharos-dropdown-menu-item';
+import { PharosImageCard } from './pharos-image-card';
+import { PharosLayout } from '../layout/pharos-layout';
+import { PharosLink } from '../link/pharos-link';
+
+registerStorybookComponents([
+  PharosButton,
+  PharosDropdownMenu,
+  PharosDropdownMenuItem,
+  PharosImageCard,
+  PharosLayout,
+  PharosLink,
+]);
 
 const meta = {
   title: 'Components/Image Card',

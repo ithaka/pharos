@@ -6,7 +6,12 @@ import createFormData from '../../utils/createFormData';
 import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
-import type { PharosSlider } from './pharos-slider';
+import { PharosSlider } from './pharos-slider';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+import { PharosSliderOption } from './pharos-slider-option';
+
+registerStorybookComponents([PharosButton, PharosSlider, PharosSliderOption]);
 
 const meta = {
   title: 'Forms/Slider',

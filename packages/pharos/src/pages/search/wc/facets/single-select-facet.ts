@@ -1,6 +1,11 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
 import type { RadioGroupItem } from '../../types';
+import registerStorybookComponents from '../../../../utils/_storybook/registerStorybookComponents';
+import { PharosRadioButton } from '../../../../components/radio-button/pharos-radio-button';
+import { PharosRadioGroup } from '../../../../components/radio-group/pharos-radio-group';
+
+registerStorybookComponents([PharosRadioButton, PharosRadioGroup]);
 
 export const SingleSelectFacet = (
   name: string,

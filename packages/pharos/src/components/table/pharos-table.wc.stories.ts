@@ -3,6 +3,30 @@ import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosCheckbox } from '../checkbox/pharos-checkbox';
+import { PharosLink } from '../link/pharos-link';
+import { PharosTable } from './pharos-table';
+import { PharosTableBody } from '../table-body/pharos-table-body';
+import { PharosTableCell } from '../table-cell/pharos-table-cell';
+import { PharosTableColumnHeader } from '../table-column-header/pharos-table-column-header';
+import { PharosTableHead } from '../table-head/pharos-table-head';
+import { PharosTableRow } from '../table-row/pharos-table-row';
+import { PharosToggleButton } from '../toggle-button-group/pharos-toggle-button';
+import { PharosToggleButtonGroup } from '../toggle-button-group/pharos-toggle-button-group';
+
+registerStorybookComponents([
+  PharosCheckbox,
+  PharosLink,
+  PharosTable,
+  PharosTableBody,
+  PharosTableCell,
+  PharosTableColumnHeader,
+  PharosTableHead,
+  PharosTableRow,
+  PharosToggleButton,
+  PharosToggleButtonGroup,
+]);
 
 const meta = {
   title: 'Components/Table',

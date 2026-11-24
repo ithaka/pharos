@@ -3,6 +3,13 @@ import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+import { PharosIcon } from '../icon/pharos-icon';
+import { PharosInputGroup } from './pharos-input-group';
+import { PharosInputGroupSelect } from './pharos-input-group-select';
+
+registerStorybookComponents([PharosButton, PharosIcon, PharosInputGroup, PharosInputGroupSelect]);
 
 const meta = {
   title: 'Forms/Input Group',

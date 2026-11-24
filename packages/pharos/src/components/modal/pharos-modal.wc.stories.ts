@@ -5,8 +5,14 @@ import { action } from 'storybook/actions';
 import { argTypes, defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
-import type { PharosModal } from './pharos-modal';
-import type { PharosButton } from '../button/pharos-button';
+import { PharosModal } from './pharos-modal';
+import { PharosButton } from '../button/pharos-button';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosAlert } from '../alert/pharos-alert';
+import { PharosLink } from '../link/pharos-link';
+import { PharosTextInput } from '../text-input/pharos-text-input';
+
+registerStorybookComponents([PharosAlert, PharosButton, PharosLink, PharosModal, PharosTextInput]);
 
 const meta = {
   title: 'Components/Modal',

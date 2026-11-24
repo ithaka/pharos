@@ -7,6 +7,11 @@ import { Footer } from '../../shared/wc/footer';
 import { FacetFilters } from './facets/facet-filters';
 import { SearchResults } from './search-results/search-results';
 import { ImageResults } from './image-results/image-results';
+import registerStorybookComponents from '../../../utils/_storybook/registerStorybookComponents';
+import { PharosHeading } from '../../../components/heading/pharos-heading';
+import { PharosLink } from '../../../components/link/pharos-link';
+
+registerStorybookComponents([PharosHeading, PharosLink]);
 
 export default {
   title: 'Pages/Search',

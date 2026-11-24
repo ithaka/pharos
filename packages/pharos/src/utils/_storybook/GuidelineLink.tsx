@@ -1,7 +1,11 @@
 import type { FC } from 'react';
 
 import { PharosLink } from '../../react-components/link/pharos-link';
+import { PharosLink as PharosLinkElement } from '../../components/link/pharos-link';
 import { PharosContext } from '../PharosContext';
+import registerStorybookComponents from './registerStorybookComponents';
+
+registerStorybookComponents([PharosLinkElement]);
 
 interface GuidelineLinkProps {
   path: string;

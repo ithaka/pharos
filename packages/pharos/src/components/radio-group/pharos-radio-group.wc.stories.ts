@@ -7,7 +7,12 @@ import { defaultArgs, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ChangeEvent } from 'react';
-import type { PharosRadioGroup } from './pharos-radio-group';
+import { PharosRadioGroup } from './pharos-radio-group';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosButton } from '../button/pharos-button';
+import { PharosRadioButton } from '../radio-button/pharos-radio-button';
+
+registerStorybookComponents([PharosButton, PharosRadioButton, PharosRadioGroup]);
 
 const meta = {
   title: 'Forms/Radio Group',

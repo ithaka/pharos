@@ -4,7 +4,12 @@ import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
-import type { PharosButton } from '../button/pharos-button';
+import { PharosButton } from '../button/pharos-button';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosLink } from '../link/pharos-link';
+import { PharosToaster } from './pharos-toaster';
+
+registerStorybookComponents([PharosButton, PharosLink, PharosToaster]);
 
 const meta = {
   title: 'Components/Toast',

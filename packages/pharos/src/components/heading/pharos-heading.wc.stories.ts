@@ -4,6 +4,12 @@ import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, argTypes, type ComponentArgs, type StoryArgs } from './storyArgs';
 import { allPresets } from './pharos-heading';
 import type { Meta, StoryObj } from '@storybook/web-components';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosCheckbox } from '../checkbox/pharos-checkbox';
+import { PharosCheckboxGroup } from '../checkbox-group/pharos-checkbox-group';
+import { PharosHeading } from './pharos-heading';
+
+registerStorybookComponents([PharosCheckbox, PharosCheckboxGroup, PharosHeading]);
 
 const meta = {
   title: 'Components/Heading',

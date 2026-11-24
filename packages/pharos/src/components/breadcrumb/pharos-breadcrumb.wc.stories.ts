@@ -2,6 +2,11 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import { defaultArgs, type StoryArgs } from './storyArgs';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosBreadcrumb } from './pharos-breadcrumb';
+import { PharosBreadcrumbItem } from './pharos-breadcrumb-item';
+
+registerStorybookComponents([PharosBreadcrumb, PharosBreadcrumbItem]);
 
 const meta = {
   title: 'Components/Breadcrumb',

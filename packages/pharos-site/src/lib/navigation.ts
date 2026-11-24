@@ -64,6 +64,7 @@ export const designTokenPages = [
   'Overview',
   'Alias colors',
   'Global colors',
+  'Gradients',
   'Font family',
   'Font size',
   'Font weight',

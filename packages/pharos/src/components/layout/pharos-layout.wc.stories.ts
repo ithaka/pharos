@@ -5,6 +5,12 @@ import { configureDocsPage } from '../../utils/_storybook/docsPageConfig';
 import logo from '../../utils/_storybook/assets/images/jstor-logo-inverse.svg';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { ComponentArgs, StoryArgs } from './storyArgs';
+import registerStorybookComponents from '../../utils/_storybook/registerStorybookComponents';
+import { PharosLayout } from './pharos-layout';
+import { PharosLink } from '../link/pharos-link';
+import { PharosSidenav } from '../sidenav/pharos-sidenav';
+
+registerStorybookComponents([PharosLayout, PharosLink, PharosSidenav]);
 
 const meta = {
   title: 'Components/Layout',

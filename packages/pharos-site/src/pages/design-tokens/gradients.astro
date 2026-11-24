@@ -1,0 +1,31 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageSection from '@components/PageSection.astro';
+import TokenTable from '@components/TokenTable.astro';
+import TokenRows from '@components/TokenRows.astro';
+import tokens from '@ithaka/pharos/lib/styles/tokens';
+import type { DesignToken } from '@lib/tokenFormat';
+
+const groups = Object.entries(
+  tokens.gradient as unknown as Record<string, Record<string, DesignToken>>
+).map(([group, gradients]) => ({
+  title: `${group === 'subdued' ? 'Subdued' : 'Saturated'} gradients`,
+  rows: Object.values(gradients).map((token) => ({
+    name: token.name,
+    value: token.value,
+    examples: [`<div style="background-image: ${token.value}; width: 12rem; height: 5rem;"></div>`],
+  })),
+}));
+---
+
+<Layout title="Gradients">
+  <PageSection title="Gradients" isHeader>
+    {
+      groups.map(({ title, rows }) => (
+        <TokenTable title={title}>
+          <TokenRows rows={rows} />
+        </TokenTable>
+      ))
+    }
+  </PageSection>
+</Layout>
