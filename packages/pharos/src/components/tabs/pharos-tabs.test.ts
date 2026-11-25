@@ -406,15 +406,10 @@ describe('pharos-tabs', () => {
     expect(styles.paddingBottom).toBe('0px');
   });
 
-  it('can be removed before its first update has finished', async () => {
+  it('can be disconnected before the observers exist', () => {
     const tabs = document.createElement('test-pharos-tabs') as PharosTabs;
-    tabs.innerHTML = `
-      <test-pharos-tab id="tab-7" data-panel-id="panel-7">Tab 1</test-pharos-tab>
-      <test-pharos-tab-panel id="panel-7" slot="panel">Panel 1</test-pharos-tab-panel>
-    `;
-    document.body.appendChild(tabs);
 
-    expect(() => tabs.remove()).not.toThrow();
+    expect(() => tabs.disconnectedCallback()).not.toThrow();
   });
 
   it('does not start observers when removed while its first update is pending', async () => {
