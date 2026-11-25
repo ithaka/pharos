@@ -405,4 +405,30 @@ describe('pharos-tabs', () => {
     expect(styles.marginBottom).toBe('0px');
     expect(styles.paddingBottom).toBe('0px');
   });
+
+  it('can be disconnected before the observers exist', () => {
+    const tabs = document.createElement('test-pharos-tabs') as PharosTabs;
+
+    expect(() => tabs.disconnectedCallback()).not.toThrow();
+  });
+
+  it('does not start observers when removed while its first update is pending', async () => {
+    const tabs = document.createElement('test-pharos-tabs') as PharosTabs;
+    tabs.innerHTML = `
+      <test-pharos-tab id="tab-8" data-panel-id="panel-8">Tab 1</test-pharos-tab>
+      <test-pharos-tab-panel id="panel-8" slot="panel">Panel 1</test-pharos-tab-panel>
+    `;
+    document.body.appendChild(tabs);
+    tabs.remove();
+    await tabs.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(tabs['_tabOverflowObserver']).toBeUndefined();
+    expect(tabs['_tabListResizeObserver']).toBeUndefined();
+
+    document.body.appendChild(tabs);
+    expect(tabs['_tabOverflowObserver']).toBeDefined();
+    expect(tabs['_tabListResizeObserver']).toBeDefined();
+    tabs.remove();
+  });
 });
